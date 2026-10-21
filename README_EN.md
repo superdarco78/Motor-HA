@@ -30,7 +30,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner-en.svg" width="100%" alt="Okno HA"></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp" alt="Animation: four shades, day and night, weather, movement" width="100%"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animation: four shades, day and night, weather, movement" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animation: four shades, day and night, weather, movement" width="100%"><br>
 <sub>Four shades, day and night, weather and movement</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Okno HA (HA Window) – integration</h1>
@@ -66,7 +66,7 @@ Left: the standard shade card in Home Assistant. Right: the same window with Okn
 
 <p align="center"><b>⬅️ Before</b> · <b>After ➡️</b></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Before">&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="49%" alt="After"></picture></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Before">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="49%" alt="After"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="49%" alt="After"></p>
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Star%20this%20repo&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
@@ -660,7 +660,7 @@ The window is a normal cover in HA. In an automation pick **Cover: set position*
 
 The integration includes the Okno HA card. No separate install and no resource needed. Light and dark look, weather behind the glass, day and night.
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="70%" alt="Okno HA card animation"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="70%" alt="Okno HA card animation"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="70%" alt="Okno HA card animation"><br>
 <sub>Okno HA card: light or dark, like your theme</sub></p>
 
 Full card documentation (editor, all options, examples): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna/blob/main/README_EN.md).

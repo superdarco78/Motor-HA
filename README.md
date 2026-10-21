@@ -30,7 +30,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner-pl.svg" width="100%" alt="Okno HA"></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl-ciemny.webp"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl.webp" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl.webp#gh-light-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl-ciemny.webp#gh-dark-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><br>
 <sub>Cztery osłony, dzień i noc, pogoda i ruch</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Okno HA – integracja</h1>
@@ -66,7 +66,7 @@ Po lewej zwykła karta rolety w Home Assistancie. Po prawej to samo okno z Okno 
 
 <p align="center"><b>⬅️ Przed</b> · <b>Po ➡️</b></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-pl.svg" width="49%" alt="Przed">&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja.webp" width="49%" alt="Po"></picture></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-pl.svg" width="49%" alt="Przed">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja.webp#gh-light-mode-only" width="49%" alt="Po"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna.webp#gh-dark-mode-only" width="49%" alt="Po"></p>
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Daj%20gwiazdk%C4%99&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
@@ -660,7 +660,7 @@ Okno to zwykła roleta w HA. W automatyzacji wybierz akcję **Roleta: ustaw pozy
 
 Integracja ma w sobie kartę Okno HA. Nie trzeba jej instalować osobno ani dodawać zasobu. Karta ma jasny i ciemny wygląd, pogodę za oknem, dzień i noc.
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja.webp" width="70%" alt="Animacja karty Okno HA"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja.webp#gh-light-mode-only" width="70%" alt="Animacja karty Okno HA"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna.webp#gh-dark-mode-only" width="70%" alt="Animacja karty Okno HA"><br>
 <sub>Karta Okno HA: jasna albo ciemna, tak jak Twój motyw</sub></p>
 
 Pełny opis karty (edytor, wszystkie opcje, przykłady): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna).

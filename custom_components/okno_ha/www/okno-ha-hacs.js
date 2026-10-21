@@ -212,6 +212,14 @@
     const nowe = /dark/.test(m) === ciemny(el) ? "all" : "not all";
     if (el.getAttribute("media") !== nowe) el.setAttribute("media", nowe);
   };
+  // jasna i ciemna wersja obok siebie (#gh-light-mode-only / #gh-dark-mode-only, na GitHubie jedna z nich): w HA tylko ta z motywu HA
+  const wariant = (el) => {
+    const a = el.dataset.oknoOrg || el.getAttribute("src") || "";
+    const m = /#gh-(light|dark)-mode-only/.exec(a);
+    if (!m) return;
+    const widac = (m[1] === "dark") === ciemny(el);
+    if (el.style.display !== (widac ? "" : "none")) el.style.display = widac ? "" : "none";
+  };
   const pokaz = (el) => el.style.setProperty("visibility", "visible", "important");   // gdy przemalowanie się nie uda – obrazek w domyślnych kolorach
   // plakietki shields.io w opisie Okna HA: kolor z adresu → kolor główny (pomarańczowe/żółte → akcent)
   const AKCENTOWE = /^(ff9800|f9a825|orange|yellow)$/i;
@@ -266,7 +274,7 @@
     for (const el of korzen.querySelectorAll("*")) {
       if (++ile.n > 200000) return;
       try {
-        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); }
+        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); }
         else if (el.tagName === "SOURCE") zrodlo(el);
         else if (el.tagName === "IFRAME") {
           if (!el.__oknoHaRamka) {   // ramka HACS przeładowana (np. po restarcie) – popraw od razu po wczytaniu
@@ -288,6 +296,19 @@
     serie.forEach(clearTimeout);
     serie = [0, 300, 1000, 2500, 5000, 10000, 20000, 40000].map((t) => setTimeout(skanuj, t));
   };
+  // linki spisu treści prowadzą do GitHuba (HACS usuwa kotwice) – w HA przewiń do nagłówka na tej samej stronie
+  document.addEventListener("click", (e) => {
+    if (!naHacs()) return;
+    const a = e.composedPath().find((n) => n.tagName === "A");
+    const h = a && a.getAttribute("href");
+    if (!h || !/^https:\/\/github\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)(\/blob\/main\/README[^#]*)?#/.test(h)) return;
+    const tekst = a.textContent.trim(), korzen = a.getRootNode();
+    const cel = [...korzen.querySelectorAll("h1 img[alt],h2 img[alt],h3 img[alt],h4 img[alt]")].find((i) => i.alt.trim() === tekst)
+      || [...korzen.querySelectorAll("h1,h2,h3,h4")].find((n) => n.textContent.trim() === tekst);
+    if (!cel) return;
+    e.preventDefault(); e.stopPropagation();
+    cel.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, true);
   popraw(window);
   pamiec.then(seria);   // pamięć wczytana – od razu podmień to, co już narysowane
   // tylko w HACS i w Ustawieniach: co 2 s poprawia obrazki (ikona, kolor motywu)

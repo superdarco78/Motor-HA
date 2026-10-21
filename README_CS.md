@@ -30,7 +30,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner-cs.svg" width="100%" alt="Okno HA"></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp" alt="Animace: čtyři stínění, den a noc, počasí, pohyb" width="100%"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animace: čtyři stínění, den a noc, počasí, pohyb" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animace: čtyři stínění, den a noc, počasí, pohyb" width="100%"><br>
 <sub>Čtyři stínění, den a noc, počasí a pohyb</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Okno HA (HA Window) – integrace</h1>
@@ -66,7 +66,7 @@ Vlevo: běžná karta rolety v Home Assistantu. Vpravo: stejné okno s Okno HA.
 
 <p align="center"><b>⬅️ Předtím</b> · <b>Potom ➡️</b></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Předtím">&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="49%" alt="Potom"></picture></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Předtím">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="49%" alt="Potom"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="49%" alt="Potom"></p>
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Dej%20hv%C4%9Bzdu&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
@@ -660,7 +660,7 @@ Okno je v HA běžná roleta. V automatizaci vyber akci **Roleta: nastavit poloh
 
 Integrace obsahuje kartu Okno HA. Bez samostatné instalace a bez zdroje. Světlý i tmavý vzhled, počasí za sklem, den a noc.
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="70%" alt="Animace karty Okno HA"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="70%" alt="Animace karty Okno HA"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="70%" alt="Animace karty Okno HA"><br>
 <sub>Karta Okno HA: světlá nebo tmavá podle vašeho motivu</sub></p>
 
 Úplný popis karty (editor, všechny volby, příklady): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna/blob/main/README_EN.md).

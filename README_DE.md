@@ -30,7 +30,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner-de.svg" width="100%" alt="Okno HA"></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><br>
 <sub>Vier Behänge, Tag und Nacht, Wetter und Bewegung</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Okno HA (HA Window) – Integration</h1>
@@ -66,7 +66,7 @@ Links: die normale Rollo-Karte in Home Assistant. Rechts: dasselbe Fenster mit O
 
 <p align="center"><b>⬅️ Vorher</b> · <b>Nachher ➡️</b></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Vorher">&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="49%" alt="Nachher"></picture></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Vorher">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="49%" alt="Nachher"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="49%" alt="Nachher"></p>
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Gib%20einen%20Stern&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
@@ -660,7 +660,7 @@ Das Fenster ist ein normales Cover in HA. Wähle in einer Automation **Abdeckung
 
 Die Integration enthält die Okno HA Karte. Keine eigene Installation und keine Ressource nötig. Helles und dunkles Aussehen, Wetter hinter dem Glas, Tag und Nacht.
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="70%" alt="Animation der Okno-HA-Karte"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="70%" alt="Animation der Okno-HA-Karte"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="70%" alt="Animation der Okno-HA-Karte"><br>
 <sub>Okno-HA-Karte: hell oder dunkel, wie Ihr Design</sub></p>
 
 Vollständige Kartendoku (Editor, alle Optionen, Beispiele): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna/blob/main/README_EN.md).

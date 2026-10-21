@@ -30,7 +30,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner-fr.svg" width="100%" alt="Okno HA"></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp" alt="Animation : quatre stores, jour et nuit, météo, mouvement" width="100%"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animation : quatre stores, jour et nuit, météo, mouvement" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animation : quatre stores, jour et nuit, météo, mouvement" width="100%"><br>
 <sub>Quatre stores, jour et nuit, météo et mouvement</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Okno HA (HA Window) – intégration</h1>
@@ -66,7 +66,7 @@
 
 <p align="center"><b>⬅️ Avant</b> · <b>Après ➡️</b></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Avant">&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="49%" alt="Après"></picture></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Avant">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="49%" alt="Après"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="49%" alt="Après"></p>
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Donnez%20une%20%C3%A9toile&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
@@ -660,7 +660,7 @@ La fenêtre est un volet normal dans HA. Dans une automatisation, choisissez **V
 
 L’intégration contient la carte Okno HA. Pas d’installation séparée ni de ressource. Apparence claire et sombre, météo derrière la vitre, jour et nuit.
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp" width="70%" alt="Animation de la carte Okno HA"></picture><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="70%" alt="Animation de la carte Okno HA"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="70%" alt="Animation de la carte Okno HA"><br>
 <sub>Carte Okno HA : claire ou sombre, comme votre thème</sub></p>
 
 Documentation complète de la carte (éditeur, toutes les options, exemples): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna/blob/main/README_EN.md).

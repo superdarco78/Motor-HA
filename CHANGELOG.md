@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.30 – Opis bez kodu, linki zostają w HA
+
+- 🐞 Pod banerem w HACS nie ma już kawałka kodu („picture…”). Animacje mają wersję jasną i ciemną, HA pokazuje tę według swojego motywu
+- 🔗 Spis treści w HACS przewija do sekcji na tej samej stronie, zamiast otwierać GitHuba
+- 🪟 Animacja karty w neutralnych kolorach, pasuje do każdego motywu
+- 🎨 Kreator karty w opisie: spokojne pola informacji, ikony kroków w ciemnym motywie na ciemnym tle
+
 ## v1.4.29 – Spokojny baner
 
 - 🖼️ Baner w opisie bez zachodu słońca: neutralne tło jak kafelki (jasne albo ciemne według motywu), domek i „HA” w kolorze z Twojego profilu
