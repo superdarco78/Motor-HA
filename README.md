@@ -26,14 +26,14 @@
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/cs.svg" alt="Čeština" height="44"></a>
 </p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner5-pl.svg" width="100%" alt="Okno HA"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner6-pl.svg" width="100%" alt="Motor HA"></a></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl.webp#gh-light-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl-ciemny.webp#gh-dark-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><br>
 <sub>Cztery osłony, dzień i noc, pogoda i ruch</sub></p>
 
-<h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Okno HA – integracja</h1>
+<h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Motor HA – integracja</h1>
 
-<p align="center">Każde okno z roletą to <b>urządzenie</b> w Home Assistancie. Kreator z 7 kółkami i obrazkami, zmiana ustawień przyciskiem <b>Konfiguruj</b>, karta sama na panelu, karta Okno HA w środku.</p>
+<p align="center">Każde okno z roletą to <b>urządzenie</b> w Home Assistancie. Kreator z 7 kółkami i obrazkami, zmiana ustawień przyciskiem <b>Konfiguruj</b>, karta sama na panelu, karta Motor HA w środku.</p>
 
 > ℹ️ Działa z każdym silnikiem rolet w Home Assistant (`cover.*`): Zigbee, Z-Wave, Tuya, Shelly, Somfy i inne. Okno z jednym albo dwoma skrzydłami.
 
@@ -49,18 +49,18 @@
 </p>
 
 <a name="dlaczego"></a>
-<h2><a name="j1" href="#j1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-dlaczego.svg" height="48" alt="Dlaczego Okno HA?"></a></h2>
+<h2><a name="j1" href="#j1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-dlaczego.svg" height="48" alt="Dlaczego Motor HA?"></a></h2>
 
 <a name="j2"></a>
-<p align="center"><a href="#j2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/tab-dlaczego.svg" width="100%" alt="Dlaczego Okno HA"></a><br>
-<sub>Dlaczego Okno HA</sub></p>
+<p align="center"><a href="#j2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/tab-dlaczego.svg" width="100%" alt="Dlaczego Motor HA"></a><br>
+<sub>Dlaczego Motor HA</sub></p>
 
 <p>&nbsp;</p>
 
 <a name="przed-i-po"></a>
 <h2><a name="j3" href="#j3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-przed-i-po.svg" height="48" alt="Przed i po"></a></h2>
 
-Po lewej zwykła karta rolety w Home Assistancie. Po prawej to samo okno z Okno HA.
+Po lewej zwykła karta rolety w Home Assistancie. Po prawej to samo okno z Motor HA.
 
 <p align="center"><b>⬅️ Przed</b> · <b>Po ➡️</b></p>
 
@@ -118,7 +118,7 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <h2><a name="j16" href="#j16"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-spis-tresci.svg" height="48" alt="Spis treści"></a></h2>
 
 **<img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ikona-rocket-launch.svg" height="20" align="absmiddle"> [Część 1. Dla początkujących](https://github.com/superdarco78/okno-ha-integracja#dla-poczatkujacych)** · wystarczy to
-- [Dlaczego Okno HA?](https://github.com/superdarco78/okno-ha-integracja#dlaczego)
+- [Dlaczego Motor HA?](https://github.com/superdarco78/okno-ha-integracja#dlaczego)
 - [Przed i po](https://github.com/superdarco78/okno-ha-integracja#przed-i-po)
 - [Galeria](https://github.com/superdarco78/okno-ha-integracja#galeria)
 - [Instalacja krok po kroku](https://github.com/superdarco78/okno-ha-integracja#instalacja)
@@ -136,7 +136,7 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 - [Co tworzy integracja](https://github.com/superdarco78/okno-ha-integracja#co-tworzy)
 - [Wszystkie ustawienia](https://github.com/superdarco78/okno-ha-integracja#wszystkie-ustawienia)
 - [Okno w automatyzacjach](https://github.com/superdarco78/okno-ha-integracja#automatyzacje)
-- [Karta Okno HA w środku](https://github.com/superdarco78/okno-ha-integracja#karta-w-srodku)
+- [Karta Motor HA w środku](https://github.com/superdarco78/okno-ha-integracja#karta-w-srodku)
 - [Instalacja bez HACS (ręcznie)](https://github.com/superdarco78/okno-ha-integracja#recznie)
 - [Usuwanie](https://github.com/superdarco78/okno-ha-integracja#usuwanie)
 - [Tłumaczenia](https://github.com/superdarco78/okno-ha-integracja#tlumaczenia)
@@ -159,8 +159,8 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/hacs_repository-pl.svg" alt="Otwórz w HACS" height="80"></a></p>
 
 <a name="j20"></a>
-<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/krok-1.svg" width="100%" alt="Okno HA w HACS: przycisk Otwórz link"></a><br>
-<sub>Okno HA w HACS: przycisk Otwórz link</sub></p>
+<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/krok-1.svg" width="100%" alt="Motor HA w HACS: przycisk Otwórz link"></a><br>
+<sub>Motor HA w HACS: przycisk Otwórz link</sub></p>
 
 <p>&nbsp;</p>
 
@@ -177,8 +177,8 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <h3><a name="j23" href="#j23"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-krok-3.svg" height="44" alt="Krok 3: Kliknij Pobierz, potem jeszcze raz Pobierz"></a></h3>
 
 <a name="j24"></a>
-<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/krok-3.svg" width="100%" alt="Okno HA w HACS: przycisk Pobierz"></a><br>
-<sub>Okno HA w HACS: przycisk Pobierz</sub></p>
+<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/krok-3.svg" width="100%" alt="Motor HA w HACS: przycisk Pobierz"></a><br>
+<sub>Motor HA w HACS: przycisk Pobierz</sub></p>
 
 <p>&nbsp;</p>
 
@@ -194,7 +194,7 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <a name="krok-5"></a>
 <h3><a name="j27" href="#j27"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-krok-5.svg" height="44" alt="Krok 5: Kliknij ten przycisk i przejdź kreator"></a></h3>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/config_flow_start-pl.svg" alt="Dodaj integrację Okno HA" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/config_flow_start-pl.svg" alt="Dodaj integrację Motor HA" height="80"></a></p>
 
 <a name="j28"></a>
 <p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/krok-5.svg" width="100%" alt="Kreator „Dodaj integrację”"></a><br>
@@ -217,8 +217,8 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <p align="center">Zwykle nic nie musisz robić: w ostatnim kroku kreatora pole <b>📋 Dodaj kartę okna na panel</b> samo kładzie kartę w sekcji „Okna”. Chcesz sam? Ołówek → <b>＋ Dodaj kartę</b> → wpisz <b>Okno</b> i wybierz okno.</p>
 
 <a name="j32"></a>
-<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/dodaj-karte.svg" width="100%" alt="Dodaj kartę: wpisz Okno i kliknij kartę Okno HA"></a><br>
-<sub>Dodaj kartę: wpisz Okno i kliknij kartę Okno HA</sub></p>
+<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/dodaj-karte.svg" width="100%" alt="Dodaj kartę: wpisz Okno i kliknij kartę Motor HA"></a><br>
+<sub>Dodaj kartę: wpisz Okno i kliknij kartę Motor HA</sub></p>
 
 <p>&nbsp;</p>
 
@@ -401,7 +401,7 @@ Po kliknięciu **Dodaj integrację** (krok 5 instalacji) HA pokaże krótki krea
 
 Każde okno zmienisz w dowolnej chwili. Kliknij koło zębate **⚙️ (Konfiguruj)** przy oknie.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/integration-pl.svg" alt="Otwórz Okno HA" height="56"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/integration-pl.svg" alt="Otwórz Motor HA" height="56"></a></p>
 
 <a name="j63"></a>
 <p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/konfiguruj.svg" width="100%" alt="Konfiguruj"></a><br>
@@ -515,13 +515,13 @@ Co nowego w każdej wersji: [📝 Historia zmian](https://github.com/superdarco7
 <br>
 
 <a name="faq-1"></a>
-<h4><a name="j78" href="#j78"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-faq-1.svg" height="42" alt="Nie ma „Okno HA” na liście integracji"></a></h4>
+<h4><a name="j78" href="#j78"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-faq-1.svg" height="42" alt="Nie ma „Motor HA” na liście integracji"></a></h4>
 
 Po pobraniu z HACS trzeba uruchomić HA ponownie (krok 4). W telefonie zamknij i otwórz aplikację.
 
 <a name="j79"></a>
-<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/krok-4.svg" width="100%" alt="Nie ma „Okno HA” na liście integracji"></a><br>
-<sub>Nie ma „Okno HA” na liście integracji</sub></p>
+<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/krok-4.svg" width="100%" alt="Nie ma „Motor HA” na liście integracji"></a><br>
+<sub>Nie ma „Motor HA” na liście integracji</sub></p>
 
 <p>&nbsp;</p>
 
@@ -624,13 +624,13 @@ Nie ma tu odpowiedzi? [Zgłoś błąd](https://github.com/superdarco78/okno-ha-i
 
 <table>
 <tr><th align="left"><a name="j95" href="#j95"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>Co</th><th align="left"><a name="j96" href="#j96"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Opis</th></tr>
-<tr><td align="left"><b>Urządzenie „Okno …”</b></td><td align="left">Jedno na każde okno (każdy wpis). Producent: Okno HA, model: rodzaj osłony.</td></tr>
+<tr><td align="left"><b>Urządzenie „Okno …”</b></td><td align="left">Jedno na każde okno (każdy wpis). Producent: Motor HA, model: rodzaj osłony.</td></tr>
 <tr><td align="left"><b>Encja <code>cover.okno_…</code></b></td><td align="left">Roleta okna. Pozycja = średnia skrzydeł. Otwórz, zamknij, stop i pozycja idą do obu rolet skrzydeł naraz.</td></tr>
 <tr><td align="left"><b>Przycisk Kalibruj</b></td><td align="left">Mierzy prawdziwy czas przejazdu rolety i zapisuje go.</td></tr>
 <tr><td align="left"><b>Atrybut <code>okno_ha</code></b></td><td align="left">Ustawienia okna dla karty. Karta czyta je sama.</td></tr>
-<tr><td align="left"><b>Urządzenie „Okno HA”</b></td><td align="left">Jedno na całą integrację, z jedną aktualizacją 2 w 1 (integracja i karta razem). Przy instalacji z HACS aktualizację pokazuje HACS.</td></tr>
+<tr><td align="left"><b>Urządzenie „Motor HA”</b></td><td align="left">Jedno na całą integrację, z jedną aktualizacją 2 w 1 (integracja i karta razem). Przy instalacji z HACS aktualizację pokazuje HACS.</td></tr>
 <tr><td align="left"><b>Kreator z kółkami</b></td><td align="left">Strona z 7 kółkami: link „Odwiedź” na urządzeniu okna albo Konfiguruj. Bez pozycji w menu bocznym.</td></tr>
-<tr><td align="left"><b>Karta Okno HA</b></td><td align="left">Wbudowana. Ładuje się sama na każdym pulpicie, bez dodawania zasobu.</td></tr>
+<tr><td align="left"><b>Karta Motor HA</b></td><td align="left">Wbudowana. Ładuje się sama na każdym pulpicie, bez dodawania zasobu.</td></tr>
 </table>
 
 <a name="wszystkie-ustawienia"></a>
@@ -678,16 +678,16 @@ Nie ma tu odpowiedzi? [Zgłoś błąd](https://github.com/superdarco78/okno-ha-i
 Okno to zwykła roleta w HA. W automatyzacji wybierz akcję **Roleta: ustaw pozycję** (albo otwórz / zamknij) i encję okna, np. **Okno Salon**. Obie rolety skrzydeł ruszą razem.
 
 <a name="karta-w-srodku"></a>
-<h2><a name="j105" href="#j105"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-karta-w-srodku.svg" height="48" alt="Karta Okno HA w środku"></a></h2>
+<h2><a name="j105" href="#j105"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-karta-w-srodku.svg" height="48" alt="Karta Motor HA w środku"></a></h2>
 
-Integracja ma w sobie kartę Okno HA. Nie trzeba jej instalować osobno ani dodawać zasobu. Karta ma jasny i ciemny wygląd, pogodę za oknem, dzień i noc.
+Integracja ma w sobie kartę Motor HA. Nie trzeba jej instalować osobno ani dodawać zasobu. Karta ma jasny i ciemny wygląd, pogodę za oknem, dzień i noc.
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja.webp#gh-light-mode-only" width="70%" alt="Animacja karty Okno HA"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna.webp#gh-dark-mode-only" width="70%" alt="Animacja karty Okno HA"><br>
-<sub>Karta Okno HA: jasna albo ciemna, tak jak Twój motyw</sub></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja.webp#gh-light-mode-only" width="70%" alt="Animacja karty Motor HA"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna.webp#gh-dark-mode-only" width="70%" alt="Animacja karty Motor HA"><br>
+<sub>Karta Motor HA: jasna albo ciemna, tak jak Twój motyw</sub></p>
 
 Pełny opis karty (edytor, wszystkie opcje, przykłady): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna).
 
-> ℹ️ Masz już kartę Okno HA z HACS? Nic nie szkodzi. Obie mogą być zainstalowane.
+> ℹ️ Masz już kartę Motor HA z HACS? Nic nie szkodzi. Obie mogą być zainstalowane.
 
 <a name="recznie"></a>
 <h2><a name="j106" href="#j106"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-recznie.svg" height="48" alt="Instalacja bez HACS (ręcznie)"></a></h2>
@@ -699,7 +699,7 @@ Pełny opis karty (edytor, wszystkie opcje, przykłady): [superdarco78/roleta-re
 <a name="usuwanie"></a>
 <h2><a name="j107" href="#j107"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-usuwanie.svg" height="48" alt="Usuwanie"></a></h2>
 
-Jedno okno: **Ustawienia → Urządzenia oraz usługi → Okno HA**, przy oknie **⋮ → Usuń**. Całą integrację: usuń wszystkie okna, potem w HACS **⋮ → Usuń** i uruchom HA ponownie. Twoje prawdziwe rolety zostają bez zmian.
+Jedno okno: **Ustawienia → Urządzenia oraz usługi → Motor HA**, przy oknie **⋮ → Usuń**. Całą integrację: usuń wszystkie okna, potem w HACS **⋮ → Usuń** i uruchom HA ponownie. Twoje prawdziwe rolety zostają bez zmian.
 
 <a name="tlumaczenia"></a>
 <h2><a name="j108" href="#j108"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-tlumaczenia.svg" height="48" alt="Tłumaczenia"></a></h2>
@@ -717,7 +717,7 @@ Chcesz dodać swój język? Skopiuj [`translations/en.json`](https://github.com/
 <a name="wsparcie"></a>
 <h2><a name="j111" href="#j111"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/h-wsparcie.svg" height="48" alt="Wsparcie"></a></h2>
 
-Podoba Ci się Okno HA? Zostaw ⭐ na górze strony. To pomaga innym znaleźć integrację. Dziękuję!
+Podoba Ci się Motor HA? Zostaw ⭐ na górze strony. To pomaga innym znaleźć integrację. Dziękuję!
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Daj%20gwiazdk%C4%99&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
