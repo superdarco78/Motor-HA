@@ -14,6 +14,7 @@ from homeassistant.helpers import config_validation as cv, entity_registry as er
 from homeassistant.helpers.typing import ConfigType
 
 from .const import CONF_NA_PANEL, DOMAIN, VERSION
+from .hacs_ikona import async_start as async_logo_w_hacs
 from .nowosci import LOADER, Nowosci
 from .panele import NIE, async_dodaj_karte
 from .ws import async_rejestruj
@@ -31,6 +32,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     add_extra_js_url(hass, f"/{DOMAIN}/{LOADER}?v={VERSION}")
     nowosci.async_start()
     async_rejestruj(hass)
+    async_logo_w_hacs(hass)   # logo Okna HA w okienku „Update” od HACS
     # strona „🪟 Okno HA”: kreator z kółkami i obrazkami, ten sam co w karcie
     await panel_custom.async_register_panel(
         hass, frontend_url_path="okno-ha", webcomponent_name="okno-ha-panel",

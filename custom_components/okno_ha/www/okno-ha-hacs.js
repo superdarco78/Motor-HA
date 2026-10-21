@@ -34,5 +34,21 @@
       console.warn("Okno HA: nie podmieniłem ikony w HACS", e);
     }
   };
+  // obrazki już narysowane (np. panel HACS otwarty, zanim ten skrypt się wczytał)
+  const przejdz = (korzen, ile = { n: 0 }) => {
+    for (const el of korzen.querySelectorAll("*")) {
+      if (++ile.n > 20000) return;
+      if (el.tagName === "IMG" && (el.getAttribute("src") || "").includes("okno_ha")) el.setAttribute("src", zamien(el.getAttribute("src")));
+      if (el.tagName === "IFRAME") {
+        try {
+          const w = el.contentWindow;
+          if (w && w.location.origin === location.origin && w.document.documentElement) { popraw(w); przejdz(w.document, ile); }
+        } catch (e) { /* inna domena */ }
+      }
+      if (el.shadowRoot) przejdz(el.shadowRoot, ile);
+    }
+  };
   popraw(window);
+  // tylko na stronie HACS: co 2 s poprawia obrazki narysowane przed wczytaniem skryptu
+  setInterval(() => { if (location.pathname.startsWith("/hacs")) przejdz(document); }, 2000);
 })();

@@ -225,3 +225,27 @@ async def test_wstecz(hass: HomeAssistant) -> None:
     assert w["step_id"] == "silnik"
     w = await hass.config_entries.flow.async_configure(w["flow_id"], {"wstecz": True})
     assert w["step_id"] == "okno"
+
+
+async def test_logo_w_hacs(hass):
+    """Encja aktualizacji HACS dla okno_ha dostaje logo z integracji, inne zostają."""
+    from homeassistant.components.update import UpdateEntity
+    from homeassistant.helpers.entity_component import EntityComponent
+    from custom_components.okno_ha.hacs_ikona import LOGO, _podmien
+
+    class Hacs(UpdateEntity):
+        def __init__(self, domena):
+            self._d = domena
+            self._attr_unique_id = domena
+            self._attr_name = domena
+        @property
+        def entity_picture(self):
+            return f"https://brands.home-assistant.io/_/{self._d}/icon.png"
+
+    komponent = hass.data["update"] = EntityComponent(__import__("logging").getLogger("t"), "update", hass)
+    nasza, inna = Hacs("okno_ha"), Hacs("hue")
+    await komponent.async_add_entities([nasza, inna])
+    _podmien(hass)
+    assert nasza.entity_picture == LOGO
+    assert hass.states.get(nasza.entity_id).attributes["entity_picture"] == LOGO
+    assert "hue" in inna.entity_picture

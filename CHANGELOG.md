@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.10 – Logo w HACS bez odświeżania
+
+- 🖼️ Logo Okna HA na liście HACS pojawia się też wtedy, gdy strona HACS była otwarta przed wczytaniem Okna HA (np. odświeżenie na stronie HACS). Nie trzeba niczego klikać ani czyścić pamięci przeglądarki
+- 🖥️ Okienko „Update” od HACS dostaje logo Okna HA prosto z serwera HA, u każdego użytkownika, zaraz po instalacji
+
 ## v1.4.9 – Logo Okna HA w HACS
 
 - 🖼️ Lista HACS i okienko „Update” pokazują logo Okna HA zamiast „icon not available”. HACS szuka ikony tylko na serwerze ikon Home Assistanta, więc Okno HA samo podaje przeglądarce swoje logo z integracji. Dotyczy tylko Okna HA, inne dodatki zostają bez zmian
