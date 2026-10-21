@@ -270,6 +270,7 @@
   };
 
   // obrazki już narysowane (np. panel HACS otwarty, zanim ten skrypt się wczytał, albo ramka HACS wczytana od nowa po restarcie)
+  let sluchaj = () => {};
   const przejdz = (korzen, ile = { n: 0 }) => {
     for (const el of korzen.querySelectorAll("*")) {
       if (++ile.n > 200000) return;
@@ -282,7 +283,7 @@
             el.addEventListener("load", () => seria());
           }
           const w = el.contentWindow;
-          if (w && w.location.origin === location.origin && w.document.documentElement) { popraw(w); przejdz(w.document, ile); }
+          if (w && w.location.origin === location.origin && w.document.documentElement) { popraw(w); sluchaj(w.document); przejdz(w.document, ile); }
         }
         if (el.shadowRoot) przejdz(el.shadowRoot, ile);
       } catch (e) { /* inna domena albo ramka w trakcie wczytywania */ }
@@ -297,7 +298,7 @@
     serie = [0, 300, 1000, 2500, 5000, 10000, 20000, 40000].map((t) => setTimeout(skanuj, t));
   };
   // linki spisu treści prowadzą do GitHuba (HACS usuwa kotwice) – w HA przewiń do nagłówka na tej samej stronie
-  document.addEventListener("click", (e) => {
+  const klik = (e) => {
     if (!naHacs()) return;
     const droga = e.composedPath(), a = droga.find((n) => n.tagName === "A");
     const h = a && a.getAttribute("href");
@@ -330,7 +331,10 @@
     if (!cel) return;
     e.preventDefault(); e.stopPropagation();
     cel.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, true);
+  };
+  // panel HACS jest w ramce (iframe) – kliknięcia w opisie nie wychodzą z niej, więc słuchaj też w ramce
+  sluchaj = (d) => { if (!d.__oknoHaKlik) { d.__oknoHaKlik = true; d.addEventListener("click", klik, true); } };
+  sluchaj(document);
   popraw(window);
   pamiec.then(seria);   // pamięć wczytana – od razu podmień to, co już narysowane
   // tylko w HACS i w Ustawieniach: co 2 s poprawia obrazki (ikona, kolor motywu)

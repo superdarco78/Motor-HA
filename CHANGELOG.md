@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.32 – Języki i linki w opisie działają w HACS
+
+- 🔗 Opis w HACS jest w osobnej ramce i kliknięcia nie docierały do Okna HA. Teraz przyciski języków zmieniają opis na miejscu, spis treści i kafelki przewijają do sekcji, a „Otwórz w HACS”, „Dodaj integrację” i „Aktualizacje” otwierają strony Twojego HA. Na GitHubie bez zmian
+
 ## v1.4.31 – Opis działa w HA, baner z zachodem słońca
 
 - 🔗 Linki w opisie w HACS zostają w Home Assistancie: spis treści i kafelki przewijają do sekcji, języki zmieniają opis na miejscu, przyciski „Otwórz w HACS”, „Dodaj integrację” i „Aktualizacje” otwierają strony Twojego HA. Na GitHubie wszystko działa jak dotąd
