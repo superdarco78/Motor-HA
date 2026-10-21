@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.6 – Nowy opis w HACS
+
+- 📖 Strona Okna HA w HACS ma nowy opis: plakietki i flagi języków na górze, „Dlaczego Okno HA”, „Przed i po” i galerię
+- 🔄 Karta dalej odświeża się sama po każdej aktualizacji i zmianie ustawień, bez Ctrl+F5
+
 ## v1.4.5 – Jedna aktualizacja i krok wstecz
 
 - 🔄 W Ustawieniach → Aktualizacje jest już tylko jedna pozycja **Okno HA** z jednym numerem wersji. Karta jest w środku integracji i aktualizuje się razem z nią. Stara osobna pozycja „v32” znika sama
