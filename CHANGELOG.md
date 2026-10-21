@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.35 – Ładowacz w Zasobach
+
+- 📦 Ładowacz `okno-ha-loader.js` dodaje się sam do Ustawienia → Panele → Zasoby przy instalacji i każdej aktualizacji (z numerem wersji). Przy każdym otwarciu strony wczytuje świeże skrypty Okna HA, a otwarta strona sama podmienia skrypt po aktualizacji – bez czyszczenia przeglądarki. Po usunięciu ostatniego okna znika sam
+
 ## v1.4.34 – Szybsza zmiana języka opisu
 
 - ⚡ Po zmianie języka opisu w HACS najpierw przemalowują się obrazki widoczne na ekranie, kilka naraz – strona nie zostaje pusta

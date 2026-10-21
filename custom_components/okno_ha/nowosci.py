@@ -67,9 +67,11 @@ class Nowosci:
             (self.katalog / "wersja.txt").write_text(VERSION, encoding="utf-8")
             # loader zawsze bierze świeży plik karty – przeglądarka nie poda starej kopii
             (self.katalog / LOADER).write_text(
-                f"import(`/{DOMAIN}/okno-ha-hacs.js?t=${{Date.now()}}`).catch(() => {{}});\n"
-                f"import(`/{DOMAIN}/{KARTA_PLIK}?t=${{Date.now()}}`).catch(e => "
-                f"console.error('Okno HA: nie wczytałem karty', e));\n", encoding="utf-8")
+                "// Okno HA – ładowacz: przy każdym otwarciu strony bierze świeże skrypty (znacznik czasu ?t=)\n"
+                "if (!window.__oknoHaLoader) {\n  window.__oknoHaLoader = true;\n"
+                f"  import(`/{DOMAIN}/okno-ha-hacs.js?t=${{Date.now()}}`).catch(() => {{}});\n"
+                f"  import(`/{DOMAIN}/{KARTA_PLIK}?t=${{Date.now()}}`).catch(e => "
+                f"console.error('Okno HA: nie wczytałem karty', e));\n}}\n", encoding="utf-8")
 
         nadpisz = numer(zapisana) < numer(KARTA_WERSJA)
         await self.hass.async_add_executor_job(_kopiuj, nadpisz)

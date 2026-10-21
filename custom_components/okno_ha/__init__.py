@@ -9,7 +9,8 @@ from homeassistant.components.frontend import add_extra_js_url
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
-from homeassistant.core import HomeAssistant
+from homeassistant.const import EVENT_HOMEASSISTANT_STARTED
+from homeassistant.core import CoreState, HomeAssistant
 from homeassistant.helpers import config_validation as cv, entity_registry as er, issue_registry as ir
 from homeassistant.helpers.typing import ConfigType
 
@@ -19,6 +20,7 @@ from .nowosci import LOADER, Nowosci
 from .panele import NIE, async_dodaj_karte
 from .repairs import RESTART
 from .ws import async_rejestruj
+from .zasob import async_dodaj as async_dodaj_zasob, async_usun as async_usun_zasob
 
 PLATFORMS = [Platform.COVER, Platform.BUTTON, Platform.UPDATE]
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
@@ -31,6 +33,13 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     await nowosci.async_przygotuj_karte()
     await hass.http.async_register_static_paths([StaticPathConfig(f"/{DOMAIN}", str(nowosci.katalog), False)])
     add_extra_js_url(hass, f"/{DOMAIN}/{LOADER}?v={VERSION}")
+    # ten sam ładowacz widać też w Zasobach paneli – dodaje się i odświeża sam przy każdej wersji
+    if hass.state is CoreState.running:
+        hass.async_create_task(async_dodaj_zasob(hass))
+    else:
+        async def _po_starcie(_e) -> None:
+            await async_dodaj_zasob(hass)
+        hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STARTED, _po_starcie)
     nowosci.async_start()
     async_rejestruj(hass)
     async_logo_w_hacs(hass)   # logo Okna HA w okienku „Update” od HACS
@@ -71,6 +80,7 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     nowosci = hass.data.get(DOMAIN)
     if nowosci is not None:
         await nowosci.async_usun_wszystko()
+    await async_usun_zasob(hass)
     ir.async_delete_issue(hass, DOMAIN, RESTART)
     _LOGGER.info("Okno HA: usunięto ostatnie okno – pliki karty i dane Okna HA skasowane")
 
