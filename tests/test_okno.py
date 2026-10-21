@@ -90,20 +90,27 @@ def test_numer_wersji():
     assert numer(None) == (0,)
 
 
-async def test_powiadomienie_o_nowej_wersji(hass, aioclient_mock):
-    from datetime import timedelta
-    from homeassistant.util import dt as dt_util
-    from pytest_homeassistant_custom_component.common import async_fire_time_changed
-    from custom_components.okno_ha.nowosci import async_start_nowosci
 
+async def test_aktualizacje(hass, aioclient_mock):
+    """Nowa wersja z GitHuba → encja aktualizacji karty; „Zainstaluj” pobiera kartę."""
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
     aioclient_mock.get("https://api.github.com/repos/superdarco78/roleta-realistyczna/releases/latest",
-                       json={"tag_name": "v99"})
+                       json={"tag_name": "v99", "body": "nowości", "html_url": "https://x/v99"})
     aioclient_mock.get("https://api.github.com/repos/superdarco78/okno-ha-integracja/releases/latest",
-                       json={"tag_name": "0.0.1"})
-    async_start_nowosci(hass)
-    async_fire_time_changed(hass, dt_util.utcnow() + timedelta(seconds=130))
+                       json={"tag_name": "v0.0.1"})
+    aioclient_mock.get("https://github.com/superdarco78/roleta-realistyczna/releases/download/v99/roleta-realistyczna.js",
+                       text="// karta v99")
+    await _dodaj(hass)
+    await hass.data[DOMAIN].async_sprawdz()
     await hass.async_block_till_done()
-    from homeassistant.components.persistent_notification import _async_get_or_create_notifications
-    ids = set(_async_get_or_create_notifications(hass))
-    assert "okno_ha_roleta-realistyczna" in ids
-    assert "okno_ha_okno-ha-integracja" not in ids
+    karta = hass.states.get("update.okno_ha_karta_okno_ha")
+    integracja = hass.states.get("update.okno_ha_integracja_okno_ha")
+    assert karta.state == "on" and karta.attributes["latest_version"] == "v99"
+    assert integracja.state == "off"
+    assert "roleta-realistyczna" in karta.attributes["release_url"] or karta.attributes["release_url"] == "https://x/v99"
+    await hass.services.async_call("update", "install", {"entity_id": karta.entity_id}, blocking=True)
+    assert hass.states.get(karta.entity_id).state == "off"
+    plik = hass.data[DOMAIN].katalog / "okno-ha.js"
+    assert plik.read_text() == "// karta v99"
+    assert "Date.now()" in (hass.data[DOMAIN].katalog / "okno-ha-loader.js").read_text()

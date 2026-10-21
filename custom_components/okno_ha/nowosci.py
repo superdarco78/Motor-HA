@@ -1,28 +1,35 @@
-"""Powiadomienie o nowej wersji karty i integracji – samo, bez wchodzenia w HACS."""
+"""Nowe wersje karty i integracji prosto z GitHuba – bez czekania na HACS.
+
+Co 2 minuty pyta GitHuba (z ETag, więc nie zjada limitu) o najnowsze wydanie.
+Encje aktualizacji (update.py) pokazują to w Ustawienia → Aktualizacje.
+"""
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from datetime import timedelta
+import io
 import logging
+from pathlib import Path
 import re
+import shutil
+import zipfile
 
-from homeassistant.components import persistent_notification
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.event import async_call_later, async_track_time_interval
 from homeassistant.helpers.storage import Store
 
-from .const import DOMAIN, KARTA_WERSJA, VERSION
+from .const import DOMAIN, KARTA_PLIK, KARTA_WERSJA
 
 _LOGGER = logging.getLogger(__name__)
-CO_ILE = timedelta(minutes=30)
-PIERWSZE_PO = 120   # sekund po starcie HA
-
-# repozytorium, zainstalowana wersja (gdy HACS jej nie zna), nazwa w powiadomieniu
-REPO = {
-    "roleta-realistyczna": (KARTA_WERSJA, "karty Okno HA", "plugin"),
-    "okno-ha-integracja": (VERSION, "integracji Okno HA", "integration"),
-}
+CO_ILE = timedelta(minutes=2)
+PIERWSZE_PO = 30   # sekund po starcie HA
+WLASCICIEL = "superdarco78"
+REPO_KARTA = "roleta-realistyczna"
+REPO_INTEGRACJA = "okno-ha-integracja"
+ZASOB_KARTY = "roleta-realistyczna.js"
+LOADER = "okno-ha-loader.js"
 
 
 def numer(wersja: str | None) -> tuple[int, ...]:
@@ -30,46 +37,109 @@ def numer(wersja: str | None) -> tuple[int, ...]:
     return tuple(int(x) for x in re.findall(r"\d+", str(wersja or ""))) or (0,)
 
 
-def zainstalowana(hass: HomeAssistant, repo: str, domyslna: str) -> str:
-    """Wersja z encji aktualizacji HACS, a gdy jej nie ma – ta, którą znamy z integracji."""
-    for s in hass.states.async_all("update"):
-        if repo in str(s.attributes.get("release_url", "")) and s.attributes.get("installed_version"):
-            return s.attributes["installed_version"]
-    return domyslna
+class Nowosci:
+    """Najnowsze wydania obu repozytoriów + zainstalowana wersja karty."""
 
+    def __init__(self, hass: HomeAssistant) -> None:
+        self.hass = hass
+        self.katalog = Path(hass.config.path(".okno_ha"))
+        self._store: Store = Store(hass, 1, f"{DOMAIN}.karta")
+        self.karta_wersja = KARTA_WERSJA
+        self.wydania: dict[str, dict] = {}
+        self._etag: dict[str, str] = {}
+        self._sluchacze: list[Callable[[], None]] = []
 
-@callback
-def async_start_nowosci(hass: HomeAssistant) -> None:
-    store: Store = Store(hass, 1, f"{DOMAIN}.nowosci")
+    # --- karta w /config/.okno_ha (wbudowana albo pobrana nowsza) ---
 
-    async def sprawdz(_=None) -> None:
-        zapisane = await store.async_load() or {}
-        sesja = async_get_clientsession(hass)
-        for repo, (domyslna, nazwa, kategoria) in REPO.items():
+    async def async_przygotuj_karte(self) -> None:
+        dane = await self._store.async_load() or {}
+        zapisana = dane.get("wersja")
+        wbudowana = Path(__file__).parent / "www" / KARTA_PLIK
+
+        def _kopiuj(nadpisz: bool) -> None:
+            self.katalog.mkdir(exist_ok=True)
+            cel = self.katalog / KARTA_PLIK
+            if nadpisz or not cel.is_file():
+                shutil.copyfile(wbudowana, cel)
+            # loader zawsze bierze świeży plik karty – przeglądarka nie poda starej kopii
+            (self.katalog / LOADER).write_text(
+                f"import(`/{DOMAIN}/{KARTA_PLIK}?t=${{Date.now()}}`).catch(e => "
+                f"console.error('Okno HA: nie wczytałem karty', e));\n", encoding="utf-8")
+
+        nadpisz = numer(zapisana) < numer(KARTA_WERSJA)
+        await self.hass.async_add_executor_job(_kopiuj, nadpisz)
+        self.karta_wersja = KARTA_WERSJA if nadpisz else zapisana
+        if nadpisz:
+            await self._store.async_save({"wersja": KARTA_WERSJA})
+
+    async def async_zainstaluj_karte(self, wersja: str) -> None:
+        url = f"https://github.com/{WLASCICIEL}/{REPO_KARTA}/releases/download/{wersja}/{ZASOB_KARTY}"
+        async with async_get_clientsession(self.hass).get(url, timeout=60) as r:
+            r.raise_for_status()
+            tresc = await r.read()
+        cel = self.katalog / KARTA_PLIK
+        await self.hass.async_add_executor_job(cel.write_bytes, tresc)
+        self.karta_wersja = wersja
+        await self._store.async_save({"wersja": wersja})
+        self._powiadom()
+
+    async def async_zainstaluj_integracje(self, wersja: str) -> None:
+        url = f"https://api.github.com/repos/{WLASCICIEL}/{REPO_INTEGRACJA}/zipball/{wersja}"
+        async with async_get_clientsession(self.hass).get(url, timeout=120) as r:
+            r.raise_for_status()
+            tresc = await r.read()
+        tu = Path(__file__).parent
+
+        def _rozpakuj() -> None:
+            with zipfile.ZipFile(io.BytesIO(tresc)) as z:
+                for nazwa in z.namelist():
+                    czesci = nazwa.split("/", 1)
+                    if len(czesci) < 2 or not czesci[1].startswith(f"custom_components/{DOMAIN}/") or nazwa.endswith("/"):
+                        continue
+                    cel = tu / czesci[1][len(f"custom_components/{DOMAIN}/"):]
+                    cel.parent.mkdir(parents=True, exist_ok=True)
+                    cel.write_bytes(z.read(nazwa))
+
+        await self.hass.async_add_executor_job(_rozpakuj)
+
+    # --- sprawdzanie GitHuba ---
+
+    @callback
+    def sluchaj(self, f: Callable[[], None]) -> Callable[[], None]:
+        self._sluchacze.append(f)
+        return lambda: self._sluchacze.remove(f)
+
+    @callback
+    def _powiadom(self) -> None:
+        for f in list(self._sluchacze):
+            f()
+
+    async def async_sprawdz(self, _=None) -> None:
+        sesja = async_get_clientsession(self.hass)
+        zmiana = False
+        for repo in (REPO_KARTA, REPO_INTEGRACJA):
+            naglowki = {"Accept": "application/vnd.github+json"}
+            if repo in self._etag:
+                naglowki["If-None-Match"] = self._etag[repo]
             try:
-                async with sesja.get(f"https://api.github.com/repos/superdarco78/{repo}/releases/latest",
-                                     timeout=15) as r:
+                async with sesja.get(f"https://api.github.com/repos/{WLASCICIEL}/{repo}/releases/latest",
+                                     headers=naglowki, timeout=15) as r:
                     if r.status != 200:
                         continue
-                    najnowsza = (await r.json()).get("tag_name")
+                    d = await r.json()
+                    if r.headers.get("ETag"):
+                        self._etag[repo] = r.headers["ETag"]
             except Exception as err:  # noqa: BLE001 – brak sieci nie może psuć HA
                 _LOGGER.debug("Okno HA: nie sprawdzę %s: %s", repo, err)
                 continue
-            if not najnowsza or zapisane.get(repo) == najnowsza:
-                continue
-            if numer(najnowsza) <= numer(zainstalowana(hass, repo, domyslna)):
-                continue
-            link = f"https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository={repo}&category={kategoria}"
-            persistent_notification.async_create(
-                hass,
-                f"Jest nowa wersja {nazwa}: **{najnowsza}**.\n\n"
-                f"[Otwórz w HACS i kliknij Pobierz]({link})\n\n"
-                f"[Co nowego](https://github.com/superdarco78/{repo}/releases/tag/{najnowsza})",
-                title=f"🪟 Nowa wersja {nazwa}",
-                notification_id=f"{DOMAIN}_{repo}",
-            )
-            zapisane[repo] = najnowsza
-            await store.async_save(zapisane)
+            if d.get("tag_name"):
+                self.wydania[repo] = {"wersja": d["tag_name"], "opis": d.get("body") or "",
+                                      "url": d.get("html_url"), "tytul": d.get("name") or d["tag_name"]}
+                zmiana = True
+        if zmiana:
+            self._powiadom()
 
-    async_call_later(hass, PIERWSZE_PO, sprawdz)
-    async_track_time_interval(hass, sprawdz, CO_ILE)
+    @callback
+    def async_start(self) -> None:
+        async_call_later(self.hass, PIERWSZE_PO, self.async_sprawdz)
+        async_track_time_interval(self.hass, self.async_sprawdz, CO_ILE)

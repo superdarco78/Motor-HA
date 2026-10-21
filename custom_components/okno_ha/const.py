@@ -3,12 +3,11 @@
 from __future__ import annotations
 
 DOMAIN = "okno_ha"
-VERSION = "1.1.0"
-KARTA_WERSJA = "v29"   # wersja karty w www/okno-ha.js
+VERSION = "1.2.0"
+KARTA_WERSJA = "v30"   # wersja karty w www/okno-ha.js
 
-# Plik karty Okno HA wbudowany w integrację – ładuje się sam, bez osobnej instalacji karty
+# Karta Okno HA wbudowana w integrację (www/) – kopiowana do /config/.okno_ha i stamtąd ładowana
 KARTA_PLIK = "okno-ha.js"
-KARTA_URL = f"/{DOMAIN}/{KARTA_PLIK}"
 
 # Klucze ustawień (te same nazwy co w karcie, żeby karta mogła je wziąć bez tłumaczenia)
 CONF_ROLETY = "rolety"

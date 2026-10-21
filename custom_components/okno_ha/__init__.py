@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 from homeassistant.components.frontend import add_extra_js_url
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
@@ -12,20 +10,20 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.typing import ConfigType
 
-from .const import DOMAIN, KARTA_PLIK, KARTA_URL, VERSION
-from .nowosci import async_start_nowosci
+from .const import DOMAIN, VERSION
+from .nowosci import LOADER, Nowosci
 
-PLATFORMS = [Platform.COVER]
+PLATFORMS = [Platform.COVER, Platform.UPDATE]
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Udostępnij wbudowaną kartę Okno HA, żeby działała bez osobnej instalacji."""
-    plik = Path(__file__).parent / "www" / KARTA_PLIK
-    if plik.is_file():
-        await hass.http.async_register_static_paths([StaticPathConfig(KARTA_URL, str(plik), False)])
-        add_extra_js_url(hass, f"{KARTA_URL}?v={VERSION}")
-    async_start_nowosci(hass)
+    """Udostępnij kartę Okno HA (wbudowaną albo pobraną nowszą) i sprawdzaj nowe wersje."""
+    nowosci = hass.data[DOMAIN] = Nowosci(hass)
+    await nowosci.async_przygotuj_karte()
+    await hass.http.async_register_static_paths([StaticPathConfig(f"/{DOMAIN}", str(nowosci.katalog), False)])
+    add_extra_js_url(hass, f"/{DOMAIN}/{LOADER}?v={VERSION}")
+    nowosci.async_start()
     return True
 
 
