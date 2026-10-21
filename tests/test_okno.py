@@ -70,6 +70,8 @@ async def test_konfiguruj(hass: HomeAssistant) -> None:
     _rolety(hass)
     wpis = await _dodaj(hass)
     r = await hass.config_entries.options.async_init(wpis.entry_id)
+    assert r["type"] is FlowResultType.MENU and r["menu_options"] == ["obrazki", "user"]
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {"next_step_id": "user"})
     assert r["step_id"] == "user"
     r = await hass.config_entries.options.async_configure(r["flow_id"], {"rolety": ROLETY})
     r = await hass.config_entries.options.async_configure(r["flow_id"], {"skrzydla": "2", "tryb_lewe": "uchyl", "tryb_prawe": "uchyl"})   # czujnik wyczyszczony
@@ -161,3 +163,33 @@ async def test_predkosc_kolory_i_kalibracja(hass, monkeypatch):
 
 async def _szybko():
     return None
+
+
+async def test_edytor_karty_zapisuje_w_urzadzeniu(hass, hass_ws_client):
+    """Panel / edytor karty: nowe okno z kreatora karty i zapis zmian w urządzeniu."""
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    hass.states.async_set("cover.grupa", "open", {"current_position": 50, "entity_id": ROLETY})
+    await async_setup_component(hass, DOMAIN, {})
+    ws = await hass_ws_client(hass)
+    await ws.send_json({"id": 1, "type": "okno_ha/utworz", "karta": {
+        "type": "custom:okno-ha", "entity": "cover.grupa", "name": "Sypialnia", "oslona": "rzymska", "rama": "#8a5a3b", "czas": 18}})
+    r = await ws.receive_json()
+    assert r["success"], r
+    await hass.async_block_till_done()
+    okno = r["result"]["entity_id"]
+    wpis = hass.config_entries.async_entries(DOMAIN)[0]
+    assert wpis.title == "Sypialnia" and wpis.options["rolety"] == ROLETY and wpis.options["rama"] == "zloty_dab"
+    assert hass.states.get(okno).attributes["okno_ha"]["oslona"] == "rzymska"
+
+    await ws.send_json({"id": 2, "type": "okno_ha/zapisz", "entity_id": okno, "karta": {
+        "type": "custom:okno-ha", "entity": okno, "name": "Sypialnia", "oslona": "plisa", "kolor": "mietowy"}})
+    r = await ws.receive_json()
+    assert r["success"], r
+    await hass.async_block_till_done()
+    k = hass.states.get(okno).attributes["okno_ha"]
+    assert k["oslona"] == "plisa" and k["kolor"] == "mietowy" and "entity" not in k
+
+    await ws.send_json({"id": 3, "type": "okno_ha/lista"})
+    r = await ws.receive_json()
+    assert r["result"][0]["entity_id"] == okno

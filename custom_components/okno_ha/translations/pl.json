@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "🪟 Okno HA – krok 1 z 5: roleta",
-        "description": "Wybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
+        "description": "![]({obrazki}/kreator-krok-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.\n\n🪄 Wolisz kreator z kółkami i obrazkami, taki jak w karcie? **[Otwórz panel Okno HA](/okno-ha)**",
         "data": {
           "name": "Nazwa okna",
           "rolety": "Roleta (jedna albo dwie)"
@@ -15,7 +15,7 @@
       },
       "okno": {
         "title": "🪟 Krok 2 z 5: okno i czujniki",
-        "description": "Ile skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
+        "description": "![]({obrazki}/kreator-krok-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
         "data": {
           "skrzydla": "Liczba skrzydeł",
           "czujnik_lewe": "Czujnik lewego skrzydła",
@@ -33,7 +33,7 @@
       },
       "silnik": {
         "title": "⚙️ Krok 3 z 5: silnik",
-        "description": "Karta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
+        "description": "![]({obrazki}/kreator-krok-3-pl.png)\n\nKarta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
         "data": {
           "predkosc_lewa": "Prędkość silnika – lewa",
           "predkosc_prawa": "Prędkość silnika – prawa",
@@ -49,7 +49,7 @@
       },
       "pogoda": {
         "title": "🌤️ Krok 4 z 5: pogoda za oknem",
-        "description": "Za oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
+        "description": "![]({obrazki}/kreator-krok-4-pl.png)\n\nZa oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
         "data": {
           "pogoda": "Pogoda"
         },
@@ -59,7 +59,7 @@
       },
       "wyglad": {
         "title": "🎨 Krok 5 z 5: wygląd",
-        "description": "Wybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
+        "description": "![]({obrazki}/kreator-krok-5-pl.png)\n\nWybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
         "data": {
           "oslona": "Rodzaj osłony",
           "kolor": "Kolor osłony",
@@ -86,7 +86,7 @@
     "step": {
       "user": {
         "title": "🪟 Okno HA – krok 1 z 5: roleta",
-        "description": "Wybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
+        "description": "![]({obrazki}/kreator-krok-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
         "data": {
           "name": "Nazwa okna",
           "rolety": "Roleta (jedna albo dwie)"
@@ -98,7 +98,7 @@
       },
       "okno": {
         "title": "🪟 Krok 2 z 5: okno i czujniki",
-        "description": "Ile skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
+        "description": "![]({obrazki}/kreator-krok-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
         "data": {
           "skrzydla": "Liczba skrzydeł",
           "czujnik_lewe": "Czujnik lewego skrzydła",
@@ -116,7 +116,7 @@
       },
       "silnik": {
         "title": "⚙️ Krok 3 z 5: silnik",
-        "description": "Karta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
+        "description": "![]({obrazki}/kreator-krok-3-pl.png)\n\nKarta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
         "data": {
           "predkosc_lewa": "Prędkość silnika – lewa",
           "predkosc_prawa": "Prędkość silnika – prawa",
@@ -132,7 +132,7 @@
       },
       "pogoda": {
         "title": "🌤️ Krok 4 z 5: pogoda za oknem",
-        "description": "Za oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
+        "description": "![]({obrazki}/kreator-krok-4-pl.png)\n\nZa oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
         "data": {
           "pogoda": "Pogoda"
         },
@@ -142,7 +142,7 @@
       },
       "wyglad": {
         "title": "🎨 Krok 5 z 5: wygląd",
-        "description": "Wybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
+        "description": "![]({obrazki}/kreator-krok-5-pl.png)\n\nWybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
         "data": {
           "oslona": "Rodzaj osłony",
           "kolor": "Kolor osłony",
@@ -159,10 +159,21 @@
           "oslona": "Jak wygląda Twoja osłona – porównaj z kafelkami na obrazku wyżej.",
           "wysokosc": "Jak wysokie jest okno na karcie (w pikselach). Większe = lepiej widać."
         }
+      },
+      "init": {
+        "title": "🪟 Co chcesz zmienić?",
+        "description": "Wybierz, jak chcesz ustawić to okno.",
+        "menu_options": {
+          "obrazki": "🪄 Kreator z kółkami i obrazkami (jak w karcie)",
+          "user": "📝 Zwykłe pola krok po kroku"
+        }
       }
     },
     "error": {
       "rolety": "Wybierz jedną albo dwie rolety."
+    },
+    "abort": {
+      "panel": "Kreator z kółkami i obrazkami otwiera się w panelu Okno HA:\n\n**[🪄 Otwórz kreator tego okna](/okno-ha?okno={okno})**"
     }
   },
   "selector": {

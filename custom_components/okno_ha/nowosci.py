@@ -61,6 +61,8 @@ class Nowosci:
             cel = self.katalog / KARTA_PLIK
             if nadpisz or not cel.is_file():
                 shutil.copyfile(wbudowana, cel)
+            for plik in ("okno-ha-panel.js", "ikona.png"):   # panel i ikona zawsze z tej wersji integracji
+                shutil.copyfile(wbudowana.parent / plik, self.katalog / plik)
             # loader zawsze bierze świeży plik karty – przeglądarka nie poda starej kopii
             (self.katalog / LOADER).write_text(
                 f"import(`/{DOMAIN}/{KARTA_PLIK}?t=${{Date.now()}}`).catch(e => "

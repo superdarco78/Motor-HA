@@ -72,6 +72,38 @@ def ustawienia_karty(nazwa: str, o: dict[str, Any]) -> dict[str, Any]:
     return k
 
 
+# ustawienia karty, które zna też zwykły kreator („Konfiguruj”) – zapisujemy je w obu miejscach
+Z_KARTY = ["czujnik_lewe", "czujnik_prawe", "tryb_lewe", "tryb_prawe", "predkosc_lewa", "predkosc_prawa", CONF_OSLONA, CONF_WYSOKOSC]
+POMIJANE = {"type", "entity", "grid_options", "view_layout", "visibility"}
+
+
+def opcje_z_karty(karta: dict[str, Any], stare: dict[str, Any], hass: HomeAssistant) -> dict[str, Any]:
+    """Ustawienia z edytora karty (kółka i obrazki) → opcje integracji. Pełne ustawienia karty idą w „karta”."""
+    karta = {k: v for k, v in karta.items() if k not in POMIJANE}
+    o = {k: v for k, v in stare.items() if k not in Z_KARTY and k not in (CONF_KOLOR_WLASNY, CONF_RAMA_WLASNA)}
+    o.update({k: karta[k] for k in Z_KARTY if karta.get(k) not in (None, "")})
+    if karta.get("roleta_lewa") and karta.get("roleta_prawa"):
+        o[CONF_ROLETY] = [karta["roleta_lewa"], karta["roleta_prawa"]]
+    elif (e := karta.get("_roleta")) and e.startswith("cover."):
+        czlonkowie = (hass.states.get(e).attributes.get(ATTR_ENTITY_ID) if hass.states.get(e) else None) or [e]
+        o[CONF_ROLETY] = list(czlonkowie)[:2]
+    if "skrzydla" in karta:
+        o[CONF_SKRZYDLA] = str(karta["skrzydla"])
+    kolor = karta.get(CONF_KOLOR)
+    if isinstance(kolor, str):
+        o[CONF_KOLOR] = kolor
+    rama = karta.get(CONF_RAMA)
+    if isinstance(rama, str):
+        o[CONF_RAMA] = next((k for k, v in RAMY.items() if v == rama.lower()), rama)
+    czas = karta.get(CONF_CZAS)
+    o[CONF_CZAS] = czas if isinstance(czas, (int, float)) else 0
+    if karta.get(CONF_POGODA) and karta[CONF_POGODA] != "auto":
+        o[CONF_POGODA] = karta[CONF_POGODA]
+    karta.pop("_roleta", None)
+    o["karta"] = karta
+    return o
+
+
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback) -> None:
     async_add_entities([OknoCover(entry)])
 
@@ -93,14 +125,15 @@ class OknoCover(CoverEntity):
         self._entry = entry
         self._kalibracja: asyncio.Task | None = None
         self._rolety: list[str] = list(o.get(CONF_ROLETY) or [])
-        oslona = o.get(CONF_OSLONA, DOMYSLNE[CONF_OSLONA])
+        oslona = (o.get("karta") or {}).get(CONF_OSLONA) or o.get(CONF_OSLONA, DOMYSLNE[CONF_OSLONA])
         self._attr_unique_id = entry.entry_id
         self._attr_device_class = (CoverDeviceClass.SHUTTER if oslona in OSLONY_ZEW
                                    else CoverDeviceClass.BLIND if oslona in ("zaluzja", "drewniana") else CoverDeviceClass.SHADE)
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)}, name=f"Okno {entry.title}",
             manufacturer="Okno HA", model=oslona, sw_version=VERSION)
-        self._karta = ustawienia_karty(entry.title, o)
+        # „karta” = ustawienia z edytora karty (kółka i obrazki); mają pierwszeństwo przed zwykłymi polami
+        self._karta = {**ustawienia_karty(entry.title, o), **(o.get("karta") or {})}
 
     async def async_added_to_hass(self) -> None:
         self.hass.data.setdefault(OKNA, {})[self._entry.entry_id] = self

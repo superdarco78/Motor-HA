@@ -1,5 +1,16 @@
 # 📝 Historia zmian
 
+## v1.4.0 – Kreator z kółkami jak w karcie
+
+- 🪟 Nowy panel **Okno HA** w menu bocznym. Są w nim wszystkie okna jako żywe karty, a „Dodaj okno” i „Zmień” otwierają ten sam kreator z 7 kółkami co w karcie
+- 🪄 **Konfiguruj** pyta: kreator z kółkami i obrazkami albo zwykłe pola
+- 🔗 Zmiany w edytorze karty okna zapisują się same w urządzeniu
+- ➕ „Dodaj do panelu” na stronie urządzenia proponuje kartę Okno HA (HA 2026.6+)
+- 🧭 Zwykły kreator „Dodaj integrację” ma na każdym kroku pasek z kółkami jak w karcie
+- 🏠 Ikona Okno HA także przy aktualizacjach
+- 📊 Pasek postępu aktualizacji przesuwa się w trakcie kopii zapasowej; gdy HACS nie zna jeszcze nowej wersji, integracja pobiera ją sama
+- 🎴 Karta Okno HA v31 w środku
+
 ## v1.3.0 – Kreator z obrazkami, kalibracja, ikona
 
 - 🏠 Ikona z logo Okno HA w „Dodaj integrację” i na liście integracji (Home Assistant 2026.3 i nowszy)

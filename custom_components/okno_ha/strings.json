@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "🪟 HA Window – step 1 of 5: shade",
-        "description": "Pick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
+        "description": "![]({obrazki}/kreator-krok-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.\n\n🪄 Prefer the wizard with circles and pictures, like in the card? **[Open the HA Window panel](/okno-ha)**",
         "data": {
           "name": "Window name",
           "rolety": "Shade (one or two)"
@@ -15,7 +15,7 @@
       },
       "okno": {
         "title": "🪟 Step 2 of 5: window and sensors",
-        "description": "How many sashes the window has and whether it has open sensors. Sensors are optional.",
+        "description": "![]({obrazki}/kreator-krok-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
         "data": {
           "skrzydla": "Number of sashes",
           "czujnik_lewe": "Left sash sensor",
@@ -33,7 +33,7 @@
       },
       "silnik": {
         "title": "⚙️ Step 3 of 5: motor",
-        "description": "The card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
+        "description": "![]({obrazki}/kreator-krok-3-en.png)\n\nThe card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
@@ -49,7 +49,7 @@
       },
       "pogoda": {
         "title": "🌤️ Step 4 of 5: weather outside",
-        "description": "Real weather shows outside the window. Leave empty and the card uses internet weather for your home.",
+        "description": "![]({obrazki}/kreator-krok-4-en.png)\n\nReal weather shows outside the window. Leave empty and the card uses internet weather for your home.",
         "data": {
           "pogoda": "Weather"
         },
@@ -59,7 +59,7 @@
       },
       "wyglad": {
         "title": "🎨 Step 5 of 5: look",
-        "description": "Pick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
+        "description": "![]({obrazki}/kreator-krok-5-en.png)\n\nPick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
         "data": {
           "oslona": "Shade type",
           "kolor": "Shade colour",
@@ -86,7 +86,7 @@
     "step": {
       "user": {
         "title": "🪟 HA Window – step 1 of 5: shade",
-        "description": "Pick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
+        "description": "![]({obrazki}/kreator-krok-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
         "data": {
           "name": "Window name",
           "rolety": "Shade (one or two)"
@@ -98,7 +98,7 @@
       },
       "okno": {
         "title": "🪟 Step 2 of 5: window and sensors",
-        "description": "How many sashes the window has and whether it has open sensors. Sensors are optional.",
+        "description": "![]({obrazki}/kreator-krok-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
         "data": {
           "skrzydla": "Number of sashes",
           "czujnik_lewe": "Left sash sensor",
@@ -116,7 +116,7 @@
       },
       "silnik": {
         "title": "⚙️ Step 3 of 5: motor",
-        "description": "The card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
+        "description": "![]({obrazki}/kreator-krok-3-en.png)\n\nThe card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
@@ -132,7 +132,7 @@
       },
       "pogoda": {
         "title": "🌤️ Step 4 of 5: weather outside",
-        "description": "Real weather shows outside the window. Leave empty and the card uses internet weather for your home.",
+        "description": "![]({obrazki}/kreator-krok-4-en.png)\n\nReal weather shows outside the window. Leave empty and the card uses internet weather for your home.",
         "data": {
           "pogoda": "Weather"
         },
@@ -142,7 +142,7 @@
       },
       "wyglad": {
         "title": "🎨 Step 5 of 5: look",
-        "description": "Pick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
+        "description": "![]({obrazki}/kreator-krok-5-en.png)\n\nPick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
         "data": {
           "oslona": "Shade type",
           "kolor": "Shade colour",
@@ -159,10 +159,21 @@
           "oslona": "What your shade looks like – compare with the tiles in the picture above.",
           "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see."
         }
+      },
+      "init": {
+        "title": "🪟 What do you want to change?",
+        "description": "Pick how you want to set up this window.",
+        "menu_options": {
+          "obrazki": "🪄 Wizard with circles and pictures (like the card)",
+          "user": "📝 Plain fields step by step"
+        }
       }
     },
     "error": {
       "rolety": "Pick one or two shades."
+    },
+    "abort": {
+      "panel": "The wizard with circles and pictures opens in the HA Window panel:\n\n**[🪄 Open this window's wizard](/okno-ha?okno={okno})**"
     }
   },
   "selector": {

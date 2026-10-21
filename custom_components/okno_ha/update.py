@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from typing import Any
 
 from homeassistant.components import persistent_notification
@@ -27,6 +28,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 class _Aktualizacja(UpdateEntity):
     _attr_has_entity_name = True
     _attr_should_poll = False
+    _attr_entity_picture = f"/{DOMAIN}/ikona.png"
     _attr_supported_features = (UpdateEntityFeature.INSTALL | UpdateEntityFeature.RELEASE_NOTES
                                  | UpdateEntityFeature.PROGRESS | UpdateEntityFeature.BACKUP)
     repo: str
@@ -69,9 +71,20 @@ class _Aktualizacja(UpdateEntity):
         self.async_write_ha_state()
 
     async def _kopia(self, backup: bool) -> None:
-        """„Utwórz kopię zapasową” w oknie aktualizacji – kopia HA przed instalacją."""
-        if backup and self.hass.services.has_service("backup", "create_automatic"):
-            await self.hass.services.async_call("backup", "create_automatic", blocking=True)
+        """„Utwórz kopię zapasową” w oknie aktualizacji – kopia HA przed instalacją.
+
+        Kopia całego HA trwa kilka minut, a HA nie mówi, ile już zrobił – pasek idzie powoli do 35%,
+        żeby było widać, że coś się dzieje."""
+        if not (backup and self.hass.services.has_service("backup", "create_automatic")):
+            return
+        zadanie = self.hass.async_create_task(
+            self.hass.services.async_call("backup", "create_automatic", blocking=True))
+        procent = 1
+        while not zadanie.done():
+            self._postep(procent)
+            await asyncio.wait({zadanie}, timeout=4)
+            procent = min(procent + 1, 35)
+        await zadanie
 
 
 class AktualizacjaKarty(_Aktualizacja):
@@ -88,6 +101,7 @@ class AktualizacjaKarty(_Aktualizacja):
             await self._kopia(backup)
             self._postep(40)
             await self._n.async_zainstaluj_karte(version or self.latest_version)
+            self._postep(100)
         finally:
             self._postep(None)
 
@@ -113,10 +127,16 @@ class AktualizacjaIntegracji(_Aktualizacja):
             hacs = next((s.entity_id for s in self.hass.states.async_all("update")
                          if REPO_INTEGRACJA in str(s.attributes.get("release_url", ""))
                          and s.entity_id != self.entity_id), None)
+            zrobione = False
             if hacs:   # zainstalowana przez HACS – niech HACS ją zaktualizuje, żeby wiedział o nowej wersji
-                await self.hass.services.async_call("update", "install", {"entity_id": hacs, "version": wersja}, blocking=True)
-            else:
+                try:
+                    await self.hass.services.async_call("update", "install", {"entity_id": hacs, "version": wersja}, blocking=True)
+                    zrobione = True
+                except Exception:  # noqa: BLE001 – HACS jeszcze nie zna tej wersji: pobieramy sami
+                    pass
+            if not zrobione:
                 await self._n.async_zainstaluj_integracje(wersja)
+            self._postep(100)
             self._zainstalowana = wersja
             persistent_notification.async_create(
                 self.hass,

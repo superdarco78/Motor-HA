@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from homeassistant.components import panel_custom
 from homeassistant.components.frontend import add_extra_js_url
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
@@ -12,6 +13,7 @@ from homeassistant.helpers.typing import ConfigType
 
 from .const import DOMAIN, VERSION
 from .nowosci import LOADER, Nowosci
+from .ws import async_rejestruj
 
 PLATFORMS = [Platform.COVER, Platform.BUTTON, Platform.UPDATE]
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
@@ -24,6 +26,12 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     await hass.http.async_register_static_paths([StaticPathConfig(f"/{DOMAIN}", str(nowosci.katalog), False)])
     add_extra_js_url(hass, f"/{DOMAIN}/{LOADER}?v={VERSION}")
     nowosci.async_start()
+    async_rejestruj(hass)
+    # panel „🪟 Okno HA” w menu bocznym: kreator z kółkami i obrazkami, ten sam co w karcie
+    await panel_custom.async_register_panel(
+        hass, frontend_url_path="okno-ha", webcomponent_name="okno-ha-panel",
+        module_url=f"/{DOMAIN}/okno-ha-panel.js?v={VERSION}", sidebar_title="Okno HA",
+        sidebar_icon="mdi:window-shutter-cog", require_admin=True)
     return True
 
 

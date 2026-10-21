@@ -169,6 +169,12 @@ class OknoHaConfigFlow(_Kreator, ConfigFlow, domain=DOMAIN):
     async def async_step_wyglad(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         return await self._krok("wyglad", user_input, True)
 
+    async def async_step_panel(self, karta: dict[str, Any]) -> ConfigFlowResult:
+        """Nowe okno z kreatora karty w panelu „Okno HA” (kółka i obrazki)."""
+        from .cover import opcje_z_karty
+        nazwa = str(karta.get("name") or "").strip() or "Okno"
+        return self.async_create_entry(title=nazwa, data={}, options=opcje_z_karty(karta, dict(DOMYSLNE), self.hass))
+
     def _koniec(self) -> ConfigFlowResult:
         nazwa = self._v.pop(CONF_NAME).strip() or "Okno"
         return self.async_create_entry(title=nazwa, data={}, options=self._v)
@@ -183,8 +189,13 @@ class OknoHaOptionsFlow(_Kreator, OptionsFlow):
     """„Konfiguruj” – te same kroki, z obecnymi ustawieniami."""
 
     async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
-        self._v = dict(self.config_entry.options)
-        return await self.async_step_user()
+        self._v = {k: v for k, v in self.config_entry.options.items() if k != "karta"}
+        return self.async_show_menu(step_id="init", menu_options=["obrazki", "user"],
+                                    description_placeholders={"okno": self.config_entry.entry_id})
+
+    async def async_step_obrazki(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        """Kreator z kółkami i obrazkami jest w panelu „Okno HA” – tu tylko link do niego."""
+        return self.async_abort(reason="panel", description_placeholders={"okno": self.config_entry.entry_id})
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         return await self._krok("user", user_input, False)
@@ -202,4 +213,4 @@ class OknoHaOptionsFlow(_Kreator, OptionsFlow):
         return await self._krok("wyglad", user_input, False)
 
     def _koniec(self) -> ConfigFlowResult:
-        return self.async_create_entry(data=self._v)
+        return self.async_create_entry(data=self._v)   # zwykłe pola wygrywają: „karta” z edytora znika
