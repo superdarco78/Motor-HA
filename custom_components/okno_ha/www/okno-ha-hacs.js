@@ -4,6 +4,7 @@
   // skrypt wczytany drugi raz działa tylko, gdy to nowa wersja integracji – wtedy przejmuje pracę po starym
   const JA = {};
   if (window.__oknoHaHacs3 && !window.__oknoHaNowy) return;
+  const poAktualizacji = !!window.__oknoHaNowy;   // wczytany przez stary skrypt po aktualizacji Motoru HA
   window.__oknoHaHacs2 = true; window.__oknoHaHacs3 = JA; window.__oknoHaNowy = false;
   const zywy = () => window.__oknoHaHacs3 === JA;
   const WZOR = /https:\/\/brands\.home-assistant\.io\/(?:_\/|marketplace\/)?okno_ha\/[a-z_@0-9]+\.png/g;
@@ -316,14 +317,23 @@
             el.addEventListener("load", () => seria());
           }
           const w = el.contentWindow;
-          if (w && w.location.origin === location.origin && w.document.documentElement) { popraw(w); sluchaj(w.document); przejdz(w.document, ile); }
+          if (w && w.location.origin === location.origin && w.document.documentElement) { popraw(w); sluchaj(w.document); galeria(w); przejdz(w.document, ile); }
         }
         if (el.shadowRoot) przejdz(el.shadowRoot, ile);
       } catch (e) { /* inna domena albo ramka w trakcie wczytywania */ }
     }
   };
+  // galeria w opisie: żywe karty zamiast obrazków (osobny skrypt w ramce opisu – tylko w HACS)
+  const galeria = (w) => {
+    if (w.__oknoHaGaleria || w.__oknoHaGaleriaW || !w.document.head || !/^\/hacs\//.test(location.pathname)) return;
+    w.__oknoHaGaleriaW = true;
+    const s = w.document.createElement("script");
+    s.type = "module";
+    s.textContent = `import("/okno_ha/okno-ha-galeria.js?t=${Date.now()}");`;
+    w.document.head.appendChild(s);
+  };
   const naHacs = () => /^\/(hacs|config)/.test(location.pathname);   // HACS i okna konfiguracji (kreator integracji)
-  const skanuj = () => { if (zywy() && naHacs()) przejdz(document); };
+  const skanuj = () => { if (zywy() && naHacs()) { if (/^\/hacs\//.test(location.pathname)) galeria(window); przejdz(document); } };
   // adresy w HA: przyciski My Home Assistant, języki opisu i spis treści – na GitHubie linki zostają bez zmian
   const mojAdres = (nazwa, zapytanie) => `${nazwa.startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${nazwa}${zapytanie || ""}`;
   const MY = /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/;
@@ -409,6 +419,25 @@
         import(`/okno_ha/okno-ha-hacs.js?t=${Date.now()}`).catch(() => { window.__oknoHaNowy = false; });
       }).catch(() => {});
   };
+  // po aktualizacji: karta wczytana wcześniej zostaje w pamięci strony aż do jej przeładowania (przeglądarka nie podmieni
+  // raz zarejestrowanej karty) – stąd stara karta w „Dodaj do panelu”. Strona sama przeładuje się raz, w spokojnym momencie:
+  // karta widoczna, bez otwartego okna dialogowego, bez trybu edycji panelu i bez pisania w polu tekstowym.
+  const otwarteOkno = (r, g = 0) => {
+    if (!r || g > 3) return false;
+    for (const e of r.children || []) {
+      if (/^(HA-DIALOG|HA-MD-DIALOG|HA-ADAPTIVE-DIALOG|HA-WA-DIALOG|DIALOG)$/.test(e.tagName) && (e.open || e.hasAttribute("open"))) return true;
+      if ((e.shadowRoot && otwarteOkno(e.shadowRoot, g + 1)) || otwarteOkno(e, g + 1)) return true;
+    }
+    return false;
+  };
+  const pisze = () => { let a = document.activeElement; while (a && a.shadowRoot && a.shadowRoot.activeElement) a = a.shadowRoot.activeElement; return !!a && /^(INPUT|TEXTAREA)$/.test(a.tagName); };
+  const spokojnie = () => !document.hidden && !/[?&]edit=1/.test(location.search) && !pisze() && !otwarteOkno(document.querySelector("home-assistant")?.shadowRoot);
+  let przeladuj = null;
+  const przeladujPozniej = () => {
+    if (przeladuj || !customElements.get("okno-ha")) return;
+    przeladuj = setInterval(() => { if (zywy() && spokojnie()) { clearInterval(przeladuj); location.reload(); } }, 5000);
+  };
+  if (poAktualizacji) przeladujPozniej();
   sprawdzWersje();
   setInterval(sprawdzWersje, 30000);
   window.addEventListener("connection-status", () => setTimeout(sprawdzWersje, 3000));

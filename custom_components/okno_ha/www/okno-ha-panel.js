@@ -29,9 +29,9 @@ class OknoHaPanel extends HTMLElement {
   set hass(h) {
     const pierwszy = !this._hass; this._hass = h;
     if (pierwszy) this._start();
-    this.querySelectorAll('okno-ha, okno-ha-editor').forEach(e => { e.hass = h; });
+    this.querySelectorAll('okno-ha, okno-ha-editor, ha-menu-button').forEach(e => { e.hass = h; });
   }
-  set narrow(n) { this._narrow = n; }
+  set narrow(n) { this._narrow = n; const mb = this.querySelector('ha-menu-button'); if (mb) mb.narrow = n; }
   set panel(p) { this._panel = p; }
   get L() {
     // język z profilu HA; brak tłumaczenia → angielski
@@ -46,11 +46,11 @@ class OknoHaPanel extends HTMLElement {
       .gora img{width:32px;height:32px}
       .tresc{max-width:1100px;margin:0 auto;padding:16px}
       .pasek{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
-      .pasek button,.okno button{font:inherit;font-size:15px;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;background:var(--primary-color);color:var(--text-primary-color,#fff)}
+      .pasek button,.okno button{font:inherit;font-size:15px;padding:10px 16px;border-radius:var(--ha-card-border-radius,12px);border:0;cursor:pointer;background:var(--primary-color);color:var(--text-primary-color,#fff)}
       .pasek button.drugi{background:var(--secondary-background-color);color:var(--primary-text-color)}
       .siatka{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
       .okno{display:flex;flex-direction:column;gap:8px}
-      .info{padding:12px 16px;border-radius:10px;background:var(--card-background-color);color:var(--primary-text-color);border-left:4px solid var(--primary-color)}
+      .info{padding:12px 16px;border-radius:var(--ha-card-border-radius,12px);background:var(--card-background-color);color:var(--primary-text-color);border-left:4px solid var(--primary-color)}
     </style>
     <div class="gora"><ha-menu-button></ha-menu-button><img src="/okno_ha/ikona.png" alt=""><span>${this.L.tytul}</span></div>
     <div class="tresc"><p class="info">${this.L.laduje}</p></div>`;
