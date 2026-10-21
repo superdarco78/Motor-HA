@@ -74,8 +74,7 @@
 15 types : 8 intérieurs et 7 extérieurs. Choisissez dans l’assistant ou plus tard dans **Configurer**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-en.svg" width="100%" alt="15 types de stores : 8 intérieurs et 7 extérieurs"></a><br>
-<sub>15 types de stores : 8 intérieurs et 7 extérieurs</sub></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-en.svg" width="100%" alt="15 types de stores : 8 intérieurs et 7 extérieurs"></a></p>
 
 <p>&nbsp;</p>
 
@@ -655,7 +654,7 @@ Pas de réponse ici ? [Signaler un bug](https://github.com/superdarco78/okno-ha-
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-en.svg" width="100%" alt="Types de stores"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-en.svg" width="100%" alt="Types de stores"></a><br>
 <sub>Types de stores</sub></p>
 
 <p>&nbsp;</p>

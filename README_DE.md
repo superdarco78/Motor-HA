@@ -74,8 +74,7 @@ Links: die normale Rollo-Karte in Home Assistant. Rechts: dasselbe Fenster mit M
 15 Arten: 8 innen und 7 außen. Wähle sie im Assistenten oder später unter **Konfigurieren**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-en.svg" width="100%" alt="15 Behangarten: 8 innen und 7 außen"></a><br>
-<sub>15 Behangarten: 8 innen und 7 außen</sub></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-en.svg" width="100%" alt="15 Behangarten: 8 innen und 7 außen"></a></p>
 
 <p>&nbsp;</p>
 
@@ -655,7 +654,7 @@ Keine Antwort gefunden? [Fehler melden](https://github.com/superdarco78/okno-ha-
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-en.svg" width="100%" alt="Behangarten"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-en.svg" width="100%" alt="Behangarten"></a><br>
 <sub>Behangarten</sub></p>
 
 <p>&nbsp;</p>

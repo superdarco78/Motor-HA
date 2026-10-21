@@ -71,11 +71,10 @@ Po lewej zwykła karta rolety w Home Assistancie. Po prawej to samo okno z Motor
 <a name="rodzaje-oslon"></a>
 <h2><a name="j4" href="#j4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki8/h-rodzaje-oslon.svg" height="48" alt="Rodzaje osłon"></a></h2>
 
-15 rodzajów do wyboru: 8 w pokoju i 7 na zewnątrz. Wybierasz w kreatorze albo później w **Konfiguruj**.
+15 rodzajów do wyboru: 8 wewnątrz pomieszczenia i 7 na zewnątrz. Wybierasz w kreatorze albo później w **Konfiguruj**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-pl.svg" width="100%" alt="15 rodzajów osłon: 8 w pokoju i 7 na zewnątrz"></a><br>
-<sub>15 rodzajów osłon: 8 w pokoju i 7 na zewnątrz</sub></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-pl.svg" width="100%" alt="15 rodzajów osłon: 8 wewnątrz pomieszczenia i 7 na zewnątrz"></a></p>
 
 <p>&nbsp;</p>
 
@@ -655,7 +654,7 @@ Nie ma tu odpowiedzi? [Zgłoś błąd](https://github.com/superdarco78/okno-ha-i
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-pl.svg" width="100%" alt="Rodzaje osłon"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-pl.svg" width="100%" alt="Rodzaje osłon"></a><br>
 <sub>Rodzaje osłon</sub></p>
 
 <p>&nbsp;</p>

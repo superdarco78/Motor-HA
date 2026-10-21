@@ -74,8 +74,7 @@ Vlevo: běžná karta rolety v Home Assistantu. Vpravo: stejné okno s Motor HA.
 15 druhů: 8 do interiéru a 7 venkovních. Vybereš v průvodci nebo později v **Konfigurovat**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-en.svg" width="100%" alt="15 druhů stínění: 8 dovnitř a 7 ven"></a><br>
-<sub>15 druhů stínění: 8 dovnitř a 7 ven</sub></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-en.svg" width="100%" alt="15 druhů stínění: 8 dovnitř a 7 ven"></a></p>
 
 <p>&nbsp;</p>
 
@@ -655,7 +654,7 @@ Tady není odpověď? [Nahlásit chybu](https://github.com/superdarco78/okno-ha-
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony-kafle-en.svg" width="100%" alt="Druhy stínění"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony2-en.svg" width="100%" alt="Druhy stínění"></a><br>
 <sub>Druhy stínění</sub></p>
 
 <p>&nbsp;</p>
