@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.38 – Dawny baner
+
+- 🖼️ W opisie wrócił dawny baner (domek na tle zachodu słońca, bez ramki); domek, litery HA i uchwyt w kolorach Twojego motywu
+
 ## v1.4.37 – Ładowacz bez numeru w Zasobach
 
 - 📦 Wpis w Zasobach to zawsze `/local/okno-ha-loader.js` bez numeru wersji, jak ładowacze innych kart. Plik i tak przy każdym otwarciu strony bierze świeże skrypty
