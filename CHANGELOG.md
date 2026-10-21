@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.15 – Dowolny kolor z palety, ikona HACS po restarcie
+
+- 🎨 Karta v33: w kreatorze z kółkami (krok „Wygląd”) dowolny kolor osłony i ramy z palety, podgląd na żywo
+- 🔤 Podpisy pod kółkami kolorów większe i wyraźniejsze w obu motywach
+- 🖼️ Ikona Okna HA w HACS pojawia się sama po restarcie Home Assistanta, bez odświeżania strony (F5)
+- 📖 Opis: większe ikony w nagłówkach, równo z tekstem; kroki kreatora bez urwanej ramki; nowa animacja z wyraźnymi przyciskami
+
 ## v1.4.14 – Czytelniejszy opis w obu motywach
 
 - 🔴 Zaznaczenia „gdzie kliknąć” (ramki, numery, strzałki) w czerwieni Home Assistanta, jeden styl
