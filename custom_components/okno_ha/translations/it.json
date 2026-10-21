@@ -1,0 +1,317 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Motor HA – passo 1 di 5: schermatura",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nScegli la schermatura di questa finestra. Per una finestra a due ante scegline due (sinistra e destra) o un gruppo.\n\n🪄 Preferisci la procedura guidata con cerchi e immagini, come nella scheda? **[Apri la procedura con i cerchi](/okno-ha)**",
+        "data": {
+          "name": "Nome della finestra",
+          "rolety": "Schermatura (una o due)"
+        },
+        "data_description": {
+          "name": "Es. Soggiorno. Il dispositivo si chiamerà «Okno Soggiorno».",
+          "rolety": "Prima la sinistra, poi la destra."
+        }
+      },
+      "okno": {
+        "title": "Passo 2 di 5: finestra e sensori",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nQuante ante ha la finestra e se ha sensori di apertura. I sensori sono facoltativi.",
+        "data": {
+          "skrzydla": "Numero di ante",
+          "czujnik_lewe": "Sensore anta sinistra",
+          "tryb_lewe": "Anta sinistra aperta",
+          "czujnik_prawe": "Sensore anta destra",
+          "tryb_prawe": "Anta destra aperta",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "czujnik_lewe": "Quando il sensore segnala aperto, la scheda disegna un’anta aperta.",
+          "tryb_lewe": "Come la scheda mostra un’anta aperta.",
+          "skrzydla": "1 = anta singola, 2 = finestra doppia (sinistra e destra).",
+          "czujnik_prawe": "Sensore di apertura dell’anta destra. Lascia vuoto se non c’è.",
+          "tryb_prawe": "Come si apre l’anta destra: a ribalta o a battente.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Passo 3 di 5: motore",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nLa scheda si muove al ritmo del motore. La velocità del motore è stata presa dal dispositivo della tapparella (se ce l’ha, es. Moes). Tempo di corsa calcolato: **{czas}**.",
+        "data": {
+          "predkosc_lewa": "Velocità motore – sinistra",
+          "predkosc_prawa": "Velocità motore – destra",
+          "czas": "Tempo di corsa completo",
+          "kalibruj": "🤖 Calibra ora (la tapparella sale, scende e risale)",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "predkosc_lewa": "L’entità «…motor_speed» della stessa tapparella. Lascia vuoto se il motore non ce l’ha.",
+          "predkosc_prawa": "Lo stesso per l’anta destra.",
+          "czas": "0 = automatico: dalla velocità del motore o dalla calibrazione.",
+          "kalibruj": "Misura il vero tempo di corsa e lo salva. Puoi farlo anche dopo con il pulsante «Calibra» del dispositivo.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Passo 4 di 5: meteo esterno",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nFuori dalla finestra si vede il meteo reale. Lascia vuoto e la scheda usa il meteo da Internet per casa tua.",
+        "data": {
+          "pogoda": "Meteo",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "pogoda": "Il meteo fuori dalla finestra della scheda: sole, nuvole, pioggia, neve, giorno e notte. Lascia vuoto e la scheda prende la prima entità meteo.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Passo 5 di 5: aspetto",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nScegli tipo e colori della schermatura dalle immagini qui sotto.\n\n![Tipi di schermatura]({obrazki}/oslony-kafle-v2-en.png)\n\n![Colori della schermatura]({obrazki}/kolory-v2-en.png)\n\n![Colori del telaio]({obrazki}/ramy-v2-en.png)",
+        "data": {
+          "oslona": "Tipo di schermatura",
+          "kolor": "Colore della schermatura",
+          "kolor_wlasny": "🎨 Colore schermatura personalizzato",
+          "rama": "Colore del telaio",
+          "rama_wlasna": "🎨 Colore telaio personalizzato",
+          "wysokosc": "Altezza della finestra nella scheda",
+          "na_panel": "📋 Aggiungi la scheda della finestra a una plancia",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "kolor": "I campioni sono nell’immagine qui sopra.",
+          "kolor_wlasny": "Clicca il cerchio e scegli un colore qualsiasi. Sostituisce il colore dell’elenco.",
+          "rama": "Le finiture legno sono disegnate con le venature.",
+          "rama_wlasna": "Qualsiasi colore del telaio. Sostituisce il colore dell’elenco.",
+          "oslona": "Com’è la tua schermatura – confrontala con le tessere nell’immagine qui sopra.",
+          "wysokosc": "Quanto è alta la finestra nella scheda (pixel). Più grande = si vede meglio.",
+          "na_panel": "La scheda appare da sola su questa plancia, con tutte le impostazioni della procedura. Scegli «Non aggiungere» per posizionarla tu.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      }
+    },
+    "error": {
+      "rolety": "Scegli una o due schermature."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "title": "Motor HA – passo 1 di 5: schermatura",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nScegli la schermatura di questa finestra. Per una finestra a due ante scegline due (sinistra e destra) o un gruppo.",
+        "data": {
+          "name": "Nome della finestra",
+          "rolety": "Schermatura (una o due)"
+        },
+        "data_description": {
+          "name": "Es. Soggiorno. Il dispositivo si chiamerà «Okno Soggiorno».",
+          "rolety": "Prima la sinistra, poi la destra."
+        }
+      },
+      "okno": {
+        "title": "Passo 2 di 5: finestra e sensori",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nQuante ante ha la finestra e se ha sensori di apertura. I sensori sono facoltativi.",
+        "data": {
+          "skrzydla": "Numero di ante",
+          "czujnik_lewe": "Sensore anta sinistra",
+          "tryb_lewe": "Anta sinistra aperta",
+          "czujnik_prawe": "Sensore anta destra",
+          "tryb_prawe": "Anta destra aperta",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "czujnik_lewe": "Quando il sensore segnala aperto, la scheda disegna un’anta aperta.",
+          "tryb_lewe": "Come la scheda mostra un’anta aperta.",
+          "skrzydla": "1 = anta singola, 2 = finestra doppia (sinistra e destra).",
+          "czujnik_prawe": "Sensore di apertura dell’anta destra. Lascia vuoto se non c’è.",
+          "tryb_prawe": "Come si apre l’anta destra: a ribalta o a battente.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Passo 3 di 5: motore",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nLa scheda si muove al ritmo del motore. La velocità del motore è stata presa dal dispositivo della tapparella (se ce l’ha, es. Moes). Tempo di corsa calcolato: **{czas}**.",
+        "data": {
+          "predkosc_lewa": "Velocità motore – sinistra",
+          "predkosc_prawa": "Velocità motore – destra",
+          "czas": "Tempo di corsa completo",
+          "kalibruj": "🤖 Calibra ora (la tapparella sale, scende e risale)",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "predkosc_lewa": "L’entità «…motor_speed» della stessa tapparella. Lascia vuoto se il motore non ce l’ha.",
+          "predkosc_prawa": "Lo stesso per l’anta destra.",
+          "czas": "0 = automatico: dalla velocità del motore o dalla calibrazione.",
+          "kalibruj": "Misura il vero tempo di corsa e lo salva. Puoi farlo anche dopo con il pulsante «Calibra» del dispositivo.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Passo 4 di 5: meteo esterno",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nFuori dalla finestra si vede il meteo reale. Lascia vuoto e la scheda usa il meteo da Internet per casa tua.",
+        "data": {
+          "pogoda": "Meteo",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "pogoda": "Il meteo fuori dalla finestra della scheda: sole, nuvole, pioggia, neve, giorno e notte. Lascia vuoto e la scheda prende la prima entità meteo.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Passo 5 di 5: aspetto",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nScegli tipo e colori della schermatura dalle immagini qui sotto.\n\n![Tipi di schermatura]({obrazki}/oslony-kafle-v2-en.png)\n\n![Colori della schermatura]({obrazki}/kolory-v2-en.png)\n\n![Colori del telaio]({obrazki}/ramy-v2-en.png)",
+        "data": {
+          "oslona": "Tipo di schermatura",
+          "kolor": "Colore della schermatura",
+          "kolor_wlasny": "🎨 Colore schermatura personalizzato",
+          "rama": "Colore del telaio",
+          "rama_wlasna": "🎨 Colore telaio personalizzato",
+          "wysokosc": "Altezza della finestra nella scheda",
+          "wstecz": "⬅️ Torna al passo precedente"
+        },
+        "data_description": {
+          "kolor": "I campioni sono nell’immagine qui sopra.",
+          "kolor_wlasny": "Clicca il cerchio e scegli un colore qualsiasi. Sostituisce il colore dell’elenco.",
+          "rama": "Le finiture legno sono disegnate con le venature.",
+          "rama_wlasna": "Qualsiasi colore del telaio. Sostituisce il colore dell’elenco.",
+          "oslona": "Com’è la tua schermatura – confrontala con le tessere nell’immagine qui sopra.",
+          "wysokosc": "Quanto è alta la finestra nella scheda (pixel). Più grande = si vede meglio.",
+          "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. Quello che hai inserito resta."
+        }
+      },
+      "init": {
+        "title": "Cosa vuoi modificare?",
+        "description": "Scegli come configurare questa finestra.",
+        "menu_options": {
+          "obrazki": "🪄 Procedura con cerchi e immagini (come nella scheda)",
+          "user": "📝 Campi semplici passo per passo"
+        }
+      }
+    },
+    "error": {
+      "rolety": "Scegli una o due schermature."
+    },
+    "abort": {
+      "panel": "La procedura con cerchi e immagini si apre nel pannello Motor HA:\n\n**[🪄 Apri la procedura di questa finestra](/okno-ha?okno={okno})**"
+    }
+  },
+  "selector": {
+    "oslona": {
+      "options": {
+        "zebra": "🦓 Giorno-notte",
+        "pelna": "🧵 Tenda a rullo",
+        "plisa": "🪗 Plissettata",
+        "rzymska": "🏛️ Tenda a pacchetto",
+        "zaluzja": "🎚️ Veneziana in alluminio",
+        "zewnetrzna": "🏠 Tapparella con cassonetto superiore",
+        "zaciemniajaca": "🌑 Oscurante",
+        "plaster": "🐝 Plissé a nido d’ape",
+        "drewniana": "🪵 Veneziana in legno",
+        "natynkowa": "🏠 Tapparella con cassonetto esterno",
+        "podtynkowa": "🧱 Tapparella con cassonetto a scomparsa",
+        "perforowana": "✨ Tapparella forata",
+        "fasadowa": "🏢 Frangisole C80",
+        "fasadowaz": "🏢 Frangisole Z90",
+        "screen": "🌫️ Screen ZIP"
+      }
+    },
+    "kolor": {
+      "options": {
+        "czarny": "⚫ Nero",
+        "grafit": "⚫ Grafite",
+        "szary": "🔘 Grigio",
+        "bezowy": "🟤 Beige",
+        "kremowy": "⚪ Crema",
+        "bialy": "⚪ Bianco",
+        "braz": "🟤 Marrone",
+        "granat": "🔵 Blu navy",
+        "pomaranczowy": "🟠 Arancione",
+        "piaskowy": "🟤 Sabbia",
+        "cappuccino": "🟤 Cappuccino",
+        "mokka": "🟤 Moka",
+        "wenge": "🟤 Wengé",
+        "popiel": "🔘 Cenere",
+        "srebrny": "⚪ Argento",
+        "stalowy": "🔵 Acciaio",
+        "lawendowy": "🟣 Lavanda",
+        "pudrowy": "🩷 Rosa cipria",
+        "mietowy": "🟢 Menta",
+        "blekitny": "🔵 Azzurro",
+        "morski": "🔵 Verde petrolio",
+        "butelkowy": "🟢 Verde bottiglia",
+        "musztardowy": "🟡 Senape",
+        "terakota": "🟠 Terracotta",
+        "sliwkowy": "🟣 Prugna",
+        "czerwony": "🔴 Rosso",
+        "bordo": "🔴 Bordeaux",
+        "rozowy": "🩷 Rosa",
+        "fiolet": "🟣 Viola",
+        "niebieski": "🔵 Blu",
+        "turkus": "🔵 Turchese",
+        "zielony": "🟢 Verde",
+        "limonka": "🟢 Lime",
+        "zolty": "🟡 Giallo",
+        "oliwka": "🟢 Oliva"
+      }
+    },
+    "rama": {
+      "options": {
+        "biala": "⚪ Bianco",
+        "kremowa": "⚪ Crema",
+        "jasnoszara": "⚪ Grigio chiaro",
+        "srebrna": "🔘 Argento",
+        "szary_agat": "🔘 Grigio agata",
+        "szara": "🔘 Grigio",
+        "szary_kwarc": "🔘 Grigio quarzo",
+        "bazaltowa": "⚫ Grigio basalto",
+        "antracyt": "⚫ Antracite",
+        "czarna": "⚫ Nero",
+        "zielona": "🟢 Verde",
+        "granatowa": "🔵 Blu navy",
+        "bordowa": "🔴 Bordeaux",
+        "braz": "🟤 Marrone",
+        "sosna": "🪵 Pino",
+        "dab_jasny": "🪵 Rovere chiaro",
+        "dab_sheffield": "🪵 Rovere Sheffield",
+        "winchester": "🪵 Winchester",
+        "oregon": "🪵 Oregon",
+        "zloty_dab": "🪵 Rovere dorato",
+        "siena": "🪵 Siena",
+        "orzech": "🪵 Noce",
+        "mahon": "🪵 Mogano",
+        "dab_bagienny": "🪵 Rovere di palude"
+      }
+    },
+    "tryb": {
+      "options": {
+        "uchyl": "a ribalta",
+        "otworz": "aperta a battente"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "1 anta",
+        "2": "2 ante"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Calibra"
+      }
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} scaricato – riavvia HA",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Riavviare Home Assistant?",
+            "description": "La nuova versione di Motor HA ({wersja}) è scaricata. Clicca «Invia» e Home Assistant si riavvia (circa un minuto), poi funziona la nuova versione."
+          }
+        }
+      }
+    }
+  }
+}

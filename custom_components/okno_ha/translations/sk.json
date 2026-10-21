@@ -1,0 +1,317 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Motor HA – krok 1 z 5: tienenie",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nVyber tienenie tohto okna. Pri dvojkrídlovom okne vyber dve (ľavé a pravé) alebo jednu skupinu.\n\n🪄 Radšej sprievodcu s krúžkami a obrázkami ako v karte? **[Otvoriť sprievodcu s krúžkami](/okno-ha)**",
+        "data": {
+          "name": "Názov okna",
+          "rolety": "Tienenie (jedno alebo dve)"
+        },
+        "data_description": {
+          "name": "Napr. Obývačka. Zariadenie sa bude volať „Okno Obývačka“.",
+          "rolety": "Najprv ľavé, potom pravé."
+        }
+      },
+      "okno": {
+        "title": "Krok 2 z 5: okno a snímače",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nKoľko krídel má okno a či má snímače otvorenia. Snímače sú voliteľné.",
+        "data": {
+          "skrzydla": "Počet krídel",
+          "czujnik_lewe": "Snímač ľavého krídla",
+          "tryb_lewe": "Ľavé krídlo otvorené",
+          "czujnik_prawe": "Snímač pravého krídla",
+          "tryb_prawe": "Pravé krídlo otvorené",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czujnik_lewe": "Keď snímač hlási otvorené, karta nakreslí otvorené krídlo.",
+          "tryb_lewe": "Ako karta ukáže otvorené krídlo.",
+          "skrzydla": "1 = jednokrídlové, 2 = dvojkrídlové okno (ľavé a pravé).",
+          "czujnik_prawe": "Snímač otvorenia pravého krídla. Nechaj prázdne, ak nie je.",
+          "tryb_prawe": "Ako sa pravé krídlo otvára: vyklopené alebo otvorené do strany.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Krok 3 z 5: motor",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nKarta sa pohybuje tempom motora. Rýchlosť motora bola prevzatá zo zariadenia rolety (ak ju má, napr. Moes). Vypočítaný čas jazdy: **{czas}**.",
+        "data": {
+          "predkosc_lewa": "Rýchlosť motora – vľavo",
+          "predkosc_prawa": "Rýchlosť motora – vpravo",
+          "czas": "Celý čas jazdy",
+          "kalibruj": "🤖 Kalibrovať teraz (roleta ide hore, dole a hore)",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "predkosc_lewa": "Entita „…motor_speed“ tej istej rolety. Nechaj prázdne, ak ju motor nemá.",
+          "predkosc_prawa": "To isté pre pravé krídlo.",
+          "czas": "0 = automaticky: z rýchlosti motora alebo kalibrácie.",
+          "kalibruj": "Zmeria skutočný čas jazdy a uloží ho. Dá sa to aj neskôr tlačidlom „Kalibrovať“ pri zariadení.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Krok 4 z 5: počasie vonku",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nZa oknom vidno skutočné počasie. Nechaj prázdne a karta použije internetové počasie pre tvoj domov.",
+        "data": {
+          "pogoda": "Počasie",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "pogoda": "Počasie za oknom karty: slnko, mraky, dážď, sneh, deň a noc. Nechaj prázdne a karta vezme prvú entitu počasia.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Krok 5 z 5: vzhľad",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nVyber typ a farby tienenia podľa obrázkov nižšie.\n\n![Typy tienenia]({obrazki}/oslony-kafle-v2-en.png)\n\n![Farby tienenia]({obrazki}/kolory-v2-en.png)\n\n![Farby rámu]({obrazki}/ramy-v2-en.png)",
+        "data": {
+          "oslona": "Typ tienenia",
+          "kolor": "Farba tienenia",
+          "kolor_wlasny": "🎨 Vlastná farba tienenia",
+          "rama": "Farba rámu okna",
+          "rama_wlasna": "🎨 Vlastná farba rámu",
+          "wysokosc": "Výška okna na karte",
+          "na_panel": "📋 Pridať kartu okna na nástenku",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "kolor": "Vzorky sú na obrázku vyššie.",
+          "kolor_wlasny": "Klikni na krúžok a vyber ľubovoľnú farbu. Nahradí farbu zo zoznamu.",
+          "rama": "Drevodekory sa kreslia s kresbou dreva.",
+          "rama_wlasna": "Ľubovoľná farba rámu. Nahradí farbu zo zoznamu.",
+          "oslona": "Ako vyzerá tvoje tienenie – porovnaj s dlaždicami na obrázku vyššie.",
+          "wysokosc": "Aké vysoké je okno na karte (pixely). Väčšie = lepšie vidno.",
+          "na_panel": "Karta sa na tejto nástenke objaví sama, so všetkými nastaveniami zo sprievodcu. Vyber „Nepridávať“, ak ju chceš umiestniť sám.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      }
+    },
+    "error": {
+      "rolety": "Vyber jedno alebo dve tienenia."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "title": "Motor HA – krok 1 z 5: tienenie",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nVyber tienenie tohto okna. Pri dvojkrídlovom okne vyber dve (ľavé a pravé) alebo jednu skupinu.",
+        "data": {
+          "name": "Názov okna",
+          "rolety": "Tienenie (jedno alebo dve)"
+        },
+        "data_description": {
+          "name": "Napr. Obývačka. Zariadenie sa bude volať „Okno Obývačka“.",
+          "rolety": "Najprv ľavé, potom pravé."
+        }
+      },
+      "okno": {
+        "title": "Krok 2 z 5: okno a snímače",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nKoľko krídel má okno a či má snímače otvorenia. Snímače sú voliteľné.",
+        "data": {
+          "skrzydla": "Počet krídel",
+          "czujnik_lewe": "Snímač ľavého krídla",
+          "tryb_lewe": "Ľavé krídlo otvorené",
+          "czujnik_prawe": "Snímač pravého krídla",
+          "tryb_prawe": "Pravé krídlo otvorené",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czujnik_lewe": "Keď snímač hlási otvorené, karta nakreslí otvorené krídlo.",
+          "tryb_lewe": "Ako karta ukáže otvorené krídlo.",
+          "skrzydla": "1 = jednokrídlové, 2 = dvojkrídlové okno (ľavé a pravé).",
+          "czujnik_prawe": "Snímač otvorenia pravého krídla. Nechaj prázdne, ak nie je.",
+          "tryb_prawe": "Ako sa pravé krídlo otvára: vyklopené alebo otvorené do strany.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Krok 3 z 5: motor",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nKarta sa pohybuje tempom motora. Rýchlosť motora bola prevzatá zo zariadenia rolety (ak ju má, napr. Moes). Vypočítaný čas jazdy: **{czas}**.",
+        "data": {
+          "predkosc_lewa": "Rýchlosť motora – vľavo",
+          "predkosc_prawa": "Rýchlosť motora – vpravo",
+          "czas": "Celý čas jazdy",
+          "kalibruj": "🤖 Kalibrovať teraz (roleta ide hore, dole a hore)",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "predkosc_lewa": "Entita „…motor_speed“ tej istej rolety. Nechaj prázdne, ak ju motor nemá.",
+          "predkosc_prawa": "To isté pre pravé krídlo.",
+          "czas": "0 = automaticky: z rýchlosti motora alebo kalibrácie.",
+          "kalibruj": "Zmeria skutočný čas jazdy a uloží ho. Dá sa to aj neskôr tlačidlom „Kalibrovať“ pri zariadení.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Krok 4 z 5: počasie vonku",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nZa oknom vidno skutočné počasie. Nechaj prázdne a karta použije internetové počasie pre tvoj domov.",
+        "data": {
+          "pogoda": "Počasie",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "pogoda": "Počasie za oknom karty: slnko, mraky, dážď, sneh, deň a noc. Nechaj prázdne a karta vezme prvú entitu počasia.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Krok 5 z 5: vzhľad",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nVyber typ a farby tienenia podľa obrázkov nižšie.\n\n![Typy tienenia]({obrazki}/oslony-kafle-v2-en.png)\n\n![Farby tienenia]({obrazki}/kolory-v2-en.png)\n\n![Farby rámu]({obrazki}/ramy-v2-en.png)",
+        "data": {
+          "oslona": "Typ tienenia",
+          "kolor": "Farba tienenia",
+          "kolor_wlasny": "🎨 Vlastná farba tienenia",
+          "rama": "Farba rámu okna",
+          "rama_wlasna": "🎨 Vlastná farba rámu",
+          "wysokosc": "Výška okna na karte",
+          "wstecz": "⬅️ Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "kolor": "Vzorky sú na obrázku vyššie.",
+          "kolor_wlasny": "Klikni na krúžok a vyber ľubovoľnú farbu. Nahradí farbu zo zoznamu.",
+          "rama": "Drevodekory sa kreslia s kresbou dreva.",
+          "rama_wlasna": "Ľubovoľná farba rámu. Nahradí farbu zo zoznamu.",
+          "oslona": "Ako vyzerá tvoje tienenie – porovnaj s dlaždicami na obrázku vyššie.",
+          "wysokosc": "Aké vysoké je okno na karte (pixely). Väčšie = lepšie vidno.",
+          "wstecz": "Zapni a klikni na „Ďalej“ pre návrat o krok späť. Čo si zadal, zostane."
+        }
+      },
+      "init": {
+        "title": "Čo chceš zmeniť?",
+        "description": "Vyber, ako chceš toto okno nastaviť.",
+        "menu_options": {
+          "obrazki": "🪄 Sprievodca s krúžkami a obrázkami (ako v karte)",
+          "user": "📝 Jednoduché polia krok za krokom"
+        }
+      }
+    },
+    "error": {
+      "rolety": "Vyber jedno alebo dve tienenia."
+    },
+    "abort": {
+      "panel": "Sprievodca s krúžkami a obrázkami sa otvorí v paneli Motor HA:\n\n**[🪄 Otvoriť sprievodcu tohto okna](/okno-ha?okno={okno})**"
+    }
+  },
+  "selector": {
+    "oslona": {
+      "options": {
+        "zebra": "🦓 Deň-noc",
+        "pelna": "🧵 Látková roleta",
+        "plisa": "🪗 Plisé",
+        "rzymska": "🏛️ Rímska roleta",
+        "zaluzja": "🎚️ Hliníková žalúzia",
+        "zewnetrzna": "🏠 Predokenná roleta s horným boxom",
+        "zaciemniajaca": "🌑 Zatemňovacia",
+        "plaster": "🐝 Plisé voštinové",
+        "drewniana": "🪵 Drevená žalúzia",
+        "natynkowa": "🏠 Predokenná roleta s nástenným boxom",
+        "podtynkowa": "🧱 Podomietková roleta",
+        "perforowana": "✨ Perforovaná roleta",
+        "fasadowa": "🏢 Vonkajšia žalúzia C80",
+        "fasadowaz": "🏢 Vonkajšia žalúzia Z90",
+        "screen": "🌫️ Screen ZIP"
+      }
+    },
+    "kolor": {
+      "options": {
+        "czarny": "⚫ Čierna",
+        "grafit": "⚫ Grafitová",
+        "szary": "🔘 Sivá",
+        "bezowy": "🟤 Béžová",
+        "kremowy": "⚪ Krémová",
+        "bialy": "⚪ Biela",
+        "braz": "🟤 Hnedá",
+        "granat": "🔵 Tmavomodrá",
+        "pomaranczowy": "🟠 Oranžová",
+        "piaskowy": "🟤 Piesková",
+        "cappuccino": "🟤 Cappuccino",
+        "mokka": "🟤 Moka",
+        "wenge": "🟤 Wenge",
+        "popiel": "🔘 Popolavá",
+        "srebrny": "⚪ Strieborná",
+        "stalowy": "🔵 Oceľová",
+        "lawendowy": "🟣 Levanduľová",
+        "pudrowy": "🩷 Púdrovo ružová",
+        "mietowy": "🟢 Mätová",
+        "blekitny": "🔵 Blankytná",
+        "morski": "🔵 Petrolejová",
+        "butelkowy": "🟢 Fľaškovo zelená",
+        "musztardowy": "🟡 Horčicová",
+        "terakota": "🟠 Terakota",
+        "sliwkowy": "🟣 Slivková",
+        "czerwony": "🔴 Červená",
+        "bordo": "🔴 Bordová",
+        "rozowy": "🩷 Ružová",
+        "fiolet": "🟣 Fialová",
+        "niebieski": "🔵 Modrá",
+        "turkus": "🔵 Tyrkysová",
+        "zielony": "🟢 Zelená",
+        "limonka": "🟢 Limetková",
+        "zolty": "🟡 Žltá",
+        "oliwka": "🟢 Olivová"
+      }
+    },
+    "rama": {
+      "options": {
+        "biala": "⚪ Biela",
+        "kremowa": "⚪ Krémová",
+        "jasnoszara": "⚪ Svetlosivá",
+        "srebrna": "🔘 Strieborná",
+        "szary_agat": "🔘 Achátovo sivá",
+        "szara": "🔘 Sivá",
+        "szary_kwarc": "🔘 Kremenno sivá",
+        "bazaltowa": "⚫ Čadičovo sivá",
+        "antracyt": "⚫ Antracit",
+        "czarna": "⚫ Čierna",
+        "zielona": "🟢 Zelená",
+        "granatowa": "🔵 Tmavomodrá",
+        "bordowa": "🔴 Bordová",
+        "braz": "🟤 Hnedá",
+        "sosna": "🪵 Borovica",
+        "dab_jasny": "🪵 Svetlý dub",
+        "dab_sheffield": "🪵 Dub Sheffield",
+        "winchester": "🪵 Winchester",
+        "oregon": "🪵 Oregon",
+        "zloty_dab": "🪵 Zlatý dub",
+        "siena": "🪵 Siena",
+        "orzech": "🪵 Orech",
+        "mahon": "🪵 Mahagón",
+        "dab_bagienny": "🪵 Bahenný dub"
+      }
+    },
+    "tryb": {
+      "options": {
+        "uchyl": "vyklopené",
+        "otworz": "otvorené na pántoch"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "1 krídlo",
+        "2": "2 krídla"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Kalibrovať"
+      }
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} stiahnuté – reštartuj HA",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Reštartovať Home Assistant?",
+            "description": "Nová verzia Motor HA ({wersja}) je stiahnutá. Klikni na „Odoslať“ a Home Assistant sa reštartuje (asi minútu), potom beží nová verzia."
+          }
+        }
+      }
+    }
+  }
+}

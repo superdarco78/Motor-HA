@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.43 – 14 języków
+
+- 🌍 Karta, kreator, panel i okna integracji mówią językiem z Twojego profilu HA: polski, angielski, niemiecki, francuski, hiszpański, włoski, niderlandzki, czeski, słowacki, ukraiński, rosyjski, portugalski, chiński (uproszczony) i japoński. Inne języki – po angielsku. Tłumaczenia są maszynowe – poprawki mile widziane
+- 🎨 Nowe ikony w opisie: kółko tematu w kolorze akcentu
+
 ## v1.4.42 – Nowa animacja w opisie
 
 - 🎞️ Animacja „Jedna karta – każda osłona” w opisie: przezroczyste tło (pasuje do jasnego i ciemnego motywu), nazwa tylko raz

@@ -1,0 +1,317 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Motor HA – Schritt 1 von 5: Beschattung",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nWähle die Beschattung dieses Fensters. Bei einem zweiflügeligen Fenster wähle zwei (links und rechts) oder eine Gruppe.\n\n🪄 Lieber den Assistenten mit Kreisen und Bildern wie in der Karte? **[Assistent mit Kreisen öffnen](/okno-ha)**",
+        "data": {
+          "name": "Name des Fensters",
+          "rolety": "Beschattung (eine oder zwei)"
+        },
+        "data_description": {
+          "name": "Z. B. Wohnzimmer. Das Gerät heißt dann „Okno Wohnzimmer“.",
+          "rolety": "Zuerst links, dann rechts."
+        }
+      },
+      "okno": {
+        "title": "Schritt 2 von 5: Fenster und Sensoren",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nWie viele Flügel das Fenster hat und ob es Öffnungssensoren gibt. Sensoren sind optional.",
+        "data": {
+          "skrzydla": "Anzahl der Flügel",
+          "czujnik_lewe": "Sensor linker Flügel",
+          "tryb_lewe": "Linker Flügel, wenn offen",
+          "czujnik_prawe": "Sensor rechter Flügel",
+          "tryb_prawe": "Rechter Flügel, wenn offen",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "czujnik_lewe": "Meldet der Sensor offen, zeichnet die Karte einen offenen Flügel.",
+          "tryb_lewe": "Wie die Karte einen offenen Flügel zeigt.",
+          "skrzydla": "1 = einflügelig, 2 = zweiflügelig (links und rechts).",
+          "czujnik_prawe": "Öffnungssensor des rechten Flügels. Leer lassen, wenn keiner vorhanden.",
+          "tryb_prawe": "Wie der rechte Flügel öffnet: gekippt oder seitlich geöffnet.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Schritt 3 von 5: Motor",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nDie Karte bewegt sich im Tempo des Motors. Die Motordrehzahl wurde vom Gerät des Rollladens übernommen (falls vorhanden, z. B. Moes). Berechnete Laufzeit: **{czas}**.",
+        "data": {
+          "predkosc_lewa": "Motordrehzahl – links",
+          "predkosc_prawa": "Motordrehzahl – rechts",
+          "czas": "Volle Laufzeit",
+          "kalibruj": "🤖 Jetzt kalibrieren (der Rollladen fährt hoch, runter und hoch)",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "predkosc_lewa": "Die Entität „…motor_speed“ desselben Rollladens. Leer lassen, wenn der Motor keine hat.",
+          "predkosc_prawa": "Dasselbe für den rechten Flügel.",
+          "czas": "0 = automatisch: aus Motordrehzahl oder Kalibrierung.",
+          "kalibruj": "Misst die echte Laufzeit und speichert sie. Geht auch später mit der Taste „Kalibrieren“ am Gerät.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Schritt 4 von 5: Wetter draußen",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nVor dem Fenster erscheint das echte Wetter. Leer lassen, dann nutzt die Karte Internetwetter für dein Zuhause.",
+        "data": {
+          "pogoda": "Wetter",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "pogoda": "Wetter vor dem Fenster der Karte: Sonne, Wolken, Regen, Schnee, Tag und Nacht. Leer lassen, dann nimmt die Karte die erste Wetter-Entität.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Schritt 5 von 5: Aussehen",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nWähle Art und Farben der Beschattung anhand der Bilder unten.\n\n![Beschattungsarten]({obrazki}/oslony-kafle-v2-en.png)\n\n![Farben der Beschattung]({obrazki}/kolory-v2-en.png)\n\n![Rahmenfarben]({obrazki}/ramy-v2-en.png)",
+        "data": {
+          "oslona": "Art der Beschattung",
+          "kolor": "Farbe der Beschattung",
+          "kolor_wlasny": "🎨 Eigene Farbe der Beschattung",
+          "rama": "Farbe des Fensterrahmens",
+          "rama_wlasna": "🎨 Eigene Rahmenfarbe",
+          "wysokosc": "Fensterhöhe auf der Karte",
+          "na_panel": "📋 Fensterkarte zu einem Dashboard hinzufügen",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "kolor": "Muster sind im Bild oben.",
+          "kolor_wlasny": "Klicke auf den Kreis und wähle eine beliebige Farbe. Ersetzt die Farbe aus der Liste.",
+          "rama": "Holzdekore werden mit Maserung gezeichnet.",
+          "rama_wlasna": "Beliebige Rahmenfarbe. Ersetzt die Farbe aus der Liste.",
+          "oslona": "Wie deine Beschattung aussieht – vergleiche mit den Kacheln im Bild oben.",
+          "wysokosc": "Wie hoch das Fenster auf der Karte ist (Pixel). Größer = besser zu sehen.",
+          "na_panel": "Die Karte erscheint mit allen Einstellungen des Assistenten von selbst auf diesem Dashboard. Wähle „Nicht hinzufügen“, um sie selbst zu platzieren.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      }
+    },
+    "error": {
+      "rolety": "Wähle eine oder zwei Beschattungen."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "title": "Motor HA – Schritt 1 von 5: Beschattung",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nWähle die Beschattung dieses Fensters. Bei einem zweiflügeligen Fenster wähle zwei (links und rechts) oder eine Gruppe.",
+        "data": {
+          "name": "Name des Fensters",
+          "rolety": "Beschattung (eine oder zwei)"
+        },
+        "data_description": {
+          "name": "Z. B. Wohnzimmer. Das Gerät heißt dann „Okno Wohnzimmer“.",
+          "rolety": "Zuerst links, dann rechts."
+        }
+      },
+      "okno": {
+        "title": "Schritt 2 von 5: Fenster und Sensoren",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nWie viele Flügel das Fenster hat und ob es Öffnungssensoren gibt. Sensoren sind optional.",
+        "data": {
+          "skrzydla": "Anzahl der Flügel",
+          "czujnik_lewe": "Sensor linker Flügel",
+          "tryb_lewe": "Linker Flügel, wenn offen",
+          "czujnik_prawe": "Sensor rechter Flügel",
+          "tryb_prawe": "Rechter Flügel, wenn offen",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "czujnik_lewe": "Meldet der Sensor offen, zeichnet die Karte einen offenen Flügel.",
+          "tryb_lewe": "Wie die Karte einen offenen Flügel zeigt.",
+          "skrzydla": "1 = einflügelig, 2 = zweiflügelig (links und rechts).",
+          "czujnik_prawe": "Öffnungssensor des rechten Flügels. Leer lassen, wenn keiner vorhanden.",
+          "tryb_prawe": "Wie der rechte Flügel öffnet: gekippt oder seitlich geöffnet.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Schritt 3 von 5: Motor",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nDie Karte bewegt sich im Tempo des Motors. Die Motordrehzahl wurde vom Gerät des Rollladens übernommen (falls vorhanden, z. B. Moes). Berechnete Laufzeit: **{czas}**.",
+        "data": {
+          "predkosc_lewa": "Motordrehzahl – links",
+          "predkosc_prawa": "Motordrehzahl – rechts",
+          "czas": "Volle Laufzeit",
+          "kalibruj": "🤖 Jetzt kalibrieren (der Rollladen fährt hoch, runter und hoch)",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "predkosc_lewa": "Die Entität „…motor_speed“ desselben Rollladens. Leer lassen, wenn der Motor keine hat.",
+          "predkosc_prawa": "Dasselbe für den rechten Flügel.",
+          "czas": "0 = automatisch: aus Motordrehzahl oder Kalibrierung.",
+          "kalibruj": "Misst die echte Laufzeit und speichert sie. Geht auch später mit der Taste „Kalibrieren“ am Gerät.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Schritt 4 von 5: Wetter draußen",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nVor dem Fenster erscheint das echte Wetter. Leer lassen, dann nutzt die Karte Internetwetter für dein Zuhause.",
+        "data": {
+          "pogoda": "Wetter",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "pogoda": "Wetter vor dem Fenster der Karte: Sonne, Wolken, Regen, Schnee, Tag und Nacht. Leer lassen, dann nimmt die Karte die erste Wetter-Entität.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Schritt 5 von 5: Aussehen",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nWähle Art und Farben der Beschattung anhand der Bilder unten.\n\n![Beschattungsarten]({obrazki}/oslony-kafle-v2-en.png)\n\n![Farben der Beschattung]({obrazki}/kolory-v2-en.png)\n\n![Rahmenfarben]({obrazki}/ramy-v2-en.png)",
+        "data": {
+          "oslona": "Art der Beschattung",
+          "kolor": "Farbe der Beschattung",
+          "kolor_wlasny": "🎨 Eigene Farbe der Beschattung",
+          "rama": "Farbe des Fensterrahmens",
+          "rama_wlasna": "🎨 Eigene Rahmenfarbe",
+          "wysokosc": "Fensterhöhe auf der Karte",
+          "wstecz": "⬅️ Zurück zum vorherigen Schritt"
+        },
+        "data_description": {
+          "kolor": "Muster sind im Bild oben.",
+          "kolor_wlasny": "Klicke auf den Kreis und wähle eine beliebige Farbe. Ersetzt die Farbe aus der Liste.",
+          "rama": "Holzdekore werden mit Maserung gezeichnet.",
+          "rama_wlasna": "Beliebige Rahmenfarbe. Ersetzt die Farbe aus der Liste.",
+          "oslona": "Wie deine Beschattung aussieht – vergleiche mit den Kacheln im Bild oben.",
+          "wysokosc": "Wie hoch das Fenster auf der Karte ist (Pixel). Größer = besser zu sehen.",
+          "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Deine Eingaben bleiben erhalten."
+        }
+      },
+      "init": {
+        "title": "Was möchtest du ändern?",
+        "description": "Wähle, wie du dieses Fenster einrichten möchtest.",
+        "menu_options": {
+          "obrazki": "🪄 Assistent mit Kreisen und Bildern (wie in der Karte)",
+          "user": "📝 Einfache Felder Schritt für Schritt"
+        }
+      }
+    },
+    "error": {
+      "rolety": "Wähle eine oder zwei Beschattungen."
+    },
+    "abort": {
+      "panel": "Der Assistent mit Kreisen und Bildern öffnet sich im Motor HA-Panel:\n\n**[🪄 Assistenten dieses Fensters öffnen](/okno-ha?okno={okno})**"
+    }
+  },
+  "selector": {
+    "oslona": {
+      "options": {
+        "zebra": "🦓 Doppelrollo",
+        "pelna": "🧵 Stoffrollo",
+        "plisa": "🪗 Plissee",
+        "rzymska": "🏛️ Raffrollo",
+        "zaluzja": "🎚️ Alu-Jalousie",
+        "zewnetrzna": "🏠 Aufsatzrollladen",
+        "zaciemniajaca": "🌑 Verdunkelungsrollo",
+        "plaster": "🐝 Wabenplissee",
+        "drewniana": "🪵 Holzjalousie",
+        "natynkowa": "🏠 Vorbaurollladen",
+        "podtynkowa": "🧱 Unterputzrollladen",
+        "perforowana": "✨ Gelochter Rollladen",
+        "fasadowa": "🏢 Raffstore C80",
+        "fasadowaz": "🏢 Raffstore Z90",
+        "screen": "🌫️ Screen ZIP"
+      }
+    },
+    "kolor": {
+      "options": {
+        "czarny": "⚫ Schwarz",
+        "grafit": "⚫ Graphit",
+        "szary": "🔘 Grau",
+        "bezowy": "🟤 Beige",
+        "kremowy": "⚪ Creme",
+        "bialy": "⚪ Weiß",
+        "braz": "🟤 Braun",
+        "granat": "🔵 Marineblau",
+        "pomaranczowy": "🟠 Orange",
+        "piaskowy": "🟤 Sand",
+        "cappuccino": "🟤 Cappuccino",
+        "mokka": "🟤 Mokka",
+        "wenge": "🟤 Wenge",
+        "popiel": "🔘 Aschgrau",
+        "srebrny": "⚪ Silber",
+        "stalowy": "🔵 Stahlblau",
+        "lawendowy": "🟣 Lavendel",
+        "pudrowy": "🩷 Puderrosa",
+        "mietowy": "🟢 Mint",
+        "blekitny": "🔵 Himmelblau",
+        "morski": "🔵 Petrol",
+        "butelkowy": "🟢 Flaschengrün",
+        "musztardowy": "🟡 Senfgelb",
+        "terakota": "🟠 Terrakotta",
+        "sliwkowy": "🟣 Pflaume",
+        "czerwony": "🔴 Rot",
+        "bordo": "🔴 Bordeaux",
+        "rozowy": "🩷 Rosa",
+        "fiolet": "🟣 Violett",
+        "niebieski": "🔵 Blau",
+        "turkus": "🔵 Türkis",
+        "zielony": "🟢 Grün",
+        "limonka": "🟢 Limette",
+        "zolty": "🟡 Gelb",
+        "oliwka": "🟢 Oliv"
+      }
+    },
+    "rama": {
+      "options": {
+        "biala": "⚪ Weiß",
+        "kremowa": "⚪ Creme",
+        "jasnoszara": "⚪ Hellgrau",
+        "srebrna": "🔘 Silber",
+        "szary_agat": "🔘 Achatgrau",
+        "szara": "🔘 Grau",
+        "szary_kwarc": "🔘 Quarzgrau",
+        "bazaltowa": "⚫ Basaltgrau",
+        "antracyt": "⚫ Anthrazit",
+        "czarna": "⚫ Schwarz",
+        "zielona": "🟢 Grün",
+        "granatowa": "🔵 Marineblau",
+        "bordowa": "🔴 Bordeaux",
+        "braz": "🟤 Braun",
+        "sosna": "🪵 Kiefer",
+        "dab_jasny": "🪵 Eiche hell",
+        "dab_sheffield": "🪵 Sheffield-Eiche",
+        "winchester": "🪵 Winchester",
+        "oregon": "🪵 Oregon",
+        "zloty_dab": "🪵 Golden Oak",
+        "siena": "🪵 Siena",
+        "orzech": "🪵 Nussbaum",
+        "mahon": "🪵 Mahagoni",
+        "dab_bagienny": "🪵 Mooreiche"
+      }
+    },
+    "tryb": {
+      "options": {
+        "uchyl": "gekippt",
+        "otworz": "an Scharnieren geöffnet"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "1 Flügel",
+        "2": "2 Flügel"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Kalibrieren"
+      }
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} heruntergeladen – HA neu starten",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Home Assistant neu starten?",
+            "description": "Die neue Motor HA-Version ({wersja}) ist heruntergeladen. Klicke auf „Absenden“, dann startet Home Assistant neu (etwa eine Minute) und die neue Version läuft."
+          }
+        }
+      }
+    }
+  }
+}
