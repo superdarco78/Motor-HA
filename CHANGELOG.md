@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.24 – Dokładne kolory motywu w opisie
+
+- 🎯 Obrazki opisu w HACS przemalowane dokładnie: tylko przyciski, ramki, numery i ikony biorą kolor główny i akcent z Twojego profilu. Zdjęcia osłon, próbki kolorów, drewno i niebo zostają bez zmian
+- 🌗 Animacja karty w opisie: jedna, jasna albo ciemna według motywu Home Assistanta
+- 🧹 Animacja karty bez starego numeru wersji
+- 🖼️ Obrazek „Przed i po” też w Twoich kolorach i w wersji jasnej albo ciemnej
+
 ## v1.4.23 – Czytelność przy każdym kolorze i motywie
 
 - 🌗 Obrazki opisu w HACS biorą wersję jasną albo ciemną z motywu Home Assistanta, a nie z ustawień systemu, więc tekst w kafelkach i nagłówkach jest zawsze czytelny

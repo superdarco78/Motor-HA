@@ -60,10 +60,10 @@
   };
   // obrazki Okna HA (opis w HACS, kreator integracji) w kolorze motywu: niebieski HA → --primary-color użytkownika
   const UKRYJ = ["okno-ha-integracja", "roleta-realistyczna"].map((r) => `img[src^="https://raw.githubusercontent.com/superdarco78/${r}/"]`
-    + ["icon", "ikona", "logo", "baner", "banner", "avatar", ".webp", "/po-", "/pl.png", "/en.png", "/de.png", "/fr.png", "/cs.png"].map((x) => `:not([src*="${x}"])`).join("")).join(",")
+    + ["icon", "ikona", "logo", "baner", "banner", "avatar", ".webp", "/pl.png", "/en.png", "/de.png", "/fr.png", "/cs.png"].map((x) => `:not([src*="${x}"])`).join("")).join(",")
     + "{visibility:hidden}";
   const NASZE = /^https:\/\/raw\.githubusercontent\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)\//;
-  const POMIN = /icon|ikona|logo|baner|banner|avatar|\.webp|\/po-[a-z]+\.svg|\/(pl|en|de|fr|cs)\.png/i;
+  const POMIN = /icon|ikona|logo|baner|banner|avatar|\.webp|\/(pl|en|de|fr|cs)\.png/i;
   const hsv = (r, g, b) => {
     const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
     let h = 0;
@@ -78,22 +78,42 @@
     const m = /^#([0-9a-f]{6})$/i.exec(PROBNIK.fillStyle);
     return m ? "#" + m[1].toLowerCase() : null;
   };
-  // piksel = a·kolor HA + w·biały/szary (wygładzanie, jasne tła, ciemny motyw) → a·kolor użytkownika + w
-  // dwa niebieskie HA: obecny domyślny #009ac7 i dawny #03a9f4 (starsze obrazki); zaznaczenia w akcencie #ff9800
+  // obrazki bez maski: piksel = a·kolor HA + w·biały/szary (wygładzanie, jasne tła, ciemny motyw) → a·kolor użytkownika + w
+  // tylko dokładne odcienie #009ac7 (194°) i akcentu #ff9800 (36°) – niebo, drewno, beże i próbki kolorów zostają
   const baza = (B) => { const bb = B[0] * B[0] + B[1] * B[1] + B[2] * B[2], b1 = B[0] + B[1] + B[2]; return { B, bb, b1, wyz: bb * 3 - b1 * b1 }; };
-  const NOWY = baza([0, 154, 199]), DAWNY = baza([3, 169, 244]), POM = baza([255, 152, 0]);
+  const NOWY = baza([0, 154, 199]), POM = baza([255, 152, 0]);
   const rgbZ = (hex) => [1, 3, 5].map((k) => parseInt(hex.slice(k, k + 2), 16));
   const piksele = (p, K, A) => {
     for (let k = 0; k < p.length; k += 4) {
       if (!p[k + 3]) continue;
       const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
-      const akcent = A && h >= 24 && h <= 40 && s >= 0.15 && v >= 0.6;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
-      if (!akcent && (h < 188 || h > 201 || s < 0.05 || v < 0.15)) continue;   // poza tym tylko odcienie niebieskiego HA i ich jasne tła (niebo na zdjęciach ma 203°+)
-      const { B, bb, b1, wyz } = akcent ? POM : h < 196.5 ? NOWY : DAWNY, C = akcent ? A : K;
+      const akcent = A && h >= 33 && h <= 38.5 && s >= 0.3 && v >= 0.3;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
+      if (!akcent && (h < 190 || h > 197.5 || s < 0.05 || v < 0.15)) continue;
+      const { B, bb, b1, wyz } = akcent ? POM : NOWY, C = akcent ? A : K;
       const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
       const a = (3 * bp - b1 * sp) / wyz, w = (bb * sp - b1 * bp) / wyz;
+      if (akcent && a < 0.3) continue;   // blady beż o tej samej barwie to nie zaznaczenie
       for (let c = 0; c < 3; c++) p[k + c] = Math.max(0, Math.min(255, Math.round(a * C[c] + w)));
     }
+  };
+  // obrazki z maską (dokładnie): baza (kolory HA czarne) + R maski·kolor główny + G maski·akcent; zdjęcia i próbki mają maskę 0
+  const zMaska = (b, m, K, A) => {
+    const c = document.createElement("canvas"); c.width = b.naturalWidth; c.height = b.naturalHeight;
+    const x = c.getContext("2d"); x.drawImage(b, 0, 0);
+    const d = x.getImageData(0, 0, c.width, c.height), p = d.data;
+    x.clearRect(0, 0, c.width, c.height); x.drawImage(m, 0, 0, c.width, c.height);
+    const q = x.getImageData(0, 0, c.width, c.height).data, Z = A || [255, 152, 0];
+    for (let k = 0; k < p.length; k += 4) {
+      const r = q[k] / 255, g = q[k + 1] / 255;
+      if (r || g) for (let j = 0; j < 3; j++) p[k + j] = Math.min(255, Math.round(p[k + j] + r * K[j] + g * Z[j]));
+    }
+    x.putImageData(d, 0, 0);
+    return c.toDataURL("image/png");
+  };
+  const obrazSvg = (svg, klasa) => {   // <image class="…" … href="data:…"> → adres danych
+    const m = new RegExp(`<image[^>]*class="${klasa}"[^>]*>`).exec(svg);
+    const h = m && /href="(data:image\/png;base64,[^"]+)"/.exec(m[0]);
+    return h ? h[1] : null;
   };
   // obrazek (PNG albo osadzony w SVG) → przemalowany canvas
   const wczytaj = (src) => new Promise((ok, zle) => { const i = new Image(); i.crossOrigin = "anonymous"; i.onload = () => ok(i); i.onerror = zle; i.src = src; });
@@ -141,6 +161,15 @@
       ? fetch(adres).then((r) => r.text()).then(async (svg) => {
         // wersja jasna albo ciemna według motywu HA (nie ustawień systemu) – tekst zawsze czytelny
         svg = svg.replace("</style>", ciemny ? ".l{display:none!important}.d{display:inline!important}</style>" : ".d{display:none!important}.l{display:inline!important}</style>");
+        if (obrazSvg(svg, "lm") || obrazSvg(svg, "dm")) {
+          // obrazek z maską: przelicz wariant l i d, bazy i maski usuń (mniejszy plik)
+          for (const w of ["l", "d"]) {
+            const b = obrazSvg(svg, w + "b"), m = obrazSvg(svg, w + "m"), n = obrazSvg(svg, w);
+            if (b && m && n) { const nowy = zMaska(await wczytaj(b), await wczytaj(m), K, A); svg = svg.split(n).join(nowy); }
+          }
+          svg = svg.replace(/<image[^>]*class="[ld][bm]"[^>]*>(\s*<\/image>)?/g, "");
+          return new Blob([svg], { type: "image/svg+xml" });
+        }
         const czesci = svg.split(/(data:image\/png;base64,[A-Za-z0-9+/=]+)/);
         for (let k = 1; k < czesci.length; k += 2) czesci[k] = plotno(await wczytaj(czesci[k]), K, A).toDataURL("image/png");
         return new Blob([czesci.join("")], { type: "image/svg+xml" });
@@ -164,6 +193,19 @@
     zadanie.catch(() => gotowe.delete(klucz));   // nie wyszło (sieć, restart HA) – następne skanowanie spróbuje jeszcze raz
     return zadanie;
   };
+  // motyw HA (nie ustawienia systemu): ciemne tło = ciemny motyw
+  const ciemny = (el) => {
+    const tlo = kolorMotywu(el, "--primary-background-color") || kolorMotywu(el, "--card-background-color");
+    return tlo ? rgbZ(tlo).reduce((s, c, i) => s + c * [0.299, 0.587, 0.114][i], 0) < 128 : matchMedia("(prefers-color-scheme: dark)").matches;
+  };
+  // <picture> z jasną i ciemną wersją (np. animacja karty): wersja według motywu HA
+  const zrodlo = (el) => {
+    const s = el.getAttribute("srcset") || "", m = el.dataset.oknoMedia || el.getAttribute("media") || "";
+    if (!NASZE.test(s) || !/prefers-color-scheme/.test(m)) return;
+    el.dataset.oknoMedia = m;
+    const nowe = /dark/.test(m) === ciemny(el) ? "all" : "not all";
+    if (el.getAttribute("media") !== nowe) el.setAttribute("media", nowe);
+  };
   const pokaz = (el) => el.style.setProperty("visibility", "visible", "important");   // gdy przemalowanie się nie uda – obrazek w domyślnych kolorach
   const przemaluj = (el) => {
     const teraz = el.getAttribute("src") || "";
@@ -176,9 +218,7 @@
     }
     const glowny = kolorMotywu(el);
     if (!glowny) return;
-    const tlo = kolorMotywu(el, "--primary-background-color") || kolorMotywu(el, "--card-background-color");
-    const ciemny = tlo ? rgbZ(tlo).reduce((s, c, i) => s + c * [0.299, 0.587, 0.114][i], 0) < 128 : matchMedia("(prefers-color-scheme: dark)").matches;
-    const kol = glowny + (ciemny ? "d" : "j");   // kolor główny + motyw (jasny/ciemny)
+    const kol = glowny + (ciemny(el) ? "d" : "j");   // kolor główny + motyw (jasny/ciemny)
     const akcG = kolorMotywu(el, "--accent-color") || "", akc = akcentDla(org, akcG);
     if (ostatnie !== kol + "|" + akcG) { ostatnie = kol + "|" + akcG; try { localStorage.setItem("okno-ha-kolory", ostatnie); } catch (e) { /* tryb prywatny */ } }
     const znak = kol + akc;
@@ -203,6 +243,7 @@
       if (++ile.n > 200000) return;
       try {
         if (el.tagName === "IMG") { obrazek(el); przemaluj(el); }
+        else if (el.tagName === "SOURCE") zrodlo(el);
         else if (el.tagName === "IFRAME") {
           if (!el.__oknoHaRamka) {   // ramka HACS przeładowana (np. po restarcie) – popraw od razu po wczytaniu
             el.__oknoHaRamka = true;
