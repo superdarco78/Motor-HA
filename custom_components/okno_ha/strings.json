@@ -1,0 +1,195 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "🪟 HA Window – step 1 of 5: shade",
+        "description": "Pick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
+        "data": {
+          "name": "Window name",
+          "rolety": "Shade (one or two)"
+        },
+        "data_description": {
+          "name": "E.g. Living room. The device will be called “Okno Living room”.",
+          "rolety": "Left first, then right."
+        }
+      },
+      "okno": {
+        "title": "🪟 Step 2 of 5: window and sensors",
+        "description": "How many sashes the window has and whether it has open sensors. Sensors are optional.",
+        "data": {
+          "skrzydla": "Number of sashes",
+          "czujnik_lewe": "Left sash sensor",
+          "tryb_lewe": "Left sash when open",
+          "czujnik_prawe": "Right sash sensor",
+          "tryb_prawe": "Right sash when open"
+        },
+        "data_description": {
+          "czujnik_lewe": "When the sensor shows open, the card draws an open sash.",
+          "tryb_lewe": "How the card shows an open sash."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Step 3 of 5: motor",
+        "description": "The card moves at the motor's speed. If the motor has a speed setting (e.g. Moes), pick it. Everything here is optional.",
+        "data": {
+          "predkosc_lewa": "Motor speed – left",
+          "predkosc_prawa": "Motor speed – right",
+          "czas": "Full travel time"
+        },
+        "data_description": {
+          "czas": "0 = automatic (from motor speed or 30 s)."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Step 4 of 5: weather outside",
+        "description": "Real weather shows outside the window. Leave empty and the card uses internet weather for your home.",
+        "data": {
+          "pogoda": "Weather"
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Step 5 of 5: look",
+        "description": "Shade type, colour and frame. You can change everything later in “Configure”.",
+        "data": {
+          "oslona": "Shade type",
+          "kolor": "Shade colour",
+          "rama": "Window frame colour",
+          "wysokosc": "Window height on the card"
+        },
+        "data_description": {
+          "kolor": "You can also type your own colour, e.g. #3a3d42.",
+          "rama": "You can also type your own colour, e.g. #f4f4f2."
+        }
+      }
+    },
+    "error": {
+      "rolety": "Pick one or two shades."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "title": "🪟 HA Window – step 1 of 5: shade",
+        "description": "Pick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
+        "data": {
+          "name": "Window name",
+          "rolety": "Shade (one or two)"
+        },
+        "data_description": {
+          "name": "E.g. Living room. The device will be called “Okno Living room”.",
+          "rolety": "Left first, then right."
+        }
+      },
+      "okno": {
+        "title": "🪟 Step 2 of 5: window and sensors",
+        "description": "How many sashes the window has and whether it has open sensors. Sensors are optional.",
+        "data": {
+          "skrzydla": "Number of sashes",
+          "czujnik_lewe": "Left sash sensor",
+          "tryb_lewe": "Left sash when open",
+          "czujnik_prawe": "Right sash sensor",
+          "tryb_prawe": "Right sash when open"
+        },
+        "data_description": {
+          "czujnik_lewe": "When the sensor shows open, the card draws an open sash.",
+          "tryb_lewe": "How the card shows an open sash."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Step 3 of 5: motor",
+        "description": "The card moves at the motor's speed. If the motor has a speed setting (e.g. Moes), pick it. Everything here is optional.",
+        "data": {
+          "predkosc_lewa": "Motor speed – left",
+          "predkosc_prawa": "Motor speed – right",
+          "czas": "Full travel time"
+        },
+        "data_description": {
+          "czas": "0 = automatic (from motor speed or 30 s)."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Step 4 of 5: weather outside",
+        "description": "Real weather shows outside the window. Leave empty and the card uses internet weather for your home.",
+        "data": {
+          "pogoda": "Weather"
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Step 5 of 5: look",
+        "description": "Shade type, colour and frame. You can change everything later in “Configure”.",
+        "data": {
+          "oslona": "Shade type",
+          "kolor": "Shade colour",
+          "rama": "Window frame colour",
+          "wysokosc": "Window height on the card"
+        },
+        "data_description": {
+          "kolor": "You can also type your own colour, e.g. #3a3d42.",
+          "rama": "You can also type your own colour, e.g. #f4f4f2."
+        }
+      }
+    },
+    "error": {
+      "rolety": "Pick one or two shades."
+    }
+  },
+  "selector": {
+    "oslona": {
+      "options": {
+        "zebra": "Day-night",
+        "pelna": "Fabric roller",
+        "plisa": "Pleated",
+        "rzymska": "Roman",
+        "zaluzja": "Aluminium venetian",
+        "zewnetrzna": "Top-mounted shutter",
+        "zaciemniajaca": "Blackout",
+        "plaster": "Honeycomb",
+        "drewniana": "Wooden venetian",
+        "natynkowa": "Surface-mounted shutter",
+        "podtynkowa": "Concealed shutter",
+        "perforowana": "Perforated shutter",
+        "fasadowa": "External venetian C80",
+        "fasadowaz": "External venetian Z90",
+        "screen": "Screen ZIP"
+      }
+    },
+    "kolor": {
+      "options": {
+        "czarny": "Black",
+        "grafit": "Graphite",
+        "szary": "Grey",
+        "bezowy": "Beige",
+        "kremowy": "Cream",
+        "bialy": "White",
+        "braz": "Brown",
+        "granat": "Navy",
+        "pomaranczowy": "Orange"
+      }
+    },
+    "rama": {
+      "options": {
+        "biala": "White",
+        "kremowa": "Cream",
+        "srebrna": "Silver",
+        "szara": "Grey",
+        "antracyt": "Anthracite",
+        "czarna": "Black",
+        "zloty_dab": "Golden oak",
+        "dab_jasny": "Light oak",
+        "winchester": "Winchester"
+      }
+    },
+    "tryb": {
+      "options": {
+        "uchyl": "tilted",
+        "otworz": "open on hinges"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "1 sash",
+        "2": "2 sashes"
+      }
+    }
+  }
+}

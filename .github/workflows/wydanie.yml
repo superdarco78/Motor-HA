@@ -1,0 +1,33 @@
+name: 🚀 Wydanie
+
+# Nowa wersja = nowy pierwszy nagłówek „## vX.Y.Z – tytuł” w CHANGELOG.md (ta sama liczba co "version" w manifest.json).
+# Po wysłaniu na main powstaje wydanie, a HACS pokazuje je w Home Assistancie jako aktualizację.
+on:
+  push:
+    branches: [main]
+    paths: ['CHANGELOG.md', 'custom_components/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wydanie:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Utwórz wydanie
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ver=$(grep -m1 -E '^## v[0-9]' CHANGELOG.md | grep -oE 'v[0-9]+(\.[0-9]+)*' | head -1)
+          man=$(python3 -c "import json;print('v'+json.load(open('custom_components/okno_ha/manifest.json'))['version'])")
+          [ "$ver" = "$man" ] || { echo "CHANGELOG ($ver) i manifest.json ($man) mają różne wersje"; exit 1; }
+          title=$(grep -m1 -E '^## v[0-9]' CHANGELOG.md | sed -E 's/^## //')
+          awk '/^## v/{n++} n==1' CHANGELOG.md | tail -n +2 > notes.md
+          if gh release view "$ver" >/dev/null 2>&1; then
+            gh release edit "$ver" --title "$title" --notes-file notes.md
+          else
+            gh release create "$ver" --target "$GITHUB_SHA" --title "$title" --notes-file notes.md --latest
+          fi

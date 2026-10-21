@@ -1,0 +1,195 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "🪟 Okno HA – krok 1 z 5: roleta",
+        "description": "Wybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
+        "data": {
+          "name": "Nazwa okna",
+          "rolety": "Roleta (jedna albo dwie)"
+        },
+        "data_description": {
+          "name": "Np. Salon. Urządzenie będzie się nazywać „Okno Salon”.",
+          "rolety": "Najpierw lewa, potem prawa."
+        }
+      },
+      "okno": {
+        "title": "🪟 Krok 2 z 5: okno i czujniki",
+        "description": "Ile skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
+        "data": {
+          "skrzydla": "Liczba skrzydeł",
+          "czujnik_lewe": "Czujnik lewego skrzydła",
+          "tryb_lewe": "Lewe skrzydło po otwarciu",
+          "czujnik_prawe": "Czujnik prawego skrzydła",
+          "tryb_prawe": "Prawe skrzydło po otwarciu"
+        },
+        "data_description": {
+          "czujnik_lewe": "Gdy czujnik pokaże otwarte, karta narysuje otwarte skrzydło.",
+          "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Krok 3 z 5: silnik",
+        "description": "Karta jedzie w tempie silnika. Jeśli silnik ma ustawienie prędkości (np. Moes), wybierz je. Wszystko tutaj jest nieobowiązkowe.",
+        "data": {
+          "predkosc_lewa": "Prędkość silnika – lewa",
+          "predkosc_prawa": "Prędkość silnika – prawa",
+          "czas": "Czas pełnego przejazdu"
+        },
+        "data_description": {
+          "czas": "0 = automatycznie (z prędkości silnika albo 30 s)."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Krok 4 z 5: pogoda za oknem",
+        "description": "Za oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
+        "data": {
+          "pogoda": "Pogoda"
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Krok 5 z 5: wygląd",
+        "description": "Rodzaj osłony, kolor i rama. Wszystko zmienisz później w „Konfiguruj”.",
+        "data": {
+          "oslona": "Rodzaj osłony",
+          "kolor": "Kolor osłony",
+          "rama": "Kolor ramy okna",
+          "wysokosc": "Wysokość okna na karcie"
+        },
+        "data_description": {
+          "kolor": "Możesz też wpisać własny kolor, np. #3a3d42.",
+          "rama": "Możesz też wpisać własny kolor, np. #f4f4f2."
+        }
+      }
+    },
+    "error": {
+      "rolety": "Wybierz jedną albo dwie rolety."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "title": "🪟 Okno HA – krok 1 z 5: roleta",
+        "description": "Wybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
+        "data": {
+          "name": "Nazwa okna",
+          "rolety": "Roleta (jedna albo dwie)"
+        },
+        "data_description": {
+          "name": "Np. Salon. Urządzenie będzie się nazywać „Okno Salon”.",
+          "rolety": "Najpierw lewa, potem prawa."
+        }
+      },
+      "okno": {
+        "title": "🪟 Krok 2 z 5: okno i czujniki",
+        "description": "Ile skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
+        "data": {
+          "skrzydla": "Liczba skrzydeł",
+          "czujnik_lewe": "Czujnik lewego skrzydła",
+          "tryb_lewe": "Lewe skrzydło po otwarciu",
+          "czujnik_prawe": "Czujnik prawego skrzydła",
+          "tryb_prawe": "Prawe skrzydło po otwarciu"
+        },
+        "data_description": {
+          "czujnik_lewe": "Gdy czujnik pokaże otwarte, karta narysuje otwarte skrzydło.",
+          "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło."
+        }
+      },
+      "silnik": {
+        "title": "⚙️ Krok 3 z 5: silnik",
+        "description": "Karta jedzie w tempie silnika. Jeśli silnik ma ustawienie prędkości (np. Moes), wybierz je. Wszystko tutaj jest nieobowiązkowe.",
+        "data": {
+          "predkosc_lewa": "Prędkość silnika – lewa",
+          "predkosc_prawa": "Prędkość silnika – prawa",
+          "czas": "Czas pełnego przejazdu"
+        },
+        "data_description": {
+          "czas": "0 = automatycznie (z prędkości silnika albo 30 s)."
+        }
+      },
+      "pogoda": {
+        "title": "🌤️ Krok 4 z 5: pogoda za oknem",
+        "description": "Za oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
+        "data": {
+          "pogoda": "Pogoda"
+        }
+      },
+      "wyglad": {
+        "title": "🎨 Krok 5 z 5: wygląd",
+        "description": "Rodzaj osłony, kolor i rama. Wszystko zmienisz później w „Konfiguruj”.",
+        "data": {
+          "oslona": "Rodzaj osłony",
+          "kolor": "Kolor osłony",
+          "rama": "Kolor ramy okna",
+          "wysokosc": "Wysokość okna na karcie"
+        },
+        "data_description": {
+          "kolor": "Możesz też wpisać własny kolor, np. #3a3d42.",
+          "rama": "Możesz też wpisać własny kolor, np. #f4f4f2."
+        }
+      }
+    },
+    "error": {
+      "rolety": "Wybierz jedną albo dwie rolety."
+    }
+  },
+  "selector": {
+    "oslona": {
+      "options": {
+        "zebra": "Dzień-noc",
+        "pelna": "Materiałowa",
+        "plisa": "Plisa",
+        "rzymska": "Rzymska",
+        "zaluzja": "Żaluzja aluminiowa",
+        "zewnetrzna": "Roleta nadstawna",
+        "zaciemniajaca": "Zaciemniająca",
+        "plaster": "Plaster miodu",
+        "drewniana": "Żaluzja drewniana",
+        "natynkowa": "Roleta natynkowa",
+        "podtynkowa": "Roleta podtynkowa",
+        "perforowana": "Roleta z perforacją",
+        "fasadowa": "Żaluzja fasadowa C80",
+        "fasadowaz": "Żaluzja fasadowa Z90",
+        "screen": "Screen ZIP"
+      }
+    },
+    "kolor": {
+      "options": {
+        "czarny": "Czarny",
+        "grafit": "Grafit",
+        "szary": "Szary",
+        "bezowy": "Beżowy",
+        "kremowy": "Kremowy",
+        "bialy": "Biały",
+        "braz": "Brąz",
+        "granat": "Granat",
+        "pomaranczowy": "Pomarańczowy"
+      }
+    },
+    "rama": {
+      "options": {
+        "biala": "Biała",
+        "kremowa": "Kremowa",
+        "srebrna": "Srebrna",
+        "szara": "Szara",
+        "antracyt": "Antracyt",
+        "czarna": "Czarna",
+        "zloty_dab": "Złoty dąb",
+        "dab_jasny": "Dąb jasny",
+        "winchester": "Winchester"
+      }
+    },
+    "tryb": {
+      "options": {
+        "uchyl": "uchylone",
+        "otworz": "otwarte na zawiasach"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "1 skrzydło",
+        "2": "2 skrzydła"
+      }
+    }
+  }
+}
