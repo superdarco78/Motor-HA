@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.37 – Ładowacz bez numeru w Zasobach
+
+- 📦 Wpis w Zasobach to zawsze `/local/okno-ha-loader.js` bez numeru wersji, jak ładowacze innych kart. Plik i tak przy każdym otwarciu strony bierze świeże skrypty
+
 ## v1.4.36 – Ładowacz w folderze www
 
 - 📦 Plik ładowacza leży teraz w `/config/www/okno-ha-loader.js` (widać go w File editor), a w Zasobach jest jako `/local/okno-ha-loader.js` – tak jak ładowacze innych kart. Integracja kładzie go i aktualizuje sama, stary wpis zamienia na nowy, bez dubli

@@ -1,6 +1,6 @@
 """Ładowacz Okna HA widoczny w Ustawienia → Panele → Zasoby (jak ładowacze kart).
 
-Dodaje się sam przy instalacji i po każdej aktualizacji (numer wersji w adresie),
+Dodaje się sam przy instalacji i po każdej aktualizacji,
 a znika razem z ostatnim oknem.
 """
 
@@ -10,7 +10,7 @@ import logging
 
 from homeassistant.core import HomeAssistant
 
-from .const import DOMAIN, VERSION
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 ADRES = "/local/okno-ha-loader.js"            # plik /config/www/okno-ha-loader.js
@@ -31,12 +31,12 @@ async def async_dodaj(hass: HomeAssistant) -> None:
         if not zasoby.loaded:
             await zasoby.async_load()
             zasoby.loaded = True
-        nowy = f"{ADRES}?v={VERSION}"
+        nowy = ADRES   # bez numeru – jak ładowacze innych kart; plik i tak bierze świeże skrypty (?t=)
         nasze = [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] in STARE]
         if not nasze:
             await zasoby.async_create_item({"res_type": "module", "url": nowy})
             return
-        if nasze[0].get("url") != nowy:   # nowa wersja albo stary adres /okno_ha/… – jeden wpis, zawsze aktualny
+        if nasze[0].get("url") != nowy:   # stary adres /okno_ha/… albo z numerem – jeden wpis /local/okno-ha-loader.js
             await zasoby.async_update_item(nasze[0]["id"], {"res_type": "module", "url": nowy})
         for z in nasze[1:]:
             await zasoby.async_delete_item(z["id"])
