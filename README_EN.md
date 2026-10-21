@@ -74,6 +74,7 @@ Left: the standard shade card in Home Assistant. Right: the same window with Mot
 <a name="j5"></a>
 <p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="17 shade types: 9 indoor and 8 outdoor"></a></p>
 
+
 <p>&nbsp;</p>
 
 <a name="galeria"></a>
@@ -137,8 +138,12 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/hacs_repository-en.svg" alt="Open in HACS" height="52"></a></p>
 
 <a name="j20"></a>
-<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki11/en/krok-1.svg" width="900" alt="Motor HA in HACS: the Open link button"></a><br>
+<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-1.svg" width="900" alt="Motor HA in HACS: the Open link button"></a><br>
 <b>Motor HA in HACS: the Open link button</b></p>
+
+<b>What to click:</b>
+<ol><li>Click <b>Open link</b></li></ol>
+<p>ℹ️ The first time, enter the address of your HA.</p>
 
 <p>&nbsp;</p>
 
@@ -146,8 +151,11 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j21" href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/puzzle.svg" height="24" alt="Step 2: Click Add"></a> Step 2: Click Add</h3>
 
 <a name="j22"></a>
-<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-2.svg" width="900" alt="The “Add repository” dialog"></a><br>
+<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-2.svg" width="900" alt="The “Add repository” dialog"></a><br>
 <b>The “Add repository” dialog</b></p>
+
+<b>What to click:</b>
+<ol><li>Click <b>Add</b></li></ol>
 
 <p>&nbsp;</p>
 
@@ -155,8 +163,11 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j23" href="#j23"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/download.svg" height="24" alt="Step 3: Click Download, then Download again"></a> Step 3: Click Download, then Download again</h3>
 
 <a name="j24"></a>
-<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-3.svg" width="900" alt="Motor HA in HACS: the Download button"></a><br>
+<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-3.svg" width="900" alt="Motor HA in HACS: the Download button"></a><br>
 <b>Motor HA in HACS: the Download button</b></p>
+
+<b>What to click:</b>
+<ol><li><b>Download</b> at the bottom right</li><li><b>Download</b> in the dialog</li></ol>
 
 <p>&nbsp;</p>
 
@@ -164,8 +175,12 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j25" href="#j25"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/power-plug.svg" height="24" alt="Step 4: Restart HA and wait 1–2 minutes"></a> Step 4: Restart HA and wait 1–2 minutes</h3>
 
 <a name="j26"></a>
-<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-4.svg" width="900" alt="Settings: Restart"></a><br>
+<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-4.svg" width="900" alt="Settings: Restart"></a><br>
 <b>Settings: Restart</b></p>
+
+<b>What to click:</b>
+<ol><li>The <b>⏻</b> icon at the top right</li><li><b>Restart</b></li></ol>
+<p>ℹ️ Settings → System. Wait 1–2 minutes.</p>
 
 <p>&nbsp;</p>
 
@@ -175,8 +190,11 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start-en.svg" alt="Add the Motor HA integration" height="52"></a></p>
 
 <a name="j28"></a>
-<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-5.svg" width="900" alt="The “Add integration” wizard"></a><br>
+<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-5.svg" width="900" alt="The “Add integration” wizard"></a><br>
 <b>The “Add integration” wizard</b></p>
+
+<b>What to click:</b>
+<ol><li>Enter a name and pick the shade</li><li><b>Next</b> (5 times)</li></ol>
 
 <p>&nbsp;</p>
 
@@ -184,8 +202,12 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j29" href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cellphone-check.svg" height="24" alt="Step 6: Done: the window is a device"></a> Step 6: Done: the window is a device</h3>
 
 <a name="j30"></a>
-<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-6.svg" width="900" alt="The window as a device in HA"></a><br>
+<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-6.svg" width="900" alt="The window as a device in HA"></a><br>
 <b>The window as a device in HA</b></p>
+
+<b>What to click:</b>
+<ol><li>Motor HA: 1 device</li><li>Your window</li></ol>
+<p>ℹ️ Settings → Devices & services.</p>
 
 <p>&nbsp;</p>
 
@@ -195,8 +217,12 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <p align="center">Usually nothing to do: in the last wizard step the <b>📋 Add the window card to a dashboard</b> field places the card in a “Okna” section. Want to do it yourself? Pencil → <b>＋ Add card</b> → type <b>Okno</b> and pick the window.</p>
 
 <a name="j32"></a>
-<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/dodaj-karte.svg" width="900" alt="Add card: type Okno and click the Motor HA card"></a><br>
+<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/dodaj-karte.svg" width="900" alt="Add card: type Okno and click the Motor HA card"></a><br>
 <b>Add card: type Okno and click the Motor HA card</b></p>
+
+<b>What to click:</b>
+<ol><li>Pencil: edit the dashboard</li><li>Type <b>Okno</b></li><li>Click the <b>Motor HA</b> card</li></ol>
+<p>ℹ️ Then pick the window, e.g. Okno Living room.</p>
 
 <p>&nbsp;</p>
 
@@ -211,8 +237,12 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 Open the wizard with 7 circles and pictures in two ways: on the window device page click **⚙️ Visit** (point 1), or **Configure → 🪄 Wizard with circles and pictures**. Click any step in any order.
 
 <a name="j34"></a>
-<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
+<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
 <b>Window device</b></p>
+
+<b>What to click:</b>
+<ol><li><b>Visit</b>: the 7-circle wizard</li><li><b>Calibrate</b>: measure travel time</li><li><b>Add to dashboard</b>: card on a dashboard</li></ol>
+<p>ℹ️ Calibration: the shade goes up, down and up. The time is saved by itself.</p>
 
 <p>&nbsp;</p>
 
@@ -231,6 +261,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-1.svg" width="900" alt="Step 1: Shade"></a><br>
 <b>Wizard with circles: Step 1: Shade</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-2"></a>
@@ -241,6 +272,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <a name="j39"></a>
 <p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-2.svg" width="900" alt="Step 2: Window"></a><br>
 <b>Wizard with circles: Step 2: Window</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -253,6 +285,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-3.svg" width="900" alt="Step 3: Motor"></a><br>
 <b>Wizard with circles: Step 3: Motor</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-4"></a>
@@ -263,6 +296,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <a name="j43"></a>
 <p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-4.svg" width="900" alt="Step 4: Window sensors"></a><br>
 <b>Wizard with circles: Step 4: Window sensors</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -275,6 +309,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-5.svg" width="900" alt="Step 5: Weather"></a><br>
 <b>Wizard with circles: Step 5: Weather</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-6"></a>
@@ -286,6 +321,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-6.svg" width="900" alt="Step 6: Look"></a><br>
 <b>Wizard with circles: Step 6: Look</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-7"></a>
@@ -296,6 +332,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <a name="j49"></a>
 <p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-7.svg" width="900" alt="Step 7: Save"></a><br>
 <b>Wizard with circles: Step 7: Save</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -321,6 +358,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-1.svg" width="900" alt="Step 1: Shade"></a><br>
 <b>Step 1: Shade</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-2"></a>
@@ -331,6 +369,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <a name="j55"></a>
 <p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-2.svg" width="900" alt="Step 2: Window and sensors"></a><br>
 <b>Step 2: Window and sensors</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -343,6 +382,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-3.svg" width="900" alt="Step 3: Motor"></a><br>
 <b>Step 3: Motor</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-4"></a>
@@ -354,6 +394,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-4.svg" width="900" alt="Step 4: Weather"></a><br>
 <b>Step 4: Weather</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-5"></a>
@@ -364,6 +405,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <a name="j61"></a>
 <p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-5.svg" width="900" alt="Step 5: Look"></a><br>
 <b>Step 5: Look</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -380,16 +422,23 @@ Change any window at any time. Click the gear **⚙️ (Configure)** next to the
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/integration-en.svg" alt="Open Motor HA" height="52"></a></p>
 
 <a name="j63"></a>
-<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/konfiguruj.svg" width="900" alt="Configure"></a><br>
+<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/konfiguruj.svg" width="900" alt="Configure"></a><br>
 <b>Configure</b></p>
+
+<b>What to click:</b>
+<ol><li>Gear: <b>Configure</b> the window</li><li><b>Add device</b>: another window</li></ol>
+<p>ℹ️ Settings → Devices & services → Motor HA.</p>
 
 <p>&nbsp;</p>
 
 Then choose how: **🪄 Wizard with circles and pictures** or **📝 Plain fields step by step** (5 steps). After saving, the card shows the changes right away.
 
 <a name="j64"></a>
-<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/konfiguruj-menu.svg" width="900" alt="Configure: choice"></a><br>
+<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/konfiguruj-menu.svg" width="900" alt="Configure: choice"></a><br>
 <b>Configure: choice</b></p>
+
+<b>What to click:</b>
+<ol><li><b>Wizard with circles and pictures</b></li><li>or <b>Plain fields step by step</b></li></ol>
 
 <p>&nbsp;</p>
 
@@ -411,8 +460,12 @@ The motor speed is picked from the shade device (e.g. Moes). Want it exact? On t
 On the same page, **Add to dashboard** (point 3) puts the window card on a dashboard (Home Assistant 2026.6 or newer), and **⚙️ Visit** (point 1) opens the circles wizard.
 
 <a name="j67"></a>
-<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
+<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
 <b>Window device</b></p>
+
+<b>What to click:</b>
+<ol><li><b>Visit</b>: the 7-circle wizard</li><li><b>Calibrate</b>: measure travel time</li><li><b>Add to dashboard</b>: card on a dashboard</li></ol>
+<p>ℹ️ Calibration: the shade goes up, down and up. The time is saved by itself.</p>
 
 <p>&nbsp;</p>
 
@@ -427,6 +480,7 @@ On the same page, **Add to dashboard** (point 3) puts the window card on a dashb
 <a name="j70"></a>
 <p align="center"><a href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/en/opis-elementow.svg" width="900" alt="What is on the card: handles and buttons"></a><br>
 <b>What is on the card: handles and buttons</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -445,16 +499,24 @@ When a new version is out, HA shows it in **Settings** by itself, within 2 minut
 <p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/updates-en.svg" alt="Updates" height="52"></a></p>
 
 <a name="j72"></a>
-<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/aktualizacja-1.svg" width="900" alt="Updates"></a><br>
+<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/aktualizacja-1.svg" width="900" alt="Updates"></a><br>
 <b>Updates</b></p>
+
+<b>What to click:</b>
+<ol><li>Click <b>Motor HA</b></li></ol>
+<p>ℹ️ One 2-in-1 update: integration and card together. HA shows it by itself.</p>
 
 <p>&nbsp;</p>
 
 Click **Install**, then restart HA. Integration and card come in one update.
 
 <a name="j73"></a>
-<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/aktualizacja-2.svg" width="900" alt="Install"></a><br>
+<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/aktualizacja-2.svg" width="900" alt="Install"></a><br>
 <b>Install</b></p>
+
+<b>What to click:</b>
+<ol><li>Keep the backup ticked</li><li><b>Install</b></li></ol>
+<p>ℹ️ Then restart HA. Your settings stay.</p>
 
 <p>&nbsp;</p>
 
@@ -495,8 +557,12 @@ What is new in each version: [📝 Changelog](https://github.com/superdarco78/ok
 After downloading from HACS you must restart HA (step 4). On a phone, close and reopen the app.
 
 <a name="j79"></a>
-<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-4.svg" width="900" alt="“Motor HA” is not in the integration list"></a><br>
+<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-4.svg" width="900" alt="“Motor HA” is not in the integration list"></a><br>
 <b>“Motor HA” is not in the integration list</b></p>
+
+<b>What to click:</b>
+<ol><li>The <b>⏻</b> icon at the top right</li><li><b>Restart</b></li></ol>
+<p>ℹ️ Settings → System. Wait 1–2 minutes.</p>
 
 <p>&nbsp;</p>
 
@@ -508,8 +574,12 @@ After downloading from HACS you must restart HA (step 4). On a phone, close and 
 The card loads by itself with the integration, nothing to refresh. Check that HA was restarted after installing (step 4). Then pencil, <b>Add card</b> and type <b>Okno</b>.
 
 <a name="j81"></a>
-<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/dodaj-karte.svg" width="900" alt="The card is not in the “Add card” list"></a><br>
+<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/dodaj-karte.svg" width="900" alt="The card is not in the “Add card” list"></a><br>
 <b>The card is not in the “Add card” list</b></p>
+
+<b>What to click:</b>
+<ol><li>Pencil: edit the dashboard</li><li>Type <b>Okno</b></li><li>Click the <b>Motor HA</b> card</li></ol>
+<p>ℹ️ Then pick the window, e.g. Okno Living room.</p>
 
 <p>&nbsp;</p>
 
@@ -521,8 +591,12 @@ The card loads by itself with the integration, nothing to refresh. Check that HA
 On the window device page press <b>Calibrate</b>. The shade goes up, down and up, and the time is saved by itself.
 
 <a name="j83"></a>
-<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="900" alt="The animation is faster or slower than the shade"></a><br>
+<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/urzadzenie.svg" width="900" alt="The animation is faster or slower than the shade"></a><br>
 <b>The animation is faster or slower than the shade</b></p>
+
+<b>What to click:</b>
+<ol><li><b>Visit</b>: the 7-circle wizard</li><li><b>Calibrate</b>: measure travel time</li><li><b>Add to dashboard</b>: card on a dashboard</li></ol>
+<p>ℹ️ Calibration: the shade goes up, down and up. The time is saved by itself.</p>
 
 <p>&nbsp;</p>
 
@@ -534,8 +608,12 @@ On the window device page press <b>Calibrate</b>. The shade goes up, down and up
 <b>Configure</b> → step 4: pick your weather or leave it empty. Empty = internet weather for your home.
 
 <a name="j85"></a>
-<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-4.svg" width="900" alt="No weather behind the glass"></a><br>
+<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/kreator-4.svg" width="900" alt="No weather behind the glass"></a><br>
 <b>No weather behind the glass</b></p>
+
+<b>What to click:</b>
+<ol><li>Weather outside</li><li><b>Next</b></li></ol>
+<p>ℹ️ Empty = internet weather for your home.</p>
 
 <p>&nbsp;</p>
 
@@ -547,8 +625,12 @@ On the window device page press <b>Calibrate</b>. The shade goes up, down and up
 <b>Configure</b> → step 2: pick the sensor and how the window opens: tilted or opened on hinges.
 
 <a name="j87"></a>
-<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-2.svg" width="900" alt="The window sensor does not work"></a><br>
+<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/kreator-2.svg" width="900" alt="The window sensor does not work"></a><br>
 <b>The window sensor does not work</b></p>
+
+<b>What to click:</b>
+<ol><li>Number of sashes</li><li>Window sensors and how the window opens</li><li><b>Next</b></li></ol>
+<p>ℹ️ No sensors? Leave empty.</p>
 
 <p>&nbsp;</p>
 
@@ -560,8 +642,12 @@ On the window device page press <b>Calibrate</b>. The shade goes up, down and up
 <b>Configure</b> → step 1: remove both shades and pick them again: left first, then right.
 
 <a name="j89"></a>
-<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-1.svg" width="900" alt="The sashes are swapped (left is right)"></a><br>
+<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/kreator-1.svg" width="900" alt="The sashes are swapped (left is right)"></a><br>
 <b>The sashes are swapped (left is right)</b></p>
+
+<b>What to click:</b>
+<ol><li>Enter the window name</li><li>Pick the shade (or two: left, right)</li><li><b>Next</b></li></ol>
+<p>ℹ️ Single-sash window: pick one shade.</p>
 
 <p>&nbsp;</p>
 
@@ -580,8 +666,12 @@ These are bad motor reports. The card ignores them. If it still jumps, <a href="
 The card uses the language of your HA profile. You can also open <b>Advanced</b> in the card editor and pick <b>English</b> in <b>Card language</b>.
 
 <a name="j92"></a>
-<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/jezyk-karty.svg" width="900" alt="The card is in Polish but I want English"></a><br>
+<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/jezyk-karty.svg" width="900" alt="The card is in Polish but I want English"></a><br>
 <b>The card is in Polish but I want English</b></p>
+
+<b>What to click:</b>
+<ol><li>Open <b>Advanced</b></li><li><b>Card language</b>: pick a language</li></ol>
+<p>ℹ️ auto = the language of your HA profile.</p>
 
 <p>&nbsp;</p>
 
@@ -634,17 +724,20 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 <p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="Shade types"></a><br>
 <b>Shade types</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="j102"></a>
 <p align="center"><a href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/kolory-en.svg" width="900" alt="Shade colours"></a><br>
 <b>Shade colours</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="j103"></a>
 <p align="center"><a href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ramy-en.svg" width="900" alt="Frame colours and finishes"></a><br>
 <b>Frame colours and finishes</b></p>
+
 
 <p>&nbsp;</p>
 
