@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.39 – Nowa nazwa: Motor HA
+
+- 🏷️ Nowa nazwa: **Motor HA** (EN **HA Motor**) – w integracji, karcie, Aktualizacjach i opisie. Bez zmian: domena `okno_ha`, encje, typ karty `custom:okno-ha`, Twoje panele
+- 🖱️ Baner bez ramki z przyciskiem „Otwórz w HACS” między logo a oknem; w HA otwiera HACS na miejscu
+- 🧭 Pasek kroków nad obrazkami kreatora jest klikalny – każda ikona przewija do swojego kroku
+- 📌 Obrazki w opisie w HACS pochodzą z zainstalowanej wersji – zmieniają się dopiero po aktualizacji
+
 ## v1.4.38 – Dawny baner
 
 - 🖼️ W opisie wrócił dawny baner (domek na tle zachodu słońca, bez ramki); domek, litery HA i uchwyt w kolorach Twojego motywu
