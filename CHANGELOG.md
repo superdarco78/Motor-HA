@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.13 – Jednolity opis w kolorach HA
+
+- 🎨 Cały opis w jednym stylu Home Assistanta, w 5 językach: niebieskie ramki, numery i plakietki zamiast czerwonych, prawdziwe ikony w makietach, aktualne logo i wersja, większy podgląd „Dodaj kartę”, podpisy pod obrazkami
+- 🌗 Obrazki w opisie przełączają się z jasnym i ciemnym motywem
+- 🧭 Jasno opisane dwa kreatory: z kółkami (7 kroków) i „Dodaj integrację” (5 kroków)
+- 🪟 Tytuły kreatora i komunikaty bez emoji okna, które Windows rysował jako brązowe okno. Sekcja na panelu nazywa się „Okna” z ikoną rolety
+
 ## v1.4.12 – Sprzątanie po usunięciu
 
 - 🧹 Po usunięciu ostatniego okna Okno HA samo kasuje swoje pliki karty z /config/.okno_ha i zapisane dane. Po restarcie HA nie zostaje skrypt karty ani podmiana ikony
