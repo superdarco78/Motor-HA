@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Okno HA – krok 1 z 5: roleta",
+        "title": "Motor HA – krok 1 z 5: roleta",
         "description": "![]({obrazki}/kreator-pasek-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.\n\n🪄 Wolisz kreator z kółkami i obrazkami, taki jak w karcie? **[Otwórz kreator z kółkami](/okno-ha)**",
         "data": {
           "name": "Nazwa okna",
@@ -95,7 +95,7 @@
   "options": {
     "step": {
       "user": {
-        "title": "Okno HA – krok 1 z 5: roleta",
+        "title": "Motor HA – krok 1 z 5: roleta",
         "description": "![]({obrazki}/kreator-pasek-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
         "data": {
           "name": "Nazwa okna",
@@ -191,7 +191,7 @@
       "rolety": "Wybierz jedną albo dwie rolety."
     },
     "abort": {
-      "panel": "Kreator z kółkami i obrazkami otwiera się w panelu Okno HA:\n\n**[🪄 Otwórz kreator tego okna](/okno-ha?okno={okno})**"
+      "panel": "Kreator z kółkami i obrazkami otwiera się w panelu Motor HA:\n\n**[🪄 Otwórz kreator tego okna](/okno-ha?okno={okno})**"
     }
   },
   "selector": {
@@ -303,12 +303,12 @@
   },
   "issues": {
     "restart": {
-      "title": "Okno HA {wersja} pobrane – uruchom ponownie HA",
+      "title": "Motor HA {wersja} pobrane – uruchom ponownie HA",
       "fix_flow": {
         "step": {
           "confirm": {
             "title": "Uruchomić ponownie Home Assistanta?",
-            "description": "Nowa wersja Okna HA ({wersja}) jest już pobrana. Kliknij „Zatwierdź”, a Home Assistant uruchomi się ponownie (około minuty) i nowa wersja zacznie działać."
+            "description": "Nowa wersja Motoru HA ({wersja}) jest już pobrana. Kliknij „Zatwierdź”, a Home Assistant uruchomi się ponownie (około minuty) i nowa wersja zacznie działać."
           }
         }
       }

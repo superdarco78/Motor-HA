@@ -53,7 +53,7 @@ def _hex(rgb: Any) -> str | None:
 
 
 def ustawienia_karty(nazwa: str, o: dict[str, Any]) -> dict[str, Any]:
-    """Ustawienia z kreatora integracji w formacie karty Okno HA (atrybut okno_ha)."""
+    """Ustawienia z kreatora integracji w formacie karty Motor HA (atrybut okno_ha)."""
     rolety = list(o.get(CONF_ROLETY) or [])
     k: dict[str, Any] = {"name": nazwa, "skrzydla": int(o.get(CONF_SKRZYDLA, DOMYSLNE[CONF_SKRZYDLA]))}
     if len(rolety) == 2:
@@ -131,7 +131,7 @@ class OknoCover(CoverEntity):
                                    else CoverDeviceClass.BLIND if oslona in ("zaluzja", "drewniana") else CoverDeviceClass.SHADE)
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)}, name=f"Okno {entry.title}",
-            manufacturer="Okno HA", model=oslona, sw_version=VERSION,
+            manufacturer="Motor HA", model=oslona, sw_version=VERSION,
             configuration_url=f"homeassistant://okno-ha?okno={entry.entry_id}")
         # „karta” = ustawienia z edytora karty (kółka i obrazki); mają pierwszeństwo przed zwykłymi polami
         self._karta = {**ustawienia_karty(entry.title, o), **(o.get("karta") or {})}
@@ -179,7 +179,7 @@ class OknoCover(CoverEntity):
             if el is None:
                 persistent_notification.async_create(
                     self.hass, f"Roleta okna {self._entry.title} nie dojechała w {KALIBRACJA_MAKS} s. Spróbuj jeszcze raz.",
-                    title="🤖 Okno HA – kalibracja przerwana", notification_id=f"{DOMAIN}_kal_{self._entry.entry_id}")
+                    title="🤖 Motor HA – kalibracja przerwana", notification_id=f"{DOMAIN}_kal_{self._entry.entry_id}")
                 self._zapisz_kalibracje(None)
                 return
             if n:
@@ -187,7 +187,7 @@ class OknoCover(CoverEntity):
         czas = round(sum(wyniki) / len(wyniki), 1)
         persistent_notification.async_create(
             self.hass, f"Okno {self._entry.title}: pełny przejazd trwa **{czas} s**. Zapisałem to, karta jedzie teraz w tym tempie.",
-            title="🤖 Okno HA – kalibracja gotowa", notification_id=f"{DOMAIN}_kal_{self._entry.entry_id}")
+            title="🤖 Motor HA – kalibracja gotowa", notification_id=f"{DOMAIN}_kal_{self._entry.entry_id}")
         self._zapisz_kalibracje(czas)
 
     @callback

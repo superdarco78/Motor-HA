@@ -1,1 +1,1 @@
-"""Testy integracji Okno HA."""
+"""Testy integracji Motor HA."""

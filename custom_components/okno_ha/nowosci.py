@@ -20,7 +20,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.event import async_call_later, async_track_time_interval
 from homeassistant.helpers.storage import Store
 
-from .const import DOMAIN, KARTA_PLIK, KARTA_WERSJA, VERSION
+from .const import DOMAIN, KARTA_OBRAZKI, KARTA_PLIK, KARTA_WERSJA, VERSION
 
 _LOGGER = logging.getLogger(__name__)
 CO_ILE = timedelta(minutes=2)
@@ -63,15 +63,16 @@ class Nowosci:
                 shutil.copyfile(wbudowana, cel)
             for plik in ("okno-ha-panel.js", "okno-ha-hacs.js", "ikona.png"):   # panel i ikona zawsze z tej wersji integracji
                 shutil.copyfile(wbudowana.parent / plik, self.katalog / plik)
-            # otwarta strona HA porównuje ten numer i sama wczytuje nowy okno-ha-hacs.js po aktualizacji
-            (self.katalog / "wersja.txt").write_text(VERSION, encoding="utf-8")
+            # otwarta strona HA porównuje ten numer i sama wczytuje nowy okno-ha-hacs.js po aktualizacji;
+            # obrazki opisu w HACS biorą się z tej wersji (tag integracji | stan repo karty), nie z main
+            (self.katalog / "wersja.txt").write_text(f"{VERSION}|{KARTA_OBRAZKI}", encoding="utf-8")
             # loader zawsze bierze świeży plik karty – przeglądarka nie poda starej kopii
             (self.katalog / LOADER).write_text(
-                "// Okno HA – ładowacz: przy każdym otwarciu strony bierze świeże skrypty (znacznik czasu ?t=)\n"
+                "// Motor HA – ładowacz: przy każdym otwarciu strony bierze świeże skrypty (znacznik czasu ?t=)\n"
                 "if (!window.__oknoHaLoader) {\n  window.__oknoHaLoader = true;\n"
                 f"  import(`/{DOMAIN}/okno-ha-hacs.js?t=${{Date.now()}}`).catch(() => {{}});\n"
                 f"  import(`/{DOMAIN}/{KARTA_PLIK}?t=${{Date.now()}}`).catch(e => "
-                f"console.error('Okno HA: nie wczytałem karty', e));\n}}\n", encoding="utf-8")
+                f"console.error('Motor HA: nie wczytałem karty', e));\n}}\n", encoding="utf-8")
             # ta sama kopia ładowacza widoczna w /config/www (File editor), w Zasobach jako /local/okno-ha-loader.js
             www = Path(self.hass.config.path("www"))
             www.mkdir(exist_ok=True)
@@ -148,7 +149,7 @@ class Nowosci:
                     if r.headers.get("ETag"):
                         self._etag[repo] = r.headers["ETag"]
             except Exception as err:  # noqa: BLE001 – brak sieci nie może psuć HA
-                _LOGGER.debug("Okno HA: nie sprawdzę %s: %s", repo, err)
+                _LOGGER.debug("Motor HA: nie sprawdzę %s: %s", repo, err)
                 continue
             if d.get("tag_name"):
                 self.wydania[repo] = {"wersja": d["tag_name"], "opis": d.get("body") or "",
@@ -159,7 +160,7 @@ class Nowosci:
             await self._odswiez_hacs()
 
     async def _odswiez_hacs(self) -> None:
-        """Nowe wydanie na GitHubie, a HACS (sam sprawdza co 48 h) go nie zna → HACS odświeża tylko Okno HA.
+        """Nowe wydanie na GitHubie, a HACS (sam sprawdza co 48 h) go nie zna → HACS odświeża tylko Motor HA.
 
         To samo, co przycisk „Aktualizuj informacje” w HACS – raz na każde nowe wydanie.
         """
@@ -181,9 +182,9 @@ class Nowosci:
             for encja in list(getattr(komponent, "entities", []) or []):
                 if getattr(encja, "repository", None) is repo and encja.hass is not None:
                     encja.async_write_ha_state()
-            _LOGGER.info("Okno HA: HACS zna już wydanie %s", nowa)
+            _LOGGER.info("Motor HA: HACS zna już wydanie %s", nowa)
         except Exception as err:  # noqa: BLE001 – inna wersja HACS: zostaje jego własne sprawdzanie
-            _LOGGER.debug("Okno HA: nie odświeżyłem HACS: %s", err)
+            _LOGGER.debug("Motor HA: nie odświeżyłem HACS: %s", err)
 
     @callback
     def async_start(self) -> None:

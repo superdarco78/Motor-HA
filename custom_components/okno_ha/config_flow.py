@@ -1,4 +1,4 @@
-"""Kreator Okno HA: roleta → okno → silnik → pogoda → wygląd. Ten sam kreator w „Konfiguruj”."""
+"""Kreator Motor HA: roleta → okno → silnik → pogoda → wygląd. Ten sam kreator w „Konfiguruj”."""
 
 from __future__ import annotations
 
@@ -165,7 +165,7 @@ class _Kreator:
 
 
 class OknoHaConfigFlow(_Kreator, ConfigFlow, domain=DOMAIN):
-    """Ustawienia → Integracje → Dodaj integrację → Okno HA."""
+    """Ustawienia → Integracje → Dodaj integrację → Motor HA."""
 
     VERSION = 1
 
@@ -188,7 +188,7 @@ class OknoHaConfigFlow(_Kreator, ConfigFlow, domain=DOMAIN):
         return await self._krok("wyglad", user_input, True)
 
     async def async_step_panel(self, karta: dict[str, Any]) -> ConfigFlowResult:
-        """Nowe okno z kreatora karty w panelu „Okno HA” (kółka i obrazki)."""
+        """Nowe okno z kreatora karty w panelu „Motor HA” (kółka i obrazki)."""
         from .cover import opcje_z_karty
         nazwa = str(karta.get("name") or "").strip() or "Okno"
         return self.async_create_entry(title=nazwa, data={}, options=opcje_z_karty(karta, dict(DOMYSLNE), self.hass))
@@ -212,7 +212,7 @@ class OknoHaOptionsFlow(_Kreator, OptionsFlow):
                                     description_placeholders={"okno": self.config_entry.entry_id})
 
     async def async_step_obrazki(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
-        """Kreator z kółkami i obrazkami jest w panelu „Okno HA” – tu tylko link do niego."""
+        """Kreator z kółkami i obrazkami jest w panelu „Motor HA” – tu tylko link do niego."""
         return self.async_abort(reason="panel", description_placeholders={"okno": self.config_entry.entry_id})
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:

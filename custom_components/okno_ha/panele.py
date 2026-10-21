@@ -70,5 +70,5 @@ async def async_dodaj_karte(hass: HomeAssistant, klucz: str, entity_id: str) -> 
     else:
         widok.setdefault("cards", []).append(karta)
     await panel.async_save(cfg)
-    _LOGGER.info("Okno HA: karta %s dodana na panel %s", entity_id, klucz)
+    _LOGGER.info("Motor HA: karta %s dodana na panel %s", entity_id, klucz)
     return True

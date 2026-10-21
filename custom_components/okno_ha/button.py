@@ -25,7 +25,7 @@ class Kalibruj(ButtonEntity):
     def __init__(self, entry: ConfigEntry) -> None:
         self._entry_id = entry.entry_id
         self._attr_unique_id = f"{entry.entry_id}_kalibruj"
-        self._attr_device_info = DeviceInfo(identifiers={(DOMAIN, entry.entry_id)}, name=f"Okno {entry.title}", manufacturer="Okno HA")
+        self._attr_device_info = DeviceInfo(identifiers={(DOMAIN, entry.entry_id)}, name=f"Okno {entry.title}", manufacturer="Motor HA")
 
     async def async_press(self) -> None:
         if okno := self.hass.data.get(OKNA, {}).get(self._entry_id):

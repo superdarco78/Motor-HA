@@ -1,4 +1,4 @@
-"""Ustawienia → Aktualizacje: jedna pozycja „Okno HA” (integracja z kartą w środku), z przyciskiem „Zainstaluj”."""
+"""Ustawienia → Aktualizacje: jedna pozycja „Motor HA” (integracja z kartą w środku), z przyciskiem „Zainstaluj”."""
 
 from __future__ import annotations
 
@@ -31,14 +31,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 
 
 class Aktualizacja(UpdateEntity):
-    """Jedna pozycja „Okno HA” w Aktualizacjach, jeden numer wersji: karta jest w środku integracji."""
+    """Jedna pozycja „Motor HA” w Aktualizacjach, jeden numer wersji: karta jest w środku integracji."""
 
     _attr_has_entity_name = True
-    _attr_name = None   # = nazwa urządzenia „Okno HA”
-    _attr_title = "Okno HA"
+    _attr_name = None   # = nazwa urządzenia „Motor HA”
+    _attr_title = "Motor HA"
     _attr_should_poll = False
     _attr_entity_picture = f"/{DOMAIN}/ikona.png"
-    # bez „Utwórz kopię zapasową” – Okno HA podmienia tylko swoje pliki, aktualizacja trwa kilka sekund
+    # bez „Utwórz kopię zapasową” – Motor HA podmienia tylko swoje pliki, aktualizacja trwa kilka sekund
     _attr_supported_features = (UpdateEntityFeature.INSTALL | UpdateEntityFeature.RELEASE_NOTES
                                  | UpdateEntityFeature.PROGRESS)
 
@@ -47,7 +47,7 @@ class Aktualizacja(UpdateEntity):
         self._zainstalowana = f"v{VERSION}"
         self._attr_unique_id = f"{DOMAIN}_{REPO_INTEGRACJA}"
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, "okno_ha")}, name="Okno HA", manufacturer="Okno HA",
+            identifiers={(DOMAIN, "okno_ha")}, name="Motor HA", manufacturer="Motor HA",
             model="Integracja z kartą", sw_version=VERSION, entry_type=DeviceEntryType.SERVICE)
 
     async def async_added_to_hass(self) -> None:
@@ -71,7 +71,7 @@ class Aktualizacja(UpdateEntity):
         return self._wydanie.get("wersja") or self._zainstalowana
 
     def _hacs(self) -> str | None:
-        """Encja aktualizacji HACS dla Okna HA (gdy Okno HA jest zainstalowane przez HACS)."""
+        """Encja aktualizacji HACS dla Motoru HA (gdy Motor HA jest zainstalowane przez HACS)."""
         if self.hass is None:
             return None
         return next((s.entity_id for s in self.hass.states.async_all("update")

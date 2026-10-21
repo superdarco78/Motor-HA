@@ -1,4 +1,4 @@
-"""Ładowacz Okna HA widoczny w Ustawienia → Panele → Zasoby (jak ładowacze kart).
+"""Ładowacz Motoru HA widoczny w Ustawienia → Panele → Zasoby (jak ładowacze kart).
 
 Dodaje się sam przy instalacji i po każdej aktualizacji,
 a znika razem z ostatnim oknem.
@@ -41,7 +41,7 @@ async def async_dodaj(hass: HomeAssistant) -> None:
         for z in nasze[1:]:
             await zasoby.async_delete_item(z["id"])
     except Exception:  # noqa: BLE001 – zasób nie może zepsuć okna; karta i tak wczytuje się sama
-        _LOGGER.exception("Okno HA: nie dodałem ładowacza do zasobów")
+        _LOGGER.exception("Motor HA: nie dodałem ładowacza do zasobów")
 
 
 async def async_usun(hass: HomeAssistant) -> None:
@@ -54,4 +54,4 @@ async def async_usun(hass: HomeAssistant) -> None:
         for z in [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] in STARE]:
             await zasoby.async_delete_item(z["id"])
     except Exception:  # noqa: BLE001
-        _LOGGER.exception("Okno HA: nie usunąłem ładowacza z zasobów")
+        _LOGGER.exception("Motor HA: nie usunąłem ładowacza z zasobów")

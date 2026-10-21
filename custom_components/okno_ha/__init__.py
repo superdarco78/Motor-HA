@@ -1,4 +1,4 @@
-"""Okno HA – okno z roletą jako urządzenie, z kreatorem w Ustawienia → Integracje."""
+"""Motor HA – okno z roletą jako urządzenie, z kreatorem w Ustawienia → Integracje."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Udostępnij kartę Okno HA (wbudowaną albo pobraną nowszą) i sprawdzaj nowe wersje."""
+    """Udostępnij kartę Motor HA (wbudowaną albo pobraną nowszą) i sprawdzaj nowe wersje."""
     nowosci = hass.data[DOMAIN] = Nowosci(hass)
     await nowosci.async_przygotuj_karte()
     await hass.http.async_register_static_paths([StaticPathConfig(f"/{DOMAIN}", str(nowosci.katalog), False)])
@@ -42,8 +42,8 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STARTED, _po_starcie)
     nowosci.async_start()
     async_rejestruj(hass)
-    async_logo_w_hacs(hass)   # logo Okna HA w okienku „Update” od HACS
-    # strona „Okno HA”: kreator z kółkami i obrazkami, ten sam co w karcie
+    async_logo_w_hacs(hass)   # logo Motoru HA w okienku „Update” od HACS
+    # strona „Motor HA”: kreator z kółkami i obrazkami, ten sam co w karcie
     await panel_custom.async_register_panel(
         hass, frontend_url_path="okno-ha", webcomponent_name="okno-ha-panel",
         module_url=f"/{DOMAIN}/okno-ha-panel.js?v={VERSION}", require_admin=True)
@@ -62,7 +62,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             try:
                 await async_dodaj_karte(hass, panel, encja)
             except Exception:  # noqa: BLE001 – panel nie może zepsuć okna
-                _LOGGER.exception("Okno HA: nie dodałem karty na panel %s", panel)
+                _LOGGER.exception("Motor HA: nie dodałem karty na panel %s", panel)
         hass.config_entries.async_update_entry(
             entry, options={k: v for k, v in entry.options.items() if k != CONF_NA_PANEL})
     entry.async_on_unload(entry.add_update_listener(_po_zmianie))
@@ -74,7 +74,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 
 async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
-    """Usunięto okno. Gdy to było ostatnie – sprzątnij pliki karty i zapisane dane Okna HA."""
+    """Usunięto okno. Gdy to było ostatnie – sprzątnij pliki karty i zapisane dane Motoru HA."""
     if any(e.entry_id != entry.entry_id for e in hass.config_entries.async_entries(DOMAIN)):
         return
     nowosci = hass.data.get(DOMAIN)
@@ -82,7 +82,7 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
         await nowosci.async_usun_wszystko()
     await async_usun_zasob(hass)
     ir.async_delete_issue(hass, DOMAIN, RESTART)
-    _LOGGER.info("Okno HA: usunięto ostatnie okno – pliki karty i dane Okna HA skasowane")
+    _LOGGER.info("Motor HA: usunięto ostatnie okno – pliki karty i dane Motoru HA skasowane")
 
 
 async def _po_zmianie(hass: HomeAssistant, entry: ConfigEntry) -> None:

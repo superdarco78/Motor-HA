@@ -1,4 +1,4 @@
-// Okno HA: lista HACS i okienko „Update” szukają ikony okno_ha tylko na brands.home-assistant.io.
+// Motor HA: lista HACS i okienko „Update” szukają ikony okno_ha tylko na brands.home-assistant.io.
 // Tutaj przeglądarka dostaje zamiast tego logo z samej integracji. Dotyczy wyłącznie adresów z okno_ha.
 (() => {
   // skrypt wczytany drugi raz działa tylko, gdy to nowa wersja integracji – wtedy przejmuje pracę po starym
@@ -46,7 +46,7 @@
         ...ramka, get() { const o = ramka.get.call(this); try { if (o && o.location.origin === w.location.origin) popraw(o); } catch (e) { /* inna domena */ } return o; },
       });
     } catch (e) {
-      console.warn("Okno HA: nie podmieniłem ikony w HACS", e);
+      console.warn("Motor HA: nie podmieniłem ikony w HACS", e);
     }
   };
 
@@ -61,11 +61,16 @@
       setTimeout(() => { el.__oknoHaPonow = false; el.setAttribute("src", `${LOGO}?r=${Date.now()}`); }, 1500);
     }
   };
-  // obrazki Okna HA (opis w HACS, kreator integracji) w kolorze motywu: niebieski HA → --primary-color użytkownika
+  // obrazki Motoru HA (opis w HACS, kreator integracji) w kolorze motywu: niebieski HA → --primary-color użytkownika
   const UKRYJ = ["okno-ha-integracja", "roleta-realistyczna"].map((r) => `img[src^="https://raw.githubusercontent.com/superdarco78/${r}/"]`
     + ["icon.png", "ikona.png", "logo", "baner-", "banner", "avatar", ".webp", "/pl.png", "/en.png", "/de.png", "/fr.png", "/cs.png"].map((x) => `:not([src*="${x}"])`).join("")).join(",")
     + "{visibility:hidden}";
   const NASZE = /^https:\/\/raw\.githubusercontent\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)\//;
+  // obrazki opisu z zainstalowanej wersji (tag wydania), nie z main – opis w HA zmienia się dopiero po aktualizacji
+  let PRZYPNIJ = null;
+  const przypnij = (u) => (!PRZYPNIJ || typeof u !== "string" ? u
+    : u.replace(/^(https:\/\/raw\.githubusercontent\.com\/superdarco78\/)(okno-ha-integracja|roleta-realistyczna)\/main\//,
+      (m, p, r) => { const t = r === "okno-ha-integracja" ? PRZYPNIJ.integ : PRZYPNIJ.karta; return t ? `${p}${r}/${t}/` : m; }));
   const POMIN = /(icon|ikona|logo|baner|banner|avatar)[^/]*\.png|\.webp|\/(pl|en|de|fr|cs)\.png/i;   // SVG (także baner i logo) przemalowane – z maską dokładnie
   const hsv = (r, g, b) => {
     const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
@@ -235,7 +240,7 @@
     if (el.style.display !== (widac ? "" : "none")) el.style.display = widac ? "" : "none";
   };
   const pokaz = (el) => el.style.setProperty("visibility", "visible", "important");   // gdy przemalowanie się nie uda – obrazek w domyślnych kolorach
-  // plakietki shields.io w opisie Okna HA: kolor z adresu → kolor główny (pomarańczowe/żółte → akcent)
+  // plakietki shields.io w opisie Motoru HA: kolor z adresu → kolor główny (pomarańczowe/żółte → akcent)
   const AKCENTOWE = /^(ff9800|f9a825|orange|yellow)$/i;
   const plakietka = (el) => {
     const a = el.dataset.oknoPlak || el.getAttribute("src") || "";
@@ -253,35 +258,45 @@
     el.dataset.oknoPlak = a;
     if (el.getAttribute("src") !== nowy) el.setAttribute("src", nowy);
   };
+  // obrazki bez przemalowania (zdjęcia, animacje, flagi): adres z wersji; gdyby go nie było – zostaje main
+  const przypnijZwykly = (el) => {
+    const s = el.getAttribute("src") || "";
+    if (!NASZE.test(s) || !POMIN.test(s) || el.dataset.oknoMain) return;
+    const p = przypnij(s);
+    if (p === s) return;
+    el.dataset.oknoMain = s;
+    el.addEventListener("error", () => el.setAttribute("src", el.dataset.oknoMain), { once: true });
+    el.setAttribute("src", p);
+  };
   const przemaluj = (el) => {
     const teraz = el.getAttribute("src") || "";
     if (NASZE.test(teraz) && el.dataset.oknoOrg && teraz !== el.dataset.oknoOrg) delete el.dataset.oknoKol;   // HACS podał nowy obrazek w tym samym miejscu
     const org = NASZE.test(teraz) ? teraz : el.dataset.oknoOrg || teraz;
     if (!NASZE.test(org) || POMIN.test(org)) return;
-    if (NASZE.test(teraz)) {   // schowany (CSS wyżej) – gdyby przemalowanie trwało za długo, pokaż w domyślnych kolorach
+    if (NASZE.test(teraz)) {   // schowany (CSS wyżej) – gdyby przemalowanie trwało bardzo długo, pokaż w domyślnych kolorach
       el.dataset.oknoOd = el.dataset.oknoOd || Date.now();
-      if (Date.now() - el.dataset.oknoOd > 8000) pokaz(el);
+      if (Date.now() - el.dataset.oknoOd > 30000) pokaz(el);
     }
     const glowny = kolorMotywu(el);
     if (!glowny) return;
     const kol = glowny + (ciemny(el) ? "d" : "j");   // kolor główny + motyw (jasny/ciemny)
     const akcG = kolorMotywu(el, "--accent-color") || "";
     if (ostatnie !== kol + "|" + akcG) { ostatnie = kol + "|" + akcG; try { localStorage.setItem("okno-ha-kolory", ostatnie); } catch (e) { /* tryb prywatny */ } }
-    const znak = kol + "|" + akcG;
+    const znak = kol + "|" + akcG + "|" + (PRZYPNIJ ? PRZYPNIJ.integ : "");
     if (el.dataset.oknoKol === znak) return;
     el.dataset.oknoKol = znak; el.dataset.oknoOrg = org;
     // odległość od ekranu – im bliżej, tym wcześniej (liczona przy wyborze następnego obrazka)
     const waga = () => { const p = el.isConnected ? el.getBoundingClientRect() : null, h = el.ownerDocument.defaultView.innerHeight || 800;
       return !p ? 1e8 : p.bottom < 0 ? -p.bottom + h : p.top > h ? p.top : 0; };
-    przemalujPlik(org, kol, akcG, waga).then(
+    przemalujPlik(przypnij(org), kol, akcG, waga).then(
       (u) => { if (el.dataset.oknoKol === znak) el.setAttribute("src", u); },
       () => { pokaz(el); if (el.dataset.oknoKol === znak) delete el.dataset.oknoKol; });   // spróbuj ponownie przy następnym skanowaniu
   };
   // HACS rysuje obrazek: od razu wersja z pamięci w ostatnich kolorach (bez czekania na skanowanie)
   const zPamieci = (el, v) => {
     if (typeof v !== "string" || !NASZE.test(v) || POMIN.test(v)) return v;
-    const u = ostatnie && gotoweTeraz.get(v + "|" + ostatnie);
-    if (!u) { setTimeout(seria, 0); return v; }
+    const u = ostatnie && gotoweTeraz.get(przypnij(v) + "|" + ostatnie);
+    if (!u) { setTimeout(seria, 0); return przypnij(v); }   // jeszcze nie przemalowany: od razu wersja z tagu, nie z main
     el.dataset.oknoOrg = v; el.dataset.oknoKol = ostatnie;
     return u;
   };
@@ -292,7 +307,7 @@
     for (const el of korzen.querySelectorAll("*")) {
       if (++ile.n > 200000) return;
       try {
-        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); }
+        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); przypnijZwykly(el); }
         else if (el.tagName === "SOURCE") zrodlo(el);
         else if (el.tagName === "A" && naHacs()) link(el);
         else if (el.tagName === "IFRAME") {
@@ -326,7 +341,7 @@
     const h = a.getAttribute("href"), lok = h && lokalny(h);
     if (lok) { a.dataset.oknoHref = h; a.setAttribute("href", lok); }
   };
-  // po restarcie HA i ponownym połączeniu: kilka prób, aż HACS i Okno HA wstaną
+  // po restarcie HA i ponownym połączeniu: kilka prób, aż HACS i Motor HA wstaną
   let serie = [];
   const seria = () => {
     serie.forEach(clearTimeout);
@@ -350,7 +365,7 @@
     const opis = jezyk && droga.find((n) => n.tagName === "HA-MARKDOWN");
     if (opis) {
       e.preventDefault(); e.stopPropagation();
-      fetch(`https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/${jezyk[1] || "README.md"}`)
+      fetch(`https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/${PRZYPNIJ ? PRZYPNIJ.integ : "main"}/${jezyk[1] || "README.md"}`)
         .then((r) => (r.ok ? r.text() : Promise.reject()))
         .then((t) => { opis.content = t; opis.scrollIntoView({ block: "start" }); seria(); })
         .catch(() => window.open(h, "_blank"));
@@ -382,7 +397,13 @@
       .then((r) => (r.ok ? r.text() : "")).then((w) => {
         w = w.trim();
         if (!w || !zywy()) return;
-        if (wersja === null) { wersja = w; return; }
+        if (wersja === null) {
+          wersja = w;
+          const [integ, karta] = w.split("|");
+          PRZYPNIJ = { integ: `v${integ}`, karta: karta || "" };
+          seria();
+          return;
+        }
         if (w === wersja) return;
         wersja = w; window.__oknoHaNowy = true;
         import(`/okno_ha/okno-ha-hacs.js?t=${Date.now()}`).catch(() => { window.__oknoHaNowy = false; });

@@ -1,6 +1,6 @@
 {
   "domain": "okno_ha",
-  "name": "Okno HA",
+  "name": "Motor HA",
   "codeowners": ["@superdarco78"],
   "config_flow": true,
   "dependencies": ["http", "frontend", "panel_custom", "repairs", "websocket_api"],

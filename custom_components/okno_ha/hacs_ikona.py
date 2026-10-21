@@ -1,7 +1,7 @@
-"""Logo Okna HA w okienku „Update” od HACS – po stronie serwera, u każdego, bez klikania.
+"""Logo Motoru HA w okienku „Update” od HACS – po stronie serwera, u każdego, bez klikania.
 
 HACS ustawia obrazek swojej encji aktualizacji na brands.home-assistant.io/_/okno_ha/icon.png,
-a tam Okna HA nie ma. Tu ta jedna encja dostaje logo z integracji. Inne dodatki zostają bez zmian.
+a tam Motoru HA nie ma. Tu ta jedna encja dostaje logo z integracji. Inne dodatki zostają bez zmian.
 """
 
 from __future__ import annotations
@@ -42,6 +42,6 @@ def _podmien(hass: HomeAssistant, *_args) -> None:
 
 @callback
 def async_start(hass: HomeAssistant) -> None:
-    """Sprawdza od razu i co minutę (HACS może wystartować po Oknie HA albo się przeładować)."""
+    """Sprawdza od razu i co minutę (HACS może wystartować po Motorze HA albo się przeładować)."""
     _podmien(hass)
     async_track_time_interval(hass, callback(lambda _now: _podmien(hass)), timedelta(minutes=1))   # w pętli zdarzeń, nie w wątku

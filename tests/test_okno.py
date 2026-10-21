@@ -107,8 +107,8 @@ async def test_aktualizacje(hass, aioclient_mock):
     await hass.data[DOMAIN].async_sprawdz()
     await hass.async_block_till_done()
     assert hass.states.get("update.okno_ha_karta_okno_ha") is None     # już jedna pozycja
-    okno = hass.states.get("update.okno_ha")
-    assert okno.name == "Okno HA" and okno.state == "on"   # jedna wersja = wersja integracji
+    okno = hass.states.get("update.motor_ha")
+    assert okno.name == "Motor HA" and okno.state == "on"   # jedna wersja = wersja integracji
     assert okno.attributes["latest_version"] == "v9.0.0" and okno.attributes["installed_version"] == f"v{VERSION}"
     assert okno.attributes["release_url"] == "https://x/v9"
     # zainstalowane przez HACS: HACS pokazuje aktualizację, nasza pozycja się chowa
