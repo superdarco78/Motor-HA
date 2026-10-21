@@ -72,7 +72,8 @@ Vlevo: běžná karta rolety v Home Assistantu. Vpravo: stejné okno s Motor HA.
 17 druhů: 9 do interiéru a 8 venkovních. Vybereš v průvodci nebo později v **Konfigurovat**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="17 druhů stínění: 9 dovnitř a 8 ven"></a></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="17 druhů stínění: 9 dovnitř a 8 ven"></a></p>
+
 
 <p>&nbsp;</p>
 
@@ -137,8 +138,12 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/hacs_repository-cs.svg" alt="Otevřít v HACS" height="52"></a></p>
 
 <a name="j20"></a>
-<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki11/cs/krok-1.svg" width="900" alt="Motor HA v HACS: tlačítko Otevřít odkaz"></a><br>
+<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/krok-1.svg" width="900" alt="Motor HA v HACS: tlačítko Otevřít odkaz"></a><br>
 <b>Motor HA v HACS: tlačítko Otevřít odkaz</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Klikni na <b>Open link</b></li></ol>
+<p>ℹ️ Poprvé zadej adresu svého HA.</p>
 
 <p>&nbsp;</p>
 
@@ -146,8 +151,11 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <h3><a name="j21" href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/puzzle.svg" height="24" alt="Krok 2: Klikni na Přidat"></a> Krok 2: Klikni na Přidat</h3>
 
 <a name="j22"></a>
-<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/krok-2.svg" width="900" alt="Okno „Přidat repozitář“"></a><br>
+<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/krok-2.svg" width="900" alt="Okno „Přidat repozitář“"></a><br>
 <b>Okno „Přidat repozitář“</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Klikni na <b>Add</b></li></ol>
 
 <p>&nbsp;</p>
 
@@ -155,8 +163,11 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <h3><a name="j23" href="#j23"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/download.svg" height="24" alt="Krok 3: Klikni na Stáhnout, pak ještě jednou Stáhnout"></a> Krok 3: Klikni na Stáhnout, pak ještě jednou Stáhnout</h3>
 
 <a name="j24"></a>
-<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/krok-3.svg" width="900" alt="Motor HA v HACS: tlačítko Stáhnout"></a><br>
+<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/krok-3.svg" width="900" alt="Motor HA v HACS: tlačítko Stáhnout"></a><br>
 <b>Motor HA v HACS: tlačítko Stáhnout</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li><b>Download</b> vpravo dole</li><li><b>Download</b> v okně</li></ol>
 
 <p>&nbsp;</p>
 
@@ -164,8 +175,12 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <h3><a name="j25" href="#j25"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/power-plug.svg" height="24" alt="Krok 4: Restartuj HA a počkej 1–2 minuty"></a> Krok 4: Restartuj HA a počkej 1–2 minuty</h3>
 
 <a name="j26"></a>
-<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/krok-4.svg" width="900" alt="Nastavení: Restartovat"></a><br>
+<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/krok-4.svg" width="900" alt="Nastavení: Restartovat"></a><br>
 <b>Nastavení: Restartovat</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Ikona <b>⏻</b> vpravo nahoře</li><li><b>Restart</b></li></ol>
+<p>ℹ️ Nastavení → Systém. Počkej 1–2 minuty.</p>
 
 <p>&nbsp;</p>
 
@@ -175,8 +190,11 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start-cs.svg" alt="Přidat integraci Motor HA" height="52"></a></p>
 
 <a name="j28"></a>
-<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/krok-5.svg" width="900" alt="Průvodce „Přidat integraci“"></a><br>
+<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/krok-5.svg" width="900" alt="Průvodce „Přidat integraci“"></a><br>
 <b>Průvodce „Přidat integraci“</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Zadej název a vyber roletu</li><li><b>Next</b> (5krát)</li></ol>
 
 <p>&nbsp;</p>
 
@@ -184,8 +202,12 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <h3><a name="j29" href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cellphone-check.svg" height="24" alt="Krok 6: Hotovo: okno je zařízení"></a> Krok 6: Hotovo: okno je zařízení</h3>
 
 <a name="j30"></a>
-<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/krok-6.svg" width="900" alt="Okno jako zařízení v HA"></a><br>
+<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/krok-6.svg" width="900" alt="Okno jako zařízení v HA"></a><br>
 <b>Okno jako zařízení v HA</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Motor HA: 1 zařízení</li><li>Tvoje okno</li></ol>
+<p>ℹ️ Nastavení → Zařízení a služby.</p>
 
 <p>&nbsp;</p>
 
@@ -195,8 +217,12 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <p align="center">Většinou nemusíš nic dělat: v posledním kroku průvodce pole <b>📋 Add the window card to a dashboard</b> samo položí kartu do sekce „Okna“. Chceš sám? Tužka → <b>＋ Přidat kartu</b> → napiš <b>Okno</b> a vyber okno.</p>
 
 <a name="j32"></a>
-<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/dodaj-karte.svg" width="900" alt="Přidat kartu: napiš Okno a klikni na kartu Motor HA"></a><br>
+<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/dodaj-karte.svg" width="900" alt="Přidat kartu: napiš Okno a klikni na kartu Motor HA"></a><br>
 <b>Přidat kartu: napiš Okno a klikni na kartu Motor HA</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Tužka: upravit panel</li><li>Napiš <b>Okno</b></li><li>Klikni na kartu <b>Motor HA</b></li></ol>
+<p>ℹ️ Pak vyber okno, např. Okno Living room.</p>
 
 <p>&nbsp;</p>
 
@@ -211,8 +237,12 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zařízení okna klikni na **⚙️ Navštívit** (bod 1) nebo **Konfigurovat → 🪄 Průvodce s kroužky a obrázky**. Každý krok můžeš kliknout v libovolném pořadí.
 
 <a name="j34"></a>
-<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/urzadzenie.svg" width="900" alt="Zařízení okna"></a><br>
+<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/urzadzenie.svg" width="900" alt="Zařízení okna"></a><br>
 <b>Zařízení okna</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li><b>Visit</b>: průvodce se 7 kroužky</li><li><b>Calibrate</b>: změř dobu jízdy</li><li><b>Add to dashboard</b>: karta na panel</li></ol>
+<p>ℹ️ Kalibrace: roleta vyjede nahoru, sjede dolů a zase nahoru. Čas se uloží sám.</p>
 
 <p>&nbsp;</p>
 
@@ -231,6 +261,7 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-kolka-1.svg" width="900" alt="Krok 1: Roleta"></a><br>
 <b>Průvodce s kroužky: Krok 1: Roleta</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-2"></a>
@@ -241,6 +272,7 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="j39"></a>
 <p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-kolka-2.svg" width="900" alt="Krok 2: Okno"></a><br>
 <b>Průvodce s kroužky: Krok 2: Okno</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -253,6 +285,7 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-kolka-3.svg" width="900" alt="Krok 3: Motor"></a><br>
 <b>Průvodce s kroužky: Krok 3: Motor</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-4"></a>
@@ -263,6 +296,7 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="j43"></a>
 <p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-kolka-4.svg" width="900" alt="Krok 4: Senzory okna"></a><br>
 <b>Průvodce s kroužky: Krok 4: Senzory okna</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -275,6 +309,7 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-kolka-5.svg" width="900" alt="Krok 5: Počasí"></a><br>
 <b>Průvodce s kroužky: Krok 5: Počasí</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-6"></a>
@@ -286,6 +321,7 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-kolka-6.svg" width="900" alt="Krok 6: Vzhled"></a><br>
 <b>Průvodce s kroužky: Krok 6: Vzhled</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-krok-7"></a>
@@ -296,6 +332,7 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="j49"></a>
 <p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-kolka-7.svg" width="900" alt="Krok 7: Uložení"></a><br>
 <b>Průvodce s kroužky: Krok 7: Uložení</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -321,6 +358,7 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-1.svg" width="900" alt="Krok 1: Roleta"></a><br>
 <b>Krok 1: Roleta</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-2"></a>
@@ -331,6 +369,7 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <a name="j55"></a>
 <p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-2.svg" width="900" alt="Krok 2: Okno a senzory"></a><br>
 <b>Krok 2: Okno a senzory</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -343,6 +382,7 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-3.svg" width="900" alt="Krok 3: Motor"></a><br>
 <b>Krok 3: Motor</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-4"></a>
@@ -354,6 +394,7 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-4.svg" width="900" alt="Krok 4: Počasí"></a><br>
 <b>Krok 4: Počasí</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="kreator-5"></a>
@@ -364,6 +405,7 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <a name="j61"></a>
 <p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/cs/kreator-5.svg" width="900" alt="Krok 5: Vzhled"></a><br>
 <b>Krok 5: Vzhled</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -380,16 +422,23 @@ Každé okno změníš kdykoli. Klikni na ozubené kolo **⚙️ (Konfigurovat)*
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/integration-cs.svg" alt="Otevřít Motor HA" height="52"></a></p>
 
 <a name="j63"></a>
-<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/konfiguruj.svg" width="900" alt="Konfigurovat"></a><br>
+<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/konfiguruj.svg" width="900" alt="Konfigurovat"></a><br>
 <b>Konfigurovat</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Ozubené kolo: <b>konfigurovat</b> okno</li><li><b>Add device</b>: další okno</li></ol>
+<p>ℹ️ Nastavení → Zařízení a služby → Motor HA.</p>
 
 <p>&nbsp;</p>
 
 Pak vyber jak: **🪄 Průvodce s kroužky a obrázky** nebo **📝 Jednoduchá pole krok za krokem** (5 kroků). Po uložení karta hned ukáže změny.
 
 <a name="j64"></a>
-<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/konfiguruj-menu.svg" width="900" alt="Konfigurovat: výběr"></a><br>
+<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/konfiguruj-menu.svg" width="900" alt="Konfigurovat: výběr"></a><br>
 <b>Konfigurovat: výběr</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li><b>Průvodce s kroužky a obrázky</b></li><li>nebo <b>Jednoduchá pole</b></li></ol>
 
 <p>&nbsp;</p>
 
@@ -411,8 +460,12 @@ Rychlost motoru se vezme ze zařízení rolety (např. Moes). Chceš přesně? N
 Na stejné stránce **Přidat na panel** (bod 3) dá kartu okna na panel (Home Assistant 2026.6 a novější) a **⚙️ Navštívit** (bod 1) otevře průvodce s kroužky.
 
 <a name="j67"></a>
-<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/urzadzenie.svg" width="900" alt="Zařízení okna"></a><br>
+<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/urzadzenie.svg" width="900" alt="Zařízení okna"></a><br>
 <b>Zařízení okna</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li><b>Visit</b>: průvodce se 7 kroužky</li><li><b>Calibrate</b>: změř dobu jízdy</li><li><b>Add to dashboard</b>: karta na panel</li></ol>
+<p>ℹ️ Kalibrace: roleta vyjede nahoru, sjede dolů a zase nahoru. Čas se uloží sám.</p>
 
 <p>&nbsp;</p>
 
@@ -427,6 +480,7 @@ Na stejné stránce **Přidat na panel** (bod 3) dá kartu okna na panel (Home A
 <a name="j70"></a>
 <p align="center"><a href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/opis-elementow.svg" width="900" alt="Co je na kartě: úchyty a tlačítka"></a><br>
 <b>Co je na kartě: úchyty a tlačítka</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -445,16 +499,24 @@ Když vyjde nová verze, HA ji sám ukáže v **Nastavení**, nejpozději za 2 m
 <p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/updates-cs.svg" alt="Aktualizace" height="52"></a></p>
 
 <a name="j72"></a>
-<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/aktualizacja-1.svg" width="900" alt="Aktualizace"></a><br>
+<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/aktualizacja-1.svg" width="900" alt="Aktualizace"></a><br>
 <b>Aktualizace</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Klikni na <b>Motor HA</b></li></ol>
+<p>ℹ️ Jedna aktualizace 2 v 1: integrace a karta spolu. HA ji ukáže sám.</p>
 
 <p>&nbsp;</p>
 
 Klikni na **Instalovat** a pak restartuj HA. Integrace a karta přijdou v jedné aktualizaci.
 
 <a name="j73"></a>
-<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/aktualizacja-2.svg" width="900" alt="Instalovat"></a><br>
+<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/aktualizacja-2.svg" width="900" alt="Instalovat"></a><br>
 <b>Instalovat</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Nech zaškrtnutou zálohu</li><li><b>Install</b></li></ol>
+<p>ℹ️ Pak restartuj HA. Tvoje nastavení zůstanou.</p>
 
 <p>&nbsp;</p>
 
@@ -495,8 +557,12 @@ Co je nového v každé verzi: [📝 Historie změn](https://github.com/superdar
 Po stažení z HACS musíš HA restartovat (krok 4). V telefonu zavři a znovu otevři aplikaci.
 
 <a name="j79"></a>
-<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/krok-4.svg" width="900" alt="„Motor HA“ není v seznamu integrací"></a><br>
+<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/krok-4.svg" width="900" alt="„Motor HA“ není v seznamu integrací"></a><br>
 <b>„Motor HA“ není v seznamu integrací</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Ikona <b>⏻</b> vpravo nahoře</li><li><b>Restart</b></li></ol>
+<p>ℹ️ Nastavení → Systém. Počkej 1–2 minuty.</p>
 
 <p>&nbsp;</p>
 
@@ -508,8 +574,12 @@ Po stažení z HACS musíš HA restartovat (krok 4). V telefonu zavři a znovu o
 Karta se načte sama s integrací, nic není třeba obnovovat. Zkontroluj, že HA byl po instalaci restartován (krok 4). Pak tužka, <b>Přidat kartu</b> a napiš <b>Okno</b>.
 
 <a name="j81"></a>
-<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/dodaj-karte.svg" width="900" alt="Karta není v seznamu „Přidat kartu“"></a><br>
+<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/dodaj-karte.svg" width="900" alt="Karta není v seznamu „Přidat kartu“"></a><br>
 <b>Karta není v seznamu „Přidat kartu“</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Tužka: upravit panel</li><li>Napiš <b>Okno</b></li><li>Klikni na kartu <b>Motor HA</b></li></ol>
+<p>ℹ️ Pak vyber okno, např. Okno Living room.</p>
 
 <p>&nbsp;</p>
 
@@ -521,8 +591,12 @@ Karta se načte sama s integrací, nic není třeba obnovovat. Zkontroluj, že H
 Na stránce zařízení okna stiskni <b>Kalibrovat</b>. Roleta vyjede nahoru, sjede dolů a zase nahoru a čas se uloží sám.
 
 <a name="j83"></a>
-<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/urzadzenie.svg" width="900" alt="Animace jede rychleji nebo pomaleji než roleta"></a><br>
+<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/urzadzenie.svg" width="900" alt="Animace jede rychleji nebo pomaleji než roleta"></a><br>
 <b>Animace jede rychleji nebo pomaleji než roleta</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li><b>Visit</b>: průvodce se 7 kroužky</li><li><b>Calibrate</b>: změř dobu jízdy</li><li><b>Add to dashboard</b>: karta na panel</li></ol>
+<p>ℹ️ Kalibrace: roleta vyjede nahoru, sjede dolů a zase nahoru. Čas se uloží sám.</p>
 
 <p>&nbsp;</p>
 
@@ -534,8 +608,12 @@ Na stránce zařízení okna stiskni <b>Kalibrovat</b>. Roleta vyjede nahoru, sj
 <b>Konfigurovat</b> → krok 4: vyber své počasí nebo nech prázdné. Prázdné = počasí z internetu pro tvůj dům.
 
 <a name="j85"></a>
-<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/kreator-4.svg" width="900" alt="Za sklem není vidět počasí"></a><br>
+<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/kreator-4.svg" width="900" alt="Za sklem není vidět počasí"></a><br>
 <b>Za sklem není vidět počasí</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Počasí venku</li><li><b>Next</b></li></ol>
+<p>ℹ️ Prázdné = počasí z internetu pro tvůj dům.</p>
 
 <p>&nbsp;</p>
 
@@ -547,8 +625,12 @@ Na stránce zařízení okna stiskni <b>Kalibrovat</b>. Roleta vyjede nahoru, sj
 <b>Konfigurovat</b> → krok 2: vyber senzor a jak se okno otevírá: vyklopené nebo otevřené na pantech.
 
 <a name="j87"></a>
-<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/kreator-2.svg" width="900" alt="Senzor okna nefunguje"></a><br>
+<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/kreator-2.svg" width="900" alt="Senzor okna nefunguje"></a><br>
 <b>Senzor okna nefunguje</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Počet křídel</li><li>Senzory okna a jak se otevírá</li><li><b>Next</b></li></ol>
+<p>ℹ️ Nemáš senzory? Nech prázdné.</p>
 
 <p>&nbsp;</p>
 
@@ -560,8 +642,12 @@ Na stránce zařízení okna stiskni <b>Kalibrovat</b>. Roleta vyjede nahoru, sj
 <b>Konfigurovat</b> → krok 1: odeber obě rolety a vyber je znovu: nejdřív levou, pak pravou.
 
 <a name="j89"></a>
-<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/kreator-1.svg" width="900" alt="Křídla jsou prohozená (levé je pravé)"></a><br>
+<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/kreator-1.svg" width="900" alt="Křídla jsou prohozená (levé je pravé)"></a><br>
 <b>Křídla jsou prohozená (levé je pravé)</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Zadej název okna</li><li>Vyber roletu (nebo dvě: levá, pravá)</li><li><b>Next</b></li></ol>
+<p>ℹ️ Jednokřídlé okno: vyber jednu roletu.</p>
 
 <p>&nbsp;</p>
 
@@ -580,8 +666,12 @@ To jsou chybná hlášení motoru. Karta je ignoruje. Pokud dál skáče, <a hre
 Karta bere jazyk z tvého profilu HA. Můžeš také v editoru karty otevřít <b>Pokročilé</b> a v poli <b>Jazyk karty</b> vybrat <b>Čeština</b>.
 
 <a name="j92"></a>
-<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/cs/jezyk-karty.svg" width="900" alt="Karta je anglicky, chci česky"></a><br>
+<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/cs/jezyk-karty.svg" width="900" alt="Karta je anglicky, chci česky"></a><br>
 <b>Karta je anglicky, chci česky</b></p>
+
+<b>Kam kliknout:</b>
+<ol><li>Otevři <b>Advanced</b></li><li><b>Card language</b>: vyber jazyk</li></ol>
+<p>ℹ️ auto = jazyk tvého profilu HA.</p>
 
 <p>&nbsp;</p>
 
@@ -631,8 +721,9 @@ Tady není odpověď? [Nahlásit chybu](https://github.com/superdarco78/okno-ha-
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="Druhy stínění"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="Druhy stínění"></a><br>
 <b>Druhy stínění</b></p>
+
 
 <p>&nbsp;</p>
 
@@ -640,11 +731,13 @@ Tady není odpověď? [Nahlásit chybu](https://github.com/superdarco78/okno-ha-
 <p align="center"><a href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/kolory-en.svg" width="900" alt="Barvy stínění"></a><br>
 <b>Barvy stínění</b></p>
 
+
 <p>&nbsp;</p>
 
 <a name="j103"></a>
 <p align="center"><a href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ramy-en.svg" width="900" alt="Barvy a dekory rámů"></a><br>
 <b>Barvy a dekory rámů</b></p>
+
 
 <p>&nbsp;</p>
 
