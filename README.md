@@ -4,7 +4,7 @@
 
 <h1 align="center">🪟 Okno HA – integracja</h1>
 
-<p align="center">Każde okno z roletą to <b>urządzenie</b> w Home Assistancie. Panel <b>Okno HA</b> w menu bocznym z kreatorem (7 kółek), zmiana ustawień przyciskiem <b>Konfiguruj</b>, karta Okno HA w środku.</p>
+<p align="center">Każde okno z roletą to <b>urządzenie</b> w Home Assistancie. Kreator z 7 kółkami i obrazkami, zmiana ustawień przyciskiem <b>Konfiguruj</b>, karta sama na panelu, karta Okno HA w środku.</p>
 
 <p align="center">
   <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/v/release/superdarco78/okno-ha-integracja?style=for-the-badge&label=wersja&color=0288d1" alt="wersja"></a>
@@ -46,7 +46,7 @@
 
 **<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/rocket-launch.png" height="26" align="absmiddle"> [Część 1. Dla początkujących](https://github.com/superdarco78/okno-ha-integracja#dla-poczatkujacych)** · wystarczy to
 - [Instalacja krok po kroku](https://github.com/superdarco78/okno-ha-integracja#instalacja)
-- [Kreator z kółkami: panel Okno HA](https://github.com/superdarco78/okno-ha-integracja#kreator-kolka)
+- [Kreator z kółkami i obrazkami](https://github.com/superdarco78/okno-ha-integracja#kreator-kolka)
 - [Kreator w „Dodaj integrację”: 5 kroków](https://github.com/superdarco78/okno-ha-integracja#kreator)
 - [Zmiana ustawień: Konfiguruj](https://github.com/superdarco78/okno-ha-integracja#konfiguruj)
 - [Kolejne okno](https://github.com/superdarco78/okno-ha-integracja#kolejne-okno)
@@ -119,7 +119,7 @@
 <a name="krok-7"></a>
 <h3 align="center">7️⃣ Dodaj kartę na pulpit</h3>
 
-<p align="center">Ołówek → <b>＋ Dodaj kartę</b> → wpisz <b>Okno</b>. Karta sama wybierze okno z integracji. Albo na stronie urządzenia: <b>Dodaj do panelu</b>.</p>
+<p align="center">Zwykle nic nie musisz robić: w ostatnim kroku kreatora pole <b>📋 Dodaj kartę okna na panel</b> samo kładzie kartę w sekcji „🪟 Okna”. Chcesz sam? Ołówek → <b>＋ Dodaj kartę</b> → wpisz <b>Okno</b> i wybierz okno.</p>
 
 <a name="j12"></a>
 <p align="center"><a href="#j12"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-zrzuty2-pl-dodaj-karte.svg" width="100%" alt="Krok 7"></a></p>
@@ -129,12 +129,12 @@
 ---
 
 <a name="kreator-kolka"></a>
-## <a name="j13" href="#j13"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/auto-fix.png" height="36" align="absmiddle"></a> Kreator z kółkami: panel Okno HA
+## <a name="j13" href="#j13"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/auto-fix.png" height="36" align="absmiddle"></a> Kreator z kółkami i obrazkami
 
-W menu bocznym HA jest **🪟 Okno HA**. To kreator karty z 7 kółkami i obrazkami. Tu dodajesz nowe okna i zmieniasz te, które już są. Każdy krok możesz kliknąć w dowolnej kolejności.
+Kreator z 7 kółkami i obrazkami otwierasz na dwa sposoby: na stronie urządzenia okna kliknij **⚙️ Odwiedź** (punkt 1), albo **Konfiguruj → 🪄 Kreator z kółkami i obrazkami**. Każdy krok możesz kliknąć w dowolnej kolejności.
 
 <a name="j14"></a>
-<p align="center"><a href="#j14"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/panel.svg" width="100%" alt="Okno HA"></a></p>
+<p align="center"><a href="#j14"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/urzadzenie-b.svg" width="100%" alt="Urządzenie okna"></a></p>
 
 <table>
 <tr><th align="center"><a name="j15" href="#j15"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="90" height="0"></a><br>Krok</th><th align="left"><a name="j16" href="#j16"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="330" height="0"></a><br>Co wybierasz</th><th align="left"><a name="j17" href="#j17"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="480" height="0"></a><br>Po co</th></tr>
@@ -206,7 +206,7 @@ Po kliknięciu **Dodaj integrację** (krok 5 instalacji) HA pokaże krótki krea
 <tr><td align="center">2</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/window-open-variant.png" height="28" align="absmiddle" alt=""> <b>Okno i czujniki</b></td><td align="left">Ile skrzydeł i czujniki otwarcia okna</td></tr>
 <tr><td align="center">3</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/speedometer.png" height="28" align="absmiddle" alt=""> <b>Silnik</b></td><td align="left">Prędkość silnika wybiera się sama. Do tego „Kalibruj teraz”</td></tr>
 <tr><td align="center">4</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/weather-partly-cloudy.png" height="28" align="absmiddle" alt=""> <b>Pogoda</b></td><td align="left">Żeby za szybą było widać prawdziwą pogodę</td></tr>
-<tr><td align="center">5</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="28" align="absmiddle" alt=""> <b>Wygląd</b></td><td align="left">Kafelki 15 osłon, próbki kolorów i okleiny ram, własny kolor</td></tr>
+<tr><td align="center">5</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="28" align="absmiddle" alt=""> <b>Wygląd</b></td><td align="left">Kafelki 15 osłon, kolory, okleiny ram i panel, na który sama trafi karta</td></tr>
 </table>
 
 <a name="kreator-1"></a>
@@ -237,45 +237,45 @@ Po kliknięciu **Dodaj integrację** (krok 5 instalacji) HA pokaże krótki krea
 #### <a name="j44" href="#j44"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="32" align="absmiddle"></a> Krok 5: Wygląd
 
 <a name="j45"></a>
-<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/kreator-5.svg" width="100%" alt="Krok 5: Wygląd"></a></p>
+<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/kreator-5-b.svg" width="100%" alt="Krok 5: Wygląd"></a></p>
 
-> ℹ️ ✅ **Gotowe.** Po **Zatwierdź** okno pojawi się jako urządzenie „Okno …”.
+> ℹ️ ✅ **Gotowe.** Po **Zatwierdź** okno pojawi się jako urządzenie „Okno …”, a karta na wybranym panelu. Nic na panelu nie jest usuwane. Panele YAML i automatyczny „Przegląd” zostają nietknięte.
 
 ---
 
 <a name="konfiguruj"></a>
 ## <a name="j46" href="#j46"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/cog.png" height="36" align="absmiddle"></a> Zmiana ustawień: Konfiguruj
 
-Każde okno zmienisz w dowolnej chwili. Kliknij **Konfiguruj** przy oknie.
+Każde okno zmienisz w dowolnej chwili. Kliknij koło zębate **⚙️ (Konfiguruj)** przy oknie.
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/integration.svg" alt="Otwórz Okno HA" height="56"></a></p>
 
 <a name="j47"></a>
-<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/konfiguruj.svg" width="100%" alt="Konfiguruj"></a></p>
+<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/konfiguruj-b.svg" width="100%" alt="Konfiguruj"></a></p>
 
-Potem wybierz, jak chcesz zmieniać: **🪄 Kreator z kółkami i obrazkami** (jak w panelu) albo **📝 Zwykłe pola** (5 kroków). Po zapisaniu karta od razu pokazuje zmiany.
+Potem wybierz, jak chcesz zmieniać: **🪄 Kreator z kółkami i obrazkami** albo **📝 Zwykłe pola krok po kroku** (5 kroków). Po zapisaniu karta od razu pokazuje zmiany.
 
 <a name="j48"></a>
-<p align="center"><a href="#j48"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/konfiguruj-menu.svg" width="100%" alt="Konfiguruj: wybór"></a></p>
+<p align="center"><a href="#j48"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/konfiguruj-menu-b.svg" width="100%" alt="Konfiguruj: wybór"></a></p>
 
 > ℹ️ Zmiany w edytorze karty okna z integracji też zapisują się same w urządzeniu.
 
 <a name="kolejne-okno"></a>
 ## <a name="j49" href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/window-open-variant.png" height="36" align="absmiddle"></a> Kolejne okno
 
-Masz więcej okien? Otwórz panel **🪟 Okno HA** w menu bocznym, albo na stronie integracji kliknij **＋ Dodaj wpis** (punkt 2 na obrazku wyżej), albo jeszcze raz ten przycisk. Każde okno to osobne urządzenie.
+Masz więcej okien? Na stronie integracji kliknij **Dodaj urządzenie** (punkt 2 na obrazku wyżej) albo jeszcze raz ten przycisk. Każde okno to osobne urządzenie z własną kartą.
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Dodaj kolejne okno" height="80"></a></p>
 
 <a name="kalibracja"></a>
 ## <a name="j50" href="#j50"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/timer-outline.png" height="36" align="absmiddle"></a> Kalibracja i karta na pulpicie
 
-Prędkość silnika ustawia się sama z urządzenia rolety (np. Moes). Chcesz dokładnie? Na stronie urządzenia okna naciśnij **Kalibruj**. Roleta pojedzie w górę, w dół i w górę, a zmierzony czas zapisze się sam. To samo robi **🤖 Kalibruj teraz** w kreatorze.
+Prędkość silnika ustawia się sama z urządzenia rolety (np. Moes). Chcesz dokładnie? Na stronie urządzenia okna naciśnij **Kalibruj** (punkt 2). Roleta pojedzie w górę, w dół i w górę, a zmierzony czas zapisze się sam. To samo robi **🤖 Kalibruj teraz** w kreatorze.
 
-Na tej samej stronie **Dodaj do panelu** dodaje kartę okna na pulpit (Home Assistant 2026.6 i nowszy).
+Na tej samej stronie **Dodaj do panelu** (punkt 3) dodaje kartę okna na pulpit (Home Assistant 2026.6 i nowszy), a **⚙️ Odwiedź** (punkt 1) otwiera kreator z kółkami.
 
 <a name="j51"></a>
-<p align="center"><a href="#j51"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/urzadzenie.svg" width="100%" alt="Urządzenie okna"></a></p>
+<p align="center"><a href="#j51"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/urzadzenie-b.svg" width="100%" alt="Urządzenie okna"></a></p>
 
 ---
 
@@ -332,9 +332,9 @@ Co nowego w każdej wersji: [📝 Historia zmian](https://github.com/superdarco7
 <tr><td align="left"><b>Integracja</b></td><td align="left">Dodatek, który dodaje do HA nowe urządzenia. Tu: okna.</td></tr>
 <tr><td align="left"><b>Urządzenie</b></td><td align="left">Jedno okno, np. „Okno Salon”. Widać je w Ustawienia → Urządzenia oraz usługi.</td></tr>
 <tr><td align="left"><b>Encja</b></td><td align="left">Jedna rzecz urządzenia, którą HA widzi i którą steruje. Okno ma encję rolety i przycisk Kalibruj.</td></tr>
-<tr><td align="left"><b>Wpis</b></td><td align="left">Jedno dodane okno na stronie integracji. Kolejne okno = <b>Dodaj wpis</b>.</td></tr>
+<tr><td align="left"><b>Dodaj urządzenie</b></td><td align="left">Przycisk na stronie integracji: dodaje kolejne okno.</td></tr>
 <tr><td align="left"><b>Konfiguruj</b></td><td align="left">Przycisk przy oknie: zmienia jego ustawienia.</td></tr>
-<tr><td align="left"><b>Panel Okno HA</b></td><td align="left">Pozycja w menu bocznym z kreatorem z kółkami.</td></tr>
+<tr><td align="left"><b>Odwiedź</b></td><td align="left">Link na stronie urządzenia okna: otwiera kreator z kółkami.</td></tr>
 <tr><td align="left"><b>Karta</b></td><td align="left">Okienko na ekranie HA. Tu: realistyczne okno z roletą.</td></tr>
 <tr><td align="left"><b>Pulpit</b></td><td align="left">Ekran w HA, na którym leżą karty.</td></tr>
 <tr><td align="left"><b>Czujnik okna</b></td><td align="left">Czujnik na oknie: wie, czy okno jest zamknięte, uchylone czy otwarte.</td></tr>
@@ -349,12 +349,12 @@ Co nowego w każdej wersji: [📝 Historia zmian](https://github.com/superdarco7
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="26" align="absmiddle"> Nie ma „Okno HA” na liście integracji ani w menu
+#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="26" align="absmiddle"> Nie ma „Okno HA” na liście integracji
 
 Po pobraniu z HACS trzeba uruchomić HA ponownie (krok 4). Potem odśwież stronę: <b>Ctrl + Shift + R</b>. W telefonie zamknij i otwórz aplikację.
 
 <a name="j64"></a>
-<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/krok-4.svg" width="100%" alt="Nie ma „Okno HA” na liście integracji ani w menu"></a></p>
+<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/krok-4.svg" width="100%" alt="Nie ma „Okno HA” na liście integracji"></a></p>
 
 <br>
 
@@ -372,7 +372,7 @@ Odśwież stronę: <b>Ctrl + Shift + R</b>. W telefonie zamknij i otwórz aplika
 Na stronie urządzenia okna naciśnij <b>Kalibruj</b>. Roleta pojedzie w górę, w dół i w górę, a czas zapisze się sam.
 
 <a name="j66"></a>
-<p align="center"><a href="#j66"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/urzadzenie.svg" width="100%" alt="Animacja jedzie szybciej albo wolniej niż roleta"></a></p>
+<p align="center"><a href="#j66"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/urzadzenie-b.svg" width="100%" alt="Animacja jedzie szybciej albo wolniej niż roleta"></a></p>
 
 <br>
 
@@ -438,7 +438,7 @@ Nie ma tu odpowiedzi? [Zgłoś błąd](https://github.com/superdarco78/okno-ha-i
 <tr><td align="left"><b>Przycisk Kalibruj</b></td><td align="left">Mierzy prawdziwy czas przejazdu rolety i zapisuje go.</td></tr>
 <tr><td align="left"><b>Atrybut <code>okno_ha</code></b></td><td align="left">Ustawienia okna dla karty. Karta czyta je sama.</td></tr>
 <tr><td align="left"><b>Urządzenie „Okno HA”</b></td><td align="left">Jedno na całą integrację: dwie encje aktualizacji, karta i integracja. Sprawdzają GitHub co około 2 minuty.</td></tr>
-<tr><td align="left"><b>Panel <code>/okno-ha</code></b></td><td align="left">„🪟 Okno HA” w menu bocznym: kreator z kółkami.</td></tr>
+<tr><td align="left"><b>Kreator z kółkami</b></td><td align="left">Strona z 7 kółkami: link „Odwiedź” na urządzeniu okna albo Konfiguruj. Bez pozycji w menu bocznym.</td></tr>
 <tr><td align="left"><b>Karta Okno HA</b></td><td align="left">Wbudowana. Ładuje się sama na każdym pulpicie, bez dodawania zasobu.</td></tr>
 </table>
 
@@ -460,6 +460,7 @@ Nie ma tu odpowiedzi? [Zgłoś błąd](https://github.com/superdarco78/okno-ha-i
 <tr><td align="center">5</td><td align="left">Kolor osłony</td><td align="left">Czarny, Grafit, Szary, Beżowy, Kremowy, Biały, Brąz, Granat, Pomarańczowy albo 🎨 własny kolor.</td></tr>
 <tr><td align="center">5</td><td align="left">Kolor ramy okna</td><td align="left">Biała, Kremowa, Srebrna, Szara, Antracyt, Czarna, Złoty dąb, Dąb jasny, Winchester albo 🎨 własny kolor.</td></tr>
 <tr><td align="center">5</td><td align="left">Wysokość okna na karcie</td><td align="left">140–460 px. Domyślnie 260.</td></tr>
+<tr><td align="center">5</td><td align="left">📋 Dodaj kartę okna na panel</td><td align="left">Panel UI. Podpowiada ten, na którym już są okna. Karta trafia do sekcji „🪟 Okna” na pierwszym widoku. „Nie dodawaj” = położysz ją sam.</td></tr>
 </table>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/oslony-kafle-pl.png" width="100%" alt=""></p>

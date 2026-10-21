@@ -4,7 +4,7 @@
 
 <h1 align="center">🪟 Okno HA (HA Window) – integration</h1>
 
-<p align="center">Each window with a shade is a <b>device</b> in Home Assistant. An <b>Okno HA</b> panel in the sidebar with a wizard (7 circles), changes with <b>Configure</b>, the Okno HA card bundled.</p>
+<p align="center">Each window with a shade is a <b>device</b> in Home Assistant. A wizard with 7 circles and pictures, changes with <b>Configure</b>, the card added to a dashboard by itself, the Okno HA card bundled.</p>
 
 <p align="center">
   <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/v/release/superdarco78/okno-ha-integracja?style=for-the-badge&label=version&color=0288d1" alt="version"></a>
@@ -46,7 +46,7 @@
 
 **<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/rocket-launch.png" height="26" align="absmiddle"> [Part 1. For beginners](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#dla-poczatkujacych)** · this is all you need
 - [Step-by-step installation](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#instalacja)
-- [Wizard with circles: Okno HA panel](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-kolka)
+- [Wizard with circles and pictures](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-kolka)
 - [Wizard in “Add integration”: 5 steps](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator)
 - [Changing settings: Configure](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#konfiguruj)
 - [Another window](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kolejne-okno)
@@ -119,7 +119,7 @@
 <a name="krok-7"></a>
 <h3 align="center">7️⃣ Add the card to a dashboard</h3>
 
-<p align="center">Pencil → <b>＋ Add card</b> → type <b>Okno</b>. The card picks the window from the integration by itself. Or on the device page: <b>Add to dashboard</b>.</p>
+<p align="center">Usually nothing to do: in the last wizard step the <b>📋 Add the window card to a dashboard</b> field places the card in a “🪟 Okna” section. Want to do it yourself? Pencil → <b>＋ Add card</b> → type <b>Okno</b> and pick the window.</p>
 
 <a name="j12"></a>
 <p align="center"><a href="#j12"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-zrzuty2-en-dodaj-karte.svg" width="100%" alt="Step 7"></a></p>
@@ -129,12 +129,12 @@
 ---
 
 <a name="kreator-kolka"></a>
-## <a name="j13" href="#j13"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/auto-fix.png" height="36" align="absmiddle"></a> Wizard with circles: Okno HA panel
+## <a name="j13" href="#j13"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/auto-fix.png" height="36" align="absmiddle"></a> Wizard with circles and pictures
 
-The HA sidebar has **🪟 Okno HA**. It is the card wizard with 7 circles and pictures. Add new windows and change existing ones here. Click any step in any order.
+Open the wizard with 7 circles and pictures in two ways: on the window device page click **⚙️ Visit** (point 1), or **Configure → 🪄 Wizard with circles and pictures**. Click any step in any order.
 
 <a name="j14"></a>
-<p align="center"><a href="#j14"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/panel.svg" width="100%" alt="Okno HA"></a></p>
+<p align="center"><a href="#j14"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/urzadzenie-b.svg" width="100%" alt="Window device"></a></p>
 
 <table>
 <tr><th align="center"><a name="j15" href="#j15"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="90" height="0"></a><br>Step</th><th align="left"><a name="j16" href="#j16"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="330" height="0"></a><br>What you choose</th><th align="left"><a name="j17" href="#j17"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="480" height="0"></a><br>Why</th></tr>
@@ -206,7 +206,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <tr><td align="center">2</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/window-open-variant.png" height="28" align="absmiddle" alt=""> <b>Window and sensors</b></td><td align="left">How many sashes and window opening sensors</td></tr>
 <tr><td align="center">3</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/speedometer.png" height="28" align="absmiddle" alt=""> <b>Motor</b></td><td align="left">Motor speed is picked automatically. Plus “Calibrate now”</td></tr>
 <tr><td align="center">4</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/weather-partly-cloudy.png" height="28" align="absmiddle" alt=""> <b>Weather</b></td><td align="left">So the real weather shows behind the glass</td></tr>
-<tr><td align="center">5</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="28" align="absmiddle" alt=""> <b>Look</b></td><td align="left">Tiles of 15 shades, colour samples and frame finishes, custom colour</td></tr>
+<tr><td align="center">5</td><td align="left"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="28" align="absmiddle" alt=""> <b>Look</b></td><td align="left">Tiles of 15 shades, colours, frame finishes and the dashboard the card goes to</td></tr>
 </table>
 
 <a name="kreator-1"></a>
@@ -237,45 +237,45 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 #### <a name="j44" href="#j44"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="32" align="absmiddle"></a> Step 5: Look
 
 <a name="j45"></a>
-<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/kreator-5.svg" width="100%" alt="Step 5: Look"></a></p>
+<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/kreator-5-b.svg" width="100%" alt="Step 5: Look"></a></p>
 
-> ℹ️ ✅ **Done.** After **Submit** the window appears as a device “Okno …”.
+> ℹ️ ✅ **Done.** After **Submit** the window appears as a device “Okno …” and the card on the chosen dashboard. Nothing on the dashboard is removed. YAML dashboards and the automatic Overview are left alone.
 
 ---
 
 <a name="konfiguruj"></a>
 ## <a name="j46" href="#j46"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/cog.png" height="36" align="absmiddle"></a> Changing settings: Configure
 
-Change any window at any time. Click **Configure** next to the window.
+Change any window at any time. Click the gear **⚙️ (Configure)** next to the window.
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/integration.svg" alt="Open Okno HA" height="56"></a></p>
 
 <a name="j47"></a>
-<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/konfiguruj.svg" width="100%" alt="Configure"></a></p>
+<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/konfiguruj-b.svg" width="100%" alt="Configure"></a></p>
 
-Then choose how: **🪄 Wizard with circles and pictures** (as in the panel) or **📝 Plain fields** (5 steps). After saving, the card shows the changes right away.
+Then choose how: **🪄 Wizard with circles and pictures** or **📝 Plain fields step by step** (5 steps). After saving, the card shows the changes right away.
 
 <a name="j48"></a>
-<p align="center"><a href="#j48"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/konfiguruj-menu.svg" width="100%" alt="Configure: choice"></a></p>
+<p align="center"><a href="#j48"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/konfiguruj-menu-b.svg" width="100%" alt="Configure: choice"></a></p>
 
 > ℹ️ Changes in the card editor of an integration window are saved to the device too.
 
 <a name="kolejne-okno"></a>
 ## <a name="j49" href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/window-open-variant.png" height="36" align="absmiddle"></a> Another window
 
-More windows? Open the **🪟 Okno HA** panel in the sidebar, or click **＋ Add entry** on the integration page (point 2 in the picture above), or this button again. Each window is its own device.
+More windows? Click **Add device** on the integration page (point 2 in the picture above) or this button again. Each window is its own device with its own card.
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Add another window" height="80"></a></p>
 
 <a name="kalibracja"></a>
 ## <a name="j50" href="#j50"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/timer-outline.png" height="36" align="absmiddle"></a> Calibration and card on the dashboard
 
-The motor speed is picked from the shade device (e.g. Moes). Want it exact? On the window device page press **Calibrate**. The shade goes up, down and up, and the measured time is saved by itself. **🤖 Calibrate now** in the wizard does the same.
+The motor speed is picked from the shade device (e.g. Moes). Want it exact? On the window device page press **Calibrate** (point 2). The shade goes up, down and up, and the measured time is saved by itself. **🤖 Calibrate now** in the wizard does the same.
 
-On the same page, **Add to dashboard** puts the window card on a dashboard (Home Assistant 2026.6 or newer).
+On the same page, **Add to dashboard** (point 3) puts the window card on a dashboard (Home Assistant 2026.6 or newer), and **⚙️ Visit** (point 1) opens the circles wizard.
 
 <a name="j51"></a>
-<p align="center"><a href="#j51"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/urzadzenie.svg" width="100%" alt="Window device"></a></p>
+<p align="center"><a href="#j51"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/urzadzenie-b.svg" width="100%" alt="Window device"></a></p>
 
 ---
 
@@ -332,9 +332,9 @@ What is new in each version: [📝 Changelog](https://github.com/superdarco78/ok
 <tr><td align="left"><b>Integration</b></td><td align="left">An add-on that adds new devices to HA. Here: windows.</td></tr>
 <tr><td align="left"><b>Device</b></td><td align="left">One window, e.g. “Okno Living room”. See Settings → Devices & services.</td></tr>
 <tr><td align="left"><b>Entity</b></td><td align="left">One thing of a device that HA sees and controls. A window has a shade entity and a Calibrate button.</td></tr>
-<tr><td align="left"><b>Entry</b></td><td align="left">One added window on the integration page. Another window = <b>Add entry</b>.</td></tr>
+<tr><td align="left"><b>Add device</b></td><td align="left">The button on the integration page: adds another window.</td></tr>
 <tr><td align="left"><b>Configure</b></td><td align="left">The button next to a window: changes its settings.</td></tr>
-<tr><td align="left"><b>Okno HA panel</b></td><td align="left">The sidebar item with the circles wizard.</td></tr>
+<tr><td align="left"><b>Visit</b></td><td align="left">The link on the window device page: opens the circles wizard.</td></tr>
 <tr><td align="left"><b>Card</b></td><td align="left">A tile on the HA screen. Here: a realistic window with a shade.</td></tr>
 <tr><td align="left"><b>Dashboard</b></td><td align="left">The HA screen where cards live.</td></tr>
 <tr><td align="left"><b>Window sensor</b></td><td align="left">A sensor on the window: knows if it is closed, tilted or open.</td></tr>
@@ -349,12 +349,12 @@ What is new in each version: [📝 Changelog](https://github.com/superdarco78/ok
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="26" align="absmiddle"> “Okno HA” is not in the integration list or the sidebar
+#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="26" align="absmiddle"> “Okno HA” is not in the integration list
 
 After downloading from HACS you must restart HA (step 4). Then refresh the page: <b>Ctrl + Shift + R</b>. On a phone, close and reopen the app.
 
 <a name="j64"></a>
-<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/krok-4.svg" width="100%" alt="“Okno HA” is not in the integration list or the sidebar"></a></p>
+<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/krok-4.svg" width="100%" alt="“Okno HA” is not in the integration list"></a></p>
 
 <br>
 
@@ -372,7 +372,7 @@ Refresh the page: <b>Ctrl + Shift + R</b>. On a phone, close and reopen the HA a
 On the window device page press <b>Calibrate</b>. The shade goes up, down and up, and the time is saved by itself.
 
 <a name="j66"></a>
-<p align="center"><a href="#j66"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/urzadzenie.svg" width="100%" alt="The animation is faster or slower than the shade"></a></p>
+<p align="center"><a href="#j66"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/en/urzadzenie-b.svg" width="100%" alt="The animation is faster or slower than the shade"></a></p>
 
 <br>
 
@@ -432,7 +432,7 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 <tr><td align="left"><b>Button Calibrate</b></td><td align="left">Measures the real travel time of the shade and saves it.</td></tr>
 <tr><td align="left"><b>Attribute <code>okno_ha</code></b></td><td align="left">Window settings for the card. The card reads them by itself.</td></tr>
 <tr><td align="left"><b>Device “Okno HA”</b></td><td align="left">One for the whole integration: two update entities, card and integration. They check GitHub about every 2 minutes.</td></tr>
-<tr><td align="left"><b>Panel <code>/okno-ha</code></b></td><td align="left">“🪟 Okno HA” in the sidebar: the circles wizard.</td></tr>
+<tr><td align="left"><b>Circles wizard</b></td><td align="left">A 7-circle page: the “Visit” link on the window device or Configure. No sidebar item.</td></tr>
 <tr><td align="left"><b>Okno HA card</b></td><td align="left">Bundled. Loads by itself on every dashboard, no resource needed.</td></tr>
 </table>
 
@@ -454,6 +454,7 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 <tr><td align="center">5</td><td align="left">Shade colour</td><td align="left">Black, Graphite, Grey, Beige, Cream, White, Brown, Navy, Orange or a 🎨 custom colour.</td></tr>
 <tr><td align="center">5</td><td align="left">Window frame colour</td><td align="left">White, Cream, Silver, Grey, Anthracite, Black, Golden oak, Light oak, Winchester or a 🎨 custom colour.</td></tr>
 <tr><td align="center">5</td><td align="left">Window height on the card</td><td align="left">140–460 px. Default 260.</td></tr>
+<tr><td align="center">5</td><td align="left">📋 Add the window card to a dashboard</td><td align="left">A UI dashboard. Suggests the one that already has windows. The card goes to a “🪟 Okna” section on the first view. “Don’t add” = place it yourself.</td></tr>
 </table>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/oslony-kafle-en.png" width="100%" alt=""></p>
