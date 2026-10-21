@@ -28,7 +28,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner7-de.svg" width="100%" alt="Motor HA"></a></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-en.webp#gh-light-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-en-ciemny.webp#gh-dark-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><br>
 <sub>Vier Behänge, Tag und Nacht, Wetter und Bewegung</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Motor HA – Integration</h1>

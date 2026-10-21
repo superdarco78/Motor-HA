@@ -28,7 +28,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner7-pl.svg" width="100%" alt="Motor HA"></a></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl.webp#gh-light-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-pl-ciemny.webp#gh-dark-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-pl.webp#gh-light-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-pl-ciemny.webp#gh-dark-mode-only" alt="Animacja: cztery osłony, dzień i noc, pogoda, ruch" width="100%"><br>
 <sub>Cztery osłony, dzień i noc, pogoda i ruch</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Motor HA – integracja</h1>
