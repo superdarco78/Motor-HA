@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.8 – Opis po niemiecku, francusku i czesku
+
+- 🌍 Pełny opis i instrukcja także po niemiecku, francusku i czesku, z obrazkami w tych językach. Na górze opisu jest 5 flag języków
+- 🏷️ W HACS nazwa to teraz po prostu „Okno HA”
+
 ## v1.4.7 – Plakietki na samej górze
 
 - 🏷️ W HACS plakietki, przycisk HACS i flagi języków są teraz na samej górze opisu, nad banerem
