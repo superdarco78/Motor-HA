@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.41 – Motor HA w opisie
+
+- 📖 Opis w HACS we wszystkich 5 językach i baner z nazwą **Motor HA** i przyciskiem „Otwórz w HACS”
+
 ## v1.4.40 – Motor HA w każdym języku, prawdziwy licznik pobrań
 
 - 🏷️ Nazwa **Motor HA** w każdym języku (także po angielsku)
