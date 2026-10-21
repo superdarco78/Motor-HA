@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.19 – Kreator w kolorach Twojego motywu
+
+- 🎨 Karta v36: podsumowanie i podpowiedzi kreatora karty mają ikony i ramki w kolorze głównym Twojego motywu HA, zamiast zielonych ✅ i zielonych ramek. Zmienia się na żywo z profilem
+- 🔢 Komunikaty o wersji bez numeru karty
+
 ## v1.4.18 – Zaznaczenia w kolorze akcentu
 
 - 🟠 Zaznaczenia „gdzie kliknąć” w obrazkach (ramki, numery, strzałki) są w kolorze akcentu HA: na GitHubie pomarańczowe #FF9800, w HACS i w kreatorze integracji w akcencie z Twojego profilu, na żywo
