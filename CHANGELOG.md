@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.16 – Kolory z Twojego motywu Home Assistanta
+
+- 🎨 Karta, kreator i edytor biorą kolor główny i kolor akcentu z profilu HA, na żywo: zmiana koloru w profilu od razu zmienia kartę
+- 🖼️ Obrazki w opisie w HACS i w kreatorze integracji przemalowują się w przeglądarce z niebieskiego HA na Twój kolor główny (czerwone zaznaczenia i zdjęcia zostają). Na GitHubie zostają niebieskie
+- 🔢 Jeden numer wersji: bez plakietki wersji karty, w edytorze wersja integracji
+- 🎞️ Animacja w opisie bez plakietki wersji
+
 ## v1.4.15 – Dowolny kolor z palety, ikona HACS po restarcie
 
 - 🎨 Karta v33: w kreatorze z kółkami (krok „Wygląd”) dowolny kolor osłony i ramy z palety, podgląd na żywo
