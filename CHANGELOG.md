@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.45 – Poprawki opisu
+
+- 🎨 Opis: ikony w „Jak sterować” naprawione, ikony nagłówków w kolorach motywu, spis treści obok siebie, pasek kroków mieści się na szerokość
+
 ## v1.4.44 – Jedna karta Motor HA w „Dodaj do panelu”
 
 - 🪟 Po każdej aktualizacji karta jest zawsze z tej samej wersji co integracja. Wcześniej mogła zostać stara karta („Okno HA v32”) i stary edytor
