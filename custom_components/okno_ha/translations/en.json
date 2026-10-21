@@ -66,7 +66,8 @@
           "kolor_wlasny": "🎨 Custom shade colour",
           "rama": "Window frame colour",
           "rama_wlasna": "🎨 Custom frame colour",
-          "wysokosc": "Window height on the card"
+          "wysokosc": "Window height on the card",
+          "na_panel": "📋 Add the window card to a dashboard"
         },
         "data_description": {
           "kolor": "Samples are in the picture above.",
@@ -74,7 +75,8 @@
           "rama": "Wood finishes are drawn with grain.",
           "rama_wlasna": "Any frame colour. Replaces the list colour.",
           "oslona": "What your shade looks like – compare with the tiles in the picture above.",
-          "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see."
+          "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see.",
+          "na_panel": "The card appears on this dashboard by itself, with all settings from the wizard. Pick “Don't add” to place it yourself."
         }
       }
     },

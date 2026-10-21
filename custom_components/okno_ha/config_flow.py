@@ -16,6 +16,7 @@ from .const import (
     CONF_CZUJNIK_LEWE,
     CONF_CZUJNIK_PRAWE,
     CONF_KALIBRUJ,
+    CONF_NA_PANEL,
     CONF_KOLOR,
     CONF_KOLOR_WLASNY,
     CONF_OSLONA,
@@ -36,6 +37,7 @@ from .const import (
     RAMY,
     TRYBY,
 )
+from .panele import NIE, async_lista
 from .wykrywanie import czas_z_predkosci, kandydaci_predkosci, predkosc_rolety
 
 # obrazki próbek w opisie kroku „wygląd”
@@ -65,7 +67,8 @@ def _pole(klucz: str, v: dict[str, Any], wymagane: bool = False):
     return (vol.Required if wymagane else vol.Optional)(klucz, default=v.get(klucz, DOMYSLNE.get(klucz)))
 
 
-def schemat(krok: str, v: dict[str, Any], z_nazwa: bool, hass: HomeAssistant | None = None) -> vol.Schema:
+def schemat(krok: str, v: dict[str, Any], z_nazwa: bool, hass: HomeAssistant | None = None,
+            panele: tuple[list, str] | None = None) -> vol.Schema:
     if krok == "user":
         pola = {}
         if z_nazwa:
@@ -91,7 +94,7 @@ def schemat(krok: str, v: dict[str, Any], z_nazwa: bool, hass: HomeAssistant | N
         })
     if krok == "pogoda":
         return vol.Schema({_pole(CONF_POGODA, v): _encja("weather")})
-    return vol.Schema({
+    pola = {
         _pole(CONF_OSLONA, v): _wybor(OSLONY, "oslona"),
         _pole(CONF_KOLOR, v): _wybor(list(KOLORY), "kolor", True),
         _pole(CONF_KOLOR_WLASNY, v): sel.ColorRGBSelector(),
@@ -99,7 +102,14 @@ def schemat(krok: str, v: dict[str, Any], z_nazwa: bool, hass: HomeAssistant | N
         _pole(CONF_RAMA_WLASNA, v): sel.ColorRGBSelector(),
         _pole(CONF_WYSOKOSC, v): sel.NumberSelector(sel.NumberSelectorConfig(
             min=140, max=460, step=10, unit_of_measurement="px", mode=sel.NumberSelectorMode.SLIDER)),
-    })
+    }
+    if panele is not None:   # tylko przy dodawaniu okna: karta sama ląduje na wybranym panelu
+        lista, proponowany = panele
+        pola[vol.Optional(CONF_NA_PANEL, default=v.get(CONF_NA_PANEL, proponowany))] = sel.SelectSelector(
+            sel.SelectSelectorConfig(options=[sel.SelectOptionDict(value=k, label=n) for k, n in lista]
+                                     + [sel.SelectOptionDict(value=NIE, label="🚫 Nie dodawaj / Don't add")],
+                                     mode=sel.SelectSelectorMode.DROPDOWN))
+    return vol.Schema(pola)
 
 
 def _sprawdz(krok: str, dane: dict[str, Any]) -> dict[str, str]:
@@ -138,7 +148,8 @@ class _Kreator:
                 if klucz not in self._v and (p := predkosc_rolety(self.hass, rolety[min(i, len(rolety) - 1)] if rolety else None)):
                     self._v[klucz] = p
         czas = czas_z_predkosci(self.hass, self._v.get(CONF_PREDKOSC_LEWA))
-        return self.async_show_form(step_id=krok, data_schema=schemat(krok, self._v, z_nazwa, self.hass), errors=bledy,
+        panele = await async_lista(self.hass) if z_nazwa and krok == "wyglad" else None
+        return self.async_show_form(step_id=krok, data_schema=schemat(krok, self._v, z_nazwa, self.hass, panele), errors=bledy,
                                     last_step=krok == KROKI[-1], description_placeholders={
                                         "czas": f"{czas} s" if czas else "—", "obrazki": OBRAZKI})
 

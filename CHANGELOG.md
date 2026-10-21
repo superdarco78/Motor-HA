@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.3 – Karta sama na panelu
+
+- 📋 Ostatni krok kreatora „Dodaj integrację” ma pole **Dodaj kartę okna na panel**. Karta okna sama pojawia się na wybranym panelu, w sekcji „🪟 Okna”, z wszystkimi ustawieniami z kreatora. Podpowiada panel, na którym już są okna
+- 🛡️ Nic na panelu nie jest usuwane ani zmieniane, karta jest tylko dokładana. Panele YAML i automatyczny „Przegląd” zostają nietknięte
+
 ## v1.4.2 – Bez dodatkowej pozycji w menu bocznym
 
 - 🧹 Kreator okna nie dodaje już pozycji „Okno HA” w menu bocznym
