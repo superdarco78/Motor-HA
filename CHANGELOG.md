@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.9 – Logo Okna HA w HACS
+
+- 🖼️ Lista HACS i okienko „Update” pokazują logo Okna HA zamiast „icon not available”. HACS szuka ikony tylko na serwerze ikon Home Assistanta, więc Okno HA samo podaje przeglądarce swoje logo z integracji. Dotyczy tylko Okna HA, inne dodatki zostają bez zmian
+
 ## v1.4.8 – Opis po niemiecku, francusku i czesku
 
 - 🌍 Pełny opis i instrukcja także po niemiecku, francusku i czesku, z obrazkami w tych językach. Na górze opisu jest 5 flag języków
