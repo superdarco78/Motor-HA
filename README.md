@@ -72,7 +72,7 @@ Po lewej zwykła karta rolety w Home Assistancie. Po prawej to samo okno z Motor
 17 rodzajów do wyboru: 9 wewnątrz pomieszczenia i 8 na zewnątrz. Wybierasz w kreatorze albo później w **Konfiguruj**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-pl.svg" width="900" alt="17 rodzajów osłon: 9 wewnątrz pomieszczenia i 8 na zewnątrz"></a></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-pl.svg" width="900" alt="17 rodzajów osłon: 9 wewnątrz pomieszczenia i 8 na zewnątrz"></a></p>
 
 <p>&nbsp;</p>
 
@@ -631,7 +631,7 @@ Nie ma tu odpowiedzi? [Zgłoś błąd](https://github.com/superdarco78/okno-ha-i
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-pl.svg" width="900" alt="Rodzaje osłon"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-pl.svg" width="900" alt="Rodzaje osłon"></a><br>
 <b>Rodzaje osłon</b></p>
 
 <p>&nbsp;</p>

@@ -72,7 +72,7 @@ Left: the standard shade card in Home Assistant. Right: the same window with Mot
 17 types: 9 indoor and 8 outdoor. Pick one in the wizard or later in **Configure**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="17 shade types: 9 indoor and 8 outdoor"></a></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="17 shade types: 9 indoor and 8 outdoor"></a></p>
 
 <p>&nbsp;</p>
 
@@ -631,7 +631,7 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="Shade types"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="Shade types"></a><br>
 <b>Shade types</b></p>
 
 <p>&nbsp;</p>
