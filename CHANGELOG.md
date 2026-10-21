@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.34 – Szybsza zmiana języka opisu
+
+- ⚡ Po zmianie języka opisu w HACS najpierw przemalowują się obrazki widoczne na ekranie, kilka naraz – strona nie zostaje pusta
+
 ## v1.4.33 – Linki w HA bez odświeżania, nowy baner
 
 - 🔗 W opisie w HACS linki spisu treści, języków i przycisków My Home Assistant wskazują teraz adresy Twojego HA (także po najechaniu myszą). „Otwórz w HACS” otwiera stronę integracji w HACS

@@ -157,12 +157,23 @@
   let ostatnie = "";   // ostatnie kolory (główny + akcent) – do natychmiastowej podmiany przy rysowaniu
   try { ostatnie = localStorage.getItem("okno-ha-kolory") || ""; } catch (e) { /* tryb prywatny */ }
   const akcentDla = (adres, akc) => (/\/(kolory|ramy|oslony)-/.test(adres) ? "" : akc);   // próbki kolorów i oklein bez akcentu
+  // kolejka: kilka obrazków naraz, najpierw te na ekranie (np. zaraz po zmianie języka opisu)
   let wToku = 0; const czeka = [];
-  const kolejka = (f) => new Promise((ok, zle) => {
-    const start = () => { wToku++; f().then(ok, zle).finally(() => { wToku--; const n = czeka.shift(); if (n) n(); }); };
-    if (wToku < 2) start(); else czeka.push(start);
+  const NARAZ = Math.min(6, Math.max(2, (navigator.hardwareConcurrency || 4) - 1));
+  const kolejka = (f, waga) => new Promise((ok, zle) => {
+    const start = () => {
+      wToku++;
+      f().then(ok, zle).finally(() => {
+        wToku--;
+        if (!czeka.length) return;
+        let i = 0;
+        czeka.forEach((z, k) => { if (z.waga() < czeka[i].waga()) i = k; });
+        czeka.splice(i, 1)[0].start();
+      });
+    };
+    if (wToku < NARAZ) start(); else czeka.push({ start, waga });
   });
-  const policz = (adres, kol, akc) => kolejka(() => liczTeraz(adres, kol, akc));
+  const policz = (adres, kol, akc, waga = () => 1e9) => kolejka(() => liczTeraz(adres, kol, akc), waga);
   const liczTeraz = (adres, kol, akc) => {
     const K = rgbZ(kol), A = akc ? rgbZ(akc) : null, ciemny = kol[7] === "d";
     return /\.svg/i.test(adres)
@@ -186,7 +197,7 @@
       : wczytaj(adres).then((i) => new Promise((ok, zle) => plotno(i, K, A).toBlob((b) => (b ? ok(b) : zle()))));
   };
   const odswiezone = new Set();
-  const przemalujPlik = (adres, kol, akcG) => {
+  const przemalujPlik = (adres, kol, akcG, waga) => {
     const akc = akcentDla(adres, akcG), klucz = adres + "|" + kol + "|" + akcG, kolory = "|" + kol + "|" + akcG;
     if (gotowe.has(klucz)) {
       // z pamięci: od razu; w tle sprawdź raz, czy obrazek na GitHubie się nie zmienił
@@ -197,7 +208,7 @@
       return gotowe.get(klucz);
     }
     odswiezone.add(klucz);
-    const zadanie = policz(adres, kol, akc).then((b) => { zapisz(klucz, b, kolory); const u = URL.createObjectURL(b); gotoweTeraz.set(klucz, u); return u; });
+    const zadanie = policz(adres, kol, akc, waga).then((b) => { zapisz(klucz, b, kolory); const u = URL.createObjectURL(b); gotoweTeraz.set(klucz, u); return u; });
     gotowe.set(klucz, zadanie);
     zadanie.catch(() => gotowe.delete(klucz));   // nie wyszło (sieć, restart HA) – następne skanowanie spróbuje jeszcze raz
     return zadanie;
@@ -259,7 +270,10 @@
     const znak = kol + "|" + akcG;
     if (el.dataset.oknoKol === znak) return;
     el.dataset.oknoKol = znak; el.dataset.oknoOrg = org;
-    przemalujPlik(org, kol, akcG).then(
+    // odległość od ekranu – im bliżej, tym wcześniej (liczona przy wyborze następnego obrazka)
+    const waga = () => { const p = el.isConnected ? el.getBoundingClientRect() : null, h = el.ownerDocument.defaultView.innerHeight || 800;
+      return !p ? 1e8 : p.bottom < 0 ? -p.bottom + h : p.top > h ? p.top : 0; };
+    przemalujPlik(org, kol, akcG, waga).then(
       (u) => { if (el.dataset.oknoKol === znak) el.setAttribute("src", u); },
       () => { pokaz(el); if (el.dataset.oknoKol === znak) delete el.dataset.oknoKol; });   // spróbuj ponownie przy następnym skanowaniu
   };
