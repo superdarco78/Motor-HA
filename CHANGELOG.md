@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.2 – Bez dodatkowej pozycji w menu bocznym
+
+- 🧹 Kreator okna nie dodaje już pozycji „Okno HA” w menu bocznym
+- ⚙️ Na stronie urządzenia okna jest link **Ustawienia okna**. Otwiera kreator z 7 kółkami dla tego okna. „Konfiguruj” → kreator z kółkami działa jak dotąd
+- 🎴 Karta Okno HA na panelu potrzebuje tylko wybrania okna. Wszystkie ustawienia bierze z integracji
+
 ## v1.4.1 – Aktualizacja nie czeka na chmurę
 
 - ⏱️ Z włączoną kopią zapasową aktualizacja czeka najwyżej 4 minuty. Kopia na dysku jest wtedy gotowa, a wysyłanie jej do chmury (OneDrive, Nabu Casa) kończy się w tle. Wcześniej pasek mógł stać bardzo długo

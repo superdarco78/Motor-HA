@@ -30,8 +30,8 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     # panel „🪟 Okno HA” w menu bocznym: kreator z kółkami i obrazkami, ten sam co w karcie
     await panel_custom.async_register_panel(
         hass, frontend_url_path="okno-ha", webcomponent_name="okno-ha-panel",
-        module_url=f"/{DOMAIN}/okno-ha-panel.js?v={VERSION}", sidebar_title="Okno HA",
-        sidebar_icon="mdi:window-shutter-cog", require_admin=True)
+        module_url=f"/{DOMAIN}/okno-ha-panel.js?v={VERSION}", require_admin=True)
+    # bez wpisu w menu bocznym – kreator otwiera się z urządzenia okna („Ustawienia okna”) i z „Konfiguruj”
     return True
 
 

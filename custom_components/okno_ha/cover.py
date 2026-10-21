@@ -131,7 +131,8 @@ class OknoCover(CoverEntity):
                                    else CoverDeviceClass.BLIND if oslona in ("zaluzja", "drewniana") else CoverDeviceClass.SHADE)
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)}, name=f"Okno {entry.title}",
-            manufacturer="Okno HA", model=oslona, sw_version=VERSION)
+            manufacturer="Okno HA", model=oslona, sw_version=VERSION,
+            configuration_url=f"homeassistant://okno-ha?okno={entry.entry_id}")
         # „karta” = ustawienia z edytora karty (kółka i obrazki); mają pierwszeństwo przed zwykłymi polami
         self._karta = {**ustawienia_karty(entry.title, o), **(o.get("karta") or {})}
 
