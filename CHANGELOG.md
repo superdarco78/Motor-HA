@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.44 – Jedna karta Motor HA w „Dodaj do panelu”
+
+- 🪟 Po każdej aktualizacji karta jest zawsze z tej samej wersji co integracja. Wcześniej mogła zostać stara karta („Okno HA v32”) i stary edytor
+- 🔎 W „Dodaj do panelu” → „Według karty” jedna pozycja „Motor HA” (bez podwójnej)
+- 🪄 Nowa karta otwiera kreator w 7 krokach, ten sam co w integracji
+
 ## v1.4.43 – 14 języków
 
 - 🌍 Karta, kreator, panel i okna integracji mówią językiem z Twojego profilu HA: polski, angielski, niemiecki, francuski, hiszpański, włoski, niderlandzki, czeski, słowacki, ukraiński, rosyjski, portugalski, chiński (uproszczony) i japoński. Inne języki – po angielsku. Tłumaczenia są maszynowe – poprawki mile widziane

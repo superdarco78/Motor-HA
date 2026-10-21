@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 DOMAIN = "okno_ha"
-VERSION = "1.4.43"
+VERSION = "1.4.44"
 OKNA = f"{DOMAIN}_okna"   # hass.data: entry_id → encja okna (dla przycisku „Kalibruj”)
-KARTA_WERSJA = "v37"
-KARTA_OBRAZKI = "297fd2cfd5e4ae27e149c3de5d50888239aee024"
+KARTA_WERSJA = "v38"
+KARTA_OBRAZKI = "5645f6c272f6fb13fc7740a299b9a64cd7515f2e"
 
 # Karta Motor HA wbudowana w integrację (www/) – kopiowana do /config/.okno_ha i stamtąd ładowana
 KARTA_PLIK = "okno-ha.js"

@@ -79,10 +79,11 @@ class Nowosci:
             www.mkdir(exist_ok=True)
             shutil.copyfile(self.katalog / LOADER, www / LOADER)
 
-        nadpisz = numer(zapisana) < numer(KARTA_WERSJA)
-        await self.hass.async_add_executor_job(_kopiuj, nadpisz)
-        self.karta_wersja = KARTA_WERSJA if nadpisz else zapisana
-        if nadpisz:
+        # 1.4.44: karta zawsze z tej wersji integracji (jedna aktualizacja „2 w 1”) – wcześniej stary plik
+        # mógł zostać, gdy numer karty się nie zmienił, i w „Dodaj do panelu” była stara karta
+        await self.hass.async_add_executor_job(_kopiuj, True)
+        self.karta_wersja = KARTA_WERSJA
+        if zapisana != KARTA_WERSJA:
             await self._store.async_save({"wersja": KARTA_WERSJA})
 
     async def async_usun_wszystko(self) -> None:
