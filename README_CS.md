@@ -40,14 +40,14 @@
 > ℹ️ Funguje s každým motorem rolet v Home Assistantu (`cover.*`): Zigbee, Z-Wave, Tuya, Shelly, Somfy a další. Okna s jedním nebo dvěma křídly.
 
 <p align="center">
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-1.svg" alt="Počasí"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-2.svg" alt="Ovládání prstem"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-3.svg" alt="Průvodce"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-4.svg" alt="Senzor okna"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-5.svg" alt="Rychlost motoru"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-6.svg" alt="Barvy"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-7.svg" alt="Světlý a tmavý"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-cs-8.svg" alt="Polština a angličtina"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-1.svg" alt="Počasí"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-2.svg" alt="Ovládání prstem"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-3.svg" alt="Průvodce"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-4.svg" alt="Senzor okna"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-5.svg" alt="Rychlost motoru"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-6.svg" alt="Barvy"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-7.svg" alt="Světlý a tmavý"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-cs-8.svg" alt="Polština a angličtina"></a>
 </p>
 
 <a name="dlaczego"></a>

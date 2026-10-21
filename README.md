@@ -40,14 +40,14 @@
 > ℹ️ Działa z każdym silnikiem rolet w Home Assistant (`cover.*`): Zigbee, Z-Wave, Tuya, Shelly, Somfy i inne. Okno z jednym albo dwoma skrzydłami.
 
 <p align="center">
-<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-1.svg" alt="Pogoda"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-2.svg" alt="Sterowanie palcem"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-3.svg" alt="Kreator"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-4.svg" alt="Czujnik okna"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-5.svg" alt="Prędkość silnika"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-6.svg" alt="Kolory"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-7.svg" alt="Jasny i ciemny"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-pl-8.svg" alt="Polski i angielski"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-1.svg" alt="Pogoda"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-2.svg" alt="Sterowanie palcem"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-3.svg" alt="Kreator"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-4.svg" alt="Czujnik okna"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-5.svg" alt="Prędkość silnika"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-6.svg" alt="Kolory"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-7.svg" alt="Jasny i ciemny"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-pl-8.svg" alt="Polski i angielski"></a>
 </p>
 
 <a name="dlaczego"></a>

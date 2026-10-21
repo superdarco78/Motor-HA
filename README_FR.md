@@ -40,14 +40,14 @@
 > ℹ️ Fonctionne avec tout moteur de store dans Home Assistant (`cover.*`) : Zigbee, Z-Wave, Tuya, Shelly, Somfy et d’autres. Fenêtres à un ou deux vantaux.
 
 <p align="center">
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-1.svg" alt="Météo"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-2.svg" alt="Pilotage au doigt"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-3.svg" alt="Assistant"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-4.svg" alt="Capteur de fenêtre"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-5.svg" alt="Vitesse du moteur"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-6.svg" alt="Couleurs"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-7.svg" alt="Clair et sombre"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-fr-8.svg" alt="Polonais et anglais"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-1.svg" alt="Météo"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-2.svg" alt="Pilotage au doigt"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-3.svg" alt="Assistant"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-4.svg" alt="Capteur de fenêtre"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-5.svg" alt="Vitesse du moteur"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-6.svg" alt="Couleurs"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-7.svg" alt="Clair et sombre"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-fr-8.svg" alt="Polonais et anglais"></a>
 </p>
 
 <a name="dlaczego"></a>

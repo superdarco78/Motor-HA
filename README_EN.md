@@ -40,14 +40,14 @@
 > ℹ️ Works with every shade motor in Home Assistant (`cover.*`): Zigbee, Z-Wave, Tuya, Shelly, Somfy and more. Windows with one or two sashes.
 
 <p align="center">
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-1.svg" alt="Weather"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-2.svg" alt="Touch control"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-3.svg" alt="Wizard"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-4.svg" alt="Window sensor"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-5.svg" alt="Motor speed"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-6.svg" alt="Colours"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-7.svg" alt="Light and dark"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki3-en-8.svg" alt="Polish and English"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-1.svg" alt="Weather"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-2.svg" alt="Touch control"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-3.svg" alt="Wizard"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-4.svg" alt="Window sensor"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-5.svg" alt="Motor speed"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-6.svg" alt="Colours"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-7.svg" alt="Light and dark"></a>
+<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki4-en-8.svg" alt="Polish and English"></a>
 </p>
 
 <a name="dlaczego"></a>
