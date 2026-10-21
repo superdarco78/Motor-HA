@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "🪟 HA Window – step 1 of 5: shade",
+        "title": "HA Window – step 1 of 5: shade",
         "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.\n\n🪄 Prefer the wizard with circles and pictures, like in the card? **[Open the wizard with circles](/okno-ha)**",
         "data": {
           "name": "Window name",
@@ -14,7 +14,7 @@
         }
       },
       "okno": {
-        "title": "🪟 Step 2 of 5: window and sensors",
+        "title": "Step 2 of 5: window and sensors",
         "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
         "data": {
           "skrzydla": "Number of sashes",
@@ -95,7 +95,7 @@
   "options": {
     "step": {
       "user": {
-        "title": "🪟 HA Window – step 1 of 5: shade",
+        "title": "HA Window – step 1 of 5: shade",
         "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
         "data": {
           "name": "Window name",
@@ -107,7 +107,7 @@
         }
       },
       "okno": {
-        "title": "🪟 Step 2 of 5: window and sensors",
+        "title": "Step 2 of 5: window and sensors",
         "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
         "data": {
           "skrzydla": "Number of sashes",
@@ -179,7 +179,7 @@
         }
       },
       "init": {
-        "title": "🪟 What do you want to change?",
+        "title": "What do you want to change?",
         "description": "Pick how you want to set up this window.",
         "menu_options": {
           "obrazki": "🪄 Wizard with circles and pictures (like the card)",
@@ -201,7 +201,7 @@
         "pelna": "🧵 Fabric roller",
         "plisa": "🪗 Pleated",
         "rzymska": "🏛️ Roman",
-        "zaluzja": "🪟 Aluminium venetian",
+        "zaluzja": "🎚️ Aluminium venetian",
         "zewnetrzna": "🏠 Top-mounted shutter",
         "zaciemniajaca": "🌑 Blackout",
         "plaster": "🐝 Honeycomb",
@@ -303,7 +303,7 @@
   },
   "issues": {
     "restart": {
-      "title": "🪟 HA Window {wersja} downloaded – restart HA",
+      "title": "HA Window {wersja} downloaded – restart HA",
       "fix_flow": {
         "step": {
           "confirm": {

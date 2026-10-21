@@ -64,7 +64,7 @@ async def async_dodaj_karte(hass: HomeAssistant, klucz: str, entity_id: str) -> 
         sekcje = widok.setdefault("sections", [])
         sekcja = next((s for s in sekcje if _ma_karte(s)), None)
         if sekcja is None:
-            sekcja = {"type": "grid", "cards": [{"type": "heading", "heading": "🪟 Okna"}]}
+            sekcja = {"type": "grid", "cards": [{"type": "heading", "heading": "Okna", "icon": "mdi:window-shutter"}]}
             sekcje.append(sekcja)
         sekcja.setdefault("cards", []).append(karta)
     else:

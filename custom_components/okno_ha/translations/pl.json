@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "🪟 Okno HA – krok 1 z 5: roleta",
+        "title": "Okno HA – krok 1 z 5: roleta",
         "description": "![]({obrazki}/kreator-pasek-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.\n\n🪄 Wolisz kreator z kółkami i obrazkami, taki jak w karcie? **[Otwórz kreator z kółkami](/okno-ha)**",
         "data": {
           "name": "Nazwa okna",
@@ -14,7 +14,7 @@
         }
       },
       "okno": {
-        "title": "🪟 Krok 2 z 5: okno i czujniki",
+        "title": "Krok 2 z 5: okno i czujniki",
         "description": "![]({obrazki}/kreator-pasek-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
         "data": {
           "skrzydla": "Liczba skrzydeł",
@@ -95,7 +95,7 @@
   "options": {
     "step": {
       "user": {
-        "title": "🪟 Okno HA – krok 1 z 5: roleta",
+        "title": "Okno HA – krok 1 z 5: roleta",
         "description": "![]({obrazki}/kreator-pasek-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
         "data": {
           "name": "Nazwa okna",
@@ -107,7 +107,7 @@
         }
       },
       "okno": {
-        "title": "🪟 Krok 2 z 5: okno i czujniki",
+        "title": "Krok 2 z 5: okno i czujniki",
         "description": "![]({obrazki}/kreator-pasek-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
         "data": {
           "skrzydla": "Liczba skrzydeł",
@@ -179,7 +179,7 @@
         }
       },
       "init": {
-        "title": "🪟 Co chcesz zmienić?",
+        "title": "Co chcesz zmienić?",
         "description": "Wybierz, jak chcesz ustawić to okno.",
         "menu_options": {
           "obrazki": "🪄 Kreator z kółkami i obrazkami (jak w karcie)",
@@ -201,7 +201,7 @@
         "pelna": "🧵 Materiałowa",
         "plisa": "🪗 Plisa",
         "rzymska": "🏛️ Rzymska",
-        "zaluzja": "🪟 Żaluzja aluminiowa",
+        "zaluzja": "🎚️ Żaluzja aluminiowa",
         "zewnetrzna": "🏠 Roleta nadstawna",
         "zaciemniajaca": "🌑 Zaciemniająca",
         "plaster": "🐝 Plaster miodu",
@@ -303,7 +303,7 @@
   },
   "issues": {
     "restart": {
-      "title": "🪟 Okno HA {wersja} pobrane – uruchom ponownie HA",
+      "title": "Okno HA {wersja} pobrane – uruchom ponownie HA",
       "fix_flow": {
         "step": {
           "confirm": {

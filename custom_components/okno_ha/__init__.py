@@ -34,7 +34,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     nowosci.async_start()
     async_rejestruj(hass)
     async_logo_w_hacs(hass)   # logo Okna HA w okienku „Update” od HACS
-    # strona „🪟 Okno HA”: kreator z kółkami i obrazkami, ten sam co w karcie
+    # strona „Okno HA”: kreator z kółkami i obrazkami, ten sam co w karcie
     await panel_custom.async_register_panel(
         hass, frontend_url_path="okno-ha", webcomponent_name="okno-ha-panel",
         module_url=f"/{DOMAIN}/okno-ha-panel.js?v={VERSION}", require_admin=True)
