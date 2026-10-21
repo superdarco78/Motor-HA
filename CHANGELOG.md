@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.27 – Nowy wygląd opisu
+
+- 🎨 Opis w HACS w jednym spokojnym stylu jak kafelki: ciemne tła w ciemnym motywie, delikatne ramki, wszystko w kolorach z Twojego profilu
+- 🔘 Własny przycisk „Otwórz w HACS” w Twoim kolorze zamiast niebieskiego przycisku My Home Assistant
+- 🌐 Pasek języków: wybrany w kolorze akcentu, pozostałe w kolorach motywu
+- 🖼️ Nowy baner, galeria osłon, „Przed i po” i makiety kroków – zdjęcia i próbki kolorów bez zmian, przyciski i ramki w Twoich kolorach
+
 ## v1.4.26 – Wszystkie obrazki opisu w Twoich kolorach, za każdym razem
 
 - 🎨 Każdy obrazek opisu w HACS przemalowuje się na kolory z Twojego profilu, także przy wielu obrazkach naraz (wcześniej pojedyncze kafelki czasem zostawały niebieskie)
