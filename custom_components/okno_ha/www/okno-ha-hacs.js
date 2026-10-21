@@ -77,12 +77,15 @@
         const x = c.getContext("2d"); x.drawImage(i, 0, 0, c.width, c.height);
         const d = x.getImageData(0, 0, c.width, c.height), p = d.data;
         // piksel = a·niebieski HA + w·biały/szary (wygładzanie, jasne tła, ciemny motyw) → a·kolor motywu + w
-        const B = [3, 169, 244], K = [1, 3, 5].map((k) => parseInt(kol.slice(k, k + 2), 16));
-        const bb = B[0] * B[0] + B[1] * B[1] + B[2] * B[2], b1 = B[0] + B[1] + B[2], wyz = bb * 3 - b1 * b1;
+        // dwa niebieskie HA: obecny domyślny #009ac7 i dawny #03a9f4 (starsze obrazki)
+        const K = [1, 3, 5].map((k) => parseInt(kol.slice(k, k + 2), 16));
+        const baza = (B) => { const bb = B[0] * B[0] + B[1] * B[1] + B[2] * B[2], b1 = B[0] + B[1] + B[2]; return { B, bb, b1, wyz: bb * 3 - b1 * b1 }; };
+        const NOWY = baza([0, 154, 199]), DAWNY = baza([3, 169, 244]);
         for (let k = 0; k < p.length; k += 4) {
           if (!p[k + 3]) continue;
           const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
-          if (h < 194 || h > 204 || s < 0.05 || v < 0.15) continue;   // tylko odcienie niebieskiego HA (#03a9f4, #41bdf5, #0288d1, jasne tła)
+          if (h < 188 || h > 205 || s < 0.05 || v < 0.15) continue;   // tylko odcienie niebieskiego HA i ich jasne tła
+          const { B, bb, b1, wyz } = h < 196.5 ? NOWY : DAWNY;
           const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
           const a = (3 * bp - b1 * sp) / wyz, w = (bb * sp - b1 * bp) / wyz;
           for (let c = 0; c < 3; c++) p[k + c] = Math.max(0, Math.min(255, Math.round(a * K[c] + w)));
@@ -99,10 +102,7 @@
     const org = el.dataset.oknoOrg || el.getAttribute("src") || "";
     if (!NASZE.test(org) || POMIN.test(org)) return;
     const kol = kolorMotywu(el);
-    if (!kol || kol === "#03a9f4" || kol === "#41bdf5") {   // domyślny niebieski: oryginał
-      if (el.dataset.oknoOrg && el.getAttribute("src") !== org) { el.setAttribute("src", org); delete el.dataset.oknoKol; }
-      return;
-    }
+    if (!kol) return;
     if (el.dataset.oknoKol === kol) return;
     el.dataset.oknoKol = kol; el.dataset.oknoOrg = org;
     przemalujPlik(org, kol).then((u) => { if (el.dataset.oknoKol === kol) el.setAttribute("src", u); }, () => {});
