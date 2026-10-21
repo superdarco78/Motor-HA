@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.46 – Edytor karty = kreator, nowy wygląd
+
+- 🪄 Edytor karty („Dodaj do panelu” i ✏️) zaczyna zawsze od kreatora w 7 krokach – tego samego co „Dodaj okno” w integracji. Po „Gotowe” albo ✕ – wszystkie ustawienia
+- 🎨 Edytor i kreator w stylu kafelków z opisu: tło w kolorze motywu, zaokrąglona ramka, cień; zaznaczone rzeczy w kolorze akcentu
+- 📖 Opis: spis treści w 3 kolumnach, większe litery
+
 ## v1.4.45 – Poprawki opisu
 
 - 🎨 Opis: ikony w „Jak sterować” naprawione, ikony nagłówków w kolorach motywu, spis treści obok siebie, pasek kroków mieści się na szerokość
