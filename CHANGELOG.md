@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.2.1 – Okno aktualizacji jak w dodatkach HA
+
+- 📊 W oknie aktualizacji widać „Zainstalowana wersja” i „Ostatnia wersja”, opis zmian, pasek postępu i kręcące się kółko na przycisku
+- 💾 Opcja **Utwórz kopię zapasową** przed instalacją
+- ✅ Po instalacji obie wersje są takie same, a przycisk znika. Strona z kartą sama przeładowuje się na nową wersję
+
 ## v1.2.0 – Aktualizacje w Ustawieniach, jednym kliknięciem
 
 - 🔔 Nowe urządzenie **Okno HA** z dwiema aktualizacjami: karta i integracja. Nowa wersja pokazuje się sama w **Ustawienia → Aktualizacje** najpóźniej po 2 minutach od wydania

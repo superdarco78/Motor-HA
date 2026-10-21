@@ -27,7 +27,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 class _Aktualizacja(UpdateEntity):
     _attr_has_entity_name = True
     _attr_should_poll = False
-    _attr_supported_features = UpdateEntityFeature.INSTALL | UpdateEntityFeature.RELEASE_NOTES | UpdateEntityFeature.PROGRESS
+    _attr_supported_features = (UpdateEntityFeature.INSTALL | UpdateEntityFeature.RELEASE_NOTES
+                                 | UpdateEntityFeature.PROGRESS | UpdateEntityFeature.BACKUP)
     repo: str
 
     def __init__(self, nowosci: Nowosci) -> None:
@@ -62,6 +63,16 @@ class _Aktualizacja(UpdateEntity):
     async def async_release_notes(self) -> str | None:
         return self._wydanie.get("opis")
 
+    def _postep(self, procent: int | None) -> None:
+        self._attr_in_progress = procent is not None
+        self._attr_update_percentage = procent
+        self.async_write_ha_state()
+
+    async def _kopia(self, backup: bool) -> None:
+        """„Utwórz kopię zapasową” w oknie aktualizacji – kopia HA przed instalacją."""
+        if backup and self.hass.services.has_service("backup", "create_automatic"):
+            await self.hass.services.async_call("backup", "create_automatic", blocking=True)
+
 
 class AktualizacjaKarty(_Aktualizacja):
     repo = REPO_KARTA
@@ -72,13 +83,13 @@ class AktualizacjaKarty(_Aktualizacja):
         return self._n.karta_wersja
 
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
-        self._attr_in_progress = True
-        self.async_write_ha_state()
+        self._postep(0)
         try:
+            await self._kopia(backup)
+            self._postep(40)
             await self._n.async_zainstaluj_karte(version or self.latest_version)
         finally:
-            self._attr_in_progress = False
-            self.async_write_ha_state()
+            self._postep(None)
 
 
 class AktualizacjaIntegracji(_Aktualizacja):
@@ -95,9 +106,10 @@ class AktualizacjaIntegracji(_Aktualizacja):
 
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
         wersja = version or self.latest_version
-        self._attr_in_progress = True
-        self.async_write_ha_state()
+        self._postep(0)
         try:
+            await self._kopia(backup)
+            self._postep(40)
             hacs = next((s.entity_id for s in self.hass.states.async_all("update")
                          if REPO_INTEGRACJA in str(s.attributes.get("release_url", ""))
                          and s.entity_id != self.entity_id), None)
@@ -112,5 +124,4 @@ class AktualizacjaIntegracji(_Aktualizacja):
                 "[Uruchom ponownie](https://my.home-assistant.io/redirect/server_controls/)",
                 title="🪟 Okno HA – potrzebny restart", notification_id=f"{DOMAIN}_restart")
         finally:
-            self._attr_in_progress = False
-            self.async_write_ha_state()
+            self._postep(None)
