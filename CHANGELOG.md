@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.1 – Aktualizacja nie czeka na chmurę
+
+- ⏱️ Z włączoną kopią zapasową aktualizacja czeka najwyżej 4 minuty. Kopia na dysku jest wtedy gotowa, a wysyłanie jej do chmury (OneDrive, Nabu Casa) kończy się w tle. Wcześniej pasek mógł stać bardzo długo
+
 ## v1.4.0 – Kreator z kółkami jak w karcie
 
 - 🪟 Nowy panel **Okno HA** w menu bocznym. Są w nim wszystkie okna jako żywe karty, a „Dodaj okno” i „Zmień” otwierają ten sam kreator z 7 kółkami co w karcie

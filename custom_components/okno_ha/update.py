@@ -25,6 +25,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     async_add_entities([AktualizacjaKarty(nowosci), AktualizacjaIntegracji(nowosci)])
 
 
+KOPIA_MAKS = 240   # s czekania na kopię zapasową przed instalacją
+
+
 class _Aktualizacja(UpdateEntity):
     _attr_has_entity_name = True
     _attr_should_poll = False
@@ -79,11 +82,15 @@ class _Aktualizacja(UpdateEntity):
             return
         zadanie = self.hass.async_create_task(
             self.hass.services.async_call("backup", "create_automatic", blocking=True))
-        procent = 1
+        procent, start = 1, self.hass.loop.time()
         while not zadanie.done():
             self._postep(procent)
             await asyncio.wait({zadanie}, timeout=4)
             procent = min(procent + 1, 35)
+            # kopia jest już na dysku po 2–3 min; wysyłanie do chmury (OneDrive, Nabu) trwa nawet godzinę –
+            # nie czekamy na nie, kopia dokończy się sama w tle
+            if self.hass.loop.time() - start > KOPIA_MAKS:
+                return
         await zadanie
 
 
