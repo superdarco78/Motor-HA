@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.47 – Czytelniej
+
+- 🔤 „Co:” i „Po co:” w kreatorze w kolorze akcentu, opis jaśniejszy; większe małe napisy i ikony w karcie, edytorze i kreatorze
+- 📖 Opis: nazwa Motor HA na wszystkich zrzutach, przyciski w stylu kafelków, większe podpisy pod obrazkami
+
 ## v1.4.46 – Edytor karty = kreator, nowy wygląd
 
 - 🪄 Edytor karty („Dodaj do panelu” i ✏️) zaczyna zawsze od kreatora w 7 krokach – tego samego co „Dodaj okno” w integracji. Po „Gotowe” albo ✕ – wszystkie ustawienia
