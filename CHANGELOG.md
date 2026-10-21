@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.28 – Aktualizacje pojawiają się same
+
+- 🔔 Nowa wersja Okna HA pokazuje się w Ustawieniach → Aktualizacje po kilku minutach, bez klikania „Aktualizuj informacje” w HACS (HACS sam sprawdza tylko co 48 godzin). Okno HA prosi HACS o odświeżenie tylko swojego repozytorium, raz na każde nowe wydanie. Dalej jedna pozycja w Aktualizacjach
+
 ## v1.4.27 – Nowy wygląd opisu
 
 - 🎨 Opis w HACS w jednym spokojnym stylu jak kafelki: ciemne tła w ciemnym motywie, delikatne ramki, wszystko w kolorach z Twojego profilu

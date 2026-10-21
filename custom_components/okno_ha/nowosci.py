@@ -146,6 +146,29 @@ class Nowosci:
                 zmiana = True
         if zmiana:
             self._powiadom()
+            await self._odswiez_hacs()
+
+    async def _odswiez_hacs(self) -> None:
+        """Nowe wydanie na GitHubie, a HACS (sam sprawdza co 48 h) go nie zna → HACS odświeża tylko Okno HA.
+
+        To samo, co przycisk „Aktualizuj informacje” w HACS – raz na każde nowe wydanie.
+        """
+        nowa = self.wydania.get(REPO_INTEGRACJA, {}).get("wersja")
+        hacs = self.hass.data.get("hacs")
+        if not nowa or hacs is None or nowa == getattr(self, "_hacs_odswiezone", None):
+            return
+        try:
+            repo = hacs.repositories.get_by_full_name(f"{WLASCICIEL}/{REPO_INTEGRACJA}")
+            if repo is None or repo.display_available_version == nowa:
+                return
+            self._hacs_odswiezone = nowa
+            await repo.update_repository(ignore_issues=True, force=True)
+            await hacs.data.async_write()
+            if (k := hacs.coordinators.get(repo.data.category)) is not None:
+                k.async_update_listeners()
+            _LOGGER.info("Okno HA: HACS zna już wydanie %s", nowa)
+        except Exception as err:  # noqa: BLE001 – inna wersja HACS: zostaje jego własne sprawdzanie
+            _LOGGER.debug("Okno HA: nie odświeżyłem HACS: %s", err)
 
     @callback
     def async_start(self) -> None:
