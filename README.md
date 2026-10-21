@@ -23,6 +23,9 @@
 <p align="center">
   <a href="https://github.com/superdarco78/okno-ha-integracja"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/pl-on.png" alt="Polski" height="44"></a>
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/en.png" alt="English" height="44"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/de.png" alt="Deutsch" height="44"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/fr.png" alt="Français" height="44"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/cs.png" alt="Čeština" height="44"></a>
 </p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/hero2/baner-pl.png" width="100%" alt="Okno HA"></p>
