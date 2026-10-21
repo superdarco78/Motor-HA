@@ -3,11 +3,11 @@
   "name": "Okno HA",
   "codeowners": ["@superdarco78"],
   "config_flow": true,
-  "dependencies": ["http", "frontend", "panel_custom", "websocket_api"],
+  "dependencies": ["http", "frontend", "panel_custom", "repairs", "websocket_api"],
   "documentation": "https://github.com/superdarco78/okno-ha-integracja#readme",
   "integration_type": "device",
   "iot_class": "calculated",
   "issue_tracker": "https://github.com/superdarco78/okno-ha-integracja/issues",
   "requirements": [],
-  "version": "1.4.3"
+  "version": "1.4.4"
 }

@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.4 – Szybka aktualizacja i duży podgląd
+
+- ⚡ Aktualizacja Okna HA nie ma już przełącznika „Utwórz kopię zapasową”. Okno HA podmienia tylko swoje pliki, więc instaluje się od razu
+- 🔁 Po pobraniu nowej wersji integracji w Ustawieniach pojawia się po polsku „Okno HA pobrane – uruchom ponownie HA” z przyciskiem **Napraw**, który robi restart
+- 🖥️ Karta Okno HA v32 w środku: edytor na szerokim ekranie ma dwie kolumny z dużym, przyklejonym podglądem, a kółka kolorów pokazują prawdziwe kolory, bez suwaka
+
 ## v1.4.3 – Karta sama na panelu
 
 - 📋 Ostatni krok kreatora „Dodaj integrację” ma pole **Dodaj kartę okna na panel**. Karta okna sama pojawia się na wybranym panelu, w sekcji „🪟 Okna”, z wszystkimi ustawieniami z kreatora. Podpowiada panel, na którym już są okna

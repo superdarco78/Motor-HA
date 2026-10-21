@@ -284,5 +284,18 @@
         "name": "Kalibruj"
       }
     }
+  },
+  "issues": {
+    "restart": {
+      "title": "🪟 Okno HA {wersja} pobrane – uruchom ponownie HA",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Uruchomić ponownie Home Assistanta?",
+            "description": "Nowa wersja Okna HA ({wersja}) jest już pobrana. Kliknij „Zatwierdź”, a Home Assistant uruchomi się ponownie (około minuty) i nowa wersja zacznie działać."
+          }
+        }
+      }
+    }
   }
 }

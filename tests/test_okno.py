@@ -193,3 +193,24 @@ async def test_edytor_karty_zapisuje_w_urzadzeniu(hass, hass_ws_client):
     await ws.send_json({"id": 3, "type": "okno_ha/lista"})
     r = await ws.receive_json()
     assert r["result"][0]["entity_id"] == okno
+
+
+async def test_napraw_restart(hass: HomeAssistant) -> None:
+    """„Napraw” po aktualizacji integracji uruchamia ponownie HA."""
+    from homeassistant.helpers import issue_registry as ir
+    from custom_components.okno_ha.repairs import RESTART, async_create_fix_flow
+
+    assert await async_setup_component(hass, "repairs", {})
+    ir.async_create_issue(hass, DOMAIN, RESTART, is_fixable=True, severity=ir.IssueSeverity.WARNING,
+                          translation_key=RESTART, translation_placeholders={"wersja": "v9.9.9"})
+    wywolania = async_mock_service(hass, "homeassistant", "restart")
+    flow = await async_create_fix_flow(hass, RESTART, None)
+    flow.hass = hass
+    flow.issue_id = RESTART
+    flow.handler = DOMAIN
+    wynik = await flow.async_step_init()
+    assert wynik["step_id"] == "confirm"
+    wynik = await flow.async_step_confirm({})
+    assert wynik["type"] == "create_entry"
+    await hass.async_block_till_done()
+    assert len(wywolania) == 1

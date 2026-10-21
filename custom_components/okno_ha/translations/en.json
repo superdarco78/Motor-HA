@@ -284,5 +284,18 @@
         "name": "Calibrate"
       }
     }
+  },
+  "issues": {
+    "restart": {
+      "title": "🪟 HA Window {wersja} downloaded – restart HA",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Restart Home Assistant?",
+            "description": "The new HA Window version ({wersja}) is downloaded. Click “Submit” and Home Assistant restarts (about a minute), then the new version runs."
+          }
+        }
+      }
+    }
   }
 }

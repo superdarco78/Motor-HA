@@ -2,17 +2,17 @@
 
 from __future__ import annotations
 
-import asyncio
 from typing import Any
 
-from homeassistant.components import persistent_notification
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
+from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DOMAIN, VERSION
+from .repairs import RESTART
 from .nowosci import REPO_INTEGRACJA, REPO_KARTA, WLASCICIEL, Nowosci, numer
 
 
@@ -25,15 +25,13 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     async_add_entities([AktualizacjaKarty(nowosci), AktualizacjaIntegracji(nowosci)])
 
 
-KOPIA_MAKS = 240   # s czekania na kopię zapasową przed instalacją
-
-
 class _Aktualizacja(UpdateEntity):
     _attr_has_entity_name = True
     _attr_should_poll = False
     _attr_entity_picture = f"/{DOMAIN}/ikona.png"
+    # bez „Utwórz kopię zapasową” – Okno HA podmienia tylko swoje pliki, aktualizacja trwa kilka sekund
     _attr_supported_features = (UpdateEntityFeature.INSTALL | UpdateEntityFeature.RELEASE_NOTES
-                                 | UpdateEntityFeature.PROGRESS | UpdateEntityFeature.BACKUP)
+                                 | UpdateEntityFeature.PROGRESS)
     repo: str
 
     def __init__(self, nowosci: Nowosci) -> None:
@@ -73,26 +71,6 @@ class _Aktualizacja(UpdateEntity):
         self._attr_update_percentage = procent
         self.async_write_ha_state()
 
-    async def _kopia(self, backup: bool) -> None:
-        """„Utwórz kopię zapasową” w oknie aktualizacji – kopia HA przed instalacją.
-
-        Kopia całego HA trwa kilka minut, a HA nie mówi, ile już zrobił – pasek idzie powoli do 35%,
-        żeby było widać, że coś się dzieje."""
-        if not (backup and self.hass.services.has_service("backup", "create_automatic")):
-            return
-        zadanie = self.hass.async_create_task(
-            self.hass.services.async_call("backup", "create_automatic", blocking=True))
-        procent, start = 1, self.hass.loop.time()
-        while not zadanie.done():
-            self._postep(procent)
-            await asyncio.wait({zadanie}, timeout=4)
-            procent = min(procent + 1, 35)
-            # kopia jest już na dysku po 2–3 min; wysyłanie do chmury (OneDrive, Nabu) trwa nawet godzinę –
-            # nie czekamy na nie, kopia dokończy się sama w tle
-            if self.hass.loop.time() - start > KOPIA_MAKS:
-                return
-        await zadanie
-
 
 class AktualizacjaKarty(_Aktualizacja):
     repo = REPO_KARTA
@@ -105,7 +83,6 @@ class AktualizacjaKarty(_Aktualizacja):
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
         self._postep(0)
         try:
-            await self._kopia(backup)
             self._postep(40)
             await self._n.async_zainstaluj_karte(version or self.latest_version)
             self._postep(100)
@@ -129,7 +106,6 @@ class AktualizacjaIntegracji(_Aktualizacja):
         wersja = version or self.latest_version
         self._postep(0)
         try:
-            await self._kopia(backup)
             self._postep(40)
             hacs = next((s.entity_id for s in self.hass.states.async_all("update")
                          if REPO_INTEGRACJA in str(s.attributes.get("release_url", ""))
@@ -145,10 +121,9 @@ class AktualizacjaIntegracji(_Aktualizacja):
                 await self._n.async_zainstaluj_integracje(wersja)
             self._postep(100)
             self._zainstalowana = wersja
-            persistent_notification.async_create(
-                self.hass,
-                f"Integracja Okno HA {wersja} jest pobrana. Uruchom ponownie Home Assistanta, żeby zaczęła działać.\n\n"
-                "[Uruchom ponownie](https://my.home-assistant.io/redirect/server_controls/)",
-                title="🪟 Okno HA – potrzebny restart", notification_id=f"{DOMAIN}_restart")
+            # „Napraw” w Ustawieniach: restart jednym kliknięciem, po polsku
+            ir.async_create_issue(self.hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
+                                  severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
+                                  translation_placeholders={"wersja": wersja})
         finally:
             self._postep(None)
