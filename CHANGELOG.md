@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.21 – Kolory motywu w opisie zawsze i w ciemnym motywie
+
+- 🌙 Obrazki opisu w HACS po przemalowaniu zostają ciemne w ciemnym motywie (jasna i ciemna wersja dalej przełączają się same), napisy w nagłówkach są czytelne
+- 🟣 Zaznaczenia „gdzie kliknąć” zawsze w kolorze akcentu z Twojego profilu, także w ciemnej wersji obrazków
+- 🔁 Przemalowanie działa za każdym razem: gdy obrazek nie wczyta się od razu (sieć, restart HA), skrypt próbuje ponownie sam
+
 ## v1.4.20 – Opis w domyślnych kolorach Home Assistanta
 
 - 🎨 Wszystkie obrazki opisu w 5 językach i obu motywach: kolor główny HA #009AC7, zaznaczenia „gdzie kliknąć” w kolorze akcentu #FF9800 (zamiast czerwieni). W HACS przemalowują się na kolory z Twojego profilu

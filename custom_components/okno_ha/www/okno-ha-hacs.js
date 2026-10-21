@@ -65,43 +65,52 @@
     const m = /^#([0-9a-f]{6})$/i.exec(PROBNIK.fillStyle);
     return m ? "#" + m[1].toLowerCase() : null;
   };
-  const gotowe = new Map();   // adres + kolor → przemalowany obrazek
+  // piksel = a·kolor HA + w·biały/szary (wygładzanie, jasne tła, ciemny motyw) → a·kolor użytkownika + w
+  // dwa niebieskie HA: obecny domyślny #009ac7 i dawny #03a9f4 (starsze obrazki); zaznaczenia w akcencie #ff9800
+  const baza = (B) => { const bb = B[0] * B[0] + B[1] * B[1] + B[2] * B[2], b1 = B[0] + B[1] + B[2]; return { B, bb, b1, wyz: bb * 3 - b1 * b1 }; };
+  const NOWY = baza([0, 154, 199]), DAWNY = baza([3, 169, 244]), POM = baza([255, 152, 0]);
+  const rgbZ = (hex) => [1, 3, 5].map((k) => parseInt(hex.slice(k, k + 2), 16));
+  const piksele = (p, K, A) => {
+    for (let k = 0; k < p.length; k += 4) {
+      if (!p[k + 3]) continue;
+      const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
+      const akcent = A && h >= 24 && h <= 40 && s >= 0.15 && v >= 0.6;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
+      if (!akcent && (h < 188 || h > 205 || s < 0.05 || v < 0.15)) continue;   // poza tym tylko odcienie niebieskiego HA i ich jasne tła
+      const { B, bb, b1, wyz } = akcent ? POM : h < 196.5 ? NOWY : DAWNY, C = akcent ? A : K;
+      const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
+      const a = (3 * bp - b1 * sp) / wyz, w = (bb * sp - b1 * bp) / wyz;
+      for (let c = 0; c < 3; c++) p[k + c] = Math.max(0, Math.min(255, Math.round(a * C[c] + w)));
+    }
+  };
+  // obrazek (PNG albo osadzony w SVG) → przemalowany canvas
+  const wczytaj = (src) => new Promise((ok, zle) => { const i = new Image(); i.crossOrigin = "anonymous"; i.onload = () => ok(i); i.onerror = zle; i.src = src; });
+  const plotno = (i, K, A) => {
+    const c = document.createElement("canvas"); c.width = i.naturalWidth; c.height = i.naturalHeight;
+    const x = c.getContext("2d"); x.drawImage(i, 0, 0);
+    const d = x.getImageData(0, 0, c.width, c.height); piksele(d.data, K, A); x.putImageData(d, 0, 0);
+    return c;
+  };
+  const gotowe = new Map();   // adres + kolory → przemalowany obrazek
   const przemalujPlik = (adres, kol, akc) => {
     const klucz = adres + kol + akc;
-    if (!gotowe.has(klucz)) gotowe.set(klucz, new Promise((ok, zle) => {
-      const i = new Image();
-      i.crossOrigin = "anonymous";
-      i.onload = () => {
-        const skala = /\.svg/i.test(adres) ? 2 : 1, c = document.createElement("canvas");
-        c.width = i.naturalWidth * skala; c.height = i.naturalHeight * skala;
-        const x = c.getContext("2d"); x.drawImage(i, 0, 0, c.width, c.height);
-        const d = x.getImageData(0, 0, c.width, c.height), p = d.data;
-        // piksel = a·niebieski HA + w·biały/szary (wygładzanie, jasne tła, ciemny motyw) → a·kolor motywu + w
-        // dwa niebieskie HA: obecny domyślny #009ac7 i dawny #03a9f4 (starsze obrazki)
-        const K = [1, 3, 5].map((k) => parseInt(kol.slice(k, k + 2), 16));
-        const baza = (B) => { const bb = B[0] * B[0] + B[1] * B[1] + B[2] * B[2], b1 = B[0] + B[1] + B[2]; return { B, bb, b1, wyz: bb * 3 - b1 * b1 }; };
-        const NOWY = baza([0, 154, 199]), DAWNY = baza([3, 169, 244]), POM = baza([255, 152, 0]);
-        const A = akc ? [1, 3, 5].map((k) => parseInt(akc.slice(k, k + 2), 16)) : null;
-        for (let k = 0; k < p.length; k += 4) {
-          if (!p[k + 3]) continue;
-          const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
-          const akcent = A && h >= 32 && h <= 38 && s >= 0.15 && v >= 0.6;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
-          if (!akcent && (h < 188 || h > 205 || s < 0.05 || v < 0.15)) continue;   // poza tym tylko odcienie niebieskiego HA i ich jasne tła
-          const { B, bb, b1, wyz } = akcent ? POM : h < 196.5 ? NOWY : DAWNY, C = akcent ? A : K;
-          const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
-          const a = (3 * bp - b1 * sp) / wyz, w = (bb * sp - b1 * bp) / wyz;
-          for (let c = 0; c < 3; c++) p[k + c] = Math.max(0, Math.min(255, Math.round(a * C[c] + w)));
-        }
-        x.putImageData(d, 0, 0);
-        c.toBlob((b) => (b ? ok(URL.createObjectURL(b)) : zle()));
-      };
-      i.onerror = zle;
-      i.src = adres;
-    }));
-    return gotowe.get(klucz);
+    if (gotowe.has(klucz)) return gotowe.get(klucz);
+    const K = rgbZ(kol), A = akc ? rgbZ(akc) : null;
+    const zadanie = /\.svg/i.test(adres)
+      // SVG zostaje SVG-iem: jasna i ciemna wersja dalej przełączają się z motywem, przemalowane są tylko obrazki w środku
+      ? fetch(adres).then((r) => r.text()).then(async (svg) => {
+        const czesci = svg.split(/(data:image\/png;base64,[A-Za-z0-9+/=]+)/);
+        for (let k = 1; k < czesci.length; k += 2) czesci[k] = plotno(await wczytaj(czesci[k]), K, A).toDataURL("image/png");
+        return URL.createObjectURL(new Blob([czesci.join("")], { type: "image/svg+xml" }));
+      })
+      : wczytaj(adres).then((i) => new Promise((ok, zle) => plotno(i, K, A).toBlob((b) => (b ? ok(URL.createObjectURL(b)) : zle()))));
+    gotowe.set(klucz, zadanie);
+    zadanie.catch(() => gotowe.delete(klucz));   // nie wyszło (sieć, restart HA) – następne skanowanie spróbuje jeszcze raz
+    return zadanie;
   };
   const przemaluj = (el) => {
-    const org = el.dataset.oknoOrg || el.getAttribute("src") || "";
+    const teraz = el.getAttribute("src") || "";
+    if (NASZE.test(teraz) && el.dataset.oknoOrg && teraz !== el.dataset.oknoOrg) delete el.dataset.oknoKol;   // HACS podał nowy obrazek w tym samym miejscu
+    const org = NASZE.test(teraz) ? teraz : el.dataset.oknoOrg || teraz;
     if (!NASZE.test(org) || POMIN.test(org)) return;
     const kol = kolorMotywu(el);
     if (!kol) return;
@@ -110,7 +119,9 @@
     const znak = kol + akc;
     if (el.dataset.oknoKol === znak) return;
     el.dataset.oknoKol = znak; el.dataset.oknoOrg = org;
-    przemalujPlik(org, kol, akc).then((u) => { if (el.dataset.oknoKol === znak) el.setAttribute("src", u); }, () => {});
+    przemalujPlik(org, kol, akc).then(
+      (u) => { if (el.dataset.oknoKol === znak) el.setAttribute("src", u); },
+      () => { if (el.dataset.oknoKol === znak) delete el.dataset.oknoKol; });   // spróbuj ponownie przy następnym skanowaniu
   };
 
   // obrazki już narysowane (np. panel HACS otwarty, zanim ten skrypt się wczytał, albo ramka HACS wczytana od nowa po restarcie)
