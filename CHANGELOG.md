@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.14 – Czytelniejszy opis w obu motywach
+
+- 🔴 Zaznaczenia „gdzie kliknąć” (ramki, numery, strzałki) w czerwieni Home Assistanta, jeden styl
+- 🖼️ Makiety bez szarego tła, nic nie jest ucięte, dobrze widać je w motywie jasnym i ciemnym
+- 📋 Tabele ikon bez kresek, ikony równo z tekstem
+
 ## v1.4.13 – Jednolity opis w kolorach HA
 
 - 🎨 Cały opis w jednym stylu Home Assistanta, w 5 językach: niebieskie ramki, numery i plakietki zamiast czerwonych, prawdziwe ikony w makietach, aktualne logo i wersja, większy podgląd „Dodaj kartę”, podpisy pod obrazkami
