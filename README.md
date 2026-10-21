@@ -64,7 +64,7 @@ Po lewej zwykła karta rolety w Home Assistancie. Po prawej to samo okno z Okno 
 
 <p align="center"><b>⬅️ Przed</b> · <b>Po ➡️</b></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/przed-pl.svg" width="49%" alt="Przed">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja.webp" width="49%" alt="Po"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki2/przed-pl.svg" width="49%" alt="Przed">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/po-pl.svg" width="49%" alt="Po"></p>
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Daj%20gwiazdk%C4%99&color=f9a825&logo=github" alt="⭐" height="36"></a></p>
 
