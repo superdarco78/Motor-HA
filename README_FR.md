@@ -26,14 +26,14 @@
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/cs.svg" alt="Čeština" height="44"></a>
 </p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner6-fr.svg" width="100%" alt="HA Motor"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner7-fr.svg" width="100%" alt="Motor HA"></a></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animation : quatre stores, jour et nuit, météo, mouvement" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animation : quatre stores, jour et nuit, météo, mouvement" width="100%"><br>
 <sub>Quatre stores, jour et nuit, météo et mouvement</sub></p>
 
-<h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> HA Motor – intégration</h1>
+<h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Motor HA – intégration</h1>
 
-<p align="center">Chaque fenêtre avec store est un <b>appareil</b> dans Home Assistant. Un assistant avec 7 cercles et des images, les changements via <b>Configurer</b>, la carte ajoutée toute seule au tableau de bord, la carte HA Motor incluse.</p>
+<p align="center">Chaque fenêtre avec store est un <b>appareil</b> dans Home Assistant. Un assistant avec 7 cercles et des images, les changements via <b>Configurer</b>, la carte ajoutée toute seule au tableau de bord, la carte Motor HA incluse.</p>
 
 > ℹ️ Fonctionne avec tout moteur de store dans Home Assistant (`cover.*`) : Zigbee, Z-Wave, Tuya, Shelly, Somfy et d’autres. Fenêtres à un ou deux vantaux.
 
@@ -49,18 +49,18 @@
 </p>
 
 <a name="dlaczego"></a>
-<h2><a name="j1" href="#j1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-dlaczego.svg" height="48" alt="Pourquoi HA Motor ?"></a></h2>
+<h2><a name="j1" href="#j1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-dlaczego.svg" height="48" alt="Pourquoi Motor HA ?"></a></h2>
 
 <a name="j2"></a>
-<p align="center"><a href="#j2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/tab-dlaczego.svg" width="100%" alt="Pourquoi HA Motor"></a><br>
-<sub>Pourquoi HA Motor</sub></p>
+<p align="center"><a href="#j2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/tab-dlaczego.svg" width="100%" alt="Pourquoi Motor HA"></a><br>
+<sub>Pourquoi Motor HA</sub></p>
 
 <p>&nbsp;</p>
 
 <a name="przed-i-po"></a>
 <h2><a name="j3" href="#j3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-przed-i-po.svg" height="48" alt="Avant et après"></a></h2>
 
-À gauche : la carte de store standard de Home Assistant. À droite : la même fenêtre avec HA Motor.
+À gauche : la carte de store standard de Home Assistant. À droite : la même fenêtre avec Motor HA.
 
 <p align="center"><b>⬅️ Avant</b> · <b>Après ➡️</b></p>
 
@@ -118,7 +118,7 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <h2><a name="j16" href="#j16"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-spis-tresci.svg" height="48" alt="Sommaire"></a></h2>
 
 **<img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ikona-rocket-launch.svg" height="20" align="absmiddle"> [Partie 1. Pour débutants](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#dla-poczatkujacych)** · c’est tout ce qu’il faut
-- [Pourquoi HA Motor ?](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#dlaczego)
+- [Pourquoi Motor HA ?](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#dlaczego)
 - [Avant et après](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#przed-i-po)
 - [Galerie](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#galeria)
 - [Installation pas à pas](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#instalacja)
@@ -136,7 +136,7 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 - [Ce que crée l’intégration](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#co-tworzy)
 - [Tous les réglages](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#wszystkie-ustawienia)
 - [La fenêtre dans les automatisations](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#automatyzacje)
-- [La carte HA Motor incluse](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#karta-w-srodku)
+- [La carte Motor HA incluse](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#karta-w-srodku)
 - [Installation sans HACS (manuelle)](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#recznie)
 - [Suppression](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#usuwanie)
 - [Traductions](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#tlumaczenia)
@@ -159,8 +159,8 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/hacs_repository-fr.svg" alt="Ouvrir dans HACS" height="80"></a></p>
 
 <a name="j20"></a>
-<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/krok-1.svg" width="100%" alt="HA Motor dans HACS : le bouton Ouvrir le lien"></a><br>
-<sub>HA Motor dans HACS : le bouton Ouvrir le lien</sub></p>
+<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/krok-1.svg" width="100%" alt="Motor HA dans HACS : le bouton Ouvrir le lien"></a><br>
+<sub>Motor HA dans HACS : le bouton Ouvrir le lien</sub></p>
 
 <p>&nbsp;</p>
 
@@ -177,8 +177,8 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <h3><a name="j23" href="#j23"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-krok-3.svg" height="44" alt="Étape 3: Cliquez sur Télécharger, puis encore sur Télécharger"></a></h3>
 
 <a name="j24"></a>
-<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/krok-3.svg" width="100%" alt="HA Motor dans HACS : le bouton Télécharger"></a><br>
-<sub>HA Motor dans HACS : le bouton Télécharger</sub></p>
+<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/krok-3.svg" width="100%" alt="Motor HA dans HACS : le bouton Télécharger"></a><br>
+<sub>Motor HA dans HACS : le bouton Télécharger</sub></p>
 
 <p>&nbsp;</p>
 
@@ -194,7 +194,7 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <a name="krok-5"></a>
 <h3><a name="j27" href="#j27"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-krok-5.svg" height="44" alt="Étape 5: Cliquez sur ce bouton et suivez l’assistant"></a></h3>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/config_flow_start-fr.svg" alt="Ajouter l’intégration HA Motor" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/config_flow_start-fr.svg" alt="Ajouter l’intégration Motor HA" height="80"></a></p>
 
 <a name="j28"></a>
 <p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/krok-5.svg" width="100%" alt="L’assistant « Ajouter une intégration »"></a><br>
@@ -217,8 +217,8 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <p align="center">En général rien à faire : à la dernière étape de l’assistant, le champ <b>📋 Add the window card to a dashboard</b> place la carte dans une section « Okna ». Vous préférez le faire vous-même ? Crayon → <b>＋ Ajouter une carte</b> → tapez <b>Okno</b> et choisissez la fenêtre.</p>
 
 <a name="j32"></a>
-<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/dodaj-karte.svg" width="100%" alt="Ajouter une carte : tapez Okno et cliquez sur la carte HA Motor"></a><br>
-<sub>Ajouter une carte : tapez Okno et cliquez sur la carte HA Motor</sub></p>
+<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/dodaj-karte.svg" width="100%" alt="Ajouter une carte : tapez Okno et cliquez sur la carte Motor HA"></a><br>
+<sub>Ajouter une carte : tapez Okno et cliquez sur la carte Motor HA</sub></p>
 
 <p>&nbsp;</p>
 
@@ -401,7 +401,7 @@ Après **Ajouter une intégration** (étape 5 de l’installation), HA affiche u
 
 Modifiez chaque fenêtre à tout moment. Cliquez sur l’engrenage **⚙️ (Configurer)** à côté de la fenêtre.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/integration-fr.svg" alt="Ouvrir HA Motor" height="56"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/integration-fr.svg" alt="Ouvrir Motor HA" height="56"></a></p>
 
 <a name="j63"></a>
 <p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/konfiguruj.svg" width="100%" alt="Configurer"></a><br>
@@ -515,13 +515,13 @@ Les nouveautés de chaque version: [📝 Historique des changements](https://git
 <br>
 
 <a name="faq-1"></a>
-<h4><a name="j78" href="#j78"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-faq-1.svg" height="42" alt="« HA Motor » n’est pas dans la liste des intégrations"></a></h4>
+<h4><a name="j78" href="#j78"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-faq-1.svg" height="42" alt="« Motor HA » n’est pas dans la liste des intégrations"></a></h4>
 
 Après le téléchargement depuis HACS, redémarrez HA (étape 4). Sur un téléphone, fermez et rouvrez l’application.
 
 <a name="j79"></a>
-<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/krok-4.svg" width="100%" alt="« HA Motor » n’est pas dans la liste des intégrations"></a><br>
-<sub>« HA Motor » n’est pas dans la liste des intégrations</sub></p>
+<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/krok-4.svg" width="100%" alt="« Motor HA » n’est pas dans la liste des intégrations"></a><br>
+<sub>« Motor HA » n’est pas dans la liste des intégrations</sub></p>
 
 <p>&nbsp;</p>
 
@@ -624,13 +624,13 @@ Pas de réponse ici ? [Signaler un bug](https://github.com/superdarco78/okno-ha-
 
 <table>
 <tr><th align="left"><a name="j95" href="#j95"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>Quoi</th><th align="left"><a name="j96" href="#j96"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Description</th></tr>
-<tr><td align="left"><b>Appareil « Okno … »</b></td><td align="left">Un par fenêtre (chaque entrée). Fabricant : HA Motor, modèle : type de store.</td></tr>
+<tr><td align="left"><b>Appareil « Okno … »</b></td><td align="left">Un par fenêtre (chaque entrée). Fabricant : Motor HA, modèle : type de store.</td></tr>
 <tr><td align="left"><b>Entité <code>cover.okno_…</code></b></td><td align="left">Le store de la fenêtre. Position = moyenne des vantaux. Ouvrir, fermer, stop et position vont aux deux stores en même temps.</td></tr>
 <tr><td align="left"><b>Bouton Étalonner</b></td><td align="left">Mesure la vraie durée de course du store et l’enregistre.</td></tr>
 <tr><td align="left"><b>Attribut <code>okno_ha</code></b></td><td align="left">Réglages de la fenêtre pour la carte. La carte les lit toute seule.</td></tr>
-<tr><td align="left"><b>Appareil « HA Motor »</b></td><td align="left">Un seul pour toute l’intégration, avec une mise à jour 2 en 1 (intégration et carte ensemble). Installée via HACS, c’est HACS qui affiche la mise à jour.</td></tr>
+<tr><td align="left"><b>Appareil « Motor HA »</b></td><td align="left">Un seul pour toute l’intégration, avec une mise à jour 2 en 1 (intégration et carte ensemble). Installée via HACS, c’est HACS qui affiche la mise à jour.</td></tr>
 <tr><td align="left"><b>Assistant à cercles</b></td><td align="left">Une page à 7 cercles : le lien « Visiter » sur l’appareil fenêtre ou Configurer. Pas d’entrée dans la barre latérale.</td></tr>
-<tr><td align="left"><b>Carte HA Motor</b></td><td align="left">Inclus. Se charge tout seul sur chaque tableau de bord, sans ressource.</td></tr>
+<tr><td align="left"><b>Carte Motor HA</b></td><td align="left">Inclus. Se charge tout seul sur chaque tableau de bord, sans ressource.</td></tr>
 </table>
 
 <a name="wszystkie-ustawienia"></a>
@@ -678,16 +678,16 @@ Pas de réponse ici ? [Signaler un bug](https://github.com/superdarco78/okno-ha-
 La fenêtre est un volet normal dans HA. Dans une automatisation, choisissez **Volet : définir la position** (ou ouvrir / fermer) et l’entité fenêtre, par ex. **Okno Salon**. Les deux stores des vantaux bougent ensemble.
 
 <a name="karta-w-srodku"></a>
-<h2><a name="j105" href="#j105"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-karta-w-srodku.svg" height="48" alt="La carte HA Motor incluse"></a></h2>
+<h2><a name="j105" href="#j105"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-karta-w-srodku.svg" height="48" alt="La carte Motor HA incluse"></a></h2>
 
-L’intégration contient la carte HA Motor. Pas d’installation séparée ni de ressource. Apparence claire et sombre, météo derrière la vitre, jour et nuit.
+L’intégration contient la carte Motor HA. Pas d’installation séparée ni de ressource. Apparence claire et sombre, météo derrière la vitre, jour et nuit.
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="70%" alt="Animation de la carte HA Motor"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="70%" alt="Animation de la carte HA Motor"><br>
-<sub>Carte HA Motor : claire ou sombre, comme votre thème</sub></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="70%" alt="Animation de la carte Motor HA"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="70%" alt="Animation de la carte Motor HA"><br>
+<sub>Carte Motor HA : claire ou sombre, comme votre thème</sub></p>
 
 Documentation complète de la carte (éditeur, toutes les options, exemples): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna/blob/main/README_EN.md).
 
-> ℹ️ Vous avez déjà la carte HA Motor depuis HACS ? Pas de souci. Les deux peuvent être installées.
+> ℹ️ Vous avez déjà la carte Motor HA depuis HACS ? Pas de souci. Les deux peuvent être installées.
 
 <a name="recznie"></a>
 <h2><a name="j106" href="#j106"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-recznie.svg" height="48" alt="Installation sans HACS (manuelle)"></a></h2>
@@ -699,7 +699,7 @@ Documentation complète de la carte (éditeur, toutes les options, exemples): [s
 <a name="usuwanie"></a>
 <h2><a name="j107" href="#j107"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-usuwanie.svg" height="48" alt="Suppression"></a></h2>
 
-Une fenêtre : **Paramètres → Appareils et services → HA Motor**, à côté de la fenêtre **⋮ → Supprimer**. Toute l’intégration : supprimez toutes les fenêtres, puis dans HACS **⋮ → Retirer** et redémarrez HA. Vos vrais stores restent inchangés.
+Une fenêtre : **Paramètres → Appareils et services → Motor HA**, à côté de la fenêtre **⋮ → Supprimer**. Toute l’intégration : supprimez toutes les fenêtres, puis dans HACS **⋮ → Retirer** et redémarrez HA. Vos vrais stores restent inchangés.
 
 <a name="tlumaczenia"></a>
 <h2><a name="j108" href="#j108"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-tlumaczenia.svg" height="48" alt="Traductions"></a></h2>
@@ -717,7 +717,7 @@ Vous voulez ajouter votre langue ? Copiez [`translations/en.json`](https://githu
 <a name="wsparcie"></a>
 <h2><a name="j111" href="#j111"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/fr/h-wsparcie.svg" height="48" alt="Soutien"></a></h2>
 
-HA Motor vous plaît ? Laissez une ⭐ en haut de la page. Cela aide d’autres à trouver l’intégration. Merci !
+Motor HA vous plaît ? Laissez une ⭐ en haut de la page. Cela aide d’autres à trouver l’intégration. Merci !
 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Donnez%20une%20%C3%A9toile&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
