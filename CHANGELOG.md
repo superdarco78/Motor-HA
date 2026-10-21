@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.29 – Spokojny baner
+
+- 🖼️ Baner w opisie bez zachodu słońca: neutralne tło jak kafelki (jasne albo ciemne według motywu), domek i „HA” w kolorze z Twojego profilu
+- 🔔 Pierwsza wersja, która pojawia się w Aktualizacjach sama, bez klikania w HACS
+
 ## v1.4.28 – Aktualizacje pojawiają się same
 
 - 🔔 Nowa wersja Okna HA pokazuje się w Ustawieniach → Aktualizacje po kilku minutach, bez klikania „Aktualizuj informacje” w HACS (HACS sam sprawdza tylko co 48 godzin). Okno HA prosi HACS o odświeżenie tylko swojego repozytorium, raz na każde nowe wydanie. Dalej jedna pozycja w Aktualizacjach
