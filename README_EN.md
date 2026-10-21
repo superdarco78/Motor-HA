@@ -28,7 +28,7 @@
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/cs.svg" alt="Čeština" height="44"></a>
 </p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner2-en.svg" width="100%" alt="Okno HA"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner3-en.svg" width="100%" alt="Okno HA"></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animation: four shades, day and night, weather, movement" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animation: four shades, day and night, weather, movement" width="100%"><br>
 <sub>Four shades, day and night, weather and movement</sub></p>
