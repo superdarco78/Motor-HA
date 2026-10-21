@@ -324,7 +324,7 @@ To złe meldunki silnika. Karta je pomija. Jeśli dalej skacze, <a href="https:/
 
 #### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="26" align="absmiddle"> Karta jest po angielsku, a chcę po polsku
 
-Karta bierze język z Twojego profilu HA. Zmień go: kliknij swoje imię na dole menu → <b>Język</b>.
+Karta bierze język z Twojego profilu HA. Możesz też w edytorze karty otworzyć <b>Zaawansowane</b> i w polu <b>Język karty</b> wybrać <b>Polski</b>.
 
 <a name="j49"></a>
 <p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-faq-pl-jezyk.svg" width="100%" alt="Karta jest po angielsku, a chcę po polsku"></a></p>
