@@ -1,5 +1,17 @@
 # 📝 Historia zmian
 
+## v1.4.48 – Jedna duża aktualizacja
+
+- ✅ Na liście „Dodaj do panelu” zawsze jedna karta „Motor HA” w nowej wersji: plik karty podmienia się przy każdym starcie, a strona HA po aktualizacji sama przeładuje się raz, w spokojnym momencie (bez otwartego okienka, bez edycji panelu, bez pisania)
+- 🪄 Edytor karty zaczyna od kreatora w 7 krokach
+- 🎞 Galeria w HACS: zamiast obrazków jedna duża żywa karta na sekcję – przyciski pogody, pory dnia i okna, rodzaju osłony i wyglądu; kartą można ruszać jak prawdziwą roletą (nic w domu się nie rusza). Na GitHubie zostają obrazki
+- 🏠 Osłony zewnętrzne widać od strony elewacji (tynk, parapet, za szybą pokój, wieczorem zapalone światło), wewnętrzne – z pokoju
+- ➕ Nowe rodzaje: roleta w kasecie z prowadnicami, markiza tarasowa; rodzaje w grupach (rolety, plisy i rzymskie, żaluzje / rolety zewnętrzne, żaluzje fasadowe, taras)
+- 🐞 Opisy pod rodzajami osłon nie są już przesunięte
+- 🎨 Karta, edytor i kreator 1:1 jak HA: kolory, zaokrąglenia i cienie ze zmiennych motywu HA, rozmiary przycisków jak w HA
+- 📱 Panel Motor HA na telefonie: wrócił przycisk menu ☰
+- 📖 Opis: tabele jako prawdziwe tabele HA, spis treści w 2 kolumnach, makieta My Home Assistant, podpisy pod kółkami kreatora
+
 ## v1.4.47 – Czytelniej
 
 - 🔤 „Co:” i „Po co:” w kreatorze w kolorze akcentu, opis jaśniejszy; większe małe napisy i ikony w karcie, edytorze i kreatorze
