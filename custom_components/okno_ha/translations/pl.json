@@ -25,19 +25,26 @@
         },
         "data_description": {
           "czujnik_lewe": "Gdy czujnik pokaże otwarte, karta narysuje otwarte skrzydło.",
-          "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło."
+          "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło.",
+          "skrzydla": "1 = jedno skrzydło, 2 = okno dwuskrzydłowe (lewe i prawe).",
+          "czujnik_prawe": "Czujnik otwarcia prawego skrzydła. Zostaw puste, jeśli go nie ma.",
+          "tryb_prawe": "Jak otwiera się prawe skrzydło: uchylone albo otwarte na bok."
         }
       },
       "silnik": {
         "title": "⚙️ Krok 3 z 5: silnik",
-        "description": "Karta jedzie w tempie silnika. Jeśli silnik ma ustawienie prędkości (np. Moes), wybierz je. Wszystko tutaj jest nieobowiązkowe.",
+        "description": "Karta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
         "data": {
           "predkosc_lewa": "Prędkość silnika – lewa",
           "predkosc_prawa": "Prędkość silnika – prawa",
-          "czas": "Czas pełnego przejazdu"
+          "czas": "Czas pełnego przejazdu",
+          "kalibruj": "🤖 Kalibruj teraz (roleta pojedzie w górę, w dół i w górę)"
         },
         "data_description": {
-          "czas": "0 = automatycznie (z prędkości silnika albo 30 s)."
+          "predkosc_lewa": "Encja „…motor_speed” z tej samej rolety. Zostaw pustą, jeśli silnik jej nie ma.",
+          "predkosc_prawa": "To samo dla prawego skrzydła.",
+          "czas": "0 = automatycznie: z prędkości silnika albo z kalibracji.",
+          "kalibruj": "Zmierzy prawdziwy czas przejazdu i zapisze go. Możesz to też zrobić później przyciskiem „Kalibruj” na urządzeniu."
         }
       },
       "pogoda": {
@@ -45,20 +52,29 @@
         "description": "Za oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
         "data": {
           "pogoda": "Pogoda"
+        },
+        "data_description": {
+          "pogoda": "Pogoda za oknem na karcie: słońce, chmury, deszcz, śnieg, dzień i noc. Zostaw puste, a karta sama wybierze pierwszą pogodę z HA."
         }
       },
       "wyglad": {
         "title": "🎨 Krok 5 z 5: wygląd",
-        "description": "Rodzaj osłony, kolor i rama. Wszystko zmienisz później w „Konfiguruj”.",
+        "description": "Wybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
         "data": {
           "oslona": "Rodzaj osłony",
           "kolor": "Kolor osłony",
+          "kolor_wlasny": "🎨 Własny kolor osłony",
           "rama": "Kolor ramy okna",
+          "rama_wlasna": "🎨 Własny kolor ramy",
           "wysokosc": "Wysokość okna na karcie"
         },
         "data_description": {
-          "kolor": "Możesz też wpisać własny kolor, np. #3a3d42.",
-          "rama": "Możesz też wpisać własny kolor, np. #f4f4f2."
+          "kolor": "Próbki są na obrazku wyżej.",
+          "kolor_wlasny": "Kliknij kółko i wybierz dowolny kolor. Zastępuje kolor z listy.",
+          "rama": "Okleiny drewnopodobne karta rysuje ze słojami.",
+          "rama_wlasna": "Dowolny kolor ramy. Zastępuje kolor z listy.",
+          "oslona": "Jak wygląda Twoja osłona – porównaj z kafelkami na obrazku wyżej.",
+          "wysokosc": "Jak wysokie jest okno na karcie (w pikselach). Większe = lepiej widać."
         }
       }
     },
@@ -92,19 +108,26 @@
         },
         "data_description": {
           "czujnik_lewe": "Gdy czujnik pokaże otwarte, karta narysuje otwarte skrzydło.",
-          "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło."
+          "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło.",
+          "skrzydla": "1 = jedno skrzydło, 2 = okno dwuskrzydłowe (lewe i prawe).",
+          "czujnik_prawe": "Czujnik otwarcia prawego skrzydła. Zostaw puste, jeśli go nie ma.",
+          "tryb_prawe": "Jak otwiera się prawe skrzydło: uchylone albo otwarte na bok."
         }
       },
       "silnik": {
         "title": "⚙️ Krok 3 z 5: silnik",
-        "description": "Karta jedzie w tempie silnika. Jeśli silnik ma ustawienie prędkości (np. Moes), wybierz je. Wszystko tutaj jest nieobowiązkowe.",
+        "description": "Karta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
         "data": {
           "predkosc_lewa": "Prędkość silnika – lewa",
           "predkosc_prawa": "Prędkość silnika – prawa",
-          "czas": "Czas pełnego przejazdu"
+          "czas": "Czas pełnego przejazdu",
+          "kalibruj": "🤖 Kalibruj teraz (roleta pojedzie w górę, w dół i w górę)"
         },
         "data_description": {
-          "czas": "0 = automatycznie (z prędkości silnika albo 30 s)."
+          "predkosc_lewa": "Encja „…motor_speed” z tej samej rolety. Zostaw pustą, jeśli silnik jej nie ma.",
+          "predkosc_prawa": "To samo dla prawego skrzydła.",
+          "czas": "0 = automatycznie: z prędkości silnika albo z kalibracji.",
+          "kalibruj": "Zmierzy prawdziwy czas przejazdu i zapisze go. Możesz to też zrobić później przyciskiem „Kalibruj” na urządzeniu."
         }
       },
       "pogoda": {
@@ -112,20 +135,29 @@
         "description": "Za oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
         "data": {
           "pogoda": "Pogoda"
+        },
+        "data_description": {
+          "pogoda": "Pogoda za oknem na karcie: słońce, chmury, deszcz, śnieg, dzień i noc. Zostaw puste, a karta sama wybierze pierwszą pogodę z HA."
         }
       },
       "wyglad": {
         "title": "🎨 Krok 5 z 5: wygląd",
-        "description": "Rodzaj osłony, kolor i rama. Wszystko zmienisz później w „Konfiguruj”.",
+        "description": "Wybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
         "data": {
           "oslona": "Rodzaj osłony",
           "kolor": "Kolor osłony",
+          "kolor_wlasny": "🎨 Własny kolor osłony",
           "rama": "Kolor ramy okna",
+          "rama_wlasna": "🎨 Własny kolor ramy",
           "wysokosc": "Wysokość okna na karcie"
         },
         "data_description": {
-          "kolor": "Możesz też wpisać własny kolor, np. #3a3d42.",
-          "rama": "Możesz też wpisać własny kolor, np. #f4f4f2."
+          "kolor": "Próbki są na obrazku wyżej.",
+          "kolor_wlasny": "Kliknij kółko i wybierz dowolny kolor. Zastępuje kolor z listy.",
+          "rama": "Okleiny drewnopodobne karta rysuje ze słojami.",
+          "rama_wlasna": "Dowolny kolor ramy. Zastępuje kolor z listy.",
+          "oslona": "Jak wygląda Twoja osłona – porównaj z kafelkami na obrazku wyżej.",
+          "wysokosc": "Jak wysokie jest okno na karcie (w pikselach). Większe = lepiej widać."
         }
       }
     },
@@ -136,47 +168,88 @@
   "selector": {
     "oslona": {
       "options": {
-        "zebra": "Dzień-noc",
-        "pelna": "Materiałowa",
-        "plisa": "Plisa",
-        "rzymska": "Rzymska",
-        "zaluzja": "Żaluzja aluminiowa",
-        "zewnetrzna": "Roleta nadstawna",
-        "zaciemniajaca": "Zaciemniająca",
-        "plaster": "Plaster miodu",
-        "drewniana": "Żaluzja drewniana",
-        "natynkowa": "Roleta natynkowa",
-        "podtynkowa": "Roleta podtynkowa",
-        "perforowana": "Roleta z perforacją",
-        "fasadowa": "Żaluzja fasadowa C80",
-        "fasadowaz": "Żaluzja fasadowa Z90",
-        "screen": "Screen ZIP"
+        "zebra": "🦓 Dzień-noc",
+        "pelna": "🧵 Materiałowa",
+        "plisa": "🪗 Plisa",
+        "rzymska": "🏛️ Rzymska",
+        "zaluzja": "🪟 Żaluzja aluminiowa",
+        "zewnetrzna": "🏠 Roleta nadstawna",
+        "zaciemniajaca": "🌑 Zaciemniająca",
+        "plaster": "🐝 Plaster miodu",
+        "drewniana": "🪵 Żaluzja drewniana",
+        "natynkowa": "🏠 Roleta natynkowa",
+        "podtynkowa": "🧱 Roleta podtynkowa",
+        "perforowana": "✨ Roleta z perforacją",
+        "fasadowa": "🏢 Żaluzja fasadowa C80",
+        "fasadowaz": "🏢 Żaluzja fasadowa Z90",
+        "screen": "🌫️ Screen ZIP"
       }
     },
     "kolor": {
       "options": {
-        "czarny": "Czarny",
-        "grafit": "Grafit",
-        "szary": "Szary",
-        "bezowy": "Beżowy",
-        "kremowy": "Kremowy",
-        "bialy": "Biały",
-        "braz": "Brąz",
-        "granat": "Granat",
-        "pomaranczowy": "Pomarańczowy"
+        "czarny": "⚫ Czarny",
+        "grafit": "⚫ Grafit",
+        "szary": "🔘 Szary",
+        "bezowy": "🟤 Beżowy",
+        "kremowy": "⚪ Kremowy",
+        "bialy": "⚪ Biały",
+        "braz": "🟤 Brąz",
+        "granat": "🔵 Granat",
+        "pomaranczowy": "🟠 Pomarańczowy",
+        "piaskowy": "🟤 Piaskowy",
+        "cappuccino": "🟤 Cappuccino",
+        "mokka": "🟤 Mokka",
+        "wenge": "🟤 Wenge",
+        "popiel": "🔘 Popiel",
+        "srebrny": "⚪ Srebrny",
+        "stalowy": "🔵 Stalowy",
+        "lawendowy": "🟣 Lawendowy",
+        "pudrowy": "🩷 Pudrowy róż",
+        "mietowy": "🟢 Miętowy",
+        "blekitny": "🔵 Błękitny",
+        "morski": "🔵 Morski",
+        "butelkowy": "🟢 Butelkowa zieleń",
+        "musztardowy": "🟡 Musztardowy",
+        "terakota": "🟠 Terakota",
+        "sliwkowy": "🟣 Śliwkowy",
+        "czerwony": "🔴 Czerwony",
+        "bordo": "🔴 Bordo",
+        "rozowy": "🩷 Różowy",
+        "fiolet": "🟣 Fiolet",
+        "niebieski": "🔵 Niebieski",
+        "turkus": "🔵 Turkus",
+        "zielony": "🟢 Zielony",
+        "limonka": "🟢 Limonka",
+        "zolty": "🟡 Żółty",
+        "oliwka": "🟢 Oliwka"
       }
     },
     "rama": {
       "options": {
-        "biala": "Biała",
-        "kremowa": "Kremowa",
-        "srebrna": "Srebrna",
-        "szara": "Szara",
-        "antracyt": "Antracyt",
-        "czarna": "Czarna",
-        "zloty_dab": "Złoty dąb",
-        "dab_jasny": "Dąb jasny",
-        "winchester": "Winchester"
+        "biala": "⚪ Biała",
+        "kremowa": "⚪ Kremowa",
+        "jasnoszara": "⚪ Jasnoszara",
+        "srebrna": "🔘 Srebrna",
+        "szary_agat": "🔘 Szary agat",
+        "szara": "🔘 Szara",
+        "szary_kwarc": "🔘 Szary kwarc",
+        "bazaltowa": "⚫ Bazaltowa",
+        "antracyt": "⚫ Antracyt",
+        "czarna": "⚫ Czarna",
+        "zielona": "🟢 Zielona",
+        "granatowa": "🔵 Granatowa",
+        "bordowa": "🔴 Bordowa",
+        "braz": "🟤 Brąz",
+        "sosna": "🪵 Sosna",
+        "dab_jasny": "🪵 Dąb jasny",
+        "dab_sheffield": "🪵 Dąb sheffield",
+        "winchester": "🪵 Winchester",
+        "oregon": "🪵 Oregon",
+        "zloty_dab": "🪵 Złoty dąb",
+        "siena": "🪵 Siena",
+        "orzech": "🪵 Orzech",
+        "mahon": "🪵 Mahoń",
+        "dab_bagienny": "🪵 Dąb bagienny"
       }
     },
     "tryb": {
@@ -189,6 +262,13 @@
       "options": {
         "1": "1 skrzydło",
         "2": "2 skrzydła"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Kalibruj"
       }
     }
   }

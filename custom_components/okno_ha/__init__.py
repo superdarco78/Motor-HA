@@ -13,7 +13,7 @@ from homeassistant.helpers.typing import ConfigType
 from .const import DOMAIN, VERSION
 from .nowosci import LOADER, Nowosci
 
-PLATFORMS = [Platform.COVER, Platform.UPDATE]
+PLATFORMS = [Platform.COVER, Platform.BUTTON, Platform.UPDATE]
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 

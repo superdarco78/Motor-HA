@@ -25,19 +25,26 @@
         },
         "data_description": {
           "czujnik_lewe": "When the sensor shows open, the card draws an open sash.",
-          "tryb_lewe": "How the card shows an open sash."
+          "tryb_lewe": "How the card shows an open sash.",
+          "skrzydla": "1 = single sash, 2 = double window (left and right).",
+          "czujnik_prawe": "Open sensor of the right sash. Leave empty if there is none.",
+          "tryb_prawe": "How the right sash opens: tilted or opened sideways."
         }
       },
       "silnik": {
         "title": "⚙️ Step 3 of 5: motor",
-        "description": "The card moves at the motor's speed. If the motor has a speed setting (e.g. Moes), pick it. Everything here is optional.",
+        "description": "The card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
-          "czas": "Full travel time"
+          "czas": "Full travel time",
+          "kalibruj": "🤖 Calibrate now (the blind goes up, down and up)"
         },
         "data_description": {
-          "czas": "0 = automatic (from motor speed or 30 s)."
+          "predkosc_lewa": "The “…motor_speed” entity of the same blind. Leave empty if the motor has none.",
+          "predkosc_prawa": "The same for the right sash.",
+          "czas": "0 = automatic: from motor speed or calibration.",
+          "kalibruj": "Measures the real travel time and saves it. You can also do it later with the “Calibrate” button on the device."
         }
       },
       "pogoda": {
@@ -45,20 +52,29 @@
         "description": "Real weather shows outside the window. Leave empty and the card uses internet weather for your home.",
         "data": {
           "pogoda": "Weather"
+        },
+        "data_description": {
+          "pogoda": "Weather outside the window on the card: sun, clouds, rain, snow, day and night. Leave empty and the card picks the first weather entity."
         }
       },
       "wyglad": {
         "title": "🎨 Step 5 of 5: look",
-        "description": "Shade type, colour and frame. You can change everything later in “Configure”.",
+        "description": "Pick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
         "data": {
           "oslona": "Shade type",
           "kolor": "Shade colour",
+          "kolor_wlasny": "🎨 Custom shade colour",
           "rama": "Window frame colour",
+          "rama_wlasna": "🎨 Custom frame colour",
           "wysokosc": "Window height on the card"
         },
         "data_description": {
-          "kolor": "You can also type your own colour, e.g. #3a3d42.",
-          "rama": "You can also type your own colour, e.g. #f4f4f2."
+          "kolor": "Samples are in the picture above.",
+          "kolor_wlasny": "Click the circle and pick any colour. Replaces the list colour.",
+          "rama": "Wood finishes are drawn with grain.",
+          "rama_wlasna": "Any frame colour. Replaces the list colour.",
+          "oslona": "What your shade looks like – compare with the tiles in the picture above.",
+          "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see."
         }
       }
     },
@@ -92,19 +108,26 @@
         },
         "data_description": {
           "czujnik_lewe": "When the sensor shows open, the card draws an open sash.",
-          "tryb_lewe": "How the card shows an open sash."
+          "tryb_lewe": "How the card shows an open sash.",
+          "skrzydla": "1 = single sash, 2 = double window (left and right).",
+          "czujnik_prawe": "Open sensor of the right sash. Leave empty if there is none.",
+          "tryb_prawe": "How the right sash opens: tilted or opened sideways."
         }
       },
       "silnik": {
         "title": "⚙️ Step 3 of 5: motor",
-        "description": "The card moves at the motor's speed. If the motor has a speed setting (e.g. Moes), pick it. Everything here is optional.",
+        "description": "The card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
-          "czas": "Full travel time"
+          "czas": "Full travel time",
+          "kalibruj": "🤖 Calibrate now (the blind goes up, down and up)"
         },
         "data_description": {
-          "czas": "0 = automatic (from motor speed or 30 s)."
+          "predkosc_lewa": "The “…motor_speed” entity of the same blind. Leave empty if the motor has none.",
+          "predkosc_prawa": "The same for the right sash.",
+          "czas": "0 = automatic: from motor speed or calibration.",
+          "kalibruj": "Measures the real travel time and saves it. You can also do it later with the “Calibrate” button on the device."
         }
       },
       "pogoda": {
@@ -112,20 +135,29 @@
         "description": "Real weather shows outside the window. Leave empty and the card uses internet weather for your home.",
         "data": {
           "pogoda": "Weather"
+        },
+        "data_description": {
+          "pogoda": "Weather outside the window on the card: sun, clouds, rain, snow, day and night. Leave empty and the card picks the first weather entity."
         }
       },
       "wyglad": {
         "title": "🎨 Step 5 of 5: look",
-        "description": "Shade type, colour and frame. You can change everything later in “Configure”.",
+        "description": "Pick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
         "data": {
           "oslona": "Shade type",
           "kolor": "Shade colour",
+          "kolor_wlasny": "🎨 Custom shade colour",
           "rama": "Window frame colour",
+          "rama_wlasna": "🎨 Custom frame colour",
           "wysokosc": "Window height on the card"
         },
         "data_description": {
-          "kolor": "You can also type your own colour, e.g. #3a3d42.",
-          "rama": "You can also type your own colour, e.g. #f4f4f2."
+          "kolor": "Samples are in the picture above.",
+          "kolor_wlasny": "Click the circle and pick any colour. Replaces the list colour.",
+          "rama": "Wood finishes are drawn with grain.",
+          "rama_wlasna": "Any frame colour. Replaces the list colour.",
+          "oslona": "What your shade looks like – compare with the tiles in the picture above.",
+          "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see."
         }
       }
     },
@@ -136,47 +168,88 @@
   "selector": {
     "oslona": {
       "options": {
-        "zebra": "Day-night",
-        "pelna": "Fabric roller",
-        "plisa": "Pleated",
-        "rzymska": "Roman",
-        "zaluzja": "Aluminium venetian",
-        "zewnetrzna": "Top-mounted shutter",
-        "zaciemniajaca": "Blackout",
-        "plaster": "Honeycomb",
-        "drewniana": "Wooden venetian",
-        "natynkowa": "Surface-mounted shutter",
-        "podtynkowa": "Concealed shutter",
-        "perforowana": "Perforated shutter",
-        "fasadowa": "External venetian C80",
-        "fasadowaz": "External venetian Z90",
-        "screen": "Screen ZIP"
+        "zebra": "🦓 Day-night",
+        "pelna": "🧵 Fabric roller",
+        "plisa": "🪗 Pleated",
+        "rzymska": "🏛️ Roman",
+        "zaluzja": "🪟 Aluminium venetian",
+        "zewnetrzna": "🏠 Top-mounted shutter",
+        "zaciemniajaca": "🌑 Blackout",
+        "plaster": "🐝 Honeycomb",
+        "drewniana": "🪵 Wooden venetian",
+        "natynkowa": "🏠 Surface-mounted shutter",
+        "podtynkowa": "🧱 Concealed shutter",
+        "perforowana": "✨ Perforated shutter",
+        "fasadowa": "🏢 External venetian C80",
+        "fasadowaz": "🏢 External venetian Z90",
+        "screen": "🌫️ Screen ZIP"
       }
     },
     "kolor": {
       "options": {
-        "czarny": "Black",
-        "grafit": "Graphite",
-        "szary": "Grey",
-        "bezowy": "Beige",
-        "kremowy": "Cream",
-        "bialy": "White",
-        "braz": "Brown",
-        "granat": "Navy",
-        "pomaranczowy": "Orange"
+        "czarny": "⚫ Black",
+        "grafit": "⚫ Graphite",
+        "szary": "🔘 Grey",
+        "bezowy": "🟤 Beige",
+        "kremowy": "⚪ Cream",
+        "bialy": "⚪ White",
+        "braz": "🟤 Brown",
+        "granat": "🔵 Navy",
+        "pomaranczowy": "🟠 Orange",
+        "piaskowy": "🟤 Sand",
+        "cappuccino": "🟤 Cappuccino",
+        "mokka": "🟤 Mocha",
+        "wenge": "🟤 Wenge",
+        "popiel": "🔘 Ash",
+        "srebrny": "⚪ Silver",
+        "stalowy": "🔵 Steel",
+        "lawendowy": "🟣 Lavender",
+        "pudrowy": "🩷 Powder pink",
+        "mietowy": "🟢 Mint",
+        "blekitny": "🔵 Sky blue",
+        "morski": "🔵 Teal",
+        "butelkowy": "🟢 Bottle green",
+        "musztardowy": "🟡 Mustard",
+        "terakota": "🟠 Terracotta",
+        "sliwkowy": "🟣 Plum",
+        "czerwony": "🔴 Red",
+        "bordo": "🔴 Burgundy",
+        "rozowy": "🩷 Pink",
+        "fiolet": "🟣 Violet",
+        "niebieski": "🔵 Blue",
+        "turkus": "🔵 Turquoise",
+        "zielony": "🟢 Green",
+        "limonka": "🟢 Lime",
+        "zolty": "🟡 Yellow",
+        "oliwka": "🟢 Olive"
       }
     },
     "rama": {
       "options": {
-        "biala": "White",
-        "kremowa": "Cream",
-        "srebrna": "Silver",
-        "szara": "Grey",
-        "antracyt": "Anthracite",
-        "czarna": "Black",
-        "zloty_dab": "Golden oak",
-        "dab_jasny": "Light oak",
-        "winchester": "Winchester"
+        "biala": "⚪ White",
+        "kremowa": "⚪ Cream",
+        "jasnoszara": "⚪ Light grey",
+        "srebrna": "🔘 Silver",
+        "szary_agat": "🔘 Agate grey",
+        "szara": "🔘 Grey",
+        "szary_kwarc": "🔘 Quartz grey",
+        "bazaltowa": "⚫ Basalt grey",
+        "antracyt": "⚫ Anthracite",
+        "czarna": "⚫ Black",
+        "zielona": "🟢 Green",
+        "granatowa": "🔵 Navy",
+        "bordowa": "🔴 Burgundy",
+        "braz": "🟤 Brown",
+        "sosna": "🪵 Pine",
+        "dab_jasny": "🪵 Light oak",
+        "dab_sheffield": "🪵 Sheffield oak",
+        "winchester": "🪵 Winchester",
+        "oregon": "🪵 Oregon",
+        "zloty_dab": "🪵 Golden oak",
+        "siena": "🪵 Siena",
+        "orzech": "🪵 Walnut",
+        "mahon": "🪵 Mahogany",
+        "dab_bagienny": "🪵 Bog oak"
       }
     },
     "tryb": {
@@ -189,6 +262,13 @@
       "options": {
         "1": "1 sash",
         "2": "2 sashes"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Calibrate"
       }
     }
   }

@@ -8,19 +8,22 @@ import voluptuous as vol
 
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, ConfigFlowResult, OptionsFlow
 from homeassistant.const import CONF_NAME
-from homeassistant.core import callback
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import selector as sel
 
 from .const import (
     CONF_CZAS,
     CONF_CZUJNIK_LEWE,
     CONF_CZUJNIK_PRAWE,
+    CONF_KALIBRUJ,
     CONF_KOLOR,
+    CONF_KOLOR_WLASNY,
     CONF_OSLONA,
     CONF_POGODA,
     CONF_PREDKOSC_LEWA,
     CONF_PREDKOSC_PRAWA,
     CONF_RAMA,
+    CONF_RAMA_WLASNA,
     CONF_ROLETY,
     CONF_SKRZYDLA,
     CONF_TRYB_LEWE,
@@ -33,10 +36,15 @@ from .const import (
     RAMY,
     TRYBY,
 )
+from .wykrywanie import czas_z_predkosci, kandydaci_predkosci, predkosc_rolety
+
+# obrazki próbek w opisie kroku „wygląd”
+OBRAZKI = "https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img"
 
 KROKI = ["user", "okno", "silnik", "pogoda", "wyglad"]
 # pola, które można zostawić puste (wtedy karta sama szuka albo ich nie używa)
-OPCJONALNE = {CONF_CZUJNIK_LEWE, CONF_CZUJNIK_PRAWE, CONF_PREDKOSC_LEWA, CONF_PREDKOSC_PRAWA, CONF_POGODA}
+OPCJONALNE = {CONF_CZUJNIK_LEWE, CONF_CZUJNIK_PRAWE, CONF_PREDKOSC_LEWA, CONF_PREDKOSC_PRAWA, CONF_POGODA,
+              CONF_KOLOR_WLASNY, CONF_RAMA_WLASNA}
 
 
 def _wybor(opcje: list[str], klucz: str, wlasna: bool = False) -> sel.SelectSelector:
@@ -44,11 +52,10 @@ def _wybor(opcje: list[str], klucz: str, wlasna: bool = False) -> sel.SelectSele
         options=opcje, translation_key=klucz, mode=sel.SelectSelectorMode.DROPDOWN, custom_value=wlasna))
 
 
-def _encja(domena: str, wiele: bool = False, klasa: list[str] | None = None) -> sel.EntitySelector:
-    cfg = sel.EntitySelectorConfig(domain=domena, multiple=wiele)
-    if klasa:
-        cfg = sel.EntitySelectorConfig(domain=domena, multiple=wiele, device_class=klasa)
-    return sel.EntitySelector(cfg)
+def _encja(domena: str, wiele: bool = False, tylko: list[str] | None = None) -> sel.EntitySelector:
+    if tylko:   # pokaż tylko pasujące encje (np. prędkości silnika), żeby nie szukać na długiej liście
+        return sel.EntitySelector(sel.EntitySelectorConfig(domain=domena, multiple=wiele, include_entities=tylko))
+    return sel.EntitySelector(sel.EntitySelectorConfig(domain=domena, multiple=wiele))
 
 
 def _pole(klucz: str, v: dict[str, Any], wymagane: bool = False):
@@ -58,7 +65,7 @@ def _pole(klucz: str, v: dict[str, Any], wymagane: bool = False):
     return (vol.Required if wymagane else vol.Optional)(klucz, default=v.get(klucz, DOMYSLNE.get(klucz)))
 
 
-def schemat(krok: str, v: dict[str, Any], z_nazwa: bool) -> vol.Schema:
+def schemat(krok: str, v: dict[str, Any], z_nazwa: bool, hass: HomeAssistant | None = None) -> vol.Schema:
     if krok == "user":
         pola = {}
         if z_nazwa:
@@ -74,18 +81,22 @@ def schemat(krok: str, v: dict[str, Any], z_nazwa: bool) -> vol.Schema:
             _pole(CONF_TRYB_PRAWE, v): _wybor(TRYBY, "tryb"),
         })
     if krok == "silnik":
+        szybkosci = kandydaci_predkosci(hass) if hass else []
         return vol.Schema({
-            _pole(CONF_PREDKOSC_LEWA, v): _encja("number"),
-            _pole(CONF_PREDKOSC_PRAWA, v): _encja("number"),
+            _pole(CONF_PREDKOSC_LEWA, v): _encja("number", tylko=szybkosci),
+            _pole(CONF_PREDKOSC_PRAWA, v): _encja("number", tylko=szybkosci),
             _pole(CONF_CZAS, v): sel.NumberSelector(sel.NumberSelectorConfig(
                 min=0, max=120, step=1, unit_of_measurement="s", mode=sel.NumberSelectorMode.SLIDER)),
+            vol.Optional(CONF_KALIBRUJ, default=False): sel.BooleanSelector(),
         })
     if krok == "pogoda":
         return vol.Schema({_pole(CONF_POGODA, v): _encja("weather")})
     return vol.Schema({
         _pole(CONF_OSLONA, v): _wybor(OSLONY, "oslona"),
-        _pole(CONF_KOLOR, v): _wybor(KOLORY, "kolor", True),
+        _pole(CONF_KOLOR, v): _wybor(list(KOLORY), "kolor", True),
+        _pole(CONF_KOLOR_WLASNY, v): sel.ColorRGBSelector(),
         _pole(CONF_RAMA, v): _wybor(list(RAMY), "rama", True),
+        _pole(CONF_RAMA_WLASNA, v): sel.ColorRGBSelector(),
         _pole(CONF_WYSOKOSC, v): sel.NumberSelector(sel.NumberSelectorConfig(
             min=140, max=460, step=10, unit_of_measurement="px", mode=sel.NumberSelectorMode.SLIDER)),
     })
@@ -121,8 +132,15 @@ class _Kreator:
                 if nast:
                     return await getattr(self, f"async_step_{nast}")()
                 return self._koniec()
-        return self.async_show_form(step_id=krok, data_schema=schemat(krok, self._v, z_nazwa), errors=bledy,
-                                    last_step=krok == KROKI[-1])
+        if krok == "silnik":   # prędkość silnika sama z urządzenia rolety
+            rolety = list(self._v.get(CONF_ROLETY) or [])
+            for i, klucz in enumerate((CONF_PREDKOSC_LEWA, CONF_PREDKOSC_PRAWA)):
+                if klucz not in self._v and (p := predkosc_rolety(self.hass, rolety[min(i, len(rolety) - 1)] if rolety else None)):
+                    self._v[klucz] = p
+        czas = czas_z_predkosci(self.hass, self._v.get(CONF_PREDKOSC_LEWA))
+        return self.async_show_form(step_id=krok, data_schema=schemat(krok, self._v, z_nazwa, self.hass), errors=bledy,
+                                    last_step=krok == KROKI[-1], description_placeholders={
+                                        "czas": f"{czas} s" if czas else "—", "obrazki": OBRAZKI})
 
     def _koniec(self) -> ConfigFlowResult:
         raise NotImplementedError

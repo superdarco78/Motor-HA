@@ -114,3 +114,50 @@ async def test_aktualizacje(hass, aioclient_mock):
     plik = hass.data[DOMAIN].katalog / "okno-ha.js"
     assert plik.read_text() == "// karta v99"
     assert "Date.now()" in (hass.data[DOMAIN].katalog / "okno-ha-loader.js").read_text()
+
+
+async def test_predkosc_kolory_i_kalibracja(hass, monkeypatch):
+    """Prędkość silnika sama z rolety, własne kolory z próbnika, przycisk „Kalibruj”."""
+    import custom_components.okno_ha.cover as okno_cover
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    hass.states.async_set("number.lewa_motor_speed", "40")
+    r = await hass.config_entries.flow.async_init(DOMAIN, context={"source": config_entries.SOURCE_USER})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"name": "Kuchnia", "rolety": ["cover.lewa"]})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"skrzydla": "1"})
+    assert r["step_id"] == "silnik"
+    assert r["description_placeholders"]["czas"] == "30.0 s"          # 20,2 + 394 / 40
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"predkosc_lewa": "number.lewa_motor_speed", "czas": 0})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {
+        "oslona": "plisa", "kolor": "grafit", "kolor_wlasny": [255, 0, 16], "rama": "zloty_dab", "wysokosc": 260})
+    await hass.async_block_till_done()
+    wpis = r["result"]
+    okno = hass.states.get("cover.okno_kuchnia")
+    karta = okno.attributes["okno_ha"]
+    assert karta["kolor"] == "#ff0010" and karta["rama"] == "#8a5a3b" and karta["predkosc_lewa"] == "number.lewa_motor_speed"
+    assert hass.states.get("button.okno_kuchnia_calibrate")
+
+    # kalibracja: roleta „jedzie” i dojeżdża po 2 s
+    monkeypatch.setattr(okno_cover.asyncio, "sleep", lambda s: _szybko())
+    czasy = iter([0, 0.5, 2.5, 3, 3.5, 5.5, 6, 6.5, 8.5, 9, 9.5])
+    monkeypatch.setattr(okno_cover, "monotonic", lambda: next(czasy))
+    ruch = iter(["opening", "open", "closing", "closed", "opening", "open"])
+
+    async def usluga(call):
+        pass
+    hass.services.async_register("cover", "open_cover", usluga)
+    hass.services.async_register("cover", "close_cover", usluga)
+    stan = {"v": None}
+
+    def pozycje(self):
+        s = next(ruch, "open")
+        return s in ("opening", "closing"), [0 if s == "closed" else 100]
+    monkeypatch.setattr(okno_cover.OknoCover, "_pozycje", pozycje)
+    await hass.services.async_call("button", "press", {"entity_id": "button.okno_kuchnia_calibrate"}, blocking=True)
+    await hass.async_block_till_done()
+    assert wpis.options["czas"] > 0 and "kalibruj" not in wpis.options
+
+
+async def _szybko():
+    return None
