@@ -7,10 +7,10 @@ const T = {
     puste: 'Nie masz jeszcze żadnego okna. Kliknij „Dodaj okno”, a kreator przeprowadzi Cię krok po kroku.',
     zapisano: 'Zmiany zapisują się same w urządzeniu okna.', nowe: 'Nowe okno – przejdź kreator, a na końcu kliknij „Utwórz okno”.',
     brak: 'Najpierw wybierz roletę w kroku 1.', ok: 'Gotowe – okno dodane jako urządzenie.', laduje: 'Wczytuję kartę Motor HA…' },
-  en: { tytul: 'HA Motor', dodaj: '➕ Add window', zmien: '✏️ Edit', wroc: '← Back to the list', zapisz: '💾 Create window',
+  en: { tytul: 'Motor HA', dodaj: '➕ Add window', zmien: '✏️ Edit', wroc: '← Back to the list', zapisz: '💾 Create window',
     puste: 'No windows yet. Click “Add window” and the wizard guides you step by step.',
     zapisano: 'Changes are saved to the window device automatically.', nowe: 'New window – go through the wizard, then click “Create window”.',
-    brak: 'Pick the blind in step 1 first.', ok: 'Done – the window was added as a device.', laduje: 'Loading the HA Motor card…' },
+    brak: 'Pick the blind in step 1 first.', ok: 'Done – the window was added as a device.', laduje: 'Loading the Motor HA card…' },
 };
 
 class OknoHaPanel extends HTMLElement {

@@ -26,8 +26,11 @@ jobs:
           [ "$ver" = "$man" ] || { echo "CHANGELOG ($ver) i manifest.json ($man) mają różne wersje"; exit 1; }
           title=$(grep -m1 -E '^## v[0-9]' CHANGELOG.md | sed -E 's/^## //')
           awk '/^## v/{n++} n==1' CHANGELOG.md | tail -n +2 > notes.md
+          # paczka dla HACS (zip_release): każda instalacja pobiera ten plik, więc plakietka pobrań liczy prawdziwe pobrania
+          (cd custom_components/okno_ha && zip -qr "$GITHUB_WORKSPACE/okno_ha.zip" . -x '__pycache__/*' '*/__pycache__/*')
           if gh release view "$ver" >/dev/null 2>&1; then
             gh release edit "$ver" --title "$title" --notes-file notes.md
+            gh release upload "$ver" okno_ha.zip --clobber
           else
-            gh release create "$ver" --target "$GITHUB_SHA" --title "$title" --notes-file notes.md --latest
+            gh release create "$ver" --target "$GITHUB_SHA" --title "$title" --notes-file notes.md --latest okno_ha.zip
           fi

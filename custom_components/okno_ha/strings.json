@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "HA Motor – step 1 of 5: shade",
+        "title": "Motor HA – step 1 of 5: shade",
         "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.\n\n🪄 Prefer the wizard with circles and pictures, like in the card? **[Open the wizard with circles](/okno-ha)**",
         "data": {
           "name": "Window name",
@@ -95,7 +95,7 @@
   "options": {
     "step": {
       "user": {
-        "title": "HA Motor – step 1 of 5: shade",
+        "title": "Motor HA – step 1 of 5: shade",
         "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
         "data": {
           "name": "Window name",
@@ -191,7 +191,7 @@
       "rolety": "Pick one or two shades."
     },
     "abort": {
-      "panel": "The wizard with circles and pictures opens in the HA Motor panel:\n\n**[🪄 Open this window's wizard](/okno-ha?okno={okno})**"
+      "panel": "The wizard with circles and pictures opens in the Motor HA panel:\n\n**[🪄 Open this window's wizard](/okno-ha?okno={okno})**"
     }
   },
   "selector": {
@@ -303,12 +303,12 @@
   },
   "issues": {
     "restart": {
-      "title": "HA Motor {wersja} downloaded – restart HA",
+      "title": "Motor HA {wersja} downloaded – restart HA",
       "fix_flow": {
         "step": {
           "confirm": {
             "title": "Restart Home Assistant?",
-            "description": "The new HA Motor version ({wersja}) is downloaded. Click “Submit” and Home Assistant restarts (about a minute), then the new version runs."
+            "description": "The new Motor HA version ({wersja}) is downloaded. Click “Submit” and Home Assistant restarts (about a minute), then the new version runs."
           }
         }
       }

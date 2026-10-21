@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.40 – Motor HA w każdym języku, prawdziwy licznik pobrań
+
+- 🏷️ Nazwa **Motor HA** w każdym języku (także po angielsku)
+- 📥 Każde wydanie ma paczkę `okno_ha.zip` – HACS pobiera ją przy instalacji i aktualizacji, więc plakietka „pobrania” liczy prawdziwe pobrania (od tej wersji; wcześniejsze instalacje nie były liczone)
+
 ## v1.4.39 – Nowa nazwa: Motor HA
 
 - 🏷️ Nowa nazwa: **Motor HA** (EN **HA Motor**) – w integracji, karcie, Aktualizacjach i opisie. Bez zmian: domena `okno_ha`, encje, typ karty `custom:okno-ha`, Twoje panele

@@ -30,6 +30,7 @@ REPO_KARTA = "roleta-realistyczna"
 REPO_INTEGRACJA = "okno-ha-integracja"
 ZASOB_KARTY = "roleta-realistyczna.js"
 LOADER = "okno-ha-loader.js"
+PACZKA = "okno_ha.zip"   # paczka integracji w każdym wydaniu (HACS: zip_release)
 
 
 def numer(wersja: str | None) -> tuple[int, ...]:
@@ -103,19 +104,35 @@ class Nowosci:
         self._powiadom()
 
     async def async_zainstaluj_integracje(self, wersja: str) -> None:
-        url = f"https://api.github.com/repos/{WLASCICIEL}/{REPO_INTEGRACJA}/zipball/{wersja}"
-        async with async_get_clientsession(self.hass).get(url, timeout=120) as r:
-            r.raise_for_status()
-            tresc = await r.read()
+        sesja = async_get_clientsession(self.hass)
+        # najpierw paczka z wydania (liczy się w plakietce pobrań), starsze wydania jej nie mają → całe repozytorium
+        paczka = True
+        async with sesja.get(f"https://github.com/{WLASCICIEL}/{REPO_INTEGRACJA}/releases/download/{wersja}/{PACZKA}",
+                             timeout=120) as r:
+            tresc = await r.read() if r.status == 200 else None
+        if tresc is None:
+            paczka = False
+            url = f"https://api.github.com/repos/{WLASCICIEL}/{REPO_INTEGRACJA}/zipball/{wersja}"
+            async with sesja.get(url, timeout=120) as r:
+                r.raise_for_status()
+                tresc = await r.read()
         tu = Path(__file__).parent
 
         def _rozpakuj() -> None:
             with zipfile.ZipFile(io.BytesIO(tresc)) as z:
                 for nazwa in z.namelist():
-                    czesci = nazwa.split("/", 1)
-                    if len(czesci) < 2 or not czesci[1].startswith(f"custom_components/{DOMAIN}/") or nazwa.endswith("/"):
+                    if nazwa.endswith("/"):
                         continue
-                    cel = tu / czesci[1][len(f"custom_components/{DOMAIN}/"):]
+                    if paczka:
+                        sciezka = nazwa
+                    else:
+                        czesci = nazwa.split("/", 1)
+                        if len(czesci) < 2 or not czesci[1].startswith(f"custom_components/{DOMAIN}/"):
+                            continue
+                        sciezka = czesci[1][len(f"custom_components/{DOMAIN}/"):]
+                    cel = (tu / sciezka).resolve()
+                    if tu.resolve() not in cel.parents:
+                        continue
                     cel.parent.mkdir(parents=True, exist_ok=True)
                     cel.write_bytes(z.read(nazwa))
 
