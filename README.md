@@ -4,15 +4,39 @@
 
 <p align="center">Okno z roletą jako urządzenie w Home Assistancie. Kreator w <b>Ustawienia → Integracje</b>, karta w środku.</p>
 
-<h2 align="center">Dwa kliknięcia i gotowe</h2>
+<h2 align="center">Instalacja krok po kroku</h2>
 
-<p align="center"><b>1. Pobierz z HACS</b><br><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Otwórz w HACS" height="80"></a></p>
+<h3 align="center">1️⃣ Kliknij ten przycisk, potem <b>Otwórz link</b></h3>
 
-<p align="center">Kliknij <b>Pobierz</b>, potem uruchom HA ponownie (<b>Ustawienia → System → ⏻ → Uruchom ponownie</b>).</p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Otwórz w HACS" height="80"></a></p>
 
-<p align="center"><b>2. Dodaj integrację</b><br><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Dodaj integrację Okno HA" height="80"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki/krok-1.svg" width="100%" alt="Krok 1️⃣"></p>
 
-<p align="center">Przejdź kreator. Okno pojawi się w <b>Ustawienia → Urządzenia i usługi</b> jako urządzenie.</p>
+<h3 align="center">2️⃣ Kliknij <b>Dodaj</b></h3>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki/krok-2.svg" width="100%" alt="Krok 2️⃣"></p>
+
+<h3 align="center">3️⃣ Kliknij <b>Pobierz</b>, potem jeszcze raz <b>Pobierz</b></h3>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki/krok-3.svg" width="100%" alt="Krok 3️⃣"></p>
+
+<h3 align="center">4️⃣ Uruchom HA ponownie i odczekaj 1–2 minuty</h3>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki/krok-4.svg" width="100%" alt="Krok 4️⃣"></p>
+
+<h3 align="center">5️⃣ Kliknij ten przycisk i przejdź kreator</h3>
+
+<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Dodaj integrację Okno HA" height="80"></a></p>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki/krok-5.svg" width="100%" alt="Krok 5️⃣"></p>
+
+<h3 align="center">6️⃣ Gotowe: okno jest urządzeniem</h3>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki/krok-6.svg" width="100%" alt="Krok 6️⃣"></p>
+
+<h3 align="center">7️⃣ Dodaj kartę na pulpit</h3>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-zrzuty2-pl-dodaj-karte.svg" width="100%" alt="Krok 7️⃣"></p>
 
 > ℹ️ Przyciski otwierają Twój Home Assistant. Za pierwszym razem strona zapyta o adres Twojego HA.
 
