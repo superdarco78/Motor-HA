@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.20 – Opis w domyślnych kolorach Home Assistanta
+
+- 🎨 Wszystkie obrazki opisu w 5 językach i obu motywach: kolor główny HA #009AC7, zaznaczenia „gdzie kliknąć” w kolorze akcentu #FF9800 (zamiast czerwieni). W HACS przemalowują się na kolory z Twojego profilu
+- 🏷️ Plakietki w kolorach HA
+- 🖼️ Dokładniejsze rozpoznawanie zaznaczeń przy przemalowaniu (słońce i dachy na zdjęciach zostają)
+
 ## v1.4.19 – Kreator w kolorach Twojego motywu
 
 - 🎨 Karta v36: podsumowanie i podpowiedzi kreatora karty mają ikony i ramki w kolorze głównym Twojego motywu HA, zamiast zielonych ✅ i zielonych ramek. Zmienia się na żywo z profilem

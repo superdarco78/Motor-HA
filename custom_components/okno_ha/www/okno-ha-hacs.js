@@ -85,7 +85,7 @@
         for (let k = 0; k < p.length; k += 4) {
           if (!p[k + 3]) continue;
           const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
-          const akcent = A && h >= 31 && h <= 40 && s >= 0.15 && v >= 0.6;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
+          const akcent = A && h >= 32 && h <= 38 && s >= 0.15 && v >= 0.6;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
           if (!akcent && (h < 188 || h > 205 || s < 0.05 || v < 0.15)) continue;   // poza tym tylko odcienie niebieskiego HA i ich jasne tła
           const { B, bb, b1, wyz } = akcent ? POM : h < 196.5 ? NOWY : DAWNY, C = akcent ? A : K;
           const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
