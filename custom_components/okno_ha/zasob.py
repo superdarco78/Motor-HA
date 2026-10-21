@@ -13,7 +13,8 @@ from homeassistant.core import HomeAssistant
 from .const import DOMAIN, VERSION
 
 _LOGGER = logging.getLogger(__name__)
-ADRES = f"/{DOMAIN}/okno-ha-loader.js"
+ADRES = "/local/okno-ha-loader.js"            # plik /config/www/okno-ha-loader.js
+STARE = (f"/{DOMAIN}/okno-ha-loader.js", ADRES)
 
 
 def _zasoby(hass: HomeAssistant):
@@ -31,11 +32,11 @@ async def async_dodaj(hass: HomeAssistant) -> None:
             await zasoby.async_load()
             zasoby.loaded = True
         nowy = f"{ADRES}?v={VERSION}"
-        nasze = [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] == ADRES]
+        nasze = [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] in STARE]
         if not nasze:
             await zasoby.async_create_item({"res_type": "module", "url": nowy})
             return
-        if nasze[0].get("url") != nowy:
+        if nasze[0].get("url") != nowy:   # nowa wersja albo stary adres /okno_ha/… – jeden wpis, zawsze aktualny
             await zasoby.async_update_item(nasze[0]["id"], {"res_type": "module", "url": nowy})
         for z in nasze[1:]:
             await zasoby.async_delete_item(z["id"])
@@ -50,7 +51,7 @@ async def async_usun(hass: HomeAssistant) -> None:
         if not zasoby.loaded:
             await zasoby.async_load()
             zasoby.loaded = True
-        for z in [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] == ADRES]:
+        for z in [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] in STARE]:
             await zasoby.async_delete_item(z["id"])
     except Exception:  # noqa: BLE001
         _LOGGER.exception("Okno HA: nie usunąłem ładowacza z zasobów")

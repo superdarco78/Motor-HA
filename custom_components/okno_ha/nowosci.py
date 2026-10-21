@@ -72,6 +72,10 @@ class Nowosci:
                 f"  import(`/{DOMAIN}/okno-ha-hacs.js?t=${{Date.now()}}`).catch(() => {{}});\n"
                 f"  import(`/{DOMAIN}/{KARTA_PLIK}?t=${{Date.now()}}`).catch(e => "
                 f"console.error('Okno HA: nie wczytałem karty', e));\n}}\n", encoding="utf-8")
+            # ta sama kopia ładowacza widoczna w /config/www (File editor), w Zasobach jako /local/okno-ha-loader.js
+            www = Path(self.hass.config.path("www"))
+            www.mkdir(exist_ok=True)
+            shutil.copyfile(self.katalog / LOADER, www / LOADER)
 
         nadpisz = numer(zapisana) < numer(KARTA_WERSJA)
         await self.hass.async_add_executor_job(_kopiuj, nadpisz)
@@ -83,6 +87,8 @@ class Nowosci:
         """Po usunięciu ostatniego okna: kasuje /config/.okno_ha i zapisaną wersję karty."""
         await self._store.async_remove()
         await self.hass.async_add_executor_job(shutil.rmtree, self.katalog, True)
+        await self.hass.async_add_executor_job(
+            lambda: Path(self.hass.config.path("www", LOADER)).unlink(missing_ok=True))
 
     async def async_zainstaluj_karte(self, wersja: str) -> None:
         url = f"https://github.com/{WLASCICIEL}/{REPO_KARTA}/releases/download/{wersja}/{ZASOB_KARTY}"

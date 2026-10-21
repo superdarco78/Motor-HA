@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.36 – Ładowacz w folderze www
+
+- 📦 Plik ładowacza leży teraz w `/config/www/okno-ha-loader.js` (widać go w File editor), a w Zasobach jest jako `/local/okno-ha-loader.js` – tak jak ładowacze innych kart. Integracja kładzie go i aktualizuje sama, stary wpis zamienia na nowy, bez dubli
+
 ## v1.4.35 – Ładowacz w Zasobach
 
 - 📦 Ładowacz `okno-ha-loader.js` dodaje się sam do Ustawienia → Panele → Zasoby przy instalacji i każdej aktualizacji (z numerem wersji). Przy każdym otwarciu strony wczytuje świeże skrypty Okna HA, a otwarta strona sama podmienia skrypt po aktualizacji – bez czyszczenia przeglądarki. Po usunięciu ostatniego okna znika sam
