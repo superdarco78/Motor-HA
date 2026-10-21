@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.42 – Nowa animacja w opisie
+
+- 🎞️ Animacja „Jedna karta – każda osłona” w opisie: przezroczyste tło (pasuje do jasnego i ciemnego motywu), nazwa tylko raz
+
 ## v1.4.41 – Motor HA w opisie
 
 - 📖 Opis w HACS we wszystkich 5 językach i baner z nazwą **Motor HA** i przyciskiem „Otwórz w HACS”
