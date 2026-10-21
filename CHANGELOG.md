@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.23 – Czytelność przy każdym kolorze i motywie
+
+- 🌗 Obrazki opisu w HACS biorą wersję jasną albo ciemną z motywu Home Assistanta, a nie z ustawień systemu, więc tekst w kafelkach i nagłówkach jest zawsze czytelny
+- 🌤️ Przemalowanie nie rusza nieba na zdjęciach okien
+- 🔤 Karta v37: napisy na przyciskach w kolorze motywu są białe albo czarne, zależnie od jasności Twojego koloru
+- 🐞 Naprawiony pierwszy krok kreatora karty (błąd przy sprawdzaniu wersji)
+
 ## v1.4.22 – Twoje kolory od razu, bez mignięcia
 
 - ⚡ Przemalowane obrazki opisu zostają zapamiętane w przeglądarce. Po odświeżeniu strony od razu są w Twoich kolorach, bez mignięcia domyślnych. Przemalowanie robi się od nowa tylko wtedy, gdy zmienisz kolor w profilu

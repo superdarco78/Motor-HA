@@ -88,7 +88,7 @@
       if (!p[k + 3]) continue;
       const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
       const akcent = A && h >= 24 && h <= 40 && s >= 0.15 && v >= 0.6;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
-      if (!akcent && (h < 188 || h > 205 || s < 0.05 || v < 0.15)) continue;   // poza tym tylko odcienie niebieskiego HA i ich jasne tła
+      if (!akcent && (h < 188 || h > 201 || s < 0.05 || v < 0.15)) continue;   // poza tym tylko odcienie niebieskiego HA i ich jasne tła (niebo na zdjęciach ma 203°+)
       const { B, bb, b1, wyz } = akcent ? POM : h < 196.5 ? NOWY : DAWNY, C = akcent ? A : K;
       const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
       const a = (3 * bp - b1 * sp) / wyz, w = (bb * sp - b1 * bp) / wyz;
@@ -135,10 +135,12 @@
   try { ostatnie = localStorage.getItem("okno-ha-kolory") || ""; } catch (e) { /* tryb prywatny */ }
   const akcentDla = (adres, akc) => (/\/(kolory|ramy|oslony)-/.test(adres) ? "" : akc);   // próbki kolorów i oklein bez akcentu
   const policz = (adres, kol, akc) => {
-    const K = rgbZ(kol), A = akc ? rgbZ(akc) : null;
+    const K = rgbZ(kol), A = akc ? rgbZ(akc) : null, ciemny = kol[7] === "d";
     return /\.svg/i.test(adres)
       // SVG zostaje SVG-iem: jasna i ciemna wersja dalej przełączają się z motywem, przemalowane są tylko obrazki w środku
       ? fetch(adres).then((r) => r.text()).then(async (svg) => {
+        // wersja jasna albo ciemna według motywu HA (nie ustawień systemu) – tekst zawsze czytelny
+        svg = svg.replace("</style>", ciemny ? ".l{display:none!important}.d{display:inline!important}</style>" : ".d{display:none!important}.l{display:inline!important}</style>");
         const czesci = svg.split(/(data:image\/png;base64,[A-Za-z0-9+/=]+)/);
         for (let k = 1; k < czesci.length; k += 2) czesci[k] = plotno(await wczytaj(czesci[k]), K, A).toDataURL("image/png");
         return new Blob([czesci.join("")], { type: "image/svg+xml" });
@@ -172,8 +174,11 @@
       el.dataset.oknoOd = el.dataset.oknoOd || Date.now();
       if (Date.now() - el.dataset.oknoOd > 8000) pokaz(el);
     }
-    const kol = kolorMotywu(el);
-    if (!kol) return;
+    const glowny = kolorMotywu(el);
+    if (!glowny) return;
+    const tlo = kolorMotywu(el, "--primary-background-color") || kolorMotywu(el, "--card-background-color");
+    const ciemny = tlo ? rgbZ(tlo).reduce((s, c, i) => s + c * [0.299, 0.587, 0.114][i], 0) < 128 : matchMedia("(prefers-color-scheme: dark)").matches;
+    const kol = glowny + (ciemny ? "d" : "j");   // kolor główny + motyw (jasny/ciemny)
     const akcG = kolorMotywu(el, "--accent-color") || "", akc = akcentDla(org, akcG);
     if (ostatnie !== kol + "|" + akcG) { ostatnie = kol + "|" + akcG; try { localStorage.setItem("okno-ha-kolory", ostatnie); } catch (e) { /* tryb prywatny */ } }
     const znak = kol + akc;
