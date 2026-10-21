@@ -18,8 +18,6 @@
   <a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-009AC7?style=for-the-badge&logo=discourse&logoColor=white" alt="Forum PL"></a>
 </p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski/hacs_repository-cs.svg" alt="Otevřít v HACS" height="56"></a></p>
-
 <p align="center">
   <a href="https://github.com/superdarco78/okno-ha-integracja"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/pl.svg" alt="Polski" height="44"></a>
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/en.svg" alt="English" height="44"></a>
@@ -28,7 +26,7 @@
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/cs-on.svg" alt="Čeština" height="44"></a>
 </p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner4-cs.svg" width="100%" alt="Okno HA"></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner5-cs.svg" width="100%" alt="Okno HA"></a></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en.webp#gh-light-mode-only" alt="Animace: čtyři stínění, den a noc, počasí, pohyb" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz5/pokaz5-en-ciemny.webp#gh-dark-mode-only" alt="Animace: čtyři stínění, den a noc, počasí, pohyb" width="100%"><br>
 <sub>Čtyři stínění, den a noc, počasí a pohyb</sub></p>
@@ -250,8 +248,10 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="kreator-krok-1"></a>
 <h4><a name="j36" href="#j36"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-krok-1.svg" height="42" alt="Krok 1: Roleta"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/1-1.svg" width="12.59%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/1-2.svg" width="14.32%" alt="Krok 2: Okno"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/1-3.svg" width="14.32%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/1-4.svg" width="14.21%" alt="Krok 4: Senzory okna"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/1-5.svg" width="14.32%" alt="Krok 5: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/1-6.svg" width="14.37%" alt="Krok 6: Vzhled"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/1-7.svg" width="12.70%" alt="Krok 7: Uložení"></a></p>
+
 <a name="j37"></a>
-<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-kolka-1.svg" width="100%" alt="Krok 1: Roleta"></a><br>
+<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-kolka-1.svg" width="100%" alt="Krok 1: Roleta"></a><br>
 <sub>Průvodce s kroužky: Krok 1: Roleta</sub></p>
 
 <p>&nbsp;</p>
@@ -259,8 +259,10 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="kreator-krok-2"></a>
 <h4><a name="j38" href="#j38"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-krok-2.svg" height="42" alt="Krok 2: Okno"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/2-1.svg" width="12.59%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/2-2.svg" width="14.32%" alt="Krok 2: Okno"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/2-3.svg" width="14.32%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/2-4.svg" width="14.21%" alt="Krok 4: Senzory okna"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/2-5.svg" width="14.32%" alt="Krok 5: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/2-6.svg" width="14.37%" alt="Krok 6: Vzhled"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/2-7.svg" width="12.70%" alt="Krok 7: Uložení"></a></p>
+
 <a name="j39"></a>
-<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-kolka-2.svg" width="100%" alt="Krok 2: Okno"></a><br>
+<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-kolka-2.svg" width="100%" alt="Krok 2: Okno"></a><br>
 <sub>Průvodce s kroužky: Krok 2: Okno</sub></p>
 
 <p>&nbsp;</p>
@@ -268,8 +270,10 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="kreator-krok-3"></a>
 <h4><a name="j40" href="#j40"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-krok-3.svg" height="42" alt="Krok 3: Motor"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/3-1.svg" width="12.59%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/3-2.svg" width="14.32%" alt="Krok 2: Okno"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/3-3.svg" width="14.32%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/3-4.svg" width="14.21%" alt="Krok 4: Senzory okna"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/3-5.svg" width="14.32%" alt="Krok 5: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/3-6.svg" width="14.37%" alt="Krok 6: Vzhled"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/3-7.svg" width="12.70%" alt="Krok 7: Uložení"></a></p>
+
 <a name="j41"></a>
-<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-kolka-3.svg" width="100%" alt="Krok 3: Motor"></a><br>
+<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-kolka-3.svg" width="100%" alt="Krok 3: Motor"></a><br>
 <sub>Průvodce s kroužky: Krok 3: Motor</sub></p>
 
 <p>&nbsp;</p>
@@ -277,8 +281,10 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="kreator-krok-4"></a>
 <h4><a name="j42" href="#j42"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-krok-4.svg" height="42" alt="Krok 4: Senzory okna"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/4-1.svg" width="12.59%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/4-2.svg" width="14.32%" alt="Krok 2: Okno"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/4-3.svg" width="14.32%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/4-4.svg" width="14.21%" alt="Krok 4: Senzory okna"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/4-5.svg" width="14.32%" alt="Krok 5: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/4-6.svg" width="14.37%" alt="Krok 6: Vzhled"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/4-7.svg" width="12.70%" alt="Krok 7: Uložení"></a></p>
+
 <a name="j43"></a>
-<p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-kolka-4.svg" width="100%" alt="Krok 4: Senzory okna"></a><br>
+<p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-kolka-4.svg" width="100%" alt="Krok 4: Senzory okna"></a><br>
 <sub>Průvodce s kroužky: Krok 4: Senzory okna</sub></p>
 
 <p>&nbsp;</p>
@@ -286,8 +292,10 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="kreator-krok-5"></a>
 <h4><a name="j44" href="#j44"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-krok-5.svg" height="42" alt="Krok 5: Počasí"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/5-1.svg" width="12.59%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/5-2.svg" width="14.32%" alt="Krok 2: Okno"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/5-3.svg" width="14.32%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/5-4.svg" width="14.21%" alt="Krok 4: Senzory okna"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/5-5.svg" width="14.32%" alt="Krok 5: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/5-6.svg" width="14.37%" alt="Krok 6: Vzhled"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/5-7.svg" width="12.70%" alt="Krok 7: Uložení"></a></p>
+
 <a name="j45"></a>
-<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-kolka-5.svg" width="100%" alt="Krok 5: Počasí"></a><br>
+<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-kolka-5.svg" width="100%" alt="Krok 5: Počasí"></a><br>
 <sub>Průvodce s kroužky: Krok 5: Počasí</sub></p>
 
 <p>&nbsp;</p>
@@ -295,8 +303,10 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="kreator-krok-6"></a>
 <h4><a name="j46" href="#j46"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-krok-6.svg" height="42" alt="Krok 6: Vzhled"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/6-1.svg" width="12.59%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/6-2.svg" width="14.32%" alt="Krok 2: Okno"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/6-3.svg" width="14.32%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/6-4.svg" width="14.21%" alt="Krok 4: Senzory okna"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/6-5.svg" width="14.32%" alt="Krok 5: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/6-6.svg" width="14.37%" alt="Krok 6: Vzhled"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/6-7.svg" width="12.70%" alt="Krok 7: Uložení"></a></p>
+
 <a name="j47"></a>
-<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-kolka-6.svg" width="100%" alt="Krok 6: Vzhled"></a><br>
+<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-kolka-6.svg" width="100%" alt="Krok 6: Vzhled"></a><br>
 <sub>Průvodce s kroužky: Krok 6: Vzhled</sub></p>
 
 <p>&nbsp;</p>
@@ -304,8 +314,10 @@ Průvodce se 7 kroužky a obrázky otevřeš dvěma způsoby: na stránce zaří
 <a name="kreator-krok-7"></a>
 <h4><a name="j48" href="#j48"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-krok-7.svg" height="42" alt="Krok 7: Uložení"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/7-1.svg" width="12.59%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/7-2.svg" width="14.32%" alt="Krok 2: Okno"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/7-3.svg" width="14.32%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/7-4.svg" width="14.21%" alt="Krok 4: Senzory okna"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/7-5.svg" width="14.32%" alt="Krok 5: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/7-6.svg" width="14.37%" alt="Krok 6: Vzhled"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/pasek7/7-7.svg" width="12.70%" alt="Krok 7: Uložení"></a></p>
+
 <a name="j49"></a>
-<p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-kolka-7.svg" width="100%" alt="Krok 7: Uložení"></a><br>
+<p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-kolka-7.svg" width="100%" alt="Krok 7: Uložení"></a><br>
 <sub>Průvodce s kroužky: Krok 7: Uložení</sub></p>
 
 <p>&nbsp;</p>
@@ -328,8 +340,10 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <a name="kreator-1"></a>
 <h4><a name="j52" href="#j52"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-1.svg" height="42" alt="Krok 1: Roleta"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/1-1.svg" width="18.80%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/1-2.svg" width="18.80%" alt="Krok 2: Okno a senzory"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/1-3.svg" width="18.80%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/1-4.svg" width="18.80%" alt="Krok 4: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/1-5.svg" width="18.80%" alt="Krok 5: Vzhled"></a></p>
+
 <a name="j53"></a>
-<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-1.svg" width="100%" alt="Krok 1: Roleta"></a><br>
+<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-1.svg" width="100%" alt="Krok 1: Roleta"></a><br>
 <sub>Krok 1: Roleta</sub></p>
 
 <p>&nbsp;</p>
@@ -337,8 +351,10 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <a name="kreator-2"></a>
 <h4><a name="j54" href="#j54"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-2.svg" height="42" alt="Krok 2: Okno a senzory"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/2-1.svg" width="18.80%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/2-2.svg" width="18.80%" alt="Krok 2: Okno a senzory"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/2-3.svg" width="18.80%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/2-4.svg" width="18.80%" alt="Krok 4: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/2-5.svg" width="18.80%" alt="Krok 5: Vzhled"></a></p>
+
 <a name="j55"></a>
-<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-2.svg" width="100%" alt="Krok 2: Okno a senzory"></a><br>
+<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-2.svg" width="100%" alt="Krok 2: Okno a senzory"></a><br>
 <sub>Krok 2: Okno a senzory</sub></p>
 
 <p>&nbsp;</p>
@@ -346,8 +362,10 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <a name="kreator-3"></a>
 <h4><a name="j56" href="#j56"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-3.svg" height="42" alt="Krok 3: Motor"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/3-1.svg" width="18.80%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/3-2.svg" width="18.80%" alt="Krok 2: Okno a senzory"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/3-3.svg" width="18.80%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/3-4.svg" width="18.80%" alt="Krok 4: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/3-5.svg" width="18.80%" alt="Krok 5: Vzhled"></a></p>
+
 <a name="j57"></a>
-<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-3.svg" width="100%" alt="Krok 3: Motor"></a><br>
+<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-3.svg" width="100%" alt="Krok 3: Motor"></a><br>
 <sub>Krok 3: Motor</sub></p>
 
 <p>&nbsp;</p>
@@ -355,8 +373,10 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <a name="kreator-4"></a>
 <h4><a name="j58" href="#j58"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-4.svg" height="42" alt="Krok 4: Počasí"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/4-1.svg" width="18.80%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/4-2.svg" width="18.80%" alt="Krok 2: Okno a senzory"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/4-3.svg" width="18.80%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/4-4.svg" width="18.80%" alt="Krok 4: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/4-5.svg" width="18.80%" alt="Krok 5: Vzhled"></a></p>
+
 <a name="j59"></a>
-<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-4.svg" width="100%" alt="Krok 4: Počasí"></a><br>
+<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-4.svg" width="100%" alt="Krok 4: Počasí"></a><br>
 <sub>Krok 4: Počasí</sub></p>
 
 <p>&nbsp;</p>
@@ -364,8 +384,10 @@ Po **Přidat integraci** (krok 5 instalace) ukáže HA krátkého průvodce v 5 
 <a name="kreator-5"></a>
 <h4><a name="j60" href="#j60"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/h-kreator-5.svg" height="42" alt="Krok 5: Vzhled"></a></h4>
 
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/5-1.svg" width="18.80%" alt="Krok 1: Roleta"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/5-2.svg" width="18.80%" alt="Krok 2: Okno a senzory"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/5-3.svg" width="18.80%" alt="Krok 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/5-4.svg" width="18.80%" alt="Krok 4: Počasí"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/pasek5/5-5.svg" width="18.80%" alt="Krok 5: Vzhled"></a></p>
+
 <a name="j61"></a>
-<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/cs/kreator-5.svg" width="100%" alt="Krok 5: Vzhled"></a><br>
+<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/cs/kreator-5.svg" width="100%" alt="Krok 5: Vzhled"></a><br>
 <sub>Krok 5: Vzhled</sub></p>
 
 <p>&nbsp;</p>
