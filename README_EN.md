@@ -51,14 +51,14 @@
 </p>
 
 <a name="dlaczego"></a>
-## <a name="j1" href="#j1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/star-four-points.png" height="21" align="absmiddle"></a> Why Okno HA?
+<h2><a name="j1" href="#j1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-dlaczego.svg" height="48" alt="Why Okno HA?"></a></h2>
 
 <a name="j2"></a>
 <p align="center"><a href="#j2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/tab-dlaczego.svg" width="100%" alt="Why Okno HA"></a><br>
 <sub>📷 Why Okno HA</sub></p>
 
 <a name="przed-i-po"></a>
-## <a name="j3" href="#j3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/chart-line.png" height="21" align="absmiddle"></a> Before and after
+<h2><a name="j3" href="#j3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-przed-i-po.svg" height="48" alt="Before and after"></a></h2>
 
 Left: the standard shade card in Home Assistant. Right: the same window with Okno HA.
 
@@ -69,7 +69,7 @@ Left: the standard shade card in Home Assistant. Right: the same window with Okn
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Star%20this%20repo&color=f9a825&logo=github" alt="⭐" height="36"></a></p>
 
 <a name="rodzaje-oslon"></a>
-## <a name="j4" href="#j4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/window-shutter.png" height="21" align="absmiddle"></a> Shade types
+<h2><a name="j4" href="#j4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-rodzaje-oslon.svg" height="48" alt="Shade types"></a></h2>
 
 15 types: 8 indoor and 7 outdoor. Pick one in the wizard or later in **Configure**.
 
@@ -78,7 +78,7 @@ Left: the standard shade card in Home Assistant. Right: the same window with Okn
 <sub>📷 15 shade types: 8 indoor and 7 outdoor</sub></p>
 
 <a name="galeria"></a>
-## <a name="j6" href="#j6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/palette.png" height="21" align="absmiddle"></a> Gallery
+<h2><a name="j6" href="#j6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-galeria.svg" height="48" alt="Gallery"></a></h2>
 
 Pictures follow the theme (light or dark), just like the card in Home Assistant.
 
@@ -113,7 +113,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 </table>
 
 <a name="spis-tresci"></a>
-## <a name="j16" href="#j16"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/format-list-bulleted.png" height="21" align="absmiddle"></a> Contents
+<h2><a name="j16" href="#j16"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-spis-tresci.svg" height="48" alt="Contents"></a></h2>
 
 **<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/rocket-launch.png" height="20" align="absmiddle"> [Part 1. For beginners](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#dla-poczatkujacych)** · this is all you need
 - [Why Okno HA?](https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#dlaczego)
@@ -144,12 +144,12 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 ---
 
 <a name="dla-poczatkujacych"></a>
-# <a name="j17" href="#j17"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/rocket-launch.png" height="28" align="absmiddle"></a> Part 1. For beginners
+<h1><a name="j17" href="#j17"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-dla-poczatkujacych.svg" height="56" alt="Part 1. For beginners"></a></h1>
 
 > ℹ️ **This is all you need.** 7 steps, a few minutes. You can skip part 2.
 
 <a name="instalacja"></a>
-## <a name="j18" href="#j18"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/download.png" height="21" align="absmiddle"></a> Step-by-step installation
+<h2><a name="j18" href="#j18"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-instalacja.svg" height="48" alt="Step-by-step installation"></a></h2>
 
 <a name="krok-1"></a>
 <h3 align="center">1️⃣ Click this button, then <b>Open link</b></h3>
@@ -211,7 +211,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 ---
 
 <a name="kreator-kolka"></a>
-## <a name="j26" href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/auto-fix.png" height="21" align="absmiddle"></a> Wizard with circles: 7 steps
+<h2><a name="j26" href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-kolka.svg" height="48" alt="Wizard with circles: 7 steps"></a></h2>
 
 Open the wizard with 7 circles and pictures in two ways: on the window device page click **⚙️ Visit** (point 1), or **Configure → 🪄 Wizard with circles and pictures**. Click any step in any order.
 
@@ -226,60 +226,60 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 > ℹ️ Not sure what to choose? Keep what is selected at the top of the list. The wizard picked the best match.
 
 <a name="kreator-krok-1"></a>
-#### <a name="j30" href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/window-shutter.png" height="17" align="absmiddle"></a> Step 1: Shade
+<h4><a name="j29" href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-krok-1.svg" height="42" alt="Step 1: Shade"></a></h4>
 
-<a name="j29"></a>
-<p align="center"><a href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-gora.svg" width="100%" alt=""></a><br><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-p1.svg" width="13.07%" alt="1"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-p2.svg" width="14.71%" alt="2"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-p3.svg" width="14.78%" alt="3"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-p4.svg" width="14.71%" alt="4"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-p5.svg" width="14.78%" alt="5"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-p6.svg" width="14.71%" alt="6"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-p7.svg" width="13.21%" alt="7"></a><br><a href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-1-en-dol.svg" width="100%" alt=""></a><br>
-<sub>📷 Wizard with circles: Step 1: Shade. Click a circle to jump to that step.</sub></p>
+<a name="j30"></a>
+<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-kolka-1.svg" width="100%" alt="Step 1: Shade"></a><br>
+<sub>📷 Wizard with circles: Step 1: Shade</sub></p>
 
 <a name="kreator-krok-2"></a>
-#### <a name="j32" href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/window-closed-variant.png" height="17" align="absmiddle"></a> Step 2: Window
+<h4><a name="j31" href="#j31"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-krok-2.svg" height="42" alt="Step 2: Window"></a></h4>
 
-<a name="j31"></a>
-<p align="center"><a href="#j31"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-gora.svg" width="100%" alt=""></a><br><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-p1.svg" width="13.07%" alt="1"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-p2.svg" width="14.71%" alt="2"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-p3.svg" width="14.78%" alt="3"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-p4.svg" width="14.71%" alt="4"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-p5.svg" width="14.78%" alt="5"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-p6.svg" width="14.71%" alt="6"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-p7.svg" width="13.21%" alt="7"></a><br><a href="#j31"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-2-en-dol.svg" width="100%" alt=""></a><br>
-<sub>📷 Wizard with circles: Step 2: Window. Click a circle to jump to that step.</sub></p>
+<a name="j32"></a>
+<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-kolka-2.svg" width="100%" alt="Step 2: Window"></a><br>
+<sub>📷 Wizard with circles: Step 2: Window</sub></p>
 
 <a name="kreator-krok-3"></a>
-#### <a name="j34" href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/speedometer.png" height="17" align="absmiddle"></a> Step 3: Motor
+<h4><a name="j33" href="#j33"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-krok-3.svg" height="42" alt="Step 3: Motor"></a></h4>
 
-<a name="j33"></a>
-<p align="center"><a href="#j33"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-gora.svg" width="100%" alt=""></a><br><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-p1.svg" width="13.07%" alt="1"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-p2.svg" width="14.71%" alt="2"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-p3.svg" width="14.78%" alt="3"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-p4.svg" width="14.71%" alt="4"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-p5.svg" width="14.78%" alt="5"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-p6.svg" width="14.71%" alt="6"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-p7.svg" width="13.21%" alt="7"></a><br><a href="#j33"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-3-en-dol.svg" width="100%" alt=""></a><br>
-<sub>📷 Wizard with circles: Step 3: Motor. Click a circle to jump to that step.</sub></p>
+<a name="j34"></a>
+<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-kolka-3.svg" width="100%" alt="Step 3: Motor"></a><br>
+<sub>📷 Wizard with circles: Step 3: Motor</sub></p>
 
 <a name="kreator-krok-4"></a>
-#### <a name="j36" href="#j36"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/window-open-variant.png" height="17" align="absmiddle"></a> Step 4: Window sensors
+<h4><a name="j35" href="#j35"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-krok-4.svg" height="42" alt="Step 4: Window sensors"></a></h4>
 
-<a name="j35"></a>
-<p align="center"><a href="#j35"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-gora.svg" width="100%" alt=""></a><br><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-p1.svg" width="13.07%" alt="1"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-p2.svg" width="14.71%" alt="2"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-p3.svg" width="14.78%" alt="3"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-p4.svg" width="14.71%" alt="4"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-p5.svg" width="14.78%" alt="5"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-p6.svg" width="14.71%" alt="6"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-p7.svg" width="13.21%" alt="7"></a><br><a href="#j35"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-4-en-dol.svg" width="100%" alt=""></a><br>
-<sub>📷 Wizard with circles: Step 4: Window sensors. Click a circle to jump to that step.</sub></p>
+<a name="j36"></a>
+<p align="center"><a href="#j36"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-kolka-4.svg" width="100%" alt="Step 4: Window sensors"></a><br>
+<sub>📷 Wizard with circles: Step 4: Window sensors</sub></p>
 
 <a name="kreator-krok-5"></a>
-#### <a name="j38" href="#j38"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/weather-partly-cloudy.png" height="17" align="absmiddle"></a> Step 5: Weather
+<h4><a name="j37" href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-krok-5.svg" height="42" alt="Step 5: Weather"></a></h4>
 
-<a name="j37"></a>
-<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-gora.svg" width="100%" alt=""></a><br><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-p1.svg" width="13.07%" alt="1"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-p2.svg" width="14.71%" alt="2"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-p3.svg" width="14.78%" alt="3"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-p4.svg" width="14.71%" alt="4"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-p5.svg" width="14.78%" alt="5"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-p6.svg" width="14.71%" alt="6"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-p7.svg" width="13.21%" alt="7"></a><br><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-5-en-dol.svg" width="100%" alt=""></a><br>
-<sub>📷 Wizard with circles: Step 5: Weather. Click a circle to jump to that step.</sub></p>
+<a name="j38"></a>
+<p align="center"><a href="#j38"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-kolka-5.svg" width="100%" alt="Step 5: Weather"></a><br>
+<sub>📷 Wizard with circles: Step 5: Weather</sub></p>
 
 <a name="kreator-krok-6"></a>
-#### <a name="j40" href="#j40"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="17" align="absmiddle"></a> Step 6: Look
+<h4><a name="j39" href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-krok-6.svg" height="42" alt="Step 6: Look"></a></h4>
 
-<a name="j39"></a>
-<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-gora.svg" width="100%" alt=""></a><br><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-p1.svg" width="13.07%" alt="1"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-p2.svg" width="14.71%" alt="2"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-p3.svg" width="14.78%" alt="3"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-p4.svg" width="14.71%" alt="4"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-p5.svg" width="14.78%" alt="5"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-p6.svg" width="14.71%" alt="6"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-p7.svg" width="13.21%" alt="7"></a><br><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-6-en-dol.svg" width="100%" alt=""></a><br>
-<sub>📷 Wizard with circles: Step 6: Look. Click a circle to jump to that step.</sub></p>
+<a name="j40"></a>
+<p align="center"><a href="#j40"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-kolka-6.svg" width="100%" alt="Step 6: Look"></a><br>
+<sub>📷 Wizard with circles: Step 6: Look</sub></p>
 
 <a name="kreator-krok-7"></a>
-#### <a name="j42" href="#j42"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/check-circle-outline.png" height="17" align="absmiddle"></a> Step 7: Save
+<h4><a name="j41" href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-krok-7.svg" height="42" alt="Step 7: Save"></a></h4>
 
-<a name="j41"></a>
-<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-gora.svg" width="100%" alt=""></a><br><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-p1.svg" width="13.07%" alt="1"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-p2.svg" width="14.71%" alt="2"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-p3.svg" width="14.78%" alt="3"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-p4.svg" width="14.71%" alt="4"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-p5.svg" width="14.78%" alt="5"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-p6.svg" width="14.71%" alt="6"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-p7.svg" width="13.21%" alt="7"></a><br><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kreator-nav-krok-7-en-dol.svg" width="100%" alt=""></a><br>
-<sub>📷 Wizard with circles: Step 7: Save. Click a circle to jump to that step.</sub></p>
+<a name="j42"></a>
+<p align="center"><a href="#j42"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-kolka-7.svg" width="100%" alt="Step 7: Save"></a><br>
+<sub>📷 Wizard with circles: Step 7: Save</sub></p>
 
 > ℹ️ ✅ **Done.** Click **Save**. The window works.
 
 ---
 
 <a name="kreator"></a>
-## <a name="j43" href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/tune.png" height="21" align="absmiddle"></a> “Add integration” wizard: 5 steps
+<h2><a name="j43" href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator.svg" height="48" alt="“Add integration” wizard: 5 steps"></a></h2>
 
 After **Add integration** (installation step 5) HA shows a short 5-step wizard. The same settings as the circles, as plain fields.
 
@@ -288,35 +288,35 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <sub>📷 “Add integration” wizard: 5 steps</sub></p>
 
 <a name="kreator-1"></a>
-#### <a name="j45" href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/window-shutter.png" height="17" align="absmiddle"></a> Step 1: Shade
+<h4><a name="j45" href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-1.svg" height="42" alt="Step 1: Shade"></a></h4>
 
 <a name="j46"></a>
 <p align="center"><a href="#j46"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-1.svg" width="100%" alt="Step 1: Shade"></a><br>
 <sub>📷 Step 1: Shade</sub></p>
 
 <a name="kreator-2"></a>
-#### <a name="j47" href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/window-open-variant.png" height="17" align="absmiddle"></a> Step 2: Window and sensors
+<h4><a name="j47" href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-2.svg" height="42" alt="Step 2: Window and sensors"></a></h4>
 
 <a name="j48"></a>
 <p align="center"><a href="#j48"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-2.svg" width="100%" alt="Step 2: Window and sensors"></a><br>
 <sub>📷 Step 2: Window and sensors</sub></p>
 
 <a name="kreator-3"></a>
-#### <a name="j49" href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/speedometer.png" height="17" align="absmiddle"></a> Step 3: Motor
+<h4><a name="j49" href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-3.svg" height="42" alt="Step 3: Motor"></a></h4>
 
 <a name="j50"></a>
 <p align="center"><a href="#j50"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-3.svg" width="100%" alt="Step 3: Motor"></a><br>
 <sub>📷 Step 3: Motor</sub></p>
 
 <a name="kreator-4"></a>
-#### <a name="j51" href="#j51"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/weather-partly-cloudy.png" height="17" align="absmiddle"></a> Step 4: Weather
+<h4><a name="j51" href="#j51"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-4.svg" height="42" alt="Step 4: Weather"></a></h4>
 
 <a name="j52"></a>
 <p align="center"><a href="#j52"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-4.svg" width="100%" alt="Step 4: Weather"></a><br>
 <sub>📷 Step 4: Weather</sub></p>
 
 <a name="kreator-5"></a>
-#### <a name="j53" href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/kafle/palette.png" height="17" align="absmiddle"></a> Step 5: Look
+<h4><a name="j53" href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kreator-5.svg" height="42" alt="Step 5: Look"></a></h4>
 
 <a name="j54"></a>
 <p align="center"><a href="#j54"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-5.svg" width="100%" alt="Step 5: Look"></a><br>
@@ -327,7 +327,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 ---
 
 <a name="konfiguruj"></a>
-## <a name="j55" href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/cog.png" height="21" align="absmiddle"></a> Changing settings: Configure
+<h2><a name="j55" href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-konfiguruj.svg" height="48" alt="Changing settings: Configure"></a></h2>
 
 Change any window at any time. Click the gear **⚙️ (Configure)** next to the window.
 
@@ -346,14 +346,14 @@ Then choose how: **🪄 Wizard with circles and pictures** or **📝 Plain field
 > ℹ️ Changes in the card editor of an integration window are saved to the device too.
 
 <a name="kolejne-okno"></a>
-## <a name="j58" href="#j58"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/window-open-variant.png" height="21" align="absmiddle"></a> Another window
+<h2><a name="j58" href="#j58"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kolejne-okno.svg" height="48" alt="Another window"></a></h2>
 
 More windows? Click **Add device** on the integration page (point 2 in the picture above) or this button again. Each window is its own device with its own card.
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Add another window" height="80"></a></p>
 
 <a name="kalibracja"></a>
-## <a name="j59" href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/timer-outline.png" height="21" align="absmiddle"></a> Calibration and card on the dashboard
+<h2><a name="j59" href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-kalibracja.svg" height="48" alt="Calibration and card on the dashboard"></a></h2>
 
 The motor speed is picked from the shade device (e.g. Moes). Want it exact? On the window device page press **Calibrate** (point 2). The shade goes up, down and up, and the measured time is saved by itself. **🤖 Calibrate now** in the wizard does the same.
 
@@ -366,7 +366,7 @@ On the same page, **Add to dashboard** (point 3) puts the window card on a dashb
 ---
 
 <a name="jak-sterowac"></a>
-## <a name="j61" href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/gesture-tap.png" height="21" align="absmiddle"></a> How to control
+<h2><a name="j61" href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-jak-sterowac.svg" height="48" alt="How to control"></a></h2>
 
 <a name="j62"></a>
 <p align="center"><a href="#j62"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/tab-jak-sterowac.svg" width="100%" alt="How to control the card"></a><br>
@@ -381,7 +381,7 @@ You can also open and close the window like any shade: on the device page, by vo
 ---
 
 <a name="aktualizacja"></a>
-## <a name="j64" href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/update.png" height="21" align="absmiddle"></a> Updates
+<h2><a name="j64" href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-aktualizacja.svg" height="48" alt="Updates"></a></h2>
 
 > ℹ️ Updating **does not change** your settings. Windows and cards keep working.
 
@@ -404,7 +404,7 @@ What is new in each version: [📝 Changelog](https://github.com/superdarco78/ok
 ---
 
 <a name="slowniczek"></a>
-## <a name="j67" href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/book-open-variant.png" height="21" align="absmiddle"></a> Glossary: what do these words mean?
+<h2><a name="j67" href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-slowniczek.svg" height="48" alt="Glossary: what do these words mean?"></a></h2>
 
 <table>
 <tr><th align="left"><a name="j68" href="#j68"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>Word</th><th align="left"><a name="j69" href="#j69"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>In plain words</th></tr>
@@ -426,82 +426,90 @@ What is new in each version: [📝 Changelog](https://github.com/superdarco78/ok
 ---
 
 <a name="pytania-i-problemy"></a>
-## <a name="j70" href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/help-circle.png" height="21" align="absmiddle"></a> Questions and problems
+<h2><a name="j70" href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-pytania-i-problemy.svg" height="48" alt="Questions and problems"></a></h2>
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> “Okno HA” is not in the integration list
+<a name="faq-1"></a>
+<h4><a name="j71" href="#j71"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-1.svg" height="42" alt="“Okno HA” is not in the integration list"></a></h4>
 
 After downloading from HACS you must restart HA (step 4). On a phone, close and reopen the app.
 
-<a name="j71"></a>
-<p align="center"><a href="#j71"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/krok-4.svg" width="100%" alt="“Okno HA” is not in the integration list"></a><br>
+<a name="j72"></a>
+<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/krok-4.svg" width="100%" alt="“Okno HA” is not in the integration list"></a><br>
 <sub>📷 “Okno HA” is not in the integration list</sub></p>
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> The card is not in the “Add card” list
+<a name="faq-2"></a>
+<h4><a name="j73" href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-2.svg" height="42" alt="The card is not in the “Add card” list"></a></h4>
 
 The card loads by itself with the integration, nothing to refresh. Check that HA was restarted after installing (step 4). Then pencil, <b>Add card</b> and type <b>Okno</b>.
 
-<a name="j72"></a>
-<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/dodaj-karte.svg" width="100%" alt="The card is not in the “Add card” list"></a><br>
+<a name="j74"></a>
+<p align="center"><a href="#j74"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/dodaj-karte.svg" width="100%" alt="The card is not in the “Add card” list"></a><br>
 <sub>📷 The card is not in the “Add card” list</sub></p>
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> The animation is faster or slower than the shade
+<a name="faq-3"></a>
+<h4><a name="j75" href="#j75"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-3.svg" height="42" alt="The animation is faster or slower than the shade"></a></h4>
 
 On the window device page press <b>Calibrate</b>. The shade goes up, down and up, and the time is saved by itself.
 
-<a name="j73"></a>
-<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/urzadzenie.svg" width="100%" alt="The animation is faster or slower than the shade"></a><br>
+<a name="j76"></a>
+<p align="center"><a href="#j76"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/urzadzenie.svg" width="100%" alt="The animation is faster or slower than the shade"></a><br>
 <sub>📷 The animation is faster or slower than the shade</sub></p>
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> No weather behind the glass
+<a name="faq-4"></a>
+<h4><a name="j77" href="#j77"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-4.svg" height="42" alt="No weather behind the glass"></a></h4>
 
 <b>Configure</b> → step 4: pick your weather or leave it empty. Empty = internet weather for your home.
 
-<a name="j74"></a>
-<p align="center"><a href="#j74"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-4.svg" width="100%" alt="No weather behind the glass"></a><br>
+<a name="j78"></a>
+<p align="center"><a href="#j78"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-4.svg" width="100%" alt="No weather behind the glass"></a><br>
 <sub>📷 No weather behind the glass</sub></p>
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> The window sensor does not work
+<a name="faq-5"></a>
+<h4><a name="j79" href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-5.svg" height="42" alt="The window sensor does not work"></a></h4>
 
 <b>Configure</b> → step 2: pick the sensor and how the window opens: tilted or opened on hinges.
 
-<a name="j75"></a>
-<p align="center"><a href="#j75"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-2.svg" width="100%" alt="The window sensor does not work"></a><br>
+<a name="j80"></a>
+<p align="center"><a href="#j80"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-2.svg" width="100%" alt="The window sensor does not work"></a><br>
 <sub>📷 The window sensor does not work</sub></p>
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> The sashes are swapped (left is right)
+<a name="faq-6"></a>
+<h4><a name="j81" href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-6.svg" height="42" alt="The sashes are swapped (left is right)"></a></h4>
 
 <b>Configure</b> → step 1: remove both shades and pick them again: left first, then right.
 
-<a name="j76"></a>
-<p align="center"><a href="#j76"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-1.svg" width="100%" alt="The sashes are swapped (left is right)"></a><br>
+<a name="j82"></a>
+<p align="center"><a href="#j82"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/kreator-1.svg" width="100%" alt="The sashes are swapped (left is right)"></a><br>
 <sub>📷 The sashes are swapped (left is right)</sub></p>
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> The shade jumps to 0% or 100% while moving
+<a name="faq-7"></a>
+<h4><a name="j83" href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-7.svg" height="42" alt="The shade jumps to 0% or 100% while moving"></a></h4>
 
 These are bad motor reports. The card ignores them. If it still jumps, <a href="https://github.com/superdarco78/okno-ha-integracja/issues/new">report a bug</a> and name the motor.
 
 <br>
 
-#### <img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="17" align="absmiddle"> The card is in Polish but I want English
+<a name="faq-8"></a>
+<h4><a name="j84" href="#j84"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-faq-8.svg" height="42" alt="The card is in Polish but I want English"></a></h4>
 
 The card uses the language of your HA profile. You can also open <b>Advanced</b> in the card editor and pick <b>English</b> in <b>Card language</b>.
 
-<a name="j77"></a>
-<p align="center"><a href="#j77"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/jezyk-karty.svg" width="100%" alt="The card is in Polish but I want English"></a><br>
+<a name="j85"></a>
+<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/jezyk-karty.svg" width="100%" alt="The card is in Polish but I want English"></a><br>
 <sub>📷 The card is in Polish but I want English</sub></p>
 
 No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracja/issues/new) or write on the [HA forum](https://community.home-assistant.io/).
@@ -509,15 +517,15 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 ---
 
 <a name="dla-zaawansowanych"></a>
-# <a name="j78" href="#j78"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/wrench.png" height="28" align="absmiddle"></a> Part 2. For advanced users
+<h1><a name="j86" href="#j86"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-dla-zaawansowanych.svg" height="56" alt="Part 2. For advanced users"></a></h1>
 
 > ℹ️ **You do not need this.** The wizard has set everything. Details below.
 
 <a name="co-tworzy"></a>
-## <a name="j79" href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/puzzle.png" height="21" align="absmiddle"></a> What the integration creates
+<h2><a name="j87" href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-co-tworzy.svg" height="48" alt="What the integration creates"></a></h2>
 
 <table>
-<tr><th align="left"><a name="j80" href="#j80"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>What</th><th align="left"><a name="j81" href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Description</th></tr>
+<tr><th align="left"><a name="j88" href="#j88"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>What</th><th align="left"><a name="j89" href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Description</th></tr>
 <tr><td align="left"><b>Device “Okno …”</b></td><td align="left">One per window (each entry). Manufacturer: Okno HA, model: shade type.</td></tr>
 <tr><td align="left"><b>Entity <code>cover.okno_…</code></b></td><td align="left">The window shade. Position = average of the sashes. Open, close, stop and position go to both sash shades at once.</td></tr>
 <tr><td align="left"><b>Button Calibrate</b></td><td align="left">Measures the real travel time of the shade and saves it.</td></tr>
@@ -528,10 +536,10 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 </table>
 
 <a name="wszystkie-ustawienia"></a>
-## <a name="j82" href="#j82"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/cog.png" height="21" align="absmiddle"></a> All settings
+<h2><a name="j90" href="#j90"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-wszystkie-ustawienia.svg" height="48" alt="All settings"></a></h2>
 
 <table>
-<tr><th align="center"><a name="j83" href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="90" height="0"></a><br>Step</th><th align="left"><a name="j84" href="#j84"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="300" height="0"></a><br>Field</th><th align="left"><a name="j85" href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="510" height="0"></a><br>What to enter</th></tr>
+<tr><th align="center"><a name="j91" href="#j91"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="90" height="0"></a><br>Step</th><th align="left"><a name="j92" href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="300" height="0"></a><br>Field</th><th align="left"><a name="j93" href="#j93"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="510" height="0"></a><br>What to enter</th></tr>
 <tr><td align="center">1</td><td align="left">Window name</td><td align="left">E.g. Living room. Device: “Okno Living room”.</td></tr>
 <tr><td align="center">1</td><td align="left">Shade (one or two)</td><td align="left">1 or 2 <code>cover.*</code> entities. Two = left, then right. A group works too.</td></tr>
 <tr><td align="center">2</td><td align="left">Number of sashes</td><td align="left">1 or 2.</td></tr>
@@ -548,25 +556,25 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 <tr><td align="center">5</td><td align="left">📋 Add the window card to a dashboard</td><td align="left">A UI dashboard. Suggests the one that already has windows. The card goes to a “Okna” section on the first view. “Don’t add” = place it yourself.</td></tr>
 </table>
 
-<a name="j86"></a>
-<p align="center"><a href="#j86"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/oslony-kafle-v2-en.png" width="100%" alt="Shade types"></a><br>
+<a name="j94"></a>
+<p align="center"><a href="#j94"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/oslony-kafle-v2-en.png" width="100%" alt="Shade types"></a><br>
 <sub>📷 Shade types</sub></p>
 
-<a name="j87"></a>
-<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolory-v2-en.png" width="100%" alt="Shade colours"></a><br>
+<a name="j95"></a>
+<p align="center"><a href="#j95"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolory-v2-en.png" width="100%" alt="Shade colours"></a><br>
 <sub>📷 Shade colours</sub></p>
 
-<a name="j88"></a>
-<p align="center"><a href="#j88"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/ramy-v2-en.png" width="100%" alt="Frame colours and finishes"></a><br>
+<a name="j96"></a>
+<p align="center"><a href="#j96"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/ramy-v2-en.png" width="100%" alt="Frame colours and finishes"></a><br>
 <sub>📷 Frame colours and finishes</sub></p>
 
 <a name="automatyzacje"></a>
-## <a name="j89" href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/flask-outline.png" height="21" align="absmiddle"></a> The window in automations
+<h2><a name="j97" href="#j97"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-automatyzacje.svg" height="48" alt="The window in automations"></a></h2>
 
 The window is a normal cover in HA. In an automation pick **Cover: set position** (or open / close) and the window entity, e.g. **Okno Living room**. Both sash shades move together.
 
 <a name="karta-w-srodku"></a>
-## <a name="j90" href="#j90"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/theme-light-dark.png" height="21" align="absmiddle"></a> The bundled Okno HA card
+<h2><a name="j98" href="#j98"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-karta-w-srodku.svg" height="48" alt="The bundled Okno HA card"></a></h2>
 
 The integration includes the Okno HA card. No separate install and no resource needed. Light and dark look, weather behind the glass, day and night.
 
@@ -577,22 +585,22 @@ Full card documentation (editor, all options, examples): [superdarco78/roleta-re
 > ℹ️ Already have the Okno HA card from HACS? No problem. Both can be installed.
 
 <a name="recznie"></a>
-## <a name="j91" href="#j91"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/toolbox.png" height="21" align="absmiddle"></a> Installation without HACS (manual)
+<h2><a name="j99" href="#j99"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-recznie.svg" height="48" alt="Installation without HACS (manual)"></a></h2>
 
 1. Download the [latest release](https://github.com/superdarco78/okno-ha-integracja/releases/latest) (Source code, zip).
 2. Copy the `custom_components/okno_ha` folder into `config/custom_components/` in HA (e.g. with the **File editor** or **Samba** add-on).
 3. Restart HA and click **Add integration** (installation step 5).
 
 <a name="usuwanie"></a>
-## <a name="j92" href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/alert-circle-outline.png" height="21" align="absmiddle"></a> Removing
+<h2><a name="j100" href="#j100"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-usuwanie.svg" height="48" alt="Removing"></a></h2>
 
 One window: **Settings → Devices & services → Okno HA**, next to the window **⋮ → Delete**. The whole integration: delete all windows, then in HACS **⋮ → Remove** and restart HA. Your real shades stay unchanged.
 
 <a name="tlumaczenia"></a>
-## <a name="j93" href="#j93"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/translate.png" height="21" align="absmiddle"></a> Translations
+<h2><a name="j101" href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-tlumaczenia.svg" height="48" alt="Translations"></a></h2>
 
 <table>
-<tr><th align="left"><a name="j94" href="#j94"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>Language</th><th align="left"><a name="j95" href="#j95"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Status</th></tr>
+<tr><th align="left"><a name="j102" href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>Language</th><th align="left"><a name="j103" href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Status</th></tr>
 <tr><td align="left">🇵🇱 Polski</td><td align="left">✅ 100%</td></tr>
 <tr><td align="left">🇬🇧 English</td><td align="left">✅ 100%</td></tr>
 </table>
@@ -602,7 +610,7 @@ Want to add your language? Copy [`translations/en.json`](https://github.com/supe
 ---
 
 <a name="wsparcie"></a>
-## <a name="j96" href="#j96"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/coffee.png" height="21" align="absmiddle"></a> Support
+<h2><a name="j104" href="#j104"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-wsparcie.svg" height="48" alt="Support"></a></h2>
 
 Like Okno HA? Leave a ⭐ at the top of the page. It helps others find the integration. Thank you!
 
@@ -613,7 +621,7 @@ Have an idea or found a bug? [Open an issue](https://github.com/superdarco78/okn
 ---
 
 <a name="licencja"></a>
-## <a name="j97" href="#j97"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/ikony-ha3/scale-balance.png" height="21" align="absmiddle"></a> License
+<h2><a name="j105" href="#j105"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki4/en/h-licencja.svg" height="48" alt="License"></a></h2>
 
 CC BY-NC-SA 4.0 – see [LICENSE](https://github.com/superdarco78/okno-ha-integracja/blob/main/LICENSE). Card: [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna).
 
