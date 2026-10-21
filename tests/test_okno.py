@@ -111,6 +111,12 @@ async def test_aktualizacje(hass, aioclient_mock):
     assert okno.name == "Okno HA" and okno.state == "on"   # jedna wersja = wersja integracji
     assert okno.attributes["latest_version"] == "v9.0.0" and okno.attributes["installed_version"] == f"v{VERSION}"
     assert okno.attributes["release_url"] == "https://x/v9"
+    # zainstalowane przez HACS: HACS pokazuje aktualizację, nasza pozycja się chowa
+    hass.states.async_set("update.okno_ha_update", "on", {"release_url": "https://github.com/superdarco78/okno-ha-integracja/releases/v9.0.0"})
+    hass.data[DOMAIN]._powiadom()
+    await hass.async_block_till_done()
+    assert hass.states.get(okno.entity_id).state == "off"
+    hass.states.async_remove("update.okno_ha_update")
     await hass.data[DOMAIN].async_zainstaluj_karte("v99")
     plik = hass.data[DOMAIN].katalog / "okno-ha.js"
     assert plik.read_text() == "// karta v99"

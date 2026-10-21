@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.11 – Jedna aktualizacja zamiast dwóch
+
+- 🔄 Gdy Okno HA jest zainstalowane przez HACS, nową wersję pokazuje tylko HACS. Nasza pozycja „Okno HA” w Aktualizacjach się wtedy chowa, więc nie ma już dwóch takich samych pozycji
+
 ## v1.4.10 – Logo w HACS bez odświeżania
 
 - 🖼️ Logo Okna HA na liście HACS pojawia się też wtedy, gdy strona HACS była otwarta przed wczytaniem Okna HA (np. odświeżenie na stronie HACS). Nie trzeba niczego klikać ani czyścić pamięci przeglądarki

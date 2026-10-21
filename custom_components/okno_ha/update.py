@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import timedelta
 from typing import Any
 
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
@@ -10,6 +11,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
 from homeassistant.helpers import entity_registry as er, issue_registry as ir
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.event import async_track_time_interval
 
 from .const import DOMAIN, VERSION
 from .repairs import RESTART
@@ -50,6 +52,9 @@ class Aktualizacja(UpdateEntity):
 
     async def async_added_to_hass(self) -> None:
         self.async_on_remove(self._n.sluchaj(self.async_write_ha_state))
+        # HACS może wystartować później – co minutę sprawdź, czy to on już pokazuje aktualizację
+        self.async_on_remove(async_track_time_interval(
+            self.hass, lambda _now: self.async_write_ha_state(), timedelta(minutes=1)))
 
     @property
     def _wydanie(self) -> dict:
@@ -61,7 +66,17 @@ class Aktualizacja(UpdateEntity):
 
     @property
     def latest_version(self) -> str | None:
+        if self._hacs():   # HACS sam pokazuje tę aktualizację – bez drugiej, takiej samej pozycji
+            return self._zainstalowana
         return self._wydanie.get("wersja") or self._zainstalowana
+
+    def _hacs(self) -> str | None:
+        """Encja aktualizacji HACS dla Okna HA (gdy Okno HA jest zainstalowane przez HACS)."""
+        if self.hass is None:
+            return None
+        return next((s.entity_id for s in self.hass.states.async_all("update")
+                     if REPO_INTEGRACJA in str(s.attributes.get("release_url", ""))
+                     and s.entity_id != self.entity_id), None)
 
     def version_is_newer(self, latest_version: str, installed_version: str) -> bool:
         return numer(latest_version) > numer(installed_version)
@@ -86,15 +101,13 @@ class Aktualizacja(UpdateEntity):
         self._postep(0)
         try:
             self._postep(40)
-            await self._zainstaluj_integracje(version or self.latest_version)
+            await self._zainstaluj_integracje(version or self._wydanie.get("wersja") or self._zainstalowana)
             self._postep(100)
         finally:
             self._postep(None)
 
     async def _zainstaluj_integracje(self, wersja: str) -> None:
-        hacs = next((s.entity_id for s in self.hass.states.async_all("update")
-                     if REPO_INTEGRACJA in str(s.attributes.get("release_url", ""))
-                     and s.entity_id != self.entity_id), None)
+        hacs = self._hacs()
         zrobione = False
         if hacs:   # zainstalowana przez HACS – niech HACS ją zaktualizuje, żeby wiedział o nowej wersji
             try:
