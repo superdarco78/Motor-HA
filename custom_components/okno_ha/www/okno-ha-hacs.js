@@ -60,10 +60,10 @@
   };
   // obrazki Okna HA (opis w HACS, kreator integracji) w kolorze motywu: niebieski HA → --primary-color użytkownika
   const UKRYJ = ["okno-ha-integracja", "roleta-realistyczna"].map((r) => `img[src^="https://raw.githubusercontent.com/superdarco78/${r}/"]`
-    + ["icon", "ikona", "logo", "baner", "banner", "avatar", ".webp", "/pl.png", "/en.png", "/de.png", "/fr.png", "/cs.png"].map((x) => `:not([src*="${x}"])`).join("")).join(",")
+    + ["icon.png", "ikona.png", "logo", "baner-", "banner", "avatar", ".webp", "/pl.png", "/en.png", "/de.png", "/fr.png", "/cs.png"].map((x) => `:not([src*="${x}"])`).join("")).join(",")
     + "{visibility:hidden}";
   const NASZE = /^https:\/\/raw\.githubusercontent\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)\//;
-  const POMIN = /icon|ikona|logo|baner|banner|avatar|\.webp|\/(pl|en|de|fr|cs)\.png/i;
+  const POMIN = /(icon|ikona|logo|baner|banner|avatar)[^/]*\.png|\.webp|\/(pl|en|de|fr|cs)\.png/i;   // SVG (także baner i logo) przemalowane – z maską dokładnie
   const hsv = (r, g, b) => {
     const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
     let h = 0;
@@ -79,17 +79,17 @@
     return m ? "#" + m[1].toLowerCase() : null;
   };
   // obrazki bez maski: piksel = a·kolor HA + w·biały/szary (wygładzanie, jasne tła, ciemny motyw) → a·kolor użytkownika + w
-  // tylko dokładne odcienie #009ac7 (194°) i akcentu #ff9800 (36°) – niebo, drewno, beże i próbki kolorów zostają
+  // niebieskie HA: #009ac7 (194°) i dawny #03a9f4 (199°, rysunki karty) oraz akcent #ff9800 (36°) – niebo (203°+), drewno, beże zostają
   const baza = (B) => { const bb = B[0] * B[0] + B[1] * B[1] + B[2] * B[2], b1 = B[0] + B[1] + B[2]; return { B, bb, b1, wyz: bb * 3 - b1 * b1 }; };
-  const NOWY = baza([0, 154, 199]), POM = baza([255, 152, 0]);
+  const NOWY = baza([0, 154, 199]), DAWNY = baza([3, 169, 244]), POM = baza([255, 152, 0]);
   const rgbZ = (hex) => [1, 3, 5].map((k) => parseInt(hex.slice(k, k + 2), 16));
   const piksele = (p, K, A) => {
     for (let k = 0; k < p.length; k += 4) {
       if (!p[k + 3]) continue;
       const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
       const akcent = A && h >= 33 && h <= 38.5 && s >= 0.3 && v >= 0.3;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
-      if (!akcent && (h < 190 || h > 197.5 || s < 0.05 || v < 0.15)) continue;
-      const { B, bb, b1, wyz } = akcent ? POM : NOWY, C = akcent ? A : K;
+      if (!akcent && (h < 188 || h > 201 || s < 0.05 || v < 0.15)) continue;
+      const { B, bb, b1, wyz } = akcent ? POM : h < 196.5 ? NOWY : DAWNY, C = akcent ? A : K;
       const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
       const a = (3 * bp - b1 * sp) / wyz, w = (bb * sp - b1 * bp) / wyz;
       if (akcent && a < 0.3) continue;   // blady beż o tej samej barwie to nie zaznaczenie
@@ -154,7 +154,13 @@
   let ostatnie = "";   // ostatnie kolory (główny + akcent) – do natychmiastowej podmiany przy rysowaniu
   try { ostatnie = localStorage.getItem("okno-ha-kolory") || ""; } catch (e) { /* tryb prywatny */ }
   const akcentDla = (adres, akc) => (/\/(kolory|ramy|oslony)-/.test(adres) ? "" : akc);   // próbki kolorów i oklein bez akcentu
-  const policz = (adres, kol, akc) => {
+  let wToku = 0; const czeka = [];
+  const kolejka = (f) => new Promise((ok, zle) => {
+    const start = () => { wToku++; f().then(ok, zle).finally(() => { wToku--; const n = czeka.shift(); if (n) n(); }); };
+    if (wToku < 2) start(); else czeka.push(start);
+  });
+  const policz = (adres, kol, akc) => kolejka(() => liczTeraz(adres, kol, akc));
+  const liczTeraz = (adres, kol, akc) => {
     const K = rgbZ(kol), A = akc ? rgbZ(akc) : null, ciemny = kol[7] === "d";
     return /\.svg/i.test(adres)
       // SVG zostaje SVG-iem: jasna i ciemna wersja dalej przełączają się z motywem, przemalowane są tylko obrazki w środku
@@ -177,18 +183,18 @@
       : wczytaj(adres).then((i) => new Promise((ok, zle) => plotno(i, K, A).toBlob((b) => (b ? ok(b) : zle()))));
   };
   const odswiezone = new Set();
-  const przemalujPlik = (adres, kol, akc) => {
-    const klucz = adres + "|" + kol + akc;
+  const przemalujPlik = (adres, kol, akcG) => {
+    const akc = akcentDla(adres, akcG), klucz = adres + "|" + kol + "|" + akcG, kolory = "|" + kol + "|" + akcG;
     if (gotowe.has(klucz)) {
       // z pamięci: od razu; w tle sprawdź raz, czy obrazek na GitHubie się nie zmienił
       if (!odswiezone.has(klucz)) {
         odswiezone.add(klucz);
-        setTimeout(() => policz(adres, kol, akc).then((b) => zapisz(klucz, b, "|" + kol + akc)).catch(() => {}), 5000);
+        setTimeout(() => policz(adres, kol, akc).then((b) => zapisz(klucz, b, kolory)).catch(() => {}), 5000);
       }
       return gotowe.get(klucz);
     }
     odswiezone.add(klucz);
-    const zadanie = policz(adres, kol, akc).then((b) => { zapisz(klucz, b, "|" + kol + akc); const u = URL.createObjectURL(b); gotoweTeraz.set(klucz, u); return u; });
+    const zadanie = policz(adres, kol, akc).then((b) => { zapisz(klucz, b, kolory); const u = URL.createObjectURL(b); gotoweTeraz.set(klucz, u); return u; });
     gotowe.set(klucz, zadanie);
     zadanie.catch(() => gotowe.delete(klucz));   // nie wyszło (sieć, restart HA) – następne skanowanie spróbuje jeszcze raz
     return zadanie;
@@ -207,6 +213,24 @@
     if (el.getAttribute("media") !== nowe) el.setAttribute("media", nowe);
   };
   const pokaz = (el) => el.style.setProperty("visibility", "visible", "important");   // gdy przemalowanie się nie uda – obrazek w domyślnych kolorach
+  // plakietki shields.io w opisie Okna HA: kolor z adresu → kolor główny (pomarańczowe/żółte → akcent)
+  const AKCENTOWE = /^(ff9800|f9a825|orange|yellow)$/i;
+  const plakietka = (el) => {
+    const a = el.dataset.oknoPlak || el.getAttribute("src") || "";
+    if (!a.startsWith("https://img.shields.io/")) return;
+    const korzen = el.getRootNode();
+    if (!a.includes("superdarco78") && !(korzen.querySelector && korzen.querySelector('img[data-okno-org],img[src*="raw.githubusercontent.com/superdarco78/"]'))) return;
+    const glowny = kolorMotywu(el), akc = kolorMotywu(el, "--accent-color") || glowny;
+    if (!glowny) return;
+    const kolor = (stary) => (AKCENTOWE.test(stary) ? akc : glowny).slice(1);
+    let u = new URL(a);
+    if (u.searchParams.has("color")) u.searchParams.set("color", kolor(u.searchParams.get("color")));
+    else if (/^\/badge\//.test(u.pathname)) u.pathname = u.pathname.replace(/-([^-/]+)$/, (_m, c) => "-" + kolor(c));
+    else u.searchParams.set("color", glowny.slice(1));
+    const nowy = u.toString();
+    el.dataset.oknoPlak = a;
+    if (el.getAttribute("src") !== nowy) el.setAttribute("src", nowy);
+  };
   const przemaluj = (el) => {
     const teraz = el.getAttribute("src") || "";
     if (NASZE.test(teraz) && el.dataset.oknoOrg && teraz !== el.dataset.oknoOrg) delete el.dataset.oknoKol;   // HACS podał nowy obrazek w tym samym miejscu
@@ -219,21 +243,21 @@
     const glowny = kolorMotywu(el);
     if (!glowny) return;
     const kol = glowny + (ciemny(el) ? "d" : "j");   // kolor główny + motyw (jasny/ciemny)
-    const akcG = kolorMotywu(el, "--accent-color") || "", akc = akcentDla(org, akcG);
+    const akcG = kolorMotywu(el, "--accent-color") || "";
     if (ostatnie !== kol + "|" + akcG) { ostatnie = kol + "|" + akcG; try { localStorage.setItem("okno-ha-kolory", ostatnie); } catch (e) { /* tryb prywatny */ } }
-    const znak = kol + akc;
+    const znak = kol + "|" + akcG;
     if (el.dataset.oknoKol === znak) return;
     el.dataset.oknoKol = znak; el.dataset.oknoOrg = org;
-    przemalujPlik(org, kol, akc).then(
+    przemalujPlik(org, kol, akcG).then(
       (u) => { if (el.dataset.oknoKol === znak) el.setAttribute("src", u); },
       () => { pokaz(el); if (el.dataset.oknoKol === znak) delete el.dataset.oknoKol; });   // spróbuj ponownie przy następnym skanowaniu
   };
   // HACS rysuje obrazek: od razu wersja z pamięci w ostatnich kolorach (bez czekania na skanowanie)
   const zPamieci = (el, v) => {
     if (typeof v !== "string" || !NASZE.test(v) || POMIN.test(v)) return v;
-    const [kol, akcG] = ostatnie.split("|"), akc = akcentDla(v, akcG || ""), u = kol && gotoweTeraz.get(v + "|" + kol + akc);
+    const u = ostatnie && gotoweTeraz.get(v + "|" + ostatnie);
     if (!u) { setTimeout(seria, 0); return v; }
-    el.dataset.oknoOrg = v; el.dataset.oknoKol = kol + akc;
+    el.dataset.oknoOrg = v; el.dataset.oknoKol = ostatnie;
     return u;
   };
 
@@ -242,7 +266,7 @@
     for (const el of korzen.querySelectorAll("*")) {
       if (++ile.n > 200000) return;
       try {
-        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); }
+        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); }
         else if (el.tagName === "SOURCE") zrodlo(el);
         else if (el.tagName === "IFRAME") {
           if (!el.__oknoHaRamka) {   // ramka HACS przeładowana (np. po restarcie) – popraw od razu po wczytaniu

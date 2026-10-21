@@ -1,5 +1,13 @@
 # 📝 Historia zmian
 
+## v1.4.26 – Wszystkie obrazki opisu w Twoich kolorach, za każdym razem
+
+- 🎨 Każdy obrazek opisu w HACS przemalowuje się na kolory z Twojego profilu, także przy wielu obrazkach naraz (wcześniej pojedyncze kafelki czasem zostawały niebieskie)
+- 🪟 Przyciski i uchwyt na obrazkach karty (np. „Zwinięta”, „50%”) znów w Twoim kolorze
+- ⚡ Po odświeżeniu strony wszystkie obrazki od razu w Twoich kolorach (poprawiona pamięć przemalowanych obrazków)
+- 🏷️ Plakietki na górze opisu w kolorze głównym i akcencie z Twojego profilu
+- 🖼️ Baner i logo w formacie SVG też biorą Twoje kolory
+
 ## v1.4.25 – Logo w okienku aktualizacji zawsze
 
 - 🖼️ Logo Okna HA w okienku „Update” od HACS wraca zawsze, także gdy HACS wstaje po Oknie HA (wcześniej czasem zostawał pusty obrazek do następnego restartu)
