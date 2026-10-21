@@ -1,8 +1,11 @@
 // Okno HA: lista HACS i okienko „Update” szukają ikony okno_ha tylko na brands.home-assistant.io.
 // Tutaj przeglądarka dostaje zamiast tego logo z samej integracji. Dotyczy wyłącznie adresów z okno_ha.
 (() => {
-  if (window.__oknoHaHacs2) return;   // skrypt wczytany drugi raz (np. po restarcie HA) – działa już pierwszy
-  window.__oknoHaHacs2 = true;
+  // skrypt wczytany drugi raz działa tylko, gdy to nowa wersja integracji – wtedy przejmuje pracę po starym
+  const JA = {};
+  if (window.__oknoHaHacs3 && !window.__oknoHaNowy) return;
+  window.__oknoHaHacs2 = true; window.__oknoHaHacs3 = JA; window.__oknoHaNowy = false;
+  const zywy = () => window.__oknoHaHacs3 === JA;
   const WZOR = /https:\/\/brands\.home-assistant\.io\/(?:_\/|marketplace\/)?okno_ha\/[a-z_@0-9]+\.png/g;
   const LOGO = "/okno_ha/ikona.png";
   const zamien = (v) => (typeof v === "string" && v.includes("okno_ha") ? v.replace(WZOR, LOGO) : v);
@@ -277,6 +280,7 @@
       try {
         if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); }
         else if (el.tagName === "SOURCE") zrodlo(el);
+        else if (el.tagName === "A" && naHacs()) link(el);
         else if (el.tagName === "IFRAME") {
           if (!el.__oknoHaRamka) {   // ramka HACS przeładowana (np. po restarcie) – popraw od razu po wczytaniu
             el.__oknoHaRamka = true;
@@ -290,7 +294,24 @@
     }
   };
   const naHacs = () => /^\/(hacs|config)/.test(location.pathname);   // HACS i okna konfiguracji (kreator integracji)
-  const skanuj = () => { if (naHacs()) przejdz(document); };
+  const skanuj = () => { if (zywy() && naHacs()) przejdz(document); };
+  // adresy w HA: przyciski My Home Assistant, języki opisu i spis treści – na GitHubie linki zostają bez zmian
+  const mojAdres = (nazwa, zapytanie) => `${nazwa.startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${nazwa}${zapytanie || ""}`;
+  const MY = /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/;
+  const JEZYK = /^https:\/\/github\.com\/superdarco78\/okno-ha-integracja(?:\/blob\/main\/(README(?:_([A-Z]{2}))?\.md))?\/?$/;
+  const KOTWICA = /^https:\/\/github\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)(\/blob\/main\/README[^#]*)?#/;
+  const lokalny = (h) => {
+    let m;
+    if ((m = MY.exec(h))) return mojAdres(m[1], m[2]);
+    if ((m = JEZYK.exec(h))) return `${location.pathname}?jezyk=${m[2] || "PL"}`;
+    if (KOTWICA.test(h)) return `${location.pathname}#${h.split("#")[1]}`;
+    return null;
+  };
+  const link = (a) => {
+    if (a.dataset.oknoHref) return;
+    const h = a.getAttribute("href"), lok = h && lokalny(h);
+    if (lok) { a.dataset.oknoHref = h; a.setAttribute("href", lok); }
+  };
   // po restarcie HA i ponownym połączeniu: kilka prób, aż HACS i Okno HA wstaną
   let serie = [];
   const seria = () => {
@@ -299,19 +320,19 @@
   };
   // linki spisu treści prowadzą do GitHuba (HACS usuwa kotwice) – w HA przewiń do nagłówka na tej samej stronie
   const klik = (e) => {
-    if (!naHacs()) return;
+    if (!zywy() || !naHacs()) return;
     const droga = e.composedPath(), a = droga.find((n) => n.tagName === "A");
-    const h = a && a.getAttribute("href");
+    const h = a && (a.dataset.oknoHref || a.getAttribute("href"));
     // przyciski My Home Assistant (Otwórz w HACS, Dodaj integrację, Aktualizacje…): w HA od razu właściwa strona tego HA
-    const my = h && /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/.exec(h);
+    const my = h && MY.exec(h);
     if (my) {
       e.preventDefault(); e.stopPropagation();
-      history.pushState(null, "", `/_my_redirect/${my[1]}${my[2] || ""}`);
+      history.pushState(null, "", mojAdres(my[1], my[2]));
       window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
       return;
     }
     // język opisu (README_EN.md itd.): w HA podmień opis na miejscu, zamiast otwierać GitHuba
-    const jezyk = h && /^https:\/\/github\.com\/superdarco78\/okno-ha-integracja(?:\/blob\/main\/(README(?:_[A-Z]{2})?\.md))?\/?$/.exec(h);
+    const jezyk = h && JEZYK.exec(h);
     const opis = jezyk && droga.find((n) => n.tagName === "HA-MARKDOWN");
     if (opis) {
       e.preventDefault(); e.stopPropagation();
@@ -321,7 +342,7 @@
         .catch(() => window.open(h, "_blank"));
       return;
     }
-    if (!h || !/^https:\/\/github\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)(\/blob\/main\/README[^#]*)?#/.test(h)) return;
+    if (!h || !KOTWICA.test(h)) return;
     // nagłówek sekcji: z kotwicy (<a name> w opisie → alt obrazka nagłówka) albo z tekstu linku
     const kotwica = decodeURIComponent(h.split("#")[1] || ""), md = (droga.find((n) => n.tagName === "HA-MARKDOWN") || {}).content || "";
     const zKotwicy = new RegExp(`<a name="${kotwica.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"></a>\\s*<h[1-4]>.*?alt="([^"]+)"`).exec(md);
@@ -333,12 +354,29 @@
     cel.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   // panel HACS jest w ramce (iframe) – kliknięcia w opisie nie wychodzą z niej, więc słuchaj też w ramce
-  sluchaj = (d) => { if (!d.__oknoHaKlik) { d.__oknoHaKlik = true; d.addEventListener("click", klik, true); } };
+  sluchaj = (d) => { if (d.__oknoHaKlik !== JA) { d.__oknoHaKlik = JA; d.addEventListener("click", klik, true); } };
   sluchaj(document);
   popraw(window);
   pamiec.then(seria);   // pamięć wczytana – od razu podmień to, co już narysowane
   // tylko w HACS i w Ustawieniach: co 2 s poprawia obrazki (ikona, kolor motywu)
   setInterval(skanuj, 2000);
+  // nowa wersja integracji (po aktualizacji i restarcie HA): wczytaj nowy skrypt bez odświeżania strony
+  let wersja = null;
+  const sprawdzWersje = () => {
+    if (!zywy() || document.hidden) return;
+    fetch(`/okno_ha/wersja.txt?t=${Date.now()}`, { cache: "no-store" })
+      .then((r) => (r.ok ? r.text() : "")).then((w) => {
+        w = w.trim();
+        if (!w || !zywy()) return;
+        if (wersja === null) { wersja = w; return; }
+        if (w === wersja) return;
+        wersja = w; window.__oknoHaNowy = true;
+        import(`/okno_ha/okno-ha-hacs.js?t=${Date.now()}`).catch(() => { window.__oknoHaNowy = false; });
+      }).catch(() => {});
+  };
+  sprawdzWersje();
+  setInterval(sprawdzWersje, 30000);
+  window.addEventListener("connection-status", () => setTimeout(sprawdzWersje, 3000));
   window.addEventListener("connection-status", seria);   // HA zgłasza „connected” po restarcie
   window.addEventListener("location-changed", seria);    // przejście do HACS w panelu
   document.addEventListener("visibilitychange", () => { if (!document.hidden) seria(); });

@@ -20,7 +20,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.event import async_call_later, async_track_time_interval
 from homeassistant.helpers.storage import Store
 
-from .const import DOMAIN, KARTA_PLIK, KARTA_WERSJA
+from .const import DOMAIN, KARTA_PLIK, KARTA_WERSJA, VERSION
 
 _LOGGER = logging.getLogger(__name__)
 CO_ILE = timedelta(minutes=2)
@@ -63,6 +63,8 @@ class Nowosci:
                 shutil.copyfile(wbudowana, cel)
             for plik in ("okno-ha-panel.js", "okno-ha-hacs.js", "ikona.png"):   # panel i ikona zawsze z tej wersji integracji
                 shutil.copyfile(wbudowana.parent / plik, self.katalog / plik)
+            # otwarta strona HA porównuje ten numer i sama wczytuje nowy okno-ha-hacs.js po aktualizacji
+            (self.katalog / "wersja.txt").write_text(VERSION, encoding="utf-8")
             # loader zawsze bierze świeży plik karty – przeglądarka nie poda starej kopii
             (self.katalog / LOADER).write_text(
                 f"import(`/{DOMAIN}/okno-ha-hacs.js?t=${{Date.now()}}`).catch(() => {{}});\n"
