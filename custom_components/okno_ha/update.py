@@ -7,7 +7,7 @@ from typing import Any
 
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
 from homeassistant.helpers import entity_registry as er, issue_registry as ir
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -54,7 +54,7 @@ class Aktualizacja(UpdateEntity):
         self.async_on_remove(self._n.sluchaj(self.async_write_ha_state))
         # HACS może wystartować później – co minutę sprawdź, czy to on już pokazuje aktualizację
         self.async_on_remove(async_track_time_interval(
-            self.hass, lambda _now: self.async_write_ha_state(), timedelta(minutes=1)))
+            self.hass, callback(lambda _now: self.async_write_ha_state()), timedelta(minutes=1)))   # w pętli zdarzeń, nie w wątku
 
     @property
     def _wydanie(self) -> dict:

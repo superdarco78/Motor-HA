@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.25 – Logo w okienku aktualizacji zawsze
+
+- 🖼️ Logo Okna HA w okienku „Update” od HACS wraca zawsze, także gdy HACS wstaje po Oknie HA (wcześniej czasem zostawał pusty obrazek do następnego restartu)
+- 🧹 Bez ostrzeżeń w dzienniku HA o zapisie stanu z innego wątku
+
 ## v1.4.24 – Dokładne kolory motywu w opisie
 
 - 🎯 Obrazki opisu w HACS przemalowane dokładnie: tylko przyciski, ramki, numery i ikony biorą kolor główny i akcent z Twojego profilu. Zdjęcia osłon, próbki kolorów, drewno i niebo zostają bez zmian
