@@ -166,6 +166,11 @@ class Nowosci:
             await hacs.data.async_write()
             if (k := hacs.coordinators.get(repo.data.category)) is not None:
                 k.async_update_listeners()
+            # encja aktualizacji HACS nie zawsze zapisuje stan po odświeżeniu (sprawdza last_fetched) – zapisz ją wprost
+            komponent = self.hass.data.get("update")
+            for encja in list(getattr(komponent, "entities", []) or []):
+                if getattr(encja, "repository", None) is repo and encja.hass is not None:
+                    encja.async_write_ha_state()
             _LOGGER.info("Okno HA: HACS zna już wydanie %s", nowa)
         except Exception as err:  # noqa: BLE001 – inna wersja HACS: zostaje jego własne sprawdzanie
             _LOGGER.debug("Okno HA: nie odświeżyłem HACS: %s", err)

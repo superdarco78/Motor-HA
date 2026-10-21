@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.31 – Opis działa w HA, baner z zachodem słońca
+
+- 🔗 Linki w opisie w HACS zostają w Home Assistancie: spis treści i kafelki przewijają do sekcji, języki zmieniają opis na miejscu, przyciski „Otwórz w HACS”, „Dodaj integrację” i „Aktualizacje” otwierają strony Twojego HA. Na GitHubie wszystko działa jak dotąd
+- 🌅 Baner z zachodem słońca, domami i światłami, w ramce jak kafelki. Domek, „HA” i uchwyt w kolorze z Twojego profilu
+- 🔔 Gdy pojawi się nowa wersja, pozycja w Ustawieniach → Aktualizacje zmienia się od razu
+
 ## v1.4.30 – Opis bez kodu, linki zostają w HA
 
 - 🐞 Pod banerem w HACS nie ma już kawałka kodu („picture…”). Animacje mają wersję jasną i ciemną, HA pokazuje tę według swojego motywu

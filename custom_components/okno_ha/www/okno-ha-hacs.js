@@ -299,10 +299,32 @@
   // linki spisu treści prowadzą do GitHuba (HACS usuwa kotwice) – w HA przewiń do nagłówka na tej samej stronie
   document.addEventListener("click", (e) => {
     if (!naHacs()) return;
-    const a = e.composedPath().find((n) => n.tagName === "A");
+    const droga = e.composedPath(), a = droga.find((n) => n.tagName === "A");
     const h = a && a.getAttribute("href");
+    // przyciski My Home Assistant (Otwórz w HACS, Dodaj integrację, Aktualizacje…): w HA od razu właściwa strona tego HA
+    const my = h && /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/.exec(h);
+    if (my) {
+      e.preventDefault(); e.stopPropagation();
+      history.pushState(null, "", `/_my_redirect/${my[1]}${my[2] || ""}`);
+      window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
+      return;
+    }
+    // język opisu (README_EN.md itd.): w HA podmień opis na miejscu, zamiast otwierać GitHuba
+    const jezyk = h && /^https:\/\/github\.com\/superdarco78\/okno-ha-integracja(?:\/blob\/main\/(README(?:_[A-Z]{2})?\.md))?\/?$/.exec(h);
+    const opis = jezyk && droga.find((n) => n.tagName === "HA-MARKDOWN");
+    if (opis) {
+      e.preventDefault(); e.stopPropagation();
+      fetch(`https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/${jezyk[1] || "README.md"}`)
+        .then((r) => (r.ok ? r.text() : Promise.reject()))
+        .then((t) => { opis.content = t; opis.scrollIntoView({ block: "start" }); seria(); })
+        .catch(() => window.open(h, "_blank"));
+      return;
+    }
     if (!h || !/^https:\/\/github\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)(\/blob\/main\/README[^#]*)?#/.test(h)) return;
-    const tekst = a.textContent.trim(), korzen = a.getRootNode();
+    // nagłówek sekcji: z kotwicy (<a name> w opisie → alt obrazka nagłówka) albo z tekstu linku
+    const kotwica = decodeURIComponent(h.split("#")[1] || ""), md = (droga.find((n) => n.tagName === "HA-MARKDOWN") || {}).content || "";
+    const zKotwicy = new RegExp(`<a name="${kotwica.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"></a>\\s*<h[1-4]>.*?alt="([^"]+)"`).exec(md);
+    const tekst = zKotwicy ? zKotwicy[1] : a.textContent.trim(), korzen = a.getRootNode();
     const cel = [...korzen.querySelectorAll("h1 img[alt],h2 img[alt],h3 img[alt],h4 img[alt]")].find((i) => i.alt.trim() === tekst)
       || [...korzen.querySelectorAll("h1,h2,h3,h4")].find((n) => n.textContent.trim() === tekst);
     if (!cel) return;
