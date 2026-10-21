@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.12 – Sprzątanie po usunięciu
+
+- 🧹 Po usunięciu ostatniego okna Okno HA samo kasuje swoje pliki karty z /config/.okno_ha i zapisane dane. Po restarcie HA nie zostaje skrypt karty ani podmiana ikony
+- ℹ️ Karty Okno HA dodane na panele zostają na miejscu, bo to Twoje panele. Można je usunąć w edycji panelu
+
 ## v1.4.11 – Jedna aktualizacja zamiast dwóch
 
 - 🔄 Gdy Okno HA jest zainstalowane przez HACS, nową wersję pokazuje tylko HACS. Nasza pozycja „Okno HA” w Aktualizacjach się wtedy chowa, więc nie ma już dwóch takich samych pozycji

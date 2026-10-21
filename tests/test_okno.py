@@ -255,3 +255,19 @@ async def test_logo_w_hacs(hass):
     assert nasza.entity_picture == LOGO
     assert hass.states.get(nasza.entity_id).attributes["entity_picture"] == LOGO
     assert "hue" in inna.entity_picture
+
+
+async def test_sprzatanie_po_usunieciu(hass):
+    """Usunięcie ostatniego okna kasuje pliki karty w /config/.okno_ha."""
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    r = await hass.config_entries.flow.async_init(DOMAIN, context={"source": config_entries.SOURCE_USER})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"name": "Kuchnia", "rolety": ["cover.lewa"]})
+    while r["type"] == FlowResultType.FORM:
+        r = await hass.config_entries.flow.async_configure(r["flow_id"], {})
+    await hass.async_block_till_done()
+    katalog = hass.data[DOMAIN].katalog
+    assert (katalog / "okno-ha-loader.js").is_file()
+    await hass.config_entries.async_remove(r["result"].entry_id)
+    await hass.async_block_till_done()
+    assert not katalog.exists()

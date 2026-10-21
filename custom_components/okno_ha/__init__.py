@@ -10,13 +10,14 @@ from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers import config_validation as cv, entity_registry as er
+from homeassistant.helpers import config_validation as cv, entity_registry as er, issue_registry as ir
 from homeassistant.helpers.typing import ConfigType
 
 from .const import CONF_NA_PANEL, DOMAIN, VERSION
 from .hacs_ikona import async_start as async_logo_w_hacs
 from .nowosci import LOADER, Nowosci
 from .panele import NIE, async_dodaj_karte
+from .repairs import RESTART
 from .ws import async_rejestruj
 
 PLATFORMS = [Platform.COVER, Platform.BUTTON, Platform.UPDATE]
@@ -43,6 +44,9 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Jedno okno = jeden wpis = jedno urządzenie."""
+    nowosci = hass.data[DOMAIN]
+    if not await hass.async_add_executor_job(nowosci.katalog.is_dir):   # okna usunięto i dodano znów bez restartu
+        await nowosci.async_przygotuj_karte()
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     if panel := entry.options.get(CONF_NA_PANEL):   # „Dodaj kartę na panel” z kreatora – raz, przy dodaniu okna
         if panel != NIE and (encja := er.async_get(hass).async_get_entity_id("cover", DOMAIN, entry.entry_id)):
@@ -58,6 +62,17 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+
+
+async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
+    """Usunięto okno. Gdy to było ostatnie – sprzątnij pliki karty i zapisane dane Okna HA."""
+    if any(e.entry_id != entry.entry_id for e in hass.config_entries.async_entries(DOMAIN)):
+        return
+    nowosci = hass.data.get(DOMAIN)
+    if nowosci is not None:
+        await nowosci.async_usun_wszystko()
+    ir.async_delete_issue(hass, DOMAIN, RESTART)
+    _LOGGER.info("Okno HA: usunięto ostatnie okno – pliki karty i dane Okna HA skasowane")
 
 
 async def _po_zmianie(hass: HomeAssistant, entry: ConfigEntry) -> None:

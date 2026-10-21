@@ -75,6 +75,11 @@ class Nowosci:
         if nadpisz:
             await self._store.async_save({"wersja": KARTA_WERSJA})
 
+    async def async_usun_wszystko(self) -> None:
+        """Po usunięciu ostatniego okna: kasuje /config/.okno_ha i zapisaną wersję karty."""
+        await self._store.async_remove()
+        await self.hass.async_add_executor_job(shutil.rmtree, self.katalog, True)
+
     async def async_zainstaluj_karte(self, wersja: str) -> None:
         url = f"https://github.com/{WLASCICIEL}/{REPO_KARTA}/releases/download/{wersja}/{ZASOB_KARTY}"
         async with async_get_clientsession(self.hass).get(url, timeout=60) as r:
