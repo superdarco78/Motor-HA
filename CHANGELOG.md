@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.49 – Nowy opis
+
+- 📖 Opis czytelny jeszcze przed instalacją: jedna animacja dla jasnego i ciemnego motywu, zrzuty w jednej skali, przyciski 52 px jak w HA, dopasowanie do telefonu, tabletu i komputera
+- 📖 Nagłówki jak w HA, uwagi jako natywne ramki HA, 17 rodzajów osłon w opisie
+
 ## v1.4.48 – Jedna duża aktualizacja
 
 - ✅ Na liście „Dodaj do panelu” zawsze jedna karta „Motor HA” w nowej wersji: plik karty podmienia się przy każdym starcie, a strona HA po aktualizacji sama przeładuje się raz, w spokojnym momencie (bez otwartego okienka, bez edycji panelu, bez pisania)

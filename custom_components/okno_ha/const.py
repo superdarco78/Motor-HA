@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "okno_ha"
-VERSION = "1.4.48"
+VERSION = "1.4.49"
 OKNA = f"{DOMAIN}_okna"   # hass.data: entry_id → encja okna (dla przycisku „Kalibruj”)
 KARTA_WERSJA = "v40"
 KARTA_OBRAZKI = "8cc8d94ce6aaa6eed1c9d69c9afc3e21c1fbd4d0"
