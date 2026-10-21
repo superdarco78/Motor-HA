@@ -28,7 +28,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner7-de.svg" width="100%" alt="Motor HA"></a></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-en.webp#gh-light-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-en-ciemny.webp#gh-dark-mode-only" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="100%"><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz7/pokaz7-en.webp" alt="Animation: vier Behänge, Tag und Nacht, Wetter, Bewegung" width="900"><br>
 <sub>Vier Behänge, Tag und Nacht, Wetter und Bewegung</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Motor HA – Integration</h1>
@@ -72,7 +72,7 @@ Links: die normale Rollo-Karte in Home Assistant. Rechts: dasselbe Fenster mit M
 17 Arten: 9 innen und 8 außen. Wähle sie im Assistenten oder später unter **Konfigurieren**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="100%" alt="17 Behangarten: 9 innen und 8 außen"></a></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="17 Behangarten: 9 innen und 8 außen"></a></p>
 
 <p>&nbsp;</p>
 
@@ -134,10 +134,10 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 <a name="krok-1"></a>
 <h3><a name="j19" href="#j19"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/magnify.svg" height="24" alt="Schritt 1: Klicke diesen Button, dann Link öffnen"></a> Schritt 1: Klicke diesen Button, dann Link öffnen</h3>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/hacs_repository-de.svg" alt="In HACS öffnen" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/hacs_repository-de.svg" alt="In HACS öffnen" height="52"></a></p>
 
 <a name="j20"></a>
-<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki11/de/krok-1.svg" width="100%" alt="Motor HA in HACS: die Schaltfläche Link öffnen"></a><br>
+<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki11/de/krok-1.svg" width="900" alt="Motor HA in HACS: die Schaltfläche Link öffnen"></a><br>
 <b>Motor HA in HACS: die Schaltfläche Link öffnen</b></p>
 
 <p>&nbsp;</p>
@@ -146,7 +146,7 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 <h3><a name="j21" href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/puzzle.svg" height="24" alt="Schritt 2: Klicke Hinzufügen"></a> Schritt 2: Klicke Hinzufügen</h3>
 
 <a name="j22"></a>
-<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-2.svg" width="100%" alt="Der Dialog „Repository hinzufügen“"></a><br>
+<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-2.svg" width="900" alt="Der Dialog „Repository hinzufügen“"></a><br>
 <b>Der Dialog „Repository hinzufügen“</b></p>
 
 <p>&nbsp;</p>
@@ -155,7 +155,7 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 <h3><a name="j23" href="#j23"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/download.svg" height="24" alt="Schritt 3: Klicke Herunterladen, dann noch einmal Herunterladen"></a> Schritt 3: Klicke Herunterladen, dann noch einmal Herunterladen</h3>
 
 <a name="j24"></a>
-<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-3.svg" width="100%" alt="Motor HA in HACS: die Schaltfläche Herunterladen"></a><br>
+<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-3.svg" width="900" alt="Motor HA in HACS: die Schaltfläche Herunterladen"></a><br>
 <b>Motor HA in HACS: die Schaltfläche Herunterladen</b></p>
 
 <p>&nbsp;</p>
@@ -164,7 +164,7 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 <h3><a name="j25" href="#j25"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/power-plug.svg" height="24" alt="Schritt 4: HA neu starten und 1–2 Minuten warten"></a> Schritt 4: HA neu starten und 1–2 Minuten warten</h3>
 
 <a name="j26"></a>
-<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-4.svg" width="100%" alt="Einstellungen: Neu starten"></a><br>
+<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-4.svg" width="900" alt="Einstellungen: Neu starten"></a><br>
 <b>Einstellungen: Neu starten</b></p>
 
 <p>&nbsp;</p>
@@ -172,10 +172,10 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 <a name="krok-5"></a>
 <h3><a name="j27" href="#j27"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/auto-fix.svg" height="24" alt="Schritt 5: Klicke diesen Button und folge dem Assistenten"></a> Schritt 5: Klicke diesen Button und folge dem Assistenten</h3>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start-de.svg" alt="Motor HA Integration hinzufügen" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start-de.svg" alt="Motor HA Integration hinzufügen" height="52"></a></p>
 
 <a name="j28"></a>
-<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-5.svg" width="100%" alt="Der Assistent „Integration hinzufügen“"></a><br>
+<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-5.svg" width="900" alt="Der Assistent „Integration hinzufügen“"></a><br>
 <b>Der Assistent „Integration hinzufügen“</b></p>
 
 <p>&nbsp;</p>
@@ -184,7 +184,7 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 <h3><a name="j29" href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cellphone-check.svg" height="24" alt="Schritt 6: Fertig: Das Fenster ist ein Gerät"></a> Schritt 6: Fertig: Das Fenster ist ein Gerät</h3>
 
 <a name="j30"></a>
-<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-6.svg" width="100%" alt="Das Fenster als Gerät in HA"></a><br>
+<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-6.svg" width="900" alt="Das Fenster als Gerät in HA"></a><br>
 <b>Das Fenster als Gerät in HA</b></p>
 
 <p>&nbsp;</p>
@@ -195,7 +195,7 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 <p align="center">Meist musst du nichts tun: Im letzten Schritt des Assistenten legt das Feld <b>📋 Add the window card to a dashboard</b> die Karte in einen Abschnitt „Okna“. Lieber selbst? Stift → <b>＋ Karte hinzufügen</b> → <b>Okno</b> eintippen und das Fenster wählen.</p>
 
 <a name="j32"></a>
-<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/dodaj-karte.svg" width="100%" alt="Karte hinzufügen: Okno eintippen und die Karte Motor HA anklicken"></a><br>
+<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/dodaj-karte.svg" width="900" alt="Karte hinzufügen: Okno eintippen und die Karte Motor HA anklicken"></a><br>
 <b>Karte hinzufügen: Okno eintippen und die Karte Motor HA anklicken</b></p>
 
 <p>&nbsp;</p>
@@ -211,7 +211,7 @@ Die Bilder passen sich dem Theme an (hell oder dunkel), genau wie die Karte in H
 Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Geräteseite des Fensters **⚙️ Besuchen** klicken (Punkt 1) oder **Konfigurieren → 🪄 Assistent mit Kreisen und Bildern**. Jeden Schritt kannst du in beliebiger Reihenfolge anklicken.
 
 <a name="j34"></a>
-<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/urzadzenie.svg" width="100%" alt="Fenstergerät"></a><br>
+<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/urzadzenie.svg" width="900" alt="Fenstergerät"></a><br>
 <b>Fenstergerät</b></p>
 
 <p>&nbsp;</p>
@@ -228,7 +228,7 @@ Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Ge
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/1-1.svg" width="11.60%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/1-2.svg" width="13.19%" alt="Schritt 2: Fenster"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/1-3.svg" width="13.19%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/1-4.svg" width="13.09%" alt="Schritt 4: Fenstersensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/1-5.svg" width="13.19%" alt="Schritt 5: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/1-6.svg" width="13.24%" alt="Schritt 6: Aussehen"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/1-7.svg" width="11.70%" alt="Schritt 7: Speichern"></a></p>
 
 <a name="j37"></a>
-<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-1.svg" width="100%" alt="Schritt 1: Rollo"></a><br>
+<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-1.svg" width="900" alt="Schritt 1: Rollo"></a><br>
 <b>Assistent mit Kreisen: Schritt 1: Rollo</b></p>
 
 <p>&nbsp;</p>
@@ -239,7 +239,7 @@ Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Ge
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/2-1.svg" width="11.60%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/2-2.svg" width="13.19%" alt="Schritt 2: Fenster"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/2-3.svg" width="13.19%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/2-4.svg" width="13.09%" alt="Schritt 4: Fenstersensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/2-5.svg" width="13.19%" alt="Schritt 5: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/2-6.svg" width="13.24%" alt="Schritt 6: Aussehen"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/2-7.svg" width="11.70%" alt="Schritt 7: Speichern"></a></p>
 
 <a name="j39"></a>
-<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-2.svg" width="100%" alt="Schritt 2: Fenster"></a><br>
+<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-2.svg" width="900" alt="Schritt 2: Fenster"></a><br>
 <b>Assistent mit Kreisen: Schritt 2: Fenster</b></p>
 
 <p>&nbsp;</p>
@@ -250,7 +250,7 @@ Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Ge
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/3-1.svg" width="11.60%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/3-2.svg" width="13.19%" alt="Schritt 2: Fenster"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/3-3.svg" width="13.19%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/3-4.svg" width="13.09%" alt="Schritt 4: Fenstersensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/3-5.svg" width="13.19%" alt="Schritt 5: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/3-6.svg" width="13.24%" alt="Schritt 6: Aussehen"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/3-7.svg" width="11.70%" alt="Schritt 7: Speichern"></a></p>
 
 <a name="j41"></a>
-<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-3.svg" width="100%" alt="Schritt 3: Motor"></a><br>
+<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-3.svg" width="900" alt="Schritt 3: Motor"></a><br>
 <b>Assistent mit Kreisen: Schritt 3: Motor</b></p>
 
 <p>&nbsp;</p>
@@ -261,7 +261,7 @@ Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Ge
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/4-1.svg" width="11.60%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/4-2.svg" width="13.19%" alt="Schritt 2: Fenster"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/4-3.svg" width="13.19%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/4-4.svg" width="13.09%" alt="Schritt 4: Fenstersensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/4-5.svg" width="13.19%" alt="Schritt 5: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/4-6.svg" width="13.24%" alt="Schritt 6: Aussehen"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/4-7.svg" width="11.70%" alt="Schritt 7: Speichern"></a></p>
 
 <a name="j43"></a>
-<p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-4.svg" width="100%" alt="Schritt 4: Fenstersensoren"></a><br>
+<p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-4.svg" width="900" alt="Schritt 4: Fenstersensoren"></a><br>
 <b>Assistent mit Kreisen: Schritt 4: Fenstersensoren</b></p>
 
 <p>&nbsp;</p>
@@ -272,7 +272,7 @@ Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Ge
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/5-1.svg" width="11.60%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/5-2.svg" width="13.19%" alt="Schritt 2: Fenster"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/5-3.svg" width="13.19%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/5-4.svg" width="13.09%" alt="Schritt 4: Fenstersensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/5-5.svg" width="13.19%" alt="Schritt 5: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/5-6.svg" width="13.24%" alt="Schritt 6: Aussehen"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/5-7.svg" width="11.70%" alt="Schritt 7: Speichern"></a></p>
 
 <a name="j45"></a>
-<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-5.svg" width="100%" alt="Schritt 5: Wetter"></a><br>
+<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-5.svg" width="900" alt="Schritt 5: Wetter"></a><br>
 <b>Assistent mit Kreisen: Schritt 5: Wetter</b></p>
 
 <p>&nbsp;</p>
@@ -283,7 +283,7 @@ Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Ge
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/6-1.svg" width="11.60%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/6-2.svg" width="13.19%" alt="Schritt 2: Fenster"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/6-3.svg" width="13.19%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/6-4.svg" width="13.09%" alt="Schritt 4: Fenstersensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/6-5.svg" width="13.19%" alt="Schritt 5: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/6-6.svg" width="13.24%" alt="Schritt 6: Aussehen"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/6-7.svg" width="11.70%" alt="Schritt 7: Speichern"></a></p>
 
 <a name="j47"></a>
-<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-6.svg" width="100%" alt="Schritt 6: Aussehen"></a><br>
+<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-6.svg" width="900" alt="Schritt 6: Aussehen"></a><br>
 <b>Assistent mit Kreisen: Schritt 6: Aussehen</b></p>
 
 <p>&nbsp;</p>
@@ -294,7 +294,7 @@ Den Assistenten mit 7 Kreisen und Bildern öffnest du auf zwei Wegen: auf der Ge
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/7-1.svg" width="11.60%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/7-2.svg" width="13.19%" alt="Schritt 2: Fenster"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/7-3.svg" width="13.19%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/7-4.svg" width="13.09%" alt="Schritt 4: Fenstersensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/7-5.svg" width="13.19%" alt="Schritt 5: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/7-6.svg" width="13.24%" alt="Schritt 6: Aussehen"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek7b/7-7.svg" width="11.70%" alt="Schritt 7: Speichern"></a></p>
 
 <a name="j49"></a>
-<p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-7.svg" width="100%" alt="Schritt 7: Speichern"></a><br>
+<p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-kolka-7.svg" width="900" alt="Schritt 7: Speichern"></a><br>
 <b>Assistent mit Kreisen: Schritt 7: Speichern</b></p>
 
 <p>&nbsp;</p>
@@ -318,7 +318,7 @@ Nach **Integration hinzufügen** (Installationsschritt 5) zeigt HA einen kurzen 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/1-1.svg" width="13.50%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/1-2.svg" width="13.50%" alt="Schritt 2: Fenster und Sensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/1-3.svg" width="13.50%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/1-4.svg" width="13.50%" alt="Schritt 4: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/1-5.svg" width="13.50%" alt="Schritt 5: Aussehen"></a></p>
 
 <a name="j53"></a>
-<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-1.svg" width="100%" alt="Schritt 1: Rollo"></a><br>
+<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-1.svg" width="900" alt="Schritt 1: Rollo"></a><br>
 <b>Schritt 1: Rollo</b></p>
 
 <p>&nbsp;</p>
@@ -329,7 +329,7 @@ Nach **Integration hinzufügen** (Installationsschritt 5) zeigt HA einen kurzen 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/2-1.svg" width="13.50%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/2-2.svg" width="13.50%" alt="Schritt 2: Fenster und Sensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/2-3.svg" width="13.50%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/2-4.svg" width="13.50%" alt="Schritt 4: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/2-5.svg" width="13.50%" alt="Schritt 5: Aussehen"></a></p>
 
 <a name="j55"></a>
-<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-2.svg" width="100%" alt="Schritt 2: Fenster und Sensoren"></a><br>
+<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-2.svg" width="900" alt="Schritt 2: Fenster und Sensoren"></a><br>
 <b>Schritt 2: Fenster und Sensoren</b></p>
 
 <p>&nbsp;</p>
@@ -340,7 +340,7 @@ Nach **Integration hinzufügen** (Installationsschritt 5) zeigt HA einen kurzen 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/3-1.svg" width="13.50%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/3-2.svg" width="13.50%" alt="Schritt 2: Fenster und Sensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/3-3.svg" width="13.50%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/3-4.svg" width="13.50%" alt="Schritt 4: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/3-5.svg" width="13.50%" alt="Schritt 5: Aussehen"></a></p>
 
 <a name="j57"></a>
-<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-3.svg" width="100%" alt="Schritt 3: Motor"></a><br>
+<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-3.svg" width="900" alt="Schritt 3: Motor"></a><br>
 <b>Schritt 3: Motor</b></p>
 
 <p>&nbsp;</p>
@@ -351,7 +351,7 @@ Nach **Integration hinzufügen** (Installationsschritt 5) zeigt HA einen kurzen 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/4-1.svg" width="13.50%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/4-2.svg" width="13.50%" alt="Schritt 2: Fenster und Sensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/4-3.svg" width="13.50%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/4-4.svg" width="13.50%" alt="Schritt 4: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/4-5.svg" width="13.50%" alt="Schritt 5: Aussehen"></a></p>
 
 <a name="j59"></a>
-<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-4.svg" width="100%" alt="Schritt 4: Wetter"></a><br>
+<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-4.svg" width="900" alt="Schritt 4: Wetter"></a><br>
 <b>Schritt 4: Wetter</b></p>
 
 <p>&nbsp;</p>
@@ -362,7 +362,7 @@ Nach **Integration hinzufügen** (Installationsschritt 5) zeigt HA einen kurzen 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/5-1.svg" width="13.50%" alt="Schritt 1: Rollo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/5-2.svg" width="13.50%" alt="Schritt 2: Fenster und Sensoren"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/5-3.svg" width="13.50%" alt="Schritt 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/5-4.svg" width="13.50%" alt="Schritt 4: Wetter"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/de/pasek5b/5-5.svg" width="13.50%" alt="Schritt 5: Aussehen"></a></p>
 
 <a name="j61"></a>
-<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-5.svg" width="100%" alt="Schritt 5: Aussehen"></a><br>
+<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/de/kreator-5.svg" width="900" alt="Schritt 5: Aussehen"></a><br>
 <b>Schritt 5: Aussehen</b></p>
 
 <p>&nbsp;</p>
@@ -377,10 +377,10 @@ Nach **Integration hinzufügen** (Installationsschritt 5) zeigt HA einen kurzen 
 
 Ändere jedes Fenster jederzeit. Klicke auf das Zahnrad **⚙️ (Konfigurieren)** neben dem Fenster.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/integration-de.svg" alt="Motor HA öffnen" height="56"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/integration-de.svg" alt="Motor HA öffnen" height="52"></a></p>
 
 <a name="j63"></a>
-<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/konfiguruj.svg" width="100%" alt="Konfigurieren"></a><br>
+<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/konfiguruj.svg" width="900" alt="Konfigurieren"></a><br>
 <b>Konfigurieren</b></p>
 
 <p>&nbsp;</p>
@@ -388,7 +388,7 @@ Nach **Integration hinzufügen** (Installationsschritt 5) zeigt HA einen kurzen 
 Dann wähle wie: **🪄 Assistent mit Kreisen und Bildern** oder **📝 Einfache Felder Schritt für Schritt** (5 Schritte). Nach dem Speichern zeigt die Karte die Änderungen sofort.
 
 <a name="j64"></a>
-<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/konfiguruj-menu.svg" width="100%" alt="Konfigurieren: Auswahl"></a><br>
+<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/konfiguruj-menu.svg" width="900" alt="Konfigurieren: Auswahl"></a><br>
 <b>Konfigurieren: Auswahl</b></p>
 
 <p>&nbsp;</p>
@@ -401,7 +401,7 @@ Dann wähle wie: **🪄 Assistent mit Kreisen und Bildern** oder **📝 Einfache
 
 Mehr Fenster? Klicke **Gerät hinzufügen** auf der Integrationsseite (Punkt 2 im Bild oben) oder noch einmal diesen Button. Jedes Fenster ist ein eigenes Gerät mit eigener Karte.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start2-de.svg" alt="Weiteres Fenster hinzufügen" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start2-de.svg" alt="Weiteres Fenster hinzufügen" height="52"></a></p>
 
 <a name="kalibracja"></a>
 <h2><a name="j66" href="#j66"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/timer-outline.svg" height="28" alt="Kalibrierung und Karte auf dem Dashboard"></a> Kalibrierung und Karte auf dem Dashboard</h2>
@@ -411,7 +411,7 @@ Die Motorgeschwindigkeit wird vom Rollo-Gerät übernommen (z. B. Moes). Willst 
 Auf derselben Seite legt **Zum Dashboard hinzufügen** (Punkt 3) die Fensterkarte auf ein Dashboard (Home Assistant 2026.6 oder neuer), und **⚙️ Besuchen** (Punkt 1) öffnet den Kreis-Assistenten.
 
 <a name="j67"></a>
-<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/urzadzenie.svg" width="100%" alt="Fenstergerät"></a><br>
+<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/urzadzenie.svg" width="900" alt="Fenstergerät"></a><br>
 <b>Fenstergerät</b></p>
 
 <p>&nbsp;</p>
@@ -425,7 +425,7 @@ Auf derselben Seite legt **Zum Dashboard hinzufügen** (Punkt 3) die Fensterkart
 <table border="0" width="100%"><tr><th align="center" width="10%">Symbol</th><th align="left" width="37%">Was du tust</th><th align="left" width="53%">Was passiert</th></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/drag-horizontal-variant.svg" height="40" alt=""></td><td align="left">Den Griff unten an einem Flügel ziehen</td><td align="left">Nur dieser Flügel bewegt sich</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/swap-vertical-circle-outline.svg" height="40" alt=""></td><td align="left">Den runden Griff in der Mitte ziehen</td><td align="left">Beide Flügel bewegen sich</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/gesture-swipe-vertical.svg" height="40" alt=""></td><td align="left">Über das Glas wischen</td><td align="left">Beide Flügel bewegen sich</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/stop.svg" height="40" alt=""></td><td align="left">STOP klicken oder das Fenster während der Fahrt berühren</td><td align="left">Alles stoppt</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/arrow-up.svg" height="40" alt=""></td><td align="left">Pfeil nach oben klicken</td><td align="left">Fährt ganz nach oben: Fenster frei</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/arrow-down.svg" height="40" alt=""></td><td align="left">Pfeil nach unten klicken</td><td align="left">Fährt ganz nach unten: Fenster verdeckt</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/unfold-more-horizontal.svg" height="40" alt=""></td><td align="left">▲ 5% oder ▼ 5% klicken</td><td align="left">Fährt ein Stück hoch oder runter</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/percent-outline.svg" height="40" alt=""></td><td align="left">Eine Vorgabe klicken, z. B. 75%</td><td align="left">Fährt auf diese Position</td></tr></table>
 
 <a name="j70"></a>
-<p align="center"><a href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/de/opis-elementow.svg" width="100%" alt="Was auf der Karte ist: Griffe und Tasten"></a><br>
+<p align="center"><a href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/de/opis-elementow.svg" width="900" alt="Was auf der Karte ist: Griffe und Tasten"></a><br>
 <b>Was auf der Karte ist: Griffe und Tasten</b></p>
 
 <p>&nbsp;</p>
@@ -442,10 +442,10 @@ Du kannst das Fenster auch wie jedes Rollo öffnen und schließen: auf der Gerä
 
 Wenn eine neue Version da ist, zeigt HA sie von selbst in den **Einstellungen**, spätestens nach 2 Minuten. Ein Update 2 in 1: Integration und Karte zusammen.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/updates-de.svg" alt="Updates" height="56"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/updates-de.svg" alt="Updates" height="52"></a></p>
 
 <a name="j72"></a>
-<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/aktualizacja-1.svg" width="100%" alt="Updates"></a><br>
+<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/aktualizacja-1.svg" width="900" alt="Updates"></a><br>
 <b>Updates</b></p>
 
 <p>&nbsp;</p>
@@ -453,7 +453,7 @@ Wenn eine neue Version da ist, zeigt HA sie von selbst in den **Einstellungen**,
 Klicke auf **Installieren** und starte HA dann neu. Integration und Karte kommen in einem Update.
 
 <a name="j73"></a>
-<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/aktualizacja-2.svg" width="100%" alt="Installieren"></a><br>
+<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/aktualizacja-2.svg" width="900" alt="Installieren"></a><br>
 <b>Installieren</b></p>
 
 <p>&nbsp;</p>
@@ -495,7 +495,7 @@ Neu in jeder Version: [📝 Änderungsprotokoll](https://github.com/superdarco78
 Nach dem Download aus HACS musst du HA neu starten (Schritt 4). Am Handy die App schließen und wieder öffnen.
 
 <a name="j79"></a>
-<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-4.svg" width="100%" alt="„Motor HA“ ist nicht in der Integrationsliste"></a><br>
+<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/krok-4.svg" width="900" alt="„Motor HA“ ist nicht in der Integrationsliste"></a><br>
 <b>„Motor HA“ ist nicht in der Integrationsliste</b></p>
 
 <p>&nbsp;</p>
@@ -508,7 +508,7 @@ Nach dem Download aus HACS musst du HA neu starten (Schritt 4). Am Handy die App
 Die Karte lädt von selbst mit der Integration, nichts muss aktualisiert werden. Prüfe, ob HA nach der Installation neu gestartet wurde (Schritt 4). Dann Stift, <b>Karte hinzufügen</b> und <b>Okno</b> eintippen.
 
 <a name="j81"></a>
-<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/dodaj-karte.svg" width="100%" alt="Die Karte ist nicht in der Liste „Karte hinzufügen“"></a><br>
+<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/dodaj-karte.svg" width="900" alt="Die Karte ist nicht in der Liste „Karte hinzufügen“"></a><br>
 <b>Die Karte ist nicht in der Liste „Karte hinzufügen“</b></p>
 
 <p>&nbsp;</p>
@@ -521,7 +521,7 @@ Die Karte lädt von selbst mit der Integration, nichts muss aktualisiert werden.
 Drücke auf der Geräteseite des Fensters <b>Kalibrieren</b>. Das Rollo fährt hoch, runter und hoch, die Zeit wird von selbst gespeichert.
 
 <a name="j83"></a>
-<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/urzadzenie.svg" width="100%" alt="Die Animation ist schneller oder langsamer als das Rollo"></a><br>
+<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/urzadzenie.svg" width="900" alt="Die Animation ist schneller oder langsamer als das Rollo"></a><br>
 <b>Die Animation ist schneller oder langsamer als das Rollo</b></p>
 
 <p>&nbsp;</p>
@@ -534,7 +534,7 @@ Drücke auf der Geräteseite des Fensters <b>Kalibrieren</b>. Das Rollo fährt h
 <b>Konfigurieren</b> → Schritt 4: Wähle dein Wetter oder lass das Feld leer. Leer = Internetwetter für dein Zuhause.
 
 <a name="j85"></a>
-<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/kreator-4.svg" width="100%" alt="Kein Wetter hinter dem Glas"></a><br>
+<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/kreator-4.svg" width="900" alt="Kein Wetter hinter dem Glas"></a><br>
 <b>Kein Wetter hinter dem Glas</b></p>
 
 <p>&nbsp;</p>
@@ -547,7 +547,7 @@ Drücke auf der Geräteseite des Fensters <b>Kalibrieren</b>. Das Rollo fährt h
 <b>Konfigurieren</b> → Schritt 2: Wähle den Sensor und wie das Fenster öffnet: gekippt oder auf Scharnieren geöffnet.
 
 <a name="j87"></a>
-<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/kreator-2.svg" width="100%" alt="Der Fenstersensor funktioniert nicht"></a><br>
+<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/kreator-2.svg" width="900" alt="Der Fenstersensor funktioniert nicht"></a><br>
 <b>Der Fenstersensor funktioniert nicht</b></p>
 
 <p>&nbsp;</p>
@@ -560,7 +560,7 @@ Drücke auf der Geräteseite des Fensters <b>Kalibrieren</b>. Das Rollo fährt h
 <b>Konfigurieren</b> → Schritt 1: Entferne beide Rollos und wähle sie neu: zuerst links, dann rechts.
 
 <a name="j89"></a>
-<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/kreator-1.svg" width="100%" alt="Die Flügel sind vertauscht (links ist rechts)"></a><br>
+<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/kreator-1.svg" width="900" alt="Die Flügel sind vertauscht (links ist rechts)"></a><br>
 <b>Die Flügel sind vertauscht (links ist rechts)</b></p>
 
 <p>&nbsp;</p>
@@ -580,7 +580,7 @@ Das sind fehlerhafte Motormeldungen. Die Karte ignoriert sie. Springt es weiter,
 Die Karte nutzt die Sprache deines HA-Profils. Du kannst auch im Karteneditor <b>Erweitert</b> öffnen und bei <b>Kartensprache</b> <b>Deutsch</b> wählen.
 
 <a name="j92"></a>
-<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/jezyk-karty.svg" width="100%" alt="Die Karte ist auf Englisch, ich möchte Deutsch"></a><br>
+<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/de/jezyk-karty.svg" width="900" alt="Die Karte ist auf Englisch, ich möchte Deutsch"></a><br>
 <b>Die Karte ist auf Englisch, ich möchte Deutsch</b></p>
 
 <p>&nbsp;</p>
@@ -631,19 +631,19 @@ Keine Antwort gefunden? [Fehler melden](https://github.com/superdarco78/okno-ha-
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="100%" alt="Behangarten"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="Behangarten"></a><br>
 <b>Behangarten</b></p>
 
 <p>&nbsp;</p>
 
 <a name="j102"></a>
-<p align="center"><a href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/kolory-en.svg" width="100%" alt="Behangfarben"></a><br>
+<p align="center"><a href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/kolory-en.svg" width="900" alt="Behangfarben"></a><br>
 <b>Behangfarben</b></p>
 
 <p>&nbsp;</p>
 
 <a name="j103"></a>
-<p align="center"><a href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ramy-en.svg" width="100%" alt="Rahmenfarben und Dekore"></a><br>
+<p align="center"><a href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ramy-en.svg" width="900" alt="Rahmenfarben und Dekore"></a><br>
 <b>Rahmenfarben und Dekore</b></p>
 
 <p>&nbsp;</p>

@@ -28,7 +28,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner7-en.svg" width="100%" alt="Motor HA"></a></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-en.webp#gh-light-mode-only" alt="Animation: four shades, day and night, weather, movement" width="100%"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz6/pokaz6-en-ciemny.webp#gh-dark-mode-only" alt="Animation: four shades, day and night, weather, movement" width="100%"><br>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz7/pokaz7-en.webp" alt="Animation: four shades, day and night, weather, movement" width="900"><br>
 <sub>Four shades, day and night, weather and movement</sub></p>
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Motor HA – integration</h1>
@@ -72,7 +72,7 @@ Left: the standard shade card in Home Assistant. Right: the same window with Mot
 17 types: 9 indoor and 8 outdoor. Pick one in the wizard or later in **Configure**.
 
 <a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="100%" alt="17 shade types: 9 indoor and 8 outdoor"></a></p>
+<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="17 shade types: 9 indoor and 8 outdoor"></a></p>
 
 <p>&nbsp;</p>
 
@@ -134,10 +134,10 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <a name="krok-1"></a>
 <h3><a name="j19" href="#j19"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/magnify.svg" height="24" alt="Step 1: Click this button, then Open link"></a> Step 1: Click this button, then Open link</h3>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/hacs_repository-en.svg" alt="Open in HACS" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/hacs_repository-en.svg" alt="Open in HACS" height="52"></a></p>
 
 <a name="j20"></a>
-<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki11/en/krok-1.svg" width="100%" alt="Motor HA in HACS: the Open link button"></a><br>
+<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki11/en/krok-1.svg" width="900" alt="Motor HA in HACS: the Open link button"></a><br>
 <b>Motor HA in HACS: the Open link button</b></p>
 
 <p>&nbsp;</p>
@@ -146,7 +146,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j21" href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/puzzle.svg" height="24" alt="Step 2: Click Add"></a> Step 2: Click Add</h3>
 
 <a name="j22"></a>
-<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-2.svg" width="100%" alt="The “Add repository” dialog"></a><br>
+<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-2.svg" width="900" alt="The “Add repository” dialog"></a><br>
 <b>The “Add repository” dialog</b></p>
 
 <p>&nbsp;</p>
@@ -155,7 +155,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j23" href="#j23"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/download.svg" height="24" alt="Step 3: Click Download, then Download again"></a> Step 3: Click Download, then Download again</h3>
 
 <a name="j24"></a>
-<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-3.svg" width="100%" alt="Motor HA in HACS: the Download button"></a><br>
+<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-3.svg" width="900" alt="Motor HA in HACS: the Download button"></a><br>
 <b>Motor HA in HACS: the Download button</b></p>
 
 <p>&nbsp;</p>
@@ -164,7 +164,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j25" href="#j25"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/power-plug.svg" height="24" alt="Step 4: Restart HA and wait 1–2 minutes"></a> Step 4: Restart HA and wait 1–2 minutes</h3>
 
 <a name="j26"></a>
-<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-4.svg" width="100%" alt="Settings: Restart"></a><br>
+<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-4.svg" width="900" alt="Settings: Restart"></a><br>
 <b>Settings: Restart</b></p>
 
 <p>&nbsp;</p>
@@ -172,10 +172,10 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <a name="krok-5"></a>
 <h3><a name="j27" href="#j27"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/auto-fix.svg" height="24" alt="Step 5: Click this button and follow the wizard"></a> Step 5: Click this button and follow the wizard</h3>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start-en.svg" alt="Add the Motor HA integration" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start-en.svg" alt="Add the Motor HA integration" height="52"></a></p>
 
 <a name="j28"></a>
-<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-5.svg" width="100%" alt="The “Add integration” wizard"></a><br>
+<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-5.svg" width="900" alt="The “Add integration” wizard"></a><br>
 <b>The “Add integration” wizard</b></p>
 
 <p>&nbsp;</p>
@@ -184,7 +184,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h3><a name="j29" href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cellphone-check.svg" height="24" alt="Step 6: Done: the window is a device"></a> Step 6: Done: the window is a device</h3>
 
 <a name="j30"></a>
-<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-6.svg" width="100%" alt="The window as a device in HA"></a><br>
+<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-6.svg" width="900" alt="The window as a device in HA"></a><br>
 <b>The window as a device in HA</b></p>
 
 <p>&nbsp;</p>
@@ -195,7 +195,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <p align="center">Usually nothing to do: in the last wizard step the <b>📋 Add the window card to a dashboard</b> field places the card in a “Okna” section. Want to do it yourself? Pencil → <b>＋ Add card</b> → type <b>Okno</b> and pick the window.</p>
 
 <a name="j32"></a>
-<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/dodaj-karte.svg" width="100%" alt="Add card: type Okno and click the Motor HA card"></a><br>
+<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/dodaj-karte.svg" width="900" alt="Add card: type Okno and click the Motor HA card"></a><br>
 <b>Add card: type Okno and click the Motor HA card</b></p>
 
 <p>&nbsp;</p>
@@ -211,7 +211,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 Open the wizard with 7 circles and pictures in two ways: on the window device page click **⚙️ Visit** (point 1), or **Configure → 🪄 Wizard with circles and pictures**. Click any step in any order.
 
 <a name="j34"></a>
-<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="100%" alt="Window device"></a><br>
+<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
 <b>Window device</b></p>
 
 <p>&nbsp;</p>
@@ -228,7 +228,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
 
 <a name="j37"></a>
-<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-1.svg" width="100%" alt="Step 1: Shade"></a><br>
+<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-1.svg" width="900" alt="Step 1: Shade"></a><br>
 <b>Wizard with circles: Step 1: Shade</b></p>
 
 <p>&nbsp;</p>
@@ -239,7 +239,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
 
 <a name="j39"></a>
-<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-2.svg" width="100%" alt="Step 2: Window"></a><br>
+<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-2.svg" width="900" alt="Step 2: Window"></a><br>
 <b>Wizard with circles: Step 2: Window</b></p>
 
 <p>&nbsp;</p>
@@ -250,7 +250,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
 
 <a name="j41"></a>
-<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-3.svg" width="100%" alt="Step 3: Motor"></a><br>
+<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-3.svg" width="900" alt="Step 3: Motor"></a><br>
 <b>Wizard with circles: Step 3: Motor</b></p>
 
 <p>&nbsp;</p>
@@ -261,7 +261,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
 
 <a name="j43"></a>
-<p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-4.svg" width="100%" alt="Step 4: Window sensors"></a><br>
+<p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-4.svg" width="900" alt="Step 4: Window sensors"></a><br>
 <b>Wizard with circles: Step 4: Window sensors</b></p>
 
 <p>&nbsp;</p>
@@ -272,7 +272,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
 
 <a name="j45"></a>
-<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-5.svg" width="100%" alt="Step 5: Weather"></a><br>
+<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-5.svg" width="900" alt="Step 5: Weather"></a><br>
 <b>Wizard with circles: Step 5: Weather</b></p>
 
 <p>&nbsp;</p>
@@ -283,7 +283,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
 
 <a name="j47"></a>
-<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-6.svg" width="100%" alt="Step 6: Look"></a><br>
+<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-6.svg" width="900" alt="Step 6: Look"></a><br>
 <b>Wizard with circles: Step 6: Look</b></p>
 
 <p>&nbsp;</p>
@@ -294,7 +294,7 @@ Open the wizard with 7 circles and pictures in two ways: on the window device pa
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
 
 <a name="j49"></a>
-<p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-7.svg" width="100%" alt="Step 7: Save"></a><br>
+<p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-7.svg" width="900" alt="Step 7: Save"></a><br>
 <b>Wizard with circles: Step 7: Save</b></p>
 
 <p>&nbsp;</p>
@@ -318,7 +318,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j53"></a>
-<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-1.svg" width="100%" alt="Step 1: Shade"></a><br>
+<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-1.svg" width="900" alt="Step 1: Shade"></a><br>
 <b>Step 1: Shade</b></p>
 
 <p>&nbsp;</p>
@@ -329,7 +329,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j55"></a>
-<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-2.svg" width="100%" alt="Step 2: Window and sensors"></a><br>
+<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-2.svg" width="900" alt="Step 2: Window and sensors"></a><br>
 <b>Step 2: Window and sensors</b></p>
 
 <p>&nbsp;</p>
@@ -340,7 +340,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j57"></a>
-<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-3.svg" width="100%" alt="Step 3: Motor"></a><br>
+<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-3.svg" width="900" alt="Step 3: Motor"></a><br>
 <b>Step 3: Motor</b></p>
 
 <p>&nbsp;</p>
@@ -351,7 +351,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j59"></a>
-<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-4.svg" width="100%" alt="Step 4: Weather"></a><br>
+<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-4.svg" width="900" alt="Step 4: Weather"></a><br>
 <b>Step 4: Weather</b></p>
 
 <p>&nbsp;</p>
@@ -362,7 +362,7 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j61"></a>
-<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-5.svg" width="100%" alt="Step 5: Look"></a><br>
+<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-5.svg" width="900" alt="Step 5: Look"></a><br>
 <b>Step 5: Look</b></p>
 
 <p>&nbsp;</p>
@@ -377,10 +377,10 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 
 Change any window at any time. Click the gear **⚙️ (Configure)** next to the window.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/integration-en.svg" alt="Open Motor HA" height="56"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/integration-en.svg" alt="Open Motor HA" height="52"></a></p>
 
 <a name="j63"></a>
-<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/konfiguruj.svg" width="100%" alt="Configure"></a><br>
+<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/konfiguruj.svg" width="900" alt="Configure"></a><br>
 <b>Configure</b></p>
 
 <p>&nbsp;</p>
@@ -388,7 +388,7 @@ Change any window at any time. Click the gear **⚙️ (Configure)** next to the
 Then choose how: **🪄 Wizard with circles and pictures** or **📝 Plain fields step by step** (5 steps). After saving, the card shows the changes right away.
 
 <a name="j64"></a>
-<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/konfiguruj-menu.svg" width="100%" alt="Configure: choice"></a><br>
+<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/konfiguruj-menu.svg" width="900" alt="Configure: choice"></a><br>
 <b>Configure: choice</b></p>
 
 <p>&nbsp;</p>
@@ -401,7 +401,7 @@ Then choose how: **🪄 Wizard with circles and pictures** or **📝 Plain field
 
 More windows? Click **Add device** on the integration page (point 2 in the picture above) or this button again. Each window is its own device with its own card.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start2-en.svg" alt="Add another window" height="80"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start2-en.svg" alt="Add another window" height="52"></a></p>
 
 <a name="kalibracja"></a>
 <h2><a name="j66" href="#j66"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/timer-outline.svg" height="28" alt="Calibration and card on the dashboard"></a> Calibration and card on the dashboard</h2>
@@ -411,7 +411,7 @@ The motor speed is picked from the shade device (e.g. Moes). Want it exact? On t
 On the same page, **Add to dashboard** (point 3) puts the window card on a dashboard (Home Assistant 2026.6 or newer), and **⚙️ Visit** (point 1) opens the circles wizard.
 
 <a name="j67"></a>
-<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="100%" alt="Window device"></a><br>
+<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
 <b>Window device</b></p>
 
 <p>&nbsp;</p>
@@ -425,7 +425,7 @@ On the same page, **Add to dashboard** (point 3) puts the window card on a dashb
 <table border="0" width="100%"><tr><th align="center" width="10%">Icon</th><th align="left" width="37%">What you do</th><th align="left" width="53%">What happens</th></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/drag-horizontal-variant.svg" height="40" alt=""></td><td align="left">Drag the handle at the bottom of one sash</td><td align="left">Only that sash moves</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/swap-vertical-circle-outline.svg" height="40" alt=""></td><td align="left">Drag the round handle in the middle</td><td align="left">Both sashes move</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/gesture-swipe-vertical.svg" height="40" alt=""></td><td align="left">Swipe on the glass</td><td align="left">Both sashes move</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/stop.svg" height="40" alt=""></td><td align="left">Click STOP or touch the window while moving</td><td align="left">Everything stops</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/arrow-up.svg" height="40" alt=""></td><td align="left">Click the up arrow</td><td align="left">Goes all the way up: window uncovered</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/arrow-down.svg" height="40" alt=""></td><td align="left">Click the down arrow</td><td align="left">Goes all the way down: window covered</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/unfold-more-horizontal.svg" height="40" alt=""></td><td align="left">Click ▲ 5% or ▼ 5%</td><td align="left">Moves a little up or down</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/percent-outline.svg" height="40" alt=""></td><td align="left">Click a preset, e.g. 75%</td><td align="left">Goes to that position</td></tr></table>
 
 <a name="j70"></a>
-<p align="center"><a href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/en/opis-elementow.svg" width="100%" alt="What is on the card: handles and buttons"></a><br>
+<p align="center"><a href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/en/opis-elementow.svg" width="900" alt="What is on the card: handles and buttons"></a><br>
 <b>What is on the card: handles and buttons</b></p>
 
 <p>&nbsp;</p>
@@ -442,10 +442,10 @@ You can also open and close the window like any shade: on the device page, by vo
 
 When a new version is out, HA shows it in **Settings** by itself, within 2 minutes. One 2-in-1 update: integration and card together.
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/updates-en.svg" alt="Updates" height="56"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/updates-en.svg" alt="Updates" height="52"></a></p>
 
 <a name="j72"></a>
-<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/aktualizacja-1.svg" width="100%" alt="Updates"></a><br>
+<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/aktualizacja-1.svg" width="900" alt="Updates"></a><br>
 <b>Updates</b></p>
 
 <p>&nbsp;</p>
@@ -453,7 +453,7 @@ When a new version is out, HA shows it in **Settings** by itself, within 2 minut
 Click **Install**, then restart HA. Integration and card come in one update.
 
 <a name="j73"></a>
-<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/aktualizacja-2.svg" width="100%" alt="Install"></a><br>
+<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/aktualizacja-2.svg" width="900" alt="Install"></a><br>
 <b>Install</b></p>
 
 <p>&nbsp;</p>
@@ -495,7 +495,7 @@ What is new in each version: [📝 Changelog](https://github.com/superdarco78/ok
 After downloading from HACS you must restart HA (step 4). On a phone, close and reopen the app.
 
 <a name="j79"></a>
-<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-4.svg" width="100%" alt="“Motor HA” is not in the integration list"></a><br>
+<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/krok-4.svg" width="900" alt="“Motor HA” is not in the integration list"></a><br>
 <b>“Motor HA” is not in the integration list</b></p>
 
 <p>&nbsp;</p>
@@ -508,7 +508,7 @@ After downloading from HACS you must restart HA (step 4). On a phone, close and 
 The card loads by itself with the integration, nothing to refresh. Check that HA was restarted after installing (step 4). Then pencil, <b>Add card</b> and type <b>Okno</b>.
 
 <a name="j81"></a>
-<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/dodaj-karte.svg" width="100%" alt="The card is not in the “Add card” list"></a><br>
+<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/dodaj-karte.svg" width="900" alt="The card is not in the “Add card” list"></a><br>
 <b>The card is not in the “Add card” list</b></p>
 
 <p>&nbsp;</p>
@@ -521,7 +521,7 @@ The card loads by itself with the integration, nothing to refresh. Check that HA
 On the window device page press <b>Calibrate</b>. The shade goes up, down and up, and the time is saved by itself.
 
 <a name="j83"></a>
-<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="100%" alt="The animation is faster or slower than the shade"></a><br>
+<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/urzadzenie.svg" width="900" alt="The animation is faster or slower than the shade"></a><br>
 <b>The animation is faster or slower than the shade</b></p>
 
 <p>&nbsp;</p>
@@ -534,7 +534,7 @@ On the window device page press <b>Calibrate</b>. The shade goes up, down and up
 <b>Configure</b> → step 4: pick your weather or leave it empty. Empty = internet weather for your home.
 
 <a name="j85"></a>
-<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-4.svg" width="100%" alt="No weather behind the glass"></a><br>
+<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-4.svg" width="900" alt="No weather behind the glass"></a><br>
 <b>No weather behind the glass</b></p>
 
 <p>&nbsp;</p>
@@ -547,7 +547,7 @@ On the window device page press <b>Calibrate</b>. The shade goes up, down and up
 <b>Configure</b> → step 2: pick the sensor and how the window opens: tilted or opened on hinges.
 
 <a name="j87"></a>
-<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-2.svg" width="100%" alt="The window sensor does not work"></a><br>
+<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-2.svg" width="900" alt="The window sensor does not work"></a><br>
 <b>The window sensor does not work</b></p>
 
 <p>&nbsp;</p>
@@ -560,7 +560,7 @@ On the window device page press <b>Calibrate</b>. The shade goes up, down and up
 <b>Configure</b> → step 1: remove both shades and pick them again: left first, then right.
 
 <a name="j89"></a>
-<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-1.svg" width="100%" alt="The sashes are swapped (left is right)"></a><br>
+<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/kreator-1.svg" width="900" alt="The sashes are swapped (left is right)"></a><br>
 <b>The sashes are swapped (left is right)</b></p>
 
 <p>&nbsp;</p>
@@ -580,7 +580,7 @@ These are bad motor reports. The card ignores them. If it still jumps, <a href="
 The card uses the language of your HA profile. You can also open <b>Advanced</b> in the card editor and pick <b>English</b> in <b>Card language</b>.
 
 <a name="j92"></a>
-<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/jezyk-karty.svg" width="100%" alt="The card is in Polish but I want English"></a><br>
+<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki10/en/jezyk-karty.svg" width="900" alt="The card is in Polish but I want English"></a><br>
 <b>The card is in Polish but I want English</b></p>
 
 <p>&nbsp;</p>
@@ -631,19 +631,19 @@ No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracj
 </table>
 
 <a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="100%" alt="Shade types"></a><br>
+<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony3-en.svg" width="900" alt="Shade types"></a><br>
 <b>Shade types</b></p>
 
 <p>&nbsp;</p>
 
 <a name="j102"></a>
-<p align="center"><a href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/kolory-en.svg" width="100%" alt="Shade colours"></a><br>
+<p align="center"><a href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/kolory-en.svg" width="900" alt="Shade colours"></a><br>
 <b>Shade colours</b></p>
 
 <p>&nbsp;</p>
 
 <a name="j103"></a>
-<p align="center"><a href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ramy-en.svg" width="100%" alt="Frame colours and finishes"></a><br>
+<p align="center"><a href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ramy-en.svg" width="900" alt="Frame colours and finishes"></a><br>
 <b>Frame colours and finishes</b></p>
 
 <p>&nbsp;</p>
