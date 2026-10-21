@@ -152,7 +152,7 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <h2><a name="j18" href="#j18"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/en/h-instalacja.svg" height="48" alt="Step-by-step installation"></a></h2>
 
 <a name="krok-1"></a>
-<h3 align="center">1️⃣ Click this button, then <b>Open link</b></h3>
+<h3 align="center">Step 1: Click this button, then <b>Open link</b></h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open in HACS" height="80"></a></p>
 
@@ -161,28 +161,28 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <sub>📷 Step 1</sub></p>
 
 <a name="krok-2"></a>
-<h3 align="center">2️⃣ Click <b>Add</b></h3>
+<h3 align="center">Step 2: Click <b>Add</b></h3>
 
 <a name="j20"></a>
 <p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/en/krok-2.svg" width="100%" alt="Step 2"></a><br>
 <sub>📷 Step 2</sub></p>
 
 <a name="krok-3"></a>
-<h3 align="center">3️⃣ Click <b>Download</b>, then <b>Download</b> again</h3>
+<h3 align="center">Step 3: Click <b>Download</b>, then <b>Download</b> again</h3>
 
 <a name="j21"></a>
 <p align="center"><a href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/en/krok-3.svg" width="100%" alt="Step 3"></a><br>
 <sub>📷 Step 3</sub></p>
 
 <a name="krok-4"></a>
-<h3 align="center">4️⃣ Restart HA and wait 1–2 minutes</h3>
+<h3 align="center">Step 4: Restart HA and wait 1–2 minutes</h3>
 
 <a name="j22"></a>
 <p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/en/krok-4.svg" width="100%" alt="Step 4"></a><br>
 <sub>📷 Step 4</sub></p>
 
 <a name="krok-5"></a>
-<h3 align="center">5️⃣ Click this button and follow the wizard</h3>
+<h3 align="center">Step 5: Click this button and follow the wizard</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Add the Okno HA integration" height="80"></a></p>
 
@@ -191,14 +191,14 @@ Pictures follow the theme (light or dark), just like the card in Home Assistant.
 <sub>📷 Step 5</sub></p>
 
 <a name="krok-6"></a>
-<h3 align="center">6️⃣ Done: the window is a device</h3>
+<h3 align="center">Step 6: Done: the window is a device</h3>
 
 <a name="j24"></a>
 <p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/en/krok-6.svg" width="100%" alt="Step 6"></a><br>
 <sub>📷 Step 6</sub></p>
 
 <a name="krok-7"></a>
-<h3 align="center">7️⃣ Add the card to a dashboard</h3>
+<h3 align="center">Step 7: Add the card to a dashboard</h3>
 
 <p align="center">Usually nothing to do: in the last wizard step the <b>📋 Add the window card to a dashboard</b> field places the card in a “Okna” section. Want to do it yourself? Pencil → <b>＋ Add card</b> → type <b>Okno</b> and pick the window.</p>
 

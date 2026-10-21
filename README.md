@@ -152,7 +152,7 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <h2><a name="j18" href="#j18"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/h-instalacja.svg" height="48" alt="Instalacja krok po kroku"></a></h2>
 
 <a name="krok-1"></a>
-<h3 align="center">1️⃣ Kliknij ten przycisk, potem <b>Otwórz link</b></h3>
+<h3 align="center">Krok 1: Kliknij ten przycisk, potem <b>Otwórz link</b></h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Otwórz w HACS" height="80"></a></p>
 
@@ -161,28 +161,28 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <sub>📷 Krok 1</sub></p>
 
 <a name="krok-2"></a>
-<h3 align="center">2️⃣ Kliknij <b>Dodaj</b></h3>
+<h3 align="center">Krok 2: Kliknij <b>Dodaj</b></h3>
 
 <a name="j20"></a>
 <p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/krok-2.svg" width="100%" alt="Krok 2"></a><br>
 <sub>📷 Krok 2</sub></p>
 
 <a name="krok-3"></a>
-<h3 align="center">3️⃣ Kliknij <b>Pobierz</b>, potem jeszcze raz <b>Pobierz</b></h3>
+<h3 align="center">Krok 3: Kliknij <b>Pobierz</b>, potem jeszcze raz <b>Pobierz</b></h3>
 
 <a name="j21"></a>
 <p align="center"><a href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/krok-3.svg" width="100%" alt="Krok 3"></a><br>
 <sub>📷 Krok 3</sub></p>
 
 <a name="krok-4"></a>
-<h3 align="center">4️⃣ Uruchom HA ponownie i odczekaj 1–2 minuty</h3>
+<h3 align="center">Krok 4: Uruchom HA ponownie i odczekaj 1–2 minuty</h3>
 
 <a name="j22"></a>
 <p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/krok-4.svg" width="100%" alt="Krok 4"></a><br>
 <sub>📷 Krok 4</sub></p>
 
 <a name="krok-5"></a>
-<h3 align="center">5️⃣ Kliknij ten przycisk i przejdź kreator</h3>
+<h3 align="center">Krok 5: Kliknij ten przycisk i przejdź kreator</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Dodaj integrację Okno HA" height="80"></a></p>
 
@@ -191,14 +191,14 @@ Obrazki dopasowują się do motywu (jasny albo ciemny), tak jak karta w Home Ass
 <sub>📷 Krok 5</sub></p>
 
 <a name="krok-6"></a>
-<h3 align="center">6️⃣ Gotowe: okno jest urządzeniem</h3>
+<h3 align="center">Krok 6: Gotowe: okno jest urządzeniem</h3>
 
 <a name="j24"></a>
 <p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/krok-6.svg" width="100%" alt="Krok 6"></a><br>
 <sub>📷 Krok 6</sub></p>
 
 <a name="krok-7"></a>
-<h3 align="center">7️⃣ Dodaj kartę na pulpit</h3>
+<h3 align="center">Krok 7: Dodaj kartę na pulpit</h3>
 
 <p align="center">Zwykle nic nie musisz robić: w ostatnim kroku kreatora pole <b>📋 Dodaj kartę okna na panel</b> samo kładzie kartę w sekcji „Okna”. Chcesz sam? Ołówek → <b>＋ Dodaj kartę</b> → wpisz <b>Okno</b> i wybierz okno.</p>
 

@@ -152,7 +152,7 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <h2><a name="j18" href="#j18"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/fr/h-instalacja.svg" height="48" alt="Installation pas à pas"></a></h2>
 
 <a name="krok-1"></a>
-<h3 align="center">1️⃣ Cliquez sur ce bouton, puis sur <b>Ouvrir le lien</b></h3>
+<h3 align="center">Étape 1: Cliquez sur ce bouton, puis sur <b>Ouvrir le lien</b></h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Ouvrir dans HACS" height="80"></a></p>
 
@@ -161,28 +161,28 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <sub>📷 Étape 1</sub></p>
 
 <a name="krok-2"></a>
-<h3 align="center">2️⃣ Cliquez sur <b>Ajouter</b></h3>
+<h3 align="center">Étape 2: Cliquez sur <b>Ajouter</b></h3>
 
 <a name="j20"></a>
 <p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/fr/krok-2.svg" width="100%" alt="Étape 2"></a><br>
 <sub>📷 Étape 2</sub></p>
 
 <a name="krok-3"></a>
-<h3 align="center">3️⃣ Cliquez sur <b>Télécharger</b>, puis encore sur <b>Télécharger</b></h3>
+<h3 align="center">Étape 3: Cliquez sur <b>Télécharger</b>, puis encore sur <b>Télécharger</b></h3>
 
 <a name="j21"></a>
 <p align="center"><a href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/fr/krok-3.svg" width="100%" alt="Étape 3"></a><br>
 <sub>📷 Étape 3</sub></p>
 
 <a name="krok-4"></a>
-<h3 align="center">4️⃣ Redémarrez HA et attendez 1–2 minutes</h3>
+<h3 align="center">Étape 4: Redémarrez HA et attendez 1–2 minutes</h3>
 
 <a name="j22"></a>
 <p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/fr/krok-4.svg" width="100%" alt="Étape 4"></a><br>
 <sub>📷 Étape 4</sub></p>
 
 <a name="krok-5"></a>
-<h3 align="center">5️⃣ Cliquez sur ce bouton et suivez l’assistant</h3>
+<h3 align="center">Étape 5: Cliquez sur ce bouton et suivez l’assistant</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Ajouter l’intégration Okno HA" height="80"></a></p>
 
@@ -191,14 +191,14 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <sub>📷 Étape 5</sub></p>
 
 <a name="krok-6"></a>
-<h3 align="center">6️⃣ Terminé : la fenêtre est un appareil</h3>
+<h3 align="center">Étape 6: Terminé : la fenêtre est un appareil</h3>
 
 <a name="j24"></a>
 <p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/fr/krok-6.svg" width="100%" alt="Étape 6"></a><br>
 <sub>📷 Étape 6</sub></p>
 
 <a name="krok-7"></a>
-<h3 align="center">7️⃣ Ajouter la carte au tableau de bord</h3>
+<h3 align="center">Étape 7: Ajouter la carte au tableau de bord</h3>
 
 <p align="center">En général rien à faire : à la dernière étape de l’assistant, le champ <b>📋 Add the window card to a dashboard</b> place la carte dans une section « Okna ». Vous préférez le faire vous-même ? Crayon → <b>＋ Ajouter une carte</b> → tapez <b>Okno</b> et choisissez la fenêtre.</p>
 

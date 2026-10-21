@@ -152,7 +152,7 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <h2><a name="j18" href="#j18"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/cs/h-instalacja.svg" height="48" alt="Instalace krok za krokem"></a></h2>
 
 <a name="krok-1"></a>
-<h3 align="center">1️⃣ Klikni na toto tlačítko, pak na <b>Otevřít odkaz</b></h3>
+<h3 align="center">Krok 1: Klikni na toto tlačítko, pak na <b>Otevřít odkaz</b></h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Otevřít v HACS" height="80"></a></p>
 
@@ -161,28 +161,28 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <sub>📷 Krok 1</sub></p>
 
 <a name="krok-2"></a>
-<h3 align="center">2️⃣ Klikni na <b>Přidat</b></h3>
+<h3 align="center">Krok 2: Klikni na <b>Přidat</b></h3>
 
 <a name="j20"></a>
 <p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/cs/krok-2.svg" width="100%" alt="Krok 2"></a><br>
 <sub>📷 Krok 2</sub></p>
 
 <a name="krok-3"></a>
-<h3 align="center">3️⃣ Klikni na <b>Stáhnout</b>, pak ještě jednou <b>Stáhnout</b></h3>
+<h3 align="center">Krok 3: Klikni na <b>Stáhnout</b>, pak ještě jednou <b>Stáhnout</b></h3>
 
 <a name="j21"></a>
 <p align="center"><a href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/cs/krok-3.svg" width="100%" alt="Krok 3"></a><br>
 <sub>📷 Krok 3</sub></p>
 
 <a name="krok-4"></a>
-<h3 align="center">4️⃣ Restartuj HA a počkej 1–2 minuty</h3>
+<h3 align="center">Krok 4: Restartuj HA a počkej 1–2 minuty</h3>
 
 <a name="j22"></a>
 <p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/cs/krok-4.svg" width="100%" alt="Krok 4"></a><br>
 <sub>📷 Krok 4</sub></p>
 
 <a name="krok-5"></a>
-<h3 align="center">5️⃣ Klikni na toto tlačítko a projdi průvodce</h3>
+<h3 align="center">Krok 5: Klikni na toto tlačítko a projdi průvodce</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Přidat integraci Okno HA" height="80"></a></p>
 
@@ -191,14 +191,14 @@ Obrázky se přizpůsobí motivu (světlý nebo tmavý), stejně jako karta v Ho
 <sub>📷 Krok 5</sub></p>
 
 <a name="krok-6"></a>
-<h3 align="center">6️⃣ Hotovo: okno je zařízení</h3>
+<h3 align="center">Krok 6: Hotovo: okno je zařízení</h3>
 
 <a name="j24"></a>
 <p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki5/cs/krok-6.svg" width="100%" alt="Krok 6"></a><br>
 <sub>📷 Krok 6</sub></p>
 
 <a name="krok-7"></a>
-<h3 align="center">7️⃣ Přidej kartu na panel</h3>
+<h3 align="center">Krok 7: Přidej kartu na panel</h3>
 
 <p align="center">Většinou nemusíš nic dělat: v posledním kroku průvodce pole <b>📋 Add the window card to a dashboard</b> samo položí kartu do sekce „Okna“. Chceš sám? Tužka → <b>＋ Přidat kartu</b> → napiš <b>Okno</b> a vyber okno.</p>
 
