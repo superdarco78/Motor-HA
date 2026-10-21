@@ -2,15 +2,24 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/pokaz4-en.webp" alt="Animation: four shades, day and night, weather, movement" width="100%"></p>
 
-<h1 align="center">🪟 Okno HA (HA Window) – integration</h1>
-
-<p align="center">Each window with a shade is a <b>device</b> in Home Assistant. A wizard with 7 circles and pictures, changes with <b>Configure</b>, the card added to a dashboard by itself, the Okno HA card bundled.</p>
-
 <p align="center">
   <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/v/release/superdarco78/okno-ha-integracja?style=for-the-badge&label=version&color=0288d1" alt="version"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/downloads/superdarco78/okno-ha-integracja/total?style=for-the-badge&label=downloads&color=2e7d32" alt="downloads"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=stars&color=f9a825&logo=github" alt="stars"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/commits/main"><img src="https://img.shields.io/github/commit-activity/y/superdarco78/okno-ha-integracja?style=for-the-badge&label=activity&color=6a1b9a" alt="Activity"></a>
+  <br>
   <a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-custom-41BDF5?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
   <a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-41BDF5?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia"><img src="https://img.shields.io/badge/translations-PL%20%7C%20EN-2e7d32?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Translations"></a>
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-green?style=for-the-badge" alt="license"></a>
+  <br>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/sprawdz.yml?style=for-the-badge&label=HACS%20validate&logo=homeassistantcommunitystore&logoColor=white" alt="HACS validate"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/wydanie.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/wydanie.yml?style=for-the-badge&label=release&logo=githubactions&logoColor=white" alt="release"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/issues"><img src="https://img.shields.io/github/issues/superdarco78/okno-ha-integracja?style=for-the-badge&label=issues&color=e64a19" alt="Issues"></a>
+  <a href="https://github.com/superdarco78"><img src="https://img.shields.io/badge/maintainer-%40superdarco78-d32f2f?style=for-the-badge&logo=github" alt="maintainer"></a>
+  <br>
+  <a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/forum-Home%20Assistant-41BDF5?style=for-the-badge&logo=discourse&logoColor=white" alt="Forum HA"></a>
+  <a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-dc143c?style=for-the-badge&logo=discourse&logoColor=white" alt="Forum PL"></a>
 </p>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open in HACS" height="56"></a></p>
@@ -19,6 +28,10 @@
   <a href="https://github.com/superdarco78/okno-ha-integracja"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/pl.png" alt="Polski" height="44"></a>
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/en-on.png" alt="English" height="44"></a>
 </p>
+
+<h1 align="center">🪟 Okno HA (HA Window) – integration</h1>
+
+<p align="center">Each window with a shade is a <b>device</b> in Home Assistant. A wizard with 7 circles and pictures, changes with <b>Configure</b>, the card added to a dashboard by itself, the Okno HA card bundled.</p>
 
 > ℹ️ Works with every shade motor in Home Assistant (`cover.*`): Zigbee, Z-Wave, Tuya, Shelly, Somfy and more. Windows with one or two sashes.
 
