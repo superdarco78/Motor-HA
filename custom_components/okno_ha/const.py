@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 DOMAIN = "okno_ha"
-VERSION = "1.0.1"
+VERSION = "1.1.0"
+KARTA_WERSJA = "v29"   # wersja karty w www/okno-ha.js
 
 # Plik karty Okno HA wbudowany w integrację – ładuje się sam, bez osobnej instalacji karty
 KARTA_PLIK = "okno-ha.js"

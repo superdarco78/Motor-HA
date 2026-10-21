@@ -81,3 +81,29 @@ async def test_konfiguruj(hass: HomeAssistant) -> None:
     k = hass.states.get("cover.okno_salon").attributes["okno_ha"]
     assert k["oslona"] == "screen" and k["kolor"] == "#123456" and k["czas"] == 25 and k["pogoda"] == "weather.dom"
     assert "czujnik_lewe" not in k
+
+
+def test_numer_wersji():
+    from custom_components.okno_ha.nowosci import numer
+    assert numer("v29") > numer("v28.1") > numer("v28")
+    assert numer("1.1.0") > numer("1.0.1")
+    assert numer(None) == (0,)
+
+
+async def test_powiadomienie_o_nowej_wersji(hass, aioclient_mock):
+    from datetime import timedelta
+    from homeassistant.util import dt as dt_util
+    from pytest_homeassistant_custom_component.common import async_fire_time_changed
+    from custom_components.okno_ha.nowosci import async_start_nowosci
+
+    aioclient_mock.get("https://api.github.com/repos/superdarco78/roleta-realistyczna/releases/latest",
+                       json={"tag_name": "v99"})
+    aioclient_mock.get("https://api.github.com/repos/superdarco78/okno-ha-integracja/releases/latest",
+                       json={"tag_name": "0.0.1"})
+    async_start_nowosci(hass)
+    async_fire_time_changed(hass, dt_util.utcnow() + timedelta(seconds=130))
+    await hass.async_block_till_done()
+    from homeassistant.components.persistent_notification import _async_get_or_create_notifications
+    ids = set(_async_get_or_create_notifications(hass))
+    assert "okno_ha_roleta-realistyczna" in ids
+    assert "okno_ha_okno-ha-integracja" not in ids

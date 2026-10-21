@@ -13,6 +13,7 @@ from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.typing import ConfigType
 
 from .const import DOMAIN, KARTA_PLIK, KARTA_URL, VERSION
+from .nowosci import async_start_nowosci
 
 PLATFORMS = [Platform.COVER]
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
@@ -24,6 +25,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     if plik.is_file():
         await hass.http.async_register_static_paths([StaticPathConfig(KARTA_URL, str(plik), False)])
         add_extra_js_url(hass, f"{KARTA_URL}?v={VERSION}")
+    async_start_nowosci(hass)
     return True
 
 
