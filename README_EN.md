@@ -1,7 +1,3 @@
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/hero2/baner-en.png" width="100%" alt="Okno HA"></p>
-
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/pokaz4-en.webp" alt="Animation: four shades, day and night, weather, movement" width="100%"></p>
-
 <p align="center">
   <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/v/release/superdarco78/okno-ha-integracja?style=for-the-badge&label=version&color=0288d1" alt="version"></a>
   <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/downloads/superdarco78/okno-ha-integracja/total?style=for-the-badge&label=downloads&color=2e7d32" alt="downloads"></a>
@@ -28,6 +24,10 @@
   <a href="https://github.com/superdarco78/okno-ha-integracja"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/pl.png" alt="Polski" height="44"></a>
   <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/jezyki/en-on.png" alt="English" height="44"></a>
 </p>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/hero2/baner-en.png" width="100%" alt="Okno HA"></p>
+
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/pokaz4-en.webp" alt="Animation: four shades, day and night, weather, movement" width="100%"></p>
 
 <h1 align="center">🪟 Okno HA (HA Window) – integration</h1>
 

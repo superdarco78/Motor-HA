@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.7 – Plakietki na samej górze
+
+- 🏷️ W HACS plakietki, przycisk HACS i flagi języków są teraz na samej górze opisu, nad banerem
+
 ## v1.4.6 – Nowy opis w HACS
 
 - 📖 Strona Okna HA w HACS ma nowy opis: plakietki i flagi języków na górze, „Dlaczego Okno HA”, „Przed i po” i galerię
