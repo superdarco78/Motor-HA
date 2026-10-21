@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.22 – Twoje kolory od razu, bez mignięcia
+
+- ⚡ Przemalowane obrazki opisu zostają zapamiętane w przeglądarce. Po odświeżeniu strony od razu są w Twoich kolorach, bez mignięcia domyślnych. Przemalowanie robi się od nowa tylko wtedy, gdy zmienisz kolor w profilu
+- 🙈 Obrazki w domyślnych kolorach nie pokazują się na chwilę przed przemalowaniem
+- 🟠 Ujednolicony pomarańcz zaznaczeń w ciemnych obrazkach, nagłówki kroków bez niebieskich emoji-cyfr
+
 ## v1.4.21 – Kolory motywu w opisie zawsze i w ciemnym motywie
 
 - 🌙 Obrazki opisu w HACS po przemalowaniu zostają ciemne w ciemnym motywie (jasna i ciemna wersja dalej przełączają się same), napisy w nagłówkach są czytelne

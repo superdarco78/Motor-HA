@@ -13,11 +13,21 @@
       w.__oknoHaIkona = true;
       const img = w.HTMLImageElement.prototype;
       const src = Object.getOwnPropertyDescriptor(img, "src");
-      Object.defineProperty(img, "src", { ...src, set(v) { src.set.call(this, zamien(v)); } });
+      Object.defineProperty(img, "src", { ...src, set(v) { src.set.call(this, zPamieci(this, zamien(v))); } });
       const ustaw = w.Element.prototype.setAttribute;
       w.Element.prototype.setAttribute = function (n, v) {
-        return ustaw.call(this, n, (n === "src" || n === "style") ? zamien(v) : v);
+        return ustaw.call(this, n, n === "src" ? (this.tagName === "IMG" ? zPamieci(this, zamien(v)) : zamien(v)) : n === "style" ? zamien(v) : v);
       };
+      // obrazki z opisu w domyślnych kolorach są niewidoczne, aż pojawią się w Twoich (bez mignięcia) – także w cieniu komponentów
+      const arkusz = new w.CSSStyleSheet();
+      arkusz.replaceSync(UKRYJ);
+      w.document.adoptedStyleSheets = [...w.document.adoptedStyleSheets, arkusz];
+      const arkusze = Object.getOwnPropertyDescriptor(w.ShadowRoot.prototype, "adoptedStyleSheets");
+      Object.defineProperty(w.ShadowRoot.prototype, "adoptedStyleSheets", {
+        ...arkusze, set(v) { arkusze.set.call(this, v.includes(arkusz) ? v : [...v, arkusz]); },
+      });
+      const cien = w.Element.prototype.attachShadow;
+      w.Element.prototype.attachShadow = function (...a) { const r = cien.apply(this, a); try { r.adoptedStyleSheets = []; } catch (e) { /* stara przeglądarka */ } return r; };
       // okienko „Update” i lista Aktualizacji: obrazek encji rysuje state-badge
       w.customElements.whenDefined("state-badge").then(() => {
         const k = w.customElements.get("state-badge").prototype;
@@ -49,6 +59,9 @@
     }
   };
   // obrazki Okna HA (opis w HACS, kreator integracji) w kolorze motywu: niebieski HA → --primary-color użytkownika
+  const UKRYJ = ["okno-ha-integracja", "roleta-realistyczna"].map((r) => `img[src^="https://raw.githubusercontent.com/superdarco78/${r}/"]`
+    + ["icon", "ikona", "logo", "baner", "banner", "avatar", ".webp", "/po-", "/pl.png", "/en.png", "/de.png", "/fr.png", "/cs.png"].map((x) => `:not([src*="${x}"])`).join("")).join(",")
+    + "{visibility:hidden}";
   const NASZE = /^https:\/\/raw\.githubusercontent\.com\/superdarco78\/(okno-ha-integracja|roleta-realistyczna)\//;
   const POMIN = /icon|ikona|logo|baner|banner|avatar|\.webp|\/po-[a-z]+\.svg|\/(pl|en|de|fr|cs)\.png/i;
   const hsv = (r, g, b) => {
@@ -90,38 +103,93 @@
     const d = x.getImageData(0, 0, c.width, c.height); piksele(d.data, K, A); x.putImageData(d, 0, 0);
     return c;
   };
-  const gotowe = new Map();   // adres + kolory → przemalowany obrazek
-  const przemalujPlik = (adres, kol, akc) => {
-    const klucz = adres + kol + akc;
-    if (gotowe.has(klucz)) return gotowe.get(klucz);
+  // przemalowane obrazki zostają w przeglądarce (IndexedDB) – po odświeżeniu strony od razu Twoje kolory, bez mignięcia domyślnych
+  const BAZA = new Promise((ok) => {
+    try {
+      const r = indexedDB.open("okno-ha-kolory", 1);
+      r.onupgradeneeded = () => r.result.createObjectStore("obrazki");
+      r.onsuccess = () => ok(r.result); r.onerror = () => ok(null);
+    } catch (e) { ok(null); }
+  });
+  const gotowe = new Map();   // adres + kolory → adres przemalowanego obrazka (blob:)
+  const gotoweTeraz = new Map();   // to samo, już gotowe – do podmiany od ręki
+  const pamiec = BAZA.then((db) => new Promise((ok) => {
+    if (!db) return ok();
+    try {
+      const s = db.transaction("obrazki").objectStore("obrazki"), q = s.openCursor();
+      q.onsuccess = () => { const c = q.result; if (!c) return ok(); const u = URL.createObjectURL(c.value); gotowe.set(c.key, Promise.resolve(u)); gotoweTeraz.set(c.key, u); c.continue(); };
+      q.onerror = () => ok();
+    } catch (e) { ok(); }
+  }));
+  const zapisz = (klucz, blob, kolory) => BAZA.then((db) => {
+    if (!db) return;
+    try {
+      const s = db.transaction("obrazki", "readwrite").objectStore("obrazki");
+      s.put(blob, klucz);
+      // inne kolory niepotrzebne – zostaje tylko komplet dla obecnych kolorów
+      const q = s.openCursor();
+      q.onsuccess = () => { const c = q.result; if (!c) return; if (!String(c.key).endsWith(kolory)) c.delete(); c.continue(); };
+    } catch (e) { /* bez pamięci – przemaluje przy następnym wejściu */ }
+  });
+  let ostatnie = "";   // ostatnie kolory (główny + akcent) – do natychmiastowej podmiany przy rysowaniu
+  try { ostatnie = localStorage.getItem("okno-ha-kolory") || ""; } catch (e) { /* tryb prywatny */ }
+  const akcentDla = (adres, akc) => (/\/(kolory|ramy|oslony)-/.test(adres) ? "" : akc);   // próbki kolorów i oklein bez akcentu
+  const policz = (adres, kol, akc) => {
     const K = rgbZ(kol), A = akc ? rgbZ(akc) : null;
-    const zadanie = /\.svg/i.test(adres)
+    return /\.svg/i.test(adres)
       // SVG zostaje SVG-iem: jasna i ciemna wersja dalej przełączają się z motywem, przemalowane są tylko obrazki w środku
       ? fetch(adres).then((r) => r.text()).then(async (svg) => {
         const czesci = svg.split(/(data:image\/png;base64,[A-Za-z0-9+/=]+)/);
         for (let k = 1; k < czesci.length; k += 2) czesci[k] = plotno(await wczytaj(czesci[k]), K, A).toDataURL("image/png");
-        return URL.createObjectURL(new Blob([czesci.join("")], { type: "image/svg+xml" }));
+        return new Blob([czesci.join("")], { type: "image/svg+xml" });
       })
-      : wczytaj(adres).then((i) => new Promise((ok, zle) => plotno(i, K, A).toBlob((b) => (b ? ok(URL.createObjectURL(b)) : zle()))));
+      : wczytaj(adres).then((i) => new Promise((ok, zle) => plotno(i, K, A).toBlob((b) => (b ? ok(b) : zle()))));
+  };
+  const odswiezone = new Set();
+  const przemalujPlik = (adres, kol, akc) => {
+    const klucz = adres + "|" + kol + akc;
+    if (gotowe.has(klucz)) {
+      // z pamięci: od razu; w tle sprawdź raz, czy obrazek na GitHubie się nie zmienił
+      if (!odswiezone.has(klucz)) {
+        odswiezone.add(klucz);
+        setTimeout(() => policz(adres, kol, akc).then((b) => zapisz(klucz, b, "|" + kol + akc)).catch(() => {}), 5000);
+      }
+      return gotowe.get(klucz);
+    }
+    odswiezone.add(klucz);
+    const zadanie = policz(adres, kol, akc).then((b) => { zapisz(klucz, b, "|" + kol + akc); const u = URL.createObjectURL(b); gotoweTeraz.set(klucz, u); return u; });
     gotowe.set(klucz, zadanie);
     zadanie.catch(() => gotowe.delete(klucz));   // nie wyszło (sieć, restart HA) – następne skanowanie spróbuje jeszcze raz
     return zadanie;
   };
+  const pokaz = (el) => el.style.setProperty("visibility", "visible", "important");   // gdy przemalowanie się nie uda – obrazek w domyślnych kolorach
   const przemaluj = (el) => {
     const teraz = el.getAttribute("src") || "";
     if (NASZE.test(teraz) && el.dataset.oknoOrg && teraz !== el.dataset.oknoOrg) delete el.dataset.oknoKol;   // HACS podał nowy obrazek w tym samym miejscu
     const org = NASZE.test(teraz) ? teraz : el.dataset.oknoOrg || teraz;
     if (!NASZE.test(org) || POMIN.test(org)) return;
+    if (NASZE.test(teraz)) {   // schowany (CSS wyżej) – gdyby przemalowanie trwało za długo, pokaż w domyślnych kolorach
+      el.dataset.oknoOd = el.dataset.oknoOd || Date.now();
+      if (Date.now() - el.dataset.oknoOd > 8000) pokaz(el);
+    }
     const kol = kolorMotywu(el);
     if (!kol) return;
-    // próbki kolorów i oklein zostają w swoich kolorach (pomarańczowy, dąb…) – tam tylko kolor główny
-    const akc = /\/(kolory|ramy|oslony)-/.test(org) ? "" : kolorMotywu(el, "--accent-color") || "";
+    const akcG = kolorMotywu(el, "--accent-color") || "", akc = akcentDla(org, akcG);
+    if (ostatnie !== kol + "|" + akcG) { ostatnie = kol + "|" + akcG; try { localStorage.setItem("okno-ha-kolory", ostatnie); } catch (e) { /* tryb prywatny */ } }
     const znak = kol + akc;
     if (el.dataset.oknoKol === znak) return;
     el.dataset.oknoKol = znak; el.dataset.oknoOrg = org;
     przemalujPlik(org, kol, akc).then(
       (u) => { if (el.dataset.oknoKol === znak) el.setAttribute("src", u); },
-      () => { if (el.dataset.oknoKol === znak) delete el.dataset.oknoKol; });   // spróbuj ponownie przy następnym skanowaniu
+      () => { pokaz(el); if (el.dataset.oknoKol === znak) delete el.dataset.oknoKol; });   // spróbuj ponownie przy następnym skanowaniu
+  };
+  // HACS rysuje obrazek: od razu wersja z pamięci w ostatnich kolorach (bez czekania na skanowanie)
+  const zPamieci = (el, v) => {
+    if (typeof v !== "string" || !NASZE.test(v) || POMIN.test(v)) return v;
+    const [kol, akcG] = ostatnie.split("|"), akc = akcentDla(v, akcG || ""), u = kol && gotoweTeraz.get(v + "|" + kol + akc);
+    if (!u) { setTimeout(seria, 0); return v; }
+    el.dataset.oknoOrg = v; el.dataset.oknoKol = kol + akc;
+    return u;
   };
 
   // obrazki już narysowane (np. panel HACS otwarty, zanim ten skrypt się wczytał, albo ramka HACS wczytana od nowa po restarcie)
@@ -151,6 +219,7 @@
     serie = [0, 300, 1000, 2500, 5000, 10000, 20000, 40000].map((t) => setTimeout(skanuj, t));
   };
   popraw(window);
+  pamiec.then(seria);   // pamięć wczytana – od razu podmień to, co już narysowane
   // tylko w HACS i w Ustawieniach: co 2 s poprawia obrazki (ikona, kolor motywu)
   setInterval(skanuj, 2000);
   window.addEventListener("connection-status", seria);   // HA zgłasza „connected” po restarcie
