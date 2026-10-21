@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.5 – Jedna aktualizacja i krok wstecz
+
+- 🔄 W Ustawieniach → Aktualizacje jest już tylko jedna pozycja **Okno HA** z jednym numerem wersji. Karta jest w środku integracji i aktualizuje się razem z nią. Stara osobna pozycja „v32” znika sama
+- ⬅️ Kreator ma na każdym kroku (od drugiego) przełącznik **Wróć do poprzedniego kroku**. Wpisane wartości zostają
+- 🎨 Obrazki w kreatorze (pasek kroków, kolory, ramy, osłony) mają przezroczyste tło, więc pasują do ciemnego i jasnego motywu
+
 ## v1.4.4 – Szybka aktualizacja i duży podgląd
 
 - ⚡ Aktualizacja Okna HA nie ma już przełącznika „Utwórz kopię zapasową”. Okno HA podmienia tylko swoje pliki, więc instaluje się od razu

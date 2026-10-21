@@ -1,4 +1,4 @@
-"""Ustawienia → Aktualizacje: karta Okno HA i integracja Okno HA, z przyciskiem „Zainstaluj”."""
+"""Ustawienia → Aktualizacje: jedna pozycja „Okno HA” (integracja z kartą w środku), z przyciskiem „Zainstaluj”."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
-from homeassistant.helpers import issue_registry as ir
+from homeassistant.helpers import entity_registry as er, issue_registry as ir
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DOMAIN, VERSION
@@ -17,51 +17,62 @@ from .nowosci import REPO_INTEGRACJA, REPO_KARTA, WLASCICIEL, Nowosci, numer
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback) -> None:
-    # jedna para encji na całą integrację – przy pierwszym oknie
+    # jedna encja na całą integrację – przy pierwszym oknie
     pierwszy = min(e.entry_id for e in hass.config_entries.async_entries(DOMAIN))
     if entry.entry_id != pierwszy:
         return
-    nowosci: Nowosci = hass.data[DOMAIN]
-    async_add_entities([AktualizacjaKarty(nowosci), AktualizacjaIntegracji(nowosci)])
+    # do v1.4.4 karta miała osobną aktualizację – teraz jest w środku integracji
+    rejestr = er.async_get(hass)
+    if stara := rejestr.async_get_entity_id("update", DOMAIN, f"{DOMAIN}_{REPO_KARTA}"):
+        rejestr.async_remove(stara)
+    async_add_entities([Aktualizacja(hass.data[DOMAIN])])
 
 
-class _Aktualizacja(UpdateEntity):
+class Aktualizacja(UpdateEntity):
+    """Jedna pozycja „Okno HA” w Aktualizacjach, jeden numer wersji: karta jest w środku integracji."""
+
     _attr_has_entity_name = True
+    _attr_name = None   # = nazwa urządzenia „Okno HA”
+    _attr_title = "Okno HA"
     _attr_should_poll = False
     _attr_entity_picture = f"/{DOMAIN}/ikona.png"
     # bez „Utwórz kopię zapasową” – Okno HA podmienia tylko swoje pliki, aktualizacja trwa kilka sekund
     _attr_supported_features = (UpdateEntityFeature.INSTALL | UpdateEntityFeature.RELEASE_NOTES
                                  | UpdateEntityFeature.PROGRESS)
-    repo: str
 
     def __init__(self, nowosci: Nowosci) -> None:
         self._n = nowosci
-        self._attr_unique_id = f"{DOMAIN}_{self.repo}"
+        self._zainstalowana = f"v{VERSION}"
+        self._attr_unique_id = f"{DOMAIN}_{REPO_INTEGRACJA}"
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, "okno_ha")}, name="Okno HA", manufacturer="Okno HA",
-            model="Karta i integracja", sw_version=VERSION, entry_type=DeviceEntryType.SERVICE)
+            model="Integracja z kartą", sw_version=VERSION, entry_type=DeviceEntryType.SERVICE)
 
     async def async_added_to_hass(self) -> None:
         self.async_on_remove(self._n.sluchaj(self.async_write_ha_state))
 
     @property
     def _wydanie(self) -> dict:
-        return self._n.wydania.get(self.repo, {})
+        return self._n.wydania.get(REPO_INTEGRACJA, {})
+
+    @property
+    def installed_version(self) -> str | None:
+        return self._zainstalowana
 
     @property
     def latest_version(self) -> str | None:
-        return self._wydanie.get("wersja") or self.installed_version
+        return self._wydanie.get("wersja") or self._zainstalowana
+
+    def version_is_newer(self, latest_version: str, installed_version: str) -> bool:
+        return numer(latest_version) > numer(installed_version)
 
     @property
     def release_url(self) -> str:
-        return self._wydanie.get("url") or f"https://github.com/{WLASCICIEL}/{self.repo}/releases"
+        return self._wydanie.get("url") or f"https://github.com/{WLASCICIEL}/{REPO_INTEGRACJA}/releases"
 
     @property
     def release_summary(self) -> str | None:
         return self._wydanie.get("tytul")
-
-    def version_is_newer(self, latest_version: str, installed_version: str) -> bool:
-        return numer(latest_version) > numer(installed_version)
 
     async def async_release_notes(self) -> str | None:
         return self._wydanie.get("opis")
@@ -71,59 +82,30 @@ class _Aktualizacja(UpdateEntity):
         self._attr_update_percentage = procent
         self.async_write_ha_state()
 
-
-class AktualizacjaKarty(_Aktualizacja):
-    repo = REPO_KARTA
-    _attr_name = "Karta Okno HA"
-
-    @property
-    def installed_version(self) -> str | None:
-        return self._n.karta_wersja
-
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
         self._postep(0)
         try:
             self._postep(40)
-            await self._n.async_zainstaluj_karte(version or self.latest_version)
+            await self._zainstaluj_integracje(version or self.latest_version)
             self._postep(100)
         finally:
             self._postep(None)
 
-
-class AktualizacjaIntegracji(_Aktualizacja):
-    repo = REPO_INTEGRACJA
-    _attr_name = "Integracja Okno HA"
-
-    def __init__(self, nowosci: Nowosci) -> None:
-        super().__init__(nowosci)
-        self._zainstalowana = f"v{VERSION}"
-
-    @property
-    def installed_version(self) -> str | None:
-        return self._zainstalowana
-
-    async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
-        wersja = version or self.latest_version
-        self._postep(0)
-        try:
-            self._postep(40)
-            hacs = next((s.entity_id for s in self.hass.states.async_all("update")
-                         if REPO_INTEGRACJA in str(s.attributes.get("release_url", ""))
-                         and s.entity_id != self.entity_id), None)
-            zrobione = False
-            if hacs:   # zainstalowana przez HACS – niech HACS ją zaktualizuje, żeby wiedział o nowej wersji
-                try:
-                    await self.hass.services.async_call("update", "install", {"entity_id": hacs, "version": wersja}, blocking=True)
-                    zrobione = True
-                except Exception:  # noqa: BLE001 – HACS jeszcze nie zna tej wersji: pobieramy sami
-                    pass
-            if not zrobione:
-                await self._n.async_zainstaluj_integracje(wersja)
-            self._postep(100)
-            self._zainstalowana = wersja
-            # „Napraw” w Ustawieniach: restart jednym kliknięciem, po polsku
-            ir.async_create_issue(self.hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
-                                  severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
-                                  translation_placeholders={"wersja": wersja})
-        finally:
-            self._postep(None)
+    async def _zainstaluj_integracje(self, wersja: str) -> None:
+        hacs = next((s.entity_id for s in self.hass.states.async_all("update")
+                     if REPO_INTEGRACJA in str(s.attributes.get("release_url", ""))
+                     and s.entity_id != self.entity_id), None)
+        zrobione = False
+        if hacs:   # zainstalowana przez HACS – niech HACS ją zaktualizuje, żeby wiedział o nowej wersji
+            try:
+                await self.hass.services.async_call("update", "install", {"entity_id": hacs, "version": wersja}, blocking=True)
+                zrobione = True
+            except Exception:  # noqa: BLE001 – HACS jeszcze nie zna tej wersji: pobieramy sami
+                pass
+        if not zrobione:
+            await self._n.async_zainstaluj_integracje(wersja)
+        self._zainstalowana = wersja
+        # „Napraw” w Ustawieniach: restart jednym kliknięciem, po polsku
+        ir.async_create_issue(self.hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
+                              severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
+                              translation_placeholders={"wersja": wersja})

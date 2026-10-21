@@ -6,7 +6,7 @@ from homeassistant.data_entry_flow import FlowResultType
 from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import async_mock_service
 
-from custom_components.okno_ha.const import DOMAIN
+from custom_components.okno_ha.const import DOMAIN, VERSION
 
 ROLETY = ["cover.lewa", "cover.prawa"]
 
@@ -100,19 +100,18 @@ async def test_aktualizacje(hass, aioclient_mock):
     aioclient_mock.get("https://api.github.com/repos/superdarco78/roleta-realistyczna/releases/latest",
                        json={"tag_name": "v99", "body": "nowości", "html_url": "https://x/v99"})
     aioclient_mock.get("https://api.github.com/repos/superdarco78/okno-ha-integracja/releases/latest",
-                       json={"tag_name": "v0.0.1"})
+                       json={"tag_name": "v9.0.0", "html_url": "https://x/v9"})
     aioclient_mock.get("https://github.com/superdarco78/roleta-realistyczna/releases/download/v99/roleta-realistyczna.js",
                        text="// karta v99")
     await _dodaj(hass)
     await hass.data[DOMAIN].async_sprawdz()
     await hass.async_block_till_done()
-    karta = hass.states.get("update.okno_ha_karta_okno_ha")
-    integracja = hass.states.get("update.okno_ha_integracja_okno_ha")
-    assert karta.state == "on" and karta.attributes["latest_version"] == "v99"
-    assert integracja.state == "off"
-    assert "roleta-realistyczna" in karta.attributes["release_url"] or karta.attributes["release_url"] == "https://x/v99"
-    await hass.services.async_call("update", "install", {"entity_id": karta.entity_id}, blocking=True)
-    assert hass.states.get(karta.entity_id).state == "off"
+    assert hass.states.get("update.okno_ha_karta_okno_ha") is None     # już jedna pozycja
+    okno = hass.states.get("update.okno_ha")
+    assert okno.name == "Okno HA" and okno.state == "on"   # jedna wersja = wersja integracji
+    assert okno.attributes["latest_version"] == "v9.0.0" and okno.attributes["installed_version"] == f"v{VERSION}"
+    assert okno.attributes["release_url"] == "https://x/v9"
+    await hass.data[DOMAIN].async_zainstaluj_karte("v99")
     plik = hass.data[DOMAIN].katalog / "okno-ha.js"
     assert plik.read_text() == "// karta v99"
     assert "Date.now()" in (hass.data[DOMAIN].katalog / "okno-ha-loader.js").read_text()
@@ -214,3 +213,15 @@ async def test_napraw_restart(hass: HomeAssistant) -> None:
     assert wynik["type"] == "create_entry"
     await hass.async_block_till_done()
     assert len(wywolania) == 1
+
+
+async def test_wstecz(hass: HomeAssistant) -> None:
+    """„⬅️ Wróć do poprzedniego kroku” w kreatorze."""
+    hass.states.async_set("cover.r", "open", {"current_position": 50})
+    w = await hass.config_entries.flow.async_init(DOMAIN, context={"source": config_entries.SOURCE_USER})
+    w = await hass.config_entries.flow.async_configure(w["flow_id"], {"name": "Test", "rolety": ["cover.r"]})
+    assert w["step_id"] == "okno"
+    w = await hass.config_entries.flow.async_configure(w["flow_id"], {"skrzydla": "1"})
+    assert w["step_id"] == "silnik"
+    w = await hass.config_entries.flow.async_configure(w["flow_id"], {"wstecz": True})
+    assert w["step_id"] == "okno"

@@ -17,6 +17,7 @@ from .const import (
     CONF_CZUJNIK_PRAWE,
     CONF_KALIBRUJ,
     CONF_NA_PANEL,
+    CONF_WSTECZ,
     CONF_KOLOR,
     CONF_KOLOR_WLASNY,
     CONF_OSLONA,
@@ -129,6 +130,9 @@ class _Kreator:
 
     async def _krok(self, krok: str, dane: dict[str, Any] | None, z_nazwa: bool) -> ConfigFlowResult:
         bledy: dict[str, str] = {}
+        if dane is not None and dane.pop(CONF_WSTECZ, False) and krok != KROKI[0]:   # „⬅️ Wstecz”
+            self._v.update(dane)
+            return await getattr(self, f"async_step_{KROKI[KROKI.index(krok) - 1]}")()
         if dane is not None:
             bledy = _sprawdz(krok, dane)
             if not bledy:
@@ -149,7 +153,10 @@ class _Kreator:
                     self._v[klucz] = p
         czas = czas_z_predkosci(self.hass, self._v.get(CONF_PREDKOSC_LEWA))
         panele = await async_lista(self.hass) if z_nazwa and krok == "wyglad" else None
-        return self.async_show_form(step_id=krok, data_schema=schemat(krok, self._v, z_nazwa, self.hass, panele), errors=bledy,
+        forma = schemat(krok, self._v, z_nazwa, self.hass, panele)
+        if krok != KROKI[0]:
+            forma = forma.extend({vol.Optional(CONF_WSTECZ, default=False): sel.BooleanSelector()})
+        return self.async_show_form(step_id=krok, data_schema=forma, errors=bledy,
                                     last_step=krok == KROKI[-1], description_placeholders={
                                         "czas": f"{czas} s" if czas else "—", "obrazki": OBRAZKI})
 

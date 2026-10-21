@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "🪟 Okno HA – krok 1 z 5: roleta",
-        "description": "![]({obrazki}/kreator-krok-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.\n\n🪄 Wolisz kreator z kółkami i obrazkami, taki jak w karcie? **[Otwórz panel Okno HA](/okno-ha)**",
+        "description": "![]({obrazki}/kreator-pasek-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.\n\n🪄 Wolisz kreator z kółkami i obrazkami, taki jak w karcie? **[Otwórz kreator z kółkami](/okno-ha)**",
         "data": {
           "name": "Nazwa okna",
           "rolety": "Roleta (jedna albo dwie)"
@@ -15,51 +15,57 @@
       },
       "okno": {
         "title": "🪟 Krok 2 z 5: okno i czujniki",
-        "description": "![]({obrazki}/kreator-krok-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
+        "description": "![]({obrazki}/kreator-pasek-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
         "data": {
           "skrzydla": "Liczba skrzydeł",
           "czujnik_lewe": "Czujnik lewego skrzydła",
           "tryb_lewe": "Lewe skrzydło po otwarciu",
           "czujnik_prawe": "Czujnik prawego skrzydła",
-          "tryb_prawe": "Prawe skrzydło po otwarciu"
+          "tryb_prawe": "Prawe skrzydło po otwarciu",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
           "czujnik_lewe": "Gdy czujnik pokaże otwarte, karta narysuje otwarte skrzydło.",
           "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło.",
           "skrzydla": "1 = jedno skrzydło, 2 = okno dwuskrzydłowe (lewe i prawe).",
           "czujnik_prawe": "Czujnik otwarcia prawego skrzydła. Zostaw puste, jeśli go nie ma.",
-          "tryb_prawe": "Jak otwiera się prawe skrzydło: uchylone albo otwarte na bok."
+          "tryb_prawe": "Jak otwiera się prawe skrzydło: uchylone albo otwarte na bok.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       },
       "silnik": {
         "title": "⚙️ Krok 3 z 5: silnik",
-        "description": "![]({obrazki}/kreator-krok-3-pl.png)\n\nKarta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-pl.png)\n\nKarta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
         "data": {
           "predkosc_lewa": "Prędkość silnika – lewa",
           "predkosc_prawa": "Prędkość silnika – prawa",
           "czas": "Czas pełnego przejazdu",
-          "kalibruj": "🤖 Kalibruj teraz (roleta pojedzie w górę, w dół i w górę)"
+          "kalibruj": "🤖 Kalibruj teraz (roleta pojedzie w górę, w dół i w górę)",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
           "predkosc_lewa": "Encja „…motor_speed” z tej samej rolety. Zostaw pustą, jeśli silnik jej nie ma.",
           "predkosc_prawa": "To samo dla prawego skrzydła.",
           "czas": "0 = automatycznie: z prędkości silnika albo z kalibracji.",
-          "kalibruj": "Zmierzy prawdziwy czas przejazdu i zapisze go. Możesz to też zrobić później przyciskiem „Kalibruj” na urządzeniu."
+          "kalibruj": "Zmierzy prawdziwy czas przejazdu i zapisze go. Możesz to też zrobić później przyciskiem „Kalibruj” na urządzeniu.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       },
       "pogoda": {
         "title": "🌤️ Krok 4 z 5: pogoda za oknem",
-        "description": "![]({obrazki}/kreator-krok-4-pl.png)\n\nZa oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
+        "description": "![]({obrazki}/kreator-pasek-4-pl.png)\n\nZa oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
         "data": {
-          "pogoda": "Pogoda"
+          "pogoda": "Pogoda",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
-          "pogoda": "Pogoda za oknem na karcie: słońce, chmury, deszcz, śnieg, dzień i noc. Zostaw puste, a karta sama wybierze pierwszą pogodę z HA."
+          "pogoda": "Pogoda za oknem na karcie: słońce, chmury, deszcz, śnieg, dzień i noc. Zostaw puste, a karta sama wybierze pierwszą pogodę z HA.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       },
       "wyglad": {
         "title": "🎨 Krok 5 z 5: wygląd",
-        "description": "![]({obrazki}/kreator-krok-5-pl.png)\n\nWybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-pl.png)\n\nWybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-v2-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-v2-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-v2-pl.png)",
         "data": {
           "oslona": "Rodzaj osłony",
           "kolor": "Kolor osłony",
@@ -67,7 +73,8 @@
           "rama": "Kolor ramy okna",
           "rama_wlasna": "🎨 Własny kolor ramy",
           "wysokosc": "Wysokość okna na karcie",
-          "na_panel": "📋 Dodaj kartę okna na panel"
+          "na_panel": "📋 Dodaj kartę okna na panel",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
           "kolor": "Próbki są na obrazku wyżej.",
@@ -76,7 +83,8 @@
           "rama_wlasna": "Dowolny kolor ramy. Zastępuje kolor z listy.",
           "oslona": "Jak wygląda Twoja osłona – porównaj z kafelkami na obrazku wyżej.",
           "wysokosc": "Jak wysokie jest okno na karcie (w pikselach). Większe = lepiej widać.",
-          "na_panel": "Karta pojawi się sama na tym panelu, z wszystkimi ustawieniami z kreatora. Wybierz „Nie dodawaj”, jeśli chcesz ją położyć sam."
+          "na_panel": "Karta pojawi się sama na tym panelu, z wszystkimi ustawieniami z kreatora. Wybierz „Nie dodawaj”, jeśli chcesz ją położyć sam.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       }
     },
@@ -88,7 +96,7 @@
     "step": {
       "user": {
         "title": "🪟 Okno HA – krok 1 z 5: roleta",
-        "description": "![]({obrazki}/kreator-krok-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
+        "description": "![]({obrazki}/kreator-pasek-1-pl.png)\n\nWybierz roletę tego okna. Okno z dwoma skrzydłami: wybierz dwie rolety (lewą i prawą) albo jedną grupę.",
         "data": {
           "name": "Nazwa okna",
           "rolety": "Roleta (jedna albo dwie)"
@@ -100,58 +108,65 @@
       },
       "okno": {
         "title": "🪟 Krok 2 z 5: okno i czujniki",
-        "description": "![]({obrazki}/kreator-krok-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
+        "description": "![]({obrazki}/kreator-pasek-2-pl.png)\n\nIle skrzydeł ma okno i czy ma czujniki otwarcia (kontaktrony). Czujniki są nieobowiązkowe.",
         "data": {
           "skrzydla": "Liczba skrzydeł",
           "czujnik_lewe": "Czujnik lewego skrzydła",
           "tryb_lewe": "Lewe skrzydło po otwarciu",
           "czujnik_prawe": "Czujnik prawego skrzydła",
-          "tryb_prawe": "Prawe skrzydło po otwarciu"
+          "tryb_prawe": "Prawe skrzydło po otwarciu",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
           "czujnik_lewe": "Gdy czujnik pokaże otwarte, karta narysuje otwarte skrzydło.",
           "tryb_lewe": "Jak karta ma pokazać otwarte skrzydło.",
           "skrzydla": "1 = jedno skrzydło, 2 = okno dwuskrzydłowe (lewe i prawe).",
           "czujnik_prawe": "Czujnik otwarcia prawego skrzydła. Zostaw puste, jeśli go nie ma.",
-          "tryb_prawe": "Jak otwiera się prawe skrzydło: uchylone albo otwarte na bok."
+          "tryb_prawe": "Jak otwiera się prawe skrzydło: uchylone albo otwarte na bok.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       },
       "silnik": {
         "title": "⚙️ Krok 3 z 5: silnik",
-        "description": "![]({obrazki}/kreator-krok-3-pl.png)\n\nKarta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-pl.png)\n\nKarta jedzie w tempie silnika. Prędkość silnika wybrałem sam z urządzenia rolety (jeśli ją ma, np. Moes). Wyliczony czas przejazdu: **{czas}**.",
         "data": {
           "predkosc_lewa": "Prędkość silnika – lewa",
           "predkosc_prawa": "Prędkość silnika – prawa",
           "czas": "Czas pełnego przejazdu",
-          "kalibruj": "🤖 Kalibruj teraz (roleta pojedzie w górę, w dół i w górę)"
+          "kalibruj": "🤖 Kalibruj teraz (roleta pojedzie w górę, w dół i w górę)",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
           "predkosc_lewa": "Encja „…motor_speed” z tej samej rolety. Zostaw pustą, jeśli silnik jej nie ma.",
           "predkosc_prawa": "To samo dla prawego skrzydła.",
           "czas": "0 = automatycznie: z prędkości silnika albo z kalibracji.",
-          "kalibruj": "Zmierzy prawdziwy czas przejazdu i zapisze go. Możesz to też zrobić później przyciskiem „Kalibruj” na urządzeniu."
+          "kalibruj": "Zmierzy prawdziwy czas przejazdu i zapisze go. Możesz to też zrobić później przyciskiem „Kalibruj” na urządzeniu.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       },
       "pogoda": {
         "title": "🌤️ Krok 4 z 5: pogoda za oknem",
-        "description": "![]({obrazki}/kreator-krok-4-pl.png)\n\nZa oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
+        "description": "![]({obrazki}/kreator-pasek-4-pl.png)\n\nZa oknem widać prawdziwą pogodę. Zostaw puste, a karta weźmie pogodę z internetu dla Twojego domu.",
         "data": {
-          "pogoda": "Pogoda"
+          "pogoda": "Pogoda",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
-          "pogoda": "Pogoda za oknem na karcie: słońce, chmury, deszcz, śnieg, dzień i noc. Zostaw puste, a karta sama wybierze pierwszą pogodę z HA."
+          "pogoda": "Pogoda za oknem na karcie: słońce, chmury, deszcz, śnieg, dzień i noc. Zostaw puste, a karta sama wybierze pierwszą pogodę z HA.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       },
       "wyglad": {
         "title": "🎨 Krok 5 z 5: wygląd",
-        "description": "![]({obrazki}/kreator-krok-5-pl.png)\n\nWybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-pl.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-pl.png)\n\nWybierz rodzaj osłony i kolory z obrazków poniżej.\n\n![Rodzaje osłon]({obrazki}/oslony-kafle-v2-pl.png)\n\n![Kolory osłony]({obrazki}/kolory-v2-pl.png)\n\n![Kolory ramy]({obrazki}/ramy-v2-pl.png)",
         "data": {
           "oslona": "Rodzaj osłony",
           "kolor": "Kolor osłony",
           "kolor_wlasny": "🎨 Własny kolor osłony",
           "rama": "Kolor ramy okna",
           "rama_wlasna": "🎨 Własny kolor ramy",
-          "wysokosc": "Wysokość okna na karcie"
+          "wysokosc": "Wysokość okna na karcie",
+          "wstecz": "⬅️ Wróć do poprzedniego kroku"
         },
         "data_description": {
           "kolor": "Próbki są na obrazku wyżej.",
@@ -159,7 +174,8 @@
           "rama": "Okleiny drewnopodobne karta rysuje ze słojami.",
           "rama_wlasna": "Dowolny kolor ramy. Zastępuje kolor z listy.",
           "oslona": "Jak wygląda Twoja osłona – porównaj z kafelkami na obrazku wyżej.",
-          "wysokosc": "Jak wysokie jest okno na karcie (w pikselach). Większe = lepiej widać."
+          "wysokosc": "Jak wysokie jest okno na karcie (w pikselach). Większe = lepiej widać.",
+          "wstecz": "Włącz i kliknij „Dalej”, a kreator wróci krok wcześniej. To, co już wpisałeś, zostaje."
         }
       },
       "init": {

@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "🪟 HA Window – step 1 of 5: shade",
-        "description": "![]({obrazki}/kreator-krok-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.\n\n🪄 Prefer the wizard with circles and pictures, like in the card? **[Open the HA Window panel](/okno-ha)**",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.\n\n🪄 Prefer the wizard with circles and pictures, like in the card? **[Open the wizard with circles](/okno-ha)**",
         "data": {
           "name": "Window name",
           "rolety": "Shade (one or two)"
@@ -15,51 +15,57 @@
       },
       "okno": {
         "title": "🪟 Step 2 of 5: window and sensors",
-        "description": "![]({obrazki}/kreator-krok-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
         "data": {
           "skrzydla": "Number of sashes",
           "czujnik_lewe": "Left sash sensor",
           "tryb_lewe": "Left sash when open",
           "czujnik_prawe": "Right sash sensor",
-          "tryb_prawe": "Right sash when open"
+          "tryb_prawe": "Right sash when open",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
           "czujnik_lewe": "When the sensor shows open, the card draws an open sash.",
           "tryb_lewe": "How the card shows an open sash.",
           "skrzydla": "1 = single sash, 2 = double window (left and right).",
           "czujnik_prawe": "Open sensor of the right sash. Leave empty if there is none.",
-          "tryb_prawe": "How the right sash opens: tilted or opened sideways."
+          "tryb_prawe": "How the right sash opens: tilted or opened sideways.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       },
       "silnik": {
         "title": "⚙️ Step 3 of 5: motor",
-        "description": "![]({obrazki}/kreator-krok-3-en.png)\n\nThe card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nThe card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
           "czas": "Full travel time",
-          "kalibruj": "🤖 Calibrate now (the blind goes up, down and up)"
+          "kalibruj": "🤖 Calibrate now (the blind goes up, down and up)",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
           "predkosc_lewa": "The “…motor_speed” entity of the same blind. Leave empty if the motor has none.",
           "predkosc_prawa": "The same for the right sash.",
           "czas": "0 = automatic: from motor speed or calibration.",
-          "kalibruj": "Measures the real travel time and saves it. You can also do it later with the “Calibrate” button on the device."
+          "kalibruj": "Measures the real travel time and saves it. You can also do it later with the “Calibrate” button on the device.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       },
       "pogoda": {
         "title": "🌤️ Step 4 of 5: weather outside",
-        "description": "![]({obrazki}/kreator-krok-4-en.png)\n\nReal weather shows outside the window. Leave empty and the card uses internet weather for your home.",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nReal weather shows outside the window. Leave empty and the card uses internet weather for your home.",
         "data": {
-          "pogoda": "Weather"
+          "pogoda": "Weather",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
-          "pogoda": "Weather outside the window on the card: sun, clouds, rain, snow, day and night. Leave empty and the card picks the first weather entity."
+          "pogoda": "Weather outside the window on the card: sun, clouds, rain, snow, day and night. Leave empty and the card picks the first weather entity.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       },
       "wyglad": {
         "title": "🎨 Step 5 of 5: look",
-        "description": "![]({obrazki}/kreator-krok-5-en.png)\n\nPick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nPick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-v2-en.png)\n\n![Shade colours]({obrazki}/kolory-v2-en.png)\n\n![Frame colours]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Shade type",
           "kolor": "Shade colour",
@@ -67,7 +73,8 @@
           "rama": "Window frame colour",
           "rama_wlasna": "🎨 Custom frame colour",
           "wysokosc": "Window height on the card",
-          "na_panel": "📋 Add the window card to a dashboard"
+          "na_panel": "📋 Add the window card to a dashboard",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
           "kolor": "Samples are in the picture above.",
@@ -76,7 +83,8 @@
           "rama_wlasna": "Any frame colour. Replaces the list colour.",
           "oslona": "What your shade looks like – compare with the tiles in the picture above.",
           "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see.",
-          "na_panel": "The card appears on this dashboard by itself, with all settings from the wizard. Pick “Don't add” to place it yourself."
+          "na_panel": "The card appears on this dashboard by itself, with all settings from the wizard. Pick “Don't add” to place it yourself.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       }
     },
@@ -88,7 +96,7 @@
     "step": {
       "user": {
         "title": "🪟 HA Window – step 1 of 5: shade",
-        "description": "![]({obrazki}/kreator-krok-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
+        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nPick the shade of this window. For a two-sash window pick two shades (left and right) or one group.",
         "data": {
           "name": "Window name",
           "rolety": "Shade (one or two)"
@@ -100,58 +108,65 @@
       },
       "okno": {
         "title": "🪟 Step 2 of 5: window and sensors",
-        "description": "![]({obrazki}/kreator-krok-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
+        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nHow many sashes the window has and whether it has open sensors. Sensors are optional.",
         "data": {
           "skrzydla": "Number of sashes",
           "czujnik_lewe": "Left sash sensor",
           "tryb_lewe": "Left sash when open",
           "czujnik_prawe": "Right sash sensor",
-          "tryb_prawe": "Right sash when open"
+          "tryb_prawe": "Right sash when open",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
           "czujnik_lewe": "When the sensor shows open, the card draws an open sash.",
           "tryb_lewe": "How the card shows an open sash.",
           "skrzydla": "1 = single sash, 2 = double window (left and right).",
           "czujnik_prawe": "Open sensor of the right sash. Leave empty if there is none.",
-          "tryb_prawe": "How the right sash opens: tilted or opened sideways."
+          "tryb_prawe": "How the right sash opens: tilted or opened sideways.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       },
       "silnik": {
         "title": "⚙️ Step 3 of 5: motor",
-        "description": "![]({obrazki}/kreator-krok-3-en.png)\n\nThe card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nThe card moves at the motor's pace. The motor speed was picked from the blind's device (if it has one, e.g. Moes). Calculated travel time: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
           "czas": "Full travel time",
-          "kalibruj": "🤖 Calibrate now (the blind goes up, down and up)"
+          "kalibruj": "🤖 Calibrate now (the blind goes up, down and up)",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
           "predkosc_lewa": "The “…motor_speed” entity of the same blind. Leave empty if the motor has none.",
           "predkosc_prawa": "The same for the right sash.",
           "czas": "0 = automatic: from motor speed or calibration.",
-          "kalibruj": "Measures the real travel time and saves it. You can also do it later with the “Calibrate” button on the device."
+          "kalibruj": "Measures the real travel time and saves it. You can also do it later with the “Calibrate” button on the device.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       },
       "pogoda": {
         "title": "🌤️ Step 4 of 5: weather outside",
-        "description": "![]({obrazki}/kreator-krok-4-en.png)\n\nReal weather shows outside the window. Leave empty and the card uses internet weather for your home.",
+        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nReal weather shows outside the window. Leave empty and the card uses internet weather for your home.",
         "data": {
-          "pogoda": "Weather"
+          "pogoda": "Weather",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
-          "pogoda": "Weather outside the window on the card: sun, clouds, rain, snow, day and night. Leave empty and the card picks the first weather entity."
+          "pogoda": "Weather outside the window on the card: sun, clouds, rain, snow, day and night. Leave empty and the card picks the first weather entity.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       },
       "wyglad": {
         "title": "🎨 Step 5 of 5: look",
-        "description": "![]({obrazki}/kreator-krok-5-en.png)\n\nPick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-en.png)\n\n![Shade colours]({obrazki}/kolory-en.png)\n\n![Frame colours]({obrazki}/ramy-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nPick the shade type and colours from the pictures below.\n\n![Shade types]({obrazki}/oslony-kafle-v2-en.png)\n\n![Shade colours]({obrazki}/kolory-v2-en.png)\n\n![Frame colours]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Shade type",
           "kolor": "Shade colour",
           "kolor_wlasny": "🎨 Custom shade colour",
           "rama": "Window frame colour",
           "rama_wlasna": "🎨 Custom frame colour",
-          "wysokosc": "Window height on the card"
+          "wysokosc": "Window height on the card",
+          "wstecz": "⬅️ Go back to the previous step"
         },
         "data_description": {
           "kolor": "Samples are in the picture above.",
@@ -159,7 +174,8 @@
           "rama": "Wood finishes are drawn with grain.",
           "rama_wlasna": "Any frame colour. Replaces the list colour.",
           "oslona": "What your shade looks like – compare with the tiles in the picture above.",
-          "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see."
+          "wysokosc": "How tall the window is on the card (pixels). Bigger = easier to see.",
+          "wstecz": "Turn on and click “Next” to go one step back. What you entered stays."
         }
       },
       "init": {
