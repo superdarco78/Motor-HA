@@ -58,16 +58,16 @@
     return [(h * 60 + 360) % 360, mx ? d / mx : 0, mx / 255];
   };
   const PROBNIK = document.createElement("canvas").getContext("2d");
-  const kolorMotywu = (el) => {
-    const v = (el.ownerDocument.defaultView || window).getComputedStyle(el).getPropertyValue("--primary-color").trim();
+  const kolorMotywu = (el, zmienna = "--primary-color") => {
+    const v = (el.ownerDocument.defaultView || window).getComputedStyle(el).getPropertyValue(zmienna).trim();
     if (!v) return null;
     PROBNIK.fillStyle = "#000"; PROBNIK.fillStyle = v;
     const m = /^#([0-9a-f]{6})$/i.exec(PROBNIK.fillStyle);
     return m ? "#" + m[1].toLowerCase() : null;
   };
   const gotowe = new Map();   // adres + kolor → przemalowany obrazek
-  const przemalujPlik = (adres, kol) => {
-    const klucz = adres + kol;
+  const przemalujPlik = (adres, kol, akc) => {
+    const klucz = adres + kol + akc;
     if (!gotowe.has(klucz)) gotowe.set(klucz, new Promise((ok, zle) => {
       const i = new Image();
       i.crossOrigin = "anonymous";
@@ -80,15 +80,17 @@
         // dwa niebieskie HA: obecny domyślny #009ac7 i dawny #03a9f4 (starsze obrazki)
         const K = [1, 3, 5].map((k) => parseInt(kol.slice(k, k + 2), 16));
         const baza = (B) => { const bb = B[0] * B[0] + B[1] * B[1] + B[2] * B[2], b1 = B[0] + B[1] + B[2]; return { B, bb, b1, wyz: bb * 3 - b1 * b1 }; };
-        const NOWY = baza([0, 154, 199]), DAWNY = baza([3, 169, 244]);
+        const NOWY = baza([0, 154, 199]), DAWNY = baza([3, 169, 244]), POM = baza([255, 152, 0]);
+        const A = akc ? [1, 3, 5].map((k) => parseInt(akc.slice(k, k + 2), 16)) : null;
         for (let k = 0; k < p.length; k += 4) {
           if (!p[k + 3]) continue;
           const [h, s, v] = hsv(p[k], p[k + 1], p[k + 2]);
-          if (h < 188 || h > 205 || s < 0.05 || v < 0.15) continue;   // tylko odcienie niebieskiego HA i ich jasne tła
-          const { B, bb, b1, wyz } = h < 196.5 ? NOWY : DAWNY;
+          const akcent = A && h >= 31 && h <= 40 && s >= 0.15 && v >= 0.6;   // zaznaczenia „gdzie kliknąć” w akcencie HA (#ff9800)
+          if (!akcent && (h < 188 || h > 205 || s < 0.05 || v < 0.15)) continue;   // poza tym tylko odcienie niebieskiego HA i ich jasne tła
+          const { B, bb, b1, wyz } = akcent ? POM : h < 196.5 ? NOWY : DAWNY, C = akcent ? A : K;
           const bp = B[0] * p[k] + B[1] * p[k + 1] + B[2] * p[k + 2], sp = p[k] + p[k + 1] + p[k + 2];
           const a = (3 * bp - b1 * sp) / wyz, w = (bb * sp - b1 * bp) / wyz;
-          for (let c = 0; c < 3; c++) p[k + c] = Math.max(0, Math.min(255, Math.round(a * K[c] + w)));
+          for (let c = 0; c < 3; c++) p[k + c] = Math.max(0, Math.min(255, Math.round(a * C[c] + w)));
         }
         x.putImageData(d, 0, 0);
         c.toBlob((b) => (b ? ok(URL.createObjectURL(b)) : zle()));
@@ -103,9 +105,12 @@
     if (!NASZE.test(org) || POMIN.test(org)) return;
     const kol = kolorMotywu(el);
     if (!kol) return;
-    if (el.dataset.oknoKol === kol) return;
-    el.dataset.oknoKol = kol; el.dataset.oknoOrg = org;
-    przemalujPlik(org, kol).then((u) => { if (el.dataset.oknoKol === kol) el.setAttribute("src", u); }, () => {});
+    // próbki kolorów i oklein zostają w swoich kolorach (pomarańczowy, dąb…) – tam tylko kolor główny
+    const akc = /\/(kolory|ramy|oslony)-/.test(org) ? "" : kolorMotywu(el, "--accent-color") || "";
+    const znak = kol + akc;
+    if (el.dataset.oknoKol === znak) return;
+    el.dataset.oknoKol = znak; el.dataset.oknoOrg = org;
+    przemalujPlik(org, kol, akc).then((u) => { if (el.dataset.oknoKol === znak) el.setAttribute("src", u); }, () => {});
   };
 
   // obrazki już narysowane (np. panel HACS otwarty, zanim ten skrypt się wczytał, albo ramka HACS wczytana od nowa po restarcie)

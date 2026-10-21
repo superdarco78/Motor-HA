@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.18 – Zaznaczenia w kolorze akcentu
+
+- 🟠 Zaznaczenia „gdzie kliknąć” w obrazkach (ramki, numery, strzałki) są w kolorze akcentu HA: na GitHubie pomarańczowe #FF9800, w HACS i w kreatorze integracji w akcencie z Twojego profilu, na żywo
+
 ## v1.4.17 – Domyślne kolory Home Assistanta
 
 - 🎨 Karta v35: gdy motyw nie podaje kolorów, używa domyślnych kolorów HA (główny #009AC7, akcent #FF9800). Kolory z Twojego profilu mają pierwszeństwo, na żywo
