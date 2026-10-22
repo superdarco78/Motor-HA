@@ -242,5 +242,23 @@
     "zmierzch": "黄昏",
     "noc": "夜晚",
     "wskazowka": "拖动玻璃或使用按钮。这只是预览，家里的设备不会移动。"
+  },
+  "urzadzenie": {
+    "dodaj": "添加到仪表盘",
+    "zmien": "更改设置",
+    "ustawienia": "Motor HA 设置",
+    "ktory": "添加到哪个仪表盘？",
+    "dodano": "已添加到",
+    "brakPaneli": "没有可编辑的仪表盘。请在 设置 → 仪表盘 中创建。",
+    "blad": "操作失败，请重试。",
+    "rodzaj": "类型",
+    "kolor": "颜色",
+    "skrzydla": "窗扇",
+    "wysokosc": "卡片高度",
+    "czas": "运行时间",
+    "auto": "自动",
+    "automatyka": "自动化",
+    "pauza": "今天暂停",
+    "powod": "移动原因"
   }
 }

@@ -5,11 +5,14 @@ import { MotorHaEdytor, KROKI } from './edytor.js';
 import { TEKSTY, kodJezyka } from './jezyk.js';
 import { MotorHaDom } from './dom.js';
 import { MotorHaSymulator } from './symulator.js';
+import { MotorHaUrzadzenie } from './urzadzenie.js';
+import { strony } from './strona.js';
 
 const ELEMENTY = [
   ['motor-ha', MotorHaKarta], ['okno-ha', class extends MotorHaKarta {}],
   ['motor-ha-editor', MotorHaEdytor], ['okno-ha-editor', class extends MotorHaEdytor {}],
   ['motor-ha-dom', MotorHaDom], ['motor-ha-symulator', MotorHaSymulator],   // symulator tylko dla opisu w HACS
+  ['motor-ha-urzadzenie', MotorHaUrzadzenie],   // karta na stronie urządzenia w Ustawieniach (strona.js)
   ['roleta-realistyczna', class extends MotorHaKarta {}], ['roleta-realistyczna-editor', class extends MotorHaEdytor {}]
 ];
 // HA w trakcie startu potrafi podmienić rejestr elementów (window.customElements). Karta wczytana wcześniej
@@ -37,6 +40,8 @@ window.customCards.push({
 });
 window.customCards.push({ type: 'motor-ha-dom', name: T.karta.dom, description: T.karta.domOpis, preview: true,
   documentationURL: 'https://github.com/superdarco78/Motor-HA' });
+
+if (!window.__motorHaStrony && !window.frameElement) { window.__motorHaStrony = true; strony(); }
 
 // dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku
 window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };

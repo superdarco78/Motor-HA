@@ -435,7 +435,7 @@
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak na to</h3>
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20Motor%20HA%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít Motor HA v HA"></a></p>
-<p>💡 Entity každého zařízení uvidíte po kliknutí na zařízení v seznamu Motor HA.</p>
+<p>💡 Klikněte na zařízení v seznamu Motor HA. Nahoře na jeho stránce je živá karta okna, pod ní <b>Přidat na panel</b>, <b>⚙ Změnit nastavení</b> (otevře průvodce tohoto zařízení) a přehled nastavení. Zařízení <b>Motor HA</b> ukazuje karty všech zařízení najednou.</p>
 
 <h3>Akce pro vlastní automatizace</h3>
 <table><tr><th align="left">Funkce<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Co dělá<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>

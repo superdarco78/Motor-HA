@@ -435,7 +435,7 @@
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak to zrobić</h3>
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20Motor%20HA%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz Motor HA w HA"></a></p>
-<p>💡 Encje każdego urządzenia zobaczysz po kliknięciu urządzenia na liście Motor HA.</p>
+<p>💡 Kliknij urządzenie na liście Motor HA. Na górze jego strony jest żywa karta okna, pod nią <b>Dodaj do panelu</b>, <b>⚙ Zmień ustawienia</b> (otwiera kreator tego urządzenia) i opis ustawień. Urządzenie <b>Motor HA</b> pokazuje karty wszystkich urządzeń naraz.</p>
 
 <h3>Akcje do własnych automatyzacji</h3>
 <table><tr><th align="left">Funkcja<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Co robi<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>

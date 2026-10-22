@@ -435,7 +435,7 @@
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> How to do it</h3>
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Open%20Motor%20HA%20in%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Open Motor HA in HA"></a></p>
-<p>💡 You see the entities of each device after clicking the device in the Motor HA list.</p>
+<p>💡 Click the device in the Motor HA list. At the top of its page there is a live window card, below it <b>Add to dashboard</b>, <b>⚙ Change settings</b> (opens the wizard of this device) and a summary of the settings. The <b>Motor HA</b> device shows the cards of all devices at once.</p>
 
 <h3>Actions for your own automations</h3>
 <table><tr><th align="left">Feature<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">What it does<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>

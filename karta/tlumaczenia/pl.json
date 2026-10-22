@@ -242,5 +242,23 @@
     "zmierzch": "Zmierzch",
     "noc": "Noc",
     "wskazowka": "Przeciągnij szybę albo użyj przycisków. To tylko podgląd – nic w domu się nie rusza."
+  },
+  "urzadzenie": {
+    "dodaj": "Dodaj do panelu",
+    "zmien": "Zmień ustawienia",
+    "ustawienia": "Ustawienia Motor HA",
+    "ktory": "Na który panel?",
+    "dodano": "Dodano na panel",
+    "brakPaneli": "Nie ma panelu, który można edytować. Utwórz go w Ustawienia → Panele.",
+    "blad": "Nie udało się. Spróbuj jeszcze raz.",
+    "rodzaj": "Rodzaj",
+    "kolor": "Kolor",
+    "skrzydla": "Skrzydła",
+    "wysokosc": "Wysokość na karcie",
+    "czas": "Czas przejazdu",
+    "auto": "automatycznie",
+    "automatyka": "Automatyka",
+    "pauza": "Pauza na dziś",
+    "powod": "Powód ruchu"
   }
 }

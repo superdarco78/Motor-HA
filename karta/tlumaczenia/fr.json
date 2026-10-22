@@ -242,5 +242,23 @@
     "zmierzch": "Crépuscule",
     "noc": "Nuit",
     "wskazowka": "Faites glisser la vitre ou utilisez les boutons. Ce n'est qu'un aperçu – rien ne bouge chez vous."
+  },
+  "urzadzenie": {
+    "dodaj": "Ajouter au tableau de bord",
+    "zmien": "Modifier les réglages",
+    "ustawienia": "Réglages Motor HA",
+    "ktory": "Quel tableau de bord ?",
+    "dodano": "Ajouté à",
+    "brakPaneli": "Aucun tableau de bord modifiable. Créez-en un dans Paramètres → Tableaux de bord.",
+    "blad": "Échec. Réessayez.",
+    "rodzaj": "Type",
+    "kolor": "Couleur",
+    "skrzydla": "Battants",
+    "wysokosc": "Hauteur sur la carte",
+    "czas": "Durée de course",
+    "auto": "automatique",
+    "automatyka": "Automatisme",
+    "pauza": "Pause aujourd’hui",
+    "powod": "Raison du mouvement"
   }
 }

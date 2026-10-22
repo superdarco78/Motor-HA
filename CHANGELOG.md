@@ -1,7 +1,13 @@
 # 📝 Historia zmian
 
-## v2.0.4 – Małe zrzuty, po kliknięciu duże
+## v2.1.0 – Karta na stronie urządzenia
 
+- 🪟 Na górze strony urządzenia (Ustawienia → Urządzenia → Twoje okno) żywa karta okna z przyciskami ↑ ■ ↓ – zawsze w tym samym miejscu
+- ➕ Pod kartą „Dodaj do panelu”: wybierasz panel i karta sama się na nim pojawia
+- ⚙️ „Zmień ustawienia” otwiera kreator tego urządzenia, a po „Zakończ” wraca na stronę urządzenia; zmiany (np. kolor) od razu widać na karcie
+- 📋 Opis ustawień pod kartą: rodzaj, kolor, skrzydła, wysokość, czas przejazdu, automatyka, pauza i powód ruchu
+- 🏠 Urządzenie „Motor HA” pokazuje kartę „Motor HA – cały dom” i karty wszystkich urządzeń naraz
+- 🧹 Jedno urządzenie „Motor HA” zamiast pustych kopii po jednej na każde okno
 - 🔍 Zrzuty w instrukcji są mniejsze, cały krok widać naraz; po kliknięciu zrzut wyskakuje duży ze szczegółami (w HA na środku ekranu, na GitHubie w nowej karcie)
 - ✨ Gładkie, zaokrąglone brzegi zrzutów – bez czarnych schodków na jasnym i ciemnym tle
 

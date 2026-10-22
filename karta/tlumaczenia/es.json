@@ -242,5 +242,23 @@
     "zmierzch": "Anochecer",
     "noc": "Noche",
     "wskazowka": "Arrastra el cristal o usa los botones. Es solo una vista previa: nada se mueve en casa."
+  },
+  "urzadzenie": {
+    "dodaj": "Añadir al panel",
+    "zmien": "Cambiar ajustes",
+    "ustawienia": "Ajustes de Motor HA",
+    "ktory": "¿En qué panel?",
+    "dodano": "Añadido a",
+    "brakPaneli": "No hay ningún panel editable. Crea uno en Ajustes → Paneles.",
+    "blad": "No ha funcionado. Inténtalo de nuevo.",
+    "rodzaj": "Tipo",
+    "kolor": "Color",
+    "skrzydla": "Hojas",
+    "wysokosc": "Altura en la tarjeta",
+    "czas": "Tiempo de recorrido",
+    "auto": "automático",
+    "automatyka": "Automatización",
+    "pauza": "Pausa por hoy",
+    "powod": "Motivo del movimiento"
   }
 }

@@ -435,7 +435,7 @@
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> So geht’s</h3>
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Motor%20HA%20in%20HA%20%C3%B6ffnen-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Motor HA in HA öffnen"></a></p>
-<p>💡 Die Entitäten jedes Geräts siehst du nach einem Klick auf das Gerät in der Motor-HA-Liste.</p>
+<p>💡 Klicke in der Motor-HA-Liste auf das Gerät. Oben auf seiner Seite ist eine Live-Karte des Fensters, darunter <b>Zum Dashboard hinzufügen</b>, <b>⚙ Einstellungen ändern</b> (öffnet den Assistenten dieses Geräts) und eine Übersicht der Einstellungen. Das Gerät <b>Motor HA</b> zeigt die Karten aller Geräte auf einmal.</p>
 
 <h3>Aktionen für eigene Automationen</h3>
 <table><tr><th align="left">Funktion<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Was sie tut<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>

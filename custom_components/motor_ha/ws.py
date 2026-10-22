@@ -11,6 +11,7 @@ from homeassistant.const import ATTR_ENTITY_ID
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry as er
 
+from . import panele
 from .const import (
     CONF_CZAS,
     CONF_KARTA,
@@ -59,6 +60,8 @@ def async_rejestruj(hass: HomeAssistant) -> None:
     websocket_api.async_register_command(hass, ws_lista)
     websocket_api.async_register_command(hass, ws_zapisz)
     websocket_api.async_register_command(hass, ws_eksport)
+    websocket_api.async_register_command(hass, ws_panele)
+    websocket_api.async_register_command(hass, ws_dodaj_karte)
 
 
 def _okno(hass: HomeAssistant, entry_id: str) -> str | None:
@@ -102,3 +105,24 @@ def ws_eksport(hass: HomeAssistant, conn: websocket_api.ActiveConnection, msg: d
         conn.send_error(msg["id"], "nie_motor_ha", "Not a Motor HA device")
         return
     conn.send_result(msg["id"], {"nazwa": entry.title, "opcje": dict(entry.options)})
+
+
+# „Dodaj do panelu” pod kartą na stronie urządzenia
+@websocket_api.websocket_command({vol.Required("type"): f"{DOMAIN}/panele"})
+@websocket_api.require_admin
+@websocket_api.async_response
+async def ws_panele(hass: HomeAssistant, conn: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+    lista, _ = await panele.async_lista(hass)
+    conn.send_result(msg["id"], [{"klucz": k, "nazwa": n} for k, n in lista])
+
+
+@websocket_api.websocket_command({vol.Required("type"): f"{DOMAIN}/dodaj_karte", vol.Required("panel"): str,
+                                  vol.Optional(ATTR_ENTITY_ID): str})
+@websocket_api.require_admin
+@websocket_api.async_response
+async def ws_dodaj_karte(hass: HomeAssistant, conn: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+    encja = msg.get(ATTR_ENTITY_ID)
+    if encja is not None and _wpis(hass, encja) is None:
+        conn.send_error(msg["id"], "not_found", encja)
+        return
+    conn.send_result(msg["id"], {"dodano": await panele.async_dodaj_karte(hass, msg["panel"], encja)})
