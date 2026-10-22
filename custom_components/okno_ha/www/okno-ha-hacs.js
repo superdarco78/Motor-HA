@@ -282,8 +282,35 @@
 .okno-opis h1 img{height:36px!important}.okno-opis h2 img{height:32px!important}.okno-opis h3 img{height:28px!important}
 .okno-opis .okno-akcent{display:inline-block;margin-top:4px;color:var(--accent-color,#ff9800);font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500)}
 .okno-opis img[src^="https://img.shields.io/"]{height:20px!important;width:auto!important;margin:2px 1px;vertical-align:middle;border-radius:4px}
+.okno-opis .okno-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;height:var(--ha-button-height,40px);padding:0 16px;
+ border-radius:var(--ha-border-radius-pill,9999px);background:var(--ha-color-fill-primary-loud-resting,var(--primary-color));color:var(--ha-color-on-primary-loud,var(--text-primary-color,#fff))!important;
+ font-family:var(--ha-font-family-body,inherit);font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);line-height:1;text-decoration:none!important;vertical-align:middle;transition:background-color .15s}
+.okno-opis a:hover .okno-btn{background:var(--ha-color-fill-primary-loud-hover,var(--primary-color));filter:brightness(1.08)}
+.okno-opis .okno-btn svg{width:20px;height:20px;fill:currentColor;flex:none}
 .okno-opis a{text-decoration:none}
 .okno-opis a:hover{text-decoration:underline}`;
+  // przyciski My Home Assistant w opisie (obrazki img/przyciski*/…) → prawdziwy przycisk w stylu przycisku HA (ha-button),
+  // rozmiary i kolory tylko ze zmiennych motywu HA; obrazek zostaje w środku ukryty (na wypadek błędu wystarczy go pokazać)
+  const IKONY_PRZ = {
+    hacs_repository: "M18.36 9L18.96 12H5.04L5.64 9H18.36M20 4H4V6H20V4M20 7H4L3 12V14H4V20H14V14H18V20H20V14H21V12L20 7M6 18V14H12V18H6Z",
+    config_flow_start: "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z",
+    config_flow_start2: "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z",
+    integration: "M20.5,11H19V7C19,5.89 18.1,5 17,5H13V3.5A2.5,2.5 0 0,0 10.5,1A2.5,2.5 0 0,0 8,3.5V5H4A2,2 0 0,0 2,7V10.8H3.5C5,10.8 6.2,12 6.2,13.5C6.2,15 5,16.2 3.5,16.2H2V20A2,2 0 0,0 4,22H7.8V20.5C7.8,19 9,17.8 10.5,17.8C12,17.8 13.2,19 13.2,20.5V22H17A2,2 0 0,0 19,20V16H20.5A2.5,2.5 0 0,0 23,13.5A2.5,2.5 0 0,0 20.5,11Z",
+    updates: "M21,10.12H14.22L16.96,7.3C14.23,4.6 9.81,4.5 7.08,7.2C4.35,9.91 4.35,14.28 7.08,17C9.81,19.7 14.23,19.7 16.96,17C18.32,15.65 19,14.08 19,12.1H21C21,14.08 20.12,16.65 18.36,18.39C14.85,21.87 9.15,21.87 5.64,18.39C2.14,14.92 2.11,9.28 5.62,5.81C9.13,2.34 14.76,2.34 18.27,5.81L21,3V10.12M12.5,8V12.25L16,14.33L15.28,15.54L11,13V8H12.5Z",
+  };
+  const PRZYCISK = /\/img\/przyciski\d*\/([a-z_0-9]+)-[a-z]{2}\.svg/;
+  const przycisk = (el) => {
+    const m = PRZYCISK.exec(el.dataset.oknoOrg || el.getAttribute("src") || "");
+    if (!m || el.dataset.oknoBtn || !el.closest("a") || !el.alt) return;
+    el.dataset.oknoBtn = "1";
+    const b = el.ownerDocument.createElement("span");
+    b.className = "okno-btn";
+    const d = IKONY_PRZ[m[1]];
+    b.innerHTML = (d ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>` : "");
+    b.appendChild(el.ownerDocument.createTextNode(el.alt));
+    el.style.display = "none";
+    el.parentNode.insertBefore(b, el);
+  };
   const SPIS = /^https:\/\/github\.com\/superdarco78\/okno-ha-integracja(?:\/blob\/main\/README[^#]*)?#/;
   const wyglad = (el) => {
     const korzen = el.getRootNode();
@@ -357,7 +384,7 @@
     for (const el of korzen.querySelectorAll("*")) {
       if (++ile.n > 200000) return;
       try {
-        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); przypnijZwykly(el); if (NASZE.test(el.dataset.oknoOrg || el.getAttribute("src") || "")) wyglad(el); }
+        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); przypnijZwykly(el); if (NASZE.test(el.dataset.oknoOrg || el.getAttribute("src") || "")) { wyglad(el); przycisk(el); } }
         else if (el.tagName === "SOURCE") zrodlo(el);
         else if (el.tagName === "A" && naHacs()) link(el);
         else if (el.tagName === "IFRAME") {

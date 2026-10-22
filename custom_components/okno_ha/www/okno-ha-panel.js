@@ -46,7 +46,7 @@ class OknoHaPanel extends HTMLElement {
       .gora img{width:32px;height:32px}
       .tresc{max-width:1100px;margin:0 auto;padding:16px}
       .pasek{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
-      .pasek button,.okno button{font:inherit;font-size:15px;padding:10px 16px;border-radius:var(--ha-card-border-radius,12px);border:0;cursor:pointer;background:var(--primary-color);color:var(--text-primary-color,#fff)}
+      .pasek button,.okno button{font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);display:inline-flex;align-items:center;gap:8px;height:var(--ha-button-height,40px);padding:0 16px;border-radius:var(--ha-border-radius-pill,9999px);border:0;cursor:pointer;background:var(--primary-color);color:var(--text-primary-color,#fff)}
       .pasek button.drugi{background:var(--secondary-background-color);color:var(--primary-text-color)}
       .siatka{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
       .okno{display:flex;flex-direction:column;gap:8px}

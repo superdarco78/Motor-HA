@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.54 – Przyciski jak w HA
+
+- 🔘 Przyciski w opisie (Otwórz w HACS, Dodaj integrację, Otwórz Motor HA, Aktualizacje) to prawdziwe przyciski w stylu HA – rozmiar i kolory z Twojego motywu, czytelne na telefonie
+- 🔘 Przyciski w panelu Motor HA jak przyciski HA (40 px, zaokrąglone)
+- 📝 Tytuł wydania bez podwójnego numeru wersji
+
 ## v1.4.53 – Opis: plakietki i etykiety w stylu HA
 
 - 🏷 Plakietki małe, zwykłymi literami i równej wysokości – w HACS i na GitHubie
