@@ -3,112 +3,495 @@
   "co": "Quoi :",
   "poco": "Pourquoi :",
   "kroki": {
-    "tryb": {"t": "Mode de l'assistant", "co": "Choisissez combien de questions vous voulez voir.", "poco": "Le mode simple suffit à la plupart. Le mode avancé montre toutes les options et les appareils en plus. Vous pourrez changer le mode plus tard dans « Configurer »."},
-    "mam": {"t": "Ce que vous avez chez vous", "co": "Cochez ce que vous avez. L'assistant a cherché dans Home Assistant et coché ce qu'il a trouvé.", "poco": "L'assistant n'affiche que les étapes et fonctions des appareils cochés. Le reste s'ajoute plus tard dans « Configurer ».\n\nTrouvé : {znalezione}"},
-    "urzadzenie": {"t": "Appareil", "co": "Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.", "poco": "Motor HA pilote ce moteur, et la pièce permet de parler à Assist, par ex. « ferme le salon »."},
-    "rodzaj": {"t": "Type", "co": "Choisissez exactement ce que vous avez.", "poco": "La carte dessine cet appareil et l'automatisme sait ce qu'il peut utiliser."},
-    "lamele": {"t": "Lames", "co": "Réglez l'orientation des lames.", "poco": "Vous laissez entrer la lumière sans remonter le store."},
-    "kolory": {"t": "Couleurs", "co": "Choisissez la couleur du store et du cadre.", "poco": "La fenêtre à l'écran ressemble à la vraie."},
-    "okno": {"t": "Fenêtre", "co": "Combien de vantaux a la fenêtre et sa taille sur la carte.", "poco": "Chaque vantail peut avoir son propre moteur."},
-    "czujniki": {"t": "Capteurs", "co": "Choisissez les capteurs d'ouverture de fenêtre et de porte.", "poco": "La carte montre un vantail basculé ou ouvert, et le verrou ne descend jamais le store sur une fenêtre ouverte."},
-    "fotokomorka": {"t": "Cellule photo", "co": "Choisissez le capteur d'obstacle du portail et l'état qui signifie « quelque chose dans le portail ».", "poco": "La carte montre l'obstacle et vous recevez une notification. La cellule du moteur arrête toujours le portail elle-même."},
-    "silnik": {"t": "Moteur", "co": "Indiquez la durée d'une course complète ou laissez 0.", "poco": "Le dessin bouge à la vitesse du vrai moteur. Avec 0, la carte apprend la durée seule après quelques mouvements."},
-    "pogoda": {"t": "Météo", "co": "Choisissez la météo et les capteurs extérieurs.", "poco": "La vraie météo s'affiche derrière la vitre, et l'automatisme protège le store du vent, de la pluie et du soleil."},
-    "domownicy": {"t": "Habitants", "co": "Choisissez les capteurs de présence, de mouvement et des habitants.", "poco": "Le store peut réagir si quelqu'un est dans la pièce ou à la maison."},
-    "automatyka": {"t": "Automatisme", "co": "Activez les fonctions qui peuvent bouger le store toutes seules.", "poco": "La maison s'occupe des stores sans écrire d'automatisations. Tout est désactivé tant que vous ne l'activez pas."},
-    "ustawienia": {"t": "Réglages", "co": "Ajustez les fonctions activées.", "poco": "Les valeurs par défaut conviennent à la plupart des maisons."},
-    "powiadomienia": {"t": "Notifications", "co": "Choisissez de quoi être averti.", "poco": "Vous savez tout de suite quel appareil a un problème. Les notifications arrivent dans HA et, si vous voulez, sur le téléphone."},
-    "panel": {"t": "Tableau de bord", "co": "Sur quel tableau de bord ajouter la carte.", "poco": "La carte apparaît toute seule, rien à cliquer."}
+    "tryb": {
+      "t": "Mode de l'assistant",
+      "co": "Choisissez combien de questions vous voulez voir.",
+      "poco": "Le mode simple suffit à la plupart. Le mode avancé montre toutes les options et les appareils en plus. Vous pourrez changer le mode plus tard dans « Configurer »."
+    },
+    "mam": {
+      "t": "Ce que vous avez chez vous",
+      "co": "Cochez ce que vous avez. L'assistant a cherché dans Home Assistant et coché ce qu'il a trouvé.",
+      "poco": "L'assistant n'affiche que les étapes et fonctions des appareils cochés. Le reste s'ajoute plus tard dans « Configurer ».\n\nTrouvé : {znalezione}"
+    },
+    "urzadzenie": {
+      "t": "Appareil",
+      "co": "Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.",
+      "poco": "Motor HA pilote ce moteur, et la pièce permet de parler à Assist, par ex. « ferme le salon »."
+    },
+    "rodzaj": {
+      "t": "Type",
+      "co": "Choisissez exactement ce que vous avez.",
+      "poco": "La carte dessine cet appareil et l'automatisme sait ce qu'il peut utiliser."
+    },
+    "lamele": {
+      "t": "Lames",
+      "co": "Réglez l'orientation des lames.",
+      "poco": "Vous laissez entrer la lumière sans remonter le store."
+    },
+    "kolory": {
+      "t": "Couleurs",
+      "co": "Choisissez la couleur du store et du cadre.",
+      "poco": "La fenêtre à l'écran ressemble à la vraie."
+    },
+    "okno": {
+      "t": "Fenêtre",
+      "co": "Combien de vantaux a la fenêtre et sa taille sur la carte.",
+      "poco": "Chaque vantail peut avoir son propre moteur."
+    },
+    "czujniki": {
+      "t": "Capteurs",
+      "co": "Choisissez les capteurs d'ouverture de fenêtre et de porte.",
+      "poco": "La carte montre un vantail basculé ou ouvert, et le verrou ne descend jamais le store sur une fenêtre ouverte."
+    },
+    "fotokomorka": {
+      "t": "Cellule photo",
+      "co": "Choisissez le capteur d'obstacle du portail et l'état qui signifie « quelque chose dans le portail ».",
+      "poco": "La carte montre l'obstacle et vous recevez une notification. La cellule du moteur arrête toujours le portail elle-même."
+    },
+    "silnik": {
+      "t": "Moteur",
+      "co": "Indiquez la durée d'une course complète ou laissez 0.",
+      "poco": "Le dessin bouge à la vitesse du vrai moteur. Avec 0, la carte apprend la durée seule après quelques mouvements."
+    },
+    "pogoda": {
+      "t": "Météo",
+      "co": "Choisissez la météo et les capteurs extérieurs.",
+      "poco": "La vraie météo s'affiche derrière la vitre, et l'automatisme protège le store du vent, de la pluie et du soleil."
+    },
+    "domownicy": {
+      "t": "Habitants",
+      "co": "Choisissez les capteurs de présence, de mouvement et des habitants.",
+      "poco": "Le store peut réagir si quelqu'un est dans la pièce ou à la maison."
+    },
+    "automatyka": {
+      "t": "Automatisme",
+      "co": "Activez les fonctions qui peuvent bouger le store toutes seules.",
+      "poco": "La maison s'occupe des stores sans écrire d'automatisations. Tout est désactivé tant que vous ne l'activez pas."
+    },
+    "ustawienia": {
+      "t": "Réglages",
+      "co": "Ajustez les fonctions activées.",
+      "poco": "Les valeurs par défaut conviennent à la plupart des maisons."
+    },
+    "powiadomienia": {
+      "t": "Notifications",
+      "co": "Choisissez de quoi être averti.",
+      "poco": "Vous savez tout de suite quel appareil a un problème. Les notifications arrivent dans HA et, si vous voulez, sur le téléphone."
+    },
+    "panel": {
+      "t": "Tableau de bord",
+      "co": "Sur quel tableau de bord ajouter la carte.",
+      "poco": "La carte apparaît toute seule, rien à cliquer."
+    }
   },
   "pola": {
-    "tryb": "Mode", "kopiuj_z": "Copier les réglages d'un autre appareil", "mam": "J'ai chez moi",
-    "rolety": "Moteur (une ou deux entités)", "name": "Nom", "pokoj": "Pièce", "rodzaj_pokoju": "Type de pièce (pour les conseils)",
-    "oslona": "Type", "lamele_kat": "Angle des lames au soleil", "lamele_tryb": "Pilotage des lames", "lamele_noc": "Angle des lames la nuit",
-    "kolor": "Couleur du store", "rama": "Couleur du cadre", "kolor_wlasny": "Couleur du store personnalisée", "rama_wlasna": "Couleur du cadre personnalisée",
-    "skrzydla": "Vantaux", "wysokosc": "Hauteur sur la carte", "odwroc": "Pourcentages inversés",
-    "czujnik_lewe": "Capteur vantail gauche", "tryb_lewe": "Vantail gauche", "czujnik_prawe": "Capteur vantail droit", "tryb_prawe": "Vantail droit",
-    "czujnik_drzwi": "Capteur de porte-fenêtre", "czujnik_przeszkoda": "Capteur d'obstacle à la porte",
-    "czujnik_foto": "Cellule photo (capteur d'obstacle)", "foto_stan": "Obstacle quand l'état du capteur est",
-    "czas": "Durée d'une course complète", "kalibruj": "Calibrer maintenant (le store monte, descend et remonte)",
-    "predkosc_lewa": "Vitesse moteur – gauche", "predkosc_prawa": "Vitesse moteur – droite", "brama_minuty": "Portail ouvert trop longtemps après",
-    "pogoda": "Météo", "czujnik_temp": "Température extérieure", "czujnik_temp_pokoj": "Température de la pièce", "czujnik_jasnosc": "Luminosité ou puissance solaire",
-    "czujnik_wiatr": "Anémomètre", "czujnik_deszcz": "Capteur de pluie", "czujnik_drgania": "Capteur de vibration du store banne", "czujnik_ostrzezenia": "Alertes météo (Météo-France, Meteoalarm)",
-    "czujnik_obecnosc": "Capteur de présence (quelqu'un est là)", "czujnik_ruch": "Détecteur de mouvement (quelqu'un est entré)", "osoby": "Habitants",
-    "czujnik_dym": "Détecteur de fumée", "czujnik_alarm": "Alarme", "czujnik_swieta": "Jour ouvré (Workday)",
-    "powiadom": "Me prévenir quand", "powiadom_gdzie": "Envoyer aussi à", "na_panel": "Ajouter la carte à un tableau de bord", "wstecz": "Revenir à l'étape précédente"
+    "tryb": "Mode",
+    "kopiuj_z": "Copier les réglages d'un autre appareil",
+    "mam": "J'ai chez moi",
+    "rolety": "Moteur (une ou deux entités)",
+    "name": "Nom",
+    "pokoj": "Pièce",
+    "rodzaj_pokoju": "Type de pièce (pour les conseils)",
+    "oslona": "Type",
+    "lamele_kat": "Angle des lames au soleil",
+    "lamele_tryb": "Pilotage des lames",
+    "lamele_noc": "Angle des lames la nuit",
+    "kolor": "Couleur du store",
+    "rama": "Couleur du cadre",
+    "kolor_wlasny": "Couleur du store personnalisée",
+    "rama_wlasna": "Couleur du cadre personnalisée",
+    "skrzydla": "Vantaux",
+    "wysokosc": "Hauteur sur la carte",
+    "odwroc": "Pourcentages inversés",
+    "czujnik_lewe": "Capteur vantail gauche",
+    "tryb_lewe": "Vantail gauche",
+    "czujnik_prawe": "Capteur vantail droit",
+    "tryb_prawe": "Vantail droit",
+    "czujnik_drzwi": "Capteur de porte-fenêtre",
+    "czujnik_przeszkoda": "Capteur d'obstacle à la porte",
+    "czujnik_foto": "Cellule photo (capteur d'obstacle)",
+    "foto_stan": "Obstacle quand l'état du capteur est",
+    "czas": "Durée d'une course complète",
+    "kalibruj": "Calibrer maintenant (le store monte, descend et remonte)",
+    "predkosc_lewa": "Vitesse moteur – gauche",
+    "predkosc_prawa": "Vitesse moteur – droite",
+    "brama_minuty": "Portail ouvert trop longtemps après",
+    "pogoda": "Météo",
+    "czujnik_temp": "Température extérieure",
+    "czujnik_temp_pokoj": "Température de la pièce",
+    "czujnik_jasnosc": "Luminosité ou puissance solaire",
+    "czujnik_wiatr": "Anémomètre",
+    "czujnik_deszcz": "Capteur de pluie",
+    "czujnik_drgania": "Capteur de vibration du store banne",
+    "czujnik_ostrzezenia": "Alertes météo (Météo-France, Meteoalarm)",
+    "czujnik_obecnosc": "Capteur de présence (quelqu'un est là)",
+    "czujnik_ruch": "Détecteur de mouvement (quelqu'un est entré)",
+    "osoby": "Habitants",
+    "czujnik_dym": "Détecteur de fumée",
+    "czujnik_alarm": "Alarme",
+    "czujnik_swieta": "Jour ouvré (Workday)",
+    "powiadom": "Me prévenir quand",
+    "powiadom_gdzie": "Envoyer aussi à",
+    "na_panel": "Ajouter la carte à un tableau de bord",
+    "wstecz": "Revenir à l'étape précédente"
   },
   "pomoc": {
-    "kopiuj_z": "Vide = partir de zéro.", "rolety": "Pour une fenêtre à deux vantaux, choisissez-en deux : d'abord le gauche, puis le droit.",
-    "name": "Vide = nom du moteur.", "pokoj": "L'appareil va dans cette pièce. Assist comprend alors « ferme le salon ».",
-    "odwroc": "À activer si le moteur indique 100 % quand le store est fermé.", "czas": "0 = automatique : d'après la vitesse du moteur, le calibrage ou les vrais mouvements.",
-    "foto_stan": "En général « on ». Pour un capteur texte, entrez par ex. « obstructed ».", "czujnik_jasnosc": "Un luxmètre ou la puissance solaire – au lieu de la seule position du soleil.",
-    "czujnik_swieta": "Intégration Workday – les jours fériés comptent comme le week-end.", "powiadom_gdzie": "L'app HA sur le téléphone. Rien de choisi – notifications dans HA seulement.",
+    "kopiuj_z": "Vide = partir de zéro.",
+    "rolety": "Pour une fenêtre à deux vantaux, choisissez-en deux : d'abord le gauche, puis le droit.",
+    "name": "Vide = nom du moteur.",
+    "pokoj": "L'appareil va dans cette pièce. Assist comprend alors « ferme le salon ».",
+    "odwroc": "À activer si le moteur indique 100 % quand le store est fermé.",
+    "czas": "0 = automatique : d'après la vitesse du moteur, le calibrage ou les vrais mouvements.",
+    "foto_stan": "En général « on ». Pour un capteur texte, entrez par ex. « obstructed ».",
+    "czujnik_jasnosc": "Un luxmètre ou la puissance solaire – au lieu de la seule position du soleil.",
+    "czujnik_swieta": "Intégration Workday – les jours fériés comptent comme le week-end.",
+    "powiadom_gdzie": "L'app HA sur le téléphone. Rien de choisi – notifications dans HA seulement.",
     "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
   },
   "f": {
-    "harmonogram": ["Programme", "Ouvre le matin et ferme le soir : à heures fixes ou avec le lever et le coucher du soleil."],
-    "slonce": ["Protection solaire", "Descend le store quand le soleil entre par cette fenêtre et qu'il fait chaud."],
-    "blokada": ["Verrou fenêtre ouverte", "Ne descend jamais sur une fenêtre ouverte ou basculée. Le mouvement sauté se fait après la fermeture."],
-    "wiatr": ["Vent", "Remonte un store extérieur par vent fort."],
-    "obecnosc": ["Présence", "Le matin, reste fermé jusqu'à ce que quelqu'un entre dans la pièce."],
-    "wakacje": ["Mode vacances", "Ouvre et ferme chaque jour à une heure un peu différente, comme si quelqu'un était là."],
-    "licznik": ["Compteur moteur", "Compte les mouvements et la durée de marche, rappelle de calibrer."],
-    "reczny": ["Le manuel a priorité", "Si vous bougez le store à la télécommande ou au bouton, l'automatisme attend."],
-    "posrednia": ["Position intermédiaire", "À l'heure choisie, le store s'arrête à mi-hauteur."],
-    "dni": ["Jours ouvrés et week-end", "Horaires séparés le week-end et les jours fériés."],
-    "wietrzenie": ["Position d'aération", "Avec la fenêtre basculée, le store reste plus haut pour laisser passer l'air."],
-    "drzwi": ["Porte-fenêtre", "Porte ouverte, le store ne descend pas sous la position choisie."],
-    "oslepianie": ["Anti-éblouissement", "Le store descend juste assez pour que le soleil n'atteigne pas la télé ou le bureau."],
-    "zima": ["Hiver et été", "En hiver il ouvre au soleil (chaleur gratuite), en été il fait de l'ombre."],
-    "jasnosc": ["Capteur de luminosité", "Un luxmètre ou les panneaux solaires décident du soleil."],
-    "temp_pokoj": ["Température de la pièce", "Fait de l'ombre quand la pièce devient trop chaude."],
-    "deszcz": ["Pluie", "Remonte store banne, screen et brise-soleil sous la pluie."],
-    "mroz": ["Gel", "Par gel, le store extérieur ne bouge pas pour ne pas geler."],
-    "grad": ["Grêle et alertes", "En cas d'alerte, remonte les stores bannes et ferme les volets pour protéger la vitre."],
-    "drgania": ["Vibration du store banne", "Remonte le store banne lors d'une forte rafale."],
-    "upal": ["Canicule demain", "Si la prévision annonce la chaleur, le store descend le matin avant que la pièce chauffe."],
-    "dym": ["Fumée", "En cas d'alarme fumée, ouvre le store – une issue de secours."],
-    "alarm": ["Alarme", "Ferme le store quand l'alarme est armée."],
-    "nikogo": ["Personne à la maison", "Ferme le store quand tout le monde est parti."],
-    "przeszkoda": ["Obstacle à la porte", "Ne descend pas si le capteur voit quelque chose dans le passage."],
-    "spie": ["Mode « Je dors »", "Un interrupteur sur l'appareil : le store reste fermé jusqu'à ce que vous l'éteigniez."],
-    "granice": ["Limites de course", "Le store ne bouge que dans la plage choisie, par ex. 10–90 %."],
-    "drobne": ["Pas de petites corrections", "Ignore les changements de quelques pour cent."],
-    "po_kolei": ["L'un après l'autre", "Les stores de la maison bougent à quelques secondes d'intervalle."],
-    "cisza": ["Calme après redémarrage", "Après le démarrage de HA, l'automatisme attend quelques minutes."],
-    "proba": ["Essai à blanc", "Montre ce que ferait l'automatisme, sans bouger le store."]
+    "harmonogram": [
+      "Programme",
+      "Ouvre le matin et ferme le soir : à heures fixes ou avec le lever et le coucher du soleil."
+    ],
+    "slonce": [
+      "Protection solaire",
+      "Descend le store quand le soleil entre par cette fenêtre et qu'il fait chaud."
+    ],
+    "blokada": [
+      "Verrou fenêtre ouverte",
+      "Ne descend jamais sur une fenêtre ouverte ou basculée. Le mouvement sauté se fait après la fermeture."
+    ],
+    "wiatr": [
+      "Vent",
+      "Remonte un store extérieur par vent fort."
+    ],
+    "obecnosc": [
+      "Présence",
+      "Le matin, reste fermé jusqu'à ce que quelqu'un entre dans la pièce."
+    ],
+    "wakacje": [
+      "Mode vacances",
+      "Ouvre et ferme chaque jour à une heure un peu différente, comme si quelqu'un était là."
+    ],
+    "licznik": [
+      "Compteur moteur",
+      "Compte les mouvements et la durée de marche, rappelle de calibrer."
+    ],
+    "reczny": [
+      "Le manuel a priorité",
+      "Si vous bougez le store à la télécommande ou au bouton, l'automatisme attend."
+    ],
+    "posrednia": [
+      "Position intermédiaire",
+      "À l'heure choisie, le store s'arrête à mi-hauteur."
+    ],
+    "dni": [
+      "Jours ouvrés et week-end",
+      "Horaires séparés le week-end et les jours fériés."
+    ],
+    "wietrzenie": [
+      "Position d'aération",
+      "Avec la fenêtre basculée, le store reste plus haut pour laisser passer l'air."
+    ],
+    "drzwi": [
+      "Porte-fenêtre",
+      "Porte ouverte, le store ne descend pas sous la position choisie."
+    ],
+    "oslepianie": [
+      "Anti-éblouissement",
+      "Le store descend juste assez pour que le soleil n'atteigne pas la télé ou le bureau."
+    ],
+    "zima": [
+      "Hiver et été",
+      "En hiver il ouvre au soleil (chaleur gratuite), en été il fait de l'ombre."
+    ],
+    "jasnosc": [
+      "Capteur de luminosité",
+      "Un luxmètre ou les panneaux solaires décident du soleil."
+    ],
+    "temp_pokoj": [
+      "Température de la pièce",
+      "Fait de l'ombre quand la pièce devient trop chaude."
+    ],
+    "deszcz": [
+      "Pluie",
+      "Remonte store banne, screen et brise-soleil sous la pluie."
+    ],
+    "mroz": [
+      "Gel",
+      "Par gel, le store extérieur ne bouge pas pour ne pas geler."
+    ],
+    "grad": [
+      "Grêle et alertes",
+      "En cas d'alerte, remonte les stores bannes et ferme les volets pour protéger la vitre."
+    ],
+    "drgania": [
+      "Vibration du store banne",
+      "Remonte le store banne lors d'une forte rafale."
+    ],
+    "upal": [
+      "Canicule demain",
+      "Si la prévision annonce la chaleur, le store descend le matin avant que la pièce chauffe."
+    ],
+    "dym": [
+      "Fumée",
+      "En cas d'alarme fumée, ouvre le store – une issue de secours."
+    ],
+    "alarm": [
+      "Alarme",
+      "Ferme le store quand l'alarme est armée."
+    ],
+    "nikogo": [
+      "Personne à la maison",
+      "Ferme le store quand tout le monde est parti."
+    ],
+    "przeszkoda": [
+      "Obstacle à la porte",
+      "Ne descend pas si le capteur voit quelque chose dans le passage."
+    ],
+    "spie": [
+      "Mode « Je dors »",
+      "Un interrupteur sur l'appareil : le store reste fermé jusqu'à ce que vous l'éteigniez."
+    ],
+    "granice": [
+      "Limites de course",
+      "Le store ne bouge que dans la plage choisie, par ex. 10–90 %."
+    ],
+    "drobne": [
+      "Pas de petites corrections",
+      "Ignore les changements de quelques pour cent."
+    ],
+    "po_kolei": [
+      "L'un après l'autre",
+      "Les stores de la maison bougent à quelques secondes d'intervalle."
+    ],
+    "cisza": [
+      "Calme après redémarrage",
+      "Après le démarrage de HA, l'automatisme attend quelques minutes."
+    ],
+    "proba": [
+      "Essai à blanc",
+      "Montre ce que ferait l'automatisme, sans bouger le store."
+    ]
   },
   "parametry": {
-    "azymut": ["Orientation de la fenêtre", "Vers où donne la fenêtre : 90 est, 180 sud, 270 ouest."],
-    "szer_slonca": ["Largeur du soleil dans la fenêtre", "Combien de degrés à gauche et à droite de l'orientation le soleil entre."],
-    "min_wys_slonca": ["Hauteur minimale du soleil", "Arbres et maisons cachent un soleil plus bas."],
-    "slonce_temp": ["Protéger à partir de", "Température extérieure à partir de laquelle le store descend au soleil."],
-    "slonce_poz": ["Position au soleil", "0 % = fermé."],
-    "harm_tryb": ["Heures d'ouverture", "Avec le lever et le coucher du soleil ou à heures fixes."],
-    "przesuniecie": ["Décalage", "Minutes après le lever et avant le coucher du soleil."],
-    "otworz": ["Ouvrir à", ""], "zamknij": ["Fermer à", ""],
-    "otworz_weekend": ["Ouvrir le week-end à", ""], "zamknij_weekend": ["Fermer le week-end à", ""],
-    "posrednia_godz": ["Position intermédiaire dès", ""], "posrednia_poz": ["Position intermédiaire", ""],
-    "wiatr_prog": ["Remonter dès un vent de", ""], "mroz_prog": ["Gel dès", ""],
-    "upal_prog": ["Chaleur dès", "Température maximale de la prévision."], "temp_pokoj_prog": ["Pièce trop chaude dès", ""],
-    "jasnosc_prog": ["Lumineux dès", "Lux ou watts des panneaux solaires."], "obecnosc_rano": ["Attendre la présence jusqu'à", ""],
-    "wakacje_rozrzut": ["Écart d'horaires", "Plus ou moins ce nombre de minutes, chaque jour différent."], "wietrzenie_poz": ["Position d'aération", ""],
-    "drzwi_min": ["Porte ouverte, pas plus bas que", ""], "granica_min": ["Au plus bas", ""], "granica_max": ["Au plus haut", ""],
-    "drobne_prog": ["Ignorer les changements inférieurs à", ""], "reczny_min": ["Après un mouvement manuel, attendre", ""],
-    "po_kolei_s": ["Écart entre les stores", ""], "cisza_min": ["Après le démarrage de HA, attendre", ""],
-    "spie_poz": ["Position en mode « Je dors »", ""], "alarm_poz": ["Position alarme armée", ""], "nikogo_poz": ["Position quand personne n'est là", ""],
-    "obiekt_odl_m": ["Le soleil atteint au plus", "À quelle distance de la fenêtre se trouvent la télé ou le bureau."], "okno_wys_m": ["Hauteur de la fenêtre", ""]
+    "azymut": [
+      "Orientation de la fenêtre",
+      "Vers où donne la fenêtre : 90 est, 180 sud, 270 ouest."
+    ],
+    "szer_slonca": [
+      "Largeur du soleil dans la fenêtre",
+      "Combien de degrés à gauche et à droite de l'orientation le soleil entre."
+    ],
+    "min_wys_slonca": [
+      "Hauteur minimale du soleil",
+      "Arbres et maisons cachent un soleil plus bas."
+    ],
+    "slonce_temp": [
+      "Protéger à partir de",
+      "Température extérieure à partir de laquelle le store descend au soleil."
+    ],
+    "slonce_poz": [
+      "Position au soleil",
+      "0 % = fermé."
+    ],
+    "harm_tryb": [
+      "Heures d'ouverture",
+      "Avec le lever et le coucher du soleil ou à heures fixes."
+    ],
+    "przesuniecie": [
+      "Décalage",
+      "Minutes après le lever et avant le coucher du soleil."
+    ],
+    "otworz": [
+      "Ouvrir à",
+      ""
+    ],
+    "zamknij": [
+      "Fermer à",
+      ""
+    ],
+    "otworz_weekend": [
+      "Ouvrir le week-end à",
+      ""
+    ],
+    "zamknij_weekend": [
+      "Fermer le week-end à",
+      ""
+    ],
+    "posrednia_godz": [
+      "Position intermédiaire dès",
+      ""
+    ],
+    "posrednia_poz": [
+      "Position intermédiaire",
+      ""
+    ],
+    "wiatr_prog": [
+      "Remonter dès un vent de",
+      ""
+    ],
+    "mroz_prog": [
+      "Gel dès",
+      ""
+    ],
+    "upal_prog": [
+      "Chaleur dès",
+      "Température maximale de la prévision."
+    ],
+    "temp_pokoj_prog": [
+      "Pièce trop chaude dès",
+      ""
+    ],
+    "jasnosc_prog": [
+      "Lumineux dès",
+      "Lux ou watts des panneaux solaires."
+    ],
+    "obecnosc_rano": [
+      "Attendre la présence jusqu'à",
+      ""
+    ],
+    "wakacje_rozrzut": [
+      "Écart d'horaires",
+      "Plus ou moins ce nombre de minutes, chaque jour différent."
+    ],
+    "wietrzenie_poz": [
+      "Position d'aération",
+      ""
+    ],
+    "drzwi_min": [
+      "Porte ouverte, pas plus bas que",
+      ""
+    ],
+    "granica_min": [
+      "Au plus bas",
+      ""
+    ],
+    "granica_max": [
+      "Au plus haut",
+      ""
+    ],
+    "drobne_prog": [
+      "Ignorer les changements inférieurs à",
+      ""
+    ],
+    "reczny_min": [
+      "Après un mouvement manuel, attendre",
+      ""
+    ],
+    "po_kolei_s": [
+      "Écart entre les stores",
+      ""
+    ],
+    "cisza_min": [
+      "Après le démarrage de HA, attendre",
+      ""
+    ],
+    "spie_poz": [
+      "Position en mode « Je dors »",
+      ""
+    ],
+    "alarm_poz": [
+      "Position alarme armée",
+      ""
+    ],
+    "nikogo_poz": [
+      "Position quand personne n'est là",
+      ""
+    ],
+    "obiekt_odl_m": [
+      "Le soleil atteint au plus",
+      "À quelle distance de la fenêtre se trouvent la télé ou le bureau."
+    ],
+    "okno_wys_m": [
+      "Hauteur de la fenêtre",
+      ""
+    ]
   },
   "selector": {
-    "tryb": {"podstawowy": "Simple – quelques questions faciles", "zaawansowany": "Avancé – toutes les options"},
-    "mam": {"zew": "Store extérieur (volet, store banne, screen)", "lamele": "Store à lames orientables", "brama": "Portail ou porte de garage", "foto": "Cellule photo du portail visible dans HA", "okno": "Capteur de fenêtre", "drzwi": "Capteur de porte-fenêtre", "obecnosc": "Capteur de présence (quelqu'un est là)", "ruch": "Détecteur de mouvement (quelqu'un est entré)", "pogoda": "Météo", "temp": "Température extérieure", "grupy": "Plusieurs appareils dans la maison", "temp_pokoj": "Température de la pièce", "jasnosc": "Luxmètre ou panneaux solaires", "wiatr": "Anémomètre", "deszcz": "Capteur de pluie", "drgania": "Capteur de vibration du store banne", "ostrzezenia": "Alertes météo", "dym": "Détecteur de fumée", "alarm": "Alarme", "osoby": "Téléphones des habitants", "przeszkoda": "Capteur d'obstacle à la porte"},
-    "pokoje": {"salon": "Salon", "sypialnia": "Chambre", "kuchnia": "Cuisine", "dziecko": "Chambre d'enfant", "gabinet": "Bureau", "lazienka": "Salle de bain", "jadalnia": "Salle à manger", "przedpokoj": "Entrée", "inny": "Autre"},
-    "skrzydla": {"1": "Un vantail", "2": "Deux vantaux"},
-    "tryby": {"uchyl": "Bascule", "otworz": "S'ouvre"},
-    "lamele_tryb": {"auto": "Automatique (soleil, nuit)", "staly": "Toujours le même angle", "nocny": "La nuit seulement"},
-    "harm_tryb": {"slonce": "Lever et coucher du soleil", "godziny": "Heures fixes"},
-    "powiadomienia": {"nie_odpowiada": "Ne répond pas", "nie_dojechala": "N'a pas atteint la position", "bateria": "Pile faible du moteur ou du capteur", "czujnik": "Capteur indisponible", "automatyka": "Problème d'automatisme (verrou, erreur, calibrage)", "brama_otwarta": "Portail ouvert trop longtemps", "brama_niedomknieta": "Le portail ne s'est pas fermé", "przeszkoda": "Obstacle dans le portail"},
-    "kroki": {"tryb": "Mode", "mam": "Ce que vous avez", "urzadzenie": "Appareil", "rodzaj": "Type", "lamele": "Lames", "kolory": "Couleurs", "okno": "Fenêtre", "czujniki": "Capteurs", "fotokomorka": "Cellule photo", "silnik": "Moteur", "pogoda": "Météo", "domownicy": "Habitants", "automatyka": "Automatisme", "ustawienia": "Réglages", "powiadomienia": "Notifications", "panel": "Tableau de bord"},
+    "tryb": {
+      "podstawowy": "Simple – quelques questions faciles",
+      "zaawansowany": "Avancé – toutes les options"
+    },
+    "mam": {
+      "zew": "Store extérieur (volet, store banne, screen)",
+      "lamele": "Store à lames orientables",
+      "brama": "Portail ou porte de garage",
+      "foto": "Cellule photo du portail visible dans HA",
+      "okno": "Capteur de fenêtre",
+      "drzwi": "Capteur de porte-fenêtre",
+      "obecnosc": "Capteur de présence (quelqu'un est là)",
+      "ruch": "Détecteur de mouvement (quelqu'un est entré)",
+      "pogoda": "Météo",
+      "temp": "Température extérieure",
+      "grupy": "Plusieurs appareils dans la maison",
+      "temp_pokoj": "Température de la pièce",
+      "jasnosc": "Luxmètre ou panneaux solaires",
+      "wiatr": "Anémomètre",
+      "deszcz": "Capteur de pluie",
+      "drgania": "Capteur de vibration du store banne",
+      "ostrzezenia": "Alertes météo",
+      "dym": "Détecteur de fumée",
+      "alarm": "Alarme",
+      "osoby": "Téléphones des habitants",
+      "przeszkoda": "Capteur d'obstacle à la porte"
+    },
+    "pokoje": {
+      "salon": "Salon",
+      "sypialnia": "Chambre",
+      "kuchnia": "Cuisine",
+      "dziecko": "Chambre d'enfant",
+      "gabinet": "Bureau",
+      "lazienka": "Salle de bain",
+      "jadalnia": "Salle à manger",
+      "przedpokoj": "Entrée",
+      "inny": "Autre"
+    },
+    "skrzydla": {
+      "1": "Un vantail",
+      "2": "Deux vantaux"
+    },
+    "tryby": {
+      "uchyl": "Bascule",
+      "otworz": "S'ouvre"
+    },
+    "lamele_tryb": {
+      "auto": "Automatique (soleil, nuit)",
+      "staly": "Toujours le même angle",
+      "nocny": "La nuit seulement"
+    },
+    "harm_tryb": {
+      "slonce": "Lever et coucher du soleil",
+      "godziny": "Heures fixes"
+    },
+    "powiadomienia": {
+      "nie_odpowiada": "Ne répond pas",
+      "nie_dojechala": "N'a pas atteint la position",
+      "bateria": "Pile faible du moteur ou du capteur",
+      "czujnik": "Capteur indisponible",
+      "automatyka": "Problème d'automatisme (verrou, erreur, calibrage)",
+      "brama_otwarta": "Portail ouvert trop longtemps",
+      "brama_niedomknieta": "Le portail ne s'est pas fermé",
+      "przeszkoda": "Obstacle dans le portail"
+    },
+    "kroki": {
+      "tryb": "Mode",
+      "mam": "Ce que vous avez",
+      "urzadzenie": "Appareil",
+      "rodzaj": "Type",
+      "lamele": "Lames",
+      "kolory": "Couleurs",
+      "okno": "Fenêtre",
+      "czujniki": "Capteurs",
+      "fotokomorka": "Cellule photo",
+      "silnik": "Moteur",
+      "pogoda": "Météo",
+      "domownicy": "Habitants",
+      "automatyka": "Automatisme",
+      "ustawienia": "Réglages",
+      "powiadomienia": "Notifications",
+      "panel": "Tableau de bord"
+    },
     "porady": {
       "ogolne_tryb": "Pas sûr ? Choisissez Simple. Vous pourrez toujours changer.",
       "ogolne_mam": "Pas sûr d'avoir quelque chose ? Laissez comme l'assistant l'a coché.",
@@ -134,17 +517,65 @@
       "lazienka_automatyka": "Nous conseillons le verrou fenêtre – après le bain, la fenêtre est souvent ouverte."
     }
   },
-  "bramy": {"przesuwna": "Portail coulissant", "skrzydlowa": "Portail battant", "segmentowa": "Porte sectionnelle", "uchylna": "Porte basculante", "roletowa": "Porte enroulable"},
-  "oslony_nowe": {"pionowa": "Store vertical", "zaslona": "Rideau latéral"},
-  "bledy": {"brak_rolety": "Choisissez un moteur.", "za_duzo": "Choisissez au plus deux moteurs (vantail gauche et droit)."},
-  "encje": {"kalibruj": "Calibrer", "wznow": "Reprendre l'automatisme", "powod": "Raison du mouvement", "ruchy": "Mouvements du moteur", "czas_pracy": "Durée de marche du moteur", "automatyka": "Automatisme", "pauza": "Pause pour aujourd'hui", "spie": "Je dors", "wakacje": "Mode vacances"},
+  "bramy": {
+    "przesuwna": "Portail coulissant",
+    "skrzydlowa": "Portail battant",
+    "segmentowa": "Porte sectionnelle",
+    "uchylna": "Porte basculante",
+    "roletowa": "Porte enroulable"
+  },
+  "oslony_nowe": {
+    "pionowa": "Store vertical",
+    "zaslona": "Rideau latéral"
+  },
+  "bledy": {
+    "brak_rolety": "Choisissez un moteur.",
+    "za_duzo": "Choisissez au plus deux moteurs (vantail gauche et droit)."
+  },
+  "encje": {
+    "kalibruj": "Calibrer",
+    "wznow": "Reprendre l'automatisme",
+    "powod": "Raison du mouvement",
+    "ruchy": "Mouvements du moteur",
+    "czas_pracy": "Durée de marche du moteur",
+    "automatyka": "Automatisme",
+    "pauza": "Pause pour aujourd'hui",
+    "spie": "Je dors",
+    "wakacje": "Mode vacances"
+  },
   "powody": {
-    "brak": "Pas d'automatisme", "wylaczona": "Automatisme désactivé", "cisza": "Calme après redémarrage", "dym": "Fumée – ouvert", "wiatr": "Vent – remonté", "drgania": "Vibration – remonté",
-    "grad": "Alerte – protégé", "deszcz": "Pluie – remonté", "mroz": "Gel – immobile", "pauza": "En pause", "reczny": "Manuel – pause", "alarm": "Alarme",
-    "spie": "Je dors", "nikogo": "Personne à la maison", "wakacje": "Mode vacances – jour", "wakacje_noc": "Mode vacances – nuit", "harm_dzien": "Programme – jour", "harm_noc": "Programme – nuit",
-    "posrednia": "Position intermédiaire", "obecnosc": "Quelqu'un est dans la pièce", "czeka_obecnosc": "Attend que quelqu'un entre", "zima_noc": "Hiver – nuit", "zima_slonce": "Hiver – le soleil chauffe",
-    "slonce": "Soleil dans la fenêtre", "jasnosc": "Lumineux", "temp_pokoj": "Pièce trop chaude", "upal": "Canicule", "oslepianie": "Éblouissement", "przeszkoda": "Obstacle", "drzwi": "Porte ouverte",
-    "wietrzenie": "Aération", "blokada": "Fenêtre ouverte – verrouillé"
+    "brak": "Pas d'automatisme",
+    "wylaczona": "Automatisme désactivé",
+    "cisza": "Calme après redémarrage",
+    "dym": "Fumée – ouvert",
+    "wiatr": "Vent – remonté",
+    "drgania": "Vibration – remonté",
+    "grad": "Alerte – protégé",
+    "deszcz": "Pluie – remonté",
+    "mroz": "Gel – immobile",
+    "pauza": "En pause",
+    "reczny": "Manuel – pause",
+    "alarm": "Alarme",
+    "spie": "Je dors",
+    "nikogo": "Personne à la maison",
+    "wakacje": "Mode vacances – jour",
+    "wakacje_noc": "Mode vacances – nuit",
+    "harm_dzien": "Programme – jour",
+    "harm_noc": "Programme – nuit",
+    "posrednia": "Position intermédiaire",
+    "obecnosc": "Quelqu'un est dans la pièce",
+    "czeka_obecnosc": "Attend que quelqu'un entre",
+    "zima_noc": "Hiver – nuit",
+    "zima_slonce": "Hiver – le soleil chauffe",
+    "slonce": "Soleil dans la fenêtre",
+    "jasnosc": "Lumineux",
+    "temp_pokoj": "Pièce trop chaude",
+    "upal": "Canicule",
+    "oslepianie": "Éblouissement",
+    "przeszkoda": "Obstacle",
+    "drzwi": "Porte ouverte",
+    "wietrzenie": "Aération",
+    "blokada": "Fenêtre ouverte – verrouillé"
   },
   "komunikaty": {
     "tytul": "{nazwa} – problème",
@@ -160,11 +591,75 @@
     "nie_motor_ha": "Ce n'est pas un appareil Motor HA."
   },
   "uslugi": {
-    "wstrzymaj": ["Mettre l'automatisme en pause", "L'automatisme ne bouge pas l'appareil pendant la durée indiquée (vide = jusqu'à la fin de la journée).", {"entity_id": ["Appareil", "Un appareil Motor HA."], "minuty": ["Minutes", "Vide = jusqu'à la fin de la journée."]}],
-    "wznow": ["Reprendre l'automatisme", "Termine la pause et vérifie aussitôt où doit être le store.", {"entity_id": ["Appareil", "Un appareil Motor HA."]}],
-    "przelicz": ["Vérifier maintenant", "L'automatisme recalcule la position tout de suite.", {"entity_id": ["Appareil", "Un appareil Motor HA."]}],
-    "kalibruj": ["Calibrer", "Mesure la vraie durée de course.", {"entity_id": ["Appareil", "Un appareil Motor HA."]}],
-    "ustaw": ["Régler la position", "Règle la position (et les lames) comme l'automatisme – sans pause après mouvement manuel.", {"entity_id": ["Appareil", "Un appareil Motor HA."], "pozycja": ["Position", "100 = ouvert."], "lamele": ["Lames", "Angle des lames."]}]
+    "wstrzymaj": [
+      "Mettre l'automatisme en pause",
+      "L'automatisme ne bouge pas l'appareil pendant la durée indiquée (vide = jusqu'à la fin de la journée).",
+      {
+        "entity_id": [
+          "Appareil",
+          "Un appareil Motor HA."
+        ],
+        "minuty": [
+          "Minutes",
+          "Vide = jusqu'à la fin de la journée."
+        ]
+      }
+    ],
+    "wznow": [
+      "Reprendre l'automatisme",
+      "Termine la pause et vérifie aussitôt où doit être le store.",
+      {
+        "entity_id": [
+          "Appareil",
+          "Un appareil Motor HA."
+        ]
+      }
+    ],
+    "przelicz": [
+      "Vérifier maintenant",
+      "L'automatisme recalcule la position tout de suite.",
+      {
+        "entity_id": [
+          "Appareil",
+          "Un appareil Motor HA."
+        ]
+      }
+    ],
+    "kalibruj": [
+      "Calibrer",
+      "Mesure la vraie durée de course.",
+      {
+        "entity_id": [
+          "Appareil",
+          "Un appareil Motor HA."
+        ]
+      }
+    ],
+    "ustaw": [
+      "Régler la position",
+      "Règle la position (et les lames) comme l'automatisme – sans pause après mouvement manuel.",
+      {
+        "entity_id": [
+          "Appareil",
+          "Un appareil Motor HA."
+        ],
+        "pozycja": [
+          "Position",
+          "100 = ouvert."
+        ],
+        "lamele": [
+          "Lames",
+          "Angle des lames."
+        ]
+      }
+    ]
   },
-  "naprawa": {"t": "Motor HA {wersja} – redémarrer", "o": "La nouvelle version est installée. Cliquez sur « Valider » pour redémarrer Home Assistant."}
+  "naprawa": {
+    "t": "Motor HA {wersja} – redémarrer",
+    "o": "La nouvelle version est installée. Cliquez sur « Valider » pour redémarrer Home Assistant."
+  },
+  "przeniesione": {
+    "t": "Motor HA 2.0 – fenêtres transférées",
+    "o": "{ile} fenêtres ont été transférées depuis la version précédente (Okno HA 1.x). Elles fonctionnent maintenant comme de nouveaux appareils Motor HA avec les mêmes réglages. Les anciennes entrées sont seulement désactivées – tu peux les supprimer dans Paramètres → Appareils et services → Okno HA. L’automatisation reste désactivée jusqu’à ce que tu l’actives dans « Configurer »."
+  }
 }

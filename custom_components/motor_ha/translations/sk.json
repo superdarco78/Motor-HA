@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – okná prenesené",
+      "description": "Z predchádzajúcej verzie (Okno HA 1.x) sa prenieslo {ile} okien. Fungujú teraz ako nové zariadenia Motor HA s rovnakými nastaveniami. Staré položky sú len vypnuté – môžeš ich zmazať v Nastavenia → Zariadenia a služby → Okno HA. Automatika zostáva vypnutá, kým ju nezapneš v „Konfigurovať“."
     }
   },
   "services": {

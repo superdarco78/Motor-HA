@@ -564,6 +564,10 @@ class MotorHaFlow(Kreator, ConfigFlow, domain=DOMAIN):
     async def async_step_user(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
         return await self.async_step_tryb()
 
+    async def async_step_import(self, dane: dict[str, Any]) -> ConfigFlowResult:
+        """Okno przeniesione z Motor HA 1.x (migracja.py)."""
+        return self.async_create_entry(title=dane["tytul"], data={}, options=dane["opcje"])
+
     async def async_step_panel(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
         from .panele import NIE, async_lista
         if (w := await self._dalej("panel", dane)) is not None:

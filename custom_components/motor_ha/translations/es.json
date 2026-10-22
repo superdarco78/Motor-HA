@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – ventanas trasladadas",
+      "description": "Se han trasladado {ile} ventanas de la versión anterior (Okno HA 1.x). Ahora funcionan como nuevos dispositivos Motor HA con los mismos ajustes. Las entradas antiguas solo están desactivadas: puedes borrarlas en Ajustes → Dispositivos y servicios → Okno HA. La automatización sigue apagada hasta que la actives en «Configurar»."
     }
   },
   "services": {

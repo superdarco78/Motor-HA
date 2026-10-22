@@ -74,7 +74,8 @@ async def async_usun_pliki(hass: HomeAssistant) -> None:
 
 
 def _bez_starej(hass: HomeAssistant) -> bool:
-    return STARA not in hass.config.components and not hass.config_entries.async_entries(STARA)
+    # stare wpisy po przeniesieniu są wyłączone – liczą się tylko włączone
+    return not any(e.disabled_by is None for e in hass.config_entries.async_entries(STARA))
 
 
 async def async_sprzatnij_stara(hass: HomeAssistant) -> None:

@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – fenêtres transférées",
+      "description": "{ile} fenêtres ont été transférées depuis la version précédente (Okno HA 1.x). Elles fonctionnent maintenant comme de nouveaux appareils Motor HA avec les mêmes réglages. Les anciennes entrées sont seulement désactivées – tu peux les supprimer dans Paramètres → Appareils et services → Okno HA. L’automatisation reste désactivée jusqu’à ce que tu l’actives dans « Configurer »."
     }
   },
   "services": {

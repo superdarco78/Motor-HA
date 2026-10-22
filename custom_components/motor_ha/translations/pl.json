@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – okna przeniesione",
+      "description": "Przeniesiono {ile} okien z poprzedniej wersji (Okno HA 1.x). Działają jako nowe urządzenia Motor HA z tymi samymi ustawieniami. Stare wpisy są tylko wyłączone – możesz je usunąć w Ustawienia → Urządzenia i usługi → Okno HA. Automatyka jest wyłączona, dopóki jej nie włączysz w „Konfiguruj”."
     }
   },
   "services": {

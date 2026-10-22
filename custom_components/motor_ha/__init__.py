@@ -22,6 +22,7 @@ from homeassistant.helpers.typing import ConfigType
 
 from .automatyka import Automatyka
 from .const import CONF_NA_PANEL, DOMAIN, KARTA_PLIK, MAM, PODSTAWOWY, TRYB, VERSION
+from .migracja import async_przenies
 from .pasek import PasekKrokow
 from .pliki import (
     async_dodaj_zasob,
@@ -61,6 +62,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         add_extra_js_url(hass, f"/{DOMAIN}/{KARTA_PLIK}?v={VERSION}")
         add_extra_js_url(hass, f"/{DOMAIN}/motor-ha-hacs.js?v={VERSION}")
     async def _zasoby() -> None:
+        await async_przenies(hass)
         await async_sprzatnij_stara(hass)
         await async_dodaj_zasob(hass)
 

@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – 窗户已迁移",
+      "description": "已从上一版本(Okno HA 1.x)迁移 {ile} 个窗户。它们现在作为新的 Motor HA 设备运行,设置保持不变。旧条目只是被禁用 – 可在 设置 → 设备与服务 → Okno HA 中删除。在「配置」中开启前,自动化保持关闭。"
     }
   },
   "services": {

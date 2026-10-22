@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – finestre trasferite",
+      "description": "{ile} finestre sono state trasferite dalla versione precedente (Okno HA 1.x). Ora funzionano come nuovi dispositivi Motor HA con le stesse impostazioni. Le vecchie voci sono solo disattivate: puoi eliminarle in Impostazioni → Dispositivi e servizi → Okno HA. L’automazione resta spenta finché non la attivi in «Configura»."
     }
   },
   "services": {

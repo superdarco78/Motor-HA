@@ -87,7 +87,8 @@ def zbuduj(jezyk: str, t: dict, karta: dict) -> dict:
         },
         "exceptions": wyjatki,
         "issues": {"restart": {"title": t["naprawa"]["t"], "fix_flow": {"step": {"confirm": {
-            "title": t["naprawa"]["t"], "description": t["naprawa"]["o"]}}}}},
+            "title": t["naprawa"]["t"], "description": t["naprawa"]["o"]}}}},
+            "przeniesione": {"title": t["przeniesione"]["t"], "description": t["przeniesione"]["o"]}},
         "services": uslugi,
     }
 

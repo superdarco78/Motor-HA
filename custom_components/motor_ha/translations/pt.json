@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – janelas transferidas",
+      "description": "Foram transferidas {ile} janelas da versão anterior (Okno HA 1.x). Agora funcionam como novos dispositivos Motor HA com as mesmas definições. As entradas antigas estão apenas desativadas – pode apagá-las em Definições → Dispositivos e serviços → Okno HA. A automação fica desligada até a ligar em «Configurar»."
     }
   },
   "services": {

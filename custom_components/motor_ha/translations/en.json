@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – windows moved",
+      "description": "{ile} windows were moved from the previous version (Okno HA 1.x). They now work as new Motor HA devices with the same settings. The old entries are only disabled – you can delete them in Settings → Devices & services → Okno HA. Automation stays off until you turn it on in “Configure”."
     }
   },
   "services": {

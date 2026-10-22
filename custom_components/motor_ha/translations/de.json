@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – Fenster übernommen",
+      "description": "{ile} Fenster wurden aus der vorherigen Version (Okno HA 1.x) übernommen. Sie laufen jetzt als neue Motor-HA-Geräte mit denselben Einstellungen. Die alten Einträge sind nur deaktiviert – du kannst sie unter Einstellungen → Geräte & Dienste → Okno HA löschen. Die Automatik bleibt aus, bis du sie unter „Konfigurieren“ einschaltest."
     }
   },
   "services": {

@@ -1088,6 +1088,10 @@
           }
         }
       }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – ramen overgezet",
+      "description": "Er zijn {ile} ramen overgezet uit de vorige versie (Okno HA 1.x). Ze werken nu als nieuwe Motor HA-apparaten met dezelfde instellingen. De oude items zijn alleen uitgeschakeld – je kunt ze verwijderen via Instellingen → Apparaten en diensten → Okno HA. De automatisering blijft uit tot je die aanzet bij ‘Configureren’."
     }
   },
   "services": {
