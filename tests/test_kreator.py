@@ -43,7 +43,6 @@ async def test_podstawowy(hass: HomeAssistant) -> None:
     assert k["roleta_lewa"] == "cover.lewa" and k["roleta_prawa"] == "cover.prawa"
     # nic nie rusza samo: wszystkie funkcje wyłączone poza licznikiem
     assert not [x for x, v in r["result"].options.items() if x.startswith("f_") and v and x != "f_licznik"]
-    print(sorted(hass.states.async_entity_ids()))
     assert hass.states.get("sensor.salon_reason_for_move") is not None
 
 

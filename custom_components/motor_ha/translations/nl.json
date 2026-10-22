@@ -1,0 +1,1157 @@
+{
+  "title": "Motor HA",
+  "config": {
+    "step": {
+      "tryb": {
+        "title": "Stap {nr} van {z}: Modus van de wizard",
+        "description": "{pasek}\n\n**Wat:** Kies hoeveel vragen je wilt zien.\n\n**Waarom:** Basis is genoeg voor de meesten. Geavanceerd toont alle opties en extra apparaten. De modus wijzig je later via „Configureren”.{porada}",
+        "data": {
+          "tryb": "Modus",
+          "kopiuj_z": "Instellingen van een ander apparaat kopiëren",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "kopiuj_z": "Leeg = opnieuw beginnen.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "mam": {
+        "title": "Stap {nr} van {z}: Wat je in huis hebt",
+        "description": "{pasek}\n\n**Wat:** Vink aan wat je hebt. De wizard heeft Home Assistant doorzocht en aangevinkt wat hij vond.\n\n**Waarom:** De wizard toont alleen stappen en functies voor aangevinkte apparaten. De rest voeg je later toe via „Configureren”.\n\nGevonden: {znalezione}{porada}",
+        "data": {
+          "mam": "Ik heb thuis",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "urzadzenie": {
+        "title": "Stap {nr} van {z}: Apparaat",
+        "description": "{pasek}\n\n**Wat:** Kies de motor (zonwering of poort), geef een naam en kies de ruimte.\n\n**Waarom:** Motor HA bestuurt deze motor, en met de ruimte praat je met Assist, bijv. „sluit de woonkamer”.{porada}",
+        "data": {
+          "rolety": "Motor (één of twee entiteiten)",
+          "name": "Naam",
+          "pokoj": "Ruimte",
+          "rodzaj_pokoju": "Soort ruimte (voor tips)",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "rolety": "Voor een raam met twee vleugels kies je er twee: eerst links, dan rechts.",
+          "name": "Leeg = naam van de motor.",
+          "pokoj": "Het apparaat komt in deze ruimte. Assist begrijpt dan „sluit de woonkamer”.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "rodzaj": {
+        "title": "Stap {nr} van {z}: Soort",
+        "description": "{pasek}\n\n**Wat:** Kies precies wat je hebt.\n\n**Waarom:** De kaart tekent dit apparaat en de automatisering weet wat ze kan gebruiken.{porada}",
+        "data": {
+          "oslona": "Soort",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "lamele": {
+        "title": "Stap {nr} van {z}: Lamellen",
+        "description": "{pasek}\n\n**Wat:** Stel het kantelen van de lamellen in.\n\n**Waarom:** Je laat licht binnen zonder de jaloezie op te trekken.{porada}",
+        "data": {
+          "lamele_kat": "Lamelhoek bij zon",
+          "lamele_tryb": "Lamelbesturing",
+          "lamele_noc": "Lamelhoek 's nachts",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "kolory": {
+        "title": "Stap {nr} van {z}: Kleuren",
+        "description": "{pasek}\n\n**Wat:** Kies de kleur van zonwering en kozijn.\n\n**Waarom:** Het raam op het scherm lijkt op het echte.{porada}",
+        "data": {
+          "kolor": "Kleur zonwering",
+          "rama": "Kleur kozijn",
+          "kolor_wlasny": "Eigen kleur zonwering",
+          "rama_wlasna": "Eigen kleur kozijn",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "okno": {
+        "title": "Stap {nr} van {z}: Raam",
+        "description": "{pasek}\n\n**Wat:** Hoeveel vleugels het raam heeft en hoe groot het op de kaart is.\n\n**Waarom:** Elke vleugel kan een eigen motor hebben.{porada}",
+        "data": {
+          "skrzydla": "Vleugels",
+          "wysokosc": "Hoogte op de kaart",
+          "odwroc": "Omgekeerde percentages",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "odwroc": "Aanzetten als de motor 100 % meldt bij gesloten zonwering.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "czujniki": {
+        "title": "Stap {nr} van {z}: Sensoren",
+        "description": "{pasek}\n\n**Wat:** Kies de openingssensoren van raam en deur.\n\n**Waarom:** De kaart toont een gekantelde of open vleugel, en de blokkering laat de zonwering nooit op een open raam zakken.{porada}",
+        "data": {
+          "czujnik_lewe": "Sensor linkervleugel",
+          "tryb_lewe": "Linkervleugel",
+          "czujnik_prawe": "Sensor rechtervleugel",
+          "tryb_prawe": "Rechtervleugel",
+          "czujnik_drzwi": "Sensor terrasdeur",
+          "czujnik_przeszkoda": "Obstakelsensor bij de deur",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "fotokomorka": {
+        "title": "Stap {nr} van {z}: Fotocel",
+        "description": "{pasek}\n\n**Wat:** Kies de obstakelsensor van de poort en de toestand die „er staat iets in de poort” betekent.\n\n**Waarom:** De kaart toont het obstakel en je krijgt een melding. De fotocel in de besturing stopt de poort nog steeds zelf.{porada}",
+        "data": {
+          "czujnik_foto": "Fotocel (obstakelsensor)",
+          "foto_stan": "Obstakel als de sensor de toestand heeft",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "foto_stan": "Meestal „on”. Voor een tekstsensor bijv. „obstructed” invullen.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "silnik": {
+        "title": "Stap {nr} van {z}: Motor",
+        "description": "{pasek}\n\n**Wat:** Vul de volledige looptijd in of laat 0.\n\n**Waarom:** De tekening beweegt zo snel als de echte motor. Bij 0 leert de kaart de tijd zelf na een paar bewegingen.{porada}",
+        "data": {
+          "czas": "Volledige looptijd",
+          "kalibruj": "Nu kalibreren (zonwering gaat omhoog, omlaag en omhoog)",
+          "predkosc_lewa": "Motorsnelheid – links",
+          "predkosc_prawa": "Motorsnelheid – rechts",
+          "brama_minuty": "Poort te lang open na",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "czas": "0 = automatisch: uit motorsnelheid, kalibratie of echte bewegingen.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "pogoda": {
+        "title": "Stap {nr} van {z}: Weer",
+        "description": "{pasek}\n\n**Wat:** Kies het weer en buitensensoren.\n\n**Waarom:** Achter het glas zie je het echte weer, en de automatisering beschermt de zonwering tegen wind, regen en zon.{porada}",
+        "data": {
+          "pogoda": "Weer",
+          "czujnik_temp": "Buitentemperatuur",
+          "czujnik_temp_pokoj": "Kamertemperatuur",
+          "czujnik_jasnosc": "Helderheid of zonnestroom",
+          "czujnik_wiatr": "Windmeter",
+          "czujnik_deszcz": "Regensensor",
+          "czujnik_drgania": "Trillingssensor zonnescherm",
+          "czujnik_ostrzezenia": "Weerwaarschuwingen (KNMI, Meteoalarm)",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "Een luxmeter of zonnestroom – in plaats van alleen de zonnestand.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "domownicy": {
+        "title": "Stap {nr} van {z}: Bewoners",
+        "description": "{pasek}\n\n**Wat:** Kies aanwezigheids-, bewegings- en bewonerssensoren.\n\n**Waarom:** De zonwering kan reageren op of er iemand in de ruimte of thuis is.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Aanwezigheidssensor (er is iemand)",
+          "czujnik_ruch": "Bewegingssensor (iemand kwam binnen)",
+          "osoby": "Bewoners",
+          "czujnik_dym": "Rookmelder",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Werkdag (Workday)",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "czujnik_swieta": "Workday-integratie – feestdagen tellen als weekend.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "automatyka": {
+        "title": "Stap {nr} van {z}: Automatisering",
+        "description": "{pasek}\n\n**Wat:** Zet de functies aan die de zonwering zelf mogen bewegen.\n\n**Waarom:** Je huis zorgt voor de zonwering zonder automatiseringen te schrijven. Alles staat uit tot je het aanzet.{porada}",
+        "data": {
+          "f_harmonogram": "Schema",
+          "f_slonce": "Zonwering",
+          "f_blokada": "Blokkering bij open raam",
+          "f_wiatr": "Wind",
+          "f_obecnosc": "Aanwezigheid",
+          "f_wakacje": "Vakantiemodus",
+          "f_licznik": "Motorteller",
+          "f_reczny": "Handmatig gaat voor",
+          "f_posrednia": "Tussenstand",
+          "f_dni": "Werkdagen en weekend",
+          "f_wietrzenie": "Ventilatiestand",
+          "f_drzwi": "Terrasdeur",
+          "f_oslepianie": "Verblindingsbescherming",
+          "f_zima": "Winter en zomer",
+          "f_jasnosc": "Helderheidssensor",
+          "f_temp_pokoj": "Kamertemperatuur",
+          "f_deszcz": "Regen",
+          "f_mroz": "Vorst",
+          "f_grad": "Hagel en waarschuwingen",
+          "f_drgania": "Trilling zonnescherm",
+          "f_upal": "Morgen hitte",
+          "f_dym": "Rook",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Niemand thuis",
+          "f_przeszkoda": "Obstakel bij de deur",
+          "f_spie": "Modus „Ik slaap”",
+          "f_granice": "Bewegingsgrenzen",
+          "f_drobne": "Geen kleine correcties",
+          "f_po_kolei": "Na elkaar",
+          "f_cisza": "Rust na herstart",
+          "f_proba": "Proefdraaien",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "f_harmonogram": "Opent 's ochtends en sluit 's avonds: op vaste tijden of met zonsopgang en -ondergang.",
+          "f_slonce": "Laat de zonwering zakken als de zon in dit raam schijnt en het warm is.",
+          "f_blokada": "Zakt nooit op een open of gekanteld raam. De overgeslagen beweging volgt na het sluiten.",
+          "f_wiatr": "Haalt buitenzonwering in bij harde wind.",
+          "f_obecnosc": "Blijft 's ochtends dicht tot iemand de ruimte binnenkomt.",
+          "f_wakacje": "Opent en sluit elke dag op een iets andere tijd, alsof er iemand thuis is.",
+          "f_licznik": "Telt bewegingen en looptijd, herinnert aan kalibreren.",
+          "f_reczny": "Beweeg je de zonwering met afstandsbediening of knop, dan wacht de automatisering.",
+          "f_posrednia": "Op de gekozen tijd stopt de zonwering halverwege.",
+          "f_dni": "Eigen tijden in het weekend en op feestdagen.",
+          "f_wietrzenie": "Bij een gekanteld raam blijft de zonwering hoger zodat lucht stroomt.",
+          "f_drzwi": "Met open deur zakt de zonwering niet lager dan de gekozen stand.",
+          "f_oslepianie": "Zakt net zo ver dat de zon niet verder komt dan tv of bureau.",
+          "f_zima": "In de winter opent hij in de zon (gratis warmte), in de zomer geeft hij schaduw.",
+          "f_jasnosc": "Een luxmeter of zonnepanelen beslissen over de zon.",
+          "f_temp_pokoj": "Geeft schaduw als het in de ruimte te warm wordt.",
+          "f_deszcz": "Haalt zonnescherm, screen en buitenjaloezie in bij regen.",
+          "f_mroz": "Bij vorst beweegt buitenzonwering niet, zodat ze niet vastvriest.",
+          "f_grad": "Bij een waarschuwing haalt hij zonneschermen in en sluit rolluiken om het glas te beschermen.",
+          "f_drgania": "Haalt het zonnescherm in bij een harde windstoot.",
+          "f_upal": "Voorspelt het weer hitte, dan zakt de zonwering 's ochtends voordat de ruimte opwarmt.",
+          "f_dym": "Bij rookalarm opent hij de zonwering – een vluchtweg.",
+          "f_alarm": "Sluit de zonwering als het alarm is ingeschakeld.",
+          "f_nikogo": "Sluit de zonwering als iedereen weg is.",
+          "f_przeszkoda": "Zakt niet als de sensor iets in de doorgang ziet.",
+          "f_spie": "Een schakelaar op het apparaat: de zonwering blijft dicht tot je hem uitzet.",
+          "f_granice": "De zonwering beweegt alleen binnen het gekozen bereik, bijv. 10–90 %.",
+          "f_drobne": "Slaat veranderingen van een paar procent over.",
+          "f_po_kolei": "Zonweringen in huis bewegen met een paar seconden ertussen.",
+          "f_cisza": "Na het starten van HA wacht de automatisering een paar minuten.",
+          "f_proba": "Toont wat de automatisering zou doen, maar beweegt de zonwering niet.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "ustawienia": {
+        "title": "Stap {nr} van {z}: Instellingen",
+        "description": "{pasek}\n\n**Wat:** Pas de ingeschakelde functies aan.\n\n**Waarom:** De standaardwaarden passen bij de meeste huizen.{porada}",
+        "data": {
+          "azymut": "Richting van het raam",
+          "szer_slonca": "Zonbreedte in het raam",
+          "min_wys_slonca": "Minimale zonhoogte",
+          "slonce_temp": "Beschermen vanaf",
+          "slonce_poz": "Stand bij zon",
+          "harm_tryb": "Openingstijden",
+          "przesuniecie": "Verschuiving",
+          "otworz": "Openen om",
+          "zamknij": "Sluiten om",
+          "otworz_weekend": "In het weekend openen om",
+          "zamknij_weekend": "In het weekend sluiten om",
+          "posrednia_godz": "Tussenstand vanaf",
+          "posrednia_poz": "Tussenstand",
+          "wiatr_prog": "Inhalen vanaf wind",
+          "mroz_prog": "Vorst vanaf",
+          "upal_prog": "Hitte vanaf",
+          "temp_pokoj_prog": "Ruimte te warm vanaf",
+          "jasnosc_prog": "Helder vanaf",
+          "obecnosc_rano": "Wachten op aanwezigheid tot",
+          "wakacje_rozrzut": "Spreiding van tijden",
+          "wietrzenie_poz": "Ventilatiestand",
+          "drzwi_min": "Met open deur niet lager dan",
+          "granica_min": "Laagst",
+          "granica_max": "Hoogst",
+          "drobne_prog": "Veranderingen overslaan kleiner dan",
+          "reczny_min": "Na handmatige beweging wachten",
+          "po_kolei_s": "Tussenruimte tussen zonweringen",
+          "cisza_min": "Na start van HA wachten",
+          "spie_poz": "Stand in modus „Ik slaap”",
+          "alarm_poz": "Stand bij ingeschakeld alarm",
+          "nikogo_poz": "Stand als niemand thuis is",
+          "obiekt_odl_m": "Zon komt hooguit tot",
+          "okno_wys_m": "Raamhoogte",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "azymut": "Waar het raam op uitkijkt: 90 oost, 180 zuid, 270 west.",
+          "szer_slonca": "Hoeveel graden links en rechts van de raamrichting de zon binnenschijnt.",
+          "min_wys_slonca": "Bomen en huizen verbergen een lagere zon.",
+          "slonce_temp": "Buitentemperatuur vanaf welke de zonwering bij zon zakt.",
+          "slonce_poz": "0 % = dicht.",
+          "harm_tryb": "Met zonsopgang en -ondergang of op vaste tijden.",
+          "przesuniecie": "Minuten na zonsopgang en voor zonsondergang.",
+          "upal_prog": "Hoogste temperatuur in de voorspelling.",
+          "jasnosc_prog": "Lux of watt van zonnepanelen.",
+          "wakacje_rozrzut": "Plus min zoveel minuten, elke dag anders.",
+          "obiekt_odl_m": "Hoe ver van het raam tv of bureau staan.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "powiadomienia": {
+        "title": "Stap {nr} van {z}: Meldingen",
+        "description": "{pasek}\n\n**Wat:** Kies waarover je bericht wilt.\n\n**Waarom:** Je weet meteen welk apparaat een probleem heeft. Meldingen gaan naar HA en, als je wilt, naar je telefoon.{porada}",
+        "data": {
+          "powiadom": "Meld het me als",
+          "powiadom_gdzie": "Ook sturen naar",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "powiadom_gdzie": "De HA-app op je telefoon. Niets gekozen – alleen meldingen in HA.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "panel": {
+        "title": "Stap {nr} van {z}: Dashboard",
+        "description": "{pasek}\n\n**Wat:** Op welk dashboard de kaart komt.\n\n**Waarom:** De kaart verschijnt vanzelf, je hoeft niets te klikken.{porada}",
+        "data": {
+          "na_panel": "Kaart aan een dashboard toevoegen",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Kies een motor.",
+      "za_duzo": "Kies hooguit twee motoren (linker- en rechtervleugel)."
+    }
+  },
+  "options": {
+    "step": {
+      "tryb": {
+        "title": "Stap {nr} van {z}: Modus van de wizard",
+        "description": "{pasek}\n\n**Wat:** Kies hoeveel vragen je wilt zien.\n\n**Waarom:** Basis is genoeg voor de meesten. Geavanceerd toont alle opties en extra apparaten. De modus wijzig je later via „Configureren”.{porada}",
+        "data": {
+          "tryb": "Modus",
+          "kopiuj_z": "Instellingen van een ander apparaat kopiëren",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "kopiuj_z": "Leeg = opnieuw beginnen.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "mam": {
+        "title": "Stap {nr} van {z}: Wat je in huis hebt",
+        "description": "{pasek}\n\n**Wat:** Vink aan wat je hebt. De wizard heeft Home Assistant doorzocht en aangevinkt wat hij vond.\n\n**Waarom:** De wizard toont alleen stappen en functies voor aangevinkte apparaten. De rest voeg je later toe via „Configureren”.\n\nGevonden: {znalezione}{porada}",
+        "data": {
+          "mam": "Ik heb thuis",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "urzadzenie": {
+        "title": "Stap {nr} van {z}: Apparaat",
+        "description": "{pasek}\n\n**Wat:** Kies de motor (zonwering of poort), geef een naam en kies de ruimte.\n\n**Waarom:** Motor HA bestuurt deze motor, en met de ruimte praat je met Assist, bijv. „sluit de woonkamer”.{porada}",
+        "data": {
+          "rolety": "Motor (één of twee entiteiten)",
+          "name": "Naam",
+          "pokoj": "Ruimte",
+          "rodzaj_pokoju": "Soort ruimte (voor tips)",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "rolety": "Voor een raam met twee vleugels kies je er twee: eerst links, dan rechts.",
+          "name": "Leeg = naam van de motor.",
+          "pokoj": "Het apparaat komt in deze ruimte. Assist begrijpt dan „sluit de woonkamer”.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "rodzaj": {
+        "title": "Stap {nr} van {z}: Soort",
+        "description": "{pasek}\n\n**Wat:** Kies precies wat je hebt.\n\n**Waarom:** De kaart tekent dit apparaat en de automatisering weet wat ze kan gebruiken.{porada}",
+        "data": {
+          "oslona": "Soort",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "lamele": {
+        "title": "Stap {nr} van {z}: Lamellen",
+        "description": "{pasek}\n\n**Wat:** Stel het kantelen van de lamellen in.\n\n**Waarom:** Je laat licht binnen zonder de jaloezie op te trekken.{porada}",
+        "data": {
+          "lamele_kat": "Lamelhoek bij zon",
+          "lamele_tryb": "Lamelbesturing",
+          "lamele_noc": "Lamelhoek 's nachts",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "kolory": {
+        "title": "Stap {nr} van {z}: Kleuren",
+        "description": "{pasek}\n\n**Wat:** Kies de kleur van zonwering en kozijn.\n\n**Waarom:** Het raam op het scherm lijkt op het echte.{porada}",
+        "data": {
+          "kolor": "Kleur zonwering",
+          "rama": "Kleur kozijn",
+          "kolor_wlasny": "Eigen kleur zonwering",
+          "rama_wlasna": "Eigen kleur kozijn",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "okno": {
+        "title": "Stap {nr} van {z}: Raam",
+        "description": "{pasek}\n\n**Wat:** Hoeveel vleugels het raam heeft en hoe groot het op de kaart is.\n\n**Waarom:** Elke vleugel kan een eigen motor hebben.{porada}",
+        "data": {
+          "skrzydla": "Vleugels",
+          "wysokosc": "Hoogte op de kaart",
+          "odwroc": "Omgekeerde percentages",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "odwroc": "Aanzetten als de motor 100 % meldt bij gesloten zonwering.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "czujniki": {
+        "title": "Stap {nr} van {z}: Sensoren",
+        "description": "{pasek}\n\n**Wat:** Kies de openingssensoren van raam en deur.\n\n**Waarom:** De kaart toont een gekantelde of open vleugel, en de blokkering laat de zonwering nooit op een open raam zakken.{porada}",
+        "data": {
+          "czujnik_lewe": "Sensor linkervleugel",
+          "tryb_lewe": "Linkervleugel",
+          "czujnik_prawe": "Sensor rechtervleugel",
+          "tryb_prawe": "Rechtervleugel",
+          "czujnik_drzwi": "Sensor terrasdeur",
+          "czujnik_przeszkoda": "Obstakelsensor bij de deur",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "fotokomorka": {
+        "title": "Stap {nr} van {z}: Fotocel",
+        "description": "{pasek}\n\n**Wat:** Kies de obstakelsensor van de poort en de toestand die „er staat iets in de poort” betekent.\n\n**Waarom:** De kaart toont het obstakel en je krijgt een melding. De fotocel in de besturing stopt de poort nog steeds zelf.{porada}",
+        "data": {
+          "czujnik_foto": "Fotocel (obstakelsensor)",
+          "foto_stan": "Obstakel als de sensor de toestand heeft",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "foto_stan": "Meestal „on”. Voor een tekstsensor bijv. „obstructed” invullen.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "silnik": {
+        "title": "Stap {nr} van {z}: Motor",
+        "description": "{pasek}\n\n**Wat:** Vul de volledige looptijd in of laat 0.\n\n**Waarom:** De tekening beweegt zo snel als de echte motor. Bij 0 leert de kaart de tijd zelf na een paar bewegingen.{porada}",
+        "data": {
+          "czas": "Volledige looptijd",
+          "kalibruj": "Nu kalibreren (zonwering gaat omhoog, omlaag en omhoog)",
+          "predkosc_lewa": "Motorsnelheid – links",
+          "predkosc_prawa": "Motorsnelheid – rechts",
+          "brama_minuty": "Poort te lang open na",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "czas": "0 = automatisch: uit motorsnelheid, kalibratie of echte bewegingen.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "pogoda": {
+        "title": "Stap {nr} van {z}: Weer",
+        "description": "{pasek}\n\n**Wat:** Kies het weer en buitensensoren.\n\n**Waarom:** Achter het glas zie je het echte weer, en de automatisering beschermt de zonwering tegen wind, regen en zon.{porada}",
+        "data": {
+          "pogoda": "Weer",
+          "czujnik_temp": "Buitentemperatuur",
+          "czujnik_temp_pokoj": "Kamertemperatuur",
+          "czujnik_jasnosc": "Helderheid of zonnestroom",
+          "czujnik_wiatr": "Windmeter",
+          "czujnik_deszcz": "Regensensor",
+          "czujnik_drgania": "Trillingssensor zonnescherm",
+          "czujnik_ostrzezenia": "Weerwaarschuwingen (KNMI, Meteoalarm)",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "Een luxmeter of zonnestroom – in plaats van alleen de zonnestand.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "domownicy": {
+        "title": "Stap {nr} van {z}: Bewoners",
+        "description": "{pasek}\n\n**Wat:** Kies aanwezigheids-, bewegings- en bewonerssensoren.\n\n**Waarom:** De zonwering kan reageren op of er iemand in de ruimte of thuis is.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Aanwezigheidssensor (er is iemand)",
+          "czujnik_ruch": "Bewegingssensor (iemand kwam binnen)",
+          "osoby": "Bewoners",
+          "czujnik_dym": "Rookmelder",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Werkdag (Workday)",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "czujnik_swieta": "Workday-integratie – feestdagen tellen als weekend.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "automatyka": {
+        "title": "Stap {nr} van {z}: Automatisering",
+        "description": "{pasek}\n\n**Wat:** Zet de functies aan die de zonwering zelf mogen bewegen.\n\n**Waarom:** Je huis zorgt voor de zonwering zonder automatiseringen te schrijven. Alles staat uit tot je het aanzet.{porada}",
+        "data": {
+          "f_harmonogram": "Schema",
+          "f_slonce": "Zonwering",
+          "f_blokada": "Blokkering bij open raam",
+          "f_wiatr": "Wind",
+          "f_obecnosc": "Aanwezigheid",
+          "f_wakacje": "Vakantiemodus",
+          "f_licznik": "Motorteller",
+          "f_reczny": "Handmatig gaat voor",
+          "f_posrednia": "Tussenstand",
+          "f_dni": "Werkdagen en weekend",
+          "f_wietrzenie": "Ventilatiestand",
+          "f_drzwi": "Terrasdeur",
+          "f_oslepianie": "Verblindingsbescherming",
+          "f_zima": "Winter en zomer",
+          "f_jasnosc": "Helderheidssensor",
+          "f_temp_pokoj": "Kamertemperatuur",
+          "f_deszcz": "Regen",
+          "f_mroz": "Vorst",
+          "f_grad": "Hagel en waarschuwingen",
+          "f_drgania": "Trilling zonnescherm",
+          "f_upal": "Morgen hitte",
+          "f_dym": "Rook",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Niemand thuis",
+          "f_przeszkoda": "Obstakel bij de deur",
+          "f_spie": "Modus „Ik slaap”",
+          "f_granice": "Bewegingsgrenzen",
+          "f_drobne": "Geen kleine correcties",
+          "f_po_kolei": "Na elkaar",
+          "f_cisza": "Rust na herstart",
+          "f_proba": "Proefdraaien",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "f_harmonogram": "Opent 's ochtends en sluit 's avonds: op vaste tijden of met zonsopgang en -ondergang.",
+          "f_slonce": "Laat de zonwering zakken als de zon in dit raam schijnt en het warm is.",
+          "f_blokada": "Zakt nooit op een open of gekanteld raam. De overgeslagen beweging volgt na het sluiten.",
+          "f_wiatr": "Haalt buitenzonwering in bij harde wind.",
+          "f_obecnosc": "Blijft 's ochtends dicht tot iemand de ruimte binnenkomt.",
+          "f_wakacje": "Opent en sluit elke dag op een iets andere tijd, alsof er iemand thuis is.",
+          "f_licznik": "Telt bewegingen en looptijd, herinnert aan kalibreren.",
+          "f_reczny": "Beweeg je de zonwering met afstandsbediening of knop, dan wacht de automatisering.",
+          "f_posrednia": "Op de gekozen tijd stopt de zonwering halverwege.",
+          "f_dni": "Eigen tijden in het weekend en op feestdagen.",
+          "f_wietrzenie": "Bij een gekanteld raam blijft de zonwering hoger zodat lucht stroomt.",
+          "f_drzwi": "Met open deur zakt de zonwering niet lager dan de gekozen stand.",
+          "f_oslepianie": "Zakt net zo ver dat de zon niet verder komt dan tv of bureau.",
+          "f_zima": "In de winter opent hij in de zon (gratis warmte), in de zomer geeft hij schaduw.",
+          "f_jasnosc": "Een luxmeter of zonnepanelen beslissen over de zon.",
+          "f_temp_pokoj": "Geeft schaduw als het in de ruimte te warm wordt.",
+          "f_deszcz": "Haalt zonnescherm, screen en buitenjaloezie in bij regen.",
+          "f_mroz": "Bij vorst beweegt buitenzonwering niet, zodat ze niet vastvriest.",
+          "f_grad": "Bij een waarschuwing haalt hij zonneschermen in en sluit rolluiken om het glas te beschermen.",
+          "f_drgania": "Haalt het zonnescherm in bij een harde windstoot.",
+          "f_upal": "Voorspelt het weer hitte, dan zakt de zonwering 's ochtends voordat de ruimte opwarmt.",
+          "f_dym": "Bij rookalarm opent hij de zonwering – een vluchtweg.",
+          "f_alarm": "Sluit de zonwering als het alarm is ingeschakeld.",
+          "f_nikogo": "Sluit de zonwering als iedereen weg is.",
+          "f_przeszkoda": "Zakt niet als de sensor iets in de doorgang ziet.",
+          "f_spie": "Een schakelaar op het apparaat: de zonwering blijft dicht tot je hem uitzet.",
+          "f_granice": "De zonwering beweegt alleen binnen het gekozen bereik, bijv. 10–90 %.",
+          "f_drobne": "Slaat veranderingen van een paar procent over.",
+          "f_po_kolei": "Zonweringen in huis bewegen met een paar seconden ertussen.",
+          "f_cisza": "Na het starten van HA wacht de automatisering een paar minuten.",
+          "f_proba": "Toont wat de automatisering zou doen, maar beweegt de zonwering niet.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "ustawienia": {
+        "title": "Stap {nr} van {z}: Instellingen",
+        "description": "{pasek}\n\n**Wat:** Pas de ingeschakelde functies aan.\n\n**Waarom:** De standaardwaarden passen bij de meeste huizen.{porada}",
+        "data": {
+          "azymut": "Richting van het raam",
+          "szer_slonca": "Zonbreedte in het raam",
+          "min_wys_slonca": "Minimale zonhoogte",
+          "slonce_temp": "Beschermen vanaf",
+          "slonce_poz": "Stand bij zon",
+          "harm_tryb": "Openingstijden",
+          "przesuniecie": "Verschuiving",
+          "otworz": "Openen om",
+          "zamknij": "Sluiten om",
+          "otworz_weekend": "In het weekend openen om",
+          "zamknij_weekend": "In het weekend sluiten om",
+          "posrednia_godz": "Tussenstand vanaf",
+          "posrednia_poz": "Tussenstand",
+          "wiatr_prog": "Inhalen vanaf wind",
+          "mroz_prog": "Vorst vanaf",
+          "upal_prog": "Hitte vanaf",
+          "temp_pokoj_prog": "Ruimte te warm vanaf",
+          "jasnosc_prog": "Helder vanaf",
+          "obecnosc_rano": "Wachten op aanwezigheid tot",
+          "wakacje_rozrzut": "Spreiding van tijden",
+          "wietrzenie_poz": "Ventilatiestand",
+          "drzwi_min": "Met open deur niet lager dan",
+          "granica_min": "Laagst",
+          "granica_max": "Hoogst",
+          "drobne_prog": "Veranderingen overslaan kleiner dan",
+          "reczny_min": "Na handmatige beweging wachten",
+          "po_kolei_s": "Tussenruimte tussen zonweringen",
+          "cisza_min": "Na start van HA wachten",
+          "spie_poz": "Stand in modus „Ik slaap”",
+          "alarm_poz": "Stand bij ingeschakeld alarm",
+          "nikogo_poz": "Stand als niemand thuis is",
+          "obiekt_odl_m": "Zon komt hooguit tot",
+          "okno_wys_m": "Raamhoogte",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "azymut": "Waar het raam op uitkijkt: 90 oost, 180 zuid, 270 west.",
+          "szer_slonca": "Hoeveel graden links en rechts van de raamrichting de zon binnenschijnt.",
+          "min_wys_slonca": "Bomen en huizen verbergen een lagere zon.",
+          "slonce_temp": "Buitentemperatuur vanaf welke de zonwering bij zon zakt.",
+          "slonce_poz": "0 % = dicht.",
+          "harm_tryb": "Met zonsopgang en -ondergang of op vaste tijden.",
+          "przesuniecie": "Minuten na zonsopgang en voor zonsondergang.",
+          "upal_prog": "Hoogste temperatuur in de voorspelling.",
+          "jasnosc_prog": "Lux of watt van zonnepanelen.",
+          "wakacje_rozrzut": "Plus min zoveel minuten, elke dag anders.",
+          "obiekt_odl_m": "Hoe ver van het raam tv of bureau staan.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      },
+      "powiadomienia": {
+        "title": "Stap {nr} van {z}: Meldingen",
+        "description": "{pasek}\n\n**Wat:** Kies waarover je bericht wilt.\n\n**Waarom:** Je weet meteen welk apparaat een probleem heeft. Meldingen gaan naar HA en, als je wilt, naar je telefoon.{porada}",
+        "data": {
+          "powiadom": "Meld het me als",
+          "powiadom_gdzie": "Ook sturen naar",
+          "wstecz": "Terug naar de vorige stap"
+        },
+        "data_description": {
+          "powiadom_gdzie": "De HA-app op je telefoon. Niets gekozen – alleen meldingen in HA.",
+          "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Kies een motor.",
+      "za_duzo": "Kies hooguit twee motoren (linker- en rechtervleugel)."
+    }
+  },
+  "selector": {
+    "tryb": {
+      "options": {
+        "podstawowy": "Basis – een paar eenvoudige vragen",
+        "zaawansowany": "Geavanceerd – alle opties"
+      }
+    },
+    "mam": {
+      "options": {
+        "zew": "Buitenzonwering (rolluik, zonnescherm, screen)",
+        "lamele": "Zonwering met kantelbare lamellen",
+        "brama": "Oprijpoort of garagedeur",
+        "foto": "Fotocel van de poort zichtbaar in HA",
+        "okno": "Raamsensor",
+        "drzwi": "Sensor terrasdeur",
+        "obecnosc": "Aanwezigheidssensor (er is iemand)",
+        "ruch": "Bewegingssensor (iemand kwam binnen)",
+        "pogoda": "Weer",
+        "temp": "Buitentemperatuur",
+        "grupy": "Meerdere apparaten in huis",
+        "temp_pokoj": "Kamertemperatuur",
+        "jasnosc": "Luxmeter of zonnepanelen",
+        "wiatr": "Windmeter",
+        "deszcz": "Regensensor",
+        "drgania": "Trillingssensor zonnescherm",
+        "ostrzezenia": "Weerwaarschuwingen",
+        "dym": "Rookmelder",
+        "alarm": "Alarm",
+        "osoby": "Telefoons van bewoners",
+        "przeszkoda": "Obstakelsensor bij de deur"
+      }
+    },
+    "pokoje": {
+      "options": {
+        "salon": "Woonkamer",
+        "sypialnia": "Slaapkamer",
+        "kuchnia": "Keuken",
+        "dziecko": "Kinderkamer",
+        "gabinet": "Werkkamer",
+        "lazienka": "Badkamer",
+        "jadalnia": "Eetkamer",
+        "przedpokoj": "Hal",
+        "inny": "Anders"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "Eén vleugel",
+        "2": "Twee vleugels"
+      }
+    },
+    "tryby": {
+      "options": {
+        "uchyl": "Kantelt",
+        "otworz": "Gaat open"
+      }
+    },
+    "lamele_tryb": {
+      "options": {
+        "auto": "Automatisch (zon, nacht)",
+        "staly": "Altijd dezelfde hoek",
+        "nocny": "Alleen 's nachts"
+      }
+    },
+    "harm_tryb": {
+      "options": {
+        "slonce": "Zonsopgang en -ondergang",
+        "godziny": "Vaste tijden"
+      }
+    },
+    "powiadomienia": {
+      "options": {
+        "nie_odpowiada": "Reageert niet",
+        "nie_dojechala": "Stand niet bereikt",
+        "bateria": "Lege batterij in motor of sensor",
+        "czujnik": "Sensor niet beschikbaar",
+        "automatyka": "Probleem automatisering (blokkering, fout, kalibratie)",
+        "brama_otwarta": "Poort te lang open",
+        "brama_niedomknieta": "Poort niet gesloten",
+        "przeszkoda": "Obstakel in de poort"
+      }
+    },
+    "kroki": {
+      "options": {
+        "tryb": "Modus",
+        "mam": "Wat je hebt",
+        "urzadzenie": "Apparaat",
+        "rodzaj": "Soort",
+        "lamele": "Lamellen",
+        "kolory": "Kleuren",
+        "okno": "Raam",
+        "czujniki": "Sensoren",
+        "fotokomorka": "Fotocel",
+        "silnik": "Motor",
+        "pogoda": "Weer",
+        "domownicy": "Bewoners",
+        "automatyka": "Automatisering",
+        "ustawienia": "Instellingen",
+        "powiadomienia": "Meldingen",
+        "panel": "Dashboard"
+      }
+    },
+    "porady": {
+      "options": {
+        "ogolne_tryb": "Twijfel je? Kies Basis. Je kunt het altijd wijzigen.",
+        "ogolne_mam": "Weet je niet of je iets hebt? Laat het zoals de wizard aanvinkte.",
+        "ogolne_kolory": "De kleur is alleen op het scherm, aan de zonwering verandert niets.",
+        "ogolne_okno": "Twee vleugels met één rolluik? Kies „Twee vleugels” en één motor.",
+        "ogolne_silnik": "Laat 0 – de kaart meet de tijd zelf na een paar bewegingen.",
+        "ogolne_pogoda": "Een weerentiteit is genoeg. Een windmeter beschermt nauwkeuriger.",
+        "ogolne_automatyka": "Begin met één functie en kijk hoe die werkt. De sensor „Reden” toont waarom de zonwering bewoog.",
+        "ogolne_lamele": "Een hoek van 45° laat licht binnen zonder dat de zon recht de kamer in schijnt.",
+        "ogolne_fotokomorka": "Geen fotocel in HA? De poort werkt hetzelfde, alleen weet de kaart niets van het obstakel.",
+        "sypialnia_rodzaj": "Voor een slaapkamer is een verduisterend of duo-rolgordijn het best. Ochtendlicht wekt je niet.",
+        "sypialnia_automatyka": "We raden het schema aan (zonsopgang 's ochtends, zonsondergang 's avonds) en de raamblokkering als je met gekanteld raam slaapt.",
+        "sypialnia_czujniki": "In de slaapkamer staat het raam 's nachts vaak gekanteld. Kies „Kantelt”.",
+        "salon_rodzaj": "In de woonkamer kiest men vaak duo-rolgordijn of plissé – ze laten licht door en houden inkijk tegen.",
+        "salon_automatyka": "We raden de zonwering aan. Met een aanwezigheidssensor opent de zonwering als iemand 's ochtends binnenkomt.",
+        "kuchnia_rodzaj": "Voor de keuken past een cassetterolgordijn of aluminium jaloezie – makkelijk schoon te maken.",
+        "kuchnia_automatyka": "We raden de blokkering bij open raam aan – bij het koken staat het raam vaak open.",
+        "dziecko_rodzaj": "In de kinderkamer helpt een verduisterend rolgordijn bij het middagdutje.",
+        "dziecko_automatyka": "We raden het nachtschema en de raamblokkering aan.",
+        "gabinet_rodzaj": "In de werkkamer verminderen een jaloezie of screen weerspiegeling op het scherm.",
+        "gabinet_automatyka": "We raden de verblindingsbescherming aan – de zonwering zakt maar zo ver als nodig.",
+        "lazienka_rodzaj": "Kies voor de badkamer vochtbestendige zonwering: aluminium jaloezie of plissé.",
+        "lazienka_automatyka": "We raden de raamblokkering aan – na het baden staat het raam vaak open."
+      }
+    },
+    "oslony": {
+      "options": {
+        "pelna": "Vrijhangend rolgordijn",
+        "kasetowa": "Cassetterolgordijn",
+        "zebra": "Duo-rolgordijn",
+        "zaciemniajaca": "Verduisterend rolgordijn",
+        "plisa": "Plissé",
+        "plaster": "Dupli-plissé",
+        "rzymska": "Vouwgordijn",
+        "zaluzja": "Aluminium jaloezie",
+        "drewniana": "Houten jaloezie",
+        "natynkowa": "Opbouwrolluik",
+        "podtynkowa": "Inbouwrolluik",
+        "zewnetrzna": "Opzetrolluik",
+        "perforowana": "Geperforeerd rolluik",
+        "fasadowa": "Buitenjaloezie C80",
+        "fasadowaz": "Buitenjaloezie Z90",
+        "markiza": "Terrasscherm",
+        "screen": "ZIP-screen",
+        "pionowa": "Verticale lamellen",
+        "zaslona": "Zijgordijn",
+        "przesuwna": "Schuifpoort",
+        "skrzydlowa": "Draaipoort",
+        "segmentowa": "Sectionaaldeur",
+        "uchylna": "Kanteldeur",
+        "roletowa": "Roldeur"
+      }
+    },
+    "kolory": {
+      "options": {
+        "czarny": "zwart",
+        "grafit": "grafiet",
+        "szary": "grijs",
+        "popiel": "asgrijs",
+        "srebrny": "zilver",
+        "bialy": "wit",
+        "kremowy": "crème",
+        "piaskowy": "zand",
+        "bezowy": "beige",
+        "cappuccino": "cappuccino",
+        "mokka": "mokka",
+        "braz": "bruin",
+        "wenge": "wengé",
+        "stalowy": "staal",
+        "granat": "marineblauw",
+        "blekitny": "hemelsblauw",
+        "niebieski": "blauw",
+        "morski": "petrol",
+        "turkus": "turquoise",
+        "mietowy": "mint",
+        "zielony": "groen",
+        "butelkowy": "flessengroen",
+        "oliwka": "olijf",
+        "limonka": "limoen",
+        "zolty": "geel",
+        "musztardowy": "mosterd",
+        "pomaranczowy": "oranje",
+        "terakota": "terracotta",
+        "czerwony": "rood",
+        "bordo": "bordeaux",
+        "pudrowy": "poederroze",
+        "rozowy": "roze",
+        "lawendowy": "lavendel",
+        "fiolet": "violet",
+        "sliwkowy": "pruim"
+      }
+    },
+    "ramy": {
+      "options": {
+        "biala": "wit",
+        "kremowa": "crèmewit",
+        "jasnoszara": "lichtgrijs",
+        "srebrna": "zilver",
+        "szary_agat": "agaatgrijs",
+        "szara": "grijs",
+        "szary_kwarc": "kwartsgrijs",
+        "bazaltowa": "basaltgrijs",
+        "antracyt": "antraciet",
+        "czarna": "zwart",
+        "zielona": "groen",
+        "granatowa": "staalblauw",
+        "bordowa": "wijnrood",
+        "braz": "bruin",
+        "sosna": "grenen",
+        "dab_jasny": "licht eiken",
+        "dab_sheffield": "Sheffield eiken",
+        "winchester": "Winchester",
+        "oregon": "Oregon",
+        "zloty_dab": "golden oak",
+        "siena": "Siena",
+        "orzech": "noten",
+        "mahon": "mahonie",
+        "dab_bagienny": "moeraseiken"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Kalibreren"
+      },
+      "wznow": {
+        "name": "Automatisering hervatten"
+      }
+    },
+    "sensor": {
+      "powod": {
+        "name": "Reden van beweging",
+        "state": {
+          "brak": "Geen automatisering",
+          "wylaczona": "Automatisering uit",
+          "cisza": "Rust na herstart",
+          "dym": "Rook – open",
+          "wiatr": "Wind – ingehaald",
+          "drgania": "Trilling – ingehaald",
+          "grad": "Waarschuwing – beschermd",
+          "deszcz": "Regen – ingehaald",
+          "mroz": "Vorst – geen beweging",
+          "pauza": "Gepauzeerd",
+          "reczny": "Handmatig – pauze",
+          "alarm": "Alarm",
+          "spie": "Ik slaap",
+          "nikogo": "Niemand thuis",
+          "wakacje": "Vakantie – dag",
+          "wakacje_noc": "Vakantie – nacht",
+          "harm_dzien": "Schema – dag",
+          "harm_noc": "Schema – nacht",
+          "posrednia": "Tussenstand",
+          "obecnosc": "Iemand is in de ruimte",
+          "czeka_obecnosc": "Wacht tot iemand binnenkomt",
+          "zima_noc": "Winter – nacht",
+          "zima_slonce": "Winter – zon verwarmt",
+          "slonce": "Zon in het raam",
+          "jasnosc": "Helder",
+          "temp_pokoj": "Ruimte te warm",
+          "upal": "Hitte",
+          "oslepianie": "Verblinding",
+          "przeszkoda": "Obstakel",
+          "drzwi": "Deur open",
+          "wietrzenie": "Ventilatie",
+          "blokada": "Raam open – geblokkeerd"
+        }
+      },
+      "ruchy": {
+        "name": "Motorbewegingen"
+      },
+      "czas_pracy": {
+        "name": "Looptijd motor"
+      }
+    },
+    "switch": {
+      "automatyka": {
+        "name": "Automatisering"
+      },
+      "pauza": {
+        "name": "Pauze voor vandaag"
+      },
+      "spie": {
+        "name": "Ik slaap"
+      },
+      "wakacje": {
+        "name": "Vakantiemodus"
+      }
+    }
+  },
+  "exceptions": {
+    "tytul": {
+      "message": "{nazwa} – probleem"
+    },
+    "nie_odpowiada": {
+      "message": "{nazwa}: de motor reageert niet ({encje}). Controleer stroom of bereik."
+    },
+    "nie_dojechala": {
+      "message": "{nazwa}: moest {cel} % bereiken, maar staat op {jest} %."
+    },
+    "bateria": {
+      "message": "{nazwa}: lege batterij – {lista}."
+    },
+    "czujnik": {
+      "message": "{nazwa}: sensor niet beschikbaar – {lista}."
+    },
+    "automatyka": {
+      "message": "{nazwa}: de automatisering bewoog de zonwering niet – {powod}."
+    },
+    "kalibracja": {
+      "message": "{nazwa}: de motor maakte {ruchy} bewegingen sinds de kalibratie. Druk op „Kalibreren” op het apparaat."
+    },
+    "brama_otwarta": {
+      "message": "{nazwa}: de poort staat langer dan {minuty} min open."
+    },
+    "brama_niedomknieta": {
+      "message": "{nazwa}: de poort is niet gesloten."
+    },
+    "przeszkoda": {
+      "message": "{nazwa}: er staat iets in de poort (fotocel)."
+    },
+    "nie_motor_ha": {
+      "message": "Dit is geen Motor HA-apparaat."
+    },
+    "powod_brak": {
+      "message": "Geen automatisering"
+    },
+    "powod_wylaczona": {
+      "message": "Automatisering uit"
+    },
+    "powod_cisza": {
+      "message": "Rust na herstart"
+    },
+    "powod_dym": {
+      "message": "Rook – open"
+    },
+    "powod_wiatr": {
+      "message": "Wind – ingehaald"
+    },
+    "powod_drgania": {
+      "message": "Trilling – ingehaald"
+    },
+    "powod_grad": {
+      "message": "Waarschuwing – beschermd"
+    },
+    "powod_deszcz": {
+      "message": "Regen – ingehaald"
+    },
+    "powod_mroz": {
+      "message": "Vorst – geen beweging"
+    },
+    "powod_pauza": {
+      "message": "Gepauzeerd"
+    },
+    "powod_reczny": {
+      "message": "Handmatig – pauze"
+    },
+    "powod_alarm": {
+      "message": "Alarm"
+    },
+    "powod_spie": {
+      "message": "Ik slaap"
+    },
+    "powod_nikogo": {
+      "message": "Niemand thuis"
+    },
+    "powod_wakacje": {
+      "message": "Vakantie – dag"
+    },
+    "powod_wakacje_noc": {
+      "message": "Vakantie – nacht"
+    },
+    "powod_harm_dzien": {
+      "message": "Schema – dag"
+    },
+    "powod_harm_noc": {
+      "message": "Schema – nacht"
+    },
+    "powod_posrednia": {
+      "message": "Tussenstand"
+    },
+    "powod_obecnosc": {
+      "message": "Iemand is in de ruimte"
+    },
+    "powod_czeka_obecnosc": {
+      "message": "Wacht tot iemand binnenkomt"
+    },
+    "powod_zima_noc": {
+      "message": "Winter – nacht"
+    },
+    "powod_zima_slonce": {
+      "message": "Winter – zon verwarmt"
+    },
+    "powod_slonce": {
+      "message": "Zon in het raam"
+    },
+    "powod_jasnosc": {
+      "message": "Helder"
+    },
+    "powod_temp_pokoj": {
+      "message": "Ruimte te warm"
+    },
+    "powod_upal": {
+      "message": "Hitte"
+    },
+    "powod_oslepianie": {
+      "message": "Verblinding"
+    },
+    "powod_przeszkoda": {
+      "message": "Obstakel"
+    },
+    "powod_drzwi": {
+      "message": "Deur open"
+    },
+    "powod_wietrzenie": {
+      "message": "Ventilatie"
+    },
+    "powod_blokada": {
+      "message": "Raam open – geblokkeerd"
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} – herstarten",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Motor HA {wersja} – herstarten",
+            "description": "De nieuwe versie is geïnstalleerd. Klik op „Verzenden” om Home Assistant te herstarten."
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "wstrzymaj": {
+      "name": "Automatisering pauzeren",
+      "description": "De automatisering beweegt het apparaat niet gedurende de opgegeven tijd (leeg = tot het eind van de dag).",
+      "fields": {
+        "entity_id": {
+          "name": "Apparaat",
+          "description": "Een Motor HA-apparaat."
+        },
+        "minuty": {
+          "name": "Minuten",
+          "description": "Leeg = tot het eind van de dag."
+        }
+      }
+    },
+    "wznow": {
+      "name": "Automatisering hervatten",
+      "description": "Beëindigt de pauze en kijkt meteen waar de zonwering moet staan.",
+      "fields": {
+        "entity_id": {
+          "name": "Apparaat",
+          "description": "Een Motor HA-apparaat."
+        }
+      }
+    },
+    "przelicz": {
+      "name": "Nu controleren",
+      "description": "De automatisering berekent de stand meteen opnieuw.",
+      "fields": {
+        "entity_id": {
+          "name": "Apparaat",
+          "description": "Een Motor HA-apparaat."
+        }
+      }
+    },
+    "kalibruj": {
+      "name": "Kalibreren",
+      "description": "Meet de echte looptijd.",
+      "fields": {
+        "entity_id": {
+          "name": "Apparaat",
+          "description": "Een Motor HA-apparaat."
+        }
+      }
+    },
+    "ustaw": {
+      "name": "Stand instellen",
+      "description": "Stelt de stand (en lamellen) in zoals de automatisering – zonder pauze na handmatige beweging.",
+      "fields": {
+        "entity_id": {
+          "name": "Apparaat",
+          "description": "Een Motor HA-apparaat."
+        },
+        "pozycja": {
+          "name": "Stand",
+          "description": "100 = open."
+        },
+        "lamele": {
+          "name": "Lamellen",
+          "description": "Lamelhoek."
+        }
+      }
+    }
+  }
+}

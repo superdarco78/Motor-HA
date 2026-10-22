@@ -1,0 +1,1157 @@
+{
+  "title": "Motor HA",
+  "config": {
+    "step": {
+      "tryb": {
+        "title": "第 {nr} 步,共 {z} 步: 向导模式",
+        "description": "{pasek}\n\n**内容:** 选择要看到多少问题。\n\n**用途:** 大多数人用基本模式就够了。高级模式显示所有选项和额外设备。之后可在「配置」中更改模式。{porada}",
+        "data": {
+          "tryb": "模式",
+          "kopiuj_z": "从其他设备复制设置",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "kopiuj_z": "留空 = 从头开始。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "mam": {
+        "title": "第 {nr} 步,共 {z} 步: 家里有什么",
+        "description": "{pasek}\n\n**内容:** 勾选您拥有的设备。向导已检查 Home Assistant 并勾选了找到的设备。\n\n**用途:** 向导只显示与勾选设备相关的步骤和功能。其余的可以之后在「配置」中添加。\n\n已找到:{znalezione}{porada}",
+        "data": {
+          "mam": "家里有",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "urzadzenie": {
+        "title": "第 {nr} 步,共 {z} 步: 设备",
+        "description": "{pasek}\n\n**内容:** 选择电机(遮阳或大门),命名并选择房间。\n\n**用途:** Motor HA 控制这个电机,设置房间后可以对 Assist 说「关上客厅」。{porada}",
+        "data": {
+          "rolety": "电机(一个或两个实体)",
+          "name": "名称",
+          "pokoj": "房间",
+          "rodzaj_pokoju": "房间类型(用于提示)",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "rolety": "两扇窗请选择两个:先左后右。",
+          "name": "留空 = 电机名称。",
+          "pokoj": "设备会放入这个房间。Assist 就能听懂「关上客厅」。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "rodzaj": {
+        "title": "第 {nr} 步,共 {z} 步: 类型",
+        "description": "{pasek}\n\n**内容:** 准确选择您拥有的类型。\n\n**用途:** 卡片会画出这个设备,自动化也知道可以使用什么。{porada}",
+        "data": {
+          "oslona": "类型",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "lamele": {
+        "title": "第 {nr} 步,共 {z} 步: 叶片",
+        "description": "{pasek}\n\n**内容:** 设置叶片角度。\n\n**用途:** 不用拉起百叶帘也能让光线进来。{porada}",
+        "data": {
+          "lamele_kat": "阳光下的叶片角度",
+          "lamele_tryb": "叶片控制",
+          "lamele_noc": "夜间叶片角度",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "kolory": {
+        "title": "第 {nr} 步,共 {z} 步: 颜色",
+        "description": "{pasek}\n\n**内容:** 选择遮阳和窗框的颜色。\n\n**用途:** 屏幕上的窗户看起来和真的一样。{porada}",
+        "data": {
+          "kolor": "遮阳颜色",
+          "rama": "窗框颜色",
+          "kolor_wlasny": "自定义遮阳颜色",
+          "rama_wlasna": "自定义窗框颜色",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "okno": {
+        "title": "第 {nr} 步,共 {z} 步: 窗户",
+        "description": "{pasek}\n\n**内容:** 窗户有几扇以及在卡片上的大小。\n\n**用途:** 每扇窗都可以有自己的电机。{porada}",
+        "data": {
+          "skrzydla": "窗扇",
+          "wysokosc": "卡片上的高度",
+          "odwroc": "反转百分比",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "odwroc": "如果遮阳关闭时电机显示 100 %,请开启。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "czujniki": {
+        "title": "第 {nr} 步,共 {z} 步: 传感器",
+        "description": "{pasek}\n\n**内容:** 选择窗户和门的开关传感器。\n\n**用途:** 卡片会显示倾开或打开的窗扇,锁定功能绝不会把遮阳放到开着的窗户上。{porada}",
+        "data": {
+          "czujnik_lewe": "左窗扇传感器",
+          "tryb_lewe": "左窗扇",
+          "czujnik_prawe": "右窗扇传感器",
+          "tryb_prawe": "右窗扇",
+          "czujnik_drzwi": "露台门传感器",
+          "czujnik_przeszkoda": "门口障碍物传感器",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "fotokomorka": {
+        "title": "第 {nr} 步,共 {z} 步: 光电传感器",
+        "description": "{pasek}\n\n**内容:** 选择大门的障碍物传感器以及表示「门口有东西」的状态。\n\n**用途:** 卡片会显示障碍物并通知您。大门仍由控制器里的光电传感器自行停止。{porada}",
+        "data": {
+          "czujnik_foto": "光电传感器(障碍物传感器)",
+          "foto_stan": "传感器处于此状态时视为障碍",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "foto_stan": "通常是「on」。文字类传感器请输入如「obstructed」。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "silnik": {
+        "title": "第 {nr} 步,共 {z} 步: 电机",
+        "description": "{pasek}\n\n**内容:** 输入完整行程时间,或保留 0。\n\n**用途:** 画面移动速度与真实电机一致。为 0 时,卡片会在几次移动后自动学习时间。{porada}",
+        "data": {
+          "czas": "完整行程时间",
+          "kalibruj": "立即校准(遮阳会上、下、再上移动)",
+          "predkosc_lewa": "电机速度 – 左",
+          "predkosc_prawa": "电机速度 – 右",
+          "brama_minuty": "大门开启过久的时间",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "czas": "0 = 自动:根据电机速度、校准或实际移动。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "pogoda": {
+        "title": "第 {nr} 步,共 {z} 步: 天气",
+        "description": "{pasek}\n\n**内容:** 选择天气和室外传感器。\n\n**用途:** 窗外显示真实天气,自动化会保护遮阳免受风、雨和阳光影响。{porada}",
+        "data": {
+          "pogoda": "天气",
+          "czujnik_temp": "室外温度",
+          "czujnik_temp_pokoj": "室内温度",
+          "czujnik_jasnosc": "亮度或太阳能板功率",
+          "czujnik_wiatr": "风速计",
+          "czujnik_deszcz": "雨水传感器",
+          "czujnik_drgania": "遮阳篷振动传感器",
+          "czujnik_ostrzezenia": "天气预警(Meteoalarm)",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "照度计或太阳能板功率 – 不只看太阳位置。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "domownicy": {
+        "title": "第 {nr} 步,共 {z} 步: 家人",
+        "description": "{pasek}\n\n**内容:** 选择在场传感器、移动传感器和家人。\n\n**用途:** 遮阳可以根据房间或家里是否有人做出反应。{porada}",
+        "data": {
+          "czujnik_obecnosc": "在场传感器(有人)",
+          "czujnik_ruch": "移动传感器(有人进入)",
+          "osoby": "家人",
+          "czujnik_dym": "烟雾传感器",
+          "czujnik_alarm": "报警系统",
+          "czujnik_swieta": "工作日(Workday)",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "czujnik_swieta": "Workday 集成 – 节假日按休息日处理。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "automatyka": {
+        "title": "第 {nr} 步,共 {z} 步: 自动化",
+        "description": "{pasek}\n\n**内容:** 开启可以自动移动遮阳的功能。\n\n**用途:** 无需编写自动化,家会自己照顾遮阳。在您开启前全部关闭。{porada}",
+        "data": {
+          "f_harmonogram": "时间表",
+          "f_slonce": "遮阳防晒",
+          "f_blokada": "开窗锁定",
+          "f_wiatr": "风",
+          "f_obecnosc": "在场",
+          "f_wakacje": "度假模式",
+          "f_licznik": "电机计数器",
+          "f_reczny": "手动优先",
+          "f_posrednia": "中间位置",
+          "f_dni": "工作日和周末",
+          "f_wietrzenie": "通风位置",
+          "f_drzwi": "露台门",
+          "f_oslepianie": "防眩光",
+          "f_zima": "冬季和夏季",
+          "f_jasnosc": "亮度传感器",
+          "f_temp_pokoj": "室内温度",
+          "f_deszcz": "雨",
+          "f_mroz": "霜冻",
+          "f_grad": "冰雹和预警",
+          "f_drgania": "遮阳篷振动",
+          "f_upal": "明天高温",
+          "f_dym": "烟雾",
+          "f_alarm": "报警系统",
+          "f_nikogo": "家里没人",
+          "f_przeszkoda": "门口障碍物",
+          "f_spie": "睡眠模式",
+          "f_granice": "行程范围",
+          "f_drobne": "不做微调",
+          "f_po_kolei": "依次而非同时",
+          "f_cisza": "重启后静默",
+          "f_proba": "试运行",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "f_harmonogram": "早上打开、晚上关闭:按固定时间或随日出日落。",
+          "f_slonce": "阳光照进这扇窗且天气暖和时放下遮阳。",
+          "f_blokada": "绝不放到开着或倾开的窗户上。窗户关上后再执行被跳过的动作。",
+          "f_wiatr": "大风时收起室外遮阳。",
+          "f_obecnosc": "早上保持关闭,直到有人进入房间。",
+          "f_wakacje": "每天在略有不同的时间开关,看起来像有人在家。",
+          "f_licznik": "统计移动次数和运行时间,提醒校准。",
+          "f_reczny": "用遥控器或按钮移动遮阳时,自动化会等待。",
+          "f_posrednia": "在设定时间遮阳停在中间。",
+          "f_dni": "周末和节假日使用单独的时间。",
+          "f_wietrzenie": "窗户倾开时遮阳保持较高,便于通风。",
+          "f_drzwi": "门开着时遮阳不会低于设定位置。",
+          "f_oslepianie": "只放下到阳光照不到电视或书桌之外的程度。",
+          "f_zima": "冬天有阳光时打开(免费取暖),夏天遮阴。",
+          "f_jasnosc": "由照度计或太阳能板判断阳光。",
+          "f_temp_pokoj": "房间太热时遮阴。",
+          "f_deszcz": "下雨时收起遮阳篷、卷帘和外置百叶。",
+          "f_mroz": "霜冻时室外遮阳不动,防止冻住。",
+          "f_grad": "有预警时收起遮阳篷、关闭卷帘以保护玻璃。",
+          "f_drgania": "强阵风时收起遮阳篷。",
+          "f_upal": "预报高温时,在房间变热前的早上放下遮阳。",
+          "f_dym": "烟雾报警时打开遮阳 – 留出逃生通道。",
+          "f_alarm": "报警系统布防时关闭遮阳。",
+          "f_nikogo": "所有人离开后关闭遮阳。",
+          "f_przeszkoda": "传感器检测到通道有东西时不放下。",
+          "f_spie": "设备上的开关:关闭开关前遮阳保持关闭。",
+          "f_granice": "遮阳只在设定范围内移动,如 10–90 %。",
+          "f_drobne": "忽略几个百分点的变化。",
+          "f_po_kolei": "家里的遮阳间隔几秒依次启动。",
+          "f_cisza": "HA 启动后自动化等待几分钟。",
+          "f_proba": "显示自动化会做什么,但不移动遮阳。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "ustawienia": {
+        "title": "第 {nr} 步,共 {z} 步: 设置",
+        "description": "{pasek}\n\n**内容:** 调整已开启的功能。\n\n**用途:** 默认值适合大多数家庭。{porada}",
+        "data": {
+          "azymut": "窗户朝向",
+          "szer_slonca": "窗户日照宽度",
+          "min_wys_slonca": "最低太阳高度",
+          "slonce_temp": "防晒起始温度",
+          "slonce_poz": "阳光下的位置",
+          "harm_tryb": "开关时间",
+          "przesuniecie": "偏移",
+          "otworz": "打开时间",
+          "zamknij": "关闭时间",
+          "otworz_weekend": "周末打开时间",
+          "zamknij_weekend": "周末关闭时间",
+          "posrednia_godz": "中间位置开始时间",
+          "posrednia_poz": "中间位置",
+          "wiatr_prog": "收起的风速",
+          "mroz_prog": "霜冻温度",
+          "upal_prog": "高温温度",
+          "temp_pokoj_prog": "室内过热温度",
+          "jasnosc_prog": "明亮阈值",
+          "obecnosc_rano": "等待有人直到",
+          "wakacje_rozrzut": "时间浮动",
+          "wietrzenie_poz": "通风位置",
+          "drzwi_min": "门开时不低于",
+          "granica_min": "最低",
+          "granica_max": "最高",
+          "drobne_prog": "忽略小于此值的变化",
+          "reczny_min": "手动移动后等待",
+          "po_kolei_s": "遮阳之间的间隔",
+          "cisza_min": "HA 启动后等待",
+          "spie_poz": "睡眠模式位置",
+          "alarm_poz": "布防时的位置",
+          "nikogo_poz": "无人时的位置",
+          "obiekt_odl_m": "阳光最远照到",
+          "okno_wys_m": "窗户高度",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "azymut": "窗户朝向:90 东,180 南,270 西。",
+          "szer_slonca": "阳光在窗户朝向左右各多少度内照入。",
+          "min_wys_slonca": "更低的太阳会被树木和房屋挡住。",
+          "slonce_temp": "室外温度达到此值时,有阳光就放下遮阳。",
+          "slonce_poz": "0 % = 关闭。",
+          "harm_tryb": "随日出日落或固定时间。",
+          "przesuniecie": "日出后和日落前的分钟数。",
+          "upal_prog": "预报最高温度。",
+          "jasnosc_prog": "勒克斯或太阳能板瓦数。",
+          "wakacje_rozrzut": "每天前后浮动这么多分钟。",
+          "obiekt_odl_m": "电视或书桌离窗户的距离。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "powiadomienia": {
+        "title": "第 {nr} 步,共 {z} 步: 通知",
+        "description": "{pasek}\n\n**内容:** 选择需要通知您的内容。\n\n**用途:** 您能马上知道哪个设备有问题。通知发到 HA,也可以发到手机。{porada}",
+        "data": {
+          "powiadom": "在以下情况通知我",
+          "powiadom_gdzie": "同时发送到",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "powiadom_gdzie": "手机上的 HA 应用。不选 = 仅 HA 通知。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "panel": {
+        "title": "第 {nr} 步,共 {z} 步: 仪表盘",
+        "description": "{pasek}\n\n**内容:** 要把卡片添加到哪个仪表盘。\n\n**用途:** 卡片会自动出现,无需点击。{porada}",
+        "data": {
+          "na_panel": "将卡片添加到仪表盘",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "请选择电机。",
+      "za_duzo": "最多选择两个电机(左扇和右扇)。"
+    }
+  },
+  "options": {
+    "step": {
+      "tryb": {
+        "title": "第 {nr} 步,共 {z} 步: 向导模式",
+        "description": "{pasek}\n\n**内容:** 选择要看到多少问题。\n\n**用途:** 大多数人用基本模式就够了。高级模式显示所有选项和额外设备。之后可在「配置」中更改模式。{porada}",
+        "data": {
+          "tryb": "模式",
+          "kopiuj_z": "从其他设备复制设置",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "kopiuj_z": "留空 = 从头开始。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "mam": {
+        "title": "第 {nr} 步,共 {z} 步: 家里有什么",
+        "description": "{pasek}\n\n**内容:** 勾选您拥有的设备。向导已检查 Home Assistant 并勾选了找到的设备。\n\n**用途:** 向导只显示与勾选设备相关的步骤和功能。其余的可以之后在「配置」中添加。\n\n已找到:{znalezione}{porada}",
+        "data": {
+          "mam": "家里有",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "urzadzenie": {
+        "title": "第 {nr} 步,共 {z} 步: 设备",
+        "description": "{pasek}\n\n**内容:** 选择电机(遮阳或大门),命名并选择房间。\n\n**用途:** Motor HA 控制这个电机,设置房间后可以对 Assist 说「关上客厅」。{porada}",
+        "data": {
+          "rolety": "电机(一个或两个实体)",
+          "name": "名称",
+          "pokoj": "房间",
+          "rodzaj_pokoju": "房间类型(用于提示)",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "rolety": "两扇窗请选择两个:先左后右。",
+          "name": "留空 = 电机名称。",
+          "pokoj": "设备会放入这个房间。Assist 就能听懂「关上客厅」。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "rodzaj": {
+        "title": "第 {nr} 步,共 {z} 步: 类型",
+        "description": "{pasek}\n\n**内容:** 准确选择您拥有的类型。\n\n**用途:** 卡片会画出这个设备,自动化也知道可以使用什么。{porada}",
+        "data": {
+          "oslona": "类型",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "lamele": {
+        "title": "第 {nr} 步,共 {z} 步: 叶片",
+        "description": "{pasek}\n\n**内容:** 设置叶片角度。\n\n**用途:** 不用拉起百叶帘也能让光线进来。{porada}",
+        "data": {
+          "lamele_kat": "阳光下的叶片角度",
+          "lamele_tryb": "叶片控制",
+          "lamele_noc": "夜间叶片角度",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "kolory": {
+        "title": "第 {nr} 步,共 {z} 步: 颜色",
+        "description": "{pasek}\n\n**内容:** 选择遮阳和窗框的颜色。\n\n**用途:** 屏幕上的窗户看起来和真的一样。{porada}",
+        "data": {
+          "kolor": "遮阳颜色",
+          "rama": "窗框颜色",
+          "kolor_wlasny": "自定义遮阳颜色",
+          "rama_wlasna": "自定义窗框颜色",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "okno": {
+        "title": "第 {nr} 步,共 {z} 步: 窗户",
+        "description": "{pasek}\n\n**内容:** 窗户有几扇以及在卡片上的大小。\n\n**用途:** 每扇窗都可以有自己的电机。{porada}",
+        "data": {
+          "skrzydla": "窗扇",
+          "wysokosc": "卡片上的高度",
+          "odwroc": "反转百分比",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "odwroc": "如果遮阳关闭时电机显示 100 %,请开启。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "czujniki": {
+        "title": "第 {nr} 步,共 {z} 步: 传感器",
+        "description": "{pasek}\n\n**内容:** 选择窗户和门的开关传感器。\n\n**用途:** 卡片会显示倾开或打开的窗扇,锁定功能绝不会把遮阳放到开着的窗户上。{porada}",
+        "data": {
+          "czujnik_lewe": "左窗扇传感器",
+          "tryb_lewe": "左窗扇",
+          "czujnik_prawe": "右窗扇传感器",
+          "tryb_prawe": "右窗扇",
+          "czujnik_drzwi": "露台门传感器",
+          "czujnik_przeszkoda": "门口障碍物传感器",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "fotokomorka": {
+        "title": "第 {nr} 步,共 {z} 步: 光电传感器",
+        "description": "{pasek}\n\n**内容:** 选择大门的障碍物传感器以及表示「门口有东西」的状态。\n\n**用途:** 卡片会显示障碍物并通知您。大门仍由控制器里的光电传感器自行停止。{porada}",
+        "data": {
+          "czujnik_foto": "光电传感器(障碍物传感器)",
+          "foto_stan": "传感器处于此状态时视为障碍",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "foto_stan": "通常是「on」。文字类传感器请输入如「obstructed」。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "silnik": {
+        "title": "第 {nr} 步,共 {z} 步: 电机",
+        "description": "{pasek}\n\n**内容:** 输入完整行程时间,或保留 0。\n\n**用途:** 画面移动速度与真实电机一致。为 0 时,卡片会在几次移动后自动学习时间。{porada}",
+        "data": {
+          "czas": "完整行程时间",
+          "kalibruj": "立即校准(遮阳会上、下、再上移动)",
+          "predkosc_lewa": "电机速度 – 左",
+          "predkosc_prawa": "电机速度 – 右",
+          "brama_minuty": "大门开启过久的时间",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "czas": "0 = 自动:根据电机速度、校准或实际移动。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "pogoda": {
+        "title": "第 {nr} 步,共 {z} 步: 天气",
+        "description": "{pasek}\n\n**内容:** 选择天气和室外传感器。\n\n**用途:** 窗外显示真实天气,自动化会保护遮阳免受风、雨和阳光影响。{porada}",
+        "data": {
+          "pogoda": "天气",
+          "czujnik_temp": "室外温度",
+          "czujnik_temp_pokoj": "室内温度",
+          "czujnik_jasnosc": "亮度或太阳能板功率",
+          "czujnik_wiatr": "风速计",
+          "czujnik_deszcz": "雨水传感器",
+          "czujnik_drgania": "遮阳篷振动传感器",
+          "czujnik_ostrzezenia": "天气预警(Meteoalarm)",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "照度计或太阳能板功率 – 不只看太阳位置。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "domownicy": {
+        "title": "第 {nr} 步,共 {z} 步: 家人",
+        "description": "{pasek}\n\n**内容:** 选择在场传感器、移动传感器和家人。\n\n**用途:** 遮阳可以根据房间或家里是否有人做出反应。{porada}",
+        "data": {
+          "czujnik_obecnosc": "在场传感器(有人)",
+          "czujnik_ruch": "移动传感器(有人进入)",
+          "osoby": "家人",
+          "czujnik_dym": "烟雾传感器",
+          "czujnik_alarm": "报警系统",
+          "czujnik_swieta": "工作日(Workday)",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "czujnik_swieta": "Workday 集成 – 节假日按休息日处理。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "automatyka": {
+        "title": "第 {nr} 步,共 {z} 步: 自动化",
+        "description": "{pasek}\n\n**内容:** 开启可以自动移动遮阳的功能。\n\n**用途:** 无需编写自动化,家会自己照顾遮阳。在您开启前全部关闭。{porada}",
+        "data": {
+          "f_harmonogram": "时间表",
+          "f_slonce": "遮阳防晒",
+          "f_blokada": "开窗锁定",
+          "f_wiatr": "风",
+          "f_obecnosc": "在场",
+          "f_wakacje": "度假模式",
+          "f_licznik": "电机计数器",
+          "f_reczny": "手动优先",
+          "f_posrednia": "中间位置",
+          "f_dni": "工作日和周末",
+          "f_wietrzenie": "通风位置",
+          "f_drzwi": "露台门",
+          "f_oslepianie": "防眩光",
+          "f_zima": "冬季和夏季",
+          "f_jasnosc": "亮度传感器",
+          "f_temp_pokoj": "室内温度",
+          "f_deszcz": "雨",
+          "f_mroz": "霜冻",
+          "f_grad": "冰雹和预警",
+          "f_drgania": "遮阳篷振动",
+          "f_upal": "明天高温",
+          "f_dym": "烟雾",
+          "f_alarm": "报警系统",
+          "f_nikogo": "家里没人",
+          "f_przeszkoda": "门口障碍物",
+          "f_spie": "睡眠模式",
+          "f_granice": "行程范围",
+          "f_drobne": "不做微调",
+          "f_po_kolei": "依次而非同时",
+          "f_cisza": "重启后静默",
+          "f_proba": "试运行",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "f_harmonogram": "早上打开、晚上关闭:按固定时间或随日出日落。",
+          "f_slonce": "阳光照进这扇窗且天气暖和时放下遮阳。",
+          "f_blokada": "绝不放到开着或倾开的窗户上。窗户关上后再执行被跳过的动作。",
+          "f_wiatr": "大风时收起室外遮阳。",
+          "f_obecnosc": "早上保持关闭,直到有人进入房间。",
+          "f_wakacje": "每天在略有不同的时间开关,看起来像有人在家。",
+          "f_licznik": "统计移动次数和运行时间,提醒校准。",
+          "f_reczny": "用遥控器或按钮移动遮阳时,自动化会等待。",
+          "f_posrednia": "在设定时间遮阳停在中间。",
+          "f_dni": "周末和节假日使用单独的时间。",
+          "f_wietrzenie": "窗户倾开时遮阳保持较高,便于通风。",
+          "f_drzwi": "门开着时遮阳不会低于设定位置。",
+          "f_oslepianie": "只放下到阳光照不到电视或书桌之外的程度。",
+          "f_zima": "冬天有阳光时打开(免费取暖),夏天遮阴。",
+          "f_jasnosc": "由照度计或太阳能板判断阳光。",
+          "f_temp_pokoj": "房间太热时遮阴。",
+          "f_deszcz": "下雨时收起遮阳篷、卷帘和外置百叶。",
+          "f_mroz": "霜冻时室外遮阳不动,防止冻住。",
+          "f_grad": "有预警时收起遮阳篷、关闭卷帘以保护玻璃。",
+          "f_drgania": "强阵风时收起遮阳篷。",
+          "f_upal": "预报高温时,在房间变热前的早上放下遮阳。",
+          "f_dym": "烟雾报警时打开遮阳 – 留出逃生通道。",
+          "f_alarm": "报警系统布防时关闭遮阳。",
+          "f_nikogo": "所有人离开后关闭遮阳。",
+          "f_przeszkoda": "传感器检测到通道有东西时不放下。",
+          "f_spie": "设备上的开关:关闭开关前遮阳保持关闭。",
+          "f_granice": "遮阳只在设定范围内移动,如 10–90 %。",
+          "f_drobne": "忽略几个百分点的变化。",
+          "f_po_kolei": "家里的遮阳间隔几秒依次启动。",
+          "f_cisza": "HA 启动后自动化等待几分钟。",
+          "f_proba": "显示自动化会做什么,但不移动遮阳。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "ustawienia": {
+        "title": "第 {nr} 步,共 {z} 步: 设置",
+        "description": "{pasek}\n\n**内容:** 调整已开启的功能。\n\n**用途:** 默认值适合大多数家庭。{porada}",
+        "data": {
+          "azymut": "窗户朝向",
+          "szer_slonca": "窗户日照宽度",
+          "min_wys_slonca": "最低太阳高度",
+          "slonce_temp": "防晒起始温度",
+          "slonce_poz": "阳光下的位置",
+          "harm_tryb": "开关时间",
+          "przesuniecie": "偏移",
+          "otworz": "打开时间",
+          "zamknij": "关闭时间",
+          "otworz_weekend": "周末打开时间",
+          "zamknij_weekend": "周末关闭时间",
+          "posrednia_godz": "中间位置开始时间",
+          "posrednia_poz": "中间位置",
+          "wiatr_prog": "收起的风速",
+          "mroz_prog": "霜冻温度",
+          "upal_prog": "高温温度",
+          "temp_pokoj_prog": "室内过热温度",
+          "jasnosc_prog": "明亮阈值",
+          "obecnosc_rano": "等待有人直到",
+          "wakacje_rozrzut": "时间浮动",
+          "wietrzenie_poz": "通风位置",
+          "drzwi_min": "门开时不低于",
+          "granica_min": "最低",
+          "granica_max": "最高",
+          "drobne_prog": "忽略小于此值的变化",
+          "reczny_min": "手动移动后等待",
+          "po_kolei_s": "遮阳之间的间隔",
+          "cisza_min": "HA 启动后等待",
+          "spie_poz": "睡眠模式位置",
+          "alarm_poz": "布防时的位置",
+          "nikogo_poz": "无人时的位置",
+          "obiekt_odl_m": "阳光最远照到",
+          "okno_wys_m": "窗户高度",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "azymut": "窗户朝向:90 东,180 南,270 西。",
+          "szer_slonca": "阳光在窗户朝向左右各多少度内照入。",
+          "min_wys_slonca": "更低的太阳会被树木和房屋挡住。",
+          "slonce_temp": "室外温度达到此值时,有阳光就放下遮阳。",
+          "slonce_poz": "0 % = 关闭。",
+          "harm_tryb": "随日出日落或固定时间。",
+          "przesuniecie": "日出后和日落前的分钟数。",
+          "upal_prog": "预报最高温度。",
+          "jasnosc_prog": "勒克斯或太阳能板瓦数。",
+          "wakacje_rozrzut": "每天前后浮动这么多分钟。",
+          "obiekt_odl_m": "电视或书桌离窗户的距离。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      },
+      "powiadomienia": {
+        "title": "第 {nr} 步,共 {z} 步: 通知",
+        "description": "{pasek}\n\n**内容:** 选择需要通知您的内容。\n\n**用途:** 您能马上知道哪个设备有问题。通知发到 HA,也可以发到手机。{porada}",
+        "data": {
+          "powiadom": "在以下情况通知我",
+          "powiadom_gdzie": "同时发送到",
+          "wstecz": "返回上一步"
+        },
+        "data_description": {
+          "powiadom_gdzie": "手机上的 HA 应用。不选 = 仅 HA 通知。",
+          "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "请选择电机。",
+      "za_duzo": "最多选择两个电机(左扇和右扇)。"
+    }
+  },
+  "selector": {
+    "tryb": {
+      "options": {
+        "podstawowy": "基本 – 几个简单问题",
+        "zaawansowany": "高级 – 所有选项"
+      }
+    },
+    "mam": {
+      "options": {
+        "zew": "室外遮阳(卷帘、遮阳篷、屏风)",
+        "lamele": "可调叶片遮阳",
+        "brama": "大门或车库门",
+        "foto": "大门光电传感器在 HA 中可见",
+        "okno": "窗户传感器",
+        "drzwi": "露台门传感器",
+        "obecnosc": "在场传感器(有人)",
+        "ruch": "移动传感器(有人进入)",
+        "pogoda": "天气",
+        "temp": "室外温度",
+        "grupy": "家里有多个设备",
+        "temp_pokoj": "室内温度",
+        "jasnosc": "照度计或太阳能板",
+        "wiatr": "风速计",
+        "deszcz": "雨水传感器",
+        "drgania": "遮阳篷振动传感器",
+        "ostrzezenia": "天气预警",
+        "dym": "烟雾传感器",
+        "alarm": "报警系统",
+        "osoby": "家人的手机",
+        "przeszkoda": "门口障碍物传感器"
+      }
+    },
+    "pokoje": {
+      "options": {
+        "salon": "客厅",
+        "sypialnia": "卧室",
+        "kuchnia": "厨房",
+        "dziecko": "儿童房",
+        "gabinet": "书房",
+        "lazienka": "浴室",
+        "jadalnia": "餐厅",
+        "przedpokoj": "门厅",
+        "inny": "其他"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "一扇",
+        "2": "两扇"
+      }
+    },
+    "tryby": {
+      "options": {
+        "uchyl": "倾开",
+        "otworz": "打开"
+      }
+    },
+    "lamele_tryb": {
+      "options": {
+        "auto": "自动(阳光、夜间)",
+        "staly": "始终同一角度",
+        "nocny": "仅夜间"
+      }
+    },
+    "harm_tryb": {
+      "options": {
+        "slonce": "日出和日落",
+        "godziny": "固定时间"
+      }
+    },
+    "powiadomienia": {
+      "options": {
+        "nie_odpowiada": "无响应",
+        "nie_dojechala": "未到达位置",
+        "bateria": "电机或传感器电量低",
+        "czujnik": "传感器不可用",
+        "automatyka": "自动化问题(锁定、错误、校准)",
+        "brama_otwarta": "大门开启过久",
+        "brama_niedomknieta": "大门未关闭",
+        "przeszkoda": "大门有障碍物"
+      }
+    },
+    "kroki": {
+      "options": {
+        "tryb": "模式",
+        "mam": "拥有",
+        "urzadzenie": "设备",
+        "rodzaj": "类型",
+        "lamele": "叶片",
+        "kolory": "颜色",
+        "okno": "窗户",
+        "czujniki": "传感器",
+        "fotokomorka": "光电传感器",
+        "silnik": "电机",
+        "pogoda": "天气",
+        "domownicy": "家人",
+        "automatyka": "自动化",
+        "ustawienia": "设置",
+        "powiadomienia": "通知",
+        "panel": "仪表盘"
+      }
+    },
+    "porady": {
+      "options": {
+        "ogolne_tryb": "不确定?选基本。随时可以更改。",
+        "ogolne_mam": "不确定是否有?保持向导的勾选即可。",
+        "ogolne_kolory": "颜色只在屏幕上,不会改变遮阳本身。",
+        "ogolne_okno": "两扇窗配一个卷帘?选「两扇」和一个电机。",
+        "ogolne_silnik": "保留 0 – 卡片会在几次移动后自己测量时间。",
+        "ogolne_pogoda": "有天气实体就够了。风速计保护更精确。",
+        "ogolne_automatyka": "先开一个功能,看看效果。「移动原因」传感器会显示遮阳为什么移动。",
+        "ogolne_lamele": "45° 角能让光线进入,阳光又不会直射房间。",
+        "ogolne_fotokomorka": "HA 里没有光电传感器?大门照常工作,只是卡片不知道有障碍物。",
+        "sypialnia_rodzaj": "卧室最适合遮光卷帘或日夜帘,早晨的光不会吵醒您。",
+        "sypialnia_automatyka": "建议使用时间表(早上日出、晚上日落),如果开窗睡觉还建议开窗锁定。",
+        "sypialnia_czujniki": "卧室窗户夜间常常倾开,请选「倾开」。",
+        "salon_rodzaj": "客厅常选日夜帘或百褶帘 – 透光又遮挡外面视线。",
+        "salon_automatyka": "建议遮阳防晒。有在场传感器时,早上有人进来遮阳就会打开。",
+        "kuchnia_rodzaj": "厨房适合盒式卷帘或铝百叶 – 容易清洁。",
+        "kuchnia_automatyka": "建议开窗锁定 – 做饭时窗户常开着。",
+        "dziecko_rodzaj": "儿童房适合用于午睡的遮光卷帘。",
+        "dziecko_automatyka": "建议夜间时间表和开窗锁定。",
+        "gabinet_rodzaj": "书房里百叶或屏风可减少显示器反光。",
+        "gabinet_automatyka": "建议防眩光 – 遮阳只放下需要的高度。",
+        "lazienka_rodzaj": "浴室请选防潮遮阳:铝百叶或百褶帘。",
+        "lazienka_automatyka": "建议开窗锁定 – 洗澡后窗户常开着。"
+      }
+    },
+    "oslony": {
+      "options": {
+        "pelna": "开放式卷帘",
+        "kasetowa": "盒式卷帘",
+        "zebra": "日夜帘",
+        "zaciemniajaca": "遮光卷帘",
+        "plisa": "百褶帘",
+        "plaster": "蜂巢帘",
+        "rzymska": "罗马帘",
+        "zaluzja": "铝百叶帘",
+        "drewniana": "木百叶帘",
+        "natynkowa": "明装卷帘窗",
+        "podtynkowa": "暗装卷帘窗",
+        "zewnetrzna": "窗上卷帘窗",
+        "perforowana": "透光卷帘窗",
+        "fasadowa": "外遮阳百叶 C80",
+        "fasadowaz": "外遮阳百叶 Z90",
+        "markiza": "露台遮阳篷",
+        "screen": "ZIP 遮阳帘",
+        "pionowa": "垂直百叶帘",
+        "zaslona": "侧拉窗帘",
+        "przesuwna": "平移门",
+        "skrzydlowa": "双开门",
+        "segmentowa": "分节式车库门",
+        "uchylna": "翻板式车库门",
+        "roletowa": "卷帘式车库门"
+      }
+    },
+    "kolory": {
+      "options": {
+        "czarny": "黑色",
+        "grafit": "石墨色",
+        "szary": "灰色",
+        "popiel": "灰白色",
+        "srebrny": "银色",
+        "bialy": "白色",
+        "kremowy": "奶油色",
+        "piaskowy": "沙色",
+        "bezowy": "米色",
+        "cappuccino": "卡布奇诺色",
+        "mokka": "摩卡色",
+        "braz": "棕色",
+        "wenge": "鸡翅木色",
+        "stalowy": "钢蓝色",
+        "granat": "藏青色",
+        "blekitny": "天蓝色",
+        "niebieski": "蓝色",
+        "morski": "海青色",
+        "turkus": "绿松石色",
+        "mietowy": "薄荷色",
+        "zielony": "绿色",
+        "butelkowy": "墨绿色",
+        "oliwka": "橄榄色",
+        "limonka": "青柠色",
+        "zolty": "黄色",
+        "musztardowy": "芥末黄",
+        "pomaranczowy": "橙色",
+        "terakota": "陶土色",
+        "czerwony": "红色",
+        "bordo": "酒红色",
+        "pudrowy": "粉红色",
+        "rozowy": "玫红色",
+        "lawendowy": "薰衣草色",
+        "fiolet": "紫色",
+        "sliwkowy": "梅子色"
+      }
+    },
+    "ramy": {
+      "options": {
+        "biala": "白色",
+        "kremowa": "奶油色",
+        "jasnoszara": "浅灰色",
+        "srebrna": "银色",
+        "szary_agat": "玛瑙灰",
+        "szara": "灰色",
+        "szary_kwarc": "石英灰",
+        "bazaltowa": "玄武岩灰",
+        "antracyt": "炭灰色",
+        "czarna": "黑色",
+        "zielona": "绿色",
+        "granatowa": "藏青色",
+        "bordowa": "酒红色",
+        "braz": "棕色",
+        "sosna": "松木",
+        "dab_jasny": "浅橡木",
+        "dab_sheffield": "谢菲尔德橡木",
+        "winchester": "温彻斯特木纹",
+        "oregon": "俄勒冈木纹",
+        "zloty_dab": "金橡木",
+        "siena": "锡耶纳木纹",
+        "orzech": "胡桃木",
+        "mahon": "桃花心木",
+        "dab_bagienny": "沼泽橡木"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "校准"
+      },
+      "wznow": {
+        "name": "恢复自动化"
+      }
+    },
+    "sensor": {
+      "powod": {
+        "name": "移动原因",
+        "state": {
+          "brak": "无自动化",
+          "wylaczona": "自动化已关闭",
+          "cisza": "重启后静默",
+          "dym": "烟雾 – 已打开",
+          "wiatr": "风 – 已收起",
+          "drgania": "振动 – 已收起",
+          "grad": "预警 – 已保护",
+          "deszcz": "雨 – 已收起",
+          "mroz": "霜冻 – 不移动",
+          "pauza": "暂停",
+          "reczny": "手动移动 – 暂停",
+          "alarm": "报警系统",
+          "spie": "睡眠中",
+          "nikogo": "家里没人",
+          "wakacje": "度假 – 白天",
+          "wakacje_noc": "度假 – 夜间",
+          "harm_dzien": "时间表 – 白天",
+          "harm_noc": "时间表 – 夜间",
+          "posrednia": "中间位置",
+          "obecnosc": "房间里有人",
+          "czeka_obecnosc": "等待有人进入",
+          "zima_noc": "冬季 – 夜间",
+          "zima_slonce": "冬季 – 阳光取暖",
+          "slonce": "阳光照入窗户",
+          "jasnosc": "明亮",
+          "temp_pokoj": "房间太热",
+          "upal": "高温",
+          "oslepianie": "眩光",
+          "przeszkoda": "障碍物",
+          "drzwi": "门开着",
+          "wietrzenie": "通风",
+          "blokada": "窗户开着 – 锁定"
+        }
+      },
+      "ruchy": {
+        "name": "电机移动次数"
+      },
+      "czas_pracy": {
+        "name": "电机运行时间"
+      }
+    },
+    "switch": {
+      "automatyka": {
+        "name": "自动化"
+      },
+      "pauza": {
+        "name": "今天暂停"
+      },
+      "spie": {
+        "name": "睡眠中"
+      },
+      "wakacje": {
+        "name": "度假模式"
+      }
+    }
+  },
+  "exceptions": {
+    "tytul": {
+      "message": "{nazwa} – 问题"
+    },
+    "nie_odpowiada": {
+      "message": "{nazwa}:电机无响应({encje})。请检查电源或连接。"
+    },
+    "nie_dojechala": {
+      "message": "{nazwa}:应移动到 {cel} %,但停在 {jest} %。"
+    },
+    "bateria": {
+      "message": "{nazwa}:电量低 – {lista}。"
+    },
+    "czujnik": {
+      "message": "{nazwa}:传感器不可用 – {lista}。"
+    },
+    "automatyka": {
+      "message": "{nazwa}:自动化未移动遮阳 – {powod}。"
+    },
+    "kalibracja": {
+      "message": "{nazwa}:校准后电机已移动 {ruchy} 次。请在设备上点击「校准」。"
+    },
+    "brama_otwarta": {
+      "message": "{nazwa}:大门已开启超过 {minuty} 分钟。"
+    },
+    "brama_niedomknieta": {
+      "message": "{nazwa}:大门未关闭。"
+    },
+    "przeszkoda": {
+      "message": "{nazwa}:大门处有东西(光电传感器)。"
+    },
+    "nie_motor_ha": {
+      "message": "这不是 Motor HA 设备。"
+    },
+    "powod_brak": {
+      "message": "无自动化"
+    },
+    "powod_wylaczona": {
+      "message": "自动化已关闭"
+    },
+    "powod_cisza": {
+      "message": "重启后静默"
+    },
+    "powod_dym": {
+      "message": "烟雾 – 已打开"
+    },
+    "powod_wiatr": {
+      "message": "风 – 已收起"
+    },
+    "powod_drgania": {
+      "message": "振动 – 已收起"
+    },
+    "powod_grad": {
+      "message": "预警 – 已保护"
+    },
+    "powod_deszcz": {
+      "message": "雨 – 已收起"
+    },
+    "powod_mroz": {
+      "message": "霜冻 – 不移动"
+    },
+    "powod_pauza": {
+      "message": "暂停"
+    },
+    "powod_reczny": {
+      "message": "手动移动 – 暂停"
+    },
+    "powod_alarm": {
+      "message": "报警系统"
+    },
+    "powod_spie": {
+      "message": "睡眠中"
+    },
+    "powod_nikogo": {
+      "message": "家里没人"
+    },
+    "powod_wakacje": {
+      "message": "度假 – 白天"
+    },
+    "powod_wakacje_noc": {
+      "message": "度假 – 夜间"
+    },
+    "powod_harm_dzien": {
+      "message": "时间表 – 白天"
+    },
+    "powod_harm_noc": {
+      "message": "时间表 – 夜间"
+    },
+    "powod_posrednia": {
+      "message": "中间位置"
+    },
+    "powod_obecnosc": {
+      "message": "房间里有人"
+    },
+    "powod_czeka_obecnosc": {
+      "message": "等待有人进入"
+    },
+    "powod_zima_noc": {
+      "message": "冬季 – 夜间"
+    },
+    "powod_zima_slonce": {
+      "message": "冬季 – 阳光取暖"
+    },
+    "powod_slonce": {
+      "message": "阳光照入窗户"
+    },
+    "powod_jasnosc": {
+      "message": "明亮"
+    },
+    "powod_temp_pokoj": {
+      "message": "房间太热"
+    },
+    "powod_upal": {
+      "message": "高温"
+    },
+    "powod_oslepianie": {
+      "message": "眩光"
+    },
+    "powod_przeszkoda": {
+      "message": "障碍物"
+    },
+    "powod_drzwi": {
+      "message": "门开着"
+    },
+    "powod_wietrzenie": {
+      "message": "通风"
+    },
+    "powod_blokada": {
+      "message": "窗户开着 – 锁定"
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} – 重启",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Motor HA {wersja} – 重启",
+            "description": "新版本已安装。点击「提交」重启 Home Assistant。"
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "wstrzymaj": {
+      "name": "暂停自动化",
+      "description": "在指定时间内自动化不移动设备(留空 = 到今天结束)。",
+      "fields": {
+        "entity_id": {
+          "name": "设备",
+          "description": "Motor HA 设备。"
+        },
+        "minuty": {
+          "name": "分钟",
+          "description": "留空 = 到今天结束。"
+        }
+      }
+    },
+    "wznow": {
+      "name": "恢复自动化",
+      "description": "结束暂停并立即检查遮阳应在的位置。",
+      "fields": {
+        "entity_id": {
+          "name": "设备",
+          "description": "Motor HA 设备。"
+        }
+      }
+    },
+    "przelicz": {
+      "name": "立即检查",
+      "description": "自动化立即重新计算位置。",
+      "fields": {
+        "entity_id": {
+          "name": "设备",
+          "description": "Motor HA 设备。"
+        }
+      }
+    },
+    "kalibruj": {
+      "name": "校准",
+      "description": "测量实际行程时间。",
+      "fields": {
+        "entity_id": {
+          "name": "设备",
+          "description": "Motor HA 设备。"
+        }
+      }
+    },
+    "ustaw": {
+      "name": "设置位置",
+      "description": "像自动化一样设置位置(和叶片) – 不触发手动后的暂停。",
+      "fields": {
+        "entity_id": {
+          "name": "设备",
+          "description": "Motor HA 设备。"
+        },
+        "pozycja": {
+          "name": "位置",
+          "description": "100 = 打开。"
+        },
+        "lamele": {
+          "name": "叶片",
+          "description": "叶片角度。"
+        }
+      }
+    }
+  }
+}
