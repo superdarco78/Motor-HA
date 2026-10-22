@@ -6,6 +6,7 @@
 - 🌐 Przyciski języków w jednym rzędzie, równej wielkości
 - 👆 Pasek kroków kreatora jest klikany: każdy krok przenosi do swojego obrazka z instrukcją
 - 🏠 Instrukcja klikana: przyciski otwierają właściwe miejsce w Twoim Home Assistant (HACS, System, Dodaj integrację, Panele), a pasek kroków i obrazki prowadzą po opisie
+- ⬅️ Kreator: przycisk „Wstecz” po lewej, obok „Dalej”, zamiast przełącznika „Wróć do poprzedniego kroku”
 - 🧙 Kroki kreatora po dwa w rzędzie, większe i czytelne
 - 🌙 Zrzuty z HA na GitHubie zawsze w ciemnym motywie (w HA obrazki same idą za motywem HA)
 - 🗂 Przyciski „w HA” w opisie w HACS otwierają się w nowej karcie, opis zostaje na miejscu

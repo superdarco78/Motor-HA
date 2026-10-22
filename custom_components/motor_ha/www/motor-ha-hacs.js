@@ -163,6 +163,38 @@
       } catch (e) { /* inna domena albo ramka w trakcie wczytywania */ }
     }
   };
+  // ── przycisk „Wstecz” w kreatorze Motor HA ──
+  // Kreator ma pole „wstecz” (przełącznik). Tutaj przełącznik znika, a obok „Dalej” po lewej stoi przycisk „Wstecz”,
+  // który wysyła krok z wstecz = tak. Używa gotowego ha-button z HA (nic nie rejestruje); przy błędzie zostaje przełącznik.
+  const WSTECZ = { pl: "Wstecz", en: "Back", de: "Zurück", fr: "Retour", cs: "Zpět" };
+  const wsteczKreator = () => {
+    try {
+      const r = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow")?.shadowRoot;
+      if (!r) return;
+      const form = r.querySelector("step-flow-form"), stopka = r.querySelector("ha-dialog-footer");
+      const jest = !!form?.step?.data_schema?.some((p) => p.name === "wstecz");
+      let b = stopka?.querySelector("[data-mh-wstecz]");
+      if (!jest || !stopka) { b?.remove(); return; }
+      for (const el of form.shadowRoot?.querySelector("ha-form")?.shadowRoot?.querySelectorAll("*") || []) {
+        if (el.schema?.name === "wstecz" && el.style.display !== "none") el.style.display = "none";
+      }
+      if (b) return;
+      b = document.createElement("ha-button");
+      b.dataset.mhWstecz = "1";
+      b.slot = "secondaryAction";
+      b.style.marginInlineEnd = "auto";   // po lewej stronie okienka
+      b.textContent = WSTECZ[String(ha()?.language || "en").slice(0, 2)] || WSTECZ.en;
+      b.addEventListener("click", () => {
+        const f = r.querySelector("step-flow-form");
+        if (!f) return;
+        f._stepData = { ...(f._stepDataProcessed || {}), wstecz: true };
+        f.submit();
+      });
+      stopka.prepend(b);
+    } catch (e) { /* okienko w trakcie rysowania */ }
+  };
+  setInterval(wsteczKreator, 500);
+
   const skanuj = () => { if (/^\/(hacs|config)/.test(location.pathname)) try { przejdz(document, { n: 0 }); } catch (e) { /* strona w trakcie rysowania */ } };
   setTimeout(skanuj, 300);
   setInterval(skanuj, 1500);
