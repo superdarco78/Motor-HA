@@ -230,5 +230,17 @@
     "orzech": "noten",
     "mahon": "mahonie",
     "dab_bagienny": "moeraseiken"
+  },
+  "symulator": {
+    "tytul": "Probeer het live",
+    "pora": "Tijd van de dag",
+    "pogoda": "Weer",
+    "rodzaj": "Soort",
+    "kolor": "Kleur",
+    "dzien": "Dag",
+    "zloto": "Gouden uur",
+    "zmierzch": "Schemering",
+    "noc": "Nacht",
+    "wskazowka": "Sleep over het glas of gebruik de knoppen. Dit is alleen een voorbeeld – thuis beweegt niets."
   }
 }

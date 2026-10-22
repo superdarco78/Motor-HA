@@ -230,5 +230,17 @@
     "orzech": "nogal",
     "mahon": "caoba",
     "dab_bagienny": "roble de pantano"
+  },
+  "symulator": {
+    "tytul": "Pruébalo en vivo",
+    "pora": "Momento del día",
+    "pogoda": "Tiempo",
+    "rodzaj": "Tipo",
+    "kolor": "Color",
+    "dzien": "Día",
+    "zloto": "Hora dorada",
+    "zmierzch": "Anochecer",
+    "noc": "Noche",
+    "wskazowka": "Arrastra el cristal o usa los botones. Es solo una vista previa: nada se mueve en casa."
   }
 }

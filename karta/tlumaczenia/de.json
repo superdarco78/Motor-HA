@@ -230,5 +230,17 @@
     "orzech": "Nussbaum",
     "mahon": "Mahagoni",
     "dab_bagienny": "Mooreiche"
+  },
+  "symulator": {
+    "tytul": "Live ausprobieren",
+    "pora": "Tageszeit",
+    "pogoda": "Wetter",
+    "rodzaj": "Art",
+    "kolor": "Farbe",
+    "dzien": "Tag",
+    "zloto": "Goldene Stunde",
+    "zmierzch": "Dämmerung",
+    "noc": "Nacht",
+    "wskazowka": "Ziehe die Scheibe oder nutze die Tasten. Nur eine Vorschau – zu Hause bewegt sich nichts."
   }
 }

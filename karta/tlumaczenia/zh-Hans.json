@@ -230,5 +230,17 @@
     "orzech": "胡桃木",
     "mahon": "桃花心木",
     "dab_bagienny": "沼泽橡木"
+  },
+  "symulator": {
+    "tytul": "实时试用",
+    "pora": "时段",
+    "pogoda": "天气",
+    "rodzaj": "类型",
+    "kolor": "颜色",
+    "dzien": "白天",
+    "zloto": "黄金时刻",
+    "zmierzch": "黄昏",
+    "noc": "夜晚",
+    "wskazowka": "拖动玻璃或使用按钮。这只是预览，家里的设备不会移动。"
   }
 }

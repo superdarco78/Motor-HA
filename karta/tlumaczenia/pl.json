@@ -230,5 +230,17 @@
     "orzech": "orzech",
     "mahon": "mahoń",
     "dab_bagienny": "dąb bagienny"
+  },
+  "symulator": {
+    "tytul": "Wypróbuj na żywo",
+    "pora": "Pora dnia",
+    "pogoda": "Pogoda",
+    "rodzaj": "Rodzaj",
+    "kolor": "Kolor",
+    "dzien": "Dzień",
+    "zloto": "Złota godzina",
+    "zmierzch": "Zmierzch",
+    "noc": "Noc",
+    "wskazowka": "Przeciągnij szybę albo użyj przycisków. To tylko podgląd – nic w domu się nie rusza."
   }
 }

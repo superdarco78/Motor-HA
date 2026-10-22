@@ -230,5 +230,17 @@
     "orzech": "noce",
     "mahon": "mogano",
     "dab_bagienny": "rovere di palude"
+  },
+  "symulator": {
+    "tytul": "Provalo dal vivo",
+    "pora": "Momento della giornata",
+    "pogoda": "Meteo",
+    "rodzaj": "Tipo",
+    "kolor": "Colore",
+    "dzien": "Giorno",
+    "zloto": "Ora d'oro",
+    "zmierzch": "Crepuscolo",
+    "noc": "Notte",
+    "wskazowka": "Trascina il vetro o usa i pulsanti. È solo un'anteprima: in casa non si muove nulla."
   }
 }

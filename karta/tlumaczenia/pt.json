@@ -230,5 +230,17 @@
     "orzech": "nogueira",
     "mahon": "mogno",
     "dab_bagienny": "carvalho de pântano"
+  },
+  "symulator": {
+    "tytul": "Experimente ao vivo",
+    "pora": "Hora do dia",
+    "pogoda": "Tempo",
+    "rodzaj": "Tipo",
+    "kolor": "Cor",
+    "dzien": "Dia",
+    "zloto": "Hora dourada",
+    "zmierzch": "Crepúsculo",
+    "noc": "Noite",
+    "wskazowka": "Arraste o vidro ou use os botões. É só uma pré-visualização – nada se mexe em casa."
   }
 }

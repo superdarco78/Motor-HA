@@ -230,5 +230,17 @@
     "orzech": "noyer",
     "mahon": "acajou",
     "dab_bagienny": "chêne des marais"
+  },
+  "symulator": {
+    "tytul": "Essayer en direct",
+    "pora": "Moment de la journée",
+    "pogoda": "Météo",
+    "rodzaj": "Type",
+    "kolor": "Couleur",
+    "dzien": "Jour",
+    "zloto": "Heure dorée",
+    "zmierzch": "Crépuscule",
+    "noc": "Nuit",
+    "wskazowka": "Faites glisser la vitre ou utilisez les boutons. Ce n'est qu'un aperçu – rien ne bouge chez vous."
   }
 }

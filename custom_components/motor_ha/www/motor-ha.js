@@ -1074,6 +1074,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "orzech",
       mahon: "mahoń",
       dab_bagienny: "dąb bagienny"
+    },
+    symulator: {
+      tytul: "Wypróbuj na żywo",
+      pora: "Pora dnia",
+      pogoda: "Pogoda",
+      rodzaj: "Rodzaj",
+      kolor: "Kolor",
+      dzien: "Dzień",
+      zloto: "Złota godzina",
+      zmierzch: "Zmierzch",
+      noc: "Noc",
+      wskazowka: "Przeciągnij szybę albo użyj przycisków. To tylko podgląd – nic w domu się nie rusza."
     }
   };
 
@@ -1310,6 +1322,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "walnut",
       mahon: "mahogany",
       dab_bagienny: "bog oak"
+    },
+    symulator: {
+      tytul: "Try it live",
+      pora: "Time of day",
+      pogoda: "Weather",
+      rodzaj: "Type",
+      kolor: "Colour",
+      dzien: "Day",
+      zloto: "Golden hour",
+      zmierzch: "Dusk",
+      noc: "Night",
+      wskazowka: "Drag the glass or use the buttons. This is only a preview – nothing at home moves."
     }
   };
 
@@ -1546,6 +1570,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "Nussbaum",
       mahon: "Mahagoni",
       dab_bagienny: "Mooreiche"
+    },
+    symulator: {
+      tytul: "Live ausprobieren",
+      pora: "Tageszeit",
+      pogoda: "Wetter",
+      rodzaj: "Art",
+      kolor: "Farbe",
+      dzien: "Tag",
+      zloto: "Goldene Stunde",
+      zmierzch: "Dämmerung",
+      noc: "Nacht",
+      wskazowka: "Ziehe die Scheibe oder nutze die Tasten. Nur eine Vorschau – zu Hause bewegt sich nichts."
     }
   };
 
@@ -1782,6 +1818,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "noyer",
       mahon: "acajou",
       dab_bagienny: "chêne des marais"
+    },
+    symulator: {
+      tytul: "Essayer en direct",
+      pora: "Moment de la journée",
+      pogoda: "Météo",
+      rodzaj: "Type",
+      kolor: "Couleur",
+      dzien: "Jour",
+      zloto: "Heure dorée",
+      zmierzch: "Crépuscule",
+      noc: "Nuit",
+      wskazowka: "Faites glisser la vitre ou utilisez les boutons. Ce n'est qu'un aperçu – rien ne bouge chez vous."
     }
   };
 
@@ -2018,6 +2066,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "ořech",
       mahon: "mahagon",
       dab_bagienny: "bahenní dub"
+    },
+    symulator: {
+      tytul: "Vyzkoušejte naživo",
+      pora: "Denní doba",
+      pogoda: "Počasí",
+      rodzaj: "Druh",
+      kolor: "Barva",
+      dzien: "Den",
+      zloto: "Zlatá hodinka",
+      zmierzch: "Soumrak",
+      noc: "Noc",
+      wskazowka: "Táhněte sklem nebo použijte tlačítka. Je to jen náhled – doma se nic nepohne."
     }
   };
 
@@ -2254,6 +2314,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "orech",
       mahon: "mahagón",
       dab_bagienny: "bahenný dub"
+    },
+    symulator: {
+      tytul: "Vyskúšajte naživo",
+      pora: "Denná doba",
+      pogoda: "Počasie",
+      rodzaj: "Druh",
+      kolor: "Farba",
+      dzien: "Deň",
+      zloto: "Zlatá hodinka",
+      zmierzch: "Súmrak",
+      noc: "Noc",
+      wskazowka: "Potiahnite sklo alebo použite tlačidlá. Je to len náhľad – doma sa nič nepohne."
     }
   };
 
@@ -2490,6 +2562,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "nogal",
       mahon: "caoba",
       dab_bagienny: "roble de pantano"
+    },
+    symulator: {
+      tytul: "Pruébalo en vivo",
+      pora: "Momento del día",
+      pogoda: "Tiempo",
+      rodzaj: "Tipo",
+      kolor: "Color",
+      dzien: "Día",
+      zloto: "Hora dorada",
+      zmierzch: "Anochecer",
+      noc: "Noche",
+      wskazowka: "Arrastra el cristal o usa los botones. Es solo una vista previa: nada se mueve en casa."
     }
   };
 
@@ -2726,6 +2810,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "noce",
       mahon: "mogano",
       dab_bagienny: "rovere di palude"
+    },
+    symulator: {
+      tytul: "Provalo dal vivo",
+      pora: "Momento della giornata",
+      pogoda: "Meteo",
+      rodzaj: "Tipo",
+      kolor: "Colore",
+      dzien: "Giorno",
+      zloto: "Ora d'oro",
+      zmierzch: "Crepuscolo",
+      noc: "Notte",
+      wskazowka: "Trascina il vetro o usa i pulsanti. È solo un'anteprima: in casa non si muove nulla."
     }
   };
 
@@ -2962,6 +3058,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "noten",
       mahon: "mahonie",
       dab_bagienny: "moeraseiken"
+    },
+    symulator: {
+      tytul: "Probeer het live",
+      pora: "Tijd van de dag",
+      pogoda: "Weer",
+      rodzaj: "Soort",
+      kolor: "Kleur",
+      dzien: "Dag",
+      zloto: "Gouden uur",
+      zmierzch: "Schemering",
+      noc: "Nacht",
+      wskazowka: "Sleep over het glas of gebruik de knoppen. Dit is alleen een voorbeeld – thuis beweegt niets."
     }
   };
 
@@ -3198,6 +3306,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "nogueira",
       mahon: "mogno",
       dab_bagienny: "carvalho de pântano"
+    },
+    symulator: {
+      tytul: "Experimente ao vivo",
+      pora: "Hora do dia",
+      pogoda: "Tempo",
+      rodzaj: "Tipo",
+      kolor: "Cor",
+      dzien: "Dia",
+      zloto: "Hora dourada",
+      zmierzch: "Crepúsculo",
+      noc: "Noite",
+      wskazowka: "Arraste o vidro ou use os botões. É só uma pré-visualização – nada se mexe em casa."
     }
   };
 
@@ -3434,6 +3554,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "горіх",
       mahon: "махагон",
       dab_bagienny: "морений дуб"
+    },
+    symulator: {
+      tytul: "Спробуйте наживо",
+      pora: "Час доби",
+      pogoda: "Погода",
+      rodzaj: "Вид",
+      kolor: "Колір",
+      dzien: "День",
+      zloto: "Золота година",
+      zmierzch: "Сутінки",
+      noc: "Ніч",
+      wskazowka: "Потягніть скло або скористайтеся кнопками. Це лише попередній перегляд – удома нічого не рухається."
     }
   };
 
@@ -3670,6 +3802,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "орех",
       mahon: "махагон",
       dab_bagienny: "морёный дуб"
+    },
+    symulator: {
+      tytul: "Попробуйте вживую",
+      pora: "Время суток",
+      pogoda: "Погода",
+      rodzaj: "Вид",
+      kolor: "Цвет",
+      dzien: "День",
+      zloto: "Золотой час",
+      zmierzch: "Сумерки",
+      noc: "Ночь",
+      wskazowka: "Потяните стекло или используйте кнопки. Это только предпросмотр – дома ничего не двигается."
     }
   };
 
@@ -3906,6 +4050,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "ウォールナット",
       mahon: "マホガニー",
       dab_bagienny: "ボグオーク"
+    },
+    symulator: {
+      tytul: "ライブで試す",
+      pora: "時間帯",
+      pogoda: "天気",
+      rodzaj: "種類",
+      kolor: "色",
+      dzien: "昼",
+      zloto: "ゴールデンアワー",
+      zmierzch: "夕暮れ",
+      noc: "夜",
+      wskazowka: "ガラスをドラッグするか、ボタンを使ってください。プレビューなので、家の中の物は動きません。"
     }
   };
 
@@ -4142,6 +4298,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       orzech: "胡桃木",
       mahon: "桃花心木",
       dab_bagienny: "沼泽橡木"
+    },
+    symulator: {
+      tytul: "实时试用",
+      pora: "时段",
+      pogoda: "天气",
+      rodzaj: "类型",
+      kolor: "颜色",
+      dzien: "白天",
+      zloto: "黄金时刻",
+      zmierzch: "黄昏",
+      noc: "夜晚",
+      wskazowka: "拖动玻璃或使用按钮。这只是预览，家里的设备不会移动。"
     }
   };
 
@@ -5045,6 +5213,190 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     }
   };
 
+  // src/ikony_mdi.js
+  var MDI = {
+    "mdi:alert-circle-outline": "M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z",
+    "mdi:arrow-down": "M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z",
+    "mdi:arrow-up": "M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z",
+    "mdi:arrow-up-down": "M17.45,17.55L12,23L6.55,17.55L7.96,16.14L11,19.17V4.83L7.96,7.86L6.55,6.45L12,1L17.45,6.45L16.04,7.86L13,4.83V19.17L16.04,16.14L17.45,17.55Z",
+    "mdi:awning-outline": "M5.06 7C4.63 7 4.22 7.14 3.84 7.42C3.46 7.7 3.24 8.06 3.14 8.5L2.11 12.91C1.86 14 2.06 14.92 2.69 15.73C2.81 15.85 2.93 15.97 3.04 16.07C3.63 16.64 4.28 17 5.22 17C6.16 17 6.91 16.59 7.47 16.05C8.1 16.67 8.86 17 9.8 17C10.64 17 11.44 16.63 12 16.07C12.68 16.7 13.45 17 14.3 17C15.17 17 15.91 16.67 16.54 16.05C17.11 16.62 17.86 17 18.81 17C19.76 17 20.43 16.65 21 16.06C21.09 15.97 21.18 15.87 21.28 15.77C21.94 14.95 22.14 14 21.89 12.91L20.86 8.5C20.73 8.06 20.5 7.7 20.13 7.42C19.77 7.14 19.38 7 18.94 7H5.06M18.89 8.97L19.97 13.38C20.06 13.81 19.97 14.2 19.69 14.55C19.44 14.86 19.13 15 18.75 15C18.44 15 18.17 14.9 17.95 14.66C17.73 14.43 17.61 14.16 17.58 13.84L16.97 9L18.89 8.97M5.06 9H7.03L6.42 13.84C6.3 14.63 5.91 15 5.25 15C4.84 15 4.53 14.86 4.31 14.55C4.03 14.2 3.94 13.81 4.03 13.38L5.06 9M9.05 9H11V13.7C11 14.05 10.89 14.35 10.64 14.62C10.39 14.88 10.08 15 9.7 15C9.36 15 9.07 14.88 8.84 14.59C8.61 14.3 8.5 14 8.5 13.66V13.5L9.05 9M13 9H14.95L15.5 13.5C15.58 13.92 15.5 14.27 15.21 14.57C14.95 14.87 14.61 15 14.2 15C13.89 15 13.61 14.88 13.36 14.62C13.11 14.35 13 14.05 13 13.7V9Z",
+    "mdi:blinds": "M3,2H21A1,1 0 0,1 22,3V5A1,1 0 0,1 21,6H20V13A1,1 0 0,1 19,14H13V16.17C14.17,16.58 15,17.69 15,19A3,3 0 0,1 12,22A3,3 0 0,1 9,19C9,17.69 9.83,16.58 11,16.17V14H5A1,1 0 0,1 4,13V6H3A1,1 0 0,1 2,5V3A1,1 0 0,1 3,2M12,18A1,1 0 0,0 11,19A1,1 0 0,0 12,20A1,1 0 0,0 13,19A1,1 0 0,0 12,18Z",
+    "mdi:blinds-horizontal": "M20 19V3H4V19H2V21H22V19H20M16 9H18V11H16V9M14 11H6V9H14V11M18 7H16V5H18V7M14 5V7H6V5H14M6 19V13H14V14.82C13.55 15.14 13.25 15.66 13.25 16.25C13.25 17.22 14.03 18 15 18S16.75 17.22 16.75 16.25C16.75 15.66 16.45 15.13 16 14.82V13H18V19H6Z",
+    "mdi:blinds-horizontal-closed": "M20 19V3H4V19H2V21H13.25C13.25 21.97 14.03 22.75 15 22.75S16.75 21.97 16.75 21H22V19H20M18 11H16V9H18V11M14 11H6V9H14V11M14 13V15H6V13H14M16 13H18V15H16V13M18 7H16V5H18V7M14 5V7H6V5H14M6 19V17H14V19H6M16 19V17H18V19H16Z",
+    "mdi:blinds-vertical": "M20 19V3H4V19H2V21H22V19H20M10 19V5H14V19H10Z",
+    "mdi:curtains": "M23 3H1V1H23V3M2 22H6C6 19 4 17 4 17C10 13 11 4 11 4H2V22M22 4H13C13 4 14 13 20 17C20 17 18 19 18 22H22V4Z",
+    "mdi:garage": "M19,20H17V11H7V20H5V9L12,5L19,9V20M8,12H16V14H8V12M8,15H16V17H8V15M16,18V20H8V18H16Z",
+    "mdi:garage-open": "M19,20H17V11H7V20H5V9L12,5L19,9V20M8,12H16V14H8V12Z",
+    "mdi:gate": "M9 6V11H7V7H5V11H3V9H1V21H3V19H5V21H7V19H9V21H11V19H13V21H15V19H17V21H19V19H21V21H23V9H21V11H19V7H17V11H15V6H13V11H11V6H9M3 13H5V17H3V13M7 13H9V17H7V13M11 13H13V17H11V13M15 13H17V17H15V13M19 13H21V17H19V13Z",
+    "mdi:gate-open": "M7 21V7H5V11H3V9H1V21H3V19H5V21H7M3 17V13H5V17H3M21 9V11H19V7H17V21H19V19H21V21H23V9H21M21 17H19V13H21V17Z",
+    "mdi:home-outline": "M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22",
+    "mdi:palette": "M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z",
+    "mdi:pause-circle-outline": "M13,16V8H15V16H13M9,16V8H11V16H9M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z",
+    "mdi:robot-outline": "M17.5 15.5C17.5 16.61 16.61 17.5 15.5 17.5S13.5 16.61 13.5 15.5 14.4 13.5 15.5 13.5 17.5 14.4 17.5 15.5M8.5 13.5C7.4 13.5 6.5 14.4 6.5 15.5S7.4 17.5 8.5 17.5 10.5 16.61 10.5 15.5 9.61 13.5 8.5 13.5M23 15V18C23 18.55 22.55 19 22 19H21V20C21 21.11 20.11 22 19 22H5C3.9 22 3 21.11 3 20V19H2C1.45 19 1 18.55 1 18V15C1 14.45 1.45 14 2 14H3C3 10.13 6.13 7 10 7H11V5.73C10.4 5.39 10 4.74 10 4C10 2.9 10.9 2 12 2S14 2.9 14 4C14 4.74 13.6 5.39 13 5.73V7H14C17.87 7 21 10.13 21 14H22C22.55 14 23 14.45 23 15M21 16H19V14C19 11.24 16.76 9 14 9H10C7.24 9 5 11.24 5 14V16H3V17H5V20H19V17H21V16Z",
+    "mdi:roller-shade": "M20 19V3H4V19H2V21H22V19H20M6 19V13H11V14.8C10.6 15.1 10.2 15.6 10.2 16.2C10.2 17.2 11 18 12 18S13.8 17.2 13.8 16.2C13.8 15.6 13.5 15.1 13 14.8V13H18V19H6Z",
+    "mdi:roller-shade-closed": "M20 19V3H4V19H2V21H10.25C10.25 21.97 11.03 22.75 12 22.75S13.75 21.97 13.75 21H22V19H20M6 19V17H11V19H6M13 19V17H18V19H13Z",
+    "mdi:sofa-outline": "M21 9V7C21 5.35 19.65 4 18 4H14C13.23 4 12.53 4.3 12 4.78C11.47 4.3 10.77 4 10 4H6C4.35 4 3 5.35 3 7V9C1.35 9 0 10.35 0 12V17C0 18.65 1.35 20 3 20V22H5V20H19V22H21V20C22.65 20 24 18.65 24 17V12C24 10.35 22.65 9 21 9M14 6H18C18.55 6 19 6.45 19 7V9.78C18.39 10.33 18 11.12 18 12V14H13V7C13 6.45 13.45 6 14 6M5 7C5 6.45 5.45 6 6 6H10C10.55 6 11 6.45 11 7V14H6V12C6 11.12 5.61 10.33 5 9.78V7M22 17C22 17.55 21.55 18 21 18H3C2.45 18 2 17.55 2 17V12C2 11.45 2.45 11 3 11S4 11.45 4 12V16H20V12C20 11.45 20.45 11 21 11S22 11.45 22 12V17Z",
+    "mdi:stop": "M18,18H6V6H18V18Z",
+    "mdi:weather-cloudy": "M6,19A5,5 0 0,1 1,14A5,5 0 0,1 6,9C7,6.65 9.3,5 12,5C15.43,5 18.24,7.66 18.5,11.03L19,11A4,4 0 0,1 23,15A4,4 0 0,1 19,19H6M19,13H17V12A5,5 0 0,0 12,7C9.5,7 7.45,8.82 7.06,11.19C6.73,11.07 6.37,11 6,11A3,3 0 0,0 3,14A3,3 0 0,0 6,17H19A2,2 0 0,0 21,15A2,2 0 0,0 19,13Z",
+    "mdi:weather-fog": "M3,15H13A1,1 0 0,1 14,16A1,1 0 0,1 13,17H3A1,1 0 0,1 2,16A1,1 0 0,1 3,15M16,15H21A1,1 0 0,1 22,16A1,1 0 0,1 21,17H16A1,1 0 0,1 15,16A1,1 0 0,1 16,15M1,12A5,5 0 0,1 6,7C7,4.65 9.3,3 12,3C15.43,3 18.24,5.66 18.5,9.03L19,9C21.19,9 22.97,10.76 23,13H21A2,2 0 0,0 19,11H17V10A5,5 0 0,0 12,5C9.5,5 7.45,6.82 7.06,9.19C6.73,9.07 6.37,9 6,9A3,3 0 0,0 3,12C3,12.35 3.06,12.69 3.17,13H1.1L1,12M3,19H5A1,1 0 0,1 6,20A1,1 0 0,1 5,21H3A1,1 0 0,1 2,20A1,1 0 0,1 3,19M8,19H21A1,1 0 0,1 22,20A1,1 0 0,1 21,21H8A1,1 0 0,1 7,20A1,1 0 0,1 8,19Z",
+    "mdi:weather-lightning-rainy": "M4.5,13.59C5,13.87 5.14,14.5 4.87,14.96C4.59,15.44 4,15.6 3.5,15.33V15.33C2,14.47 1,12.85 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16A1,1 0 0,1 18,15A1,1 0 0,1 19,14A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,12.11 3.6,13.08 4.5,13.6V13.59M9.5,11H12.5L10.5,15H12.5L8.75,22L9.5,17H7L9.5,11M17.5,18.67C17.5,19.96 16.5,21 15.25,21C14,21 13,19.96 13,18.67C13,17.12 15.25,14.5 15.25,14.5C15.25,14.5 17.5,17.12 17.5,18.67Z",
+    "mdi:weather-night": "M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z",
+    "mdi:weather-partly-cloudy": "M12.74,5.47C15.1,6.5 16.35,9.03 15.92,11.46C17.19,12.56 18,14.19 18,16V16.17C18.31,16.06 18.65,16 19,16A3,3 0 0,1 22,19A3,3 0 0,1 19,22H6A4,4 0 0,1 2,18A4,4 0 0,1 6,14H6.27C5,12.45 4.6,10.24 5.5,8.26C6.72,5.5 9.97,4.24 12.74,5.47M11.93,7.3C10.16,6.5 8.09,7.31 7.31,9.07C6.85,10.09 6.93,11.22 7.41,12.13C8.5,10.83 10.16,10 12,10C12.7,10 13.38,10.12 14,10.34C13.94,9.06 13.18,7.86 11.93,7.3M13.55,3.64C13,3.4 12.45,3.23 11.88,3.12L14.37,1.82L15.27,4.71C14.76,4.29 14.19,3.93 13.55,3.64M6.09,4.44C5.6,4.79 5.17,5.19 4.8,5.63L4.91,2.82L7.87,3.5C7.25,3.71 6.65,4.03 6.09,4.44M18,9.71C17.91,9.12 17.78,8.55 17.59,8L19.97,9.5L17.92,11.73C18.03,11.08 18.05,10.4 18,9.71M3.04,11.3C3.11,11.9 3.24,12.47 3.43,13L1.06,11.5L3.1,9.28C3,9.93 2.97,10.61 3.04,11.3M19,18H16V16A4,4 0 0,0 12,12A4,4 0 0,0 8,16H6A2,2 0 0,0 4,18A2,2 0 0,0 6,20H19A1,1 0 0,0 20,19A1,1 0 0,0 19,18Z",
+    "mdi:weather-rainy": "M6,14.03A1,1 0 0,1 7,15.03C7,15.58 6.55,16.03 6,16.03C3.24,16.03 1,13.79 1,11.03C1,8.27 3.24,6.03 6,6.03C7,3.68 9.3,2.03 12,2.03C15.43,2.03 18.24,4.69 18.5,8.06L19,8.03A4,4 0 0,1 23,12.03C23,14.23 21.21,16.03 19,16.03H18C17.45,16.03 17,15.58 17,15.03C17,14.47 17.45,14.03 18,14.03H19A2,2 0 0,0 21,12.03A2,2 0 0,0 19,10.03H17V9.03C17,6.27 14.76,4.03 12,4.03C9.5,4.03 7.45,5.84 7.06,8.21C6.73,8.09 6.37,8.03 6,8.03A3,3 0 0,0 3,11.03A3,3 0 0,0 6,14.03M12,14.15C12.18,14.39 12.37,14.66 12.56,14.94C13,15.56 14,17.03 14,18C14,19.11 13.1,20 12,20A2,2 0 0,1 10,18C10,17.03 11,15.56 11.44,14.94C11.63,14.66 11.82,14.4 12,14.15M12,11.03L11.5,11.59C11.5,11.59 10.65,12.55 9.79,13.81C8.93,15.06 8,16.56 8,18A4,4 0 0,0 12,22A4,4 0 0,0 16,18C16,16.56 15.07,15.06 14.21,13.81C13.35,12.55 12.5,11.59 12.5,11.59",
+    "mdi:weather-snowy": "M6,14A1,1 0 0,1 7,15A1,1 0 0,1 6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14M7.88,18.07L10.07,17.5L8.46,15.88C8.07,15.5 8.07,14.86 8.46,14.46C8.85,14.07 9.5,14.07 9.88,14.46L11.5,16.07L12.07,13.88C12.21,13.34 12.76,13.03 13.29,13.17C13.83,13.31 14.14,13.86 14,14.4L13.41,16.59L15.6,16C16.14,15.86 16.69,16.17 16.83,16.71C16.97,17.24 16.66,17.79 16.12,17.93L13.93,18.5L15.54,20.12C15.93,20.5 15.93,21.15 15.54,21.54C15.15,21.93 14.5,21.93 14.12,21.54L12.5,19.93L11.93,22.12C11.79,22.66 11.24,22.97 10.71,22.83C10.17,22.69 9.86,22.14 10,21.6L10.59,19.41L8.4,20C7.86,20.14 7.31,19.83 7.17,19.29C7.03,18.76 7.34,18.21 7.88,18.07Z",
+    "mdi:weather-sunny": "M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,2L14.39,5.42C13.65,5.15 12.84,5 12,5C11.16,5 10.35,5.15 9.61,5.42L12,2M3.34,7L7.5,6.65C6.9,7.16 6.36,7.78 5.94,8.5C5.5,9.24 5.25,10 5.11,10.79L3.34,7M3.36,17L5.12,13.23C5.26,14 5.53,14.78 5.95,15.5C6.37,16.24 6.91,16.86 7.5,17.37L3.36,17M20.65,7L18.88,10.79C18.74,10 18.47,9.23 18.05,8.5C17.63,7.78 17.1,7.15 16.5,6.64L20.65,7M20.64,17L16.5,17.36C17.09,16.85 17.62,16.22 18.04,15.5C18.46,14.77 18.73,14 18.87,13.21L20.64,17M12,22L9.59,18.56C10.33,18.83 11.14,19 12,19C12.82,19 13.63,18.83 14.37,18.56L12,22Z",
+    "mdi:weather-sunset": "M3,12H7A5,5 0 0,1 12,7A5,5 0 0,1 17,12H21A1,1 0 0,1 22,13A1,1 0 0,1 21,14H3A1,1 0 0,1 2,13A1,1 0 0,1 3,12M5,16H19A1,1 0 0,1 20,17A1,1 0 0,1 19,18H5A1,1 0 0,1 4,17A1,1 0 0,1 5,16M17,20A1,1 0 0,1 18,21A1,1 0 0,1 17,22H7A1,1 0 0,1 6,21A1,1 0 0,1 7,20H17M15,12A3,3 0 0,0 12,9A3,3 0 0,0 9,12H15M12,2L14.39,5.42C13.65,5.15 12.84,5 12,5C11.16,5 10.35,5.15 9.61,5.42L12,2M3.34,7L7.5,6.65C6.9,7.16 6.36,7.78 5.94,8.5C5.5,9.24 5.25,10 5.11,10.79L3.34,7M20.65,7L18.88,10.79C18.74,10 18.47,9.23 18.05,8.5C17.63,7.78 17.1,7.15 16.5,6.64L20.65,7Z",
+    "mdi:white-balance-sunny": "M3.55 19.09L4.96 20.5L6.76 18.71L5.34 17.29M12 6C8.69 6 6 8.69 6 12S8.69 18 12 18 18 15.31 18 12C18 8.68 15.31 6 12 6M20 13H23V11H20M17.24 18.71L19.04 20.5L20.45 19.09L18.66 17.29M20.45 5L19.04 3.6L17.24 5.39L18.66 6.81M13 1H11V4H13M6.76 5.39L4.96 3.6L3.55 5L5.34 6.81L6.76 5.39M1 13H4V11H1M13 20H11V23H13",
+    "mdi:window-open-variant": "M21 20V2H3V20H1V23H23V20M19 4V11H17V4M5 4H7V11H5M5 20V13H7V20M9 20V4H15V20M17 20V13H19V20Z",
+    "mdi:window-shutter": "M3 4H21V8H19V20H17V8H7V20H5V8H3V4M8 9H16V11H8V9M8 12H16V14H8V12M8 15H16V17H8V15M8 18H16V20H8V18Z",
+    "mdi:window-shutter-open": "M3 4H21V8H19V20H17V8H7V20H5V8H3V4M8 9H16V11H8V9Z"
+  };
+
+  // src/symulator.js
+  var ENCJA = "cover.motor_ha_podglad";
+  var PORY = ["dzien", "zloto", "zmierzch", "noc"];
+  var IKONY_POR = { dzien: "mdi:white-balance-sunny", zloto: "mdi:weather-sunset", zmierzch: "mdi:weather-sunset", noc: "mdi:weather-night" };
+  var POGODY = {
+    sunny: "mdi:weather-sunny",
+    partlycloudy: "mdi:weather-partly-cloudy",
+    cloudy: "mdi:weather-cloudy",
+    rainy: "mdi:weather-rainy",
+    "lightning-rainy": "mdi:weather-lightning-rainy",
+    snowy: "mdi:weather-snowy",
+    fog: "mdi:weather-fog"
+  };
+  var POGODY_EN = { sunny: "Sunny", partlycloudy: "Partly cloudy", cloudy: "Cloudy", rainy: "Rainy", "lightning-rainy": "Lightning, rainy", snowy: "Snowy", fog: "Fog" };
+  var BARWY = ["grafit", "bialy", "kremowy", "piaskowy", "szary", "mokka", "granat", "morski", "oliwka", "terakota", "bordo"];
+  var RAMA = { bialy: "antracyt", kremowy: "antracyt", piaskowy: "antracyt" };
+  var esc4 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var svgIkony = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI[n] || ""}"/></svg>`;
+  var ZAMIENNIKI = `ha-card{display:block;background:var(--ha-card-background,var(--card-background-color,#fff));color:var(--primary-text-color);
+ border-radius:var(--ha-card-border-radius,12px);border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--divider-color,#e0e0e0));
+ box-shadow:var(--ha-card-box-shadow,none)}
+ha-icon{display:inline-flex}ha-icon svg{width:var(--mdc-icon-size,24px);height:var(--mdc-icon-size,24px);fill:currentColor;display:block}`;
+  var STYL3 = `:host{display:block;font-family:var(--ha-font-family-body,Roboto,sans-serif);color:var(--primary-text-color)}
+.s{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:640px){.s{grid-template-columns:1fr}}
+.k{min-width:0}
+.t{margin:0 0 4px;font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500)}
+.w{margin:0 0 12px;font-size:var(--ha-font-size-m,14px);line-height:1.5;color:var(--secondary-text-color)}
+.r{margin:0 0 12px}
+.l{margin:0 0 6px;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500)}
+.g{margin:8px 0 4px;font-size:var(--ha-font-size-s,12px);color:var(--secondary-text-color)}
+.c{display:flex;flex-wrap:wrap;gap:8px}
+button{display:inline-flex;align-items:center;gap:6px;box-sizing:border-box;height:32px;padding:0 12px;margin:0;border-radius:var(--ha-border-radius-md,8px);
+ font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);cursor:pointer;
+ background:transparent;border:1px solid var(--outline-color,var(--divider-color));-webkit-tap-highlight-color:transparent;outline:0;transition:background-color .15s}
+button:hover{background:color-mix(in srgb,var(--primary-text-color) 8%,transparent)}
+button:focus-visible{box-shadow:0 0 0 2px var(--primary-color)}
+button.on{background:color-mix(in srgb,var(--primary-color) 20%,transparent);border-color:transparent}
+button svg{fill:var(--primary-color);flex:none}
+.p{width:16px;height:16px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(127,127,127,.5)}`;
+  var MotorHaSymulator = class extends HTMLElement {
+    constructor() {
+      super();
+      this._s = { typ: "zebra", kolor: "grafit", pora: "dzien", pogoda: "sunny" };
+      this._arkusz = null;
+      try {
+        this._arkusz = new CSSStyleSheet();
+        this._arkusz.replaceSync(ZAMIENNIKI);
+      } catch (e) {
+      }
+    }
+    set jezyk(j) {
+      this._jezykOpisu = j;
+      if (this._gora) this._rysuj();
+    }
+    set hass(h) {
+      const pierwszy = !this._gora;
+      this._gora = h;
+      if (pierwszy) this._rysuj();
+    }
+    get _jez() {
+      return jezyk(this._jezykOpisu ? { jezyk: this._jezykOpisu } : null, this._gora);
+    }
+    _pogoda(s) {
+      const g = this._gora;
+      const z = this._jez === jezyk(null, g) ? g?.localize?.(`component.weather.entity_component._.state.${s}`) : "";
+      return z || POGODY_EN[s];
+    }
+    _hass() {
+      const g = this._gora, s = this._s, teraz = (/* @__PURE__ */ new Date()).toISOString(), brama = !!GRUPY.brama && Object.values(GRUPY.brama).flat().includes(s.typ);
+      const enc = (id, state, attributes) => ({ entity_id: id, state, attributes, last_changed: teraz, last_updated: teraz, context: { id: "" } });
+      const st = Object.assign({}, g.states, {
+        [ENCJA]: enc(ENCJA, "open", {
+          current_position: brama ? 0 : 60,
+          friendly_name: this._T.oslony[s.typ] || "Motor HA",
+          supported_features: brama ? 3 : 15,
+          ...brama ? { device_class: ["przesuwna", "skrzydlowa"].includes(s.typ) ? "gate" : "garage" } : {}
+        }),
+        "sun.sun": enc("sun.sun", s.pora === "noc" || s.pora === "zmierzch" ? "below_horizon" : "above_horizon", { elevation: { dzien: 40, zloto: 4, zmierzch: -3, noc: -20 }[s.pora], azimuth: 200 })
+      });
+      if (brama) st[ENCJA].state = "closed";
+      return Object.assign({}, g, { states: st, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) });
+    }
+    _rysuj() {
+      const T2 = this._T = TEKSTY[this._jez], S = T2.symulator, s = this._s;
+      const root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      const przycisk = (dane, wart, tekst, ikona, kropka) => `<button data-${dane}="${esc4(wart)}"${s[dane] === wart ? ' class="on"' : ""}>${kropka || (ikona ? svgIkony(ikona) : "")}${esc4(tekst)}</button>`;
+      const rodzaje = Object.entries(GRUPY).map(([g, pod]) => `<div class="g">${esc4(T2.grupy[g])}</div><div class="c">${Object.values(pod).flat().map((t) => przycisk("typ", t, T2.oslony[t], IKONY[t])).join("")}</div>`).join("");
+      root.innerHTML = `<style>${STYL3}</style><div class="s"><div class="k"></div><div>
+<p class="t">${esc4(S.tytul)}</p><p class="w">${esc4(S.wskazowka)}</p>
+<div class="r"><div class="l">${esc4(S.pora)}</div><div class="c">${PORY.map((p) => przycisk("pora", p, S[p], IKONY_POR[p])).join("")}</div></div>
+<div class="r"><div class="l">${esc4(S.pogoda)}</div><div class="c">${Object.entries(POGODY).map(([p, i]) => przycisk("pogoda", p, this._pogoda(p), i)).join("")}</div></div>
+<div class="r"><div class="l">${esc4(S.kolor)}</div><div class="c">${BARWY.map((k) => przycisk("kolor", k, T2.kolory[k], null, `<span class="p" style="background:${KOLORY[k]}"></span>`)).join("")}</div></div>
+<div class="r"><div class="l">${esc4(S.rodzaj)}</div>${rodzaje}</div></div></div>`;
+      root.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+        const [k, v] = Object.entries(b.dataset)[0];
+        s[k] = v;
+        root.querySelectorAll(`[data-${k}]`).forEach((x) => x.classList.toggle("on", x.dataset[k] === v));
+        this._karta();
+      }));
+      this._k = null;
+      this._karta();
+    }
+    _karta() {
+      const s = this._s, pole = this.shadowRoot.querySelector(".k");
+      if (!this._k) {
+        this._k = document.createElement("motor-ha");
+        pole.appendChild(this._k);
+      }
+      this._k.setConfig({
+        type: "custom:motor-ha",
+        entity: ENCJA,
+        oslona: s.typ,
+        kolor: s.kolor,
+        rama: RAMA[s.kolor] || "biala",
+        jezyk: this._jez,
+        name: this._T.oslony[s.typ],
+        _podglad: { pogoda: s.pogoda, pora: s.pora }
+      });
+      this._k.hass = this._hass();
+      this._zamienniki();
+    }
+    // ha-card i ha-icon nie istnieją w ramce: styl przez arkusz cienia karty, ikony jako SVG w środku (bez rejestrowania elementów)
+    _zamienniki() {
+      if (customElements.get("ha-icon")) return;
+      const r = this._k.shadowRoot;
+      if (!r) return;
+      if (this._arkusz && !r.adoptedStyleSheets.includes(this._arkusz)) r.adoptedStyleSheets = [...r.adoptedStyleSheets, this._arkusz];
+      const wypelnij = () => r.querySelectorAll("ha-icon").forEach((i) => {
+        const n = i.getAttribute("icon") || "";
+        if (i.dataset.mh !== n) {
+          i.dataset.mh = n;
+          i.innerHTML = MDI[n] ? `<svg viewBox="0 0 24 24"><path d="${MDI[n]}"/></svg>` : "";
+        }
+      });
+      wypelnij();
+      if (!this._obs || this._obsR !== r) {
+        this._obs?.disconnect();
+        this._obs = new MutationObserver(wypelnij);
+        this._obs.observe(r, { subtree: true, childList: true, attributes: true, attributeFilter: ["icon"] });
+        this._obsR = r;
+      }
+    }
+  };
+
   // src/index.js
   var rejestruj = (nazwa2, klasa) => {
     if (!customElements.get(nazwa2)) customElements.define(nazwa2, klasa);
@@ -5056,6 +5408,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   rejestruj("okno-ha-editor", class extends MotorHaEdytor {
   });
   rejestruj("motor-ha-dom", MotorHaDom);
+  rejestruj("motor-ha-symulator", MotorHaSymulator);
   rejestruj("roleta-realistyczna", class extends MotorHaKarta {
   });
   rejestruj("roleta-realistyczna-editor", class extends MotorHaEdytor {

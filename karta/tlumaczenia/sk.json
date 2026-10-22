@@ -230,5 +230,17 @@
     "orzech": "orech",
     "mahon": "mahagón",
     "dab_bagienny": "bahenný dub"
+  },
+  "symulator": {
+    "tytul": "Vyskúšajte naživo",
+    "pora": "Denná doba",
+    "pogoda": "Počasie",
+    "rodzaj": "Druh",
+    "kolor": "Farba",
+    "dzien": "Deň",
+    "zloto": "Zlatá hodinka",
+    "zmierzch": "Súmrak",
+    "noc": "Noc",
+    "wskazowka": "Potiahnite sklo alebo použite tlačidlá. Je to len náhľad – doma sa nič nepohne."
   }
 }

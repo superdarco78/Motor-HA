@@ -230,5 +230,17 @@
     "orzech": "walnut",
     "mahon": "mahogany",
     "dab_bagienny": "bog oak"
+  },
+  "symulator": {
+    "tytul": "Try it live",
+    "pora": "Time of day",
+    "pogoda": "Weather",
+    "rodzaj": "Type",
+    "kolor": "Colour",
+    "dzien": "Day",
+    "zloto": "Golden hour",
+    "zmierzch": "Dusk",
+    "noc": "Night",
+    "wskazowka": "Drag the glass or use the buttons. This is only a preview – nothing at home moves."
   }
 }

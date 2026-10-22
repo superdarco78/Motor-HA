@@ -4,6 +4,7 @@ import { MotorHaKarta } from './karta.js';
 import { MotorHaEdytor, KROKI } from './edytor.js';
 import { TEKSTY, kodJezyka } from './jezyk.js';
 import { MotorHaDom } from './dom.js';
+import { MotorHaSymulator } from './symulator.js';
 
 const rejestruj = (nazwa, klasa) => { if (!customElements.get(nazwa)) customElements.define(nazwa, klasa); };
 rejestruj('motor-ha', MotorHaKarta);
@@ -11,6 +12,7 @@ rejestruj('okno-ha', class extends MotorHaKarta {});
 rejestruj('motor-ha-editor', MotorHaEdytor);
 rejestruj('okno-ha-editor', class extends MotorHaEdytor {});
 rejestruj('motor-ha-dom', MotorHaDom);
+rejestruj('motor-ha-symulator', MotorHaSymulator);   // tylko symulacja w opisie HACS
 rejestruj('roleta-realistyczna', class extends MotorHaKarta {});
 rejestruj('roleta-realistyczna-editor', class extends MotorHaEdytor {});
 
