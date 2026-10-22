@@ -125,12 +125,18 @@ def pasek_kawalek_svg(i: int, n: int, nazwa: str, sciezka: str) -> str:
     return "".join(cz)
 
 
+# ikona przy każdym kroku instalacji (według obrazka; krok bez obrazka = przejście kreatora)
+IKONY_INSTALACJI = {"hacs-1": "link-variant", "hacs-2": "plus-box", "hacs-3": "download", "restart": "restart",
+                    "start": "auto-fix", None: "gesture-tap", "panel": "view-dashboard"}
+
+
 def zapisz_obrazki() -> None:
     from custom_components.motor_ha.pasek import IKONY as SCIEZKI_KROKOW   # te same ikony co pasek w kreatorze
     kat = KORZEN / "img" / "ikony"
     kat.mkdir(parents=True, exist_ok=True)
     potrzebne = set(KAFLE_IKONY) | set(DZIALY.values()) | set(FUNKCJE_IKONY.values()) | {i for _, i in ENCJE} \
-        | set(USLUGI.values()) | set(POWIADOMIENIA.values()) | set(IKONY_GRUP.values())
+        | set(USLUGI.values()) | set(POWIADOMIENIA.values()) | set(IKONY_GRUP.values()) | set(IKONY_INSTALACJI.values()) \
+        | {"wrench", "help-circle"}
     for n in sorted(potrzebne):
         (kat / f"{n}.svg").write_text(ikona_svg(MDI[n]), encoding="utf-8")
         (kat / f"w-{n}.svg").write_text(ikona_szeroka_svg(MDI[n]), encoding="utf-8")
@@ -230,19 +236,19 @@ def readme(j: str) -> str:
     # plakietki
     w.append('<p align="center">')
     w += [odznaka(o["wersja"], "", "009AC7", "", f"{gh}/releases/latest", f"github/v/release/{REPO}"),
-          odznaka(o["pobrania"], "", "4CAF50", "", f"{gh}/releases", f"github/downloads/{REPO}/total"),
-          odznaka(o["gwiazdki"], "", "FF9800", "github", f"{gh}/stargazers", f"github/stars/{REPO}"),
-          odznaka("HACS", "Custom", "FF5722", "homeassistantcommunitystore", "https://hacs.xyz"),
+          odznaka(o["pobrania"], "", "009AC7", "", f"{gh}/releases", f"github/downloads/{REPO}/total"),
+          odznaka(o["gwiazdki"], "", "009AC7", "github", f"{gh}/stargazers", f"github/stars/{REPO}"),
+          odznaka("HACS", "Custom", "009AC7", "homeassistantcommunitystore", "https://hacs.xyz"),
           "<br>",
-          odznaka("Home Assistant", "2024.12+", "18BCF2", "homeassistant", "https://www.home-assistant.io/"),
-          odznaka(o["jezyki"], "14", "8E44AD", "googletranslate", f"{gh}#licencja"),
-          odznaka(o["licencja"], "CC BY-NC-SA 4.0", "E53935", "", f"{gh}/blob/main/LICENSE"),
-          odznaka(o["zgloszenia"], "", "FFB300", "github", f"{gh}/issues", f"github/issues/{REPO}"),
+          odznaka("Home Assistant", "2024.12+", "009AC7", "homeassistant", "https://www.home-assistant.io/"),
+          odznaka(o["jezyki"], "14", "009AC7", "googletranslate", f"{gh}#licencja"),
+          odznaka(o["licencja"], "CC BY-NC-SA 4.0", "009AC7", "", f"{gh}/blob/main/LICENSE"),
+          odznaka(o["zgloszenia"], "", "009AC7", "github", f"{gh}/issues", f"github/issues/{REPO}"),
           "<br>",
-          odznaka("HACS", "", "41BDF5", "homeassistantcommunitystore", f"{gh}/actions/workflows/sprawdz.yml",
+          odznaka("HACS", "", "009AC7", "homeassistantcommunitystore", f"{gh}/actions/workflows/sprawdz.yml",
                   f"github/actions/workflow/status/{REPO}/sprawdz.yml?branch=main&event=push"),
-          odznaka(o["forum"], "Home Assistant", "1B9AAA", "discourse", "https://community.home-assistant.io/"),
-          odznaka(o["forum_pl"], "arturhome.pl", "D81B60", "discourse", "https://forum.arturhome.pl/")]
+          odznaka(o["forum"], "Home Assistant", "009AC7", "discourse", "https://community.home-assistant.io/"),
+          odznaka(o["forum_pl"], "arturhome.pl", "009AC7", "discourse", "https://forum.arturhome.pl/")]
     w.append("</p>\n")
     # języki
     w.append('<p align="center">')
@@ -291,7 +297,7 @@ def readme(j: str) -> str:
     # klikany spis kroków instalacji
     w.append("<ol>" + "".join(f'<li><a href="{baza}#krok-{n}">{escape(x[2])}</a></li>' for n, x in enumerate(kt["instalacja"], 1)) + "</ol>\n")
     for nr, (img, guzik, tytul, lista, uwaga) in enumerate(kt["instalacja"], 1):
-        w.append(f'<a name="krok-{nr}"></a>\n<h3>{nr}. {escape(tytul)}</h3>\n')
+        w.append(f'<a name="krok-{nr}"></a>\n<h3>{ik(IKONY_INSTALACJI[img], 28)} {nr}. {escape(tytul)}</h3>\n')
         # przycisk i obrazek prowadzą do tego samego miejsca w Twoim HA (obrazki HACS – do repozytorium w HACS)
         link = f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#krok-{nr}'
         if guzik:
@@ -304,7 +310,7 @@ def readme(j: str) -> str:
         if uwaga:
             w.append(f"<p>ℹ️ {uwaga}</p>\n" if img else f'<p>➡️ <a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-krok">{escape(uwaga)}</a></p>\n')
         w.append(nawigacja(baza, kt, L["spis"], f"krok-{nr - 1}" if nr > 1 else None, f"krok-{nr + 1}" if nr < ile else "kreator"))
-    w.append(f"<details><summary><b>{escape(L['instalacja_reczna'])}</b></summary>\n<p>{L['instalacja_reczna_tekst'].format(gh=gh)}</p>\n</details>\n")
+    w.append(f"<h3>{ik('wrench', 28)} {escape(L['instalacja_reczna'])}</h3>\n<p>{L['instalacja_reczna_tekst'].format(gh=gh)}</p>\n")
     # kreator
     w.append(naglowek("kreator", d["kreator"]))
     w.append(f'<p>{L["kreator_wstep"]}</p>\n')
@@ -393,7 +399,7 @@ def readme(j: str) -> str:
     # pytania
     w.append(naglowek("pytania", d["pytania"]))
     for py, od in L["pytania"]:
-        w.append(f"<details><summary><b>{escape(py)}</b></summary>\n<p>{od}</p>\n</details>\n")
+        w.append(f"<h3>{ik('help-circle', 28)} {escape(py)}</h3>\n<p>{od}</p>\n")
     # licencja
     w.append(naglowek("licencja", d["licencja"]))
     w.append(f"<p>{L['licencja_tekst'].format(gh=gh)}</p>\n")

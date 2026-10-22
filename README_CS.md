@@ -1,17 +1,17 @@
 <p align="center">
 <a href="https://github.com/superdarco78/Motor-HA/releases/latest"><img src="https://img.shields.io/github/v/release/superdarco78/Motor-HA?style=for-the-badge&label=verze&color=009AC7" alt="verze"></a>
-<a href="https://github.com/superdarco78/Motor-HA/releases"><img src="https://img.shields.io/github/downloads/superdarco78/Motor-HA/total?style=for-the-badge&label=sta%C5%BEen%C3%AD&color=4CAF50" alt="stažení"></a>
-<a href="https://github.com/superdarco78/Motor-HA/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/Motor-HA?style=for-the-badge&label=hv%C4%9Bzdy&color=FF9800&logo=github&logoColor=white" alt="hvězdy"></a>
-<a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Custom-FF5722?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
+<a href="https://github.com/superdarco78/Motor-HA/releases"><img src="https://img.shields.io/github/downloads/superdarco78/Motor-HA/total?style=for-the-badge&label=sta%C5%BEen%C3%AD&color=009AC7" alt="stažení"></a>
+<a href="https://github.com/superdarco78/Motor-HA/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/Motor-HA?style=for-the-badge&label=hv%C4%9Bzdy&color=009AC7&logo=github&logoColor=white" alt="hvězdy"></a>
+<a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Custom-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
 <br>
-<a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-18BCF2?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
-<a href="https://github.com/superdarco78/Motor-HA#licencja"><img src="https://img.shields.io/badge/jazyky-14-8E44AD?style=for-the-badge&logo=googletranslate&logoColor=white" alt="jazyky"></a>
-<a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE"><img src="https://img.shields.io/badge/licence-CC%20BY--NC--SA%204.0-E53935?style=for-the-badge" alt="licence"></a>
-<a href="https://github.com/superdarco78/Motor-HA/issues"><img src="https://img.shields.io/github/issues/superdarco78/Motor-HA?style=for-the-badge&label=hl%C3%A1%C5%A1en%C3%AD&color=FFB300&logo=github&logoColor=white" alt="hlášení"></a>
+<a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
+<a href="https://github.com/superdarco78/Motor-HA#licencja"><img src="https://img.shields.io/badge/jazyky-14-009AC7?style=for-the-badge&logo=googletranslate&logoColor=white" alt="jazyky"></a>
+<a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE"><img src="https://img.shields.io/badge/licence-CC%20BY--NC--SA%204.0-009AC7?style=for-the-badge" alt="licence"></a>
+<a href="https://github.com/superdarco78/Motor-HA/issues"><img src="https://img.shields.io/github/issues/superdarco78/Motor-HA?style=for-the-badge&label=hl%C3%A1%C5%A1en%C3%AD&color=009AC7&logo=github&logoColor=white" alt="hlášení"></a>
 <br>
-<a href="https://github.com/superdarco78/Motor-HA/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/Motor-HA/sprawdz.yml?branch=main&event=push&style=for-the-badge&label=HACS&color=41BDF5&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
-<a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/f%C3%B3rum-Home%20Assistant-1B9AAA?style=for-the-badge&logo=discourse&logoColor=white" alt="fórum"></a>
-<a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/f%C3%B3rum%20PL-arturhome.pl-D81B60?style=for-the-badge&logo=discourse&logoColor=white" alt="fórum PL"></a>
+<a href="https://github.com/superdarco78/Motor-HA/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/Motor-HA/sprawdz.yml?branch=main&event=push&style=for-the-badge&label=HACS&color=009AC7&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
+<a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/f%C3%B3rum-Home%20Assistant-009AC7?style=for-the-badge&logo=discourse&logoColor=white" alt="fórum"></a>
+<a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/f%C3%B3rum%20PL-arturhome.pl-009AC7?style=for-the-badge&logo=discourse&logoColor=white" alt="fórum PL"></a>
 </p>
 
 <p align="center">
@@ -70,7 +70,7 @@
 <ol><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-1">Klikněte na tlačítko, pak „Otevřít odkaz”</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-2">Přidejte repozitář do HACS</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-3">Stáhněte Motor HA</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-4">Restartujte Home Assistant</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-5">Klikněte na tlačítko a spusťte průvodce</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-6">Projděte průvodce</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-7">Hotovo: karta je na panelu</a></li></ol>
 
 <a name="krok-1"></a>
-<h3>1. Klikněte na tlačítko, pak „Otevřít odkaz”</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/link-variant.svg" width="28" height="28" align="absmiddle" alt=""> 1. Klikněte na tlačítko, pak „Otevřít odkaz”</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20v%20HACS-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" height="36" alt="Otevřít v HACS"></a></p>
 
@@ -84,7 +84,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-2">Další ➡️</a></sub></p>
 
 <a name="krok-2"></a>
-<h3>2. Přidejte repozitář do HACS</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/plus-box.svg" width="28" height="28" align="absmiddle" alt=""> 2. Přidejte repozitář do HACS</h3>
 
 <p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-2"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/cs/hacs-2-ciemny.webp" width="100%" alt="Přidejte repozitář do HACS"></a></p>
 
@@ -94,7 +94,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-1">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-3">Další ➡️</a></sub></p>
 
 <a name="krok-3"></a>
-<h3>3. Stáhněte Motor HA</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/download.svg" width="28" height="28" align="absmiddle" alt=""> 3. Stáhněte Motor HA</h3>
 
 <p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-3"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/cs/hacs-3-ciemny.webp" width="100%" alt="Stáhněte Motor HA"></a></p>
 
@@ -104,7 +104,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-2">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-4">Další ➡️</a></sub></p>
 
 <a name="krok-4"></a>
-<h3>4. Restartujte Home Assistant</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/restart.svg" width="28" height="28" align="absmiddle" alt=""> 4. Restartujte Home Assistant</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/system_dashboard/"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20Syst%C3%A9m%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít Systém v HA"></a></p>
 
@@ -118,7 +118,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-3">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-5">Další ➡️</a></sub></p>
 
 <a name="krok-5"></a>
-<h3>5. Klikněte na tlačítko a spusťte průvodce</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/auto-fix.svg" width="28" height="28" align="absmiddle" alt=""> 5. Klikněte na tlačítko a spusťte průvodce</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=motor_ha"><img src="https://img.shields.io/badge/-P%C5%99idat%20integraci-FF9800?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Přidat integraci"></a></p>
 
@@ -130,7 +130,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-4">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-6">Další ➡️</a></sub></p>
 
 <a name="krok-6"></a>
-<h3>6. Projděte průvodce</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> 6. Projděte průvodce</h3>
 
 
 <p>➡️ <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-krok">Každý krok s obrázkem je níže v části „Průvodce krok za krokem”.</a></p>
@@ -138,7 +138,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-5">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-7">Další ➡️</a></sub></p>
 
 <a name="krok-7"></a>
-<h3>7. Hotovo: karta je na panelu</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/view-dashboard.svg" width="28" height="28" align="absmiddle" alt=""> 7. Hotovo: karta je na panelu</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/lovelace_dashboards/"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20panely%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít panely v HA"></a></p>
 
@@ -149,9 +149,8 @@
 
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-6">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator">Další ➡️</a></sub></p>
 
-<details><summary><b>Ruční instalace (pro pokročilé)</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/wrench.svg" width="28" height="28" align="absmiddle" alt=""> Ruční instalace (pro pokročilé)</h3>
 <p>Stáhni <code>motor_ha.zip</code> z <a href="https://github.com/superdarco78/Motor-HA/releases/latest">poslední verze</a>, rozbal ho do <code>config/custom_components/motor_ha</code> a restartuj Home Assistant.</p>
-</details>
 
 <a name="kreator"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/auto-fix.svg" width="34" height="34" align="absmiddle" alt=""> Průvodce krok za krokem</h2>
@@ -475,25 +474,20 @@
 <a name="pytania"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="34" height="34" align="absmiddle" alt=""> Otázky</h2>
 
-<details><summary><b>Mám Okno HA 1.x. Co se stane po aktualizaci?</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Mám Okno HA 1.x. Co se stane po aktualizaci?</h3>
 <p>Tvoje okna se sama přesunou do Motor HA 2.0 se stejným nastavením a názvy entit. Staré položky se jen vypnou – můžeš je pak smazat.</p>
-</details>
 
-<details><summary><b>Karta ukazuje obrácená procenta.</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Karta ukazuje obrácená procenta.</h3>
 <p><b>Nastavit → Motor →</b> zapni <b>Obrácená procenta</b>.</p>
-</details>
 
-<details><summary><b>Roleta na obrazovce jede jinak než skutečná.</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Roleta na obrazovce jede jinak než skutečná.</h3>
 <p>Stiskni <b>Kalibrovat</b> u zařízení. Motor pojede nahoru, dolů a nahoru a karta si zapamatuje čas.</p>
-</details>
 
-<details><summary><b>Proč se stínění pohnulo samo?</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Proč se stínění pohnulo samo?</h3>
 <p>Podívej se na senzor <b>Důvod pohybu</b> nebo na řádek pod názvem na kartě.</p>
-</details>
 
-<details><summary><b>Nechci žádnou automatiku.</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Nechci žádnou automatiku.</h3>
 <p>Nic nedělej: automatika je na začátku vypnutá. Karta i zařízení fungují i bez ní.</p>
-</details>
 
 <a name="licencja"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Licence</h2>

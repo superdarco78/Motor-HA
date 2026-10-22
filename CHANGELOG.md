@@ -4,6 +4,7 @@
 
 - 🧙 Każdy krok kreatora z obrazkiem jeden pod drugim, na całą szerokość – nic się nie rozjeżdża, czytelne też na telefonie
 - 👆 Klikana instrukcja: spis kroków instalacji, pod każdym krokiem „Poprzedni · Spis treści · Następny”, tytuły kroków w tabeli kreatora prowadzą do ich obrazków
+- 🎨 Według zasad wyglądu: plakietki tylko w kolorze HA, ikona przy każdym kroku instalacji, „Instalacja ręczna” i „Pytania” bez rozwijanych list
 
 ## v2.0.2 – Opis na całą szerokość i klikana instrukcja
 

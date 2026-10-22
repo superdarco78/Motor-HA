@@ -1,17 +1,17 @@
 <p align="center">
 <a href="https://github.com/superdarco78/Motor-HA/releases/latest"><img src="https://img.shields.io/github/v/release/superdarco78/Motor-HA?style=for-the-badge&label=wersja&color=009AC7" alt="wersja"></a>
-<a href="https://github.com/superdarco78/Motor-HA/releases"><img src="https://img.shields.io/github/downloads/superdarco78/Motor-HA/total?style=for-the-badge&label=pobrania&color=4CAF50" alt="pobrania"></a>
-<a href="https://github.com/superdarco78/Motor-HA/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/Motor-HA?style=for-the-badge&label=gwiazdki&color=FF9800&logo=github&logoColor=white" alt="gwiazdki"></a>
-<a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Custom-FF5722?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
+<a href="https://github.com/superdarco78/Motor-HA/releases"><img src="https://img.shields.io/github/downloads/superdarco78/Motor-HA/total?style=for-the-badge&label=pobrania&color=009AC7" alt="pobrania"></a>
+<a href="https://github.com/superdarco78/Motor-HA/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/Motor-HA?style=for-the-badge&label=gwiazdki&color=009AC7&logo=github&logoColor=white" alt="gwiazdki"></a>
+<a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Custom-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
 <br>
-<a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-18BCF2?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
-<a href="https://github.com/superdarco78/Motor-HA#licencja"><img src="https://img.shields.io/badge/j%C4%99zyki-14-8E44AD?style=for-the-badge&logo=googletranslate&logoColor=white" alt="języki"></a>
-<a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE"><img src="https://img.shields.io/badge/licencja-CC%20BY--NC--SA%204.0-E53935?style=for-the-badge" alt="licencja"></a>
-<a href="https://github.com/superdarco78/Motor-HA/issues"><img src="https://img.shields.io/github/issues/superdarco78/Motor-HA?style=for-the-badge&label=zg%C5%82oszenia&color=FFB300&logo=github&logoColor=white" alt="zgłoszenia"></a>
+<a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
+<a href="https://github.com/superdarco78/Motor-HA#licencja"><img src="https://img.shields.io/badge/j%C4%99zyki-14-009AC7?style=for-the-badge&logo=googletranslate&logoColor=white" alt="języki"></a>
+<a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE"><img src="https://img.shields.io/badge/licencja-CC%20BY--NC--SA%204.0-009AC7?style=for-the-badge" alt="licencja"></a>
+<a href="https://github.com/superdarco78/Motor-HA/issues"><img src="https://img.shields.io/github/issues/superdarco78/Motor-HA?style=for-the-badge&label=zg%C5%82oszenia&color=009AC7&logo=github&logoColor=white" alt="zgłoszenia"></a>
 <br>
-<a href="https://github.com/superdarco78/Motor-HA/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/Motor-HA/sprawdz.yml?branch=main&event=push&style=for-the-badge&label=HACS&color=41BDF5&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
-<a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/forum-Home%20Assistant-1B9AAA?style=for-the-badge&logo=discourse&logoColor=white" alt="forum"></a>
-<a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-D81B60?style=for-the-badge&logo=discourse&logoColor=white" alt="forum PL"></a>
+<a href="https://github.com/superdarco78/Motor-HA/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/Motor-HA/sprawdz.yml?branch=main&event=push&style=for-the-badge&label=HACS&color=009AC7&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
+<a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/forum-Home%20Assistant-009AC7?style=for-the-badge&logo=discourse&logoColor=white" alt="forum"></a>
+<a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-009AC7?style=for-the-badge&logo=discourse&logoColor=white" alt="forum PL"></a>
 </p>
 
 <p align="center">
@@ -70,7 +70,7 @@
 <ol><li><a href="https://github.com/superdarco78/Motor-HA#krok-1">Kliknij przycisk, potem „Otwórz link”</a></li><li><a href="https://github.com/superdarco78/Motor-HA#krok-2">Dodaj repozytorium do HACS</a></li><li><a href="https://github.com/superdarco78/Motor-HA#krok-3">Pobierz Motor HA</a></li><li><a href="https://github.com/superdarco78/Motor-HA#krok-4">Uruchom ponownie Home Assistant</a></li><li><a href="https://github.com/superdarco78/Motor-HA#krok-5">Kliknij przycisk i zacznij kreator</a></li><li><a href="https://github.com/superdarco78/Motor-HA#krok-6">Przejdź kreator</a></li><li><a href="https://github.com/superdarco78/Motor-HA#krok-7">Gotowe: karta jest na panelu</a></li></ol>
 
 <a name="krok-1"></a>
-<h3>1. Kliknij przycisk, potem „Otwórz link”</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/link-variant.svg" width="28" height="28" align="absmiddle" alt=""> 1. Kliknij przycisk, potem „Otwórz link”</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20w%20HACS-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" height="36" alt="Otwórz w HACS"></a></p>
 
@@ -84,7 +84,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA#spis">📑 Spis treści</a> · <a href="https://github.com/superdarco78/Motor-HA#krok-2">Następny ➡️</a></sub></p>
 
 <a name="krok-2"></a>
-<h3>2. Dodaj repozytorium do HACS</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/plus-box.svg" width="28" height="28" align="absmiddle" alt=""> 2. Dodaj repozytorium do HACS</h3>
 
 <p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-2"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-2-ciemny.webp" width="100%" alt="Dodaj repozytorium do HACS"></a></p>
 
@@ -94,7 +94,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA#krok-1">⬅️ Poprzedni</a> · <a href="https://github.com/superdarco78/Motor-HA#spis">📑 Spis treści</a> · <a href="https://github.com/superdarco78/Motor-HA#krok-3">Następny ➡️</a></sub></p>
 
 <a name="krok-3"></a>
-<h3>3. Pobierz Motor HA</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/download.svg" width="28" height="28" align="absmiddle" alt=""> 3. Pobierz Motor HA</h3>
 
 <p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-3"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-3-ciemny.webp" width="100%" alt="Pobierz Motor HA"></a></p>
 
@@ -104,7 +104,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA#krok-2">⬅️ Poprzedni</a> · <a href="https://github.com/superdarco78/Motor-HA#spis">📑 Spis treści</a> · <a href="https://github.com/superdarco78/Motor-HA#krok-4">Następny ➡️</a></sub></p>
 
 <a name="krok-4"></a>
-<h3>4. Uruchom ponownie Home Assistant</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/restart.svg" width="28" height="28" align="absmiddle" alt=""> 4. Uruchom ponownie Home Assistant</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/system_dashboard/"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20System%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz System w HA"></a></p>
 
@@ -118,7 +118,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA#krok-3">⬅️ Poprzedni</a> · <a href="https://github.com/superdarco78/Motor-HA#spis">📑 Spis treści</a> · <a href="https://github.com/superdarco78/Motor-HA#krok-5">Następny ➡️</a></sub></p>
 
 <a name="krok-5"></a>
-<h3>5. Kliknij przycisk i zacznij kreator</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/auto-fix.svg" width="28" height="28" align="absmiddle" alt=""> 5. Kliknij przycisk i zacznij kreator</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=motor_ha"><img src="https://img.shields.io/badge/-Dodaj%20integracj%C4%99-FF9800?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Dodaj integrację"></a></p>
 
@@ -130,7 +130,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA#krok-4">⬅️ Poprzedni</a> · <a href="https://github.com/superdarco78/Motor-HA#spis">📑 Spis treści</a> · <a href="https://github.com/superdarco78/Motor-HA#krok-6">Następny ➡️</a></sub></p>
 
 <a name="krok-6"></a>
-<h3>6. Przejdź kreator</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> 6. Przejdź kreator</h3>
 
 
 <p>➡️ <a href="https://github.com/superdarco78/Motor-HA#kreator-krok">Każdy krok kreatora z obrazkiem jest niżej, w części „Kreator krok po kroku”.</a></p>
@@ -138,7 +138,7 @@
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA#krok-5">⬅️ Poprzedni</a> · <a href="https://github.com/superdarco78/Motor-HA#spis">📑 Spis treści</a> · <a href="https://github.com/superdarco78/Motor-HA#krok-7">Następny ➡️</a></sub></p>
 
 <a name="krok-7"></a>
-<h3>7. Gotowe: karta jest na panelu</h3>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/view-dashboard.svg" width="28" height="28" align="absmiddle" alt=""> 7. Gotowe: karta jest na panelu</h3>
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/lovelace_dashboards/"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20panele%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz panele w HA"></a></p>
 
@@ -149,9 +149,8 @@
 
 <p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA#krok-6">⬅️ Poprzedni</a> · <a href="https://github.com/superdarco78/Motor-HA#spis">📑 Spis treści</a> · <a href="https://github.com/superdarco78/Motor-HA#kreator">Następny ➡️</a></sub></p>
 
-<details><summary><b>Instalacja ręczna (dla zaawansowanych)</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/wrench.svg" width="28" height="28" align="absmiddle" alt=""> Instalacja ręczna (dla zaawansowanych)</h3>
 <p>Pobierz plik <code>motor_ha.zip</code> z <a href="https://github.com/superdarco78/Motor-HA/releases/latest">ostatniego wydania</a>, rozpakuj go do folderu <code>config/custom_components/motor_ha</code> i uruchom ponownie Home Assistant.</p>
-</details>
 
 <a name="kreator"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/auto-fix.svg" width="34" height="34" align="absmiddle" alt=""> Kreator krok po kroku</h2>
@@ -475,25 +474,20 @@
 <a name="pytania"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="34" height="34" align="absmiddle" alt=""> Pytania</h2>
 
-<details><summary><b>Mam Okno HA 1.x. Co się stanie po aktualizacji?</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Mam Okno HA 1.x. Co się stanie po aktualizacji?</h3>
 <p>Twoje okna przeniosą się same do Motor HA 2.0, z tymi samymi ustawieniami i nazwami encji. Stare wpisy zostaną tylko wyłączone – możesz je potem usunąć.</p>
-</details>
 
-<details><summary><b>Karta pokazuje odwrotne procenty.</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Karta pokazuje odwrotne procenty.</h3>
 <p><b>Konfiguruj → Silnik →</b> włącz <b>Odwrócone procenty</b>.</p>
-</details>
 
-<details><summary><b>Roleta na ekranie jedzie inaczej niż prawdziwa.</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Roleta na ekranie jedzie inaczej niż prawdziwa.</h3>
 <p>Naciśnij przycisk <b>Kalibruj</b> na urządzeniu. Silnik pojedzie w górę, w dół i w górę, a karta zapamięta czas.</p>
-</details>
 
-<details><summary><b>Dlaczego osłona sama ruszyła?</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Dlaczego osłona sama ruszyła?</h3>
 <p>Zobacz czujnik <b>Powód ruchu</b> albo wiersz pod nazwą na karcie.</p>
-</details>
 
-<details><summary><b>Nie chcę żadnej automatyki.</b></summary>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Nie chcę żadnej automatyki.</h3>
 <p>Nic nie rób: automatyka jest na start wyłączona. Karta i urządzenie działają bez niej.</p>
-</details>
 
 <a name="licencja"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Licencja</h2>
