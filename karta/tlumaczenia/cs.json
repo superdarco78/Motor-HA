@@ -242,5 +242,23 @@
     "zmierzch": "Soumrak",
     "noc": "Noc",
     "wskazowka": "Táhněte sklem nebo použijte tlačítka. Je to jen náhled – doma se nic nepohne."
+  },
+  "urzadzenie": {
+    "dodaj": "Přidat na panel",
+    "zmien": "Změnit nastavení",
+    "ustawienia": "Nastavení Motor HA",
+    "ktory": "Na který panel?",
+    "dodano": "Přidáno na panel",
+    "brakPaneli": "Není panel, který lze upravit. Vytvořte ho v Nastavení → Panely.",
+    "blad": "Nepodařilo se. Zkuste to znovu.",
+    "rodzaj": "Druh",
+    "kolor": "Barva",
+    "skrzydla": "Křídla",
+    "wysokosc": "Výška na kartě",
+    "czas": "Doba jízdy",
+    "auto": "automaticky",
+    "automatyka": "Automatika",
+    "pauza": "Pauza na dnes",
+    "powod": "Důvod pohybu"
   }
 }

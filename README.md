@@ -74,7 +74,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20w%20HACS-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" height="36" alt="Otwórz w HACS"></a></p>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-1"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-1-ciemny.webp" width="100%" alt="Kliknij przycisk, potem „Otwórz link”"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-1-ciemny.webp" width="70%" alt="Kliknij przycisk, potem „Otwórz link”"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li><b>Otwórz link</b></li></ol>
@@ -86,7 +86,7 @@
 <a name="krok-2"></a>
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/plus-box.svg" width="28" height="28" align="absmiddle" alt=""> 2. Dodaj repozytorium do HACS</h3>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-2"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-2-ciemny.webp" width="100%" alt="Dodaj repozytorium do HACS"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-2-ciemny.webp" width="70%" alt="Dodaj repozytorium do HACS"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li><b>Dodaj</b></li></ol>
@@ -96,7 +96,7 @@
 <a name="krok-3"></a>
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/download.svg" width="28" height="28" align="absmiddle" alt=""> 3. Pobierz Motor HA</h3>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-3"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-3-ciemny.webp" width="100%" alt="Pobierz Motor HA"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/hacs-3-ciemny.webp" width="70%" alt="Pobierz Motor HA"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li><b>Pobierz</b> na dole po prawej</li><li><b>Pobierz</b> w okienku</li></ol>
@@ -108,7 +108,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/system_dashboard/"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20System%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz System w HA"></a></p>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-4"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/restart-ciemny.webp" width="100%" alt="Uruchom ponownie Home Assistant"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/restart-ciemny.webp" width="70%" alt="Uruchom ponownie Home Assistant"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Ikona <b>⏻</b> w prawym górnym rogu (<b>Ustawienia → System</b>)</li><li><b>Uruchom ponownie Home Assistanta</b> i potwierdź</li></ol>
@@ -122,7 +122,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=motor_ha"><img src="https://img.shields.io/badge/-Dodaj%20integracj%C4%99-FF9800?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Dodaj integrację"></a></p>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-5"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/start-ciemny.webp" width="70%" alt="Kliknij przycisk i zacznij kreator"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/start-ciemny.webp" width="50%" alt="Kliknij przycisk i zacznij kreator"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li><b>OK</b></li></ol>
@@ -142,7 +142,7 @@
 
 <p align="center"><a href="https://my.home-assistant.io/redirect/lovelace_dashboards/"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20panele%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz panele w HA"></a></p>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#krok-7"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/panel-ciemny.webp" width="100%" alt="Gotowe: karta jest na panelu"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/panel-ciemny.webp" width="70%" alt="Gotowe: karta jest na panelu"></p>
 
 
 <p>ℹ️ Karta Motor HA sama pojawia się na panelu wybranym w ostatnim kroku.</p>
@@ -186,7 +186,7 @@
 <a name="kreator-1"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-tryb.svg" width="28" height="28" align="absmiddle" alt=""> 1. Tryb kreatora</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-01-ciemny.webp" width="100%" alt="Tryb kreatora"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-01-ciemny.webp" width="50%" alt="Tryb kreatora"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Wybierz, ile pytań chcesz zobaczyć.</li><li><b>Dalej</b></li></ol>
@@ -196,7 +196,7 @@
 <a name="kreator-2"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-mam.svg" width="28" height="28" align="absmiddle" alt=""> 2. Co masz w domu</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-02-ciemny.webp" width="100%" alt="Co masz w domu"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-02-ciemny.webp" width="50%" alt="Co masz w domu"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Zaznacz, co masz. Kreator sam przeszukał Home Assistanta i zaznaczył to, co znalazł.</li><li><b>Dalej</b></li></ol>
@@ -206,7 +206,7 @@
 <a name="kreator-3"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-urzadzenie.svg" width="28" height="28" align="absmiddle" alt=""> 3. Urządzenie</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-03-ciemny.webp" width="100%" alt="Urządzenie"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-03-ciemny.webp" width="50%" alt="Urządzenie"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.</li><li><b>Dalej</b></li></ol>
@@ -216,7 +216,7 @@
 <a name="kreator-4"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-rodzaj.svg" width="28" height="28" align="absmiddle" alt=""> 4. Rodzaj</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-04-ciemny.webp" width="100%" alt="Rodzaj"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-04-ciemny.webp" width="50%" alt="Rodzaj"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Wybierz, co dokładnie masz.</li><li><b>Dalej</b></li></ol>
@@ -226,7 +226,7 @@
 <a name="kreator-5"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-kolory.svg" width="28" height="28" align="absmiddle" alt=""> 5. Kolory</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-05-ciemny.webp" width="100%" alt="Kolory"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-05-ciemny.webp" width="50%" alt="Kolory"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Wybierz kolor osłony i ramy.</li><li><b>Dalej</b></li></ol>
@@ -236,7 +236,7 @@
 <a name="kreator-6"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-okno.svg" width="28" height="28" align="absmiddle" alt=""> 6. Okno</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-6"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-06-ciemny.webp" width="100%" alt="Okno"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-06-ciemny.webp" width="50%" alt="Okno"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Ile skrzydeł ma okno i jak duże ma być na karcie.</li><li><b>Dalej</b></li></ol>
@@ -246,7 +246,7 @@
 <a name="kreator-7"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-czujniki.svg" width="28" height="28" align="absmiddle" alt=""> 7. Czujniki</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-7"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-07-ciemny.webp" width="100%" alt="Czujniki"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-07-ciemny.webp" width="50%" alt="Czujniki"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Wybierz czujniki otwarcia okna i drzwi.</li><li><b>Dalej</b></li></ol>
@@ -256,7 +256,7 @@
 <a name="kreator-8"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-silnik.svg" width="28" height="28" align="absmiddle" alt=""> 8. Silnik</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-8"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-08-ciemny.webp" width="100%" alt="Silnik"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-08-ciemny.webp" width="50%" alt="Silnik"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Podaj czas pełnego przejazdu albo zostaw 0.</li><li><b>Dalej</b></li></ol>
@@ -266,7 +266,7 @@
 <a name="kreator-9"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-pogoda.svg" width="28" height="28" align="absmiddle" alt=""> 9. Pogoda</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-9"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-09-ciemny.webp" width="100%" alt="Pogoda"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-09-ciemny.webp" width="50%" alt="Pogoda"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Wybierz pogodę i czujniki na zewnątrz.</li><li><b>Dalej</b></li></ol>
@@ -276,7 +276,7 @@
 <a name="kreator-10"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-automatyka.svg" width="28" height="28" align="absmiddle" alt=""> 10. Automatyka</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-10"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-10-ciemny.webp" width="100%" alt="Automatyka"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-10-ciemny.webp" width="50%" alt="Automatyka"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Włącz funkcje, które mają same ruszać osłoną.</li><li><b>Dalej</b></li></ol>
@@ -286,7 +286,7 @@
 <a name="kreator-11"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-powiadomienia.svg" width="28" height="28" align="absmiddle" alt=""> 11. Powiadomienia</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-11"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-11-ciemny.webp" width="100%" alt="Powiadomienia"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-11-ciemny.webp" width="50%" alt="Powiadomienia"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Wybierz, o czym dać Ci znać.</li><li><b>Dalej</b></li></ol>
@@ -296,7 +296,7 @@
 <a name="kreator-12"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-panel.svg" width="28" height="28" align="absmiddle" alt=""> 12. Panel</h4>
 
-<p align="center"><a href="https://github.com/superdarco78/Motor-HA#kreator-12"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-12-ciemny.webp" width="100%" alt="Panel"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/pl/krok-12-ciemny.webp" width="50%" alt="Panel"></p>
 
 <p><b>Co kliknąć:</b></p>
 <ol><li>Na który panel dodać kartę.</li><li><b>Zatwierdź</b></li></ol>
@@ -435,7 +435,7 @@
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak to zrobić</h3>
 <p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20Motor%20HA%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz Motor HA w HA"></a></p>
-<p>💡 Encje każdego urządzenia zobaczysz po kliknięciu urządzenia na liście Motor HA.</p>
+<p>💡 Kliknij urządzenie na liście Motor HA. Na górze jego strony jest żywa karta okna, pod nią <b>Dodaj do panelu</b>, <b>⚙ Zmień ustawienia</b> (otwiera kreator tego urządzenia) i opis ustawień. Urządzenie <b>Motor HA</b> pokazuje karty wszystkich urządzeń naraz.</p>
 
 <h3>Akcje do własnych automatyzacji</h3>
 <table><tr><th align="left">Funkcja<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Co robi<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>

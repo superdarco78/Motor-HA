@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.0.3";
+  var WERSJA = "2.1.0";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -1086,6 +1086,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Zmierzch",
       noc: "Noc",
       wskazowka: "Przeciągnij szybę albo użyj przycisków. To tylko podgląd – nic w domu się nie rusza."
+    },
+    urzadzenie: {
+      dodaj: "Dodaj do panelu",
+      zmien: "Zmień ustawienia",
+      ustawienia: "Ustawienia Motor HA",
+      ktory: "Na który panel?",
+      dodano: "Dodano na panel",
+      brakPaneli: "Nie ma panelu, który można edytować. Utwórz go w Ustawienia → Panele.",
+      blad: "Nie udało się. Spróbuj jeszcze raz.",
+      rodzaj: "Rodzaj",
+      kolor: "Kolor",
+      skrzydla: "Skrzydła",
+      wysokosc: "Wysokość na karcie",
+      czas: "Czas przejazdu",
+      auto: "automatycznie",
+      automatyka: "Automatyka",
+      pauza: "Pauza na dziś",
+      powod: "Powód ruchu"
     }
   };
 
@@ -1334,6 +1352,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Dusk",
       noc: "Night",
       wskazowka: "Drag the glass or use the buttons. This is only a preview – nothing at home moves."
+    },
+    urzadzenie: {
+      dodaj: "Add to dashboard",
+      zmien: "Change settings",
+      ustawienia: "Motor HA settings",
+      ktory: "Which dashboard?",
+      dodano: "Added to dashboard",
+      brakPaneli: "There is no editable dashboard. Create one in Settings → Dashboards.",
+      blad: "That didn't work. Please try again.",
+      rodzaj: "Type",
+      kolor: "Colour",
+      skrzydla: "Sashes",
+      wysokosc: "Height on the card",
+      czas: "Travel time",
+      auto: "automatic",
+      automatyka: "Automation",
+      pauza: "Pause for today",
+      powod: "Reason for movement"
     }
   };
 
@@ -1582,6 +1618,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Dämmerung",
       noc: "Nacht",
       wskazowka: "Ziehe die Scheibe oder nutze die Tasten. Nur eine Vorschau – zu Hause bewegt sich nichts."
+    },
+    urzadzenie: {
+      dodaj: "Zum Dashboard hinzufügen",
+      zmien: "Einstellungen ändern",
+      ustawienia: "Motor HA – Einstellungen",
+      ktory: "Welches Dashboard?",
+      dodano: "Hinzugefügt zu",
+      brakPaneli: "Kein bearbeitbares Dashboard. Lege eines unter Einstellungen → Dashboards an.",
+      blad: "Das hat nicht geklappt. Bitte erneut versuchen.",
+      rodzaj: "Art",
+      kolor: "Farbe",
+      skrzydla: "Flügel",
+      wysokosc: "Höhe auf der Karte",
+      czas: "Fahrzeit",
+      auto: "automatisch",
+      automatyka: "Automatik",
+      pauza: "Pause für heute",
+      powod: "Grund der Bewegung"
     }
   };
 
@@ -1830,6 +1884,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Crépuscule",
       noc: "Nuit",
       wskazowka: "Faites glisser la vitre ou utilisez les boutons. Ce n'est qu'un aperçu – rien ne bouge chez vous."
+    },
+    urzadzenie: {
+      dodaj: "Ajouter au tableau de bord",
+      zmien: "Modifier les réglages",
+      ustawienia: "Réglages Motor HA",
+      ktory: "Quel tableau de bord ?",
+      dodano: "Ajouté à",
+      brakPaneli: "Aucun tableau de bord modifiable. Créez-en un dans Paramètres → Tableaux de bord.",
+      blad: "Échec. Réessayez.",
+      rodzaj: "Type",
+      kolor: "Couleur",
+      skrzydla: "Battants",
+      wysokosc: "Hauteur sur la carte",
+      czas: "Durée de course",
+      auto: "automatique",
+      automatyka: "Automatisme",
+      pauza: "Pause aujourd’hui",
+      powod: "Raison du mouvement"
     }
   };
 
@@ -2078,6 +2150,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Soumrak",
       noc: "Noc",
       wskazowka: "Táhněte sklem nebo použijte tlačítka. Je to jen náhled – doma se nic nepohne."
+    },
+    urzadzenie: {
+      dodaj: "Přidat na panel",
+      zmien: "Změnit nastavení",
+      ustawienia: "Nastavení Motor HA",
+      ktory: "Na který panel?",
+      dodano: "Přidáno na panel",
+      brakPaneli: "Není panel, který lze upravit. Vytvořte ho v Nastavení → Panely.",
+      blad: "Nepodařilo se. Zkuste to znovu.",
+      rodzaj: "Druh",
+      kolor: "Barva",
+      skrzydla: "Křídla",
+      wysokosc: "Výška na kartě",
+      czas: "Doba jízdy",
+      auto: "automaticky",
+      automatyka: "Automatika",
+      pauza: "Pauza na dnes",
+      powod: "Důvod pohybu"
     }
   };
 
@@ -2326,6 +2416,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Súmrak",
       noc: "Noc",
       wskazowka: "Potiahnite sklo alebo použite tlačidlá. Je to len náhľad – doma sa nič nepohne."
+    },
+    urzadzenie: {
+      dodaj: "Pridať na panel",
+      zmien: "Zmeniť nastavenia",
+      ustawienia: "Nastavenia Motor HA",
+      ktory: "Na ktorý panel?",
+      dodano: "Pridané na panel",
+      brakPaneli: "Nie je panel, ktorý sa dá upraviť. Vytvorte ho v Nastavenia → Panely.",
+      blad: "Nepodarilo sa. Skúste to znova.",
+      rodzaj: "Druh",
+      kolor: "Farba",
+      skrzydla: "Krídla",
+      wysokosc: "Výška na karte",
+      czas: "Čas jazdy",
+      auto: "automaticky",
+      automatyka: "Automatika",
+      pauza: "Pauza na dnes",
+      powod: "Dôvod pohybu"
     }
   };
 
@@ -2574,6 +2682,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Anochecer",
       noc: "Noche",
       wskazowka: "Arrastra el cristal o usa los botones. Es solo una vista previa: nada se mueve en casa."
+    },
+    urzadzenie: {
+      dodaj: "Añadir al panel",
+      zmien: "Cambiar ajustes",
+      ustawienia: "Ajustes de Motor HA",
+      ktory: "¿En qué panel?",
+      dodano: "Añadido a",
+      brakPaneli: "No hay ningún panel editable. Crea uno en Ajustes → Paneles.",
+      blad: "No ha funcionado. Inténtalo de nuevo.",
+      rodzaj: "Tipo",
+      kolor: "Color",
+      skrzydla: "Hojas",
+      wysokosc: "Altura en la tarjeta",
+      czas: "Tiempo de recorrido",
+      auto: "automático",
+      automatyka: "Automatización",
+      pauza: "Pausa por hoy",
+      powod: "Motivo del movimiento"
     }
   };
 
@@ -2822,6 +2948,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Crepuscolo",
       noc: "Notte",
       wskazowka: "Trascina il vetro o usa i pulsanti. È solo un'anteprima: in casa non si muove nulla."
+    },
+    urzadzenie: {
+      dodaj: "Aggiungi alla plancia",
+      zmien: "Modifica impostazioni",
+      ustawienia: "Impostazioni Motor HA",
+      ktory: "Quale plancia?",
+      dodano: "Aggiunto a",
+      brakPaneli: "Nessuna plancia modificabile. Creane una in Impostazioni → Plance.",
+      blad: "Non è riuscito. Riprova.",
+      rodzaj: "Tipo",
+      kolor: "Colore",
+      skrzydla: "Ante",
+      wysokosc: "Altezza sulla scheda",
+      czas: "Tempo di corsa",
+      auto: "automatico",
+      automatyka: "Automazione",
+      pauza: "Pausa per oggi",
+      powod: "Motivo del movimento"
     }
   };
 
@@ -3070,6 +3214,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Schemering",
       noc: "Nacht",
       wskazowka: "Sleep over het glas of gebruik de knoppen. Dit is alleen een voorbeeld – thuis beweegt niets."
+    },
+    urzadzenie: {
+      dodaj: "Toevoegen aan dashboard",
+      zmien: "Instellingen wijzigen",
+      ustawienia: "Motor HA-instellingen",
+      ktory: "Welk dashboard?",
+      dodano: "Toegevoegd aan",
+      brakPaneli: "Geen bewerkbaar dashboard. Maak er een in Instellingen → Dashboards.",
+      blad: "Dat lukte niet. Probeer het opnieuw.",
+      rodzaj: "Soort",
+      kolor: "Kleur",
+      skrzydla: "Vleugels",
+      wysokosc: "Hoogte op de kaart",
+      czas: "Looptijd",
+      auto: "automatisch",
+      automatyka: "Automatisering",
+      pauza: "Pauze voor vandaag",
+      powod: "Reden van beweging"
     }
   };
 
@@ -3318,6 +3480,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Crepúsculo",
       noc: "Noite",
       wskazowka: "Arraste o vidro ou use os botões. É só uma pré-visualização – nada se mexe em casa."
+    },
+    urzadzenie: {
+      dodaj: "Adicionar ao painel",
+      zmien: "Alterar definições",
+      ustawienia: "Definições do Motor HA",
+      ktory: "Em que painel?",
+      dodano: "Adicionado a",
+      brakPaneli: "Não há painel editável. Crie um em Definições → Painéis.",
+      blad: "Não resultou. Tente novamente.",
+      rodzaj: "Tipo",
+      kolor: "Cor",
+      skrzydla: "Folhas",
+      wysokosc: "Altura no cartão",
+      czas: "Tempo de percurso",
+      auto: "automático",
+      automatyka: "Automação",
+      pauza: "Pausa por hoje",
+      powod: "Motivo do movimento"
     }
   };
 
@@ -3566,6 +3746,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Сутінки",
       noc: "Ніч",
       wskazowka: "Потягніть скло або скористайтеся кнопками. Це лише попередній перегляд – удома нічого не рухається."
+    },
+    urzadzenie: {
+      dodaj: "Додати на панель",
+      zmien: "Змінити налаштування",
+      ustawienia: "Налаштування Motor HA",
+      ktory: "На яку панель?",
+      dodano: "Додано на панель",
+      brakPaneli: "Немає панелі, яку можна редагувати. Створіть її в Налаштування → Панелі.",
+      blad: "Не вдалося. Спробуйте ще раз.",
+      rodzaj: "Тип",
+      kolor: "Колір",
+      skrzydla: "Стулки",
+      wysokosc: "Висота на картці",
+      czas: "Час руху",
+      auto: "автоматично",
+      automatyka: "Автоматика",
+      pauza: "Пауза на сьогодні",
+      powod: "Причина руху"
     }
   };
 
@@ -3814,6 +4012,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "Сумерки",
       noc: "Ночь",
       wskazowka: "Потяните стекло или используйте кнопки. Это только предпросмотр – дома ничего не двигается."
+    },
+    urzadzenie: {
+      dodaj: "Добавить на панель",
+      zmien: "Изменить настройки",
+      ustawienia: "Настройки Motor HA",
+      ktory: "На какую панель?",
+      dodano: "Добавлено на панель",
+      brakPaneli: "Нет панели, которую можно редактировать. Создайте её в Настройки → Панели.",
+      blad: "Не удалось. Попробуйте ещё раз.",
+      rodzaj: "Тип",
+      kolor: "Цвет",
+      skrzydla: "Створки",
+      wysokosc: "Высота на карточке",
+      czas: "Время хода",
+      auto: "автоматически",
+      automatyka: "Автоматика",
+      pauza: "Пауза на сегодня",
+      powod: "Причина движения"
     }
   };
 
@@ -4062,6 +4278,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "夕暮れ",
       noc: "夜",
       wskazowka: "ガラスをドラッグするか、ボタンを使ってください。プレビューなので、家の中の物は動きません。"
+    },
+    urzadzenie: {
+      dodaj: "ダッシュボードに追加",
+      zmien: "設定を変更",
+      ustawienia: "Motor HA の設定",
+      ktory: "どのダッシュボード？",
+      dodano: "追加しました：",
+      brakPaneli: "編集できるダッシュボードがありません。設定 → ダッシュボードで作成してください。",
+      blad: "失敗しました。もう一度お試しください。",
+      rodzaj: "種類",
+      kolor: "色",
+      skrzydla: "窓の数",
+      wysokosc: "カードの高さ",
+      czas: "移動時間",
+      auto: "自動",
+      automatyka: "自動化",
+      pauza: "今日は一時停止",
+      powod: "動いた理由"
     }
   };
 
@@ -4310,6 +4544,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zmierzch: "黄昏",
       noc: "夜晚",
       wskazowka: "拖动玻璃或使用按钮。这只是预览，家里的设备不会移动。"
+    },
+    urzadzenie: {
+      dodaj: "添加到仪表盘",
+      zmien: "更改设置",
+      ustawienia: "Motor HA 设置",
+      ktory: "添加到哪个仪表盘？",
+      dodano: "已添加到",
+      brakPaneli: "没有可编辑的仪表盘。请在 设置 → 仪表盘 中创建。",
+      blad: "操作失败，请重试。",
+      rodzaj: "类型",
+      kolor: "颜色",
+      skrzydla: "窗扇",
+      wysokosc: "卡片高度",
+      czas: "运行时间",
+      auto: "自动",
+      automatyka: "自动化",
+      pauza: "今天暂停",
+      powod: "移动原因"
     }
   };
 
@@ -5397,6 +5649,224 @@ button svg{fill:var(--primary-color);flex:none}
     }
   };
 
+  // src/urzadzenie.js
+  var esc5 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var STYL4 = `
+:host{display:block;margin-bottom:var(--ha-space-4,16px)}
+[hidden]{display:none!important}
+.ramka{background:var(--ha-card-background,var(--card-background-color));border-radius:var(--ha-card-border-radius,12px);
+ border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--divider-color));overflow:hidden;color:var(--primary-text-color)}
+.karta{--ha-card-border-width:0;--ha-card-box-shadow:none;--ha-card-border-radius:0}
+.stopka{border-top:1px solid var(--divider-color);padding:var(--ha-space-2,8px) var(--ha-space-2,8px);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.link{background:none;border:none;font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);
+ color:var(--primary-color);cursor:pointer;padding:0 var(--ha-space-2,8px);line-height:36px;border-radius:var(--ha-border-radius-md,8px)}
+.link:hover{background:color-mix(in srgb,var(--primary-color) 10%,transparent)}
+.panele{display:flex;flex-wrap:wrap;gap:6px;padding:0 var(--ha-space-2,8px) var(--ha-space-2,8px);width:100%}
+.panele button{font:inherit;font-size:var(--ha-font-size-s,13px);border:1px solid var(--divider-color);border-radius:18px;padding:6px 12px;cursor:pointer;
+ background:none;color:var(--primary-text-color)}
+.panele button:hover{border-color:var(--primary-color);color:var(--primary-color)}
+.pyt{width:100%;font-size:var(--ha-font-size-s,13px);color:var(--secondary-text-color)}
+.info{font-size:var(--ha-font-size-s,13px);color:var(--secondary-text-color);padding:0 var(--ha-space-2,8px) var(--ha-space-2,8px);width:100%}
+.ust{padding:var(--ha-space-4,16px) var(--ha-space-4,16px) var(--ha-space-2,8px)}
+.ust h2{margin:0 0 var(--ha-space-2,8px);font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500)}
+.wiersz{display:flex;justify-content:space-between;gap:12px;font-size:var(--ha-font-size-m,14px);line-height:28px;border-bottom:1px solid var(--divider-color)}
+.wiersz:last-child{border-bottom:none}
+.wiersz span:first-child{color:var(--secondary-text-color)}
+.wiersz span:last-child{text-align:end}`;
+  var MotorHaUrzadzenie = class extends HTMLElement {
+    // cel: { entity: 'cover.x', urzadzenie: 'id', wpis: 'entry_id' } albo { dom: true }
+    set cel(c) {
+      this._cel = c;
+      this._zbudowane = false;
+      this._rysuj();
+    }
+    get cel() {
+      return this._cel;
+    }
+    set hass(h) {
+      this._hass = h;
+      this._rysuj();
+    }
+    get hass() {
+      return this._hass;
+    }
+    _rysuj() {
+      const h = this._hass, c = this._cel;
+      if (!h || !c) return;
+      const T2 = TEKSTY[jezyk({}, h)], U = T2.urzadzenie, root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      if (!this._zbudowane) {
+        this._zbudowane = true;
+        root.innerHTML = `<style>${STYL4}</style><div class="ramka"><div class="karta"></div>
+        <div class="stopka"><button class="link dodaj">${esc5(U.dodaj)}</button>${c.wpis ? `<button class="link zmien">⚙ ${esc5(U.zmien)}</button>` : ""}
+        <div class="panele" hidden></div><div class="info" hidden></div></div>
+        ${c.entity ? `<div class="ust" style="border-top:1px solid var(--divider-color)"><h2>${esc5(U.ustawienia)}</h2><div class="wiersze"></div></div>` : ""}</div>`;
+        const karta = document.createElement(c.entity ? "motor-ha" : "motor-ha-dom");
+        karta.setConfig(c.entity ? { type: "custom:motor-ha", entity: c.entity } : { type: "custom:motor-ha-dom" });
+        root.querySelector(".karta").appendChild(karta);
+        this._karta = karta;
+        root.querySelector(".dodaj").addEventListener("click", () => this._panele());
+        root.querySelector(".zmien")?.addEventListener("click", () => konfiguruj(c.wpis));
+      }
+      this._karta.hass = h;
+      if (c.entity) {
+        const st = h.states[c.entity], m = st?.attributes?.motor_ha;
+        if (!m) return;
+        const wiersze = this._wiersze(h, T2, U, c, m);
+        const klucz = JSON.stringify(wiersze);
+        if (klucz !== this._ost) {
+          this._ost = klucz;
+          root.querySelector(".wiersze").innerHTML = wiersze.map(([a, b]) => `<div class="wiersz"><span>${esc5(a)}</span><span>${esc5(b)}</span></div>`).join("");
+        }
+      }
+    }
+    _wiersze(h, T2, U, c, m) {
+      const stan = (e) => e && h.states[e] ? h.formatEntityState ? h.formatEntityState(h.states[e]) : h.states[e].state : null;
+      const auto = Object.values(h.entities || {}).find((e) => e.device_id === c.urzadzenie && e.platform === "motor_ha" && e.entity_id.startsWith("switch.") && e.entity_id !== m.encje?.pauza);
+      const w = [[U.rodzaj, T2.oslony?.[m.oslona] || m.oslona]];
+      if (m.kolor) w.push([U.kolor, T2.kolory?.[m.kolor] || m.kolor]);
+      if (m.skrzydla) w.push([U.skrzydla, String(m.skrzydla)]);
+      if (m.wysokosc) w.push([U.wysokosc, `${m.wysokosc} px`]);
+      w.push([U.czas, typeof m.czas === "number" && m.czas > 0 ? `${m.czas} s` : U.auto]);
+      if (auto) w.push([U.automatyka, stan(auto.entity_id)]);
+      if (m.encje?.pauza && h.states[m.encje.pauza]) w.push([U.pauza, stan(m.encje.pauza)]);
+      if (m.encje?.powod && h.states[m.encje.powod]) w.push([U.powod, stan(m.encje.powod)]);
+      return w;
+    }
+    async _panele() {
+      const r = this.shadowRoot, U = TEKSTY[jezyk({}, this._hass)].urzadzenie, pole = r.querySelector(".panele"), info = r.querySelector(".info");
+      if (!pole.hidden) {
+        pole.hidden = true;
+        return;
+      }
+      info.hidden = true;
+      try {
+        const lista = await this._hass.callWS({ type: "motor_ha/panele" });
+        if (!lista.length) {
+          info.textContent = U.brakPaneli;
+          info.hidden = false;
+          return;
+        }
+        pole.innerHTML = `<div class="pyt">${esc5(U.ktory)}</div>` + lista.map((p) => `<button data-k="${esc5(p.klucz)}">${esc5(p.nazwa)}</button>`).join("");
+        pole.hidden = false;
+        pole.querySelectorAll("button").forEach((b) => b.addEventListener("click", async () => {
+          try {
+            const w = await this._hass.callWS({ type: "motor_ha/dodaj_karte", panel: b.dataset.k, ...this._cel.entity ? { entity_id: this._cel.entity } : {} });
+            pole.hidden = true;
+            info.textContent = w.dodano ? `✓ ${U.dodano} ${b.textContent}` : U.blad;
+            info.hidden = false;
+          } catch (e) {
+            info.textContent = U.blad;
+            info.hidden = false;
+          }
+        }));
+      } catch (e) {
+        info.textContent = U.blad;
+        info.hidden = false;
+      }
+    }
+  };
+  function konfiguruj(wpis) {
+    const skad = location.pathname + location.search;
+    const idz = (u) => {
+      history.pushState(null, "", u);
+      window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
+    };
+    const szukaj = (k) => {
+      for (const x of k.querySelectorAll("*")) {
+        if (x.tagName === "HA-CONFIG-ENTRY-ROW" && x.data?.entry?.entry_id === wpis) return x;
+        if (x.shadowRoot) {
+          const y = szukaj(x.shadowRoot);
+          if (y) return y;
+        }
+      }
+      return null;
+    };
+    const okno = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    idz("/config/integrations/integration/motor_ha");
+    let n = 0;
+    const t = setInterval(() => {
+      const w = szukaj(document);
+      if (w && typeof w._showOptions === "function") {
+        clearInterval(t);
+        w._showOptions();
+        let bylo = false, m = 0;
+        const p = setInterval(() => {
+          const o = okno(), otwarte = !!(o && o._params);
+          if (otwarte) bylo = true;
+          if (bylo && !otwarte || ++m > 7200) {
+            clearInterval(p);
+            if (bylo && location.pathname.startsWith("/config/integrations/integration/motor_ha")) idz(skad);
+          }
+        }, 250);
+      } else if (++n > 80) clearInterval(t);
+    }, 250);
+  }
+
+  // src/strona.js
+  var WZOR = /^\/config\/devices\/device\/([^/?#]+)/;
+  var ZNAK = "data-motor-ha";
+  var strona = (k) => {
+    for (const x of k.querySelectorAll("*")) {
+      if (x.tagName === "HA-CONFIG-DEVICE-PAGE") return x;
+      if (x.shadowRoot && x.tagName !== "HA-SIDEBAR") {
+        const y = strona(x.shadowRoot);
+        if (y) return y;
+      }
+    }
+    return null;
+  };
+  function cele(h, id) {
+    const encje = Object.values(h.entities || {}).filter((e) => e.platform === "motor_ha");
+    const urz = h.devices?.[id];
+    if (!urz || !encje.some((e) => e.device_id === id)) return null;
+    const wpis = urz.config_entries?.[0];
+    const okno = encje.find((e) => e.device_id === id && e.entity_id.startsWith("cover."));
+    if (okno) return [{ kolumna: 0, cel: { entity: okno.entity_id, urzadzenie: id, wpis } }];
+    const okna = encje.filter((e) => e.entity_id.startsWith("cover.") && h.states[e.entity_id]).sort((a, b) => String(h.states[a.entity_id].attributes.friendly_name).localeCompare(String(h.states[b.entity_id].attributes.friendly_name)));
+    return [
+      { kolumna: 0, cel: { dom: true } },
+      ...okna.map((e, i) => ({ kolumna: 1 + i % 2, cel: { entity: e.entity_id, urzadzenie: e.device_id, wpis: h.devices[e.device_id]?.config_entries?.[0] } }))
+    ];
+  }
+  function pilnuj() {
+    const m = WZOR.exec(location.pathname);
+    if (!m || !customElements.get("motor-ha-urzadzenie")) return;
+    const pg = strona(document), r = pg?.shadowRoot, h = pg?.hass;
+    if (!r || !h) return;
+    const kolumny = [...r.querySelectorAll("div.column")];
+    if (!kolumny.length) return;
+    const nasze = [...r.querySelectorAll(`[${ZNAK}]`)];
+    const lista = cele(h, m[1]);
+    const klucz = lista ? m[1] + "|" + kolumny.length + "|" + lista.map((x) => x.cel.entity || "dom").join() : "";
+    if (nasze.length && nasze[0].getAttribute(ZNAK) !== klucz) {
+      nasze.forEach((e) => e.remove());
+      nasze.length = 0;
+    }
+    if (!lista) return;
+    if (!nasze.length) {
+      const ile = {};
+      for (const { kolumna, cel } of lista) {
+        const nr = Math.min(kolumna, kolumny.length - 1), k = kolumny[nr], i = ile[nr] || 0;
+        const e = document.createElement("motor-ha-urzadzenie");
+        e.setAttribute(ZNAK, klucz);
+        e.cel = cel;
+        e.hass = h;
+        k.insertBefore(e, k.children[i] || null);
+        ile[nr] = i + 1;
+        nasze.push(e);
+      }
+    }
+    for (const e of nasze) if (e.hass !== h) e.hass = h;
+  }
+  function strony() {
+    setInterval(() => {
+      try {
+        pilnuj();
+      } catch (e) {
+      }
+    }, 700);
+  }
+
   // src/index.js
   var ELEMENTY = [
     ["motor-ha", MotorHaKarta],
@@ -5408,6 +5878,8 @@ button svg{fill:var(--primary-color);flex:none}
     ["motor-ha-dom", MotorHaDom],
     ["motor-ha-symulator", MotorHaSymulator],
     // symulator tylko dla opisu w HACS
+    ["motor-ha-urzadzenie", MotorHaUrzadzenie],
+    // karta na stronie urządzenia w Ustawieniach (strona.js)
     ["roleta-realistyczna", class extends MotorHaKarta {
     }],
     ["roleta-realistyczna-editor", class extends MotorHaEdytor {
@@ -5452,6 +5924,10 @@ button svg{fill:var(--primary-color);flex:none}
     preview: true,
     documentationURL: "https://github.com/superdarco78/Motor-HA"
   });
+  if (!window.__motorHaStrony && !window.frameElement) {
+    window.__motorHaStrony = true;
+    strony();
+  }
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");
 })();

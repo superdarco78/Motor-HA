@@ -242,5 +242,23 @@
     "zmierzch": "Crepuscolo",
     "noc": "Notte",
     "wskazowka": "Trascina il vetro o usa i pulsanti. È solo un'anteprima: in casa non si muove nulla."
+  },
+  "urzadzenie": {
+    "dodaj": "Aggiungi alla plancia",
+    "zmien": "Modifica impostazioni",
+    "ustawienia": "Impostazioni Motor HA",
+    "ktory": "Quale plancia?",
+    "dodano": "Aggiunto a",
+    "brakPaneli": "Nessuna plancia modificabile. Creane una in Impostazioni → Plance.",
+    "blad": "Non è riuscito. Riprova.",
+    "rodzaj": "Tipo",
+    "kolor": "Colore",
+    "skrzydla": "Ante",
+    "wysokosc": "Altezza sulla scheda",
+    "czas": "Tempo di corsa",
+    "auto": "automatico",
+    "automatyka": "Automazione",
+    "pauza": "Pausa per oggi",
+    "powod": "Motivo del movimento"
   }
 }

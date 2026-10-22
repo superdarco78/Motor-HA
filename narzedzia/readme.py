@@ -319,7 +319,8 @@ def readme(j: str) -> str:
             napis = {"hacs": L["hacs"], "dodaj": L["dodaj"]}.get(guzik) or kt["guzik_" + guzik]
             w.append(f'<p align="center">{przycisk(napis, g[1], g[2], g[0])}</p>\n')
         if img:
-            w.append(obraz(j, img, "70%" if img == "start" else "100%", tytul, link))
+            # mały zrzut, po kliknięciu duży (GitHub otwiera obrazek, w HA wyskakuje – motor-ha-hacs.js)
+            w.append(obraz(j, img, "50%" if img == "start" else "70%", tytul))
         w.append(klik(kt["co_kliknac"], lista))
         if uwaga:
             w.append(f"<p>ℹ️ {uwaga}</p>\n" if img else f'<p>➡️ <a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-krok">{escape(uwaga)}</a></p>\n')
@@ -349,7 +350,7 @@ def readme(j: str) -> str:
     for nr, kr in enumerate(KROKI_ZRZUTY, 1):
         x = t["kroki"][kr]
         w.append(f'<a name="kreator-{nr}"></a>\n<h4>{ik("krok-" + kr, 28)} {nr}. {escape(x["t"])}</h4>\n')
-        w.append(obraz(j, f"krok-{nr:02d}", "100%", x["t"], f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{nr}'))
+        w.append(obraz(j, f"krok-{nr:02d}", "50%", x["t"]))
         w.append(klik(kt["co_kliknac"], [escape(x["co"]), f'<b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b>']))
         w.append(nawigacja(baza, kt, L["spis"], f"kreator-{nr - 1}" if nr > 1 else "kreator", f"kreator-{nr + 1}" if nr < len(KROKI_ZRZUTY) else "oslony"))
     # osłony

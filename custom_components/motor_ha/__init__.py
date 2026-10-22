@@ -145,7 +145,13 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if not await hass.async_add_executor_job(Path(hass.config.path(".motor_ha")).is_dir):
         await async_przygotuj(hass)   # wszystkie urządzenia usunięto i dodano znów bez restartu
     rej = dr.async_get(hass)
-    hub = rej.async_get_or_create(config_entry_id=entry.entry_id, **info_hub())
+    # jedno urządzenie „Motor HA” dla wszystkich wpisów (HA tworzyłby osobne, puste – po jednym na wpis)
+    hub = rej.async_get_device(identifiers={HUB}) or rej.async_get_or_create(config_entry_id=entry.entry_id, **info_hub())
+    encje = er.async_get(hass)
+    for d in list(rej.devices.values()):   # puste kopie „Motor HA” z 2.0.x
+        if HUB in d.identifiers and d.id != hub.id and entry.entry_id in d.config_entries \
+                and not er.async_entries_for_device(encje, d.id, include_disabled_entities=True):
+            rej.async_update_device(d.id, remove_config_entry_id=entry.entry_id)
     u = rej.async_get_or_create(config_entry_id=entry.entry_id, **info_urzadzenia(entry))
     if u.via_device_id != hub.id:
         rej.async_update_device(u.id, via_device_id=hub.id)

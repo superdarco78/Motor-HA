@@ -12,6 +12,7 @@ _LOGGER = logging.getLogger(__name__)
 PRZEGLAD = "lovelace"
 NIE = "nie"
 KARTA = "custom:motor-ha"
+KARTA_DOM = "custom:motor-ha-dom"
 
 
 def _panele(hass: HomeAssistant) -> dict:
@@ -43,15 +44,21 @@ async def async_lista(hass: HomeAssistant) -> tuple[list[tuple[str, str]], str]:
     return lista, z_karta or (lista[0][0] if lista else NIE)
 
 
-async def async_dodaj_karte(hass: HomeAssistant, klucz: str, entity_id: str) -> bool:
-    """Dokłada kartę do pierwszego widoku. Niczego nie usuwa; gdy karta już jest, nic nie robi."""
+async def async_dodaj_karte(hass: HomeAssistant, klucz: str, entity_id: str | None) -> bool:
+    """Dokłada kartę do pierwszego widoku. Niczego nie usuwa; gdy karta już jest, nic nie robi.
+    Bez encji – karta „Motor HA – cały dom”."""
     panel = _panele(hass).get(None if klucz == PRZEGLAD else klucz)
     if panel is None or (cfg := await _wczytaj(panel)) is None:
         return False
     cfg = copy.deepcopy(cfg)
-    if f"'{entity_id}'" in str(cfg):
+    if entity_id is None:
+        if f"'{KARTA_DOM}'" in str(cfg):
+            return True
+        karta = {"type": KARTA_DOM}
+    elif f"'{entity_id}'" in str(cfg):
         return True
-    karta = {"type": KARTA, "entity": entity_id}
+    else:
+        karta = {"type": KARTA, "entity": entity_id}
     widoki = cfg.setdefault("views", [])
     if not widoki:
         widoki.append({"title": "Motor HA", "path": "motor-ha", "type": "sections", "sections": []})
@@ -66,5 +73,5 @@ async def async_dodaj_karte(hass: HomeAssistant, klucz: str, entity_id: str) -> 
     else:
         widok.setdefault("cards", []).append(karta)
     await panel.async_save(cfg)
-    _LOGGER.info("Motor HA: karta %s dodana na panel %s", entity_id, klucz)
+    _LOGGER.info("Motor HA: karta %s dodana na panel %s", entity_id or KARTA_DOM, klucz)
     return True

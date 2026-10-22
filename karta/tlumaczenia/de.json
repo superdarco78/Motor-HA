@@ -242,5 +242,23 @@
     "zmierzch": "Dämmerung",
     "noc": "Nacht",
     "wskazowka": "Ziehe die Scheibe oder nutze die Tasten. Nur eine Vorschau – zu Hause bewegt sich nichts."
+  },
+  "urzadzenie": {
+    "dodaj": "Zum Dashboard hinzufügen",
+    "zmien": "Einstellungen ändern",
+    "ustawienia": "Motor HA – Einstellungen",
+    "ktory": "Welches Dashboard?",
+    "dodano": "Hinzugefügt zu",
+    "brakPaneli": "Kein bearbeitbares Dashboard. Lege eines unter Einstellungen → Dashboards an.",
+    "blad": "Das hat nicht geklappt. Bitte erneut versuchen.",
+    "rodzaj": "Art",
+    "kolor": "Farbe",
+    "skrzydla": "Flügel",
+    "wysokosc": "Höhe auf der Karte",
+    "czas": "Fahrzeit",
+    "auto": "automatisch",
+    "automatyka": "Automatik",
+    "pauza": "Pause für heute",
+    "powod": "Grund der Bewegung"
   }
 }

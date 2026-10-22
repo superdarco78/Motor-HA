@@ -242,5 +242,23 @@
     "zmierzch": "Dusk",
     "noc": "Night",
     "wskazowka": "Drag the glass or use the buttons. This is only a preview – nothing at home moves."
+  },
+  "urzadzenie": {
+    "dodaj": "Add to dashboard",
+    "zmien": "Change settings",
+    "ustawienia": "Motor HA settings",
+    "ktory": "Which dashboard?",
+    "dodano": "Added to dashboard",
+    "brakPaneli": "There is no editable dashboard. Create one in Settings → Dashboards.",
+    "blad": "That didn't work. Please try again.",
+    "rodzaj": "Type",
+    "kolor": "Colour",
+    "skrzydla": "Sashes",
+    "wysokosc": "Height on the card",
+    "czas": "Travel time",
+    "auto": "automatic",
+    "automatyka": "Automation",
+    "pauza": "Pause for today",
+    "powod": "Reason for movement"
   }
 }

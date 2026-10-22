@@ -242,5 +242,23 @@
     "zmierzch": "Crepúsculo",
     "noc": "Noite",
     "wskazowka": "Arraste o vidro ou use os botões. É só uma pré-visualização – nada se mexe em casa."
+  },
+  "urzadzenie": {
+    "dodaj": "Adicionar ao painel",
+    "zmien": "Alterar definições",
+    "ustawienia": "Definições do Motor HA",
+    "ktory": "Em que painel?",
+    "dodano": "Adicionado a",
+    "brakPaneli": "Não há painel editável. Crie um em Definições → Painéis.",
+    "blad": "Não resultou. Tente novamente.",
+    "rodzaj": "Tipo",
+    "kolor": "Cor",
+    "skrzydla": "Folhas",
+    "wysokosc": "Altura no cartão",
+    "czas": "Tempo de percurso",
+    "auto": "automático",
+    "automatyka": "Automação",
+    "pauza": "Pausa por hoje",
+    "powod": "Motivo do movimento"
   }
 }

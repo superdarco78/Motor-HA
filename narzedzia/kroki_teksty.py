@@ -122,7 +122,7 @@ JAK = {
         "automatyka": "Funkcje włączasz w kroku <b>Automatyka</b>, a godziny i progi zmieniasz w kroku <b>Ustawienia</b> (tryb zaawansowany). "
                       "W trybie podstawowym wszystko ma gotowe wartości.",
         "powiadomienia": "Rodzaje powiadomień wybierasz w kroku <b>Powiadomienia</b>.",
-        "encje": "Encje każdego urządzenia zobaczysz po kliknięciu urządzenia na liście Motor HA.",
+        "encje": "Kliknij urządzenie na liście Motor HA. Na górze jego strony jest żywa karta okna, pod nią <b>Dodaj do panelu</b>, <b>⚙ Zmień ustawienia</b> (otwiera kreator tego urządzenia) i opis ustawień. Urządzenie <b>Motor HA</b> pokazuje karty wszystkich urządzeń naraz.",
         "dom": ["Kliknij przycisk i otwórz swój panel.", "Kliknij <b>✏️ Edytuj panel</b>, potem <b>+ Dodaj kartę</b>.",
                 "Wpisz „Motor HA” i wybierz <b>Motor HA – cały dom</b>, potem <b>Zapisz</b>."],
         "aktualizacja": ["Kliknij przycisk.", "Kliknij <b>Motor HA</b>, potem <b>Aktualizuj</b>.", "Po aktualizacji kliknij <b>Uruchom ponownie</b>."],
@@ -135,7 +135,7 @@ JAK = {
         "automatyka": "You turn functions on in the <b>Automation</b> step and change times and limits in the <b>Settings</b> step (advanced mode). "
                       "In basic mode everything has ready values.",
         "powiadomienia": "You choose the kinds of notifications in the <b>Notifications</b> step.",
-        "encje": "You see the entities of each device after clicking the device in the Motor HA list.",
+        "encje": "Click the device in the Motor HA list. At the top of its page there is a live window card, below it <b>Add to dashboard</b>, <b>⚙ Change settings</b> (opens the wizard of this device) and a summary of the settings. The <b>Motor HA</b> device shows the cards of all devices at once.",
         "dom": ["Click the button and open your dashboard.", "Click <b>✏️ Edit dashboard</b>, then <b>+ Add card</b>.",
                 "Type “Motor HA”, choose <b>Motor HA – whole home</b>, then <b>Save</b>."],
         "aktualizacja": ["Click the button.", "Click <b>Motor HA</b>, then <b>Update</b>.", "After the update click <b>Restart</b>."],
@@ -148,7 +148,7 @@ JAK = {
         "automatyka": "Funktionen schaltest du im Schritt <b>Automatik</b> ein, Zeiten und Grenzwerte änderst du im Schritt <b>Einstellungen</b> (erweiterter Modus). "
                       "Im Basismodus hat alles fertige Werte.",
         "powiadomienia": "Die Arten von Benachrichtigungen wählst du im Schritt <b>Benachrichtigungen</b>.",
-        "encje": "Die Entitäten jedes Geräts siehst du nach einem Klick auf das Gerät in der Motor-HA-Liste.",
+        "encje": "Klicke in der Motor-HA-Liste auf das Gerät. Oben auf seiner Seite ist eine Live-Karte des Fensters, darunter <b>Zum Dashboard hinzufügen</b>, <b>⚙ Einstellungen ändern</b> (öffnet den Assistenten dieses Geräts) und eine Übersicht der Einstellungen. Das Gerät <b>Motor HA</b> zeigt die Karten aller Geräte auf einmal.",
         "dom": ["Auf den Button klicken und dein Dashboard öffnen.", "<b>✏️ Dashboard bearbeiten</b>, dann <b>+ Karte hinzufügen</b>.",
                 "„Motor HA“ eingeben, <b>Motor HA – ganzes Haus</b> wählen, dann <b>Speichern</b>."],
         "aktualizacja": ["Auf den Button klicken.", "Auf <b>Motor HA</b> klicken, dann auf <b>Aktualisieren</b>.", "Nach dem Update auf <b>Neu starten</b> klicken."],
@@ -161,7 +161,7 @@ JAK = {
         "automatyka": "Vous activez les fonctions à l’étape <b>Automatisme</b> et modifiez les heures et les seuils à l’étape <b>Réglages</b> (mode avancé). "
                       "En mode simple, tout a des valeurs prêtes.",
         "powiadomienia": "Vous choisissez les types de notifications à l’étape <b>Notifications</b>.",
-        "encje": "Vous voyez les entités de chaque appareil en cliquant sur l’appareil dans la liste Motor HA.",
+        "encje": "Cliquez sur l’appareil dans la liste Motor HA. En haut de sa page se trouve une carte vivante de la fenêtre, en dessous <b>Ajouter au tableau de bord</b>, <b>⚙ Modifier les réglages</b> (ouvre l’assistant de cet appareil) et un résumé des réglages. L’appareil <b>Motor HA</b> montre les cartes de tous les appareils à la fois.",
         "dom": ["Cliquez sur le bouton et ouvrez votre tableau de bord.", "Cliquez sur <b>✏️ Modifier le tableau de bord</b>, puis <b>+ Ajouter une carte</b>.",
                 "Tapez « Motor HA », choisissez <b>Motor HA – toute la maison</b>, puis <b>Enregistrer</b>."],
         "aktualizacja": ["Cliquez sur le bouton.", "Cliquez sur <b>Motor HA</b>, puis <b>Mettre à jour</b>.", "Après la mise à jour, cliquez sur <b>Redémarrer</b>."],
@@ -174,7 +174,7 @@ JAK = {
         "automatyka": "Funkce zapnete v kroku <b>Automatika</b>, časy a limity změníte v kroku <b>Nastavení</b> (pokročilý režim). "
                       "V základním režimu má vše připravené hodnoty.",
         "powiadomienia": "Druhy oznámení vyberete v kroku <b>Oznámení</b>.",
-        "encje": "Entity každého zařízení uvidíte po kliknutí na zařízení v seznamu Motor HA.",
+        "encje": "Klikněte na zařízení v seznamu Motor HA. Nahoře na jeho stránce je živá karta okna, pod ní <b>Přidat na panel</b>, <b>⚙ Změnit nastavení</b> (otevře průvodce tohoto zařízení) a přehled nastavení. Zařízení <b>Motor HA</b> ukazuje karty všech zařízení najednou.",
         "dom": ["Klikněte na tlačítko a otevřete svůj panel.", "Klikněte na <b>✏️ Upravit panel</b>, pak <b>+ Přidat kartu</b>.",
                 "Napište „Motor HA“, vyberte <b>Motor HA – celý dům</b>, pak <b>Uložit</b>."],
         "aktualizacja": ["Klikněte na tlačítko.", "Klikněte na <b>Motor HA</b>, pak na <b>Aktualizovat</b>.", "Po aktualizaci klikněte na <b>Restartovat</b>."],
