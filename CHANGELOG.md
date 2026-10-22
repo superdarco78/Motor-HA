@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v1.4.51 – Strona w HACS zawsze się otwiera
+
+- 🛠 Żywa galeria w opisie wyłączona – opis pokazuje obrazki; strona Motor HA w HACS nie może już pokazać „Error while loading page repository”
+
 ## v1.4.50 – Poprawka strony w HACS
 
 - 🛠 Naprawiony błąd „Error while loading page repository” w HACS (1.4.48–1.4.49): galeria w opisie nie zastępuje już kart HA w oknie HA
