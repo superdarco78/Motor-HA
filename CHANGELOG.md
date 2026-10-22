@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.0.4 – Małe zrzuty, po kliknięciu duże
+
+- 🔍 Zrzuty w instrukcji są mniejsze, cały krok widać naraz; po kliknięciu zrzut wyskakuje duży ze szczegółami (w HA na środku ekranu, na GitHubie w nowej karcie)
+- ✨ Gładkie, zaokrąglone brzegi zrzutów – bez czarnych schodków na jasnym i ciemnym tle
+
 ## v2.0.3 – Opis jak w HA, kroki jeden pod drugim
 
 - 🧙 Każdy krok kreatora z obrazkiem jeden pod drugim, na całą szerokość – nic się nie rozjeżdża, czytelne też na telefonie

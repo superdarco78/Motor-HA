@@ -93,9 +93,25 @@
     return tytul && [...wnetrze(md).querySelectorAll(m[1] === "b" ? "b" : "h1,h2,h3,h4")].find((h) => h.textContent.trim() === tytul);
   };
   const wnetrze = (md) => md.shadowRoot || md;
+  // kliknięty zrzut wyskakuje duży na środku ekranu (klik albo Esc zamyka)
+  const powieksz = (img) => {
+    const t = document.createElement("div"), d = document.createElement("img");
+    Object.assign(t.style, { position: "fixed", inset: "0", zIndex: "9999", display: "flex", alignItems: "center", justifyContent: "center",
+      padding: "16px", boxSizing: "border-box", background: "rgba(0,0,0,.6)", cursor: "zoom-out" });
+    Object.assign(d.style, { maxWidth: "100%", maxHeight: "100%", objectFit: "contain", borderRadius: "var(--ha-card-border-radius,12px)" });
+    d.src = img.currentSrc || img.src; d.alt = img.alt || "";
+    t.appendChild(d);
+    const zamknij = () => { t.remove(); document.removeEventListener("keydown", klawisz, true); };
+    const klawisz = (e) => { if (e.key === "Escape") zamknij(); };
+    t.addEventListener("click", zamknij);
+    document.addEventListener("keydown", klawisz, true);
+    document.body.appendChild(t);
+  };
   const klik = (e) => {
     const droga = e.composedPath(), a = droga.find((n) => n.tagName === "A"), md = droga.find((n) => n.tagName === "HA-MARKDOWN");
     const h = a && a.getAttribute("href");
+    const img = !a && droga.find((n) => n.tagName === "IMG");
+    if (img && md && md.__mhNasz && /\/img\/(kroki|oslony-rzedy)\//.test(img.getAttribute("src") || "")) { e.preventDefault(); e.stopPropagation(); return powieksz(img); }
     if (!h || !md || !md.__mhNasz) return;
     let m;
     // przyciski „w HA” otwierają się w nowej karcie – opis zostaje tam, gdzie był
@@ -152,8 +168,9 @@ ${p} p:has(> a > img[src*="/img/kreator/pasek-"]){display:flex!important;flex-wr
 ${p} p:has(> a > img[src*="/img/kreator/pasek-"]) > a{flex:1 1 0!important;min-width:0!important}
 ${p} img[src*="/img/kreator/pasek-"]{display:block!important;width:100%!important;height:auto!important;margin:0!important}
 ${p} p:has(> img),${p} p:has(> a > img){text-align:center!important}
-${p} img[src*="/img/kroki/"],${p} img[src*="/img/oslony-rzedy/"]{display:block!important;margin:8px auto!important;width:auto!important;max-width:min(100%,880px)!important}
-${p} img[src*="/img/kroki/"][src*="/krok-"]{max-width:min(100%,640px)!important}`;
+${p} img[src*="/img/kroki/"],${p} img[src*="/img/oslony-rzedy/"]{display:block!important;margin:8px auto!important;width:auto!important;max-width:min(100%,880px)!important;cursor:zoom-in}
+${p} img[src*="/img/kroki/"]{max-width:min(100%,560px)!important}
+${p} img[src*="/img/kroki/"][src*="/krok-"],${p} img[src*="/img/kroki/"][src*="/start-"]{max-width:min(100%,400px)!important}`;
     w.prepend(s);
   };
   const nasz = (md) => typeof md.content === "string" && md.content.includes("superdarco78/Motor-HA/main/img/");
