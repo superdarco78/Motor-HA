@@ -1,5 +1,13 @@
 # 📝 Historia zmian
 
+## v2.0.1 – Instrukcja krok po kroku z obrazkami
+
+- 🖼 Instalacja krok po kroku z obrazkami: Otwórz link, Dodaj, Pobierz, Uruchom ponownie, Dodaj integrację, gotowa karta
+- 🧙 Każdy krok kreatora z prawdziwym zrzutem z Home Assistant i zaznaczeniem, gdzie kliknąć (5 języków, jasny i ciemny motyw)
+- 📑 Spis treści na GitHubie: jedna pozycja w kratce, nic się nie skleja
+- 🔲 Kafelki na GitHubie: ikona nad tytułem zamiast malutkiej kropki
+- ✅ Plakietka „HACS” pokazuje stan sprawdzenia głównej gałęzi
+
 ## v2.0.0 – Motor HA od nowa
 
 - 🆕 Całość zbudowana od nowa: integracja, karta, edytor karty, kreator, opis i instrukcja
