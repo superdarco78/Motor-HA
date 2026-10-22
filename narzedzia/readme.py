@@ -25,6 +25,8 @@ GH = f"https://github.com/{REPO}"
 RAW = f"https://raw.githubusercontent.com/{REPO}/main/"
 HACS = f"https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"
 DODAJ = "https://my.home-assistant.io/redirect/config_flow_start/?domain=motor_ha"
+RESTART = "https://my.home-assistant.io/redirect/system_dashboard/"
+PANELE = "https://my.home-assistant.io/redirect/lovelace_dashboards/"
 GLOWNY, AKCENT, SZARY = "#009AC7", "#FF9800", "#8C8C8C"
 JEZYKI = ["pl", "en", "de", "fr", "cs"]
 
@@ -72,6 +74,20 @@ def ikona_svg(sciezka: str) -> str:
             f'<path d="{sciezka}" fill="{GLOWNY}" transform="translate(22 22) scale(2.1667)"/></svg>')
 
 
+def ikona_szeroka_svg(sciezka: str) -> str:
+    """Ta sama ikona, ale obrazek ma 2000 px „szerokości własnej”: z width=100% rozpycha komórkę tabeli na GitHubie
+    (tabela ma tam width:max-content), a ikona zostaje na środku w swojej wysokości."""
+    return ('<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="96" viewBox="0 0 96 96">'
+            f'<circle cx="48" cy="48" r="44" fill="none" stroke="{AKCENT}" stroke-width="5"/>'
+            f'<path d="{sciezka}" fill="{GLOWNY}" transform="translate(22 22) scale(2.1667)"/></svg>')
+
+
+def linia_svg(szer: int) -> str:
+    """Kreska pod nagłówkiem kolumny w kolorze akcentu – jednocześnie rozpycha tabelę na całą szerokość."""
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{szer}" height="4" viewBox="0 0 {szer} 4" preserveAspectRatio="none">'
+            f'<rect width="{szer}" height="4" rx="2" fill="{AKCENT}"/></svg>')
+
+
 def pasek_svg(kroki: list[str], nazwy: dict[str, str], sciezki: dict[str, str]) -> str:
     n, krok, r = len(kroki), 116, 22
     szer, wys = n * krok, 2 * r + 40
@@ -91,6 +107,24 @@ def pasek_svg(kroki: list[str], nazwy: dict[str, str], sciezki: dict[str, str]) 
     return "".join(cz)
 
 
+def pasek_kawalek_svg(i: int, n: int, nazwa: str, sciezka: str) -> str:
+    """Jeden krok paska jako osobny obrazek – w README każdy jest linkiem do swojego kroku z obrazkiem."""
+    krok, r = 116, 22
+    wys, cx, cy = 2 * r + 40, krok / 2, r + 4
+    cz = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{krok}" height="{wys}" viewBox="0 0 {krok} {wys}" '
+          'font-family="Roboto, Noto Sans, Arial, sans-serif">']
+    if i > 0:
+        cz.append(f'<line x1="0" y1="{cy}" x2="{cx - r - 4}" y2="{cy}" stroke="{GLOWNY}" stroke-width="2.5"/>')
+    if i < n - 1:
+        cz.append(f'<line x1="{cx + r + 4}" y1="{cy}" x2="{krok}" y2="{cy}" stroke="{GLOWNY}" stroke-width="2.5"/>')
+    s = r * 1.15 / 12
+    cz.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{AKCENT}" stroke-width="3"/>'
+              f'<path d="{sciezka}" fill="{GLOWNY}" transform="translate({cx - 12 * s} {cy - 12 * s}) scale({s})"/>'
+              f'<text x="{cx}" y="{2 * r + 26}" text-anchor="middle" font-size="13" font-weight="500" fill="{SZARY}">'
+              f'{i + 1}. {escape(nazwa)}</text></svg>')
+    return "".join(cz)
+
+
 def zapisz_obrazki() -> None:
     from custom_components.motor_ha.pasek import IKONY as SCIEZKI_KROKOW   # te same ikony co pasek w kreatorze
     kat = KORZEN / "img" / "ikony"
@@ -99,6 +133,10 @@ def zapisz_obrazki() -> None:
         | set(USLUGI.values()) | set(POWIADOMIENIA.values()) | set(IKONY_GRUP.values())
     for n in sorted(potrzebne):
         (kat / f"{n}.svg").write_text(ikona_svg(MDI[n]), encoding="utf-8")
+        (kat / f"w-{n}.svg").write_text(ikona_szeroka_svg(MDI[n]), encoding="utf-8")
+    (kat / "puste-440.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" width="440" height="1"/>', encoding="utf-8")
+    for szer in (1000, 2000):
+        (kat / f"linia-{szer}.svg").write_text(linia_svg(szer), encoding="utf-8")
     for k, d in SCIEZKI_KROKOW.items():
         (kat / f"krok-{k}.svg").write_text(ikona_svg(d), encoding="utf-8")
     (KORZEN / "img" / "kreator").mkdir(exist_ok=True)
@@ -106,6 +144,9 @@ def zapisz_obrazki() -> None:
         t = json.loads((Path(__file__).parent / "teksty" / f"{j}.json").read_text(encoding="utf-8"))
         (KORZEN / "img" / "kreator" / f"pasek-{j}.svg").write_text(
             pasek_svg(KROKI_PODST, t["selector"]["kroki"], SCIEZKI_KROKOW), encoding="utf-8")
+        for i, k in enumerate(KROKI_PODST):
+            (KORZEN / "img" / "kreator" / f"pasek-{j}-{i + 1}.svg").write_text(
+                pasek_kawalek_svg(i, len(KROKI_PODST), t["selector"]["kroki"].get(k, k), SCIEZKI_KROKOW[k]), encoding="utf-8")
 
 
 # ---------- README ----------
@@ -133,11 +174,34 @@ def ik(nazwa: str, wys: int = 40) -> str:
     return f'<img src="{RAW}img/ikony/{nazwa}.svg" width="{wys}" height="{wys}" align="absmiddle" alt="">'
 
 
-def obraz(j: str, nazwa: str, szer: int, alt: str) -> str:
-    """Zrzut z zaznaczeniami: jasny albo ciemny według motywu (GitHub: <picture>, HA: motor-ha-hacs.js)."""
-    u = f"{RAW}img/kroki/{j}/{nazwa}"
-    return (f'<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="{u}-ciemny.webp">'
-            f'<img src="{u}-jasny.webp" width="{szer}" alt="{escape(alt)}"></picture></p>\n')
+def wik(nazwa: str, wys: int) -> str:
+    """Ikona na środku komórki, która rozpycha kolumnę (patrz ikona_szeroka_svg)."""
+    return f'<img src="{RAW}img/ikony/w-{nazwa}.svg" width="100%" height="{wys}" alt="">'
+
+
+def glowka(*kolumny: tuple[str, int]) -> str:
+    """Wiersz nagłówka: tekst + kreska akcentu; kreski 1000/2000 px dzielą szerokość tabeli 1:2."""
+    return "<tr>" + "".join(f'<th align="left">{escape(t)}<br><img src="{RAW}img/ikony/linia-{sz}.svg" width="100%" height="4" alt=""></th>'
+                            for t, sz in kolumny) + "</tr>"
+
+
+def zrzut(j: str, u: str, szer: str, alt: str, link: str = "") -> str:
+    """Zrzut z HA: na GitHubie zawsze ciemny, jasny pod rozwijanym „☀️ Jasny motyw” (GitHub nie ma przełączników).
+    W HA motor-ha-hacs.js dobiera jasny/ciemny według motywu HA i chowa rozwijany jasny.
+    Z linkiem klik w obrazek otwiera to samo miejsce w Twoim HA (My Home Assistant)."""
+    def jeden(wersja: str) -> str:
+        i = f'<img src="{u}-{wersja}.webp" width="{szer}" alt="{escape(alt)}">'
+        return f'<a href="{link}">{i}</a>' if link else i
+    return f'{jeden("ciemny")}<details><summary><sub>{K[j]["jasny_motyw"]}</sub></summary>{jeden("jasny")}</details>'
+
+
+def obraz(j: str, nazwa: str, szer: str, alt: str, link: str = "") -> str:
+    return f'<p align="center">{zrzut(j, f"{RAW}img/kroki/{j}/{nazwa}", szer, alt, link)}</p>\n'
+
+
+# przyciski My Home Assistant w krokach instalacji: (link, kolor, logo)
+GUZIKI = {"hacs": (HACS, "009AC7", "homeassistantcommunitystore"), "dodaj": (DODAJ, "FF9800", "homeassistant"),
+          "restart": (RESTART, "009AC7", "homeassistant"), "panel": (PANELE, "009AC7", "homeassistant")}
 
 
 def klik(tytul: str, lista: list[str]) -> str:
@@ -176,13 +240,12 @@ def readme(j: str) -> str:
     w.append('<p align="center">')
     for x in JEZYKI:
         plik = "" if x == "pl" else f"/blob/main/{T[x]['plik']}"
-        w.append(f'<a href="{gh}{plik}"><img src="{RAW}img/jezyki/{x}{"-on" if x == j else ""}.svg" height="44" alt="{T[x]["nazwa_jezyka"]}"></a>')
+        w.append(f'<a href="{gh}{plik}"><img src="{RAW}img/jezyki/{x}{"-on" if x == j else ""}.svg" width="19%" alt="{T[x]["nazwa_jezyka"]}"></a>')
     w.append("</p>\n")
     # baner z przyciskiem HACS
     w.append(f'<p align="center"><a href="{HACS}"><img src="{RAW}img/baner/{j}.svg" width="100%" alt="Motor HA – {escape(L["hacs"])}"></a></p>\n')
     # animacja (w HA zamienia się na żywą symulację)
-    w.append(f'<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="{RAW}img/pokaz/{j}-ciemny.webp">'
-             f'<img src="{RAW}img/pokaz/{j}-jasny.webp" width="100%" alt="{escape(L["pokaz"])}"></picture><br><sub>{escape(L["pokaz"])}</sub></p>\n')
+    w.append(f'<p align="center">{zrzut(j, f"{RAW}img/pokaz/{j}", "100%", L["pokaz"])}<sub>{escape(L["pokaz"])}</sub></p>\n')
     w.append(f'<h1 align="center">Motor HA</h1>\n<p align="center"><b>{escape(L["podtytul"])}</b></p>\n')
     w.append(f'<p align="center">{L["wstep"]}</p>\n')
     w.append(f"> [!NOTE]\n> {L['uwaga']}\n")
@@ -192,24 +255,24 @@ def readme(j: str) -> str:
              + przycisk(L["dodaj"], "FF9800", "homeassistant", DODAJ) + "</p>\n")
     # kafelki
     # 2 kolumny – czytelne także na telefonie; ikona nad tytułem w tej samej komórce
-    w.append('<table width="100%">')
+    w.append('<table>')
     for r in range(4):
         w.append("<tr>")
         for i in (2 * r, 2 * r + 1):
             ty, op = L["kafle"][i]
-            w.append(f'<td align="center" valign="top" width="50%"><a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#{KAFLE_CEL[i]}">{ik(KAFLE_IKONY[i], 48)}<br>'
+            w.append(f'<td align="center" valign="top" width="50%"><a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#{KAFLE_CEL[i]}">{wik(KAFLE_IKONY[i], 56)}<br>'
                      f'<b>{escape(ty)}</b></a><br><sub>{escape(op)}</sub></td>')
         w.append("</tr>")
     w.append("</table>\n")
     # spis treści w 2 kolumnach
     dz = list(L["dzialy"].items())
-    pol = (len(dz) + 1) // 2
-    # jedna pozycja w komórce, wiersz po wierszu – nic się nie skleja ani nie rozjeżdża
-    w.append(f"<h2>{ik('format-list-bulleted', 34)} {escape(L['spis'])}</h2>\n<table width=\"100%\">")
-    for a, b in zip(dz[:pol], dz[pol:] + [None]):
+    # kafelki po 3 w rzędzie: ikona nad nazwą, jedna pozycja w komórce, cała szerokość strony
+    w.append(f"<h2>{ik('format-list-bulleted', 34)} {escape(L['spis'])}</h2>\n<table>")
+    for i in range(0, len(dz), 3):
+        rzad = dz[i:i + 3]
         w.append("<tr>" + "".join(
-            f'<td width="50%">{ik(DZIALY[x[0]], 28)} <a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#{x[0]}"><b>{escape(x[1])}</b></a></td>'
-            if x else '<td width="50%"></td>' for x in (a, b)) + "</tr>")
+            f'<td align="center" valign="top"><a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#{kl}">{wik(DZIALY[kl], 40)}<br><b>{escape(n)}</b></a></td>'
+            for kl, n in rzad) + '<td></td>' * (3 - len(rzad)) + "</tr>")
     w.append("</table>\n")
     d = L["dzialy"]
     # instalacja
@@ -217,11 +280,14 @@ def readme(j: str) -> str:
     kt = K[j]
     for nr, (img, guzik, tytul, lista, uwaga) in enumerate(kt["instalacja"], 1):
         w.append(f'<a name="krok-{nr}"></a>\n<h3>{nr}. {escape(tytul)}</h3>\n')
+        # przycisk i obrazek prowadzą do tego samego miejsca w Twoim HA (obrazki HACS – do repozytorium w HACS)
+        link = GUZIKI[guzik or "hacs"][0] if img else ""
         if guzik:
-            w.append('<p align="center">' + (przycisk(L["hacs"], "009AC7", "homeassistantcommunitystore", HACS) if guzik == "hacs"
-                                             else przycisk(L["dodaj"], "FF9800", "homeassistant", DODAJ)) + "</p>\n")
+            g = GUZIKI[guzik]
+            napis = {"hacs": L["hacs"], "dodaj": L["dodaj"]}.get(guzik) or kt["guzik_" + guzik]
+            w.append(f'<p align="center">{przycisk(napis, g[1], g[2], g[0])}</p>\n')
         if img:
-            w.append(obraz(j, img, 560 if img == "start" else 860, tytul))
+            w.append(obraz(j, img, "70%" if img == "start" else "100%", tytul, link))
         w.append(klik(kt["co_kliknac"], lista))
         if uwaga:
             w.append(f"<p>ℹ️ {uwaga}</p>\n" if img else f'<p>➡️ <a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-krok">{escape(uwaga)}</a></p>\n')
@@ -229,9 +295,13 @@ def readme(j: str) -> str:
     # kreator
     w.append(naglowek("kreator", d["kreator"]))
     w.append(f'<p>{L["kreator_wstep"]}</p>\n')
-    w.append(f'<p align="center"><img src="{RAW}img/kreator/pasek-{j}.svg" width="100%" alt="{escape(d["kreator"])}"></p>\n')
+    # pasek kroków: każdy krok to link do swojego kroku z obrazkiem niżej (bez odstępów – nic się nie zawija)
+    w.append('<p align="center">' + "".join(
+        f'<a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{KROKI_ZRZUTY.index(k) + 1}">'
+        f'<img src="{RAW}img/kreator/pasek-{j}-{i + 1}.svg" width="10%" alt="{i + 1}. {escape(t["selector"]["kroki"].get(k, k))}"></a>'
+        for i, k in enumerate(KROKI_PODST)) + "</p>\n")
     kk = L["kreator_kolumny"]
-    w.append(f'<table><tr><th align="left">{kk[0]} · {kk[1]}</th><th align="left">{kk[2]}</th></tr>')
+    w.append("<table>" + glowka((f"{kk[0]} · {kk[1]}", 1000), (kk[2], 1000)))
     for nr, kr in enumerate(KROKI, 1):
         x = t["kroki"][kr]
         w.append(f'<tr><td>{ik("krok-" + kr, 36)} <b>{nr}. {escape(x["t"])}</b><br>{escape(x["co"])}</td>'
@@ -239,11 +309,18 @@ def readme(j: str) -> str:
     w.append("</table>\n")
     w.append(f"<p>{L['kreator_dodatkowe']}</p>\n")
     w.append(f'<a name="kreator-krok"></a>\n<h3>{escape(kt["kreator_obrazki"])}</h3>\n')
-    for nr, kr in enumerate(KROKI_ZRZUTY, 1):
-        x = t["kroki"][kr]
-        w.append(f'<a name="kreator-{nr}"></a>\n<h4>{ik("krok-" + kr, 28)} {nr}. {escape(x["t"])}</h4>\n')
-        w.append(obraz(j, f"krok-{nr:02d}", 640, x["t"]))
-        w.append(klik(kt["co_kliknac"], [escape(x["co"]), f'<b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b>']))
+    # po 2 kroki w rzędzie – obrazki wypełniają całą szerokość, a tekst na nich zostaje czytelny
+    w.append("<table>")
+    for i in range(0, len(KROKI_ZRZUTY), 2):
+        w.append("<tr>")
+        for nr in range(i + 1, i + 3):
+            x = t["kroki"][KROKI_ZRZUTY[nr - 1]]
+            u = f"{RAW}img/kroki/{j}/krok-{nr:02d}"
+            w.append(f'<td valign="top"><a name="kreator-{nr}"></a><b>{ik("krok-" + KROKI_ZRZUTY[nr - 1], 28)} {nr}. {escape(x["t"])}</b><br>'
+                     + zrzut(j, u, "100%", x["t"], DODAJ) +
+                     f'<b>{escape(kt["co_kliknac"])}</b><br>① {escape(x["co"])}<br>② <b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b></td>')
+        w.append("</tr>")
+    w.append("</table>\n")
     # osłony
     w.append(naglowek("oslony", d["oslony"]))
     w.append(f"<p>{escape(L['oslony_wstep'])}</p>\n")
@@ -252,9 +329,10 @@ def readme(j: str) -> str:
         for pg, typy in podgrupy.items():
             w.append(f'<tr><td colspan="4"><b>{escape(k["grupy"][pg])}</b></td></tr><tr>')
             for ty in typy:
-                w.append(f'<td align="center" valign="top" width="25%"><img src="{RAW}img/oslony/{ty}.png" width="150" alt="{escape(k["oslony"][ty])}">'
+                w.append(f'<td align="center" valign="top"><img src="{RAW}img/oslony/{ty}.png" width="100%" alt="{escape(k["oslony"][ty])}">'
                          f'<br><sub>{escape(k["oslony"][ty])}</sub></td>')
-            w.append("</tr>")
+            # puste miejsca mają tę samą szerokość co obrazek – kolumny zostają równe
+            w.append(f'<td><img src="{RAW}img/ikony/puste-440.svg" width="100%" height="1" alt=""></td>' * (4 - len(typy)) + "</tr>")
         w.append("</table>\n")
     # automatyka
     w.append(naglowek("automatyka", d["automatyka"]))
@@ -262,7 +340,7 @@ def readme(j: str) -> str:
     from custom_components.motor_ha.const import FUNKCJE   # noqa: PLC0415
     ka = L["automatyka_kolumny"]
     for tytul, zaaw in ((L["automatyka_podst"], False), (L["automatyka_zaaw"], True)):
-        w.append(f'<h3>{escape(tytul)}</h3>\n<table><tr><th align="left">{ka[0]}</th><th align="left">{ka[1]}</th></tr>')
+        w.append(f'<h3>{escape(tytul)}</h3>\n<table>' + glowka((ka[0], 1000), (ka[1], 2000)))
         for f, (_, tylko_zaaw) in FUNKCJE.items():
             if tylko_zaaw == zaaw:
                 n, op = t["f"][f]
@@ -276,7 +354,8 @@ def readme(j: str) -> str:
                                             for ty in GRUPY["brama"]["bramy"] + GRUPY["brama"]["garaze"]) + "</p>\n")
     # powiadomienia
     w.append(naglowek("powiadomienia", d["powiadomienia"]))
-    w.append(f"<p>{escape(L['powiadomienia_wstep'])}</p>\n<table>")
+    tr = json.loads((KORZEN / "custom_components" / "motor_ha" / "translations" / f"{j}.json").read_text(encoding="utf-8"))
+    w.append(f"<p>{escape(L['powiadomienia_wstep'])}</p>\n<table>" + glowka((tr["config"]["step"]["powiadomienia"]["data"]["powiadom"], 2000)))
     for p, ikona in POWIADOMIENIA.items():
         w.append(f'<tr><td>{ik(ikona, 30)} {escape(t["selector"]["powiadomienia"][p])}</td></tr>')
     w.append("</table>\n")
@@ -284,12 +363,12 @@ def readme(j: str) -> str:
     w.append(naglowek("encje", d["encje"]))
     w.append(f"<p>{escape(L['encje_wstep'])}</p>\n")
     ke = L["encje_kolumny"]
-    w.append(f'<table><tr><th align="left">{ke[0]}</th><th align="left">{ke[1]}</th></tr>')
+    w.append("<table>" + glowka((ke[0], 1000), (ke[1], 2000)))
     for e, ikona in ENCJE:
         nazwa = "Motor HA" if e == "cover" else t["encje"][e]
         w.append(f'<tr><td>{ik(ikona, 30)} <b>{escape(nazwa)}</b></td><td>{escape(L["encje_opisy"][e])}</td></tr>')
     w.append("</table>\n")
-    w.append(f"<h3>{escape(L['uslugi_tytul'])}</h3>\n<table>")
+    w.append(f"<h3>{escape(L['uslugi_tytul'])}</h3>\n<table>" + glowka((ka[0], 1000), (ka[1], 2000)))
     for u, ikona in USLUGI.items():
         n, op, _ = t["uslugi"][u]
         w.append(f'<tr><td>{ik(ikona, 30)} <b>{escape(n)}</b><br><code>motor_ha.{u}</code></td><td>{escape(op)}</td></tr>')
