@@ -77,7 +77,6 @@
   const MY = /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/;
   const JEZYK = /^https:\/\/github\.com\/superdarco78\/Motor-HA(?:\/blob\/main\/README(?:_([A-Z]{2}))?\.md)?\/?$/;
   const KOTWICA = /^https:\/\/github\.com\/superdarco78\/Motor-HA(?:\/blob\/main\/README(?:_[A-Z]{2})?\.md)?#(.+)$/;
-  const idz = (adres) => { history.pushState(null, "", adres); window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } })); };
   const opisy = new Map();   // kod języka → treść opisu
   const pokazJezyk = (md, kod) => {
     const plik = kod ? `README_${kod}.md` : "README.md";
@@ -99,7 +98,8 @@
     const h = a && a.getAttribute("href");
     if (!h || !md || !md.__mhNasz) return;
     let m;
-    if ((m = MY.exec(h))) idz(`${m[1].startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${m[1]}${m[2] || ""}`);
+    // przyciski „w HA” otwierają się w nowej karcie – opis zostaje tam, gdzie był
+    if ((m = MY.exec(h))) window.open(`${m[1].startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${m[1]}${m[2] || ""}`, "_blank", "noopener");
     else if ((m = JEZYK.exec(h))) pokazJezyk(md, m[1] || "");
     else if ((m = KOTWICA.exec(h))) { const cel = naglowek(md, decodeURIComponent(m[1])); if (!cel) return; cel.scrollIntoView({ behavior: "smooth", block: "start" }); }
     else return;
@@ -122,7 +122,7 @@
         if (koniec) return;
         koniec = true;
         // animacja i jej podpis znikają – symulacja mówi sama za siebie
-        for (let e = miejsce; e && (e === miejsce || /^(BR|SUB|DETAILS)$/.test(e.tagName)); e = e.nextElementSibling) e.style.display = "none";
+        for (let e = miejsce; e && (e === miejsce || /^(BR|SUB)$/.test(e.tagName)); e = e.nextElementSibling) e.style.display = "none";
       },
       zle, hass: ha, jezyk: () => JEZYKI[md.__mhJezyk || ""] || "pl",
     };
@@ -147,11 +147,9 @@
     const w = wnetrze(md);
     for (const el of w.querySelectorAll("img")) {
       obrazek(el);
-      if (/\/img\/pokaz\//.test(el.dataset.mhOrg || "") && el.isConnected && !el.closest("details")) symulacja(el, md);
+      if (/\/img\/pokaz\//.test(el.dataset.mhOrg || "") && el.isConnected) symulacja(el, md);
     }
     for (const el of w.querySelectorAll("source")) zrodlo(el);
-    // „☀️ Jasny motyw” jest tylko dla GitHuba – w HA obrazki same idą za motywem HA
-    for (const el of w.querySelectorAll("details")) if (el.querySelector("summary")?.textContent.trim().startsWith("☀️")) el.style.display = "none";
   };
   const sluchaj = (d) => { if (!d.__mhKlik) { d.__mhKlik = true; d.addEventListener("click", klik, true); } };
   const przejdz = (korzen, ile) => {

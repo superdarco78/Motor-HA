@@ -186,13 +186,10 @@ def glowka(*kolumny: tuple[str, int]) -> str:
 
 
 def zrzut(j: str, u: str, szer: str, alt: str, link: str = "") -> str:
-    """Zrzut z HA: na GitHubie zawsze ciemny, jasny pod rozwijanym „☀️ Jasny motyw” (GitHub nie ma przełączników).
-    W HA motor-ha-hacs.js dobiera jasny/ciemny według motywu HA i chowa rozwijany jasny.
-    Z linkiem klik w obrazek otwiera to samo miejsce w Twoim HA (My Home Assistant)."""
-    def jeden(wersja: str) -> str:
-        i = f'<img src="{u}-{wersja}.webp" width="{szer}" alt="{escape(alt)}">'
-        return f'<a href="{link}">{i}</a>' if link else i
-    return f'{jeden("ciemny")}<details><summary><sub>{K[j]["jasny_motyw"]}</sub></summary>{jeden("jasny")}</details>'
+    """Zrzut z HA: na GitHubie zawsze ciemny; w HA motor-ha-hacs.js dobiera jasny/ciemny według motywu HA.
+    Link (np. kotwica kroku) zamiast otwierania samego obrazka."""
+    i = f'<img src="{u}-ciemny.webp" width="{szer}" alt="{escape(alt)}">'
+    return f'<a href="{link}">{i}</a>' if link else i
 
 
 def obraz(j: str, nazwa: str, szer: str, alt: str, link: str = "") -> str:
@@ -281,7 +278,7 @@ def readme(j: str) -> str:
     for nr, (img, guzik, tytul, lista, uwaga) in enumerate(kt["instalacja"], 1):
         w.append(f'<a name="krok-{nr}"></a>\n<h3>{nr}. {escape(tytul)}</h3>\n')
         # przycisk i obrazek prowadzą do tego samego miejsca w Twoim HA (obrazki HACS – do repozytorium w HACS)
-        link = GUZIKI[guzik or "hacs"][0] if img else ""
+        link = f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#krok-{nr}'
         if guzik:
             g = GUZIKI[guzik]
             napis = {"hacs": L["hacs"], "dodaj": L["dodaj"]}.get(guzik) or kt["guzik_" + guzik]
@@ -317,7 +314,7 @@ def readme(j: str) -> str:
             x = t["kroki"][KROKI_ZRZUTY[nr - 1]]
             u = f"{RAW}img/kroki/{j}/krok-{nr:02d}"
             w.append(f'<td valign="top"><a name="kreator-{nr}"></a><b>{ik("krok-" + KROKI_ZRZUTY[nr - 1], 28)} {nr}. {escape(x["t"])}</b><br>'
-                     + zrzut(j, u, "100%", x["t"], DODAJ) +
+                     + zrzut(j, u, "100%", x["t"], f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{nr}') + "<br>" +
                      f'<b>{escape(kt["co_kliknac"])}</b><br>① {escape(x["co"])}<br>② <b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b></td>')
         w.append("</tr>")
     w.append("</table>\n")

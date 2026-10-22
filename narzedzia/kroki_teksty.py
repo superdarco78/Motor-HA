@@ -11,7 +11,6 @@ KROKI_ZRZUTY = ["tryb", "mam", "urzadzenie", "rodzaj", "kolory", "okno", "czujni
 
 K = {
     "pl": {
-        "jasny_motyw": "☀️ Jasny motyw",
         "guzik_restart": "Otwórz System w HA", "guzik_panel": "Otwórz panele w HA",
         "co_kliknac": "Co kliknąć:",
         "dalej": "Dalej", "zatwierdz": "Zatwierdź",
@@ -31,7 +30,6 @@ K = {
         "kreator_klik": "Wybierz albo wpisz to, o co pyta krok",
     },
     "en": {
-        "jasny_motyw": "☀️ Light theme",
         "guzik_restart": "Open System in HA", "guzik_panel": "Open dashboards in HA",
         "co_kliknac": "What to click:",
         "dalej": "Next", "zatwierdz": "Submit",
@@ -51,7 +49,6 @@ K = {
         "kreator_klik": "Choose or type what the step asks for",
     },
     "de": {
-        "jasny_motyw": "☀️ Helles Design",
         "guzik_restart": "System in HA öffnen", "guzik_panel": "Dashboards in HA öffnen",
         "co_kliknac": "Was klicken:",
         "dalej": "Weiter", "zatwierdz": "OK",
@@ -71,7 +68,6 @@ K = {
         "kreator_klik": "Auswählen oder eingeben, was der Schritt fragt",
     },
     "fr": {
-        "jasny_motyw": "☀️ Thème clair",
         "guzik_restart": "Ouvrir Système dans HA", "guzik_panel": "Ouvrir les tableaux de bord dans HA",
         "co_kliknac": "Où cliquer :",
         "dalej": "Suivant", "zatwierdz": "Valider",
@@ -91,7 +87,6 @@ K = {
         "kreator_klik": "Choisissez ou saisissez ce que demande l’étape",
     },
     "cs": {
-        "jasny_motyw": "☀️ Světlý motiv",
         "guzik_restart": "Otevřít Systém v HA", "guzik_panel": "Otevřít panely v HA",
         "co_kliknac": "Co kliknout:",
         "dalej": "Další", "zatwierdz": "Odeslat",
