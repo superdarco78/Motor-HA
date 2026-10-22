@@ -11,6 +11,7 @@ KROKI_ZRZUTY = ["tryb", "mam", "urzadzenie", "rodzaj", "kolory", "okno", "czujni
 
 K = {
     "pl": {
+        "poprzedni": "Poprzedni", "nastepny": "Następny",
         "guzik_restart": "Otwórz System w HA", "guzik_panel": "Otwórz panele w HA",
         "co_kliknac": "Co kliknąć:",
         "dalej": "Dalej", "zatwierdz": "Zatwierdź",
@@ -30,6 +31,7 @@ K = {
         "kreator_klik": "Wybierz albo wpisz to, o co pyta krok",
     },
     "en": {
+        "poprzedni": "Previous", "nastepny": "Next",
         "guzik_restart": "Open System in HA", "guzik_panel": "Open dashboards in HA",
         "co_kliknac": "What to click:",
         "dalej": "Next", "zatwierdz": "Submit",
@@ -49,6 +51,7 @@ K = {
         "kreator_klik": "Choose or type what the step asks for",
     },
     "de": {
+        "poprzedni": "Zurück", "nastepny": "Weiter",
         "guzik_restart": "System in HA öffnen", "guzik_panel": "Dashboards in HA öffnen",
         "co_kliknac": "Was klicken:",
         "dalej": "Weiter", "zatwierdz": "OK",
@@ -68,6 +71,7 @@ K = {
         "kreator_klik": "Auswählen oder eingeben, was der Schritt fragt",
     },
     "fr": {
+        "poprzedni": "Précédent", "nastepny": "Suivant",
         "guzik_restart": "Ouvrir Système dans HA", "guzik_panel": "Ouvrir les tableaux de bord dans HA",
         "co_kliknac": "Où cliquer :",
         "dalej": "Suivant", "zatwierdz": "Valider",
@@ -87,6 +91,7 @@ K = {
         "kreator_klik": "Choisissez ou saisissez ce que demande l’étape",
     },
     "cs": {
+        "poprzedni": "Předchozí", "nastepny": "Další",
         "guzik_restart": "Otevřít Systém v HA", "guzik_panel": "Otevřít panely v HA",
         "co_kliknac": "Co kliknout:",
         "dalej": "Další", "zatwierdz": "Odeslat",
@@ -104,5 +109,74 @@ K = {
         ],
         "kreator_obrazki": "Každý krok s obrázkem",
         "kreator_klik": "Vyberte nebo zadejte, na co se krok ptá",
+    },
+}
+
+# „Jak to zrobić” przy działach README: przycisk My HA + kroki klik po kroku (dla kogoś, kto nie zna HA)
+JAK = {
+    "pl": {
+        "tytul": "Jak to zrobić",
+        "motor": "Otwórz Motor HA w HA", "aktualizacje": "Otwórz Aktualizacje w HA", "panele": "Otwórz panele w HA",
+        "konfiguruj": ["Kliknij przycisk wyżej.", "Przy swoim urządzeniu kliknij <b>⚙ Konfiguruj</b>.",
+                       "Przejdź kroki tak jak w kreatorze i na końcu kliknij <b>Zatwierdź</b>."],
+        "automatyka": "Funkcje włączasz w kroku <b>Automatyka</b>, a godziny i progi zmieniasz w kroku <b>Ustawienia</b> (tryb zaawansowany). "
+                      "W trybie podstawowym wszystko ma gotowe wartości.",
+        "powiadomienia": "Rodzaje powiadomień wybierasz w kroku <b>Powiadomienia</b>.",
+        "encje": "Encje każdego urządzenia zobaczysz po kliknięciu urządzenia na liście Motor HA.",
+        "dom": ["Kliknij przycisk i otwórz swój panel.", "Kliknij <b>✏️ Edytuj panel</b>, potem <b>+ Dodaj kartę</b>.",
+                "Wpisz „Motor HA” i wybierz <b>Motor HA – cały dom</b>, potem <b>Zapisz</b>."],
+        "aktualizacja": ["Kliknij przycisk.", "Kliknij <b>Motor HA</b>, potem <b>Aktualizuj</b>.", "Po aktualizacji kliknij <b>Uruchom ponownie</b>."],
+    },
+    "en": {
+        "tytul": "How to do it",
+        "motor": "Open Motor HA in HA", "aktualizacje": "Open Updates in HA", "panele": "Open dashboards in HA",
+        "konfiguruj": ["Click the button above.", "Next to your device, click <b>⚙ Configure</b>.",
+                       "Go through the steps like in the wizard and click <b>Submit</b> at the end."],
+        "automatyka": "You turn functions on in the <b>Automation</b> step and change times and limits in the <b>Settings</b> step (advanced mode). "
+                      "In basic mode everything has ready values.",
+        "powiadomienia": "You choose the kinds of notifications in the <b>Notifications</b> step.",
+        "encje": "You see the entities of each device after clicking the device in the Motor HA list.",
+        "dom": ["Click the button and open your dashboard.", "Click <b>✏️ Edit dashboard</b>, then <b>+ Add card</b>.",
+                "Type “Motor HA”, choose <b>Motor HA – whole home</b>, then <b>Save</b>."],
+        "aktualizacja": ["Click the button.", "Click <b>Motor HA</b>, then <b>Update</b>.", "After the update click <b>Restart</b>."],
+    },
+    "de": {
+        "tytul": "So geht’s",
+        "motor": "Motor HA in HA öffnen", "aktualizacje": "Updates in HA öffnen", "panele": "Dashboards in HA öffnen",
+        "konfiguruj": ["Auf den Button oben klicken.", "Beim Gerät auf <b>⚙ Konfigurieren</b> klicken.",
+                       "Die Schritte wie im Assistenten durchgehen und am Ende auf <b>OK</b> klicken."],
+        "automatyka": "Funktionen schaltest du im Schritt <b>Automatik</b> ein, Zeiten und Grenzwerte änderst du im Schritt <b>Einstellungen</b> (erweiterter Modus). "
+                      "Im Basismodus hat alles fertige Werte.",
+        "powiadomienia": "Die Arten von Benachrichtigungen wählst du im Schritt <b>Benachrichtigungen</b>.",
+        "encje": "Die Entitäten jedes Geräts siehst du nach einem Klick auf das Gerät in der Motor-HA-Liste.",
+        "dom": ["Auf den Button klicken und dein Dashboard öffnen.", "<b>✏️ Dashboard bearbeiten</b>, dann <b>+ Karte hinzufügen</b>.",
+                "„Motor HA“ eingeben, <b>Motor HA – ganzes Haus</b> wählen, dann <b>Speichern</b>."],
+        "aktualizacja": ["Auf den Button klicken.", "Auf <b>Motor HA</b> klicken, dann auf <b>Aktualisieren</b>.", "Nach dem Update auf <b>Neu starten</b> klicken."],
+    },
+    "fr": {
+        "tytul": "Comment faire",
+        "motor": "Ouvrir Motor HA dans HA", "aktualizacje": "Ouvrir les mises à jour dans HA", "panele": "Ouvrir les tableaux de bord dans HA",
+        "konfiguruj": ["Cliquez sur le bouton ci-dessus.", "À côté de votre appareil, cliquez sur <b>⚙ Configurer</b>.",
+                       "Suivez les étapes comme dans l’assistant et cliquez sur <b>Valider</b> à la fin."],
+        "automatyka": "Vous activez les fonctions à l’étape <b>Automatisme</b> et modifiez les heures et les seuils à l’étape <b>Réglages</b> (mode avancé). "
+                      "En mode simple, tout a des valeurs prêtes.",
+        "powiadomienia": "Vous choisissez les types de notifications à l’étape <b>Notifications</b>.",
+        "encje": "Vous voyez les entités de chaque appareil en cliquant sur l’appareil dans la liste Motor HA.",
+        "dom": ["Cliquez sur le bouton et ouvrez votre tableau de bord.", "Cliquez sur <b>✏️ Modifier le tableau de bord</b>, puis <b>+ Ajouter une carte</b>.",
+                "Tapez « Motor HA », choisissez <b>Motor HA – toute la maison</b>, puis <b>Enregistrer</b>."],
+        "aktualizacja": ["Cliquez sur le bouton.", "Cliquez sur <b>Motor HA</b>, puis <b>Mettre à jour</b>.", "Après la mise à jour, cliquez sur <b>Redémarrer</b>."],
+    },
+    "cs": {
+        "tytul": "Jak na to",
+        "motor": "Otevřít Motor HA v HA", "aktualizacje": "Otevřít Aktualizace v HA", "panele": "Otevřít panely v HA",
+        "konfiguruj": ["Klikněte na tlačítko výše.", "U svého zařízení klikněte na <b>⚙ Nastavit</b>.",
+                       "Projděte kroky jako v průvodci a na konci klikněte na <b>Odeslat</b>."],
+        "automatyka": "Funkce zapnete v kroku <b>Automatika</b>, časy a limity změníte v kroku <b>Nastavení</b> (pokročilý režim). "
+                      "V základním režimu má vše připravené hodnoty.",
+        "powiadomienia": "Druhy oznámení vyberete v kroku <b>Oznámení</b>.",
+        "encje": "Entity každého zařízení uvidíte po kliknutí na zařízení v seznamu Motor HA.",
+        "dom": ["Klikněte na tlačítko a otevřete svůj panel.", "Klikněte na <b>✏️ Upravit panel</b>, pak <b>+ Přidat kartu</b>.",
+                "Napište „Motor HA“, vyberte <b>Motor HA – celý dům</b>, pak <b>Uložit</b>."],
+        "aktualizacja": ["Klikněte na tlačítko.", "Klikněte na <b>Motor HA</b>, pak na <b>Aktualizovat</b>.", "Po aktualizaci klikněte na <b>Restartovat</b>."],
     },
 }

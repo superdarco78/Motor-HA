@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.0.2"
+VERSION = "2.0.3"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"

@@ -17,7 +17,7 @@ KORZEN = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(KORZEN))
 from readme_teksty import T  # noqa: E402
-from kroki_teksty import KROKI_ZRZUTY, K  # noqa: E402
+from kroki_teksty import JAK, KROKI_ZRZUTY, K  # noqa: E402
 
 MDI = json.loads((Path(__file__).parent / "mdi.json").read_text(encoding="utf-8"))
 REPO = "superdarco78/Motor-HA"
@@ -125,12 +125,18 @@ def pasek_kawalek_svg(i: int, n: int, nazwa: str, sciezka: str) -> str:
     return "".join(cz)
 
 
+# ikona przy każdym kroku instalacji (według obrazka; krok bez obrazka = przejście kreatora)
+IKONY_INSTALACJI = {"hacs-1": "link-variant", "hacs-2": "plus-box", "hacs-3": "download", "restart": "restart",
+                    "start": "auto-fix", None: "gesture-tap", "panel": "view-dashboard"}
+
+
 def zapisz_obrazki() -> None:
     from custom_components.motor_ha.pasek import IKONY as SCIEZKI_KROKOW   # te same ikony co pasek w kreatorze
     kat = KORZEN / "img" / "ikony"
     kat.mkdir(parents=True, exist_ok=True)
     potrzebne = set(KAFLE_IKONY) | set(DZIALY.values()) | set(FUNKCJE_IKONY.values()) | {i for _, i in ENCJE} \
-        | set(USLUGI.values()) | set(POWIADOMIENIA.values()) | set(IKONY_GRUP.values())
+        | set(USLUGI.values()) | set(POWIADOMIENIA.values()) | set(IKONY_GRUP.values()) | set(IKONY_INSTALACJI.values()) \
+        | {"wrench", "help-circle"}
     for n in sorted(potrzebne):
         (kat / f"{n}.svg").write_text(ikona_svg(MDI[n]), encoding="utf-8")
         (kat / f"w-{n}.svg").write_text(ikona_szeroka_svg(MDI[n]), encoding="utf-8")
@@ -201,8 +207,33 @@ GUZIKI = {"hacs": (HACS, "009AC7", "homeassistantcommunitystore"), "dodaj": (DOD
           "restart": (RESTART, "009AC7", "homeassistant"), "panel": (PANELE, "009AC7", "homeassistant")}
 
 
+def nawigacja(baza: str, kt: dict, spis: str, wstecz: str | None, dalej: str | None) -> str:
+    """Linki pod krokiem: poprzedni · spis treści · następny (w HA przewijają opis na miejscu)."""
+    cz = []
+    if wstecz:
+        cz.append(f'<a href="{baza}#{wstecz}">⬅️ {escape(kt["poprzedni"])}</a>')
+    cz.append(f'<a href="{baza}#spis">📑 {escape(spis)}</a>')
+    if dalej:
+        cz.append(f'<a href="{baza}#{dalej}">{escape(kt["nastepny"])} ➡️</a>')
+    return '<p align="center"><sub>' + " · ".join(cz) + "</sub></p>\n"
+
+
 def klik(tytul: str, lista: list[str]) -> str:
     return f"<p><b>{escape(tytul)}</b></p>\n<ol>" + "".join(f"<li>{x}</li>" for x in lista) + "</ol>\n" if lista else ""
+
+
+MOTOR = "https://my.home-assistant.io/redirect/integration/?domain=motor_ha"
+AKTUALIZACJE = "https://my.home-assistant.io/redirect/updates/"
+
+
+def jak(tj: dict, guzik: str, link: str, kroki: list[str], rada: str = "") -> str:
+    """„Jak to zrobić”: przycisk do właściwego miejsca w HA, kroki i porada."""
+    w = f'<h3>{ik("gesture-tap", 28)} {escape(tj["tytul"])}</h3>\n<p align="center">{przycisk(tj[guzik], "009AC7", "homeassistant", link)}</p>\n'
+    if kroki:
+        w += "<ol>" + "".join(f"<li>{x}</li>" for x in kroki) + "</ol>\n"
+    if rada:
+        w += f"<p>💡 {rada}</p>\n"
+    return w
 
 
 def naglowek(klucz: str, tekst: str) -> str:
@@ -219,19 +250,19 @@ def readme(j: str) -> str:
     # plakietki
     w.append('<p align="center">')
     w += [odznaka(o["wersja"], "", "009AC7", "", f"{gh}/releases/latest", f"github/v/release/{REPO}"),
-          odznaka(o["pobrania"], "", "4CAF50", "", f"{gh}/releases", f"github/downloads/{REPO}/total"),
-          odznaka(o["gwiazdki"], "", "FF9800", "github", f"{gh}/stargazers", f"github/stars/{REPO}"),
-          odznaka("HACS", "Custom", "FF5722", "homeassistantcommunitystore", "https://hacs.xyz"),
+          odznaka(o["pobrania"], "", "009AC7", "", f"{gh}/releases", f"github/downloads/{REPO}/total"),
+          odznaka(o["gwiazdki"], "", "009AC7", "github", f"{gh}/stargazers", f"github/stars/{REPO}"),
+          odznaka("HACS", "Custom", "009AC7", "homeassistantcommunitystore", "https://hacs.xyz"),
           "<br>",
-          odznaka("Home Assistant", "2024.12+", "18BCF2", "homeassistant", "https://www.home-assistant.io/"),
-          odznaka(o["jezyki"], "14", "8E44AD", "googletranslate", f"{gh}#licencja"),
-          odznaka(o["licencja"], "CC BY-NC-SA 4.0", "E53935", "", f"{gh}/blob/main/LICENSE"),
-          odznaka(o["zgloszenia"], "", "FFB300", "github", f"{gh}/issues", f"github/issues/{REPO}"),
+          odznaka("Home Assistant", "2024.12+", "009AC7", "homeassistant", "https://www.home-assistant.io/"),
+          odznaka(o["jezyki"], "14", "009AC7", "googletranslate", f"{gh}#licencja"),
+          odznaka(o["licencja"], "CC BY-NC-SA 4.0", "009AC7", "", f"{gh}/blob/main/LICENSE"),
+          odznaka(o["zgloszenia"], "", "009AC7", "github", f"{gh}/issues", f"github/issues/{REPO}"),
           "<br>",
-          odznaka("HACS", "", "41BDF5", "homeassistantcommunitystore", f"{gh}/actions/workflows/sprawdz.yml",
+          odznaka("HACS", "", "009AC7", "homeassistantcommunitystore", f"{gh}/actions/workflows/sprawdz.yml",
                   f"github/actions/workflow/status/{REPO}/sprawdz.yml?branch=main&event=push"),
-          odznaka(o["forum"], "Home Assistant", "1B9AAA", "discourse", "https://community.home-assistant.io/"),
-          odznaka(o["forum_pl"], "arturhome.pl", "D81B60", "discourse", "https://forum.arturhome.pl/")]
+          odznaka(o["forum"], "Home Assistant", "009AC7", "discourse", "https://community.home-assistant.io/"),
+          odznaka(o["forum_pl"], "arturhome.pl", "009AC7", "discourse", "https://forum.arturhome.pl/")]
     w.append("</p>\n")
     # języki
     w.append('<p align="center">')
@@ -264,7 +295,7 @@ def readme(j: str) -> str:
     # spis treści w 2 kolumnach
     dz = list(L["dzialy"].items())
     # kafelki po 3 w rzędzie: ikona nad nazwą, jedna pozycja w komórce, cała szerokość strony
-    w.append(f"<h2>{ik('format-list-bulleted', 34)} {escape(L['spis'])}</h2>\n<table>")
+    w.append(f"<a name=\"spis\"></a>\n<h2>{ik('format-list-bulleted', 34)} {escape(L['spis'])}</h2>\n<table>")
     for i in range(0, len(dz), 3):
         rzad = dz[i:i + 3]
         w.append("<tr>" + "".join(
@@ -275,8 +306,12 @@ def readme(j: str) -> str:
     # instalacja
     w.append(naglowek("instalacja", d["instalacja"]))
     kt = K[j]
+    baza = f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}'
+    ile = len(kt["instalacja"])
+    # klikany spis kroków instalacji
+    w.append("<ol>" + "".join(f'<li><a href="{baza}#krok-{n}">{escape(x[2])}</a></li>' for n, x in enumerate(kt["instalacja"], 1)) + "</ol>\n")
     for nr, (img, guzik, tytul, lista, uwaga) in enumerate(kt["instalacja"], 1):
-        w.append(f'<a name="krok-{nr}"></a>\n<h3>{nr}. {escape(tytul)}</h3>\n')
+        w.append(f'<a name="krok-{nr}"></a>\n<h3>{ik(IKONY_INSTALACJI[img], 28)} {nr}. {escape(tytul)}</h3>\n')
         # przycisk i obrazek prowadzą do tego samego miejsca w Twoim HA (obrazki HACS – do repozytorium w HACS)
         link = f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#krok-{nr}'
         if guzik:
@@ -288,7 +323,8 @@ def readme(j: str) -> str:
         w.append(klik(kt["co_kliknac"], lista))
         if uwaga:
             w.append(f"<p>ℹ️ {uwaga}</p>\n" if img else f'<p>➡️ <a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-krok">{escape(uwaga)}</a></p>\n')
-    w.append(f"<details><summary><b>{escape(L['instalacja_reczna'])}</b></summary>\n<p>{L['instalacja_reczna_tekst'].format(gh=gh)}</p>\n</details>\n")
+        w.append(nawigacja(baza, kt, L["spis"], f"krok-{nr - 1}" if nr > 1 else None, f"krok-{nr + 1}" if nr < ile else "kreator"))
+    w.append(f"<h3>{ik('wrench', 28)} {escape(L['instalacja_reczna'])}</h3>\n<p>{L['instalacja_reczna_tekst'].format(gh=gh)}</p>\n")
     # kreator
     w.append(naglowek("kreator", d["kreator"]))
     w.append(f'<p>{L["kreator_wstep"]}</p>\n')
@@ -301,36 +337,31 @@ def readme(j: str) -> str:
     w.append("<table>" + glowka((f"{kk[0]} · {kk[1]}", 1000), (kk[2], 1000)))
     for nr, kr in enumerate(KROKI, 1):
         x = t["kroki"][kr]
-        w.append(f'<tr><td>{ik("krok-" + kr, 36)} <b>{nr}. {escape(x["t"])}</b><br>{escape(x["co"])}</td>'
+        tyt = f'<b>{nr}. {escape(x["t"])}</b>'
+        if kr in KROKI_ZRZUTY:   # krok z obrazkiem niżej – tytuł jest linkiem do niego
+            tyt = f'<a href="{baza}#kreator-{KROKI_ZRZUTY.index(kr) + 1}">{tyt}</a>'
+        w.append(f'<tr><td>{ik("krok-" + kr, 36)} {tyt}<br>{escape(x["co"])}</td>'
                  f'<td>{escape(x["poco"].split(chr(10))[0])}</td></tr>')
     w.append("</table>\n")
     w.append(f"<p>{L['kreator_dodatkowe']}</p>\n")
     w.append(f'<a name="kreator-krok"></a>\n<h3>{escape(kt["kreator_obrazki"])}</h3>\n')
-    # po 2 kroki w rzędzie – obrazki wypełniają całą szerokość, a tekst na nich zostaje czytelny
-    w.append("<table>")
-    for i in range(0, len(KROKI_ZRZUTY), 2):
-        w.append("<tr>")
-        for nr in range(i + 1, i + 3):
-            x = t["kroki"][KROKI_ZRZUTY[nr - 1]]
-            u = f"{RAW}img/kroki/{j}/krok-{nr:02d}"
-            w.append(f'<td valign="top"><a name="kreator-{nr}"></a><b>{ik("krok-" + KROKI_ZRZUTY[nr - 1], 28)} {nr}. {escape(x["t"])}</b><br>'
-                     + zrzut(j, u, "100%", x["t"], f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{nr}') + "<br>" +
-                     f'<b>{escape(kt["co_kliknac"])}</b><br>① {escape(x["co"])}<br>② <b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b></td>')
-        w.append("</tr>")
-    w.append("</table>\n")
+    # kroki jeden pod drugim: tytuł, obrazek na całą szerokość, co kliknąć – czytelne też na telefonie
+    for nr, kr in enumerate(KROKI_ZRZUTY, 1):
+        x = t["kroki"][kr]
+        w.append(f'<a name="kreator-{nr}"></a>\n<h4>{ik("krok-" + kr, 28)} {nr}. {escape(x["t"])}</h4>\n')
+        w.append(obraz(j, f"krok-{nr:02d}", "100%", x["t"], f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{nr}'))
+        w.append(klik(kt["co_kliknac"], [escape(x["co"]), f'<b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b>']))
+        w.append(nawigacja(baza, kt, L["spis"], f"kreator-{nr - 1}" if nr > 1 else "kreator", f"kreator-{nr + 1}" if nr < len(KROKI_ZRZUTY) else "oslony"))
     # osłony
     w.append(naglowek("oslony", d["oslony"]))
     w.append(f"<p>{escape(L['oslony_wstep'])}</p>\n")
     for g, podgrupy in GRUPY.items():
-        w.append(f"<h3>{ik(IKONY_GRUP[g], 28)} {escape(k['grupy'][g])}</h3>\n<table>")
+        # każda podgrupa to jeden obrazek na całą szerokość: tytuł i kafelki tej samej wielkości, równo rozłożone
+        # (img/oslony-rzedy, robione z img/oslony-kafle; na GitHubie ciemne, w HA według motywu – motor-ha-hacs.js)
+        w.append(f"<h3>{ik(IKONY_GRUP[g], 28)} {escape(k['grupy'][g])}</h3>\n")
         for pg, typy in podgrupy.items():
-            w.append(f'<tr><td colspan="4"><b>{escape(k["grupy"][pg])}</b></td></tr><tr>')
-            for ty in typy:
-                w.append(f'<td align="center" valign="top"><img src="{RAW}img/oslony/{ty}.png" width="100%" alt="{escape(k["oslony"][ty])}">'
-                         f'<br><sub>{escape(k["oslony"][ty])}</sub></td>')
-            # puste miejsca mają tę samą szerokość co obrazek – kolumny zostają równe
-            w.append(f'<td><img src="{RAW}img/ikony/puste-440.svg" width="100%" height="1" alt=""></td>' * (4 - len(typy)) + "</tr>")
-        w.append("</table>\n")
+            opis = ", ".join(k["oslony"][ty] for ty in typy)
+            w.append(f'<p><img src="{RAW}img/oslony-rzedy/{j}-{pg}-ciemny.webp" width="100%" alt="{escape(k["grupy"][pg])}: {escape(opis)}"></p>\n')
     # automatyka
     w.append(naglowek("automatyka", d["automatyka"]))
     w.append(f"<p>{L['automatyka_wstep']}</p>\n")
@@ -343,12 +374,14 @@ def readme(j: str) -> str:
                 n, op = t["f"][f]
                 w.append(f'<tr><td>{ik(FUNKCJE_IKONY[f], 32)} <b>{escape(n)}</b></td><td>{escape(op)}</td></tr>')
         w.append("</table>\n")
+    w.append(jak(JAK[j], "motor", MOTOR, JAK[j]["konfiguruj"], JAK[j]["automatyka"]))
     # bramy
     w.append(naglowek("bramy", d["bramy"]))
     w.append("> [!IMPORTANT]\n> " + L["bramy_tekst"][0] + "\n\n")
     w.append(f"<p>{L['bramy_tekst'][1]}</p>\n<p>{L['bramy_tekst'][2]}</p>\n")
-    w.append('<p align="center">' + "".join(f'<img src="{RAW}img/oslony/{ty}.png" width="19%" alt="{escape(k["oslony"][ty])}"> '
-                                            for ty in GRUPY["brama"]["bramy"] + GRUPY["brama"]["garaze"]) + "</p>\n")
+    for pg, typy in GRUPY["brama"].items():
+        opis = ", ".join(k["oslony"][ty] for ty in typy)
+        w.append(f'<p><img src="{RAW}img/oslony-rzedy/{j}-{pg}-ciemny.webp" width="100%" alt="{escape(k["grupy"][pg])}: {escape(opis)}"></p>\n')
     # powiadomienia
     w.append(naglowek("powiadomienia", d["powiadomienia"]))
     tr = json.loads((KORZEN / "custom_components" / "motor_ha" / "translations" / f"{j}.json").read_text(encoding="utf-8"))
@@ -356,6 +389,7 @@ def readme(j: str) -> str:
     for p, ikona in POWIADOMIENIA.items():
         w.append(f'<tr><td>{ik(ikona, 30)} {escape(t["selector"]["powiadomienia"][p])}</td></tr>')
     w.append("</table>\n")
+    w.append(jak(JAK[j], "motor", MOTOR, JAK[j]["konfiguruj"], JAK[j]["powiadomienia"]))
     # encje i usługi
     w.append(naglowek("encje", d["encje"]))
     w.append(f"<p>{escape(L['encje_wstep'])}</p>\n")
@@ -365,6 +399,7 @@ def readme(j: str) -> str:
         nazwa = "Motor HA" if e == "cover" else t["encje"][e]
         w.append(f'<tr><td>{ik(ikona, 30)} <b>{escape(nazwa)}</b></td><td>{escape(L["encje_opisy"][e])}</td></tr>')
     w.append("</table>\n")
+    w.append(jak(JAK[j], "motor", MOTOR, [], JAK[j]["encje"]))
     w.append(f"<h3>{escape(L['uslugi_tytul'])}</h3>\n<table>" + glowka((ka[0], 1000), (ka[1], 2000)))
     for u, ikona in USLUGI.items():
         n, op, _ = t["uslugi"][u]
@@ -373,13 +408,15 @@ def readme(j: str) -> str:
     # karta domu
     w.append(naglowek("dom", d["dom"]))
     w.append(f"<p>{L['dom_tekst']}</p>\n<p><code>type: custom:motor-ha-dom</code></p>\n")
+    w.append(jak(JAK[j], "panele", PANELE, JAK[j]["dom"]))
     # aktualizacja
     w.append(naglowek("aktualizacja", d["aktualizacja"]))
     w.append("<ul>" + "".join(f"<li>{x}</li>" for x in L["aktualizacja"]) + "</ul>\n")
+    w.append(jak(JAK[j], "aktualizacje", AKTUALIZACJE, JAK[j]["aktualizacja"]))
     # pytania
     w.append(naglowek("pytania", d["pytania"]))
     for py, od in L["pytania"]:
-        w.append(f"<details><summary><b>{escape(py)}</b></summary>\n<p>{od}</p>\n</details>\n")
+        w.append(f"<h3>{ik('help-circle', 28)} {escape(py)}</h3>\n<p>{od}</p>\n")
     # licencja
     w.append(naglowek("licencja", d["licencja"]))
     w.append(f"<p>{L['licencja_tekst'].format(gh=gh)}</p>\n")
