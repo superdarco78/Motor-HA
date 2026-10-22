@@ -117,6 +117,10 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .suwak .wyp::after{content:"";position:absolute;right:6px;top:50%;width:4px;height:50%;transform:translateY(-50%);border-radius:2px;background:var(--white-color,#fff)}
 .suwak .wart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
  font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);mix-blend-mode:normal}
+/* „⚙ Zmień ustawienia” jak przycisk tekstowy HA */
+.zmien{align-self:flex-start;background:none;border:none;font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);
+ color:var(--primary-color);cursor:pointer;padding:0 var(--ha-space-2,8px);margin:0 calc(-1 * var(--ha-space-2,8px));line-height:36px;border-radius:var(--ha-border-radius-md,8px)}
+.zmien:hover{background:color-mix(in srgb,var(--primary-color) 10%,transparent)}
 /* gotowe pozycje jak chipy filtrów HA */
 .poz{display:flex;flex-wrap:wrap;gap:8px}
 .poz button{flex:1 1 auto;height:32px;padding:0 12px;border-radius:var(--ha-border-radius-md,8px);border:1px solid var(--outline-color,var(--divider-color));background:transparent;

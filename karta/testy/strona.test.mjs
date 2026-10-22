@@ -27,7 +27,7 @@ const stan = (p) => ({ entity_id: 'cover.okno', state: 'open', attributes: { fri
   motor_ha: { oslona: 'zaluzja', kolor: 'bialy', skrzydla: 2, czas: 20, encje: {} } }, last_changed: new Date().toISOString() });
 const hass = {
   language: 'pl', locale: { language: 'pl' }, themes: { darkMode: false }, user: { is_admin: true },
-  states: { 'cover.okno': stan(60) },
+  states: { 'cover.okno': stan(0) },
   entities: { 'cover.okno': { entity_id: 'cover.okno', device_id: '${OKNO}', platform: 'motor_ha' },
               'switch.okno_auto': { entity_id: 'switch.okno_auto', device_id: '${OKNO}', platform: 'motor_ha' },
               'update.motor_ha': { entity_id: 'update.motor_ha', device_id: '${HUB}', platform: 'motor_ha' } },
@@ -61,9 +61,10 @@ async function otworz(ustawienia, urzadzenie, { opoznienie = 1500, kolumny = 1 }
   await page.route(`${ADRES}/**`, r => {
     const u = new URL(r.request().url());
     if (u.pathname === '/motor_ha/motor-ha.js') return r.fulfill({ contentType: 'text/javascript', body: KARTA });
+    if (u.pathname.startsWith('/lovelace')) return r.fulfill({ contentType: 'text/html', body: STRONA(999999, 1) });
     return r.fulfill({ contentType: 'text/html', body: STRONA(opoznienie, kolumny) });
   });
-  await page.goto(`${ADRES}/config/devices/device/${urzadzenie}`);
+  await page.goto(urzadzenie.startsWith('/') ? ADRES + urzadzenie : `${ADRES}/config/devices/device/${urzadzenie}`);
   return { ctx, page, bledy };
 }
 
@@ -73,7 +74,9 @@ const karty = (page) => page.evaluate(() => {
     const r = e.getBoundingClientRect(), okno = e.shadowRoot?.querySelector('motor-ha, motor-ha-dom');
     return { w: r.width, h: r.height, pierwsza: e.parentElement.firstElementChild === e,
       okno: okno ? okno.getBoundingClientRect().height : 0, szyby: okno?.shadowRoot?.querySelectorAll('.szyba').length || 0,
-      dodaj: !!e.shadowRoot?.querySelector('.dodaj'), zmien: !!e.shadowRoot?.querySelector('.zmien') };
+      dodaj: !!e.shadowRoot?.querySelector('.dodaj'), zmien: !!e.shadowRoot?.querySelector('.zmien'),
+      zmienWKarcie: !!okno?.shadowRoot?.querySelector('.zmien'),
+      suwak: okno?.shadowRoot?.querySelector('.suwak .wyp')?.getBoundingClientRect().width || 0 };
   });
 });
 
@@ -91,6 +94,8 @@ for (const [nazwa, ustawienia] of URZADZENIA) {
       assert.ok(k.w <= ustawienia.viewport.width, 'karta mieści się na szerokość ekranu');
       assert.ok(k.szyby > 0, 'okno narysowane');
       assert.ok(k.dodaj && k.zmien, 'przyciski „Dodaj do panelu” i „Zmień ustawienia”');
+      assert.ok(!k.zmienWKarcie, 'na stronie urządzenia jeden „Zmień ustawienia”');
+      assert.ok(k.suwak >= 12, `suwak ma uchwyt także przy 0 % (${k.suwak})`);
       const szer = await page.evaluate(() => document.documentElement.scrollWidth);
       assert.ok(szer <= ustawienia.viewport.width, `nic nie wychodzi poza ekran (${szer})`);
       assert.deepEqual(bledy, []);
@@ -117,3 +122,31 @@ test('strona wczytana późno (wolny telefon) – karta i tak się pojawia', asy
       .querySelector('ha-config-device-page')?.shadowRoot.querySelector('motor-ha-urzadzenie'), null, { timeout: 12000 });
   } finally { await ctx.close(); }
 });
+
+for (const [nazwa, ustawienia] of URZADZENIA.slice(0, 2)) {
+  test(`${nazwa}: karta na panelu ma „Zmień ustawienia” i suwak z uchwytem`, async () => {
+    const { ctx, page, bledy } = await otworz(ustawienia, '/lovelace/okna');
+    try {
+      await page.waitForFunction(() => customElements.get('motor-ha'));
+      const w = await page.evaluate(async () => {
+        const hass = document.querySelector('home-assistant').hass;
+        const k = document.createElement('motor-ha');
+        k.setConfig({ type: 'custom:motor-ha', entity: 'cover.okno' });
+        k.hass = hass;
+        document.body.appendChild(k);
+        await new Promise(r => setTimeout(r, 600));
+        const z = k.shadowRoot.querySelector('.zmien');
+        const wynik = { zmien: z?.textContent || '', wys: z?.getBoundingClientRect().height || 0,
+          suwak: k.shadowRoot.querySelector('.suwak .wyp')?.getBoundingClientRect().width || 0 };
+        k.preview = true; k.hass = { ...hass };   // edytor panelu: bez przycisku
+        wynik.wPodgladzie = !!k.shadowRoot.querySelector('.zmien');
+        return wynik;
+      });
+      assert.match(w.zmien, /Zmień ustawienia/);
+      assert.ok(w.wys >= 30, 'przycisk da się nacisnąć palcem');
+      assert.ok(w.suwak >= 12, `suwak ma uchwyt przy 0 % (${w.suwak})`);
+      assert.ok(!w.wPodgladzie, 'w edytorze panelu nie ma przycisku');
+      assert.deepEqual(bledy, []);
+    } finally { await ctx.close(); }
+  });
+}

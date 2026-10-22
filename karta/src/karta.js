@@ -6,6 +6,7 @@ import { kolorNieba, poraDnia, pogoda, widokSvg, NIEBO_Z_POGODY } from './scena.
 import { Ruch, czasPrzejazdu } from './ruch.js';
 import { obroty, czujnikiOkna, encjaPogody, pogodaZInternetu, oslonyDoWyboru } from './wykryj.js';
 import { TEKSTY, jezyk } from './jezyk.js';
+import { konfiguruj } from './urzadzenie.js';
 
 // klucze, które zostają w karcie na panelu, gdy ustawienia trzyma urządzenie Motor HA
 export const KLUCZE_PANELU = ['type', 'entity', 'grid_options', 'view_layout', 'visibility', 'layout_options'];
@@ -51,7 +52,7 @@ export class MotorHaKarta extends HTMLElement {
     const c = this._cfg = this._ustawienia;
     this._jez = jezyk(c, this._hass);
     const czl = this._skrzydla(c);
-    const klucz = JSON.stringify([czl.length, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno]);
+    const klucz = JSON.stringify([czl.length, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
     if (klucz !== this._klucz) { this._klucz = klucz; this._zbuduj(c, czl); }
     this._aktualizuj(c, czl);
   }
@@ -85,6 +86,7 @@ export class MotorHaKarta extends HTMLElement {
   <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
  ${c.suwak !== false ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok('ui.card.cover.position', T.karta.pozycja))}"><div class="wyp"></div></div>` : ''}
  ${pozycje.length ? `<div class="poz">${pozycje.map(p => `<button data-p="${p}">${p === 100 ? esc(T.karta.zwinieta) : p === 0 ? esc(T.karta.opuszczona) : p + ' %'}</button>`).join('')}</div>` : ''}
+ ${this._wpis() ? `<button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button>` : ''}
 </div></ha-card>`;
     const q = s => root.querySelector(s), qa = s => [...root.querySelectorAll(s)];
     const pola = zew ? qa('.zewo .szyba') : qa('.skrz .szyba');
@@ -107,7 +109,17 @@ export class MotorHaKarta extends HTMLElement {
     E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
     if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
     if (E.suwak) this._suwak(E.suwak);
+    q('.zmien')?.addEventListener('click', () => konfiguruj(this._wpis()));
     this._zbudowana = true;
+  }
+
+  // „⚙ Zmień ustawienia” pod oknem na panelu: kreator tego urządzenia, potem powrót na ten sam panel.
+  // Nie w podglądzie, nie w edytorze panelu i nie na stronie urządzenia (tam jest własny przycisk).
+  _wpis() {
+    const h = this._hass, c = this._surowa;
+    if (!h || !c || c._podglad || this.preview || this.bezEdycji || h.user?.is_admin === false) return null;
+    const e = h.entities?.[c.entity];
+    return e?.platform === 'motor_ha' ? h.devices?.[e.device_id]?.config_entries?.[0] || null : null;
   }
 
   // nagłówek jak w kafelku HA + wiersz automatyki (powód ruchu, pauza) – wspólny dla okien i bram
@@ -357,7 +369,8 @@ export class MotorHaKarta extends HTMLElement {
   _rysujSuwak() {
     const S = this._el.suwak; if (!S) return;
     const w = this._suwakW ?? this._srednia(true);
-    S.querySelector('.wyp').style.width = Math.max(0, Math.min(100, w)) + '%';
+    // jak ha-control-slider: przy 0 % zostaje pasek z uchwytem, żeby było widać, że to suwak
+    S.querySelector('.wyp').style.width = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
     S.setAttribute('aria-valuenow', Math.round(w));
   }
 

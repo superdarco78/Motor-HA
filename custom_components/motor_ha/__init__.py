@@ -102,6 +102,8 @@ async def _usun_stary_folder(hass: HomeAssistant) -> None:
     """Po zmianie nazwy z 1.x HACS potrafił pobrać Motor HA do starego folderu custom_components/okno_ha.
     HA wczytuje wtedy ten folder zamiast motor_ha i nowe wersje „nie działają”. Usuwamy kopię i prosimy o restart."""
     tu = Path(__file__).parent
+    if tu.name != DOMAIN:
+        _LOGGER.warning("Motor HA %s działa z folderu %s (powinien być custom_components/%s)", VERSION, tu, DOMAIN)
 
     def _usun() -> bool:
         cc = tu.parent

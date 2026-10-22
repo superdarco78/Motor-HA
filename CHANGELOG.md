@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.1.3 – „Zmień ustawienia” na panelu, suwak z uchwytem
+
+- ⚙️ Pod oknem na panelu „Zmień ustawienia”: otwiera kreator tego urządzenia, a po zamknięciu wraca na ten sam panel
+- 🎚️ Suwak przy zamkniętej osłonie nie jest już pustym paskiem – zawsze widać uchwyt, jak w Home Assistancie
+- 🧹 Gdy Home Assistant wczytuje Motor HA z innego folderu niż ten, do którego pisze HACS, aktualizacja trafia też tam, a w dzienniku jest o tym wpis
+
 ## v2.1.2 – Karta zawsze na stronie urządzenia, też w aplikacji
 
 - 🪟 Karta na stronie urządzenia pokazuje się zawsze – także w aplikacji Home Assistant na Androida, w Chrome na telefonie i na komputerze (sprawdza to stały test przy każdej zmianie)

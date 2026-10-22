@@ -43,6 +43,7 @@ export class MotorHaUrzadzenie extends HTMLElement {
         <div class="panele" hidden></div><div class="info" hidden></div></div>
         ${c.entity ? `<div class="ust" style="border-top:1px solid var(--divider-color)"><h2>${esc(U.ustawienia)}</h2><div class="wiersze"></div></div>` : ''}</div>`;
       const karta = document.createElement(c.entity ? 'motor-ha' : 'motor-ha-dom');
+      karta.bezEdycji = true;   // „Zmień ustawienia” jest niżej, w stopce
       karta.setConfig(c.entity ? { type: 'custom:motor-ha', entity: c.entity } : { type: 'custom:motor-ha-dom' });
       root.querySelector('.karta').appendChild(karta);
       this._karta = karta;
