@@ -1,0 +1,27 @@
+// Motor HA – karta okna z osłoną. Rejestruje kartę i edytor (typ custom:okno-ha; stary custom:roleta-realistyczna działa dalej).
+import { WERSJA, GRUPY, IKONY, KOLORY } from './stale.js';
+import { MotorHaKarta } from './karta.js';
+import { MotorHaEdytor, KROKI } from './edytor.js';
+import { TEKSTY, kodJezyka } from './jezyk.js';
+
+const rejestruj = (nazwa, klasa) => { if (!customElements.get(nazwa)) customElements.define(nazwa, klasa); };
+rejestruj('okno-ha', MotorHaKarta);
+rejestruj('okno-ha-editor', MotorHaEdytor);
+rejestruj('roleta-realistyczna', class extends MotorHaKarta {});
+rejestruj('roleta-realistyczna-editor', class extends MotorHaEdytor {});
+
+const T = TEKSTY[kodJezyka(document.documentElement.lang || navigator.language)];
+window.customCards = window.customCards || [];
+// plik może się wczytać dwa razy (ładowacz + opis w HACS) – na liście „Dodaj kartę” zawsze jedna pozycja
+for (let i = window.customCards.length - 1; i >= 0; i--) if (['okno-ha', 'roleta-realistyczna'].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
+window.customCards.push({
+  type: 'okno-ha', name: T.nazwa, description: T.opis, preview: true,
+  documentationURL: 'https://github.com/superdarco78/okno-ha-integracja',
+  // „Dodaj do panelu” na stronie urządzenia proponuje kartę Motor HA dla okien i osłon
+  getEntitySuggestion: (hass, entityId) => String(entityId).startsWith('cover.') ? { label: T.nazwa, config: { type: 'custom:okno-ha', entity: entityId } } : null
+});
+
+// dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku
+window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
+
+console.info(`%c Motor HA %c ${WERSJA} `, 'background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px', 'background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px');
