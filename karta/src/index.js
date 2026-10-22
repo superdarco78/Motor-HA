@@ -1,24 +1,26 @@
-// Motor HA – karta okna z osłoną. Rejestruje kartę i edytor (typ custom:okno-ha; stary custom:roleta-realistyczna działa dalej).
+// Motor HA – karta okna z osłoną. Rejestruje kartę i edytor (typ custom:motor-ha; stare typy z dawnych paneli działają dalej, ale nie ma ich na liście kart).
 import { WERSJA, GRUPY, IKONY, KOLORY } from './stale.js';
 import { MotorHaKarta } from './karta.js';
 import { MotorHaEdytor, KROKI } from './edytor.js';
 import { TEKSTY, kodJezyka } from './jezyk.js';
 
 const rejestruj = (nazwa, klasa) => { if (!customElements.get(nazwa)) customElements.define(nazwa, klasa); };
-rejestruj('okno-ha', MotorHaKarta);
-rejestruj('okno-ha-editor', MotorHaEdytor);
+rejestruj('motor-ha', MotorHaKarta);
+rejestruj('okno-ha', class extends MotorHaKarta {});
+rejestruj('motor-ha-editor', MotorHaEdytor);
+rejestruj('okno-ha-editor', class extends MotorHaEdytor {});
 rejestruj('roleta-realistyczna', class extends MotorHaKarta {});
 rejestruj('roleta-realistyczna-editor', class extends MotorHaEdytor {});
 
 const T = TEKSTY[kodJezyka(document.documentElement.lang || navigator.language)];
 window.customCards = window.customCards || [];
 // plik może się wczytać dwa razy (ładowacz + opis w HACS) – na liście „Dodaj kartę” zawsze jedna pozycja
-for (let i = window.customCards.length - 1; i >= 0; i--) if (['okno-ha', 'roleta-realistyczna'].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
+for (let i = window.customCards.length - 1; i >= 0; i--) if (['motor-ha', 'okno-ha', 'roleta-realistyczna'].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
 window.customCards.push({
-  type: 'okno-ha', name: T.nazwa, description: T.opis, preview: true,
+  type: 'motor-ha', name: T.nazwa, description: T.opis, preview: true,
   documentationURL: 'https://github.com/superdarco78/okno-ha-integracja',
   // „Dodaj do panelu” na stronie urządzenia proponuje kartę Motor HA dla okien i osłon
-  getEntitySuggestion: (hass, entityId) => String(entityId).startsWith('cover.') ? { label: T.nazwa, config: { type: 'custom:okno-ha', entity: entityId } } : null
+  getEntitySuggestion: (hass, entityId) => String(entityId).startsWith('cover.') ? { label: T.nazwa, config: { type: 'custom:motor-ha', entity: entityId } } : null
 });
 
 // dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku

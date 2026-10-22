@@ -1,0 +1,26 @@
+{
+  "entity": {
+    "button": {
+      "kalibruj": { "default": "mdi:timer-cog-outline" },
+      "wznow": { "default": "mdi:play-circle-outline" }
+    },
+    "sensor": {
+      "powod": { "default": "mdi:help-circle-outline" },
+      "ruchy": { "default": "mdi:counter" },
+      "czas_pracy": { "default": "mdi:engine-outline" }
+    },
+    "switch": {
+      "automatyka": { "default": "mdi:robot", "state": { "off": "mdi:robot-off" } },
+      "pauza": { "default": "mdi:pause-circle-outline", "state": { "on": "mdi:pause-circle" } },
+      "spie": { "default": "mdi:sleep", "state": { "off": "mdi:sleep-off" } },
+      "wakacje": { "default": "mdi:airplane", "state": { "off": "mdi:airplane-off" } }
+    }
+  },
+  "services": {
+    "wstrzymaj": { "service": "mdi:pause" },
+    "wznow": { "service": "mdi:play" },
+    "przelicz": { "service": "mdi:refresh" },
+    "kalibruj": { "service": "mdi:timer-cog-outline" },
+    "ustaw": { "service": "mdi:arrow-up-down" }
+  }
+}

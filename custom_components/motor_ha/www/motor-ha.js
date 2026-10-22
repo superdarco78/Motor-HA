@@ -236,7 +236,8 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .skrz{position:relative;flex:1;min-width:0;box-sizing:border-box;padding:7px;border-radius:2px;cursor:ns-resize;
  box-shadow:inset 0 0 0 1px rgba(0,0,0,.16),0 1px 2px rgba(0,0,0,.22);transition:transform 1.2s cubic-bezier(.4,.1,.2,1)}
 .skrz+.skrz{margin-left:8px}
-.za{position:absolute;inset:3px;border-radius:2px;overflow:hidden;background:#2b3138}
+.za{position:absolute;inset:6px;border-radius:2px;overflow:hidden;background:#2b3138;visibility:hidden}
+.za.widac{visibility:visible}
 .szyba{position:relative;height:100%;overflow:hidden;border-radius:1px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2),inset 0 3px 8px rgba(0,0,0,.28)}
 .niebo,.pg,.osiedle,.osiedle-w,.blask,.pokoj{position:absolute;inset:0}
 .osiedle{width:100%;height:100%}
@@ -701,7 +702,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   }
   function oslonyDoWyboru(h) {
     const s = h?.states || {};
-    const pkt = (id) => (s[id].attributes?.okno_ha ? 100 : 0) + ((s[id].attributes?.entity_id || []).length > 1 ? 40 : 0) + (s[id].attributes?.supported_features & 4 ? 10 : 0);
+    const pkt = (id) => (s[id].attributes?.motor_ha ? 100 : 0) + ((s[id].attributes?.entity_id || []).length > 1 ? 40 : 0) + (s[id].attributes?.supported_features & 4 ? 10 : 0);
     return Object.keys(s).filter((k) => k.startsWith("cover.") && !["garage", "gate", "door", "damper"].includes(s[k].attributes?.device_class)).sort((a, b) => pkt(b) - pkt(a) || a.localeCompare(b));
   }
 
@@ -721,16 +722,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "lewe",
       prawe: "prawe",
       otwarte: "otwarte",
-      uchylone: "uchylone"
+      uchylone: "uchylone",
+      pozycja: "Pozycja"
     },
     kroki: {
-      urzadzenie: { t: "Urządzenie", co: "Wybierz osłonę z Home Assistanta i nadaj oknu nazwę.", poco: "Karta steruje tą osłoną i pokazuje jej prawdziwą pozycję." },
-      oslona: { t: "Osłona", co: "Wybierz rodzaj osłony, taki jak masz w domu.", poco: "Karta narysuje ten materiał. Osłony zewnętrzne widać od strony elewacji." },
-      kolory: { t: "Kolory", co: "Wybierz kolor osłony i kolor ramy okna.", poco: "Okno na ekranie wygląda jak Twoje prawdziwe okno." },
-      okno: { t: "Okno", co: "Ustaw liczbę skrzydeł, wysokość i przyciski.", poco: "Każde skrzydło może mieć własną osłonę i jeździć osobno." },
-      czujniki: { t: "Czujniki", co: "Wybierz czujniki otwarcia okna (kontaktrony).", poco: "Karta pokaże skrzydło uchylone albo otwarte." },
-      silnik: { t: "Silnik", co: "Podaj prędkość silnika albo czas pełnego przejazdu.", poco: "Osłona na ekranie jedzie tak szybko jak prawdziwa." },
-      pogoda: { t: "Pogoda", co: "Wybierz pogodę za oknem i język karty.", poco: "Za szybą widać słońce, deszcz, śnieg, mgłę, dzień i noc." }
+      urzadzenie: {
+        t: "Urządzenie",
+        co: "Wybierz osłonę z Home Assistanta i nadaj oknu nazwę.",
+        poco: "Karta steruje tą osłoną i pokazuje jej prawdziwą pozycję."
+      },
+      oslona: {
+        t: "Osłona",
+        co: "Wybierz rodzaj osłony, taki jak masz w domu.",
+        poco: "Karta narysuje ten materiał. Osłony zewnętrzne widać od strony elewacji."
+      },
+      kolory: {
+        t: "Kolory",
+        co: "Wybierz kolor osłony i kolor ramy okna.",
+        poco: "Okno na ekranie wygląda jak Twoje prawdziwe okno."
+      },
+      okno: {
+        t: "Okno",
+        co: "Ustaw liczbę skrzydeł, wysokość i przyciski.",
+        poco: "Każde skrzydło może mieć własną osłonę i jeździć osobno."
+      },
+      czujniki: {
+        t: "Czujniki",
+        co: "Wybierz czujniki otwarcia okna (kontaktrony).",
+        poco: "Karta pokaże skrzydło uchylone albo otwarte."
+      },
+      silnik: {
+        t: "Silnik",
+        co: "Podaj prędkość silnika albo czas pełnego przejazdu.",
+        poco: "Osłona na ekranie jedzie tak szybko jak prawdziwa."
+      },
+      pogoda: {
+        t: "Pogoda",
+        co: "Wybierz pogodę za oknem i język karty.",
+        poco: "Za szybą widać słońce, deszcz, śnieg, mgłę, dzień i noc."
+      }
     },
     ui: {
       krok: "Krok {0} z {1}",
@@ -908,16 +938,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "left",
       prawe: "right",
       otwarte: "open",
-      uchylone: "tilted"
+      uchylone: "tilted",
+      pozycja: "Position"
     },
     kroki: {
-      urzadzenie: { t: "Device", co: "Pick a shade from Home Assistant and name the window.", poco: "The card controls this shade and shows its real position." },
-      oslona: { t: "Shade", co: "Pick the shade type you have at home.", poco: "The card draws this material. Outdoor shades are shown from the facade." },
-      kolory: { t: "Colours", co: "Pick the shade colour and the window frame colour.", poco: "The window on screen looks like your real one." },
-      okno: { t: "Window", co: "Set the number of sashes, the height and the buttons.", poco: "Each sash can have its own shade and move on its own." },
-      czujniki: { t: "Sensors", co: "Pick the window opening sensors (contact sensors).", poco: "The card shows a tilted or open sash." },
-      silnik: { t: "Motor", co: "Enter the motor speed or the full travel time.", poco: "The shade on screen moves as fast as the real one." },
-      pogoda: { t: "Weather", co: "Pick the weather outside and the card language.", poco: "Sun, rain, snow, fog, day and night behind the glass." }
+      urzadzenie: {
+        t: "Device",
+        co: "Pick a shade from Home Assistant and name the window.",
+        poco: "The card controls this shade and shows its real position."
+      },
+      oslona: {
+        t: "Shade",
+        co: "Pick the shade type you have at home.",
+        poco: "The card draws this material. Outdoor shades are shown from the facade."
+      },
+      kolory: {
+        t: "Colours",
+        co: "Pick the shade colour and the window frame colour.",
+        poco: "The window on screen looks like your real one."
+      },
+      okno: {
+        t: "Window",
+        co: "Set the number of sashes, the height and the buttons.",
+        poco: "Each sash can have its own shade and move on its own."
+      },
+      czujniki: {
+        t: "Sensors",
+        co: "Pick the window opening sensors (contact sensors).",
+        poco: "The card shows a tilted or open sash."
+      },
+      silnik: {
+        t: "Motor",
+        co: "Enter the motor speed or the full travel time.",
+        poco: "The shade on screen moves as fast as the real one."
+      },
+      pogoda: {
+        t: "Weather",
+        co: "Pick the weather outside and the card language.",
+        poco: "Sun, rain, snow, fog, day and night behind the glass."
+      }
     },
     ui: {
       krok: "Step {0} of {1}",
@@ -1095,16 +1154,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "links",
       prawe: "rechts",
       otwarte: "offen",
-      uchylone: "gekippt"
+      uchylone: "gekippt",
+      pozycja: "Position"
     },
     kroki: {
-      urzadzenie: { t: "Gerät", co: "Wähle einen Behang aus Home Assistant und gib dem Fenster einen Namen.", poco: "Die Karte steuert diesen Behang und zeigt seine echte Position." },
-      oslona: { t: "Behang", co: "Wähle die Art des Behangs, die du zu Hause hast.", poco: "Die Karte zeichnet dieses Material. Außenbehänge werden von der Fassade aus gezeigt." },
-      kolory: { t: "Farben", co: "Wähle die Farbe des Behangs und des Fensterrahmens.", poco: "Das Fenster auf dem Bildschirm sieht aus wie dein echtes." },
-      okno: { t: "Fenster", co: "Lege Anzahl der Flügel, Höhe und Tasten fest.", poco: "Jeder Flügel kann einen eigenen Behang haben und einzeln fahren." },
-      czujniki: { t: "Sensoren", co: "Wähle die Fensterkontakte.", poco: "Die Karte zeigt einen gekippten oder offenen Flügel." },
-      silnik: { t: "Motor", co: "Gib die Motorgeschwindigkeit oder die volle Fahrzeit an.", poco: "Der Behang auf dem Bildschirm fährt so schnell wie der echte." },
-      pogoda: { t: "Wetter", co: "Wähle das Wetter draußen und die Sprache der Karte.", poco: "Sonne, Regen, Schnee, Nebel, Tag und Nacht hinter der Scheibe." }
+      urzadzenie: {
+        t: "Gerät",
+        co: "Wähle einen Behang aus Home Assistant und gib dem Fenster einen Namen.",
+        poco: "Die Karte steuert diesen Behang und zeigt seine echte Position."
+      },
+      oslona: {
+        t: "Behang",
+        co: "Wähle die Art des Behangs, die du zu Hause hast.",
+        poco: "Die Karte zeichnet dieses Material. Außenbehänge werden von der Fassade aus gezeigt."
+      },
+      kolory: {
+        t: "Farben",
+        co: "Wähle die Farbe des Behangs und des Fensterrahmens.",
+        poco: "Das Fenster auf dem Bildschirm sieht aus wie dein echtes."
+      },
+      okno: {
+        t: "Fenster",
+        co: "Lege Anzahl der Flügel, Höhe und Tasten fest.",
+        poco: "Jeder Flügel kann einen eigenen Behang haben und einzeln fahren."
+      },
+      czujniki: {
+        t: "Sensoren",
+        co: "Wähle die Fensterkontakte.",
+        poco: "Die Karte zeigt einen gekippten oder offenen Flügel."
+      },
+      silnik: {
+        t: "Motor",
+        co: "Gib die Motorgeschwindigkeit oder die volle Fahrzeit an.",
+        poco: "Der Behang auf dem Bildschirm fährt so schnell wie der echte."
+      },
+      pogoda: {
+        t: "Wetter",
+        co: "Wähle das Wetter draußen und die Sprache der Karte.",
+        poco: "Sonne, Regen, Schnee, Nebel, Tag und Nacht hinter der Scheibe."
+      }
     },
     ui: {
       krok: "Schritt {0} von {1}",
@@ -1282,16 +1370,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "gauche",
       prawe: "droite",
       otwarte: "ouverte",
-      uchylone: "entrouverte"
+      uchylone: "entrouverte",
+      pozycja: "Position"
     },
     kroki: {
-      urzadzenie: { t: "Appareil", co: "Choisis un store dans Home Assistant et donne un nom à la fenêtre.", poco: "La carte pilote ce store et montre sa vraie position." },
-      oslona: { t: "Store", co: "Choisis le type de store que tu as chez toi.", poco: "La carte dessine ce matériau. Les stores extérieurs sont vus depuis la façade." },
-      kolory: { t: "Couleurs", co: "Choisis la couleur du store et celle du cadre.", poco: "La fenêtre à l'écran ressemble à ta vraie fenêtre." },
-      okno: { t: "Fenêtre", co: "Règle le nombre de vantaux, la hauteur et les boutons.", poco: "Chaque vantail peut avoir son propre store et bouger seul." },
-      czujniki: { t: "Capteurs", co: "Choisis les capteurs d'ouverture de fenêtre.", poco: "La carte montre un vantail entrouvert ou ouvert." },
-      silnik: { t: "Moteur", co: "Indique la vitesse du moteur ou le temps de course complet.", poco: "Le store à l'écran bouge aussi vite que le vrai." },
-      pogoda: { t: "Météo", co: "Choisis la météo dehors et la langue de la carte.", poco: "Soleil, pluie, neige, brouillard, jour et nuit derrière la vitre." }
+      urzadzenie: {
+        t: "Appareil",
+        co: "Choisis un store dans Home Assistant et donne un nom à la fenêtre.",
+        poco: "La carte pilote ce store et montre sa vraie position."
+      },
+      oslona: {
+        t: "Store",
+        co: "Choisis le type de store que tu as chez toi.",
+        poco: "La carte dessine ce matériau. Les stores extérieurs sont vus depuis la façade."
+      },
+      kolory: {
+        t: "Couleurs",
+        co: "Choisis la couleur du store et celle du cadre.",
+        poco: "La fenêtre à l'écran ressemble à ta vraie fenêtre."
+      },
+      okno: {
+        t: "Fenêtre",
+        co: "Règle le nombre de vantaux, la hauteur et les boutons.",
+        poco: "Chaque vantail peut avoir son propre store et bouger seul."
+      },
+      czujniki: {
+        t: "Capteurs",
+        co: "Choisis les capteurs d'ouverture de fenêtre.",
+        poco: "La carte montre un vantail entrouvert ou ouvert."
+      },
+      silnik: {
+        t: "Moteur",
+        co: "Indique la vitesse du moteur ou le temps de course complet.",
+        poco: "Le store à l'écran bouge aussi vite que le vrai."
+      },
+      pogoda: {
+        t: "Météo",
+        co: "Choisis la météo dehors et la langue de la carte.",
+        poco: "Soleil, pluie, neige, brouillard, jour et nuit derrière la vitre."
+      }
     },
     ui: {
       krok: "Étape {0} sur {1}",
@@ -1469,16 +1586,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "levé",
       prawe: "pravé",
       otwarte: "otevřené",
-      uchylone: "vyklopené"
+      uchylone: "vyklopené",
+      pozycja: "Poloha"
     },
     kroki: {
-      urzadzenie: { t: "Zařízení", co: "Vyber stínění z Home Assistantu a pojmenuj okno.", poco: "Karta ovládá toto stínění a ukazuje jeho skutečnou polohu." },
-      oslona: { t: "Stínění", co: "Vyber druh stínění, jaký máš doma.", poco: "Karta nakreslí tento materiál. Venkovní stínění je vidět z fasády." },
-      kolory: { t: "Barvy", co: "Vyber barvu stínění a barvu rámu okna.", poco: "Okno na obrazovce vypadá jako tvoje skutečné." },
-      okno: { t: "Okno", co: "Nastav počet křídel, výšku a tlačítka.", poco: "Každé křídlo může mít vlastní stínění a jezdit samostatně." },
-      czujniki: { t: "Senzory", co: "Vyber senzory otevření okna (kontakty).", poco: "Karta ukáže vyklopené nebo otevřené křídlo." },
-      silnik: { t: "Motor", co: "Zadej rychlost motoru nebo dobu celého pojezdu.", poco: "Stínění na obrazovce jede stejně rychle jako skutečné." },
-      pogoda: { t: "Počasí", co: "Vyber počasí za oknem a jazyk karty.", poco: "Za sklem je vidět slunce, déšť, sníh, mlha, den a noc." }
+      urzadzenie: {
+        t: "Zařízení",
+        co: "Vyber stínění z Home Assistantu a pojmenuj okno.",
+        poco: "Karta ovládá toto stínění a ukazuje jeho skutečnou polohu."
+      },
+      oslona: {
+        t: "Stínění",
+        co: "Vyber druh stínění, jaký máš doma.",
+        poco: "Karta nakreslí tento materiál. Venkovní stínění je vidět z fasády."
+      },
+      kolory: {
+        t: "Barvy",
+        co: "Vyber barvu stínění a barvu rámu okna.",
+        poco: "Okno na obrazovce vypadá jako tvoje skutečné."
+      },
+      okno: {
+        t: "Okno",
+        co: "Nastav počet křídel, výšku a tlačítka.",
+        poco: "Každé křídlo může mít vlastní stínění a jezdit samostatně."
+      },
+      czujniki: {
+        t: "Senzory",
+        co: "Vyber senzory otevření okna (kontakty).",
+        poco: "Karta ukáže vyklopené nebo otevřené křídlo."
+      },
+      silnik: {
+        t: "Motor",
+        co: "Zadej rychlost motoru nebo dobu celého pojezdu.",
+        poco: "Stínění na obrazovce jede stejně rychle jako skutečné."
+      },
+      pogoda: {
+        t: "Počasí",
+        co: "Vyber počasí za oknem a jazyk karty.",
+        poco: "Za sklem je vidět slunce, déšť, sníh, mlha, den a noc."
+      }
     },
     ui: {
       krok: "Krok {0} z {1}",
@@ -1656,16 +1802,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "ľavé",
       prawe: "pravé",
       otwarte: "otvorené",
-      uchylone: "vyklopené"
+      uchylone: "vyklopené",
+      pozycja: "Poloha"
     },
     kroki: {
-      urzadzenie: { t: "Zariadenie", co: "Vyber tienenie z Home Assistantu a pomenuj okno.", poco: "Karta ovláda toto tienenie a ukazuje jeho skutočnú polohu." },
-      oslona: { t: "Tienenie", co: "Vyber druh tienenia, aký máš doma.", poco: "Karta nakreslí tento materiál. Vonkajšie tienenie je vidieť z fasády." },
-      kolory: { t: "Farby", co: "Vyber farbu tienenia a farbu rámu okna.", poco: "Okno na obrazovke vyzerá ako tvoje skutočné." },
-      okno: { t: "Okno", co: "Nastav počet krídel, výšku a tlačidlá.", poco: "Každé krídlo môže mať vlastné tienenie a ísť samostatne." },
-      czujniki: { t: "Senzory", co: "Vyber senzory otvorenia okna (kontakty).", poco: "Karta ukáže vyklopené alebo otvorené krídlo." },
-      silnik: { t: "Motor", co: "Zadaj rýchlosť motora alebo čas celého pojazdu.", poco: "Tienenie na obrazovke ide rovnako rýchlo ako skutočné." },
-      pogoda: { t: "Počasie", co: "Vyber počasie za oknom a jazyk karty.", poco: "Za sklom je vidieť slnko, dážď, sneh, hmlu, deň a noc." }
+      urzadzenie: {
+        t: "Zariadenie",
+        co: "Vyber tienenie z Home Assistantu a pomenuj okno.",
+        poco: "Karta ovláda toto tienenie a ukazuje jeho skutočnú polohu."
+      },
+      oslona: {
+        t: "Tienenie",
+        co: "Vyber druh tienenia, aký máš doma.",
+        poco: "Karta nakreslí tento materiál. Vonkajšie tienenie je vidieť z fasády."
+      },
+      kolory: {
+        t: "Farby",
+        co: "Vyber farbu tienenia a farbu rámu okna.",
+        poco: "Okno na obrazovke vyzerá ako tvoje skutočné."
+      },
+      okno: {
+        t: "Okno",
+        co: "Nastav počet krídel, výšku a tlačidlá.",
+        poco: "Každé krídlo môže mať vlastné tienenie a ísť samostatne."
+      },
+      czujniki: {
+        t: "Senzory",
+        co: "Vyber senzory otvorenia okna (kontakty).",
+        poco: "Karta ukáže vyklopené alebo otvorené krídlo."
+      },
+      silnik: {
+        t: "Motor",
+        co: "Zadaj rýchlosť motora alebo čas celého pojazdu.",
+        poco: "Tienenie na obrazovke ide rovnako rýchlo ako skutočné."
+      },
+      pogoda: {
+        t: "Počasie",
+        co: "Vyber počasie za oknom a jazyk karty.",
+        poco: "Za sklom je vidieť slnko, dážď, sneh, hmlu, deň a noc."
+      }
     },
     ui: {
       krok: "Krok {0} z {1}",
@@ -1843,16 +2018,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "izquierda",
       prawe: "derecha",
       otwarte: "abierta",
-      uchylone: "abatida"
+      uchylone: "abatida",
+      pozycja: "Posición"
     },
     kroki: {
-      urzadzenie: { t: "Dispositivo", co: "Elige un estor de Home Assistant y pon nombre a la ventana.", poco: "La tarjeta controla este estor y muestra su posición real." },
-      oslona: { t: "Estor", co: "Elige el tipo de estor que tienes en casa.", poco: "La tarjeta dibuja este material. Los exteriores se ven desde la fachada." },
-      kolory: { t: "Colores", co: "Elige el color del estor y el del marco.", poco: "La ventana en pantalla se parece a la tuya." },
-      okno: { t: "Ventana", co: "Ajusta el número de hojas, la altura y los botones.", poco: "Cada hoja puede tener su propio estor y moverse sola." },
-      czujniki: { t: "Sensores", co: "Elige los sensores de apertura de la ventana.", poco: "La tarjeta muestra una hoja abatida o abierta." },
-      silnik: { t: "Motor", co: "Indica la velocidad del motor o el tiempo de recorrido completo.", poco: "El estor en pantalla se mueve tan rápido como el real." },
-      pogoda: { t: "Tiempo", co: "Elige el tiempo fuera y el idioma de la tarjeta.", poco: "Sol, lluvia, nieve, niebla, día y noche tras el cristal." }
+      urzadzenie: {
+        t: "Dispositivo",
+        co: "Elige un estor de Home Assistant y pon nombre a la ventana.",
+        poco: "La tarjeta controla este estor y muestra su posición real."
+      },
+      oslona: {
+        t: "Estor",
+        co: "Elige el tipo de estor que tienes en casa.",
+        poco: "La tarjeta dibuja este material. Los exteriores se ven desde la fachada."
+      },
+      kolory: {
+        t: "Colores",
+        co: "Elige el color del estor y el del marco.",
+        poco: "La ventana en pantalla se parece a la tuya."
+      },
+      okno: {
+        t: "Ventana",
+        co: "Ajusta el número de hojas, la altura y los botones.",
+        poco: "Cada hoja puede tener su propio estor y moverse sola."
+      },
+      czujniki: {
+        t: "Sensores",
+        co: "Elige los sensores de apertura de la ventana.",
+        poco: "La tarjeta muestra una hoja abatida o abierta."
+      },
+      silnik: {
+        t: "Motor",
+        co: "Indica la velocidad del motor o el tiempo de recorrido completo.",
+        poco: "El estor en pantalla se mueve tan rápido como el real."
+      },
+      pogoda: {
+        t: "Tiempo",
+        co: "Elige el tiempo fuera y el idioma de la tarjeta.",
+        poco: "Sol, lluvia, nieve, niebla, día y noche tras el cristal."
+      }
     },
     ui: {
       krok: "Paso {0} de {1}",
@@ -2030,16 +2234,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "sinistra",
       prawe: "destra",
       otwarte: "aperta",
-      uchylone: "a ribalta"
+      uchylone: "a ribalta",
+      pozycja: "Posizione"
     },
     kroki: {
-      urzadzenie: { t: "Dispositivo", co: "Scegli una tenda di Home Assistant e dai un nome alla finestra.", poco: "La scheda comanda questa tenda e mostra la sua posizione reale." },
-      oslona: { t: "Tenda", co: "Scegli il tipo di tenda che hai in casa.", poco: "La scheda disegna questo materiale. Le schermature esterne si vedono dalla facciata." },
-      kolory: { t: "Colori", co: "Scegli il colore della tenda e del telaio.", poco: "La finestra sullo schermo somiglia alla tua." },
-      okno: { t: "Finestra", co: "Imposta numero di ante, altezza e pulsanti.", poco: "Ogni anta può avere la sua tenda e muoversi da sola." },
-      czujniki: { t: "Sensori", co: "Scegli i sensori di apertura della finestra.", poco: "La scheda mostra un'anta a ribalta o aperta." },
-      silnik: { t: "Motore", co: "Indica la velocità del motore o il tempo di corsa completo.", poco: "La tenda sullo schermo si muove veloce come quella vera." },
-      pogoda: { t: "Meteo", co: "Scegli il meteo fuori e la lingua della scheda.", poco: "Sole, pioggia, neve, nebbia, giorno e notte dietro il vetro." }
+      urzadzenie: {
+        t: "Dispositivo",
+        co: "Scegli una tenda di Home Assistant e dai un nome alla finestra.",
+        poco: "La scheda comanda questa tenda e mostra la sua posizione reale."
+      },
+      oslona: {
+        t: "Tenda",
+        co: "Scegli il tipo di tenda che hai in casa.",
+        poco: "La scheda disegna questo materiale. Le schermature esterne si vedono dalla facciata."
+      },
+      kolory: {
+        t: "Colori",
+        co: "Scegli il colore della tenda e del telaio.",
+        poco: "La finestra sullo schermo somiglia alla tua."
+      },
+      okno: {
+        t: "Finestra",
+        co: "Imposta numero di ante, altezza e pulsanti.",
+        poco: "Ogni anta può avere la sua tenda e muoversi da sola."
+      },
+      czujniki: {
+        t: "Sensori",
+        co: "Scegli i sensori di apertura della finestra.",
+        poco: "La scheda mostra un'anta a ribalta o aperta."
+      },
+      silnik: {
+        t: "Motore",
+        co: "Indica la velocità del motore o il tempo di corsa completo.",
+        poco: "La tenda sullo schermo si muove veloce come quella vera."
+      },
+      pogoda: {
+        t: "Meteo",
+        co: "Scegli il meteo fuori e la lingua della scheda.",
+        poco: "Sole, pioggia, neve, nebbia, giorno e notte dietro il vetro."
+      }
     },
     ui: {
       krok: "Passo {0} di {1}",
@@ -2217,16 +2450,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "links",
       prawe: "rechts",
       otwarte: "open",
-      uchylone: "op kiep"
+      uchylone: "op kiep",
+      pozycja: "Positie"
     },
     kroki: {
-      urzadzenie: { t: "Apparaat", co: "Kies een zonwering uit Home Assistant en geef het raam een naam.", poco: "De kaart bedient deze zonwering en toont de echte positie." },
-      oslona: { t: "Zonwering", co: "Kies het soort zonwering dat je thuis hebt.", poco: "De kaart tekent dit materiaal. Buitenzonwering zie je vanaf de gevel." },
-      kolory: { t: "Kleuren", co: "Kies de kleur van de zonwering en van het kozijn.", poco: "Het raam op het scherm lijkt op je echte raam." },
-      okno: { t: "Raam", co: "Stel het aantal vleugels, de hoogte en de knoppen in.", poco: "Elke vleugel kan een eigen zonwering hebben en apart bewegen." },
-      czujniki: { t: "Sensoren", co: "Kies de raamcontacten.", poco: "De kaart toont een vleugel op kiep of open." },
-      silnik: { t: "Motor", co: "Geef de motorsnelheid of de volledige looptijd op.", poco: "De zonwering op het scherm beweegt even snel als de echte." },
-      pogoda: { t: "Weer", co: "Kies het weer buiten en de taal van de kaart.", poco: "Zon, regen, sneeuw, mist, dag en nacht achter het glas." }
+      urzadzenie: {
+        t: "Apparaat",
+        co: "Kies een zonwering uit Home Assistant en geef het raam een naam.",
+        poco: "De kaart bedient deze zonwering en toont de echte positie."
+      },
+      oslona: {
+        t: "Zonwering",
+        co: "Kies het soort zonwering dat je thuis hebt.",
+        poco: "De kaart tekent dit materiaal. Buitenzonwering zie je vanaf de gevel."
+      },
+      kolory: {
+        t: "Kleuren",
+        co: "Kies de kleur van de zonwering en van het kozijn.",
+        poco: "Het raam op het scherm lijkt op je echte raam."
+      },
+      okno: {
+        t: "Raam",
+        co: "Stel het aantal vleugels, de hoogte en de knoppen in.",
+        poco: "Elke vleugel kan een eigen zonwering hebben en apart bewegen."
+      },
+      czujniki: {
+        t: "Sensoren",
+        co: "Kies de raamcontacten.",
+        poco: "De kaart toont een vleugel op kiep of open."
+      },
+      silnik: {
+        t: "Motor",
+        co: "Geef de motorsnelheid of de volledige looptijd op.",
+        poco: "De zonwering op het scherm beweegt even snel als de echte."
+      },
+      pogoda: {
+        t: "Weer",
+        co: "Kies het weer buiten en de taal van de kaart.",
+        poco: "Zon, regen, sneeuw, mist, dag en nacht achter het glas."
+      }
     },
     ui: {
       krok: "Stap {0} van {1}",
@@ -2404,16 +2666,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "esquerda",
       prawe: "direita",
       otwarte: "aberta",
-      uchylone: "basculada"
+      uchylone: "basculada",
+      pozycja: "Posição"
     },
     kroki: {
-      urzadzenie: { t: "Dispositivo", co: "Escolha uma proteção do Home Assistant e dê um nome à janela.", poco: "O cartão controla esta proteção e mostra a posição real." },
-      oslona: { t: "Proteção", co: "Escolha o tipo de proteção que tem em casa.", poco: "O cartão desenha este material. As exteriores veem-se da fachada." },
-      kolory: { t: "Cores", co: "Escolha a cor da proteção e a cor do caixilho.", poco: "A janela no ecrã parece a sua janela real." },
-      okno: { t: "Janela", co: "Defina o número de folhas, a altura e os botões.", poco: "Cada folha pode ter a sua proteção e mover-se sozinha." },
-      czujniki: { t: "Sensores", co: "Escolha os sensores de abertura da janela.", poco: "O cartão mostra uma folha basculada ou aberta." },
-      silnik: { t: "Motor", co: "Indique a velocidade do motor ou o tempo de curso completo.", poco: "A proteção no ecrã move-se tão rápido como a real." },
-      pogoda: { t: "Tempo", co: "Escolha o tempo lá fora e o idioma do cartão.", poco: "Sol, chuva, neve, nevoeiro, dia e noite atrás do vidro." }
+      urzadzenie: {
+        t: "Dispositivo",
+        co: "Escolha uma proteção do Home Assistant e dê um nome à janela.",
+        poco: "O cartão controla esta proteção e mostra a posição real."
+      },
+      oslona: {
+        t: "Proteção",
+        co: "Escolha o tipo de proteção que tem em casa.",
+        poco: "O cartão desenha este material. As exteriores veem-se da fachada."
+      },
+      kolory: {
+        t: "Cores",
+        co: "Escolha a cor da proteção e a cor do caixilho.",
+        poco: "A janela no ecrã parece a sua janela real."
+      },
+      okno: {
+        t: "Janela",
+        co: "Defina o número de folhas, a altura e os botões.",
+        poco: "Cada folha pode ter a sua proteção e mover-se sozinha."
+      },
+      czujniki: {
+        t: "Sensores",
+        co: "Escolha os sensores de abertura da janela.",
+        poco: "O cartão mostra uma folha basculada ou aberta."
+      },
+      silnik: {
+        t: "Motor",
+        co: "Indique a velocidade do motor ou o tempo de curso completo.",
+        poco: "A proteção no ecrã move-se tão rápido como a real."
+      },
+      pogoda: {
+        t: "Tempo",
+        co: "Escolha o tempo lá fora e o idioma do cartão.",
+        poco: "Sol, chuva, neve, nevoeiro, dia e noite atrás do vidro."
+      }
     },
     ui: {
       krok: "Passo {0} de {1}",
@@ -2591,16 +2882,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "ліве",
       prawe: "праве",
       otwarte: "відчинене",
-      uchylone: "на провітрюванні"
+      uchylone: "на провітрюванні",
+      pozycja: "Положення"
     },
     kroki: {
-      urzadzenie: { t: "Пристрій", co: "Виберіть штору з Home Assistant і назвіть вікно.", poco: "Картка керує цією шторою і показує її справжнє положення." },
-      oslona: { t: "Штора", co: "Виберіть тип штори, як у вас удома.", poco: "Картка намалює цей матеріал. Зовнішні штори видно з фасаду." },
-      kolory: { t: "Кольори", co: "Виберіть колір штори та колір рами.", poco: "Вікно на екрані схоже на ваше справжнє." },
-      okno: { t: "Вікно", co: "Задайте кількість стулок, висоту та кнопки.", poco: "Кожна стулка може мати власну штору й рухатися окремо." },
-      czujniki: { t: "Датчики", co: "Виберіть датчики відчинення вікна (геркони).", poco: "Картка покаже стулку на провітрюванні або відчинену." },
-      silnik: { t: "Мотор", co: "Вкажіть швидкість мотора або час повного ходу.", poco: "Штора на екрані рухається так само швидко, як справжня." },
-      pogoda: { t: "Погода", co: "Виберіть погоду за вікном і мову картки.", poco: "Сонце, дощ, сніг, туман, день і ніч за склом." }
+      urzadzenie: {
+        t: "Пристрій",
+        co: "Виберіть штору з Home Assistant і назвіть вікно.",
+        poco: "Картка керує цією шторою і показує її справжнє положення."
+      },
+      oslona: {
+        t: "Штора",
+        co: "Виберіть тип штори, як у вас удома.",
+        poco: "Картка намалює цей матеріал. Зовнішні штори видно з фасаду."
+      },
+      kolory: {
+        t: "Кольори",
+        co: "Виберіть колір штори та колір рами.",
+        poco: "Вікно на екрані схоже на ваше справжнє."
+      },
+      okno: {
+        t: "Вікно",
+        co: "Задайте кількість стулок, висоту та кнопки.",
+        poco: "Кожна стулка може мати власну штору й рухатися окремо."
+      },
+      czujniki: {
+        t: "Датчики",
+        co: "Виберіть датчики відчинення вікна (геркони).",
+        poco: "Картка покаже стулку на провітрюванні або відчинену."
+      },
+      silnik: {
+        t: "Мотор",
+        co: "Вкажіть швидкість мотора або час повного ходу.",
+        poco: "Штора на екрані рухається так само швидко, як справжня."
+      },
+      pogoda: {
+        t: "Погода",
+        co: "Виберіть погоду за вікном і мову картки.",
+        poco: "Сонце, дощ, сніг, туман, день і ніч за склом."
+      }
     },
     ui: {
       krok: "Крок {0} з {1}",
@@ -2778,16 +3098,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "левое",
       prawe: "правое",
       otwarte: "открыто",
-      uchylone: "на проветривании"
+      uchylone: "на проветривании",
+      pozycja: "Положение"
     },
     kroki: {
-      urzadzenie: { t: "Устройство", co: "Выберите штору из Home Assistant и назовите окно.", poco: "Карточка управляет этой шторой и показывает её настоящее положение." },
-      oslona: { t: "Штора", co: "Выберите тип шторы, как у вас дома.", poco: "Карточка нарисует этот материал. Наружные шторы видны с фасада." },
-      kolory: { t: "Цвета", co: "Выберите цвет шторы и цвет рамы.", poco: "Окно на экране похоже на ваше настоящее." },
-      okno: { t: "Окно", co: "Задайте число створок, высоту и кнопки.", poco: "Каждая створка может иметь свою штору и двигаться отдельно." },
-      czujniki: { t: "Датчики", co: "Выберите датчики открытия окна (герконы).", poco: "Карточка покажет створку на проветривании или открытую." },
-      silnik: { t: "Мотор", co: "Укажите скорость мотора или время полного хода.", poco: "Штора на экране движется так же быстро, как настоящая." },
-      pogoda: { t: "Погода", co: "Выберите погоду за окном и язык карточки.", poco: "Солнце, дождь, снег, туман, день и ночь за стеклом." }
+      urzadzenie: {
+        t: "Устройство",
+        co: "Выберите штору из Home Assistant и назовите окно.",
+        poco: "Карточка управляет этой шторой и показывает её настоящее положение."
+      },
+      oslona: {
+        t: "Штора",
+        co: "Выберите тип шторы, как у вас дома.",
+        poco: "Карточка нарисует этот материал. Наружные шторы видны с фасада."
+      },
+      kolory: {
+        t: "Цвета",
+        co: "Выберите цвет шторы и цвет рамы.",
+        poco: "Окно на экране похоже на ваше настоящее."
+      },
+      okno: {
+        t: "Окно",
+        co: "Задайте число створок, высоту и кнопки.",
+        poco: "Каждая створка может иметь свою штору и двигаться отдельно."
+      },
+      czujniki: {
+        t: "Датчики",
+        co: "Выберите датчики открытия окна (герконы).",
+        poco: "Карточка покажет створку на проветривании или открытую."
+      },
+      silnik: {
+        t: "Мотор",
+        co: "Укажите скорость мотора или время полного хода.",
+        poco: "Штора на экране движется так же быстро, как настоящая."
+      },
+      pogoda: {
+        t: "Погода",
+        co: "Выберите погоду за окном и язык карточки.",
+        poco: "Солнце, дождь, снег, туман, день и ночь за стеклом."
+      }
     },
     ui: {
       krok: "Шаг {0} из {1}",
@@ -2965,16 +3314,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "左",
       prawe: "右",
       otwarte: "開",
-      uchylone: "換気"
+      uchylone: "換気",
+      pozycja: "位置"
     },
     kroki: {
-      urzadzenie: { t: "デバイス", co: "Home Assistant のシェードを選び、窓に名前を付けます。", poco: "カードはこのシェードを操作し、実際の位置を表示します。" },
-      oslona: { t: "シェード", co: "家にあるシェードの種類を選びます。", poco: "カードがこの素材を描きます。屋外用は外壁側から表示します。" },
-      kolory: { t: "色", co: "シェードの色と窓枠の色を選びます。", poco: "画面の窓が本物そっくりになります。" },
-      okno: { t: "窓", co: "窓の枚数、高さ、ボタンを設定します。", poco: "窓ごとに別のシェードを付けて個別に動かせます。" },
-      czujniki: { t: "センサー", co: "窓の開閉センサーを選びます。", poco: "カードが換気中や開いた窓を表示します。" },
-      silnik: { t: "モーター", co: "モーターの速度か全開閉の時間を入力します。", poco: "画面のシェードが本物と同じ速さで動きます。" },
-      pogoda: { t: "天気", co: "外の天気とカードの言語を選びます。", poco: "ガラスの向こうに晴れ、雨、雪、霧、昼と夜が見えます。" }
+      urzadzenie: {
+        t: "デバイス",
+        co: "Home Assistant のシェードを選び、窓に名前を付けます。",
+        poco: "カードはこのシェードを操作し、実際の位置を表示します。"
+      },
+      oslona: {
+        t: "シェード",
+        co: "家にあるシェードの種類を選びます。",
+        poco: "カードがこの素材を描きます。屋外用は外壁側から表示します。"
+      },
+      kolory: {
+        t: "色",
+        co: "シェードの色と窓枠の色を選びます。",
+        poco: "画面の窓が本物そっくりになります。"
+      },
+      okno: {
+        t: "窓",
+        co: "窓の枚数、高さ、ボタンを設定します。",
+        poco: "窓ごとに別のシェードを付けて個別に動かせます。"
+      },
+      czujniki: {
+        t: "センサー",
+        co: "窓の開閉センサーを選びます。",
+        poco: "カードが換気中や開いた窓を表示します。"
+      },
+      silnik: {
+        t: "モーター",
+        co: "モーターの速度か全開閉の時間を入力します。",
+        poco: "画面のシェードが本物と同じ速さで動きます。"
+      },
+      pogoda: {
+        t: "天気",
+        co: "外の天気とカードの言語を選びます。",
+        poco: "ガラスの向こうに晴れ、雨、雪、霧、昼と夜が見えます。"
+      }
     },
     ui: {
       krok: "ステップ {0} / {1}",
@@ -3152,16 +3530,45 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       lewe: "左",
       prawe: "右",
       otwarte: "已打开",
-      uchylone: "已内倒"
+      uchylone: "已内倒",
+      pozycja: "位置"
     },
     kroki: {
-      urzadzenie: { t: "设备", co: "从 Home Assistant 选择一个遮阳并为窗户命名。", poco: "卡片控制这个遮阳并显示其真实位置。" },
-      oslona: { t: "遮阳", co: "选择家中遮阳的类型。", poco: "卡片会画出这种材质。室外遮阳从外墙一侧显示。" },
-      kolory: { t: "颜色", co: "选择遮阳颜色和窗框颜色。", poco: "屏幕上的窗户看起来和真实的一样。" },
-      okno: { t: "窗户", co: "设置窗扇数量、高度和按钮。", poco: "每个窗扇可以有自己的遮阳并单独移动。" },
-      czujniki: { t: "传感器", co: "选择窗户开合传感器（门磁）。", poco: "卡片会显示内倒或打开的窗扇。" },
-      silnik: { t: "电机", co: "输入电机速度或完整行程时间。", poco: "屏幕上的遮阳和真实的一样快。" },
-      pogoda: { t: "天气", co: "选择窗外天气和卡片语言。", poco: "玻璃后可见晴、雨、雪、雾、白天和夜晚。" }
+      urzadzenie: {
+        t: "设备",
+        co: "从 Home Assistant 选择一个遮阳并为窗户命名。",
+        poco: "卡片控制这个遮阳并显示其真实位置。"
+      },
+      oslona: {
+        t: "遮阳",
+        co: "选择家中遮阳的类型。",
+        poco: "卡片会画出这种材质。室外遮阳从外墙一侧显示。"
+      },
+      kolory: {
+        t: "颜色",
+        co: "选择遮阳颜色和窗框颜色。",
+        poco: "屏幕上的窗户看起来和真实的一样。"
+      },
+      okno: {
+        t: "窗户",
+        co: "设置窗扇数量、高度和按钮。",
+        poco: "每个窗扇可以有自己的遮阳并单独移动。"
+      },
+      czujniki: {
+        t: "传感器",
+        co: "选择窗户开合传感器（门磁）。",
+        poco: "卡片会显示内倒或打开的窗扇。"
+      },
+      silnik: {
+        t: "电机",
+        co: "输入电机速度或完整行程时间。",
+        poco: "屏幕上的遮阳和真实的一样快。"
+      },
+      pogoda: {
+        t: "天气",
+        co: "选择窗外天气和卡片语言。",
+        poco: "玻璃后可见晴、雨、雪、雾、白天和夜晚。"
+      }
     },
     ui: {
       krok: "第 {0} 步，共 {1} 步",
@@ -3376,7 +3783,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   var esc = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var MotorHaKarta = class extends HTMLElement {
     static getConfigElement() {
-      return document.createElement("okno-ha-editor");
+      return document.createElement("motor-ha-editor");
     }
     static getStubConfig(hass) {
       return { entity: oslonyDoWyboru(hass)[0] || "cover.okno" };
@@ -3404,9 +3811,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       cancelAnimationFrame(this._raf);
       this._raf = null;
     }
-    // ustawienia: domyślne ← urządzenie Motor HA (atrybut okno_ha) ← karta na panelu
+    // ustawienia: domyślne ← urządzenie Motor HA (atrybut motor_ha) ← karta na panelu
     get _ustawienia() {
-      const urz = this._hass?.states?.[this._surowa.entity]?.attributes?.okno_ha;
+      const urz = this._hass?.states?.[this._surowa.entity]?.attributes?.motor_ha;
       return Object.assign({}, DOMYSLNE, urz && typeof urz === "object" ? urz : {}, this._surowa, this._surowa._podglad || {});
     }
     get _T() {
@@ -3441,14 +3848,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
       <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 ? '<i class="klamka"></i>' : ""}</div>`;
       const kolumna = (i) => `<div class="szyba" data-i="${i}"><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
-      const pozycje = String(c.pozycje || "").split(/[,; ]+/).map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
+      const pozycje = String(c.pozycje || "").split(/[,; ]+/).filter((x) => x !== "").map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
       root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
 <ha-card class="${zew ? "zew" : "wew"}"><div class="mh">
  <div class="gl" role="button" tabindex="0"><div class="ik"><ha-icon icon="${IKONY[c.oslona] || IKONY.zebra}"></ha-icon></div>
   <div class="opis"><span class="nazwa"></span><span class="stan"></span></div></div>
  <div class="scena">${zew ? '<div class="pg pgz"></div>' : ""}
   <div class="okno" style="width:min(100%,${W}px);aspect-ratio:${W}/${Math.round(H)}">
-   ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "3px"};right:${i ? "3px" : "50%"}` : ""}"></div>`).join("")}
+   ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
    ${n > 1 && !c.osobno ? `<div class="oba" title="${esc(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
@@ -3457,7 +3864,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   <button class="otw" title="${esc(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
   <button class="stp" title="${esc(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
- ${c.suwak !== false ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100"><div class="wyp"></div><div class="wart"></div></div>` : ""}
+ ${c.suwak !== false ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
  ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc(T2.karta.zwinieta) : p === 0 ? esc(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
@@ -3649,6 +4056,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.skrz.forEach((S, i) => {
         S.s.classList.toggle("uch", okno[i] === "uch");
         S.s.classList.toggle("otw", okno[i] === "otw");
+        if (S.za) S.za.classList.toggle("widac", !!okno[i]);
       });
       const czesci = [];
       const pos = st.attributes.current_position;
@@ -3684,7 +4092,6 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       if (!S) return;
       const w = this._suwakW ?? this._srednia(true);
       S.querySelector(".wyp").style.width = Math.max(0, Math.min(100, w)) + "%";
-      S.querySelector(".wart").textContent = Math.round(w) + " %";
       S.setAttribute("aria-valuenow", Math.round(w));
     }
     _rysuj() {
@@ -3828,7 +4235,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       return TEKSTY[this._jez];
     }
     _urz() {
-      return this._hass?.states?.[this._cfg?.entity]?.attributes?.okno_ha;
+      return this._hass?.states?.[this._cfg?.entity]?.attributes?.motor_ha;
     }
     _w(k) {
       return this._cfg[k] ?? DOMYSLNE[k];
@@ -3846,7 +4253,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       this.dispatchEvent(new CustomEvent("config-changed", { detail: { config: doPanelu }, bubbles: true, composed: true }));
       if (urz) {
         clearTimeout(this._zapis);
-        this._zapis = setTimeout(() => this._hass.callWS({ type: "okno_ha/zapisz", entity_id: c.entity, karta: c }).catch((e) => console.warn("Motor HA: nie zapisałem ustawień w urządzeniu", e)), 500);
+        this._zapis = setTimeout(() => this._hass.callWS({ type: "motor_ha/zapisz", entity_id: c.entity, karta: c }).catch((e) => console.warn("Motor HA: nie zapisałem ustawień w urządzeniu", e)), 500);
       }
       if (przerysuj) this._rysuj();
     }
@@ -3857,7 +4264,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
         this._wczytane = this._cfg.entity;
         this._cfg = { ...urz, ...this._cfg };
         delete this._cfg.type;
-        this._cfg.type = "custom:okno-ha";
+        this._cfg.type = "custom:motor-ha";
       }
       this._jez = jezyk(this._cfg, this._hass);
       const T2 = this._T, n = this._krok ?? 0, [kl, ik] = KROKI[n], K = T2.kroki[kl];
@@ -4006,23 +4413,27 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   var rejestruj = (nazwa2, klasa) => {
     if (!customElements.get(nazwa2)) customElements.define(nazwa2, klasa);
   };
-  rejestruj("okno-ha", MotorHaKarta);
-  rejestruj("okno-ha-editor", MotorHaEdytor);
+  rejestruj("motor-ha", MotorHaKarta);
+  rejestruj("okno-ha", class extends MotorHaKarta {
+  });
+  rejestruj("motor-ha-editor", MotorHaEdytor);
+  rejestruj("okno-ha-editor", class extends MotorHaEdytor {
+  });
   rejestruj("roleta-realistyczna", class extends MotorHaKarta {
   });
   rejestruj("roleta-realistyczna-editor", class extends MotorHaEdytor {
   });
   var T = TEKSTY[kodJezyka(document.documentElement.lang || navigator.language)];
   window.customCards = window.customCards || [];
-  for (let i = window.customCards.length - 1; i >= 0; i--) if (["okno-ha", "roleta-realistyczna"].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
+  for (let i = window.customCards.length - 1; i >= 0; i--) if (["motor-ha", "okno-ha", "roleta-realistyczna"].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
   window.customCards.push({
-    type: "okno-ha",
+    type: "motor-ha",
     name: T.nazwa,
     description: T.opis,
     preview: true,
     documentationURL: "https://github.com/superdarco78/okno-ha-integracja",
     // „Dodaj do panelu” na stronie urządzenia proponuje kartę Motor HA dla okien i osłon
-    getEntitySuggestion: (hass, entityId) => String(entityId).startsWith("cover.") ? { label: T.nazwa, config: { type: "custom:okno-ha", entity: entityId } } : null
+    getEntitySuggestion: (hass, entityId) => String(entityId).startsWith("cover.") ? { label: T.nazwa, config: { type: "custom:motor-ha", entity: entityId } } : null
   });
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");

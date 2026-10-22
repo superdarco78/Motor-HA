@@ -1,9 +1,9 @@
-// Składa kartę (src/ + tlumaczenia/) w jeden plik custom_components/okno_ha/www/okno-ha.js.
+// Składa kartę (src/ + tlumaczenia/) w jeden plik custom_components/motor_ha/www/motor-ha.js.
 import * as esbuild from 'esbuild';
 
 await esbuild.build({
   entryPoints: ['src/index.js'],
-  outfile: '../custom_components/okno_ha/www/okno-ha.js',
+  outfile: '../custom_components/motor_ha/www/motor-ha.js',
   bundle: true,
   format: 'iife',
   target: 'es2020',

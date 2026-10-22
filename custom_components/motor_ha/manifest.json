@@ -1,13 +1,27 @@
 {
-  "domain": "okno_ha",
+  "domain": "motor_ha",
   "name": "Motor HA",
-  "codeowners": ["@superdarco78"],
+  "after_dependencies": [
+    "frontend",
+    "hacs",
+    "lovelace",
+    "notify",
+    "sun",
+    "weather"
+  ],
+  "codeowners": [
+    "@superdarco78"
+  ],
   "config_flow": true,
-  "dependencies": ["http", "frontend", "panel_custom", "repairs", "websocket_api"],
+  "dependencies": [
+    "http",
+    "repairs",
+    "websocket_api"
+  ],
   "documentation": "https://github.com/superdarco78/okno-ha-integracja#readme",
   "integration_type": "device",
   "iot_class": "calculated",
   "issue_tracker": "https://github.com/superdarco78/okno-ha-integracja/issues",
   "requirements": [],
-  "version": "1.4.54"
+  "version": "2.0.0"
 }

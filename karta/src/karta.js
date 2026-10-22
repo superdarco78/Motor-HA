@@ -15,7 +15,7 @@ const LISTWA = 5, POD_LISTWA = 8;
 const esc = s => String(s ?? '').replace(/[&<>"]/g, z => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[z]);
 
 export class MotorHaKarta extends HTMLElement {
-  static getConfigElement() { return document.createElement('okno-ha-editor'); }
+  static getConfigElement() { return document.createElement('motor-ha-editor'); }
   static getStubConfig(hass) { return { entity: oslonyDoWyboru(hass)[0] || 'cover.okno' }; }
 
   setConfig(cfg) {
@@ -30,9 +30,9 @@ export class MotorHaKarta extends HTMLElement {
   connectedCallback() { if (this._zbudowana) this._animuj(); }
   disconnectedCallback() { cancelAnimationFrame(this._raf); this._raf = null; }
 
-  // ustawienia: domyślne ← urządzenie Motor HA (atrybut okno_ha) ← karta na panelu
+  // ustawienia: domyślne ← urządzenie Motor HA (atrybut motor_ha) ← karta na panelu
   get _ustawienia() {
-    const urz = this._hass?.states?.[this._surowa.entity]?.attributes?.okno_ha;
+    const urz = this._hass?.states?.[this._surowa.entity]?.attributes?.motor_ha;
     return Object.assign({}, DOMYSLNE, urz && typeof urz === 'object' ? urz : {}, this._surowa, this._surowa._podglad || {});
   }
   get _T() { return TEKSTY[this._jez]; }

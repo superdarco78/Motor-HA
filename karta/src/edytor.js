@@ -84,7 +84,7 @@ export class MotorHaEdytor extends HTMLElement {
     if (pierwszy) this._rysuj(); else this._forma?.forEach(f => { f.hass = h; });
   }
   get _T() { return TEKSTY[this._jez]; }
-  _urz() { return this._hass?.states?.[this._cfg?.entity]?.attributes?.okno_ha; }
+  _urz() { return this._hass?.states?.[this._cfg?.entity]?.attributes?.motor_ha; }
   _w(k) { return this._cfg[k] ?? DOMYSLNE[k]; }
 
   // zmiana: karta na panelu dostaje tylko encję, a ustawienia okna z integracji zapisują się w urządzeniu
@@ -99,7 +99,7 @@ export class MotorHaEdytor extends HTMLElement {
     this.dispatchEvent(new CustomEvent('config-changed', { detail: { config: doPanelu }, bubbles: true, composed: true }));
     if (urz) {
       clearTimeout(this._zapis);
-      this._zapis = setTimeout(() => this._hass.callWS({ type: 'okno_ha/zapisz', entity_id: c.entity, karta: c })
+      this._zapis = setTimeout(() => this._hass.callWS({ type: 'motor_ha/zapisz', entity_id: c.entity, karta: c })
         .catch(e => console.warn('Motor HA: nie zapisałem ustawień w urządzeniu', e)), 500);
     }
     if (przerysuj) this._rysuj();
@@ -112,7 +112,7 @@ export class MotorHaEdytor extends HTMLElement {
     if (urz && this._wczytane !== this._cfg.entity) {
       this._wczytane = this._cfg.entity;
       this._cfg = { ...urz, ...this._cfg };
-      delete this._cfg.type; this._cfg.type = 'custom:okno-ha';
+      delete this._cfg.type; this._cfg.type = 'custom:motor-ha';
     }
     this._jez = jezyk(this._cfg, this._hass);
     const T = this._T, n = this._krok ?? 0, [kl, ik] = KROKI[n], K = T.kroki[kl];

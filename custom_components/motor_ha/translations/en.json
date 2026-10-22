@@ -1,0 +1,1157 @@
+{
+  "title": "Motor HA",
+  "config": {
+    "step": {
+      "tryb": {
+        "title": "Step {nr} of {z}: Wizard mode",
+        "description": "{pasek}\n\n**What:** Choose how many questions you want to see.\n\n**Why:** Basic is enough for most people. Advanced shows every option and extra devices. You can change the mode later in “Configure”.{porada}",
+        "data": {
+          "tryb": "Mode",
+          "kopiuj_z": "Copy settings from another device",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "kopiuj_z": "Empty = start from scratch.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "mam": {
+        "title": "Step {nr} of {z}: What you have at home",
+        "description": "{pasek}\n\n**What:** Tick what you have. The wizard searched Home Assistant and ticked what it found.\n\n**Why:** The wizard shows only the steps and features for ticked devices. You can add the rest later in “Configure”.\n\nFound: {znalezione}{porada}",
+        "data": {
+          "mam": "I have at home",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "urzadzenie": {
+        "title": "Step {nr} of {z}: Device",
+        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor, and the room lets you talk to Assist, e.g. “close the living room”.{porada}",
+        "data": {
+          "rolety": "Motor (one or two entities)",
+          "name": "Name",
+          "pokoj": "Room",
+          "rodzaj_pokoju": "Kind of room (for tips)",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "rolety": "For a window with two sashes choose two: first the left one, then the right one.",
+          "name": "Empty = the motor's name.",
+          "pokoj": "The device goes to this room. Assist then understands “close the living room”.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "rodzaj": {
+        "title": "Step {nr} of {z}: Type",
+        "description": "{pasek}\n\n**What:** Choose exactly what you have.\n\n**Why:** The card draws this device, and the automation knows what it can use.{porada}",
+        "data": {
+          "oslona": "Type",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "lamele": {
+        "title": "Step {nr} of {z}: Slats",
+        "description": "{pasek}\n\n**What:** Set how the slats tilt.\n\n**Why:** You let light in without raising the blind.{porada}",
+        "data": {
+          "lamele_kat": "Slat angle in sunshine",
+          "lamele_tryb": "Slat control",
+          "lamele_noc": "Slat angle at night",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "kolory": {
+        "title": "Step {nr} of {z}: Colours",
+        "description": "{pasek}\n\n**What:** Choose the colour of the shade and the frame.\n\n**Why:** The window on screen looks like the real one.{porada}",
+        "data": {
+          "kolor": "Shade colour",
+          "rama": "Frame colour",
+          "kolor_wlasny": "Custom shade colour",
+          "rama_wlasna": "Custom frame colour",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "okno": {
+        "title": "Step {nr} of {z}: Window",
+        "description": "{pasek}\n\n**What:** How many sashes the window has and how big it is on the card.\n\n**Why:** Each sash can have its own motor.{porada}",
+        "data": {
+          "skrzydla": "Sashes",
+          "wysokosc": "Height on the card",
+          "odwroc": "Reversed percentages",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "odwroc": "Turn on when the motor reports 100 % with the shade closed.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "czujniki": {
+        "title": "Step {nr} of {z}: Sensors",
+        "description": "{pasek}\n\n**What:** Choose the window and door opening sensors.\n\n**Why:** The card shows a tilted or open sash, and the lock never lowers the shade onto an open window.{porada}",
+        "data": {
+          "czujnik_lewe": "Left sash sensor",
+          "tryb_lewe": "Left sash",
+          "czujnik_prawe": "Right sash sensor",
+          "tryb_prawe": "Right sash",
+          "czujnik_drzwi": "Terrace door sensor",
+          "czujnik_przeszkoda": "Obstacle sensor at the door",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "fotokomorka": {
+        "title": "Step {nr} of {z}: Photocell",
+        "description": "{pasek}\n\n**What:** Pick the gate obstacle sensor and the state that means “something is in the gate”.\n\n**Why:** The card shows the obstacle and you can get a notification. The photocell in the controller still stops the gate by itself.{porada}",
+        "data": {
+          "czujnik_foto": "Photocell (obstacle sensor)",
+          "foto_stan": "Obstacle when the sensor state is",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "foto_stan": "Usually “on”. For a text sensor enter e.g. “obstructed”.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "silnik": {
+        "title": "Step {nr} of {z}: Motor",
+        "description": "{pasek}\n\n**What:** Enter the full travel time or leave 0.\n\n**Why:** The drawing moves as fast as the real motor. With 0 the card learns the time by itself after a few moves.{porada}",
+        "data": {
+          "czas": "Full travel time",
+          "kalibruj": "Calibrate now (the shade goes up, down and up)",
+          "predkosc_lewa": "Motor speed – left",
+          "predkosc_prawa": "Motor speed – right",
+          "brama_minuty": "Gate open too long after",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "czas": "0 = automatic: from the motor speed, calibration or real moves.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "pogoda": {
+        "title": "Step {nr} of {z}: Weather",
+        "description": "{pasek}\n\n**What:** Choose the weather and outdoor sensors.\n\n**Why:** Real weather shows behind the glass, and the automation protects the shade from wind, rain and sun.{porada}",
+        "data": {
+          "pogoda": "Weather",
+          "czujnik_temp": "Outdoor temperature",
+          "czujnik_temp_pokoj": "Room temperature",
+          "czujnik_jasnosc": "Brightness or solar power",
+          "czujnik_wiatr": "Anemometer",
+          "czujnik_deszcz": "Rain sensor",
+          "czujnik_drgania": "Awning vibration sensor",
+          "czujnik_ostrzezenia": "Weather warnings (Meteoalarm)",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "A lux meter or solar power – instead of the sun position alone.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "domownicy": {
+        "title": "Step {nr} of {z}: Household",
+        "description": "{pasek}\n\n**What:** Choose presence, motion and household sensors.\n\n**Why:** The shade can react to whether someone is in the room or at home.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Presence sensor (someone is there)",
+          "czujnik_ruch": "Motion sensor (someone came in)",
+          "osoby": "Household members",
+          "czujnik_dym": "Smoke detector",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Workday",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "czujnik_swieta": "Workday integration – holidays count as weekend.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "automatyka": {
+        "title": "Step {nr} of {z}: Automation",
+        "description": "{pasek}\n\n**What:** Turn on the features that may move the shade by themselves.\n\n**Why:** Your home looks after the shades without writing automations. All are off until you turn them on.{porada}",
+        "data": {
+          "f_harmonogram": "Schedule",
+          "f_slonce": "Sun protection",
+          "f_blokada": "Open window lock",
+          "f_wiatr": "Wind",
+          "f_obecnosc": "Presence",
+          "f_wakacje": "Vacation mode",
+          "f_licznik": "Motor counter",
+          "f_reczny": "Manual move wins",
+          "f_posrednia": "Intermediate position",
+          "f_dni": "Workdays and weekend",
+          "f_wietrzenie": "Ventilation position",
+          "f_drzwi": "Terrace door",
+          "f_oslepianie": "Glare protection",
+          "f_zima": "Winter and summer",
+          "f_jasnosc": "Brightness sensor",
+          "f_temp_pokoj": "Room temperature",
+          "f_deszcz": "Rain",
+          "f_mroz": "Frost",
+          "f_grad": "Hail and warnings",
+          "f_drgania": "Awning vibration",
+          "f_upal": "Heat tomorrow",
+          "f_dym": "Smoke",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Nobody home",
+          "f_przeszkoda": "Obstacle at the door",
+          "f_spie": "“Sleeping” mode",
+          "f_granice": "Movement limits",
+          "f_drobne": "No small corrections",
+          "f_po_kolei": "One after another",
+          "f_cisza": "Quiet after restart",
+          "f_proba": "Dry run",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "f_harmonogram": "Opens in the morning and closes in the evening: at fixed times or with sunrise and sunset.",
+          "f_slonce": "Lowers the shade when the sun shines into this window and it is warm.",
+          "f_blokada": "Never lowers the shade onto an open or tilted window. A skipped move runs after the window closes.",
+          "f_wiatr": "Retracts an outdoor shade in strong wind.",
+          "f_obecnosc": "In the morning it stays closed until someone enters the room.",
+          "f_wakacje": "Opens and closes at a slightly different time every day, as if someone were home.",
+          "f_licznik": "Counts moves and run time, reminds you to calibrate.",
+          "f_reczny": "When you move the shade with a remote or a button, the automation waits.",
+          "f_posrednia": "At the chosen time the shade stops half way.",
+          "f_dni": "Separate times at weekends and on holidays.",
+          "f_wietrzenie": "With a tilted window the shade stays higher so air can flow.",
+          "f_drzwi": "With the door open the shade goes no lower than the chosen position.",
+          "f_oslepianie": "The shade goes down only so far that the sun reaches no further than the TV or desk.",
+          "f_zima": "In winter it opens in the sun (free heat), in summer it shades.",
+          "f_jasnosc": "A lux meter or solar panels decide about the sun.",
+          "f_temp_pokoj": "Shades when the room gets too warm.",
+          "f_deszcz": "Retracts the awning, screen and external venetian blind in the rain.",
+          "f_mroz": "In frost the outdoor shade does not move, so it does not freeze.",
+          "f_grad": "On a warning it retracts awnings and closes shutters to protect the glass.",
+          "f_drgania": "Retracts the awning in a strong gust.",
+          "f_upal": "When the forecast says heat, the shade goes down in the morning before the room warms up.",
+          "f_dym": "On a smoke alarm it opens the shade – an escape route.",
+          "f_alarm": "Closes the shade when the alarm is armed.",
+          "f_nikogo": "Closes the shade when everyone leaves.",
+          "f_przeszkoda": "Does not go down when the sensor sees something in the way.",
+          "f_spie": "A switch on the device: the shade stays closed until you turn it off.",
+          "f_granice": "The shade moves only within the chosen range, e.g. 10–90 %.",
+          "f_drobne": "Skips changes of a few percent.",
+          "f_po_kolei": "Shades in the house move a few seconds apart.",
+          "f_cisza": "After HA starts the automation waits a few minutes.",
+          "f_proba": "Shows what the automation would do, but does not move the shade.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "ustawienia": {
+        "title": "Step {nr} of {z}: Settings",
+        "description": "{pasek}\n\n**What:** Adjust the features you turned on.\n\n**Why:** The defaults suit most homes.{porada}",
+        "data": {
+          "azymut": "Window direction",
+          "szer_slonca": "Sun width in the window",
+          "min_wys_slonca": "Minimum sun height",
+          "slonce_temp": "Protect from temperature",
+          "slonce_poz": "Position in the sun",
+          "harm_tryb": "Opening times",
+          "przesuniecie": "Offset",
+          "otworz": "Open at",
+          "zamknij": "Close at",
+          "otworz_weekend": "Open at weekends at",
+          "zamknij_weekend": "Close at weekends at",
+          "posrednia_godz": "Intermediate position from",
+          "posrednia_poz": "Intermediate position",
+          "wiatr_prog": "Retract from wind",
+          "mroz_prog": "Frost from",
+          "upal_prog": "Heat from",
+          "temp_pokoj_prog": "Room too warm from",
+          "jasnosc_prog": "Bright from",
+          "obecnosc_rano": "Wait for presence until",
+          "wakacje_rozrzut": "Time spread",
+          "wietrzenie_poz": "Ventilation position",
+          "drzwi_min": "With the door open no lower than",
+          "granica_min": "Lowest",
+          "granica_max": "Highest",
+          "drobne_prog": "Skip changes smaller than",
+          "reczny_min": "After a manual move wait",
+          "po_kolei_s": "Gap between shades",
+          "cisza_min": "After HA starts wait",
+          "spie_poz": "Position in “Sleeping” mode",
+          "alarm_poz": "Position when armed",
+          "nikogo_poz": "Position when nobody is home",
+          "obiekt_odl_m": "Sun reaches at most",
+          "okno_wys_m": "Window height",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "azymut": "Where the window faces: 90 east, 180 south, 270 west.",
+          "szer_slonca": "How many degrees left and right of the window direction the sun shines in.",
+          "min_wys_slonca": "Trees and houses hide a lower sun.",
+          "slonce_temp": "Outdoors, from which the shade goes down in the sun.",
+          "slonce_poz": "0 % = closed.",
+          "harm_tryb": "With sunrise and sunset or at fixed times.",
+          "przesuniecie": "Minutes after sunrise and before sunset.",
+          "upal_prog": "The highest temperature in the forecast.",
+          "jasnosc_prog": "Lux or watts from solar panels.",
+          "wakacje_rozrzut": "Plus or minus this many minutes, different every day.",
+          "obiekt_odl_m": "How far from the window the TV or desk stands.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "powiadomienia": {
+        "title": "Step {nr} of {z}: Notifications",
+        "description": "{pasek}\n\n**What:** Choose what to tell you about.\n\n**Why:** You know right away which device has a problem. Notifications go to HA and, if you choose, to your phone.{porada}",
+        "data": {
+          "powiadom": "Notify me when",
+          "powiadom_gdzie": "Also send to",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "powiadom_gdzie": "The HA app on your phone. Nothing chosen – notifications in HA only.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "panel": {
+        "title": "Step {nr} of {z}: Dashboard",
+        "description": "{pasek}\n\n**What:** Which dashboard to add the card to.\n\n**Why:** The card appears by itself, nothing to click.{porada}",
+        "data": {
+          "na_panel": "Add the card to a dashboard",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Choose a motor.",
+      "za_duzo": "Choose at most two motors (left and right sash)."
+    }
+  },
+  "options": {
+    "step": {
+      "tryb": {
+        "title": "Step {nr} of {z}: Wizard mode",
+        "description": "{pasek}\n\n**What:** Choose how many questions you want to see.\n\n**Why:** Basic is enough for most people. Advanced shows every option and extra devices. You can change the mode later in “Configure”.{porada}",
+        "data": {
+          "tryb": "Mode",
+          "kopiuj_z": "Copy settings from another device",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "kopiuj_z": "Empty = start from scratch.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "mam": {
+        "title": "Step {nr} of {z}: What you have at home",
+        "description": "{pasek}\n\n**What:** Tick what you have. The wizard searched Home Assistant and ticked what it found.\n\n**Why:** The wizard shows only the steps and features for ticked devices. You can add the rest later in “Configure”.\n\nFound: {znalezione}{porada}",
+        "data": {
+          "mam": "I have at home",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "urzadzenie": {
+        "title": "Step {nr} of {z}: Device",
+        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor, and the room lets you talk to Assist, e.g. “close the living room”.{porada}",
+        "data": {
+          "rolety": "Motor (one or two entities)",
+          "name": "Name",
+          "pokoj": "Room",
+          "rodzaj_pokoju": "Kind of room (for tips)",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "rolety": "For a window with two sashes choose two: first the left one, then the right one.",
+          "name": "Empty = the motor's name.",
+          "pokoj": "The device goes to this room. Assist then understands “close the living room”.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "rodzaj": {
+        "title": "Step {nr} of {z}: Type",
+        "description": "{pasek}\n\n**What:** Choose exactly what you have.\n\n**Why:** The card draws this device, and the automation knows what it can use.{porada}",
+        "data": {
+          "oslona": "Type",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "lamele": {
+        "title": "Step {nr} of {z}: Slats",
+        "description": "{pasek}\n\n**What:** Set how the slats tilt.\n\n**Why:** You let light in without raising the blind.{porada}",
+        "data": {
+          "lamele_kat": "Slat angle in sunshine",
+          "lamele_tryb": "Slat control",
+          "lamele_noc": "Slat angle at night",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "kolory": {
+        "title": "Step {nr} of {z}: Colours",
+        "description": "{pasek}\n\n**What:** Choose the colour of the shade and the frame.\n\n**Why:** The window on screen looks like the real one.{porada}",
+        "data": {
+          "kolor": "Shade colour",
+          "rama": "Frame colour",
+          "kolor_wlasny": "Custom shade colour",
+          "rama_wlasna": "Custom frame colour",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "okno": {
+        "title": "Step {nr} of {z}: Window",
+        "description": "{pasek}\n\n**What:** How many sashes the window has and how big it is on the card.\n\n**Why:** Each sash can have its own motor.{porada}",
+        "data": {
+          "skrzydla": "Sashes",
+          "wysokosc": "Height on the card",
+          "odwroc": "Reversed percentages",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "odwroc": "Turn on when the motor reports 100 % with the shade closed.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "czujniki": {
+        "title": "Step {nr} of {z}: Sensors",
+        "description": "{pasek}\n\n**What:** Choose the window and door opening sensors.\n\n**Why:** The card shows a tilted or open sash, and the lock never lowers the shade onto an open window.{porada}",
+        "data": {
+          "czujnik_lewe": "Left sash sensor",
+          "tryb_lewe": "Left sash",
+          "czujnik_prawe": "Right sash sensor",
+          "tryb_prawe": "Right sash",
+          "czujnik_drzwi": "Terrace door sensor",
+          "czujnik_przeszkoda": "Obstacle sensor at the door",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "fotokomorka": {
+        "title": "Step {nr} of {z}: Photocell",
+        "description": "{pasek}\n\n**What:** Pick the gate obstacle sensor and the state that means “something is in the gate”.\n\n**Why:** The card shows the obstacle and you can get a notification. The photocell in the controller still stops the gate by itself.{porada}",
+        "data": {
+          "czujnik_foto": "Photocell (obstacle sensor)",
+          "foto_stan": "Obstacle when the sensor state is",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "foto_stan": "Usually “on”. For a text sensor enter e.g. “obstructed”.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "silnik": {
+        "title": "Step {nr} of {z}: Motor",
+        "description": "{pasek}\n\n**What:** Enter the full travel time or leave 0.\n\n**Why:** The drawing moves as fast as the real motor. With 0 the card learns the time by itself after a few moves.{porada}",
+        "data": {
+          "czas": "Full travel time",
+          "kalibruj": "Calibrate now (the shade goes up, down and up)",
+          "predkosc_lewa": "Motor speed – left",
+          "predkosc_prawa": "Motor speed – right",
+          "brama_minuty": "Gate open too long after",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "czas": "0 = automatic: from the motor speed, calibration or real moves.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "pogoda": {
+        "title": "Step {nr} of {z}: Weather",
+        "description": "{pasek}\n\n**What:** Choose the weather and outdoor sensors.\n\n**Why:** Real weather shows behind the glass, and the automation protects the shade from wind, rain and sun.{porada}",
+        "data": {
+          "pogoda": "Weather",
+          "czujnik_temp": "Outdoor temperature",
+          "czujnik_temp_pokoj": "Room temperature",
+          "czujnik_jasnosc": "Brightness or solar power",
+          "czujnik_wiatr": "Anemometer",
+          "czujnik_deszcz": "Rain sensor",
+          "czujnik_drgania": "Awning vibration sensor",
+          "czujnik_ostrzezenia": "Weather warnings (Meteoalarm)",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "A lux meter or solar power – instead of the sun position alone.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "domownicy": {
+        "title": "Step {nr} of {z}: Household",
+        "description": "{pasek}\n\n**What:** Choose presence, motion and household sensors.\n\n**Why:** The shade can react to whether someone is in the room or at home.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Presence sensor (someone is there)",
+          "czujnik_ruch": "Motion sensor (someone came in)",
+          "osoby": "Household members",
+          "czujnik_dym": "Smoke detector",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Workday",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "czujnik_swieta": "Workday integration – holidays count as weekend.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "automatyka": {
+        "title": "Step {nr} of {z}: Automation",
+        "description": "{pasek}\n\n**What:** Turn on the features that may move the shade by themselves.\n\n**Why:** Your home looks after the shades without writing automations. All are off until you turn them on.{porada}",
+        "data": {
+          "f_harmonogram": "Schedule",
+          "f_slonce": "Sun protection",
+          "f_blokada": "Open window lock",
+          "f_wiatr": "Wind",
+          "f_obecnosc": "Presence",
+          "f_wakacje": "Vacation mode",
+          "f_licznik": "Motor counter",
+          "f_reczny": "Manual move wins",
+          "f_posrednia": "Intermediate position",
+          "f_dni": "Workdays and weekend",
+          "f_wietrzenie": "Ventilation position",
+          "f_drzwi": "Terrace door",
+          "f_oslepianie": "Glare protection",
+          "f_zima": "Winter and summer",
+          "f_jasnosc": "Brightness sensor",
+          "f_temp_pokoj": "Room temperature",
+          "f_deszcz": "Rain",
+          "f_mroz": "Frost",
+          "f_grad": "Hail and warnings",
+          "f_drgania": "Awning vibration",
+          "f_upal": "Heat tomorrow",
+          "f_dym": "Smoke",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Nobody home",
+          "f_przeszkoda": "Obstacle at the door",
+          "f_spie": "“Sleeping” mode",
+          "f_granice": "Movement limits",
+          "f_drobne": "No small corrections",
+          "f_po_kolei": "One after another",
+          "f_cisza": "Quiet after restart",
+          "f_proba": "Dry run",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "f_harmonogram": "Opens in the morning and closes in the evening: at fixed times or with sunrise and sunset.",
+          "f_slonce": "Lowers the shade when the sun shines into this window and it is warm.",
+          "f_blokada": "Never lowers the shade onto an open or tilted window. A skipped move runs after the window closes.",
+          "f_wiatr": "Retracts an outdoor shade in strong wind.",
+          "f_obecnosc": "In the morning it stays closed until someone enters the room.",
+          "f_wakacje": "Opens and closes at a slightly different time every day, as if someone were home.",
+          "f_licznik": "Counts moves and run time, reminds you to calibrate.",
+          "f_reczny": "When you move the shade with a remote or a button, the automation waits.",
+          "f_posrednia": "At the chosen time the shade stops half way.",
+          "f_dni": "Separate times at weekends and on holidays.",
+          "f_wietrzenie": "With a tilted window the shade stays higher so air can flow.",
+          "f_drzwi": "With the door open the shade goes no lower than the chosen position.",
+          "f_oslepianie": "The shade goes down only so far that the sun reaches no further than the TV or desk.",
+          "f_zima": "In winter it opens in the sun (free heat), in summer it shades.",
+          "f_jasnosc": "A lux meter or solar panels decide about the sun.",
+          "f_temp_pokoj": "Shades when the room gets too warm.",
+          "f_deszcz": "Retracts the awning, screen and external venetian blind in the rain.",
+          "f_mroz": "In frost the outdoor shade does not move, so it does not freeze.",
+          "f_grad": "On a warning it retracts awnings and closes shutters to protect the glass.",
+          "f_drgania": "Retracts the awning in a strong gust.",
+          "f_upal": "When the forecast says heat, the shade goes down in the morning before the room warms up.",
+          "f_dym": "On a smoke alarm it opens the shade – an escape route.",
+          "f_alarm": "Closes the shade when the alarm is armed.",
+          "f_nikogo": "Closes the shade when everyone leaves.",
+          "f_przeszkoda": "Does not go down when the sensor sees something in the way.",
+          "f_spie": "A switch on the device: the shade stays closed until you turn it off.",
+          "f_granice": "The shade moves only within the chosen range, e.g. 10–90 %.",
+          "f_drobne": "Skips changes of a few percent.",
+          "f_po_kolei": "Shades in the house move a few seconds apart.",
+          "f_cisza": "After HA starts the automation waits a few minutes.",
+          "f_proba": "Shows what the automation would do, but does not move the shade.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "ustawienia": {
+        "title": "Step {nr} of {z}: Settings",
+        "description": "{pasek}\n\n**What:** Adjust the features you turned on.\n\n**Why:** The defaults suit most homes.{porada}",
+        "data": {
+          "azymut": "Window direction",
+          "szer_slonca": "Sun width in the window",
+          "min_wys_slonca": "Minimum sun height",
+          "slonce_temp": "Protect from temperature",
+          "slonce_poz": "Position in the sun",
+          "harm_tryb": "Opening times",
+          "przesuniecie": "Offset",
+          "otworz": "Open at",
+          "zamknij": "Close at",
+          "otworz_weekend": "Open at weekends at",
+          "zamknij_weekend": "Close at weekends at",
+          "posrednia_godz": "Intermediate position from",
+          "posrednia_poz": "Intermediate position",
+          "wiatr_prog": "Retract from wind",
+          "mroz_prog": "Frost from",
+          "upal_prog": "Heat from",
+          "temp_pokoj_prog": "Room too warm from",
+          "jasnosc_prog": "Bright from",
+          "obecnosc_rano": "Wait for presence until",
+          "wakacje_rozrzut": "Time spread",
+          "wietrzenie_poz": "Ventilation position",
+          "drzwi_min": "With the door open no lower than",
+          "granica_min": "Lowest",
+          "granica_max": "Highest",
+          "drobne_prog": "Skip changes smaller than",
+          "reczny_min": "After a manual move wait",
+          "po_kolei_s": "Gap between shades",
+          "cisza_min": "After HA starts wait",
+          "spie_poz": "Position in “Sleeping” mode",
+          "alarm_poz": "Position when armed",
+          "nikogo_poz": "Position when nobody is home",
+          "obiekt_odl_m": "Sun reaches at most",
+          "okno_wys_m": "Window height",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "azymut": "Where the window faces: 90 east, 180 south, 270 west.",
+          "szer_slonca": "How many degrees left and right of the window direction the sun shines in.",
+          "min_wys_slonca": "Trees and houses hide a lower sun.",
+          "slonce_temp": "Outdoors, from which the shade goes down in the sun.",
+          "slonce_poz": "0 % = closed.",
+          "harm_tryb": "With sunrise and sunset or at fixed times.",
+          "przesuniecie": "Minutes after sunrise and before sunset.",
+          "upal_prog": "The highest temperature in the forecast.",
+          "jasnosc_prog": "Lux or watts from solar panels.",
+          "wakacje_rozrzut": "Plus or minus this many minutes, different every day.",
+          "obiekt_odl_m": "How far from the window the TV or desk stands.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      },
+      "powiadomienia": {
+        "title": "Step {nr} of {z}: Notifications",
+        "description": "{pasek}\n\n**What:** Choose what to tell you about.\n\n**Why:** You know right away which device has a problem. Notifications go to HA and, if you choose, to your phone.{porada}",
+        "data": {
+          "powiadom": "Notify me when",
+          "powiadom_gdzie": "Also send to",
+          "wstecz": "Go back to the previous step"
+        },
+        "data_description": {
+          "powiadom_gdzie": "The HA app on your phone. Nothing chosen – notifications in HA only.",
+          "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Choose a motor.",
+      "za_duzo": "Choose at most two motors (left and right sash)."
+    }
+  },
+  "selector": {
+    "tryb": {
+      "options": {
+        "podstawowy": "Basic – a few simple questions",
+        "zaawansowany": "Advanced – all options"
+      }
+    },
+    "mam": {
+      "options": {
+        "zew": "Outdoor shade (shutter, awning, screen)",
+        "lamele": "Shade with tilting slats",
+        "brama": "Driveway gate or garage door",
+        "foto": "Gate photocell visible in HA",
+        "okno": "Window sensor",
+        "drzwi": "Terrace door sensor",
+        "obecnosc": "Presence sensor (someone is there)",
+        "ruch": "Motion sensor (someone came in)",
+        "pogoda": "Weather",
+        "temp": "Outdoor temperature",
+        "grupy": "Several devices at home",
+        "temp_pokoj": "Room temperature",
+        "jasnosc": "Lux meter or solar panels",
+        "wiatr": "Anemometer",
+        "deszcz": "Rain sensor",
+        "drgania": "Awning vibration sensor",
+        "ostrzezenia": "Weather warnings",
+        "dym": "Smoke detector",
+        "alarm": "Alarm",
+        "osoby": "Household phones",
+        "przeszkoda": "Obstacle sensor at the door"
+      }
+    },
+    "pokoje": {
+      "options": {
+        "salon": "Living room",
+        "sypialnia": "Bedroom",
+        "kuchnia": "Kitchen",
+        "dziecko": "Child's room",
+        "gabinet": "Office",
+        "lazienka": "Bathroom",
+        "jadalnia": "Dining room",
+        "przedpokoj": "Hallway",
+        "inny": "Other"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "One sash",
+        "2": "Two sashes"
+      }
+    },
+    "tryby": {
+      "options": {
+        "uchyl": "Tilts",
+        "otworz": "Opens"
+      }
+    },
+    "lamele_tryb": {
+      "options": {
+        "auto": "Automatic (sun, night)",
+        "staly": "Always the same angle",
+        "nocny": "Only at night"
+      }
+    },
+    "harm_tryb": {
+      "options": {
+        "slonce": "Sunrise and sunset",
+        "godziny": "Fixed times"
+      }
+    },
+    "powiadomienia": {
+      "options": {
+        "nie_odpowiada": "Not responding",
+        "nie_dojechala": "Did not reach the position",
+        "bateria": "Low battery in the motor or sensor",
+        "czujnik": "Sensor unavailable",
+        "automatyka": "Automation problem (lock, error, calibration)",
+        "brama_otwarta": "Gate open too long",
+        "brama_niedomknieta": "Gate did not close",
+        "przeszkoda": "Obstacle in the gate"
+      }
+    },
+    "kroki": {
+      "options": {
+        "tryb": "Mode",
+        "mam": "What you have",
+        "urzadzenie": "Device",
+        "rodzaj": "Type",
+        "lamele": "Slats",
+        "kolory": "Colours",
+        "okno": "Window",
+        "czujniki": "Sensors",
+        "fotokomorka": "Photocell",
+        "silnik": "Motor",
+        "pogoda": "Weather",
+        "domownicy": "Household",
+        "automatyka": "Automation",
+        "ustawienia": "Settings",
+        "powiadomienia": "Notifications",
+        "panel": "Dashboard"
+      }
+    },
+    "porady": {
+      "options": {
+        "ogolne_tryb": "Not sure? Choose Basic. You can always change it.",
+        "ogolne_mam": "Not sure whether you have something? Leave it as the wizard ticked it.",
+        "ogolne_kolory": "The colour is only on screen, it changes nothing in the shade itself.",
+        "ogolne_okno": "Two sashes with one shutter? Choose “Two sashes” and one motor.",
+        "ogolne_silnik": "Leave 0 – the card measures the time by itself after a few moves.",
+        "ogolne_pogoda": "A weather entity is enough. An anemometer gives more precise protection.",
+        "ogolne_automatyka": "Start with one feature and see how it works. The “Reason” sensor shows why the shade moved.",
+        "ogolne_lamele": "An angle of 45° lets light in, while the sun does not shine straight into the room.",
+        "ogolne_fotokomorka": "No photocell in HA? The gate works the same, the card just does not know about the obstacle.",
+        "sypialnia_rodzaj": "A blackout blind or a day-night blind is best for a bedroom. Morning light does not wake you.",
+        "sypialnia_automatyka": "We recommend the schedule (sunrise in the morning, sunset in the evening) and the window lock if you sleep with the window tilted.",
+        "sypialnia_czujniki": "In a bedroom the window is often tilted at night. Set “Tilts”.",
+        "salon_rodzaj": "In a living room people usually choose day-night or pleated blinds – they let light in and block the view from the street.",
+        "salon_automatyka": "We recommend sun protection. With a presence sensor the shade opens when someone comes in in the morning.",
+        "kuchnia_rodzaj": "A cassette blind or an aluminium venetian blind suits a kitchen – easy to clean.",
+        "kuchnia_automatyka": "We recommend the open window lock – the window is often open while cooking.",
+        "dziecko_rodzaj": "A blackout blind is useful in a child's room for daytime naps.",
+        "dziecko_automatyka": "We recommend the night schedule and the window lock.",
+        "gabinet_rodzaj": "In an office a venetian blind or a screen reduces glare on the monitor.",
+        "gabinet_automatyka": "We recommend glare protection – the shade goes down only as far as needed.",
+        "lazienka_rodzaj": "For a bathroom choose a damp-proof shade: an aluminium venetian or a pleated blind.",
+        "lazienka_automatyka": "We recommend the window lock – the window is often open after a bath."
+      }
+    },
+    "oslony": {
+      "options": {
+        "pelna": "Free-hanging roller blind",
+        "kasetowa": "Cassette roller blind",
+        "zebra": "Day-night blind",
+        "zaciemniajaca": "Blackout blind",
+        "plisa": "Pleated blind",
+        "plaster": "Honeycomb blind",
+        "rzymska": "Roman blind",
+        "zaluzja": "Aluminium venetian",
+        "drewniana": "Wooden venetian",
+        "natynkowa": "Surface-mounted shutter",
+        "podtynkowa": "Concealed shutter",
+        "zewnetrzna": "Top-mounted shutter",
+        "perforowana": "Perforated shutter",
+        "fasadowa": "External venetian C80",
+        "fasadowaz": "External venetian Z90",
+        "markiza": "Terrace awning",
+        "screen": "ZIP screen",
+        "pionowa": "Vertical blind",
+        "zaslona": "Side curtain",
+        "przesuwna": "Sliding gate",
+        "skrzydlowa": "Swing gate",
+        "segmentowa": "Sectional garage door",
+        "uchylna": "Up-and-over garage door",
+        "roletowa": "Roller garage door"
+      }
+    },
+    "kolory": {
+      "options": {
+        "czarny": "black",
+        "grafit": "graphite",
+        "szary": "grey",
+        "popiel": "ash",
+        "srebrny": "silver",
+        "bialy": "white",
+        "kremowy": "cream",
+        "piaskowy": "sand",
+        "bezowy": "beige",
+        "cappuccino": "cappuccino",
+        "mokka": "mocha",
+        "braz": "brown",
+        "wenge": "wenge",
+        "stalowy": "steel",
+        "granat": "navy",
+        "blekitny": "sky blue",
+        "niebieski": "blue",
+        "morski": "sea green",
+        "turkus": "turquoise",
+        "mietowy": "mint",
+        "zielony": "green",
+        "butelkowy": "bottle green",
+        "oliwka": "olive",
+        "limonka": "lime",
+        "zolty": "yellow",
+        "musztardowy": "mustard",
+        "pomaranczowy": "orange",
+        "terakota": "terracotta",
+        "czerwony": "red",
+        "bordo": "burgundy",
+        "pudrowy": "powder pink",
+        "rozowy": "pink",
+        "lawendowy": "lavender",
+        "fiolet": "violet",
+        "sliwkowy": "plum"
+      }
+    },
+    "ramy": {
+      "options": {
+        "biala": "white",
+        "kremowa": "cream",
+        "jasnoszara": "light grey",
+        "srebrna": "silver",
+        "szary_agat": "agate grey",
+        "szara": "grey",
+        "szary_kwarc": "quartz grey",
+        "bazaltowa": "basalt grey",
+        "antracyt": "anthracite",
+        "czarna": "black",
+        "zielona": "green",
+        "granatowa": "navy",
+        "bordowa": "burgundy",
+        "braz": "brown",
+        "sosna": "pine",
+        "dab_jasny": "light oak",
+        "dab_sheffield": "Sheffield oak",
+        "winchester": "Winchester",
+        "oregon": "Oregon",
+        "zloty_dab": "golden oak",
+        "siena": "Siena",
+        "orzech": "walnut",
+        "mahon": "mahogany",
+        "dab_bagienny": "bog oak"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Calibrate"
+      },
+      "wznow": {
+        "name": "Resume automation"
+      }
+    },
+    "sensor": {
+      "powod": {
+        "name": "Reason for move",
+        "state": {
+          "brak": "No automation",
+          "wylaczona": "Automation off",
+          "cisza": "Quiet after restart",
+          "dym": "Smoke – open",
+          "wiatr": "Wind – retracted",
+          "drgania": "Vibration – retracted",
+          "grad": "Warning – protected",
+          "deszcz": "Rain – retracted",
+          "mroz": "Frost – not moving",
+          "pauza": "Paused",
+          "reczny": "Manual move – paused",
+          "alarm": "Alarm",
+          "spie": "Sleeping",
+          "nikogo": "Nobody home",
+          "wakacje": "Vacation mode – day",
+          "wakacje_noc": "Vacation mode – night",
+          "harm_dzien": "Schedule – day",
+          "harm_noc": "Schedule – night",
+          "posrednia": "Intermediate position",
+          "obecnosc": "Someone is in the room",
+          "czeka_obecnosc": "Waiting for someone to come in",
+          "zima_noc": "Winter – night",
+          "zima_slonce": "Winter – sun warms",
+          "slonce": "Sun in the window",
+          "jasnosc": "Bright",
+          "temp_pokoj": "Room too warm",
+          "upal": "Heat",
+          "oslepianie": "Glare",
+          "przeszkoda": "Obstacle",
+          "drzwi": "Door open",
+          "wietrzenie": "Ventilation",
+          "blokada": "Window open – locked"
+        }
+      },
+      "ruchy": {
+        "name": "Motor moves"
+      },
+      "czas_pracy": {
+        "name": "Motor run time"
+      }
+    },
+    "switch": {
+      "automatyka": {
+        "name": "Automation"
+      },
+      "pauza": {
+        "name": "Pause for today"
+      },
+      "spie": {
+        "name": "Sleeping"
+      },
+      "wakacje": {
+        "name": "Vacation mode"
+      }
+    }
+  },
+  "exceptions": {
+    "tytul": {
+      "message": "{nazwa} – problem"
+    },
+    "nie_odpowiada": {
+      "message": "{nazwa}: the motor is not responding ({encje}). Check power or range."
+    },
+    "nie_dojechala": {
+      "message": "{nazwa}: should have reached {cel} %, but stands at {jest} %."
+    },
+    "bateria": {
+      "message": "{nazwa}: low battery – {lista}."
+    },
+    "czujnik": {
+      "message": "{nazwa}: sensor unavailable – {lista}."
+    },
+    "automatyka": {
+      "message": "{nazwa}: the automation did not move the shade – {powod}."
+    },
+    "kalibracja": {
+      "message": "{nazwa}: the motor made {ruchy} moves since calibration. Press “Calibrate” on the device."
+    },
+    "brama_otwarta": {
+      "message": "{nazwa}: the gate has been open for more than {minuty} min."
+    },
+    "brama_niedomknieta": {
+      "message": "{nazwa}: the gate did not close."
+    },
+    "przeszkoda": {
+      "message": "{nazwa}: something is in the gate (photocell)."
+    },
+    "nie_motor_ha": {
+      "message": "This is not a Motor HA device."
+    },
+    "powod_brak": {
+      "message": "No automation"
+    },
+    "powod_wylaczona": {
+      "message": "Automation off"
+    },
+    "powod_cisza": {
+      "message": "Quiet after restart"
+    },
+    "powod_dym": {
+      "message": "Smoke – open"
+    },
+    "powod_wiatr": {
+      "message": "Wind – retracted"
+    },
+    "powod_drgania": {
+      "message": "Vibration – retracted"
+    },
+    "powod_grad": {
+      "message": "Warning – protected"
+    },
+    "powod_deszcz": {
+      "message": "Rain – retracted"
+    },
+    "powod_mroz": {
+      "message": "Frost – not moving"
+    },
+    "powod_pauza": {
+      "message": "Paused"
+    },
+    "powod_reczny": {
+      "message": "Manual move – paused"
+    },
+    "powod_alarm": {
+      "message": "Alarm"
+    },
+    "powod_spie": {
+      "message": "Sleeping"
+    },
+    "powod_nikogo": {
+      "message": "Nobody home"
+    },
+    "powod_wakacje": {
+      "message": "Vacation mode – day"
+    },
+    "powod_wakacje_noc": {
+      "message": "Vacation mode – night"
+    },
+    "powod_harm_dzien": {
+      "message": "Schedule – day"
+    },
+    "powod_harm_noc": {
+      "message": "Schedule – night"
+    },
+    "powod_posrednia": {
+      "message": "Intermediate position"
+    },
+    "powod_obecnosc": {
+      "message": "Someone is in the room"
+    },
+    "powod_czeka_obecnosc": {
+      "message": "Waiting for someone to come in"
+    },
+    "powod_zima_noc": {
+      "message": "Winter – night"
+    },
+    "powod_zima_slonce": {
+      "message": "Winter – sun warms"
+    },
+    "powod_slonce": {
+      "message": "Sun in the window"
+    },
+    "powod_jasnosc": {
+      "message": "Bright"
+    },
+    "powod_temp_pokoj": {
+      "message": "Room too warm"
+    },
+    "powod_upal": {
+      "message": "Heat"
+    },
+    "powod_oslepianie": {
+      "message": "Glare"
+    },
+    "powod_przeszkoda": {
+      "message": "Obstacle"
+    },
+    "powod_drzwi": {
+      "message": "Door open"
+    },
+    "powod_wietrzenie": {
+      "message": "Ventilation"
+    },
+    "powod_blokada": {
+      "message": "Window open – locked"
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} – restart",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Motor HA {wersja} – restart",
+            "description": "The new version is installed. Click “Submit” to restart Home Assistant."
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "wstrzymaj": {
+      "name": "Pause automation",
+      "description": "The automation does not move the device for the given time (empty = until the end of the day).",
+      "fields": {
+        "entity_id": {
+          "name": "Device",
+          "description": "A Motor HA device."
+        },
+        "minuty": {
+          "name": "Minutes",
+          "description": "Empty = until the end of the day."
+        }
+      }
+    },
+    "wznow": {
+      "name": "Resume automation",
+      "description": "Ends the pause and checks right away where the shade should be.",
+      "fields": {
+        "entity_id": {
+          "name": "Device",
+          "description": "A Motor HA device."
+        }
+      }
+    },
+    "przelicz": {
+      "name": "Check now",
+      "description": "The automation recalculates the position right away.",
+      "fields": {
+        "entity_id": {
+          "name": "Device",
+          "description": "A Motor HA device."
+        }
+      }
+    },
+    "kalibruj": {
+      "name": "Calibrate",
+      "description": "Measures the real travel time.",
+      "fields": {
+        "entity_id": {
+          "name": "Device",
+          "description": "A Motor HA device."
+        }
+      }
+    },
+    "ustaw": {
+      "name": "Set position",
+      "description": "Sets the position (and slats) like the automation – without a manual-move pause.",
+      "fields": {
+        "entity_id": {
+          "name": "Device",
+          "description": "A Motor HA device."
+        },
+        "pozycja": {
+          "name": "Position",
+          "description": "100 = open."
+        },
+        "lamele": {
+          "name": "Slats",
+          "description": "Slat angle."
+        }
+      }
+    }
+  }
+}
