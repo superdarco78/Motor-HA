@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.1.0";
+  var WERSJA = "2.1.1";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -418,7 +418,8 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .zew .okno{box-shadow:0 0 0 5px #c4bdb0,0 0 0 6px rgba(0,0,0,.08),-4px 4px 10px 6px rgba(0,0,0,.28)}
 .zew .okno::after{content:"";position:absolute;left:-14px;right:-14px;bottom:-12px;height:9px;z-index:20;border-radius:1px 1px 2px 2px;
  background:linear-gradient(180deg,#f2f3f4,#b9bec3 55%,#8a9096);box-shadow:0 4px 5px rgba(0,0,0,.35)}
-.pokoj{background:linear-gradient(180deg,rgba(150,185,215,.3),rgba(150,185,215,0) 45%),linear-gradient(180deg,#3a332d,#2a2420)}
+.pokoj{background:linear-gradient(180deg,rgba(185,215,240,.45),rgba(185,215,240,0) 40%),linear-gradient(180deg,transparent 74%,rgba(0,0,0,.28) 74%),
+ radial-gradient(ellipse 60% 50% at 50% 30%,rgba(255,240,215,.35),transparent 70%),linear-gradient(180deg,#9c8e7c,#7d705f)}
 .noc .pokoj{background:radial-gradient(ellipse 70% 45% at 50% 22%,rgba(255,206,130,.7),rgba(96,66,38,.9) 70%,#2a1d12)}
 .zew .skrz{cursor:default}
 .zew .zewo{position:absolute;inset:0;z-index:15;display:flex;cursor:ns-resize}
