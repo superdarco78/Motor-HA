@@ -1,0 +1,665 @@
+{
+  "krok": "Passo {nr} di {z}",
+  "co": "Cosa:",
+  "poco": "Perché:",
+  "kroki": {
+    "tryb": {
+      "t": "Modalità della procedura",
+      "co": "Scegli quante domande vuoi vedere.",
+      "poco": "La base basta ai più. L'avanzata mostra tutte le opzioni e i dispositivi extra. Puoi cambiare modalità più tardi in «Configura»."
+    },
+    "mam": {
+      "t": "Cosa hai in casa",
+      "co": "Spunta ciò che hai. La procedura ha cercato in Home Assistant e spuntato ciò che ha trovato.",
+      "poco": "La procedura mostra solo passi e funzioni dei dispositivi spuntati. Il resto lo aggiungi dopo in «Configura».\n\nTrovato: {znalezione}"
+    },
+    "urzadzenie": {
+      "t": "Dispositivo",
+      "co": "Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.",
+      "poco": "Motor HA comanda questo motore, e la stanza ti permette di parlare con Assist, ad es. «chiudi il soggiorno»."
+    },
+    "rodzaj": {
+      "t": "Tipo",
+      "co": "Scegli esattamente ciò che hai.",
+      "poco": "La scheda disegna questo dispositivo e l'automazione sa cosa può usare."
+    },
+    "lamele": {
+      "t": "Lamelle",
+      "co": "Imposta l'orientamento delle lamelle.",
+      "poco": "Fai entrare luce senza alzare la veneziana."
+    },
+    "kolory": {
+      "t": "Colori",
+      "co": "Scegli il colore della schermatura e del telaio.",
+      "poco": "La finestra sullo schermo sembra quella vera."
+    },
+    "okno": {
+      "t": "Finestra",
+      "co": "Quante ante ha la finestra e quanto è grande nella scheda.",
+      "poco": "Ogni anta può avere il suo motore."
+    },
+    "czujniki": {
+      "t": "Sensori",
+      "co": "Scegli i sensori di apertura di finestra e porta.",
+      "poco": "La scheda mostra un'anta a ribalta o aperta, e il blocco non abbassa mai la schermatura su una finestra aperta."
+    },
+    "fotokomorka": {
+      "t": "Fotocellula",
+      "co": "Scegli il sensore di ostacolo del cancello e lo stato che significa «c'è qualcosa nel cancello».",
+      "poco": "La scheda mostra l'ostacolo e ricevi una notifica. La fotocellula della centralina continua a fermare il cancello da sola."
+    },
+    "silnik": {
+      "t": "Motore",
+      "co": "Inserisci il tempo di corsa completa o lascia 0.",
+      "poco": "Il disegno si muove veloce come il motore vero. Con 0 la scheda impara il tempo da sola dopo qualche movimento."
+    },
+    "pogoda": {
+      "t": "Meteo",
+      "co": "Scegli il meteo e i sensori esterni.",
+      "poco": "Dietro il vetro si vede il meteo reale, e l'automazione protegge la schermatura da vento, pioggia e sole."
+    },
+    "domownicy": {
+      "t": "Abitanti",
+      "co": "Scegli sensori di presenza, movimento e degli abitanti.",
+      "poco": "La schermatura può reagire se qualcuno è nella stanza o in casa."
+    },
+    "automatyka": {
+      "t": "Automazione",
+      "co": "Attiva le funzioni che possono muovere la schermatura da sole.",
+      "poco": "La casa si occupa delle schermature senza scrivere automazioni. È tutto spento finché non lo attivi."
+    },
+    "ustawienia": {
+      "t": "Impostazioni",
+      "co": "Regola le funzioni attive.",
+      "poco": "I valori predefiniti vanno bene per la maggior parte delle case."
+    },
+    "powiadomienia": {
+      "t": "Notifiche",
+      "co": "Scegli di cosa essere avvisato.",
+      "poco": "Sai subito quale dispositivo ha un problema. Le notifiche arrivano in HA e, se vuoi, sul telefono."
+    },
+    "panel": {
+      "t": "Plancia",
+      "co": "Su quale plancia aggiungere la scheda.",
+      "poco": "La scheda compare da sola, niente da cliccare."
+    }
+  },
+  "pola": {
+    "tryb": "Modalità",
+    "kopiuj_z": "Copia impostazioni da un altro dispositivo",
+    "mam": "In casa ho",
+    "rolety": "Motore (una o due entità)",
+    "name": "Nome",
+    "pokoj": "Stanza",
+    "rodzaj_pokoju": "Tipo di stanza (per i consigli)",
+    "oslona": "Tipo",
+    "lamele_kat": "Angolo lamelle al sole",
+    "lamele_tryb": "Comando lamelle",
+    "lamele_noc": "Angolo lamelle di notte",
+    "kolor": "Colore schermatura",
+    "rama": "Colore telaio",
+    "kolor_wlasny": "Colore schermatura personalizzato",
+    "rama_wlasna": "Colore telaio personalizzato",
+    "skrzydla": "Ante",
+    "wysokosc": "Altezza nella scheda",
+    "odwroc": "Percentuali invertite",
+    "czujnik_lewe": "Sensore anta sinistra",
+    "tryb_lewe": "Anta sinistra",
+    "czujnik_prawe": "Sensore anta destra",
+    "tryb_prawe": "Anta destra",
+    "czujnik_drzwi": "Sensore porta finestra",
+    "czujnik_przeszkoda": "Sensore ostacolo alla porta",
+    "czujnik_foto": "Fotocellula (sensore ostacolo)",
+    "foto_stan": "Ostacolo quando il sensore ha lo stato",
+    "czas": "Tempo di corsa completa",
+    "kalibruj": "Calibra ora (la schermatura sale, scende e sale)",
+    "predkosc_lewa": "Velocità motore – sinistro",
+    "predkosc_prawa": "Velocità motore – destro",
+    "brama_minuty": "Cancello aperto troppo a lungo dopo",
+    "pogoda": "Meteo",
+    "czujnik_temp": "Temperatura esterna",
+    "czujnik_temp_pokoj": "Temperatura della stanza",
+    "czujnik_jasnosc": "Luminosità o potenza fotovoltaica",
+    "czujnik_wiatr": "Anemometro",
+    "czujnik_deszcz": "Sensore pioggia",
+    "czujnik_drgania": "Sensore vibrazione tenda da sole",
+    "czujnik_ostrzezenia": "Allerte meteo (Meteoalarm)",
+    "czujnik_obecnosc": "Sensore di presenza (c'è qualcuno)",
+    "czujnik_ruch": "Sensore di movimento (qualcuno è entrato)",
+    "osoby": "Abitanti",
+    "czujnik_dym": "Rilevatore di fumo",
+    "czujnik_alarm": "Allarme",
+    "czujnik_swieta": "Giorno lavorativo (Workday)",
+    "powiadom": "Avvisami quando",
+    "powiadom_gdzie": "Invia anche a",
+    "na_panel": "Aggiungi la scheda a una plancia",
+    "wstecz": "Torna al passo precedente"
+  },
+  "pomoc": {
+    "kopiuj_z": "Vuoto = parti da zero.",
+    "rolety": "Per una finestra a due ante scegline due: prima la sinistra, poi la destra.",
+    "name": "Vuoto = nome del motore.",
+    "pokoj": "Il dispositivo va in questa stanza. Assist capirà «chiudi il soggiorno».",
+    "odwroc": "Attiva se il motore segnala 100 % con la schermatura chiusa.",
+    "czas": "0 = automatico: dalla velocità del motore, dalla calibrazione o dai movimenti reali.",
+    "foto_stan": "Di solito «on». Per un sensore di testo inserisci ad es. «obstructed».",
+    "czujnik_jasnosc": "Un luxmetro o la potenza fotovoltaica – invece della sola posizione del sole.",
+    "czujnik_swieta": "Integrazione Workday – i festivi contano come weekend.",
+    "powiadom_gdzie": "L'app HA sul telefono. Nessuna scelta – solo notifiche in HA.",
+    "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
+  },
+  "f": {
+    "harmonogram": [
+      "Programma",
+      "Apre al mattino e chiude la sera: a orari fissi o con alba e tramonto."
+    ],
+    "slonce": [
+      "Protezione solare",
+      "Abbassa la schermatura quando il sole entra da questa finestra e fa caldo."
+    ],
+    "blokada": [
+      "Blocco a finestra aperta",
+      "Non scende mai su una finestra aperta o a ribalta. Il movimento saltato avviene dopo la chiusura."
+    ],
+    "wiatr": [
+      "Vento",
+      "Ritira una schermatura esterna con vento forte."
+    ],
+    "obecnosc": [
+      "Presenza",
+      "Al mattino resta chiusa finché qualcuno non entra nella stanza."
+    ],
+    "wakacje": [
+      "Modalità vacanza",
+      "Apre e chiude ogni giorno a un orario un po' diverso, come se ci fosse qualcuno."
+    ],
+    "licznik": [
+      "Contatore motore",
+      "Conta movimenti e tempo di lavoro, ricorda di calibrare."
+    ],
+    "reczny": [
+      "Il manuale ha la precedenza",
+      "Se muovi la schermatura col telecomando o il pulsante, l'automazione aspetta."
+    ],
+    "posrednia": [
+      "Posizione intermedia",
+      "All'orario scelto la schermatura si ferma a metà."
+    ],
+    "dni": [
+      "Feriali e weekend",
+      "Orari diversi nel weekend e nei festivi."
+    ],
+    "wietrzenie": [
+      "Posizione di ventilazione",
+      "Con la finestra a ribalta la schermatura resta più alta per far passare l'aria."
+    ],
+    "drzwi": [
+      "Porta finestra",
+      "Con la porta aperta la schermatura non scende sotto la posizione scelta."
+    ],
+    "oslepianie": [
+      "Antiabbagliamento",
+      "Scende solo quanto basta perché il sole non arrivi oltre la TV o la scrivania."
+    ],
+    "zima": [
+      "Inverno ed estate",
+      "D'inverno apre al sole (calore gratis), d'estate fa ombra."
+    ],
+    "jasnosc": [
+      "Sensore di luminosità",
+      "Un luxmetro o i pannelli solari decidono sul sole."
+    ],
+    "temp_pokoj": [
+      "Temperatura della stanza",
+      "Fa ombra quando la stanza diventa troppo calda."
+    ],
+    "deszcz": [
+      "Pioggia",
+      "Ritira tenda da sole, screen e frangisole con la pioggia."
+    ],
+    "mroz": [
+      "Gelo",
+      "Col gelo la schermatura esterna non si muove per non congelarsi."
+    ],
+    "grad": [
+      "Grandine e allerte",
+      "In caso di allerta ritira le tende da sole e chiude le tapparelle per proteggere il vetro."
+    ],
+    "drgania": [
+      "Vibrazione tenda da sole",
+      "Ritira la tenda con una raffica forte."
+    ],
+    "upal": [
+      "Caldo domani",
+      "Se la previsione annuncia caldo, la schermatura scende al mattino prima che la stanza si scaldi."
+    ],
+    "dym": [
+      "Fumo",
+      "Con l'allarme fumo apre la schermatura – una via di fuga."
+    ],
+    "alarm": [
+      "Allarme",
+      "Chiude la schermatura quando l'allarme è inserito."
+    ],
+    "nikogo": [
+      "Nessuno in casa",
+      "Chiude la schermatura quando tutti escono."
+    ],
+    "przeszkoda": [
+      "Ostacolo alla porta",
+      "Non scende se il sensore vede qualcosa nel passaggio."
+    ],
+    "spie": [
+      "Modalità «Dormo»",
+      "Un interruttore sul dispositivo: la schermatura resta chiusa finché non lo spegni."
+    ],
+    "granice": [
+      "Limiti di corsa",
+      "La schermatura si muove solo nell'intervallo scelto, ad es. 10–90 %."
+    ],
+    "drobne": [
+      "Niente piccole correzioni",
+      "Salta i cambi di pochi punti percentuali."
+    ],
+    "po_kolei": [
+      "Uno dopo l'altro",
+      "Le schermature di casa si muovono a pochi secondi di distanza."
+    ],
+    "cisza": [
+      "Quiete dopo il riavvio",
+      "Dopo l'avvio di HA l'automazione aspetta qualche minuto."
+    ],
+    "proba": [
+      "Prova a vuoto",
+      "Mostra cosa farebbe l'automazione, senza muovere la schermatura."
+    ]
+  },
+  "parametry": {
+    "azymut": [
+      "Orientamento della finestra",
+      "Dove guarda la finestra: 90 est, 180 sud, 270 ovest."
+    ],
+    "szer_slonca": [
+      "Ampiezza del sole nella finestra",
+      "Quanti gradi a sinistra e a destra dell'orientamento il sole entra."
+    ],
+    "min_wys_slonca": [
+      "Altezza minima del sole",
+      "Alberi e case coprono un sole più basso."
+    ],
+    "slonce_temp": [
+      "Proteggi da",
+      "Temperatura esterna da cui la schermatura scende al sole."
+    ],
+    "slonce_poz": [
+      "Posizione al sole",
+      "0 % = chiusa."
+    ],
+    "harm_tryb": [
+      "Orari di apertura",
+      "Con alba e tramonto o a orari fissi."
+    ],
+    "przesuniecie": [
+      "Scostamento",
+      "Minuti dopo l'alba e prima del tramonto."
+    ],
+    "otworz": [
+      "Apri alle",
+      ""
+    ],
+    "zamknij": [
+      "Chiudi alle",
+      ""
+    ],
+    "otworz_weekend": [
+      "Nel weekend apri alle",
+      ""
+    ],
+    "zamknij_weekend": [
+      "Nel weekend chiudi alle",
+      ""
+    ],
+    "posrednia_godz": [
+      "Posizione intermedia dalle",
+      ""
+    ],
+    "posrednia_poz": [
+      "Posizione intermedia",
+      ""
+    ],
+    "wiatr_prog": [
+      "Ritira da vento di",
+      ""
+    ],
+    "mroz_prog": [
+      "Gelo da",
+      ""
+    ],
+    "upal_prog": [
+      "Caldo da",
+      "Temperatura massima della previsione."
+    ],
+    "temp_pokoj_prog": [
+      "Stanza troppo calda da",
+      ""
+    ],
+    "jasnosc_prog": [
+      "Luminoso da",
+      "Lux o watt dei pannelli solari."
+    ],
+    "obecnosc_rano": [
+      "Aspetta la presenza fino alle",
+      ""
+    ],
+    "wakacje_rozrzut": [
+      "Variazione degli orari",
+      "Più o meno questi minuti, ogni giorno diverso."
+    ],
+    "wietrzenie_poz": [
+      "Posizione di ventilazione",
+      ""
+    ],
+    "drzwi_min": [
+      "Con la porta aperta non più in basso di",
+      ""
+    ],
+    "granica_min": [
+      "Più in basso",
+      ""
+    ],
+    "granica_max": [
+      "Più in alto",
+      ""
+    ],
+    "drobne_prog": [
+      "Salta cambi minori di",
+      ""
+    ],
+    "reczny_min": [
+      "Dopo un movimento manuale aspetta",
+      ""
+    ],
+    "po_kolei_s": [
+      "Intervallo tra schermature",
+      ""
+    ],
+    "cisza_min": [
+      "Dopo l'avvio di HA aspetta",
+      ""
+    ],
+    "spie_poz": [
+      "Posizione in modalità «Dormo»",
+      ""
+    ],
+    "alarm_poz": [
+      "Posizione con allarme inserito",
+      ""
+    ],
+    "nikogo_poz": [
+      "Posizione quando non c'è nessuno",
+      ""
+    ],
+    "obiekt_odl_m": [
+      "Il sole arriva al massimo a",
+      "A che distanza dalla finestra sono la TV o la scrivania."
+    ],
+    "okno_wys_m": [
+      "Altezza della finestra",
+      ""
+    ]
+  },
+  "selector": {
+    "tryb": {
+      "podstawowy": "Base – poche domande semplici",
+      "zaawansowany": "Avanzata – tutte le opzioni"
+    },
+    "mam": {
+      "zew": "Schermatura esterna (tapparella, tenda da sole, screen)",
+      "lamele": "Schermatura con lamelle orientabili",
+      "brama": "Cancello o porta da garage",
+      "foto": "Fotocellula del cancello visibile in HA",
+      "okno": "Sensore finestra",
+      "drzwi": "Sensore porta finestra",
+      "obecnosc": "Sensore di presenza (c'è qualcuno)",
+      "ruch": "Sensore di movimento (qualcuno è entrato)",
+      "pogoda": "Meteo",
+      "temp": "Temperatura esterna",
+      "grupy": "Più dispositivi in casa",
+      "temp_pokoj": "Temperatura della stanza",
+      "jasnosc": "Luxmetro o pannelli solari",
+      "wiatr": "Anemometro",
+      "deszcz": "Sensore pioggia",
+      "drgania": "Sensore vibrazione tenda da sole",
+      "ostrzezenia": "Allerte meteo",
+      "dym": "Rilevatore di fumo",
+      "alarm": "Allarme",
+      "osoby": "Telefoni degli abitanti",
+      "przeszkoda": "Sensore ostacolo alla porta"
+    },
+    "pokoje": {
+      "salon": "Soggiorno",
+      "sypialnia": "Camera da letto",
+      "kuchnia": "Cucina",
+      "dziecko": "Cameretta",
+      "gabinet": "Studio",
+      "lazienka": "Bagno",
+      "jadalnia": "Sala da pranzo",
+      "przedpokoj": "Ingresso",
+      "inny": "Altro"
+    },
+    "skrzydla": {
+      "1": "Un'anta",
+      "2": "Due ante"
+    },
+    "tryby": {
+      "uchyl": "A ribalta",
+      "otworz": "Si apre"
+    },
+    "lamele_tryb": {
+      "auto": "Automatico (sole, notte)",
+      "staly": "Sempre lo stesso angolo",
+      "nocny": "Solo di notte"
+    },
+    "harm_tryb": {
+      "slonce": "Alba e tramonto",
+      "godziny": "Orari fissi"
+    },
+    "powiadomienia": {
+      "nie_odpowiada": "Non risponde",
+      "nie_dojechala": "Non ha raggiunto la posizione",
+      "bateria": "Batteria scarica nel motore o nel sensore",
+      "czujnik": "Sensore non disponibile",
+      "automatyka": "Problema dell'automazione (blocco, errore, calibrazione)",
+      "brama_otwarta": "Cancello aperto troppo a lungo",
+      "brama_niedomknieta": "Il cancello non si è chiuso",
+      "przeszkoda": "Ostacolo nel cancello"
+    },
+    "kroki": {
+      "tryb": "Modalità",
+      "mam": "Cosa hai",
+      "urzadzenie": "Dispositivo",
+      "rodzaj": "Tipo",
+      "lamele": "Lamelle",
+      "kolory": "Colori",
+      "okno": "Finestra",
+      "czujniki": "Sensori",
+      "fotokomorka": "Fotocellula",
+      "silnik": "Motore",
+      "pogoda": "Meteo",
+      "domownicy": "Abitanti",
+      "automatyka": "Automazione",
+      "ustawienia": "Impostazioni",
+      "powiadomienia": "Notifiche",
+      "panel": "Plancia"
+    },
+    "porady": {
+      "ogolne_tryb": "Non sai? Scegli Base. Puoi sempre cambiare.",
+      "ogolne_mam": "Non sai se hai qualcosa? Lascia come l'ha spuntato la procedura.",
+      "ogolne_kolory": "Il colore è solo sullo schermo, non cambia nulla nella schermatura.",
+      "ogolne_okno": "Due ante con una tapparella? Scegli «Due ante» e un motore.",
+      "ogolne_silnik": "Lascia 0 – la scheda misura il tempo da sola dopo qualche movimento.",
+      "ogolne_pogoda": "Basta un'entità meteo. Un anemometro protegge con più precisione.",
+      "ogolne_automatyka": "Inizia con una funzione e guarda come lavora. Il sensore «Motivo» mostra perché la schermatura si è mossa.",
+      "ogolne_lamele": "Un angolo di 45° fa entrare luce senza che il sole entri diretto nella stanza.",
+      "ogolne_fotokomorka": "Niente fotocellula in HA? Il cancello funziona uguale, solo la scheda non sa dell'ostacolo.",
+      "sypialnia_rodzaj": "In camera da letto è meglio una tenda oscurante o giorno-notte. La luce del mattino non ti sveglia.",
+      "sypialnia_automatyka": "Consigliamo il programma (alba al mattino, tramonto la sera) e il blocco finestra se dormi con la finestra a ribalta.",
+      "sypialnia_czujniki": "In camera la finestra è spesso a ribalta di notte. Imposta «A ribalta».",
+      "salon_rodzaj": "In soggiorno si sceglie spesso giorno-notte o plissé – fanno passare la luce e coprono la vista dalla strada.",
+      "salon_automatyka": "Consigliamo la protezione solare. Con un sensore di presenza la schermatura si apre quando qualcuno entra al mattino.",
+      "kuchnia_rodzaj": "In cucina va bene un rullo a cassonetto o una veneziana in alluminio – facili da pulire.",
+      "kuchnia_automatyka": "Consigliamo il blocco a finestra aperta – cucinando la finestra è spesso aperta.",
+      "dziecko_rodzaj": "Nella cameretta una tenda oscurante aiuta per il riposino.",
+      "dziecko_automatyka": "Consigliamo il programma notturno e il blocco finestra.",
+      "gabinet_rodzaj": "Nello studio una veneziana o uno screen riducono i riflessi sul monitor.",
+      "gabinet_automatyka": "Consigliamo l'antiabbagliamento – la schermatura scende solo quanto serve.",
+      "lazienka_rodzaj": "Per il bagno scegli una schermatura resistente all'umidità: veneziana in alluminio o plissé.",
+      "lazienka_automatyka": "Consigliamo il blocco finestra – dopo il bagno la finestra è spesso aperta."
+    }
+  },
+  "bramy": {
+    "przesuwna": "Cancello scorrevole",
+    "skrzydlowa": "Cancello a battente",
+    "segmentowa": "Porta sezionale",
+    "uchylna": "Porta basculante",
+    "roletowa": "Porta avvolgibile"
+  },
+  "oslony_nowe": {
+    "pionowa": "Tenda verticale",
+    "zaslona": "Tenda laterale"
+  },
+  "bledy": {
+    "brak_rolety": "Scegli un motore.",
+    "za_duzo": "Scegli al massimo due motori (anta sinistra e destra)."
+  },
+  "encje": {
+    "kalibruj": "Calibra",
+    "wznow": "Riprendi automazione",
+    "powod": "Motivo del movimento",
+    "ruchy": "Movimenti del motore",
+    "czas_pracy": "Tempo di lavoro del motore",
+    "automatyka": "Automazione",
+    "pauza": "Pausa per oggi",
+    "spie": "Dormo",
+    "wakacje": "Modalità vacanza"
+  },
+  "powody": {
+    "brak": "Nessuna automazione",
+    "wylaczona": "Automazione spenta",
+    "cisza": "Quiete dopo il riavvio",
+    "dym": "Fumo – aperta",
+    "wiatr": "Vento – ritirata",
+    "drgania": "Vibrazione – ritirata",
+    "grad": "Allerta – protetta",
+    "deszcz": "Pioggia – ritirata",
+    "mroz": "Gelo – ferma",
+    "pauza": "In pausa",
+    "reczny": "Manuale – pausa",
+    "alarm": "Allarme",
+    "spie": "Dormo",
+    "nikogo": "Nessuno in casa",
+    "wakacje": "Vacanza – giorno",
+    "wakacje_noc": "Vacanza – notte",
+    "harm_dzien": "Programma – giorno",
+    "harm_noc": "Programma – notte",
+    "posrednia": "Posizione intermedia",
+    "obecnosc": "Qualcuno è nella stanza",
+    "czeka_obecnosc": "Aspetta che qualcuno entri",
+    "zima_noc": "Inverno – notte",
+    "zima_slonce": "Inverno – il sole scalda",
+    "slonce": "Sole nella finestra",
+    "jasnosc": "Luminoso",
+    "temp_pokoj": "Stanza troppo calda",
+    "upal": "Caldo",
+    "oslepianie": "Abbagliamento",
+    "przeszkoda": "Ostacolo",
+    "drzwi": "Porta aperta",
+    "wietrzenie": "Ventilazione",
+    "blokada": "Finestra aperta – bloccata"
+  },
+  "komunikaty": {
+    "tytul": "{nazwa} – problema",
+    "nie_odpowiada": "{nazwa}: il motore non risponde ({encje}). Controlla alimentazione o copertura.",
+    "nie_dojechala": "{nazwa}: doveva arrivare al {cel} %, ma è al {jest} %.",
+    "bateria": "{nazwa}: batteria scarica – {lista}.",
+    "czujnik": "{nazwa}: sensore non disponibile – {lista}.",
+    "automatyka": "{nazwa}: l'automazione non ha mosso la schermatura – {powod}.",
+    "kalibracja": "{nazwa}: il motore ha fatto {ruchy} movimenti dalla calibrazione. Premi «Calibra» sul dispositivo.",
+    "brama_otwarta": "{nazwa}: il cancello è aperto da più di {minuty} min.",
+    "brama_niedomknieta": "{nazwa}: il cancello non si è chiuso.",
+    "przeszkoda": "{nazwa}: c'è qualcosa nel cancello (fotocellula).",
+    "nie_motor_ha": "Questo non è un dispositivo Motor HA."
+  },
+  "uslugi": {
+    "wstrzymaj": [
+      "Metti in pausa l'automazione",
+      "L'automazione non muove il dispositivo per il tempo indicato (vuoto = fino a fine giornata).",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ],
+        "minuty": [
+          "Minuti",
+          "Vuoto = fino a fine giornata."
+        ]
+      }
+    ],
+    "wznow": [
+      "Riprendi l'automazione",
+      "Termina la pausa e controlla subito dove deve stare la schermatura.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ]
+      }
+    ],
+    "przelicz": [
+      "Controlla ora",
+      "L'automazione ricalcola subito la posizione.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ]
+      }
+    ],
+    "kalibruj": [
+      "Calibra",
+      "Misura il tempo di corsa reale.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ]
+      }
+    ],
+    "ustaw": [
+      "Imposta posizione",
+      "Imposta la posizione (e le lamelle) come l'automazione – senza pausa da movimento manuale.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ],
+        "pozycja": [
+          "Posizione",
+          "100 = aperta."
+        ],
+        "lamele": [
+          "Lamelle",
+          "Angolo delle lamelle."
+        ]
+      }
+    ]
+  },
+  "naprawa": {
+    "t": "Motor HA {wersja} – riavvia",
+    "o": "La nuova versione è installata. Clicca «Invia» per riavviare Home Assistant."
+  },
+  "przeniesione": {
+    "t": "Motor HA 2.0 – finestre trasferite",
+    "o": "{ile} finestre sono state trasferite dalla versione precedente (Okno HA 1.x). Ora funzionano come nuovi dispositivi Motor HA con le stesse impostazioni. Le vecchie voci sono solo disattivate: puoi eliminarle in Impostazioni → Dispositivi e servizi → Okno HA. L’automazione resta spenta finché non la attivi in «Configura»."
+  }
+}

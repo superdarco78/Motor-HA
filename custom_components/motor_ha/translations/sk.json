@@ -1,0 +1,1161 @@
+{
+  "title": "Motor HA",
+  "config": {
+    "step": {
+      "tryb": {
+        "title": "Krok {nr} z {z}: Režim sprievodcu",
+        "description": "{pasek}\n\n**Čo:** Vyberte, koľko otázok chcete vidieť.\n\n**Prečo:** Základný väčšine ľudí stačí. Pokročilý ukáže všetky možnosti a ďalšie zariadenia. Režim neskôr zmeníte v „Nastaviť“.{porada}",
+        "data": {
+          "tryb": "Režim",
+          "kopiuj_z": "Skopírovať nastavenia z iného zariadenia",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "kopiuj_z": "Prázdne = začať od nuly.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "mam": {
+        "title": "Krok {nr} z {z}: Čo máte doma",
+        "description": "{pasek}\n\n**Čo:** Zaškrtnite, čo máte. Sprievodca prehľadal Home Assistant a zaškrtol, čo našiel.\n\n**Prečo:** Sprievodca ukáže len kroky a funkcie pre zaškrtnuté zariadenia. Zvyšok pridáte neskôr v „Nastaviť“.\n\nNájdené: {znalezione}{porada}",
+        "data": {
+          "mam": "Doma mám",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "urzadzenie": {
+        "title": "Krok {nr} z {z}: Zariadenie",
+        "description": "{pasek}\n\n**Čo:** Vyberte motor (tienenie alebo bránu), pomenujte ho a vyberte miestnosť.\n\n**Prečo:** Motor HA ovláda tento motor a vďaka miestnosti môžete hovoriť s Assist, napr. „zatiahni obývačku“.{porada}",
+        "data": {
+          "rolety": "Motor (jedna alebo dve entity)",
+          "name": "Názov",
+          "pokoj": "Miestnosť",
+          "rodzaj_pokoju": "Druh miestnosti (pre tipy)",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "rolety": "Pre okno s dvoma krídlami vyberte dve: najprv ľavé, potom pravé.",
+          "name": "Prázdne = názov motora.",
+          "pokoj": "Zariadenie pôjde do tejto miestnosti. Assist potom rozumie „zatiahni obývačku“.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "rodzaj": {
+        "title": "Krok {nr} z {z}: Druh",
+        "description": "{pasek}\n\n**Čo:** Vyberte presne, čo máte.\n\n**Prečo:** Karta toto zariadenie nakreslí a automatika vie, čo môže použiť.{porada}",
+        "data": {
+          "oslona": "Druh",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "lamele": {
+        "title": "Krok {nr} z {z}: Lamely",
+        "description": "{pasek}\n\n**Čo:** Nastavte natáčanie lamiel.\n\n**Prečo:** Pustíte dnu svetlo bez vyťahovania žalúzie.{porada}",
+        "data": {
+          "lamele_kat": "Uhol lamiel na slnku",
+          "lamele_tryb": "Ovládanie lamiel",
+          "lamele_noc": "Uhol lamiel v noci",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "kolory": {
+        "title": "Krok {nr} z {z}: Farby",
+        "description": "{pasek}\n\n**Čo:** Vyberte farbu tienenia a rámu.\n\n**Prečo:** Okno na obrazovke vyzerá ako skutočné.{porada}",
+        "data": {
+          "kolor": "Farba tienenia",
+          "rama": "Farba rámu",
+          "kolor_wlasny": "Vlastná farba tienenia",
+          "rama_wlasna": "Vlastná farba rámu",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "okno": {
+        "title": "Krok {nr} z {z}: Okno",
+        "description": "{pasek}\n\n**Čo:** Koľko krídel má okno a aké veľké je na karte.\n\n**Prečo:** Každé krídlo môže mať vlastný motor.{porada}",
+        "data": {
+          "skrzydla": "Krídla",
+          "wysokosc": "Výška na karte",
+          "odwroc": "Obrátené percentá",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "odwroc": "Zapnite, keď motor hlási 100 % pri zatvorenom tienení.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "czujniki": {
+        "title": "Krok {nr} z {z}: Snímače",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače otvorenia okna a dverí.\n\n**Prečo:** Karta ukáže vyklopené alebo otvorené krídlo a blokovanie nikdy nespustí tienenie na otvorené okno.{porada}",
+        "data": {
+          "czujnik_lewe": "Snímač ľavého krídla",
+          "tryb_lewe": "Ľavé krídlo",
+          "czujnik_prawe": "Snímač pravého krídla",
+          "tryb_prawe": "Pravé krídlo",
+          "czujnik_drzwi": "Snímač terasových dverí",
+          "czujnik_przeszkoda": "Snímač prekážky pri dverách",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "fotokomorka": {
+        "title": "Krok {nr} z {z}: Fotobunka",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímač prekážky brány a stav, ktorý znamená „niečo stojí v bráne“.\n\n**Prečo:** Karta ukáže prekážku a dostanete upozornenie. Fotobunka v riadiacej jednotke bránu ďalej zastaví sama.{porada}",
+        "data": {
+          "czujnik_foto": "Fotobunka (snímač prekážky)",
+          "foto_stan": "Prekážka, keď má snímač stav",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "foto_stan": "Zvyčajne „on“. Pri textovom snímači zadajte napr. „obstructed“.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "silnik": {
+        "title": "Krok {nr} z {z}: Motor",
+        "description": "{pasek}\n\n**Čo:** Zadajte čas celého prejazdu alebo nechajte 0.\n\n**Prečo:** Kresba ide tak rýchlo ako skutočný motor. Pri 0 sa karta čas naučí sama po niekoľkých pohyboch.{porada}",
+        "data": {
+          "czas": "Čas celého prejazdu",
+          "kalibruj": "Kalibrovať teraz (tienenie pôjde hore, dole a hore)",
+          "predkosc_lewa": "Rýchlosť motora – ľavý",
+          "predkosc_prawa": "Rýchlosť motora – pravý",
+          "brama_minuty": "Brána otvorená príliš dlho po",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czas": "0 = automaticky: z rýchlosti motora, kalibrácie alebo skutočných pohybov.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "pogoda": {
+        "title": "Krok {nr} z {z}: Počasie",
+        "description": "{pasek}\n\n**Čo:** Vyberte počasie a vonkajšie snímače.\n\n**Prečo:** Za sklom vidno skutočné počasie a automatika chráni tienenie pred vetrom, dažďom a slnkom.{porada}",
+        "data": {
+          "pogoda": "Počasie",
+          "czujnik_temp": "Vonkajšia teplota",
+          "czujnik_temp_pokoj": "Teplota v miestnosti",
+          "czujnik_jasnosc": "Jas alebo výkon fotovoltiky",
+          "czujnik_wiatr": "Anemometer",
+          "czujnik_deszcz": "Snímač dažďa",
+          "czujnik_drgania": "Snímač vibrácií markízy",
+          "czujnik_ostrzezenia": "Výstrahy počasia (SHMÚ, Meteoalarm)",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "Luxmeter alebo výkon fotovoltiky – namiesto samotnej polohy slnka.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "domownicy": {
+        "title": "Krok {nr} z {z}: Obyvatelia",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače prítomnosti, pohybu a obyvateľov.\n\n**Prečo:** Tienenie môže reagovať na to, či je niekto v miestnosti alebo doma.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Snímač prítomnosti (niekto je tu)",
+          "czujnik_ruch": "Snímač pohybu (niekto vošiel)",
+          "osoby": "Obyvatelia",
+          "czujnik_dym": "Dymový snímač",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Pracovný deň (Workday)",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czujnik_swieta": "Integrácia Workday – sviatky sa rátajú ako víkend.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "automatyka": {
+        "title": "Krok {nr} z {z}: Automatika",
+        "description": "{pasek}\n\n**Čo:** Zapnite funkcie, ktoré smú tienením hýbať samy.\n\n**Prečo:** Dom sa o tienenie stará bez písania automatizácií. Všetko je vypnuté, kým to nezapnete.{porada}",
+        "data": {
+          "f_harmonogram": "Plán",
+          "f_slonce": "Ochrana pred slnkom",
+          "f_blokada": "Blokovanie pri otvorenom okne",
+          "f_wiatr": "Vietor",
+          "f_obecnosc": "Prítomnosť",
+          "f_wakacje": "Režim dovolenky",
+          "f_licznik": "Počítadlo motora",
+          "f_reczny": "Ručný pohyb má prednosť",
+          "f_posrednia": "Medzipoloha",
+          "f_dni": "Pracovné dni a víkend",
+          "f_wietrzenie": "Poloha vetrania",
+          "f_drzwi": "Terasové dvere",
+          "f_oslepianie": "Ochrana pred oslnením",
+          "f_zima": "Zima a leto",
+          "f_jasnosc": "Snímač jasu",
+          "f_temp_pokoj": "Teplota v miestnosti",
+          "f_deszcz": "Dážď",
+          "f_mroz": "Mráz",
+          "f_grad": "Krupobitie a výstrahy",
+          "f_drgania": "Vibrácie markízy",
+          "f_upal": "Zajtra horúco",
+          "f_dym": "Dym",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Nikto doma",
+          "f_przeszkoda": "Prekážka pri dverách",
+          "f_spie": "Režim „Spím“",
+          "f_granice": "Hranice pohybu",
+          "f_drobne": "Bez drobných opráv",
+          "f_po_kolei": "Postupne, nie naraz",
+          "f_cisza": "Pokoj po reštarte",
+          "f_proba": "Skúška naprázdno",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "f_harmonogram": "Ráno otvorí a večer zatvorí: v pevné časy alebo s východom a západom slnka.",
+          "f_slonce": "Spustí tienenie, keď slnko svieti do tohto okna a je teplo.",
+          "f_blokada": "Nikdy nespustí na otvorené alebo vyklopené okno. Vynechaný pohyb prebehne po zatvorení.",
+          "f_wiatr": "Pri silnom vetre zatiahne vonkajšie tienenie.",
+          "f_obecnosc": "Ráno zostane zatvorené, kým niekto nevojde do miestnosti.",
+          "f_wakacje": "Každý deň otvára a zatvára v trochu inom čase, akoby bol niekto doma.",
+          "f_licznik": "Počíta pohyby a čas chodu, pripomenie kalibráciu.",
+          "f_reczny": "Keď pohnete tienením ovládačom alebo tlačidlom, automatika počká.",
+          "f_posrednia": "Vo zvolenom čase sa tienenie zastaví v polovici.",
+          "f_dni": "Vlastné časy cez víkend a sviatky.",
+          "f_wietrzenie": "Pri vyklopenom okne zostane tienenie vyššie, aby prúdil vzduch.",
+          "f_drzwi": "Pri otvorených dverách nezíde tienenie nižšie ako zvolená poloha.",
+          "f_oslepianie": "Zíde len toľko, aby slnko nedosiahlo ďalej ako k televízoru alebo stolu.",
+          "f_zima": "V zime na slnku odkryje (teplo zadarmo), v lete zatieni.",
+          "f_jasnosc": "O slnku rozhoduje luxmeter alebo fotovoltika.",
+          "f_temp_pokoj": "Zatieni, keď je v miestnosti príliš teplo.",
+          "f_deszcz": "Za dažďa zatiahne markízu, screen a vonkajšiu žalúziu.",
+          "f_mroz": "Pri mraze sa vonkajšie tienenie nehýbe, aby neprimrzlo.",
+          "f_grad": "Pri výstrahe zatiahne markízy a zatvorí rolety na ochranu skla.",
+          "f_drgania": "Pri silnom nápore vetra zatiahne markízu.",
+          "f_upal": "Keď predpoveď hlási horúčavu, tienenie zíde ráno, kým sa miestnosť zohreje.",
+          "f_dym": "Pri dymovom alarme otvorí tienenie – úniková cesta.",
+          "f_alarm": "Po zakódovaní alarmu zatvorí tienenie.",
+          "f_nikogo": "Keď všetci odídu, zatvorí tienenie.",
+          "f_przeszkoda": "Nezíde, keď snímač vidí niečo v priechode.",
+          "f_spie": "Vypínač na zariadení: tienenie zostane zatvorené, kým ho nevypnete.",
+          "f_granice": "Tienenie jazdí len vo zvolenom rozsahu, napr. 10–90 %.",
+          "f_drobne": "Vynechá zmeny o pár percent.",
+          "f_po_kolei": "Tienenia v dome idú s odstupom niekoľkých sekúnd.",
+          "f_cisza": "Po štarte HA automatika niekoľko minút počká.",
+          "f_proba": "Ukáže, čo by automatika urobila, ale tienením nepohne.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "ustawienia": {
+        "title": "Krok {nr} z {z}: Nastavenia",
+        "description": "{pasek}\n\n**Čo:** Upravte zapnuté funkcie.\n\n**Prečo:** Predvolené hodnoty sedia väčšine domov.{porada}",
+        "data": {
+          "azymut": "Smer okna",
+          "szer_slonca": "Šírka slnka v okne",
+          "min_wys_slonca": "Minimálna výška slnka",
+          "slonce_temp": "Chrániť od teploty",
+          "slonce_poz": "Poloha na slnku",
+          "harm_tryb": "Časy otvárania",
+          "przesuniecie": "Posun",
+          "otworz": "Otvoriť o",
+          "zamknij": "Zatvoriť o",
+          "otworz_weekend": "Cez víkend otvoriť o",
+          "zamknij_weekend": "Cez víkend zatvoriť o",
+          "posrednia_godz": "Medzipoloha od",
+          "posrednia_poz": "Medzipoloha",
+          "wiatr_prog": "Zatiahnuť od vetra",
+          "mroz_prog": "Mráz od",
+          "upal_prog": "Horúčava od",
+          "temp_pokoj_prog": "Príliš teplo v miestnosti od",
+          "jasnosc_prog": "Jasno od",
+          "obecnosc_rano": "Čakať na prítomnosť do",
+          "wakacje_rozrzut": "Rozptyl časov",
+          "wietrzenie_poz": "Poloha vetrania",
+          "drzwi_min": "Pri otvorených dverách nie nižšie ako",
+          "granica_min": "Najnižšie",
+          "granica_max": "Najvyššie",
+          "drobne_prog": "Vynechať zmeny menšie ako",
+          "reczny_min": "Po ručnom pohybe čakať",
+          "po_kolei_s": "Odstup medzi tieneniami",
+          "cisza_min": "Po štarte HA čakať",
+          "spie_poz": "Poloha v režime „Spím“",
+          "alarm_poz": "Poloha pri alarme",
+          "nikogo_poz": "Poloha, keď nikto nie je doma",
+          "obiekt_odl_m": "Slnko najďalej po",
+          "okno_wys_m": "Výška okna",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "azymut": "Kam okno smeruje: 90 východ, 180 juh, 270 západ.",
+          "szer_slonca": "Koľko stupňov vľavo a vpravo od smeru okna svieti slnko dnu.",
+          "min_wys_slonca": "Nižšie slnko zakryjú stromy a domy.",
+          "slonce_temp": "Vonkajšej, od ktorej tienenie na slnku zíde.",
+          "slonce_poz": "0 % = zatvorené.",
+          "harm_tryb": "S východom a západom slnka alebo v pevné časy.",
+          "przesuniecie": "Minúty po východe a pred západom slnka.",
+          "upal_prog": "Najvyššia teplota v predpovedi.",
+          "jasnosc_prog": "Luxy alebo watty z fotovoltiky.",
+          "wakacje_rozrzut": "Plus mínus toľko minút, každý deň inak.",
+          "obiekt_odl_m": "Ako ďaleko od okna stojí televízor alebo stôl.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "powiadomienia": {
+        "title": "Krok {nr} z {z}: Upozornenia",
+        "description": "{pasek}\n\n**Čo:** Vyberte, o čom vám dať vedieť.\n\n**Prečo:** Hneď viete, ktoré zariadenie má problém. Upozornenia prídu do HA a, ak chcete, do telefónu.{porada}",
+        "data": {
+          "powiadom": "Upozorni ma, keď",
+          "powiadom_gdzie": "Poslať aj na",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "powiadom_gdzie": "Aplikácia HA v telefóne. Nič nevybrané – len upozornenia v HA.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "panel": {
+        "title": "Krok {nr} z {z}: Panel",
+        "description": "{pasek}\n\n**Čo:** Na ktorý panel pridať kartu.\n\n**Prečo:** Karta sa objaví sama, nič nemusíte klikať.{porada}",
+        "data": {
+          "na_panel": "Pridať kartu na panel",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Vyberte motor.",
+      "za_duzo": "Vyberte najviac dva motory (ľavé a pravé krídlo)."
+    }
+  },
+  "options": {
+    "step": {
+      "tryb": {
+        "title": "Krok {nr} z {z}: Režim sprievodcu",
+        "description": "{pasek}\n\n**Čo:** Vyberte, koľko otázok chcete vidieť.\n\n**Prečo:** Základný väčšine ľudí stačí. Pokročilý ukáže všetky možnosti a ďalšie zariadenia. Režim neskôr zmeníte v „Nastaviť“.{porada}",
+        "data": {
+          "tryb": "Režim",
+          "kopiuj_z": "Skopírovať nastavenia z iného zariadenia",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "kopiuj_z": "Prázdne = začať od nuly.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "mam": {
+        "title": "Krok {nr} z {z}: Čo máte doma",
+        "description": "{pasek}\n\n**Čo:** Zaškrtnite, čo máte. Sprievodca prehľadal Home Assistant a zaškrtol, čo našiel.\n\n**Prečo:** Sprievodca ukáže len kroky a funkcie pre zaškrtnuté zariadenia. Zvyšok pridáte neskôr v „Nastaviť“.\n\nNájdené: {znalezione}{porada}",
+        "data": {
+          "mam": "Doma mám",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "urzadzenie": {
+        "title": "Krok {nr} z {z}: Zariadenie",
+        "description": "{pasek}\n\n**Čo:** Vyberte motor (tienenie alebo bránu), pomenujte ho a vyberte miestnosť.\n\n**Prečo:** Motor HA ovláda tento motor a vďaka miestnosti môžete hovoriť s Assist, napr. „zatiahni obývačku“.{porada}",
+        "data": {
+          "rolety": "Motor (jedna alebo dve entity)",
+          "name": "Názov",
+          "pokoj": "Miestnosť",
+          "rodzaj_pokoju": "Druh miestnosti (pre tipy)",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "rolety": "Pre okno s dvoma krídlami vyberte dve: najprv ľavé, potom pravé.",
+          "name": "Prázdne = názov motora.",
+          "pokoj": "Zariadenie pôjde do tejto miestnosti. Assist potom rozumie „zatiahni obývačku“.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "rodzaj": {
+        "title": "Krok {nr} z {z}: Druh",
+        "description": "{pasek}\n\n**Čo:** Vyberte presne, čo máte.\n\n**Prečo:** Karta toto zariadenie nakreslí a automatika vie, čo môže použiť.{porada}",
+        "data": {
+          "oslona": "Druh",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "lamele": {
+        "title": "Krok {nr} z {z}: Lamely",
+        "description": "{pasek}\n\n**Čo:** Nastavte natáčanie lamiel.\n\n**Prečo:** Pustíte dnu svetlo bez vyťahovania žalúzie.{porada}",
+        "data": {
+          "lamele_kat": "Uhol lamiel na slnku",
+          "lamele_tryb": "Ovládanie lamiel",
+          "lamele_noc": "Uhol lamiel v noci",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "kolory": {
+        "title": "Krok {nr} z {z}: Farby",
+        "description": "{pasek}\n\n**Čo:** Vyberte farbu tienenia a rámu.\n\n**Prečo:** Okno na obrazovke vyzerá ako skutočné.{porada}",
+        "data": {
+          "kolor": "Farba tienenia",
+          "rama": "Farba rámu",
+          "kolor_wlasny": "Vlastná farba tienenia",
+          "rama_wlasna": "Vlastná farba rámu",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "okno": {
+        "title": "Krok {nr} z {z}: Okno",
+        "description": "{pasek}\n\n**Čo:** Koľko krídel má okno a aké veľké je na karte.\n\n**Prečo:** Každé krídlo môže mať vlastný motor.{porada}",
+        "data": {
+          "skrzydla": "Krídla",
+          "wysokosc": "Výška na karte",
+          "odwroc": "Obrátené percentá",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "odwroc": "Zapnite, keď motor hlási 100 % pri zatvorenom tienení.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "czujniki": {
+        "title": "Krok {nr} z {z}: Snímače",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače otvorenia okna a dverí.\n\n**Prečo:** Karta ukáže vyklopené alebo otvorené krídlo a blokovanie nikdy nespustí tienenie na otvorené okno.{porada}",
+        "data": {
+          "czujnik_lewe": "Snímač ľavého krídla",
+          "tryb_lewe": "Ľavé krídlo",
+          "czujnik_prawe": "Snímač pravého krídla",
+          "tryb_prawe": "Pravé krídlo",
+          "czujnik_drzwi": "Snímač terasových dverí",
+          "czujnik_przeszkoda": "Snímač prekážky pri dverách",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "fotokomorka": {
+        "title": "Krok {nr} z {z}: Fotobunka",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímač prekážky brány a stav, ktorý znamená „niečo stojí v bráne“.\n\n**Prečo:** Karta ukáže prekážku a dostanete upozornenie. Fotobunka v riadiacej jednotke bránu ďalej zastaví sama.{porada}",
+        "data": {
+          "czujnik_foto": "Fotobunka (snímač prekážky)",
+          "foto_stan": "Prekážka, keď má snímač stav",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "foto_stan": "Zvyčajne „on“. Pri textovom snímači zadajte napr. „obstructed“.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "silnik": {
+        "title": "Krok {nr} z {z}: Motor",
+        "description": "{pasek}\n\n**Čo:** Zadajte čas celého prejazdu alebo nechajte 0.\n\n**Prečo:** Kresba ide tak rýchlo ako skutočný motor. Pri 0 sa karta čas naučí sama po niekoľkých pohyboch.{porada}",
+        "data": {
+          "czas": "Čas celého prejazdu",
+          "kalibruj": "Kalibrovať teraz (tienenie pôjde hore, dole a hore)",
+          "predkosc_lewa": "Rýchlosť motora – ľavý",
+          "predkosc_prawa": "Rýchlosť motora – pravý",
+          "brama_minuty": "Brána otvorená príliš dlho po",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czas": "0 = automaticky: z rýchlosti motora, kalibrácie alebo skutočných pohybov.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "pogoda": {
+        "title": "Krok {nr} z {z}: Počasie",
+        "description": "{pasek}\n\n**Čo:** Vyberte počasie a vonkajšie snímače.\n\n**Prečo:** Za sklom vidno skutočné počasie a automatika chráni tienenie pred vetrom, dažďom a slnkom.{porada}",
+        "data": {
+          "pogoda": "Počasie",
+          "czujnik_temp": "Vonkajšia teplota",
+          "czujnik_temp_pokoj": "Teplota v miestnosti",
+          "czujnik_jasnosc": "Jas alebo výkon fotovoltiky",
+          "czujnik_wiatr": "Anemometer",
+          "czujnik_deszcz": "Snímač dažďa",
+          "czujnik_drgania": "Snímač vibrácií markízy",
+          "czujnik_ostrzezenia": "Výstrahy počasia (SHMÚ, Meteoalarm)",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "Luxmeter alebo výkon fotovoltiky – namiesto samotnej polohy slnka.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "domownicy": {
+        "title": "Krok {nr} z {z}: Obyvatelia",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače prítomnosti, pohybu a obyvateľov.\n\n**Prečo:** Tienenie môže reagovať na to, či je niekto v miestnosti alebo doma.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Snímač prítomnosti (niekto je tu)",
+          "czujnik_ruch": "Snímač pohybu (niekto vošiel)",
+          "osoby": "Obyvatelia",
+          "czujnik_dym": "Dymový snímač",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Pracovný deň (Workday)",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "czujnik_swieta": "Integrácia Workday – sviatky sa rátajú ako víkend.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "automatyka": {
+        "title": "Krok {nr} z {z}: Automatika",
+        "description": "{pasek}\n\n**Čo:** Zapnite funkcie, ktoré smú tienením hýbať samy.\n\n**Prečo:** Dom sa o tienenie stará bez písania automatizácií. Všetko je vypnuté, kým to nezapnete.{porada}",
+        "data": {
+          "f_harmonogram": "Plán",
+          "f_slonce": "Ochrana pred slnkom",
+          "f_blokada": "Blokovanie pri otvorenom okne",
+          "f_wiatr": "Vietor",
+          "f_obecnosc": "Prítomnosť",
+          "f_wakacje": "Režim dovolenky",
+          "f_licznik": "Počítadlo motora",
+          "f_reczny": "Ručný pohyb má prednosť",
+          "f_posrednia": "Medzipoloha",
+          "f_dni": "Pracovné dni a víkend",
+          "f_wietrzenie": "Poloha vetrania",
+          "f_drzwi": "Terasové dvere",
+          "f_oslepianie": "Ochrana pred oslnením",
+          "f_zima": "Zima a leto",
+          "f_jasnosc": "Snímač jasu",
+          "f_temp_pokoj": "Teplota v miestnosti",
+          "f_deszcz": "Dážď",
+          "f_mroz": "Mráz",
+          "f_grad": "Krupobitie a výstrahy",
+          "f_drgania": "Vibrácie markízy",
+          "f_upal": "Zajtra horúco",
+          "f_dym": "Dym",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Nikto doma",
+          "f_przeszkoda": "Prekážka pri dverách",
+          "f_spie": "Režim „Spím“",
+          "f_granice": "Hranice pohybu",
+          "f_drobne": "Bez drobných opráv",
+          "f_po_kolei": "Postupne, nie naraz",
+          "f_cisza": "Pokoj po reštarte",
+          "f_proba": "Skúška naprázdno",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "f_harmonogram": "Ráno otvorí a večer zatvorí: v pevné časy alebo s východom a západom slnka.",
+          "f_slonce": "Spustí tienenie, keď slnko svieti do tohto okna a je teplo.",
+          "f_blokada": "Nikdy nespustí na otvorené alebo vyklopené okno. Vynechaný pohyb prebehne po zatvorení.",
+          "f_wiatr": "Pri silnom vetre zatiahne vonkajšie tienenie.",
+          "f_obecnosc": "Ráno zostane zatvorené, kým niekto nevojde do miestnosti.",
+          "f_wakacje": "Každý deň otvára a zatvára v trochu inom čase, akoby bol niekto doma.",
+          "f_licznik": "Počíta pohyby a čas chodu, pripomenie kalibráciu.",
+          "f_reczny": "Keď pohnete tienením ovládačom alebo tlačidlom, automatika počká.",
+          "f_posrednia": "Vo zvolenom čase sa tienenie zastaví v polovici.",
+          "f_dni": "Vlastné časy cez víkend a sviatky.",
+          "f_wietrzenie": "Pri vyklopenom okne zostane tienenie vyššie, aby prúdil vzduch.",
+          "f_drzwi": "Pri otvorených dverách nezíde tienenie nižšie ako zvolená poloha.",
+          "f_oslepianie": "Zíde len toľko, aby slnko nedosiahlo ďalej ako k televízoru alebo stolu.",
+          "f_zima": "V zime na slnku odkryje (teplo zadarmo), v lete zatieni.",
+          "f_jasnosc": "O slnku rozhoduje luxmeter alebo fotovoltika.",
+          "f_temp_pokoj": "Zatieni, keď je v miestnosti príliš teplo.",
+          "f_deszcz": "Za dažďa zatiahne markízu, screen a vonkajšiu žalúziu.",
+          "f_mroz": "Pri mraze sa vonkajšie tienenie nehýbe, aby neprimrzlo.",
+          "f_grad": "Pri výstrahe zatiahne markízy a zatvorí rolety na ochranu skla.",
+          "f_drgania": "Pri silnom nápore vetra zatiahne markízu.",
+          "f_upal": "Keď predpoveď hlási horúčavu, tienenie zíde ráno, kým sa miestnosť zohreje.",
+          "f_dym": "Pri dymovom alarme otvorí tienenie – úniková cesta.",
+          "f_alarm": "Po zakódovaní alarmu zatvorí tienenie.",
+          "f_nikogo": "Keď všetci odídu, zatvorí tienenie.",
+          "f_przeszkoda": "Nezíde, keď snímač vidí niečo v priechode.",
+          "f_spie": "Vypínač na zariadení: tienenie zostane zatvorené, kým ho nevypnete.",
+          "f_granice": "Tienenie jazdí len vo zvolenom rozsahu, napr. 10–90 %.",
+          "f_drobne": "Vynechá zmeny o pár percent.",
+          "f_po_kolei": "Tienenia v dome idú s odstupom niekoľkých sekúnd.",
+          "f_cisza": "Po štarte HA automatika niekoľko minút počká.",
+          "f_proba": "Ukáže, čo by automatika urobila, ale tienením nepohne.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "ustawienia": {
+        "title": "Krok {nr} z {z}: Nastavenia",
+        "description": "{pasek}\n\n**Čo:** Upravte zapnuté funkcie.\n\n**Prečo:** Predvolené hodnoty sedia väčšine domov.{porada}",
+        "data": {
+          "azymut": "Smer okna",
+          "szer_slonca": "Šírka slnka v okne",
+          "min_wys_slonca": "Minimálna výška slnka",
+          "slonce_temp": "Chrániť od teploty",
+          "slonce_poz": "Poloha na slnku",
+          "harm_tryb": "Časy otvárania",
+          "przesuniecie": "Posun",
+          "otworz": "Otvoriť o",
+          "zamknij": "Zatvoriť o",
+          "otworz_weekend": "Cez víkend otvoriť o",
+          "zamknij_weekend": "Cez víkend zatvoriť o",
+          "posrednia_godz": "Medzipoloha od",
+          "posrednia_poz": "Medzipoloha",
+          "wiatr_prog": "Zatiahnuť od vetra",
+          "mroz_prog": "Mráz od",
+          "upal_prog": "Horúčava od",
+          "temp_pokoj_prog": "Príliš teplo v miestnosti od",
+          "jasnosc_prog": "Jasno od",
+          "obecnosc_rano": "Čakať na prítomnosť do",
+          "wakacje_rozrzut": "Rozptyl časov",
+          "wietrzenie_poz": "Poloha vetrania",
+          "drzwi_min": "Pri otvorených dverách nie nižšie ako",
+          "granica_min": "Najnižšie",
+          "granica_max": "Najvyššie",
+          "drobne_prog": "Vynechať zmeny menšie ako",
+          "reczny_min": "Po ručnom pohybe čakať",
+          "po_kolei_s": "Odstup medzi tieneniami",
+          "cisza_min": "Po štarte HA čakať",
+          "spie_poz": "Poloha v režime „Spím“",
+          "alarm_poz": "Poloha pri alarme",
+          "nikogo_poz": "Poloha, keď nikto nie je doma",
+          "obiekt_odl_m": "Slnko najďalej po",
+          "okno_wys_m": "Výška okna",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "azymut": "Kam okno smeruje: 90 východ, 180 juh, 270 západ.",
+          "szer_slonca": "Koľko stupňov vľavo a vpravo od smeru okna svieti slnko dnu.",
+          "min_wys_slonca": "Nižšie slnko zakryjú stromy a domy.",
+          "slonce_temp": "Vonkajšej, od ktorej tienenie na slnku zíde.",
+          "slonce_poz": "0 % = zatvorené.",
+          "harm_tryb": "S východom a západom slnka alebo v pevné časy.",
+          "przesuniecie": "Minúty po východe a pred západom slnka.",
+          "upal_prog": "Najvyššia teplota v predpovedi.",
+          "jasnosc_prog": "Luxy alebo watty z fotovoltiky.",
+          "wakacje_rozrzut": "Plus mínus toľko minút, každý deň inak.",
+          "obiekt_odl_m": "Ako ďaleko od okna stojí televízor alebo stôl.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      },
+      "powiadomienia": {
+        "title": "Krok {nr} z {z}: Upozornenia",
+        "description": "{pasek}\n\n**Čo:** Vyberte, o čom vám dať vedieť.\n\n**Prečo:** Hneď viete, ktoré zariadenie má problém. Upozornenia prídu do HA a, ak chcete, do telefónu.{porada}",
+        "data": {
+          "powiadom": "Upozorni ma, keď",
+          "powiadom_gdzie": "Poslať aj na",
+          "wstecz": "Späť na predchádzajúci krok"
+        },
+        "data_description": {
+          "powiadom_gdzie": "Aplikácia HA v telefóne. Nič nevybrané – len upozornenia v HA.",
+          "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Vyberte motor.",
+      "za_duzo": "Vyberte najviac dva motory (ľavé a pravé krídlo)."
+    }
+  },
+  "selector": {
+    "tryb": {
+      "options": {
+        "podstawowy": "Základný – pár jednoduchých otázok",
+        "zaawansowany": "Pokročilý – všetky možnosti"
+      }
+    },
+    "mam": {
+      "options": {
+        "zew": "Vonkajšie tienenie (roleta, markíza, screen)",
+        "lamele": "Tienenie s natáčacími lamelami",
+        "brama": "Vjazdová brána alebo garáž",
+        "foto": "Fotobunka brány viditeľná v HA",
+        "okno": "Snímač okna",
+        "drzwi": "Snímač terasových dverí",
+        "obecnosc": "Snímač prítomnosti (niekto je tu)",
+        "ruch": "Snímač pohybu (niekto vošiel)",
+        "pogoda": "Počasie",
+        "temp": "Vonkajšia teplota",
+        "grupy": "Viac zariadení v dome",
+        "temp_pokoj": "Teplota v miestnosti",
+        "jasnosc": "Luxmeter alebo fotovoltika",
+        "wiatr": "Anemometer",
+        "deszcz": "Snímač dažďa",
+        "drgania": "Snímač vibrácií markízy",
+        "ostrzezenia": "Výstrahy počasia",
+        "dym": "Dymový snímač",
+        "alarm": "Alarm",
+        "osoby": "Telefóny obyvateľov",
+        "przeszkoda": "Snímač prekážky pri dverách"
+      }
+    },
+    "pokoje": {
+      "options": {
+        "salon": "Obývačka",
+        "sypialnia": "Spálňa",
+        "kuchnia": "Kuchyňa",
+        "dziecko": "Detská izba",
+        "gabinet": "Pracovňa",
+        "lazienka": "Kúpeľňa",
+        "jadalnia": "Jedáleň",
+        "przedpokoj": "Predsieň",
+        "inny": "Iné"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "Jedno krídlo",
+        "2": "Dve krídla"
+      }
+    },
+    "tryby": {
+      "options": {
+        "uchyl": "Vyklápa sa",
+        "otworz": "Otvára sa"
+      }
+    },
+    "lamele_tryb": {
+      "options": {
+        "auto": "Automaticky (slnko, noc)",
+        "staly": "Vždy rovnaký uhol",
+        "nocny": "Len v noci"
+      }
+    },
+    "harm_tryb": {
+      "options": {
+        "slonce": "Východ a západ slnka",
+        "godziny": "Pevné časy"
+      }
+    },
+    "powiadomienia": {
+      "options": {
+        "nie_odpowiada": "Neodpovedá",
+        "nie_dojechala": "Nedošlo do polohy",
+        "bateria": "Slabá batéria v motore alebo snímači",
+        "czujnik": "Snímač nedostupný",
+        "automatyka": "Problém automatiky (blokovanie, chyba, kalibrácia)",
+        "brama_otwarta": "Brána otvorená príliš dlho",
+        "brama_niedomknieta": "Brána sa nezatvorila",
+        "przeszkoda": "Prekážka v bráne"
+      }
+    },
+    "kroki": {
+      "options": {
+        "tryb": "Režim",
+        "mam": "Čo máte",
+        "urzadzenie": "Zariadenie",
+        "rodzaj": "Druh",
+        "lamele": "Lamely",
+        "kolory": "Farby",
+        "okno": "Okno",
+        "czujniki": "Snímače",
+        "fotokomorka": "Fotobunka",
+        "silnik": "Motor",
+        "pogoda": "Počasie",
+        "domownicy": "Obyvatelia",
+        "automatyka": "Automatika",
+        "ustawienia": "Nastavenia",
+        "powiadomienia": "Upozornenia",
+        "panel": "Panel"
+      }
+    },
+    "porady": {
+      "options": {
+        "ogolne_tryb": "Neviete? Zvoľte Základný. Vždy to môžete zmeniť.",
+        "ogolne_mam": "Neviete, či niečo máte? Nechajte, ako to sprievodca zaškrtol.",
+        "ogolne_kolory": "Farba je len na obrazovke, na tienení nič nemení.",
+        "ogolne_okno": "Dve krídla s jednou roletou? Zvoľte „Dve krídla“ a jeden motor.",
+        "ogolne_silnik": "Nechajte 0 – karta zmeria čas sama po niekoľkých pohyboch.",
+        "ogolne_pogoda": "Stačí entita počasia. Anemometer chráni presnejšie.",
+        "ogolne_automatyka": "Začnite jednou funkciou a uvidíte, ako funguje. Snímač „Dôvod“ ukáže, prečo sa tienenie pohlo.",
+        "ogolne_lamele": "Uhol 45° pustí svetlo, ale slnko nesvieti priamo do miestnosti.",
+        "ogolne_fotokomorka": "Fotobunka nie je v HA? Brána funguje rovnako, len karta o prekážke nevie.",
+        "sypialnia_rodzaj": "Do spálne je najlepšia zatemňovacia roleta alebo deň-noc. Ranné svetlo vás nezobudí.",
+        "sypialnia_automatyka": "Odporúčame plán (ráno východ, večer západ) a blokovanie okna, keď spíte pri vyklopenom okne.",
+        "sypialnia_czujniki": "V spálni je okno v noci často vyklopené. Nastavte „Vyklápa sa“.",
+        "salon_rodzaj": "Do obývačky sa zvyčajne volí deň-noc alebo plisé – pustia svetlo a zakryjú výhľad z ulice.",
+        "salon_automatyka": "Odporúčame ochranu pred slnkom. So snímačom prítomnosti sa tienenie otvorí, keď ráno niekto vojde.",
+        "kuchnia_rodzaj": "Do kuchyne sa hodí roleta v kazete alebo hliníková žalúzia – ľahko sa umývajú.",
+        "kuchnia_automatyka": "Odporúčame blokovanie pri otvorenom okne – pri varení býva okno otvorené.",
+        "dziecko_rodzaj": "V detskej izbe sa hodí zatemňovacia roleta na poobedný spánok.",
+        "dziecko_automatyka": "Odporúčame nočný plán a blokovanie okna.",
+        "gabinet_rodzaj": "V pracovni žalúzia alebo screen zníži odlesky na monitore.",
+        "gabinet_automatyka": "Odporúčame ochranu pred oslnením – tienenie zíde len toľko, koľko treba.",
+        "lazienka_rodzaj": "Do kúpeľne zvoľte tienenie odolné vlhkosti: hliníkovú žalúziu alebo plisé.",
+        "lazienka_automatyka": "Odporúčame blokovanie okna – po kúpeli býva okno otvorené."
+      }
+    },
+    "oslony": {
+      "options": {
+        "pelna": "Voľne visiaca roleta",
+        "kasetowa": "Kazetová roleta",
+        "zebra": "Roleta deň a noc",
+        "zaciemniajaca": "Zatemňovacia roleta",
+        "plisa": "Plisé",
+        "plaster": "Plisé včelí plást",
+        "rzymska": "Rímska roleta",
+        "zaluzja": "Hliníková žalúzia",
+        "drewniana": "Drevená žalúzia",
+        "natynkowa": "Predokenná roleta",
+        "podtynkowa": "Podomietková roleta",
+        "zewnetrzna": "Nadokenná roleta",
+        "perforowana": "Perforovaná roleta",
+        "fasadowa": "Vonkajšia žalúzia C80",
+        "fasadowaz": "Vonkajšia žalúzia Z90",
+        "markiza": "Terasová markíza",
+        "screen": "ZIP screen",
+        "pionowa": "Vertikálna žalúzia",
+        "zaslona": "Bočný záves",
+        "przesuwna": "Posuvná brána",
+        "skrzydlowa": "Krídlová brána",
+        "segmentowa": "Sekčná brána",
+        "uchylna": "Výklopná brána",
+        "roletowa": "Rolovacia brána"
+      }
+    },
+    "kolory": {
+      "options": {
+        "czarny": "čierna",
+        "grafit": "grafit",
+        "szary": "sivá",
+        "popiel": "popolavá",
+        "srebrny": "strieborná",
+        "bialy": "biela",
+        "kremowy": "krémová",
+        "piaskowy": "piesková",
+        "bezowy": "béžová",
+        "cappuccino": "cappuccino",
+        "mokka": "moka",
+        "braz": "hnedá",
+        "wenge": "wenge",
+        "stalowy": "oceľová",
+        "granat": "námornícka modrá",
+        "blekitny": "blankytná",
+        "niebieski": "modrá",
+        "morski": "morská",
+        "turkus": "tyrkysová",
+        "mietowy": "mätová",
+        "zielony": "zelená",
+        "butelkowy": "fľašovo zelená",
+        "oliwka": "olivová",
+        "limonka": "limetková",
+        "zolty": "žltá",
+        "musztardowy": "horčicová",
+        "pomaranczowy": "oranžová",
+        "terakota": "terakota",
+        "czerwony": "červená",
+        "bordo": "bordová",
+        "pudrowy": "púdrovo ružová",
+        "rozowy": "ružová",
+        "lawendowy": "levanduľová",
+        "fiolet": "fialová",
+        "sliwkowy": "slivková"
+      }
+    },
+    "ramy": {
+      "options": {
+        "biala": "biela",
+        "kremowa": "krémová",
+        "jasnoszara": "svetlosivá",
+        "srebrna": "strieborná",
+        "szary_agat": "achátovo sivá",
+        "szara": "sivá",
+        "szary_kwarc": "kremenno sivá",
+        "bazaltowa": "čadičovo sivá",
+        "antracyt": "antracit",
+        "czarna": "čierna",
+        "zielona": "zelená",
+        "granatowa": "tmavomodrá",
+        "bordowa": "vínová",
+        "braz": "hnedá",
+        "sosna": "borovica",
+        "dab_jasny": "svetlý dub",
+        "dab_sheffield": "dub Sheffield",
+        "winchester": "Winchester",
+        "oregon": "Oregon",
+        "zloty_dab": "zlatý dub",
+        "siena": "Siena",
+        "orzech": "orech",
+        "mahon": "mahagón",
+        "dab_bagienny": "bahenný dub"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Kalibrovať"
+      },
+      "wznow": {
+        "name": "Obnoviť automatiku"
+      }
+    },
+    "sensor": {
+      "powod": {
+        "name": "Dôvod pohybu",
+        "state": {
+          "brak": "Bez automatiky",
+          "wylaczona": "Automatika vypnutá",
+          "cisza": "Pokoj po reštarte",
+          "dym": "Dym – otvorené",
+          "wiatr": "Vietor – zatiahnuté",
+          "drgania": "Vibrácie – zatiahnuté",
+          "grad": "Výstraha – chránené",
+          "deszcz": "Dážď – zatiahnuté",
+          "mroz": "Mráz – bez pohybu",
+          "pauza": "Pozastavené",
+          "reczny": "Ručný pohyb – pauza",
+          "alarm": "Alarm",
+          "spie": "Spím",
+          "nikogo": "Nikto doma",
+          "wakacje": "Režim dovolenky – deň",
+          "wakacje_noc": "Režim dovolenky – noc",
+          "harm_dzien": "Plán – deň",
+          "harm_noc": "Plán – noc",
+          "posrednia": "Medzipoloha",
+          "obecnosc": "Niekto je v miestnosti",
+          "czeka_obecnosc": "Čaká, kým niekto vojde",
+          "zima_noc": "Zima – noc",
+          "zima_slonce": "Zima – slnko hreje",
+          "slonce": "Slnko v okne",
+          "jasnosc": "Jasno",
+          "temp_pokoj": "V miestnosti príliš teplo",
+          "upal": "Horúčava",
+          "oslepianie": "Oslnenie",
+          "przeszkoda": "Prekážka",
+          "drzwi": "Dvere otvorené",
+          "wietrzenie": "Vetranie",
+          "blokada": "Okno otvorené – blokované"
+        }
+      },
+      "ruchy": {
+        "name": "Pohyby motora"
+      },
+      "czas_pracy": {
+        "name": "Čas chodu motora"
+      }
+    },
+    "switch": {
+      "automatyka": {
+        "name": "Automatika"
+      },
+      "pauza": {
+        "name": "Pauza na dnes"
+      },
+      "spie": {
+        "name": "Spím"
+      },
+      "wakacje": {
+        "name": "Režim dovolenky"
+      }
+    }
+  },
+  "exceptions": {
+    "tytul": {
+      "message": "{nazwa} – problém"
+    },
+    "nie_odpowiada": {
+      "message": "{nazwa}: motor neodpovedá ({encje}). Skontrolujte napájanie alebo dosah."
+    },
+    "nie_dojechala": {
+      "message": "{nazwa}: malo dôjsť na {cel} %, ale stojí na {jest} %."
+    },
+    "bateria": {
+      "message": "{nazwa}: slabá batéria – {lista}."
+    },
+    "czujnik": {
+      "message": "{nazwa}: snímač nedostupný – {lista}."
+    },
+    "automatyka": {
+      "message": "{nazwa}: automatika tienením nepohla – {powod}."
+    },
+    "kalibracja": {
+      "message": "{nazwa}: motor od kalibrácie urobil {ruchy} pohybov. Stlačte „Kalibrovať“ na zariadení."
+    },
+    "brama_otwarta": {
+      "message": "{nazwa}: brána je otvorená dlhšie ako {minuty} min."
+    },
+    "brama_niedomknieta": {
+      "message": "{nazwa}: brána sa nezatvorila."
+    },
+    "przeszkoda": {
+      "message": "{nazwa}: v bráne niečo stojí (fotobunka)."
+    },
+    "nie_motor_ha": {
+      "message": "Toto nie je zariadenie Motor HA."
+    },
+    "powod_brak": {
+      "message": "Bez automatiky"
+    },
+    "powod_wylaczona": {
+      "message": "Automatika vypnutá"
+    },
+    "powod_cisza": {
+      "message": "Pokoj po reštarte"
+    },
+    "powod_dym": {
+      "message": "Dym – otvorené"
+    },
+    "powod_wiatr": {
+      "message": "Vietor – zatiahnuté"
+    },
+    "powod_drgania": {
+      "message": "Vibrácie – zatiahnuté"
+    },
+    "powod_grad": {
+      "message": "Výstraha – chránené"
+    },
+    "powod_deszcz": {
+      "message": "Dážď – zatiahnuté"
+    },
+    "powod_mroz": {
+      "message": "Mráz – bez pohybu"
+    },
+    "powod_pauza": {
+      "message": "Pozastavené"
+    },
+    "powod_reczny": {
+      "message": "Ručný pohyb – pauza"
+    },
+    "powod_alarm": {
+      "message": "Alarm"
+    },
+    "powod_spie": {
+      "message": "Spím"
+    },
+    "powod_nikogo": {
+      "message": "Nikto doma"
+    },
+    "powod_wakacje": {
+      "message": "Režim dovolenky – deň"
+    },
+    "powod_wakacje_noc": {
+      "message": "Režim dovolenky – noc"
+    },
+    "powod_harm_dzien": {
+      "message": "Plán – deň"
+    },
+    "powod_harm_noc": {
+      "message": "Plán – noc"
+    },
+    "powod_posrednia": {
+      "message": "Medzipoloha"
+    },
+    "powod_obecnosc": {
+      "message": "Niekto je v miestnosti"
+    },
+    "powod_czeka_obecnosc": {
+      "message": "Čaká, kým niekto vojde"
+    },
+    "powod_zima_noc": {
+      "message": "Zima – noc"
+    },
+    "powod_zima_slonce": {
+      "message": "Zima – slnko hreje"
+    },
+    "powod_slonce": {
+      "message": "Slnko v okne"
+    },
+    "powod_jasnosc": {
+      "message": "Jasno"
+    },
+    "powod_temp_pokoj": {
+      "message": "V miestnosti príliš teplo"
+    },
+    "powod_upal": {
+      "message": "Horúčava"
+    },
+    "powod_oslepianie": {
+      "message": "Oslnenie"
+    },
+    "powod_przeszkoda": {
+      "message": "Prekážka"
+    },
+    "powod_drzwi": {
+      "message": "Dvere otvorené"
+    },
+    "powod_wietrzenie": {
+      "message": "Vetranie"
+    },
+    "powod_blokada": {
+      "message": "Okno otvorené – blokované"
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} – reštart",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Motor HA {wersja} – reštart",
+            "description": "Nová verzia je nainštalovaná. Kliknite na „Odoslať“ pre reštart Home Assistanta."
+          }
+        }
+      }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – okná prenesené",
+      "description": "Z predchádzajúcej verzie (Okno HA 1.x) sa prenieslo {ile} okien. Fungujú teraz ako nové zariadenia Motor HA s rovnakými nastaveniami. Staré položky sú len vypnuté – môžeš ich zmazať v Nastavenia → Zariadenia a služby → Okno HA. Automatika zostáva vypnutá, kým ju nezapneš v „Konfigurovať“."
+    }
+  },
+  "services": {
+    "wstrzymaj": {
+      "name": "Pozastaviť automatiku",
+      "description": "Automatika zariadením nehýbe zadaný čas (prázdne = do konca dňa).",
+      "fields": {
+        "entity_id": {
+          "name": "Zariadenie",
+          "description": "Zariadenie Motor HA."
+        },
+        "minuty": {
+          "name": "Minúty",
+          "description": "Prázdne = do konca dňa."
+        }
+      }
+    },
+    "wznow": {
+      "name": "Obnoviť automatiku",
+      "description": "Ukončí pauzu a hneď skontroluje, kde má tienenie byť.",
+      "fields": {
+        "entity_id": {
+          "name": "Zariadenie",
+          "description": "Zariadenie Motor HA."
+        }
+      }
+    },
+    "przelicz": {
+      "name": "Skontrolovať teraz",
+      "description": "Automatika hneď prepočíta polohu.",
+      "fields": {
+        "entity_id": {
+          "name": "Zariadenie",
+          "description": "Zariadenie Motor HA."
+        }
+      }
+    },
+    "kalibruj": {
+      "name": "Kalibrovať",
+      "description": "Zmeria skutočný čas prejazdu.",
+      "fields": {
+        "entity_id": {
+          "name": "Zariadenie",
+          "description": "Zariadenie Motor HA."
+        }
+      }
+    },
+    "ustaw": {
+      "name": "Nastaviť polohu",
+      "description": "Nastaví polohu (a lamely) ako automatika – bez pauzy po ručnom pohybe.",
+      "fields": {
+        "entity_id": {
+          "name": "Zariadenie",
+          "description": "Zariadenie Motor HA."
+        },
+        "pozycja": {
+          "name": "Poloha",
+          "description": "100 = otvorené."
+        },
+        "lamele": {
+          "name": "Lamely",
+          "description": "Uhol lamiel."
+        }
+      }
+    }
+  }
+}

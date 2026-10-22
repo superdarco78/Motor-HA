@@ -1,0 +1,665 @@
+{
+  "krok": "Paso {nr} de {z}",
+  "co": "Qué:",
+  "poco": "Para qué:",
+  "kroki": {
+    "tryb": {
+      "t": "Modo del asistente",
+      "co": "Elige cuántas preguntas quieres ver.",
+      "poco": "El básico basta a la mayoría. El avanzado muestra todas las opciones y dispositivos extra. Podrás cambiar el modo luego en «Configurar»."
+    },
+    "mam": {
+      "t": "Qué tienes en casa",
+      "co": "Marca lo que tienes. El asistente buscó en Home Assistant y marcó lo que encontró.",
+      "poco": "El asistente solo muestra pasos y funciones de los dispositivos marcados. El resto se añade luego en «Configurar».\n\nEncontrado: {znalezione}"
+    },
+    "urzadzenie": {
+      "t": "Dispositivo",
+      "co": "Elige el motor (estor o portón), ponle nombre y elige la habitación.",
+      "poco": "Motor HA controla este motor, y la habitación te permite hablar con Assist, p. ej. «cierra el salón»."
+    },
+    "rodzaj": {
+      "t": "Tipo",
+      "co": "Elige exactamente lo que tienes.",
+      "poco": "La tarjeta dibuja este dispositivo y la automatización sabe qué puede usar."
+    },
+    "lamele": {
+      "t": "Lamas",
+      "co": "Ajusta la orientación de las lamas.",
+      "poco": "Dejas entrar luz sin subir la persiana."
+    },
+    "kolory": {
+      "t": "Colores",
+      "co": "Elige el color del estor y del marco.",
+      "poco": "La ventana en pantalla se parece a la real."
+    },
+    "okno": {
+      "t": "Ventana",
+      "co": "Cuántas hojas tiene la ventana y su tamaño en la tarjeta.",
+      "poco": "Cada hoja puede tener su propio motor."
+    },
+    "czujniki": {
+      "t": "Sensores",
+      "co": "Elige los sensores de apertura de ventana y puerta.",
+      "poco": "La tarjeta muestra una hoja abatida o abierta, y el bloqueo nunca baja el estor sobre una ventana abierta."
+    },
+    "fotokomorka": {
+      "t": "Fotocélula",
+      "co": "Elige el sensor de obstáculo del portón y el estado que significa «hay algo en el portón».",
+      "poco": "La tarjeta muestra el obstáculo y recibes un aviso. La fotocélula del controlador sigue parando el portón por sí sola."
+    },
+    "silnik": {
+      "t": "Motor",
+      "co": "Indica el tiempo de recorrido completo o deja 0.",
+      "poco": "El dibujo se mueve tan rápido como el motor real. Con 0 la tarjeta aprende el tiempo sola tras unos movimientos."
+    },
+    "pogoda": {
+      "t": "Tiempo",
+      "co": "Elige el tiempo y los sensores exteriores.",
+      "poco": "Tras el cristal se ve el tiempo real, y la automatización protege el estor del viento, la lluvia y el sol."
+    },
+    "domownicy": {
+      "t": "Habitantes",
+      "co": "Elige sensores de presencia, movimiento y de los habitantes.",
+      "poco": "El estor puede reaccionar a si hay alguien en la habitación o en casa."
+    },
+    "automatyka": {
+      "t": "Automatización",
+      "co": "Activa las funciones que pueden mover el estor solas.",
+      "poco": "La casa cuida los estores sin escribir automatizaciones. Todo está apagado hasta que lo actives."
+    },
+    "ustawienia": {
+      "t": "Ajustes",
+      "co": "Ajusta las funciones activadas.",
+      "poco": "Los valores por defecto sirven para la mayoría de las casas."
+    },
+    "powiadomienia": {
+      "t": "Avisos",
+      "co": "Elige de qué avisarte.",
+      "poco": "Sabes al instante qué dispositivo tiene un problema. Los avisos llegan a HA y, si quieres, al móvil."
+    },
+    "panel": {
+      "t": "Panel",
+      "co": "En qué panel añadir la tarjeta.",
+      "poco": "La tarjeta aparece sola, no hay que hacer clic."
+    }
+  },
+  "pola": {
+    "tryb": "Modo",
+    "kopiuj_z": "Copiar ajustes de otro dispositivo",
+    "mam": "Tengo en casa",
+    "rolety": "Motor (una o dos entidades)",
+    "name": "Nombre",
+    "pokoj": "Habitación",
+    "rodzaj_pokoju": "Tipo de habitación (para consejos)",
+    "oslona": "Tipo",
+    "lamele_kat": "Ángulo de lamas al sol",
+    "lamele_tryb": "Control de lamas",
+    "lamele_noc": "Ángulo de lamas de noche",
+    "kolor": "Color del estor",
+    "rama": "Color del marco",
+    "kolor_wlasny": "Color propio del estor",
+    "rama_wlasna": "Color propio del marco",
+    "skrzydla": "Hojas",
+    "wysokosc": "Altura en la tarjeta",
+    "odwroc": "Porcentajes invertidos",
+    "czujnik_lewe": "Sensor hoja izquierda",
+    "tryb_lewe": "Hoja izquierda",
+    "czujnik_prawe": "Sensor hoja derecha",
+    "tryb_prawe": "Hoja derecha",
+    "czujnik_drzwi": "Sensor de puerta de terraza",
+    "czujnik_przeszkoda": "Sensor de obstáculo en la puerta",
+    "czujnik_foto": "Fotocélula (sensor de obstáculo)",
+    "foto_stan": "Obstáculo cuando el estado del sensor es",
+    "czas": "Tiempo de recorrido completo",
+    "kalibruj": "Calibrar ahora (el estor sube, baja y sube)",
+    "predkosc_lewa": "Velocidad del motor – izquierdo",
+    "predkosc_prawa": "Velocidad del motor – derecho",
+    "brama_minuty": "Portón abierto demasiado tiempo tras",
+    "pogoda": "Tiempo",
+    "czujnik_temp": "Temperatura exterior",
+    "czujnik_temp_pokoj": "Temperatura de la habitación",
+    "czujnik_jasnosc": "Luminosidad o potencia solar",
+    "czujnik_wiatr": "Anemómetro",
+    "czujnik_deszcz": "Sensor de lluvia",
+    "czujnik_drgania": "Sensor de vibración del toldo",
+    "czujnik_ostrzezenia": "Avisos meteorológicos (AEMET, Meteoalarm)",
+    "czujnik_obecnosc": "Sensor de presencia (hay alguien)",
+    "czujnik_ruch": "Sensor de movimiento (alguien entró)",
+    "osoby": "Habitantes",
+    "czujnik_dym": "Detector de humo",
+    "czujnik_alarm": "Alarma",
+    "czujnik_swieta": "Día laborable (Workday)",
+    "powiadom": "Avisarme cuando",
+    "powiadom_gdzie": "Enviar también a",
+    "na_panel": "Añadir la tarjeta a un panel",
+    "wstecz": "Volver al paso anterior"
+  },
+  "pomoc": {
+    "kopiuj_z": "Vacío = empezar de cero.",
+    "rolety": "Para una ventana de dos hojas elige dos: primero la izquierda, luego la derecha.",
+    "name": "Vacío = nombre del motor.",
+    "pokoj": "El dispositivo irá a esta habitación. Assist entenderá «cierra el salón».",
+    "odwroc": "Actívalo si el motor indica 100 % con el estor cerrado.",
+    "czas": "0 = automático: por la velocidad del motor, la calibración o los movimientos reales.",
+    "foto_stan": "Normalmente «on». Para un sensor de texto escribe p. ej. «obstructed».",
+    "czujnik_jasnosc": "Un luxómetro o la potencia solar – en vez de solo la posición del sol.",
+    "czujnik_swieta": "Integración Workday – los festivos cuentan como fin de semana.",
+    "powiadom_gdzie": "La app de HA en el móvil. Sin elegir – solo avisos en HA.",
+    "wstecz": "Actívalo y pulsa «Siguiente» para retroceder un paso. Lo introducido se conserva."
+  },
+  "f": {
+    "harmonogram": [
+      "Horario",
+      "Abre por la mañana y cierra por la noche: a horas fijas o con la salida y puesta del sol."
+    ],
+    "slonce": [
+      "Protección solar",
+      "Baja el estor cuando el sol entra por esta ventana y hace calor."
+    ],
+    "blokada": [
+      "Bloqueo con ventana abierta",
+      "Nunca baja sobre una ventana abierta o abatida. El movimiento saltado se hace al cerrarla."
+    ],
+    "wiatr": [
+      "Viento",
+      "Recoge un estor exterior con viento fuerte."
+    ],
+    "obecnosc": [
+      "Presencia",
+      "Por la mañana sigue cerrado hasta que alguien entra en la habitación."
+    ],
+    "wakacje": [
+      "Modo vacaciones",
+      "Abre y cierra cada día a una hora algo distinta, como si hubiera alguien en casa."
+    ],
+    "licznik": [
+      "Contador del motor",
+      "Cuenta movimientos y tiempo de uso, recuerda calibrar."
+    ],
+    "reczny": [
+      "El movimiento manual manda",
+      "Si mueves el estor con el mando o el pulsador, la automatización espera."
+    ],
+    "posrednia": [
+      "Posición intermedia",
+      "A la hora elegida el estor se queda a media altura."
+    ],
+    "dni": [
+      "Laborables y fin de semana",
+      "Horas distintas el fin de semana y los festivos."
+    ],
+    "wietrzenie": [
+      "Posición de ventilación",
+      "Con la ventana abatida el estor queda más alto para que circule el aire."
+    ],
+    "drzwi": [
+      "Puerta de terraza",
+      "Con la puerta abierta el estor no baja de la posición elegida."
+    ],
+    "oslepianie": [
+      "Antideslumbramiento",
+      "Baja solo lo justo para que el sol no llegue más allá de la tele o el escritorio."
+    ],
+    "zima": [
+      "Invierno y verano",
+      "En invierno abre al sol (calor gratis), en verano da sombra."
+    ],
+    "jasnosc": [
+      "Sensor de luminosidad",
+      "Un luxómetro o las placas solares deciden sobre el sol."
+    ],
+    "temp_pokoj": [
+      "Temperatura de la habitación",
+      "Da sombra cuando la habitación se calienta demasiado."
+    ],
+    "deszcz": [
+      "Lluvia",
+      "Recoge toldo, screen y celosía exterior con lluvia."
+    ],
+    "mroz": [
+      "Helada",
+      "Con helada el estor exterior no se mueve para que no se congele."
+    ],
+    "grad": [
+      "Granizo y avisos",
+      "Ante un aviso recoge los toldos y cierra las persianas para proteger el cristal."
+    ],
+    "drgania": [
+      "Vibración del toldo",
+      "Recoge el toldo con una ráfaga fuerte."
+    ],
+    "upal": [
+      "Calor mañana",
+      "Si la previsión anuncia calor, el estor baja por la mañana antes de que se caliente la habitación."
+    ],
+    "dym": [
+      "Humo",
+      "Con alarma de humo abre el estor – una vía de escape."
+    ],
+    "alarm": [
+      "Alarma",
+      "Cierra el estor al armar la alarma."
+    ],
+    "nikogo": [
+      "Nadie en casa",
+      "Cierra el estor cuando todos se van."
+    ],
+    "przeszkoda": [
+      "Obstáculo en la puerta",
+      "No baja si el sensor ve algo en el paso."
+    ],
+    "spie": [
+      "Modo «Duermo»",
+      "Un interruptor en el dispositivo: el estor sigue cerrado hasta que lo apagues."
+    ],
+    "granice": [
+      "Límites de recorrido",
+      "El estor solo se mueve en el rango elegido, p. ej. 10–90 %."
+    ],
+    "drobne": [
+      "Sin pequeñas correcciones",
+      "Omite cambios de pocos por ciento."
+    ],
+    "po_kolei": [
+      "Uno tras otro",
+      "Los estores de la casa se mueven con unos segundos de diferencia."
+    ],
+    "cisza": [
+      "Calma tras reiniciar",
+      "Tras arrancar HA, la automatización espera unos minutos."
+    ],
+    "proba": [
+      "Prueba en seco",
+      "Muestra lo que haría la automatización, sin mover el estor."
+    ]
+  },
+  "parametry": {
+    "azymut": [
+      "Orientación de la ventana",
+      "Hacia dónde mira la ventana: 90 este, 180 sur, 270 oeste."
+    ],
+    "szer_slonca": [
+      "Ancho del sol en la ventana",
+      "Cuántos grados a izquierda y derecha de la orientación entra el sol."
+    ],
+    "min_wys_slonca": [
+      "Altura mínima del sol",
+      "Árboles y casas tapan un sol más bajo."
+    ],
+    "slonce_temp": [
+      "Proteger desde",
+      "Temperatura exterior a partir de la cual el estor baja al sol."
+    ],
+    "slonce_poz": [
+      "Posición al sol",
+      "0 % = cerrado."
+    ],
+    "harm_tryb": [
+      "Horas de apertura",
+      "Con la salida y puesta del sol o a horas fijas."
+    ],
+    "przesuniecie": [
+      "Desfase",
+      "Minutos tras la salida y antes de la puesta del sol."
+    ],
+    "otworz": [
+      "Abrir a las",
+      ""
+    ],
+    "zamknij": [
+      "Cerrar a las",
+      ""
+    ],
+    "otworz_weekend": [
+      "Abrir el fin de semana a las",
+      ""
+    ],
+    "zamknij_weekend": [
+      "Cerrar el fin de semana a las",
+      ""
+    ],
+    "posrednia_godz": [
+      "Posición intermedia desde",
+      ""
+    ],
+    "posrednia_poz": [
+      "Posición intermedia",
+      ""
+    ],
+    "wiatr_prog": [
+      "Recoger desde un viento de",
+      ""
+    ],
+    "mroz_prog": [
+      "Helada desde",
+      ""
+    ],
+    "upal_prog": [
+      "Calor desde",
+      "Temperatura máxima de la previsión."
+    ],
+    "temp_pokoj_prog": [
+      "Habitación demasiado caliente desde",
+      ""
+    ],
+    "jasnosc_prog": [
+      "Luminoso desde",
+      "Lux o vatios de las placas solares."
+    ],
+    "obecnosc_rano": [
+      "Esperar presencia hasta",
+      ""
+    ],
+    "wakacje_rozrzut": [
+      "Variación de horas",
+      "Más o menos estos minutos, distinto cada día."
+    ],
+    "wietrzenie_poz": [
+      "Posición de ventilación",
+      ""
+    ],
+    "drzwi_min": [
+      "Con la puerta abierta no más bajo que",
+      ""
+    ],
+    "granica_min": [
+      "Lo más bajo",
+      ""
+    ],
+    "granica_max": [
+      "Lo más alto",
+      ""
+    ],
+    "drobne_prog": [
+      "Omitir cambios menores de",
+      ""
+    ],
+    "reczny_min": [
+      "Tras un movimiento manual esperar",
+      ""
+    ],
+    "po_kolei_s": [
+      "Intervalo entre estores",
+      ""
+    ],
+    "cisza_min": [
+      "Tras arrancar HA esperar",
+      ""
+    ],
+    "spie_poz": [
+      "Posición en modo «Duermo»",
+      ""
+    ],
+    "alarm_poz": [
+      "Posición con alarma armada",
+      ""
+    ],
+    "nikogo_poz": [
+      "Posición cuando no hay nadie",
+      ""
+    ],
+    "obiekt_odl_m": [
+      "El sol llega como mucho a",
+      "A qué distancia de la ventana está la tele o el escritorio."
+    ],
+    "okno_wys_m": [
+      "Altura de la ventana",
+      ""
+    ]
+  },
+  "selector": {
+    "tryb": {
+      "podstawowy": "Básico – unas pocas preguntas sencillas",
+      "zaawansowany": "Avanzado – todas las opciones"
+    },
+    "mam": {
+      "zew": "Estor exterior (persiana, toldo, screen)",
+      "lamele": "Estor con lamas orientables",
+      "brama": "Portón o puerta de garaje",
+      "foto": "Fotocélula del portón visible en HA",
+      "okno": "Sensor de ventana",
+      "drzwi": "Sensor de puerta de terraza",
+      "obecnosc": "Sensor de presencia (hay alguien)",
+      "ruch": "Sensor de movimiento (alguien entró)",
+      "pogoda": "Tiempo",
+      "temp": "Temperatura exterior",
+      "grupy": "Varios dispositivos en casa",
+      "temp_pokoj": "Temperatura de la habitación",
+      "jasnosc": "Luxómetro o placas solares",
+      "wiatr": "Anemómetro",
+      "deszcz": "Sensor de lluvia",
+      "drgania": "Sensor de vibración del toldo",
+      "ostrzezenia": "Avisos meteorológicos",
+      "dym": "Detector de humo",
+      "alarm": "Alarma",
+      "osoby": "Móviles de los habitantes",
+      "przeszkoda": "Sensor de obstáculo en la puerta"
+    },
+    "pokoje": {
+      "salon": "Salón",
+      "sypialnia": "Dormitorio",
+      "kuchnia": "Cocina",
+      "dziecko": "Habitación infantil",
+      "gabinet": "Despacho",
+      "lazienka": "Baño",
+      "jadalnia": "Comedor",
+      "przedpokoj": "Recibidor",
+      "inny": "Otra"
+    },
+    "skrzydla": {
+      "1": "Una hoja",
+      "2": "Dos hojas"
+    },
+    "tryby": {
+      "uchyl": "Se abate",
+      "otworz": "Se abre"
+    },
+    "lamele_tryb": {
+      "auto": "Automático (sol, noche)",
+      "staly": "Siempre el mismo ángulo",
+      "nocny": "Solo de noche"
+    },
+    "harm_tryb": {
+      "slonce": "Salida y puesta del sol",
+      "godziny": "Horas fijas"
+    },
+    "powiadomienia": {
+      "nie_odpowiada": "No responde",
+      "nie_dojechala": "No llegó a la posición",
+      "bateria": "Batería baja en motor o sensor",
+      "czujnik": "Sensor no disponible",
+      "automatyka": "Problema de automatización (bloqueo, error, calibración)",
+      "brama_otwarta": "Portón abierto demasiado tiempo",
+      "brama_niedomknieta": "El portón no se cerró",
+      "przeszkoda": "Obstáculo en el portón"
+    },
+    "kroki": {
+      "tryb": "Modo",
+      "mam": "Qué tienes",
+      "urzadzenie": "Dispositivo",
+      "rodzaj": "Tipo",
+      "lamele": "Lamas",
+      "kolory": "Colores",
+      "okno": "Ventana",
+      "czujniki": "Sensores",
+      "fotokomorka": "Fotocélula",
+      "silnik": "Motor",
+      "pogoda": "Tiempo",
+      "domownicy": "Habitantes",
+      "automatyka": "Automatización",
+      "ustawienia": "Ajustes",
+      "powiadomienia": "Avisos",
+      "panel": "Panel"
+    },
+    "porady": {
+      "ogolne_tryb": "¿No lo sabes? Elige Básico. Siempre puedes cambiarlo.",
+      "ogolne_mam": "¿No sabes si tienes algo? Déjalo como lo marcó el asistente.",
+      "ogolne_kolory": "El color solo está en pantalla, no cambia nada en el estor.",
+      "ogolne_okno": "¿Dos hojas con una persiana? Elige «Dos hojas» y un motor.",
+      "ogolne_silnik": "Deja 0 – la tarjeta mide el tiempo sola tras unos movimientos.",
+      "ogolne_pogoda": "Basta una entidad de tiempo. Un anemómetro protege con más precisión.",
+      "ogolne_automatyka": "Empieza con una función y mira cómo funciona. El sensor «Motivo» muestra por qué se movió el estor.",
+      "ogolne_lamele": "Un ángulo de 45° deja entrar luz sin que el sol dé directamente en la habitación.",
+      "ogolne_fotokomorka": "¿Sin fotocélula en HA? El portón funciona igual, solo que la tarjeta no sabe del obstáculo.",
+      "sypialnia_rodzaj": "Para el dormitorio lo mejor es un estor opaco o noche y día. La luz de la mañana no te despierta.",
+      "sypialnia_automatyka": "Recomendamos el horario (salida del sol por la mañana, puesta por la noche) y el bloqueo si duermes con la ventana abatida.",
+      "sypialnia_czujniki": "En el dormitorio la ventana suele quedar abatida de noche. Elige «Se abate».",
+      "salon_rodzaj": "En el salón se suele elegir noche y día o plisado – dejan pasar la luz y tapan la vista desde la calle.",
+      "salon_automatyka": "Recomendamos la protección solar. Con un sensor de presencia el estor se abre cuando alguien entra por la mañana.",
+      "kuchnia_rodzaj": "Para la cocina va bien un estor con cajón o una veneciana de aluminio – fáciles de limpiar.",
+      "kuchnia_automatyka": "Recomendamos el bloqueo con ventana abierta – al cocinar la ventana suele estar abierta.",
+      "dziecko_rodzaj": "En la habitación infantil un estor opaco ayuda con la siesta.",
+      "dziecko_automatyka": "Recomendamos el horario nocturno y el bloqueo de ventana.",
+      "gabinet_rodzaj": "En el despacho una veneciana o un screen reducen reflejos en el monitor.",
+      "gabinet_automatyka": "Recomendamos el antideslumbramiento – el estor baja solo lo necesario.",
+      "lazienka_rodzaj": "Para el baño elige un estor resistente a la humedad: veneciana de aluminio o plisado.",
+      "lazienka_automatyka": "Recomendamos el bloqueo de ventana – tras el baño la ventana suele estar abierta."
+    }
+  },
+  "bramy": {
+    "przesuwna": "Portón corredero",
+    "skrzydlowa": "Portón batiente",
+    "segmentowa": "Puerta seccional",
+    "uchylna": "Puerta basculante",
+    "roletowa": "Puerta enrollable"
+  },
+  "oslony_nowe": {
+    "pionowa": "Estor vertical",
+    "zaslona": "Cortina lateral"
+  },
+  "bledy": {
+    "brak_rolety": "Elige un motor.",
+    "za_duzo": "Elige como mucho dos motores (hoja izquierda y derecha)."
+  },
+  "encje": {
+    "kalibruj": "Calibrar",
+    "wznow": "Reanudar automatización",
+    "powod": "Motivo del movimiento",
+    "ruchy": "Movimientos del motor",
+    "czas_pracy": "Tiempo de uso del motor",
+    "automatyka": "Automatización",
+    "pauza": "Pausa por hoy",
+    "spie": "Duermo",
+    "wakacje": "Modo vacaciones"
+  },
+  "powody": {
+    "brak": "Sin automatización",
+    "wylaczona": "Automatización apagada",
+    "cisza": "Calma tras reiniciar",
+    "dym": "Humo – abierto",
+    "wiatr": "Viento – recogido",
+    "drgania": "Vibración – recogido",
+    "grad": "Aviso – protegido",
+    "deszcz": "Lluvia – recogido",
+    "mroz": "Helada – sin mover",
+    "pauza": "En pausa",
+    "reczny": "Manual – pausa",
+    "alarm": "Alarma",
+    "spie": "Duermo",
+    "nikogo": "Nadie en casa",
+    "wakacje": "Vacaciones – día",
+    "wakacje_noc": "Vacaciones – noche",
+    "harm_dzien": "Horario – día",
+    "harm_noc": "Horario – noche",
+    "posrednia": "Posición intermedia",
+    "obecnosc": "Hay alguien en la habitación",
+    "czeka_obecnosc": "Espera a que alguien entre",
+    "zima_noc": "Invierno – noche",
+    "zima_slonce": "Invierno – el sol calienta",
+    "slonce": "Sol en la ventana",
+    "jasnosc": "Luminoso",
+    "temp_pokoj": "Habitación demasiado caliente",
+    "upal": "Calor",
+    "oslepianie": "Deslumbramiento",
+    "przeszkoda": "Obstáculo",
+    "drzwi": "Puerta abierta",
+    "wietrzenie": "Ventilación",
+    "blokada": "Ventana abierta – bloqueado"
+  },
+  "komunikaty": {
+    "tytul": "{nazwa} – problema",
+    "nie_odpowiada": "{nazwa}: el motor no responde ({encje}). Revisa la alimentación o la cobertura.",
+    "nie_dojechala": "{nazwa}: debía llegar al {cel} %, pero está en {jest} %.",
+    "bateria": "{nazwa}: batería baja – {lista}.",
+    "czujnik": "{nazwa}: sensor no disponible – {lista}.",
+    "automatyka": "{nazwa}: la automatización no movió el estor – {powod}.",
+    "kalibracja": "{nazwa}: el motor ha hecho {ruchy} movimientos desde la calibración. Pulsa «Calibrar» en el dispositivo.",
+    "brama_otwarta": "{nazwa}: el portón lleva abierto más de {minuty} min.",
+    "brama_niedomknieta": "{nazwa}: el portón no se cerró.",
+    "przeszkoda": "{nazwa}: hay algo en el portón (fotocélula).",
+    "nie_motor_ha": "Esto no es un dispositivo Motor HA."
+  },
+  "uslugi": {
+    "wstrzymaj": [
+      "Pausar la automatización",
+      "La automatización no mueve el dispositivo durante el tiempo indicado (vacío = hasta el final del día).",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ],
+        "minuty": [
+          "Minutos",
+          "Vacío = hasta el final del día."
+        ]
+      }
+    ],
+    "wznow": [
+      "Reanudar la automatización",
+      "Termina la pausa y comprueba al momento dónde debe estar el estor.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ]
+      }
+    ],
+    "przelicz": [
+      "Comprobar ahora",
+      "La automatización recalcula la posición al momento.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ]
+      }
+    ],
+    "kalibruj": [
+      "Calibrar",
+      "Mide el tiempo de recorrido real.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ]
+      }
+    ],
+    "ustaw": [
+      "Fijar posición",
+      "Fija la posición (y las lamas) como la automatización – sin pausa por movimiento manual.",
+      {
+        "entity_id": [
+          "Dispositivo",
+          "Un dispositivo Motor HA."
+        ],
+        "pozycja": [
+          "Posición",
+          "100 = abierto."
+        ],
+        "lamele": [
+          "Lamas",
+          "Ángulo de las lamas."
+        ]
+      }
+    ]
+  },
+  "naprawa": {
+    "t": "Motor HA {wersja} – reiniciar",
+    "o": "La nueva versión está instalada. Pulsa «Enviar» para reiniciar Home Assistant."
+  },
+  "przeniesione": {
+    "t": "Motor HA 2.0 – ventanas trasladadas",
+    "o": "Se han trasladado {ile} ventanas de la versión anterior (Okno HA 1.x). Ahora funcionan como nuevos dispositivos Motor HA con los mismos ajustes. Las entradas antiguas solo están desactivadas: puedes borrarlas en Ajustes → Dispositivos y servicios → Okno HA. La automatización sigue apagada hasta que la actives en «Configurar»."
+  }
+}

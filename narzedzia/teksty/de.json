@@ -1,0 +1,665 @@
+{
+  "krok": "Schritt {nr} von {z}",
+  "co": "Was:",
+  "poco": "Wozu:",
+  "kroki": {
+    "tryb": {
+      "t": "Assistent-Modus",
+      "co": "Wähle, wie viele Fragen du sehen möchtest.",
+      "poco": "Einfach reicht den meisten. Erweitert zeigt alle Optionen und Zusatzgeräte. Den Modus änderst du später unter „Konfigurieren“."
+    },
+    "mam": {
+      "t": "Was du zu Hause hast",
+      "co": "Hake an, was du hast. Der Assistent hat Home Assistant durchsucht und Gefundenes angehakt.",
+      "poco": "Der Assistent zeigt nur Schritte und Funktionen für angehakte Geräte. Den Rest fügst du später unter „Konfigurieren“ hinzu.\n\nGefunden: {znalezione}"
+    },
+    "urzadzenie": {
+      "t": "Gerät",
+      "co": "Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.",
+      "poco": "Motor HA steuert diesen Motor, und mit dem Raum verstehst du Assist, z. B. „Wohnzimmer schließen“."
+    },
+    "rodzaj": {
+      "t": "Art",
+      "co": "Wähle genau, was du hast.",
+      "poco": "Die Karte zeichnet dieses Gerät, und die Automatik weiß, was sie nutzen kann."
+    },
+    "lamele": {
+      "t": "Lamellen",
+      "co": "Stelle das Wenden der Lamellen ein.",
+      "poco": "Du lässt Licht herein, ohne die Jalousie hochzufahren."
+    },
+    "kolory": {
+      "t": "Farben",
+      "co": "Wähle die Farbe von Behang und Rahmen.",
+      "poco": "Das Fenster auf dem Bildschirm sieht aus wie das echte."
+    },
+    "okno": {
+      "t": "Fenster",
+      "co": "Wie viele Flügel das Fenster hat und wie groß es auf der Karte ist.",
+      "poco": "Jeder Flügel kann einen eigenen Motor haben."
+    },
+    "czujniki": {
+      "t": "Sensoren",
+      "co": "Wähle die Öffnungssensoren von Fenster und Tür.",
+      "poco": "Die Karte zeigt einen gekippten oder offenen Flügel, und die Sperre fährt den Behang nie auf ein offenes Fenster."
+    },
+    "fotokomorka": {
+      "t": "Lichtschranke",
+      "co": "Wähle den Hindernissensor des Tors und den Zustand, der „etwas steht im Tor“ bedeutet.",
+      "poco": "Die Karte zeigt das Hindernis und du bekommst eine Benachrichtigung. Die Lichtschranke in der Steuerung stoppt das Tor weiterhin selbst."
+    },
+    "silnik": {
+      "t": "Motor",
+      "co": "Gib die volle Fahrzeit ein oder lass 0.",
+      "poco": "Die Zeichnung fährt so schnell wie der echte Motor. Bei 0 lernt die Karte die Zeit nach ein paar Fahrten selbst."
+    },
+    "pogoda": {
+      "t": "Wetter",
+      "co": "Wähle Wetter und Außensensoren.",
+      "poco": "Hinter dem Glas siehst du das echte Wetter, und die Automatik schützt den Behang vor Wind, Regen und Sonne."
+    },
+    "domownicy": {
+      "t": "Bewohner",
+      "co": "Wähle Präsenz-, Bewegungs- und Bewohnersensoren.",
+      "poco": "Der Behang kann darauf reagieren, ob jemand im Raum oder zu Hause ist."
+    },
+    "automatyka": {
+      "t": "Automatik",
+      "co": "Schalte die Funktionen ein, die den Behang selbst bewegen dürfen.",
+      "poco": "Dein Zuhause kümmert sich um die Behänge, ohne Automationen zu schreiben. Alles ist aus, bis du es einschaltest."
+    },
+    "ustawienia": {
+      "t": "Einstellungen",
+      "co": "Passe die eingeschalteten Funktionen an.",
+      "poco": "Die Standardwerte passen für die meisten Häuser."
+    },
+    "powiadomienia": {
+      "t": "Benachrichtigungen",
+      "co": "Wähle, worüber du informiert werden willst.",
+      "poco": "Du weißt sofort, welches Gerät ein Problem hat. Benachrichtigungen gehen an HA und auf Wunsch aufs Handy."
+    },
+    "panel": {
+      "t": "Dashboard",
+      "co": "Auf welches Dashboard die Karte kommt.",
+      "poco": "Die Karte erscheint von selbst, du musst nichts klicken."
+    }
+  },
+  "pola": {
+    "tryb": "Modus",
+    "kopiuj_z": "Einstellungen von einem anderen Gerät kopieren",
+    "mam": "Ich habe zu Hause",
+    "rolety": "Motor (eine oder zwei Entitäten)",
+    "name": "Name",
+    "pokoj": "Raum",
+    "rodzaj_pokoju": "Raumart (für Tipps)",
+    "oslona": "Art",
+    "lamele_kat": "Lamellenwinkel bei Sonne",
+    "lamele_tryb": "Lamellensteuerung",
+    "lamele_noc": "Lamellenwinkel nachts",
+    "kolor": "Behangfarbe",
+    "rama": "Rahmenfarbe",
+    "kolor_wlasny": "Eigene Behangfarbe",
+    "rama_wlasna": "Eigene Rahmenfarbe",
+    "skrzydla": "Flügel",
+    "wysokosc": "Höhe auf der Karte",
+    "odwroc": "Umgekehrte Prozente",
+    "czujnik_lewe": "Sensor linker Flügel",
+    "tryb_lewe": "Linker Flügel",
+    "czujnik_prawe": "Sensor rechter Flügel",
+    "tryb_prawe": "Rechter Flügel",
+    "czujnik_drzwi": "Terrassentürsensor",
+    "czujnik_przeszkoda": "Hindernissensor an der Tür",
+    "czujnik_foto": "Lichtschranke (Hindernissensor)",
+    "foto_stan": "Hindernis, wenn der Sensor den Zustand hat",
+    "czas": "Volle Fahrzeit",
+    "kalibruj": "Jetzt kalibrieren (Behang fährt hoch, runter und hoch)",
+    "predkosc_lewa": "Motorgeschwindigkeit – links",
+    "predkosc_prawa": "Motorgeschwindigkeit – rechts",
+    "brama_minuty": "Tor zu lange offen nach",
+    "pogoda": "Wetter",
+    "czujnik_temp": "Außentemperatur",
+    "czujnik_temp_pokoj": "Raumtemperatur",
+    "czujnik_jasnosc": "Helligkeit oder Solarleistung",
+    "czujnik_wiatr": "Windmesser",
+    "czujnik_deszcz": "Regensensor",
+    "czujnik_drgania": "Vibrationssensor der Markise",
+    "czujnik_ostrzezenia": "Wetterwarnungen (DWD, Meteoalarm)",
+    "czujnik_obecnosc": "Präsenzsensor (jemand ist da)",
+    "czujnik_ruch": "Bewegungsmelder (jemand kam herein)",
+    "osoby": "Bewohner",
+    "czujnik_dym": "Rauchmelder",
+    "czujnik_alarm": "Alarmanlage",
+    "czujnik_swieta": "Arbeitstag (Workday)",
+    "powiadom": "Benachrichtige mich, wenn",
+    "powiadom_gdzie": "Auch senden an",
+    "na_panel": "Karte zum Dashboard hinzufügen",
+    "wstecz": "Zurück zum vorigen Schritt"
+  },
+  "pomoc": {
+    "kopiuj_z": "Leer = von vorne beginnen.",
+    "rolety": "Bei einem Fenster mit zwei Flügeln wähle zwei: zuerst den linken, dann den rechten.",
+    "name": "Leer = Name des Motors.",
+    "pokoj": "Das Gerät kommt in diesen Raum. Assist versteht dann „Wohnzimmer schließen“.",
+    "odwroc": "Einschalten, wenn der Motor bei geschlossenem Behang 100 % meldet.",
+    "czas": "0 = automatisch: aus Motorgeschwindigkeit, Kalibrierung oder echten Fahrten.",
+    "foto_stan": "Meist „on“. Bei einem Textsensor z. B. „obstructed“ eingeben.",
+    "czujnik_jasnosc": "Luxmeter oder Solarleistung – statt nur des Sonnenstands.",
+    "czujnik_swieta": "Workday-Integration – Feiertage zählen wie Wochenende.",
+    "powiadom_gdzie": "Die HA-App auf dem Handy. Nichts gewählt – nur Benachrichtigungen in HA.",
+    "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
+  },
+  "f": {
+    "harmonogram": [
+      "Zeitplan",
+      "Öffnet morgens und schließt abends: zu festen Zeiten oder mit Sonnenauf- und -untergang."
+    ],
+    "slonce": [
+      "Sonnenschutz",
+      "Fährt den Behang herunter, wenn die Sonne in dieses Fenster scheint und es warm ist."
+    ],
+    "blokada": [
+      "Sperre bei offenem Fenster",
+      "Fährt nie auf ein offenes oder gekipptes Fenster. Eine ausgelassene Fahrt folgt nach dem Schließen."
+    ],
+    "wiatr": [
+      "Wind",
+      "Fährt einen Außenbehang bei starkem Wind ein."
+    ],
+    "obecnosc": [
+      "Präsenz",
+      "Bleibt morgens geschlossen, bis jemand den Raum betritt."
+    ],
+    "wakacje": [
+      "Urlaubsmodus",
+      "Öffnet und schließt jeden Tag zu etwas anderer Zeit, als wäre jemand zu Hause."
+    ],
+    "licznik": [
+      "Motorzähler",
+      "Zählt Fahrten und Laufzeit, erinnert ans Kalibrieren."
+    ],
+    "reczny": [
+      "Handbetrieb hat Vorrang",
+      "Bewegst du den Behang mit Fernbedienung oder Taster, wartet die Automatik."
+    ],
+    "posrednia": [
+      "Zwischenposition",
+      "Zur gewählten Zeit hält der Behang auf halber Höhe."
+    ],
+    "dni": [
+      "Werktage und Wochenende",
+      "Eigene Zeiten am Wochenende und an Feiertagen."
+    ],
+    "wietrzenie": [
+      "Lüftungsposition",
+      "Bei gekipptem Fenster bleibt der Behang höher, damit Luft strömt."
+    ],
+    "drzwi": [
+      "Terrassentür",
+      "Bei offener Tür fährt der Behang nicht tiefer als die gewählte Position."
+    ],
+    "oslepianie": [
+      "Blendschutz",
+      "Fährt nur so weit, dass die Sonne nicht weiter als bis zum Fernseher oder Schreibtisch reicht."
+    ],
+    "zima": [
+      "Winter und Sommer",
+      "Im Winter öffnet er in der Sonne (Gratiswärme), im Sommer beschattet er."
+    ],
+    "jasnosc": [
+      "Helligkeitssensor",
+      "Luxmeter oder Solaranlage entscheiden über die Sonne."
+    ],
+    "temp_pokoj": [
+      "Raumtemperatur",
+      "Beschattet, wenn es im Raum zu warm wird."
+    ],
+    "deszcz": [
+      "Regen",
+      "Fährt Markise, Screen und Raffstore bei Regen ein."
+    ],
+    "mroz": [
+      "Frost",
+      "Bei Frost bewegt sich der Außenbehang nicht, damit er nicht festfriert."
+    ],
+    "grad": [
+      "Hagel und Warnungen",
+      "Bei einer Warnung fährt er Markisen ein und schließt Rollläden zum Schutz der Scheibe."
+    ],
+    "drgania": [
+      "Markisen-Vibration",
+      "Fährt die Markise bei starker Böe ein."
+    ],
+    "upal": [
+      "Hitze morgen",
+      "Sagt die Vorhersage Hitze voraus, fährt der Behang morgens herunter, bevor der Raum warm wird."
+    ],
+    "dym": [
+      "Rauch",
+      "Bei Rauchalarm öffnet er den Behang – ein Fluchtweg."
+    ],
+    "alarm": [
+      "Alarmanlage",
+      "Schließt den Behang, wenn die Alarmanlage scharf ist."
+    ],
+    "nikogo": [
+      "Niemand zu Hause",
+      "Schließt den Behang, wenn alle gegangen sind."
+    ],
+    "przeszkoda": [
+      "Hindernis an der Tür",
+      "Fährt nicht herunter, wenn der Sensor etwas im Weg sieht."
+    ],
+    "spie": [
+      "Modus „Schlafen“",
+      "Ein Schalter am Gerät: Der Behang bleibt zu, bis du ihn ausschaltest."
+    ],
+    "granice": [
+      "Fahrgrenzen",
+      "Der Behang fährt nur im gewählten Bereich, z. B. 10–90 %."
+    ],
+    "drobne": [
+      "Keine kleinen Korrekturen",
+      "Überspringt Änderungen von wenigen Prozent."
+    ],
+    "po_kolei": [
+      "Nacheinander",
+      "Behänge im Haus fahren mit einigen Sekunden Abstand."
+    ],
+    "cisza": [
+      "Ruhe nach Neustart",
+      "Nach dem Start von HA wartet die Automatik einige Minuten."
+    ],
+    "proba": [
+      "Probelauf",
+      "Zeigt, was die Automatik tun würde, bewegt den Behang aber nicht."
+    ]
+  },
+  "parametry": {
+    "azymut": [
+      "Fensterrichtung",
+      "Wohin das Fenster zeigt: 90 Osten, 180 Süden, 270 Westen."
+    ],
+    "szer_slonca": [
+      "Sonnenbreite im Fenster",
+      "Wie viele Grad links und rechts der Fensterrichtung die Sonne hineinscheint."
+    ],
+    "min_wys_slonca": [
+      "Minimale Sonnenhöhe",
+      "Bäume und Häuser verdecken eine tiefere Sonne."
+    ],
+    "slonce_temp": [
+      "Schützen ab Temperatur",
+      "Draußen, ab der der Behang bei Sonne herunterfährt."
+    ],
+    "slonce_poz": [
+      "Position bei Sonne",
+      "0 % = geschlossen."
+    ],
+    "harm_tryb": [
+      "Öffnungszeiten",
+      "Mit Sonnenauf- und -untergang oder zu festen Zeiten."
+    ],
+    "przesuniecie": [
+      "Versatz",
+      "Minuten nach Sonnenaufgang und vor Sonnenuntergang."
+    ],
+    "otworz": [
+      "Öffnen um",
+      ""
+    ],
+    "zamknij": [
+      "Schließen um",
+      ""
+    ],
+    "otworz_weekend": [
+      "Am Wochenende öffnen um",
+      ""
+    ],
+    "zamknij_weekend": [
+      "Am Wochenende schließen um",
+      ""
+    ],
+    "posrednia_godz": [
+      "Zwischenposition ab",
+      ""
+    ],
+    "posrednia_poz": [
+      "Zwischenposition",
+      ""
+    ],
+    "wiatr_prog": [
+      "Einfahren ab Wind",
+      ""
+    ],
+    "mroz_prog": [
+      "Frost ab",
+      ""
+    ],
+    "upal_prog": [
+      "Hitze ab",
+      "Höchsttemperatur der Vorhersage."
+    ],
+    "temp_pokoj_prog": [
+      "Raum zu warm ab",
+      ""
+    ],
+    "jasnosc_prog": [
+      "Hell ab",
+      "Lux oder Watt der Solaranlage."
+    ],
+    "obecnosc_rano": [
+      "Auf Präsenz warten bis",
+      ""
+    ],
+    "wakacje_rozrzut": [
+      "Zeitstreuung",
+      "Plus minus so viele Minuten, jeden Tag anders."
+    ],
+    "wietrzenie_poz": [
+      "Lüftungsposition",
+      ""
+    ],
+    "drzwi_min": [
+      "Bei offener Tür nicht tiefer als",
+      ""
+    ],
+    "granica_min": [
+      "Am tiefsten",
+      ""
+    ],
+    "granica_max": [
+      "Am höchsten",
+      ""
+    ],
+    "drobne_prog": [
+      "Änderungen überspringen kleiner als",
+      ""
+    ],
+    "reczny_min": [
+      "Nach Handbetrieb warten",
+      ""
+    ],
+    "po_kolei_s": [
+      "Abstand zwischen Behängen",
+      ""
+    ],
+    "cisza_min": [
+      "Nach HA-Start warten",
+      ""
+    ],
+    "spie_poz": [
+      "Position im Modus „Schlafen“",
+      ""
+    ],
+    "alarm_poz": [
+      "Position bei scharfer Anlage",
+      ""
+    ],
+    "nikogo_poz": [
+      "Position, wenn niemand da ist",
+      ""
+    ],
+    "obiekt_odl_m": [
+      "Sonne reicht höchstens bis",
+      "Wie weit vom Fenster Fernseher oder Schreibtisch stehen."
+    ],
+    "okno_wys_m": [
+      "Fensterhöhe",
+      ""
+    ]
+  },
+  "selector": {
+    "tryb": {
+      "podstawowy": "Einfach – ein paar einfache Fragen",
+      "zaawansowany": "Erweitert – alle Optionen"
+    },
+    "mam": {
+      "zew": "Außenbehang (Rollladen, Markise, Screen)",
+      "lamele": "Behang mit wendbaren Lamellen",
+      "brama": "Einfahrtstor oder Garagentor",
+      "foto": "Lichtschranke des Tors in HA sichtbar",
+      "okno": "Fenstersensor",
+      "drzwi": "Terrassentürsensor",
+      "obecnosc": "Präsenzsensor (jemand ist da)",
+      "ruch": "Bewegungsmelder (jemand kam herein)",
+      "pogoda": "Wetter",
+      "temp": "Außentemperatur",
+      "grupy": "Mehrere Geräte im Haus",
+      "temp_pokoj": "Raumtemperatur",
+      "jasnosc": "Luxmeter oder Solaranlage",
+      "wiatr": "Windmesser",
+      "deszcz": "Regensensor",
+      "drgania": "Vibrationssensor der Markise",
+      "ostrzezenia": "Wetterwarnungen",
+      "dym": "Rauchmelder",
+      "alarm": "Alarmanlage",
+      "osoby": "Handys der Bewohner",
+      "przeszkoda": "Hindernissensor an der Tür"
+    },
+    "pokoje": {
+      "salon": "Wohnzimmer",
+      "sypialnia": "Schlafzimmer",
+      "kuchnia": "Küche",
+      "dziecko": "Kinderzimmer",
+      "gabinet": "Arbeitszimmer",
+      "lazienka": "Bad",
+      "jadalnia": "Esszimmer",
+      "przedpokoj": "Flur",
+      "inny": "Andere"
+    },
+    "skrzydla": {
+      "1": "Ein Flügel",
+      "2": "Zwei Flügel"
+    },
+    "tryby": {
+      "uchyl": "Kippt",
+      "otworz": "Öffnet"
+    },
+    "lamele_tryb": {
+      "auto": "Automatisch (Sonne, Nacht)",
+      "staly": "Immer derselbe Winkel",
+      "nocny": "Nur nachts"
+    },
+    "harm_tryb": {
+      "slonce": "Sonnenauf- und -untergang",
+      "godziny": "Feste Zeiten"
+    },
+    "powiadomienia": {
+      "nie_odpowiada": "Reagiert nicht",
+      "nie_dojechala": "Position nicht erreicht",
+      "bateria": "Schwache Batterie in Motor oder Sensor",
+      "czujnik": "Sensor nicht verfügbar",
+      "automatyka": "Problem der Automatik (Sperre, Fehler, Kalibrierung)",
+      "brama_otwarta": "Tor zu lange offen",
+      "brama_niedomknieta": "Tor nicht geschlossen",
+      "przeszkoda": "Hindernis im Tor"
+    },
+    "kroki": {
+      "tryb": "Modus",
+      "mam": "Was du hast",
+      "urzadzenie": "Gerät",
+      "rodzaj": "Art",
+      "lamele": "Lamellen",
+      "kolory": "Farben",
+      "okno": "Fenster",
+      "czujniki": "Sensoren",
+      "fotokomorka": "Lichtschranke",
+      "silnik": "Motor",
+      "pogoda": "Wetter",
+      "domownicy": "Bewohner",
+      "automatyka": "Automatik",
+      "ustawienia": "Einstellungen",
+      "powiadomienia": "Benachrichtigungen",
+      "panel": "Dashboard"
+    },
+    "porady": {
+      "ogolne_tryb": "Unsicher? Wähle Einfach. Du kannst es jederzeit ändern.",
+      "ogolne_mam": "Unsicher, ob du etwas hast? Lass es so, wie der Assistent es angehakt hat.",
+      "ogolne_kolory": "Die Farbe gibt es nur auf dem Bildschirm, am Behang ändert sich nichts.",
+      "ogolne_okno": "Zwei Flügel mit einem Rollladen? Wähle „Zwei Flügel“ und einen Motor.",
+      "ogolne_silnik": "Lass 0 – die Karte misst die Zeit nach ein paar Fahrten selbst.",
+      "ogolne_pogoda": "Eine Wetter-Entität reicht. Ein Windmesser schützt genauer.",
+      "ogolne_automatyka": "Beginne mit einer Funktion und schau, wie sie arbeitet. Der Sensor „Grund“ zeigt, warum sich der Behang bewegt hat.",
+      "ogolne_lamele": "45° lässt Licht herein, ohne dass die Sonne direkt in den Raum scheint.",
+      "ogolne_fotokomorka": "Keine Lichtschranke in HA? Das Tor arbeitet genauso, nur die Karte weiß nichts vom Hindernis.",
+      "sypialnia_rodzaj": "Fürs Schlafzimmer ist ein Verdunkelungs- oder Doppelrollo am besten. Morgens weckt dich kein Licht.",
+      "sypialnia_automatyka": "Wir empfehlen den Zeitplan (morgens Sonnenaufgang, abends Sonnenuntergang) und die Fenstersperre, wenn du bei gekipptem Fenster schläfst.",
+      "sypialnia_czujniki": "Im Schlafzimmer ist das Fenster nachts oft gekippt. Stelle „Kippt“ ein.",
+      "salon_rodzaj": "Im Wohnzimmer wählt man meist Doppelrollo oder Plissee – sie lassen Licht herein und verdecken die Sicht von der Straße.",
+      "salon_automatyka": "Wir empfehlen den Sonnenschutz. Mit einem Präsenzsensor öffnet der Behang, wenn morgens jemand hereinkommt.",
+      "kuchnia_rodzaj": "Für die Küche eignen sich Kassettenrollo oder Alu-Jalousie – leicht zu reinigen.",
+      "kuchnia_automatyka": "Wir empfehlen die Fenstersperre – beim Kochen ist das Fenster oft offen.",
+      "dziecko_rodzaj": "Im Kinderzimmer hilft ein Verdunkelungsrollo beim Mittagsschlaf.",
+      "dziecko_automatyka": "Wir empfehlen den Nacht-Zeitplan und die Fenstersperre.",
+      "gabinet_rodzaj": "Im Arbeitszimmer verringern Jalousie oder Screen Spiegelungen am Monitor.",
+      "gabinet_automatyka": "Wir empfehlen den Blendschutz – der Behang fährt nur so weit wie nötig.",
+      "lazienka_rodzaj": "Fürs Bad wähle einen feuchtigkeitsfesten Behang: Alu-Jalousie oder Plissee.",
+      "lazienka_automatyka": "Wir empfehlen die Fenstersperre – nach dem Baden ist das Fenster oft offen."
+    }
+  },
+  "bramy": {
+    "przesuwna": "Schiebetor",
+    "skrzydlowa": "Flügeltor",
+    "segmentowa": "Sektionaltor",
+    "uchylna": "Schwingtor",
+    "roletowa": "Rolltor"
+  },
+  "oslony_nowe": {
+    "pionowa": "Vertikaljalousie",
+    "zaslona": "Seitenvorhang"
+  },
+  "bledy": {
+    "brak_rolety": "Wähle einen Motor.",
+    "za_duzo": "Wähle höchstens zwei Motoren (linker und rechter Flügel)."
+  },
+  "encje": {
+    "kalibruj": "Kalibrieren",
+    "wznow": "Automatik fortsetzen",
+    "powod": "Grund der Bewegung",
+    "ruchy": "Motorfahrten",
+    "czas_pracy": "Motorlaufzeit",
+    "automatyka": "Automatik",
+    "pauza": "Pause für heute",
+    "spie": "Schlafen",
+    "wakacje": "Urlaubsmodus"
+  },
+  "powody": {
+    "brak": "Keine Automatik",
+    "wylaczona": "Automatik aus",
+    "cisza": "Ruhe nach Neustart",
+    "dym": "Rauch – offen",
+    "wiatr": "Wind – eingefahren",
+    "drgania": "Vibration – eingefahren",
+    "grad": "Warnung – geschützt",
+    "deszcz": "Regen – eingefahren",
+    "mroz": "Frost – keine Bewegung",
+    "pauza": "Pausiert",
+    "reczny": "Handbetrieb – Pause",
+    "alarm": "Alarmanlage",
+    "spie": "Schlafen",
+    "nikogo": "Niemand zu Hause",
+    "wakacje": "Urlaubsmodus – Tag",
+    "wakacje_noc": "Urlaubsmodus – Nacht",
+    "harm_dzien": "Zeitplan – Tag",
+    "harm_noc": "Zeitplan – Nacht",
+    "posrednia": "Zwischenposition",
+    "obecnosc": "Jemand ist im Raum",
+    "czeka_obecnosc": "Wartet, bis jemand hereinkommt",
+    "zima_noc": "Winter – Nacht",
+    "zima_slonce": "Winter – Sonne wärmt",
+    "slonce": "Sonne im Fenster",
+    "jasnosc": "Hell",
+    "temp_pokoj": "Raum zu warm",
+    "upal": "Hitze",
+    "oslepianie": "Blendung",
+    "przeszkoda": "Hindernis",
+    "drzwi": "Tür offen",
+    "wietrzenie": "Lüften",
+    "blokada": "Fenster offen – gesperrt"
+  },
+  "komunikaty": {
+    "tytul": "{nazwa} – Problem",
+    "nie_odpowiada": "{nazwa}: Der Motor reagiert nicht ({encje}). Prüfe Strom oder Reichweite.",
+    "nie_dojechala": "{nazwa}: sollte {cel} % erreichen, steht aber bei {jest} %.",
+    "bateria": "{nazwa}: schwache Batterie – {lista}.",
+    "czujnik": "{nazwa}: Sensor nicht verfügbar – {lista}.",
+    "automatyka": "{nazwa}: Die Automatik hat den Behang nicht bewegt – {powod}.",
+    "kalibracja": "{nazwa}: Der Motor hat seit der Kalibrierung {ruchy} Fahrten gemacht. Drücke „Kalibrieren“ am Gerät.",
+    "brama_otwarta": "{nazwa}: Das Tor ist länger als {minuty} min offen.",
+    "brama_niedomknieta": "{nazwa}: Das Tor hat sich nicht geschlossen.",
+    "przeszkoda": "{nazwa}: Etwas steht im Tor (Lichtschranke).",
+    "nie_motor_ha": "Das ist kein Motor-HA-Gerät."
+  },
+  "uslugi": {
+    "wstrzymaj": [
+      "Automatik pausieren",
+      "Die Automatik bewegt das Gerät für die angegebene Zeit nicht (leer = bis Tagesende).",
+      {
+        "entity_id": [
+          "Gerät",
+          "Ein Motor-HA-Gerät."
+        ],
+        "minuty": [
+          "Minuten",
+          "Leer = bis Tagesende."
+        ]
+      }
+    ],
+    "wznow": [
+      "Automatik fortsetzen",
+      "Beendet die Pause und prüft sofort, wo der Behang sein soll.",
+      {
+        "entity_id": [
+          "Gerät",
+          "Ein Motor-HA-Gerät."
+        ]
+      }
+    ],
+    "przelicz": [
+      "Jetzt prüfen",
+      "Die Automatik berechnet die Position sofort neu.",
+      {
+        "entity_id": [
+          "Gerät",
+          "Ein Motor-HA-Gerät."
+        ]
+      }
+    ],
+    "kalibruj": [
+      "Kalibrieren",
+      "Misst die echte Fahrzeit.",
+      {
+        "entity_id": [
+          "Gerät",
+          "Ein Motor-HA-Gerät."
+        ]
+      }
+    ],
+    "ustaw": [
+      "Position setzen",
+      "Setzt die Position (und Lamellen) wie die Automatik – ohne Pause nach Handbetrieb.",
+      {
+        "entity_id": [
+          "Gerät",
+          "Ein Motor-HA-Gerät."
+        ],
+        "pozycja": [
+          "Position",
+          "100 = offen."
+        ],
+        "lamele": [
+          "Lamellen",
+          "Lamellenwinkel."
+        ]
+      }
+    ]
+  },
+  "naprawa": {
+    "t": "Motor HA {wersja} – Neustart",
+    "o": "Die neue Version ist installiert. Klicke „Absenden“, um Home Assistant neu zu starten."
+  },
+  "przeniesione": {
+    "t": "Motor HA 2.0 – Fenster übernommen",
+    "o": "{ile} Fenster wurden aus der vorherigen Version (Okno HA 1.x) übernommen. Sie laufen jetzt als neue Motor-HA-Geräte mit denselben Einstellungen. Die alten Einträge sind nur deaktiviert – du kannst sie unter Einstellungen → Geräte & Dienste → Okno HA löschen. Die Automatik bleibt aus, bis du sie unter „Konfigurieren“ einschaltest."
+  }
+}

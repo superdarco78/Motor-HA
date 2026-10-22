@@ -1,0 +1,64 @@
+wstrzymaj:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: motor_ha
+          domain: cover
+          multiple: true
+    minuty:
+      selector:
+        number:
+          min: 0
+          max: 1440
+          unit_of_measurement: min
+wznow:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: motor_ha
+          domain: cover
+          multiple: true
+przelicz:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: motor_ha
+          domain: cover
+          multiple: true
+kalibruj:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: motor_ha
+          domain: cover
+          multiple: true
+ustaw:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: motor_ha
+          domain: cover
+          multiple: true
+    pozycja:
+      required: true
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+    lamele:
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"

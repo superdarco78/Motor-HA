@@ -1,0 +1,1161 @@
+{
+  "title": "Motor HA",
+  "config": {
+    "step": {
+      "tryb": {
+        "title": "Krok {nr} z {z}: Tryb kreatora",
+        "description": "{pasek}\n\n**Co:** Wybierz, ile pytań chcesz zobaczyć.\n\n**Po co:** Podstawowy wystarczy większości osób. Zaawansowany pokazuje wszystkie opcje i dodatkowe urządzenia. Tryb zmienisz potem w „Konfiguruj”.{porada}",
+        "data": {
+          "tryb": "Tryb",
+          "kopiuj_z": "Skopiuj ustawienia z innego urządzenia",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "kopiuj_z": "Puste = zacznij od zera.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "mam": {
+        "title": "Krok {nr} z {z}: Co masz w domu",
+        "description": "{pasek}\n\n**Co:** Zaznacz, co masz. Kreator sam przeszukał Home Assistanta i zaznaczył to, co znalazł.\n\n**Po co:** Kreator pokaże tylko kroki i funkcje dla zaznaczonych urządzeń. Resztę dodasz później w „Konfiguruj”.\n\nZnalezione: {znalezione}{porada}",
+        "data": {
+          "mam": "Mam w domu",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "urzadzenie": {
+        "title": "Krok {nr} z {z}: Urządzenie",
+        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem, a pomieszczenie pozwala mówić do Assist, np. „zasłoń salon”.{porada}",
+        "data": {
+          "rolety": "Silnik (jedna lub dwie encje)",
+          "name": "Nazwa",
+          "pokoj": "Pomieszczenie",
+          "rodzaj_pokoju": "Rodzaj pomieszczenia (do porad)",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "rolety": "Dla okna z dwoma skrzydłami wybierz dwie: najpierw lewą, potem prawą.",
+          "name": "Puste = nazwa silnika.",
+          "pokoj": "Urządzenie trafi do tego pomieszczenia. Assist zrozumie wtedy „zasłoń salon”.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "rodzaj": {
+        "title": "Krok {nr} z {z}: Rodzaj",
+        "description": "{pasek}\n\n**Co:** Wybierz, co dokładnie masz.\n\n**Po co:** Karta narysuje to urządzenie, a automatyka wie, czego może użyć.{porada}",
+        "data": {
+          "oslona": "Rodzaj",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "lamele": {
+        "title": "Krok {nr} z {z}: Lamele",
+        "description": "{pasek}\n\n**Co:** Ustaw obracanie lameli.\n\n**Po co:** Wpuścisz światło bez podnoszenia żaluzji.{porada}",
+        "data": {
+          "lamele_kat": "Kąt lameli przy słońcu",
+          "lamele_tryb": "Ustawianie lameli",
+          "lamele_noc": "Kąt lameli w nocy",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "kolory": {
+        "title": "Krok {nr} z {z}: Kolory",
+        "description": "{pasek}\n\n**Co:** Wybierz kolor osłony i ramy.\n\n**Po co:** Okno na ekranie wygląda jak prawdziwe.{porada}",
+        "data": {
+          "kolor": "Kolor osłony",
+          "rama": "Kolor ramy",
+          "kolor_wlasny": "Własny kolor osłony",
+          "rama_wlasna": "Własny kolor ramy",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "okno": {
+        "title": "Krok {nr} z {z}: Okno",
+        "description": "{pasek}\n\n**Co:** Ile skrzydeł ma okno i jak duże ma być na karcie.\n\n**Po co:** Każde skrzydło może mieć własny silnik.{porada}",
+        "data": {
+          "skrzydla": "Skrzydła",
+          "wysokosc": "Wysokość na karcie",
+          "odwroc": "Odwrócone procenty",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "odwroc": "Włącz, gdy silnik melduje 100 % przy zamkniętej osłonie.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "czujniki": {
+        "title": "Krok {nr} z {z}: Czujniki",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki otwarcia okna i drzwi.\n\n**Po co:** Karta pokaże skrzydło uchylone albo otwarte, a blokada nie opuści osłony na otwarte okno.{porada}",
+        "data": {
+          "czujnik_lewe": "Czujnik lewego skrzydła",
+          "tryb_lewe": "Lewe skrzydło",
+          "czujnik_prawe": "Czujnik prawego skrzydła",
+          "tryb_prawe": "Prawe skrzydło",
+          "czujnik_drzwi": "Czujnik drzwi tarasowych",
+          "czujnik_przeszkoda": "Czujnik przeszkody przy drzwiach",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "fotokomorka": {
+        "title": "Krok {nr} z {z}: Fotokomórka",
+        "description": "{pasek}\n\n**Co:** Wskaż czujnik przeszkody bramy i stan, który znaczy „coś stoi w bramie”.\n\n**Po co:** Karta pokaże przeszkodę i wyślesz sobie powiadomienie. Fotokomórka w sterowniku dalej sama zatrzymuje bramę.{porada}",
+        "data": {
+          "czujnik_foto": "Fotokomórka (czujnik przeszkody)",
+          "foto_stan": "Przeszkoda, gdy czujnik ma stan",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "foto_stan": "Zwykle „on”. Dla czujnika z tekstem wpisz np. „obstructed”.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "silnik": {
+        "title": "Krok {nr} z {z}: Silnik",
+        "description": "{pasek}\n\n**Co:** Podaj czas pełnego przejazdu albo zostaw 0.\n\n**Po co:** Rysunek jedzie tak szybko jak prawdziwy silnik. Przy 0 karta sama nauczy się czasu po kilku ruchach.{porada}",
+        "data": {
+          "czas": "Czas pełnego przejazdu",
+          "kalibruj": "Kalibruj teraz (osłona pojedzie w górę, w dół i w górę)",
+          "predkosc_lewa": "Prędkość silnika – lewy",
+          "predkosc_prawa": "Prędkość silnika – prawy",
+          "brama_minuty": "Brama otwarta za długo po",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "czas": "0 = automatycznie: z prędkości silnika, z kalibracji albo z prawdziwych ruchów.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "pogoda": {
+        "title": "Krok {nr} z {z}: Pogoda",
+        "description": "{pasek}\n\n**Co:** Wybierz pogodę i czujniki na zewnątrz.\n\n**Po co:** Za szybą widać prawdziwą pogodę, a automatyka chroni osłonę przed wiatrem, deszczem i słońcem.{porada}",
+        "data": {
+          "pogoda": "Pogoda",
+          "czujnik_temp": "Temperatura na zewnątrz",
+          "czujnik_temp_pokoj": "Temperatura w pokoju",
+          "czujnik_jasnosc": "Jasność albo moc fotowoltaiki",
+          "czujnik_wiatr": "Wiatromierz",
+          "czujnik_deszcz": "Czujnik deszczu",
+          "czujnik_drgania": "Czujnik drgań markizy",
+          "czujnik_ostrzezenia": "Ostrzeżenia pogodowe (IMGW, Meteoalarm)",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "Luksomierz albo moc z fotowoltaiki – zamiast samej pozycji słońca.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "domownicy": {
+        "title": "Krok {nr} z {z}: Domownicy",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki obecności, ruchu i domowników.\n\n**Po co:** Osłona może reagować na to, czy ktoś jest w pokoju albo w domu.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Czujnik obecności (ktoś jest)",
+          "czujnik_ruch": "Czujnik ruchu (ktoś wszedł)",
+          "osoby": "Domownicy",
+          "czujnik_dym": "Czujnik dymu",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Dzień roboczy (Workday)",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "czujnik_swieta": "Integracja Workday – święta liczą się jak weekend.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "automatyka": {
+        "title": "Krok {nr} z {z}: Automatyka",
+        "description": "{pasek}\n\n**Co:** Włącz funkcje, które mają same ruszać osłoną.\n\n**Po co:** Dom dba o osłony bez pisania automatyzacji. Wszystkie są wyłączone, dopóki ich nie włączysz.{porada}",
+        "data": {
+          "f_harmonogram": "Harmonogram",
+          "f_slonce": "Ochrona przed słońcem",
+          "f_blokada": "Blokada przy otwartym oknie",
+          "f_wiatr": "Wiatr",
+          "f_obecnosc": "Obecność",
+          "f_wakacje": "Tryb wakacyjny",
+          "f_licznik": "Licznik pracy silnika",
+          "f_reczny": "Ręczny ruch ma pierwszeństwo",
+          "f_posrednia": "Pozycja pośrednia",
+          "f_dni": "Dni robocze i weekend",
+          "f_wietrzenie": "Pozycja wietrzenia",
+          "f_drzwi": "Drzwi tarasowe",
+          "f_oslepianie": "Ochrona przed oślepianiem",
+          "f_zima": "Zima i lato",
+          "f_jasnosc": "Czujnik jasności",
+          "f_temp_pokoj": "Temperatura w pokoju",
+          "f_deszcz": "Deszcz",
+          "f_mroz": "Mróz",
+          "f_grad": "Grad i ostrzeżenia",
+          "f_drgania": "Drgania markizy",
+          "f_upal": "Upał jutro",
+          "f_dym": "Dym",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Nikogo w domu",
+          "f_przeszkoda": "Przeszkoda przy drzwiach",
+          "f_spie": "Tryb „Śpię”",
+          "f_granice": "Granice ruchu",
+          "f_drobne": "Bez drobnych poprawek",
+          "f_po_kolei": "Po kolei, nie naraz",
+          "f_cisza": "Cisza po restarcie",
+          "f_proba": "Próba na sucho",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "f_harmonogram": "Otwiera rano i zamyka wieczorem: o stałych godzinach albo ze wschodem i zachodem słońca.",
+          "f_slonce": "Opuszcza osłonę, gdy słońce świeci w to okno i jest ciepło.",
+          "f_blokada": "Nie opuszcza osłony na otwarte lub uchylone okno. Pominięty ruch wykona się po zamknięciu.",
+          "f_wiatr": "Zwija osłonę zewnętrzną przy silnym wietrze.",
+          "f_obecnosc": "Rano czeka zamknięta, aż ktoś wejdzie do pokoju.",
+          "f_wakacje": "Otwiera i zamyka co dzień o trochę innej porze, jakby ktoś był w domu.",
+          "f_licznik": "Liczy ruchy i czas pracy, przypomina o kalibracji.",
+          "f_reczny": "Gdy ruszysz osłonę pilotem albo przyciskiem, automatyka czeka.",
+          "f_posrednia": "O wybranej godzinie osłona staje w połowie.",
+          "f_dni": "Osobne godziny w weekend i święta.",
+          "f_wietrzenie": "Przy uchylonym oknie osłona staje wyżej, żeby powietrze płynęło.",
+          "f_drzwi": "Gdy drzwi są otwarte, osłona nie zjedzie niżej niż wybrana pozycja.",
+          "f_oslepianie": "Osłona zjeżdża tylko tyle, żeby słońce nie wpadało dalej niż do telewizora lub biurka.",
+          "f_zima": "Zimą w słońcu odsłania (darmowe ciepło), latem zasłania.",
+          "f_jasnosc": "O słońcu decyduje luksomierz albo fotowoltaika.",
+          "f_temp_pokoj": "Zasłania, gdy w pokoju robi się za ciepło.",
+          "f_deszcz": "Zwija markizę, screen i żaluzję fasadową w deszczu.",
+          "f_mroz": "Przy mrozie osłona zewnętrzna się nie rusza, żeby nie przymarzła.",
+          "f_grad": "Przy ostrzeżeniu zwija markizy, a rolety zamyka, żeby chroniły szybę.",
+          "f_drgania": "Zwija markizę przy mocnym podmuchu.",
+          "f_upal": "Gdy prognoza mówi o upale, osłona zjeżdża rano, zanim pokój się nagrzeje.",
+          "f_dym": "Przy alarmie dymu otwiera osłonę – droga ucieczki.",
+          "f_alarm": "Po uzbrojeniu alarmu zamyka osłonę.",
+          "f_nikogo": "Gdy wszyscy wyjdą, zamyka osłonę.",
+          "f_przeszkoda": "Nie zjeżdża, gdy czujnik widzi coś w przejściu.",
+          "f_spie": "Przełącznik na urządzeniu: osłona zamknięta, dopóki go nie wyłączysz.",
+          "f_granice": "Osłona jeździ tylko w wybranym zakresie, np. 10–90 %.",
+          "f_drobne": "Pomija zmiany o kilka procent.",
+          "f_po_kolei": "Osłony w domu ruszają z odstępem kilku sekund.",
+          "f_cisza": "Po starcie HA automatyka czeka kilka minut.",
+          "f_proba": "Pokazuje, co automatyka by zrobiła, ale nie rusza osłoną.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "ustawienia": {
+        "title": "Krok {nr} z {z}: Ustawienia",
+        "description": "{pasek}\n\n**Co:** Dostosuj włączone funkcje.\n\n**Po co:** Domyślne wartości pasują do większości domów.{porada}",
+        "data": {
+          "azymut": "Kierunek okna",
+          "szer_slonca": "Szerokość słońca w oknie",
+          "min_wys_slonca": "Minimalna wysokość słońca",
+          "slonce_temp": "Chroń od temperatury",
+          "slonce_poz": "Pozycja przy słońcu",
+          "harm_tryb": "Godziny otwierania",
+          "przesuniecie": "Przesunięcie",
+          "otworz": "Otwórz o",
+          "zamknij": "Zamknij o",
+          "otworz_weekend": "Otwórz w weekend o",
+          "zamknij_weekend": "Zamknij w weekend o",
+          "posrednia_godz": "Pozycja pośrednia od",
+          "posrednia_poz": "Pozycja pośrednia",
+          "wiatr_prog": "Zwiń od wiatru",
+          "mroz_prog": "Mróz od",
+          "upal_prog": "Upał od",
+          "temp_pokoj_prog": "Za ciepło w pokoju od",
+          "jasnosc_prog": "Jasno od",
+          "obecnosc_rano": "Czekaj na obecność do",
+          "wakacje_rozrzut": "Rozrzut godzin",
+          "wietrzenie_poz": "Pozycja wietrzenia",
+          "drzwi_min": "Przy otwartych drzwiach nie niżej niż",
+          "granica_min": "Najniżej",
+          "granica_max": "Najwyżej",
+          "drobne_prog": "Pomijaj zmiany mniejsze niż",
+          "reczny_min": "Po ręcznym ruchu czekaj",
+          "po_kolei_s": "Odstęp między osłonami",
+          "cisza_min": "Po starcie HA czekaj",
+          "spie_poz": "Pozycja w trybie „Śpię”",
+          "alarm_poz": "Pozycja przy alarmie",
+          "nikogo_poz": "Pozycja, gdy nikogo nie ma",
+          "obiekt_odl_m": "Słońce najwyżej do",
+          "okno_wys_m": "Wysokość okna",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "azymut": "Gdzie patrzy okno: 90 wschód, 180 południe, 270 zachód.",
+          "szer_slonca": "Ile stopni w lewo i w prawo od kierunku okna słońce świeci w okno.",
+          "min_wys_slonca": "Niższe słońce zasłaniają drzewa i domy.",
+          "slonce_temp": "Na zewnątrz, od której osłona zjeżdża przy słońcu.",
+          "slonce_poz": "0 % = zamknięta.",
+          "harm_tryb": "Ze wschodem i zachodem słońca albo o stałych godzinach.",
+          "przesuniecie": "Minuty po wschodzie i przed zachodem.",
+          "upal_prog": "Najwyższa temperatura w prognozie.",
+          "jasnosc_prog": "Luksy albo waty z fotowoltaiki.",
+          "wakacje_rozrzut": "Plus minus tyle minut, co dzień inaczej.",
+          "obiekt_odl_m": "Jak daleko od okna stoi telewizor lub biurko.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "powiadomienia": {
+        "title": "Krok {nr} z {z}: Powiadomienia",
+        "description": "{pasek}\n\n**Co:** Wybierz, o czym dać Ci znać.\n\n**Po co:** Od razu wiesz, które urządzenie ma problem. Powiadomienia trafiają do HA i, jeśli wybierzesz, na telefon.{porada}",
+        "data": {
+          "powiadom": "Powiadom mnie, gdy",
+          "powiadom_gdzie": "Wyślij też na",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "powiadom_gdzie": "Aplikacja HA na telefonie. Bez wyboru – tylko powiadomienia w HA.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "panel": {
+        "title": "Krok {nr} z {z}: Panel",
+        "description": "{pasek}\n\n**Co:** Na który panel dodać kartę.\n\n**Po co:** Karta pojawi się sama, nic nie musisz klikać.{porada}",
+        "data": {
+          "na_panel": "Dodaj kartę na panel",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Wybierz silnik.",
+      "za_duzo": "Wybierz najwyżej dwa silniki (lewe i prawe skrzydło)."
+    }
+  },
+  "options": {
+    "step": {
+      "tryb": {
+        "title": "Krok {nr} z {z}: Tryb kreatora",
+        "description": "{pasek}\n\n**Co:** Wybierz, ile pytań chcesz zobaczyć.\n\n**Po co:** Podstawowy wystarczy większości osób. Zaawansowany pokazuje wszystkie opcje i dodatkowe urządzenia. Tryb zmienisz potem w „Konfiguruj”.{porada}",
+        "data": {
+          "tryb": "Tryb",
+          "kopiuj_z": "Skopiuj ustawienia z innego urządzenia",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "kopiuj_z": "Puste = zacznij od zera.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "mam": {
+        "title": "Krok {nr} z {z}: Co masz w domu",
+        "description": "{pasek}\n\n**Co:** Zaznacz, co masz. Kreator sam przeszukał Home Assistanta i zaznaczył to, co znalazł.\n\n**Po co:** Kreator pokaże tylko kroki i funkcje dla zaznaczonych urządzeń. Resztę dodasz później w „Konfiguruj”.\n\nZnalezione: {znalezione}{porada}",
+        "data": {
+          "mam": "Mam w domu",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "urzadzenie": {
+        "title": "Krok {nr} z {z}: Urządzenie",
+        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem, a pomieszczenie pozwala mówić do Assist, np. „zasłoń salon”.{porada}",
+        "data": {
+          "rolety": "Silnik (jedna lub dwie encje)",
+          "name": "Nazwa",
+          "pokoj": "Pomieszczenie",
+          "rodzaj_pokoju": "Rodzaj pomieszczenia (do porad)",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "rolety": "Dla okna z dwoma skrzydłami wybierz dwie: najpierw lewą, potem prawą.",
+          "name": "Puste = nazwa silnika.",
+          "pokoj": "Urządzenie trafi do tego pomieszczenia. Assist zrozumie wtedy „zasłoń salon”.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "rodzaj": {
+        "title": "Krok {nr} z {z}: Rodzaj",
+        "description": "{pasek}\n\n**Co:** Wybierz, co dokładnie masz.\n\n**Po co:** Karta narysuje to urządzenie, a automatyka wie, czego może użyć.{porada}",
+        "data": {
+          "oslona": "Rodzaj",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "lamele": {
+        "title": "Krok {nr} z {z}: Lamele",
+        "description": "{pasek}\n\n**Co:** Ustaw obracanie lameli.\n\n**Po co:** Wpuścisz światło bez podnoszenia żaluzji.{porada}",
+        "data": {
+          "lamele_kat": "Kąt lameli przy słońcu",
+          "lamele_tryb": "Ustawianie lameli",
+          "lamele_noc": "Kąt lameli w nocy",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "kolory": {
+        "title": "Krok {nr} z {z}: Kolory",
+        "description": "{pasek}\n\n**Co:** Wybierz kolor osłony i ramy.\n\n**Po co:** Okno na ekranie wygląda jak prawdziwe.{porada}",
+        "data": {
+          "kolor": "Kolor osłony",
+          "rama": "Kolor ramy",
+          "kolor_wlasny": "Własny kolor osłony",
+          "rama_wlasna": "Własny kolor ramy",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "okno": {
+        "title": "Krok {nr} z {z}: Okno",
+        "description": "{pasek}\n\n**Co:** Ile skrzydeł ma okno i jak duże ma być na karcie.\n\n**Po co:** Każde skrzydło może mieć własny silnik.{porada}",
+        "data": {
+          "skrzydla": "Skrzydła",
+          "wysokosc": "Wysokość na karcie",
+          "odwroc": "Odwrócone procenty",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "odwroc": "Włącz, gdy silnik melduje 100 % przy zamkniętej osłonie.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "czujniki": {
+        "title": "Krok {nr} z {z}: Czujniki",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki otwarcia okna i drzwi.\n\n**Po co:** Karta pokaże skrzydło uchylone albo otwarte, a blokada nie opuści osłony na otwarte okno.{porada}",
+        "data": {
+          "czujnik_lewe": "Czujnik lewego skrzydła",
+          "tryb_lewe": "Lewe skrzydło",
+          "czujnik_prawe": "Czujnik prawego skrzydła",
+          "tryb_prawe": "Prawe skrzydło",
+          "czujnik_drzwi": "Czujnik drzwi tarasowych",
+          "czujnik_przeszkoda": "Czujnik przeszkody przy drzwiach",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "fotokomorka": {
+        "title": "Krok {nr} z {z}: Fotokomórka",
+        "description": "{pasek}\n\n**Co:** Wskaż czujnik przeszkody bramy i stan, który znaczy „coś stoi w bramie”.\n\n**Po co:** Karta pokaże przeszkodę i wyślesz sobie powiadomienie. Fotokomórka w sterowniku dalej sama zatrzymuje bramę.{porada}",
+        "data": {
+          "czujnik_foto": "Fotokomórka (czujnik przeszkody)",
+          "foto_stan": "Przeszkoda, gdy czujnik ma stan",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "foto_stan": "Zwykle „on”. Dla czujnika z tekstem wpisz np. „obstructed”.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "silnik": {
+        "title": "Krok {nr} z {z}: Silnik",
+        "description": "{pasek}\n\n**Co:** Podaj czas pełnego przejazdu albo zostaw 0.\n\n**Po co:** Rysunek jedzie tak szybko jak prawdziwy silnik. Przy 0 karta sama nauczy się czasu po kilku ruchach.{porada}",
+        "data": {
+          "czas": "Czas pełnego przejazdu",
+          "kalibruj": "Kalibruj teraz (osłona pojedzie w górę, w dół i w górę)",
+          "predkosc_lewa": "Prędkość silnika – lewy",
+          "predkosc_prawa": "Prędkość silnika – prawy",
+          "brama_minuty": "Brama otwarta za długo po",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "czas": "0 = automatycznie: z prędkości silnika, z kalibracji albo z prawdziwych ruchów.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "pogoda": {
+        "title": "Krok {nr} z {z}: Pogoda",
+        "description": "{pasek}\n\n**Co:** Wybierz pogodę i czujniki na zewnątrz.\n\n**Po co:** Za szybą widać prawdziwą pogodę, a automatyka chroni osłonę przed wiatrem, deszczem i słońcem.{porada}",
+        "data": {
+          "pogoda": "Pogoda",
+          "czujnik_temp": "Temperatura na zewnątrz",
+          "czujnik_temp_pokoj": "Temperatura w pokoju",
+          "czujnik_jasnosc": "Jasność albo moc fotowoltaiki",
+          "czujnik_wiatr": "Wiatromierz",
+          "czujnik_deszcz": "Czujnik deszczu",
+          "czujnik_drgania": "Czujnik drgań markizy",
+          "czujnik_ostrzezenia": "Ostrzeżenia pogodowe (IMGW, Meteoalarm)",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "czujnik_jasnosc": "Luksomierz albo moc z fotowoltaiki – zamiast samej pozycji słońca.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "domownicy": {
+        "title": "Krok {nr} z {z}: Domownicy",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki obecności, ruchu i domowników.\n\n**Po co:** Osłona może reagować na to, czy ktoś jest w pokoju albo w domu.{porada}",
+        "data": {
+          "czujnik_obecnosc": "Czujnik obecności (ktoś jest)",
+          "czujnik_ruch": "Czujnik ruchu (ktoś wszedł)",
+          "osoby": "Domownicy",
+          "czujnik_dym": "Czujnik dymu",
+          "czujnik_alarm": "Alarm",
+          "czujnik_swieta": "Dzień roboczy (Workday)",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "czujnik_swieta": "Integracja Workday – święta liczą się jak weekend.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "automatyka": {
+        "title": "Krok {nr} z {z}: Automatyka",
+        "description": "{pasek}\n\n**Co:** Włącz funkcje, które mają same ruszać osłoną.\n\n**Po co:** Dom dba o osłony bez pisania automatyzacji. Wszystkie są wyłączone, dopóki ich nie włączysz.{porada}",
+        "data": {
+          "f_harmonogram": "Harmonogram",
+          "f_slonce": "Ochrona przed słońcem",
+          "f_blokada": "Blokada przy otwartym oknie",
+          "f_wiatr": "Wiatr",
+          "f_obecnosc": "Obecność",
+          "f_wakacje": "Tryb wakacyjny",
+          "f_licznik": "Licznik pracy silnika",
+          "f_reczny": "Ręczny ruch ma pierwszeństwo",
+          "f_posrednia": "Pozycja pośrednia",
+          "f_dni": "Dni robocze i weekend",
+          "f_wietrzenie": "Pozycja wietrzenia",
+          "f_drzwi": "Drzwi tarasowe",
+          "f_oslepianie": "Ochrona przed oślepianiem",
+          "f_zima": "Zima i lato",
+          "f_jasnosc": "Czujnik jasności",
+          "f_temp_pokoj": "Temperatura w pokoju",
+          "f_deszcz": "Deszcz",
+          "f_mroz": "Mróz",
+          "f_grad": "Grad i ostrzeżenia",
+          "f_drgania": "Drgania markizy",
+          "f_upal": "Upał jutro",
+          "f_dym": "Dym",
+          "f_alarm": "Alarm",
+          "f_nikogo": "Nikogo w domu",
+          "f_przeszkoda": "Przeszkoda przy drzwiach",
+          "f_spie": "Tryb „Śpię”",
+          "f_granice": "Granice ruchu",
+          "f_drobne": "Bez drobnych poprawek",
+          "f_po_kolei": "Po kolei, nie naraz",
+          "f_cisza": "Cisza po restarcie",
+          "f_proba": "Próba na sucho",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "f_harmonogram": "Otwiera rano i zamyka wieczorem: o stałych godzinach albo ze wschodem i zachodem słońca.",
+          "f_slonce": "Opuszcza osłonę, gdy słońce świeci w to okno i jest ciepło.",
+          "f_blokada": "Nie opuszcza osłony na otwarte lub uchylone okno. Pominięty ruch wykona się po zamknięciu.",
+          "f_wiatr": "Zwija osłonę zewnętrzną przy silnym wietrze.",
+          "f_obecnosc": "Rano czeka zamknięta, aż ktoś wejdzie do pokoju.",
+          "f_wakacje": "Otwiera i zamyka co dzień o trochę innej porze, jakby ktoś był w domu.",
+          "f_licznik": "Liczy ruchy i czas pracy, przypomina o kalibracji.",
+          "f_reczny": "Gdy ruszysz osłonę pilotem albo przyciskiem, automatyka czeka.",
+          "f_posrednia": "O wybranej godzinie osłona staje w połowie.",
+          "f_dni": "Osobne godziny w weekend i święta.",
+          "f_wietrzenie": "Przy uchylonym oknie osłona staje wyżej, żeby powietrze płynęło.",
+          "f_drzwi": "Gdy drzwi są otwarte, osłona nie zjedzie niżej niż wybrana pozycja.",
+          "f_oslepianie": "Osłona zjeżdża tylko tyle, żeby słońce nie wpadało dalej niż do telewizora lub biurka.",
+          "f_zima": "Zimą w słońcu odsłania (darmowe ciepło), latem zasłania.",
+          "f_jasnosc": "O słońcu decyduje luksomierz albo fotowoltaika.",
+          "f_temp_pokoj": "Zasłania, gdy w pokoju robi się za ciepło.",
+          "f_deszcz": "Zwija markizę, screen i żaluzję fasadową w deszczu.",
+          "f_mroz": "Przy mrozie osłona zewnętrzna się nie rusza, żeby nie przymarzła.",
+          "f_grad": "Przy ostrzeżeniu zwija markizy, a rolety zamyka, żeby chroniły szybę.",
+          "f_drgania": "Zwija markizę przy mocnym podmuchu.",
+          "f_upal": "Gdy prognoza mówi o upale, osłona zjeżdża rano, zanim pokój się nagrzeje.",
+          "f_dym": "Przy alarmie dymu otwiera osłonę – droga ucieczki.",
+          "f_alarm": "Po uzbrojeniu alarmu zamyka osłonę.",
+          "f_nikogo": "Gdy wszyscy wyjdą, zamyka osłonę.",
+          "f_przeszkoda": "Nie zjeżdża, gdy czujnik widzi coś w przejściu.",
+          "f_spie": "Przełącznik na urządzeniu: osłona zamknięta, dopóki go nie wyłączysz.",
+          "f_granice": "Osłona jeździ tylko w wybranym zakresie, np. 10–90 %.",
+          "f_drobne": "Pomija zmiany o kilka procent.",
+          "f_po_kolei": "Osłony w domu ruszają z odstępem kilku sekund.",
+          "f_cisza": "Po starcie HA automatyka czeka kilka minut.",
+          "f_proba": "Pokazuje, co automatyka by zrobiła, ale nie rusza osłoną.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "ustawienia": {
+        "title": "Krok {nr} z {z}: Ustawienia",
+        "description": "{pasek}\n\n**Co:** Dostosuj włączone funkcje.\n\n**Po co:** Domyślne wartości pasują do większości domów.{porada}",
+        "data": {
+          "azymut": "Kierunek okna",
+          "szer_slonca": "Szerokość słońca w oknie",
+          "min_wys_slonca": "Minimalna wysokość słońca",
+          "slonce_temp": "Chroń od temperatury",
+          "slonce_poz": "Pozycja przy słońcu",
+          "harm_tryb": "Godziny otwierania",
+          "przesuniecie": "Przesunięcie",
+          "otworz": "Otwórz o",
+          "zamknij": "Zamknij o",
+          "otworz_weekend": "Otwórz w weekend o",
+          "zamknij_weekend": "Zamknij w weekend o",
+          "posrednia_godz": "Pozycja pośrednia od",
+          "posrednia_poz": "Pozycja pośrednia",
+          "wiatr_prog": "Zwiń od wiatru",
+          "mroz_prog": "Mróz od",
+          "upal_prog": "Upał od",
+          "temp_pokoj_prog": "Za ciepło w pokoju od",
+          "jasnosc_prog": "Jasno od",
+          "obecnosc_rano": "Czekaj na obecność do",
+          "wakacje_rozrzut": "Rozrzut godzin",
+          "wietrzenie_poz": "Pozycja wietrzenia",
+          "drzwi_min": "Przy otwartych drzwiach nie niżej niż",
+          "granica_min": "Najniżej",
+          "granica_max": "Najwyżej",
+          "drobne_prog": "Pomijaj zmiany mniejsze niż",
+          "reczny_min": "Po ręcznym ruchu czekaj",
+          "po_kolei_s": "Odstęp między osłonami",
+          "cisza_min": "Po starcie HA czekaj",
+          "spie_poz": "Pozycja w trybie „Śpię”",
+          "alarm_poz": "Pozycja przy alarmie",
+          "nikogo_poz": "Pozycja, gdy nikogo nie ma",
+          "obiekt_odl_m": "Słońce najwyżej do",
+          "okno_wys_m": "Wysokość okna",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "azymut": "Gdzie patrzy okno: 90 wschód, 180 południe, 270 zachód.",
+          "szer_slonca": "Ile stopni w lewo i w prawo od kierunku okna słońce świeci w okno.",
+          "min_wys_slonca": "Niższe słońce zasłaniają drzewa i domy.",
+          "slonce_temp": "Na zewnątrz, od której osłona zjeżdża przy słońcu.",
+          "slonce_poz": "0 % = zamknięta.",
+          "harm_tryb": "Ze wschodem i zachodem słońca albo o stałych godzinach.",
+          "przesuniecie": "Minuty po wschodzie i przed zachodem.",
+          "upal_prog": "Najwyższa temperatura w prognozie.",
+          "jasnosc_prog": "Luksy albo waty z fotowoltaiki.",
+          "wakacje_rozrzut": "Plus minus tyle minut, co dzień inaczej.",
+          "obiekt_odl_m": "Jak daleko od okna stoi telewizor lub biurko.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      },
+      "powiadomienia": {
+        "title": "Krok {nr} z {z}: Powiadomienia",
+        "description": "{pasek}\n\n**Co:** Wybierz, o czym dać Ci znać.\n\n**Po co:** Od razu wiesz, które urządzenie ma problem. Powiadomienia trafiają do HA i, jeśli wybierzesz, na telefon.{porada}",
+        "data": {
+          "powiadom": "Powiadom mnie, gdy",
+          "powiadom_gdzie": "Wyślij też na",
+          "wstecz": "Wróć do poprzedniego kroku"
+        },
+        "data_description": {
+          "powiadom_gdzie": "Aplikacja HA na telefonie. Bez wyboru – tylko powiadomienia w HA.",
+          "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+        }
+      }
+    },
+    "error": {
+      "brak_rolety": "Wybierz silnik.",
+      "za_duzo": "Wybierz najwyżej dwa silniki (lewe i prawe skrzydło)."
+    }
+  },
+  "selector": {
+    "tryb": {
+      "options": {
+        "podstawowy": "Podstawowy – kilka prostych pytań",
+        "zaawansowany": "Zaawansowany – wszystkie opcje"
+      }
+    },
+    "mam": {
+      "options": {
+        "zew": "Osłona zewnętrzna (roleta, markiza, screen)",
+        "lamele": "Osłona z obracanymi lamelami",
+        "brama": "Brama wjazdowa lub garaż",
+        "foto": "Fotokomórka bramy widoczna w HA",
+        "okno": "Czujnik okna",
+        "drzwi": "Czujnik drzwi tarasowych",
+        "obecnosc": "Czujnik obecności (ktoś jest)",
+        "ruch": "Czujnik ruchu (ktoś wszedł)",
+        "pogoda": "Pogoda",
+        "temp": "Temperatura na zewnątrz",
+        "grupy": "Kilka urządzeń w domu",
+        "temp_pokoj": "Temperatura w pokoju",
+        "jasnosc": "Luksomierz lub fotowoltaika",
+        "wiatr": "Wiatromierz",
+        "deszcz": "Czujnik deszczu",
+        "drgania": "Czujnik drgań markizy",
+        "ostrzezenia": "Ostrzeżenia pogodowe",
+        "dym": "Czujnik dymu",
+        "alarm": "Alarm",
+        "osoby": "Telefony domowników",
+        "przeszkoda": "Czujnik przeszkody przy drzwiach"
+      }
+    },
+    "pokoje": {
+      "options": {
+        "salon": "Salon",
+        "sypialnia": "Sypialnia",
+        "kuchnia": "Kuchnia",
+        "dziecko": "Pokój dziecka",
+        "gabinet": "Gabinet",
+        "lazienka": "Łazienka",
+        "jadalnia": "Jadalnia",
+        "przedpokoj": "Przedpokój",
+        "inny": "Inne"
+      }
+    },
+    "skrzydla": {
+      "options": {
+        "1": "Jedno skrzydło",
+        "2": "Dwa skrzydła"
+      }
+    },
+    "tryby": {
+      "options": {
+        "uchyl": "Uchyla się",
+        "otworz": "Otwiera się"
+      }
+    },
+    "lamele_tryb": {
+      "options": {
+        "auto": "Automatycznie (słońce, noc)",
+        "staly": "Zawsze ten sam kąt",
+        "nocny": "Tylko w nocy"
+      }
+    },
+    "harm_tryb": {
+      "options": {
+        "slonce": "Wschód i zachód słońca",
+        "godziny": "Stałe godziny"
+      }
+    },
+    "powiadomienia": {
+      "options": {
+        "nie_odpowiada": "Nie odpowiada",
+        "nie_dojechala": "Nie dojechała do pozycji",
+        "bateria": "Słaba bateria w silniku lub czujniku",
+        "czujnik": "Czujnik niedostępny",
+        "automatyka": "Problem z automatyką (blokada, błąd, kalibracja)",
+        "brama_otwarta": "Brama otwarta za długo",
+        "brama_niedomknieta": "Brama nie domknęła się",
+        "przeszkoda": "Przeszkoda w bramie"
+      }
+    },
+    "kroki": {
+      "options": {
+        "tryb": "Tryb",
+        "mam": "Co masz",
+        "urzadzenie": "Urządzenie",
+        "rodzaj": "Rodzaj",
+        "lamele": "Lamele",
+        "kolory": "Kolory",
+        "okno": "Okno",
+        "czujniki": "Czujniki",
+        "fotokomorka": "Fotokomórka",
+        "silnik": "Silnik",
+        "pogoda": "Pogoda",
+        "domownicy": "Domownicy",
+        "automatyka": "Automatyka",
+        "ustawienia": "Ustawienia",
+        "powiadomienia": "Powiadomienia",
+        "panel": "Panel"
+      }
+    },
+    "porady": {
+      "options": {
+        "ogolne_tryb": "Nie wiesz? Wybierz Podstawowy. Zawsze możesz to zmienić.",
+        "ogolne_mam": "Nie wiesz, czy coś masz? Zostaw tak, jak kreator zaznaczył.",
+        "ogolne_kolory": "Kolor jest tylko na ekranie, nic nie zmienia w samej osłonie.",
+        "ogolne_okno": "Dwa skrzydła z jedną roletą? Wybierz „Dwa skrzydła” i jeden silnik.",
+        "ogolne_silnik": "Zostaw 0 – karta sama zmierzy czas po kilku przejazdach.",
+        "ogolne_pogoda": "Encja pogody wystarczy. Wiatromierz daje dokładniejszą ochronę.",
+        "ogolne_automatyka": "Zacznij od jednej funkcji i zobacz, jak działa. Czujnik „Powód” pokaże, dlaczego osłona się ruszyła.",
+        "ogolne_lamele": "Kąt 45° wpuszcza światło, a słońce nie świeci prosto do pokoju.",
+        "ogolne_fotokomorka": "Brak fotokomórki w HA? Brama działa tak samo, tylko karta nie wie o przeszkodzie.",
+        "sypialnia_rodzaj": "Do sypialni najlepsza jest roleta zaciemniająca albo dzień-noc. Rano nie budzi światło.",
+        "sypialnia_automatyka": "Polecamy harmonogram (rano wschód, wieczorem zachód) i blokadę okna, gdy śpisz przy uchylonym oknie.",
+        "sypialnia_czujniki": "W sypialni okno często jest uchylone na noc. Ustaw „Uchyla się”.",
+        "salon_rodzaj": "W salonie zwykle wybiera się dzień-noc albo plisę – wpuszczają światło, a zasłaniają widok z ulicy.",
+        "salon_automatyka": "Polecamy ochronę przed słońcem. Z czujnikiem obecności osłona otworzy się, gdy ktoś wejdzie rano.",
+        "kuchnia_rodzaj": "Do kuchni dobra jest roleta w kasecie albo żaluzja aluminiowa – łatwo je umyć.",
+        "kuchnia_automatyka": "Polecamy blokadę przy otwartym oknie – przy gotowaniu okno często jest otwarte.",
+        "dziecko_rodzaj": "W pokoju dziecka przydaje się roleta zaciemniająca do drzemki w dzień.",
+        "dziecko_automatyka": "Polecamy harmonogram na noc i blokadę okna.",
+        "gabinet_rodzaj": "W gabinecie żaluzja albo screen zmniejsza odblaski na monitorze.",
+        "gabinet_automatyka": "Polecamy ochronę przed oślepianiem – osłona zjedzie tylko tyle, ile trzeba.",
+        "lazienka_rodzaj": "Do łazienki wybierz osłonę odporną na wilgoć: żaluzję aluminiową albo plisę.",
+        "lazienka_automatyka": "Polecamy blokadę okna – po kąpieli okno często jest otwarte."
+      }
+    },
+    "oslony": {
+      "options": {
+        "pelna": "Roleta wolnowisząca",
+        "kasetowa": "Roleta w kasecie",
+        "zebra": "Dzień-noc",
+        "zaciemniajaca": "Zaciemniająca",
+        "plisa": "Plisa",
+        "plaster": "Plaster miodu",
+        "rzymska": "Rzymska",
+        "zaluzja": "Żaluzja aluminiowa",
+        "drewniana": "Żaluzja drewniana",
+        "natynkowa": "Roleta natynkowa",
+        "podtynkowa": "Roleta podtynkowa",
+        "zewnetrzna": "Roleta nadstawna",
+        "perforowana": "Roleta z perforacją",
+        "fasadowa": "Żaluzja fasadowa C80",
+        "fasadowaz": "Żaluzja fasadowa Z90",
+        "markiza": "Markiza tarasowa",
+        "screen": "Screen ZIP",
+        "pionowa": "Żaluzja pionowa",
+        "zaslona": "Zasłona boczna",
+        "przesuwna": "Brama przesuwna",
+        "skrzydlowa": "Brama skrzydłowa",
+        "segmentowa": "Brama garażowa segmentowa",
+        "uchylna": "Brama garażowa uchylna",
+        "roletowa": "Brama garażowa roletowa"
+      }
+    },
+    "kolory": {
+      "options": {
+        "czarny": "czarny",
+        "grafit": "grafit",
+        "szary": "szary",
+        "popiel": "popiel",
+        "srebrny": "srebrny",
+        "bialy": "biały",
+        "kremowy": "kremowy",
+        "piaskowy": "piaskowy",
+        "bezowy": "beżowy",
+        "cappuccino": "cappuccino",
+        "mokka": "mokka",
+        "braz": "brąz",
+        "wenge": "wenge",
+        "stalowy": "stalowy",
+        "granat": "granat",
+        "blekitny": "błękitny",
+        "niebieski": "niebieski",
+        "morski": "morski",
+        "turkus": "turkus",
+        "mietowy": "miętowy",
+        "zielony": "zielony",
+        "butelkowy": "butelkowa zieleń",
+        "oliwka": "oliwka",
+        "limonka": "limonka",
+        "zolty": "żółty",
+        "musztardowy": "musztardowy",
+        "pomaranczowy": "pomarańczowy",
+        "terakota": "terakota",
+        "czerwony": "czerwony",
+        "bordo": "bordo",
+        "pudrowy": "pudrowy róż",
+        "rozowy": "różowy",
+        "lawendowy": "lawendowy",
+        "fiolet": "fiolet",
+        "sliwkowy": "śliwkowy"
+      }
+    },
+    "ramy": {
+      "options": {
+        "biala": "biała",
+        "kremowa": "kremowa",
+        "jasnoszara": "jasnoszara",
+        "srebrna": "srebrna",
+        "szary_agat": "szary agat",
+        "szara": "szara",
+        "szary_kwarc": "szary kwarc",
+        "bazaltowa": "bazaltowa",
+        "antracyt": "antracyt",
+        "czarna": "czarna",
+        "zielona": "zielona",
+        "granatowa": "granatowa",
+        "bordowa": "bordowa",
+        "braz": "brąz",
+        "sosna": "sosna",
+        "dab_jasny": "dąb jasny",
+        "dab_sheffield": "dąb sheffield",
+        "winchester": "winchester",
+        "oregon": "oregon",
+        "zloty_dab": "złoty dąb",
+        "siena": "siena",
+        "orzech": "orzech",
+        "mahon": "mahoń",
+        "dab_bagienny": "dąb bagienny"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "kalibruj": {
+        "name": "Kalibruj"
+      },
+      "wznow": {
+        "name": "Wznów automatykę"
+      }
+    },
+    "sensor": {
+      "powod": {
+        "name": "Powód ruchu",
+        "state": {
+          "brak": "Brak automatyki",
+          "wylaczona": "Automatyka wyłączona",
+          "cisza": "Cisza po restarcie",
+          "dym": "Dym – otwarta",
+          "wiatr": "Wiatr – zwinięta",
+          "drgania": "Drgania – zwinięta",
+          "grad": "Ostrzeżenie – schowana",
+          "deszcz": "Deszcz – zwinięta",
+          "mroz": "Mróz – bez ruchu",
+          "pauza": "Pauza",
+          "reczny": "Ręczny ruch – pauza",
+          "alarm": "Alarm",
+          "spie": "Śpię",
+          "nikogo": "Nikogo w domu",
+          "wakacje": "Tryb wakacyjny – dzień",
+          "wakacje_noc": "Tryb wakacyjny – noc",
+          "harm_dzien": "Harmonogram – dzień",
+          "harm_noc": "Harmonogram – noc",
+          "posrednia": "Pozycja pośrednia",
+          "obecnosc": "Ktoś jest w pokoju",
+          "czeka_obecnosc": "Czeka, aż ktoś wejdzie",
+          "zima_noc": "Zima – noc",
+          "zima_slonce": "Zima – słońce grzeje",
+          "slonce": "Słońce w oknie",
+          "jasnosc": "Jasno",
+          "temp_pokoj": "Za ciepło w pokoju",
+          "upal": "Upał",
+          "oslepianie": "Oślepianie",
+          "przeszkoda": "Przeszkoda",
+          "drzwi": "Drzwi otwarte",
+          "wietrzenie": "Wietrzenie",
+          "blokada": "Okno otwarte – blokada"
+        }
+      },
+      "ruchy": {
+        "name": "Ruchy silnika"
+      },
+      "czas_pracy": {
+        "name": "Czas pracy silnika"
+      }
+    },
+    "switch": {
+      "automatyka": {
+        "name": "Automatyka"
+      },
+      "pauza": {
+        "name": "Pauza na dziś"
+      },
+      "spie": {
+        "name": "Śpię"
+      },
+      "wakacje": {
+        "name": "Tryb wakacyjny"
+      }
+    }
+  },
+  "exceptions": {
+    "tytul": {
+      "message": "{nazwa} – problem"
+    },
+    "nie_odpowiada": {
+      "message": "{nazwa}: silnik nie odpowiada ({encje}). Sprawdź zasilanie albo zasięg."
+    },
+    "nie_dojechala": {
+      "message": "{nazwa}: miała dojechać do {cel} %, a stoi na {jest} %."
+    },
+    "bateria": {
+      "message": "{nazwa}: słaba bateria – {lista}."
+    },
+    "czujnik": {
+      "message": "{nazwa}: czujnik niedostępny – {lista}."
+    },
+    "automatyka": {
+      "message": "{nazwa}: automatyka nie ruszyła osłony – {powod}."
+    },
+    "kalibracja": {
+      "message": "{nazwa}: silnik zrobił {ruchy} ruchów od kalibracji. Naciśnij „Kalibruj” na urządzeniu."
+    },
+    "brama_otwarta": {
+      "message": "{nazwa}: brama jest otwarta dłużej niż {minuty} min."
+    },
+    "brama_niedomknieta": {
+      "message": "{nazwa}: brama nie domknęła się."
+    },
+    "przeszkoda": {
+      "message": "{nazwa}: coś stoi w bramie (fotokomórka)."
+    },
+    "nie_motor_ha": {
+      "message": "To nie jest urządzenie Motor HA."
+    },
+    "powod_brak": {
+      "message": "Brak automatyki"
+    },
+    "powod_wylaczona": {
+      "message": "Automatyka wyłączona"
+    },
+    "powod_cisza": {
+      "message": "Cisza po restarcie"
+    },
+    "powod_dym": {
+      "message": "Dym – otwarta"
+    },
+    "powod_wiatr": {
+      "message": "Wiatr – zwinięta"
+    },
+    "powod_drgania": {
+      "message": "Drgania – zwinięta"
+    },
+    "powod_grad": {
+      "message": "Ostrzeżenie – schowana"
+    },
+    "powod_deszcz": {
+      "message": "Deszcz – zwinięta"
+    },
+    "powod_mroz": {
+      "message": "Mróz – bez ruchu"
+    },
+    "powod_pauza": {
+      "message": "Pauza"
+    },
+    "powod_reczny": {
+      "message": "Ręczny ruch – pauza"
+    },
+    "powod_alarm": {
+      "message": "Alarm"
+    },
+    "powod_spie": {
+      "message": "Śpię"
+    },
+    "powod_nikogo": {
+      "message": "Nikogo w domu"
+    },
+    "powod_wakacje": {
+      "message": "Tryb wakacyjny – dzień"
+    },
+    "powod_wakacje_noc": {
+      "message": "Tryb wakacyjny – noc"
+    },
+    "powod_harm_dzien": {
+      "message": "Harmonogram – dzień"
+    },
+    "powod_harm_noc": {
+      "message": "Harmonogram – noc"
+    },
+    "powod_posrednia": {
+      "message": "Pozycja pośrednia"
+    },
+    "powod_obecnosc": {
+      "message": "Ktoś jest w pokoju"
+    },
+    "powod_czeka_obecnosc": {
+      "message": "Czeka, aż ktoś wejdzie"
+    },
+    "powod_zima_noc": {
+      "message": "Zima – noc"
+    },
+    "powod_zima_slonce": {
+      "message": "Zima – słońce grzeje"
+    },
+    "powod_slonce": {
+      "message": "Słońce w oknie"
+    },
+    "powod_jasnosc": {
+      "message": "Jasno"
+    },
+    "powod_temp_pokoj": {
+      "message": "Za ciepło w pokoju"
+    },
+    "powod_upal": {
+      "message": "Upał"
+    },
+    "powod_oslepianie": {
+      "message": "Oślepianie"
+    },
+    "powod_przeszkoda": {
+      "message": "Przeszkoda"
+    },
+    "powod_drzwi": {
+      "message": "Drzwi otwarte"
+    },
+    "powod_wietrzenie": {
+      "message": "Wietrzenie"
+    },
+    "powod_blokada": {
+      "message": "Okno otwarte – blokada"
+    }
+  },
+  "issues": {
+    "restart": {
+      "title": "Motor HA {wersja} – uruchom ponownie",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Motor HA {wersja} – uruchom ponownie",
+            "description": "Nowa wersja jest zainstalowana. Kliknij „Wyślij”, żeby uruchomić Home Assistanta ponownie."
+          }
+        }
+      }
+    },
+    "przeniesione": {
+      "title": "Motor HA 2.0 – okna przeniesione",
+      "description": "Przeniesiono {ile} okien z poprzedniej wersji (Okno HA 1.x). Działają jako nowe urządzenia Motor HA z tymi samymi ustawieniami. Stare wpisy są tylko wyłączone – możesz je usunąć w Ustawienia → Urządzenia i usługi → Okno HA. Automatyka jest wyłączona, dopóki jej nie włączysz w „Konfiguruj”."
+    }
+  },
+  "services": {
+    "wstrzymaj": {
+      "name": "Wstrzymaj automatykę",
+      "description": "Automatyka nie rusza urządzeniem przez podany czas (puste = do końca dnia).",
+      "fields": {
+        "entity_id": {
+          "name": "Urządzenie",
+          "description": "Urządzenie Motor HA."
+        },
+        "minuty": {
+          "name": "Minuty",
+          "description": "Puste = do końca dnia."
+        }
+      }
+    },
+    "wznow": {
+      "name": "Wznów automatykę",
+      "description": "Kończy pauzę i od razu sprawdza, gdzie ma być osłona.",
+      "fields": {
+        "entity_id": {
+          "name": "Urządzenie",
+          "description": "Urządzenie Motor HA."
+        }
+      }
+    },
+    "przelicz": {
+      "name": "Sprawdź teraz",
+      "description": "Automatyka od razu liczy pozycję od nowa.",
+      "fields": {
+        "entity_id": {
+          "name": "Urządzenie",
+          "description": "Urządzenie Motor HA."
+        }
+      }
+    },
+    "kalibruj": {
+      "name": "Kalibruj",
+      "description": "Mierzy prawdziwy czas przejazdu.",
+      "fields": {
+        "entity_id": {
+          "name": "Urządzenie",
+          "description": "Urządzenie Motor HA."
+        }
+      }
+    },
+    "ustaw": {
+      "name": "Ustaw pozycję",
+      "description": "Ustawia pozycję (i lamele) jak automatyka – bez pauzy po ręcznym ruchu.",
+      "fields": {
+        "entity_id": {
+          "name": "Urządzenie",
+          "description": "Urządzenie Motor HA."
+        },
+        "pozycja": {
+          "name": "Pozycja",
+          "description": "100 = otwarta."
+        },
+        "lamele": {
+          "name": "Lamele",
+          "description": "Kąt lameli."
+        }
+      }
+    }
+  }
+}
