@@ -55,6 +55,7 @@
 </tr>
 </table>
 
+<a name="spis"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="34" height="34" align="absmiddle" alt=""> Obsah</h2>
 <table>
 <tr><td align="center" valign="top"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#instalacja"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/w-download.svg" width="100%" height="40" alt=""><br><b>Instalace</b></a></td><td align="center" valign="top"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/w-auto-fix.svg" width="100%" height="40" alt=""><br><b>Průvodce krok za krokem</b></a></td><td align="center" valign="top"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#oslony"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/w-window-shutter.svg" width="100%" height="40" alt=""><br><b>Druhy stínění a bran</b></a></td></tr>
@@ -65,6 +66,8 @@
 
 <a name="instalacja"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/download.svg" width="34" height="34" align="absmiddle" alt=""> Instalace</h2>
+
+<ol><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-1">Klikněte na tlačítko, pak „Otevřít odkaz”</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-2">Přidejte repozitář do HACS</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-3">Stáhněte Motor HA</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-4">Restartujte Home Assistant</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-5">Klikněte na tlačítko a spusťte průvodce</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-6">Projděte průvodce</a></li><li><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-7">Hotovo: karta je na panelu</a></li></ol>
 
 <a name="krok-1"></a>
 <h3>1. Klikněte na tlačítko, pak „Otevřít odkaz”</h3>
@@ -78,6 +81,8 @@
 
 <p>ℹ️ Poprvé se stránka zeptá na adresu vašeho Home Assistantu.</p>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-2">Další ➡️</a></sub></p>
+
 <a name="krok-2"></a>
 <h3>2. Přidejte repozitář do HACS</h3>
 
@@ -86,6 +91,8 @@
 <p><b>Co kliknout:</b></p>
 <ol><li><b>Přidat</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-1">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-3">Další ➡️</a></sub></p>
+
 <a name="krok-3"></a>
 <h3>3. Stáhněte Motor HA</h3>
 
@@ -93,6 +100,8 @@
 
 <p><b>Co kliknout:</b></p>
 <ol><li><b>Stáhnout</b> vpravo dole</li><li><b>Stáhnout</b> v okně</li></ol>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-2">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-4">Další ➡️</a></sub></p>
 
 <a name="krok-4"></a>
 <h3>4. Restartujte Home Assistant</h3>
@@ -106,6 +115,8 @@
 
 <p>ℹ️ Počkejte 1–2 minuty.</p>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-3">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-5">Další ➡️</a></sub></p>
+
 <a name="krok-5"></a>
 <h3>5. Klikněte na tlačítko a spusťte průvodce</h3>
 
@@ -116,11 +127,15 @@
 <p><b>Co kliknout:</b></p>
 <ol><li><b>OK</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-4">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-6">Další ➡️</a></sub></p>
+
 <a name="krok-6"></a>
 <h3>6. Projděte průvodce</h3>
 
 
 <p>➡️ <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-krok">Každý krok s obrázkem je níže v části „Průvodce krok za krokem”.</a></p>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-5">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-7">Další ➡️</a></sub></p>
 
 <a name="krok-7"></a>
 <h3>7. Hotovo: karta je na panelu</h3>
@@ -131,6 +146,8 @@
 
 
 <p>ℹ️ Karta Motor HA se sama objeví na panelu vybraném v posledním kroku.</p>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#krok-6">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator">Další ➡️</a></sub></p>
 
 <details><summary><b>Ruční instalace (pro pokročilé)</b></summary>
 <p>Stáhni <code>motor_ha.zip</code> z <a href="https://github.com/superdarco78/Motor-HA/releases/latest">poslední verze</a>, rozbal ho do <code>config/custom_components/motor_ha</code> a restartuj Home Assistant.</p>
@@ -144,22 +161,22 @@
 <p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-1.svg" width="10%" alt="1. Režim"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-2.svg" width="10%" alt="2. Co máte"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-3.svg" width="10%" alt="3. Zařízení"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-4.svg" width="10%" alt="4. Druh"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-5.svg" width="10%" alt="5. Barvy"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-6"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-6.svg" width="10%" alt="6. Okno"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-8"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-7.svg" width="10%" alt="7. Motor"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-10"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-8.svg" width="10%" alt="8. Automatika"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-11"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-9.svg" width="10%" alt="9. Oznámení"></a><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-12"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-cs-10.svg" width="10%" alt="10. Panel"></a></p>
 
 <table><tr><th align="left">Krok · Co<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Proč<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-tryb.svg" width="36" height="36" align="absmiddle" alt=""> <b>1. Režim průvodce</b><br>Vyberte, kolik otázek chcete vidět.</td><td>Základní většině lidí stačí. Pokročilý ukáže všechny možnosti a další zařízení. Režim později změníte v „Nastavit“.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-mam.svg" width="36" height="36" align="absmiddle" alt=""> <b>2. Co máte doma</b><br>Zaškrtněte, co máte. Průvodce prohledal Home Assistant a zaškrtl, co našel.</td><td>Průvodce ukáže jen kroky a funkce pro zaškrtnutá zařízení. Zbytek přidáte později v „Nastavit“.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-urzadzenie.svg" width="36" height="36" align="absmiddle" alt=""> <b>3. Zařízení</b><br>Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.</td><td>Motor HA ovládá tento motor a díky místnosti můžete mluvit s Assist, např. „zatáhni obývák“.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-rodzaj.svg" width="36" height="36" align="absmiddle" alt=""> <b>4. Druh</b><br>Vyberte přesně, co máte.</td><td>Karta toto zařízení nakreslí a automatika ví, co může použít.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-tryb.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-1"><b>1. Režim průvodce</b></a><br>Vyberte, kolik otázek chcete vidět.</td><td>Základní většině lidí stačí. Pokročilý ukáže všechny možnosti a další zařízení. Režim později změníte v „Nastavit“.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-mam.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-2"><b>2. Co máte doma</b></a><br>Zaškrtněte, co máte. Průvodce prohledal Home Assistant a zaškrtl, co našel.</td><td>Průvodce ukáže jen kroky a funkce pro zaškrtnutá zařízení. Zbytek přidáte později v „Nastavit“.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-urzadzenie.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-3"><b>3. Zařízení</b></a><br>Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.</td><td>Motor HA ovládá tento motor a díky místnosti můžete mluvit s Assist, např. „zatáhni obývák“.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-rodzaj.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-4"><b>4. Druh</b></a><br>Vyberte přesně, co máte.</td><td>Karta toto zařízení nakreslí a automatika ví, co může použít.</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-lamele.svg" width="36" height="36" align="absmiddle" alt=""> <b>5. Lamely</b><br>Nastavte natáčení lamel.</td><td>Pustíte dovnitř světlo, aniž byste žaluzii vytahovali.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-kolory.svg" width="36" height="36" align="absmiddle" alt=""> <b>6. Barvy</b><br>Vyberte barvu stínění a rámu.</td><td>Okno na obrazovce vypadá jako skutečné.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-okno.svg" width="36" height="36" align="absmiddle" alt=""> <b>7. Okno</b><br>Kolik křídel má okno a jak velké je na kartě.</td><td>Každé křídlo může mít vlastní motor.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-czujniki.svg" width="36" height="36" align="absmiddle" alt=""> <b>8. Čidla</b><br>Vyberte čidla otevření okna a dveří.</td><td>Karta ukáže sklopené nebo otevřené křídlo a blokace nikdy nespustí stínění na otevřené okno.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-kolory.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-5"><b>6. Barvy</b></a><br>Vyberte barvu stínění a rámu.</td><td>Okno na obrazovce vypadá jako skutečné.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-okno.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-6"><b>7. Okno</b></a><br>Kolik křídel má okno a jak velké je na kartě.</td><td>Každé křídlo může mít vlastní motor.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-czujniki.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-7"><b>8. Čidla</b></a><br>Vyberte čidla otevření okna a dveří.</td><td>Karta ukáže sklopené nebo otevřené křídlo a blokace nikdy nespustí stínění na otevřené okno.</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-fotokomorka.svg" width="36" height="36" align="absmiddle" alt=""> <b>9. Fotobuňka</b><br>Vyberte čidlo překážky brány a stav, který znamená „něco stojí v bráně“.</td><td>Karta ukáže překážku a dostanete oznámení. Fotobuňka v řídicí jednotce dál bránu zastaví sama.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-silnik.svg" width="36" height="36" align="absmiddle" alt=""> <b>10. Motor</b><br>Zadejte dobu celého pojezdu nebo nechte 0.</td><td>Kresba jede stejně rychle jako skutečný motor. S 0 se karta dobu naučí sama po několika pohybech.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-pogoda.svg" width="36" height="36" align="absmiddle" alt=""> <b>11. Počasí</b><br>Vyberte počasí a venkovní čidla.</td><td>Za sklem je vidět skutečné počasí a automatika chrání stínění před větrem, deštěm a sluncem.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-silnik.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-8"><b>10. Motor</b></a><br>Zadejte dobu celého pojezdu nebo nechte 0.</td><td>Kresba jede stejně rychle jako skutečný motor. S 0 se karta dobu naučí sama po několika pohybech.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-pogoda.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-9"><b>11. Počasí</b></a><br>Vyberte počasí a venkovní čidla.</td><td>Za sklem je vidět skutečné počasí a automatika chrání stínění před větrem, deštěm a sluncem.</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-domownicy.svg" width="36" height="36" align="absmiddle" alt=""> <b>12. Obyvatelé</b><br>Vyberte čidla přítomnosti, pohybu a obyvatel.</td><td>Stínění může reagovat na to, zda je někdo v místnosti nebo doma.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-automatyka.svg" width="36" height="36" align="absmiddle" alt=""> <b>13. Automatika</b><br>Zapněte funkce, které smí stíněním hýbat samy.</td><td>Dům se o stínění stará bez psaní automatizací. Vše je vypnuté, dokud to nezapnete.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-automatyka.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-10"><b>13. Automatika</b></a><br>Zapněte funkce, které smí stíněním hýbat samy.</td><td>Dům se o stínění stará bez psaní automatizací. Vše je vypnuté, dokud to nezapnete.</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-ustawienia.svg" width="36" height="36" align="absmiddle" alt=""> <b>14. Nastavení</b><br>Upravte zapnuté funkce.</td><td>Výchozí hodnoty sedí většině domů.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-powiadomienia.svg" width="36" height="36" align="absmiddle" alt=""> <b>15. Oznámení</b><br>Vyberte, o čem vám dát vědět.</td><td>Hned víte, které zařízení má problém. Oznámení přijdou do HA a, pokud chcete, do telefonu.</td></tr>
-<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-panel.svg" width="36" height="36" align="absmiddle" alt=""> <b>16. Panel</b><br>Na který panel přidat kartu.</td><td>Karta se objeví sama, nic nemusíte klikat.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-powiadomienia.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-11"><b>15. Oznámení</b></a><br>Vyberte, o čem vám dát vědět.</td><td>Hned víte, které zařízení má problém. Oznámení přijdou do HA a, pokud chcete, do telefonu.</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-panel.svg" width="36" height="36" align="absmiddle" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-12"><b>16. Panel</b></a><br>Na který panel přidat kartu.</td><td>Karta se objeví sama, nic nemusíte klikat.</td></tr>
 </table>
 
 <p>Kroky Lamely, Čidla, Fotobuňka, Počasí, Obyvatelé a Nastavení se ukážou jen tehdy, když jsou potřeba. Vše později změníš tlačítkem <b>Nastavit</b> u zařízení.</p>
@@ -175,6 +192,8 @@
 <p><b>Co kliknout:</b></p>
 <ol><li>Vyberte, kolik otázek chcete vidět.</li><li><b>Další</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-2">Další ➡️</a></sub></p>
+
 <a name="kreator-2"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-mam.svg" width="28" height="28" align="absmiddle" alt=""> 2. Co máte doma</h4>
 
@@ -182,6 +201,8 @@
 
 <p><b>Co kliknout:</b></p>
 <ol><li>Zaškrtněte, co máte. Průvodce prohledal Home Assistant a zaškrtl, co našel.</li><li><b>Další</b></li></ol>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-1">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-3">Další ➡️</a></sub></p>
 
 <a name="kreator-3"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-urzadzenie.svg" width="28" height="28" align="absmiddle" alt=""> 3. Zařízení</h4>
@@ -191,6 +212,8 @@
 <p><b>Co kliknout:</b></p>
 <ol><li>Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.</li><li><b>Další</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-2">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-4">Další ➡️</a></sub></p>
+
 <a name="kreator-4"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-rodzaj.svg" width="28" height="28" align="absmiddle" alt=""> 4. Druh</h4>
 
@@ -198,6 +221,8 @@
 
 <p><b>Co kliknout:</b></p>
 <ol><li>Vyberte přesně, co máte.</li><li><b>Další</b></li></ol>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-3">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-5">Další ➡️</a></sub></p>
 
 <a name="kreator-5"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-kolory.svg" width="28" height="28" align="absmiddle" alt=""> 5. Barvy</h4>
@@ -207,6 +232,8 @@
 <p><b>Co kliknout:</b></p>
 <ol><li>Vyberte barvu stínění a rámu.</li><li><b>Další</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-4">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-6">Další ➡️</a></sub></p>
+
 <a name="kreator-6"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-okno.svg" width="28" height="28" align="absmiddle" alt=""> 6. Okno</h4>
 
@@ -214,6 +241,8 @@
 
 <p><b>Co kliknout:</b></p>
 <ol><li>Kolik křídel má okno a jak velké je na kartě.</li><li><b>Další</b></li></ol>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-5">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-7">Další ➡️</a></sub></p>
 
 <a name="kreator-7"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-czujniki.svg" width="28" height="28" align="absmiddle" alt=""> 7. Čidla</h4>
@@ -223,6 +252,8 @@
 <p><b>Co kliknout:</b></p>
 <ol><li>Vyberte čidla otevření okna a dveří.</li><li><b>Další</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-6">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-8">Další ➡️</a></sub></p>
+
 <a name="kreator-8"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-silnik.svg" width="28" height="28" align="absmiddle" alt=""> 8. Motor</h4>
 
@@ -230,6 +261,8 @@
 
 <p><b>Co kliknout:</b></p>
 <ol><li>Zadejte dobu celého pojezdu nebo nechte 0.</li><li><b>Další</b></li></ol>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-7">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-9">Další ➡️</a></sub></p>
 
 <a name="kreator-9"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-pogoda.svg" width="28" height="28" align="absmiddle" alt=""> 9. Počasí</h4>
@@ -239,6 +272,8 @@
 <p><b>Co kliknout:</b></p>
 <ol><li>Vyberte počasí a venkovní čidla.</li><li><b>Další</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-8">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-10">Další ➡️</a></sub></p>
+
 <a name="kreator-10"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-automatyka.svg" width="28" height="28" align="absmiddle" alt=""> 10. Automatika</h4>
 
@@ -246,6 +281,8 @@
 
 <p><b>Co kliknout:</b></p>
 <ol><li>Zapněte funkce, které smí stíněním hýbat samy.</li><li><b>Další</b></li></ol>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-9">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-11">Další ➡️</a></sub></p>
 
 <a name="kreator-11"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-powiadomienia.svg" width="28" height="28" align="absmiddle" alt=""> 11. Oznámení</h4>
@@ -255,6 +292,8 @@
 <p><b>Co kliknout:</b></p>
 <ol><li>Vyberte, o čem vám dát vědět.</li><li><b>Další</b></li></ol>
 
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-10">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-12">Další ➡️</a></sub></p>
+
 <a name="kreator-12"></a>
 <h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-panel.svg" width="28" height="28" align="absmiddle" alt=""> 12. Panel</h4>
 
@@ -262,6 +301,8 @@
 
 <p><b>Co kliknout:</b></p>
 <ol><li>Na který panel přidat kartu.</li><li><b>Odeslat</b></li></ol>
+
+<p align="center"><sub><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#kreator-11">⬅️ Předchozí</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#spis">📑 Obsah</a> · <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md#oslony">Další ➡️</a></sub></p>
 
 <a name="oslony"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="34" height="34" align="absmiddle" alt=""> Druhy stínění a bran</h2>

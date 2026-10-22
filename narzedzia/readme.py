@@ -201,6 +201,17 @@ GUZIKI = {"hacs": (HACS, "009AC7", "homeassistantcommunitystore"), "dodaj": (DOD
           "restart": (RESTART, "009AC7", "homeassistant"), "panel": (PANELE, "009AC7", "homeassistant")}
 
 
+def nawigacja(baza: str, kt: dict, spis: str, wstecz: str | None, dalej: str | None) -> str:
+    """Linki pod krokiem: poprzedni · spis treści · następny (w HA przewijają opis na miejscu)."""
+    cz = []
+    if wstecz:
+        cz.append(f'<a href="{baza}#{wstecz}">⬅️ {escape(kt["poprzedni"])}</a>')
+    cz.append(f'<a href="{baza}#spis">📑 {escape(spis)}</a>')
+    if dalej:
+        cz.append(f'<a href="{baza}#{dalej}">{escape(kt["nastepny"])} ➡️</a>')
+    return '<p align="center"><sub>' + " · ".join(cz) + "</sub></p>\n"
+
+
 def klik(tytul: str, lista: list[str]) -> str:
     return f"<p><b>{escape(tytul)}</b></p>\n<ol>" + "".join(f"<li>{x}</li>" for x in lista) + "</ol>\n" if lista else ""
 
@@ -264,7 +275,7 @@ def readme(j: str) -> str:
     # spis treści w 2 kolumnach
     dz = list(L["dzialy"].items())
     # kafelki po 3 w rzędzie: ikona nad nazwą, jedna pozycja w komórce, cała szerokość strony
-    w.append(f"<h2>{ik('format-list-bulleted', 34)} {escape(L['spis'])}</h2>\n<table>")
+    w.append(f"<a name=\"spis\"></a>\n<h2>{ik('format-list-bulleted', 34)} {escape(L['spis'])}</h2>\n<table>")
     for i in range(0, len(dz), 3):
         rzad = dz[i:i + 3]
         w.append("<tr>" + "".join(
@@ -275,6 +286,10 @@ def readme(j: str) -> str:
     # instalacja
     w.append(naglowek("instalacja", d["instalacja"]))
     kt = K[j]
+    baza = f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}'
+    ile = len(kt["instalacja"])
+    # klikany spis kroków instalacji
+    w.append("<ol>" + "".join(f'<li><a href="{baza}#krok-{n}">{escape(x[2])}</a></li>' for n, x in enumerate(kt["instalacja"], 1)) + "</ol>\n")
     for nr, (img, guzik, tytul, lista, uwaga) in enumerate(kt["instalacja"], 1):
         w.append(f'<a name="krok-{nr}"></a>\n<h3>{nr}. {escape(tytul)}</h3>\n')
         # przycisk i obrazek prowadzą do tego samego miejsca w Twoim HA (obrazki HACS – do repozytorium w HACS)
@@ -288,6 +303,7 @@ def readme(j: str) -> str:
         w.append(klik(kt["co_kliknac"], lista))
         if uwaga:
             w.append(f"<p>ℹ️ {uwaga}</p>\n" if img else f'<p>➡️ <a href="{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-krok">{escape(uwaga)}</a></p>\n')
+        w.append(nawigacja(baza, kt, L["spis"], f"krok-{nr - 1}" if nr > 1 else None, f"krok-{nr + 1}" if nr < ile else "kreator"))
     w.append(f"<details><summary><b>{escape(L['instalacja_reczna'])}</b></summary>\n<p>{L['instalacja_reczna_tekst'].format(gh=gh)}</p>\n</details>\n")
     # kreator
     w.append(naglowek("kreator", d["kreator"]))
@@ -301,7 +317,10 @@ def readme(j: str) -> str:
     w.append("<table>" + glowka((f"{kk[0]} · {kk[1]}", 1000), (kk[2], 1000)))
     for nr, kr in enumerate(KROKI, 1):
         x = t["kroki"][kr]
-        w.append(f'<tr><td>{ik("krok-" + kr, 36)} <b>{nr}. {escape(x["t"])}</b><br>{escape(x["co"])}</td>'
+        tyt = f'<b>{nr}. {escape(x["t"])}</b>'
+        if kr in KROKI_ZRZUTY:   # krok z obrazkiem niżej – tytuł jest linkiem do niego
+            tyt = f'<a href="{baza}#kreator-{KROKI_ZRZUTY.index(kr) + 1}">{tyt}</a>'
+        w.append(f'<tr><td>{ik("krok-" + kr, 36)} {tyt}<br>{escape(x["co"])}</td>'
                  f'<td>{escape(x["poco"].split(chr(10))[0])}</td></tr>')
     w.append("</table>\n")
     w.append(f"<p>{L['kreator_dodatkowe']}</p>\n")
@@ -312,6 +331,7 @@ def readme(j: str) -> str:
         w.append(f'<a name="kreator-{nr}"></a>\n<h4>{ik("krok-" + kr, 28)} {nr}. {escape(x["t"])}</h4>\n')
         w.append(obraz(j, f"krok-{nr:02d}", "100%", x["t"], f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{nr}'))
         w.append(klik(kt["co_kliknac"], [escape(x["co"]), f'<b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b>']))
+        w.append(nawigacja(baza, kt, L["spis"], f"kreator-{nr - 1}" if nr > 1 else "kreator", f"kreator-{nr + 1}" if nr < len(KROKI_ZRZUTY) else "oslony"))
     # osłony
     w.append(naglowek("oslony", d["oslony"]))
     w.append(f"<p>{escape(L['oslony_wstep'])}</p>\n")
