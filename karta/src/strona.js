@@ -26,15 +26,32 @@ function cele(h, id) {
     ...okna.map((e, i) => ({ kolumna: 1 + (i % 2), cel: { entity: e.entity_id, urzadzenie: e.device_id, wpis: h.devices[e.device_id]?.config_entries?.[0] } }))];
 }
 
-function pilnuj() {
+// Gdy karta się nie pokaże, raz na stronę zapisujemy powód w dzienniku HA (Ustawienia → System → Dzienniki),
+// żeby dało się to sprawdzić bez zaglądania do telefonu.
+let zgloszone = '', od = 0, powod = '';
+function zglos(id) {
+  const h = document.querySelector('home-assistant')?.hass;
+  if (zgloszone === id || !powod || Date.now() - od < 15000 || !h?.callService) return;
+  if (!h.devices?.[id]?.identifiers?.some?.(i => i[0] === 'motor_ha')) return;   // tylko urządzenia Motor HA
+  zgloszone = id;
+  Promise.resolve(h.callService('system_log', 'write', { logger: 'motor_ha.strona', level: 'warning',
+    message: `Motor HA: brak karty na stronie urządzenia (${powod}; ${navigator.userAgent})` })).catch(() => {});
+}
+
+export function pilnuj(rejestruj) {
   const m = WZOR.exec(location.pathname);
-  if (!m || !customElements.get('motor-ha-urzadzenie')) return;
+  if (!m) { od = 0; return; }
+  if (!od) { od = Date.now(); zgloszone = ''; }
+  // inny dodatek mógł podmienić rejestr elementów – wtedy rejestrujemy się w nim jeszcze raz
+  if (!customElements.get('motor-ha-urzadzenie')) rejestruj?.();
+  if (!customElements.get('motor-ha-urzadzenie')) { powod = 'element niezarejestrowany'; return; }
   const pg = strona(document), r = pg?.shadowRoot, h = pg?.hass;
-  if (!r || !h) return;
+  if (!r || !h) { powod = 'brak strony urządzenia'; return; }
   const kolumny = [...r.querySelectorAll('div.column')];
-  if (!kolumny.length) return;
+  if (!kolumny.length) { powod = 'brak kolumn'; return; }
   const nasze = [...r.querySelectorAll(`[${ZNAK}]`)];
   const lista = cele(h, m[1]);
+  powod = lista ? '' : `brak encji Motor HA przy urządzeniu (encje: ${Object.keys(h.entities || {}).length})`;
   const klucz = lista ? m[1] + '|' + kolumny.length + '|' + lista.map(x => x.cel.entity || 'dom').join() : '';
   if (nasze.length && nasze[0].getAttribute(ZNAK) !== klucz) { nasze.forEach(e => e.remove()); nasze.length = 0; }
   if (!lista) return;
@@ -52,8 +69,13 @@ function pilnuj() {
     }
   }
   for (const e of nasze) if (e.hass !== h) e.hass = h;
+  if (!nasze[0]?.getBoundingClientRect().height) powod = 'karta wstawiona, ale pusta';
 }
 
-export function strony() {
-  setInterval(() => { try { pilnuj(); } catch (e) { /* strona w trakcie rysowania */ } }, 700);
+export function strony(rejestruj) {
+  setInterval(() => {
+    try { pilnuj(rejestruj); } catch (e) { powod = String(e?.message || e); }
+    const m = WZOR.exec(location.pathname);
+    if (m) try { zglos(m[1]); } catch (e) { /* dziennik niedostępny */ }
+  }, 700);
 }

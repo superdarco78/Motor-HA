@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.1.2 – Karta zawsze na stronie urządzenia, też w aplikacji
+
+- 🪟 Karta na stronie urządzenia pokazuje się zawsze – także w aplikacji Home Assistant na Androida, w Chrome na telefonie i na komputerze (sprawdza to stały test przy każdej zmianie)
+- 🧹 Stara kopia po wersji 1.x (folder custom_components/okno_ha) jest usuwana sama – przez nią Home Assistant wczytywał starą wersję zamiast nowej
+- 🔄 Po aktualizacji strona sama się odświeża, gdy wracasz do aplikacji – bez zamykania aplikacji i czyszczenia pamięci
+- 📝 Gdyby karta się nie pokazała, w Ustawienia → System → Dzienniki zapisuje się powód
+
 ## v2.1.1 – Restart we właściwej chwili, ładniejszy podgląd
 
 - 🔄 Po pobraniu nowej wersji (także przez HACS) w Ustawieniach pojawia się „Motor HA … – uruchom ponownie” z przyciskiem – dopiero gdy nowe pliki są już na dysku, więc restart nigdy nie wypada za wcześnie

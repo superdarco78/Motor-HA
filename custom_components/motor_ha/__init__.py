@@ -5,8 +5,10 @@ Każde urządzenie = jeden wpis z własną kartą, kreatorem, automatyką i powi
 
 from __future__ import annotations
 
+import importlib
 import json
 import logging
+import shutil
 from datetime import timedelta
 from pathlib import Path
 
@@ -15,7 +17,7 @@ import voluptuous as vol
 from homeassistant.components.frontend import add_extra_js_url
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_ENTITY_ID, EVENT_HOMEASSISTANT_STARTED, Platform
+from homeassistant.const import ATTR_ENTITY_ID, EVENT_COMPONENT_LOADED, EVENT_HOMEASSISTANT_STARTED, Platform
 from homeassistant.core import CoreState, HomeAssistant, ServiceCall, callback
 from homeassistant.exceptions import ServiceValidationError
 from homeassistant.helpers import config_validation as cv, device_registry as dr, entity_registry as er
@@ -61,9 +63,21 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     katalog = await async_przygotuj(hass)
     await hass.http.async_register_static_paths([StaticPathConfig(f"/{DOMAIN}", str(katalog), False)])
     hass.http.register_view(PasekKrokow(hass))
-    if "frontend" in hass.config.components:
+    @callback
+    def _skrypty(_e=None) -> bool:
+        if "frontend" not in hass.config.components:
+            return False
         add_extra_js_url(hass, f"/{DOMAIN}/{KARTA_PLIK}?v={VERSION}")
         add_extra_js_url(hass, f"/{DOMAIN}/motor-ha-hacs.js?v={VERSION}")
+        return True
+
+    if not _skrypty():   # frontend jeszcze się nie wczytał – karta na stronie urządzenia musi być zawsze
+        @callback
+        def _po_frontendzie(e) -> None:
+            if e.data.get("component") == "frontend":
+                _skrypty()
+                koniec()
+        koniec = hass.bus.async_listen(EVENT_COMPONENT_LOADED, _po_frontendzie)
     async def _zasoby() -> None:
         await async_przenies(hass)
         await async_sprzatnij_stara(hass)
@@ -80,7 +94,43 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     _uslugi(hass)
     ir.async_delete_issue(hass, DOMAIN, RESTART)
     _pilnuj_plikow(hass)
+    await _usun_stary_folder(hass)
     return True
+
+
+async def _usun_stary_folder(hass: HomeAssistant) -> None:
+    """Po zmianie nazwy z 1.x HACS potrafił pobrać Motor HA do starego folderu custom_components/okno_ha.
+    HA wczytuje wtedy ten folder zamiast motor_ha i nowe wersje „nie działają”. Usuwamy kopię i prosimy o restart."""
+    tu = Path(__file__).parent
+
+    def _usun() -> bool:
+        cc = tu.parent
+        stary, nowy = cc / "okno_ha", cc / DOMAIN
+        if not stary.is_dir() or not (nowy / "manifest.json").is_file():
+            return False
+        if not (stary / "manifest.json").is_file():   # resztka z poprzedniego startu (same tłumaczenia)
+            shutil.rmtree(stary, ignore_errors=True)
+            return False
+        try:
+            if json.loads((stary / "manifest.json").read_text(encoding="utf-8")).get("domain") != DOMAIN:
+                return False   # prawdziwe Okno HA 1.x – zostaje (migracja)
+        except (OSError, ValueError):
+            return False
+        if tu == stary:
+            # działamy właśnie z tej kopii: najpierw wczytujemy wszystkie moduły, żeby do restartu wszystko działało
+            for plik in tu.glob("*.py"):
+                if plik.stem != "__init__":
+                    importlib.import_module(f"{__package__}.{plik.stem}")
+        for x in stary.iterdir():
+            if x.name != "translations":   # teksty (np. „uruchom ponownie”) potrzebne do restartu
+                shutil.rmtree(x, ignore_errors=True) if x.is_dir() else x.unlink(missing_ok=True)
+        return True
+
+    if await hass.async_add_executor_job(_usun):
+        _LOGGER.warning("Motor HA: usunąłem starą kopię w custom_components/okno_ha")
+        ir.async_create_issue(hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
+                              severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
+                              translation_placeholders={"wersja": VERSION})
 
 
 @callback

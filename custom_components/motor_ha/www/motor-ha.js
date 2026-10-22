@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.1.1";
+  var WERSJA = "2.1.2";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -5829,15 +5829,49 @@ button svg{fill:var(--primary-color);flex:none}
       ...okna.map((e, i) => ({ kolumna: 1 + i % 2, cel: { entity: e.entity_id, urzadzenie: e.device_id, wpis: h.devices[e.device_id]?.config_entries?.[0] } }))
     ];
   }
-  function pilnuj() {
+  var zgloszone = "";
+  var od = 0;
+  var powod = "";
+  function zglos(id) {
+    const h = document.querySelector("home-assistant")?.hass;
+    if (zgloszone === id || !powod || Date.now() - od < 15e3 || !h?.callService) return;
+    if (!h.devices?.[id]?.identifiers?.some?.((i) => i[0] === "motor_ha")) return;
+    zgloszone = id;
+    Promise.resolve(h.callService("system_log", "write", {
+      logger: "motor_ha.strona",
+      level: "warning",
+      message: `Motor HA: brak karty na stronie urządzenia (${powod}; ${navigator.userAgent})`
+    })).catch(() => {
+    });
+  }
+  function pilnuj(rejestruj2) {
     const m = WZOR.exec(location.pathname);
-    if (!m || !customElements.get("motor-ha-urzadzenie")) return;
+    if (!m) {
+      od = 0;
+      return;
+    }
+    if (!od) {
+      od = Date.now();
+      zgloszone = "";
+    }
+    if (!customElements.get("motor-ha-urzadzenie")) rejestruj2?.();
+    if (!customElements.get("motor-ha-urzadzenie")) {
+      powod = "element niezarejestrowany";
+      return;
+    }
     const pg = strona(document), r = pg?.shadowRoot, h = pg?.hass;
-    if (!r || !h) return;
+    if (!r || !h) {
+      powod = "brak strony urządzenia";
+      return;
+    }
     const kolumny = [...r.querySelectorAll("div.column")];
-    if (!kolumny.length) return;
+    if (!kolumny.length) {
+      powod = "brak kolumn";
+      return;
+    }
     const nasze = [...r.querySelectorAll(`[${ZNAK}]`)];
     const lista = cele(h, m[1]);
+    powod = lista ? "" : `brak encji Motor HA przy urządzeniu (encje: ${Object.keys(h.entities || {}).length})`;
     const klucz = lista ? m[1] + "|" + kolumny.length + "|" + lista.map((x) => x.cel.entity || "dom").join() : "";
     if (nasze.length && nasze[0].getAttribute(ZNAK) !== klucz) {
       nasze.forEach((e) => e.remove());
@@ -5858,11 +5892,18 @@ button svg{fill:var(--primary-color);flex:none}
       }
     }
     for (const e of nasze) if (e.hass !== h) e.hass = h;
+    if (!nasze[0]?.getBoundingClientRect().height) powod = "karta wstawiona, ale pusta";
   }
-  function strony() {
+  function strony(rejestruj2) {
     setInterval(() => {
       try {
-        pilnuj();
+        pilnuj(rejestruj2);
+      } catch (e) {
+        powod = String(e?.message || e);
+      }
+      const m = WZOR.exec(location.pathname);
+      if (m) try {
+        zglos(m[1]);
       } catch (e) {
       }
     }, 700);
@@ -5927,7 +5968,7 @@ button svg{fill:var(--primary-color);flex:none}
   });
   if (!window.__motorHaStrony && !window.frameElement) {
     window.__motorHaStrony = true;
-    strony();
+    strony(() => rejestruj(true));
   }
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");

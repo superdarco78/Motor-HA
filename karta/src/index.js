@@ -41,7 +41,7 @@ window.customCards.push({
 window.customCards.push({ type: 'motor-ha-dom', name: T.karta.dom, description: T.karta.domOpis, preview: true,
   documentationURL: 'https://github.com/superdarco78/Motor-HA' });
 
-if (!window.__motorHaStrony && !window.frameElement) { window.__motorHaStrony = true; strony(); }
+if (!window.__motorHaStrony && !window.frameElement) { window.__motorHaStrony = true; strony(() => rejestruj(true)); }
 
 // dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku
 window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };

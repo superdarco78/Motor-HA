@@ -26,7 +26,7 @@ STARA = "okno_ha"
 STARE_ZASOBY = ("/local/okno-ha-loader.js", "/okno_ha/okno-ha-loader.js", "/okno_ha/okno-ha.js")
 
 LADOWACZ = f"""// Motor HA – ładowacz. Przy każdym otwarciu strony bierze świeże skrypty (?t=), a po aktualizacji
-// Motor HA raz sam odświeża stronę, gdy nikt jej nie dotyka przez minutę.
+// Motor HA raz sam odświeża stronę: po powrocie do aplikacji/karty albo gdy nikt jej nie dotyka przez minutę.
 if (!window.__motorHaLoader) {{
   window.__motorHaLoader = true;
   const t = Date.now();
@@ -38,11 +38,16 @@ if (!window.__motorHaLoader) {{
     try {{
       const w = (await (await fetch(`/{DOMAIN}/wersja.txt?t=${{Date.now()}}`, {{ cache: "no-store" }})).text()).trim();
       if (wersja === null) wersja = w;
-      else if (w && w !== wersja && Date.now() - ruch > 60000 && !document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow")) location.reload();
+      else if (w && w !== wersja && (teraz || Date.now() - ruch > 60000) && !document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow")) location.reload();
     }} catch (e) {{ /* HA w trakcie restartu */ }}
   }};
+  let teraz = false;
   sprawdz();
   setInterval(sprawdz, 60000);
+  // aplikacja HA (Android/iOS) trzyma stronę otwartą tygodniami: po powrocie do aplikacji nowa wersja wczytuje się od razu
+  document.addEventListener("visibilitychange", () => {{
+    if (document.visibilityState === "visible") {{ teraz = true; sprawdz().finally(() => {{ teraz = false; }}); }}
+  }});
 }}
 """
 
