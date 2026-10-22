@@ -167,32 +167,101 @@
 <a name="kreator-krok"></a>
 <h3>Every step with a picture</h3>
 
-<table>
-<tr>
-<td valign="top"><a name="kreator-1"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-tryb.svg" width="28" height="28" align="absmiddle" alt=""> 1. Wizard mode</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-01-ciemny.webp" width="100%" alt="Wizard mode"></a><br><b>What to click:</b><br>① Choose how many questions you want to see.<br>② <b>Next</b></td>
-<td valign="top"><a name="kreator-2"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-mam.svg" width="28" height="28" align="absmiddle" alt=""> 2. What you have at home</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-02-ciemny.webp" width="100%" alt="What you have at home"></a><br><b>What to click:</b><br>① Tick what you have. The wizard searched Home Assistant and ticked what it found.<br>② <b>Next</b></td>
-</tr>
-<tr>
-<td valign="top"><a name="kreator-3"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-urzadzenie.svg" width="28" height="28" align="absmiddle" alt=""> 3. Device</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-03-ciemny.webp" width="100%" alt="Device"></a><br><b>What to click:</b><br>① Choose the motor (a shade or a gate), give it a name and pick the room.<br>② <b>Next</b></td>
-<td valign="top"><a name="kreator-4"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-rodzaj.svg" width="28" height="28" align="absmiddle" alt=""> 4. Type</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-04-ciemny.webp" width="100%" alt="Type"></a><br><b>What to click:</b><br>① Choose exactly what you have.<br>② <b>Next</b></td>
-</tr>
-<tr>
-<td valign="top"><a name="kreator-5"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-kolory.svg" width="28" height="28" align="absmiddle" alt=""> 5. Colours</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-05-ciemny.webp" width="100%" alt="Colours"></a><br><b>What to click:</b><br>① Choose the colour of the shade and the frame.<br>② <b>Next</b></td>
-<td valign="top"><a name="kreator-6"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-okno.svg" width="28" height="28" align="absmiddle" alt=""> 6. Window</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-6"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-06-ciemny.webp" width="100%" alt="Window"></a><br><b>What to click:</b><br>① How many sashes the window has and how big it is on the card.<br>② <b>Next</b></td>
-</tr>
-<tr>
-<td valign="top"><a name="kreator-7"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-czujniki.svg" width="28" height="28" align="absmiddle" alt=""> 7. Sensors</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-7"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-07-ciemny.webp" width="100%" alt="Sensors"></a><br><b>What to click:</b><br>① Choose the window and door opening sensors.<br>② <b>Next</b></td>
-<td valign="top"><a name="kreator-8"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-silnik.svg" width="28" height="28" align="absmiddle" alt=""> 8. Motor</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-8"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-08-ciemny.webp" width="100%" alt="Motor"></a><br><b>What to click:</b><br>① Enter the full travel time or leave 0.<br>② <b>Next</b></td>
-</tr>
-<tr>
-<td valign="top"><a name="kreator-9"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-pogoda.svg" width="28" height="28" align="absmiddle" alt=""> 9. Weather</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-9"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-09-ciemny.webp" width="100%" alt="Weather"></a><br><b>What to click:</b><br>① Choose the weather and outdoor sensors.<br>② <b>Next</b></td>
-<td valign="top"><a name="kreator-10"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-automatyka.svg" width="28" height="28" align="absmiddle" alt=""> 10. Automation</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-10"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-10-ciemny.webp" width="100%" alt="Automation"></a><br><b>What to click:</b><br>① Turn on the features that may move the shade by themselves.<br>② <b>Next</b></td>
-</tr>
-<tr>
-<td valign="top"><a name="kreator-11"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-powiadomienia.svg" width="28" height="28" align="absmiddle" alt=""> 11. Notifications</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-11"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-11-ciemny.webp" width="100%" alt="Notifications"></a><br><b>What to click:</b><br>① Choose what to tell you about.<br>② <b>Next</b></td>
-<td valign="top"><a name="kreator-12"></a><b><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-panel.svg" width="28" height="28" align="absmiddle" alt=""> 12. Dashboard</b><br><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-12"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-12-ciemny.webp" width="100%" alt="Dashboard"></a><br><b>What to click:</b><br>① Which dashboard to add the card to.<br>② <b>Submit</b></td>
-</tr>
-</table>
+<a name="kreator-1"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-tryb.svg" width="28" height="28" align="absmiddle" alt=""> 1. Wizard mode</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-01-ciemny.webp" width="100%" alt="Wizard mode"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Choose how many questions you want to see.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-2"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-mam.svg" width="28" height="28" align="absmiddle" alt=""> 2. What you have at home</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-02-ciemny.webp" width="100%" alt="What you have at home"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Tick what you have. The wizard searched Home Assistant and ticked what it found.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-3"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-urzadzenie.svg" width="28" height="28" align="absmiddle" alt=""> 3. Device</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-03-ciemny.webp" width="100%" alt="Device"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Choose the motor (a shade or a gate), give it a name and pick the room.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-4"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-rodzaj.svg" width="28" height="28" align="absmiddle" alt=""> 4. Type</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-04-ciemny.webp" width="100%" alt="Type"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Choose exactly what you have.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-5"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-kolory.svg" width="28" height="28" align="absmiddle" alt=""> 5. Colours</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-05-ciemny.webp" width="100%" alt="Colours"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Choose the colour of the shade and the frame.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-6"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-okno.svg" width="28" height="28" align="absmiddle" alt=""> 6. Window</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-6"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-06-ciemny.webp" width="100%" alt="Window"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>How many sashes the window has and how big it is on the card.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-7"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-czujniki.svg" width="28" height="28" align="absmiddle" alt=""> 7. Sensors</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-7"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-07-ciemny.webp" width="100%" alt="Sensors"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Choose the window and door opening sensors.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-8"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-silnik.svg" width="28" height="28" align="absmiddle" alt=""> 8. Motor</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-8"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-08-ciemny.webp" width="100%" alt="Motor"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Enter the full travel time or leave 0.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-9"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-pogoda.svg" width="28" height="28" align="absmiddle" alt=""> 9. Weather</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-9"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-09-ciemny.webp" width="100%" alt="Weather"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Choose the weather and outdoor sensors.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-10"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-automatyka.svg" width="28" height="28" align="absmiddle" alt=""> 10. Automation</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-10"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-10-ciemny.webp" width="100%" alt="Automation"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Turn on the features that may move the shade by themselves.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-11"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-powiadomienia.svg" width="28" height="28" align="absmiddle" alt=""> 11. Notifications</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-11"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-11-ciemny.webp" width="100%" alt="Notifications"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Choose what to tell you about.</li><li><b>Next</b></li></ol>
+
+<a name="kreator-12"></a>
+<h4><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-panel.svg" width="28" height="28" align="absmiddle" alt=""> 12. Dashboard</h4>
+
+<p align="center"><a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator-12"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kroki/en/krok-12-ciemny.webp" width="100%" alt="Dashboard"></a></p>
+
+<p><b>What to click:</b></p>
+<ol><li>Which dashboard to add the card to.</li><li><b>Submit</b></li></ol>
 
 <a name="oslony"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="34" height="34" align="absmiddle" alt=""> Blind and gate types</h2>

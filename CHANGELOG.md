@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v2.0.3 – Kroki kreatora jeden pod drugim
+
+- 🧙 Każdy krok kreatora z obrazkiem jeden pod drugim, na całą szerokość – nic się nie rozjeżdża, czytelne też na telefonie
+
 ## v2.0.2 – Opis na całą szerokość i klikana instrukcja
 
 - ↔️ Opis na GitHubie wypełnia całą szerokość: kafelki, spis treści, tabele i obrazki, bez pustych miejsc z boku

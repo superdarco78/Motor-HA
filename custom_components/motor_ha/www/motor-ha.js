@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.0.2";
+  var WERSJA = "2.0.3";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],

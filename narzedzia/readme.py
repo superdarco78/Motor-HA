@@ -306,18 +306,12 @@ def readme(j: str) -> str:
     w.append("</table>\n")
     w.append(f"<p>{L['kreator_dodatkowe']}</p>\n")
     w.append(f'<a name="kreator-krok"></a>\n<h3>{escape(kt["kreator_obrazki"])}</h3>\n')
-    # po 2 kroki w rzędzie – obrazki wypełniają całą szerokość, a tekst na nich zostaje czytelny
-    w.append("<table>")
-    for i in range(0, len(KROKI_ZRZUTY), 2):
-        w.append("<tr>")
-        for nr in range(i + 1, i + 3):
-            x = t["kroki"][KROKI_ZRZUTY[nr - 1]]
-            u = f"{RAW}img/kroki/{j}/krok-{nr:02d}"
-            w.append(f'<td valign="top"><a name="kreator-{nr}"></a><b>{ik("krok-" + KROKI_ZRZUTY[nr - 1], 28)} {nr}. {escape(x["t"])}</b><br>'
-                     + zrzut(j, u, "100%", x["t"], f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{nr}') + "<br>" +
-                     f'<b>{escape(kt["co_kliknac"])}</b><br>① {escape(x["co"])}<br>② <b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b></td>')
-        w.append("</tr>")
-    w.append("</table>\n")
+    # kroki jeden pod drugim: tytuł, obrazek na całą szerokość, co kliknąć – czytelne też na telefonie
+    for nr, kr in enumerate(KROKI_ZRZUTY, 1):
+        x = t["kroki"][kr]
+        w.append(f'<a name="kreator-{nr}"></a>\n<h4>{ik("krok-" + kr, 28)} {nr}. {escape(x["t"])}</h4>\n')
+        w.append(obraz(j, f"krok-{nr:02d}", "100%", x["t"], f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#kreator-{nr}'))
+        w.append(klik(kt["co_kliknac"], [escape(x["co"]), f'<b>{kt["zatwierdz" if nr == len(KROKI_ZRZUTY) else "dalej"]}</b>']))
     # osłony
     w.append(naglowek("oslony", d["oslony"]))
     w.append(f"<p>{escape(L['oslony_wstep'])}</p>\n")
