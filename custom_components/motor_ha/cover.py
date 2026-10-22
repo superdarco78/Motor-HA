@@ -60,7 +60,8 @@ from .urzadzenie import Wpis, info_urzadzenia
 
 # klucze przekazywane karcie bez zmian
 PROSTE = ["czujnik_lewe", "czujnik_prawe", "tryb_lewe", "tryb_prawe", "predkosc_lewa", "predkosc_prawa",
-          CONF_OSLONA, CONF_KOLOR, CONF_ODWROC, "rodzaj_pokoju"]
+          CONF_OSLONA, CONF_KOLOR, CONF_ODWROC, "rodzaj_pokoju", "foto_stan"]
+SLONECZNE = ("f_slonce", "f_oslepianie", "f_upal", "f_zima", "f_jasnosc", "f_temp_pokoj")
 KALIBRACJA_MAKS = 240   # s na jeden przejazd
 
 
@@ -89,6 +90,8 @@ def ustawienia_karty(nazwa: str, o: dict[str, Any]) -> dict[str, Any]:
     k["pogoda"] = o.get(CONF_POGODA) or "auto"
     if o.get(CZUJNIKI["foto"]):
         k["przeszkoda"] = o[CZUJNIKI["foto"]]
+    if any(o.get(f) for f in SLONECZNE):
+        k["kompas"] = float(o.get("azymut", 180))   # kierunek okna – karta rysuje słońce względem okna
     return k
 
 

@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "A window with its shade: moves at your motor's speed, real weather and time of day outside, window sensors.",
+  "opis": "Everything with a motor: shutters, blinds, awnings, curtains, gates and garage doors. Moves at motor speed, weather behind the glass, window sensors.",
   "karta": {
     "oba": "Drag to move both shades",
     "otworz": "Open",
@@ -14,7 +14,16 @@
     "prawe": "right",
     "otwarte": "open",
     "uchylone": "tilted",
-    "pozycja": "Position"
+    "pozycja": "Position",
+    "przeszkoda": "Obstacle in the gate",
+    "wznow": "Resume",
+    "pauza": "Paused until",
+    "wolne": "Way clear",
+    "dom": "Motor HA – whole home",
+    "domOpis": "All Motor HA devices on one card: state, reason for move and buttons.",
+    "domBrak": "There are no Motor HA devices yet.",
+    "wszOtw": "Open all",
+    "wszZam": "Close all"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Venetian blinds",
     "zrolety": "Roller shutters",
     "fasadowe": "External venetian blinds",
-    "taras": "Terrace"
+    "taras": "Terrace",
+    "pionowe": "Vertical and curtains",
+    "brama": "Gate and garage",
+    "bramy": "Driveway gates",
+    "garaze": "Garage doors"
   },
   "oslony": {
     "pelna": "Free-hanging roller blind",
@@ -146,7 +159,14 @@
     "fasadowa": "External venetian C80",
     "fasadowaz": "External venetian Z90",
     "markiza": "Terrace awning",
-    "screen": "ZIP screen"
+    "screen": "ZIP screen",
+    "pionowa": "Vertical blind",
+    "zaslona": "Side curtain",
+    "przesuwna": "Sliding gate",
+    "skrzydlowa": "Swing gate",
+    "segmentowa": "Sectional door",
+    "uchylna": "Up-and-over door",
+    "roletowa": "Roller door"
   },
   "kolory": {
     "czarny": "black",

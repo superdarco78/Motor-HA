@@ -1,6 +1,6 @@
 // Edytor karty Motor HA: 7 kroków z kółkami (te same co w kreatorze integracji), w każdym „Co” i „Po co”.
 // Pola to zwykłe pola Home Assistanta (ha-form), więc wyglądają i działają jak w HA.
-import { DOMYSLNE, GRUPY, IKONY, IKONY_GRUP, KOLORY, RAMY, hex, ramaHex } from './stale.js';
+import { DOMYSLNE, GRUPY, IKONY, IKONY_GRUP, KOLORY, RAMY, czyBrama, hex, ramaHex } from './stale.js';
 import { KLUCZE_PANELU } from './karta.js';
 import { TEKSTY, NAZWY_JEZYKOW, jezyk, wstaw } from './jezyk.js';
 import { czasPrzejazdu, nauczony } from './ruch.js';
@@ -115,18 +115,21 @@ export class MotorHaEdytor extends HTMLElement {
       delete this._cfg.type; this._cfg.type = 'custom:motor-ha';
     }
     this._jez = jezyk(this._cfg, this._hass);
-    const T = this._T, n = this._krok ?? 0, [kl, ik] = KROKI[n], K = T.kroki[kl];
+    // brama i garaż nie mają okna, czujników okna ani pogody za szybą
+    const LISTA = czyBrama(this._w('oslona')) ? KROKI.filter(([k]) => !['okno', 'czujniki', 'pogoda'].includes(k)) : KROKI;
+    this._krok = Math.min(this._krok ?? 0, LISTA.length - 1);
+    const T = this._T, n = this._krok, [kl, ik] = LISTA[n], K = T.kroki[kl];
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
     root.innerHTML = `<style>${STYL}</style><div class="ed">
-<div class="pasek" role="tablist">${KROKI.map(([k, i], j) => `<button class="kr${j === n ? ' on' : j < n ? ' zrob' : ''}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc(T.kroki[k].t)}">
+<div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? ' on' : j < n ? ' zrob' : ''}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc(T.kroki[k].t)}">
  <span class="k"><ha-icon icon="${i}"></ha-icon></span><span class="p">${esc(T.kroki[k].t)}</span></button>`).join('')}</div>
-<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc(K.t)}<small>${esc(wstaw(T.ui.krok, n + 1, KROKI.length))}</small></h3></div>
+<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc(K.t)}<small>${esc(wstaw(T.ui.krok, n + 1, LISTA.length))}</small></h3></div>
 <p class="cp"><span><b>${esc(T.ui.co)}</b> ${esc(K.co)}</span><span><b>${esc(T.ui.poco)}</b> ${esc(K.poco)}</span></p>
 <div class="tresc"></div>
 <div class="nav"><button class="bt dr" data-n="-1" ${n ? '' : 'hidden'}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc(T.ui.wstecz)}</button>
- <button class="bt" data-n="1" ${n < KROKI.length - 1 ? '' : 'hidden'}>${esc(T.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
+ <button class="bt" data-n="1" ${n < LISTA.length - 1 ? '' : 'hidden'}>${esc(T.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
     root.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => { this._krok = +b.dataset.k; this._rysuj(); }));
-    root.querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => { this._krok = Math.max(0, Math.min(KROKI.length - 1, n + +b.dataset.n)); this._rysuj(); }));
+    root.querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => { this._krok = Math.max(0, Math.min(LISTA.length - 1, n + +b.dataset.n)); this._rysuj(); }));
     this._forma = [];
     this['_' + kl](root.querySelector('.tresc'));
   }

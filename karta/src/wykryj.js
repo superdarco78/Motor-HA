@@ -62,6 +62,6 @@ export function pogodaZInternetu(h, gotowe) {
 export function oslonyDoWyboru(h) {
   const s = h?.states || {};
   const pkt = id => (s[id].attributes?.motor_ha ? 100 : 0) + ((s[id].attributes?.entity_id || []).length > 1 ? 40 : 0) + (s[id].attributes?.supported_features & 4 ? 10 : 0);
-  return Object.keys(s).filter(k => k.startsWith('cover.') && !['garage', 'gate', 'door', 'damper'].includes(s[k].attributes?.device_class))
+  return Object.keys(s).filter(k => k.startsWith('cover.') && !['door', 'damper'].includes(s[k].attributes?.device_class))
     .sort((a, b) => pkt(b) - pkt(a) || a.localeCompare(b));
 }

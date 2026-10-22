@@ -122,6 +122,26 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
  color:var(--primary-text-color);font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .poz button:hover{background:color-mix(in srgb,var(--primary-text-color) 8%,transparent)}
 .poz button.on{background:color-mix(in srgb,var(--primary-text-color) 15%,transparent);border-color:transparent}
+.poziomo .listwa,.poziomo .prow{display:none}
+.poziomo .oslona{will-change:clip-path,mask-image}
+.poziomo .skrz,.poziomo .zewo{cursor:pointer}
+/* brama i garaż */
+.bramaw{position:relative;width:min(100%,420px);border-radius:var(--ha-border-radius-md,8px);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bramaw svg{display:block;width:100%;height:auto}
+/* automatyka: powód ruchu i pauza – jak wiersz informacji HA */
+.auto{display:flex;align-items:center;gap:8px;min-height:32px;padding:0 4px 0 8px;border-radius:var(--ha-border-radius-md,8px);
+ background:color-mix(in srgb,var(--primary-color) 12%,transparent);color:var(--primary-text-color);font-size:var(--ha-font-size-s,12px);line-height:16px}
+.auto[hidden]{display:none}
+.auto ha-icon{--mdc-icon-size:18px;display:flex;color:var(--primary-color);flex:none}
+.auto span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.auto.blad{background:color-mix(in srgb,var(--error-color,#db4437) 14%,transparent)}
+.auto.blad ha-icon{color:var(--error-color,#db4437)}
+.auto button{flex:none;height:28px;padding:0 12px;border:none;border-radius:var(--ha-border-radius-pill,9999px);cursor:pointer;font:inherit;
+ font-size:var(--ha-font-size-s,12px);font-weight:var(--ha-font-weight-medium,500);background:var(--primary-color);color:var(--text-primary-color,#fff)}
+.auto button[hidden]{display:none}
+/* kompas słońca w nagłówku */
+.kompas{flex:none;width:36px;height:36px}
+.kompas[hidden]{display:none}
 .brak{padding:16px;color:var(--secondary-text-color);font-size:var(--ha-font-size-m,14px)}
 `;
 

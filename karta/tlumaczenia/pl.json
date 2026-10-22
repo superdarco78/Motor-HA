@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "Okno z osłoną: ruch w tempie silnika, pogoda i pora dnia za szybą, czujniki okna.",
+  "opis": "Wszystko, co ma silnik: rolety, żaluzje, markizy, zasłony, bramy i garaże. Ruch w tempie silnika, pogoda za szybą, czujniki okna.",
   "karta": {
     "oba": "Przeciągnij, żeby przesunąć obie osłony",
     "otworz": "Otwórz",
@@ -14,7 +14,16 @@
     "prawe": "prawe",
     "otwarte": "otwarte",
     "uchylone": "uchylone",
-    "pozycja": "Pozycja"
+    "pozycja": "Pozycja",
+    "przeszkoda": "Przeszkoda w bramie",
+    "wznow": "Wznów",
+    "pauza": "Pauza do",
+    "wolne": "Wolna droga",
+    "dom": "Motor HA – cały dom",
+    "domOpis": "Wszystkie urządzenia Motor HA na jednej karcie: stan, powód ruchu i przyciski.",
+    "domBrak": "Nie ma jeszcze urządzeń Motor HA.",
+    "wszOtw": "Otwórz wszystkie",
+    "wszZam": "Zamknij wszystkie"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Żaluzje",
     "zrolety": "Rolety zewnętrzne",
     "fasadowe": "Żaluzje fasadowe",
-    "taras": "Taras"
+    "taras": "Taras",
+    "pionowe": "Pionowe i zasłony",
+    "brama": "Brama i garaż",
+    "bramy": "Bramy wjazdowe",
+    "garaze": "Bramy garażowe"
   },
   "oslony": {
     "pelna": "Roleta wolnowisząca",
@@ -146,7 +159,14 @@
     "fasadowa": "Żaluzja fasadowa C80",
     "fasadowaz": "Żaluzja fasadowa Z90",
     "markiza": "Markiza tarasowa",
-    "screen": "Screen ZIP"
+    "screen": "Screen ZIP",
+    "pionowa": "Żaluzja pionowa",
+    "zaslona": "Zasłona boczna",
+    "przesuwna": "Brama przesuwna",
+    "skrzydlowa": "Brama skrzydłowa",
+    "segmentowa": "Brama segmentowa",
+    "uchylna": "Brama uchylna",
+    "roletowa": "Brama roletowa"
   },
   "kolory": {
     "czarny": "czarny",

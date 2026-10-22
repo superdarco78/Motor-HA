@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "Una ventana con su estor: se mueve a la velocidad del motor, tiempo real y hora del día fuera, sensores de ventana.",
+  "opis": "Todo lo que tiene motor: persianas, estores, toldos, cortinas, portones y puertas de garaje. Movimiento al ritmo del motor, tiempo tras el cristal, sensores de ventana.",
   "karta": {
     "oba": "Arrastra para mover ambos estores",
     "otworz": "Abrir",
@@ -14,7 +14,16 @@
     "prawe": "derecha",
     "otwarte": "abierta",
     "uchylone": "abatida",
-    "pozycja": "Posición"
+    "pozycja": "Posición",
+    "przeszkoda": "Obstáculo en el portón",
+    "wznow": "Reanudar",
+    "pauza": "En pausa hasta",
+    "wolne": "Paso libre",
+    "dom": "Motor HA – toda la casa",
+    "domOpis": "Todos los dispositivos Motor HA en una tarjeta: estado, motivo del movimiento y botones.",
+    "domBrak": "Aún no hay dispositivos Motor HA.",
+    "wszOtw": "Abrir todo",
+    "wszZam": "Cerrar todo"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Venecianas",
     "zrolety": "Persianas",
     "fasadowe": "Lamas orientables",
-    "taras": "Terraza"
+    "taras": "Terraza",
+    "pionowe": "Verticales y cortinas",
+    "brama": "Portón y garaje",
+    "bramy": "Portones",
+    "garaze": "Puertas de garaje"
   },
   "oslony": {
     "pelna": "Estor enrollable libre",
@@ -146,7 +159,14 @@
     "fasadowa": "Lama orientable C80",
     "fasadowaz": "Lama orientable Z90",
     "markiza": "Toldo de terraza",
-    "screen": "Screen ZIP"
+    "screen": "Screen ZIP",
+    "pionowa": "Estor vertical",
+    "zaslona": "Cortina lateral",
+    "przesuwna": "Portón corredero",
+    "skrzydlowa": "Portón batiente",
+    "segmentowa": "Puerta seccional",
+    "uchylna": "Puerta basculante",
+    "roletowa": "Puerta enrollable"
   },
   "kolory": {
     "czarny": "negro",

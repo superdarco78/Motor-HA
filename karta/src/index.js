@@ -3,25 +3,29 @@ import { WERSJA, GRUPY, IKONY, KOLORY } from './stale.js';
 import { MotorHaKarta } from './karta.js';
 import { MotorHaEdytor, KROKI } from './edytor.js';
 import { TEKSTY, kodJezyka } from './jezyk.js';
+import { MotorHaDom } from './dom.js';
 
 const rejestruj = (nazwa, klasa) => { if (!customElements.get(nazwa)) customElements.define(nazwa, klasa); };
 rejestruj('motor-ha', MotorHaKarta);
 rejestruj('okno-ha', class extends MotorHaKarta {});
 rejestruj('motor-ha-editor', MotorHaEdytor);
 rejestruj('okno-ha-editor', class extends MotorHaEdytor {});
+rejestruj('motor-ha-dom', MotorHaDom);
 rejestruj('roleta-realistyczna', class extends MotorHaKarta {});
 rejestruj('roleta-realistyczna-editor', class extends MotorHaEdytor {});
 
 const T = TEKSTY[kodJezyka(document.documentElement.lang || navigator.language)];
 window.customCards = window.customCards || [];
 // plik może się wczytać dwa razy (ładowacz + opis w HACS) – na liście „Dodaj kartę” zawsze jedna pozycja
-for (let i = window.customCards.length - 1; i >= 0; i--) if (['motor-ha', 'okno-ha', 'roleta-realistyczna'].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
+for (let i = window.customCards.length - 1; i >= 0; i--) if (['motor-ha', 'motor-ha-dom', 'okno-ha', 'roleta-realistyczna'].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
 window.customCards.push({
   type: 'motor-ha', name: T.nazwa, description: T.opis, preview: true,
   documentationURL: 'https://github.com/superdarco78/okno-ha-integracja',
   // „Dodaj do panelu” na stronie urządzenia proponuje kartę Motor HA dla okien i osłon
   getEntitySuggestion: (hass, entityId) => String(entityId).startsWith('cover.') ? { label: T.nazwa, config: { type: 'custom:motor-ha', entity: entityId } } : null
 });
+window.customCards.push({ type: 'motor-ha-dom', name: T.karta.dom, description: T.karta.domOpis, preview: true,
+  documentationURL: 'https://github.com/superdarco78/okno-ha-integracja' });
 
 // dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku
 window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };

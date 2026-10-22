@@ -48,6 +48,12 @@ export function tekstura(typ, k) {
       return { okres: 6, nakladka: 'repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 2px)', obraz: svg(6, pion('a', [[0, k, .8], [1, J(k, .06), .78]]) + pas('a', 0, 6)) };
     case 'markiza': // pasy markizy w poprzek, lekkie fałdy
       return { okres: 30, nakladka: `repeating-linear-gradient(90deg,${k} 0 14px,${rgba('#f3efe6', .97)} 14px 28px)`, obraz: svg(30, pion('a', [[0, '#ffffff', .12], [0.5, '#000000', .12], [1, '#ffffff', .12]]) + pas('a', 0, 30)) };
+    case 'pionowa': // lamele pionowe 9 cm: pasy w pionie, łańcuszek u dołu
+      return { okres: 24, nakladka: `repeating-linear-gradient(90deg,${J(k, .2)} 0 2px,${k} 2px 15px,${J(k, -.28)} 15px 17px,rgba(0,0,0,.35) 17px 18px)`,
+        obraz: svg(24, pion('a', [[0, k], [1, J(k, -.05)]]) + pas('a', 0, 24)) };
+    case 'zaslona': // miękkie fałdy w pionie
+      return { okres: 24, nakladka: `repeating-linear-gradient(90deg,${J(k, -.22)} 0,${J(k, .14)} 11px,${J(k, -.1)} 22px,${J(k, -.22)} 26px),${splot}`,
+        obraz: svg(24, pion('a', [[0, k], [1, J(k, -.08)]]) + pas('a', 0, 24)) };
     default:
       return tekstura('zebra', k);
   }

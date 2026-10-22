@@ -7,15 +7,23 @@
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
       plisy: ["plisa", "plaster", "rzymska"],
-      zaluzje: ["zaluzja", "drewniana"]
+      zaluzje: ["zaluzja", "drewniana"],
+      pionowe: ["pionowa", "zaslona"]
     },
     zew: {
       zrolety: ["natynkowa", "podtynkowa", "zewnetrzna", "perforowana"],
       fasadowe: ["fasadowa", "fasadowaz"],
       taras: ["markiza", "screen"]
+    },
+    brama: {
+      bramy: ["przesuwna", "skrzydlowa"],
+      garaze: ["segmentowa", "uchylna", "roletowa"]
     }
   };
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
+  var BRAMY = Object.values(GRUPY.brama).flat();
+  var czyBrama = (t) => BRAMY.includes(t);
+  var POZIOME = ["pionowa", "zaslona"];
   var ZEWNETRZNE = Object.values(GRUPY.zew).flat();
   var czyZew = (t) => ZEWNETRZNE.includes(t);
   var IKONY = {
@@ -35,7 +43,23 @@
     fasadowa: "mdi:blinds-horizontal-closed",
     fasadowaz: "mdi:blinds-horizontal-closed",
     markiza: "mdi:awning-outline",
-    screen: "mdi:roller-shade"
+    screen: "mdi:roller-shade",
+    pionowa: "mdi:blinds-vertical",
+    zaslona: "mdi:curtains",
+    przesuwna: "mdi:gate",
+    skrzydlowa: "mdi:gate",
+    segmentowa: "mdi:garage",
+    uchylna: "mdi:garage",
+    roletowa: "mdi:garage"
+  };
+  var IKONY_OTW = {
+    przesuwna: "mdi:gate-open",
+    skrzydlowa: "mdi:gate-open",
+    segmentowa: "mdi:garage-open",
+    uchylna: "mdi:garage-open",
+    roletowa: "mdi:garage-open",
+    pionowa: "mdi:blinds-vertical",
+    zaslona: "mdi:curtains"
   };
   var IKONY_GRUP = {
     wew: "mdi:sofa-outline",
@@ -43,6 +67,10 @@
     rolety: "mdi:roller-shade",
     plisy: "mdi:blinds",
     zaluzje: "mdi:blinds-horizontal",
+    pionowe: "mdi:blinds-vertical",
+    brama: "mdi:gate",
+    bramy: "mdi:gate",
+    garaze: "mdi:garage",
     zrolety: "mdi:window-shutter",
     fasadowe: "mdi:blinds-horizontal-closed",
     taras: "mdi:awning-outline"
@@ -156,6 +184,81 @@
   };
   var rgba = (h, a) => `rgba(${rgb(h).join(",")},${a})`;
 
+  // src/brama.js
+  var W = 320;
+  var H = 200;
+  var ZIEMIA = 172;
+  function tlo(noc) {
+    const niebo = noc ? ["#1b2540", "#2c3a5c"] : ["#8fc3ea", "#d7ecf8"];
+    return `<defs><linearGradient id="mhN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${niebo[0]}"/><stop offset="1" stop-color="${niebo[1]}"/></linearGradient>
+  <clipPath id="mhOtw"><rect x="74" y="78" width="172" height="${ZIEMIA - 78}"/></clipPath>
+  <clipPath id="mhPrz"><rect x="0" y="0" width="${W}" height="${H}"/></clipPath></defs>
+  <rect class="niebo-b" width="${W}" height="${ZIEMIA}" fill="url(#mhN)"/>
+  <rect y="${ZIEMIA}" width="${W}" height="${H - ZIEMIA}" fill="${noc ? "#2d3a2a" : "#6fa04f"}"/>
+  <path d="M110 ${ZIEMIA}h100l40 ${H - ZIEMIA}H70z" fill="${noc ? "#4a4a4a" : "#9a9a94"}"/>`;
+  }
+  function przesło(x, y, w, h, k) {
+    const prety = Array.from({ length: Math.floor(w / 11) }, (_, i) => `<rect x="${x + 6 + i * 11}" y="${y + 4}" width="3" height="${h - 8}" fill="${k}"/>`).join("");
+    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="none" stroke="${k}" stroke-width="5"/>
+  <rect x="${x}" y="${y + h / 2 - 2}" width="${w}" height="4" fill="${jasniej(k, -0.15)}"/>${prety}`;
+  }
+  function slupek(x, k) {
+    return `<rect x="${x - 7}" y="${ZIEMIA - 98}" width="14" height="98" fill="${jasniej(k, 0.12)}"/><rect x="${x - 9}" y="${ZIEMIA - 102}" width="18" height="6" fill="${jasniej(k, -0.1)}"/>`;
+  }
+  function fotokomorka() {
+    return `<g class="foto"><rect x="62" y="${ZIEMIA - 22}" width="6" height="16" rx="1" fill="#333"/><rect x="252" y="${ZIEMIA - 22}" width="6" height="16" rx="1" fill="#333"/>
+  <line class="wiazka" x1="68" y1="${ZIEMIA - 16}" x2="252" y2="${ZIEMIA - 16}" stroke-width="2" stroke-dasharray="5 4"/></g>`;
+  }
+  function garaz(k, rama, noc) {
+    return `<rect x="34" y="40" width="252" height="${ZIEMIA - 40}" fill="${noc ? "#6c675f" : "#e3ddd1"}"/>
+  <path d="M24 44L160 8L296 44z" fill="${noc ? "#4c2f28" : "#9c4b37"}"/>
+  <rect x="70" y="74" width="180" height="${ZIEMIA - 74}" fill="${rama}"/>
+  <rect x="74" y="78" width="172" height="${ZIEMIA - 78}" fill="${noc ? "#3b3128" : "#2b2723"}"/>
+  ${noc ? '<rect x="74" y="78" width="172" height="40" fill="rgba(255,200,120,.25)"/>' : ""}`;
+  }
+  function drzwiGarazu(typ, k) {
+    const h = ZIEMIA - 78, x = 74, w = 172;
+    let wzor = "";
+    if (typ === "segmentowa") wzor = [1, 2, 3].map((i) => `<rect x="${x}" y="${78 + i * h / 4 - 1}" width="${w}" height="2" fill="${jasniej(k, -0.3)}"/>`).join("") + Array.from({ length: 16 }, (_, i) => `<rect x="${x}" y="${78 + i * h / 16}" width="${w}" height="1" fill="${jasniej(k, 0.12)}" opacity=".5"/>`).join("");
+    else if (typ === "roletowa") wzor = Array.from({ length: 24 }, (_, i) => `<rect x="${x}" y="${78 + i * h / 24}" width="${w}" height="1.2" fill="${jasniej(k, -0.32)}"/>`).join("");
+    else wzor = Array.from({ length: 14 }, (_, i) => `<rect x="${x + 6 + i * 12}" y="80" width="2" height="${h - 4}" fill="${jasniej(k, -0.18)}"/>`).join("");
+    return `<g class="drzwi"><rect x="${x}" y="78" width="${w}" height="${h}" fill="${k}"/>${wzor}
+  <rect x="${x}" y="${ZIEMIA - 5}" width="${w}" height="5" fill="${jasniej(k, -0.4)}"/>
+  ${typ !== "roletowa" ? `<rect x="${x + w / 2 - 12}" y="${ZIEMIA - 34}" width="24" height="5" rx="2" fill="${jasniej(k, -0.45)}"/>` : ""}</g>`;
+  }
+  function rysunekBramy(typ, k, rama, noc, foto) {
+    let t = tlo(noc);
+    if (typ === "przesuwna") {
+      t += `${slupek(258, rama)}<g clip-path="url(#mhPrz)"><g class="przesuwna">${przesło(64, ZIEMIA - 86, 190, 80, k)}<circle cx="90" cy="${ZIEMIA - 3}" r="4" fill="#222"/><circle cx="230" cy="${ZIEMIA - 3}" r="4" fill="#222"/></g></g>
+    <rect x="0" y="${ZIEMIA - 92}" width="56" height="92" fill="${noc ? "#5a5650" : "#cfc8bb"}"/><rect x="0" y="${ZIEMIA - 96}" width="58" height="5" fill="${noc ? "#47443f" : "#b3ab9c"}"/>${slupek(62, rama)}`;
+    } else if (typ === "skrzydlowa") {
+      t += `${slupek(62, rama)}${slupek(258, rama)}<g class="lewe">${przesło(68, ZIEMIA - 88, 92, 82, k)}</g><g class="prawe">${przesło(160, ZIEMIA - 88, 92, 82, k)}</g>`;
+    } else {
+      t += garaz(k, rama, noc) + `<g clip-path="url(#mhOtw)">${drzwiGarazu(typ, k)}</g>`;
+    }
+    if (foto) t += fotokomorka();
+    return `<svg class="brama" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">${t}</svg>`;
+  }
+  function ustawBrame(svg2, typ, p) {
+    if (!svg2) return;
+    const f = Math.max(0, Math.min(100, p)) / 100;
+    const g = (s) => svg2.querySelector(s);
+    if (typ === "przesuwna") g(".przesuwna")?.setAttribute("transform", `translate(${-f * 186} 0)`);
+    else if (typ === "skrzydlowa") {
+      const s = Math.cos(f * Math.PI * 0.45);
+      g(".lewe")?.setAttribute("transform", `translate(68 0) scale(${s} 1) translate(-68 0)`);
+      g(".prawe")?.setAttribute("transform", `translate(252 0) scale(${s} 1) translate(-252 0)`);
+    } else if (typ === "uchylna") {
+      g(".drzwi")?.setAttribute("transform", `translate(0 ${-f * 6}) translate(0 78) scale(1 ${1 - f * 0.88}) translate(0 -78)`);
+    } else g(".drzwi")?.setAttribute("transform", `translate(0 ${-f * (ZIEMIA - 78)})`);
+  }
+  function ustawFotokomorke(svg2, przeszkoda) {
+    const w = svg2?.querySelector(".wiazka");
+    if (!w) return;
+    w.setAttribute("stroke", przeszkoda ? "#e53935" : "#43a047");
+    w.setAttribute("stroke-dasharray", przeszkoda ? "0" : "5 4");
+  }
+
   // src/tekstury.js
   var svg = (h, tresc, w = 8) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}' preserveAspectRatio='none'>${tresc}</svg>`)}")`;
   var pion = (id, stopy) => `<defs><linearGradient id='${id}' x1='0' y1='0' x2='0' y2='1'>${stopy.map(([o, c, a = 1]) => `<stop offset='${o}' stop-color='${c}' stop-opacity='${a}'/>`).join("")}</linearGradient></defs>`;
@@ -208,6 +311,18 @@
         return { okres: 6, nakladka: "repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 2px)", obraz: svg(6, pion("a", [[0, k, 0.8], [1, jasniej(k, 0.06), 0.78]]) + pas("a", 0, 6)) };
       case "markiza":
         return { okres: 30, nakladka: `repeating-linear-gradient(90deg,${k} 0 14px,${rgba("#f3efe6", 0.97)} 14px 28px)`, obraz: svg(30, pion("a", [[0, "#ffffff", 0.12], [0.5, "#000000", 0.12], [1, "#ffffff", 0.12]]) + pas("a", 0, 30)) };
+      case "pionowa":
+        return {
+          okres: 24,
+          nakladka: `repeating-linear-gradient(90deg,${jasniej(k, 0.2)} 0 2px,${k} 2px 15px,${jasniej(k, -0.28)} 15px 17px,rgba(0,0,0,.35) 17px 18px)`,
+          obraz: svg(24, pion("a", [[0, k], [1, jasniej(k, -0.05)]]) + pas("a", 0, 24))
+        };
+      case "zaslona":
+        return {
+          okres: 24,
+          nakladka: `repeating-linear-gradient(90deg,${jasniej(k, -0.22)} 0,${jasniej(k, 0.14)} 11px,${jasniej(k, -0.1)} 22px,${jasniej(k, -0.22)} 26px),${splot}`,
+          obraz: svg(24, pion("a", [[0, k], [1, jasniej(k, -0.08)]]) + pas("a", 0, 24))
+        };
       default:
         return tekstura("zebra", k);
     }
@@ -332,11 +447,31 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
  color:var(--primary-text-color);font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .poz button:hover{background:color-mix(in srgb,var(--primary-text-color) 8%,transparent)}
 .poz button.on{background:color-mix(in srgb,var(--primary-text-color) 15%,transparent);border-color:transparent}
+.poziomo .listwa,.poziomo .prow{display:none}
+.poziomo .oslona{will-change:clip-path,mask-image}
+.poziomo .skrz,.poziomo .zewo{cursor:pointer}
+/* brama i garaż */
+.bramaw{position:relative;width:min(100%,420px);border-radius:var(--ha-border-radius-md,8px);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bramaw svg{display:block;width:100%;height:auto}
+/* automatyka: powód ruchu i pauza – jak wiersz informacji HA */
+.auto{display:flex;align-items:center;gap:8px;min-height:32px;padding:0 4px 0 8px;border-radius:var(--ha-border-radius-md,8px);
+ background:color-mix(in srgb,var(--primary-color) 12%,transparent);color:var(--primary-text-color);font-size:var(--ha-font-size-s,12px);line-height:16px}
+.auto[hidden]{display:none}
+.auto ha-icon{--mdc-icon-size:18px;display:flex;color:var(--primary-color);flex:none}
+.auto span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.auto.blad{background:color-mix(in srgb,var(--error-color,#db4437) 14%,transparent)}
+.auto.blad ha-icon{color:var(--error-color,#db4437)}
+.auto button{flex:none;height:28px;padding:0 12px;border:none;border-radius:var(--ha-border-radius-pill,9999px);cursor:pointer;font:inherit;
+ font-size:var(--ha-font-size-s,12px);font-weight:var(--ha-font-weight-medium,500);background:var(--primary-color);color:var(--text-primary-color,#fff)}
+.auto button[hidden]{display:none}
+/* kompas słońca w nagłówku */
+.kompas{flex:none;width:36px;height:36px}
+.kompas[hidden]{display:none}
 .brak{padding:16px;color:var(--secondary-text-color);font-size:var(--ha-font-size-m,14px)}
 `;
   function stylOkna({ rama, drewno, kolor, typ, zew }) {
     const t = tekstura(typ, kolor), S = (k) => jasniej(kolor, k), R = (k) => jasniej(rama, k);
-    const tlo = (drewno ? SLOJE + "," : "") + rama;
+    const tlo2 = (drewno ? SLOJE + "," : "") + rama;
     const alu = `linear-gradient(90deg,${S(-0.4)},${S(0.22)} 40%,${S(-0.05)} 70%,${S(-0.45)})`;
     let kaseta = `background:linear-gradient(180deg,#fff,#f1f1f1 55%,#cfcfcf);box-shadow:0 2px 3px rgba(0,0,0,.35)`;
     let listwa = `background:linear-gradient(180deg,#fafafa,#bdbdbd);box-shadow:0 2px 3px rgba(0,0,0,.4)`;
@@ -397,7 +532,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
       listwa = `background:linear-gradient(180deg,${S(0.35)},${S(0.05)} 55%,${S(-0.4)});box-shadow:0 2px 0 rgba(20,20,20,.85),0 3px 3px rgba(0,0,0,.4)`;
     const markiza = typ === "markiza" ? `.listwa::before{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 7px 0,${kolor} 6.5px,transparent 7px) 0 0/14px 10px repeat-x}` : "";
     return `
-.okno{background:${tlo};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
+.okno{background:${tlo2};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
 .skrz{background:${(drewno ? SLOJE + "," : "") + R(-0.03)}}
 .oslona{background-image:${t.nakladka ? t.nakladka + "," : ""}${t.obraz};background-size:${t.nakladka ? "100% 100%," : ""}100% ${t.okres}px;background-position:${t.nakladka ? "0 0," : ""}0 100%;background-repeat:${t.nakladka ? "no-repeat," : ""}repeat-y}
 .kaseta{${kaseta}}
@@ -703,13 +838,13 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   function oslonyDoWyboru(h) {
     const s = h?.states || {};
     const pkt = (id) => (s[id].attributes?.motor_ha ? 100 : 0) + ((s[id].attributes?.entity_id || []).length > 1 ? 40 : 0) + (s[id].attributes?.supported_features & 4 ? 10 : 0);
-    return Object.keys(s).filter((k) => k.startsWith("cover.") && !["garage", "gate", "door", "damper"].includes(s[k].attributes?.device_class)).sort((a, b) => pkt(b) - pkt(a) || a.localeCompare(b));
+    return Object.keys(s).filter((k) => k.startsWith("cover.") && !["door", "damper"].includes(s[k].attributes?.device_class)).sort((a, b) => pkt(b) - pkt(a) || a.localeCompare(b));
   }
 
   // tlumaczenia/pl.json
   var pl_default = {
     nazwa: "Motor HA",
-    opis: "Okno z osłoną: ruch w tempie silnika, pogoda i pora dnia za szybą, czujniki okna.",
+    opis: "Wszystko, co ma silnik: rolety, żaluzje, markizy, zasłony, bramy i garaże. Ruch w tempie silnika, pogoda za szybą, czujniki okna.",
     karta: {
       oba: "Przeciągnij, żeby przesunąć obie osłony",
       otworz: "Otwórz",
@@ -723,7 +858,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "prawe",
       otwarte: "otwarte",
       uchylone: "uchylone",
-      pozycja: "Pozycja"
+      pozycja: "Pozycja",
+      przeszkoda: "Przeszkoda w bramie",
+      wznow: "Wznów",
+      pauza: "Pauza do",
+      wolne: "Wolna droga",
+      dom: "Motor HA – cały dom",
+      domOpis: "Wszystkie urządzenia Motor HA na jednej karcie: stan, powód ruchu i przyciski.",
+      domBrak: "Nie ma jeszcze urządzeń Motor HA.",
+      wszOtw: "Otwórz wszystkie",
+      wszZam: "Zamknij wszystkie"
     },
     kroki: {
       urzadzenie: {
@@ -836,7 +980,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Żaluzje",
       zrolety: "Rolety zewnętrzne",
       fasadowe: "Żaluzje fasadowe",
-      taras: "Taras"
+      taras: "Taras",
+      pionowe: "Pionowe i zasłony",
+      brama: "Brama i garaż",
+      bramy: "Bramy wjazdowe",
+      garaze: "Bramy garażowe"
     },
     oslony: {
       pelna: "Roleta wolnowisząca",
@@ -855,7 +1003,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Żaluzja fasadowa C80",
       fasadowaz: "Żaluzja fasadowa Z90",
       markiza: "Markiza tarasowa",
-      screen: "Screen ZIP"
+      screen: "Screen ZIP",
+      pionowa: "Żaluzja pionowa",
+      zaslona: "Zasłona boczna",
+      przesuwna: "Brama przesuwna",
+      skrzydlowa: "Brama skrzydłowa",
+      segmentowa: "Brama segmentowa",
+      uchylna: "Brama uchylna",
+      roletowa: "Brama roletowa"
     },
     kolory: {
       czarny: "czarny",
@@ -925,7 +1080,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/en.json
   var en_default = {
     nazwa: "Motor HA",
-    opis: "A window with its shade: moves at your motor's speed, real weather and time of day outside, window sensors.",
+    opis: "Everything with a motor: shutters, blinds, awnings, curtains, gates and garage doors. Moves at motor speed, weather behind the glass, window sensors.",
     karta: {
       oba: "Drag to move both shades",
       otworz: "Open",
@@ -939,7 +1094,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "right",
       otwarte: "open",
       uchylone: "tilted",
-      pozycja: "Position"
+      pozycja: "Position",
+      przeszkoda: "Obstacle in the gate",
+      wznow: "Resume",
+      pauza: "Paused until",
+      wolne: "Way clear",
+      dom: "Motor HA – whole home",
+      domOpis: "All Motor HA devices on one card: state, reason for move and buttons.",
+      domBrak: "There are no Motor HA devices yet.",
+      wszOtw: "Open all",
+      wszZam: "Close all"
     },
     kroki: {
       urzadzenie: {
@@ -1052,7 +1216,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Venetian blinds",
       zrolety: "Roller shutters",
       fasadowe: "External venetian blinds",
-      taras: "Terrace"
+      taras: "Terrace",
+      pionowe: "Vertical and curtains",
+      brama: "Gate and garage",
+      bramy: "Driveway gates",
+      garaze: "Garage doors"
     },
     oslony: {
       pelna: "Free-hanging roller blind",
@@ -1071,7 +1239,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "External venetian C80",
       fasadowaz: "External venetian Z90",
       markiza: "Terrace awning",
-      screen: "ZIP screen"
+      screen: "ZIP screen",
+      pionowa: "Vertical blind",
+      zaslona: "Side curtain",
+      przesuwna: "Sliding gate",
+      skrzydlowa: "Swing gate",
+      segmentowa: "Sectional door",
+      uchylna: "Up-and-over door",
+      roletowa: "Roller door"
     },
     kolory: {
       czarny: "black",
@@ -1141,7 +1316,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/de.json
   var de_default = {
     nazwa: "Motor HA",
-    opis: "Ein Fenster mit Behang: fährt im Tempo des Motors, echtes Wetter und Tageszeit draußen, Fenstersensoren.",
+    opis: "Alles mit Motor: Rollläden, Jalousien, Markisen, Vorhänge, Tore und Garagentore. Bewegung im Motortempo, Wetter hinter dem Glas, Fenstersensoren.",
     karta: {
       oba: "Ziehen, um beide Behänge zu bewegen",
       otworz: "Öffnen",
@@ -1155,7 +1330,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "rechts",
       otwarte: "offen",
       uchylone: "gekippt",
-      pozycja: "Position"
+      pozycja: "Position",
+      przeszkoda: "Hindernis im Tor",
+      wznow: "Fortsetzen",
+      pauza: "Pause bis",
+      wolne: "Weg frei",
+      dom: "Motor HA – ganzes Haus",
+      domOpis: "Alle Motor-HA-Geräte auf einer Karte: Zustand, Grund der Bewegung und Tasten.",
+      domBrak: "Noch keine Motor-HA-Geräte.",
+      wszOtw: "Alle öffnen",
+      wszZam: "Alle schließen"
     },
     kroki: {
       urzadzenie: {
@@ -1268,7 +1452,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Jalousien",
       zrolety: "Rollläden",
       fasadowe: "Raffstores",
-      taras: "Terrasse"
+      taras: "Terrasse",
+      pionowe: "Vertikal und Vorhänge",
+      brama: "Tor und Garage",
+      bramy: "Einfahrtstore",
+      garaze: "Garagentore"
     },
     oslony: {
       pelna: "Freihängendes Rollo",
@@ -1287,7 +1475,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Raffstore C80",
       fasadowaz: "Raffstore Z90",
       markiza: "Terrassenmarkise",
-      screen: "ZIP-Screen"
+      screen: "ZIP-Screen",
+      pionowa: "Vertikaljalousie",
+      zaslona: "Seitenvorhang",
+      przesuwna: "Schiebetor",
+      skrzydlowa: "Flügeltor",
+      segmentowa: "Sektionaltor",
+      uchylna: "Schwingtor",
+      roletowa: "Rolltor"
     },
     kolory: {
       czarny: "schwarz",
@@ -1357,7 +1552,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/fr.json
   var fr_default = {
     nazwa: "Motor HA",
-    opis: "Une fenêtre avec son store : il bouge à la vitesse du moteur, vraie météo et moment de la journée dehors, capteurs de fenêtre.",
+    opis: "Tout ce qui a un moteur : volets, stores, bannes, rideaux, portails et portes de garage. Mouvement à la vitesse du moteur, météo derrière la vitre, capteurs de fenêtre.",
     karta: {
       oba: "Glisser pour déplacer les deux stores",
       otworz: "Ouvrir",
@@ -1371,7 +1566,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "droite",
       otwarte: "ouverte",
       uchylone: "entrouverte",
-      pozycja: "Position"
+      pozycja: "Position",
+      przeszkoda: "Obstacle dans le portail",
+      wznow: "Reprendre",
+      pauza: "En pause jusqu'à",
+      wolne: "Passage libre",
+      dom: "Motor HA – toute la maison",
+      domOpis: "Tous les appareils Motor HA sur une carte : état, raison du mouvement et boutons.",
+      domBrak: "Aucun appareil Motor HA pour l'instant.",
+      wszOtw: "Tout ouvrir",
+      wszZam: "Tout fermer"
     },
     kroki: {
       urzadzenie: {
@@ -1484,7 +1688,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Stores vénitiens",
       zrolety: "Volets roulants",
       fasadowe: "Brise-soleil orientables",
-      taras: "Terrasse"
+      taras: "Terrasse",
+      pionowe: "Verticaux et rideaux",
+      brama: "Portail et garage",
+      bramy: "Portails",
+      garaze: "Portes de garage"
     },
     oslony: {
       pelna: "Store enrouleur libre",
@@ -1503,7 +1711,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Brise-soleil C80",
       fasadowaz: "Brise-soleil Z90",
       markiza: "Store banne",
-      screen: "Screen ZIP"
+      screen: "Screen ZIP",
+      pionowa: "Store vertical",
+      zaslona: "Rideau latéral",
+      przesuwna: "Portail coulissant",
+      skrzydlowa: "Portail battant",
+      segmentowa: "Porte sectionnelle",
+      uchylna: "Porte basculante",
+      roletowa: "Porte enroulable"
     },
     kolory: {
       czarny: "noir",
@@ -1573,7 +1788,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/cs.json
   var cs_default = {
     nazwa: "Motor HA",
-    opis: "Okno se stíněním: jede rychlostí motoru, za sklem skutečné počasí a denní doba, okenní senzory.",
+    opis: "Vše s motorem: rolety, žaluzie, markýzy, závěsy, brány a garážová vrata. Pohyb v tempu motoru, počasí za sklem, okenní čidla.",
     karta: {
       oba: "Táhni pro posun obou stínění",
       otworz: "Otevřít",
@@ -1587,7 +1802,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "pravé",
       otwarte: "otevřené",
       uchylone: "vyklopené",
-      pozycja: "Poloha"
+      pozycja: "Poloha",
+      przeszkoda: "Překážka v bráně",
+      wznow: "Obnovit",
+      pauza: "Pauza do",
+      wolne: "Volná cesta",
+      dom: "Motor HA – celý dům",
+      domOpis: "Všechna zařízení Motor HA na jedné kartě: stav, důvod pohybu a tlačítka.",
+      domBrak: "Zatím žádná zařízení Motor HA.",
+      wszOtw: "Otevřít vše",
+      wszZam: "Zavřít vše"
     },
     kroki: {
       urzadzenie: {
@@ -1700,7 +1924,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Žaluzie",
       zrolety: "Venkovní rolety",
       fasadowe: "Venkovní žaluzie",
-      taras: "Terasa"
+      taras: "Terasa",
+      pionowe: "Vertikální a závěsy",
+      brama: "Brána a garáž",
+      bramy: "Vjezdové brány",
+      garaze: "Garážová vrata"
     },
     oslony: {
       pelna: "Volně visící roleta",
@@ -1719,7 +1947,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Venkovní žaluzie C80",
       fasadowaz: "Venkovní žaluzie Z90",
       markiza: "Terasová markýza",
-      screen: "ZIP screen"
+      screen: "ZIP screen",
+      pionowa: "Vertikální žaluzie",
+      zaslona: "Boční závěs",
+      przesuwna: "Posuvná brána",
+      skrzydlowa: "Křídlová brána",
+      segmentowa: "Sekční vrata",
+      uchylna: "Výklopná vrata",
+      roletowa: "Rolovací vrata"
     },
     kolory: {
       czarny: "černá",
@@ -1789,7 +2024,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/sk.json
   var sk_default = {
     nazwa: "Motor HA",
-    opis: "Okno s tienením: ide rýchlosťou motora, za sklom skutočné počasie a denná doba, okenné senzory.",
+    opis: "Všetko s motorom: rolety, žalúzie, markízy, závesy, brány a garážové brány. Pohyb v tempe motora, počasie za sklom, okenné snímače.",
     karta: {
       oba: "Ťahaj na posun oboch tienení",
       otworz: "Otvoriť",
@@ -1803,7 +2038,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "pravé",
       otwarte: "otvorené",
       uchylone: "vyklopené",
-      pozycja: "Poloha"
+      pozycja: "Poloha",
+      przeszkoda: "Prekážka v bráne",
+      wznow: "Obnoviť",
+      pauza: "Pauza do",
+      wolne: "Voľná cesta",
+      dom: "Motor HA – celý dom",
+      domOpis: "Všetky zariadenia Motor HA na jednej karte: stav, dôvod pohybu a tlačidlá.",
+      domBrak: "Zatiaľ žiadne zariadenia Motor HA.",
+      wszOtw: "Otvoriť všetko",
+      wszZam: "Zatvoriť všetko"
     },
     kroki: {
       urzadzenie: {
@@ -1916,7 +2160,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Žalúzie",
       zrolety: "Vonkajšie rolety",
       fasadowe: "Vonkajšie žalúzie",
-      taras: "Terasa"
+      taras: "Terasa",
+      pionowe: "Vertikálne a závesy",
+      brama: "Brána a garáž",
+      bramy: "Vjazdové brány",
+      garaze: "Garážové brány"
     },
     oslony: {
       pelna: "Voľne visiaca roleta",
@@ -1935,7 +2183,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Vonkajšia žalúzia C80",
       fasadowaz: "Vonkajšia žalúzia Z90",
       markiza: "Terasová markíza",
-      screen: "ZIP screen"
+      screen: "ZIP screen",
+      pionowa: "Vertikálna žalúzia",
+      zaslona: "Bočný záves",
+      przesuwna: "Posuvná brána",
+      skrzydlowa: "Krídlová brána",
+      segmentowa: "Sekčná brána",
+      uchylna: "Výklopná brána",
+      roletowa: "Rolovacia brána"
     },
     kolory: {
       czarny: "čierna",
@@ -2005,7 +2260,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/es.json
   var es_default = {
     nazwa: "Motor HA",
-    opis: "Una ventana con su estor: se mueve a la velocidad del motor, tiempo real y hora del día fuera, sensores de ventana.",
+    opis: "Todo lo que tiene motor: persianas, estores, toldos, cortinas, portones y puertas de garaje. Movimiento al ritmo del motor, tiempo tras el cristal, sensores de ventana.",
     karta: {
       oba: "Arrastra para mover ambos estores",
       otworz: "Abrir",
@@ -2019,7 +2274,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "derecha",
       otwarte: "abierta",
       uchylone: "abatida",
-      pozycja: "Posición"
+      pozycja: "Posición",
+      przeszkoda: "Obstáculo en el portón",
+      wznow: "Reanudar",
+      pauza: "En pausa hasta",
+      wolne: "Paso libre",
+      dom: "Motor HA – toda la casa",
+      domOpis: "Todos los dispositivos Motor HA en una tarjeta: estado, motivo del movimiento y botones.",
+      domBrak: "Aún no hay dispositivos Motor HA.",
+      wszOtw: "Abrir todo",
+      wszZam: "Cerrar todo"
     },
     kroki: {
       urzadzenie: {
@@ -2132,7 +2396,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Venecianas",
       zrolety: "Persianas",
       fasadowe: "Lamas orientables",
-      taras: "Terraza"
+      taras: "Terraza",
+      pionowe: "Verticales y cortinas",
+      brama: "Portón y garaje",
+      bramy: "Portones",
+      garaze: "Puertas de garaje"
     },
     oslony: {
       pelna: "Estor enrollable libre",
@@ -2151,7 +2419,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Lama orientable C80",
       fasadowaz: "Lama orientable Z90",
       markiza: "Toldo de terraza",
-      screen: "Screen ZIP"
+      screen: "Screen ZIP",
+      pionowa: "Estor vertical",
+      zaslona: "Cortina lateral",
+      przesuwna: "Portón corredero",
+      skrzydlowa: "Portón batiente",
+      segmentowa: "Puerta seccional",
+      uchylna: "Puerta basculante",
+      roletowa: "Puerta enrollable"
     },
     kolory: {
       czarny: "negro",
@@ -2221,7 +2496,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/it.json
   var it_default = {
     nazwa: "Motor HA",
-    opis: "Una finestra con la sua tenda: si muove alla velocità del motore, meteo reale e ora del giorno fuori, sensori finestra.",
+    opis: "Tutto ciò che ha un motore: tapparelle, veneziane, tende da sole, tende, cancelli e porte da garage. Movimento alla velocità del motore, meteo dietro il vetro, sensori finestra.",
     karta: {
       oba: "Trascina per muovere entrambe le tende",
       otworz: "Apri",
@@ -2235,7 +2510,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "destra",
       otwarte: "aperta",
       uchylone: "a ribalta",
-      pozycja: "Posizione"
+      pozycja: "Posizione",
+      przeszkoda: "Ostacolo nel cancello",
+      wznow: "Riprendi",
+      pauza: "In pausa fino a",
+      wolne: "Via libera",
+      dom: "Motor HA – tutta la casa",
+      domOpis: "Tutti i dispositivi Motor HA in una scheda: stato, motivo del movimento e pulsanti.",
+      domBrak: "Ancora nessun dispositivo Motor HA.",
+      wszOtw: "Apri tutto",
+      wszZam: "Chiudi tutto"
     },
     kroki: {
       urzadzenie: {
@@ -2348,7 +2632,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Veneziane",
       zrolety: "Tapparelle",
       fasadowe: "Frangisole",
-      taras: "Terrazza"
+      taras: "Terrazza",
+      pionowe: "Verticali e tende",
+      brama: "Cancello e garage",
+      bramy: "Cancelli",
+      garaze: "Porte da garage"
     },
     oslony: {
       pelna: "Tenda a rullo libera",
@@ -2367,7 +2655,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Frangisole C80",
       fasadowaz: "Frangisole Z90",
       markiza: "Tenda da sole",
-      screen: "Screen ZIP"
+      screen: "Screen ZIP",
+      pionowa: "Tenda verticale",
+      zaslona: "Tenda laterale",
+      przesuwna: "Cancello scorrevole",
+      skrzydlowa: "Cancello a battente",
+      segmentowa: "Porta sezionale",
+      uchylna: "Porta basculante",
+      roletowa: "Porta avvolgibile"
     },
     kolory: {
       czarny: "nero",
@@ -2437,7 +2732,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/nl.json
   var nl_default = {
     nazwa: "Motor HA",
-    opis: "Een raam met zonwering: beweegt op de snelheid van de motor, echt weer en tijd van de dag buiten, raamsensoren.",
+    opis: "Alles met een motor: rolluiken, jaloezieën, zonneschermen, gordijnen, poorten en garagedeuren. Beweging in het tempo van de motor, weer achter het glas, raamsensoren.",
     karta: {
       oba: "Sleep om beide zonweringen te bewegen",
       otworz: "Openen",
@@ -2451,7 +2746,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "rechts",
       otwarte: "open",
       uchylone: "op kiep",
-      pozycja: "Positie"
+      pozycja: "Positie",
+      przeszkoda: "Obstakel in de poort",
+      wznow: "Hervatten",
+      pauza: "Gepauzeerd tot",
+      wolne: "Weg vrij",
+      dom: "Motor HA – hele huis",
+      domOpis: "Alle Motor HA-apparaten op één kaart: status, reden van beweging en knoppen.",
+      domBrak: "Nog geen Motor HA-apparaten.",
+      wszOtw: "Alles openen",
+      wszZam: "Alles sluiten"
     },
     kroki: {
       urzadzenie: {
@@ -2564,7 +2868,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Jaloezieën",
       zrolety: "Rolluiken",
       fasadowe: "Buitenjaloezieën",
-      taras: "Terras"
+      taras: "Terras",
+      pionowe: "Verticaal en gordijnen",
+      brama: "Poort en garage",
+      bramy: "Opritpoorten",
+      garaze: "Garagedeuren"
     },
     oslony: {
       pelna: "Vrijhangend rolgordijn",
@@ -2583,7 +2891,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Buitenjaloezie C80",
       fasadowaz: "Buitenjaloezie Z90",
       markiza: "Terrasscherm",
-      screen: "ZIP-screen"
+      screen: "ZIP-screen",
+      pionowa: "Verticale lamellen",
+      zaslona: "Zijgordijn",
+      przesuwna: "Schuifpoort",
+      skrzydlowa: "Draaipoort",
+      segmentowa: "Sectionaaldeur",
+      uchylna: "Kanteldeur",
+      roletowa: "Roldeur"
     },
     kolory: {
       czarny: "zwart",
@@ -2653,7 +2968,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/pt.json
   var pt_default = {
     nazwa: "Motor HA",
-    opis: "Uma janela com a sua proteção: move-se à velocidade do motor, tempo real e hora do dia lá fora, sensores de janela.",
+    opis: "Tudo o que tem motor: estores, persianas, toldos, cortinas, portões e portas de garagem. Movimento ao ritmo do motor, tempo atrás do vidro, sensores de janela.",
     karta: {
       oba: "Arraste para mover as duas proteções",
       otworz: "Abrir",
@@ -2667,7 +2982,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "direita",
       otwarte: "aberta",
       uchylone: "basculada",
-      pozycja: "Posição"
+      pozycja: "Posição",
+      przeszkoda: "Obstáculo no portão",
+      wznow: "Retomar",
+      pauza: "Em pausa até",
+      wolne: "Caminho livre",
+      dom: "Motor HA – casa inteira",
+      domOpis: "Todos os dispositivos Motor HA num cartão: estado, motivo do movimento e botões.",
+      domBrak: "Ainda não há dispositivos Motor HA.",
+      wszOtw: "Abrir tudo",
+      wszZam: "Fechar tudo"
     },
     kroki: {
       urzadzenie: {
@@ -2780,7 +3104,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Venezianas",
       zrolety: "Estores exteriores",
       fasadowe: "Lâminas orientáveis",
-      taras: "Terraço"
+      taras: "Terraço",
+      pionowe: "Verticais e cortinas",
+      brama: "Portão e garagem",
+      bramy: "Portões",
+      garaze: "Portas de garagem"
     },
     oslony: {
       pelna: "Estore de rolo livre",
@@ -2799,7 +3127,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Lâmina orientável C80",
       fasadowaz: "Lâmina orientável Z90",
       markiza: "Toldo de terraço",
-      screen: "Screen ZIP"
+      screen: "Screen ZIP",
+      pionowa: "Persiana vertical",
+      zaslona: "Cortina lateral",
+      przesuwna: "Portão de correr",
+      skrzydlowa: "Portão de batente",
+      segmentowa: "Porta seccionada",
+      uchylna: "Porta basculante",
+      roletowa: "Porta de enrolar"
     },
     kolory: {
       czarny: "preto",
@@ -2869,7 +3204,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/uk.json
   var uk_default = {
     nazwa: "Motor HA",
-    opis: "Вікно із захистом від сонця: рухається зі швидкістю мотора, справжня погода й пора доби за склом, датчики вікна.",
+    opis: "Усе з мотором: ролети, жалюзі, маркізи, штори, ворота й гаражні ворота. Рух у темпі мотора, погода за склом, датчики вікон.",
     karta: {
       oba: "Потягніть, щоб посунути обидві штори",
       otworz: "Відкрити",
@@ -2883,7 +3218,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "праве",
       otwarte: "відчинене",
       uchylone: "на провітрюванні",
-      pozycja: "Положення"
+      pozycja: "Положення",
+      przeszkoda: "Перешкода у воротах",
+      wznow: "Відновити",
+      pauza: "Пауза до",
+      wolne: "Шлях вільний",
+      dom: "Motor HA – увесь дім",
+      domOpis: "Усі пристрої Motor HA на одній картці: стан, причина руху й кнопки.",
+      domBrak: "Ще немає пристроїв Motor HA.",
+      wszOtw: "Відкрити все",
+      wszZam: "Закрити все"
     },
     kroki: {
       urzadzenie: {
@@ -2996,7 +3340,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Жалюзі",
       zrolety: "Ролети",
       fasadowe: "Фасадні жалюзі",
-      taras: "Тераса"
+      taras: "Тераса",
+      pionowe: "Вертикальні та штори",
+      brama: "Ворота і гараж",
+      bramy: "В'їзні ворота",
+      garaze: "Гаражні ворота"
     },
     oslony: {
       pelna: "Відкрита рулонна штора",
@@ -3015,7 +3363,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Фасадні жалюзі C80",
       fasadowaz: "Фасадні жалюзі Z90",
       markiza: "Терасна маркіза",
-      screen: "ZIP-скрін"
+      screen: "ZIP-скрін",
+      pionowa: "Вертикальні жалюзі",
+      zaslona: "Бічна штора",
+      przesuwna: "Відкатні ворота",
+      skrzydlowa: "Розпашні ворота",
+      segmentowa: "Секційні ворота",
+      uchylna: "Підйомно-поворотні ворота",
+      roletowa: "Рулонні ворота"
     },
     kolory: {
       czarny: "чорний",
@@ -3085,7 +3440,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/ru.json
   var ru_default = {
     nazwa: "Motor HA",
-    opis: "Окно со шторой: движется со скоростью мотора, настоящая погода и время суток за стеклом, датчики окна.",
+    opis: "Всё с мотором: рольставни, жалюзи, маркизы, шторы, ворота и гаражные ворота. Движение в темпе мотора, погода за стеклом, датчики окон.",
     karta: {
       oba: "Потяните, чтобы сдвинуть обе шторы",
       otworz: "Открыть",
@@ -3099,7 +3454,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "правое",
       otwarte: "открыто",
       uchylone: "на проветривании",
-      pozycja: "Положение"
+      pozycja: "Положение",
+      przeszkoda: "Препятствие в воротах",
+      wznow: "Возобновить",
+      pauza: "Пауза до",
+      wolne: "Путь свободен",
+      dom: "Motor HA – весь дом",
+      domOpis: "Все устройства Motor HA на одной карточке: состояние, причина движения и кнопки.",
+      domBrak: "Пока нет устройств Motor HA.",
+      wszOtw: "Открыть все",
+      wszZam: "Закрыть все"
     },
     kroki: {
       urzadzenie: {
@@ -3212,7 +3576,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Жалюзи",
       zrolety: "Рольставни",
       fasadowe: "Фасадные жалюзи",
-      taras: "Терраса"
+      taras: "Терраса",
+      pionowe: "Вертикальные и шторы",
+      brama: "Ворота и гараж",
+      bramy: "Въездные ворота",
+      garaze: "Гаражные ворота"
     },
     oslony: {
       pelna: "Открытая рулонная штора",
@@ -3231,7 +3599,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "Фасадные жалюзи C80",
       fasadowaz: "Фасадные жалюзи Z90",
       markiza: "Террасная маркиза",
-      screen: "ZIP-скрин"
+      screen: "ZIP-скрин",
+      pionowa: "Вертикальные жалюзи",
+      zaslona: "Боковая штора",
+      przesuwna: "Откатные ворота",
+      skrzydlowa: "Распашные ворота",
+      segmentowa: "Секционные ворота",
+      uchylna: "Подъёмно-поворотные ворота",
+      roletowa: "Рулонные ворота"
     },
     kolory: {
       czarny: "чёрный",
@@ -3301,7 +3676,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/ja.json
   var ja_default = {
     nazwa: "Motor HA",
-    opis: "シェード付きの窓：モーターの速さで動き、外の天気と時間帯、窓センサーを表示します。",
+    opis: "モーター付きのすべて：シャッター、ブラインド、オーニング、カーテン、門扉、ガレージドア。モーターの速さで動き、窓の外に天気、窓センサー。",
     karta: {
       oba: "ドラッグして両方のシェードを動かす",
       otworz: "開く",
@@ -3315,7 +3690,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "右",
       otwarte: "開",
       uchylone: "換気",
-      pozycja: "位置"
+      pozycja: "位置",
+      przeszkoda: "門に障害物",
+      wznow: "再開",
+      pauza: "一時停止：",
+      wolne: "通行可",
+      dom: "Motor HA – 家全体",
+      domOpis: "すべての Motor HA デバイスを1枚のカードに：状態、動いた理由、ボタン。",
+      domBrak: "Motor HA デバイスはまだありません。",
+      wszOtw: "すべて開く",
+      wszZam: "すべて閉じる"
     },
     kroki: {
       urzadzenie: {
@@ -3428,7 +3812,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "ブラインド",
       zrolety: "シャッター",
       fasadowe: "外付けブラインド",
-      taras: "テラス"
+      taras: "テラス",
+      pionowe: "縦型とカーテン",
+      brama: "門とガレージ",
+      bramy: "門扉",
+      garaze: "ガレージドア"
     },
     oslony: {
       pelna: "オープン型ロールスクリーン",
@@ -3447,7 +3835,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "外付けブラインド C80",
       fasadowaz: "外付けブラインド Z90",
       markiza: "テラスオーニング",
-      screen: "ZIP スクリーン"
+      screen: "ZIP スクリーン",
+      pionowa: "縦型ブラインド",
+      zaslona: "サイドカーテン",
+      przesuwna: "引き戸式門扉",
+      skrzydlowa: "開き戸式門扉",
+      segmentowa: "セクショナルドア",
+      uchylna: "跳ね上げ式ドア",
+      roletowa: "シャッター"
     },
     kolory: {
       czarny: "黒",
@@ -3517,7 +3912,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   // tlumaczenia/zh-Hans.json
   var zh_Hans_default = {
     nazwa: "Motor HA",
-    opis: "带遮阳的窗户：按电机速度移动，窗外显示真实天气和时段，并显示窗户传感器。",
+    opis: "一切带电机的设备：卷帘、百叶、遮阳篷、窗帘、大门和车库门。按电机速度移动，窗外显示天气，窗户传感器。",
     karta: {
       oba: "拖动以同时移动两个遮阳",
       otworz: "打开",
@@ -3531,7 +3926,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       prawe: "右",
       otwarte: "已打开",
       uchylone: "已内倒",
-      pozycja: "位置"
+      pozycja: "位置",
+      przeszkoda: "大门有障碍物",
+      wznow: "恢复",
+      pauza: "暂停至",
+      wolne: "道路畅通",
+      dom: "Motor HA – 全屋",
+      domOpis: "一张卡片显示所有 Motor HA 设备：状态、移动原因和按钮。",
+      domBrak: "还没有 Motor HA 设备。",
+      wszOtw: "全部打开",
+      wszZam: "全部关闭"
     },
     kroki: {
       urzadzenie: {
@@ -3644,7 +4048,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "百叶帘",
       zrolety: "卷帘门窗",
       fasadowe: "外遮阳百叶",
-      taras: "露台"
+      taras: "露台",
+      pionowe: "垂直帘与窗帘",
+      brama: "大门与车库",
+      bramy: "庭院大门",
+      garaze: "车库门"
     },
     oslony: {
       pelna: "开放式卷帘",
@@ -3663,7 +4071,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       fasadowa: "外遮阳百叶 C80",
       fasadowaz: "外遮阳百叶 Z90",
       markiza: "露台遮阳篷",
-      screen: "ZIP 遮阳帘"
+      screen: "ZIP 遮阳帘",
+      pionowa: "垂直百叶帘",
+      zaslona: "侧拉窗帘",
+      przesuwna: "平移门",
+      skrzydlowa: "平开门",
+      segmentowa: "分节门",
+      uchylna: "翻板门",
+      roletowa: "卷帘门"
     },
     kolory: {
       czarny: "黑色",
@@ -3821,7 +4236,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     // encje skrzydeł: wybrane ręcznie, członkowie grupy (okno z integracji to też grupa) albo sama encja
     _skrzydla(c) {
-      const s = this._hass.states, n = +c.skrzydla === 1 ? 1 : 2;
+      const s = this._hass.states, n = +c.skrzydla === 1 || czyBrama(c.oslona) ? 1 : 2;
       const grupa = (s[c.entity]?.attributes?.entity_id || []).filter((e) => s[e]);
       const wybor = [c.roleta_lewa, c.roleta_prawa];
       return Array.from({ length: n }, (_, i) => wybor[i] && s[wybor[i]] ? wybor[i] : grupa.length ? grupa[Math.min(i, grupa.length - 1)] : c.entity);
@@ -3839,8 +4254,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._aktualizuj(c, czl);
     }
     _zbuduj(c, czl) {
+      if (czyBrama(c.oslona)) return this._zbudujBrame(c, czl);
       const T2 = this._T, n = czl.length, zew = czyZew(c.oslona), rama = ramaHex(c.rama), kolor = hex(c.kolor);
-      const H = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W = Math.round(H * (n === 1 ? 0.68 : 0.92));
+      this._brama = false;
+      this._poziomo = POZIOME.includes(c.oslona);
+      const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W2 = Math.round(H2 * (n === 1 ? 0.68 : 0.92));
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
       const skrzydlo = (i) => `<div class="skrz" data-i="${i}"><div class="szyba">
@@ -3850,11 +4268,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const kolumna = (i) => `<div class="szyba" data-i="${i}"><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
       const pozycje = String(c.pozycje || "").split(/[,; ]+/).filter((x) => x !== "").map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
       root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
-<ha-card class="${zew ? "zew" : "wew"}"><div class="mh">
- <div class="gl" role="button" tabindex="0"><div class="ik"><ha-icon icon="${IKONY[c.oslona] || IKONY.zebra}"></ha-icon></div>
-  <div class="opis"><span class="nazwa"></span><span class="stan"></span></div></div>
+<ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
+ ${this._naglowek(c)}
  <div class="scena">${zew ? '<div class="pg pgz"></div>' : ""}
-  <div class="okno" style="width:min(100%,${W}px);aspect-ratio:${W}/${Math.round(H)}">
+  <div class="okno" style="width:min(100%,${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
    ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
@@ -3870,6 +4287,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
       const pola = zew ? qa(".zewo .szyba") : qa(".skrz .szyba");
       this._el = {
+        ...this._wspolne(q),
         karta: q("ha-card"),
         nazwa: q(".nazwa"),
         stan: q(".stan"),
@@ -3902,6 +4320,76 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       if (E.suwak) this._suwak(E.suwak);
       this._zbudowana = true;
     }
+    // nagłówek jak w kafelku HA + wiersz automatyki (powód ruchu, pauza) – wspólny dla okien i bram
+    _naglowek(c) {
+      return `<div class="gl" role="button" tabindex="0"><div class="ik"><ha-icon icon="${IKONY[c.oslona] || IKONY.zebra}"></ha-icon></div>
+  <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
+  <svg class="kompas" viewBox="-20 -20 40 40" hidden aria-hidden="true"><circle r="17" fill="none" stroke="var(--divider-color)" stroke-width="2"/>
+   <path d="M-9 -15h18" stroke="var(--primary-color)" stroke-width="4" stroke-linecap="round"/><circle class="sl" r="4.5" fill="#ffb300"/></svg></div>
+ <div class="auto" hidden><ha-icon icon="mdi:robot-outline"></ha-icon><span></span><button class="wzn" hidden>${esc(this._T.karta.wznow)}</button></div>`;
+    }
+    _wspolne(q) {
+      const el = { auto: q(".auto"), autoT: q(".auto span"), autoI: q(".auto ha-icon"), wzn: q(".wzn"), kompas: q(".kompas"), sl: q(".kompas .sl"), ikona: q(".ik ha-icon") };
+      el.wzn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const b = this._cfg?.encje?.wznow;
+        if (b && !this._cfg._podglad) this._hass.callService("button", "press", { entity_id: b });
+      });
+      return el;
+    }
+    // brama albo garaż: rysunek zamiast okna, dotknięcie = jak przycisk pilota
+    _zbudujBrame(c, czl) {
+      const T2 = this._T, root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      this._brama = true;
+      this._poziomo = false;
+      this._kas = 0;
+      this._brNoc = null;
+      const st = this._hass.states[c.entity], zPoz = (st?.attributes?.supported_features ?? 0) & 4;
+      root.innerHTML = `<style>${STYL_STALY}</style>
+<ha-card class="brama"><div class="mh">
+ ${this._naglowek(c)}
+ <div class="scena"><div class="bramaw" role="button" tabindex="0"></div></div>
+ ${c.przyciski !== false ? `<div class="przyc">
+  <button class="otw" title="${esc(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
+  <button class="stp" title="${esc(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
+  <button class="zam" title="${esc(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
+ ${c.suwak !== false && zPoz ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
+</div></ha-card>`;
+      const q = (s) => root.querySelector(s);
+      this._el = {
+        ...this._wspolne(q),
+        karta: q("ha-card"),
+        nazwa: q(".nazwa"),
+        stan: q(".stan"),
+        ik: q(".ik"),
+        suwak: q(".suwak"),
+        otw: q(".otw"),
+        stp: q(".stp"),
+        zam: q(".zam"),
+        poz: [],
+        skrz: [],
+        pola: [],
+        bramaw: q(".bramaw")
+      };
+      this._ruchy = [new Ruch(czl[0])];
+      this._czl = null;
+      this._niebo = null;
+      this._zew = false;
+      const E = this._el;
+      q(".gl").addEventListener("click", () => this._wiecej());
+      E.bramaw.addEventListener("click", () => this._dotkniecie(null));
+      E.bramaw.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          this._dotkniecie(null);
+        }
+      });
+      E.otw?.addEventListener("click", () => this._polecenie(100));
+      E.zam?.addEventListener("click", () => this._polecenie(0));
+      E.stp?.addEventListener("click", () => this._polecenie(null));
+      if (E.suwak) this._suwak(E.suwak);
+      this._zbudowana = true;
+    }
     _lok(klucz, zapas) {
       return this._hass?.localize?.(klucz) || zapas;
     }
@@ -3921,7 +4409,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       if (c._podglad) return;
       const encje = ktore ? [...new Set(idx.map((i) => czl[i]))] : [c.entity];
       const usl = cel === null ? "stop_cover" : cel === 100 ? "open_cover" : cel === 0 ? "close_cover" : "set_cover_position";
-      const dane = usl === "set_cover_position" ? { position: c.odwroc ? 100 - cel : cel } : {};
+      const odwroc = c.odwroc && (ktore || !this._hass.states[c.entity]?.attributes?.motor_ha);
+      const dane = usl === "set_cover_position" ? { position: odwroc ? 100 - cel : cel } : {};
       this._hass.callService("cover", usl, { entity_id: encje, ...dane });
     }
     // pozycja z wysokości palca na szybie
@@ -4048,6 +4537,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         });
         if (E.pgz) E.pgz.innerHTML = ["deszcz", "ulewa", "burza", "snieg", "deszczsnieg", "mgla"].includes(rodzaj) ? pogoda(rodzaj, pora, 0, 1).replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, "") : "";
       }
+      if (this._brama) return this._aktualizujBrame(c, czl, st, pora);
       const auto = c.auto_czujniki !== false ? czujnikiOkna(h, czl[0]) : [];
       const okno = [0, 1].map((k) => {
         const id = c[k ? "czujnik_prawe" : "czujnik_lewe"] || auto[k], s = id && h.states[id];
@@ -4071,7 +4561,66 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (o && k < czl.length) czesci.push(`${T2.karta.okno}${czl.length > 1 ? " " + (k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
       });
       this._opisStanu = czesci;
+      this._automatyka(c, h);
       const otwarte = this._ruchy.some((r) => (r.widac ?? 0) > 0);
+      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+      this._animuj();
+    }
+    // wiersz automatyki: dlaczego osłona stoi tak, jak stoi; przy pauzie przycisk „Wznów”
+    _automatyka(c, h) {
+      const E = this._el, enc = c.encje || {};
+      const ps = enc.powod && h.states[enc.powod], pz = enc.pauza && h.states[enc.pauza];
+      const pokaz = ps && !["brak", "wylaczona", "unavailable", "unknown"].includes(ps.state);
+      if (E.auto) {
+        E.auto.hidden = !pokaz;
+        if (pokaz) {
+          let t = h.formatEntityState ? h.formatEntityState(ps) : ps.state;
+          const pauza = pz?.state === "on" || ["pauza", "reczny"].includes(ps.state);
+          const d = pauza && c.pauza_do ? new Date(c.pauza_do) : null;
+          if (d && !isNaN(d)) {
+            const g = `${this._T.karta.pauza} ${d.toLocaleTimeString(h.locale?.language || void 0, { hour: "2-digit", minute: "2-digit" })}`;
+            t = ps.state === "pauza" ? g : `${t} · ${g}`;
+          }
+          E.autoT.textContent = t;
+          E.wzn.hidden = !(pauza && enc.wznow);
+          const blad = ["blokada", "przeszkoda"].includes(ps.state);
+          E.auto.classList.toggle("blad", blad);
+          E.autoI.setAttribute("icon", pauza ? "mdi:pause-circle-outline" : blad ? "mdi:alert-circle-outline" : "mdi:robot-outline");
+        }
+      }
+      const sun = h.states["sun.sun"], az = +sun?.attributes?.azimuth, el = +sun?.attributes?.elevation;
+      const widac = typeof c.kompas === "number" && Number.isFinite(az) && el > 0;
+      if (E.kompas) {
+        E.kompas.toggleAttribute("hidden", !widac);
+        if (widac) {
+          const k = (az - c.kompas) * Math.PI / 180, r = 13 * (1 - Math.min(1, el / 90) * 0.55);
+          E.sl.setAttribute("cx", (Math.sin(k) * r).toFixed(1));
+          E.sl.setAttribute("cy", (-Math.cos(k) * r).toFixed(1));
+          E.sl.setAttribute("opacity", Math.abs((az - c.kompas + 540) % 360 - 180) < 90 ? 1 : 0.35);
+        }
+      }
+    }
+    _aktualizujBrame(c, czl, st, pora) {
+      const h = this._hass, T2 = this._T, E = this._el, noc = pora === "noc" || pora === "zmierzch";
+      if (noc !== this._brNoc) {
+        this._brNoc = noc;
+        E.bramaw.innerHTML = rysunekBramy(c.oslona, hex(c.kolor), ramaHex(c.rama), noc, !!c.przeszkoda);
+        E.svg = E.bramaw.querySelector("svg");
+        E.bramaw.setAttribute("aria-label", T2.oslony[c.oslona] || "");
+      }
+      const czesci = [h.formatEntityState ? h.formatEntityState(st) : st.state];
+      const pos = st.attributes.current_position;
+      if (typeof pos === "number" && pos > 0 && pos < 100) czesci.push(`${pos} %`);
+      const fs = c.przeszkoda && h.states[c.przeszkoda];
+      const przeszkoda = !!fs && String(fs.state) === String(c.foto_stan || "on");
+      if (fs) {
+        ustawFotokomorke(E.svg, przeszkoda);
+        if (przeszkoda) czesci.push(T2.karta.przeszkoda);
+      }
+      this._opisStanu = czesci;
+      this._automatyka(c, h);
+      const otwarte = st.state !== "closed";
+      E.ikona?.setAttribute("icon", (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.oslona]) || "mdi:gate");
       E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       this._animuj();
     }
@@ -4096,11 +4645,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     _rysuj() {
       const E = this._el, ile = E.pola.length;
+      if (this._brama && this._ruchy[0]?.widac !== null) ustawBrame(E.svg, this._cfg.oslona, this._ruchy[0].widac);
       E.pola.forEach((P, i) => {
         const r = this._ruchy[Math.min(i, this._ruchy.length - 1)];
         if (!r || r.widac === null) return;
         const wys = P.p.clientHeight;
         if (!wys) return;
+        if (this._poziomo) {
+          const z = 100 - r.widac;
+          P.oslona.style.top = this._kas - 2 + "px";
+          P.oslona.style.height = wys - this._kas + 2 + "px";
+          if (this._cfg.oslona === "zaslona") {
+            const pol = (z / 2).toFixed(2);
+            P.oslona.style.clipPath = "";
+            P.oslona.style.maskImage = P.oslona.style.webkitMaskImage = `linear-gradient(90deg,#000 0 calc(${pol}% + 6px),transparent calc(${pol}% + 6px) calc(${100 - pol}% - 6px),#000 calc(${100 - pol}% - 6px))`;
+          } else P.oslona.style.clipPath = `inset(0 ${(100 - Math.max(4, z)).toFixed(2)}% 0 0)`;
+          if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
+          return;
+        }
         const gora = this._gornaListwy(wys, r.widac);
         P.oslona.style.height = Math.max(0, gora - (this._kas - 2) + 1) + "px";
         P.oslona.style.top = this._kas - 2 + "px";
@@ -4267,22 +4829,24 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
         this._cfg.type = "custom:motor-ha";
       }
       this._jez = jezyk(this._cfg, this._hass);
-      const T2 = this._T, n = this._krok ?? 0, [kl, ik] = KROKI[n], K = T2.kroki[kl];
+      const LISTA = czyBrama(this._w("oslona")) ? KROKI.filter(([k]) => !["okno", "czujniki", "pogoda"].includes(k)) : KROKI;
+      this._krok = Math.min(this._krok ?? 0, LISTA.length - 1);
+      const T2 = this._T, n = this._krok, [kl, ik] = LISTA[n], K = T2.kroki[kl];
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
       root.innerHTML = `<style>${STYL}</style><div class="ed">
-<div class="pasek" role="tablist">${KROKI.map(([k, i], j) => `<button class="kr${j === n ? " on" : j < n ? " zrob" : ""}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc2(T2.kroki[k].t)}">
+<div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? " on" : j < n ? " zrob" : ""}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc2(T2.kroki[k].t)}">
  <span class="k"><ha-icon icon="${i}"></ha-icon></span><span class="p">${esc2(T2.kroki[k].t)}</span></button>`).join("")}</div>
-<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc2(K.t)}<small>${esc2(wstaw(T2.ui.krok, n + 1, KROKI.length))}</small></h3></div>
+<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc2(K.t)}<small>${esc2(wstaw(T2.ui.krok, n + 1, LISTA.length))}</small></h3></div>
 <p class="cp"><span><b>${esc2(T2.ui.co)}</b> ${esc2(K.co)}</span><span><b>${esc2(T2.ui.poco)}</b> ${esc2(K.poco)}</span></p>
 <div class="tresc"></div>
 <div class="nav"><button class="bt dr" data-n="-1" ${n ? "" : "hidden"}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc2(T2.ui.wstecz)}</button>
- <button class="bt" data-n="1" ${n < KROKI.length - 1 ? "" : "hidden"}>${esc2(T2.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
+ <button class="bt" data-n="1" ${n < LISTA.length - 1 ? "" : "hidden"}>${esc2(T2.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
       root.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => {
         this._krok = +b.dataset.k;
         this._rysuj();
       }));
       root.querySelectorAll("[data-n]").forEach((b) => b.addEventListener("click", () => {
-        this._krok = Math.max(0, Math.min(KROKI.length - 1, n + +b.dataset.n));
+        this._krok = Math.max(0, Math.min(LISTA.length - 1, n + +b.dataset.n));
         this._rysuj();
       }));
       this._forma = [];
@@ -4409,6 +4973,78 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     }
   };
 
+  // src/dom.js
+  var esc3 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var STYL2 = `
+.lista{display:flex;flex-direction:column;gap:4px}
+.wiersz{display:flex;align-items:center;gap:10px;min-height:48px}
+.wiersz .opis{cursor:pointer}
+.male{display:flex;gap:6px}
+.male button{width:36px;height:36px;border:none;border-radius:var(--ha-border-radius-md,8px);cursor:pointer;color:var(--primary-text-color);
+ background:color-mix(in srgb,var(--disabled-color,#bdbdbd) 20%,transparent);display:flex;align-items:center;justify-content:center}
+.male ha-icon{--mdc-icon-size:20px;display:flex}
+.tytul{font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);padding:4px 4px 0}`;
+  var MotorHaDom = class extends HTMLElement {
+    setConfig(cfg) {
+      this._cfg = cfg || {};
+      this._klucz = null;
+    }
+    static getStubConfig() {
+      return {};
+    }
+    getCardSize() {
+      return 1 + (this._ile || 3);
+    }
+    getGridOptions() {
+      return { columns: 12, min_columns: 6, rows: "auto" };
+    }
+    set hass(h) {
+      this._hass = h;
+      this._rysuj();
+    }
+    _urzadzenia() {
+      const s = this._hass.states;
+      return Object.keys(s).filter((e) => e.startsWith("cover.") && s[e].attributes?.motor_ha && typeof s[e].attributes.motor_ha === "object").filter((e) => !this._cfg.entities || this._cfg.entities.includes(e)).sort((a, b) => String(s[a].attributes.friendly_name).localeCompare(String(s[b].attributes.friendly_name)));
+    }
+    _rysuj() {
+      const h = this._hass;
+      if (!h || !this._cfg) return;
+      const T2 = TEKSTY[jezyk(this._cfg, h)], lista = this._urzadzenia(), root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      this._ile = lista.length;
+      const klucz = lista.join() + T2.karta.dom;
+      if (klucz !== this._klucz) {
+        this._klucz = klucz;
+        root.innerHTML = `<style>${STYL_STALY}${STYL2}</style><ha-card><div class="mh">
+        <div class="tytul">${esc3(this._cfg.title ?? T2.karta.dom)}</div>
+        ${lista.length ? `<div class="lista">${lista.map((e) => `<div class="wiersz" data-e="${e}"><div class="ik"><ha-icon></ha-icon></div>
+          <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
+          <div class="male"><button data-u="open_cover" title="${esc3(T2.karta.otworz)}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
+          <button data-u="stop_cover" title="${esc3(T2.karta.stop)}"><ha-icon icon="mdi:stop"></ha-icon></button>
+          <button data-u="close_cover" title="${esc3(T2.karta.zamknij)}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div></div>`).join("")}</div>` : `<div class="brak">${esc3(T2.karta.domBrak)}</div>`}
+      </div></ha-card>`;
+        root.querySelectorAll(".wiersz").forEach((w) => {
+          const e = w.dataset.e;
+          w.querySelector(".opis").addEventListener("click", () => this.dispatchEvent(new CustomEvent("hass-more-info", { bubbles: true, composed: true, detail: { entityId: e } })));
+          w.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => this._hass.callService("cover", b.dataset.u, { entity_id: e })));
+        });
+      }
+      root.querySelectorAll(".wiersz").forEach((w) => {
+        const st = h.states[w.dataset.e];
+        if (!st) return;
+        const m = st.attributes.motor_ha, typ = m.oslona, otw = st.state !== "closed";
+        const czesci = [h.formatEntityState ? h.formatEntityState(st) : st.state];
+        const p = st.attributes.current_position;
+        if (typeof p === "number" && p > 0 && p < 100) czesci.push(`${p} %`);
+        const ps = m.encje?.powod && h.states[m.encje.powod];
+        if (ps && !["brak", "wylaczona", "unavailable", "unknown"].includes(ps.state)) czesci.push(h.formatEntityState ? h.formatEntityState(ps) : ps.state);
+        w.querySelector(".nazwa").textContent = st.attributes.friendly_name || w.dataset.e;
+        w.querySelector(".stan").textContent = czesci.join(" · ");
+        w.querySelector(".ik ha-icon").setAttribute("icon", (otw ? IKONY_OTW[typ] : null) || IKONY[typ] || "mdi:window-shutter");
+        w.querySelector(".ik").style.setProperty("--mh-kolor", otw ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+      });
+    }
+  };
+
   // src/index.js
   var rejestruj = (nazwa2, klasa) => {
     if (!customElements.get(nazwa2)) customElements.define(nazwa2, klasa);
@@ -4419,13 +5055,14 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   rejestruj("motor-ha-editor", MotorHaEdytor);
   rejestruj("okno-ha-editor", class extends MotorHaEdytor {
   });
+  rejestruj("motor-ha-dom", MotorHaDom);
   rejestruj("roleta-realistyczna", class extends MotorHaKarta {
   });
   rejestruj("roleta-realistyczna-editor", class extends MotorHaEdytor {
   });
   var T = TEKSTY[kodJezyka(document.documentElement.lang || navigator.language)];
   window.customCards = window.customCards || [];
-  for (let i = window.customCards.length - 1; i >= 0; i--) if (["motor-ha", "okno-ha", "roleta-realistyczna"].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
+  for (let i = window.customCards.length - 1; i >= 0; i--) if (["motor-ha", "motor-ha-dom", "okno-ha", "roleta-realistyczna"].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
   window.customCards.push({
     type: "motor-ha",
     name: T.nazwa,
@@ -4434,6 +5071,13 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     documentationURL: "https://github.com/superdarco78/okno-ha-integracja",
     // „Dodaj do panelu” na stronie urządzenia proponuje kartę Motor HA dla okien i osłon
     getEntitySuggestion: (hass, entityId) => String(entityId).startsWith("cover.") ? { label: T.nazwa, config: { type: "custom:motor-ha", entity: entityId } } : null
+  });
+  window.customCards.push({
+    type: "motor-ha-dom",
+    name: T.karta.dom,
+    description: T.karta.domOpis,
+    preview: true,
+    documentationURL: "https://github.com/superdarco78/okno-ha-integracja"
   });
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");

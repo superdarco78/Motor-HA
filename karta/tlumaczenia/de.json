@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "Ein Fenster mit Behang: fährt im Tempo des Motors, echtes Wetter und Tageszeit draußen, Fenstersensoren.",
+  "opis": "Alles mit Motor: Rollläden, Jalousien, Markisen, Vorhänge, Tore und Garagentore. Bewegung im Motortempo, Wetter hinter dem Glas, Fenstersensoren.",
   "karta": {
     "oba": "Ziehen, um beide Behänge zu bewegen",
     "otworz": "Öffnen",
@@ -14,7 +14,16 @@
     "prawe": "rechts",
     "otwarte": "offen",
     "uchylone": "gekippt",
-    "pozycja": "Position"
+    "pozycja": "Position",
+    "przeszkoda": "Hindernis im Tor",
+    "wznow": "Fortsetzen",
+    "pauza": "Pause bis",
+    "wolne": "Weg frei",
+    "dom": "Motor HA – ganzes Haus",
+    "domOpis": "Alle Motor-HA-Geräte auf einer Karte: Zustand, Grund der Bewegung und Tasten.",
+    "domBrak": "Noch keine Motor-HA-Geräte.",
+    "wszOtw": "Alle öffnen",
+    "wszZam": "Alle schließen"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Jalousien",
     "zrolety": "Rollläden",
     "fasadowe": "Raffstores",
-    "taras": "Terrasse"
+    "taras": "Terrasse",
+    "pionowe": "Vertikal und Vorhänge",
+    "brama": "Tor und Garage",
+    "bramy": "Einfahrtstore",
+    "garaze": "Garagentore"
   },
   "oslony": {
     "pelna": "Freihängendes Rollo",
@@ -146,7 +159,14 @@
     "fasadowa": "Raffstore C80",
     "fasadowaz": "Raffstore Z90",
     "markiza": "Terrassenmarkise",
-    "screen": "ZIP-Screen"
+    "screen": "ZIP-Screen",
+    "pionowa": "Vertikaljalousie",
+    "zaslona": "Seitenvorhang",
+    "przesuwna": "Schiebetor",
+    "skrzydlowa": "Flügeltor",
+    "segmentowa": "Sektionaltor",
+    "uchylna": "Schwingtor",
+    "roletowa": "Rolltor"
   },
   "kolory": {
     "czarny": "schwarz",

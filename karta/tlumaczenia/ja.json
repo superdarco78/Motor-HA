@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "シェード付きの窓：モーターの速さで動き、外の天気と時間帯、窓センサーを表示します。",
+  "opis": "モーター付きのすべて：シャッター、ブラインド、オーニング、カーテン、門扉、ガレージドア。モーターの速さで動き、窓の外に天気、窓センサー。",
   "karta": {
     "oba": "ドラッグして両方のシェードを動かす",
     "otworz": "開く",
@@ -14,7 +14,16 @@
     "prawe": "右",
     "otwarte": "開",
     "uchylone": "換気",
-    "pozycja": "位置"
+    "pozycja": "位置",
+    "przeszkoda": "門に障害物",
+    "wznow": "再開",
+    "pauza": "一時停止：",
+    "wolne": "通行可",
+    "dom": "Motor HA – 家全体",
+    "domOpis": "すべての Motor HA デバイスを1枚のカードに：状態、動いた理由、ボタン。",
+    "domBrak": "Motor HA デバイスはまだありません。",
+    "wszOtw": "すべて開く",
+    "wszZam": "すべて閉じる"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "ブラインド",
     "zrolety": "シャッター",
     "fasadowe": "外付けブラインド",
-    "taras": "テラス"
+    "taras": "テラス",
+    "pionowe": "縦型とカーテン",
+    "brama": "門とガレージ",
+    "bramy": "門扉",
+    "garaze": "ガレージドア"
   },
   "oslony": {
     "pelna": "オープン型ロールスクリーン",
@@ -146,7 +159,14 @@
     "fasadowa": "外付けブラインド C80",
     "fasadowaz": "外付けブラインド Z90",
     "markiza": "テラスオーニング",
-    "screen": "ZIP スクリーン"
+    "screen": "ZIP スクリーン",
+    "pionowa": "縦型ブラインド",
+    "zaslona": "サイドカーテン",
+    "przesuwna": "引き戸式門扉",
+    "skrzydlowa": "開き戸式門扉",
+    "segmentowa": "セクショナルドア",
+    "uchylna": "跳ね上げ式ドア",
+    "roletowa": "シャッター"
   },
   "kolory": {
     "czarny": "黒",

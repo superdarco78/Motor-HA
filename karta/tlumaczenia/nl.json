@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "Een raam met zonwering: beweegt op de snelheid van de motor, echt weer en tijd van de dag buiten, raamsensoren.",
+  "opis": "Alles met een motor: rolluiken, jaloezieën, zonneschermen, gordijnen, poorten en garagedeuren. Beweging in het tempo van de motor, weer achter het glas, raamsensoren.",
   "karta": {
     "oba": "Sleep om beide zonweringen te bewegen",
     "otworz": "Openen",
@@ -14,7 +14,16 @@
     "prawe": "rechts",
     "otwarte": "open",
     "uchylone": "op kiep",
-    "pozycja": "Positie"
+    "pozycja": "Positie",
+    "przeszkoda": "Obstakel in de poort",
+    "wznow": "Hervatten",
+    "pauza": "Gepauzeerd tot",
+    "wolne": "Weg vrij",
+    "dom": "Motor HA – hele huis",
+    "domOpis": "Alle Motor HA-apparaten op één kaart: status, reden van beweging en knoppen.",
+    "domBrak": "Nog geen Motor HA-apparaten.",
+    "wszOtw": "Alles openen",
+    "wszZam": "Alles sluiten"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Jaloezieën",
     "zrolety": "Rolluiken",
     "fasadowe": "Buitenjaloezieën",
-    "taras": "Terras"
+    "taras": "Terras",
+    "pionowe": "Verticaal en gordijnen",
+    "brama": "Poort en garage",
+    "bramy": "Opritpoorten",
+    "garaze": "Garagedeuren"
   },
   "oslony": {
     "pelna": "Vrijhangend rolgordijn",
@@ -146,7 +159,14 @@
     "fasadowa": "Buitenjaloezie C80",
     "fasadowaz": "Buitenjaloezie Z90",
     "markiza": "Terrasscherm",
-    "screen": "ZIP-screen"
+    "screen": "ZIP-screen",
+    "pionowa": "Verticale lamellen",
+    "zaslona": "Zijgordijn",
+    "przesuwna": "Schuifpoort",
+    "skrzydlowa": "Draaipoort",
+    "segmentowa": "Sectionaaldeur",
+    "uchylna": "Kanteldeur",
+    "roletowa": "Roldeur"
   },
   "kolory": {
     "czarny": "zwart",

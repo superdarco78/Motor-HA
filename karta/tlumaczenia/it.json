@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "Una finestra con la sua tenda: si muove alla velocità del motore, meteo reale e ora del giorno fuori, sensori finestra.",
+  "opis": "Tutto ciò che ha un motore: tapparelle, veneziane, tende da sole, tende, cancelli e porte da garage. Movimento alla velocità del motore, meteo dietro il vetro, sensori finestra.",
   "karta": {
     "oba": "Trascina per muovere entrambe le tende",
     "otworz": "Apri",
@@ -14,7 +14,16 @@
     "prawe": "destra",
     "otwarte": "aperta",
     "uchylone": "a ribalta",
-    "pozycja": "Posizione"
+    "pozycja": "Posizione",
+    "przeszkoda": "Ostacolo nel cancello",
+    "wznow": "Riprendi",
+    "pauza": "In pausa fino a",
+    "wolne": "Via libera",
+    "dom": "Motor HA – tutta la casa",
+    "domOpis": "Tutti i dispositivi Motor HA in una scheda: stato, motivo del movimento e pulsanti.",
+    "domBrak": "Ancora nessun dispositivo Motor HA.",
+    "wszOtw": "Apri tutto",
+    "wszZam": "Chiudi tutto"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Veneziane",
     "zrolety": "Tapparelle",
     "fasadowe": "Frangisole",
-    "taras": "Terrazza"
+    "taras": "Terrazza",
+    "pionowe": "Verticali e tende",
+    "brama": "Cancello e garage",
+    "bramy": "Cancelli",
+    "garaze": "Porte da garage"
   },
   "oslony": {
     "pelna": "Tenda a rullo libera",
@@ -146,7 +159,14 @@
     "fasadowa": "Frangisole C80",
     "fasadowaz": "Frangisole Z90",
     "markiza": "Tenda da sole",
-    "screen": "Screen ZIP"
+    "screen": "Screen ZIP",
+    "pionowa": "Tenda verticale",
+    "zaslona": "Tenda laterale",
+    "przesuwna": "Cancello scorrevole",
+    "skrzydlowa": "Cancello a battente",
+    "segmentowa": "Porta sezionale",
+    "uchylna": "Porta basculante",
+    "roletowa": "Porta avvolgibile"
   },
   "kolory": {
     "czarny": "nero",

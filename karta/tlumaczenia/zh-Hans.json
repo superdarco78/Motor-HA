@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "带遮阳的窗户：按电机速度移动，窗外显示真实天气和时段，并显示窗户传感器。",
+  "opis": "一切带电机的设备：卷帘、百叶、遮阳篷、窗帘、大门和车库门。按电机速度移动，窗外显示天气，窗户传感器。",
   "karta": {
     "oba": "拖动以同时移动两个遮阳",
     "otworz": "打开",
@@ -14,7 +14,16 @@
     "prawe": "右",
     "otwarte": "已打开",
     "uchylone": "已内倒",
-    "pozycja": "位置"
+    "pozycja": "位置",
+    "przeszkoda": "大门有障碍物",
+    "wznow": "恢复",
+    "pauza": "暂停至",
+    "wolne": "道路畅通",
+    "dom": "Motor HA – 全屋",
+    "domOpis": "一张卡片显示所有 Motor HA 设备：状态、移动原因和按钮。",
+    "domBrak": "还没有 Motor HA 设备。",
+    "wszOtw": "全部打开",
+    "wszZam": "全部关闭"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "百叶帘",
     "zrolety": "卷帘门窗",
     "fasadowe": "外遮阳百叶",
-    "taras": "露台"
+    "taras": "露台",
+    "pionowe": "垂直帘与窗帘",
+    "brama": "大门与车库",
+    "bramy": "庭院大门",
+    "garaze": "车库门"
   },
   "oslony": {
     "pelna": "开放式卷帘",
@@ -146,7 +159,14 @@
     "fasadowa": "外遮阳百叶 C80",
     "fasadowaz": "外遮阳百叶 Z90",
     "markiza": "露台遮阳篷",
-    "screen": "ZIP 遮阳帘"
+    "screen": "ZIP 遮阳帘",
+    "pionowa": "垂直百叶帘",
+    "zaslona": "侧拉窗帘",
+    "przesuwna": "平移门",
+    "skrzydlowa": "平开门",
+    "segmentowa": "分节门",
+    "uchylna": "翻板门",
+    "roletowa": "卷帘门"
   },
   "kolory": {
     "czarny": "黑色",

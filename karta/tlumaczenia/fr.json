@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "Une fenêtre avec son store : il bouge à la vitesse du moteur, vraie météo et moment de la journée dehors, capteurs de fenêtre.",
+  "opis": "Tout ce qui a un moteur : volets, stores, bannes, rideaux, portails et portes de garage. Mouvement à la vitesse du moteur, météo derrière la vitre, capteurs de fenêtre.",
   "karta": {
     "oba": "Glisser pour déplacer les deux stores",
     "otworz": "Ouvrir",
@@ -14,7 +14,16 @@
     "prawe": "droite",
     "otwarte": "ouverte",
     "uchylone": "entrouverte",
-    "pozycja": "Position"
+    "pozycja": "Position",
+    "przeszkoda": "Obstacle dans le portail",
+    "wznow": "Reprendre",
+    "pauza": "En pause jusqu'à",
+    "wolne": "Passage libre",
+    "dom": "Motor HA – toute la maison",
+    "domOpis": "Tous les appareils Motor HA sur une carte : état, raison du mouvement et boutons.",
+    "domBrak": "Aucun appareil Motor HA pour l'instant.",
+    "wszOtw": "Tout ouvrir",
+    "wszZam": "Tout fermer"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Stores vénitiens",
     "zrolety": "Volets roulants",
     "fasadowe": "Brise-soleil orientables",
-    "taras": "Terrasse"
+    "taras": "Terrasse",
+    "pionowe": "Verticaux et rideaux",
+    "brama": "Portail et garage",
+    "bramy": "Portails",
+    "garaze": "Portes de garage"
   },
   "oslony": {
     "pelna": "Store enrouleur libre",
@@ -146,7 +159,14 @@
     "fasadowa": "Brise-soleil C80",
     "fasadowaz": "Brise-soleil Z90",
     "markiza": "Store banne",
-    "screen": "Screen ZIP"
+    "screen": "Screen ZIP",
+    "pionowa": "Store vertical",
+    "zaslona": "Rideau latéral",
+    "przesuwna": "Portail coulissant",
+    "skrzydlowa": "Portail battant",
+    "segmentowa": "Porte sectionnelle",
+    "uchylna": "Porte basculante",
+    "roletowa": "Porte enroulable"
   },
   "kolory": {
     "czarny": "noir",

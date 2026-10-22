@@ -1,6 +1,6 @@
 {
   "nazwa": "Motor HA",
-  "opis": "Okno se stíněním: jede rychlostí motoru, za sklem skutečné počasí a denní doba, okenní senzory.",
+  "opis": "Vše s motorem: rolety, žaluzie, markýzy, závěsy, brány a garážová vrata. Pohyb v tempu motoru, počasí za sklem, okenní čidla.",
   "karta": {
     "oba": "Táhni pro posun obou stínění",
     "otworz": "Otevřít",
@@ -14,7 +14,16 @@
     "prawe": "pravé",
     "otwarte": "otevřené",
     "uchylone": "vyklopené",
-    "pozycja": "Poloha"
+    "pozycja": "Poloha",
+    "przeszkoda": "Překážka v bráně",
+    "wznow": "Obnovit",
+    "pauza": "Pauza do",
+    "wolne": "Volná cesta",
+    "dom": "Motor HA – celý dům",
+    "domOpis": "Všechna zařízení Motor HA na jedné kartě: stav, důvod pohybu a tlačítka.",
+    "domBrak": "Zatím žádná zařízení Motor HA.",
+    "wszOtw": "Otevřít vše",
+    "wszZam": "Zavřít vše"
   },
   "kroki": {
     "urzadzenie": {
@@ -127,7 +136,11 @@
     "zaluzje": "Žaluzie",
     "zrolety": "Venkovní rolety",
     "fasadowe": "Venkovní žaluzie",
-    "taras": "Terasa"
+    "taras": "Terasa",
+    "pionowe": "Vertikální a závěsy",
+    "brama": "Brána a garáž",
+    "bramy": "Vjezdové brány",
+    "garaze": "Garážová vrata"
   },
   "oslony": {
     "pelna": "Volně visící roleta",
@@ -146,7 +159,14 @@
     "fasadowa": "Venkovní žaluzie C80",
     "fasadowaz": "Venkovní žaluzie Z90",
     "markiza": "Terasová markýza",
-    "screen": "ZIP screen"
+    "screen": "ZIP screen",
+    "pionowa": "Vertikální žaluzie",
+    "zaslona": "Boční závěs",
+    "przesuwna": "Posuvná brána",
+    "skrzydlowa": "Křídlová brána",
+    "segmentowa": "Sekční vrata",
+    "uchylna": "Výklopná vrata",
+    "roletowa": "Rolovací vrata"
   },
   "kolory": {
     "czarny": "černá",

@@ -8,15 +8,24 @@ export const GRUPY = {
   wew: {
     rolety: ['pelna', 'kasetowa', 'zebra', 'zaciemniajaca'],
     plisy: ['plisa', 'plaster', 'rzymska'],
-    zaluzje: ['zaluzja', 'drewniana']
+    zaluzje: ['zaluzja', 'drewniana'],
+    pionowe: ['pionowa', 'zaslona']
   },
   zew: {
     zrolety: ['natynkowa', 'podtynkowa', 'zewnetrzna', 'perforowana'],
     fasadowe: ['fasadowa', 'fasadowaz'],
     taras: ['markiza', 'screen']
+  },
+  brama: {
+    bramy: ['przesuwna', 'skrzydlowa'],
+    garaze: ['segmentowa', 'uchylna', 'roletowa']
   }
 };
 export const OSLONY = Object.values(GRUPY).flatMap(g => Object.values(g).flat());
+export const BRAMY = Object.values(GRUPY.brama).flat();
+export const czyBrama = t => BRAMY.includes(t);
+// osłony, które zasuwają się w bok (żaluzja pionowa, zasłona), a nie w dół
+export const POZIOME = ['pionowa', 'zaslona'];
 export const ZEWNETRZNE = Object.values(GRUPY.zew).flat();
 export const czyZew = t => ZEWNETRZNE.includes(t);
 
@@ -26,10 +35,15 @@ export const IKONY = {
   zaluzja: 'mdi:blinds-horizontal', drewniana: 'mdi:blinds-horizontal',
   natynkowa: 'mdi:window-shutter', podtynkowa: 'mdi:window-shutter', zewnetrzna: 'mdi:window-shutter', perforowana: 'mdi:window-shutter-open',
   fasadowa: 'mdi:blinds-horizontal-closed', fasadowaz: 'mdi:blinds-horizontal-closed',
-  markiza: 'mdi:awning-outline', screen: 'mdi:roller-shade'
+  markiza: 'mdi:awning-outline', screen: 'mdi:roller-shade',
+  pionowa: 'mdi:blinds-vertical', zaslona: 'mdi:curtains',
+  przesuwna: 'mdi:gate', skrzydlowa: 'mdi:gate', segmentowa: 'mdi:garage', uchylna: 'mdi:garage', roletowa: 'mdi:garage'
 };
+// ikona otwartego urządzenia (bramy i garaże zmieniają ikonę jak w HA)
+export const IKONY_OTW = { przesuwna: 'mdi:gate-open', skrzydlowa: 'mdi:gate-open', segmentowa: 'mdi:garage-open', uchylna: 'mdi:garage-open',
+  roletowa: 'mdi:garage-open', pionowa: 'mdi:blinds-vertical', zaslona: 'mdi:curtains' };
 export const IKONY_GRUP = { wew: 'mdi:sofa-outline', zew: 'mdi:home-outline', rolety: 'mdi:roller-shade', plisy: 'mdi:blinds',
-  zaluzje: 'mdi:blinds-horizontal', zrolety: 'mdi:window-shutter', fasadowe: 'mdi:blinds-horizontal-closed', taras: 'mdi:awning-outline' };
+  zaluzje: 'mdi:blinds-horizontal', pionowe: 'mdi:blinds-vertical', brama: 'mdi:gate', bramy: 'mdi:gate', garaze: 'mdi:garage', zrolety: 'mdi:window-shutter', fasadowe: 'mdi:blinds-horizontal-closed', taras: 'mdi:awning-outline' };
 
 // Kolory tkanin i pancerzy (klucz → kolor).
 export const KOLORY = {
