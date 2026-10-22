@@ -62,8 +62,10 @@ class Nowosci:
             cel = self.katalog / KARTA_PLIK
             if nadpisz or not cel.is_file():
                 shutil.copyfile(wbudowana, cel)
-            for plik in ("okno-ha-panel.js", "okno-ha-hacs.js", "okno-ha-galeria.js", "ikona.png"):   # panel i ikona zawsze z tej wersji integracji
+            for plik in ("okno-ha-panel.js", "okno-ha-hacs.js", "okno-ha-galeria.js", "okno-ha-opis.js", "ikona.png"):   # panel i ikona zawsze z tej wersji integracji
                 shutil.copyfile(wbudowana.parent / plik, self.katalog / plik)
+            # opis Motor HA w HACS (strona w stylu HA, 5 języków) – z tej wersji integracji
+            shutil.copytree(wbudowana.parent / "opis", self.katalog / "opis", dirs_exist_ok=True)
             # otwarta strona HA porównuje ten numer i sama wczytuje nowy okno-ha-hacs.js po aktualizacji;
             # obrazki opisu w HACS biorą się z tej wersji (tag integracji | stan repo karty), nie z main
             (self.katalog / "wersja.txt").write_text(f"{VERSION}|{KARTA_OBRAZKI}", encoding="utf-8")

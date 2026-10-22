@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Motor HA – passo 1 di 5: schermatura",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nScegli la schermatura di questa finestra. Per una finestra a due ante scegline due (sinistra e destra) o un gruppo.\n\n🪄 Preferisci la procedura guidata con cerchi e immagini, come nella scheda? **[Apri la procedura con i cerchi](/okno-ha)**",
+        "description": "![]({obrazki}/kreator-pasek-1-it.png)\n\nScegli la schermatura di questa finestra. Per una finestra a due ante scegline due (sinistra e destra) o un gruppo.\n\n🪄 Preferisci la procedura guidata con cerchi e immagini, come nella scheda? **[Apri la procedura con i cerchi](/okno-ha)**",
         "data": {
           "name": "Nome della finestra",
           "rolety": "Schermatura (una o due)"
@@ -15,7 +15,7 @@
       },
       "okno": {
         "title": "Passo 2 di 5: finestra e sensori",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nQuante ante ha la finestra e se ha sensori di apertura. I sensori sono facoltativi.",
+        "description": "![]({obrazki}/kreator-pasek-2-it.png)\n\nQuante ante ha la finestra e se ha sensori di apertura. I sensori sono facoltativi.",
         "data": {
           "skrzydla": "Numero di ante",
           "czujnik_lewe": "Sensore anta sinistra",
@@ -35,7 +35,7 @@
       },
       "silnik": {
         "title": "⚙️ Passo 3 di 5: motore",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nLa scheda si muove al ritmo del motore. La velocità del motore è stata presa dal dispositivo della tapparella (se ce l’ha, es. Moes). Tempo di corsa calcolato: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-it.png)\n\nLa scheda si muove al ritmo del motore. La velocità del motore è stata presa dal dispositivo della tapparella (se ce l’ha, es. Moes). Tempo di corsa calcolato: **{czas}**.",
         "data": {
           "predkosc_lewa": "Velocità motore – sinistra",
           "predkosc_prawa": "Velocità motore – destra",
@@ -53,7 +53,7 @@
       },
       "pogoda": {
         "title": "🌤️ Passo 4 di 5: meteo esterno",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nFuori dalla finestra si vede il meteo reale. Lascia vuoto e la scheda usa il meteo da Internet per casa tua.",
+        "description": "![]({obrazki}/kreator-pasek-4-it.png)\n\nFuori dalla finestra si vede il meteo reale. Lascia vuoto e la scheda usa il meteo da Internet per casa tua.",
         "data": {
           "pogoda": "Meteo",
           "wstecz": "⬅️ Torna al passo precedente"
@@ -65,7 +65,7 @@
       },
       "wyglad": {
         "title": "🎨 Passo 5 di 5: aspetto",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nScegli tipo e colori della schermatura dalle immagini qui sotto.\n\n![Tipi di schermatura]({obrazki}/oslony-kafle-v2-en.png)\n\n![Colori della schermatura]({obrazki}/kolory-v2-en.png)\n\n![Colori del telaio]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-it.png)\n\nScegli tipo e colori della schermatura dalle immagini qui sotto.\n\n![Tipi di schermatura]({obrazki}/oslony-kafle-v2-en.png)\n\n![Colori della schermatura]({obrazki}/kolory-v2-en.png)\n\n![Colori del telaio]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Tipo di schermatura",
           "kolor": "Colore della schermatura",
@@ -96,7 +96,7 @@
     "step": {
       "user": {
         "title": "Motor HA – passo 1 di 5: schermatura",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nScegli la schermatura di questa finestra. Per una finestra a due ante scegline due (sinistra e destra) o un gruppo.",
+        "description": "![]({obrazki}/kreator-pasek-1-it.png)\n\nScegli la schermatura di questa finestra. Per una finestra a due ante scegline due (sinistra e destra) o un gruppo.",
         "data": {
           "name": "Nome della finestra",
           "rolety": "Schermatura (una o due)"
@@ -108,7 +108,7 @@
       },
       "okno": {
         "title": "Passo 2 di 5: finestra e sensori",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nQuante ante ha la finestra e se ha sensori di apertura. I sensori sono facoltativi.",
+        "description": "![]({obrazki}/kreator-pasek-2-it.png)\n\nQuante ante ha la finestra e se ha sensori di apertura. I sensori sono facoltativi.",
         "data": {
           "skrzydla": "Numero di ante",
           "czujnik_lewe": "Sensore anta sinistra",
@@ -128,7 +128,7 @@
       },
       "silnik": {
         "title": "⚙️ Passo 3 di 5: motore",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nLa scheda si muove al ritmo del motore. La velocità del motore è stata presa dal dispositivo della tapparella (se ce l’ha, es. Moes). Tempo di corsa calcolato: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-it.png)\n\nLa scheda si muove al ritmo del motore. La velocità del motore è stata presa dal dispositivo della tapparella (se ce l’ha, es. Moes). Tempo di corsa calcolato: **{czas}**.",
         "data": {
           "predkosc_lewa": "Velocità motore – sinistra",
           "predkosc_prawa": "Velocità motore – destra",
@@ -146,7 +146,7 @@
       },
       "pogoda": {
         "title": "🌤️ Passo 4 di 5: meteo esterno",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nFuori dalla finestra si vede il meteo reale. Lascia vuoto e la scheda usa il meteo da Internet per casa tua.",
+        "description": "![]({obrazki}/kreator-pasek-4-it.png)\n\nFuori dalla finestra si vede il meteo reale. Lascia vuoto e la scheda usa il meteo da Internet per casa tua.",
         "data": {
           "pogoda": "Meteo",
           "wstecz": "⬅️ Torna al passo precedente"
@@ -158,7 +158,7 @@
       },
       "wyglad": {
         "title": "🎨 Passo 5 di 5: aspetto",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nScegli tipo e colori della schermatura dalle immagini qui sotto.\n\n![Tipi di schermatura]({obrazki}/oslony-kafle-v2-en.png)\n\n![Colori della schermatura]({obrazki}/kolory-v2-en.png)\n\n![Colori del telaio]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-it.png)\n\nScegli tipo e colori della schermatura dalle immagini qui sotto.\n\n![Tipi di schermatura]({obrazki}/oslony-kafle-v2-en.png)\n\n![Colori della schermatura]({obrazki}/kolory-v2-en.png)\n\n![Colori del telaio]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Tipo di schermatura",
           "kolor": "Colore della schermatura",

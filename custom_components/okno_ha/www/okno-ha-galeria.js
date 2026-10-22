@@ -7,7 +7,10 @@
 // i „ramka” (wewnątrz własnej ramki – ma własny rejestr elementów, więc zamienniki ha-icon/ha-card są tu bezpieczne).
 (() => {
   const FE = (() => { try { return window.frameElement; } catch (e) { return null; } })();
-  const ZAD = FE && FE.__oknoHaSym;
+  // tryb „biblioteka”: strona opisu Motor HA (własna ramka) bierze stąd zbuduj() i rysuje żywe karty u siebie
+  const BIB = !!window.__oknoHaBiblioteka;
+  const ZAD = (FE && FE.__oknoHaSym) || (BIB ? { t: window.__oknoHaBiblioteka.t || Date.now() } : null);
+  if (BIB && window.__oknoHaZbuduj) return;
   if (!ZAD && window.__oknoHaGaleria) return;
   if (!ZAD) window.__oknoHaGaleria = true;
   const gora = () => { try { return window.top.document.querySelector("home-assistant")?.hass; } catch (e) { return null; } };
@@ -56,6 +59,7 @@
   const wczytaj = () => karta || (karta = customElements.get("okno-ha") ? Promise.resolve()
     : import(`/okno_ha/okno-ha.js?t=${ZAD.t}`).then(() => customElements.whenDefined("okno-ha")));
   // v1.4.48: jedna duża żywa karta na sekcję (jak dawny symulator) + przyciski pod nią: scena z sekcji, rodzaj osłony, wygląd
+  const POKAZ = /\/img\/pokaz7\/pokaz7-[a-z]+\.webp/, PRZED = /\/img\/maski\/przed-[a-z]+\.svg/;
   const WZOR_OSL = /\/img\/maski\/oslony\d*-[a-z]+\.svg/;
   const STYL = `.okno-ha-zywa{max-width:520px;margin:8px auto 4px;text-align:left}
 .okno-ha-zywa .ow{margin-top:12px}
@@ -68,16 +72,29 @@
 .okno-ha-zywa .oc button:focus-visible{box-shadow:0 0 0 2px var(--secondary-text-color)}
 .okno-ha-zywa .oc button.on{background:color-mix(in srgb,var(--primary-text-color) 15%,transparent);border-color:transparent}
 .okno-ha-zywa .oc button ha-icon{--mdc-icon-size:18px;color:var(--primary-color,#009ac7)}
+.okno-ha-zywa.szer{max-width:none}
+.okno-ha-zywa .pp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:start}
+.okno-ha-zywa .pt{font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);margin:0 0 8px}
+.okno-ha-zywa .pk{padding:8px 16px}
+.okno-ha-zywa .pr{display:flex;align-items:center;gap:16px;min-height:40px;padding:4px 0}
+.okno-ha-zywa .pi{flex:none;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--state-cover-active-color,var(--state-icon-color,var(--paper-item-icon-color,#44739e)))}
+.okno-ha-zywa .pn{flex:1;min-width:0}
+.okno-ha-zywa .pn div{font-size:var(--ha-font-size-m,14px);line-height:20px;color:var(--primary-text-color);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.okno-ha-zywa .pn .ps{font-size:var(--ha-font-size-s,12px);line-height:16px;color:var(--secondary-text-color)}
+.okno-ha-zywa .pb{flex:none;display:flex}
+.okno-ha-zywa .pb button{width:40px;height:40px;padding:8px;border:0;border-radius:50%;background:transparent;color:var(--primary-text-color);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.okno-ha-zywa .pb button:hover{background:color-mix(in srgb,var(--primary-text-color) 8%,transparent)}
 .okno-ha-zywa .sw{width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 1px var(--divider-color,rgba(127,127,127,.4))}`;
-  const zbuduj = (sceny, start) => {
+  const zbuduj = (sceny, start, kontener) => {
     const h = gora();
     if (!h) throw new Error("brak hass");
     const D = window.__oknoHaDane, L = D?.teksty(h.locale?.language || h.language || "pl");
-    const st = document.createElement("style"); st.textContent = STYL; document.head.appendChild(st);
+    if (!document.querySelector("style.okno-ha-zywa-styl")) { const st = document.createElement("style"); st.className = "okno-ha-zywa-styl"; st.textContent = STYL; document.head.appendChild(st); }
     const pole = document.createElement("div");
     pole.className = "okno-ha-zywa";
     const el = document.createElement("okno-ha");
-    let wyb = 0, wyg = Object.assign({}, start), poz = 0, cel2 = 0, ruch = null, s = null, cfg = null;
+    const { proste, przed, ...wyg0 } = start || {};
+    let wyb = 0, wyg = Object.assign({}, wyg0), poz = 0, cel2 = 0, ruch = null, s = null, cfg = null;
     const stan = () => {
       const st = cel2 > poz ? "opening" : cel2 < poz ? "closing" : poz <= 0 ? "closed" : "open", teraz = new Date().toISOString();
       const enc = (id, state, attributes) => ({ entity_id: id, state, attributes, last_changed: teraz, last_updated: teraz, context: { id: "" } });
@@ -94,33 +111,54 @@
         ruch = setInterval(() => {   // jak prawdziwy silnik: meldunek co pół sekundy, 10 s na cały przejazd
           poz = cel2 > poz ? Math.min(cel2, poz + 5) : Math.max(cel2, poz - 5);
           if (poz === cel2) clearInterval(ruch);
-          el.hass = stan();
+          ustaw();
         }, 500);
-        el.hass = stan();
+        ustaw();
         return Promise.resolve();
       } });
     };
+    let przedRys = null;
+    const ustaw = () => { const hh = stan(); el.hass = hh; if (przedRys) przedRys(hh); };
+    const podpis = (x) => x.podpis || (L && L.nazwa(scena(x.nazwa).k.oslona)) || "";
     const pokaz = (nowaScena) => {
       const sc = scena(sceny[wyb].nazwa);
       s = sc.s;
       if (nowaScena) { clearInterval(ruch); poz = cel2 = s.poz; }
       const k = Object.assign({}, sc.k, wyg);
-      const nazwa = sceny.length > 1 || !L ? sceny[wyb].podpis : (L.nazwa(k.oslona) || sceny[wyb].podpis);
+      const nazwa = sceny.length > 1 || !L ? podpis(sceny[wyb]) : (L.nazwa(k.oslona) || sceny[wyb].podpis);
       cfg = Object.assign({ type: "custom:okno-ha", entity: "cover.podglad", name: String(nazwa || "Motor HA").replace(/^[^\p{L}]+/u, ""), pogoda: "weather.podglad", zrodlo: "auto", czas: 10, auto_czujniki: false }, k);
       if (s.l) Object.assign(cfg, { czujnik_lewe: "binary_sensor.podglad_l", tryb_lewe: s.l });
       if (s.p) Object.assign(cfg, { czujnik_prawe: "binary_sensor.podglad_p", tryb_prawe: s.p });
       el.setConfig(cfg);
-      el.hass = stan();
+      ustaw();
       pole.querySelectorAll("[data-sc]").forEach((b) => b.classList.toggle("on", +b.dataset.sc === wyb));
       pole.querySelectorAll("[data-os]").forEach((b) => b.classList.toggle("on", b.dataset.os === (cfg.oslona || "zebra")));
       pole.querySelectorAll("[data-pr]").forEach((b) => { const p = D.presety[+b.dataset.pr]; b.classList.toggle("on", p.rama === cfg.rama && p.kolor === cfg.kolor); });
     };
-    pole.appendChild(el);
     const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    if (przed) {
+      // „Przed i po”: zwykły wiersz rolety z karty Encje HA obok karty Motor HA – oba sterują tą samą udawaną roletą
+      pole.classList.add("szer");
+      const pp = document.createElement("div"); pp.className = "pp";
+      pp.innerHTML = `<div><div class="pt">${esc(przed[0])}</div><ha-card class="pk"><div class="pr"><span class="pi"><ha-icon icon="mdi:window-shutter"></ha-icon></span>`
+        + `<div class="pn"><div class="pnn"></div><div class="ps"></div></div><span class="pb">`
+        + ["open_cover:mdi:arrow-up", "stop_cover:mdi:stop", "close_cover:mdi:arrow-down"].map((b) => `<button data-us="${b.split(":")[0]}"><ha-icon icon="${b.slice(b.indexOf(":") + 1)}"></ha-icon></button>`).join("")
+        + `</span></div></ha-card></div><div class="pa"><div class="pt">${esc(przed[1])}</div></div>`;
+      pp.querySelector(".pa").appendChild(el);
+      pole.appendChild(pp);
+      pp.querySelectorAll("[data-us]").forEach((b) => b.onclick = () => el.hass.callService("cover", b.dataset.us, {}));
+      przedRys = (hh) => {
+        const e = hh.states["cover.podglad"], lok = (k) => { try { return h.localize?.(`component.cover.entity_component._.state.${k}`) || k; } catch (er) { return k; } };
+        pp.querySelector(".pnn").textContent = cfg.name;
+        const stan = String(lok(e.state));
+        pp.querySelector(".ps").textContent = `${stan.charAt(0).toUpperCase()}${stan.slice(1)} · ${e.attributes.current_position} %`;
+      };
+    } else pole.appendChild(el);
+    const esc0 = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     const rzad = (tytul, html) => { const d = document.createElement("div"); d.className = "ow"; d.innerHTML = (tytul ? `<div class="ol">${esc(tytul)}</div>` : "") + html; pole.appendChild(d); return d; };
-    if (sceny.length > 1) rzad("", `<div class="oc">${sceny.map((x, i) => `<button data-sc="${i}">${esc(x.podpis)}</button>`).join("")}</div>`)
+    if (sceny.length > 1) rzad("", `<div class="oc">${sceny.map((x, i) => `<button data-sc="${i}">${esc(podpis(x))}</button>`).join("")}</div>`)
       .querySelectorAll("[data-sc]").forEach((b) => b.onclick = () => { wyb = +b.dataset.sc; pokaz(true); });
-    if (D && L) {
+    if (D && L && !proste) {
       rzad(L.osl, Object.entries(D.podgrupy).map(([g, pod]) => `<div class="og">${esc(g === "wew" ? L.osw : L.osz)}</div><div class="oc">${Object.values(pod).flat()
         .map((t) => `<button data-os="${t}"><ha-icon icon="${D.ikony[t]}"></ha-icon>${esc(L.nazwa(t))}</button>`).join("")}</div>`).join(""))
         .querySelectorAll("[data-os]").forEach((b) => b.onclick = () => { wyg.oslona = b.dataset.os; pokaz(false); });
@@ -128,9 +166,13 @@
         .querySelectorAll("[data-pr]").forEach((b) => b.onclick = () => { const p = D.presety[+b.dataset.pr]; Object.assign(wyg, { rama: p.rama, kolor: p.kolor, siatka: p.siatka || "" }); pokaz(false); });
     }
     pokaz(true);
-    document.body.appendChild(pole);
+    (kontener || document.body).appendChild(pole);
     return el;
   };
+  if (BIB) {
+    window.__oknoHaZbuduj = (sceny, start, kontener) => wczytaj().then(() => zbuduj(sceny, start, kontener));
+    return;
+  }
   // ── tryb „ramka”: wnętrze własnej ramki symulacji ──
   if (ZAD) {
     const host = FE.ownerDocument.defaultView;
@@ -162,17 +204,17 @@
   }
   // ── tryb „gospodarz”: okno HA – szuka obrazków galerii w opisie HACS i stawia obok nich osobne ramki ──
   const T = Date.now();   // jeden adres karty dla wszystkich ramek → przeglądarka pobiera ją raz
-  const ramka = (grupa, sceny, start) => {
+  const ramka = (grupa, sceny, start, ukryj) => {
     const doc = grupa.ownerDocument, f = doc.createElement("iframe");
     f.className = "okno-ha-sym";
     f.setAttribute("title", "Motor HA");
     f.setAttribute("scrolling", "no");
-    Object.assign(f.style, { display: "block", width: "100%", maxWidth: "520px", height: "0", border: "0", margin: "8px auto 4px", background: "transparent", colorScheme: "normal" });
+    Object.assign(f.style, { display: "block", width: "100%", maxWidth: start.przed ? "100%" : "520px", height: "0", border: "0", margin: "8px auto 4px", background: "transparent", colorScheme: "normal" });
     f.__oknoHaSym = { sceny, start, t: T };
     let koniec = false;
     const porzuc = () => { if (koniec) return; koniec = true; f.remove(); grupa.__oknoHa = false; grupa.__oknoHaBlad = true; };
     f.__oknoHaBlad = porzuc;
-    f.__oknoHaGotowe = () => { if (koniec) return; koniec = true; grupa.style.display = "none"; };
+    f.__oknoHaGotowe = () => { if (koniec) return; koniec = true; grupa.style.display = "none"; if (ukryj) ukryj.style.display = "none"; };
     setTimeout(() => { if (!koniec) porzuc(); }, 30000);   // nic nie przyszło – zostają obrazki
     f.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden}body{padding:2px}</style></head><body><script type="module">import("/okno_ha/okno-ha-galeria.js?t=${T}").catch(()=>frameElement.__oknoHaBlad&&frameElement.__oknoHaBlad())<\/script></body></html>`;
     grupa.parentNode.insertBefore(f, grupa);
@@ -182,6 +224,19 @@
       if (++ile.n > 200000) return;
       if (e.tagName === "IMG") {
         const src = e.dataset.oknoOrg || e.getAttribute("src") || "", m = WZOR.exec(src), osl = !m && WZOR_OSL.test(src);
+        if (!m && !osl && e.isConnected && (POKAZ.test(src) || PRZED.test(src))) {
+          // pokaz (4 osłony) i „Przed i po”: też żywa karta w rozmiarze HA zamiast małego obrazka
+          const grupa = e.closest("p") || e;
+          if (grupa.__oknoHa || grupa.__oknoHaBlad || !grupa.parentNode) continue;
+          grupa.__oknoHa = true;
+          if (POKAZ.test(src)) ramka(grupa, ["deszcz_oslona-zebra", "noc_oslona-plisa", "dzien_oslona-zewnetrzna", "zachod_oslona-zaluzja"].map((nazwa) => ({ nazwa, podpis: "" })), { proste: true });
+          else {
+            const alty = [...grupa.querySelectorAll("img")].map((i) => i.alt).filter(Boolean);
+            const prz = grupa.previousElementSibling, strz = prz && prz.tagName === "P" && prz.querySelectorAll("b").length === 2 && prz.textContent.length < 60 ? prz : null;
+            ramka(grupa, [{ nazwa: "dzien_oslona-zebra", podpis: "" }], { proste: true, przed: [alty[0] || "", alty[1] || ""] }, strz);
+          }
+          continue;
+        }
         if (!(m || osl) || !e.isConnected) continue;
         const grupa = (m && e.closest("table")) || e.closest("p") || e.closest("a") || e;
         if (grupa.__oknoHa || grupa.__oknoHaBlad || !grupa.parentNode) continue;

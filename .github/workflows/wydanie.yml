@@ -24,7 +24,9 @@ jobs:
           ver=$(grep -m1 -E '^## v[0-9]' CHANGELOG.md | grep -oE 'v[0-9]+(\.[0-9]+)*' | head -1)
           man=$(python3 -c "import json;print('v'+json.load(open('custom_components/okno_ha/manifest.json'))['version'])")
           [ "$ver" = "$man" ] || { echo "CHANGELOG ($ver) i manifest.json ($man) mają różne wersje"; exit 1; }
-          title=$(grep -m1 -E '^## v[0-9]' CHANGELOG.md | sed -E 's/^## //')
+          # tytuł bez numeru: HACS i HA same dopisują numer przed tytułem („v1.4.54 - …”), inaczej numer byłby dwa razy
+          title=$(grep -m1 -E '^## v[0-9]' CHANGELOG.md | sed -E 's/^## v[0-9]+(\.[0-9]+)*[[:space:]]*(–|-)?[[:space:]]*//')
+          [ -n "$title" ] || title="$ver"
           awk '/^## v/{n++} n==1' CHANGELOG.md | tail -n +2 > notes.md
           # paczka dla HACS (zip_release): każda instalacja pobiera ten plik, więc plakietka pobrań liczy prawdziwe pobrania
           (cd custom_components/okno_ha && zip -qr "$GITHUB_WORKSPACE/okno_ha.zip" . -x '__pycache__/*' '*/__pycache__/*')

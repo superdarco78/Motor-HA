@@ -1,5 +1,18 @@
 # 📝 Historia zmian
 
+## v1.4.54 – Nowy opis w HA
+
+- 📖 Opis w HACS zbudowany od nowa w stylu Home Assistanta: te same rozmiary czcionek, ikon i odstępów co w HA, kolory z Twojego motywu (jasny i ciemny), czytelny na telefonie, tablecie i komputerze
+- 🎞 Żywe karty zamiast obrazków: „Rodzaje osłon”, „Przed i po” (zwykła karta HA obok Motor HA) i inne przykłady – wszystkie w jednym, czytelnym rozmiarze
+- 🧭 Kliknięcia w opisie (spis treści, kafelki, języki, przyciski) zostają na stronie – już nie wyrzucają do listy HACS
+- 📸 Kreator „Dodaj integrację”: prawdziwe zrzuty z HA 2026.10 w 5 językach, z ramkami i numerami w kolorze akcentu, a pod każdym krokiem „Co kliknąć” i krótka wskazówka
+- 🌍 Pasek kroków w kreatorze integracji po niemiecku, francusku, czesku i w 9 innych językach (wcześniej po angielsku)
+- 🎨 Krok „Wygląd”: kolory i okleiny ram pokazują nazwę (np. „⚫ Czarny”), a nie skrót („czarny”)
+- 🛟 Gdyby nowy opis się nie wczytał, HACS pokazuje zwykły opis – strona nigdy się nie psuje
+- 🔘 Przyciski w opisie (Otwórz w HACS, Dodaj integrację, Otwórz Motor HA, Aktualizacje) to prawdziwe przyciski w stylu HA – rozmiar i kolory z Twojego motywu, czytelne na telefonie
+- 🔘 Przyciski w panelu Motor HA jak przyciski HA (40 px, zaokrąglone)
+- 📝 Tytuł wydania bez podwójnego numeru wersji
+
 ## v1.4.53 – Opis: plakietki i etykiety w stylu HA
 
 - 🏷 Plakietki małe, zwykłymi literami i równej wysokości – w HACS i na GitHubie

@@ -282,8 +282,76 @@
 .okno-opis h1 img{height:36px!important}.okno-opis h2 img{height:32px!important}.okno-opis h3 img{height:28px!important}
 .okno-opis .okno-akcent{display:inline-block;margin-top:4px;color:var(--accent-color,#ff9800);font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500)}
 .okno-opis img[src^="https://img.shields.io/"]{height:20px!important;width:auto!important;margin:2px 1px;vertical-align:middle;border-radius:4px}
+.okno-opis .okno-kafle{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:8px;margin:16px 0}
+.okno-opis .okno-kafle>a{display:block;text-decoration:none!important;color:inherit!important;min-width:0}
+.okno-opis .okno-kafel{display:flex;flex-direction:column;align-items:center;gap:4px;box-sizing:border-box;height:100%;padding:16px 12px;text-align:center;
+background:var(--ha-card-background,var(--card-background-color));border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--divider-color));border-radius:var(--ha-card-border-radius,12px)}
+.okno-opis a:hover .okno-kafel{background:var(--secondary-background-color)}
+.okno-opis .okno-kafel-ik{display:block;width:56px;height:56px;overflow:hidden;flex:none;margin-bottom:4px}
+.okno-opis .okno-kafel-ik img{display:block!important;width:117px!important;max-width:none!important;height:auto!important;margin:-6px 0 0 -30px!important}
+.okno-opis .okno-kafel-t{font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500);line-height:1.3;color:var(--primary-text-color)}
+.okno-opis .okno-kafel-o{font-size:var(--ha-font-size-m,14px);line-height:var(--ha-line-height-normal,1.5);color:var(--secondary-text-color)}
+.okno-opis .okno-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;height:var(--ha-button-height,40px);padding:0 16px;
+ border-radius:var(--ha-border-radius-pill,9999px);background:var(--ha-color-fill-primary-loud-resting,var(--primary-color));color:var(--ha-color-on-primary-loud,var(--text-primary-color,#fff))!important;
+ font-family:var(--ha-font-family-body,inherit);font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);line-height:1;text-decoration:none!important;vertical-align:middle;transition:background-color .15s}
+.okno-opis a:hover .okno-btn{background:var(--ha-color-fill-primary-loud-hover,var(--primary-color));filter:brightness(1.08)}
+.okno-opis .okno-btn svg{width:20px;height:20px;fill:currentColor;flex:none}
 .okno-opis a{text-decoration:none}
 .okno-opis a:hover{text-decoration:underline}`;
+  // przyciski My Home Assistant w opisie (obrazki img/przyciski*/…) → prawdziwy przycisk w stylu przycisku HA (ha-button),
+  // rozmiary i kolory tylko ze zmiennych motywu HA; obrazek zostaje w środku ukryty (na wypadek błędu wystarczy go pokazać)
+  const IKONY_PRZ = {
+    hacs_repository: "M18.36 9L18.96 12H5.04L5.64 9H18.36M20 4H4V6H20V4M20 7H4L3 12V14H4V20H14V14H18V20H20V14H21V12L20 7M6 18V14H12V18H6Z",
+    config_flow_start: "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z",
+    config_flow_start2: "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z",
+    integration: "M20.5,11H19V7C19,5.89 18.1,5 17,5H13V3.5A2.5,2.5 0 0,0 10.5,1A2.5,2.5 0 0,0 8,3.5V5H4A2,2 0 0,0 2,7V10.8H3.5C5,10.8 6.2,12 6.2,13.5C6.2,15 5,16.2 3.5,16.2H2V20A2,2 0 0,0 4,22H7.8V20.5C7.8,19 9,17.8 10.5,17.8C12,17.8 13.2,19 13.2,20.5V22H17A2,2 0 0,0 19,20V16H20.5A2.5,2.5 0 0,0 23,13.5A2.5,2.5 0 0,0 20.5,11Z",
+    updates: "M21,10.12H14.22L16.96,7.3C14.23,4.6 9.81,4.5 7.08,7.2C4.35,9.91 4.35,14.28 7.08,17C9.81,19.7 14.23,19.7 16.96,17C18.32,15.65 19,14.08 19,12.1H21C21,14.08 20.12,16.65 18.36,18.39C14.85,21.87 9.15,21.87 5.64,18.39C2.14,14.92 2.11,9.28 5.62,5.81C9.13,2.34 14.76,2.34 18.27,5.81L21,3V10.12M12.5,8V12.25L16,14.33L15.28,15.54L11,13V8H12.5Z",
+  };
+  // 8 kafelków funkcji: w HA prawdziwe kafelki (tekst jak w HA, czytelny i skalowany na każdym ekranie), z obrazka zostaje sama ikona
+  const KAFLE = {
+    pl: [["Pogoda", "Prawdziwa pogoda za oknem: słońce, deszcz, śnieg, noc"], ["Sterowanie palcem", "Przeciągnij roletę w górę albo w dół"], ["Kreator", "7 prostych kroków, wszystko ustawi sam"], ["Czujnik okna", "Pokazuje okno uchylone i otwarte"], ["Prędkość silnika", "Roleta na ekranie jedzie jak prawdziwa"], ["Kolory", "Ponad 30 kolorów i okleiny drewna"], ["Jasny i ciemny", "Pasuje do motywu Home Assistanta"], ["Polski i angielski", "Język sam z Twojego profilu HA"]],
+    en: [["Real weather", "Sun, rain, snow and night outside the window"], ["Swipe to move", "Drag the blind up or down"], ["Setup wizard", "7 easy steps, sets up everything"], ["Window sensor", "Shows a tilted or open window"], ["Motor speed", "Moves just like your real blind"], ["Colours", "30+ colours and wood finishes"], ["Light and dark", "Matches your Home Assistant theme"], ["Polish and English", "Language from your HA profile"]],
+    de: [["Wetter", "Sonne, Regen, Schnee und Nacht vor dem Fenster"], ["Wischen", "Rollo mit dem Finger hoch oder runter ziehen"], ["Assistent", "7 einfache Schritte, stellt alles selbst ein"], ["Fenstersensor", "Zeigt gekippte und offene Fenster"], ["Motortempo", "Fährt wie dein echtes Rollo"], ["Farben", "Über 30 Farben und Holzdekore"], ["Hell und dunkel", "Passt zu deinem Home-Assistant-Design"], ["Polnisch und Englisch", "Sprache aus deinem HA-Profil"]],
+    fr: [["Météo", "Soleil, pluie, neige et nuit derrière la fenêtre"], ["Glisser", "Monte ou descends le store avec un doigt"], ["Assistant", "7 étapes simples, il règle tout"], ["Capteur de fenêtre", "Montre une fenêtre entrouverte ou ouverte"], ["Vitesse du moteur", "Bouge comme ton vrai store"], ["Couleurs", "Plus de 30 couleurs et finitions bois"], ["Clair et sombre", "Suit le thème de Home Assistant"], ["Polonais et anglais", "Langue de ton profil HA"]],
+    cs: [["Počasí", "Slunce, déšť, sníh a noc za oknem"], ["Tažení prstem", "Roletu táhni prstem nahoru nebo dolů"], ["Průvodce", "7 jednoduchých kroků, vše nastaví sám"], ["Okenní senzor", "Ukáže vyklopené i otevřené okno"], ["Rychlost motoru", "Jede jako tvoje skutečná roleta"], ["Barvy", "Přes 30 barev a dřevodekorů"], ["Světlý a tmavý", "Ladí s motivem Home Assistant"], ["Polština a angličtina", "Jazyk podle tvého profilu HA"]],
+  };
+  const KAFEL = /\/z3-kafelki5-([a-z]{2})-(\d)\.svg/;
+  const kafel = (el) => {
+    const m = KAFEL.exec(el.dataset.oknoOrg || el.getAttribute("src") || "");
+    const t = m && KAFLE[m[1]] && KAFLE[m[1]][+m[2] - 1], a = el.parentElement;
+    if (!t || el.closest(".okno-kafel") || !a || a.tagName !== "A" || !a.parentElement) return;
+    a.parentElement.classList.add("okno-kafle");
+    const d = el.ownerDocument, k = d.createElement("span"), ik = d.createElement("span"), ty = d.createElement("span"), op = d.createElement("span");
+    k.className = "okno-kafel"; ik.className = "okno-kafel-ik"; ty.className = "okno-kafel-t"; op.className = "okno-kafel-o";
+    ty.textContent = t[0]; op.textContent = t[1];
+    a.insertBefore(k, el); ik.appendChild(el); k.append(ik, ty, op);
+  };
+  const PRZYCISK = /\/img\/przyciski\d*\/([a-z_0-9]+)-[a-z]{2}\.svg/;
+  const przycisk = (el) => {
+    const m = PRZYCISK.exec(el.dataset.oknoOrg || el.getAttribute("src") || "");
+    if (!m || el.dataset.oknoBtn || !el.closest("a") || !el.alt) return;
+    el.dataset.oknoBtn = "1";
+    const b = el.ownerDocument.createElement("span");
+    b.className = "okno-btn";
+    const d = IKONY_PRZ[m[1]];
+    b.innerHTML = (d ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>` : "");
+    b.appendChild(el.ownerDocument.createTextNode(el.alt));
+    el.style.display = "none";
+    el.parentNode.insertBefore(b, el);
+  };
+  // zrzuty ekranu w skali HA: okienka HA rysowane ok. 2,45× większe (2370 px ≈ 967 px w HA) – w HA pokazane 1:1, na węższym ekranie zmniejszone do szerokości
+  const skala = (el) => {
+    if (el.dataset.oknoSkala || !(+el.getAttribute("width") >= 500)) return;
+    const ustaw = () => {
+      const w = el.naturalWidth;
+      if (!w) return;
+      el.dataset.oknoSkala = "1";
+      el.style.width = `min(100%, ${w >= 1500 ? Math.round(w / 2.45) : w}px)`;
+      el.style.height = "auto";
+    };
+    if (el.complete && el.naturalWidth) ustaw();
+    else if (!el.dataset.oknoSkalaCzeka) { el.dataset.oknoSkalaCzeka = "1"; el.addEventListener("load", ustaw, { once: true }); }
+  };
   const SPIS = /^https:\/\/github\.com\/superdarco78\/okno-ha-integracja(?:\/blob\/main\/README[^#]*)?#/;
   const wyglad = (el) => {
     const korzen = el.getRootNode();
@@ -357,7 +425,7 @@
     for (const el of korzen.querySelectorAll("*")) {
       if (++ile.n > 200000) return;
       try {
-        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); przypnijZwykly(el); if (NASZE.test(el.dataset.oknoOrg || el.getAttribute("src") || "")) wyglad(el); }
+        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); przypnijZwykly(el); if (NASZE.test(el.dataset.oknoOrg || el.getAttribute("src") || "")) { wyglad(el); przycisk(el); skala(el); kafel(el); opis(el); } }
         else if (el.tagName === "SOURCE") zrodlo(el);
         else if (el.tagName === "A" && naHacs()) link(el);
         else if (el.tagName === "IFRAME") {
@@ -380,8 +448,41 @@
     galeriaW = true;
     import(`/okno_ha/okno-ha-galeria.js?t=${Date.now()}`).catch(() => { galeriaW = false; });
   };
+  // v1.4.54: opis Motor HA w HACS jako osobna strona w stylu HA (okno-ha-opis.js we własnej ramce, treść z opis/<język>.html).
+  // HACS tej ramki nie widzi – nic z niej nie może zepsuć strony. Opis z GitHuba chowa się dopiero, gdy strona się narysuje;
+  // przy błędzie ramka znika, zostaje opis z GitHuba z poprawkami poniżej i dawną galerią.
+  let opisBlad = false;
+  const OPIS_T = Date.now(), OPIS_JEZYKI = ["pl", "en", "de", "fr", "cs"];
+  const opisJezyk = () => {
+    try { const z = localStorage.getItem("okno-ha-opis-jezyk"); if (OPIS_JEZYKI.includes(z)) return z; } catch (e) { /* tryb prywatny */ }
+    const h = document.querySelector("home-assistant")?.hass, j = String(h?.locale?.language || h?.language || "en").slice(0, 2).toLowerCase();
+    return OPIS_JEZYKI.includes(j) ? j : "en";
+  };
+  const opis = (el) => {
+    if (opisBlad || !/^\/hacs\/repository\//.test(location.pathname)) return;
+    const md = el.closest("ha-markdown-element, .markdown-body");
+    const rodzic = md && md.parentNode;
+    if (!rodzic) return;
+    const jest = [...rodzic.children].find((n) => n.classList && n.classList.contains("okno-ha-opis-ramka"));
+    if (jest) { if (jest.__oknoHaGotowa && md.style.display !== "none") md.style.display = "none"; return; }
+    const doc = md.ownerDocument, f = doc.createElement("iframe");
+    f.className = "okno-ha-opis-ramka";
+    f.setAttribute("title", "Motor HA");
+    f.setAttribute("scrolling", "no");
+    Object.assign(f.style, { display: "block", width: "100%", height: "0", border: "0", background: "transparent", colorScheme: "normal" });
+    f.__oknoHaOpis = { jez: opisJezyk(), t: OPIS_T, wersja: PRZYPNIJ ? PRZYPNIJ.integ : "",
+      zapisz: (j) => { try { localStorage.setItem("okno-ha-opis-jezyk", j); } catch (e) { /* tryb prywatny */ } } };
+    let koniec = false;
+    f.__oknoHaBlad = () => { if (koniec) return; koniec = true; opisBlad = true; f.remove(); md.style.display = ""; galeria(); };
+    f.__oknoHaGotowe = () => { if (koniec) return; koniec = true; f.__oknoHaGotowa = true; md.style.display = "none"; };
+    setTimeout(() => { if (!koniec) f.__oknoHaBlad(); }, 30000);   // nic nie przyszło – zostaje opis z GitHuba
+    f.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><script type="module">import("/okno_ha/okno-ha-opis.js?t=${OPIS_T}").catch(()=>frameElement.__oknoHaBlad&&frameElement.__oknoHaBlad())<\/script></body></html>`;
+    rodzic.insertBefore(f, md);
+  };
+  // strona opisu (ramka) przemalowuje swoje obrazki tym samym kodem co opis z GitHuba
+  window.__oknoHaPrzemaluj = (el) => przemaluj(el);
   const naHacs = () => /^\/(hacs|config)/.test(location.pathname);   // HACS i okna konfiguracji (kreator integracji)
-  const skanuj = () => { if (zywy() && naHacs()) { galeria(); przejdz(document); } };
+  const skanuj = () => { if (zywy() && naHacs()) { if (opisBlad) galeria(); przejdz(document); } };
   // adresy w HA: przyciski My Home Assistant, języki opisu i spis treści – na GitHubie linki zostają bez zmian
   const mojAdres = (nazwa, zapytanie) => `${nazwa.startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${nazwa}${zapytanie || ""}`;
   const MY = /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/;
@@ -429,16 +530,32 @@
         .catch(() => window.open(h, "_blank"));
       return;
     }
-    if (!h || !KOTWICA.test(h)) return;
-    // nagłówek sekcji: z kotwicy (<a name> w opisie → alt obrazka nagłówka) albo z tekstu linku
-    const kotwica = decodeURIComponent(h.split("#")[1] || ""), md = (droga.find((n) => n.tagName === "HA-MARKDOWN") || {}).content || "";
-    const zKotwicy = new RegExp(`<a name="${kotwica.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"></a>\\s*<h[1-4]>.*?alt="([^"]+)"`).exec(md);
-    const tekst = zKotwicy ? zKotwicy[1] : a.textContent.trim(), korzen = a.getRootNode();
-    const cel = [...korzen.querySelectorAll("h1 img[alt],h2 img[alt],h3 img[alt],h4 img[alt]")].find((i) => i.alt.trim() === tekst)
-      || [...korzen.querySelectorAll("h1,h2,h3,h4")].find((n) => n.textContent.trim() === tekst);
-    if (!cel) return;
-    e.preventDefault(); e.stopPropagation();
-    cel.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!h) return;
+    // każdy link w naszym opisie obsługujemy sami: domyślne przejście w ramce HACS potrafi wyrzucić do listy integracji
+    const nasz = droga.some((n) => n.classList && n.classList.contains("okno-opis"));
+    const spis = KOTWICA.test(h);
+    if (spis || (nasz && h.startsWith("#"))) {
+      e.preventDefault(); e.stopPropagation();
+      const kotwica = decodeURIComponent(h.split("#")[1] || ""), korzen = a.getRootNode();
+      let cel = null;
+      if (spis) {
+        // nagłówek sekcji: z kotwicy (<a name> w opisie → alt obrazka nagłówka) albo z tekstu linku
+        const md = (droga.find((n) => n.tagName === "HA-MARKDOWN") || {}).content || "";
+        const zKotwicy = new RegExp(`<a name="${kotwica.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"></a>\\s*<h[1-4]>.*?alt="([^"]+)"`).exec(md);
+        const tekst = zKotwicy ? zKotwicy[1] : a.textContent.trim();
+        cel = [...korzen.querySelectorAll("h1 img[alt],h2 img[alt],h3 img[alt],h4 img[alt]")].find((i) => i.alt.trim() === tekst)
+          || [...korzen.querySelectorAll("h1,h2,h3,h4")].find((n) => n.textContent.trim() === tekst);
+      }
+      cel = cel || [...korzen.querySelectorAll("a[name],[id]")].find((n) => n.getAttribute("name") === kotwica || n.id === kotwica);
+      // obrazek/nagłówek z linkiem do samego siebie (#j…): zostań w miejscu
+      if (cel && cel !== a) cel.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    // linki zewnętrzne (GitHub, forum, licencja): zawsze w nowej karcie, opis HACS zostaje otwarty
+    if (nasz && /^https?:\/\//.test(h) && !h.startsWith(location.origin)) {
+      e.preventDefault(); e.stopPropagation();
+      window.open(h, "_blank", "noopener");
+    }
   };
   // panel HACS jest w ramce (iframe) – kliknięcia w opisie nie wychodzą z niej, więc słuchaj też w ramce
   sluchaj = (d) => { if (d.__oknoHaKlik !== JA) { d.__oknoHaKlik = JA; d.addEventListener("click", klik, true); } };

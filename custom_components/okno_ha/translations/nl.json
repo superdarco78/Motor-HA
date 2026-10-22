@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Motor HA – stap 1 van 5: zonwering",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nKies de zonwering van dit raam. Kies bij een raam met twee vleugels er twee (links en rechts) of één groep.\n\n🪄 Liever de wizard met cirkels en afbeeldingen, zoals in de kaart? **[Open de wizard met cirkels](/okno-ha)**",
+        "description": "![]({obrazki}/kreator-pasek-1-nl.png)\n\nKies de zonwering van dit raam. Kies bij een raam met twee vleugels er twee (links en rechts) of één groep.\n\n🪄 Liever de wizard met cirkels en afbeeldingen, zoals in de kaart? **[Open de wizard met cirkels](/okno-ha)**",
         "data": {
           "name": "Naam van het raam",
           "rolety": "Zonwering (één of twee)"
@@ -15,7 +15,7 @@
       },
       "okno": {
         "title": "Stap 2 van 5: raam en sensoren",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nHoeveel vleugels het raam heeft en of er opensensoren zijn. Sensoren zijn optioneel.",
+        "description": "![]({obrazki}/kreator-pasek-2-nl.png)\n\nHoeveel vleugels het raam heeft en of er opensensoren zijn. Sensoren zijn optioneel.",
         "data": {
           "skrzydla": "Aantal vleugels",
           "czujnik_lewe": "Sensor linkervleugel",
@@ -35,7 +35,7 @@
       },
       "silnik": {
         "title": "⚙️ Stap 3 van 5: motor",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nDe kaart beweegt in het tempo van de motor. De motorsnelheid is van het rolluikapparaat genomen (als dat er een heeft, bijv. Moes). Berekende looptijd: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-nl.png)\n\nDe kaart beweegt in het tempo van de motor. De motorsnelheid is van het rolluikapparaat genomen (als dat er een heeft, bijv. Moes). Berekende looptijd: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motorsnelheid – links",
           "predkosc_prawa": "Motorsnelheid – rechts",
@@ -53,7 +53,7 @@
       },
       "pogoda": {
         "title": "🌤️ Stap 4 van 5: weer buiten",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nBuiten het raam zie je het echte weer. Leeg laten en de kaart gebruikt internetweer voor je huis.",
+        "description": "![]({obrazki}/kreator-pasek-4-nl.png)\n\nBuiten het raam zie je het echte weer. Leeg laten en de kaart gebruikt internetweer voor je huis.",
         "data": {
           "pogoda": "Weer",
           "wstecz": "⬅️ Terug naar de vorige stap"
@@ -65,7 +65,7 @@
       },
       "wyglad": {
         "title": "🎨 Stap 5 van 5: uiterlijk",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nKies type en kleuren van de zonwering aan de hand van de afbeeldingen hieronder.\n\n![Soorten zonwering]({obrazki}/oslony-kafle-v2-en.png)\n\n![Kleuren zonwering]({obrazki}/kolory-v2-en.png)\n\n![Kozijnkleuren]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-nl.png)\n\nKies type en kleuren van de zonwering aan de hand van de afbeeldingen hieronder.\n\n![Soorten zonwering]({obrazki}/oslony-kafle-v2-en.png)\n\n![Kleuren zonwering]({obrazki}/kolory-v2-en.png)\n\n![Kozijnkleuren]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Soort zonwering",
           "kolor": "Kleur zonwering",
@@ -96,7 +96,7 @@
     "step": {
       "user": {
         "title": "Motor HA – stap 1 van 5: zonwering",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nKies de zonwering van dit raam. Kies bij een raam met twee vleugels er twee (links en rechts) of één groep.",
+        "description": "![]({obrazki}/kreator-pasek-1-nl.png)\n\nKies de zonwering van dit raam. Kies bij een raam met twee vleugels er twee (links en rechts) of één groep.",
         "data": {
           "name": "Naam van het raam",
           "rolety": "Zonwering (één of twee)"
@@ -108,7 +108,7 @@
       },
       "okno": {
         "title": "Stap 2 van 5: raam en sensoren",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nHoeveel vleugels het raam heeft en of er opensensoren zijn. Sensoren zijn optioneel.",
+        "description": "![]({obrazki}/kreator-pasek-2-nl.png)\n\nHoeveel vleugels het raam heeft en of er opensensoren zijn. Sensoren zijn optioneel.",
         "data": {
           "skrzydla": "Aantal vleugels",
           "czujnik_lewe": "Sensor linkervleugel",
@@ -128,7 +128,7 @@
       },
       "silnik": {
         "title": "⚙️ Stap 3 van 5: motor",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nDe kaart beweegt in het tempo van de motor. De motorsnelheid is van het rolluikapparaat genomen (als dat er een heeft, bijv. Moes). Berekende looptijd: **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-nl.png)\n\nDe kaart beweegt in het tempo van de motor. De motorsnelheid is van het rolluikapparaat genomen (als dat er een heeft, bijv. Moes). Berekende looptijd: **{czas}**.",
         "data": {
           "predkosc_lewa": "Motorsnelheid – links",
           "predkosc_prawa": "Motorsnelheid – rechts",
@@ -146,7 +146,7 @@
       },
       "pogoda": {
         "title": "🌤️ Stap 4 van 5: weer buiten",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nBuiten het raam zie je het echte weer. Leeg laten en de kaart gebruikt internetweer voor je huis.",
+        "description": "![]({obrazki}/kreator-pasek-4-nl.png)\n\nBuiten het raam zie je het echte weer. Leeg laten en de kaart gebruikt internetweer voor je huis.",
         "data": {
           "pogoda": "Weer",
           "wstecz": "⬅️ Terug naar de vorige stap"
@@ -158,7 +158,7 @@
       },
       "wyglad": {
         "title": "🎨 Stap 5 van 5: uiterlijk",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nKies type en kleuren van de zonwering aan de hand van de afbeeldingen hieronder.\n\n![Soorten zonwering]({obrazki}/oslony-kafle-v2-en.png)\n\n![Kleuren zonwering]({obrazki}/kolory-v2-en.png)\n\n![Kozijnkleuren]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-nl.png)\n\nKies type en kleuren van de zonwering aan de hand van de afbeeldingen hieronder.\n\n![Soorten zonwering]({obrazki}/oslony-kafle-v2-en.png)\n\n![Kleuren zonwering]({obrazki}/kolory-v2-en.png)\n\n![Kozijnkleuren]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Soort zonwering",
           "kolor": "Kleur zonwering",

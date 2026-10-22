@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Motor HA – étape 1 sur 5 : store",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nChoisissez le store de cette fenêtre. Pour une fenêtre à deux battants, choisissez deux stores (gauche et droite) ou un groupe.\n\n🪄 Vous préférez l’assistant avec cercles et images, comme dans la carte ? **[Ouvrir l’assistant avec cercles](/okno-ha)**",
+        "description": "![]({obrazki}/kreator-pasek-1-fr.png)\n\nChoisissez le store de cette fenêtre. Pour une fenêtre à deux battants, choisissez deux stores (gauche et droite) ou un groupe.\n\n🪄 Vous préférez l’assistant avec cercles et images, comme dans la carte ? **[Ouvrir l’assistant avec cercles](/okno-ha)**",
         "data": {
           "name": "Nom de la fenêtre",
           "rolety": "Store (un ou deux)"
@@ -15,7 +15,7 @@
       },
       "okno": {
         "title": "Étape 2 sur 5 : fenêtre et capteurs",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nCombien de battants a la fenêtre et si elle a des capteurs d’ouverture. Les capteurs sont facultatifs.",
+        "description": "![]({obrazki}/kreator-pasek-2-fr.png)\n\nCombien de battants a la fenêtre et si elle a des capteurs d’ouverture. Les capteurs sont facultatifs.",
         "data": {
           "skrzydla": "Nombre de battants",
           "czujnik_lewe": "Capteur du battant gauche",
@@ -35,7 +35,7 @@
       },
       "silnik": {
         "title": "⚙️ Étape 3 sur 5 : moteur",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nLa carte bouge au rythme du moteur. La vitesse du moteur a été prise sur l’appareil du volet (s’il en a une, par ex. Moes). Durée de course calculée : **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-fr.png)\n\nLa carte bouge au rythme du moteur. La vitesse du moteur a été prise sur l’appareil du volet (s’il en a une, par ex. Moes). Durée de course calculée : **{czas}**.",
         "data": {
           "predkosc_lewa": "Vitesse du moteur – gauche",
           "predkosc_prawa": "Vitesse du moteur – droite",
@@ -53,7 +53,7 @@
       },
       "pogoda": {
         "title": "🌤️ Étape 4 sur 5 : météo extérieure",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nLa vraie météo s’affiche derrière la fenêtre. Laissez vide et la carte utilise la météo Internet de votre domicile.",
+        "description": "![]({obrazki}/kreator-pasek-4-fr.png)\n\nLa vraie météo s’affiche derrière la fenêtre. Laissez vide et la carte utilise la météo Internet de votre domicile.",
         "data": {
           "pogoda": "Météo",
           "wstecz": "⬅️ Revenir à l’étape précédente"
@@ -65,7 +65,7 @@
       },
       "wyglad": {
         "title": "🎨 Étape 5 sur 5 : apparence",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nChoisissez le type et les couleurs du store d’après les images ci-dessous.\n\n![Types de stores]({obrazki}/oslony-kafle-v2-en.png)\n\n![Couleurs des stores]({obrazki}/kolory-v2-en.png)\n\n![Couleurs de cadre]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-fr.png)\n\nChoisissez le type et les couleurs du store d’après les images ci-dessous.\n\n![Types de stores]({obrazki}/oslony-kafle-v2-en.png)\n\n![Couleurs des stores]({obrazki}/kolory-v2-en.png)\n\n![Couleurs de cadre]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Type de store",
           "kolor": "Couleur du store",
@@ -96,7 +96,7 @@
     "step": {
       "user": {
         "title": "Motor HA – étape 1 sur 5 : store",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nChoisissez le store de cette fenêtre. Pour une fenêtre à deux battants, choisissez deux stores (gauche et droite) ou un groupe.",
+        "description": "![]({obrazki}/kreator-pasek-1-fr.png)\n\nChoisissez le store de cette fenêtre. Pour une fenêtre à deux battants, choisissez deux stores (gauche et droite) ou un groupe.",
         "data": {
           "name": "Nom de la fenêtre",
           "rolety": "Store (un ou deux)"
@@ -108,7 +108,7 @@
       },
       "okno": {
         "title": "Étape 2 sur 5 : fenêtre et capteurs",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\nCombien de battants a la fenêtre et si elle a des capteurs d’ouverture. Les capteurs sont facultatifs.",
+        "description": "![]({obrazki}/kreator-pasek-2-fr.png)\n\nCombien de battants a la fenêtre et si elle a des capteurs d’ouverture. Les capteurs sont facultatifs.",
         "data": {
           "skrzydla": "Nombre de battants",
           "czujnik_lewe": "Capteur du battant gauche",
@@ -128,7 +128,7 @@
       },
       "silnik": {
         "title": "⚙️ Étape 3 sur 5 : moteur",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nLa carte bouge au rythme du moteur. La vitesse du moteur a été prise sur l’appareil du volet (s’il en a une, par ex. Moes). Durée de course calculée : **{czas}**.",
+        "description": "![]({obrazki}/kreator-pasek-3-fr.png)\n\nLa carte bouge au rythme du moteur. La vitesse du moteur a été prise sur l’appareil du volet (s’il en a une, par ex. Moes). Durée de course calculée : **{czas}**.",
         "data": {
           "predkosc_lewa": "Vitesse du moteur – gauche",
           "predkosc_prawa": "Vitesse du moteur – droite",
@@ -146,7 +146,7 @@
       },
       "pogoda": {
         "title": "🌤️ Étape 4 sur 5 : météo extérieure",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\nLa vraie météo s’affiche derrière la fenêtre. Laissez vide et la carte utilise la météo Internet de votre domicile.",
+        "description": "![]({obrazki}/kreator-pasek-4-fr.png)\n\nLa vraie météo s’affiche derrière la fenêtre. Laissez vide et la carte utilise la météo Internet de votre domicile.",
         "data": {
           "pogoda": "Météo",
           "wstecz": "⬅️ Revenir à l’étape précédente"
@@ -158,7 +158,7 @@
       },
       "wyglad": {
         "title": "🎨 Étape 5 sur 5 : apparence",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\nChoisissez le type et les couleurs du store d’après les images ci-dessous.\n\n![Types de stores]({obrazki}/oslony-kafle-v2-en.png)\n\n![Couleurs des stores]({obrazki}/kolory-v2-en.png)\n\n![Couleurs de cadre]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-fr.png)\n\nChoisissez le type et les couleurs du store d’après les images ci-dessous.\n\n![Types de stores]({obrazki}/oslony-kafle-v2-en.png)\n\n![Couleurs des stores]({obrazki}/kolory-v2-en.png)\n\n![Couleurs de cadre]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "Type de store",
           "kolor": "Couleur du store",

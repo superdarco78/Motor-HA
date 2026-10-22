@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Motor HA – ステップ 1/5：シェード",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nこの窓のシェードを選んでください。2 枚扉の窓なら 2 つ（左と右）または 1 つのグループを選びます。\n\n🪄 カードと同じ、丸とイラストのウィザードがよいですか？ **[丸のウィザードを開く](/okno-ha)**",
+        "description": "![]({obrazki}/kreator-pasek-1-ja.png)\n\nこの窓のシェードを選んでください。2 枚扉の窓なら 2 つ（左と右）または 1 つのグループを選びます。\n\n🪄 カードと同じ、丸とイラストのウィザードがよいですか？ **[丸のウィザードを開く](/okno-ha)**",
         "data": {
           "name": "窓の名前",
           "rolety": "シェード（1 つまたは 2 つ）"
@@ -15,7 +15,7 @@
       },
       "okno": {
         "title": "ステップ 2/5：窓とセンサー",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\n窓の枚数と、開閉センサーがあるかどうか。センサーは任意です。",
+        "description": "![]({obrazki}/kreator-pasek-2-ja.png)\n\n窓の枚数と、開閉センサーがあるかどうか。センサーは任意です。",
         "data": {
           "skrzydla": "窓の枚数",
           "czujnik_lewe": "左の窓のセンサー",
@@ -35,7 +35,7 @@
       },
       "silnik": {
         "title": "⚙️ ステップ 3/5：モーター",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nカードはモーターの速さで動きます。モーター回転数はシャッターのデバイスから取得しました（ある場合、例：Moes）。計算された移動時間：**{czas}**。",
+        "description": "![]({obrazki}/kreator-pasek-3-ja.png)\n\nカードはモーターの速さで動きます。モーター回転数はシャッターのデバイスから取得しました（ある場合、例：Moes）。計算された移動時間：**{czas}**。",
         "data": {
           "predkosc_lewa": "モーター回転数 – 左",
           "predkosc_prawa": "モーター回転数 – 右",
@@ -53,7 +53,7 @@
       },
       "pogoda": {
         "title": "🌤️ ステップ 4/5：外の天気",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\n窓の外に実際の天気が表示されます。空欄なら、カードは自宅の位置のインターネット天気を使います。",
+        "description": "![]({obrazki}/kreator-pasek-4-ja.png)\n\n窓の外に実際の天気が表示されます。空欄なら、カードは自宅の位置のインターネット天気を使います。",
         "data": {
           "pogoda": "天気",
           "wstecz": "⬅️ 前のステップに戻る"
@@ -65,7 +65,7 @@
       },
       "wyglad": {
         "title": "🎨 ステップ 5/5：見た目",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\n下の画像を見て、シェードの種類と色を選んでください。\n\n![シェードの種類]({obrazki}/oslony-kafle-v2-en.png)\n\n![シェードの色]({obrazki}/kolory-v2-en.png)\n\n![窓枠の色]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-ja.png)\n\n下の画像を見て、シェードの種類と色を選んでください。\n\n![シェードの種類]({obrazki}/oslony-kafle-v2-en.png)\n\n![シェードの色]({obrazki}/kolory-v2-en.png)\n\n![窓枠の色]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "シェードの種類",
           "kolor": "シェードの色",
@@ -96,7 +96,7 @@
     "step": {
       "user": {
         "title": "Motor HA – ステップ 1/5：シェード",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\nこの窓のシェードを選んでください。2 枚扉の窓なら 2 つ（左と右）または 1 つのグループを選びます。",
+        "description": "![]({obrazki}/kreator-pasek-1-ja.png)\n\nこの窓のシェードを選んでください。2 枚扉の窓なら 2 つ（左と右）または 1 つのグループを選びます。",
         "data": {
           "name": "窓の名前",
           "rolety": "シェード（1 つまたは 2 つ）"
@@ -108,7 +108,7 @@
       },
       "okno": {
         "title": "ステップ 2/5：窓とセンサー",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\n窓の枚数と、開閉センサーがあるかどうか。センサーは任意です。",
+        "description": "![]({obrazki}/kreator-pasek-2-ja.png)\n\n窓の枚数と、開閉センサーがあるかどうか。センサーは任意です。",
         "data": {
           "skrzydla": "窓の枚数",
           "czujnik_lewe": "左の窓のセンサー",
@@ -128,7 +128,7 @@
       },
       "silnik": {
         "title": "⚙️ ステップ 3/5：モーター",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\nカードはモーターの速さで動きます。モーター回転数はシャッターのデバイスから取得しました（ある場合、例：Moes）。計算された移動時間：**{czas}**。",
+        "description": "![]({obrazki}/kreator-pasek-3-ja.png)\n\nカードはモーターの速さで動きます。モーター回転数はシャッターのデバイスから取得しました（ある場合、例：Moes）。計算された移動時間：**{czas}**。",
         "data": {
           "predkosc_lewa": "モーター回転数 – 左",
           "predkosc_prawa": "モーター回転数 – 右",
@@ -146,7 +146,7 @@
       },
       "pogoda": {
         "title": "🌤️ ステップ 4/5：外の天気",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\n窓の外に実際の天気が表示されます。空欄なら、カードは自宅の位置のインターネット天気を使います。",
+        "description": "![]({obrazki}/kreator-pasek-4-ja.png)\n\n窓の外に実際の天気が表示されます。空欄なら、カードは自宅の位置のインターネット天気を使います。",
         "data": {
           "pogoda": "天気",
           "wstecz": "⬅️ 前のステップに戻る"
@@ -158,7 +158,7 @@
       },
       "wyglad": {
         "title": "🎨 ステップ 5/5：見た目",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\n下の画像を見て、シェードの種類と色を選んでください。\n\n![シェードの種類]({obrazki}/oslony-kafle-v2-en.png)\n\n![シェードの色]({obrazki}/kolory-v2-en.png)\n\n![窓枠の色]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-ja.png)\n\n下の画像を見て、シェードの種類と色を選んでください。\n\n![シェードの種類]({obrazki}/oslony-kafle-v2-en.png)\n\n![シェードの色]({obrazki}/kolory-v2-en.png)\n\n![窓枠の色]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "シェードの種類",
           "kolor": "シェードの色",
