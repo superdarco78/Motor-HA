@@ -1,819 +1,297 @@
 <p align="center">
-  <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/v/release/superdarco78/okno-ha-integracja?style=flat&label=version&color=009AC7" alt="version"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/downloads/superdarco78/okno-ha-integracja/total?style=flat&label=downloads&color=009AC7" alt="downloads"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=flat&label=stars&color=FF9800&logo=github" alt="stars"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/commits/main"><img src="https://img.shields.io/github/commit-activity/y/superdarco78/okno-ha-integracja?style=flat&label=activity&color=009AC7" alt="Activity"></a>
-  <br>
-  <a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-custom-009AC7?style=flat&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
-  <a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-009AC7?style=flat&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia"><img src="https://img.shields.io/badge/translations-PL%20%7C%20EN-009AC7?style=flat&logo=googletranslate&logoColor=white" alt="Translations"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-009AC7?style=flat" alt="license"></a>
-  <br>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/sprawdz.yml?style=flat&label=HACS%20validate&logo=homeassistantcommunitystore&logoColor=white" alt="HACS validate"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/wydanie.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/wydanie.yml?style=flat&label=release&logo=githubactions&logoColor=white" alt="release"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/issues"><img src="https://img.shields.io/github/issues/superdarco78/okno-ha-integracja?style=flat&label=issues&color=FF9800" alt="Issues"></a>
-  <a href="https://github.com/superdarco78"><img src="https://img.shields.io/badge/maintainer-%40superdarco78-009AC7?style=flat&logo=github" alt="maintainer"></a>
-  <br>
-  <a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/forum-Home%20Assistant-009AC7?style=flat&logo=discourse&logoColor=white" alt="Forum HA"></a>
-  <a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-009AC7?style=flat&logo=discourse&logoColor=white" alt="Forum PL"></a>
+<a href="https://github.com/superdarco78/Motor-HA/releases/latest"><img src="https://img.shields.io/github/v/release/superdarco78/Motor-HA?style=for-the-badge&label=version&color=009AC7" alt="version"></a>
+<a href="https://github.com/superdarco78/Motor-HA/releases"><img src="https://img.shields.io/github/downloads/superdarco78/Motor-HA/total?style=for-the-badge&label=downloads&color=4CAF50" alt="downloads"></a>
+<a href="https://github.com/superdarco78/Motor-HA/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/Motor-HA?style=for-the-badge&label=stars&color=FF9800&logo=github&logoColor=white" alt="stars"></a>
+<a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Custom-FF5722?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
+<br>
+<a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-18BCF2?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
+<a href="https://github.com/superdarco78/Motor-HA#licencja"><img src="https://img.shields.io/badge/languages-14-8E44AD?style=for-the-badge&logo=googletranslate&logoColor=white" alt="languages"></a>
+<a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-E53935?style=for-the-badge" alt="license"></a>
+<a href="https://github.com/superdarco78/Motor-HA/issues"><img src="https://img.shields.io/github/issues/superdarco78/Motor-HA?style=for-the-badge&label=issues&color=FFB300&logo=github&logoColor=white" alt="issues"></a>
+<br>
+<a href="https://github.com/superdarco78/Motor-HA/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/Motor-HA/sprawdz.yml?style=for-the-badge&label=HACS&color=41BDF5&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
+<a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/forum-Home%20Assistant-1B9AAA?style=for-the-badge&logo=discourse&logoColor=white" alt="forum"></a>
+<a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-D81B60?style=for-the-badge&logo=discourse&logoColor=white" alt="forum PL"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/superdarco78/okno-ha-integracja"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/pl.svg" alt="Polski" height="44"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/en-on.svg" alt="English" height="44"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_DE.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/de.svg" alt="Deutsch" height="44"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/fr.svg" alt="Français" height="44"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/jezyki/cs.svg" alt="Čeština" height="44"></a>
+<a href="https://github.com/superdarco78/Motor-HA"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/pl.svg" height="44" alt="Polski"></a>
+<a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/en-on.svg" height="44" alt="English"></a>
+<a href="https://github.com/superdarco78/Motor-HA/blob/main/README_DE.md"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/de.svg" height="44" alt="Deutsch"></a>
+<a href="https://github.com/superdarco78/Motor-HA/blob/main/README_FR.md"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/fr.svg" height="44" alt="Français"></a>
+<a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/cs.svg" height="44" alt="Čeština"></a>
 </p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/baner7-en.svg" width="100%" alt="Motor HA"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/en.svg" width="100%" alt="Motor HA – Open in HACS"></a></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/pokaz7/pokaz7-en.webp" alt="Animation: four shades, day and night, weather, movement" width="900"><br>
-<sub>Four shades, day and night, weather and movement</sub></p>
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/pokaz/en-ciemny.webp"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/pokaz/en-jasny.webp" width="100%" alt="Four devices: day-night blind, external venetian blind, awning and gate. Day, night and weather behind the glass."></picture><br><sub>Four devices: day-night blind, external venetian blind, awning and gate. Day, night and weather behind the glass.</sub></p>
 
-<h1 align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" height="44" align="absmiddle"> Motor HA – integration</h1>
+<h1 align="center">Motor HA</h1>
+<p align="center"><b>Windows, blinds, gates and garages in Home Assistant – just like the real thing.</b></p>
 
-<p align="center">Each window with a shade is a <b>device</b> in Home Assistant. A wizard with 7 circles and pictures, changes with <b>Configure</b>, the card added to a dashboard by itself, the Motor HA card bundled.</p>
-
-> [!NOTE]
-> Works with every shade motor in Home Assistant (`cover.*`): Zigbee, Z-Wave, Tuya, Shelly, Somfy and more. Windows with one or two sashes.
-
-<p align="center">
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-1.svg" alt="Weather"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#jak-sterowac"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-2.svg" alt="Touch control"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-kolka"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-3.svg" alt="Wizard"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-4.svg" alt="Window sensor"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kalibracja"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-5.svg" alt="Motor speed"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-6.svg" alt="Colours"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#karta-w-srodku"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-7.svg" alt="Light and dark"></a>
-<a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia"><img width="24%" src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-kafelki5-en-8.svg" alt="Polish and English"></a>
-</p>
-
-<a name="dlaczego"></a>
-<h2><a name="j1" href="#j1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/star-four-points.svg" height="28" alt="Why Motor HA?"></a> Why Motor HA?</h2>
-
-<a name="j2"></a>
-<table border="0" width="100%"><tr><th align="center" width="10%"></th><th align="left" width="37%">What you get</th><th align="left" width="53%">In plain words</th></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/home-heart.svg" height="40" alt=""></td><td align="left"><b>Looks like a real window</b></td><td align="left">The shade moves on screen like at home. You see the glass, frame and sashes.</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/weather-partly-cloudy.svg" height="40" alt=""></td><td align="left"><b>Real weather behind the glass</b></td><td align="left">Sun, clouds, rain, snow, fog. Day, sunset and night.</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/auto-fix.svg" height="40" alt=""></td><td align="left"><b>No YAML, no code</b></td><td align="left">The wizard finds everything. You just click.</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-shutter.svg" height="40" alt=""></td><td align="left"><b>17 shade types</b></td><td align="left">Shades, pleated, blinds, outdoor shutters, screens. Colours and frame finishes.</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/motion-sensor.svg" height="40" alt=""></td><td align="left"><b>Window sensors</b></td><td align="left">The card shows the window tilted or open.</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/update.svg" height="40" alt=""></td><td align="left"><b>One-click updates</b></td><td align="left">A new version shows up in Settings by itself.</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/theme-light-dark.svg" height="40" alt=""></td><td align="left"><b>Light and dark theme</b></td><td align="left">Matches the Home Assistant theme.</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cellphone-check.svg" height="40" alt=""></td><td align="left"><b>Phone, tablet, computer</b></td><td align="left">Works in the HA app and the browser.</td></tr></table>
-
-<a name="przed-i-po"></a>
-<h2><a name="j3" href="#j3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/chart-line.svg" height="28" alt="Before and after"></a> Before and after</h2>
-
-Left: the standard shade card in Home Assistant. Right: the same window with Motor HA.
-
-<p align="center"><b>⬅️ Before</b> · <b>After ➡️</b></p>
-
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Before">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="49%" alt="After"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="49%" alt="After"></p>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=flat&label=%E2%AD%90%20Star%20this%20repo&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
-
-<a name="rodzaje-oslon"></a>
-<h2><a name="j4" href="#j4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-shutter.svg" height="28" alt="Shade types"></a> Shade types</h2>
-
-17 types: 9 indoor and 8 outdoor. Pick one in the wizard or later in **Configure**.
-
-<a name="j5"></a>
-<p align="center"><a href="#j5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="17 shade types: 9 indoor and 8 outdoor"></a></p>
-
-
-<p>&nbsp;</p>
-
-<a name="galeria"></a>
-<h2><a name="j6" href="#j6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/palette.svg" height="28" alt="Gallery"></a> Gallery</h2>
-
-Pictures follow the theme (light or dark), just like the card in Home Assistant.
-
-**Weather outside:**
-
-<table>
-<tr>
-<td align="center" width="33%"><b>☀️ Sun</b><br><a name="j7"></a><a href="#j7"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-dzien.svg" width="100%"></a></td>
-<td align="center" width="33%"><b>🌧 Rain</b><br><a name="j8"></a><a href="#j8"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-deszcz.svg" width="100%"></a></td>
-<td align="center" width="33%"><b>❄️ Snow</b><br><a name="j9"></a><a href="#j9"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-snieg.svg" width="100%"></a></td>
-</tr>
-</table>
-
-**Time of day:**
-
-<table>
-<tr>
-<td align="center" width="33%"><b>☀️ Day</b><br><a name="j10"></a><a href="#j10"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-zwinieta.svg" width="100%"></a></td>
-<td align="center" width="33%"><b>🌅 Sunset</b><br><a name="j11"></a><a href="#j11"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-zachod.svg" width="100%"></a></td>
-<td align="center" width="33%"><b>🌙 Night</b><br><a name="j12"></a><a href="#j12"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-noc.svg" width="100%"></a></td>
-</tr>
-</table>
-
-**Window (from sensors):**
-
-<table>
-<tr>
-<td align="center" width="33%"><b>↘ Left tilted</b><br><a name="j13"></a><a href="#j13"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-uchylone.svg" width="100%"></a></td>
-<td align="center" width="33%"><b>↔ Right open</b><br><a name="j14"></a><a href="#j14"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-otwarte.svg" width="100%"></a></td>
-<td align="center" width="33%"><b>↘↔ Tilted and open</b><br><a name="j15"></a><a href="#j15"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/auto/z3-stany-jasne-en-okno.svg" width="100%"></a></td>
-</tr>
-</table>
-
-<a name="spis-tresci"></a>
-<h2><a name="j16" href="#j16"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/format-list-bulleted.svg" height="28" alt="Contents"></a> Contents</h2>
-
-<h2><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/rocket-launch.svg" height="40" align="absmiddle"> <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#dla-poczatkujacych">Part 1. For beginners</a> <sub>· this is all you need</sub></h2>
-<table role="presentation" border="0" width="100%"><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#dlaczego">Why Motor HA?</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#przed-i-po">Before and after</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#galeria">Gallery</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#instalacja">Step-by-step installation</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-kolka">Wizard with circles and pictures</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator">Wizard in “Add integration”: 5 steps</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#konfiguruj">Changing settings: Configure</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kolejne-okno">Another window</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kalibracja">Calibration and card on the dashboard</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#jak-sterowac">How to control</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#aktualizacja">Updates</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#slowniczek">Glossary: what do these words mean?</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#pytania-i-problemy">Questions and problems</a></h3></td></tr></table>
-
-<h2><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/wrench.svg" height="40" align="absmiddle"> <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#dla-zaawansowanych">Part 2. For advanced users</a> <sub>· optional</sub></h2>
-<table role="presentation" border="0" width="100%"><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#co-tworzy">What the integration creates</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#wszystkie-ustawienia">All settings</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#automatyzacje">The window in automations</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#karta-w-srodku">The bundled Motor HA card</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#recznie">Installation without HACS (manual)</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#usuwanie">Removing</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia">Translations</a></h3></td><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#wsparcie">Support</a></h3></td></tr><tr><td width="50%"><h3><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#licencja">License</a></h3></td></tr></table>
-
----
-
-<a name="dla-poczatkujacych"></a>
-<h1><a name="j17" href="#j17"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/rocket-launch.svg" height="36" alt="Part 1. For beginners"></a> Part 1. For beginners</h1>
+<p align="center">Motor HA turns every motor in Home Assistant into a <b>device with a card</b> that looks like your window, blind or gate. The wizard finds your devices by itself and asks only about what you have. Automation is optional: everything stays off until you turn it on.</p>
 
 > [!NOTE]
-> **This is all you need.** 7 steps, a few minutes. You can skip part 2.
+> Works with any motor in Home Assistant (`cover.*`): Zigbee, Z-Wave, Matter, Tuya, Shelly, Somfy and more. No YAML, no code.
+
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://img.shields.io/badge/-Open%20in%20HACS-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" height="36" alt="Open in HACS"></a> <a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=motor_ha"><img src="https://img.shields.io/badge/-Add%20integration-FF9800?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Add integration"></a></p>
+
+<table align="center">
+<tr>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#kreator"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/auto-fix.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>Wizard</b><br><sub>Finds your devices and asks only about what you have</sub></td>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#oslony"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>24 types</b><br><sub>Blinds, shutters, pleats, curtains, awnings, gates</sub></td>
+</tr>
+<tr>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#automatyka"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>Automation</b><br><sub>31 features, each one switched on separately</sub></td>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#automatyka"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle-outline.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>Reason for move</b><br><sub>See why a blind moved</sub></td>
+</tr>
+<tr>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#oslony"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/weather-partly-cloudy.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>Weather outside</b><br><sub>Sun, clouds, rain, snow and night</sub></td>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#powiadomienia"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/bell-ring-outline.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>Notifications</b><br><sub>Battery, no response, gate left open</sub></td>
+</tr>
+<tr>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#dom"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/home-outline.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>Whole home card</b><br><sub>All blinds on one card</sub></td>
+<td align="center" width="56"><a href="https://github.com/superdarco78/Motor-HA#licencja"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/translate.svg" width="48" height="48" alt=""></a></td><td valign="middle" width="45%"><b>14 languages</b><br><sub>Language from your HA profile</sub></td>
+</tr>
+</table>
+
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="34" height="34" alt=""> Contents</h2>
+<table><tr>
+<td valign="top" width="50%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/download.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#instalacja"><b>Installation</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/auto-fix.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#kreator"><b>Wizard step by step</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#oslony"><b>Blind and gate types</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#automatyka"><b>Automation</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#bramy"><b>Gates and garages</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/bell-ring-outline.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#powiadomienia"><b>Notifications</b></a></td>
+<td valign="top" width="50%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#encje"><b>What you get in Home Assistant</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/home-outline.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#dom"><b>Whole home card</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/update.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#aktualizacja"><b>Updating and removing</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#pytania"><b>Questions</b></a><br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="26" height="26" alt=""> <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_EN.md#licencja"><b>License</b></a></td>
+</tr></table>
 
 <a name="instalacja"></a>
-<h2><a name="j18" href="#j18"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/download.svg" height="28" alt="Step-by-step installation"></a> Step-by-step installation</h2>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/download.svg" width="34" height="34" alt=""> Installation</h2>
 
-<a name="krok-1"></a>
-<h3><a name="j19" href="#j19"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/magnify.svg" height="24" alt="Step 1: Click this button, then Open link"></a> Step 1: Click this button, then Open link</h3>
+<p><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://img.shields.io/badge/-Open%20in%20HACS-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" height="36" alt="Open in HACS"></a> <a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=motor_ha"><img src="https://img.shields.io/badge/-Add%20integration-FF9800?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Add integration"></a></p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=okno-ha-integracja&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/hacs_repository-en.svg" alt="Open in HACS" height="52"></a></p>
+<ol><li>Click <b>Open in HACS</b>, then <b>Download</b>.</li><li>Restart Home Assistant: <b>Settings → System → Restart</b>.</li><li>Click <b>Add integration</b> and choose <b>Motor HA</b>.</li><li>Go through the wizard. The card appears on the dashboard you picked.</li></ol>
 
-<a name="j20"></a>
-<p align="center"><a href="#j20"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-1.svg" width="900" alt="Motor HA in HACS: the Open link button"></a><br>
-<b>Motor HA in HACS: the Open link button</b></p>
-
-<b>What to click:</b>
-<ol><li>Click <b>Open link</b></li></ol>
-<p>ℹ️ The first time, enter the address of your HA.</p>
-
-<p>&nbsp;</p>
-
-<a name="krok-2"></a>
-<h3><a name="j21" href="#j21"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/puzzle.svg" height="24" alt="Step 2: Click Add"></a> Step 2: Click Add</h3>
-
-<a name="j22"></a>
-<p align="center"><a href="#j22"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-2.svg" width="900" alt="The “Add repository” dialog"></a><br>
-<b>The “Add repository” dialog</b></p>
-
-<b>What to click:</b>
-<ol><li>Click <b>Add</b></li></ol>
-
-<p>&nbsp;</p>
-
-<a name="krok-3"></a>
-<h3><a name="j23" href="#j23"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/download.svg" height="24" alt="Step 3: Click Download, then Download again"></a> Step 3: Click Download, then Download again</h3>
-
-<a name="j24"></a>
-<p align="center"><a href="#j24"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-3.svg" width="900" alt="Motor HA in HACS: the Download button"></a><br>
-<b>Motor HA in HACS: the Download button</b></p>
-
-<b>What to click:</b>
-<ol><li><b>Download</b> at the bottom right</li><li><b>Download</b> in the dialog</li></ol>
-
-<p>&nbsp;</p>
-
-<a name="krok-4"></a>
-<h3><a name="j25" href="#j25"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/power-plug.svg" height="24" alt="Step 4: Restart HA and wait 1–2 minutes"></a> Step 4: Restart HA and wait 1–2 minutes</h3>
-
-<a name="j26"></a>
-<p align="center"><a href="#j26"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-4.svg" width="900" alt="Settings: Restart"></a><br>
-<b>Settings: Restart</b></p>
-
-<b>What to click:</b>
-<ol><li>The <b>⏻</b> icon at the top right</li><li><b>Restart</b></li></ol>
-<p>ℹ️ Settings → System. Wait 1–2 minutes.</p>
-
-<p>&nbsp;</p>
-
-<a name="krok-5"></a>
-<h3><a name="j27" href="#j27"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/auto-fix.svg" height="24" alt="Step 5: Click this button and follow the wizard"></a> Step 5: Click this button and follow the wizard</h3>
-
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start-en.svg" alt="Add the Motor HA integration" height="52"></a></p>
-
-<a name="j28"></a>
-<p align="center"><a href="#j28"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-5.svg" width="900" alt="The “Add integration” wizard"></a><br>
-<b>The “Add integration” wizard</b></p>
-
-<b>What to click:</b>
-<ol><li>Enter a name and pick the shade</li><li><b>Next</b> (5 times)</li></ol>
-
-<p>&nbsp;</p>
-
-<a name="krok-6"></a>
-<h3><a name="j29" href="#j29"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cellphone-check.svg" height="24" alt="Step 6: Done: the window is a device"></a> Step 6: Done: the window is a device</h3>
-
-<a name="j30"></a>
-<p align="center"><a href="#j30"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-6.svg" width="900" alt="The window as a device in HA"></a><br>
-<b>The window as a device in HA</b></p>
-
-<b>What to click:</b>
-<ol><li>Motor HA: 1 device</li><li>Your window</li></ol>
-<p>ℹ️ Settings → Devices & services.</p>
-
-<p>&nbsp;</p>
-
-<a name="krok-7"></a>
-<h3><a name="j31" href="#j31"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-open-variant.svg" height="24" alt="Step 7: Add the card to a dashboard"></a> Step 7: Add the card to a dashboard</h3>
-
-<p align="center">Usually nothing to do: in the last wizard step the <b>📋 Add the window card to a dashboard</b> field places the card in a “Okna” section. Want to do it yourself? Pencil → <b>＋ Add card</b> → type <b>Okno</b> and pick the window.</p>
-
-<a name="j32"></a>
-<p align="center"><a href="#j32"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/dodaj-karte.svg" width="900" alt="Add card: type Okno and click the Motor HA card"></a><br>
-<b>Add card: type Okno and click the Motor HA card</b></p>
-
-<b>What to click:</b>
-<ol><li>Pencil: edit the dashboard</li><li>Type <b>Okno</b></li><li>Click the <b>Motor HA</b> card</li></ol>
-<p>ℹ️ Then pick the window, e.g. Okno Living room.</p>
-
-<p>&nbsp;</p>
-
-> [!NOTE]
-> The buttons open your Home Assistant. The first time, the page asks for the address of your HA.
-
----
-
-<a name="kreator-kolka"></a>
-<h2><a name="j33" href="#j33"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/auto-fix.svg" height="28" alt="Wizard with circles: 7 steps"></a> Wizard with circles: 7 steps</h2>
-
-Open the wizard with 7 circles and pictures in two ways: on the window device page click **⚙️ Visit** (point 1), or **Configure → 🪄 Wizard with circles and pictures**. Click any step in any order.
-
-<a name="j34"></a>
-<p align="center"><a href="#j34"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
-<b>Window device</b></p>
-
-<b>What to click:</b>
-<ol><li><b>Visit</b>: the 7-circle wizard</li><li><b>Calibrate</b>: measure travel time</li><li><b>Add to dashboard</b>: card on a dashboard</li></ol>
-<p>ℹ️ Calibration: the shade goes up, down and up. The time is saved by itself.</p>
-
-<p>&nbsp;</p>
-
-<a name="j35"></a>
-<table border="0" width="100%"><tr><th align="center" width="8%">Step</th><th align="center" width="7%"></th><th align="left" width="31%">What you choose</th><th align="left" width="54%">Why</th></tr><tr><td align="center">1</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-shutter.svg" height="40" alt=""></td><td align="left"><b>Shade</b></td><td align="left">Which shade (or group of shades) the window controls</td></tr><tr><td align="center">2</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-closed-variant.svg" height="40" alt=""></td><td align="left"><b>Window</b></td><td align="left">How many sashes and which shade is on which</td></tr><tr><td align="center">3</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/speedometer.svg" height="40" alt=""></td><td align="left"><b>Motor</b></td><td align="left">So the animation moves as fast as the real shade</td></tr><tr><td align="center">4</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-open-variant.svg" height="40" alt=""></td><td align="left"><b>Window sensors</b></td><td align="left">So the card shows a tilted or open window</td></tr><tr><td align="center">5</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/weather-partly-cloudy.svg" height="40" alt=""></td><td align="left"><b>Weather</b></td><td align="left">So the real weather shows behind the glass</td></tr><tr><td align="center">6</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/palette.svg" height="40" alt=""></td><td align="left"><b>Look and name</b></td><td align="left">Shade type, colours and name</td></tr><tr><td align="center">7</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/check-circle-outline.svg" height="40" alt=""></td><td align="left"><b>Summary</b></td><td align="left">Check everything and save</td></tr></table>
-
-> [!NOTE]
-> Not sure what to choose? Keep what is selected at the top of the list. The wizard picked the best match.
-
-<a name="kreator-krok-1"></a>
-<h4><a name="j36" href="#j36"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-shutter.svg" height="22" alt="Step 1: Shade"></a> Step 1: Shade</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/1-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
-
-<a name="j37"></a>
-<p align="center"><a href="#j37"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-1.svg" width="900" alt="Step 1: Shade"></a><br>
-<b>Wizard with circles: Step 1: Shade</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-krok-2"></a>
-<h4><a name="j38" href="#j38"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-closed-variant.svg" height="22" alt="Step 2: Window"></a> Step 2: Window</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/2-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
-
-<a name="j39"></a>
-<p align="center"><a href="#j39"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-2.svg" width="900" alt="Step 2: Window"></a><br>
-<b>Wizard with circles: Step 2: Window</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-krok-3"></a>
-<h4><a name="j40" href="#j40"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/speedometer.svg" height="22" alt="Step 3: Motor"></a> Step 3: Motor</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/3-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
-
-<a name="j41"></a>
-<p align="center"><a href="#j41"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-3.svg" width="900" alt="Step 3: Motor"></a><br>
-<b>Wizard with circles: Step 3: Motor</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-krok-4"></a>
-<h4><a name="j42" href="#j42"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-open-variant.svg" height="22" alt="Step 4: Window sensors"></a> Step 4: Window sensors</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/4-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
-
-<a name="j43"></a>
-<p align="center"><a href="#j43"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-4.svg" width="900" alt="Step 4: Window sensors"></a><br>
-<b>Wizard with circles: Step 4: Window sensors</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-krok-5"></a>
-<h4><a name="j44" href="#j44"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/weather-partly-cloudy.svg" height="22" alt="Step 5: Weather"></a> Step 5: Weather</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/5-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
-
-<a name="j45"></a>
-<p align="center"><a href="#j45"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-5.svg" width="900" alt="Step 5: Weather"></a><br>
-<b>Wizard with circles: Step 5: Weather</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-krok-6"></a>
-<h4><a name="j46" href="#j46"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/palette.svg" height="22" alt="Step 6: Look"></a> Step 6: Look</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/6-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
-
-<a name="j47"></a>
-<p align="center"><a href="#j47"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-6.svg" width="900" alt="Step 6: Look"></a><br>
-<b>Wizard with circles: Step 6: Look</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-krok-7"></a>
-<h4><a name="j48" href="#j48"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/check-circle-outline.svg" height="22" alt="Step 7: Save"></a> Step 7: Save</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-1.svg" width="11.60%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-2.svg" width="13.19%" alt="Step 2: Window"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-3.svg" width="13.19%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-4.svg" width="13.09%" alt="Step 4: Window sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-5.svg" width="13.19%" alt="Step 5: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-6"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-6.svg" width="13.24%" alt="Step 6: Look"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-krok-7"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek7b/7-7.svg" width="11.70%" alt="Step 7: Save"></a></p>
-
-<a name="j49"></a>
-<p align="center"><a href="#j49"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-kolka-7.svg" width="900" alt="Step 7: Save"></a><br>
-<b>Wizard with circles: Step 7: Save</b></p>
-
-
-<p>&nbsp;</p>
-
-> [!NOTE]
-> ✅ **Done.** Click **Save**. The window works.
-
----
+<details><summary><b>Manual installation (advanced)</b></summary>
+<p>Download <code>motor_ha.zip</code> from the <a href="https://github.com/superdarco78/Motor-HA/releases/latest">latest release</a>, unpack it into <code>config/custom_components/motor_ha</code> and restart Home Assistant.</p>
+</details>
 
 <a name="kreator"></a>
-<h2><a name="j50" href="#j50"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/tune.svg" height="28" alt="“Add integration” wizard: 5 steps"></a> “Add integration” wizard: 5 steps</h2>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/auto-fix.svg" width="34" height="34" alt=""> Wizard step by step</h2>
 
-After **Add integration** (installation step 5) HA shows a short 5-step wizard. The same settings as the circles, as plain fields.
+<p>The wizard has two modes. <b>Basic</b> asks a few simple questions. <b>Advanced</b> shows every option. First you tick what you have at home (the wizard ticks it for you after looking through Home Assistant), then you only see the steps that fit. Every step has a tip for the room you picked.</p>
 
-<a name="j51"></a>
-<table border="0" width="100%"><tr><th align="center" width="8%">Step</th><th align="center" width="7%"></th><th align="left" width="31%">What you choose</th><th align="left" width="54%">Why</th></tr><tr><td align="center">1</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-shutter.svg" height="40" alt=""></td><td align="left"><b>Shade</b></td><td align="left">Window name and shade (one or two: left, right)</td></tr><tr><td align="center">2</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-open-variant.svg" height="40" alt=""></td><td align="left"><b>Window and sensors</b></td><td align="left">How many sashes and window opening sensors</td></tr><tr><td align="center">3</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/speedometer.svg" height="40" alt=""></td><td align="left"><b>Motor</b></td><td align="left">Motor speed is picked automatically. Plus “Calibrate now”</td></tr><tr><td align="center">4</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/weather-partly-cloudy.svg" height="40" alt=""></td><td align="left"><b>Weather</b></td><td align="left">So the real weather shows behind the glass</td></tr><tr><td align="center">5</td><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/palette.svg" height="40" alt=""></td><td align="left"><b>Look</b></td><td align="left">Tiles of 17 shades, colours, frame finishes and the dashboard the card goes to</td></tr></table>
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/kreator/pasek-en.svg" width="100%" alt="Wizard step by step"></p>
 
-<a name="kreator-1"></a>
-<h4><a name="j52" href="#j52"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-shutter.svg" height="22" alt="Step 1: Shade"></a> Step 1: Shade</h4>
+<table><tr><th></th><th align="left">Step · What</th><th align="left">Why</th></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-tryb.svg" width="36" height="36" alt=""></td><td><b>1. Wizard mode</b><br>Choose how many questions you want to see.</td><td>Basic is enough for most people. Advanced shows every option and extra devices. You can change the mode later in “Configure”.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-mam.svg" width="36" height="36" alt=""></td><td><b>2. What you have at home</b><br>Tick what you have. The wizard searched Home Assistant and ticked what it found.</td><td>The wizard shows only the steps and features for ticked devices. You can add the rest later in “Configure”.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-urzadzenie.svg" width="36" height="36" alt=""></td><td><b>3. Device</b><br>Choose the motor (a shade or a gate), give it a name and pick the room.</td><td>Motor HA controls this motor, and the room lets you talk to Assist, e.g. “close the living room”.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-rodzaj.svg" width="36" height="36" alt=""></td><td><b>4. Type</b><br>Choose exactly what you have.</td><td>The card draws this device, and the automation knows what it can use.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-lamele.svg" width="36" height="36" alt=""></td><td><b>5. Slats</b><br>Set how the slats tilt.</td><td>You let light in without raising the blind.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-kolory.svg" width="36" height="36" alt=""></td><td><b>6. Colours</b><br>Choose the colour of the shade and the frame.</td><td>The window on screen looks like the real one.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-okno.svg" width="36" height="36" alt=""></td><td><b>7. Window</b><br>How many sashes the window has and how big it is on the card.</td><td>Each sash can have its own motor.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-czujniki.svg" width="36" height="36" alt=""></td><td><b>8. Sensors</b><br>Choose the window and door opening sensors.</td><td>The card shows a tilted or open sash, and the lock never lowers the shade onto an open window.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-fotokomorka.svg" width="36" height="36" alt=""></td><td><b>9. Photocell</b><br>Pick the gate obstacle sensor and the state that means “something is in the gate”.</td><td>The card shows the obstacle and you can get a notification. The photocell in the controller still stops the gate by itself.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-silnik.svg" width="36" height="36" alt=""></td><td><b>10. Motor</b><br>Enter the full travel time or leave 0.</td><td>The drawing moves as fast as the real motor. With 0 the card learns the time by itself after a few moves.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-pogoda.svg" width="36" height="36" alt=""></td><td><b>11. Weather</b><br>Choose the weather and outdoor sensors.</td><td>Real weather shows behind the glass, and the automation protects the shade from wind, rain and sun.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-domownicy.svg" width="36" height="36" alt=""></td><td><b>12. Household</b><br>Choose presence, motion and household sensors.</td><td>The shade can react to whether someone is in the room or at home.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-automatyka.svg" width="36" height="36" alt=""></td><td><b>13. Automation</b><br>Turn on the features that may move the shade by themselves.</td><td>Your home looks after the shades without writing automations. All are off until you turn them on.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-ustawienia.svg" width="36" height="36" alt=""></td><td><b>14. Settings</b><br>Adjust the features you turned on.</td><td>The defaults suit most homes.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-powiadomienia.svg" width="36" height="36" alt=""></td><td><b>15. Notifications</b><br>Choose what to tell you about.</td><td>You know right away which device has a problem. Notifications go to HA and, if you choose, to your phone.</td></tr>
+<tr><td align="center" width="52"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/krok-panel.svg" width="36" height="36" alt=""></td><td><b>16. Dashboard</b><br>Which dashboard to add the card to.</td><td>The card appears by itself, nothing to click.</td></tr>
+</table>
 
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
+<p>The Slats, Sensors, Photocell, Weather, Household and Settings steps only show up when they are needed. You can change everything later with the <b>Configure</b> button on the device.</p>
 
-<a name="j53"></a>
-<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-1.svg" width="412" alt="Step 1: Shade"></a></p>
+<a name="oslony"></a>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="34" height="34" alt=""> Blind and gate types</h2>
 
-<b>What to click:</b>
-<ol><li>Type the <b>Window name</b></li><li>Pick the <b>Shade</b> (one or two: left, right)</li><li>Click <b>Next</b></li></ol>
-<p>ℹ️ Window with one sash: pick one shade.</p>
+<p>The card draws exactly what you have. Outdoor blinds are shown from the facade, indoor ones from inside the room.</p>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sofa-outline.svg" width="28" height="28" alt=""> Indoor</h3>
+<table>
+<tr><td colspan="4"><b>Roller blinds</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pelna.png" width="150" alt="Free-hanging roller blind"><br><sub>Free-hanging roller blind</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/kasetowa.png" width="150" alt="Cassette roller blind"><br><sub>Cassette roller blind</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zebra.png" width="150" alt="Day-night blind"><br><sub>Day-night blind</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaciemniajaca.png" width="150" alt="Blackout blind"><br><sub>Blackout blind</sub></td>
+</tr>
+<tr><td colspan="4"><b>Pleated and Roman</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plisa.png" width="150" alt="Pleated blind"><br><sub>Pleated blind</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plaster.png" width="150" alt="Honeycomb blind"><br><sub>Honeycomb blind</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/rzymska.png" width="150" alt="Roman blind"><br><sub>Roman blind</sub></td>
+</tr>
+<tr><td colspan="4"><b>Venetian blinds</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaluzja.png" width="150" alt="Aluminium venetian"><br><sub>Aluminium venetian</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/drewniana.png" width="150" alt="Wooden venetian"><br><sub>Wooden venetian</sub></td>
+</tr>
+<tr><td colspan="4"><b>Vertical and curtains</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pionowa.png" width="150" alt="Vertical blind"><br><sub>Vertical blind</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaslona.png" width="150" alt="Side curtain"><br><sub>Side curtain</sub></td>
+</tr>
+</table>
 
-<p>&nbsp;</p>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="28" height="28" alt=""> Outdoor</h3>
+<table>
+<tr><td colspan="4"><b>Roller shutters</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/natynkowa.png" width="150" alt="Surface-mounted shutter"><br><sub>Surface-mounted shutter</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/podtynkowa.png" width="150" alt="Concealed shutter"><br><sub>Concealed shutter</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zewnetrzna.png" width="150" alt="Top-mounted shutter"><br><sub>Top-mounted shutter</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/perforowana.png" width="150" alt="Perforated shutter"><br><sub>Perforated shutter</sub></td>
+</tr>
+<tr><td colspan="4"><b>External venetian blinds</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowa.png" width="150" alt="External venetian C80"><br><sub>External venetian C80</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowaz.png" width="150" alt="External venetian Z90"><br><sub>External venetian Z90</sub></td>
+</tr>
+<tr><td colspan="4"><b>Terrace</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/markiza.png" width="150" alt="Terrace awning"><br><sub>Terrace awning</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/screen.png" width="150" alt="ZIP screen"><br><sub>ZIP screen</sub></td>
+</tr>
+</table>
 
-<a name="kreator-2"></a>
-<h4><a name="j54" href="#j54"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-open-variant.svg" height="22" alt="Step 2: Window and sensors"></a> Step 2: Window and sensors</h4>
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="28" height="28" alt=""> Gate and garage</h3>
+<table>
+<tr><td colspan="4"><b>Driveway gates</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="150" alt="Sliding gate"><br><sub>Sliding gate</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="150" alt="Swing gate"><br><sub>Swing gate</sub></td>
+</tr>
+<tr><td colspan="4"><b>Garage doors</b></td></tr><tr>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="150" alt="Sectional door"><br><sub>Sectional door</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="150" alt="Up-and-over door"><br><sub>Up-and-over door</sub></td>
+<td align="center" valign="top" width="25%"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="150" alt="Roller door"><br><sub>Roller door</sub></td>
+</tr>
+</table>
 
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
+<a name="automatyka"></a>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="34" height="34" alt=""> Automation</h2>
 
-<a name="j55"></a>
-<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-2.svg" width="412" alt="Step 2: Window and sensors"></a></p>
+<p>Every feature is <b>optional and off at the start</b>. Turn on only what you want. The <b>Reason for move</b> sensor shows why a blind moved, and the <b>Resume</b> button on the card ends the pause after a manual move.</p>
 
-<b>What to click:</b>
-<ol><li><b>Number of sashes</b></li><li>Window sensors and how the window opens</li><li>Click <b>Next</b></li></ol>
-<p>ℹ️ No sensors? Leave them empty.</p>
+<h3>In basic mode</h3>
+<table><tr><th></th><th align="left">Feature</th><th align="left">What it does</th></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/calendar-clock.svg" width="32" height="32" alt=""></td><td><b>Schedule</b></td><td>Opens in the morning and closes in the evening: at fixed times or with sunrise and sunset.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/weather-sunny.svg" width="32" height="32" alt=""></td><td><b>Sun protection</b></td><td>Lowers the shade when the sun shines into this window and it is warm.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-open-variant.svg" width="32" height="32" alt=""></td><td><b>Open window lock</b></td><td>Never lowers the shade onto an open or tilted window. A skipped move runs after the window closes.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/weather-windy.svg" width="32" height="32" alt=""></td><td><b>Wind</b></td><td>Retracts an outdoor shade in strong wind.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/account-check.svg" width="32" height="32" alt=""></td><td><b>Presence</b></td><td>In the morning it stays closed until someone enters the room.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/airplane.svg" width="32" height="32" alt=""></td><td><b>Vacation mode</b></td><td>Opens and closes at a slightly different time every day, as if someone were home.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/counter.svg" width="32" height="32" alt=""></td><td><b>Motor counter</b></td><td>Counts moves and run time, reminds you to calibrate.</td></tr>
+</table>
 
+<h3>Extra in advanced mode</h3>
+<table><tr><th></th><th align="left">Feature</th><th align="left">What it does</th></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/hand-back-right.svg" width="32" height="32" alt=""></td><td><b>Manual move wins</b></td><td>When you move the shade with a remote or a button, the automation waits.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/arrow-collapse-vertical.svg" width="32" height="32" alt=""></td><td><b>Intermediate position</b></td><td>At the chosen time the shade stops half way.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/calendar-week.svg" width="32" height="32" alt=""></td><td><b>Workdays and weekend</b></td><td>Separate times at weekends and on holidays.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/fan.svg" width="32" height="32" alt=""></td><td><b>Ventilation position</b></td><td>With a tilted window the shade stays higher so air can flow.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/door-open.svg" width="32" height="32" alt=""></td><td><b>Terrace door</b></td><td>With the door open the shade goes no lower than the chosen position.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sunglasses.svg" width="32" height="32" alt=""></td><td><b>Glare protection</b></td><td>The shade goes down only so far that the sun reaches no further than the TV or desk.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/snowflake.svg" width="32" height="32" alt=""></td><td><b>Winter and summer</b></td><td>In winter it opens in the sun (free heat), in summer it shades.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/brightness-5.svg" width="32" height="32" alt=""></td><td><b>Brightness sensor</b></td><td>A lux meter or solar panels decide about the sun.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/home-thermometer.svg" width="32" height="32" alt=""></td><td><b>Room temperature</b></td><td>Shades when the room gets too warm.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/weather-pouring.svg" width="32" height="32" alt=""></td><td><b>Rain</b></td><td>Retracts the awning, screen and external venetian blind in the rain.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/snowflake-thermometer.svg" width="32" height="32" alt=""></td><td><b>Frost</b></td><td>In frost the outdoor shade does not move, so it does not freeze.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/weather-hail.svg" width="32" height="32" alt=""></td><td><b>Hail and warnings</b></td><td>On a warning it retracts awnings and closes shutters to protect the glass.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/vibrate.svg" width="32" height="32" alt=""></td><td><b>Awning vibration</b></td><td>Retracts the awning in a strong gust.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/thermometer-high.svg" width="32" height="32" alt=""></td><td><b>Heat tomorrow</b></td><td>When the forecast says heat, the shade goes down in the morning before the room warms up.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/smoke-detector-variant.svg" width="32" height="32" alt=""></td><td><b>Smoke</b></td><td>On a smoke alarm it opens the shade – an escape route.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/shield-home.svg" width="32" height="32" alt=""></td><td><b>Alarm</b></td><td>Closes the shade when the alarm is armed.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/home-export-outline.svg" width="32" height="32" alt=""></td><td><b>Nobody home</b></td><td>Closes the shade when everyone leaves.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-octagon-outline.svg" width="32" height="32" alt=""></td><td><b>Obstacle at the door</b></td><td>Does not go down when the sensor sees something in the way.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sleep.svg" width="32" height="32" alt=""></td><td><b>“Sleeping” mode</b></td><td>A switch on the device: the shade stays closed until you turn it off.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/arrow-expand-vertical.svg" width="32" height="32" alt=""></td><td><b>Movement limits</b></td><td>The shade moves only within the chosen range, e.g. 10–90 %.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/tune-variant.svg" width="32" height="32" alt=""></td><td><b>No small corrections</b></td><td>Skips changes of a few percent.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-numbered.svg" width="32" height="32" alt=""></td><td><b>One after another</b></td><td>Shades in the house move a few seconds apart.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/timer-sand.svg" width="32" height="32" alt=""></td><td><b>Quiet after restart</b></td><td>After HA starts the automation waits a few minutes.</td></tr>
+<tr><td align="center" width="48"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/flask-outline.svg" width="32" height="32" alt=""></td><td><b>Dry run</b></td><td>Shows what the automation would do, but does not move the shade.</td></tr>
+</table>
 
-<p>&nbsp;</p>
+<a name="bramy"></a>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="34" height="34" alt=""> Gates and garages</h2>
 
-<a name="kreator-3"></a>
-<h4><a name="j56" href="#j56"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/speedometer.svg" height="22" alt="Step 3: Motor"></a> Step 3: Motor</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
-
-<a name="j57"></a>
-<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-3.svg" width="412" alt="Step 3: Motor"></a></p>
-
-<b>What to click:</b>
-<ol><li><b>Motor speed</b>: picked automatically</li><li><b>Calibrate now</b> (optional)</li><li>Click <b>Next</b></li></ol>
-<p>ℹ️ Not sure? Leave it as it is.</p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-4"></a>
-<h4><a name="j58" href="#j58"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/weather-partly-cloudy.svg" height="22" alt="Step 4: Weather"></a> Step 4: Weather</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
-
-<a name="j59"></a>
-<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-4.svg" width="412" alt="Step 4: Weather"></a></p>
-
-<b>What to click:</b>
-<ol><li><b>Weather</b> outside the window</li><li>Click <b>Next</b></li></ol>
-<p>ℹ️ Empty = internet weather for your home.</p>
-
-
-<p>&nbsp;</p>
-
-<a name="kreator-5"></a>
-<h4><a name="j60" href="#j60"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/palette.svg" height="22" alt="Step 5: Look"></a> Step 5: Look</h4>
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
-
-<a name="j61"></a>
-<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-5.svg" width="412" alt="Step 5: Look"></a></p>
-
-<b>What to click:</b>
-<ol><li><b>Shade type</b> and <b>Shade colour</b>: compare with the pictures</li><li><b>Custom colour</b>: click the field and pick a colour</li><li>Dashboard the card goes to</li><li>Click <b>Submit</b></li></ol>
-<p>ℹ️ The card appears on the chosen dashboard by itself. Nothing is removed.</p>
-
-
-<p>&nbsp;</p>
-
-> [!NOTE]
-> ✅ **Done.** After **Submit** the window appears as a device “Okno …” and the card on the chosen dashboard. Nothing on the dashboard is removed. YAML dashboards and the automatic Overview are left alone.
-
----
-
-<a name="konfiguruj"></a>
-<h2><a name="j62" href="#j62"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cog.svg" height="28" alt="Changing settings: Configure"></a> Changing settings: Configure</h2>
-
-Change any window at any time. Click the gear **⚙️ (Configure)** next to the window.
-
-<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/integration-en.svg" alt="Open Motor HA" height="52"></a></p>
-
-<a name="j63"></a>
-<p align="center"><a href="#j63"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/konfiguruj.svg" width="900" alt="Configure"></a><br>
-<b>Configure</b></p>
-
-<b>What to click:</b>
-<ol><li>Gear: <b>Configure</b> the window</li><li><b>Add device</b>: another window</li></ol>
-<p>ℹ️ Settings → Devices & services → Motor HA.</p>
-
-<p>&nbsp;</p>
-
-Then choose how: **🪄 Wizard with circles and pictures** or **📝 Plain fields step by step** (5 steps). After saving, the card shows the changes right away.
-
-<a name="j64"></a>
-<p align="center"><a href="#j64"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/konfiguruj-menu.svg" width="900" alt="Configure: choice"></a><br>
-<b>Configure: choice</b></p>
-
-<b>What to click:</b>
-<ol><li><b>Wizard with circles and pictures</b></li><li>or <b>Plain fields step by step</b></li></ol>
-
-<p>&nbsp;</p>
-
-> [!NOTE]
-> Changes in the card editor of an integration window are saved to the device too.
-
-<a name="kolejne-okno"></a>
-<h2><a name="j65" href="#j65"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-open-variant.svg" height="28" alt="Another window"></a> Another window</h2>
-
-More windows? Click **Add device** on the integration page (point 2 in the picture above) or this button again. Each window is its own device with its own card.
-
-<p align="center"><a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=okno_ha"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/config_flow_start2-en.svg" alt="Add another window" height="52"></a></p>
-
-<a name="kalibracja"></a>
-<h2><a name="j66" href="#j66"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/timer-outline.svg" height="28" alt="Calibration and card on the dashboard"></a> Calibration and card on the dashboard</h2>
-
-The motor speed is picked from the shade device (e.g. Moes). Want it exact? On the window device page press **Calibrate** (point 2). The shade goes up, down and up, and the measured time is saved by itself. **🤖 Calibrate now** in the wizard does the same.
-
-On the same page, **Add to dashboard** (point 3) puts the window card on a dashboard (Home Assistant 2026.6 or newer), and **⚙️ Visit** (point 1) opens the circles wizard.
-
-<a name="j67"></a>
-<p align="center"><a href="#j67"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/urzadzenie.svg" width="900" alt="Window device"></a><br>
-<b>Window device</b></p>
-
-<b>What to click:</b>
-<ol><li><b>Visit</b>: the 7-circle wizard</li><li><b>Calibrate</b>: measure travel time</li><li><b>Add to dashboard</b>: card on a dashboard</li></ol>
-<p>ℹ️ Calibration: the shade goes up, down and up. The time is saved by itself.</p>
-
-<p>&nbsp;</p>
-
----
-
-<a name="jak-sterowac"></a>
-<h2><a name="j68" href="#j68"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/gesture-tap.svg" height="28" alt="How to control"></a> How to control</h2>
-
-<a name="j69"></a>
-<table border="0" width="100%"><tr><th align="center" width="10%">Icon</th><th align="left" width="37%">What you do</th><th align="left" width="53%">What happens</th></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/drag-horizontal-variant.svg" height="40" alt=""></td><td align="left">Drag the handle at the bottom of one sash</td><td align="left">Only that sash moves</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/swap-vertical-circle-outline.svg" height="40" alt=""></td><td align="left">Drag the round handle in the middle</td><td align="left">Both sashes move</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/gesture-swipe-vertical.svg" height="40" alt=""></td><td align="left">Swipe on the glass</td><td align="left">Both sashes move</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/stop.svg" height="40" alt=""></td><td align="left">Click STOP or touch the window while moving</td><td align="left">Everything stops</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/arrow-up.svg" height="40" alt=""></td><td align="left">Click the up arrow</td><td align="left">Goes all the way up: window uncovered</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/arrow-down.svg" height="40" alt=""></td><td align="left">Click the down arrow</td><td align="left">Goes all the way down: window covered</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/unfold-more-horizontal.svg" height="40" alt=""></td><td align="left">Click ▲ 5% or ▼ 5%</td><td align="left">Moves a little up or down</td></tr><tr><td align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/percent-outline.svg" height="40" alt=""></td><td align="left">Click a preset, e.g. 75%</td><td align="left">Goes to that position</td></tr></table>
-
-<a name="j70"></a>
-<p align="center"><a href="#j70"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki6/en/opis-elementow.svg" width="900" alt="What is on the card: handles and buttons"></a><br>
-<b>What is on the card: handles and buttons</b></p>
+> [!IMPORTANT]
+> Motor HA <b>never moves a gate or garage door by itself</b>. Automation is only for windows and blinds.
 
 
-<p>&nbsp;</p>
+<p>The photocell in the gate controller always stops the gate by itself. Motor HA only shows the obstacle on the card and can send a notification.</p>
+<p>The card shows sliding, swing, sectional, up-and-over and roller gates.</p>
 
-You can also open and close the window like any shade: on the device page, by voice or in an automation. Both sashes move together.
+<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="19%" alt="Sliding gate"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="19%" alt="Swing gate"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="19%" alt="Sectional door"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="19%" alt="Up-and-over door"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="19%" alt="Roller door"> </p>
 
----
+<a name="powiadomienia"></a>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/bell-ring-outline.svg" width="34" height="34" alt=""> Notifications</h2>
+
+<p>You switch on each type of notification separately. They arrive in Home Assistant and, if you want, on your phone (HA app).</p>
+<table>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-circle-outline.svg" width="30" height="30" alt=""></td><td>Not responding</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/arrow-up-down.svg" width="30" height="30" alt=""></td><td>Did not reach the position</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-outline.svg" width="30" height="30" alt=""></td><td>Low battery in the motor or sensor</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-octagon-outline.svg" width="30" height="30" alt=""></td><td>Sensor unavailable</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="30" height="30" alt=""></td><td>Automation problem (lock, error, calibration)</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="30" height="30" alt=""></td><td>Gate open too long</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="30" height="30" alt=""></td><td>Gate did not close</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-octagon-outline.svg" width="30" height="30" alt=""></td><td>Obstacle in the gate</td></tr>
+</table>
+
+<a name="encje"></a>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="34" height="34" alt=""> What you get in Home Assistant</h2>
+
+<p>Each device gets its own entities. They work with Assist, automations and scripts.</p>
+
+<table><tr><th></th><th align="left">Entity</th><th align="left">What for</th></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="30" height="30" alt=""></td><td><b>Motor HA</b></td><td>Window, blind or gate – control it like any cover in HA</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle-outline.svg" width="30" height="30" alt=""></td><td><b>Reason for move</b></td><td>Why the blind last moved (or why it stays)</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/play-circle-outline.svg" width="30" height="30" alt=""></td><td><b>Resume automation</b></td><td>Ends the pause and checks right away where the blind should be</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/timer-cog-outline.svg" width="30" height="30" alt=""></td><td><b>Calibrate</b></td><td>Measures the real travel time of the motor</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="30" height="30" alt=""></td><td><b>Automation</b></td><td>Turns all automation for this device on or off</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/pause-circle-outline.svg" width="30" height="30" alt=""></td><td><b>Pause for today</b></td><td>Pauses automation until the end of the day</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sleep.svg" width="30" height="30" alt=""></td><td><b>Sleeping</b></td><td>“Sleeping” mode: the blind stays closed</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/counter.svg" width="30" height="30" alt=""></td><td><b>Motor moves</b></td><td>How many times the motor moved</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/engine-outline.svg" width="30" height="30" alt=""></td><td><b>Motor run time</b></td><td>How long the motor has run</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/airplane.svg" width="30" height="30" alt=""></td><td><b>Vacation mode</b></td><td>Vacation mode for the whole home</td></tr>
+</table>
+
+<h3>Actions for your own automations</h3>
+<table>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/pause.svg" width="30" height="30" alt=""></td><td><b>Pause automation</b><br><code>motor_ha.wstrzymaj</code></td><td>The automation does not move the device for the given time (empty = until the end of the day).</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/play.svg" width="30" height="30" alt=""></td><td><b>Resume automation</b><br><code>motor_ha.wznow</code></td><td>Ends the pause and checks right away where the shade should be.</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/refresh.svg" width="30" height="30" alt=""></td><td><b>Check now</b><br><code>motor_ha.przelicz</code></td><td>The automation recalculates the position right away.</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/timer-cog-outline.svg" width="30" height="30" alt=""></td><td><b>Calibrate</b><br><code>motor_ha.kalibruj</code></td><td>Measures the real travel time.</td></tr>
+<tr><td align="center" width="46"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/arrow-up-down.svg" width="30" height="30" alt=""></td><td><b>Set position</b><br><code>motor_ha.ustaw</code></td><td>Sets the position (and slats) like the automation – without a manual-move pause.</td></tr>
+</table>
+
+<a name="dom"></a>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/home-outline.svg" width="34" height="34" alt=""> Whole home card</h2>
+
+<p>The <b>Motor HA – whole home</b> card lists every window, blind and gate with open, stop and close buttons. Add it like this: <b>Edit dashboard → Add card →</b> type “Motor HA”.</p>
+<p><code>type: custom:motor-ha-dom</code></p>
 
 <a name="aktualizacja"></a>
-<h2><a name="j71" href="#j71"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/update.svg" height="28" alt="Updates"></a> Updates</h2>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/update.svg" width="34" height="34" alt=""> Updating and removing</h2>
 
-> [!NOTE]
-> Updating **does not change** your settings. Windows and cards keep working.
+<ul><li>A new version shows up by itself in <b>Settings → Updates</b>. Integration and card share one number and one update.</li><li>After updating, click the <b>Restart</b> notification. The page refreshes by itself.</li><li>Removing: <b>Settings → Devices & services → Motor HA → Delete</b>, then remove Motor HA in HACS. The integration cleans up its own files.</li></ul>
 
-When a new version is out, HA shows it in **Settings** by itself, within 2 minutes. One 2-in-1 update: integration and card together.
+<a name="pytania"></a>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="34" height="34" alt=""> Questions</h2>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/przyciski2/updates-en.svg" alt="Updates" height="52"></a></p>
+<details><summary><b>I have Okno HA 1.x. What happens after the update?</b></summary>
+<p>Your windows move to Motor HA 2.0 by themselves, with the same settings and entity names. The old entries are only disabled – you can delete them later.</p>
+</details>
 
-<a name="j72"></a>
-<p align="center"><a href="#j72"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/aktualizacja-1.svg" width="900" alt="Updates"></a><br>
-<b>Updates</b></p>
+<details><summary><b>The card shows reversed percentages.</b></summary>
+<p><b>Configure → Motor →</b> turn on <b>Reversed percentages</b>.</p>
+</details>
 
-<b>What to click:</b>
-<ol><li>Click <b>Motor HA</b></li></ol>
-<p>ℹ️ One 2-in-1 update: integration and card together. HA shows it by itself.</p>
+<details><summary><b>The blind on screen moves differently from the real one.</b></summary>
+<p>Press <b>Calibrate</b> on the device. The motor goes up, down and up, and the card remembers the time.</p>
+</details>
 
-<p>&nbsp;</p>
+<details><summary><b>Why did the blind move by itself?</b></summary>
+<p>Look at the <b>Reason for move</b> sensor or the line under the name on the card.</p>
+</details>
 
-Click **Install**, then restart HA. Integration and card come in one update.
-
-<a name="j73"></a>
-<p align="center"><a href="#j73"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/aktualizacja-2.svg" width="900" alt="Install"></a><br>
-<b>Install</b></p>
-
-<b>What to click:</b>
-<ol><li>Keep the backup ticked</li><li><b>Install</b></li></ol>
-<p>ℹ️ Then restart HA. Your settings stay.</p>
-
-<p>&nbsp;</p>
-
-What is new in each version: [📝 Changelog](https://github.com/superdarco78/okno-ha-integracja/blob/main/CHANGELOG.md) and [releases](https://github.com/superdarco78/okno-ha-integracja/releases).
-
----
-
-<a name="slowniczek"></a>
-<h2><a name="j74" href="#j74"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/book-open-variant.svg" height="28" alt="Glossary: what do these words mean?"></a> Glossary: what do these words mean?</h2>
-
-<table>
-<tr><th align="left"><a name="j75" href="#j75"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>Word</th><th align="left"><a name="j76" href="#j76"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>In plain words</th></tr>
-<tr><td align="left"><b>Home Assistant (HA)</b></td><td align="left">The program that runs your home.</td></tr>
-<tr><td align="left"><b>HACS</b></td><td align="left">The add-on “store” for HA. You download the integration from here.</td></tr>
-<tr><td align="left"><b>Integration</b></td><td align="left">An add-on that adds new devices to HA. Here: windows.</td></tr>
-<tr><td align="left"><b>Device</b></td><td align="left">One window, e.g. “Okno Living room”. See Settings → Devices & services.</td></tr>
-<tr><td align="left"><b>Entity</b></td><td align="left">One thing of a device that HA sees and controls. A window has a shade entity and a Calibrate button.</td></tr>
-<tr><td align="left"><b>Add device</b></td><td align="left">The button on the integration page: adds another window.</td></tr>
-<tr><td align="left"><b>Configure</b></td><td align="left">The button next to a window: changes its settings.</td></tr>
-<tr><td align="left"><b>Visit</b></td><td align="left">The link on the window device page: opens the circles wizard.</td></tr>
-<tr><td align="left"><b>Card</b></td><td align="left">A tile on the HA screen. Here: a realistic window with a shade.</td></tr>
-<tr><td align="left"><b>Dashboard</b></td><td align="left">The HA screen where cards live.</td></tr>
-<tr><td align="left"><b>Window sensor</b></td><td align="left">A sensor on the window: knows if it is closed, tilted or open.</td></tr>
-<tr><td align="left"><b>Rolled up / 100%</b></td><td align="left">Shade all the way up, window uncovered.</td></tr>
-<tr><td align="left"><b>Lowered / 0%</b></td><td align="left">Shade all the way down, window covered.</td></tr>
-</table>
-
----
-
-<a name="pytania-i-problemy"></a>
-<h2><a name="j77" href="#j77"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/help-circle.svg" height="28" alt="Questions and problems"></a> Questions and problems</h2>
-
-<br>
-
-<a name="faq-1"></a>
-<h4><a name="j78" href="#j78"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="“Motor HA” is not in the integration list"></a> “Motor HA” is not in the integration list</h4>
-
-After downloading from HACS you must restart HA (step 4). On a phone, close and reopen the app.
-
-<a name="j79"></a>
-<p align="center"><a href="#j79"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/krok-4.svg" width="900" alt="“Motor HA” is not in the integration list"></a><br>
-<b>“Motor HA” is not in the integration list</b></p>
-
-<b>What to click:</b>
-<ol><li>The <b>⏻</b> icon at the top right</li><li><b>Restart</b></li></ol>
-<p>ℹ️ Settings → System. Wait 1–2 minutes.</p>
-
-<p>&nbsp;</p>
-
-<br>
-
-<a name="faq-2"></a>
-<h4><a name="j80" href="#j80"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="The card is not in the “Add card” list"></a> The card is not in the “Add card” list</h4>
-
-The card loads by itself with the integration, nothing to refresh. Check that HA was restarted after installing (step 4). Then pencil, <b>Add card</b> and type <b>Okno</b>.
-
-<a name="j81"></a>
-<p align="center"><a href="#j81"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/dodaj-karte.svg" width="900" alt="The card is not in the “Add card” list"></a><br>
-<b>The card is not in the “Add card” list</b></p>
-
-<b>What to click:</b>
-<ol><li>Pencil: edit the dashboard</li><li>Type <b>Okno</b></li><li>Click the <b>Motor HA</b> card</li></ol>
-<p>ℹ️ Then pick the window, e.g. Okno Living room.</p>
-
-<p>&nbsp;</p>
-
-<br>
-
-<a name="faq-3"></a>
-<h4><a name="j82" href="#j82"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="The animation is faster or slower than the shade"></a> The animation is faster or slower than the shade</h4>
-
-On the window device page press <b>Calibrate</b>. The shade goes up, down and up, and the time is saved by itself.
-
-<a name="j83"></a>
-<p align="center"><a href="#j83"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/urzadzenie.svg" width="900" alt="The animation is faster or slower than the shade"></a><br>
-<b>The animation is faster or slower than the shade</b></p>
-
-<b>What to click:</b>
-<ol><li><b>Visit</b>: the 7-circle wizard</li><li><b>Calibrate</b>: measure travel time</li><li><b>Add to dashboard</b>: card on a dashboard</li></ol>
-<p>ℹ️ Calibration: the shade goes up, down and up. The time is saved by itself.</p>
-
-<p>&nbsp;</p>
-
-<br>
-
-<a name="faq-4"></a>
-<h4><a name="j84" href="#j84"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="No weather behind the glass"></a> No weather behind the glass</h4>
-
-<b>Configure</b> → step 4: pick your weather or leave it empty. Empty = internet weather for your home.
-
-<a name="j85"></a>
-<p align="center"><a href="#j85"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/kreator-4.svg" width="900" alt="No weather behind the glass"></a><br>
-<b>No weather behind the glass</b></p>
-
-<b>What to click:</b>
-<ol><li>Weather outside</li><li><b>Next</b></li></ol>
-<p>ℹ️ Empty = internet weather for your home.</p>
-
-<p>&nbsp;</p>
-
-<br>
-
-<a name="faq-5"></a>
-<h4><a name="j86" href="#j86"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="The window sensor does not work"></a> The window sensor does not work</h4>
-
-<b>Configure</b> → step 2: pick the sensor and how the window opens: tilted or opened on hinges.
-
-<a name="j87"></a>
-<p align="center"><a href="#j87"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/kreator-2.svg" width="900" alt="The window sensor does not work"></a><br>
-<b>The window sensor does not work</b></p>
-
-<b>What to click:</b>
-<ol><li>Number of sashes</li><li>Window sensors and how the window opens</li><li><b>Next</b></li></ol>
-<p>ℹ️ No sensors? Leave empty.</p>
-
-<p>&nbsp;</p>
-
-<br>
-
-<a name="faq-6"></a>
-<h4><a name="j88" href="#j88"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="The sashes are swapped (left is right)"></a> The sashes are swapped (left is right)</h4>
-
-<b>Configure</b> → step 1: remove both shades and pick them again: left first, then right.
-
-<a name="j89"></a>
-<p align="center"><a href="#j89"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/kreator-1.svg" width="900" alt="The sashes are swapped (left is right)"></a><br>
-<b>The sashes are swapped (left is right)</b></p>
-
-<b>What to click:</b>
-<ol><li>Enter the window name</li><li>Pick the shade (or two: left, right)</li><li><b>Next</b></li></ol>
-<p>ℹ️ Single-sash window: pick one shade.</p>
-
-<p>&nbsp;</p>
-
-<br>
-
-<a name="faq-7"></a>
-<h4><a name="j90" href="#j90"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="The shade jumps to 0% or 100% while moving"></a> The shade jumps to 0% or 100% while moving</h4>
-
-These are bad motor reports. The card ignores them. If it still jumps, <a href="https://github.com/superdarco78/okno-ha-integracja/issues/new">report a bug</a> and name the motor.
-
-<br>
-
-<a name="faq-8"></a>
-<h4><a name="j91" href="#j91"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="22" alt="The card is in Polish but I want English"></a> The card is in Polish but I want English</h4>
-
-The card uses the language of your HA profile. You can also open <b>Advanced</b> in the card editor and pick <b>English</b> in <b>Card language</b>.
-
-<a name="j92"></a>
-<p align="center"><a href="#j92"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki12/en/jezyk-karty.svg" width="900" alt="The card is in Polish but I want English"></a><br>
-<b>The card is in Polish but I want English</b></p>
-
-<b>What to click:</b>
-<ol><li>Open <b>Advanced</b></li><li><b>Card language</b>: pick a language</li></ol>
-<p>ℹ️ auto = the language of your HA profile.</p>
-
-<p>&nbsp;</p>
-
-No answer here? [Report a bug](https://github.com/superdarco78/okno-ha-integracja/issues/new) or write on the [HA forum](https://community.home-assistant.io/).
-
----
-
-<a name="dla-zaawansowanych"></a>
-<h1><a name="j93" href="#j93"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/wrench.svg" height="36" alt="Part 2. For advanced users"></a> Part 2. For advanced users</h1>
-
-> [!NOTE]
-> **You do not need this.** The wizard has set everything. Details below.
-
-<a name="co-tworzy"></a>
-<h2><a name="j94" href="#j94"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/puzzle.svg" height="28" alt="What the integration creates"></a> What the integration creates</h2>
-
-<table>
-<tr><th align="left"><a name="j95" href="#j95"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>What</th><th align="left"><a name="j96" href="#j96"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Description</th></tr>
-<tr><td align="left"><b>Device “Okno …”</b></td><td align="left">One per window (each entry). Manufacturer: Motor HA, model: shade type.</td></tr>
-<tr><td align="left"><b>Entity <code>cover.okno_…</code></b></td><td align="left">The window shade. Position = average of the sashes. Open, close, stop and position go to both sash shades at once.</td></tr>
-<tr><td align="left"><b>Button Calibrate</b></td><td align="left">Measures the real travel time of the shade and saves it.</td></tr>
-<tr><td align="left"><b>Attribute <code>okno_ha</code></b></td><td align="left">Window settings for the card. The card reads them by itself.</td></tr>
-<tr><td align="left"><b>Device “Motor HA”</b></td><td align="left">One for the whole integration, with one 2-in-1 update (integration and card together). When installed from HACS, HACS shows the update.</td></tr>
-<tr><td align="left"><b>Circles wizard</b></td><td align="left">A 7-circle page: the “Visit” link on the window device or Configure. No sidebar item.</td></tr>
-<tr><td align="left"><b>Motor HA card</b></td><td align="left">Bundled. Loads by itself on every dashboard, no resource needed.</td></tr>
-</table>
-
-<a name="wszystkie-ustawienia"></a>
-<h2><a name="j97" href="#j97"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/cog.svg" height="28" alt="All settings"></a> All settings</h2>
-
-<table>
-<tr><th align="center"><a name="j98" href="#j98"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="90" height="0"></a><br>Step</th><th align="left"><a name="j99" href="#j99"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="300" height="0"></a><br>Field</th><th align="left"><a name="j100" href="#j100"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="510" height="0"></a><br>What to enter</th></tr>
-<tr><td align="center">1</td><td align="left">Window name</td><td align="left">E.g. Living room. Device: “Okno Living room”.</td></tr>
-<tr><td align="center">1</td><td align="left">Shade (one or two)</td><td align="left">1 or 2 <code>cover.*</code> entities. Two = left, then right. A group works too.</td></tr>
-<tr><td align="center">2</td><td align="left">Number of sashes</td><td align="left">1 or 2.</td></tr>
-<tr><td align="center">2</td><td align="left">Left / right sash sensor</td><td align="left">A <code>binary_sensor.*</code> entity. Optional.</td></tr>
-<tr><td align="center">2</td><td align="left">Sash when open</td><td align="left"><b>tilted</b> or <b>opened on hinges</b>.</td></tr>
-<tr><td align="center">3</td><td align="left">Motor speed – left / right</td><td align="left">A <code>number.*_motor_speed</code> entity. Picked automatically.</td></tr>
-<tr><td align="center">3</td><td align="left">Full travel time</td><td align="left">0–120 s. 0 = automatic: from motor speed or calibration.</td></tr>
-<tr><td align="center">3</td><td align="left">🤖 Calibrate now</td><td align="left">The shade goes up, down and up. The time is saved by itself.</td></tr>
-<tr><td align="center">4</td><td align="left">Weather</td><td align="left">A <code>weather.*</code> entity. Empty = internet weather (Open-Meteo) for your home.</td></tr>
-<tr><td align="center">5</td><td align="left">Shade type</td><td align="left">Indoor: Day-night, Fabric, Blackout, Pleated, Honeycomb, Roman, Aluminium blind, Wooden blind. Outdoor: Top-mounted, Surface-mounted, Flush-mounted, Perforated roller shutter, Facade blind C80 and Z90, Screen ZIP.</td></tr>
-<tr><td align="center">5</td><td align="left">Shade colour</td><td align="left">Black, Graphite, Grey, Beige, Cream, White, Brown, Navy, Orange or a 🎨 custom colour.</td></tr>
-<tr><td align="center">5</td><td align="left">Window frame colour</td><td align="left">White, Cream, Silver, Grey, Anthracite, Black, Golden oak, Light oak, Winchester or a 🎨 custom colour.</td></tr>
-<tr><td align="center">5</td><td align="left">Window height on the card</td><td align="left">140–460 px. Default 260.</td></tr>
-<tr><td align="center">5</td><td align="left">📋 Add the window card to a dashboard</td><td align="left">A UI dashboard. Suggests the one that already has windows. The card goes to a “Okna” section on the first view. “Don’t add” = place it yourself.</td></tr>
-</table>
-
-<a name="j101"></a>
-<p align="center"><a href="#j101"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/oslony4-en.svg" width="900" alt="Shade types"></a><br>
-<b>Shade types</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="j102"></a>
-<p align="center"><a href="#j102"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/kolory-en.svg" width="900" alt="Shade colours"></a><br>
-<b>Shade colours</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="j103"></a>
-<p align="center"><a href="#j103"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/ramy-en.svg" width="900" alt="Frame colours and finishes"></a><br>
-<b>Frame colours and finishes</b></p>
-
-
-<p>&nbsp;</p>
-
-<a name="automatyzacje"></a>
-<h2><a name="j104" href="#j104"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/flask-outline.svg" height="28" alt="The window in automations"></a> The window in automations</h2>
-
-The window is a normal cover in HA. In an automation pick **Cover: set position** (or open / close) and the window entity, e.g. **Okno Living room**. Both sash shades move together.
-
-<a name="karta-w-srodku"></a>
-<h2><a name="j105" href="#j105"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/theme-light-dark.svg" height="28" alt="The bundled Motor HA card"></a> The bundled Motor HA card</h2>
-
-The integration includes the Motor HA card. No separate install and no resource needed. Light and dark look, weather behind the glass, day and night.
-
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="70%" alt="Motor HA card animation"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="70%" alt="Motor HA card animation"><br>
-<sub>Motor HA card: light or dark, like your theme</sub></p>
-
-Full card documentation (editor, all options, examples): [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna/blob/main/README_EN.md).
-
-> [!NOTE]
-> Already have the Motor HA card from HACS? No problem. Both can be installed.
-
-<a name="recznie"></a>
-<h2><a name="j106" href="#j106"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/toolbox.svg" height="28" alt="Installation without HACS (manual)"></a> Installation without HACS (manual)</h2>
-
-1. Download the [latest release](https://github.com/superdarco78/okno-ha-integracja/releases/latest) (Source code, zip).
-2. Copy the `custom_components/okno_ha` folder into `config/custom_components/` in HA (e.g. with the **File editor** or **Samba** add-on).
-3. Restart HA and click **Add integration** (installation step 5).
-
-<a name="usuwanie"></a>
-<h2><a name="j107" href="#j107"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/alert-circle-outline.svg" height="28" alt="Removing"></a> Removing</h2>
-
-One window: **Settings → Devices & services → Motor HA**, next to the window **⋮ → Delete**. The whole integration: delete all windows, then in HACS **⋮ → Remove** and restart HA. Your real shades stay unchanged.
-
-<a name="tlumaczenia"></a>
-<h2><a name="j108" href="#j108"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/translate.svg" height="28" alt="Translations"></a> Translations</h2>
-
-<table>
-<tr><th align="left"><a name="j109" href="#j109"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="260" height="0"></a><br>Language</th><th align="left"><a name="j110" href="#j110"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/odstep.png" width="640" height="0"></a><br>Status</th></tr>
-<tr><td align="left">🇵🇱 Polski</td><td align="left">✅ 100%</td></tr>
-<tr><td align="left">🇬🇧 English</td><td align="left">✅ 100%</td></tr>
-</table>
-
-Want to add your language? Copy [`translations/en.json`](https://github.com/superdarco78/okno-ha-integracja/blob/main/custom_components/okno_ha/translations/en.json), translate it and send it in an [issue](https://github.com/superdarco78/okno-ha-integracja/issues/new).
-
----
-
-<a name="wsparcie"></a>
-<h2><a name="j111" href="#j111"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/coffee.svg" height="28" alt="Support"></a> Support</h2>
-
-Like Motor HA? Leave a ⭐ at the top of the page. It helps others find the integration. Thank you!
-
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=flat&label=%E2%AD%90%20Star%20this%20repo&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
-
-Have an idea or found a bug? [Open an issue](https://github.com/superdarco78/okno-ha-integracja/issues/new). Discussion: [HA forum](https://community.home-assistant.io/).
-
----
+<details><summary><b>I don&#x27;t want any automation.</b></summary>
+<p>Do nothing: automation is off at the start. The card and device work without it.</p>
+</details>
 
 <a name="licencja"></a>
-<h2><a name="j112" href="#j112"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/scale-balance.svg" height="28" alt="License"></a> License</h2>
+<h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" alt=""> License</h2>
 
-CC BY-NC-SA 4.0 – see [LICENSE](https://github.com/superdarco78/okno-ha-integracja/blob/main/LICENSE). Card: [superdarco78/roleta-realistyczna](https://github.com/superdarco78/roleta-realistyczna).
-
-> [!NOTE]
-> **© 2026 superdarco78.** The integration, card, graphics and texts are licensed under CC BY-NC-SA 4.0. Free to use in your home. Selling, re-uploading as your own and commercial use only with the author's permission. Official source: [github.com/superdarco78/okno-ha-integracja](https://github.com/superdarco78/okno-ha-integracja).
+<p>License <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – free to use and change, but not to sell. © superdarco78</p>

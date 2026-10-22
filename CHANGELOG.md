@@ -1,5 +1,20 @@
 # 📝 Historia zmian
 
+## v2.0.0 – Motor HA od nowa
+
+- 🆕 Całość zbudowana od nowa: integracja, karta, edytor karty, kreator, opis i instrukcja
+- 🔄 Twoje okna z wersji 1.x przenoszą się same, z tymi samymi ustawieniami i nazwami encji. Stare wpisy są tylko wyłączone – możesz je potem usunąć
+- 🧙 Kreator: najpierw „Co masz w domu” (zaznaczone samo po przejrzeniu HA), potem tylko pasujące kroki, porada dla pokoju, tryb podstawowy i zaawansowany
+- 🤖 Automatyka: 31 funkcji (harmonogram, słońce, blokada przy otwartym oknie, wiatr, obecność, wakacje i inne), każda osobno i na start wyłączona
+- ❓ Czujnik „Powód ruchu”, przycisk „Wznów”, pauza na dziś, tryb „Śpię” i tryb wakacyjny
+- 🚪 Bramy i garaże: przesuwna, skrzydłowa, segmentowa, uchylna, roletowa. Motor HA nigdy sam nimi nie rusza; fotokomórka pokazuje przeszkodę
+- 🪟 Nowe osłony: żaluzja pionowa i zasłona boczna (razem 24 rodzaje)
+- 🔔 Powiadomienia: brak odpowiedzi, nie dojechała, bateria, czujnik, automatyka, otwarta lub niedomknięta brama, przeszkoda – każde osobno
+- 🏠 Nowa karta „Motor HA – cały dom”: wszystkie osłony na jednej liście
+- 🌍 Integracja w 14 językach, opis i instrukcja w 5 językach
+- 🏷 Nazwa Motor HA wszędzie, także w środku (domena motor_ha, karta custom:motor-ha). Repozytorium: superdarco78/Motor-HA
+- 🧹 Porządek w repozytorium: obrazki 1,5 GB → 14 MB
+
 ## v1.4.54 – Nowy opis w HA
 
 - 📖 Opis w HACS zbudowany od nowa w stylu Home Assistanta: te same rozmiary czcionek, ikon i odstępów co w HA, kolory z Twojego motywu (jasny i ciemny), czytelny na telefonie, tablecie i komputerze
