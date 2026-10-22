@@ -432,10 +432,14 @@
   };
   const pisze = () => { let a = document.activeElement; while (a && a.shadowRoot && a.shadowRoot.activeElement) a = a.shadowRoot.activeElement; return !!a && /^(INPUT|TEXTAREA)$/.test(a.tagName); };
   const spokojnie = () => !document.hidden && !/[?&]edit=1/.test(location.search) && !pisze() && !otwarteOkno(document.querySelector("home-assistant")?.shadowRoot);
+  // po restarcie HA strona przeładuje się dopiero, gdy HA i HACS są w pełni gotowe (połączenie + HACS wczytany),
+  // i nie wcześniej niż 90 s po wykryciu nowej wersji – inaczej HACS pokazuje pustą stronę / „błąd wczytywania”
+  const haGotowy = () => { const h = document.querySelector("home-assistant")?.hass; return !!h && h.connected !== false && !!h.config && h.config.state === "RUNNING" && (h.config.components || []).includes("hacs"); };
   let przeladuj = null;
   const przeladujPozniej = () => {
     if (przeladuj || !customElements.get("okno-ha")) return;
-    przeladuj = setInterval(() => { if (zywy() && spokojnie()) { clearInterval(przeladuj); location.reload(); } }, 5000);
+    const od = Date.now();
+    przeladuj = setInterval(() => { if (zywy() && Date.now() - od > 90000 && haGotowy() && spokojnie()) { clearInterval(przeladuj); location.reload(); } }, 5000);
   };
   if (poAktualizacji) przeladujPozniej();
   sprawdzWersje();
