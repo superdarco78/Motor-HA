@@ -1,4 +1,4 @@
-/* Motor HA – karta okna z osłoną · © superdarco78 · CC BY-NC-SA 4.0 · github.com/superdarco78/okno-ha-integracja
+/* Motor HA – karta okna z osłoną · © superdarco78 · CC BY-NC-SA 4.0 · github.com/superdarco78/Motor-HA
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
@@ -5068,7 +5068,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     name: T.nazwa,
     description: T.opis,
     preview: true,
-    documentationURL: "https://github.com/superdarco78/okno-ha-integracja",
+    documentationURL: "https://github.com/superdarco78/Motor-HA",
     // „Dodaj do panelu” na stronie urządzenia proponuje kartę Motor HA dla okien i osłon
     getEntitySuggestion: (hass, entityId) => String(entityId).startsWith("cover.") ? { label: T.nazwa, config: { type: "custom:motor-ha", entity: entityId } } : null
   });
@@ -5077,7 +5077,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     name: T.karta.dom,
     description: T.karta.domOpis,
     preview: true,
-    documentationURL: "https://github.com/superdarco78/okno-ha-integracja"
+    documentationURL: "https://github.com/superdarco78/Motor-HA"
   });
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");

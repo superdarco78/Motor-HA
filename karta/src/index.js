@@ -20,12 +20,12 @@ window.customCards = window.customCards || [];
 for (let i = window.customCards.length - 1; i >= 0; i--) if (['motor-ha', 'motor-ha-dom', 'okno-ha', 'roleta-realistyczna'].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);
 window.customCards.push({
   type: 'motor-ha', name: T.nazwa, description: T.opis, preview: true,
-  documentationURL: 'https://github.com/superdarco78/okno-ha-integracja',
+  documentationURL: 'https://github.com/superdarco78/Motor-HA',
   // „Dodaj do panelu” na stronie urządzenia proponuje kartę Motor HA dla okien i osłon
   getEntitySuggestion: (hass, entityId) => String(entityId).startsWith('cover.') ? { label: T.nazwa, config: { type: 'custom:motor-ha', entity: entityId } } : null
 });
 window.customCards.push({ type: 'motor-ha-dom', name: T.karta.dom, description: T.karta.domOpis, preview: true,
-  documentationURL: 'https://github.com/superdarco78/okno-ha-integracja' });
+  documentationURL: 'https://github.com/superdarco78/Motor-HA' });
 
 // dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku
 window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };

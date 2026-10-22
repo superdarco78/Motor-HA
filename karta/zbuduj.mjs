@@ -10,6 +10,6 @@ await esbuild.build({
   charset: 'utf8',
   minify: process.argv.includes('--min'),
   legalComments: 'none',
-  banner: { js: '/* Motor HA – karta okna z osłoną · © superdarco78 · CC BY-NC-SA 4.0 · github.com/superdarco78/okno-ha-integracja\n   Źródło: karta/src (npm run build) */' },
+  banner: { js: '/* Motor HA – karta okna z osłoną · © superdarco78 · CC BY-NC-SA 4.0 · github.com/superdarco78/Motor-HA\n   Źródło: karta/src (npm run build) */' },
   logLevel: 'info'
 });

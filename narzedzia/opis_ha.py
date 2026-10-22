@@ -22,7 +22,7 @@ KORZEN = Path(__file__).resolve().parent.parent
 WYJSCIE = KORZEN / "custom_components" / "okno_ha" / "www" / "opis"
 MDI = json.loads((Path(__file__).parent / "mdi.json").read_text(encoding="utf-8"))
 JEZYKI = {"pl": "README.md", "en": "README_EN.md", "de": "README_DE.md", "fr": "README_FR.md", "cs": "README_CS.md"}
-GH = "https://github.com/superdarco78/okno-ha-integracja"
+GH = "https://github.com/superdarco78/Motor-HA"
 RAW = "https://raw.githubusercontent.com/superdarco78/"
 
 # 8 kafelków funkcji (na GitHubie obrazki z tekstem) – w HA prawdziwe kafelki z tekstem HA
@@ -150,7 +150,7 @@ class Opis:
         t = tekst(re.sub(r"<sub>.*?</sub>", "", tresc))
         self.ostatni_naglowek = t
         if "icon.png" in ln:   # tytuł strony
-            self.daj(f'<h1 class="m-tytul"{self.id_attr()}><img class="m-logo" data-src="{RAW}okno-ha-integracja/main/custom_components/okno_ha/brand/icon.png" alt=""><span>{html.escape(t)}</span></h1>')
+            self.daj(f'<h1 class="m-tytul"{self.id_attr()}><img class="m-logo" data-src="{RAW}Motor-HA/main/custom_components/okno_ha/brand/icon.png" alt=""><span>{html.escape(t)}</span></h1>')
             return
         tag = {1: "h1", 2: "h2", 3: "h3", 4: "h4"}[poziom]
         self.daj(f'<{tag} class="m-{tag}"{self.id_attr()}>{ikona(ik) if ik else ""}<span>{html.escape(t)}</span></{tag}>')
