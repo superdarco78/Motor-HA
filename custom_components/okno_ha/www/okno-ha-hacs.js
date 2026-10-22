@@ -324,7 +324,11 @@
     }
   };
   // galeria w opisie: żywe karty zamiast obrazków (osobny skrypt w ramce opisu – tylko w HACS)
+  // v1.4.51: żywa galeria WYŁĄCZONA – jej zamienniki ha-card/ha-icon mogły trafić do ramki HACS przed HACS-em
+  // i psuły stronę („Error while loading page repository”). Opis pokazuje obrazki, jak na GitHubie.
+  const GALERIA = false;
   const galeria = (w) => {
+    if (!GALERIA) return;
     if (w.__oknoHaGaleria || w.__oknoHaGaleriaW || !w.document.head || !/^\/hacs\//.test(location.pathname)) return;
     w.__oknoHaGaleriaW = true;
     const s = w.document.createElement("script");
