@@ -309,58 +309,28 @@
 <p>Karta kreslí přesně to, co máš. Venkovní stínění je vidět z fasády, vnitřní z místnosti.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sofa-outline.svg" width="28" height="28" align="absmiddle" alt=""> Uvnitř</h3>
-<table>
-<tr><td colspan="4"><b>Rolety</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pelna.png" width="100%" alt="Volně visící roleta"><br><sub>Volně visící roleta</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/kasetowa.png" width="100%" alt="Kazetová roleta"><br><sub>Kazetová roleta</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zebra.png" width="100%" alt="Roleta den a noc"><br><sub>Roleta den a noc</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaciemniajaca.png" width="100%" alt="Zatemňovací roleta"><br><sub>Zatemňovací roleta</sub></td>
-</tr>
-<tr><td colspan="4"><b>Plisé a římské</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plisa.png" width="100%" alt="Plisé"><br><sub>Plisé</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plaster.png" width="100%" alt="Plisé voština"><br><sub>Plisé voština</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/rzymska.png" width="100%" alt="Římská roleta"><br><sub>Římská roleta</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Žaluzie</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaluzja.png" width="100%" alt="Hliníková žaluzie"><br><sub>Hliníková žaluzie</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/drewniana.png" width="100%" alt="Dřevěná žaluzie"><br><sub>Dřevěná žaluzie</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Vertikální a závěsy</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pionowa.png" width="100%" alt="Vertikální žaluzie"><br><sub>Vertikální žaluzie</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaslona.png" width="100%" alt="Boční závěs"><br><sub>Boční závěs</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-rolety-ciemny.webp" width="100%" alt="Rolety: Volně visící roleta, Kazetová roleta, Roleta den a noc, Zatemňovací roleta"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-plisy-ciemny.webp" width="100%" alt="Plisé a římské: Plisé, Plisé voština, Římská roleta"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-zaluzje-ciemny.webp" width="100%" alt="Žaluzie: Hliníková žaluzie, Dřevěná žaluzie"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-pionowe-ciemny.webp" width="100%" alt="Vertikální a závěsy: Vertikální žaluzie, Boční závěs"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="28" height="28" align="absmiddle" alt=""> Venku</h3>
-<table>
-<tr><td colspan="4"><b>Venkovní rolety</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/natynkowa.png" width="100%" alt="Předokenní roleta"><br><sub>Předokenní roleta</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/podtynkowa.png" width="100%" alt="Podomítková roleta"><br><sub>Podomítková roleta</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zewnetrzna.png" width="100%" alt="Nadokenní roleta"><br><sub>Nadokenní roleta</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/perforowana.png" width="100%" alt="Perforovaná roleta"><br><sub>Perforovaná roleta</sub></td>
-</tr>
-<tr><td colspan="4"><b>Venkovní žaluzie</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowa.png" width="100%" alt="Venkovní žaluzie C80"><br><sub>Venkovní žaluzie C80</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowaz.png" width="100%" alt="Venkovní žaluzie Z90"><br><sub>Venkovní žaluzie Z90</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Terasa</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/markiza.png" width="100%" alt="Terasová markýza"><br><sub>Terasová markýza</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/screen.png" width="100%" alt="ZIP screen"><br><sub>ZIP screen</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-zrolety-ciemny.webp" width="100%" alt="Venkovní rolety: Předokenní roleta, Podomítková roleta, Nadokenní roleta, Perforovaná roleta"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-fasadowe-ciemny.webp" width="100%" alt="Venkovní žaluzie: Venkovní žaluzie C80, Venkovní žaluzie Z90"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-taras-ciemny.webp" width="100%" alt="Terasa: Terasová markýza, ZIP screen"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="28" height="28" align="absmiddle" alt=""> Brána a garáž</h3>
-<table>
-<tr><td colspan="4"><b>Vjezdové brány</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="100%" alt="Posuvná brána"><br><sub>Posuvná brána</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="100%" alt="Křídlová brána"><br><sub>Křídlová brána</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Garážová vrata</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="100%" alt="Sekční vrata"><br><sub>Sekční vrata</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="100%" alt="Výklopná vrata"><br><sub>Výklopná vrata</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="100%" alt="Rolovací vrata"><br><sub>Rolovací vrata</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-bramy-ciemny.webp" width="100%" alt="Vjezdové brány: Posuvná brána, Křídlová brána"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-garaze-ciemny.webp" width="100%" alt="Garážová vrata: Sekční vrata, Výklopná vrata, Rolovací vrata"></p>
 
 <a name="automatyka"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="34" height="34" align="absmiddle" alt=""> Automatika</h2>
@@ -406,6 +376,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/flask-outline.svg" width="32" height="32" align="absmiddle" alt=""> <b>Zkouška naprázdno</b></td><td>Ukáže, co by automatika udělala, ale stíněním nepohne.</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak na to</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20Motor%20HA%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít Motor HA v HA"></a></p>
+<ol><li>Klikněte na tlačítko výše.</li><li>U svého zařízení klikněte na <b>⚙ Nastavit</b>.</li><li>Projděte kroky jako v průvodci a na konci klikněte na <b>Odeslat</b>.</li></ol>
+<p>💡 Funkce zapnete v kroku <b>Automatika</b>, časy a limity změníte v kroku <b>Nastavení</b> (pokročilý režim). V základním režimu má vše připravené hodnoty.</p>
+
 <a name="bramy"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="34" height="34" align="absmiddle" alt=""> Brány a garáže</h2>
 
@@ -416,7 +391,9 @@
 <p>Fotobuňka v řídicí jednotce brány vždy sama bránu zastaví. Motor HA jen ukáže překážku na kartě a může poslat oznámení.</p>
 <p>Karta ukazuje posuvnou, křídlovou, sekční, výklopnou a rolovací bránu.</p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="19%" alt="Posuvná brána"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="19%" alt="Křídlová brána"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="19%" alt="Sekční vrata"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="19%" alt="Výklopná vrata"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="19%" alt="Rolovací vrata"> </p>
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-bramy-ciemny.webp" width="100%" alt="Vjezdové brány: Posuvná brána, Křídlová brána"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/cs-garaze-ciemny.webp" width="100%" alt="Garážová vrata: Sekční vrata, Výklopná vrata, Rolovací vrata"></p>
 
 <a name="powiadomienia"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/bell-ring-outline.svg" width="34" height="34" align="absmiddle" alt=""> Oznámení</h2>
@@ -432,6 +409,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="30" height="30" align="absmiddle" alt=""> Brána se nezavřela</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-octagon-outline.svg" width="30" height="30" align="absmiddle" alt=""> Překážka v bráně</td></tr>
 </table>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak na to</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20Motor%20HA%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít Motor HA v HA"></a></p>
+<ol><li>Klikněte na tlačítko výše.</li><li>U svého zařízení klikněte na <b>⚙ Nastavit</b>.</li><li>Projděte kroky jako v průvodci a na konci klikněte na <b>Odeslat</b>.</li></ol>
+<p>💡 Druhy oznámení vyberete v kroku <b>Oznámení</b>.</p>
 
 <a name="encje"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="34" height="34" align="absmiddle" alt=""> Co se objeví v Home Assistant</h2>
@@ -451,6 +433,10 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/airplane.svg" width="30" height="30" align="absmiddle" alt=""> <b>Režim dovolené</b></td><td>Režim dovolené pro celý dům</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak na to</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20Motor%20HA%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít Motor HA v HA"></a></p>
+<p>💡 Entity každého zařízení uvidíte po kliknutí na zařízení v seznamu Motor HA.</p>
+
 <h3>Akce pro vlastní automatizace</h3>
 <table><tr><th align="left">Funkce<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Co dělá<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/pause.svg" width="30" height="30" align="absmiddle" alt=""> <b>Pozastavit automatiku</b><br><code>motor_ha.wstrzymaj</code></td><td>Automatika zařízením nehýbe po zadanou dobu (prázdné = do konce dne).</td></tr>
@@ -466,10 +452,18 @@
 <p>Karta <b>Motor HA – celý dům</b> ukazuje všechna okna, stínění a brány v jednom seznamu s tlačítky otevřít, stop a zavřít. Přidáš ji takto: <b>Upravit panel → Přidat kartu →</b> napiš „Motor HA“.</p>
 <p><code>type: custom:motor-ha-dom</code></p>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak na to</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/lovelace_dashboards/"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20panely%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít panely v HA"></a></p>
+<ol><li>Klikněte na tlačítko a otevřete svůj panel.</li><li>Klikněte na <b>✏️ Upravit panel</b>, pak <b>+ Přidat kartu</b>.</li><li>Napište „Motor HA“, vyberte <b>Motor HA – celý dům</b>, pak <b>Uložit</b>.</li></ol>
+
 <a name="aktualizacja"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/update.svg" width="34" height="34" align="absmiddle" alt=""> Aktualizace a odebrání</h2>
 
 <ul><li>Nová verze se sama objeví v <b>Nastavení → Aktualizace</b>. Integrace a karta mají jedno společné číslo a jednu aktualizaci.</li><li>Po aktualizaci klikni na oznámení <b>Restartovat</b>. Stránka se obnoví sama.</li><li>Odebrání: <b>Nastavení → Zařízení a služby → Motor HA → Smazat</b>, pak odeber Motor HA v HACS. Integrace po sobě uklidí soubory sama.</li></ul>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak na to</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://img.shields.io/badge/-Otev%C5%99%C3%ADt%20Aktualizace%20v%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otevřít Aktualizace v HA"></a></p>
+<ol><li>Klikněte na tlačítko.</li><li>Klikněte na <b>Motor HA</b>, pak na <b>Aktualizovat</b>.</li><li>Po aktualizaci klikněte na <b>Restartovat</b>.</li></ol>
 
 <a name="pytania"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="34" height="34" align="absmiddle" alt=""> Otázky</h2>

@@ -1,10 +1,13 @@
 # 📝 Historia zmian
 
-## v2.0.3 – Kroki kreatora jeden pod drugim
+## v2.0.3 – Opis jak w HA, kroki jeden pod drugim
 
 - 🧙 Każdy krok kreatora z obrazkiem jeden pod drugim, na całą szerokość – nic się nie rozjeżdża, czytelne też na telefonie
 - 👆 Klikana instrukcja: spis kroków instalacji, pod każdym krokiem „Poprzedni · Spis treści · Następny”, tytuły kroków w tabeli kreatora prowadzą do ich obrazków
 - 🎨 Według zasad wyglądu: plakietki tylko w kolorze HA, ikona przy każdym kroku instalacji, „Instalacja ręczna” i „Pytania” bez rozwijanych list
+- 🏠 Opis w HA (HACS) jak reszta HA: ikony w jednej linii z napisem, tabele z liniami, pasek kroków cały w karcie HA, zrzuty przycięte bez czarnych pasów
+- 🪟 Rodzaje osłon i bram w równych rzędach – wszystkie obrazki tej samej wielkości, bez pustych miejsc
+- 🛠️ „Jak to zrobić” w działach Automatyka, Powiadomienia, Encje, Karta domu i Aktualizacja: przycisk do właściwego miejsca w HA i kroki
 
 ## v2.0.2 – Opis na całą szerokość i klikana instrukcja
 

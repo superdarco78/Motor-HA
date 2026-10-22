@@ -133,6 +133,29 @@
     miejsce.parentNode.insertBefore(f, miejsce);
   };
 
+  // wygląd opisu w HA (tylko nasz opis): ikony w jednej linii z napisem, tabele z liniami HA, pasek kroków w karcie HA
+  const wyglad = (md, w) => {
+    if (w.querySelector("style[data-mh]")) return;
+    const p = w === md ? "[data-mh-opis]" : ":host";
+    if (w === md) md.setAttribute("data-mh-opis", "");
+    const s = document.createElement("style");
+    s.setAttribute("data-mh", "");
+    s.textContent = `
+${p} img[src*="/img/ikony/"]:not([src*="/w-"]):not([src*="/linia-"]){display:inline-block!important;vertical-align:middle!important;margin:0 6px 2px 0!important}
+${p} img[src*="/img/ikony/w-"]{display:block!important;margin:0 auto!important}
+${p} table{border-collapse:collapse!important;width:100%!important;margin:8px 0 16px!important}
+${p} th,${p} td{border:1px solid var(--divider-color,rgba(127,127,127,.25))!important;padding:8px 10px!important;vertical-align:middle!important}
+${p} th{background:var(--secondary-background-color,transparent)!important}
+${p} p:has(> a > img[src*="/img/kreator/pasek-"]){display:flex!important;flex-wrap:nowrap!important;justify-content:space-between!important;gap:0!important;
+  padding:10px 8px!important;border-radius:var(--ha-card-border-radius,12px)!important;background:var(--card-background-color,transparent)!important;
+  border:1px solid var(--divider-color,rgba(127,127,127,.25))!important}
+${p} p:has(> a > img[src*="/img/kreator/pasek-"]) > a{flex:1 1 0!important;min-width:0!important}
+${p} img[src*="/img/kreator/pasek-"]{display:block!important;width:100%!important;height:auto!important;margin:0!important}
+${p} p:has(> img),${p} p:has(> a > img){text-align:center!important}
+${p} img[src*="/img/kroki/"],${p} img[src*="/img/oslony-rzedy/"]{display:block!important;margin:8px auto!important;width:auto!important;max-width:min(100%,880px)!important}
+${p} img[src*="/img/kroki/"][src*="/krok-"]{max-width:min(100%,640px)!important}`;
+    w.prepend(s);
+  };
   const nasz = (md) => typeof md.content === "string" && md.content.includes("superdarco78/Motor-HA/main/img/");
   const opis = (md) => {
     md.__mhNasz = true;
@@ -145,6 +168,7 @@
     // HACS narysował opis od nowa (np. po odświeżeniu danych) – zostaje wybrany język
     if (md.__mhTekst && md.content !== md.__mhTekst) { md.content = md.__mhTekst; return; }
     const w = wnetrze(md);
+    wyglad(md, w);
     for (const el of w.querySelectorAll("img")) {
       obrazek(el);
       if (/\/img\/pokaz\//.test(el.dataset.mhOrg || "") && el.isConnected) symulacja(el, md);

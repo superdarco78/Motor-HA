@@ -309,58 +309,28 @@
 <p>The card draws exactly what you have. Outdoor blinds are shown from the facade, indoor ones from inside the room.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sofa-outline.svg" width="28" height="28" align="absmiddle" alt=""> Indoor</h3>
-<table>
-<tr><td colspan="4"><b>Roller blinds</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pelna.png" width="100%" alt="Free-hanging roller blind"><br><sub>Free-hanging roller blind</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/kasetowa.png" width="100%" alt="Cassette roller blind"><br><sub>Cassette roller blind</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zebra.png" width="100%" alt="Day-night blind"><br><sub>Day-night blind</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaciemniajaca.png" width="100%" alt="Blackout blind"><br><sub>Blackout blind</sub></td>
-</tr>
-<tr><td colspan="4"><b>Pleated and Roman</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plisa.png" width="100%" alt="Pleated blind"><br><sub>Pleated blind</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plaster.png" width="100%" alt="Honeycomb blind"><br><sub>Honeycomb blind</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/rzymska.png" width="100%" alt="Roman blind"><br><sub>Roman blind</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Venetian blinds</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaluzja.png" width="100%" alt="Aluminium venetian"><br><sub>Aluminium venetian</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/drewniana.png" width="100%" alt="Wooden venetian"><br><sub>Wooden venetian</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Vertical and curtains</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pionowa.png" width="100%" alt="Vertical blind"><br><sub>Vertical blind</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaslona.png" width="100%" alt="Side curtain"><br><sub>Side curtain</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-rolety-ciemny.webp" width="100%" alt="Roller blinds: Free-hanging roller blind, Cassette roller blind, Day-night blind, Blackout blind"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-plisy-ciemny.webp" width="100%" alt="Pleated and Roman: Pleated blind, Honeycomb blind, Roman blind"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-zaluzje-ciemny.webp" width="100%" alt="Venetian blinds: Aluminium venetian, Wooden venetian"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-pionowe-ciemny.webp" width="100%" alt="Vertical and curtains: Vertical blind, Side curtain"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="28" height="28" align="absmiddle" alt=""> Outdoor</h3>
-<table>
-<tr><td colspan="4"><b>Roller shutters</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/natynkowa.png" width="100%" alt="Surface-mounted shutter"><br><sub>Surface-mounted shutter</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/podtynkowa.png" width="100%" alt="Concealed shutter"><br><sub>Concealed shutter</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zewnetrzna.png" width="100%" alt="Top-mounted shutter"><br><sub>Top-mounted shutter</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/perforowana.png" width="100%" alt="Perforated shutter"><br><sub>Perforated shutter</sub></td>
-</tr>
-<tr><td colspan="4"><b>External venetian blinds</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowa.png" width="100%" alt="External venetian C80"><br><sub>External venetian C80</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowaz.png" width="100%" alt="External venetian Z90"><br><sub>External venetian Z90</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Terrace</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/markiza.png" width="100%" alt="Terrace awning"><br><sub>Terrace awning</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/screen.png" width="100%" alt="ZIP screen"><br><sub>ZIP screen</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-zrolety-ciemny.webp" width="100%" alt="Roller shutters: Surface-mounted shutter, Concealed shutter, Top-mounted shutter, Perforated shutter"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-fasadowe-ciemny.webp" width="100%" alt="External venetian blinds: External venetian C80, External venetian Z90"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-taras-ciemny.webp" width="100%" alt="Terrace: Terrace awning, ZIP screen"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="28" height="28" align="absmiddle" alt=""> Gate and garage</h3>
-<table>
-<tr><td colspan="4"><b>Driveway gates</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="100%" alt="Sliding gate"><br><sub>Sliding gate</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="100%" alt="Swing gate"><br><sub>Swing gate</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Garage doors</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="100%" alt="Sectional door"><br><sub>Sectional door</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="100%" alt="Up-and-over door"><br><sub>Up-and-over door</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="100%" alt="Roller door"><br><sub>Roller door</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-bramy-ciemny.webp" width="100%" alt="Driveway gates: Sliding gate, Swing gate"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-garaze-ciemny.webp" width="100%" alt="Garage doors: Sectional door, Up-and-over door, Roller door"></p>
 
 <a name="automatyka"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="34" height="34" align="absmiddle" alt=""> Automation</h2>
@@ -406,6 +376,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/flask-outline.svg" width="32" height="32" align="absmiddle" alt=""> <b>Dry run</b></td><td>Shows what the automation would do, but does not move the shade.</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> How to do it</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Open%20Motor%20HA%20in%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Open Motor HA in HA"></a></p>
+<ol><li>Click the button above.</li><li>Next to your device, click <b>⚙ Configure</b>.</li><li>Go through the steps like in the wizard and click <b>Submit</b> at the end.</li></ol>
+<p>💡 You turn functions on in the <b>Automation</b> step and change times and limits in the <b>Settings</b> step (advanced mode). In basic mode everything has ready values.</p>
+
 <a name="bramy"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="34" height="34" align="absmiddle" alt=""> Gates and garages</h2>
 
@@ -416,7 +391,9 @@
 <p>The photocell in the gate controller always stops the gate by itself. Motor HA only shows the obstacle on the card and can send a notification.</p>
 <p>The card shows sliding, swing, sectional, up-and-over and roller gates.</p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="19%" alt="Sliding gate"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="19%" alt="Swing gate"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="19%" alt="Sectional door"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="19%" alt="Up-and-over door"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="19%" alt="Roller door"> </p>
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-bramy-ciemny.webp" width="100%" alt="Driveway gates: Sliding gate, Swing gate"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/en-garaze-ciemny.webp" width="100%" alt="Garage doors: Sectional door, Up-and-over door, Roller door"></p>
 
 <a name="powiadomienia"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/bell-ring-outline.svg" width="34" height="34" align="absmiddle" alt=""> Notifications</h2>
@@ -432,6 +409,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="30" height="30" align="absmiddle" alt=""> Gate did not close</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-octagon-outline.svg" width="30" height="30" align="absmiddle" alt=""> Obstacle in the gate</td></tr>
 </table>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> How to do it</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Open%20Motor%20HA%20in%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Open Motor HA in HA"></a></p>
+<ol><li>Click the button above.</li><li>Next to your device, click <b>⚙ Configure</b>.</li><li>Go through the steps like in the wizard and click <b>Submit</b> at the end.</li></ol>
+<p>💡 You choose the kinds of notifications in the <b>Notifications</b> step.</p>
 
 <a name="encje"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="34" height="34" align="absmiddle" alt=""> What you get in Home Assistant</h2>
@@ -451,6 +433,10 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/airplane.svg" width="30" height="30" align="absmiddle" alt=""> <b>Vacation mode</b></td><td>Vacation mode for the whole home</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> How to do it</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Open%20Motor%20HA%20in%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Open Motor HA in HA"></a></p>
+<p>💡 You see the entities of each device after clicking the device in the Motor HA list.</p>
+
 <h3>Actions for your own automations</h3>
 <table><tr><th align="left">Feature<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">What it does<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/pause.svg" width="30" height="30" align="absmiddle" alt=""> <b>Pause automation</b><br><code>motor_ha.wstrzymaj</code></td><td>The automation does not move the device for the given time (empty = until the end of the day).</td></tr>
@@ -466,10 +452,18 @@
 <p>The <b>Motor HA – whole home</b> card lists every window, blind and gate with open, stop and close buttons. Add it like this: <b>Edit dashboard → Add card →</b> type “Motor HA”.</p>
 <p><code>type: custom:motor-ha-dom</code></p>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> How to do it</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/lovelace_dashboards/"><img src="https://img.shields.io/badge/-Open%20dashboards%20in%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Open dashboards in HA"></a></p>
+<ol><li>Click the button and open your dashboard.</li><li>Click <b>✏️ Edit dashboard</b>, then <b>+ Add card</b>.</li><li>Type “Motor HA”, choose <b>Motor HA – whole home</b>, then <b>Save</b>.</li></ol>
+
 <a name="aktualizacja"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/update.svg" width="34" height="34" align="absmiddle" alt=""> Updating and removing</h2>
 
 <ul><li>A new version shows up by itself in <b>Settings → Updates</b>. Integration and card share one number and one update.</li><li>After updating, click the <b>Restart</b> notification. The page refreshes by itself.</li><li>Removing: <b>Settings → Devices & services → Motor HA → Delete</b>, then remove Motor HA in HACS. The integration cleans up its own files.</li></ul>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> How to do it</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://img.shields.io/badge/-Open%20Updates%20in%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Open Updates in HA"></a></p>
+<ol><li>Click the button.</li><li>Click <b>Motor HA</b>, then <b>Update</b>.</li><li>After the update click <b>Restart</b>.</li></ol>
 
 <a name="pytania"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="34" height="34" align="absmiddle" alt=""> Questions</h2>

@@ -309,58 +309,28 @@
 <p>Karta rysuje dokładnie to, co masz. Osłony zewnętrzne widać od strony elewacji, wewnętrzne od środka pokoju.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sofa-outline.svg" width="28" height="28" align="absmiddle" alt=""> Wewnątrz pomieszczenia</h3>
-<table>
-<tr><td colspan="4"><b>Rolety</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pelna.png" width="100%" alt="Roleta wolnowisząca"><br><sub>Roleta wolnowisząca</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/kasetowa.png" width="100%" alt="Roleta w kasecie"><br><sub>Roleta w kasecie</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zebra.png" width="100%" alt="Dzień-noc"><br><sub>Dzień-noc</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaciemniajaca.png" width="100%" alt="Zaciemniająca"><br><sub>Zaciemniająca</sub></td>
-</tr>
-<tr><td colspan="4"><b>Plisy i rzymskie</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plisa.png" width="100%" alt="Plisa"><br><sub>Plisa</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plaster.png" width="100%" alt="Plaster miodu"><br><sub>Plaster miodu</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/rzymska.png" width="100%" alt="Rzymska"><br><sub>Rzymska</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Żaluzje</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaluzja.png" width="100%" alt="Żaluzja aluminiowa"><br><sub>Żaluzja aluminiowa</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/drewniana.png" width="100%" alt="Żaluzja drewniana"><br><sub>Żaluzja drewniana</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Pionowe i zasłony</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pionowa.png" width="100%" alt="Żaluzja pionowa"><br><sub>Żaluzja pionowa</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaslona.png" width="100%" alt="Zasłona boczna"><br><sub>Zasłona boczna</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-rolety-ciemny.webp" width="100%" alt="Rolety: Roleta wolnowisząca, Roleta w kasecie, Dzień-noc, Zaciemniająca"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-plisy-ciemny.webp" width="100%" alt="Plisy i rzymskie: Plisa, Plaster miodu, Rzymska"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-zaluzje-ciemny.webp" width="100%" alt="Żaluzje: Żaluzja aluminiowa, Żaluzja drewniana"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-pionowe-ciemny.webp" width="100%" alt="Pionowe i zasłony: Żaluzja pionowa, Zasłona boczna"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="28" height="28" align="absmiddle" alt=""> Na zewnątrz</h3>
-<table>
-<tr><td colspan="4"><b>Rolety zewnętrzne</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/natynkowa.png" width="100%" alt="Roleta natynkowa"><br><sub>Roleta natynkowa</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/podtynkowa.png" width="100%" alt="Roleta podtynkowa"><br><sub>Roleta podtynkowa</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zewnetrzna.png" width="100%" alt="Roleta nadstawna"><br><sub>Roleta nadstawna</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/perforowana.png" width="100%" alt="Roleta z perforacją"><br><sub>Roleta z perforacją</sub></td>
-</tr>
-<tr><td colspan="4"><b>Żaluzje fasadowe</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowa.png" width="100%" alt="Żaluzja fasadowa C80"><br><sub>Żaluzja fasadowa C80</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowaz.png" width="100%" alt="Żaluzja fasadowa Z90"><br><sub>Żaluzja fasadowa Z90</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Taras</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/markiza.png" width="100%" alt="Markiza tarasowa"><br><sub>Markiza tarasowa</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/screen.png" width="100%" alt="Screen ZIP"><br><sub>Screen ZIP</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-zrolety-ciemny.webp" width="100%" alt="Rolety zewnętrzne: Roleta natynkowa, Roleta podtynkowa, Roleta nadstawna, Roleta z perforacją"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-fasadowe-ciemny.webp" width="100%" alt="Żaluzje fasadowe: Żaluzja fasadowa C80, Żaluzja fasadowa Z90"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-taras-ciemny.webp" width="100%" alt="Taras: Markiza tarasowa, Screen ZIP"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="28" height="28" align="absmiddle" alt=""> Brama i garaż</h3>
-<table>
-<tr><td colspan="4"><b>Bramy wjazdowe</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="100%" alt="Brama przesuwna"><br><sub>Brama przesuwna</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="100%" alt="Brama skrzydłowa"><br><sub>Brama skrzydłowa</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Bramy garażowe</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="100%" alt="Brama segmentowa"><br><sub>Brama segmentowa</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="100%" alt="Brama uchylna"><br><sub>Brama uchylna</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="100%" alt="Brama roletowa"><br><sub>Brama roletowa</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-bramy-ciemny.webp" width="100%" alt="Bramy wjazdowe: Brama przesuwna, Brama skrzydłowa"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-garaze-ciemny.webp" width="100%" alt="Bramy garażowe: Brama segmentowa, Brama uchylna, Brama roletowa"></p>
 
 <a name="automatyka"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="34" height="34" align="absmiddle" alt=""> Automatyka</h2>
@@ -406,6 +376,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/flask-outline.svg" width="32" height="32" align="absmiddle" alt=""> <b>Próba na sucho</b></td><td>Pokazuje, co automatyka by zrobiła, ale nie rusza osłoną.</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak to zrobić</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20Motor%20HA%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz Motor HA w HA"></a></p>
+<ol><li>Kliknij przycisk wyżej.</li><li>Przy swoim urządzeniu kliknij <b>⚙ Konfiguruj</b>.</li><li>Przejdź kroki tak jak w kreatorze i na końcu kliknij <b>Zatwierdź</b>.</li></ol>
+<p>💡 Funkcje włączasz w kroku <b>Automatyka</b>, a godziny i progi zmieniasz w kroku <b>Ustawienia</b> (tryb zaawansowany). W trybie podstawowym wszystko ma gotowe wartości.</p>
+
 <a name="bramy"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="34" height="34" align="absmiddle" alt=""> Bramy i garaże</h2>
 
@@ -416,7 +391,9 @@
 <p>Fotokomórka w sterowniku bramy zawsze sama zatrzymuje bramę. Motor HA tylko pokazuje przeszkodę na karcie i może wysłać powiadomienie.</p>
 <p>Karta pokazuje bramę przesuwną, skrzydłową, segmentową, uchylną i roletową.</p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="19%" alt="Brama przesuwna"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="19%" alt="Brama skrzydłowa"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="19%" alt="Brama segmentowa"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="19%" alt="Brama uchylna"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="19%" alt="Brama roletowa"> </p>
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-bramy-ciemny.webp" width="100%" alt="Bramy wjazdowe: Brama przesuwna, Brama skrzydłowa"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/pl-garaze-ciemny.webp" width="100%" alt="Bramy garażowe: Brama segmentowa, Brama uchylna, Brama roletowa"></p>
 
 <a name="powiadomienia"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/bell-ring-outline.svg" width="34" height="34" align="absmiddle" alt=""> Powiadomienia</h2>
@@ -432,6 +409,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="30" height="30" align="absmiddle" alt=""> Brama nie domknęła się</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-octagon-outline.svg" width="30" height="30" align="absmiddle" alt=""> Przeszkoda w bramie</td></tr>
 </table>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak to zrobić</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20Motor%20HA%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz Motor HA w HA"></a></p>
+<ol><li>Kliknij przycisk wyżej.</li><li>Przy swoim urządzeniu kliknij <b>⚙ Konfiguruj</b>.</li><li>Przejdź kroki tak jak w kreatorze i na końcu kliknij <b>Zatwierdź</b>.</li></ol>
+<p>💡 Rodzaje powiadomień wybierasz w kroku <b>Powiadomienia</b>.</p>
 
 <a name="encje"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="34" height="34" align="absmiddle" alt=""> Co pojawi się w Home Assistant</h2>
@@ -451,6 +433,10 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/airplane.svg" width="30" height="30" align="absmiddle" alt=""> <b>Tryb wakacyjny</b></td><td>Tryb wakacyjny dla całego domu</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak to zrobić</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20Motor%20HA%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz Motor HA w HA"></a></p>
+<p>💡 Encje każdego urządzenia zobaczysz po kliknięciu urządzenia na liście Motor HA.</p>
+
 <h3>Akcje do własnych automatyzacji</h3>
 <table><tr><th align="left">Funkcja<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Co robi<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/pause.svg" width="30" height="30" align="absmiddle" alt=""> <b>Wstrzymaj automatykę</b><br><code>motor_ha.wstrzymaj</code></td><td>Automatyka nie rusza urządzeniem przez podany czas (puste = do końca dnia).</td></tr>
@@ -466,10 +452,18 @@
 <p>Karta <b>Motor HA – cały dom</b> pokazuje wszystkie okna, osłony i bramy na jednej liście, z przyciskami otwórz, stop i zamknij. Dodasz ją tak: <b>Edytuj panel → Dodaj kartę →</b> wpisz „Motor HA”.</p>
 <p><code>type: custom:motor-ha-dom</code></p>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak to zrobić</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/lovelace_dashboards/"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20panele%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz panele w HA"></a></p>
+<ol><li>Kliknij przycisk i otwórz swój panel.</li><li>Kliknij <b>✏️ Edytuj panel</b>, potem <b>+ Dodaj kartę</b>.</li><li>Wpisz „Motor HA” i wybierz <b>Motor HA – cały dom</b>, potem <b>Zapisz</b>.</li></ol>
+
 <a name="aktualizacja"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/update.svg" width="34" height="34" align="absmiddle" alt=""> Aktualizacja i usuwanie</h2>
 
 <ul><li>Nowa wersja pojawia się sama w <b>Ustawienia → Aktualizacje</b>. Integracja i karta mają jeden wspólny numer i jedną aktualizację.</li><li>Po aktualizacji kliknij powiadomienie <b>Uruchom ponownie</b>. Strona odświeży się sama.</li><li>Usuwanie: <b>Ustawienia → Urządzenia i usługi → Motor HA → Usuń</b>, potem usuń Motor HA w HACS. Integracja sama sprząta swoje pliki.</li></ul>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Jak to zrobić</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://img.shields.io/badge/-Otw%C3%B3rz%20Aktualizacje%20w%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Otwórz Aktualizacje w HA"></a></p>
+<ol><li>Kliknij przycisk.</li><li>Kliknij <b>Motor HA</b>, potem <b>Aktualizuj</b>.</li><li>Po aktualizacji kliknij <b>Uruchom ponownie</b>.</li></ol>
 
 <a name="pytania"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="34" height="34" align="absmiddle" alt=""> Pytania</h2>

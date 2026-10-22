@@ -309,58 +309,28 @@
 <p>La carte dessine exactement ce que tu as. Les stores extérieurs se voient depuis la façade, les intérieurs depuis la pièce.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/sofa-outline.svg" width="28" height="28" align="absmiddle" alt=""> Intérieur</h3>
-<table>
-<tr><td colspan="4"><b>Stores enrouleurs</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pelna.png" width="100%" alt="Store enrouleur libre"><br><sub>Store enrouleur libre</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/kasetowa.png" width="100%" alt="Store enrouleur à coffre"><br><sub>Store enrouleur à coffre</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zebra.png" width="100%" alt="Store jour-nuit"><br><sub>Store jour-nuit</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaciemniajaca.png" width="100%" alt="Store occultant"><br><sub>Store occultant</sub></td>
-</tr>
-<tr><td colspan="4"><b>Plissés et bateaux</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plisa.png" width="100%" alt="Store plissé"><br><sub>Store plissé</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/plaster.png" width="100%" alt="Store nid d&#x27;abeille"><br><sub>Store nid d&#x27;abeille</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/rzymska.png" width="100%" alt="Store bateau"><br><sub>Store bateau</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Stores vénitiens</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaluzja.png" width="100%" alt="Store vénitien alu"><br><sub>Store vénitien alu</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/drewniana.png" width="100%" alt="Store vénitien bois"><br><sub>Store vénitien bois</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Verticaux et rideaux</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/pionowa.png" width="100%" alt="Store vertical"><br><sub>Store vertical</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zaslona.png" width="100%" alt="Rideau latéral"><br><sub>Rideau latéral</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-rolety-ciemny.webp" width="100%" alt="Stores enrouleurs: Store enrouleur libre, Store enrouleur à coffre, Store jour-nuit, Store occultant"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-plisy-ciemny.webp" width="100%" alt="Plissés et bateaux: Store plissé, Store nid d&#x27;abeille, Store bateau"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-zaluzje-ciemny.webp" width="100%" alt="Stores vénitiens: Store vénitien alu, Store vénitien bois"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-pionowe-ciemny.webp" width="100%" alt="Verticaux et rideaux: Store vertical, Rideau latéral"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/window-shutter.svg" width="28" height="28" align="absmiddle" alt=""> Extérieur</h3>
-<table>
-<tr><td colspan="4"><b>Volets roulants</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/natynkowa.png" width="100%" alt="Volet roulant en applique"><br><sub>Volet roulant en applique</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/podtynkowa.png" width="100%" alt="Volet roulant encastré"><br><sub>Volet roulant encastré</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/zewnetrzna.png" width="100%" alt="Volet roulant coffre tunnel"><br><sub>Volet roulant coffre tunnel</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/perforowana.png" width="100%" alt="Volet roulant ajouré"><br><sub>Volet roulant ajouré</sub></td>
-</tr>
-<tr><td colspan="4"><b>Brise-soleil orientables</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowa.png" width="100%" alt="Brise-soleil C80"><br><sub>Brise-soleil C80</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/fasadowaz.png" width="100%" alt="Brise-soleil Z90"><br><sub>Brise-soleil Z90</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Terrasse</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/markiza.png" width="100%" alt="Store banne"><br><sub>Store banne</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/screen.png" width="100%" alt="Screen ZIP"><br><sub>Screen ZIP</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-zrolety-ciemny.webp" width="100%" alt="Volets roulants: Volet roulant en applique, Volet roulant encastré, Volet roulant coffre tunnel, Volet roulant ajouré"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-fasadowe-ciemny.webp" width="100%" alt="Brise-soleil orientables: Brise-soleil C80, Brise-soleil Z90"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-taras-ciemny.webp" width="100%" alt="Terrasse: Store banne, Screen ZIP"></p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="28" height="28" align="absmiddle" alt=""> Portail et garage</h3>
-<table>
-<tr><td colspan="4"><b>Portails</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="100%" alt="Portail coulissant"><br><sub>Portail coulissant</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="100%" alt="Portail battant"><br><sub>Portail battant</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-<tr><td colspan="4"><b>Portes de garage</b></td></tr><tr>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="100%" alt="Porte sectionnelle"><br><sub>Porte sectionnelle</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="100%" alt="Porte basculante"><br><sub>Porte basculante</sub></td>
-<td align="center" valign="top"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="100%" alt="Porte enroulable"><br><sub>Porte enroulable</sub></td>
-<td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/puste-440.svg" width="100%" height="1" alt=""></td></tr>
-</table>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-bramy-ciemny.webp" width="100%" alt="Portails: Portail coulissant, Portail battant"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-garaze-ciemny.webp" width="100%" alt="Portes de garage: Porte sectionnelle, Porte basculante, Porte enroulable"></p>
 
 <a name="automatyka"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/robot.svg" width="34" height="34" align="absmiddle" alt=""> Automatisation</h2>
@@ -406,6 +376,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/flask-outline.svg" width="32" height="32" align="absmiddle" alt=""> <b>Essai à blanc</b></td><td>Montre ce que ferait l&#x27;automatisme, sans bouger le store.</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Comment faire</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Ouvrir%20Motor%20HA%20dans%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Ouvrir Motor HA dans HA"></a></p>
+<ol><li>Cliquez sur le bouton ci-dessus.</li><li>À côté de votre appareil, cliquez sur <b>⚙ Configurer</b>.</li><li>Suivez les étapes comme dans l’assistant et cliquez sur <b>Valider</b> à la fin.</li></ol>
+<p>💡 Vous activez les fonctions à l’étape <b>Automatisme</b> et modifiez les heures et les seuils à l’étape <b>Réglages</b> (mode avancé). En mode simple, tout a des valeurs prêtes.</p>
+
 <a name="bramy"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="34" height="34" align="absmiddle" alt=""> Portails et garages</h2>
 
@@ -416,7 +391,9 @@
 <p>La cellule photo du contrôleur arrête toujours le portail elle-même. Motor HA montre seulement l’obstacle sur la carte et peut envoyer une notification.</p>
 <p>La carte montre les portails coulissants, battants, sectionnels, basculants et à enroulement.</p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/przesuwna.png" width="19%" alt="Portail coulissant"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/skrzydlowa.png" width="19%" alt="Portail battant"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/segmentowa.png" width="19%" alt="Porte sectionnelle"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/uchylna.png" width="19%" alt="Porte basculante"> <img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony/roletowa.png" width="19%" alt="Porte enroulable"> </p>
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-bramy-ciemny.webp" width="100%" alt="Portails: Portail coulissant, Portail battant"></p>
+
+<p><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/oslony-rzedy/fr-garaze-ciemny.webp" width="100%" alt="Portes de garage: Porte sectionnelle, Porte basculante, Porte enroulable"></p>
 
 <a name="powiadomienia"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/bell-ring-outline.svg" width="34" height="34" align="absmiddle" alt=""> Notifications</h2>
@@ -432,6 +409,11 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gate.svg" width="30" height="30" align="absmiddle" alt=""> Le portail ne s&#x27;est pas fermé</td></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/alert-octagon-outline.svg" width="30" height="30" align="absmiddle" alt=""> Obstacle dans le portail</td></tr>
 </table>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Comment faire</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Ouvrir%20Motor%20HA%20dans%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Ouvrir Motor HA dans HA"></a></p>
+<ol><li>Cliquez sur le bouton ci-dessus.</li><li>À côté de votre appareil, cliquez sur <b>⚙ Configurer</b>.</li><li>Suivez les étapes comme dans l’assistant et cliquez sur <b>Valider</b> à la fin.</li></ol>
+<p>💡 Vous choisissez les types de notifications à l’étape <b>Notifications</b>.</p>
 
 <a name="encje"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/format-list-bulleted.svg" width="34" height="34" align="absmiddle" alt=""> Ce que tu obtiens dans Home Assistant</h2>
@@ -451,6 +433,10 @@
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/airplane.svg" width="30" height="30" align="absmiddle" alt=""> <b>Mode vacances</b></td><td>Mode vacances pour toute la maison</td></tr>
 </table>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Comment faire</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/integration/?domain=motor_ha"><img src="https://img.shields.io/badge/-Ouvrir%20Motor%20HA%20dans%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Ouvrir Motor HA dans HA"></a></p>
+<p>💡 Vous voyez les entités de chaque appareil en cliquant sur l’appareil dans la liste Motor HA.</p>
+
 <h3>Actions pour tes automatisations</h3>
 <table><tr><th align="left">Fonction<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-1000.svg" width="100%" height="4" alt=""></th><th align="left">Ce qu’elle fait<br><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/linia-2000.svg" width="100%" height="4" alt=""></th></tr>
 <tr><td><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/pause.svg" width="30" height="30" align="absmiddle" alt=""> <b>Mettre l&#x27;automatisme en pause</b><br><code>motor_ha.wstrzymaj</code></td><td>L&#x27;automatisme ne bouge pas l&#x27;appareil pendant la durée indiquée (vide = jusqu&#x27;à la fin de la journée).</td></tr>
@@ -466,10 +452,18 @@
 <p>La carte <b>Motor HA – toute la maison</b> liste toutes les fenêtres, stores et portails avec les boutons ouvrir, stop et fermer. Pour l’ajouter : <b>Modifier le tableau de bord → Ajouter une carte →</b> tape « Motor HA ».</p>
 <p><code>type: custom:motor-ha-dom</code></p>
 
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Comment faire</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/lovelace_dashboards/"><img src="https://img.shields.io/badge/-Ouvrir%20les%20tableaux%20de%20bord%20dans%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Ouvrir les tableaux de bord dans HA"></a></p>
+<ol><li>Cliquez sur le bouton et ouvrez votre tableau de bord.</li><li>Cliquez sur <b>✏️ Modifier le tableau de bord</b>, puis <b>+ Ajouter une carte</b>.</li><li>Tapez « Motor HA », choisissez <b>Motor HA – toute la maison</b>, puis <b>Enregistrer</b>.</li></ol>
+
 <a name="aktualizacja"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/update.svg" width="34" height="34" align="absmiddle" alt=""> Mise à jour et suppression</h2>
 
 <ul><li>Une nouvelle version apparaît toute seule dans <b>Paramètres → Mises à jour</b>. L’intégration et la carte ont un seul numéro et une seule mise à jour.</li><li>Après la mise à jour, clique sur la notification <b>Redémarrer</b>. La page se recharge toute seule.</li><li>Suppression : <b>Paramètres → Appareils et services → Motor HA → Supprimer</b>, puis supprime Motor HA dans HACS. L’intégration nettoie ses fichiers elle-même.</li></ul>
+
+<h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/gesture-tap.svg" width="28" height="28" align="absmiddle" alt=""> Comment faire</h3>
+<p align="center"><a href="https://my.home-assistant.io/redirect/updates/"><img src="https://img.shields.io/badge/-Ouvrir%20les%20mises%20%C3%A0%20jour%20dans%20HA-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" height="36" alt="Ouvrir les mises à jour dans HA"></a></p>
+<ol><li>Cliquez sur le bouton.</li><li>Cliquez sur <b>Motor HA</b>, puis <b>Mettre à jour</b>.</li><li>Après la mise à jour, cliquez sur <b>Redémarrer</b>.</li></ol>
 
 <a name="pytania"></a>
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="34" height="34" align="absmiddle" alt=""> Questions</h2>

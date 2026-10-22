@@ -17,7 +17,7 @@ KORZEN = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(KORZEN))
 from readme_teksty import T  # noqa: E402
-from kroki_teksty import KROKI_ZRZUTY, K  # noqa: E402
+from kroki_teksty import JAK, KROKI_ZRZUTY, K  # noqa: E402
 
 MDI = json.loads((Path(__file__).parent / "mdi.json").read_text(encoding="utf-8"))
 REPO = "superdarco78/Motor-HA"
@@ -222,6 +222,20 @@ def klik(tytul: str, lista: list[str]) -> str:
     return f"<p><b>{escape(tytul)}</b></p>\n<ol>" + "".join(f"<li>{x}</li>" for x in lista) + "</ol>\n" if lista else ""
 
 
+MOTOR = "https://my.home-assistant.io/redirect/integration/?domain=motor_ha"
+AKTUALIZACJE = "https://my.home-assistant.io/redirect/updates/"
+
+
+def jak(tj: dict, guzik: str, link: str, kroki: list[str], rada: str = "") -> str:
+    """„Jak to zrobić”: przycisk do właściwego miejsca w HA, kroki i porada."""
+    w = f'<h3>{ik("gesture-tap", 28)} {escape(tj["tytul"])}</h3>\n<p align="center">{przycisk(tj[guzik], "009AC7", "homeassistant", link)}</p>\n'
+    if kroki:
+        w += "<ol>" + "".join(f"<li>{x}</li>" for x in kroki) + "</ol>\n"
+    if rada:
+        w += f"<p>💡 {rada}</p>\n"
+    return w
+
+
 def naglowek(klucz: str, tekst: str) -> str:
     return f'<a name="{klucz}"></a>\n<h2>{ik(DZIALY[klucz], 34)} {escape(tekst)}</h2>\n'
 
@@ -342,15 +356,12 @@ def readme(j: str) -> str:
     w.append(naglowek("oslony", d["oslony"]))
     w.append(f"<p>{escape(L['oslony_wstep'])}</p>\n")
     for g, podgrupy in GRUPY.items():
-        w.append(f"<h3>{ik(IKONY_GRUP[g], 28)} {escape(k['grupy'][g])}</h3>\n<table>")
+        # każda podgrupa to jeden obrazek na całą szerokość: tytuł i kafelki tej samej wielkości, równo rozłożone
+        # (img/oslony-rzedy, robione z img/oslony-kafle; na GitHubie ciemne, w HA według motywu – motor-ha-hacs.js)
+        w.append(f"<h3>{ik(IKONY_GRUP[g], 28)} {escape(k['grupy'][g])}</h3>\n")
         for pg, typy in podgrupy.items():
-            w.append(f'<tr><td colspan="4"><b>{escape(k["grupy"][pg])}</b></td></tr><tr>')
-            for ty in typy:
-                w.append(f'<td align="center" valign="top"><img src="{RAW}img/oslony/{ty}.png" width="100%" alt="{escape(k["oslony"][ty])}">'
-                         f'<br><sub>{escape(k["oslony"][ty])}</sub></td>')
-            # puste miejsca mają tę samą szerokość co obrazek – kolumny zostają równe
-            w.append(f'<td><img src="{RAW}img/ikony/puste-440.svg" width="100%" height="1" alt=""></td>' * (4 - len(typy)) + "</tr>")
-        w.append("</table>\n")
+            opis = ", ".join(k["oslony"][ty] for ty in typy)
+            w.append(f'<p><img src="{RAW}img/oslony-rzedy/{j}-{pg}-ciemny.webp" width="100%" alt="{escape(k["grupy"][pg])}: {escape(opis)}"></p>\n')
     # automatyka
     w.append(naglowek("automatyka", d["automatyka"]))
     w.append(f"<p>{L['automatyka_wstep']}</p>\n")
@@ -363,12 +374,14 @@ def readme(j: str) -> str:
                 n, op = t["f"][f]
                 w.append(f'<tr><td>{ik(FUNKCJE_IKONY[f], 32)} <b>{escape(n)}</b></td><td>{escape(op)}</td></tr>')
         w.append("</table>\n")
+    w.append(jak(JAK[j], "motor", MOTOR, JAK[j]["konfiguruj"], JAK[j]["automatyka"]))
     # bramy
     w.append(naglowek("bramy", d["bramy"]))
     w.append("> [!IMPORTANT]\n> " + L["bramy_tekst"][0] + "\n\n")
     w.append(f"<p>{L['bramy_tekst'][1]}</p>\n<p>{L['bramy_tekst'][2]}</p>\n")
-    w.append('<p align="center">' + "".join(f'<img src="{RAW}img/oslony/{ty}.png" width="19%" alt="{escape(k["oslony"][ty])}"> '
-                                            for ty in GRUPY["brama"]["bramy"] + GRUPY["brama"]["garaze"]) + "</p>\n")
+    for pg, typy in GRUPY["brama"].items():
+        opis = ", ".join(k["oslony"][ty] for ty in typy)
+        w.append(f'<p><img src="{RAW}img/oslony-rzedy/{j}-{pg}-ciemny.webp" width="100%" alt="{escape(k["grupy"][pg])}: {escape(opis)}"></p>\n')
     # powiadomienia
     w.append(naglowek("powiadomienia", d["powiadomienia"]))
     tr = json.loads((KORZEN / "custom_components" / "motor_ha" / "translations" / f"{j}.json").read_text(encoding="utf-8"))
@@ -376,6 +389,7 @@ def readme(j: str) -> str:
     for p, ikona in POWIADOMIENIA.items():
         w.append(f'<tr><td>{ik(ikona, 30)} {escape(t["selector"]["powiadomienia"][p])}</td></tr>')
     w.append("</table>\n")
+    w.append(jak(JAK[j], "motor", MOTOR, JAK[j]["konfiguruj"], JAK[j]["powiadomienia"]))
     # encje i usługi
     w.append(naglowek("encje", d["encje"]))
     w.append(f"<p>{escape(L['encje_wstep'])}</p>\n")
@@ -385,6 +399,7 @@ def readme(j: str) -> str:
         nazwa = "Motor HA" if e == "cover" else t["encje"][e]
         w.append(f'<tr><td>{ik(ikona, 30)} <b>{escape(nazwa)}</b></td><td>{escape(L["encje_opisy"][e])}</td></tr>')
     w.append("</table>\n")
+    w.append(jak(JAK[j], "motor", MOTOR, [], JAK[j]["encje"]))
     w.append(f"<h3>{escape(L['uslugi_tytul'])}</h3>\n<table>" + glowka((ka[0], 1000), (ka[1], 2000)))
     for u, ikona in USLUGI.items():
         n, op, _ = t["uslugi"][u]
@@ -393,9 +408,11 @@ def readme(j: str) -> str:
     # karta domu
     w.append(naglowek("dom", d["dom"]))
     w.append(f"<p>{L['dom_tekst']}</p>\n<p><code>type: custom:motor-ha-dom</code></p>\n")
+    w.append(jak(JAK[j], "panele", PANELE, JAK[j]["dom"]))
     # aktualizacja
     w.append(naglowek("aktualizacja", d["aktualizacja"]))
     w.append("<ul>" + "".join(f"<li>{x}</li>" for x in L["aktualizacja"]) + "</ul>\n")
+    w.append(jak(JAK[j], "aktualizacje", AKTUALIZACJE, JAK[j]["aktualizacja"]))
     # pytania
     w.append(naglowek("pytania", d["pytania"]))
     for py, od in L["pytania"]:
