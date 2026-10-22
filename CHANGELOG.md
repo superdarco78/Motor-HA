@@ -1,5 +1,17 @@
 # 📝 Historia zmian
 
+## v2.0.2 – Opis na całą szerokość i klikana instrukcja
+
+- ↔️ Opis na GitHubie wypełnia całą szerokość: kafelki, spis treści, tabele i obrazki, bez pustych miejsc z boku
+- 🌐 Przyciski języków w jednym rzędzie, równej wielkości
+- 👆 Pasek kroków kreatora jest klikany: każdy krok przenosi do swojego obrazka z instrukcją
+- 🏠 Instrukcja klikana: przyciski otwierają właściwe miejsce w Twoim Home Assistant (HACS, System, Dodaj integrację, Panele), a pasek kroków i obrazki prowadzą po opisie
+- ⬅️ Kreator: przycisk „Wstecz” po lewej, obok „Dalej”, zamiast przełącznika „Wróć do poprzedniego kroku”
+- 🧙 Kroki kreatora po dwa w rzędzie, większe i czytelne
+- 🌙 Zrzuty z HA na GitHubie zawsze w ciemnym motywie (w HA obrazki same idą za motywem HA)
+- 🗂 Przyciski „w HA” w opisie w HACS otwierają się w nowej karcie, opis zostaje na miejscu
+- 🟧 Nagłówki tabel z kreską w kolorze akcentu, wszystkie tabele równe
+
 ## v2.0.1 – Instrukcja krok po kroku z obrazkami
 
 - 🖼 Instalacja krok po kroku z obrazkami: Otwórz link, Dodaj, Pobierz, Uruchom ponownie, Dodaj integrację, gotowa karta

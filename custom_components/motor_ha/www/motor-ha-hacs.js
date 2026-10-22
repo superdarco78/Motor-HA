@@ -77,7 +77,6 @@
   const MY = /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/;
   const JEZYK = /^https:\/\/github\.com\/superdarco78\/Motor-HA(?:\/blob\/main\/README(?:_([A-Z]{2}))?\.md)?\/?$/;
   const KOTWICA = /^https:\/\/github\.com\/superdarco78\/Motor-HA(?:\/blob\/main\/README(?:_[A-Z]{2})?\.md)?#(.+)$/;
-  const idz = (adres) => { history.pushState(null, "", adres); window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } })); };
   const opisy = new Map();   // kod języka → treść opisu
   const pokazJezyk = (md, kod) => {
     const plik = kod ? `README_${kod}.md` : "README.md";
@@ -88,9 +87,10 @@
   const naglowek = (md, kotwica) => {
     const tekst = String(md.content || ""), i = tekst.indexOf(`<a name="${kotwica}"></a>`);
     if (i < 0) return null;
-    const m = /<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/.exec(tekst.slice(i));
-    const tytul = m && m[1].replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").trim();
-    return tytul && [...wnetrze(md).querySelectorAll("h1,h2,h3,h4")].find((h) => h.textContent.trim() === tytul);
+    // po kotwicy stoi nagłówek albo pogrubiony tytuł kroku (galeria kreatora)
+    const m = /<(h[1-4]|b)[^>]*>([\s\S]*?)<\/\1>/.exec(tekst.slice(i));
+    const tytul = m && m[2].replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").trim();
+    return tytul && [...wnetrze(md).querySelectorAll(m[1] === "b" ? "b" : "h1,h2,h3,h4")].find((h) => h.textContent.trim() === tytul);
   };
   const wnetrze = (md) => md.shadowRoot || md;
   const klik = (e) => {
@@ -98,7 +98,8 @@
     const h = a && a.getAttribute("href");
     if (!h || !md || !md.__mhNasz) return;
     let m;
-    if ((m = MY.exec(h))) idz(`${m[1].startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${m[1]}${m[2] || ""}`);
+    // przyciski „w HA” otwierają się w nowej karcie – opis zostaje tam, gdzie był
+    if ((m = MY.exec(h))) window.open(`${m[1].startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${m[1]}${m[2] || ""}`, "_blank", "noopener");
     else if ((m = JEZYK.exec(h))) pokazJezyk(md, m[1] || "");
     else if ((m = KOTWICA.exec(h))) { const cel = naglowek(md, decodeURIComponent(m[1])); if (!cel) return; cel.scrollIntoView({ behavior: "smooth", block: "start" }); }
     else return;
@@ -162,6 +163,38 @@
       } catch (e) { /* inna domena albo ramka w trakcie wczytywania */ }
     }
   };
+  // ── przycisk „Wstecz” w kreatorze Motor HA ──
+  // Kreator ma pole „wstecz” (przełącznik). Tutaj przełącznik znika, a obok „Dalej” po lewej stoi przycisk „Wstecz”,
+  // który wysyła krok z wstecz = tak. Używa gotowego ha-button z HA (nic nie rejestruje); przy błędzie zostaje przełącznik.
+  const WSTECZ = { pl: "Wstecz", en: "Back", de: "Zurück", fr: "Retour", cs: "Zpět" };
+  const wsteczKreator = () => {
+    try {
+      const r = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow")?.shadowRoot;
+      if (!r) return;
+      const form = r.querySelector("step-flow-form"), stopka = r.querySelector("ha-dialog-footer");
+      const jest = !!form?.step?.data_schema?.some((p) => p.name === "wstecz");
+      let b = stopka?.querySelector("[data-mh-wstecz]");
+      if (!jest || !stopka) { b?.remove(); return; }
+      for (const el of form.shadowRoot?.querySelector("ha-form")?.shadowRoot?.querySelectorAll("*") || []) {
+        if (el.schema?.name === "wstecz" && el.style.display !== "none") el.style.display = "none";
+      }
+      if (b) return;
+      b = document.createElement("ha-button");
+      b.dataset.mhWstecz = "1";
+      b.slot = "secondaryAction";
+      b.style.marginInlineEnd = "auto";   // po lewej stronie okienka
+      b.textContent = WSTECZ[String(ha()?.language || "en").slice(0, 2)] || WSTECZ.en;
+      b.addEventListener("click", () => {
+        const f = r.querySelector("step-flow-form");
+        if (!f) return;
+        f._stepData = { ...(f._stepDataProcessed || {}), wstecz: true };
+        f.submit();
+      });
+      stopka.prepend(b);
+    } catch (e) { /* okienko w trakcie rysowania */ }
+  };
+  setInterval(wsteczKreator, 500);
+
   const skanuj = () => { if (/^\/(hacs|config)/.test(location.pathname)) try { przejdz(document, { n: 0 }); } catch (e) { /* strona w trakcie rysowania */ } };
   setTimeout(skanuj, 300);
   setInterval(skanuj, 1500);
