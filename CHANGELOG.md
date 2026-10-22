@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v1.4.50 – Poprawka strony w HACS
+
+- 🛠 Naprawiony błąd „Error while loading page repository” w HACS (1.4.48–1.4.49): galeria w opisie nie zastępuje już kart HA w oknie HA
+- 🔄 Samo przeładowanie strony po aktualizacji dopiero, gdy HA i HACS są w pełni gotowe
+
 ## v1.4.49 – Nowy opis
 
 - 📖 Opis czytelny jeszcze przed instalacją: jedna animacja dla jasnego i ciemnego motywu, zrzuty w jednej skali, przyciski 52 px jak w HA, dopasowanie do telefonu, tabletu i komputera
