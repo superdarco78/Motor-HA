@@ -5,7 +5,9 @@ Każde urządzenie = jeden wpis z własną kartą, kreatorem, automatyką i powi
 
 from __future__ import annotations
 
+import json
 import logging
+from datetime import timedelta
 from pathlib import Path
 
 import voluptuous as vol
@@ -18,6 +20,7 @@ from homeassistant.core import CoreState, HomeAssistant, ServiceCall, callback
 from homeassistant.exceptions import ServiceValidationError
 from homeassistant.helpers import config_validation as cv, device_registry as dr, entity_registry as er
 from homeassistant.helpers import issue_registry as ir
+from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.typing import ConfigType
 
 from .automatyka import Automatyka
@@ -76,7 +79,29 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     async_ikona_hacs(hass)
     _uslugi(hass)
     ir.async_delete_issue(hass, DOMAIN, RESTART)
+    _pilnuj_plikow(hass)
     return True
+
+
+@callback
+def _pilnuj_plikow(hass: HomeAssistant) -> None:
+    """Nowa wersja pobrana (HACS albo nasza aktualizacja), a działa jeszcze stara: w Ustawieniach pojawia się
+    „Motor HA … – restart” z przyciskiem. Prośba o restart przychodzi dopiero, gdy pliki są już na dysku."""
+    plik = Path(__file__).parent / "manifest.json"
+
+    def _wersja() -> str | None:
+        try:
+            return json.loads(plik.read_text(encoding="utf-8")).get("version")
+        except (OSError, ValueError):
+            return None
+
+    async def _sprawdz(_t=None) -> None:
+        if (nowa := await hass.async_add_executor_job(_wersja)) and nowa != VERSION:
+            ir.async_create_issue(hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
+                                  severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
+                                  translation_placeholders={"wersja": nowa})
+
+    async_track_time_interval(hass, _sprawdz, timedelta(seconds=30), cancel_on_shutdown=True)
 
 
 @callback
@@ -141,15 +166,22 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     return True
 
 
+def _urzadzenie(rej: dr.DeviceRegistry, ident: tuple[str, str]) -> dr.DeviceEntry | None:
+    """Urządzenie po identyfikatorze – HA 2026.10+ (async_get_devices) i starsze (async_get_device)."""
+    if (wszystkie := getattr(rej, "async_get_devices", None)) is not None:
+        return next(iter(wszystkie(identifiers={ident})), None)
+    return rej.async_get_device(identifiers={ident})
+
+
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if not await hass.async_add_executor_job(Path(hass.config.path(".motor_ha")).is_dir):
         await async_przygotuj(hass)   # wszystkie urządzenia usunięto i dodano znów bez restartu
     rej = dr.async_get(hass)
     # jedno urządzenie „Motor HA” dla wszystkich wpisów (HA tworzyłby osobne, puste – po jednym na wpis)
-    hub = rej.async_get_device(identifiers={HUB}) or rej.async_get_or_create(config_entry_id=entry.entry_id, **info_hub())
+    hub = _urzadzenie(rej, HUB) or rej.async_get_or_create(config_entry_id=entry.entry_id, **info_hub())
     encje = er.async_get(hass)
-    for d in list(rej.devices.values()):   # puste kopie „Motor HA” z 2.0.x
-        if HUB in d.identifiers and d.id != hub.id and entry.entry_id in d.config_entries \
+    for d in dr.async_entries_for_config_entry(rej, entry.entry_id):   # puste kopie „Motor HA” z 2.0.x
+        if HUB in d.identifiers and d.id != hub.id \
                 and not er.async_entries_for_device(encje, d.id, include_disabled_entities=True):
             rej.async_update_device(d.id, remove_config_entry_id=entry.entry_id)
     u = rej.async_get_or_create(config_entry_id=entry.entry_id, **info_urzadzenia(entry))
@@ -164,7 +196,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     await w.auto.async_start()
     w.powiadomienia.async_start()
-    if (pokoj := entry.options.get("pokoj")) and (u := dr.async_get(hass).async_get_device({(DOMAIN, entry.entry_id)})):
+    if (pokoj := entry.options.get("pokoj")) and (u := _urzadzenie(dr.async_get(hass), (DOMAIN, entry.entry_id))):
         if not u.area_id:
             dr.async_get(hass).async_update_device(u.id, area_id=pokoj)
     if (panel := entry.options.get(CONF_NA_PANEL)):
@@ -205,7 +237,7 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     await async_usun_pliki(hass)
     await async_usun_zasob(hass)
     ir.async_delete_issue(hass, DOMAIN, RESTART)
-    if u := dr.async_get(hass).async_get_device({HUB}):
+    if u := _urzadzenie(dr.async_get(hass), HUB):
         dr.async_get(hass).async_remove_device(u.id)
 
 

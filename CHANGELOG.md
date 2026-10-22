@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.1.1 – Restart we właściwej chwili, ładniejszy podgląd
+
+- 🔄 Po pobraniu nowej wersji (także przez HACS) w Ustawieniach pojawia się „Motor HA … – uruchom ponownie” z przyciskiem – dopiero gdy nowe pliki są już na dysku, więc restart nigdy nie wypada za wcześnie
+- 🏠 Osłony zewnętrzne (żaluzje fasadowe, markizy, rolety): za szybą widać jasny pokój zamiast czerni
+- 🎞️ Podgląd w opisie: wszystkie karty równej wysokości, brama zawsze widoczna i z suwakiem
+- 🧰 Zgodność z nowszym Home Assistantem (rejestr urządzeń 2026.10+)
+
 ## v2.1.0 – Karta na stronie urządzenia
 
 - 🪟 Na górze strony urządzenia (Ustawienia → Urządzenia → Twoje okno) żywa karta okna z przyciskami ↑ ■ ↓ – zawsze w tym samym miejscu
