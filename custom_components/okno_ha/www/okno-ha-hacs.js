@@ -255,9 +255,47 @@
     if (u.searchParams.has("color")) u.searchParams.set("color", kolor(u.searchParams.get("color")));
     else if (/^\/badge\//.test(u.pathname)) u.pathname = u.pathname.replace(/-([^-/]+)$/, (_m, c) => "-" + kolor(c));
     else u.searchParams.set("color", glowny.slice(1));
+    u.searchParams.set("style", "flat");   // w HA małe, zaokrąglone, zwykłe litery (na GitHubie zostają duże)
     const nowy = u.toString();
     el.dataset.oknoPlak = a;
     if (el.getAttribute("src") !== nowy) el.setAttribute("src", nowy);
+  };
+  // wygląd opisu w HA (v1.4.52): sam CSS w miejscu opisu – bez żadnych elementów HA, nic nie może zepsuć strony.
+  // Spis treści jako kafelki równej wielkości, nagłówki i czcionki w rozmiarach HA, linki bez podkreśleń.
+  const STYL_OPISU = `
+.okno-spis{display:block!important;width:100%!important;border:0!important;margin:8px 0 16px!important}
+.okno-spis>tbody{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));grid-auto-rows:1fr;gap:8px}
+.okno-spis tr{display:contents}
+.okno-spis td{display:flex;width:auto!important;padding:0!important;border:0!important;background:none!important}
+.okno-spis td h3{display:flex;margin:0!important;width:100%;font-size:inherit!important}
+.okno-spis td a{display:flex;align-items:center;box-sizing:border-box;width:100%;min-height:56px;padding:12px 16px;border-radius:var(--ha-card-border-radius,12px);
+ border:1px solid var(--divider-color);background:var(--ha-card-background,var(--card-background-color));color:var(--primary-text-color)!important;text-decoration:none!important;
+ font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);line-height:var(--ha-line-height-condensed,1.3);transition:background-color .15s}
+.okno-spis td a:hover{background:color-mix(in srgb,var(--primary-text-color) 6%,var(--ha-card-background,var(--card-background-color)))}
+.okno-opis h1{font-size:var(--ha-font-size-2xl,24px)!important;font-weight:var(--ha-font-weight-normal,400);line-height:1.3}
+.okno-opis h2{font-size:var(--ha-font-size-xl,20px)!important;font-weight:var(--ha-font-weight-medium,500);line-height:1.3}
+.okno-opis h3{font-size:var(--ha-font-size-l,16px)!important;font-weight:var(--ha-font-weight-medium,500);line-height:1.4}
+.okno-opis h1 a,.okno-opis h2 a,.okno-opis h3 a{color:inherit!important;text-decoration:none!important}
+.okno-opis h1 sub,.okno-opis h2 sub,.okno-opis h3 sub{font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-normal,400);color:var(--secondary-text-color);vertical-align:baseline}
+.okno-opis p,.okno-opis li,.okno-opis td{font-size:var(--ha-font-size-m,14px);line-height:var(--ha-line-height-normal,1.5)}
+.okno-opis a{text-decoration:none}
+.okno-opis a:hover{text-decoration:underline}`;
+  const SPIS = /^https:\/\/github\.com\/superdarco78\/okno-ha-integracja(?:\/blob\/main\/README[^#]*)?#/;
+  const wyglad = (el) => {
+    const korzen = el.getRootNode();
+    if (!korzen || !korzen.querySelector) return;
+    const kontener = el.closest("ha-markdown-element, .markdown-body, ha-markdown") || korzen.firstElementChild;
+    if (kontener && !kontener.classList.contains("okno-opis")) kontener.classList.add("okno-opis");
+    if (!korzen.querySelector(".okno-ha-styl-opisu")) {
+      const st = (korzen.ownerDocument || korzen).createElement("style");
+      st.className = "okno-ha-styl-opisu"; st.textContent = STYL_OPISU;
+      (korzen.head || korzen).appendChild(st);
+    }
+    for (const t of korzen.querySelectorAll("table:not(.okno-spis)")) {
+      const linki = t.querySelectorAll("td > h3 > a");
+      if (linki.length >= 2 && [...linki].every((a) => SPIS.test(a.dataset.oknoHref || a.getAttribute("href") || "") || /^#/.test(a.getAttribute("href") || ""))
+        && t.querySelectorAll("td").length === linki.length) t.classList.add("okno-spis");
+    }
   };
   // obrazki bez przemalowania (zdjęcia, animacje, flagi): adres z wersji; gdyby go nie było – zostaje main
   const przypnijZwykly = (el) => {
@@ -308,7 +346,7 @@
     for (const el of korzen.querySelectorAll("*")) {
       if (++ile.n > 200000) return;
       try {
-        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); przypnijZwykly(el); }
+        if (el.tagName === "IMG") { obrazek(el); przemaluj(el); plakietka(el); wariant(el); przypnijZwykly(el); if (NASZE.test(el.dataset.oknoOrg || el.getAttribute("src") || "")) wyglad(el); }
         else if (el.tagName === "SOURCE") zrodlo(el);
         else if (el.tagName === "A" && naHacs()) link(el);
         else if (el.tagName === "IFRAME") {
@@ -317,27 +355,22 @@
             el.addEventListener("load", () => seria());
           }
           const w = el.contentWindow;
-          if (w && w.location.origin === location.origin && w.document.documentElement) { popraw(w); sluchaj(w.document); galeria(w); przejdz(w.document, ile); }
+          if (w && w.location.origin === location.origin && w.document.documentElement) { popraw(w); sluchaj(w.document); przejdz(w.document, ile); }
         }
         if (el.shadowRoot) przejdz(el.shadowRoot, ile);
       } catch (e) { /* inna domena albo ramka w trakcie wczytywania */ }
     }
   };
-  // galeria w opisie: żywe karty zamiast obrazków (osobny skrypt w ramce opisu – tylko w HACS)
-  // v1.4.51: żywa galeria WYŁĄCZONA – jej zamienniki ha-card/ha-icon mogły trafić do ramki HACS przed HACS-em
-  // i psuły stronę („Error while loading page repository”). Opis pokazuje obrazki, jak na GitHubie.
-  const GALERIA = false;
-  const galeria = (w) => {
-    if (!GALERIA) return;
-    if (w.__oknoHaGaleria || w.__oknoHaGaleriaW || !w.document.head || !/^\/hacs\//.test(location.pathname)) return;
-    w.__oknoHaGaleriaW = true;
-    const s = w.document.createElement("script");
-    s.type = "module";
-    s.textContent = `import("/okno_ha/okno-ha-galeria.js?t=${Date.now()}");`;
-    w.document.head.appendChild(s);
+  // żywa symulacja w opisie (v1.4.52): okno-ha-galeria.js wczytywany TYLKO tu, w oknie HA, i sam niczego nie rejestruje –
+  // każdą symulację stawia we własnej, osobnej ramce obok obrazków (HACS jej nie widzi; przy błędzie zostają obrazki)
+  let galeriaW = false;
+  const galeria = () => {
+    if (galeriaW || !/^\/hacs\//.test(location.pathname)) return;
+    galeriaW = true;
+    import(`/okno_ha/okno-ha-galeria.js?t=${Date.now()}`).catch(() => { galeriaW = false; });
   };
   const naHacs = () => /^\/(hacs|config)/.test(location.pathname);   // HACS i okna konfiguracji (kreator integracji)
-  const skanuj = () => { if (zywy() && naHacs()) { if (/^\/hacs\//.test(location.pathname)) galeria(window); przejdz(document); } };
+  const skanuj = () => { if (zywy() && naHacs()) { galeria(); przejdz(document); } };
   // adresy w HA: przyciski My Home Assistant, języki opisu i spis treści – na GitHubie linki zostają bez zmian
   const mojAdres = (nazwa, zapytanie) => `${nazwa.startsWith("hacs_") ? "/hacs" : ""}/_my_redirect/${nazwa}${zapytanie || ""}`;
   const MY = /^https:\/\/my\.home-assistant\.io\/redirect\/([a-z_]+)\/?(\?.*)?$/;

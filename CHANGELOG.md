@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v1.4.52 – Opis w stylu HA i bezpieczna symulacja
+
+- 🧩 Spis treści w HACS jako kafelki równej wielkości (jak w HA), na telefonie jedna kolumna, na komputerze kilka
+- 🏷 Plakietki w HA małe i zaokrąglone, zwykłymi literami
+- 🔤 Nagłówki i tekst w rozmiarach czcionek HA, linki bez podkreśleń
+- 🎞 Żywa symulacja wraca – każda w osobnej, odizolowanej ramce: HACS jej nie widzi, więc nie może zepsuć strony; przy błędzie zostają obrazki
+
 ## v1.4.51 – Strona w HACS zawsze się otwiera
 
 - 🛠 Żywa galeria w opisie wyłączona – opis pokazuje obrazki; strona Motor HA w HACS nie może już pokazać „Error while loading page repository”
