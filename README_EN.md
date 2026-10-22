@@ -1,21 +1,21 @@
 <p align="center">
-  <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/v/release/superdarco78/okno-ha-integracja?style=for-the-badge&label=version&color=009AC7" alt="version"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/downloads/superdarco78/okno-ha-integracja/total?style=for-the-badge&label=downloads&color=009AC7" alt="downloads"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=stars&color=FF9800&logo=github" alt="stars"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/commits/main"><img src="https://img.shields.io/github/commit-activity/y/superdarco78/okno-ha-integracja?style=for-the-badge&label=activity&color=009AC7" alt="Activity"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/v/release/superdarco78/okno-ha-integracja?style=flat&label=version&color=009AC7" alt="version"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/releases"><img src="https://img.shields.io/github/downloads/superdarco78/okno-ha-integracja/total?style=flat&label=downloads&color=009AC7" alt="downloads"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=flat&label=stars&color=FF9800&logo=github" alt="stars"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/commits/main"><img src="https://img.shields.io/github/commit-activity/y/superdarco78/okno-ha-integracja?style=flat&label=activity&color=009AC7" alt="Activity"></a>
   <br>
-  <a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-custom-009AC7?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
-  <a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-009AC7?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia"><img src="https://img.shields.io/badge/translations-PL%20%7C%20EN-009AC7?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Translations"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-009AC7?style=for-the-badge" alt="license"></a>
+  <a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-custom-009AC7?style=flat&logo=homeassistantcommunitystore&logoColor=white" alt="HACS"></a>
+  <a href="https://www.home-assistant.io/"><img src="https://img.shields.io/badge/Home%20Assistant-2024.12%2B-009AC7?style=flat&logo=homeassistant&logoColor=white" alt="Home Assistant"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#tlumaczenia"><img src="https://img.shields.io/badge/translations-PL%20%7C%20EN-009AC7?style=flat&logo=googletranslate&logoColor=white" alt="Translations"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-009AC7?style=flat" alt="license"></a>
   <br>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/sprawdz.yml?style=for-the-badge&label=HACS%20validate&logo=homeassistantcommunitystore&logoColor=white" alt="HACS validate"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/wydanie.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/wydanie.yml?style=for-the-badge&label=release&logo=githubactions&logoColor=white" alt="release"></a>
-  <a href="https://github.com/superdarco78/okno-ha-integracja/issues"><img src="https://img.shields.io/github/issues/superdarco78/okno-ha-integracja?style=for-the-badge&label=issues&color=FF9800" alt="Issues"></a>
-  <a href="https://github.com/superdarco78"><img src="https://img.shields.io/badge/maintainer-%40superdarco78-009AC7?style=for-the-badge&logo=github" alt="maintainer"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/sprawdz.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/sprawdz.yml?style=flat&label=HACS%20validate&logo=homeassistantcommunitystore&logoColor=white" alt="HACS validate"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/actions/workflows/wydanie.yml"><img src="https://img.shields.io/github/actions/workflow/status/superdarco78/okno-ha-integracja/wydanie.yml?style=flat&label=release&logo=githubactions&logoColor=white" alt="release"></a>
+  <a href="https://github.com/superdarco78/okno-ha-integracja/issues"><img src="https://img.shields.io/github/issues/superdarco78/okno-ha-integracja?style=flat&label=issues&color=FF9800" alt="Issues"></a>
+  <a href="https://github.com/superdarco78"><img src="https://img.shields.io/badge/maintainer-%40superdarco78-009AC7?style=flat&logo=github" alt="maintainer"></a>
   <br>
-  <a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/forum-Home%20Assistant-009AC7?style=for-the-badge&logo=discourse&logoColor=white" alt="Forum HA"></a>
-  <a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-009AC7?style=for-the-badge&logo=discourse&logoColor=white" alt="Forum PL"></a>
+  <a href="https://community.home-assistant.io/"><img src="https://img.shields.io/badge/forum-Home%20Assistant-009AC7?style=flat&logo=discourse&logoColor=white" alt="Forum HA"></a>
+  <a href="https://forum.arturhome.pl/"><img src="https://img.shields.io/badge/forum%20PL-arturhome.pl-009AC7?style=flat&logo=discourse&logoColor=white" alt="Forum PL"></a>
 </p>
 
 <p align="center">
@@ -64,7 +64,7 @@ Left: the standard shade card in Home Assistant. Right: the same window with Mot
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/maski/przed-en.svg" width="49%" alt="Before">&nbsp;<img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-en.webp#gh-light-mode-only" width="49%" alt="After"><img src="https://raw.githubusercontent.com/superdarco78/roleta-realistyczna/main/img/z3/animacja-ciemna-en.webp#gh-dark-mode-only" width="49%" alt="After"></p>
 
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Star%20this%20repo&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=flat&label=%E2%AD%90%20Star%20this%20repo&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
 <a name="rodzaje-oslon"></a>
 <h2><a name="j4" href="#j4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kolo/window-shutter.svg" height="28" alt="Shade types"></a> Shade types</h2>
@@ -789,7 +789,7 @@ Want to add your language? Copy [`translations/en.json`](https://github.com/supe
 
 Like Motor HA? Leave a ⭐ at the top of the page. It helps others find the integration. Thank you!
 
-<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=for-the-badge&label=%E2%AD%90%20Star%20this%20repo&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
+<p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/stargazers"><img src="https://img.shields.io/github/stars/superdarco78/okno-ha-integracja?style=flat&label=%E2%AD%90%20Star%20this%20repo&color=FF9800&logo=github" alt="⭐" height="36"></a></p>
 
 Have an idea or found a bug? [Open an issue](https://github.com/superdarco78/okno-ha-integracja/issues/new). Discussion: [HA forum](https://community.home-assistant.io/).
 

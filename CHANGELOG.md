@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v1.4.53 – Opis: plakietki i etykiety w stylu HA
+
+- 🏷 Plakietki małe, zwykłymi literami i równej wysokości – w HACS i na GitHubie
+- 🎨 „Co kliknąć:” w kolorze akcentu HA (we wszystkich 5 językach)
+- 🧩 Kafelki spisu treści i ikony nagłówków większe, ikony równo z tekstem
+
 ## v1.4.52 – Opis w stylu HA i bezpieczna symulacja
 
 - 🧩 Spis treści w HACS jako kafelki równej wielkości (jak w HA), na telefonie jedna kolumna, na komputerze kilka

@@ -270,7 +270,7 @@
 .okno-spis td h3{display:flex;margin:0!important;width:100%;font-size:inherit!important}
 .okno-spis td a{display:flex;align-items:center;box-sizing:border-box;width:100%;min-height:56px;padding:12px 16px;border-radius:var(--ha-card-border-radius,12px);
  border:1px solid var(--divider-color);background:var(--ha-card-background,var(--card-background-color));color:var(--primary-text-color)!important;text-decoration:none!important;
- font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);line-height:var(--ha-line-height-condensed,1.3);transition:background-color .15s}
+ font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500);line-height:var(--ha-line-height-condensed,1.3);transition:background-color .15s}
 .okno-spis td a:hover{background:color-mix(in srgb,var(--primary-text-color) 6%,var(--ha-card-background,var(--card-background-color)))}
 .okno-opis h1{font-size:var(--ha-font-size-2xl,24px)!important;font-weight:var(--ha-font-weight-normal,400);line-height:1.3}
 .okno-opis h2{font-size:var(--ha-font-size-xl,20px)!important;font-weight:var(--ha-font-weight-medium,500);line-height:1.3}
@@ -278,6 +278,10 @@
 .okno-opis h1 a,.okno-opis h2 a,.okno-opis h3 a{color:inherit!important;text-decoration:none!important}
 .okno-opis h1 sub,.okno-opis h2 sub,.okno-opis h3 sub{font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-normal,400);color:var(--secondary-text-color);vertical-align:baseline}
 .okno-opis p,.okno-opis li,.okno-opis td{font-size:var(--ha-font-size-m,14px);line-height:var(--ha-line-height-normal,1.5)}
+.okno-opis h1 img,.okno-opis h2 img,.okno-opis h3 img{width:auto!important;vertical-align:middle!important;margin:0 8px 0 0}
+.okno-opis h1 img{height:36px!important}.okno-opis h2 img{height:32px!important}.okno-opis h3 img{height:28px!important}
+.okno-opis .okno-akcent{display:inline-block;margin-top:4px;color:var(--accent-color,#ff9800);font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500)}
+.okno-opis img[src^="https://img.shields.io/"]{height:20px!important;width:auto!important;margin:2px 1px;vertical-align:middle;border-radius:4px}
 .okno-opis a{text-decoration:none}
 .okno-opis a:hover{text-decoration:underline}`;
   const SPIS = /^https:\/\/github\.com\/superdarco78\/okno-ha-integracja(?:\/blob\/main\/README[^#]*)?#/;
@@ -290,6 +294,13 @@
       const st = (korzen.ownerDocument || korzen).createElement("style");
       st.className = "okno-ha-styl-opisu"; st.textContent = STYL_OPISU;
       (korzen.head || korzen).appendChild(st);
+    }
+    // „Co kliknąć:” (i w innych językach) – samodzielna etykieta przed listą kroków → kolor akcentu HA
+    for (const b of korzen.querySelectorAll("b:not(.okno-akcent)")) {
+      const t = b.textContent.trim(), rodzic = b.parentElement;
+      const sam = rodzic && rodzic.tagName === "P" && rodzic.textContent.trim() === t ? rodzic : b;   // markdown często owija etykietę w <p>
+      const n = sam.nextElementSibling;
+      if (/:$/.test(t) && t.length < 30 && n && n.tagName === "OL" && !sam.closest("li,td,h1,h2,h3")) b.classList.add("okno-akcent");
     }
     for (const t of korzen.querySelectorAll("table:not(.okno-spis)")) {
       const linki = t.querySelectorAll("td > h3 > a");
