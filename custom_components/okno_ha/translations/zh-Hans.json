@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Motor HA – 第 1 步，共 5 步：遮阳",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\n选择这扇窗户的遮阳。双扇窗请选择两个（左和右）或一个组。\n\n🪄 更喜欢像卡片里那样带圆圈和图片的向导？**[打开圆圈向导](/okno-ha)**",
+        "description": "![]({obrazki}/kreator-pasek-1-zh-Hans.png)\n\n选择这扇窗户的遮阳。双扇窗请选择两个（左和右）或一个组。\n\n🪄 更喜欢像卡片里那样带圆圈和图片的向导？**[打开圆圈向导](/okno-ha)**",
         "data": {
           "name": "窗户名称",
           "rolety": "遮阳（一个或两个）"
@@ -15,7 +15,7 @@
       },
       "okno": {
         "title": "第 2 步，共 5 步：窗户和传感器",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\n窗户有几扇，以及是否有开窗传感器。传感器是可选的。",
+        "description": "![]({obrazki}/kreator-pasek-2-zh-Hans.png)\n\n窗户有几扇，以及是否有开窗传感器。传感器是可选的。",
         "data": {
           "skrzydla": "窗扇数量",
           "czujnik_lewe": "左窗扇传感器",
@@ -35,7 +35,7 @@
       },
       "silnik": {
         "title": "⚙️ 第 3 步，共 5 步：电机",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\n卡片按电机的速度移动。电机转速取自卷帘设备（如果有，例如 Moes）。计算出的行程时间：**{czas}**。",
+        "description": "![]({obrazki}/kreator-pasek-3-zh-Hans.png)\n\n卡片按电机的速度移动。电机转速取自卷帘设备（如果有，例如 Moes）。计算出的行程时间：**{czas}**。",
         "data": {
           "predkosc_lewa": "电机转速 – 左",
           "predkosc_prawa": "电机转速 – 右",
@@ -53,7 +53,7 @@
       },
       "pogoda": {
         "title": "🌤️ 第 4 步，共 5 步：室外天气",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\n窗外显示真实天气。留空时，卡片使用你家位置的网络天气。",
+        "description": "![]({obrazki}/kreator-pasek-4-zh-Hans.png)\n\n窗外显示真实天气。留空时，卡片使用你家位置的网络天气。",
         "data": {
           "pogoda": "天气",
           "wstecz": "⬅️ 返回上一步"
@@ -65,7 +65,7 @@
       },
       "wyglad": {
         "title": "🎨 第 5 步，共 5 步：外观",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\n根据下面的图片选择遮阳类型和颜色。\n\n![遮阳类型]({obrazki}/oslony-kafle-v2-en.png)\n\n![遮阳颜色]({obrazki}/kolory-v2-en.png)\n\n![窗框颜色]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-zh-Hans.png)\n\n根据下面的图片选择遮阳类型和颜色。\n\n![遮阳类型]({obrazki}/oslony-kafle-v2-en.png)\n\n![遮阳颜色]({obrazki}/kolory-v2-en.png)\n\n![窗框颜色]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "遮阳类型",
           "kolor": "遮阳颜色",
@@ -96,7 +96,7 @@
     "step": {
       "user": {
         "title": "Motor HA – 第 1 步，共 5 步：遮阳",
-        "description": "![]({obrazki}/kreator-pasek-1-en.png)\n\n选择这扇窗户的遮阳。双扇窗请选择两个（左和右）或一个组。",
+        "description": "![]({obrazki}/kreator-pasek-1-zh-Hans.png)\n\n选择这扇窗户的遮阳。双扇窗请选择两个（左和右）或一个组。",
         "data": {
           "name": "窗户名称",
           "rolety": "遮阳（一个或两个）"
@@ -108,7 +108,7 @@
       },
       "okno": {
         "title": "第 2 步，共 5 步：窗户和传感器",
-        "description": "![]({obrazki}/kreator-pasek-2-en.png)\n\n窗户有几扇，以及是否有开窗传感器。传感器是可选的。",
+        "description": "![]({obrazki}/kreator-pasek-2-zh-Hans.png)\n\n窗户有几扇，以及是否有开窗传感器。传感器是可选的。",
         "data": {
           "skrzydla": "窗扇数量",
           "czujnik_lewe": "左窗扇传感器",
@@ -128,7 +128,7 @@
       },
       "silnik": {
         "title": "⚙️ 第 3 步，共 5 步：电机",
-        "description": "![]({obrazki}/kreator-pasek-3-en.png)\n\n卡片按电机的速度移动。电机转速取自卷帘设备（如果有，例如 Moes）。计算出的行程时间：**{czas}**。",
+        "description": "![]({obrazki}/kreator-pasek-3-zh-Hans.png)\n\n卡片按电机的速度移动。电机转速取自卷帘设备（如果有，例如 Moes）。计算出的行程时间：**{czas}**。",
         "data": {
           "predkosc_lewa": "电机转速 – 左",
           "predkosc_prawa": "电机转速 – 右",
@@ -146,7 +146,7 @@
       },
       "pogoda": {
         "title": "🌤️ 第 4 步，共 5 步：室外天气",
-        "description": "![]({obrazki}/kreator-pasek-4-en.png)\n\n窗外显示真实天气。留空时，卡片使用你家位置的网络天气。",
+        "description": "![]({obrazki}/kreator-pasek-4-zh-Hans.png)\n\n窗外显示真实天气。留空时，卡片使用你家位置的网络天气。",
         "data": {
           "pogoda": "天气",
           "wstecz": "⬅️ 返回上一步"
@@ -158,7 +158,7 @@
       },
       "wyglad": {
         "title": "🎨 第 5 步，共 5 步：外观",
-        "description": "![]({obrazki}/kreator-pasek-5-en.png)\n\n根据下面的图片选择遮阳类型和颜色。\n\n![遮阳类型]({obrazki}/oslony-kafle-v2-en.png)\n\n![遮阳颜色]({obrazki}/kolory-v2-en.png)\n\n![窗框颜色]({obrazki}/ramy-v2-en.png)",
+        "description": "![]({obrazki}/kreator-pasek-5-zh-Hans.png)\n\n根据下面的图片选择遮阳类型和颜色。\n\n![遮阳类型]({obrazki}/oslony-kafle-v2-en.png)\n\n![遮阳颜色]({obrazki}/kolory-v2-en.png)\n\n![窗框颜色]({obrazki}/ramy-v2-en.png)",
         "data": {
           "oslona": "遮阳类型",
           "kolor": "遮阳颜色",

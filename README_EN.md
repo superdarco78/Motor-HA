@@ -355,8 +355,11 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/1-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j53"></a>
-<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-1.svg" width="900" alt="Step 1: Shade"></a><br>
-<b>Step 1: Shade</b></p>
+<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-1.svg" width="412" alt="Step 1: Shade"></a></p>
+
+<b>What to click:</b>
+<ol><li>Type the <b>Window name</b></li><li>Pick the <b>Shade</b> (one or two: left, right)</li><li>Click <b>Next</b></li></ol>
+<p>ℹ️ Window with one sash: pick one shade.</p>
 
 
 <p>&nbsp;</p>
@@ -367,8 +370,11 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/2-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j55"></a>
-<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-2.svg" width="900" alt="Step 2: Window and sensors"></a><br>
-<b>Step 2: Window and sensors</b></p>
+<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-2.svg" width="412" alt="Step 2: Window and sensors"></a></p>
+
+<b>What to click:</b>
+<ol><li><b>Number of sashes</b></li><li>Window sensors and how the window opens</li><li>Click <b>Next</b></li></ol>
+<p>ℹ️ No sensors? Leave them empty.</p>
 
 
 <p>&nbsp;</p>
@@ -379,8 +385,11 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/3-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j57"></a>
-<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-3.svg" width="900" alt="Step 3: Motor"></a><br>
-<b>Step 3: Motor</b></p>
+<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-3.svg" width="412" alt="Step 3: Motor"></a></p>
+
+<b>What to click:</b>
+<ol><li><b>Motor speed</b>: picked automatically</li><li><b>Calibrate now</b> (optional)</li><li>Click <b>Next</b></li></ol>
+<p>ℹ️ Not sure? Leave it as it is.</p>
 
 
 <p>&nbsp;</p>
@@ -391,8 +400,11 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/4-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j59"></a>
-<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-4.svg" width="900" alt="Step 4: Weather"></a><br>
-<b>Step 4: Weather</b></p>
+<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-4.svg" width="412" alt="Step 4: Weather"></a></p>
+
+<b>What to click:</b>
+<ol><li><b>Weather</b> outside the window</li><li>Click <b>Next</b></li></ol>
+<p>ℹ️ Empty = internet weather for your home.</p>
 
 
 <p>&nbsp;</p>
@@ -403,8 +415,11 @@ After **Add integration** (installation step 5) HA shows a short 5-step wizard. 
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-1.svg" width="13.50%" alt="Step 1: Shade"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-2.svg" width="13.50%" alt="Step 2: Window and sensors"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-3.svg" width="13.50%" alt="Step 3: Motor"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-4.svg" width="13.50%" alt="Step 4: Weather"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_EN.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/en/pasek5b/5-5.svg" width="13.50%" alt="Step 5: Look"></a></p>
 
 <a name="j61"></a>
-<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-5.svg" width="900" alt="Step 5: Look"></a><br>
-<b>Step 5: Look</b></p>
+<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/en/kreator-5.svg" width="412" alt="Step 5: Look"></a></p>
+
+<b>What to click:</b>
+<ol><li><b>Shade type</b> and <b>Shade colour</b>: compare with the pictures</li><li><b>Custom colour</b>: click the field and pick a colour</li><li>Dashboard the card goes to</li><li>Click <b>Submit</b></li></ol>
+<p>ℹ️ The card appears on the chosen dashboard by itself. Nothing is removed.</p>
 
 
 <p>&nbsp;</p>

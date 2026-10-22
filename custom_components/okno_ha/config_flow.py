@@ -50,9 +50,13 @@ OPCJONALNE = {CONF_CZUJNIK_LEWE, CONF_CZUJNIK_PRAWE, CONF_PREDKOSC_LEWA, CONF_PR
               CONF_KOLOR_WLASNY, CONF_RAMA_WLASNA}
 
 
-def _wybor(opcje: list[str], klucz: str, wlasna: bool = False) -> sel.SelectSelector:
+def _wybor(opcje: list[str], klucz: str, obecna: Any = None) -> sel.SelectSelector:
+    # bez custom_value: HA 2026.10 pokazywał wtedy klucz („czarny”) zamiast nazwy z tłumaczenia;
+    # nietypowa zapisana wartość (np. kolor z edytora karty) zostaje jako dodatkowa opcja
+    if obecna and isinstance(obecna, str) and obecna not in opcje:
+        opcje = [*opcje, obecna]
     return sel.SelectSelector(sel.SelectSelectorConfig(
-        options=opcje, translation_key=klucz, mode=sel.SelectSelectorMode.DROPDOWN, custom_value=wlasna))
+        options=opcje, translation_key=klucz, mode=sel.SelectSelectorMode.DROPDOWN))
 
 
 def _encja(domena: str, wiele: bool = False, tylko: list[str] | None = None) -> sel.EntitySelector:
@@ -97,9 +101,9 @@ def schemat(krok: str, v: dict[str, Any], z_nazwa: bool, hass: HomeAssistant | N
         return vol.Schema({_pole(CONF_POGODA, v): _encja("weather")})
     pola = {
         _pole(CONF_OSLONA, v): _wybor(OSLONY, "oslona"),
-        _pole(CONF_KOLOR, v): _wybor(list(KOLORY), "kolor", True),
+        _pole(CONF_KOLOR, v): _wybor(list(KOLORY), "kolor", v.get(CONF_KOLOR)),
         _pole(CONF_KOLOR_WLASNY, v): sel.ColorRGBSelector(),
-        _pole(CONF_RAMA, v): _wybor(list(RAMY), "rama", True),
+        _pole(CONF_RAMA, v): _wybor(list(RAMY), "rama", v.get(CONF_RAMA)),
         _pole(CONF_RAMA_WLASNA, v): sel.ColorRGBSelector(),
         _pole(CONF_WYSOKOSC, v): sel.NumberSelector(sel.NumberSelectorConfig(
             min=140, max=460, step=10, unit_of_measurement="px", mode=sel.NumberSelectorMode.SLIDER)),

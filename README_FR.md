@@ -194,7 +194,7 @@ Les images suivent le thème (clair ou sombre), comme la carte dans Home Assista
 <b>L’assistant « Ajouter une intégration »</b></p>
 
 <b>Où cliquer:</b>
-<ol><li>Saisissez un nom et choisissez le store</li><li><b>Next</b> (5 fois)</li></ol>
+<ol><li>Saisissez un nom et choisissez le store</li><li><b>Suivant</b> (5 fois)</li></ol>
 
 <p>&nbsp;</p>
 
@@ -355,8 +355,11 @@ Après **Ajouter une intégration** (étape 5 de l’installation), HA affiche u
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/1-1.svg" width="13.50%" alt="Étape 1 : Store"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/1-2.svg" width="13.50%" alt="Étape 2 : Fenêtre et capteurs"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/1-3.svg" width="13.50%" alt="Étape 3 : Moteur"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/1-4.svg" width="13.50%" alt="Étape 4 : Météo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/1-5.svg" width="13.50%" alt="Étape 5 : Apparence"></a></p>
 
 <a name="j53"></a>
-<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-1.svg" width="900" alt="Étape 1 : Store"></a><br>
-<b>Étape 1 : Store</b></p>
+<p align="center"><a href="#j53"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-1.svg" width="412" alt="Étape 1 : Store"></a></p>
+
+<b>Où cliquer:</b>
+<ol><li>Saisissez le <b>Nom de la fenêtre</b></li><li>Choisissez le <b>Store</b> (un ou deux : gauche, droite)</li><li>Cliquez sur <b>Suivant</b></li></ol>
+<p>ℹ️ Fenêtre à un battant : choisissez un seul store.</p>
 
 
 <p>&nbsp;</p>
@@ -367,8 +370,11 @@ Après **Ajouter une intégration** (étape 5 de l’installation), HA affiche u
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/2-1.svg" width="13.50%" alt="Étape 1 : Store"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/2-2.svg" width="13.50%" alt="Étape 2 : Fenêtre et capteurs"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/2-3.svg" width="13.50%" alt="Étape 3 : Moteur"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/2-4.svg" width="13.50%" alt="Étape 4 : Météo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/2-5.svg" width="13.50%" alt="Étape 5 : Apparence"></a></p>
 
 <a name="j55"></a>
-<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-2.svg" width="900" alt="Étape 2 : Fenêtre et capteurs"></a><br>
-<b>Étape 2 : Fenêtre et capteurs</b></p>
+<p align="center"><a href="#j55"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-2.svg" width="412" alt="Étape 2 : Fenêtre et capteurs"></a></p>
+
+<b>Où cliquer:</b>
+<ol><li><b>Nombre de battants</b></li><li>Capteurs de fenêtre et ouverture</li><li>Cliquez sur <b>Suivant</b></li></ol>
+<p>ℹ️ Pas de capteurs ? Laissez vide.</p>
 
 
 <p>&nbsp;</p>
@@ -379,8 +385,11 @@ Après **Ajouter une intégration** (étape 5 de l’installation), HA affiche u
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/3-1.svg" width="13.50%" alt="Étape 1 : Store"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/3-2.svg" width="13.50%" alt="Étape 2 : Fenêtre et capteurs"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/3-3.svg" width="13.50%" alt="Étape 3 : Moteur"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/3-4.svg" width="13.50%" alt="Étape 4 : Météo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/3-5.svg" width="13.50%" alt="Étape 5 : Apparence"></a></p>
 
 <a name="j57"></a>
-<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-3.svg" width="900" alt="Étape 3 : Moteur"></a><br>
-<b>Étape 3 : Moteur</b></p>
+<p align="center"><a href="#j57"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-3.svg" width="412" alt="Étape 3 : Moteur"></a></p>
+
+<b>Où cliquer:</b>
+<ol><li><b>Vitesse du moteur</b> : choisie toute seule</li><li><b>Calibrer maintenant</b> (facultatif)</li><li>Cliquez sur <b>Suivant</b></li></ol>
+<p>ℹ️ Vous hésitez ? Laissez tel quel.</p>
 
 
 <p>&nbsp;</p>
@@ -391,8 +400,11 @@ Après **Ajouter une intégration** (étape 5 de l’installation), HA affiche u
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/4-1.svg" width="13.50%" alt="Étape 1 : Store"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/4-2.svg" width="13.50%" alt="Étape 2 : Fenêtre et capteurs"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/4-3.svg" width="13.50%" alt="Étape 3 : Moteur"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/4-4.svg" width="13.50%" alt="Étape 4 : Météo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/4-5.svg" width="13.50%" alt="Étape 5 : Apparence"></a></p>
 
 <a name="j59"></a>
-<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-4.svg" width="900" alt="Étape 4 : Météo"></a><br>
-<b>Étape 4 : Météo</b></p>
+<p align="center"><a href="#j59"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-4.svg" width="412" alt="Étape 4 : Météo"></a></p>
+
+<b>Où cliquer:</b>
+<ol><li><b>Météo</b> derrière la fenêtre</li><li>Cliquez sur <b>Suivant</b></li></ol>
+<p>ℹ️ Vide = météo Internet pour votre maison.</p>
 
 
 <p>&nbsp;</p>
@@ -403,8 +415,11 @@ Après **Ajouter une intégration** (étape 5 de l’installation), HA affiche u
 <p align="center"><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-1"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/5-1.svg" width="13.50%" alt="Étape 1 : Store"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-2"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/5-2.svg" width="13.50%" alt="Étape 2 : Fenêtre et capteurs"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-3"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/5-3.svg" width="13.50%" alt="Étape 3 : Moteur"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-4"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/5-4.svg" width="13.50%" alt="Étape 4 : Météo"></a><a href="https://github.com/superdarco78/okno-ha-integracja/blob/main/README_FR.md#kreator-5"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7/fr/pasek5b/5-5.svg" width="13.50%" alt="Étape 5 : Apparence"></a></p>
 
 <a name="j61"></a>
-<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-5.svg" width="900" alt="Étape 5 : Apparence"></a><br>
-<b>Étape 5 : Apparence</b></p>
+<p align="center"><a href="#j61"><img src="https://raw.githubusercontent.com/superdarco78/okno-ha-integracja/main/img/kroki7b/fr/kreator-5.svg" width="412" alt="Étape 5 : Apparence"></a></p>
+
+<b>Où cliquer:</b>
+<ol><li><b>Type de store</b> et <b>Couleur</b> : comparez avec les images</li><li><b>Couleur personnalisée</b> : cliquez sur le champ et choisissez</li><li>Tableau de bord de la carte</li><li>Cliquez sur <b>Valider</b></li></ol>
+<p>ℹ️ La carte apparaît toute seule sur le tableau de bord choisi. Rien n’est supprimé.</p>
 
 
 <p>&nbsp;</p>
@@ -612,7 +627,7 @@ Sur la page de l’appareil fenêtre, appuyez sur <b>Étalonner</b>. Le store mo
 <b>Pas de météo derrière la vitre</b></p>
 
 <b>Où cliquer:</b>
-<ol><li>Météo dehors</li><li><b>Next</b></li></ol>
+<ol><li>Météo dehors</li><li><b>Suivant</b></li></ol>
 <p>ℹ️ Vide = météo Internet pour votre maison.</p>
 
 <p>&nbsp;</p>
@@ -629,7 +644,7 @@ Sur la page de l’appareil fenêtre, appuyez sur <b>Étalonner</b>. Le store mo
 <b>Le capteur de fenêtre ne marche pas</b></p>
 
 <b>Où cliquer:</b>
-<ol><li>Nombre de vantaux</li><li>Capteurs et façon d’ouvrir</li><li><b>Next</b></li></ol>
+<ol><li>Nombre de vantaux</li><li>Capteurs et façon d’ouvrir</li><li><b>Suivant</b></li></ol>
 <p>ℹ️ Pas de capteurs ? Laissez vide.</p>
 
 <p>&nbsp;</p>
@@ -646,7 +661,7 @@ Sur la page de l’appareil fenêtre, appuyez sur <b>Étalonner</b>. Le store mo
 <b>Les vantaux sont inversés (gauche est droite)</b></p>
 
 <b>Où cliquer:</b>
-<ol><li>Saisissez le nom de la fenêtre</li><li>Choisissez le store (ou deux : gauche, droite)</li><li><b>Next</b></li></ol>
+<ol><li>Saisissez le nom de la fenêtre</li><li>Choisissez le store (ou deux : gauche, droite)</li><li><b>Suivant</b></li></ol>
 <p>ℹ️ Fenêtre à un vantail : choisissez un store.</p>
 
 <p>&nbsp;</p>

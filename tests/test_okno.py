@@ -77,7 +77,7 @@ async def test_konfiguruj(hass: HomeAssistant) -> None:
     r = await hass.config_entries.options.async_configure(r["flow_id"], {"skrzydla": "2", "tryb_lewe": "uchyl", "tryb_prawe": "uchyl"})   # czujnik wyczyszczony
     r = await hass.config_entries.options.async_configure(r["flow_id"], {"czas": 25})
     r = await hass.config_entries.options.async_configure(r["flow_id"], {"pogoda": "weather.dom"})
-    r = await hass.config_entries.options.async_configure(r["flow_id"], {"oslona": "screen", "kolor": "#123456", "rama": "biala", "wysokosc": 260})
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {"oslona": "screen", "kolor": "grafit", "kolor_wlasny": [18, 52, 86], "rama": "biala", "wysokosc": 260})
     assert r["type"] is FlowResultType.CREATE_ENTRY
     await hass.async_block_till_done()
     k = hass.states.get("cover.okno_salon").attributes["okno_ha"]
