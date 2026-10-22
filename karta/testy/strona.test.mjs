@@ -19,7 +19,7 @@ const URZADZENIA = [
 ];
 
 // udawany HA: ten sam układ co ha-config-device-page w HA 2026.10 (kolumny div.column w cieniu strony)
-const STRONA = (opoznienie, kolumny) => `<!doctype html><html lang="pl"><head><meta name="viewport" content="width=device-width,initial-scale=1">
+const STRONA = (opoznienie, kolumny) => `<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>body{margin:0;font-family:sans-serif;--primary-color:#009ac7;--primary-text-color:#212121;--secondary-text-color:#727272;
 --divider-color:#e0e0e0;--card-background-color:#fff}</style></head><body><home-assistant></home-assistant><script>
 window.zapisy = [];
@@ -75,7 +75,7 @@ const karty = (page) => page.evaluate(() => {
     return { w: r.width, h: r.height, pierwsza: e.parentElement.firstElementChild === e,
       okno: okno ? okno.getBoundingClientRect().height : 0, szyby: okno?.shadowRoot?.querySelectorAll('.szyba').length || 0,
       dodaj: !!e.shadowRoot?.querySelector('.dodaj'), zmien: !!e.shadowRoot?.querySelector('.zmien'),
-      zmienWKarcie: !!okno?.shadowRoot?.querySelector('.zmien'),
+      zmienWKarcie: !!okno?.shadowRoot?.querySelector('.zmien'), wiersze: e.shadowRoot?.querySelectorAll('.wiersz.klik').length || 0,
       suwak: okno?.shadowRoot?.querySelector('.suwak .wyp')?.getBoundingClientRect().width || 0 };
   });
 });
@@ -95,6 +95,7 @@ for (const [nazwa, ustawienia] of URZADZENIA) {
       assert.ok(k.szyby > 0, 'okno narysowane');
       assert.ok(k.dodaj && k.zmien, 'przyciski „Dodaj do panelu” i „Zmień ustawienia”');
       assert.ok(!k.zmienWKarcie, 'na stronie urządzenia jeden „Zmień ustawienia”');
+      assert.ok(k.wiersze >= 4, `wiersze ustawień da się dotknąć (${k.wiersze})`);
       assert.ok(k.suwak >= 12, `suwak ma uchwyt także przy 0 % (${k.suwak})`);
       const szer = await page.evaluate(() => document.documentElement.scrollWidth);
       assert.ok(szer <= ustawienia.viewport.width, `nic nie wychodzi poza ekran (${szer})`);
@@ -150,3 +151,23 @@ for (const [nazwa, ustawienia] of URZADZENIA.slice(0, 2)) {
     } finally { await ctx.close(); }
   });
 }
+
+test('dotknięcie wiersza „Kolor” otwiera kreator na kroku kolorów', async () => {
+  const { ctx, page } = await otworz(URZADZENIA[0][1], OKNO);
+  try {
+    await page.waitForFunction(() => document.querySelector('home-assistant').shadowRoot
+      .querySelector('ha-config-device-page')?.shadowRoot.querySelector('motor-ha-urzadzenie')?.shadowRoot?.querySelector('.wiersz.klik'), null, { timeout: 8000 });
+    const ws = await page.evaluate(async () => {
+      const hass = document.querySelector('home-assistant').hass, wyslane = [];
+      hass.callWS = async (m) => { wyslane.push(m); return {}; };
+      const k = document.querySelector('home-assistant').shadowRoot.querySelector('ha-config-device-page').shadowRoot.querySelector('motor-ha-urzadzenie');
+      k.hass = { ...hass };
+      const w = [...k.shadowRoot.querySelectorAll('.wiersz.klik')].find(x => x.textContent.includes('Kolor'));
+      w.click();
+      await new Promise(r => setTimeout(r, 300));
+      return { wyslane, adres: location.pathname };
+    });
+    assert.deepEqual(ws.wyslane, [{ type: 'motor_ha/krok', entry_id: 'wpis1', krok: 'kolory' }]);
+    assert.equal(ws.adres, '/config/integrations/integration/motor_ha', 'otwiera kreator „Konfiguruj”');
+  } finally { await ctx.close(); }
+});

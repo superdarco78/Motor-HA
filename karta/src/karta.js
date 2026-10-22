@@ -154,6 +154,7 @@ export class MotorHaKarta extends HTMLElement {
   <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
  ${c.suwak !== false && zPoz ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok('ui.card.cover.position', T.karta.pozycja))}"><div class="wyp"></div></div>` : ''}
+ ${this._wpis() ? `<button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button>` : ''}
 </div></ha-card>`;
     const q = s => root.querySelector(s);
     this._el = { ...this._wspolne(q), karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), suwak: q('.suwak'),
@@ -168,6 +169,7 @@ export class MotorHaKarta extends HTMLElement {
     E.zam?.addEventListener('click', () => this._polecenie(0));
     E.stp?.addEventListener('click', () => this._polecenie(null));
     if (E.suwak) this._suwak(E.suwak);
+    q('.zmien')?.addEventListener('click', () => konfiguruj(this._wpis()));
     this._zbudowana = true;
   }
 

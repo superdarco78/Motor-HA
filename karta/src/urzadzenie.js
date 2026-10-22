@@ -24,7 +24,11 @@ const STYL = `
 .wiersz{display:flex;justify-content:space-between;gap:12px;font-size:var(--ha-font-size-m,14px);line-height:28px;border-bottom:1px solid var(--divider-color)}
 .wiersz:last-child{border-bottom:none}
 .wiersz span:first-child{color:var(--secondary-text-color)}
-.wiersz span:last-child{text-align:end}`;
+.wiersz span:last-child{text-align:end}
+.wiersz.klik{cursor:pointer;margin:0 calc(-1 * var(--ha-space-2,8px));padding:0 var(--ha-space-2,8px);border-radius:var(--ha-border-radius-sm,4px)}
+.wiersz.klik span:last-child::after{content:"›";margin-inline-start:8px;color:var(--secondary-text-color)}
+.wiersz.klik:hover{background:color-mix(in srgb,var(--primary-text-color) 6%,transparent)}
+.wiersz.klik:focus-visible{outline:2px solid var(--primary-color);outline-offset:-2px}`;
 
 export class MotorHaUrzadzenie extends HTMLElement {
   // cel: { entity: 'cover.x', urzadzenie: 'id', wpis: 'entry_id' } albo { dom: true }
@@ -58,7 +62,16 @@ export class MotorHaUrzadzenie extends HTMLElement {
       const klucz = JSON.stringify(wiersze);
       if (klucz !== this._ost) {
         this._ost = klucz;
-        root.querySelector('.wiersze').innerHTML = wiersze.map(([a, b]) => `<div class="wiersz"><span>${esc(a)}</span><span>${esc(b)}</span></div>`).join('');
+        const lista = root.querySelector('.wiersze');
+        lista.innerHTML = wiersze.map(([a, b, cel], i) => {
+          const dziala = cel.encja || c.wpis;   // krok, którego to urządzenie nie ma (np. brama) – cały kreator
+          return `<div class="wiersz${dziala ? ' klik' : ''}" ${dziala ? `role="button" tabindex="0" data-i="${i}"` : ''}><span>${esc(a)}</span><span>${esc(b)}</span></div>`;
+        }).join('');
+        lista.querySelectorAll('.klik').forEach(el => {
+          const idz = () => this._edytuj(wiersze[+el.dataset.i][2]);
+          el.addEventListener('click', idz);
+          el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); idz(); } });
+        });
       }
     }
   }
@@ -67,15 +80,25 @@ export class MotorHaUrzadzenie extends HTMLElement {
     const stan = e => (e && h.states[e] ? (h.formatEntityState ? h.formatEntityState(h.states[e]) : h.states[e].state) : null);
     const auto = Object.values(h.entities || {}).find(e => e.device_id === c.urzadzenie && e.platform === 'motor_ha'
       && e.entity_id.startsWith('switch.') && e.entity_id !== m.encje?.pauza);
-    const w = [[U.rodzaj, T.oslony?.[m.oslona] || m.oslona]];
-    if (m.kolor) w.push([U.kolor, T.kolory?.[m.kolor] || m.kolor]);
-    if (m.skrzydla) w.push([U.skrzydla, String(m.skrzydla)]);
-    if (m.wysokosc) w.push([U.wysokosc, `${m.wysokosc} px`]);
-    w.push([U.czas, typeof m.czas === 'number' && m.czas > 0 ? `${m.czas} s` : U.auto]);
-    if (auto) w.push([U.automatyka, stan(auto.entity_id)]);
-    if (m.encje?.pauza && h.states[m.encje.pauza]) w.push([U.pauza, stan(m.encje.pauza)]);
-    if (m.encje?.powod && h.states[m.encje.powod]) w.push([U.powod, stan(m.encje.powod)]);
+    // trzeci element: co otwiera dotknięcie wiersza – krok kreatora albo okienko encji HA
+    const w = [[U.rodzaj, T.oslony?.[m.oslona] || m.oslona, { krok: 'rodzaj' }]];
+    if (m.kolor) w.push([U.kolor, T.kolory?.[m.kolor] || m.kolor, { krok: 'kolory' }]);
+    if (m.skrzydla) w.push([U.skrzydla, String(m.skrzydla), { krok: 'okno' }]);
+    if (m.wysokosc) w.push([U.wysokosc, `${m.wysokosc} px`, { krok: 'okno' }]);
+    w.push([U.czas, typeof m.czas === 'number' && m.czas > 0 ? `${m.czas} s` : U.auto, { krok: 'silnik' }]);
+    if (auto) w.push([U.automatyka, stan(auto.entity_id), { encja: auto.entity_id }]);
+    if (m.encje?.pauza && h.states[m.encje.pauza]) w.push([U.pauza, stan(m.encje.pauza), { encja: m.encje.pauza }]);
+    if (m.encje?.powod && h.states[m.encje.powod]) w.push([U.powod, stan(m.encje.powod), { encja: m.encje.powod }]);
     return w;
+  }
+
+  async _edytuj(cel) {
+    if (cel.encja) {
+      this.dispatchEvent(new CustomEvent('hass-more-info', { bubbles: true, composed: true, detail: { entityId: cel.encja } }));
+      return;
+    }
+    try { await this._hass.callWS({ type: 'motor_ha/krok', entry_id: this._cel.wpis, krok: cel.krok }); } catch (e) { /* starszy Motor HA – cały kreator */ }
+    konfiguruj(this._cel.wpis);
   }
 
   async _panele() {

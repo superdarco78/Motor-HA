@@ -99,3 +99,23 @@ async def test_zaawansowany_wszystko(hass: HomeAssistant) -> None:
         r = await hass.config_entries.options.async_configure(r["flow_id"], {})
     assert r["type"] is FlowResultType.CREATE_ENTRY and n == 14
     await hass.async_block_till_done()
+
+
+async def test_wiersz_otwiera_jeden_krok(hass: HomeAssistant) -> None:
+    """Dotknięcie wiersza „Kolor” na stronie urządzenia: kreator od razu na kroku kolorów, „Dalej” zapisuje."""
+    import time
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    r, _ = await _przejdz(hass, {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"},
+                                 "panel": {"na_panel": "nie"}})
+    wpis = r["result"]
+    hass.data[DOMAIN]["krok"] = {wpis.entry_id: ("kolory", time.monotonic())}
+    r = await hass.config_entries.options.async_init(wpis.entry_id)
+    assert r["step_id"] == "kolory" and r["last_step"]
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {"kolor": "czarny"})
+    assert r["type"] is FlowResultType.CREATE_ENTRY
+    await hass.async_block_till_done()
+    assert wpis.options["kolor"] == "czarny"
+    # następny „Konfiguruj” znowu cały kreator
+    r = await hass.config_entries.options.async_init(wpis.entry_id)
+    assert r["step_id"] == "tryb"
