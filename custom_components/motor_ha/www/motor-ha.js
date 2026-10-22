@@ -5398,21 +5398,41 @@ button svg{fill:var(--primary-color);flex:none}
   };
 
   // src/index.js
-  var rejestruj = (nazwa2, klasa) => {
-    if (!customElements.get(nazwa2)) customElements.define(nazwa2, klasa);
+  var ELEMENTY = [
+    ["motor-ha", MotorHaKarta],
+    ["okno-ha", class extends MotorHaKarta {
+    }],
+    ["motor-ha-editor", MotorHaEdytor],
+    ["okno-ha-editor", class extends MotorHaEdytor {
+    }],
+    ["motor-ha-dom", MotorHaDom],
+    ["motor-ha-symulator", MotorHaSymulator],
+    // symulator tylko dla opisu w HACS
+    ["roleta-realistyczna", class extends MotorHaKarta {
+    }],
+    ["roleta-realistyczna-editor", class extends MotorHaEdytor {
+    }]
+  ];
+  var rejestruj = (kopia) => {
+    for (const [nazwa2, klasa] of ELEMENTY) {
+      if (customElements.get(nazwa2)) continue;
+      try {
+        customElements.define(nazwa2, kopia ? class extends klasa {
+        } : klasa);
+      } catch (e) {
+        console.warn("Motor HA: nie zarejestrowałem", nazwa2, e);
+      }
+    }
   };
-  rejestruj("motor-ha", MotorHaKarta);
-  rejestruj("okno-ha", class extends MotorHaKarta {
-  });
-  rejestruj("motor-ha-editor", MotorHaEdytor);
-  rejestruj("okno-ha-editor", class extends MotorHaEdytor {
-  });
-  rejestruj("motor-ha-dom", MotorHaDom);
-  rejestruj("motor-ha-symulator", MotorHaSymulator);
-  rejestruj("roleta-realistyczna", class extends MotorHaKarta {
-  });
-  rejestruj("roleta-realistyczna-editor", class extends MotorHaEdytor {
-  });
+  rejestruj(false);
+  var rejestr = window.customElements;
+  var straz = setInterval(() => {
+    if (window.customElements !== rejestr || !customElements.get("motor-ha")) {
+      rejestr = window.customElements;
+      rejestruj(true);
+    }
+  }, 50);
+  setTimeout(() => clearInterval(straz), 3e4);
   var T = TEKSTY[kodJezyka(document.documentElement.lang || navigator.language)];
   window.customCards = window.customCards || [];
   for (let i = window.customCards.length - 1; i >= 0; i--) if (["motor-ha", "motor-ha-dom", "okno-ha", "roleta-realistyczna"].includes(window.customCards[i]?.type)) window.customCards.splice(i, 1);

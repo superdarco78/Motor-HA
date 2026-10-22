@@ -12,6 +12,8 @@
 - 🔔 Powiadomienia: brak odpowiedzi, nie dojechała, bateria, czujnik, automatyka, otwarta lub niedomknięta brama, przeszkoda – każde osobno
 - 🏠 Nowa karta „Motor HA – cały dom”: wszystkie osłony na jednej liście
 - 🌍 Integracja w 14 językach, opis i instrukcja w 5 językach
+- 🎮 Opis w HACS: żywa symulacja karty (pora dnia, pogoda, kolor, rodzaj), opis sam w języku HA, spis treści i przyciski działają na miejscu
+- 🛠 Karta nie pokazuje już czasem „Błąd konfiguracji” zaraz po otwarciu strony (HA podmieniał rejestr elementów)
 - 🏷 Nazwa Motor HA wszędzie, także w środku (domena motor_ha, karta custom:motor-ha). Repozytorium: superdarco78/Motor-HA
 - 🧹 Porządek w repozytorium: obrazki 1,5 GB → 14 MB
 

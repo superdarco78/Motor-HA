@@ -8,7 +8,6 @@ osłoną, jest domyślnie wyłączona.
 from __future__ import annotations
 
 from typing import Any
-from urllib.parse import urlencode
 
 import voluptuous as vol
 
@@ -67,6 +66,7 @@ from .const import (
     BRAMY as RODZAJE_BRAM,
 )
 from . import skan
+from .pasek import async_obrazek
 
 WSTECZ = "wstecz"
 KOPIUJ = "kopiuj_z"
@@ -231,10 +231,10 @@ class Kreator:
         nr = lista.index(krok) if krok in lista else 0
         if nr > 0:
             schemat[vol.Optional(WSTECZ, default=False)] = sel.BooleanSelector()
-        pasek = urlencode({"k": ",".join(lista), "a": nr, "j": self.hass.config.language})
+        pasek = await async_obrazek(self.hass, lista, nr, self.hass.config.language)
         return self.async_show_form(  # type: ignore[attr-defined]
             step_id=krok, data_schema=vol.Schema(schemat), errors=bledy or {}, last_step=krok == lista[-1],
-            description_placeholders={"pasek": f"![](/{DOMAIN}/pasek.svg?{pasek})", "nr": str(nr + 1),
+            description_placeholders={"pasek": f"![]({pasek})", "nr": str(nr + 1),
                                       "z": str(len(lista)), "porada": await self._porada(krok),
                                       "nazwa": self.tytul or "", **(dodatki or {})})
 

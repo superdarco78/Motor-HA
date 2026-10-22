@@ -62,6 +62,9 @@ def _kopiuj(hass_config_path: str, zrodlo: Path) -> None:
 async def async_przygotuj(hass: HomeAssistant) -> Path:
     """Kopiuje pliki tej wersji do /config/.motor_ha i zwraca ten katalog."""
     zrodlo = Path(__file__).parent / "www"
+    # HA podaje /local/ tylko wtedy, gdy folder www był już przy starcie – inaczej ładowacz do restartu idzie z /motor_ha/
+    lokalny = await hass.async_add_executor_job(Path(hass.config.path("www")).is_dir)
+    hass.data.setdefault(DOMAIN, {})["adres"] = ADRES if lokalny else f"/{DOMAIN}/{LOADER}"
     await hass.async_add_executor_job(_kopiuj, hass.config.path(), zrodlo)
     return Path(hass.config.path(".motor_ha"))
 
@@ -114,12 +117,13 @@ async def async_dodaj_zasob(hass: HomeAssistant) -> None:
         if not zasoby.loaded:
             await zasoby.async_load()
             zasoby.loaded = True
+        adres = hass.data.get(DOMAIN, {}).get("adres", ADRES)
         nasze = [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] in STARE_ADRESY]
         if not nasze:
-            await zasoby.async_create_item({"res_type": "module", "url": ADRES})
+            await zasoby.async_create_item({"res_type": "module", "url": adres})
             return
-        if nasze[0].get("url") != ADRES:
-            await zasoby.async_update_item(nasze[0]["id"], {"res_type": "module", "url": ADRES})
+        if nasze[0].get("url") != adres:
+            await zasoby.async_update_item(nasze[0]["id"], {"res_type": "module", "url": adres})
         for z in nasze[1:]:
             await zasoby.async_delete_item(z["id"])
     except Exception:  # noqa: BLE001 – zasób nie może zepsuć HA; karta i tak wczytuje się przez add_extra_js_url

@@ -6,15 +6,24 @@ import { TEKSTY, kodJezyka } from './jezyk.js';
 import { MotorHaDom } from './dom.js';
 import { MotorHaSymulator } from './symulator.js';
 
-const rejestruj = (nazwa, klasa) => { if (!customElements.get(nazwa)) customElements.define(nazwa, klasa); };
-rejestruj('motor-ha', MotorHaKarta);
-rejestruj('okno-ha', class extends MotorHaKarta {});
-rejestruj('motor-ha-editor', MotorHaEdytor);
-rejestruj('okno-ha-editor', class extends MotorHaEdytor {});
-rejestruj('motor-ha-dom', MotorHaDom);
-rejestruj('motor-ha-symulator', MotorHaSymulator);   // tylko symulacja w opisie HACS
-rejestruj('roleta-realistyczna', class extends MotorHaKarta {});
-rejestruj('roleta-realistyczna-editor', class extends MotorHaEdytor {});
+const ELEMENTY = [
+  ['motor-ha', MotorHaKarta], ['okno-ha', class extends MotorHaKarta {}],
+  ['motor-ha-editor', MotorHaEdytor], ['okno-ha-editor', class extends MotorHaEdytor {}],
+  ['motor-ha-dom', MotorHaDom], ['motor-ha-symulator', MotorHaSymulator],   // symulator tylko dla opisu w HACS
+  ['roleta-realistyczna', class extends MotorHaKarta {}], ['roleta-realistyczna-editor', class extends MotorHaEdytor {}]
+];
+// HA w trakcie startu potrafi podmienić rejestr elementów (window.customElements). Karta wczytana wcześniej
+// zniknęłaby wtedy z nowego rejestru („Błąd konfiguracji”), więc przez pierwsze 30 s pilnujemy, czy nadal tam jest.
+const rejestruj = (kopia) => {
+  for (const [nazwa, klasa] of ELEMENTY) {
+    if (customElements.get(nazwa)) continue;
+    try { customElements.define(nazwa, kopia ? class extends klasa {} : klasa); } catch (e) { console.warn('Motor HA: nie zarejestrowałem', nazwa, e); }
+  }
+};
+rejestruj(false);
+let rejestr = window.customElements;
+const straz = setInterval(() => { if (window.customElements !== rejestr || !customElements.get('motor-ha')) { rejestr = window.customElements; rejestruj(true); } }, 50);
+setTimeout(() => clearInterval(straz), 30000);
 
 const T = TEKSTY[kodJezyka(document.documentElement.lang || navigator.language)];
 window.customCards = window.customCards || [];

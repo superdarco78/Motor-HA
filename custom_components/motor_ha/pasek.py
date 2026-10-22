@@ -6,6 +6,7 @@ Jeden pasek, bez drugiego w środku zrzutu. Kolory jak w domyślnym motywie HA, 
 
 from __future__ import annotations
 
+from base64 import b64encode
 from html import escape
 
 from aiohttp import web
@@ -91,3 +92,12 @@ def rysuj(kroki: list[str], aktywny: int, nazwy: dict[str, str]) -> str:
                           f'fill="{GLOWNY if i == aktywny else SZARY}">{escape(nazwy.get(k, k))}</text>')
     czesci.append("</svg>")
     return "".join(czesci)
+
+
+async def async_obrazek(hass: HomeAssistant, kroki: list[str], aktywny: int, jezyk: str) -> str:
+    """Pasek jako obrazek w treści kreatora (data:), bo przy pierwszym dodaniu integracja nie podaje jeszcze plików."""
+    kroki = [k for k in kroki if k in IKONY][:16]
+    t = await async_get_translations(hass, jezyk, "selector", {DOMAIN})
+    nazwy = {k: t.get(f"component.{DOMAIN}.selector.kroki.options.{k}", k) for k in kroki}
+    svg = rysuj(kroki, max(0, min(len(kroki) - 1, aktywny)), nazwy)
+    return "data:image/svg+xml;base64," + b64encode(svg.encode()).decode()
