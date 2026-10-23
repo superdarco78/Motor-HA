@@ -296,7 +296,7 @@
       "gotowe": "Gotowe"
     },
     "podpisy": {
-      "silnik": "Pokazuję tylko osłony, które jeszcze nie są w Motor HA.",
+      "silnik": "Wszystkie osłony z Home Assistanta. Użyte już w innym urządzeniu mają podpis.",
       "uklad": "Dotknij najbliższy układ.",
       "przypisz": "Każde pole: silnik i czujnik. Podpowiedzi są już wpisane.",
       "czujniki": "Znalezione w pokoju i w domu. Dotknij, żeby wyłączyć albo zmienić.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "zjedzie do {0} %",
     "zjedzieNormalnie": "zjedzie normalnie",
     "pozniej": "Gdy zamkniesz okno, osłona dojedzie sama.",
-    "kazdy": "Każdy silnik osobno"
+    "kazdy": "Każdy silnik osobno",
+    "slupek": "Słupek / mur",
+    "belka": "Belka",
+    "brak": "brak",
+    "wUrzadzeniu": "też w: {0}",
+    "grupa": "grupa",
+    "calyPokoj": "Cały pokój: {0}",
+    "bezPokoju": "Bez pokoju",
+    "pojedyncze": "Pojedyncze"
   }
 }

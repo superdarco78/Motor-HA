@@ -296,7 +296,7 @@
       "gotowe": "Hotovo"
     },
     "podpisy": {
-      "silnik": "Zobrazuji jen stínění, která ještě nejsou v Motor HA.",
+      "silnik": "Všechna stínění z Home Assistantu. Ta už použitá v jiném zařízení jsou označená.",
       "uklad": "Klepni na nejpodobnější rozvržení.",
       "przypisz": "Každé pole: motor a senzor. Návrhy jsou už vyplněné.",
       "czujniki": "Nalezeno v místnosti a v domě. Klepnutím vypneš nebo změníš.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "sjede na {0} %",
     "zjedzieNormalnie": "sjede normálně",
     "pozniej": "Když okno zavřete, stínění dojede samo.",
-    "kazdy": "Každý motor zvlášť"
+    "kazdy": "Každý motor zvlášť",
+    "slupek": "Sloupek / zeď",
+    "belka": "Příčník",
+    "brak": "žádný",
+    "wUrzadzeniu": "také v: {0}",
+    "grupa": "skupina",
+    "calyPokoj": "Celá místnost: {0}",
+    "bezPokoju": "Bez místnosti",
+    "pojedyncze": "Jednotlivé"
   }
 }

@@ -296,7 +296,7 @@
       "gotowe": "完了"
     },
     "podpisy": {
-      "silnik": "まだ Motor HA にないシェードだけを表示します。",
+      "silnik": "Home Assistant のすべてのカバー。ほかのデバイスで使用中のものには表示があります。",
       "uklad": "いちばん近いレイアウトをタップします。",
       "przypisz": "各区画にモーターとセンサー。候補は入力済みです。",
       "czujniki": "部屋と家の中で見つかりました。タップでオフまたは変更。",
@@ -424,6 +424,14 @@
     "zjedzieDo": "{0} %まで閉まります",
     "zjedzieNormalnie": "通常どおり閉まります",
     "pozniej": "窓を閉めると、カバーは自動で閉まりきります。",
-    "kazdy": "モーターごと"
+    "kazdy": "モーターごと",
+    "slupek": "方立 / 壁",
+    "belka": "無目",
+    "brak": "なし",
+    "wUrzadzeniu": "{0} でも使用",
+    "grupa": "グループ",
+    "calyPokoj": "部屋全体：{0}",
+    "bezPokoju": "部屋なし",
+    "pojedyncze": "単独"
   }
 }

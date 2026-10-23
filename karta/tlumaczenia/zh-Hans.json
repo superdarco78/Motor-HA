@@ -296,7 +296,7 @@
       "gotowe": "完成"
     },
     "podpisy": {
-      "silnik": "只显示尚未加入 Motor HA 的遮阳。",
+      "silnik": "Home Assistant 中的所有遮阳。已在其他设备中使用的会标注。",
       "uklad": "点击最接近的布局。",
       "przypisz": "每个窗格：一个电机和一个传感器。建议已填好。",
       "czujniki": "在房间和家中找到。点击可关闭或更改。",
@@ -424,6 +424,14 @@
     "zjedzieDo": "关到 {0} %",
     "zjedzieNormalnie": "正常关闭",
     "pozniej": "关窗后，遮阳会自动关完。",
-    "kazdy": "每个电机单独"
+    "kazdy": "每个电机单独",
+    "slupek": "竖梃 / 墙",
+    "belka": "横档",
+    "brak": "无",
+    "wUrzadzeniu": "也在：{0}",
+    "grupa": "组",
+    "calyPokoj": "整个房间：{0}",
+    "bezPokoju": "无房间",
+    "pojedyncze": "单个"
   }
 }

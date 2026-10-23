@@ -296,7 +296,7 @@
       "gotowe": "Listo"
     },
     "podpisy": {
-      "silnik": "Solo se muestran los estores que aún no están en Motor HA.",
+      "silnik": "Todas las persianas de Home Assistant. Las ya usadas en otro dispositivo están marcadas.",
       "uklad": "Toca la distribución más parecida.",
       "przypisz": "Cada paño: un motor y un sensor. Las sugerencias ya están puestas.",
       "czujniki": "Encontrado en la habitación y en la casa. Toca para desactivar o cambiar.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "baja al {0} %",
     "zjedzieNormalnie": "baja con normalidad",
     "pozniej": "Al cerrar la ventana, la persiana termina sola.",
-    "kazdy": "Cada motor por separado"
+    "kazdy": "Cada motor por separado",
+    "slupek": "Parteluz / muro",
+    "belka": "Travesaño",
+    "brak": "ninguno",
+    "wUrzadzeniu": "también en: {0}",
+    "grupa": "grupo",
+    "calyPokoj": "Toda la habitación: {0}",
+    "bezPokoju": "Sin habitación",
+    "pojedyncze": "Individuales"
   }
 }

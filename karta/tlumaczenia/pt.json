@@ -296,7 +296,7 @@
       "gotowe": "Concluído"
     },
     "podpisy": {
-      "silnik": "Só são mostradas proteções que ainda não estão no Motor HA.",
+      "silnik": "Todas as persianas do Home Assistant. As já usadas noutro dispositivo estão assinaladas.",
       "uklad": "Toque na disposição mais parecida.",
       "przypisz": "Cada folha: um motor e um sensor. As sugestões já estão preenchidas.",
       "czujniki": "Encontrado na divisão e na casa. Toque para desligar ou alterar.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "desce até {0} %",
     "zjedzieNormalnie": "desce normalmente",
     "pozniej": "Ao fechar a janela, a persiana termina sozinha.",
-    "kazdy": "Cada motor separadamente"
+    "kazdy": "Cada motor separadamente",
+    "slupek": "Pilar / parede",
+    "belka": "Travessa",
+    "brak": "nenhum",
+    "wUrzadzeniu": "também em: {0}",
+    "grupa": "grupo",
+    "calyPokoj": "Divisão inteira: {0}",
+    "bezPokoju": "Sem divisão",
+    "pojedyncze": "Individuais"
   }
 }

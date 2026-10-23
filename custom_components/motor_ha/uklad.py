@@ -46,7 +46,10 @@ def popraw(uklad: Any) -> dict[str, Any] | None:
         if not isinstance(k, dict):
             return None
         r = [_liczba(h, 1, 0.02, 100) for h in (k.get("r") or [1])][:MAX_W_KOLUMNIE] or [1.0]
-        kol.append({"w": _liczba(k.get("w"), 1, 0.02, 100), "r": r, "dol": _liczba(k.get("dol"), 0, 0, 0.6)})
+        bel = [_liczba(b, 0, 0, 50) for b in (k.get("bel") or [])][:len(r) - 1]
+        kol.append({"w": _liczba(k.get("w"), 1, 0.02, 100), "r": r, "dol": _liczba(k.get("dol"), 0, 0, 0.6),
+                    "mur": _liczba(k.get("mur"), 0, 0, 50), "bel": bel + [0.0] * (len(r) - 1 - len(bel))})
+    kol[-1]["mur"] = 0.0   # mur (odstęp ściany) tylko między oknami, nie za ostatnim
     return {"kol": kol}
 
 
@@ -63,15 +66,17 @@ def uklad(o: dict[str, Any]) -> dict[str, Any]:
 
 def prostokaty(u: dict[str, Any]) -> list[tuple[float, float, float, float]]:
     """Pola jako (x, y, szer., wys.) w ułamkach całego okna."""
-    suma = sum(k["w"] for k in u["kol"]) or 1
+    # mur: kawałek ściany za kolumną, w tych samych jednostkach co szerokość kolumny
+    suma = sum(k["w"] + k.get("mur", 0) for k in u["kol"][:-1]) + u["kol"][-1]["w"] or 1
     wynik, x = [], 0.0
     for k in u["kol"]:
-        w, wys, sr, y = k["w"] / suma, 1 - k["dol"], sum(k["r"]) or 1, 0.0
-        for h in k["r"]:
+        bel = list(k.get("bel") or [])   # belki (poziome odstępy) pod polami, w jednostkach wysokości pól
+        w, wys, sr, y = k["w"] / suma, 1 - k["dol"], (sum(k["r"]) + sum(bel[:len(k["r"]) - 1])) or 1, 0.0
+        for j, h in enumerate(k["r"]):
             hh = h / sr * wys
             wynik.append((round(x, 4), round(y, 4), round(w, 4), round(hh, 4)))
-            y += hh
-        x += w
+            y += hh + (bel[j] / sr * wys if j < len(bel) else 0)
+        x += w + k.get("mur", 0) / suma
     return wynik
 
 

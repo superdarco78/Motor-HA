@@ -380,6 +380,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 /* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
 .okno.uk{background:none!important;box-shadow:none!important;padding:0}
 .uk .kolr{position:absolute;border-radius:3px}
+.uk .mur{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.12) 9px 10px),color-mix(in srgb,var(--secondary-text-color,#888) 30%,var(--card-background-color,#fff));border-radius:2px}
 .uk .skrz{position:absolute;flex:none;margin:0;padding:5px;overflow:hidden}
 .uk .za{inset:auto}
 .uk .wid{position:absolute}
@@ -1171,7 +1172,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Gotowe"
       },
       podpisy: {
-        silnik: "Pokazuję tylko osłony, które jeszcze nie są w Motor HA.",
+        silnik: "Wszystkie osłony z Home Assistanta. Użyte już w innym urządzeniu mają podpis.",
         uklad: "Dotknij najbliższy układ.",
         przypisz: "Każde pole: silnik i czujnik. Podpowiedzi są już wpisane.",
         czujniki: "Znalezione w pokoju i w domu. Dotknij, żeby wyłączyć albo zmienić.",
@@ -1299,7 +1300,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "zjedzie do {0} %",
       zjedzieNormalnie: "zjedzie normalnie",
       pozniej: "Gdy zamkniesz okno, osłona dojedzie sama.",
-      kazdy: "Każdy silnik osobno"
+      kazdy: "Każdy silnik osobno",
+      slupek: "Słupek / mur",
+      belka: "Belka",
+      brak: "brak",
+      wUrzadzeniu: "też w: {0}",
+      grupa: "grupa",
+      calyPokoj: "Cały pokój: {0}",
+      bezPokoju: "Bez pokoju",
+      pojedyncze: "Pojedyncze"
     }
   };
 
@@ -1602,7 +1611,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Done"
       },
       podpisy: {
-        silnik: "Only covers that are not in Motor HA yet are shown.",
+        silnik: "All covers from Home Assistant. Ones already used in another device are labelled.",
         uklad: "Tap the closest layout.",
         przypisz: "Each pane: a motor and a sensor. Suggestions are already filled in.",
         czujniki: "Found in the room and in the home. Tap to turn off or change.",
@@ -1730,7 +1739,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "closes to {0} %",
       zjedzieNormalnie: "closes as usual",
       pozniej: "Once you close the window, the cover finishes on its own.",
-      kazdy: "Each motor separately"
+      kazdy: "Each motor separately",
+      slupek: "Mullion / wall",
+      belka: "Transom",
+      brak: "none",
+      wUrzadzeniu: "also in: {0}",
+      grupa: "group",
+      calyPokoj: "Whole room: {0}",
+      bezPokoju: "No room",
+      pojedyncze: "Single"
     }
   };
 
@@ -2033,7 +2050,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Fertig"
       },
       podpisy: {
-        silnik: "Es werden nur Behänge gezeigt, die noch nicht in Motor HA sind.",
+        silnik: "Alle Beschattungen aus Home Assistant. Bereits in einem anderen Gerät genutzte sind markiert.",
         uklad: "Tippe auf die ähnlichste Aufteilung.",
         przypisz: "Jedes Feld: ein Motor und ein Sensor. Vorschläge sind schon eingetragen.",
         czujniki: "Im Raum und im Zuhause gefunden. Tippe zum Ausschalten oder Ändern.",
@@ -2161,7 +2178,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "fährt auf {0} %",
       zjedzieNormalnie: "fährt normal zu",
       pozniej: "Sobald das Fenster zu ist, fährt der Behang von selbst weiter.",
-      kazdy: "Jeder Motor einzeln"
+      kazdy: "Jeder Motor einzeln",
+      slupek: "Pfosten / Wand",
+      belka: "Kämpfer",
+      brak: "keiner",
+      wUrzadzeniu: "auch in: {0}",
+      grupa: "Gruppe",
+      calyPokoj: "Ganzer Raum: {0}",
+      bezPokoju: "Ohne Raum",
+      pojedyncze: "Einzeln"
     }
   };
 
@@ -2464,7 +2489,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Terminé"
       },
       podpisy: {
-        silnik: "Seuls les stores pas encore dans Motor HA sont affichés.",
+        silnik: "Tous les volets de Home Assistant. Ceux déjà utilisés dans un autre appareil sont signalés.",
         uklad: "Touche la disposition la plus proche.",
         przypisz: "Chaque vantail : un moteur et un capteur. Les suggestions sont déjà remplies.",
         czujniki: "Trouvé dans la pièce et dans la maison. Touche pour désactiver ou changer.",
@@ -2592,7 +2617,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "descend à {0} %",
       zjedzieNormalnie: "descend normalement",
       pozniej: "Une fois la fenêtre fermée, le volet finit seul.",
-      kazdy: "Chaque moteur séparément"
+      kazdy: "Chaque moteur séparément",
+      slupek: "Meneau / mur",
+      belka: "Traverse",
+      brak: "aucun",
+      wUrzadzeniu: "aussi dans : {0}",
+      grupa: "groupe",
+      calyPokoj: "Toute la pièce : {0}",
+      bezPokoju: "Sans pièce",
+      pojedyncze: "Individuels"
     }
   };
 
@@ -2895,7 +2928,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Hotovo"
       },
       podpisy: {
-        silnik: "Zobrazuji jen stínění, která ještě nejsou v Motor HA.",
+        silnik: "Všechna stínění z Home Assistantu. Ta už použitá v jiném zařízení jsou označená.",
         uklad: "Klepni na nejpodobnější rozvržení.",
         przypisz: "Každé pole: motor a senzor. Návrhy jsou už vyplněné.",
         czujniki: "Nalezeno v místnosti a v domě. Klepnutím vypneš nebo změníš.",
@@ -3023,7 +3056,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "sjede na {0} %",
       zjedzieNormalnie: "sjede normálně",
       pozniej: "Když okno zavřete, stínění dojede samo.",
-      kazdy: "Každý motor zvlášť"
+      kazdy: "Každý motor zvlášť",
+      slupek: "Sloupek / zeď",
+      belka: "Příčník",
+      brak: "žádný",
+      wUrzadzeniu: "také v: {0}",
+      grupa: "skupina",
+      calyPokoj: "Celá místnost: {0}",
+      bezPokoju: "Bez místnosti",
+      pojedyncze: "Jednotlivé"
     }
   };
 
@@ -3326,7 +3367,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Hotovo"
       },
       podpisy: {
-        silnik: "Zobrazujem len tienenia, ktoré ešte nie sú v Motor HA.",
+        silnik: "Všetky tienenia z Home Assistanta. Tie už použité v inom zariadení sú označené.",
         uklad: "Ťukni na najpodobnejšie rozloženie.",
         przypisz: "Každé pole: motor a senzor. Návrhy sú už vyplnené.",
         czujniki: "Nájdené v miestnosti a v dome. Ťuknutím vypneš alebo zmeníš.",
@@ -3454,7 +3495,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "zíde na {0} %",
       zjedzieNormalnie: "zíde normálne",
       pozniej: "Keď okno zatvoríte, tienenie dôjde samo.",
-      kazdy: "Každý motor zvlášť"
+      kazdy: "Každý motor zvlášť",
+      slupek: "Stĺpik / múr",
+      belka: "Priečnik",
+      brak: "žiadny",
+      wUrzadzeniu: "aj v: {0}",
+      grupa: "skupina",
+      calyPokoj: "Celá miestnosť: {0}",
+      bezPokoju: "Bez miestnosti",
+      pojedyncze: "Jednotlivé"
     }
   };
 
@@ -3757,7 +3806,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Listo"
       },
       podpisy: {
-        silnik: "Solo se muestran los estores que aún no están en Motor HA.",
+        silnik: "Todas las persianas de Home Assistant. Las ya usadas en otro dispositivo están marcadas.",
         uklad: "Toca la distribución más parecida.",
         przypisz: "Cada paño: un motor y un sensor. Las sugerencias ya están puestas.",
         czujniki: "Encontrado en la habitación y en la casa. Toca para desactivar o cambiar.",
@@ -3885,7 +3934,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "baja al {0} %",
       zjedzieNormalnie: "baja con normalidad",
       pozniej: "Al cerrar la ventana, la persiana termina sola.",
-      kazdy: "Cada motor por separado"
+      kazdy: "Cada motor por separado",
+      slupek: "Parteluz / muro",
+      belka: "Travesaño",
+      brak: "ninguno",
+      wUrzadzeniu: "también en: {0}",
+      grupa: "grupo",
+      calyPokoj: "Toda la habitación: {0}",
+      bezPokoju: "Sin habitación",
+      pojedyncze: "Individuales"
     }
   };
 
@@ -4188,7 +4245,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Fatto"
       },
       podpisy: {
-        silnik: "Mostro solo le tende non ancora in Motor HA.",
+        silnik: "Tutte le tapparelle di Home Assistant. Quelle già usate in un altro dispositivo sono indicate.",
         uklad: "Tocca la disposizione più simile.",
         przypisz: "Ogni anta: un motore e un sensore. I suggerimenti sono già inseriti.",
         czujniki: "Trovato nella stanza e in casa. Tocca per disattivare o cambiare.",
@@ -4316,7 +4373,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "scende al {0} %",
       zjedzieNormalnie: "scende normalmente",
       pozniej: "Chiusa la finestra, la tapparella finisce da sola.",
-      kazdy: "Ogni motore separatamente"
+      kazdy: "Ogni motore separatamente",
+      slupek: "Montante / muro",
+      belka: "Traverso",
+      brak: "nessuno",
+      wUrzadzeniu: "anche in: {0}",
+      grupa: "gruppo",
+      calyPokoj: "Tutta la stanza: {0}",
+      bezPokoju: "Senza stanza",
+      pojedyncze: "Singole"
     }
   };
 
@@ -4619,7 +4684,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Klaar"
       },
       podpisy: {
-        silnik: "Alleen zonwering die nog niet in Motor HA zit, wordt getoond.",
+        silnik: "Alle zonwering uit Home Assistant. Al in een ander apparaat gebruikte zijn gemarkeerd.",
         uklad: "Tik op de indeling die het meest lijkt.",
         przypisz: "Elk vak: een motor en een sensor. Suggesties zijn al ingevuld.",
         czujniki: "Gevonden in de kamer en in huis. Tik om uit te zetten of te wijzigen.",
@@ -4747,7 +4812,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "gaat naar {0} %",
       zjedzieNormalnie: "gaat normaal dicht",
       pozniej: "Zodra het raam dicht is, gaat het scherm vanzelf verder.",
-      kazdy: "Elke motor apart"
+      kazdy: "Elke motor apart",
+      slupek: "Stijl / muur",
+      belka: "Kalf",
+      brak: "geen",
+      wUrzadzeniu: "ook in: {0}",
+      grupa: "groep",
+      calyPokoj: "Hele ruimte: {0}",
+      bezPokoju: "Geen ruimte",
+      pojedyncze: "Los"
     }
   };
 
@@ -5050,7 +5123,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Concluído"
       },
       podpisy: {
-        silnik: "Só são mostradas proteções que ainda não estão no Motor HA.",
+        silnik: "Todas as persianas do Home Assistant. As já usadas noutro dispositivo estão assinaladas.",
         uklad: "Toque na disposição mais parecida.",
         przypisz: "Cada folha: um motor e um sensor. As sugestões já estão preenchidas.",
         czujniki: "Encontrado na divisão e na casa. Toque para desligar ou alterar.",
@@ -5178,7 +5251,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "desce até {0} %",
       zjedzieNormalnie: "desce normalmente",
       pozniej: "Ao fechar a janela, a persiana termina sozinha.",
-      kazdy: "Cada motor separadamente"
+      kazdy: "Cada motor separadamente",
+      slupek: "Pilar / parede",
+      belka: "Travessa",
+      brak: "nenhum",
+      wUrzadzeniu: "também em: {0}",
+      grupa: "grupo",
+      calyPokoj: "Divisão inteira: {0}",
+      bezPokoju: "Sem divisão",
+      pojedyncze: "Individuais"
     }
   };
 
@@ -5481,7 +5562,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Готово"
       },
       podpisy: {
-        silnik: "Показано лише штори, яких ще немає в Motor HA.",
+        silnik: "Усі штори з Home Assistant. Уже використані в іншому пристрої підписані.",
         uklad: "Торкніться найсхожішої схеми.",
         przypisz: "Кожна стулка: мотор і датчик. Підказки вже заповнено.",
         czujniki: "Знайдено в кімнаті та вдома. Торкніться, щоб вимкнути або змінити.",
@@ -5609,7 +5690,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "опуститься до {0} %",
       zjedzieNormalnie: "опуститься як завжди",
       pozniej: "Коли закриєте вікно, штора доїде сама.",
-      kazdy: "Кожен мотор окремо"
+      kazdy: "Кожен мотор окремо",
+      slupek: "Імпост / стіна",
+      belka: "Перемичка",
+      brak: "немає",
+      wUrzadzeniu: "також у: {0}",
+      grupa: "група",
+      calyPokoj: "Уся кімната: {0}",
+      bezPokoju: "Без кімнати",
+      pojedyncze: "Окремі"
     }
   };
 
@@ -5912,7 +6001,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Готово"
       },
       podpisy: {
-        silnik: "Показаны только шторы, которых ещё нет в Motor HA.",
+        silnik: "Все шторы из Home Assistant. Уже используемые в другом устройстве подписаны.",
         uklad: "Нажмите на самую похожую схему.",
         przypisz: "Каждая створка: мотор и датчик. Подсказки уже заполнены.",
         czujniki: "Найдено в комнате и в доме. Нажмите, чтобы выключить или изменить.",
@@ -6040,7 +6129,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "опустится до {0} %",
       zjedzieNormalnie: "опустится как обычно",
       pozniej: "Когда закроете окно, штора доедет сама.",
-      kazdy: "Каждый мотор отдельно"
+      kazdy: "Каждый мотор отдельно",
+      slupek: "Импост / стена",
+      belka: "Перемычка",
+      brak: "нет",
+      wUrzadzeniu: "также в: {0}",
+      grupa: "группа",
+      calyPokoj: "Вся комната: {0}",
+      bezPokoju: "Без комнаты",
+      pojedyncze: "Отдельные"
     }
   };
 
@@ -6343,7 +6440,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "完了"
       },
       podpisy: {
-        silnik: "まだ Motor HA にないシェードだけを表示します。",
+        silnik: "Home Assistant のすべてのカバー。ほかのデバイスで使用中のものには表示があります。",
         uklad: "いちばん近いレイアウトをタップします。",
         przypisz: "各区画にモーターとセンサー。候補は入力済みです。",
         czujniki: "部屋と家の中で見つかりました。タップでオフまたは変更。",
@@ -6471,7 +6568,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "{0} %まで閉まります",
       zjedzieNormalnie: "通常どおり閉まります",
       pozniej: "窓を閉めると、カバーは自動で閉まりきります。",
-      kazdy: "モーターごと"
+      kazdy: "モーターごと",
+      slupek: "方立 / 壁",
+      belka: "無目",
+      brak: "なし",
+      wUrzadzeniu: "{0} でも使用",
+      grupa: "グループ",
+      calyPokoj: "部屋全体：{0}",
+      bezPokoju: "部屋なし",
+      pojedyncze: "単独"
     }
   };
 
@@ -6774,7 +6879,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "完成"
       },
       podpisy: {
-        silnik: "只显示尚未加入 Motor HA 的遮阳。",
+        silnik: "Home Assistant 中的所有遮阳。已在其他设备中使用的会标注。",
         uklad: "点击最接近的布局。",
         przypisz: "每个窗格：一个电机和一个传感器。建议已填好。",
         czujniki: "在房间和家中找到。点击可关闭或更改。",
@@ -6902,7 +7007,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zjedzieDo: "关到 {0} %",
       zjedzieNormalnie: "正常关闭",
       pozniej: "关窗后，遮阳会自动关完。",
-      kazdy: "每个电机单独"
+      kazdy: "每个电机单独",
+      slupek: "竖梃 / 墙",
+      belka: "横档",
+      brak: "无",
+      wUrzadzeniu: "也在：{0}",
+      grupa: "组",
+      calyPokoj: "整个房间：{0}",
+      bezPokoju: "无房间",
+      pojedyncze: "单个"
     }
   };
 
@@ -7220,6 +7333,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         const k = P.filter((p) => p.x === x), dol = Math.max(...k.map((p) => p.y + p.h));
         return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
       }).join("") : "";
+      const xs = P ? [...new Set(P.map((p) => p.x))].sort((a, b) => a - b) : [];
+      const mury = xs.slice(1).map((x, i) => {
+        const pk = P.find((p) => p.x === xs[i]), od2 = pk.x + pk.w;
+        return x - od2 > 4e-3 ? `<div class="mur" style="left:${od2 * 100}%;width:${(x - od2) * 100}%"></div>` : "";
+      }).join("");
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
       const skrzydlo = (i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}"${miejsce(i)}><div class="szyba">
@@ -7233,7 +7351,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
   ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
-   ${ramy}${zew ? "" : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
+   ${mury}${ramy}${zew ? "" : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
    ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
@@ -8295,18 +8413,39 @@ button svg{fill:var(--primary-color);flex:none}
   var RAMY_TAB = Object.keys(RAMA_Z_KLUCZA);
   var STRONY = [["n", 0], ["e", 90], ["s", 180], ["w", 270]];
   var AUTO_ZEW = ["markiza", "fasadowa", "fasadowaz", "screen"];
-  function prostokaty(u) {
-    const K = u.kol, suma = K.reduce((a, k) => a + k.w, 0) || 1, out = [];
+  var sumaKol = (K) => K.reduce((a, k, i) => a + k.w + (i < K.length - 1 ? +k.mur || 0 : 0), 0) || 1;
+  var sumaWierszy = (k) => k.r.reduce((a, h, j) => a + h + (j < k.r.length - 1 ? +k.bel?.[j] || 0 : 0), 0) || 1;
+  function przerwy(u) {
+    const K = u.kol, suma = sumaKol(K), out = [];
     let x = 0;
-    K.forEach((k) => {
-      const w = k.w / suma, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0) || 1;
+    K.forEach((k, c) => {
+      const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
       let y = 0;
-      k.r.forEach((h) => {
-        const hh = h / sr * wys;
-        out.push([okr(x), okr(y), okr(w), okr(hh)]);
-        y += hh;
+      k.r.forEach((h, j) => {
+        y += h / sr * wys;
+        const b = j < k.r.length - 1 ? (+k.bel?.[j] || 0) / sr * wys : 0;
+        if (b > 0) out.push([x, y, w, b, "bel", c, j]);
+        y += b;
       });
       x += w;
+      const m = c < K.length - 1 ? (+k.mur || 0) / suma : 0;
+      if (m > 0) out.push([x, 0, m, 1, "mur", c]);
+      x += m;
+    });
+    return out;
+  }
+  function prostokaty(u) {
+    const K = u.kol, suma = sumaKol(K), out = [];
+    let x = 0;
+    K.forEach((k) => {
+      const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
+      let y = 0;
+      k.r.forEach((h, j) => {
+        const hh = h / sr * wys;
+        out.push([okr(x), okr(y), okr(w), okr(hh)]);
+        y += hh + (+k.bel?.[j] || 0) / sr * wys;
+      });
+      x += w + (+k.mur || 0) / suma;
     });
     return out;
   }
@@ -8319,7 +8458,7 @@ button svg{fill:var(--primary-color);flex:none}
     });
     return { kol: kol.length ? kol : [{ w: 1, r: [1], dol: 0 }] };
   }
-  var kopia = (u) => ({ kol: u.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0 })) });
+  var kopia = (u) => ({ kol: u.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0, mur: +k.mur || 0, bel: (k.bel || []).map(Number) })) });
   var takiSam = (a, b) => JSON.stringify(prostokaty(a)) === JSON.stringify(prostokaty(b));
   var szablon = (u) => {
     const i = UKLADY.findIndex(([, P]) => takiSam(zSzablonu(P), u));
@@ -8372,6 +8511,9 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
+.linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
+.kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
 .siatka.k4{grid-template-columns:repeat(4,minmax(0,1fr))} .siatka.k2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .kaf{position:relative;background:var(--tile);border:2px solid transparent;border-radius:14px;padding:8px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;color:var(--fg);text-align:center;min-width:0;transition:transform .12s}
 .kaf:active{transform:scale(.97)}
@@ -8574,6 +8716,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const iw = W2 - 2 * pad, ih = H2 - 2 * pad, id = opt.id || "p";
       const d = [`<svg viewBox="0 0 ${W2} ${H2}" width="${W2}" height="${H2}" style="max-width:100%;height:auto" role="img" aria-label="${esc6(this.t.kroki.uklad)}">`];
       d.push(`<defs><linearGradient id="n${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
+      for (const [x, y, w, h, typ] of przerwy(S.u)) if (typ === "mur") d.push(this._przerwa(pad + x * iw - 1, 1, w * iw + 2, H2 - 2, "mur"));
       const xs = [...new Set(pl.map((p) => p[0]))];
       for (const x of xs) {
         const k = pl.filter((p) => p[0] === x), dol = Math.max(...k.map((p) => p[1] + p[3]));
@@ -8623,17 +8766,38 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // --- kroki ---
     str_silnik() {
       const S = this.S, t = this.t, d = this.dane;
-      const pokoj = this._oslona(S.rolety[0])?.area;
-      const lista = d.oslony.filter((o) => !o.zajeta || S.rolety.includes(o.id)).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || (a.pokoj || "~").localeCompare(b.pokoj || "~") || a.nazwa.localeCompare(b.nazwa));
-      if (!lista.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
-      const [n1] = this._nieba();
-      return `<div class="siatka k2">${lista.map((o) => {
+      if (!d.oslony.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
+      const [n1] = this._nieba(), pierwszy = this._oslona(S.rolety[0])?.area;
+      const kafel = (o) => {
         const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
         return `<button class="kaf ${nr >= 0 ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
-        ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="10" y="4" width="44" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/>
-        <rect x="11" y="5" width="42" height="${34 * (1 - poz / 100) + 1}" fill="var(--fg2)" opacity=".7"/></svg>`}
-        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6([o.pokoj, `${poz} %`].filter(Boolean).join(" · "))}</span></button>`;
-      }).join("")}</div>${S.wykryty ? `<p class="pod" style="margin-top:12px">${esc6(wstaw(t.wykryty, S.wykryty))}</p>` : ""}`;
+        ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
+        <rect x="12" y="6" width="40" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), 12, 6, 40, 32, Math.max(poz, 8), this._kolor())}</svg>`}
+        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6(`${poz} %`)}</span>${o.zajeta && nr < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc6(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc6(t.grupa)}</span>` : ""}</button>`;
+      };
+      const pokoje = [...new Set(d.oslony.map((o) => o.area || ""))].sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || "").localeCompare(this._nazwaPokoju(b) || ""));
+      const w = pokoje.map((a) => {
+        const tu = d.oslony.filter((o) => (o.area || "") === a).sort((x, y) => !!y.grupa - !!x.grupa || x.nazwa.localeCompare(y.nazwa));
+        const poj = tu.filter((o) => !o.grupa && !o.brama), caly = a && poj.length > 1 && poj.every((o) => S.rolety.includes(o.id)) && S.rolety.length === poj.length;
+        const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? "wyb" : ""}" data-pokojcaly="${esc6(a)}" aria-pressed="${caly}">
+        <svg viewBox="0 0 ${12 + poj.length * 36} 44" aria-hidden="true">${poj.map((o, i) => `<rect x="${6 + i * 36}" y="4" width="32" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/><rect x="${7 + i * 36}" y="5" width="30" height="14" fill="var(--fg2)" opacity=".7"/>`).join("")}</svg>
+        <b>${esc6(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc6(poj.map((o) => o.nazwa).join(" + "))}</span></button>` : "";
+        const grupy = tu.filter((o) => o.grupa), reszta = tu.filter((o) => !o.grupa);
+        const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc6(t.pojedyncze)}</span></div>` : "";
+        return `<div class="sek">${esc6(a ? this._nazwaPokoju(a) : t.bezPokoju)}</div><div class="siatka k2">${podp}${grupy.map(kafel).join("")}${linia}${reszta.map(kafel).join("")}</div>`;
+      });
+      return w.join("") + (S.wykryty ? `<p class="pod" style="margin-top:12px">${esc6(wstaw(t.wykryty, S.wykryty))}</p>` : "");
+    }
+    // rysunek kafelka: rodzaj osłony zgadnięty z klasy, lamel albo nazwy
+    _typOslony(o) {
+      if (o.klasa === "awning") return "markiza";
+      if (o.klasa === "shutter") return "natynkowa";
+      if (o.lamele || /żaluzj|zaluzj|jalous|blind/i.test(o.nazwa)) return "zaluzja";
+      if (/rolet|roller|shutter/i.test(o.nazwa)) return "pelna";
+      return this.S.o.oslona && !czyBrama(this.S.o.oslona) ? this.S.o.oslona : "zebra";
+    }
+    _nazwaPokoju(a) {
+      return this.dane.oslony.find((o) => o.area === a)?.pokoj || a;
     }
     str_uklad() {
       const S = this.S, t = this.t;
@@ -8642,6 +8806,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       <div class="chipy" style="justify-content:center;margin:10px 0 4px">
         <button class="chip" data-op="poz">${ik("uklad", 16)} ${esc6(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik("uklad", 16)} ${esc6(t.wzdluz)}</button>
         <button class="chip" data-op="usun">${esc6(t.usun)}</button></div>
+      <div id="przerwy">${this._suwakiPrzerw()}</div>
       <p class="pod" style="text-align:center">${esc6(t.wlasnyPodpis)}</p><div class="sek">${esc6(t.zSzablonu)}</div>` : "";
       return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
       <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
@@ -8891,40 +9056,87 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // --- edytor własnego układu: duże okno z uchwytami do przeciągania i wybieranym polem ---
     edytor() {
-      const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), iw = EW - 2 * EP, ih = EH - 2 * EP;
+      const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
       const [n1] = this._nieba(), d = [];
       d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc6(this.t.wlasnyTytul)}">`);
       d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
+      for (const [x2, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x2 * iw, EP + y * ih, w * iw, h * ih, typ));
       P.forEach((p, i) => {
         const x2 = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
         d.push(`<g data-ep="${i}"><rect x="${x2}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
-        <rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${on ? "rgba(255,152,0,.35)" : n1}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
-        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? "#3a2600" : "var(--fg)"}">${i + 1}</text></g>`);
+        <rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>
+        ${on ? `<rect x="${x2 + 1.5}" y="${y + 1.5}" width="${Math.max(0, w - 3)}" height="${Math.max(0, h - 3)}" fill="none" stroke="#ff9800" stroke-width="3"/>` : ""}
+        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? "#e65100" : "#1c3a4a"}">${i + 1}</text></g>`);
       });
       const uchwyt = (typ, id, x2, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? "ns" : "ew"}-resize"><circle cx="${x2}" cy="${y}" r="16" fill="transparent"/>
       <rect x="${x2 - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
       let x = 0;
       K.forEach((k, c) => {
-        const w = k.w / suma, X = EP + x * iw, W2 = w * iw, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
+        const w = k.w / suma, X = EP + x * iw, W2 = w * iw, wys = 1 - k.dol, sr = sumaWierszy(k);
         let y = 0;
         k.r.forEach((h, j) => {
           y += h / sr * wys;
-          if (j < k.r.length - 1) d.push(uchwyt("r", `${c}-${j}`, X + W2 / 2, EP + y * ih, true));
+          if (j < k.r.length - 1) {
+            const b = (+k.bel?.[j] || 0) / sr * wys;
+            d.push(uchwyt("r", `${c}-${j}`, X + W2 / 2, EP + (y + b / 2) * ih, true));
+            y += b;
+          }
         });
         if (k.dol >= 0.08 && k.r.length < 3) d.push(`<g data-dodaj="${c}" style="cursor:pointer"><rect x="${X + 4}" y="${EP + wys * ih + 10}" width="${Math.max(0, W2 - 8)}" height="${Math.max(0, k.dol * ih - 14)}" rx="4" fill="transparent" stroke="var(--fg2)" stroke-dasharray="5 4"/>
         <text x="${X + W2 / 2}" y="${EP + (wys + k.dol / 2) * ih + 11}" text-anchor="middle" font-size="22" fill="var(--fg2)">+</text></g>`);
         d.push(uchwyt("d", c, X + W2 / 2, EP + wys * ih, true));
         x += w;
-        if (c < K.length - 1) d.push(uchwyt("k", c, EP + x * iw, EP + ih * 0.5, false));
+        const m = c < K.length - 1 ? (+k.mur || 0) / suma : 0;
+        if (c < K.length - 1) d.push(uchwyt("k", c, EP + (x + m / 2) * iw, EP + ih * 0.5, false));
+        x += m;
       });
       d.push("</svg>");
       this._ed = { EW, EH, EP };
       return d.join("");
     }
-    _odswiezUklad() {
+    // wąski odstęp = słupek w kolorze ramy, szeroki = kawałek ściany (cegły)
+    _przerwa(x, y, w, h, typ) {
+      const wasko = Math.min(w, h) < 12;
+      if (wasko) return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>`;
+      const d = [`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#c9bfb2" stroke="#000" stroke-opacity=".25"/>`];
+      for (let yy = y + 7, n = 0; yy < y + h; yy += 7, n++) {
+        d.push(`<line x1="${x}" x2="${x + w}" y1="${yy}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+        for (let xx = x + (n % 2 ? 6 : 12); xx < x + w; xx += 12) d.push(`<line x1="${xx}" x2="${xx}" y1="${yy - 7}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+      }
+      return `<g>${d.join("")}</g>`;
+    }
+    // gdzie jest wybrane pole: kolumna c i wiersz j
+    _gdzie(i) {
+      const K = this.S.u.kol;
+      let c = 0;
+      while (c < K.length - 1 && i >= K[c].r.length) {
+        i -= K[c].r.length;
+        c++;
+      }
+      return [c, i];
+    }
+    // suwaki grubości: słupek/mur obok wybranego pola i belka pod nim
+    _suwakiPrzerw() {
+      const S = this.S, t = this.t, K = S.u.kol, [c, j] = this._gdzie(Math.min(S.wyb, prostokaty(S.u).length - 1)), w = [];
+      const cm = c < K.length - 1 ? c : c - 1, k = K[c];
+      const sw = K.reduce((a, x) => a + x.w, 0), sr = k.r.reduce((a, b) => a + b, 0);
+      if (cm >= 0) {
+        const v = Math.round((+K[cm].mur || 0) / sw * 100);
+        w.push(`<div class="suw"><span class="et">${esc6(t.slupek)}</span><input type="range" min="0" max="40" step="1" value="${v}" data-przerwa="mur:${cm}" aria-label="${esc6(t.slupek)}"><span>${v ? v + " %" : esc6(t.brak)}</span></div>`);
+      }
+      const jb = j < k.r.length - 1 ? j : j - 1;
+      if (jb >= 0) {
+        const v = Math.round((+k.bel?.[jb] || 0) / sr * 100);
+        w.push(`<div class="suw"><span class="et">${esc6(t.belka)}</span><input type="range" min="0" max="30" step="1" value="${v}" data-przerwa="bel:${c}:${jb}" aria-label="${esc6(t.belka)}"><span>${v ? v + " %" : esc6(t.brak)}</span></div>`);
+      }
+      return w.join("");
+    }
+    _odswiezUklad(bezSuwakow) {
       this._dopasujPola(false);
       const r = this.shadowRoot, e = r.getElementById("edytor");
       if (e) e.innerHTML = this.edytor();
+      const pz = r.getElementById("przerwy");
+      if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
       const k = r.querySelector("[data-wlasny]");
       if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
     }
@@ -8940,6 +9152,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const kd = K[i], wys = 1 - kd.dol, sr = kd.r.reduce((a, b) => a + b, 0);
         kd.r = [...kd.r.map((h) => h / sr * wys), kd.dol];
         kd.dol = 0;
+        kd.bel = [...(kd.bel || []).map((b) => b / sr * wys), 0];
         S.wyb = K.slice(0, i).reduce((a, x) => a + x.r.length, 0) + kd.r.length - 1;
         this._dopasujPola(false);
         return this.rysuj();
@@ -8947,18 +9160,22 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (op === "poz" && k.r.length < 3) {
         const h = k.r[i] / 2;
         k.r.splice(i, 1, h, h);
+        (k.bel = k.bel || []).splice(i, 0, 0);
       }
       if (op === "pion" && K.length < 4) {
         k.w /= 2;
-        K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol });
+        K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol, bel: [...k.bel || []], mur: k.mur || 0 });
+        k.mur = 0;
       }
       if (op === "usun" && P.length > 1) {
         if (k.r.length > 1) {
           const h = k.r.splice(i, 1)[0];
-          k.r[Math.max(0, i - 1)] += h;
+          k.r[Math.max(0, i - 1)] += h + (+k.bel?.[Math.min(i, k.r.length - 1)] || 0);
+          k.bel?.splice(Math.min(i, k.r.length - 1), 1);
         } else {
-          const w = K.splice(c, 1)[0].w;
-          K[Math.max(0, c - 1)].w += w;
+          const u = K.splice(c, 1)[0];
+          K[Math.max(0, c - 1)].w += u.w + (+u.mur || 0);
+          if (c >= K.length && K.length) K[K.length - 1].mur = 0;
         }
         S.wyb = 0;
       }
@@ -8970,18 +9187,18 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (!svg2 || !this._uch) return;
       const { EW, EH, EP } = this._ed, r = svg2.getBoundingClientRect(), sk = EW / r.width;
       const fx = Math.min(1, Math.max(0, ((e.clientX - r.left) * sk - EP) / (EW - 2 * EP))), fy = Math.min(1, Math.max(0, ((e.clientY - r.top) * sk - EP) / (EH - 2 * EP)));
-      const K = this.S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), [typ, id] = this._uch.split(":");
+      const K = this.S.u.kol, suma = sumaKol(K), [typ, id] = this._uch.split(":");
       if (typ === "k") {
-        const c = +id, przed = K.slice(0, c).reduce((a, k) => a + k.w, 0) / suma, para = (K[c].w + K[c + 1].w) / suma;
-        const lewa = Math.min(para - 0.08, Math.max(0.08, fx - przed));
+        const c = +id, przed = K.slice(0, c).reduce((a, k) => a + k.w + (+k.mur || 0), 0) / suma, m = (+K[c].mur || 0) / suma, para = (K[c].w + K[c + 1].w) / suma;
+        const lewa = Math.min(para - 0.08, Math.max(0.08, fx - przed - m / 2));
         K[c].w = lewa * suma;
         K[c + 1].w = (para - lewa) * suma;
       } else if (typ === "d") {
         K[+id].dol = Math.min(0.6, Math.max(0, Math.round((1 - fy) * 50) / 50));
       } else {
-        const [c, j] = id.split("-").map(Number), k = K[c], wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
-        const gora = k.r.slice(0, j).reduce((a, b) => a + b, 0) / sr * wys, para = (k.r[j] + k.r[j + 1]) / sr * wys;
-        const g = Math.min(para - 0.06, Math.max(0.06, fy - gora));
+        const [c, j] = id.split("-").map(Number), k = K[c], wys = 1 - k.dol, sr = sumaWierszy(k), bel = k.bel || [];
+        const gora = k.r.slice(0, j).reduce((a, b2, i) => a + b2 + (+bel[i] || 0), 0) / sr * wys, b = (+bel[j] || 0) / sr * wys, para = (k.r[j] + k.r[j + 1]) / sr * wys;
+        const g = Math.min(para - 0.06, Math.max(0.06, fy - gora - b / 2));
         k.r[j] = g / wys * sr;
         k.r[j + 1] = (para - g) / wys * sr;
       }
@@ -8998,7 +9215,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     arkusz() {
       const S = this.S, t = this.t, i = S.arkusz, p = S.pola[i] || (S.pola[i] = { tryb: "uchyl" });
       const pokoj = this._oslona(S.rolety[0])?.area;
-      const sil = this._tylkoTu(this.dane.oslony.filter((o) => !o.brama && (!o.grupa || S.rolety.includes(o.id)) && (!o.zajeta || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa)), (o) => pokoj && o.area === pokoj, [p.silnik, ...S.rolety]);
+      const sil = this._tylkoTu(this.dane.oslony.filter((o) => !o.brama && (!o.grupa || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa)), (o) => pokoj && o.area === pokoj, [p.silnik, ...S.rolety]);
       const silniki = sil.lista;
       const ok = this._tylkoTu(this._czujnik("okno").lista, (c) => c.tu, [p.czujnik]), okna = ok.lista;
       return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(wstaw(t.pole, i + 1))}"><div class="uchwyt"></div><h2>${esc6(wstaw(t.pole, i + 1))}</h2>
@@ -9095,15 +9312,18 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (b.id === "dalej") return S.krok < kroki.length - 1 ? this._idz(S.krok + 1) : this._zapisz(b);
       if (b.id === "mierz") return this._mierz();
       if (d.idz) return this._idz(kroki.indexOf(d.idz));
-      if (d.oslona) {
+      if (d.oslona || d.pokojcaly) {
         const i = S.rolety.indexOf(d.oslona), x = this._oslona(d.oslona);
-        if (i >= 0) S.rolety.splice(i, 1);
+        if (d.pokojcaly) {
+          S.rolety = this.dane.oslony.filter((o2) => o2.area === d.pokojcaly && !o2.grupa && !o2.brama).map((o2) => o2.id).slice(0, 12);
+          S.wykryty = null;
+        } else if (i >= 0) S.rolety.splice(i, 1);
         else {
           if (S.rolety.some((e2) => !!this._oslona(e2)?.brama !== !!x?.brama)) S.rolety = [];
           S.rolety.push(d.oslona);
           S.wykryty = null;
           if (S.rolety.length === 1 && x?.area && !x.brama && this.dane.nowy) {
-            const reszta = this.dane.oslony.filter((o2) => o2.area === x.area && o2.id !== x.id && !o2.zajeta && !o2.brama).map((o2) => o2.id);
+            const reszta = this.dane.oslony.filter((o2) => o2.area === x.area && o2.id !== x.id && !o2.zajeta && !o2.grupa && !o2.brama).map((o2) => o2.id);
             if (reszta.length) {
               S.rolety.push(...reszta.slice(0, 11));
               S.wykryty = x.pokoj;
@@ -9210,6 +9430,17 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           this._kartaEl.hass = this._hassKarty();
         }
         return;
+      }
+      if (el.dataset?.przerwa) {
+        const [typ, c, j] = el.dataset.przerwa.split(":"), K = S.u.kol, v2 = +el.value, k = K[+c];
+        if (typ === "mur") k.mur = v2 / 100 * K.reduce((a, x) => a + x.w, 0);
+        else {
+          k.bel = k.bel || [];
+          k.bel[+j] = v2 / 100 * k.r.reduce((a, b) => a + b, 0);
+        }
+        el.nextElementSibling.textContent = v2 ? v2 + " %" : this.t.brak;
+        S.szablon = "w";
+        return this._odswiezUklad(true);
       }
       if (el.dataset?.par) {
         const k = el.dataset.par, v2 = +el.value;

@@ -296,7 +296,7 @@
       "gotowe": "Klaar"
     },
     "podpisy": {
-      "silnik": "Alleen zonwering die nog niet in Motor HA zit, wordt getoond.",
+      "silnik": "Alle zonwering uit Home Assistant. Al in een ander apparaat gebruikte zijn gemarkeerd.",
       "uklad": "Tik op de indeling die het meest lijkt.",
       "przypisz": "Elk vak: een motor en een sensor. Suggesties zijn al ingevuld.",
       "czujniki": "Gevonden in de kamer en in huis. Tik om uit te zetten of te wijzigen.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "gaat naar {0} %",
     "zjedzieNormalnie": "gaat normaal dicht",
     "pozniej": "Zodra het raam dicht is, gaat het scherm vanzelf verder.",
-    "kazdy": "Elke motor apart"
+    "kazdy": "Elke motor apart",
+    "slupek": "Stijl / muur",
+    "belka": "Kalf",
+    "brak": "geen",
+    "wUrzadzeniu": "ook in: {0}",
+    "grupa": "groep",
+    "calyPokoj": "Hele ruimte: {0}",
+    "bezPokoju": "Geen ruimte",
+    "pojedyncze": "Los"
   }
 }

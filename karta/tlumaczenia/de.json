@@ -296,7 +296,7 @@
       "gotowe": "Fertig"
     },
     "podpisy": {
-      "silnik": "Es werden nur Behänge gezeigt, die noch nicht in Motor HA sind.",
+      "silnik": "Alle Beschattungen aus Home Assistant. Bereits in einem anderen Gerät genutzte sind markiert.",
       "uklad": "Tippe auf die ähnlichste Aufteilung.",
       "przypisz": "Jedes Feld: ein Motor und ein Sensor. Vorschläge sind schon eingetragen.",
       "czujniki": "Im Raum und im Zuhause gefunden. Tippe zum Ausschalten oder Ändern.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "fährt auf {0} %",
     "zjedzieNormalnie": "fährt normal zu",
     "pozniej": "Sobald das Fenster zu ist, fährt der Behang von selbst weiter.",
-    "kazdy": "Jeder Motor einzeln"
+    "kazdy": "Jeder Motor einzeln",
+    "slupek": "Pfosten / Wand",
+    "belka": "Kämpfer",
+    "brak": "keiner",
+    "wUrzadzeniu": "auch in: {0}",
+    "grupa": "Gruppe",
+    "calyPokoj": "Ganzer Raum: {0}",
+    "bezPokoju": "Ohne Raum",
+    "pojedyncze": "Einzeln"
   }
 }

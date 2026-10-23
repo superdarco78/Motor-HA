@@ -296,7 +296,7 @@
       "gotowe": "Fatto"
     },
     "podpisy": {
-      "silnik": "Mostro solo le tende non ancora in Motor HA.",
+      "silnik": "Tutte le tapparelle di Home Assistant. Quelle già usate in un altro dispositivo sono indicate.",
       "uklad": "Tocca la disposizione più simile.",
       "przypisz": "Ogni anta: un motore e un sensore. I suggerimenti sono già inseriti.",
       "czujniki": "Trovato nella stanza e in casa. Tocca per disattivare o cambiare.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "scende al {0} %",
     "zjedzieNormalnie": "scende normalmente",
     "pozniej": "Chiusa la finestra, la tapparella finisce da sola.",
-    "kazdy": "Ogni motore separatamente"
+    "kazdy": "Ogni motore separatamente",
+    "slupek": "Montante / muro",
+    "belka": "Traverso",
+    "brak": "nessuno",
+    "wUrzadzeniu": "anche in: {0}",
+    "grupa": "gruppo",
+    "calyPokoj": "Tutta la stanza: {0}",
+    "bezPokoju": "Senza stanza",
+    "pojedyncze": "Singole"
   }
 }

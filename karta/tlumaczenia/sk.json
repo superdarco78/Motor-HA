@@ -296,7 +296,7 @@
       "gotowe": "Hotovo"
     },
     "podpisy": {
-      "silnik": "Zobrazujem len tienenia, ktoré ešte nie sú v Motor HA.",
+      "silnik": "Všetky tienenia z Home Assistanta. Tie už použité v inom zariadení sú označené.",
       "uklad": "Ťukni na najpodobnejšie rozloženie.",
       "przypisz": "Každé pole: motor a senzor. Návrhy sú už vyplnené.",
       "czujniki": "Nájdené v miestnosti a v dome. Ťuknutím vypneš alebo zmeníš.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "zíde na {0} %",
     "zjedzieNormalnie": "zíde normálne",
     "pozniej": "Keď okno zatvoríte, tienenie dôjde samo.",
-    "kazdy": "Každý motor zvlášť"
+    "kazdy": "Každý motor zvlášť",
+    "slupek": "Stĺpik / múr",
+    "belka": "Priečnik",
+    "brak": "žiadny",
+    "wUrzadzeniu": "aj v: {0}",
+    "grupa": "skupina",
+    "calyPokoj": "Celá miestnosť: {0}",
+    "bezPokoju": "Bez miestnosti",
+    "pojedyncze": "Jednotlivé"
   }
 }

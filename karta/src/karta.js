@@ -86,6 +86,9 @@ export class MotorHaKarta extends HTMLElement {
       const k = P.filter(p => p.x === x), dol = Math.max(...k.map(p => p.y + p.h));
       return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
     }).join('') : '';
+    // słupek albo mur między osobnymi oknami: odstęp między kolumnami pól
+    const xs = P ? [...new Set(P.map(p => p.x))].sort((a, b) => a - b) : [];
+    const mury = xs.slice(1).map((x, i) => { const pk = P.find(p => p.x === xs[i]), od = pk.x + pk.w; return x - od > .004 ? `<div class="mur" style="left:${od * 100}%;width:${(x - od) * 100}%"></div>` : ''; }).join('');
     this._kas = KASETA[c.oslona] ?? 12;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
     const skrzydlo = i => `<div class="skrz" data-i="${i}" data-s="${strona(i)}"${miejsce(i)}><div class="szyba">
@@ -99,7 +102,7 @@ export class MotorHaKarta extends HTMLElement {
  ${this._naglowek(c)}
  <div class="scena${pion ? ' zs' : ''}">${zew ? '<div class="pg pgz"></div>' : ''}
   ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno${P ? ' uk' : ''}" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
-   ${ramy}${zew ? '' : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
+   ${mury}${ramy}${zew ? '' : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join('')}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join('')}</div>` : ''}
    ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc(T.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ''}

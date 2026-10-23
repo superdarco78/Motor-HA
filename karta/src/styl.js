@@ -55,6 +55,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 /* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
 .okno.uk{background:none!important;box-shadow:none!important;padding:0}
 .uk .kolr{position:absolute;border-radius:3px}
+.uk .mur{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.12) 9px 10px),color-mix(in srgb,var(--secondary-text-color,#888) 30%,var(--card-background-color,#fff));border-radius:2px}
 .uk .skrz{position:absolute;flex:none;margin:0;padding:5px;overflow:hidden}
 .uk .za{inset:auto}
 .uk .wid{position:absolute}

@@ -296,7 +296,7 @@
       "gotowe": "Terminé"
     },
     "podpisy": {
-      "silnik": "Seuls les stores pas encore dans Motor HA sont affichés.",
+      "silnik": "Tous les volets de Home Assistant. Ceux déjà utilisés dans un autre appareil sont signalés.",
       "uklad": "Touche la disposition la plus proche.",
       "przypisz": "Chaque vantail : un moteur et un capteur. Les suggestions sont déjà remplies.",
       "czujniki": "Trouvé dans la pièce et dans la maison. Touche pour désactiver ou changer.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "descend à {0} %",
     "zjedzieNormalnie": "descend normalement",
     "pozniej": "Une fois la fenêtre fermée, le volet finit seul.",
-    "kazdy": "Chaque moteur séparément"
+    "kazdy": "Chaque moteur séparément",
+    "slupek": "Meneau / mur",
+    "belka": "Traverse",
+    "brak": "aucun",
+    "wUrzadzeniu": "aussi dans : {0}",
+    "grupa": "groupe",
+    "calyPokoj": "Toute la pièce : {0}",
+    "bezPokoju": "Sans pièce",
+    "pojedyncze": "Individuels"
   }
 }

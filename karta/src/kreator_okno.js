@@ -76,14 +76,33 @@ const STRONY = [['n', 0], ['e', 90], ['s', 180], ['w', 270]];
 const AUTO_ZEW = ['markiza', 'fasadowa', 'fasadowaz', 'screen'];   // zwijane przy deszczu
 
 // --- model układu: kolumny od lewej, w kolumnie pola od góry (r), puste miejsce pod oknem (dol) ---
+// mur: odstęp ściany za kolumną (osobne okna obok siebie na jednej karcie)
+const sumaKol = K => K.reduce((a, k, i) => a + k.w + (i < K.length - 1 ? +k.mur || 0 : 0), 0) || 1;
+// belki: poziome odstępy pod polami kolumny (bel[j] pod polem j), w jednostkach wysokości pól
+const sumaWierszy = k => k.r.reduce((a, h, j) => a + h + (j < k.r.length - 1 ? +k.bel?.[j] || 0 : 0), 0) || 1;
+// słupki/mury i belki jako prostokąty (ułamki okna): [x, y, w, h, 'mur' | 'bel']
+export function przerwy(u) {
+  const K = u.kol, suma = sumaKol(K), out = [];
+  let x = 0;
+  K.forEach((k, c) => {
+    const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
+    let y = 0;
+    k.r.forEach((h, j) => { y += h / sr * wys; const b = j < k.r.length - 1 ? (+k.bel?.[j] || 0) / sr * wys : 0; if (b > 0) out.push([x, y, w, b, 'bel', c, j]); y += b; });
+    x += w;
+    const m = c < K.length - 1 ? (+k.mur || 0) / suma : 0;
+    if (m > 0) out.push([x, 0, m, 1, 'mur', c]);
+    x += m;
+  });
+  return out;
+}
 export function prostokaty(u) {
-  const K = u.kol, suma = K.reduce((a, k) => a + k.w, 0) || 1, out = [];
+  const K = u.kol, suma = sumaKol(K), out = [];
   let x = 0;
   K.forEach(k => {
-    const w = k.w / suma, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0) || 1;
+    const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
     let y = 0;
-    k.r.forEach(h => { const hh = h / sr * wys; out.push([okr(x), okr(y), okr(w), okr(hh)]); y += hh; });
-    x += w;
+    k.r.forEach((h, j) => { const hh = h / sr * wys; out.push([okr(x), okr(y), okr(w), okr(hh)]); y += hh + (+k.bel?.[j] || 0) / sr * wys; });
+    x += w + (+k.mur || 0) / suma;   // mur za ostatnią kolumną nie liczy się (sumaKol)
   });
   return out;
 }
@@ -97,7 +116,7 @@ export function zSzablonu(P) {
   });
   return { kol: kol.length ? kol : [{ w: 1, r: [1], dol: 0 }] };
 }
-const kopia = u => ({ kol: u.kol.map(k => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0 })) });
+const kopia = u => ({ kol: u.kol.map(k => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0, mur: +k.mur || 0, bel: (k.bel || []).map(Number) })) });
 const takiSam = (a, b) => JSON.stringify(prostokaty(a)) === JSON.stringify(prostokaty(b));
 export const szablon = u => { const i = UKLADY.findIndex(([, P]) => takiSam(zSzablonu(P), u)); return i < 0 ? 'w' : i; };
 const godz = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
@@ -141,6 +160,9 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
+.linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
+.kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
 .siatka.k4{grid-template-columns:repeat(4,minmax(0,1fr))} .siatka.k2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .kaf{position:relative;background:var(--tile);border:2px solid transparent;border-radius:14px;padding:8px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;color:var(--fg);text-align:center;min-width:0;transition:transform .12s}
 .kaf:active{transform:scale(.97)}
@@ -315,6 +337,7 @@ export class MotorHaKreator extends HTMLElement {
     const iw = W - 2 * pad, ih = H - 2 * pad, id = opt.id || 'p';
     const d = [`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="max-width:100%;height:auto" role="img" aria-label="${esc(this.t.kroki.uklad)}">`];
     d.push(`<defs><linearGradient id="n${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
+    for (const [x, y, w, h, typ] of przerwy(S.u)) if (typ === 'mur') d.push(this._przerwa(pad + x * iw - 1, 1, w * iw + 2, H - 2, 'mur'));
     const xs = [...new Set(pl.map(p => p[0]))];
     for (const x of xs) {
       const k = pl.filter(p => p[0] === x), dol = Math.max(...k.map(p => p[1] + p[3]));
@@ -363,20 +386,40 @@ export class MotorHaKreator extends HTMLElement {
   // --- kroki ---
   str_silnik() {
     const S = this.S, t = this.t, d = this.dane;
-    const pokoj = this._oslona(S.rolety[0])?.area;
-    const lista = d.oslony.filter(o => !o.zajeta || S.rolety.includes(o.id))
-      .sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || (a.pokoj || '~').localeCompare(b.pokoj || '~') || a.nazwa.localeCompare(b.nazwa));
-    if (!lista.length) return `<p class="pod">${esc(t.brakOslon)}</p>`;
-    const [n1] = this._nieba();
-    return `<div class="siatka k2">${lista.map(o => {
+    if (!d.oslony.length) return `<p class="pod">${esc(t.brakOslon)}</p>`;
+    const [n1] = this._nieba(), pierwszy = this._oslona(S.rolety[0])?.area;
+    const kafel = o => {
       const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === 'number' ? o.poz : o.stan === 'closed' ? 0 : 100;
       return `<button class="kaf ${nr >= 0 ? 'wyb' : ''}" data-oslona="${esc(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ''}
         ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join('')}</svg>`
-        : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="10" y="4" width="44" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/>
-        <rect x="11" y="5" width="42" height="${34 * (1 - poz / 100) + 1}" fill="var(--fg2)" opacity=".7"/></svg>`}
-        <b>${esc(o.nazwa)}</b><span class="miejsce">${esc([o.pokoj, `${poz} %`].filter(Boolean).join(' · '))}</span></button>`;
-    }).join('')}</div>${S.wykryty ? `<p class="pod" style="margin-top:12px">${esc(wstaw(t.wykryty, S.wykryty))}</p>` : ''}`;
+        : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
+        <rect x="12" y="6" width="40" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), 12, 6, 40, 32, Math.max(poz, 8), this._kolor())}</svg>`}
+        <b>${esc(o.nazwa)}</b><span class="miejsce">${esc(`${poz} %`)}</span>${o.zajeta && nr < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc(t.grupa)}</span>` : ''}</button>`;
+    };
+    // pokoje: na górze podpowiedź „cały pokój” (wszystkie pojedyncze silniki naraz), niżej grupy i pojedyncze osłony
+    const pokoje = [...new Set(d.oslony.map(o => o.area || ''))]
+      .sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || '').localeCompare(this._nazwaPokoju(b) || ''));
+    const w = pokoje.map(a => {
+      const tu = d.oslony.filter(o => (o.area || '') === a).sort((x, y) => !!y.grupa - !!x.grupa || x.nazwa.localeCompare(y.nazwa));
+      const poj = tu.filter(o => !o.grupa && !o.brama), caly = a && poj.length > 1 && poj.every(o => S.rolety.includes(o.id)) && S.rolety.length === poj.length;
+      const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? 'wyb' : ''}" data-pokojcaly="${esc(a)}" aria-pressed="${caly}">
+        <svg viewBox="0 0 ${12 + poj.length * 36} 44" aria-hidden="true">${poj.map((o, i) => `<rect x="${6 + i * 36}" y="4" width="32" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/><rect x="${7 + i * 36}" y="5" width="30" height="14" fill="var(--fg2)" opacity=".7"/>`).join('')}</svg>
+        <b>${esc(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc(poj.map(o => o.nazwa).join(' + '))}</span></button>` : '';
+      const grupy = tu.filter(o => o.grupa), reszta = tu.filter(o => !o.grupa);
+      const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc(t.pojedyncze)}</span></div>` : '';
+      return `<div class="sek">${esc(a ? this._nazwaPokoju(a) : t.bezPokoju)}</div><div class="siatka k2">${podp}${grupy.map(kafel).join('')}${linia}${reszta.map(kafel).join('')}</div>`;
+    });
+    return w.join('') + (S.wykryty ? `<p class="pod" style="margin-top:12px">${esc(wstaw(t.wykryty, S.wykryty))}</p>` : '');
   }
+  // rysunek kafelka: rodzaj osłony zgadnięty z klasy, lamel albo nazwy
+  _typOslony(o) {
+    if (o.klasa === 'awning') return 'markiza';
+    if (o.klasa === 'shutter') return 'natynkowa';
+    if (o.lamele || /żaluzj|zaluzj|jalous|blind/i.test(o.nazwa)) return 'zaluzja';
+    if (/rolet|roller|shutter/i.test(o.nazwa)) return 'pelna';
+    return this.S.o.oslona && !czyBrama(this.S.o.oslona) ? this.S.o.oslona : 'zebra';
+  }
+  _nazwaPokoju(a) { return this.dane.oslony.find(o => o.area === a)?.pokoj || a; }
   str_uklad() {
     const S = this.S, t = this.t;
     const ed = S.szablon === 'w' ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
@@ -384,6 +427,7 @@ export class MotorHaKreator extends HTMLElement {
       <div class="chipy" style="justify-content:center;margin:10px 0 4px">
         <button class="chip" data-op="poz">${ik('uklad', 16)} ${esc(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik('uklad', 16)} ${esc(t.wzdluz)}</button>
         <button class="chip" data-op="usun">${esc(t.usun)}</button></div>
+      <div id="przerwy">${this._suwakiPrzerw()}</div>
       <p class="pod" style="text-align:center">${esc(t.wlasnyPodpis)}</p><div class="sek">${esc(t.zSzablonu)}</div>` : '';
     return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? 'wyb' : ''}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc(dziel(t.uklady[k]))}</b></button>`).join('')}
       <button class="kaf ${S.szablon === 'w' ? 'wyb' : ''}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc(t.uklady.wlasny)}</b></button></div>`;
@@ -573,38 +617,70 @@ export class MotorHaKreator extends HTMLElement {
 
   // --- edytor własnego układu: duże okno z uchwytami do przeciągania i wybieranym polem ---
   edytor() {
-    const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), iw = EW - 2 * EP, ih = EH - 2 * EP;
+    const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
     const [n1] = this._nieba(), d = [];
     d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc(this.t.wlasnyTytul)}">`);
     d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
+    // słupki i mury między oknami, belki między polami
+    for (const [x, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x * iw, EP + y * ih, w * iw, h * ih, typ));
     P.forEach((p, i) => {
       const x = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
       d.push(`<g data-ep="${i}"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
-        <rect x="${x + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${on ? 'rgba(255,152,0,.35)' : n1}" stroke="${on ? '#ff9800' : 'none'}" stroke-width="3"/>
-        <text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? '#3a2600' : 'var(--fg)'}">${i + 1}</text></g>`);
+        <rect x="${x + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>
+        ${on ? `<rect x="${x + 1.5}" y="${y + 1.5}" width="${Math.max(0, w - 3)}" height="${Math.max(0, h - 3)}" fill="none" stroke="#ff9800" stroke-width="3"/>` : ''}
+        <text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? '#e65100' : '#1c3a4a'}">${i + 1}</text></g>`);
     });
     const uchwyt = (typ, id, x, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? 'ns' : 'ew'}-resize"><circle cx="${x}" cy="${y}" r="16" fill="transparent"/>
       <rect x="${x - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
     let x = 0;
     K.forEach((k, c) => {
-      const w = k.w / suma, X = EP + x * iw, W = w * iw, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
+      const w = k.w / suma, X = EP + x * iw, W = w * iw, wys = 1 - k.dol, sr = sumaWierszy(k);
       let y = 0;
-      k.r.forEach((h, j) => { y += h / sr * wys; if (j < k.r.length - 1) d.push(uchwyt('r', `${c}-${j}`, X + W / 2, EP + y * ih, true)); });
+      k.r.forEach((h, j) => {
+        y += h / sr * wys;
+        if (j < k.r.length - 1) { const b = (+k.bel?.[j] || 0) / sr * wys; d.push(uchwyt('r', `${c}-${j}`, X + W / 2, EP + (y + b / 2) * ih, true)); y += b; }
+      });
       // puste miejsce pod podniesioną kolumną: dotknięcie dokłada tam pole (np. drzwi pod naświetlem)
       if (k.dol >= .08 && k.r.length < 3) d.push(`<g data-dodaj="${c}" style="cursor:pointer"><rect x="${X + 4}" y="${EP + wys * ih + 10}" width="${Math.max(0, W - 8)}" height="${Math.max(0, k.dol * ih - 14)}" rx="4" fill="transparent" stroke="var(--fg2)" stroke-dasharray="5 4"/>
         <text x="${X + W / 2}" y="${EP + (wys + k.dol / 2) * ih + 11}" text-anchor="middle" font-size="22" fill="var(--fg2)">+</text></g>`);
       d.push(uchwyt('d', c, X + W / 2, EP + wys * ih, true));
       x += w;
-      if (c < K.length - 1) d.push(uchwyt('k', c, EP + x * iw, EP + ih * .5, false));
+      const m = c < K.length - 1 ? (+k.mur || 0) / suma : 0;
+      if (c < K.length - 1) d.push(uchwyt('k', c, EP + (x + m / 2) * iw, EP + ih * .5, false));
+      x += m;
     });
     d.push('</svg>');
     this._ed = { EW, EH, EP };
     return d.join('');
   }
-  _odswiezUklad() {
+  // wąski odstęp = słupek w kolorze ramy, szeroki = kawałek ściany (cegły)
+  _przerwa(x, y, w, h, typ) {
+    const wasko = Math.min(w, h) < 12;
+    if (wasko) return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>`;
+    const d = [`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#c9bfb2" stroke="#000" stroke-opacity=".25"/>`];
+    for (let yy = y + 7, n = 0; yy < y + h; yy += 7, n++) {
+      d.push(`<line x1="${x}" x2="${x + w}" y1="${yy}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+      for (let xx = x + (n % 2 ? 6 : 12); xx < x + w; xx += 12) d.push(`<line x1="${xx}" x2="${xx}" y1="${yy - 7}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+    }
+    return `<g>${d.join('')}</g>`;
+  }
+  // gdzie jest wybrane pole: kolumna c i wiersz j
+  _gdzie(i) { const K = this.S.u.kol; let c = 0; while (c < K.length - 1 && i >= K[c].r.length) { i -= K[c].r.length; c++; } return [c, i]; }
+  // suwaki grubości: słupek/mur obok wybranego pola i belka pod nim
+  _suwakiPrzerw() {
+    const S = this.S, t = this.t, K = S.u.kol, [c, j] = this._gdzie(Math.min(S.wyb, prostokaty(S.u).length - 1)), w = [];
+    const cm = c < K.length - 1 ? c : c - 1, k = K[c];
+    const sw = K.reduce((a, x) => a + x.w, 0), sr = k.r.reduce((a, b) => a + b, 0);
+    if (cm >= 0) { const v = Math.round((+K[cm].mur || 0) / sw * 100); w.push(`<div class="suw"><span class="et">${esc(t.slupek)}</span><input type="range" min="0" max="40" step="1" value="${v}" data-przerwa="mur:${cm}" aria-label="${esc(t.slupek)}"><span>${v ? v + ' %' : esc(t.brak)}</span></div>`); }
+    const jb = j < k.r.length - 1 ? j : j - 1;
+    if (jb >= 0) { const v = Math.round((+k.bel?.[jb] || 0) / sr * 100); w.push(`<div class="suw"><span class="et">${esc(t.belka)}</span><input type="range" min="0" max="30" step="1" value="${v}" data-przerwa="bel:${c}:${jb}" aria-label="${esc(t.belka)}"><span>${v ? v + ' %' : esc(t.brak)}</span></div>`); }
+    return w.join('');
+  }
+  _odswiezUklad(bezSuwakow) {
     this._dopasujPola(false);
     const r = this.shadowRoot, e = r.getElementById('edytor');
     if (e) e.innerHTML = this.edytor();
+    const pz = r.getElementById('przerwy'); if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
     const k = r.querySelector('[data-wlasny]'); if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
   }
   operacja(op) {
@@ -614,15 +690,15 @@ export class MotorHaKreator extends HTMLElement {
     const k = K[c];
     if (op === 'dodaj') {   // pole w pustym miejscu pod kolumną nr i
       const kd = K[i], wys = 1 - kd.dol, sr = kd.r.reduce((a, b) => a + b, 0);
-      kd.r = [...kd.r.map(h => h / sr * wys), kd.dol]; kd.dol = 0;
+      kd.r = [...kd.r.map(h => h / sr * wys), kd.dol]; kd.dol = 0; kd.bel = [...(kd.bel || []).map(b => b / sr * wys), 0];
       S.wyb = K.slice(0, i).reduce((a, x) => a + x.r.length, 0) + kd.r.length - 1;
       this._dopasujPola(false); return this.rysuj();
     }
-    if (op === 'poz' && k.r.length < 3) { const h = k.r[i] / 2; k.r.splice(i, 1, h, h); }
-    if (op === 'pion' && K.length < 4) { k.w /= 2; K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol }); }
+    if (op === 'poz' && k.r.length < 3) { const h = k.r[i] / 2; k.r.splice(i, 1, h, h); (k.bel = k.bel || []).splice(i, 0, 0); }
+    if (op === 'pion' && K.length < 4) { k.w /= 2; K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol, bel: [...(k.bel || [])], mur: k.mur || 0 }); k.mur = 0; }
     if (op === 'usun' && P.length > 1) {
-      if (k.r.length > 1) { const h = k.r.splice(i, 1)[0]; k.r[Math.max(0, i - 1)] += h; }
-      else { const w = K.splice(c, 1)[0].w; K[Math.max(0, c - 1)].w += w; }
+      if (k.r.length > 1) { const h = k.r.splice(i, 1)[0]; k.r[Math.max(0, i - 1)] += h + (+k.bel?.[Math.min(i, k.r.length - 1)] || 0); k.bel?.splice(Math.min(i, k.r.length - 1), 1); }
+      else { const u = K.splice(c, 1)[0]; K[Math.max(0, c - 1)].w += u.w + (+u.mur || 0); if (c >= K.length && K.length) K[K.length - 1].mur = 0; }
       S.wyb = 0;
     }
     this._dopasujPola(false);
@@ -632,17 +708,17 @@ export class MotorHaKreator extends HTMLElement {
     const svg = this.shadowRoot.getElementById('edSvg'); if (!svg || !this._uch) return;
     const { EW, EH, EP } = this._ed, r = svg.getBoundingClientRect(), sk = EW / r.width;
     const fx = Math.min(1, Math.max(0, ((e.clientX - r.left) * sk - EP) / (EW - 2 * EP))), fy = Math.min(1, Math.max(0, ((e.clientY - r.top) * sk - EP) / (EH - 2 * EP)));
-    const K = this.S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), [typ, id] = this._uch.split(':');
-    if (typ === 'k') {   // granica między kolumną c i c+1
-      const c = +id, przed = K.slice(0, c).reduce((a, k) => a + k.w, 0) / suma, para = (K[c].w + K[c + 1].w) / suma;
-      const lewa = Math.min(para - .08, Math.max(.08, fx - przed));
+    const K = this.S.u.kol, suma = sumaKol(K), [typ, id] = this._uch.split(':');
+    if (typ === 'k') {   // środek słupka między kolumną c i c+1
+      const c = +id, przed = K.slice(0, c).reduce((a, k) => a + k.w + (+k.mur || 0), 0) / suma, m = (+K[c].mur || 0) / suma, para = (K[c].w + K[c + 1].w) / suma;
+      const lewa = Math.min(para - .08, Math.max(.08, fx - przed - m / 2));
       K[c].w = lewa * suma; K[c + 1].w = (para - lewa) * suma;
     } else if (typ === 'd') {   // dół kolumny: okno nad kaloryferem
       K[+id].dol = Math.min(.6, Math.max(0, Math.round((1 - fy) * 50) / 50));
-    } else {   // granica między polami w kolumnie
-      const [c, j] = id.split('-').map(Number), k = K[c], wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
-      const gora = k.r.slice(0, j).reduce((a, b) => a + b, 0) / sr * wys, para = (k.r[j] + k.r[j + 1]) / sr * wys;
-      const g = Math.min(para - .06, Math.max(.06, fy - gora));
+    } else {   // środek belki między polami w kolumnie
+      const [c, j] = id.split('-').map(Number), k = K[c], wys = 1 - k.dol, sr = sumaWierszy(k), bel = k.bel || [];
+      const gora = k.r.slice(0, j).reduce((a, b, i) => a + b + (+bel[i] || 0), 0) / sr * wys, b = (+bel[j] || 0) / sr * wys, para = (k.r[j] + k.r[j + 1]) / sr * wys;
+      const g = Math.min(para - .06, Math.max(.06, fy - gora - b / 2));
       k.r[j] = g / wys * sr; k.r[j + 1] = (para - g) / wys * sr;
     }
     this._odswiezUklad();
@@ -657,7 +733,7 @@ export class MotorHaKreator extends HTMLElement {
   arkusz() {
     const S = this.S, t = this.t, i = S.arkusz, p = S.pola[i] || (S.pola[i] = { tryb: 'uchyl' });
     const pokoj = this._oslona(S.rolety[0])?.area;
-    const sil = this._tylkoTu(this.dane.oslony.filter(o => !o.brama && (!o.grupa || S.rolety.includes(o.id)) && (!o.zajeta || S.rolety.includes(o.id)))
+    const sil = this._tylkoTu(this.dane.oslony.filter(o => !o.brama && (!o.grupa || S.rolety.includes(o.id)))
       .sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa)), o => pokoj && o.area === pokoj, [p.silnik, ...S.rolety]);
     const silniki = sil.lista;
     const ok = this._tylkoTu(this._czujnik('okno').lista, c => c.tu, [p.czujnik]), okna = ok.lista;
@@ -741,16 +817,19 @@ export class MotorHaKreator extends HTMLElement {
     if (b.id === 'dalej') return S.krok < kroki.length - 1 ? this._idz(S.krok + 1) : this._zapisz(b);
     if (b.id === 'mierz') return this._mierz();
     if (d.idz) return this._idz(kroki.indexOf(d.idz));
-    if (d.oslona) {
+    if (d.oslona || d.pokojcaly) {
       const i = S.rolety.indexOf(d.oslona), x = this._oslona(d.oslona);
-      if (i >= 0) S.rolety.splice(i, 1);
+      if (d.pokojcaly) {   // cały pokój jednym dotknięciem: wszystkie pojedyncze silniki z tego pokoju
+        S.rolety = this.dane.oslony.filter(o => o.area === d.pokojcaly && !o.grupa && !o.brama).map(o => o.id).slice(0, 12);
+        S.wykryty = null;
+      } else if (i >= 0) S.rolety.splice(i, 1);
       else {
         // brama i okno to osobne urządzenia
         if (S.rolety.some(e => !!this._oslona(e)?.brama !== !!x?.brama)) S.rolety = [];
         S.rolety.push(d.oslona);
         S.wykryty = null;
         if (S.rolety.length === 1 && x?.area && !x.brama && this.dane.nowy) {
-          const reszta = this.dane.oslony.filter(o2 => o2.area === x.area && o2.id !== x.id && !o2.zajeta && !o2.brama).map(o2 => o2.id);
+          const reszta = this.dane.oslony.filter(o2 => o2.area === x.area && o2.id !== x.id && !o2.zajeta && !o2.grupa && !o2.brama).map(o2 => o2.id);
           if (reszta.length) { S.rolety.push(...reszta.slice(0, 11)); S.wykryty = x.pokoj; }
         }
       }
@@ -804,6 +883,14 @@ export class MotorHaKreator extends HTMLElement {
   _wpis(e) {
     const el = e.target, S = this.S;
     if (el.id === 'nazwa') { S.tytul = el.value; S.recznie.tytul = true; if (this._kartaEl) { this._kartaEl.setConfig(this._konfigKarty()); this._kartaEl.hass = this._hassKarty(); } return; }
+    if (el.dataset?.przerwa) {   // grubość słupka/muru albo belki
+      const [typ, c, j] = el.dataset.przerwa.split(':'), K = S.u.kol, v = +el.value, k = K[+c];
+      if (typ === 'mur') k.mur = v / 100 * K.reduce((a, x) => a + x.w, 0);
+      else { k.bel = k.bel || []; k.bel[+j] = v / 100 * k.r.reduce((a, b) => a + b, 0); }
+      el.nextElementSibling.textContent = v ? v + ' %' : this.t.brak;
+      S.szablon = 'w';
+      return this._odswiezUklad(true);
+    }
     if (el.dataset?.par) {
       const k = el.dataset.par, v = +el.value;
       S.o[k] = v; el.nextElementSibling.textContent = PAR[k].fmt(v);

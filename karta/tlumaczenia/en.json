@@ -296,7 +296,7 @@
       "gotowe": "Done"
     },
     "podpisy": {
-      "silnik": "Only covers that are not in Motor HA yet are shown.",
+      "silnik": "All covers from Home Assistant. Ones already used in another device are labelled.",
       "uklad": "Tap the closest layout.",
       "przypisz": "Each pane: a motor and a sensor. Suggestions are already filled in.",
       "czujniki": "Found in the room and in the home. Tap to turn off or change.",
@@ -424,6 +424,14 @@
     "zjedzieDo": "closes to {0} %",
     "zjedzieNormalnie": "closes as usual",
     "pozniej": "Once you close the window, the cover finishes on its own.",
-    "kazdy": "Each motor separately"
+    "kazdy": "Each motor separately",
+    "slupek": "Mullion / wall",
+    "belka": "Transom",
+    "brak": "none",
+    "wUrzadzeniu": "also in: {0}",
+    "grupa": "group",
+    "calyPokoj": "Whole room: {0}",
+    "bezPokoju": "No room",
+    "pojedyncze": "Single"
   }
 }
