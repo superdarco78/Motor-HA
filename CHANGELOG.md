@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.2.4 – Stały rysunek w każdym kroku kreatora
+
+- 🖼️ Rysunek okna stoi w miejscu w każdym kroku kreatora i zmienia się od razu przy każdym ustawieniu (także przy suwakach słupka, muru i belki); na telefonie mały rysunek na górze w każdym kroku
+- 🪪 Na komputerze w kroku „Gotowe” w miejscu rysunku jest powiększona karta – dokładnie tak, jak będzie na panelu
+
 ## v2.2.3 – Kreator na komputerze w dwóch kolumnach
 
 - 🖥️ Na komputerze kreator jest szeroki i podzielony na pół: z lewej ustawienia kroku, z prawej duży rysunek okna, który zajmuje całą połowę i zmienia się od razu. Na górze duże ikony kroków. W „Rodzaj”, „Kolory” i „Pola” pola wybiera się na dużym rysunku

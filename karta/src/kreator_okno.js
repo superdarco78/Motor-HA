@@ -58,7 +58,8 @@ export const dziel = s => String(s ?? '').replace(/\S{11,}/g, w => {
 const KROKI_OKNA = ['silnik', 'uklad', 'rodzaj', 'kolory', 'przypisz', 'czujniki', 'auto', 'stoper', 'dzwonek', 'gotowe'];
 const KROKI_BRAMY = ['silnik', 'rodzaj', 'kolory', 'czujniki', 'stoper', 'dzwonek', 'gotowe'];
 // krok klasycznego kreatora (skrót z karty i strony urządzenia) → krok kreatora graficznego
-const PODGLAD = ['uklad', 'rodzaj', 'kolory'];
+// telefon: mały rysunek okna na górze w każdym kroku (stały, zmienia się od razu); „Pola” mają własny duży, „Gotowe” – kartę
+const BEZ_PODGLADU = ['przypisz', 'gotowe'];
 // szablony układów: pola (x, y, szer., wys.) w ułamkach okna; trzeci element – drzwi do podłogi
 export const UKLADY = [
   ['u1', [[0, 0, 1, 1]]],
@@ -384,10 +385,17 @@ export class MotorHaKreator extends HTMLElement {
       + (p.tryb === 'otworz' ? `<path d="M${cx - 4.5} ${cy - 5}l4 1.6v10l-4-1.6z" fill="#3a2600"/>` : `<path d="M${cx - 4.5} ${cy + 5}l2.4-7h4.2" fill="none" stroke="#3a2600" stroke-width="1.4"/>`);
   }
   _brama(typ) { return rysunekBramy(typ, this._kolor(), this._rama(), false, false); }
-  // duży rysunek w lewej kolumnie (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
+  // stały rysunek: duży z boku (szeroki ekran) albo mały na górze (telefon); woła się też przy suwakach, bez rysowania całego kroku
+  _odswiezScene(k = this.kroki()[this.S.krok], jedenDuzy = ['rodzaj', 'kolory'].includes(k) && !this.S.brama && prostokaty(this.S.u).length > 1) {
+    const r = this.shadowRoot, S = this.S;
+    const sc = this._szeroko ? this._scena(k) : '';
+    r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
+    r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && S.szablon === 'w') && !jedenDuzy ? this._podgladMaly() : '';
+  }
+  // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
   _scena(k) {
     const S = this.S;
-    if (k === 'gotowe') return '';
+    if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
     if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
     const n = prostokaty(S.u).length;
     if (k === 'przypisz') return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'd', wybrane: S.arkusz })}</div>`;
@@ -645,7 +653,7 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S, t = this.t, d = this.dane;
     const panel = d.panele.find(p => p.klucz === d.panel);
     return `<input class="nazwa" id="nazwa" value="${esc(S.tytul)}" aria-label="${esc(t.nazwa)}" placeholder="${esc(t.nazwa)}">
-      <div class="karta" id="karta"></div>
+      ${this._szeroko ? '' : '<div class="karta" id="karta"></div>'}
       ${d.nowy && panel ? `<button class="wiersz ${S.panel ? '' : 'wyl'}" data-panel="1" style="margin-top:12px"><span class="ik">${ik('uklad', 22)}</span><span class="t"><b>${esc(t.naPanel)}</b><small>${esc(panel.nazwa)}</small></span><span class="przel"></span></button>` : ''}`;
   }
   // karta na udawanej encji: dokładnie to, co pokaże panel
@@ -731,6 +739,7 @@ export class MotorHaKreator extends HTMLElement {
     const r = this.shadowRoot, e = r.getElementById('edytor');
     if (e) e.innerHTML = this.edytor();
     const pz = r.getElementById('przerwy'); if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
+    this._odswiezScene();
     const k = r.querySelector('[data-wlasny]'); if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
   }
   operacja(op) {
@@ -861,9 +870,7 @@ export class MotorHaKreator extends HTMLElement {
     // szeroki ekran: z lewej duży rysunek okna (zawsze widoczny), z prawej ustawienia kroku
     this._szeroko = this.clientWidth >= 760;
     this.toggleAttribute('szeroko', this._szeroko);
-    const sc = this._szeroko ? this._scena(k) : '';
-    r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
-    r.getElementById('podglad').innerHTML = !this._szeroko && PODGLAD.includes(k) && !(k === 'uklad' && S.szablon === 'w') && !jedenDuzy ? this._podgladMaly() : '';
+    this._odswiezScene(k, jedenDuzy);
     const pyt = k === 'rodzaj' && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
     this._kartaEl = null;
     r.getElementById('tresc').innerHTML = `<h2>${esc(pyt)}</h2>${pod ? `<p class="pod">${esc(pod)}</p>` : ''}${this['str_' + k]()}`
