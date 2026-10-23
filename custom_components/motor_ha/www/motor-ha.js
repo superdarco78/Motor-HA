@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.2.4";
+  var WERSJA = "2.2.5";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -8605,9 +8605,11 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .krok svg{width:18px;height:18px;fill:currentColor}
 .krok.zrob{color:var(--primary)} .krok.zrob .k{border-color:var(--primary)}
 .krok.teraz{color:var(--primary)} .krok.teraz .k{border-color:var(--accent);background:var(--primary);color:var(--on)}
-.krok .n{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:10px;line-height:1;white-space:nowrap;visibility:hidden}
-.krok.teraz .n{visibility:visible;font-weight:700}
-.krok:first-child.teraz .n{left:0;transform:none}.krok:last-child.teraz .n{left:auto;right:0;transform:none}
+.krok .n{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:10px;line-height:1;white-space:nowrap;color:var(--fg)}
+.krok.teraz .n{font-weight:700;color:var(--primary)}
+:host(:not([szeroko])) .kroki{overflow-x:auto;scrollbar-width:none;justify-content:flex-start;padding:0 4px} :host(:not([szeroko])) .kroki::-webkit-scrollbar{display:none}
+:host(:not([szeroko])) .krok{flex:0 0 auto;min-width:64px}
+.krok:not(.zrob):not(.teraz) .k{border-color:color-mix(in srgb,var(--primary) 45%,var(--line));color:var(--fg)}
 .krok:focus-visible .k{box-shadow:0 0 0 3px var(--accent)}
 .podglad{display:flex;justify-content:center;padding-top:8px}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
@@ -8617,14 +8619,22 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 :host([szeroko]) .krok .k{width:46px;height:46px;border-width:3px} :host([szeroko]) .krok svg{width:26px;height:26px} :host([szeroko]) .krok .n{font-size:12px} :host([szeroko]) .krok{padding-bottom:18px}
 :host([szeroko]) .scena[hidden]{display:none}
 .scena > div, .scena > svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.scena svg{width:100%;height:100%;max-height:100%}
+.scena > div > svg, .scena #duzeOkno svg{width:100%;height:100%;max-height:100%}
 :host([szeroko]) .wybpol{position:static}
+.scena > .edscena{display:block;height:auto;max-width:560px}
+.edscena #edytor{display:flex;justify-content:center} .edscena #edSvg{width:100%;height:auto;max-height:calc(100dvh - 420px)}
+:host([szeroko]) .krok .n{visibility:visible;color:var(--fg)} :host([szeroko]) .krok.teraz .n{color:var(--primary)}
+:host([szeroko]) .krok:not(.zrob):not(.teraz) .k{border-color:color-mix(in srgb,var(--primary) 45%,var(--line));color:var(--fg)}
+:host([szeroko]) .krok:hover .k{border-color:var(--accent)}
 .tresc{flex:1;min-width:0;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
 .wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
+.wiersz.zrod{opacity:.45} g.zrod{opacity:.5} #duzeOkno g[data-pole]{touch-action:none;cursor:grab} .wiersz{user-select:none;-webkit-user-select:none}
+.cialo{position:relative} .duch{position:absolute;left:0;top:0;z-index:20;pointer-events:none;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--surface);color:var(--fg);border:2px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:14px;white-space:nowrap}
+.duch .ik{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700}
 #duzeOkno svg{touch-action:none}
 .wybpol{margin:-4px 0 14px;padding:8px 0 12px;border-bottom:1px solid var(--line);position:sticky;top:-14px;z-index:3;background:var(--surface)}
 .wybpol #duzeOkno svg{max-height:30vh;width:auto;max-width:100%}
@@ -8789,9 +8799,16 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, ile = prostokaty(S.u).length, R = S.rolety;
       const okna = this._czujnik("okno").lista.filter((x) => x.tu).map((x) => x.id);
       const kolejne = [.../* @__PURE__ */ new Set([...this.dane.okna || [], ...okna])];
+      const strona2 = (id) => {
+        const n = (this._oslona(id)?.nazwa || id).toLowerCase();
+        return /lew|left|links|gauche/.test(n) ? 0 : /praw|right|rechts|droite/.test(n) ? 2 : 1;
+      };
+      const Rs = [...R].sort((a, b) => strona2(a) - strona2(b)), P = prostokaty(S.u);
+      const silnikPola = (i) => Rs.length >= ile ? Rs[i] : Rs[Math.min(Rs.length - 1, Math.floor((P[i][0] + P[i][2] / 2) * Rs.length))];
+      const nowyUklad = S.pola.length !== ile;
       S.pola = Array.from({ length: ile }, (_, i) => {
         const p = { ...S.pola[i] || {} };
-        if ((podpowiedz || !p.silnik) && R.length) p.silnik = R[Math.min(i, R.length - 1)];
+        if ((podpowiedz || nowyUklad || !p.silnik) && R.length) p.silnik = silnikPola(i);
         if (podpowiedz && !p.czujnik && kolejne[i] && !S.pola.some((q, j) => j !== i && q?.czujnik === kolejne[i])) p.czujnik = kolejne[i];
         p.tryb || (p.tryb = "uchyl");
         return p;
@@ -8871,6 +8888,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // stały rysunek: duży z boku (szeroki ekran) albo mały na górze (telefon); woła się też przy suwakach, bez rysowania całego kroku
     _odswiezScene(k = this.kroki()[this.S.krok], jedenDuzy = ["rodzaj", "kolory"].includes(k) && !this.S.brama && prostokaty(this.S.u).length > 1) {
       const r = this.shadowRoot, S = this.S;
+      if (k === "uklad" && this._szeroko && r.getElementById("edSvg") && this._bezSceny) return;
       const sc = this._szeroko ? this._scena(k) : "";
       r.getElementById("scena").innerHTML = sc;
       r.getElementById("scena").hidden = !sc;
@@ -8882,6 +8900,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (k === "gotowe") return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
       if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
       const n = prostokaty(S.u).length;
+      if (k === "uklad") return `<div class="edscena">${this._edytorCaly()}</div>`;
       if (k === "przypisz") return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "d", wybrane: S.arkusz })}</div>`;
       if (["rodzaj", "kolory"].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "r", wybrane: this._wybR() })}</div>`;
       return `<div>${this.okno({ w: 440, h: 400, id: "s" })}</div>`;
@@ -8949,15 +8968,20 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _nazwaPokoju(a) {
       return this.dane.oslony.find((o) => o.area === a)?.pokoj || a;
     }
-    str_uklad() {
-      const S = this.S, t = this.t;
-      const ed = S.szablon === "w" ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
-      <div id="edytor">${this.edytor()}</div>
+    // edytor układu: rysunek z uchwytami, przyciski podziału i suwaki słupka / belki
+    _edytorCaly() {
+      const t = this.t;
+      return `<div id="edytor">${this.edytor()}</div>
       <div class="chipy" style="justify-content:center;margin:10px 0 4px">
         <button class="chip" data-op="poz">${ik("uklad", 16)} ${esc6(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik("uklad", 16)} ${esc6(t.wzdluz)}</button>
         <button class="chip" data-op="usun">${esc6(t.usun)}</button></div>
       <div id="przerwy">${this._suwakiPrzerw()}</div>
-      <p class="pod" style="text-align:center">${esc6(t.wlasnyPodpis)}</p><div class="sek">${esc6(t.zSzablonu)}</div>` : "";
+      <p class="pod" style="text-align:center">${esc6(t.wlasnyPodpis)}</p>`;
+    }
+    str_uklad() {
+      const S = this.S, t = this.t;
+      const ed = S.szablon === "w" && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
+      ${this._edytorCaly()}<div class="sek">${esc6(t.zSzablonu)}</div>` : "";
       return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
       <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
     }
@@ -9223,17 +9247,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // --- edytor własnego układu: duże okno z uchwytami do przeciągania i wybieranym polem ---
     edytor() {
-      const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
-      const [n1] = this._nieba(), d = [];
+      const duzy = this._szeroko, EW = duzy ? 440 : 260, EH = duzy ? 390 : 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
+      const [n1, n2] = this._nieba(), d = [], kol = this._kolor();
       d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc6(this.t.wlasnyTytul)}">`);
+      d.push(`<defs><linearGradient id="nE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
       d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
       for (const [x2, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x2 * iw, EP + y * ih, w * iw, h * ih, typ));
       P.forEach((p, i) => {
         const x2 = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
+        const pp = S.pola[i] || {}, wi = Math.max(0, w - 8), hi = Math.max(0, h - 8);
         d.push(`<g data-ep="${i}"><rect x="${x2}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
-        <rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>
+        ${duzy ? `<rect x="${x2 + 4}" y="${y + 4}" width="${wi}" height="${hi}" fill="url(#nE)"/><path d="M${x2 + 4} ${y + 4 + hi * 0.78}l${wi * 0.25} ${-hi * 0.14} ${wi * 0.2} ${hi * 0.08} ${wi * 0.3} ${-hi * 0.16} ${wi * 0.25} ${hi * 0.1}V${y + 4 + hi}H${x2 + 4}z" fill="#000" opacity=".12"/>${this.oslona(pp.oslona || S.o.oslona, x2 + 4, y + 4, wi, hi, 60, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol)}` : `<rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>`}
         ${on ? `<rect x="${x2 + 1.5}" y="${y + 1.5}" width="${Math.max(0, w - 3)}" height="${Math.max(0, h - 3)}" fill="none" stroke="#ff9800" stroke-width="3"/>` : ""}
-        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? "#e65100" : "#1c3a4a"}">${i + 1}</text></g>`);
+        ${duzy ? `<circle cx="${x2 + w / 2}" cy="${y + h / 2}" r="12" fill="${on ? "#ff9800" : "#009ac7"}" stroke="#fff" stroke-width="2"/><text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>` : `<text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? "#e65100" : "#1c3a4a"}">${i + 1}</text>`}</g>`);
       });
       const uchwyt = (typ, id, x2, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? "ns" : "ew"}-resize"><circle cx="${x2}" cy="${y}" r="16" fill="transparent"/>
       <rect x="${x2 - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
@@ -9304,7 +9330,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (e) e.innerHTML = this.edytor();
       const pz = r.getElementById("przerwy");
       if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
+      this._bezSceny = true;
       this._odswiezScene();
+      this._bezSceny = false;
       const k = r.querySelector("[data-wlasny]");
       if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
     }
@@ -9373,9 +9401,24 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this._odswiezUklad();
     }
     // listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (i to, co już wybrane); reszta domu po „Pokaż wszystkie”
+    // „duch” przeciąganego pola: numer i silnik idą za palcem / myszką
+    _duch(i) {
+      const o = this._oslona(this.S.pola[i]?.silnik), d = document.createElement("div");
+      d.id = "duch";
+      d.className = "duch";
+      d.innerHTML = `<span class="ik">${i + 1}</span><b>${esc6(o ? o.nazwa : this.t.wybierzSilnik)}</b>`;
+      this.shadowRoot.querySelector(".cialo").append(d);
+    }
     _polePod(e) {
-      const el = this.shadowRoot.elementsFromPoint?.(e.clientX, e.clientY).find((x) => x.closest?.("[data-pole]"))?.closest("[data-pole]");
-      return el ? +el.dataset.pole : null;
+      let naj = null, pole = Infinity;
+      for (const el of this.shadowRoot.querySelectorAll("#duzeOkno g[data-pole] > rect:first-child, .wiersz[data-pole]")) {
+        const b = el.getBoundingClientRect();
+        if (e.clientX >= b.left && e.clientX <= b.right && e.clientY >= b.top && e.clientY <= b.bottom && b.width * b.height < pole) {
+          pole = b.width * b.height;
+          naj = el.closest("[data-pole]");
+        }
+      }
+      return naj ? +naj.dataset.pole : null;
     }
     _tylkoTu(lista, tu, wybrane) {
       if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: "" };
@@ -9422,11 +9465,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this._ro.observe(this);
       r.addEventListener("input", (e) => this._wpis(e));
       r.addEventListener("pointerdown", (e) => {
-        const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]"));
-        if (zp) {
-          this._zamiana = { z: +zp.dataset.pole, x: e.clientX, y: e.clientY, jedzie: false };
+        const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]") || (e.pointerType === "mouse" ? e.target.closest?.(".wiersz[data-pole]") : null));
+        if (zp && e.button === 0) {
+          e.preventDefault();
+          this._zamiana = { z: +zp.dataset.pole, x: e.clientX, y: e.clientY, jedzie: false, id: e.pointerId };
           try {
-            e.target.setPointerCapture(e.pointerId);
+            r.querySelector(".cialo").setPointerCapture(e.pointerId);
           } catch (x) {
           }
         }
@@ -9448,28 +9492,47 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.addEventListener("pointermove", (e) => {
         if (this._uch) this._ciagnij(e);
         const z = this._zamiana;
-        if (!z) return;
-        if (!z.jedzie && Math.hypot(e.clientX - z.x, e.clientY - z.y) > 8) z.jedzie = true;
-        if (z.jedzie) {
-          const cel = this._polePod(e);
-          z.do = cel;
-          r.querySelectorAll("[data-pole]").forEach((el) => el.classList.toggle("cel", +el.dataset.pole === cel && cel !== z.z));
+        if (!z || e.pointerId !== z.id) return;
+        if (!z.jedzie && Math.hypot(e.clientX - z.x, e.clientY - z.y) > 6) {
+          z.jedzie = true;
+          this._duch(z.z);
         }
+        if (!z.jedzie) return;
+        e.preventDefault();
+        const cel = this._polePod(e);
+        z.do = cel;
+        r.querySelectorAll("[data-pole]").forEach((el) => {
+          el.classList.toggle("cel", +el.dataset.pole === cel && cel !== z.z);
+          el.classList.toggle("zrod", +el.dataset.pole === z.z);
+        });
+        const d = r.getElementById("duch"), c = r.querySelector(".cialo").getBoundingClientRect();
+        if (d) d.style.transform = `translate(${Math.max(0, Math.min(c.width - d.offsetWidth - 4, e.clientX - c.left + 12))}px,${e.clientY - c.top + 12}px)`;
       });
       r.addEventListener("pointerup", (e) => {
         const z = this._zamiana;
+        if (!z || e.pointerId !== z.id) return;
         this._zamiana = null;
-        if (!z?.jedzie) return;
+        r.getElementById("duch")?.remove();
+        if (!z.jedzie) {
+          r.querySelectorAll(".zrod").forEach((el) => el.classList.remove("zrod"));
+          return;
+        }
         this._poZamianie = true;
         setTimeout(() => {
           this._poZamianie = false;
-        }, 50);
+        }, 80);
         const cel = this._polePod(e) ?? z.do ?? null, S = this.S;
         if (cel !== null && cel !== z.z) {
           const a = S.pola[z.z] || {};
           S.pola[z.z] = S.pola[cel] || {};
           S.pola[cel] = a;
         }
+        this.rysuj();
+      });
+      r.addEventListener("pointercancel", () => {
+        if (!this._zamiana) return;
+        this._zamiana = null;
+        r.getElementById("duch")?.remove();
         this.rysuj();
       });
       const koniec = () => {
@@ -9488,6 +9551,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.getElementById("nazwaKroku").textContent = t.kroki[k];
       r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
       r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${ik(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
+      {
+        const kr = r.getElementById("kroki"), a = kr.querySelector(".teraz");
+        if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2;
+      }
       const jedenDuzy = ["rodzaj", "kolory"].includes(k) && !S.brama && prostokaty(S.u).length > 1;
       this._szeroko = this.clientWidth >= 760;
       this.toggleAttribute("szeroko", this._szeroko);

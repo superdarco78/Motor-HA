@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.5 – Układ na dużym rysunku, przeciąganie pól i podpisy kroków
+
+- 🪟 Krok „Układ” na komputerze: słupki, belki i podziały ustawia się wprost na dużym rysunku z prawdziwymi osłonami
+- 🏷️ Pod każdą ikoną kroku jest jej nazwa, ikony nie są szare; na telefonie pasek kroków przesuwa się palcem
+- ✋ Krok „Pola”: przeciąganie pola na rysunku albo całego wiersza (palcem za ⠿) – za kursorem idzie podpis pola, zamiana trafia dokładnie w pole, na którym je upuszczono
+- ⚙️ Podpowiedź silników rozkłada je po szerokości okna: lewy silnik w lewych polach, prawy w prawych (także po zmianie liczby pól)
+
 ## v2.2.4 – Stały rysunek w każdym kroku kreatora
 
 - 🖼️ Rysunek okna stoi w miejscu w każdym kroku kreatora i zmienia się od razu przy każdym ustawieniu (także przy suwakach słupka, muru i belki); na telefonie mały rysunek na górze w każdym kroku
