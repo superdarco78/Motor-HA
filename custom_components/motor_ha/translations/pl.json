@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Wybierz silnik.",
       "za_duzo": "Wybierz najwyżej dwa silniki (lewe i prawe skrzydło)."
+    },
+    "abort": {
+      "zle_dane": "Kreator wysłał niepełne ustawienia. Otwórz go jeszcze raz.",
+      "brak_rolety": "Wybierz silnik co najmniej dla jednego pola.",
+      "za_duzo": "Za dużo silników (najwyżej 12)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Wybierz silnik.",
       "za_duzo": "Wybierz najwyżej dwa silniki (lewe i prawe skrzydło)."
+    },
+    "abort": {
+      "zle_dane": "Kreator wysłał niepełne ustawienia. Otwórz go jeszcze raz.",
+      "brak_rolety": "Wybierz silnik co najmniej dla jednego pola.",
+      "za_duzo": "Za dużo silników (najwyżej 12)."
     }
   },
   "selector": {

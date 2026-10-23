@@ -24,8 +24,6 @@ from .const import (
     BATERIA_PROG,
     BRAMY,
     CONF_CZAS,
-    CONF_CZUJNIK_LEWE,
-    CONF_CZUJNIK_PRAWE,
     CONF_FOTO_STAN,
     CONF_OSLONA,
     CONF_POGODA,
@@ -38,6 +36,7 @@ from .const import (
     PARAMETRY,
 )
 from .skan import baterie
+from .uklad import czujniki_okna
 
 _LOGGER = logging.getLogger(__name__)
 NIEDOSTEPNA_PO = timedelta(minutes=2)
@@ -65,7 +64,7 @@ class Powiadomienia:
         self.foto_stan = str(o.get(CONF_FOTO_STAN, "on"))
         self.brama_min = float(o.get("brama_minuty", PARAMETRY["brama_minuty"]))
         self.czujniki = [e for e in [o.get(v) for v in CZUJNIKI.values()]
-                         + [o.get(CONF_CZUJNIK_LEWE), o.get(CONF_CZUJNIK_PRAWE), o.get(CONF_POGODA)] if e]
+                         + [c for c, _ in czujniki_okna(o)] + [o.get(CONF_POGODA)] if e]
         self.aktualna = aktualna
         self._aktywne: set[str] = set()
         self._od: dict[str, datetime] = {}

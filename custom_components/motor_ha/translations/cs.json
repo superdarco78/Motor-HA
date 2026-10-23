@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Vyberte motor.",
       "za_duzo": "Vyberte nejvýš dva motory (levé a pravé křídlo)."
+    },
+    "abort": {
+      "zle_dane": "Průvodce odeslal neúplné nastavení. Otevřete ho znovu.",
+      "brak_rolety": "Vyberte motor alespoň pro jedno pole.",
+      "za_duzo": "Příliš mnoho motorů (nejvýše 12)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Vyberte motor.",
       "za_duzo": "Vyberte nejvýš dva motory (levé a pravé křídlo)."
+    },
+    "abort": {
+      "zle_dane": "Průvodce odeslal neúplné nastavení. Otevřete ho znovu.",
+      "brak_rolety": "Vyberte motor alespoň pro jedno pole.",
+      "za_duzo": "Příliš mnoho motorů (nejvýše 12)."
     }
   },
   "selector": {

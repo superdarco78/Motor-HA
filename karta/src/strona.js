@@ -31,9 +31,12 @@ function cele(h, id) {
 // Gdy karta się nie pokaże, raz na stronę zapisujemy powód w dzienniku HA (Ustawienia → System → Dzienniki),
 // żeby dało się to sprawdzić bez zaglądania do telefonu.
 let zgloszone = '', od = 0, powod = '';
+const BEZ_STRONY = 'brak strony urządzenia';
 function zglos(id) {
   const h = document.querySelector('home-assistant')?.hass;
   if (zgloszone === id || !powod || Date.now() - od < 15000 || !h?.callService) return;
+  // strony urządzenia nie ma (karta w tle, HA uśpił stronę, inny ekran w trakcie przejścia) – nie ma czego pokazać, to nie błąd
+  if (document.hidden || powod === BEZ_STRONY) return;
   if (!h.devices?.[id]?.identifiers?.some?.(i => i[0] === 'motor_ha')) return;   // tylko urządzenia Motor HA
   zgloszone = id;
   Promise.resolve(h.callService('system_log', 'write', { logger: 'motor_ha.strona', level: 'warning',
@@ -42,13 +45,13 @@ function zglos(id) {
 
 export function pilnuj(rejestruj) {
   const m = WZOR.exec(location.pathname);
-  if (!m) { od = 0; return; }
+  if (!m || document.hidden) { od = 0; return; }   // liczymy tylko czas, gdy strona jest widoczna
   if (!od) { od = Date.now(); zgloszone = ''; }
   // inny dodatek mógł podmienić rejestr elementów – wtedy rejestrujemy się w nim jeszcze raz
   if (!customElements.get('motor-ha-urzadzenie')) rejestruj?.();
   if (!customElements.get('motor-ha-urzadzenie')) { powod = 'element niezarejestrowany'; return; }
   const pg = strona(document), r = pg?.shadowRoot, h = pg?.hass;
-  if (!r || !h) { powod = 'brak strony urządzenia'; return; }
+  if (!r || !h) { powod = BEZ_STRONY; return; }
   const kolumny = [...r.querySelectorAll('div.column')];
   if (!kolumny.length) { powod = 'brak kolumn'; return; }
   const nasze = [...r.querySelectorAll(`[${ZNAK}]`)];

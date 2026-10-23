@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Kies een motor.",
       "za_duzo": "Kies hooguit twee motoren (linker- en rechtervleugel)."
+    },
+    "abort": {
+      "zle_dane": "De wizard stuurde onvolledige instellingen. Open hem opnieuw.",
+      "brak_rolety": "Kies een motor voor minstens één vak.",
+      "za_duzo": "Te veel motoren (maximaal 12)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Kies een motor.",
       "za_duzo": "Kies hooguit twee motoren (linker- en rechtervleugel)."
+    },
+    "abort": {
+      "zle_dane": "De wizard stuurde onvolledige instellingen. Open hem opnieuw.",
+      "brak_rolety": "Kies een motor voor minstens één vak.",
+      "za_duzo": "Te veel motoren (maximaal 12)."
     }
   },
   "selector": {

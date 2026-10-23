@@ -12,7 +12,8 @@ from homeassistant.const import ATTR_ENTITY_ID
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry as er
 
-from . import panele
+from . import graficzny, panele
+from .uklad import CONF_POLA, CONF_UKLAD, pola
 from .const import (
     CONF_CZAS,
     CONF_KARTA,
@@ -30,7 +31,7 @@ from .const import (
 # ustawienia karty, które zna też kreator integracji – zapisywane w obu miejscach
 Z_KARTY = ["czujnik_lewe", "czujnik_prawe", "tryb_lewe", "tryb_prawe", "predkosc_lewa", "predkosc_prawa",
            "oslona", "wysokosc", "odwroc"]
-POMIJANE = {"type", "entity", "grid_options", "view_layout", "visibility", "layout_options"}
+POMIJANE = {"type", "entity", "grid_options", "view_layout", "visibility", "layout_options", "pola"}
 
 
 def opcje_z_karty(karta: dict[str, Any], stare: dict[str, Any], hass: HomeAssistant) -> dict[str, Any]:
@@ -42,6 +43,9 @@ def opcje_z_karty(karta: dict[str, Any], stare: dict[str, Any], hass: HomeAssist
         o[CONF_ROLETY] = [karta["roleta_lewa"], karta["roleta_prawa"]]
     if "skrzydla" in karta:
         o[CONF_SKRZYDLA] = str(karta["skrzydla"])
+        if o.get(CONF_UKLAD) and str(karta["skrzydla"]) != str(len(pola(o))):   # w edytorze karty wybrano 1 albo 2 skrzydła
+            o.pop(CONF_UKLAD)
+            o.pop(CONF_POLA, None)
     if isinstance(kolor := karta.get(CONF_KOLOR), str):
         o[CONF_KOLOR] = kolor
     if isinstance(rama := karta.get(CONF_RAMA), str):
@@ -64,6 +68,7 @@ def async_rejestruj(hass: HomeAssistant) -> None:
     websocket_api.async_register_command(hass, ws_panele)
     websocket_api.async_register_command(hass, ws_dodaj_karte)
     websocket_api.async_register_command(hass, ws_krok)
+    graficzny.async_rejestruj(hass)
 
 
 def _okno(hass: HomeAssistant, entry_id: str) -> str | None:

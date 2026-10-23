@@ -73,7 +73,7 @@ CONF_KARTA = "karta"            # ustawienia z edytora karty
 # klucze karty, które ustawia też kreator: po „Dalej”/„Zapisz” w kreatorze liczy się kreator, nie stara karta
 KARTA_Z_KREATORA = ("oslona", "kolor", "rama", "wysokosc", "skrzydla", "czas", "pogoda", "tryb_lewe", "tryb_prawe",
                     "czujnik_lewe", "czujnik_prawe", "predkosc_lewa", "predkosc_prawa", "odwroc", "osobno",
-                    "roleta_lewa", "roleta_prawa", "rodzaj_pokoju", "foto_stan", "przeszkoda")
+                    "roleta_lewa", "roleta_prawa", "rodzaj_pokoju", "foto_stan", "przeszkoda", "pola")
 
 TRYBY_SKRZYDLA = ["uchyl", "otworz"]
 POKOJE = ["salon", "sypialnia", "kuchnia", "dziecko", "gabinet", "lazienka", "jadalnia", "przedpokoj", "inny"]
@@ -159,6 +159,8 @@ PARAMETRY: dict[str, object] = {
     "lamele_noc": 0,          # kąt lameli w nocy
     "lamele_tryb": "auto",    # auto / staly / nocny
     "harm_tryb": "slonce",    # slonce / godziny
+    "harm_otwieraj": True,    # harmonogram rano otwiera (kreator graficzny: „Rano otwórz”)
+    "harm_zamykaj": True,     # harmonogram wieczorem zamyka („Wieczorem zamknij”)
     "otworz": "07:00:00",
     "zamknij": "21:00:00",
     "otworz_weekend": "08:30:00",
