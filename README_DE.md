@@ -475,7 +475,7 @@
 <p><b>Konfigurieren → Motor →</b> <b>Umgekehrte Prozente</b> einschalten.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Das Rollo auf dem Bildschirm fährt anders als das echte.</h3>
-<p>Drücke <b>Kalibrieren</b> am Gerät. Der Motor fährt hoch, runter und hoch, die Karte merkt sich die Zeit.</p>
+<p>Drücke <b>Kalibrieren</b> am Gerät. Der Motor fährt hoch, runter und hoch, die Karte merkt sich die Zeit. Am Ende bekommst du eine Benachrichtigung mit der Zeit. Die Option „Nach der Kalibrierung auf 50 % fahren“ im Schritt „Motor“ (standardmäßig aus) hält den Behang in der Mitte an, damit du siehst, dass die Kalibrierung fertig ist.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Warum ist das Rollo von selbst gefahren?</h3>
 <p>Schau auf den Sensor <b>Grund der Bewegung</b> oder die Zeile unter dem Namen auf der Karte.</p>

@@ -163,3 +163,39 @@ async def test_ukryj_silnik_przed_assist(hass: HomeAssistant) -> None:
         await hass.async_block_till_done()
         for e in ROLETY:
             assert async_should_expose(hass, "conversation", e) is not wlacz, (e, wlacz)
+
+
+async def test_po_kalibracji(hass: HomeAssistant, monkeypatch) -> None:
+    """Koniec kalibracji: powiadomienie z czasem; z opcją „50 %” osłona staje w połowie."""
+    from custom_components.motor_ha import cover, powiadomienia
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    r, _ = await _przejdz(hass, {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"},
+                                 "silnik": {"czas": 0, "kalibruj": False, "kalibracja_50": True},
+                                 "panel": {"na_panel": "nie"}})
+    wpis = r["result"]
+    assert wpis.options["kalibracja_50"] is True
+    wyslane, ruchy, czasy = [], [], [12.0, 14.0, 12.0]
+
+    async def jedz(self, usluga, cel, pierwszy):
+        return czasy.pop(0) if czasy else None
+
+    async def pozycja(self, **kw):
+        ruchy.append(kw["position"])
+
+    monkeypatch.setattr(cover.MotorCover, "_jedz", jedz)
+    monkeypatch.setattr(cover.MotorCover, "async_set_cover_position", pozycja)
+    monkeypatch.setattr(powiadomienia.persistent_notification, "async_create",
+                        lambda hass, tresc, title=None, notification_id=None: wyslane.append((title, tresc)))
+    okno = hass.data[DOMAIN]["wpisy"][wpis.entry_id].okno
+    await okno._kalibruj()
+    await hass.async_block_till_done()
+    assert ruchy == [50], ruchy
+    assert wyslane and "✅" in wyslane[-1][0] and " 13 s" in wyslane[-1][1], wyslane
+    assert wpis.options["czas"] == 13.0
+    # nieudana: bez jazdy na 50 %, powiadomienie o błędzie
+    ruchy.clear()
+    okno = hass.data[DOMAIN]["wpisy"][wpis.entry_id].okno
+    await okno._kalibruj()
+    await hass.async_block_till_done()
+    assert ruchy == [] and "✅" not in wyslane[-1][0], wyslane

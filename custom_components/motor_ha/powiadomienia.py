@@ -117,9 +117,14 @@ class Powiadomienia:
             persistent_notification.async_dismiss(self.hass, f"{DOMAIN}_{self.entry.entry_id}_{rodzaj}")
 
     async def _wyslij(self, rodzaj: str, dane: dict[str, Any]) -> None:
+        await self.wyslij(rodzaj, dane, f"{DOMAIN}_{self.entry.entry_id}_{rodzaj}")
+
+    async def wyslij(self, rodzaj: str, dane: dict[str, Any], nid: str, ok: bool = False) -> None:
+        """Do HA i na wybrane telefony; ok=True – dobra wiadomość (tytuł bez „problem”)."""
         tytul, tresc = await self._tekst(rodzaj, dane)
-        persistent_notification.async_create(self.hass, tresc, title=tytul,
-                                             notification_id=f"{DOMAIN}_{self.entry.entry_id}_{rodzaj}")
+        if ok:
+            tytul = f"{NAZWA} ✅"
+        persistent_notification.async_create(self.hass, tresc, title=tytul, notification_id=nid)
         for usluga in self.gdzie:
             domena, _, nazwa = usluga.partition(".")
             if not nazwa:

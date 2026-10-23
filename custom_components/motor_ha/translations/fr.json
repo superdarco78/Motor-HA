@@ -132,6 +132,7 @@
         "data": {
           "czas": "Durée d'une course complète",
           "kalibruj": "Calibrer maintenant (le store monte, descend et remonte)",
+          "kalibracja_50": "Après l’étalonnage, aller à 50 %",
           "predkosc_lewa": "Vitesse moteur – gauche",
           "predkosc_prawa": "Vitesse moteur – droite",
           "brama_minuty": "Portail ouvert trop longtemps après",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automatique : d'après la vitesse du moteur, le calibrage ou les vrais mouvements.",
+          "kalibracja_50": "Le store s’arrête à mi-course : on voit tout de suite que l’étalonnage est terminé. Désactivé par défaut.",
           "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Durée d'une course complète",
           "kalibruj": "Calibrer maintenant (le store monte, descend et remonte)",
+          "kalibracja_50": "Après l’étalonnage, aller à 50 %",
           "predkosc_lewa": "Vitesse moteur – gauche",
           "predkosc_prawa": "Vitesse moteur – droite",
           "brama_minuty": "Portail ouvert trop longtemps après",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automatique : d'après la vitesse du moteur, le calibrage ou les vrais mouvements.",
+          "kalibracja_50": "Le store s’arrête à mi-course : on voit tout de suite que l’étalonnage est terminé. Désactivé par défaut.",
           "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa} : le moteur a fait {ruchy} mouvements depuis le calibrage. Appuyez sur « Calibrer » sur l'appareil."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa} : étalonnage terminé. Une course complète dure {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa} : échec de l’étalonnage – le moteur n’est pas arrivé en {maks} s. Vérifiez le moteur et réessayez."
     },
     "brama_otwarta": {
       "message": "{nazwa} : le portail est ouvert depuis plus de {minuty} min."

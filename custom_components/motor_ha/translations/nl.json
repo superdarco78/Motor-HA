@@ -132,6 +132,7 @@
         "data": {
           "czas": "Volledige looptijd",
           "kalibruj": "Nu kalibreren (zonwering gaat omhoog, omlaag en omhoog)",
+          "kalibracja_50": "Na kalibratie naar 50 %",
           "predkosc_lewa": "Motorsnelheid – links",
           "predkosc_prawa": "Motorsnelheid – rechts",
           "brama_minuty": "Poort te lang open na",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automatisch: uit motorsnelheid, kalibratie of echte bewegingen.",
+          "kalibracja_50": "De zonwering stopt halverwege, zodat je meteen ziet dat de kalibratie klaar is. Standaard uit.",
           "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Volledige looptijd",
           "kalibruj": "Nu kalibreren (zonwering gaat omhoog, omlaag en omhoog)",
+          "kalibracja_50": "Na kalibratie naar 50 %",
           "predkosc_lewa": "Motorsnelheid – links",
           "predkosc_prawa": "Motorsnelheid – rechts",
           "brama_minuty": "Poort te lang open na",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automatisch: uit motorsnelheid, kalibratie of echte bewegingen.",
+          "kalibracja_50": "De zonwering stopt halverwege, zodat je meteen ziet dat de kalibratie klaar is. Standaard uit.",
           "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: de motor maakte {ruchy} bewegingen sinds de kalibratie. Druk op „Kalibreren” op het apparaat."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: kalibratie klaar. Een volledige rit duurt {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: kalibratie mislukt – de motor was niet binnen {maks} s klaar. Controleer de motor en probeer opnieuw."
     },
     "brama_otwarta": {
       "message": "{nazwa}: de poort staat langer dan {minuty} min open."

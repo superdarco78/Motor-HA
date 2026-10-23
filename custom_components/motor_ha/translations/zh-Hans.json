@@ -132,6 +132,7 @@
         "data": {
           "czas": "完整行程时间",
           "kalibruj": "立即校准(遮阳会上、下、再上移动)",
+          "kalibracja_50": "校准后移动到 50 %",
           "predkosc_lewa": "电机速度 – 左",
           "predkosc_prawa": "电机速度 – 右",
           "brama_minuty": "大门开启过久的时间",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = 自动:根据电机速度、校准或实际移动。",
+          "kalibracja_50": "遮阳会停在一半,一眼就能看出校准已完成。默认关闭。",
           "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "完整行程时间",
           "kalibruj": "立即校准(遮阳会上、下、再上移动)",
+          "kalibracja_50": "校准后移动到 50 %",
           "predkosc_lewa": "电机速度 – 左",
           "predkosc_prawa": "电机速度 – 右",
           "brama_minuty": "大门开启过久的时间",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = 自动:根据电机速度、校准或实际移动。",
+          "kalibracja_50": "遮阳会停在一半,一眼就能看出校准已完成。默认关闭。",
           "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}:校准后电机已移动 {ruchy} 次。请在设备上点击「校准」。"
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}:校准完成。完整行程需要 {czas} 秒。"
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}:校准失败 – 电机未在 {maks} 秒内到位。请检查电机后重试。"
     },
     "brama_otwarta": {
       "message": "{nazwa}:大门已开启超过 {minuty} 分钟。"

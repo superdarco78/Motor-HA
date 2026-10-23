@@ -132,6 +132,7 @@
         "data": {
           "czas": "Tempo de curso completo",
           "kalibruj": "Calibrar agora (o estore sobe, desce e sobe)",
+          "kalibracja_50": "Após a calibração, ir para 50 %",
           "predkosc_lewa": "Velocidade do motor – esquerdo",
           "predkosc_prawa": "Velocidade do motor – direito",
           "brama_minuty": "Portão aberto tempo demais após",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automático: pela velocidade do motor, calibração ou movimentos reais.",
+          "kalibracja_50": "O estore para a meio e vê-se logo que a calibração terminou. Desligado por predefinição.",
           "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Tempo de curso completo",
           "kalibruj": "Calibrar agora (o estore sobe, desce e sobe)",
+          "kalibracja_50": "Após a calibração, ir para 50 %",
           "predkosc_lewa": "Velocidade do motor – esquerdo",
           "predkosc_prawa": "Velocidade do motor – direito",
           "brama_minuty": "Portão aberto tempo demais após",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automático: pela velocidade do motor, calibração ou movimentos reais.",
+          "kalibracja_50": "O estore para a meio e vê-se logo que a calibração terminou. Desligado por predefinição.",
           "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: o motor fez {ruchy} movimentos desde a calibração. Prima «Calibrar» no dispositivo."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: calibração concluída. Um percurso completo demora {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: a calibração falhou – o motor não chegou em {maks} s. Verifique o motor e tente de novo."
     },
     "brama_otwarta": {
       "message": "{nazwa}: o portão está aberto há mais de {minuty} min."

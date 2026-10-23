@@ -132,6 +132,7 @@
         "data": {
           "czas": "Full travel time",
           "kalibruj": "Calibrate now (the shade goes up, down and up)",
+          "kalibracja_50": "After calibration, move to 50 %",
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
           "brama_minuty": "Gate open too long after",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automatic: from the motor speed, calibration or real moves.",
+          "kalibracja_50": "The shade stops halfway, so you can see right away that calibration is done. Off by default.",
           "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Full travel time",
           "kalibruj": "Calibrate now (the shade goes up, down and up)",
+          "kalibracja_50": "After calibration, move to 50 %",
           "predkosc_lewa": "Motor speed – left",
           "predkosc_prawa": "Motor speed – right",
           "brama_minuty": "Gate open too long after",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automatic: from the motor speed, calibration or real moves.",
+          "kalibracja_50": "The shade stops halfway, so you can see right away that calibration is done. Off by default.",
           "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: the motor made {ruchy} moves since calibration. Press “Calibrate” on the device."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: calibration done. A full run takes {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: calibration failed – the motor did not finish within {maks} s. Check the motor and try again."
     },
     "brama_otwarta": {
       "message": "{nazwa}: the gate has been open for more than {minuty} min."

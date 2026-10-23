@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.1.4"
+VERSION = "2.1.5"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
@@ -64,6 +64,7 @@ CONF_PREDKOSC_LEWA = "predkosc_lewa"
 CONF_PREDKOSC_PRAWA = "predkosc_prawa"
 CONF_CZAS = "czas"
 CONF_KALIBRUJ = "kalibruj"
+CONF_KALIBRACJA_50 = "kalibracja_50"   # po udanej kalibracji osłona staje na 50 % (domyślnie nie)
 CONF_POGODA = "pogoda"
 CONF_ODWROC = "odwroc"
 CONF_NA_PANEL = "na_panel"

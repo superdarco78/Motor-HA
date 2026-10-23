@@ -35,6 +35,7 @@ from homeassistant.helpers.event import async_track_state_change_event
 from .const import (
     BRAMY,
     CONF_CZAS,
+    CONF_KALIBRACJA_50,
     CONF_KALIBRUJ,
     CONF_KARTA,
     CONF_KOLOR,
@@ -256,19 +257,29 @@ class MotorCover(CoverEntity):
         for n, (usluga, cel) in enumerate((("open_cover", 100), ("close_cover", 0), ("open_cover", 100))):
             el = await self._jedz(usluga, cel, n == 0)
             if el is None:
-                persistent_notification.async_create(
-                    self.hass, f"{self._entry.title}: > {KALIBRACJA_MAKS} s", title="Motor HA ⚠️", notification_id=nid)
+                await self._koniec_kalibracji(nid, "kalibracja_blad", {"maks": KALIBRACJA_MAKS})
                 self._zapisz_kalibracje(None)
                 return
             if n:
                 wyniki.append(el)
         czas = round(sum(wyniki) / len(wyniki), 1)
-        persistent_notification.async_create(self.hass, f"{self._entry.title}: {czas} s", title="Motor HA ✅",
-                                             notification_id=nid)
+        await self._koniec_kalibracji(nid, "kalibracja_ok", {"czas": f"{czas:g}"})
+        if self._entry.options.get(CONF_KALIBRACJA_50) and self._typ not in BRAMY \
+                and self.supported_features & CoverEntityFeature.SET_POSITION:
+            await self.async_set_cover_position(position=50)   # widać, że kalibracja się skończyła
         self._zapisz_kalibracje(czas)
         if w := self.hass.data[DOMAIN]["wpisy"].get(self._entry.entry_id):
             if w.auto:
                 await w.auto.async_kalibracja_zrobiona()
+
+    async def _koniec_kalibracji(self, nid: str, rodzaj: str, dane: dict[str, Any]) -> None:
+        """Powiadomienie po kalibracji: w HA i na telefon (jeśli wybrany w „Powiadomieniach”)."""
+        w = self.hass.data[DOMAIN]["wpisy"].get(self._entry.entry_id)
+        if w and w.powiadomienia:
+            await w.powiadomienia.wyslij(rodzaj, dane, nid, ok=rodzaj == "kalibracja_ok")
+            return
+        persistent_notification.async_create(self.hass, f"{self._entry.title}: {dane.get('czas', '⚠️')} s",
+                                             title="Motor HA", notification_id=nid)
 
     @callback
     def _zapisz_kalibracje(self, czas: float | None) -> None:

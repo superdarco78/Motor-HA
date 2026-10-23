@@ -132,6 +132,7 @@
         "data": {
           "czas": "Czas pełnego przejazdu",
           "kalibruj": "Kalibruj teraz (osłona pojedzie w górę, w dół i w górę)",
+          "kalibracja_50": "Po kalibracji ustaw osłonę na 50 %",
           "predkosc_lewa": "Prędkość silnika – lewy",
           "predkosc_prawa": "Prędkość silnika – prawy",
           "brama_minuty": "Brama otwarta za długo po",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automatycznie: z prędkości silnika, z kalibracji albo z prawdziwych ruchów.",
+          "kalibracja_50": "Osłona stanie w połowie – od razu widać, że kalibracja się skończyła. Domyślnie wyłączone.",
           "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Czas pełnego przejazdu",
           "kalibruj": "Kalibruj teraz (osłona pojedzie w górę, w dół i w górę)",
+          "kalibracja_50": "Po kalibracji ustaw osłonę na 50 %",
           "predkosc_lewa": "Prędkość silnika – lewy",
           "predkosc_prawa": "Prędkość silnika – prawy",
           "brama_minuty": "Brama otwarta za długo po",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automatycznie: z prędkości silnika, z kalibracji albo z prawdziwych ruchów.",
+          "kalibracja_50": "Osłona stanie w połowie – od razu widać, że kalibracja się skończyła. Domyślnie wyłączone.",
           "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: silnik zrobił {ruchy} ruchów od kalibracji. Naciśnij „Kalibruj” na urządzeniu."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: kalibracja zakończona. Pełny przejazd trwa {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: kalibracja się nie udała – silnik nie dojechał w {maks} s. Sprawdź silnik i spróbuj jeszcze raz."
     },
     "brama_otwarta": {
       "message": "{nazwa}: brama jest otwarta dłużej niż {minuty} min."
