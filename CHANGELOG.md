@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.6 – Przegrody, ściana w kolorze i „Ustaw jak zaleca”
+
+- 🧱 Krok „Układ”: przy każdej przerwie między polami wybór „Brak / Słupek / Ściana” (w poziomie „Brak / Belka / Ściana”), osobno dla każdej przerwy, pokazuje się sam przy 2 i więcej polach; szerokość ściany suwakiem
+- 🎨 Krok „Kolory”: kolor ściany między oknami (biała, beżowa, szara, cegła, grafit) – na rysunku i na karcie; słupek ma kolor ramy
+- ✨ Krok „Pola”: przycisk „Ustaw jak zaleca” – lewy silnik w lewe pola, prawy w prawe, czujnik okna przy każdym silniku
+- 🔕 Nowe urządzenie: powiadomienia i telefony domyślnie wyłączone
+
 ## v2.2.5 – Układ na dużym rysunku, przeciąganie pól i podpisy kroków
 
 - 🪟 Krok „Układ” na komputerze: słupki, belki i podziały ustawia się wprost na dużym rysunku z prawdziwymi osłonami

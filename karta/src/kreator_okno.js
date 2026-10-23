@@ -1,7 +1,7 @@
 // Kreator graficzny Motor HA (2.2.0): dziesięć kroków z obrazkami zamiast list, żywy podgląd okna,
 // układ okna jako siatka pól (do 4 × 3) edytowana palcem. Otwiera się nad okienkiem „Dodaj urządzenie”
 // i „Konfiguruj” (kreator.js), a gotowe ustawienia wysyła jak zwykłą odpowiedź kroku integracji (pole „kreator”).
-import { KOLORY, RAMA_Z_KLUCZA, GRUPY, BRAMY, czyBrama, czyZew } from './stale.js';
+import { KOLORY, RAMA_Z_KLUCZA, GRUPY, BRAMY, SCIANY, czyBrama, czyZew } from './stale.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
 import { rysunekBramy } from './brama.js';
 
@@ -211,6 +211,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .przel{width:40px;height:22px;border-radius:11px;background:var(--line);position:relative;flex:0 0 auto;transition:background .15s}
 .przel::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.3)}
 .wiersz:not(.wyl) .przel{background:var(--primary)} .wiersz:not(.wyl) .przel::after{left:21px}
+.przeg{margin-top:6px} .przeg .sek{margin:8px 0 6px} .przeg .sek small{font-weight:400;color:var(--fg2)} .przeg .suw{padding:8px 4px 0;margin:0}
 .suw{display:flex;align-items:center;gap:10px;padding:0 12px 10px 64px;margin-top:-6px;margin-bottom:8px;color:var(--fg2);font-size:12px}
 .suw input{flex:1;min-width:0;accent-color:var(--primary)}
 .suw span{min-width:44px;text-align:end}
@@ -260,7 +261,7 @@ export class MotorHaKreator extends HTMLElement {
     delete o.uklad; delete o.pola;
     S.brama = czyBrama(o.oslona) || this._oslona(S.rolety[0])?.brama;
     S.szablon = szablon(S.u);
-    if (d.nowy) this._podpowiedzi();
+    if (d.nowy) { o.powiadom = []; o.powiadom_gdzie = []; this._podpowiedzi(); }   // nowe urządzenie: powiadomienia wyłączone, wybiera się samemu
     const kroki = this.kroki();
     const k = kroki.indexOf(p.krok);
     S.krok = k < 0 ? 0 : k;
@@ -323,10 +324,15 @@ export class MotorHaKreator extends HTMLElement {
     S.pola = Array.from({ length: ile }, (_, i) => {
       const p = { ...(S.pola[i] || {}) };
       if ((podpowiedz || nowyUklad || !p.silnik) && R.length) p.silnik = silnikPola(i);
-      if (podpowiedz && !p.czujnik && kolejne[i] && !S.pola.some((q, j) => j !== i && q?.czujnik === kolejne[i])) p.czujnik = kolejne[i];
       p.tryb ||= 'uchyl';
       return p;
     });
+    // czujniki okien: po jednym na każdy silnik (pierwsze pole silnika), potem w pozostałe pola
+    if (podpowiedz) {
+      const kolejnosc = [...S.pola.map((p, i) => i).filter((i, _, a) => a.findIndex(j => S.pola[j].silnik === S.pola[i].silnik) === i), ...S.pola.map((p, i) => i)];
+      const wolne = kolejne.filter(c => !S.pola.some(q => q.czujnik === c));
+      for (const i of [...new Set(kolejnosc)]) if (!S.pola[i].czujnik && wolne.length) S.pola[i].czujnik = wolne.shift();
+    }
   }
 
   // --- rysunki ---
@@ -406,7 +412,7 @@ export class MotorHaKreator extends HTMLElement {
     if (k === 'uklad' && this._szeroko && r.getElementById('edSvg') && this._bezSceny) return;
     const sc = this._szeroko ? this._scena(k) : '';
     r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
-    r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && S.szablon === 'w') && !jedenDuzy ? this._podgladMaly() : '';
+    r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && (S.szablon === 'w' || prostokaty(S.u).length > 1)) && !jedenDuzy ? this._podgladMaly() : '';
   }
   // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
   _scena(k) {
@@ -494,7 +500,7 @@ export class MotorHaKreator extends HTMLElement {
   str_uklad() {
     const S = this.S, t = this.t;
     // szeroki ekran: edytuje się prosto na dużym rysunku z boku, tu zostają szablony
-    const ed = S.szablon === 'w' && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
+    const ed = (S.szablon === 'w' || prostokaty(S.u).length > 1) && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
       ${this._edytorCaly()}<div class="sek">${esc(t.zSzablonu)}</div>` : '';
     return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? 'wyb' : ''}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc(dziel(t.uklady[k]))}</b></button>`).join('')}
       <button class="kaf ${S.szablon === 'w' ? 'wyb' : ''}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc(t.uklady.wlasny)}</b></button></div>`;
@@ -513,9 +519,9 @@ export class MotorHaKreator extends HTMLElement {
   }
   str_kolory() {
     const S = this.S, T = this.T, t = this.t;
-    const wr = this._wybR(), wybrany = (co, k) => co === 'kolor' && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === 'kolor' ? 'kolor_wlasny' : 'rama_wlasna'];
+    const wr = this._wybR(), wybrany = (co, k) => co === 'kolor' && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === 'kolor' ? 'kolor_wlasny' : co + '_wlasna'];
     const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map(k => `<button class="probka ${wybrany(co, k) ? 'wyb' : ''}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc(dziel(nazwy[k] || k))}</button>`).join('')}</div>`;
-    return this._wyborPola() + `<div class="sek">${esc(t.oslona)}</div>${rzad('kolor', KOLORY_TAB, k => KOLORY[k], T.kolory)}<div class="sek">${esc(t.rama)}</div>${rzad('rama', RAMY_TAB, k => RAMA_Z_KLUCZA[k], T.ramy)}`;
+    return this._wyborPola() + `<div class="sek">${esc(t.oslona)}</div>${rzad('kolor', KOLORY_TAB, k => KOLORY[k], T.kolory)}<div class="sek">${esc(t.rama)}</div>${rzad('rama', RAMY_TAB, k => RAMA_Z_KLUCZA[k], T.ramy)}${wr === null && przerwy(S.u).some(p => p[4] === 'mur') ? `<div class="sek">${esc(t.sciana)}</div>${rzad('sciana', Object.keys(SCIANY), k => SCIANY[k], t.sciany)}` : ''}`;
   }
   // „Rodzaj” i „Kolory”: całe okno albo jedno pole (dotknij pola na rysunku)
   _wybR() { const S = this.S; return S.brama || S.wybR == null || S.wybR >= prostokaty(S.u).length ? null : S.wybR; }
@@ -531,6 +537,7 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S, t = this.t;
     return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p>${this._szeroko ? '' : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc(t.zamienPodpis)}</p>
+      ${S.rolety.length > 1 ? `<div style="display:flex;justify-content:center;margin-top:8px"><button class="chip" data-zaleca="1">✨ ${esc(t.jakZaleca)}</button></div>` : ''}
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
@@ -683,7 +690,7 @@ export class MotorHaKreator extends HTMLElement {
   _konfigKarty() {
     const S = this.S, o = S.o;
     const pl = S.brama ? null : prostokaty(S.u).map(([x, y, w, h], i) => ({ x, y, w, h, ...(S.pola[i] || {}) }));
-    return { type: 'custom:motor-ha', entity: 'cover.motor_ha_kreator', name: S.tytul || ' ', oslona: o.oslona, kolor: this._kolor(), rama: this._rama(),
+    return { type: 'custom:motor-ha', entity: 'cover.motor_ha_kreator', name: S.tytul || ' ', oslona: o.oslona, kolor: this._kolor(), rama: this._rama(), sciana: o.sciana,
       wysokosc: +o.wysokosc || 260, czas: +o.czas || 'auto', odwroc: !!o.odwroc, ...(pl ? { pola: pl, skrzydla: pl.length } : { skrzydla: 1 }),
       _podglad: { pogoda: 'sunny', pora: 'dzien' } };
   }
@@ -742,10 +749,11 @@ export class MotorHaKreator extends HTMLElement {
   _przerwa(x, y, w, h, typ) {
     const wasko = Math.min(w, h) < 12;
     if (wasko) return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>`;
-    const d = [`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#c9bfb2" stroke="#000" stroke-opacity=".25"/>`];
+    const sc = this.S.o.sciana, cegla = sc === 'cegla', fuga = cegla ? 'stroke="#e9e1d6" stroke-opacity=".7"' : 'stroke="#000" stroke-opacity=".12"';
+    const d = [`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${SCIANY[sc] || '#c9bfb2'}" stroke="#000" stroke-opacity=".25"/>`];
     for (let yy = y + 7, n = 0; yy < y + h; yy += 7, n++) {
-      d.push(`<line x1="${x}" x2="${x + w}" y1="${yy}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
-      for (let xx = x + (n % 2 ? 6 : 12); xx < x + w; xx += 12) d.push(`<line x1="${xx}" x2="${xx}" y1="${yy - 7}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+      d.push(`<line x1="${x}" x2="${x + w}" y1="${yy}" y2="${yy}" ${fuga}/>`);
+      for (let xx = x + (n % 2 ? 6 : 12); xx < x + w; xx += 12) d.push(`<line x1="${xx}" x2="${xx}" y1="${yy - 7}" y2="${yy}" ${fuga}/>`);
     }
     return `<g>${d.join('')}</g>`;
   }
@@ -756,9 +764,17 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S, t = this.t, K = S.u.kol, [c, j] = this._gdzie(Math.min(S.wyb, prostokaty(S.u).length - 1)), w = [];
     const cm = c < K.length - 1 ? c : c - 1, k = K[c];
     const sw = K.reduce((a, x) => a + x.w, 0), sr = k.r.reduce((a, b) => a + b, 0);
-    if (cm >= 0) { const v = Math.round((+K[cm].mur || 0) / sw * 100); w.push(`<div class="suw"><span class="et">${esc(t.slupek)}</span><input type="range" min="0" max="40" step="1" value="${v}" data-przerwa="mur:${cm}" aria-label="${esc(t.slupek)}"><span>${v ? v + ' %' : esc(t.brak)}</span></div>`); }
+    // przegroda: brak / słupek (belka) w kolorze ramy / ściana – każda przerwa osobno, obok i pod wybranym polem
+    const blok = (tytul, gdzie, typ, id, v, waski) => {
+      const rodzaj = !v ? 'brak' : v <= 3 ? 'waski' : 'sciana', nz = t.przegRodzaj;
+      return `<div class="przeg"><div class="sek">${esc(tytul)} <small>· ${esc(gdzie)}</small></div><div class="chipy">${[['brak', nz.brak], ['waski', nz[waski]], ['sciana', nz.sciana]]
+        .map(([r, n]) => `<button class="chip ${rodzaj === r ? 'wyb' : ''}" data-przeg="${typ}:${id}:${r}">${esc(n)}</button>`).join('')}</div>
+        ${rodzaj === 'sciana' ? `<div class="suw"><span class="et">${esc(t.szerokosc)}</span><input type="range" min="4" max="${typ.startsWith('mur') ? 40 : 30}" step="1" value="${v}" data-przerwa="${typ}:${id}" aria-label="${esc(t.szerokosc)}"><span>${v} %</span></div>` : ''}</div>`;
+    };
+    const nr = Math.min(S.wyb, prostokaty(S.u).length - 1) + 1;
+    if (cm >= 0) w.push(blok(t.przegPion, wstaw(t.obokPola, nr), 'mur', `${cm}:0`, Math.round((+K[cm].mur || 0) / sw * 100), 'slupek'));
     const jb = j < k.r.length - 1 ? j : j - 1;
-    if (jb >= 0) { const v = Math.round((+k.bel?.[jb] || 0) / sr * 100); w.push(`<div class="suw"><span class="et">${esc(t.belka)}</span><input type="range" min="0" max="30" step="1" value="${v}" data-przerwa="bel:${c}:${jb}" aria-label="${esc(t.belka)}"><span>${v ? v + ' %' : esc(t.brak)}</span></div>`); }
+    if (jb >= 0) w.push(blok(t.przegPoz, wstaw(t.podPolem, nr), 'bel', `${c}:${jb}`, Math.round((+k.bel?.[jb] || 0) / sr * 100), 'belka'));
     return w.join('');
   }
   _odswiezUklad(bezSuwakow) {
@@ -782,6 +798,11 @@ export class MotorHaKreator extends HTMLElement {
     }
     if (op === 'poz' && k.r.length < 3) { const h = k.r[i] / 2; k.r.splice(i, 1, h, h); (k.bel = k.bel || []).splice(i, 0, 0); }
     if (op === 'pion' && K.length < 4) { k.w /= 2; K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol, bel: [...(k.bel || [])], mur: k.mur || 0 }); k.mur = 0; }
+    if (op === 'sciana' && K.length > 1) {   // ściana obok wybranego pola: jest → zabierz, nie ma → 12 % szerokości
+      const cm = c < K.length - 1 ? c : c - 1, sw = K.reduce((a, x) => a + x.w, 0);
+      K[cm].mur = +K[cm].mur > 0 ? 0 : sw * .12;
+      if (K[cm].mur && !this.S.o.sciana) this.S.o.sciana = 'biala';
+    }
     if (op === 'usun' && P.length > 1) {
       if (k.r.length > 1) { const h = k.r.splice(i, 1)[0]; k.r[Math.max(0, i - 1)] += h + (+k.bel?.[Math.min(i, k.r.length - 1)] || 0); k.bel?.splice(Math.min(i, k.r.length - 1), 1); }
       else { const u = K.splice(c, 1)[0]; K[Math.max(0, c - 1)].w += u.w + (+u.mur || 0); if (c >= K.length && K.length) K[K.length - 1].mur = 0; }
@@ -953,6 +974,7 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
     if (d.x) return this._p.zamknij();
     if (d.krok !== undefined) return this._idz(+d.krok);
+    if (d.zaleca) { S.pola = S.pola.map(p => ({ ...p, silnik: undefined, czujnik: undefined })); this._dopasujPola(true); return this.rysuj(); }
     if (b.id === 'wstecz') return this._idz(Math.max(0, S.krok - 1));
     if (b.id === 'dalej') return S.krok < kroki.length - 1 ? this._idz(S.krok + 1) : this._zapisz(b);
     if (b.id === 'mierz') return this._mierz();
@@ -994,6 +1016,15 @@ export class MotorHaKreator extends HTMLElement {
     else if (d.kolor) { o.kolor = d.kolor; delete o.kolor_wlasny; }
     else if (d.calosc) S.wybR = null;
     else if (d.rama) { o.rama = d.rama; delete o.rama_wlasna; }
+    else if (d.sciana) o.sciana = d.sciana;
+    else if (d.przeg) {   // rodzaj przegrody: brak / słupek 2 % / ściana 12 % (belka 10 %)
+      const [typ, c, j, r] = d.przeg.split(':'), K = S.u.kol, mur = typ === 'mur', k = K[+c];
+      const v = r === 'brak' ? 0 : r === 'waski' ? 2 : mur ? 12 : 10, cal = mur ? K.reduce((a, x) => a + x.w, 0) : k.r.reduce((a, b) => a + b, 0);
+      if (mur) k.mur = v / 100 * cal; else { k.bel = k.bel || []; k.bel[+j] = v / 100 * cal; }
+      if (r === 'sciana' && !o.sciana) o.sciana = 'biala';
+      S.szablon = 'w';
+      return this._odswiezUklad();
+    }
     else if (d.pole !== undefined && ['rodzaj', 'kolory'].includes(kroki[S.krok])) S.wybR = this._wybR() === +d.pole ? null : +d.pole;
     else if (d.pole !== undefined) { S.arkusz = +d.pole; S.wszystkie = false; }
     else if (d.zamknij) { S.arkusz = null; S.arkuszC = null; S.wszystkie = false; }

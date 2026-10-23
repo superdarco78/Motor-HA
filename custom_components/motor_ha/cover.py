@@ -67,7 +67,7 @@ from .urzadzenie import Wpis, info_urzadzenia
 
 # klucze przekazywane karcie bez zmian
 PROSTE = ["czujnik_lewe", "czujnik_prawe", "tryb_lewe", "tryb_prawe", "predkosc_lewa", "predkosc_prawa",
-          CONF_OSLONA, CONF_KOLOR, CONF_ODWROC, "rodzaj_pokoju", "foto_stan", CONF_OSOBNO]
+          CONF_OSLONA, CONF_KOLOR, CONF_ODWROC, "rodzaj_pokoju", "foto_stan", CONF_OSOBNO, "sciana"]
 SLONECZNE = ("f_slonce", "f_oslepianie", "f_upal", "f_zima", "f_jasnosc", "f_temp_pokoj")
 
 
