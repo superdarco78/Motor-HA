@@ -3,7 +3,7 @@
 
 import { GRUPY_KAFLI } from './kafle.js';
 
-export const WERSJA = '2.2.7';
+export const WERSJA = '2.2.8';
 
 // Rodzaje osłon w grupach jak w katalogach producentów (te same grupy i obrazki co w kreatorze, kafle.js).
 export const GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
@@ -14,6 +14,9 @@ export const GARAZE = [...GRUPY.brama.garaze];
 // rodzaje z 2.2.7 rysowane i animowane w karcie jak najbliższy rodzaj bazowy (osobne animacje w następnej wersji)
 export const BAZA = { roleta_zip_wew: 'kasetowa', bambusowa: 'pelna', plisa_gora_dol: 'plisa', zaslona_wave: 'zaslona', firana: 'zaslona', panel: 'pionowa', ekran: 'pelna', dach_dkl: 'zaciemniajaca', dach_ssl: 'natynkowa', dachowa: 'natynkowa', dach_fhb: 'rzymska', dach_msl: 'screen', markizeta_dach: 'screen', dach_pal: 'zaluzja', dach_fhl: 'plisa', dach_dn: 'zebra', natynkowa_okragla: 'natynkowa', adaptacyjna: 'zewnetrzna', roleta_moskitiera: 'natynkowa', ekstrudowana: 'natynkowa', roleta_drzwi: 'natynkowa', fasadowa_f80: 'fasadowaz', markizoleta: 'screen', okiennice: 'zewnetrzna', okiennice_przesuwne: 'zewnetrzna', markiza_otwarta: 'markiza', markiza_polkasetowa: 'markiza', markiza_kasetowa: 'markiza', markiza_volant: 'markiza', markiza_koszowa: 'markiza', markiza_wolnostojaca: 'markiza', markiza_zimowa: 'markiza', markizeta: 'markiza', markiza_balkonowa: 'markiza', markiza_pionowa: 'markiza', markiza_boczna: 'markiza', zagiel: 'markiza', parasol: 'markiza', pergola: 'fasadowaz', pergola_tkanina: 'markiza', zadaszenie: 'markiza', screen_taras: 'screen', okno_silownik: 'screen', okno_dachowe: 'screen', okno_plaskie: 'screen', swietlik: 'screen', wylaz: 'screen', moskitiera: 'screen', moskitiera_plisa_okno: 'screen', moskitiera_drzwi: 'screen', moskitiera_zip_drzwi: 'screen', furtka: 'skrzydlowa', garaz_boczna: 'segmentowa', garaz_skrzydlowa: 'uchylna', szlaban: 'przesuwna' };
 export const baza = t => BAZA[t] || t;
+// rodzaje z własnym rysunkiem i ruchem w karcie (kafle_ruch.js): tarasy, okna i nowe bramy – bez rysowania okna
+const Z_SCENA = new Set(['taras', 'okna'].flatMap(g => Object.values(GRUPY[g]).flat()));
+export const wlasnyRuch = t => !!t && t !== baza(t) && (Z_SCENA.has(t) || czyBrama(t));
 // osłony, które zasuwają się w bok (żaluzja pionowa, zasłona), a nie w dół
 export const POZIOME = ['pionowa', 'zaslona'];
 // kolor ściany (muru) między oknami

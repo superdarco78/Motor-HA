@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.8 – Animacje każdego rodzaju i zdjęcia w kreatorze
+
+- 🎬 Każdy rodzaj otwiera się po swojemu: markizy wysuwają się na ramionach, okna dachowe i z siłownikiem się uchylają, świetlik podnosi kopułę, parasol i żagiel się rozkładają, szlaban podnosi ramię, furtka i bramy garażowe boczne/dwuskrzydłowe jadą jak w rzeczywistości
+- 🃏 Karta: tarasy, okna z napędem i nowe bramy mają własny rysunek, który jedzie razem z silnikiem (rolety i żaluzje w oknie bez zmian)
+- 🖼️ Krok „Rodzaj”: zdjęcia rodzajów (wygenerowane przez AI w Canvie); rodzaje bez zdjęcia mają dalej rysunek
+- ▶️ Kreator: przy nowych rodzajach podgląd pokazuje w kółko otwieranie i zamykanie
+
 ## v2.2.7 – Katalog rodzajów jak u producentów
 
 - 🖼️ Krok „Rodzaj”: realistyczne obrazki i nazwy w grupach jak w katalogach (wewnątrz, na zewnątrz, okna dachowe, taras i ogród, okna z napędem, moskitiery, brama i garaż)

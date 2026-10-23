@@ -1,6 +1,7 @@
 // Karta Motor HA: okno z osłoną. Osłona jedzie w tempie silnika, za szybą pogoda i pora dnia, czujniki pokazują otwarte okno.
-import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno, SCIANY, baza } from './stale.js';
+import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno, SCIANY, baza, wlasnyRuch } from './stale.js';
 import { rysunekBramy, ustawBrame, ustawFotokomorke } from './brama.js';
+import { kafelRuch } from './kafle_ruch.js';
 import { STYL_STALY, stylOkna, stylPola } from './styl.js';
 import { kolorNieba, poraDnia, pogoda, widokSvg, NIEBO_Z_POGODY } from './scena.js';
 import { Ruch, czasPrzejazdu } from './ruch.js';
@@ -64,13 +65,13 @@ export class MotorHaKarta extends HTMLElement {
     const c = this._cfg = this._ustawienia;
     this._jez = jezyk(c, this._hass);
     const czl = this._skrzydla(c);
-    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
     if (klucz !== this._klucz) { this._klucz = klucz; this._zbuduj(c, czl); }
     this._aktualizuj(c, czl);
   }
 
   _zbuduj(c, czl) {
-    if (czyBrama(c.oslona)) return this._zbudujBrame(c, czl);
+    if (czyBrama(c.oslona) || (wlasnyRuch(c.rodzaj) && !polaOkna(c))) return this._zbudujBrame(c, czl);
     const T = this._T, n = czl.length, zew = czyZew(c.oslona), rama = ramaHex(c.rama), kolor = hex(c.kolor);
     this._brama = false; this._poziomo = POZIOME.includes(c.oslona);
     // suwak w kierunku ruchu: góra-dół – pionowy obok okna, na boki (i bramy) – poziomy pod przyciskami
@@ -191,6 +192,8 @@ export class MotorHaKarta extends HTMLElement {
   _zbudujBrame(c, czl) {
     const T = this._T, root = this.shadowRoot || this.attachShadow({ mode: 'open' });
     this._brama = true; this._uk = false; this._poziomo = false; this._kas = 0; this._brNoc = null;
+    // nowy rodzaj (markiza koszowa, okno dachowe, szlaban…): własny rysunek z kafle_ruch.js, jedzie razem z silnikiem
+    this._scenaRuchu = wlasnyRuch(c.rodzaj) ? c.rodzaj : null; this._ostO = null;
     const st = this._hass.states[c.entity], zPoz = (st?.attributes?.supported_features ?? 0) & 4;
     root.innerHTML = `<style>${STYL_STALY}</style>
 <ha-card class="brama"><div class="mh">
@@ -409,7 +412,8 @@ export class MotorHaKarta extends HTMLElement {
 
   _aktualizujBrame(c, czl, st, pora) {
     const h = this._hass, T = this._T, E = this._el, noc = pora === 'noc' || pora === 'zmierzch';
-    if (noc !== this._brNoc) {
+    if (this._scenaRuchu) E.bramaw.setAttribute('aria-label', T.oslony[c.rodzaj] || '');
+    else if (noc !== this._brNoc) {
       this._brNoc = noc;
       E.bramaw.innerHTML = rysunekBramy(c.oslona, hex(c.kolor), ramaHex(c.rama), noc, !!c.przeszkoda);
       E.svg = E.bramaw.querySelector('svg');
@@ -424,7 +428,7 @@ export class MotorHaKarta extends HTMLElement {
     this._opisStanu = czesci;
     this._automatyka(c, h);
     const otwarte = st.state !== 'closed';
-    E.ikona?.setAttribute('icon', (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.rodzaj] || IKONY[c.oslona]) || 'mdi:gate');
+    E.ikona?.setAttribute('icon', (otwarte && IKONY_OTW[c.rodzaj === c.oslona || czyBrama(c.rodzaj) ? c.oslona : '']) || IKONY[c.rodzaj] || IKONY[c.oslona] || 'mdi:gate');
     E.karta.style.setProperty('--mh-kolor', otwarte ? 'var(--primary-color)' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
     this._animuj();
   }
@@ -456,7 +460,14 @@ export class MotorHaKarta extends HTMLElement {
 
   _rysuj() {
     const E = this._el, ile = E.pola.length;
-    if (this._brama && this._ruchy[0]?.widac !== null) ustawBrame(E.svg, this._cfg.oslona, this._ruchy[0].widac);
+    if (this._brama && this._ruchy[0]?.widac !== null) {
+      const w = this._ruchy[0].widac;
+      if (!this._scenaRuchu) ustawBrame(E.svg, this._cfg.oslona, w);
+      else if (this._ostO === null || Math.abs(w - this._ostO) >= .4 || (w !== this._ostO && (w === 0 || w === 100))) {
+        this._ostO = w;
+        E.bramaw.innerHTML = kafelRuch(this._scenaRuchu, w / 100, hex(this._cfg.kolor), ramaHex(this._cfg.rama));
+      }
+    }
     E.pola.forEach((P, i) => {
       const r = this._ruchy[Math.min(i, this._ruchy.length - 1)]; if (!r || r.widac === null) return;
       const wys = P.p.clientHeight; if (!wys) return;
