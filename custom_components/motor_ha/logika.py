@@ -95,13 +95,17 @@ def pozycja_oslepiania(w: Warunki, p: dict[str, Any]) -> int:
 
 def godziny(w: Warunki, p: dict[str, Any], funkcje: set[str]) -> tuple[datetime, datetime]:
     """Kiedy dziś otworzyć i zamknąć."""
-    if p["harm_tryb"] == "slonce" and w.wschod and w.zachod:
-        przes = timedelta(minutes=float(p["przesuniecie"]))
-        otw, zam = w.wschod + przes, w.zachod - przes
-    elif "dni" in funkcje and w.wolne:
+    # rano i wieczór mogą mieć osobny tryb (kreator 2.2.1); bez nich – wspólny harm_tryb i jedno przesunięcie
+    rano = p.get("harm_rano") or p["harm_tryb"]
+    wieczor = p.get("harm_wieczor") or p["harm_tryb"]
+    if "dni" in funkcje and w.wolne:
         otw, zam = _o(w.teraz, _godz(p["otworz_weekend"])), _o(w.teraz, _godz(p["zamknij_weekend"]))
     else:
         otw, zam = _o(w.teraz, _godz(p["otworz"])), _o(w.teraz, _godz(p["zamknij"]))
+    if rano == "slonce" and w.wschod:
+        otw = w.wschod + timedelta(minutes=float(p.get("przes_otw") if p.get("przes_otw") is not None else p["przesuniecie"]))
+    if wieczor == "slonce" and w.zachod:
+        zam = w.zachod + timedelta(minutes=float(p.get("przes_zam") if p.get("przes_zam") is not None else -float(p["przesuniecie"])))
     if w.wakacje and "wakacje" in funkcje:
         los = timedelta(minutes=w.los)
         otw, zam = otw + los, zam - los
@@ -122,14 +126,14 @@ def decyduj(w: Warunki, typ: str, funkcje: set[str], parametry: dict[str, Any] |
     # bezpieczeństwo osłon zewnętrznych – ważniejsze niż pauza
     if zew:
         if "wiatr" in f and w.wiatr is not None and w.wiatr >= float(p["wiatr_prog"]):
-            return Decyzja(100, "wiatr", dane={"wiatr": round(w.wiatr), "prog": p["wiatr_prog"]})
+            return Decyzja(int(p.get("wiatr_poz", 100)), "wiatr", dane={"wiatr": round(w.wiatr), "prog": p["wiatr_prog"]})
         if "drgania" in f and w.drgania:
             return Decyzja(100, "drgania")
         if "grad" in f and w.grad:
             # markizy i żaluzje zwijamy, rolety zamykamy – chronią szybę
             return Decyzja(100 if typ in ZWIJA_DESZCZ else 0, "grad")
         if "deszcz" in f and w.deszcz and typ in ZWIJA_DESZCZ:
-            return Decyzja(100, "deszcz")
+            return Decyzja(int(p.get("deszcz_poz", 100)), "deszcz")
         if "mroz" in f and w.temp is not None and w.temp <= float(p["mroz_prog"]):
             return Decyzja(None, "mroz", dane={"temp": round(w.temp, 1)})
 

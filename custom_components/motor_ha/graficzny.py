@@ -76,10 +76,12 @@ POLA_CZUJNIKOW = {"pogoda": CONF_POGODA, "temp": CZUJNIKI["temp"], "obecnosc": C
                   "ruch": CZUJNIKI["ruch"], "wiatr": CZUJNIKI["wiatr"], "deszcz": CZUJNIKI["deszcz"],
                   "jasnosc": CZUJNIKI["jasnosc"], "temp_pokoj": CZUJNIKI["temp_pokoj"], "foto": CZUJNIKI["foto"],
                   "drzwi": CZUJNIKI["drzwi"]}
+# rano i wieczór osobno: o wschodzie/zachodzie (z przesunięciem w minutach, + = później) albo o godzinie
+HARMONOGRAM_KREATORA = ("harm_rano", "harm_wieczor", "przes_otw", "przes_zam")
 PROSTE = {TRYB, MAM, CONF_POKOJ, CONF_RODZAJ_POKOJU, CONF_WYSOKOSC, CONF_OSOBNO, CONF_ODWROC, CONF_CZAS,
           CONF_KALIBRUJ, CONF_KALIBRACJA_50, CONF_POGODA, CONF_OSOBY, CONF_POWIADOM, CONF_POWIADOM_GDZIE,
           CONF_NA_PANEL, CONF_FOTO_STAN, CONF_UKRYJ_ZRODLO, CONF_SWIETA, *CZUJNIKI.values(),
-          *(f"f_{k}" for k in FUNKCJE), *PARAMETRY}
+          *(f"f_{k}" for k in FUNKCJE), *PARAMETRY, *HARMONOGRAM_KREATORA}
 
 
 class ZleDane(ValueError):
@@ -215,7 +217,12 @@ async def dane_kreatora(hass: HomeAssistant, entry_id: str | None, rolety: list[
         oslony.append({"id": s.entity_id, "nazwa": s.name, "pokoj": skan.nazwa_obszaru(hass, a), "area": a,
                        "poz": s.attributes.get("current_position"), "stan": s.state, "brama": skan.czy_brama(s),
                        "lamele": skan.czy_lamele(s), "klasa": s.attributes.get("device_class"),
-                       "zajeta": zajete.get(s.entity_id)})
+                       "zajeta": zajete.get(s.entity_id),
+                       # grupa osłon (np. „Żaluzje salon”) – w polu wybiera się pojedynczy silnik
+                       "grupa": isinstance(s.attributes.get("entity_id"), (list, tuple)),
+                       # silniki w grupie: wybór grupy w kreatorze daje tyle skrzydeł, ile w niej osłon
+                       "czlonkowie": [e for e in s.attributes.get("entity_id") or [] if isinstance(e, str) and e.startswith("cover.")]
+                       if isinstance(s.attributes.get("entity_id"), (list, tuple)) else []})
     pierwsza = rolety[0] if rolety else None
     zn = skan.znajdz(hass)
     pokoj = skan.obszar(hass, pierwsza) if pierwsza else None
@@ -260,6 +267,7 @@ async def ws_mierz(hass: HomeAssistant, conn: websocket_api.ActiveConnection, ms
     if not rolety:
         conn.send_error(msg["id"], "brak_rolety", "No cover")
         return
-    czas, rodzaj, dane = await Pomiar(hass, rolety, [skan.predkosc(hass, e) for e in rolety],
-                                      context=conn.context(msg)).async_zmierz()
-    conn.send_result(msg["id"], {"czas": czas, "wynik": rodzaj, "brak": [_nazwa(hass, e) for e in dane.get("brak", [])]})
+    pomiar = Pomiar(hass, rolety, [skan.predkosc(hass, e) for e in rolety], context=conn.context(msg))
+    czas, rodzaj, dane = await pomiar.async_zmierz()
+    conn.send_result(msg["id"], {"czas": czas, "wynik": rodzaj, "brak": [_nazwa(hass, e) for e in dane.get("brak", [])],
+                                 "silniki": [{"nazwa": _nazwa(hass, e), "czas": c} for e, c in pomiar.czasy.items()] if czas else []})

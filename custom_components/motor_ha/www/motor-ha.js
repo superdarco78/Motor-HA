@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.2.0";
+  var WERSJA = "2.2.1";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -380,7 +380,8 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 /* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
 .okno.uk{background:none!important;box-shadow:none!important;padding:0}
 .uk .kolr{position:absolute;border-radius:3px}
-.uk .skrz{position:absolute;flex:none;margin:0;padding:5px}
+.uk .mur{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.12) 9px 10px),color-mix(in srgb,var(--secondary-text-color,#888) 30%,var(--card-background-color,#fff));border-radius:2px}
+.uk .skrz{position:absolute;flex:none;margin:0;padding:5px;overflow:hidden}
 .uk .za{inset:auto}
 .uk .wid{position:absolute}
 .uk .zewo .szyba{position:absolute;flex:none}
@@ -1171,7 +1172,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Gotowe"
       },
       podpisy: {
-        silnik: "Pokazuję tylko osłony, które jeszcze nie są w Motor HA.",
+        silnik: "Wszystkie osłony z Home Assistanta. Użyte już w innym urządzeniu mają podpis.",
         uklad: "Dotknij najbliższy układ.",
         przypisz: "Każde pole: silnik i czujnik. Podpowiedzi są już wpisane.",
         czujniki: "Znalezione w pokoju i w domu. Dotknij, żeby wyłączyć albo zmienić.",
@@ -1228,7 +1229,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Wieczorem zamknij",
         slonce: "Chroń przed słońcem",
         blokada: "Nie zamykaj na otwarte okno",
-        wietrzenie: "Uchylone okno = osłona do połowy",
+        wietrzenie: "Uchylone okno = podnieś osłonę",
         wiatr: "Silny wiatr = zwiń",
         deszcz: "Deszcz = zwiń"
       },
@@ -1279,7 +1280,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Bez telefonu powiadomienia są tylko w Home Assistancie.",
       naPanel: "Dodaj na panel",
       nazwa: "Nazwa",
-      zapisano: "Zapisano ✓"
+      zapisano: "Zapisano ✓",
+      wszystkie: "Pokaż wszystkie",
+      prog: "Próg",
+      pozycja: "Pozycja",
+      odTemp: "od temp.",
+      zrodlo: "Źródło",
+      przypiszPodpis: "Dotknij skrzydła na rysunku: wybierz silnik i czujnik okna.",
+      wschodSlonca: "Wschód słońca",
+      zachodSlonca: "Zachód słońca",
+      godzina: "Godzina",
+      przesuniecie: "Przesunięcie",
+      poWsch: "{0} min po wschodzie",
+      przedWsch: "{0} min przed wschodem",
+      poZach: "{0} min po zachodzie",
+      przedZach: "{0} min przed zachodem",
+      oknaWieczorem: "Wieczorem przy czujnikach okien",
+      nieZjedzie: "nie zjedzie",
+      zjedzieDo: "zjedzie do {0} %",
+      zjedzieNormalnie: "zjedzie normalnie",
+      pozniej: "Gdy zamkniesz okno, osłona dojedzie sama.",
+      kazdy: "Każdy silnik osobno",
+      slupek: "Słupek / mur",
+      belka: "Belka",
+      brak: "brak",
+      wUrzadzeniu: "też w: {0}",
+      grupa: "grupa",
+      calyPokoj: "Cały pokój: {0}",
+      bezPokoju: "Bez pokoju",
+      pojedyncze: "Pojedyncze",
+      grupaIle: "grupa · {0} skrzydła",
+      przeciagnij: "Przeciągnij, żeby zamienić",
+      zamienPodpis: "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami."
     }
   };
 
@@ -1582,7 +1614,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Done"
       },
       podpisy: {
-        silnik: "Only covers that are not in Motor HA yet are shown.",
+        silnik: "All covers from Home Assistant. Ones already used in another device are labelled.",
         uklad: "Tap the closest layout.",
         przypisz: "Each pane: a motor and a sensor. Suggestions are already filled in.",
         czujniki: "Found in the room and in the home. Tap to turn off or change.",
@@ -1639,7 +1671,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Close in the evening",
         slonce: "Protect from the sun",
         blokada: "Don’t close on an open window",
-        wietrzenie: "Tilted window = cover halfway",
+        wietrzenie: "Tilted window = raise the cover",
         wiatr: "Strong wind = retract",
         deszcz: "Rain = retract"
       },
@@ -1690,7 +1722,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Without a phone, notifications appear only in Home Assistant.",
       naPanel: "Add to dashboard",
       nazwa: "Name",
-      zapisano: "Saved ✓"
+      zapisano: "Saved ✓",
+      wszystkie: "Show all",
+      prog: "Threshold",
+      pozycja: "Position",
+      odTemp: "from temp.",
+      zrodlo: "Source",
+      przypiszPodpis: "Tap a sash in the drawing to pick its motor and window sensor.",
+      wschodSlonca: "Sunrise",
+      zachodSlonca: "Sunset",
+      godzina: "Time",
+      przesuniecie: "Offset",
+      poWsch: "{0} min after sunrise",
+      przedWsch: "{0} min before sunrise",
+      poZach: "{0} min after sunset",
+      przedZach: "{0} min before sunset",
+      oknaWieczorem: "In the evening, with window sensors",
+      nieZjedzie: "won't close",
+      zjedzieDo: "closes to {0} %",
+      zjedzieNormalnie: "closes as usual",
+      pozniej: "Once you close the window, the cover finishes on its own.",
+      kazdy: "Each motor separately",
+      slupek: "Mullion / wall",
+      belka: "Transom",
+      brak: "none",
+      wUrzadzeniu: "also in: {0}",
+      grupa: "group",
+      calyPokoj: "Whole room: {0}",
+      bezPokoju: "No room",
+      pojedyncze: "Single",
+      grupaIle: "group · {0} sashes",
+      przeciagnij: "Drag to swap",
+      zamienPodpis: "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them."
     }
   };
 
@@ -1993,7 +2056,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Fertig"
       },
       podpisy: {
-        silnik: "Es werden nur Behänge gezeigt, die noch nicht in Motor HA sind.",
+        silnik: "Alle Beschattungen aus Home Assistant. Bereits in einem anderen Gerät genutzte sind markiert.",
         uklad: "Tippe auf die ähnlichste Aufteilung.",
         przypisz: "Jedes Feld: ein Motor und ein Sensor. Vorschläge sind schon eingetragen.",
         czujniki: "Im Raum und im Zuhause gefunden. Tippe zum Ausschalten oder Ändern.",
@@ -2050,7 +2113,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Abends schließen",
         slonce: "Vor Sonne schützen",
         blokada: "Bei offenem Fenster nicht schließen",
-        wietrzenie: "Gekipptes Fenster = Behang halb",
+        wietrzenie: "Gekipptes Fenster = Behang anheben",
         wiatr: "Starker Wind = einfahren",
         deszcz: "Regen = einfahren"
       },
@@ -2101,7 +2164,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Ohne Telefon erscheinen Benachrichtigungen nur in Home Assistant.",
       naPanel: "Zum Dashboard hinzufügen",
       nazwa: "Name",
-      zapisano: "Gespeichert ✓"
+      zapisano: "Gespeichert ✓",
+      wszystkie: "Alle anzeigen",
+      prog: "Schwelle",
+      pozycja: "Position",
+      odTemp: "ab Temp.",
+      zrodlo: "Quelle",
+      przypiszPodpis: "Tippe auf einen Flügel in der Zeichnung: Motor und Fenstersensor wählen.",
+      wschodSlonca: "Sonnenaufgang",
+      zachodSlonca: "Sonnenuntergang",
+      godzina: "Uhrzeit",
+      przesuniecie: "Versatz",
+      poWsch: "{0} Min. nach Sonnenaufgang",
+      przedWsch: "{0} Min. vor Sonnenaufgang",
+      poZach: "{0} Min. nach Sonnenuntergang",
+      przedZach: "{0} Min. vor Sonnenuntergang",
+      oknaWieczorem: "Abends mit Fenstersensoren",
+      nieZjedzie: "fährt nicht zu",
+      zjedzieDo: "fährt auf {0} %",
+      zjedzieNormalnie: "fährt normal zu",
+      pozniej: "Sobald das Fenster zu ist, fährt der Behang von selbst weiter.",
+      kazdy: "Jeder Motor einzeln",
+      slupek: "Pfosten / Wand",
+      belka: "Kämpfer",
+      brak: "keiner",
+      wUrzadzeniu: "auch in: {0}",
+      grupa: "Gruppe",
+      calyPokoj: "Ganzer Raum: {0}",
+      bezPokoju: "Ohne Raum",
+      pojedyncze: "Einzeln",
+      grupaIle: "Gruppe · {0} Flügel",
+      przeciagnij: "Ziehen zum Tauschen",
+      zamienPodpis: "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze."
     }
   };
 
@@ -2404,7 +2498,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Terminé"
       },
       podpisy: {
-        silnik: "Seuls les stores pas encore dans Motor HA sont affichés.",
+        silnik: "Tous les volets de Home Assistant. Ceux déjà utilisés dans un autre appareil sont signalés.",
         uklad: "Touche la disposition la plus proche.",
         przypisz: "Chaque vantail : un moteur et un capteur. Les suggestions sont déjà remplies.",
         czujniki: "Trouvé dans la pièce et dans la maison. Touche pour désactiver ou changer.",
@@ -2461,7 +2555,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Fermer le soir",
         slonce: "Protéger du soleil",
         blokada: "Ne pas fermer si la fenêtre est ouverte",
-        wietrzenie: "Fenêtre basculée = store à mi-hauteur",
+        wietrzenie: "Fenêtre basculée = remonter le store",
         wiatr: "Vent fort = remonter",
         deszcz: "Pluie = remonter"
       },
@@ -2512,7 +2606,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Sans téléphone, les notifications n’apparaissent que dans Home Assistant.",
       naPanel: "Ajouter au tableau de bord",
       nazwa: "Nom",
-      zapisano: "Enregistré ✓"
+      zapisano: "Enregistré ✓",
+      wszystkie: "Tout afficher",
+      prog: "Seuil",
+      pozycja: "Position",
+      odTemp: "dès temp.",
+      zrodlo: "Source",
+      przypiszPodpis: "Touchez un vantail sur le dessin pour choisir son moteur et son capteur de fenêtre.",
+      wschodSlonca: "Lever du soleil",
+      zachodSlonca: "Coucher du soleil",
+      godzina: "Heure",
+      przesuniecie: "Décalage",
+      poWsch: "{0} min après le lever",
+      przedWsch: "{0} min avant le lever",
+      poZach: "{0} min après le coucher",
+      przedZach: "{0} min avant le coucher",
+      oknaWieczorem: "Le soir, avec les capteurs de fenêtre",
+      nieZjedzie: "ne descend pas",
+      zjedzieDo: "descend à {0} %",
+      zjedzieNormalnie: "descend normalement",
+      pozniej: "Une fois la fenêtre fermée, le volet finit seul.",
+      kazdy: "Chaque moteur séparément",
+      slupek: "Meneau / mur",
+      belka: "Traverse",
+      brak: "aucun",
+      wUrzadzeniu: "aussi dans : {0}",
+      grupa: "groupe",
+      calyPokoj: "Toute la pièce : {0}",
+      bezPokoju: "Sans pièce",
+      pojedyncze: "Individuels",
+      grupaIle: "groupe · {0} vantaux",
+      przeciagnij: "Glisser pour échanger",
+      zamienPodpis: "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger."
     }
   };
 
@@ -2815,7 +2940,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Hotovo"
       },
       podpisy: {
-        silnik: "Zobrazuji jen stínění, která ještě nejsou v Motor HA.",
+        silnik: "Všechna stínění z Home Assistantu. Ta už použitá v jiném zařízení jsou označená.",
         uklad: "Klepni na nejpodobnější rozvržení.",
         przypisz: "Každé pole: motor a senzor. Návrhy jsou už vyplněné.",
         czujniki: "Nalezeno v místnosti a v domě. Klepnutím vypneš nebo změníš.",
@@ -2872,7 +2997,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Večer zavřít",
         slonce: "Chránit před sluncem",
         blokada: "Nezavírat při otevřeném okně",
-        wietrzenie: "Vyklopené okno = stínění napůl",
+        wietrzenie: "Vyklopené okno = zvednout stínění",
         wiatr: "Silný vítr = zatáhnout",
         deszcz: "Déšť = zatáhnout"
       },
@@ -2923,7 +3048,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Bez telefonu se oznámení zobrazí jen v Home Assistantu.",
       naPanel: "Přidat na panel",
       nazwa: "Název",
-      zapisano: "Uloženo ✓"
+      zapisano: "Uloženo ✓",
+      wszystkie: "Zobrazit vše",
+      prog: "Práh",
+      pozycja: "Poloha",
+      odTemp: "od teploty",
+      zrodlo: "Zdroj",
+      przypiszPodpis: "Klepněte na křídlo v nákresu: vyberte motor a čidlo okna.",
+      wschodSlonca: "Východ slunce",
+      zachodSlonca: "Západ slunce",
+      godzina: "Čas",
+      przesuniecie: "Posun",
+      poWsch: "{0} min po východu",
+      przedWsch: "{0} min před východem",
+      poZach: "{0} min po západu",
+      przedZach: "{0} min před západem",
+      oknaWieczorem: "Večer u čidel oken",
+      nieZjedzie: "nesjede",
+      zjedzieDo: "sjede na {0} %",
+      zjedzieNormalnie: "sjede normálně",
+      pozniej: "Když okno zavřete, stínění dojede samo.",
+      kazdy: "Každý motor zvlášť",
+      slupek: "Sloupek / zeď",
+      belka: "Příčník",
+      brak: "žádný",
+      wUrzadzeniu: "také v: {0}",
+      grupa: "skupina",
+      calyPokoj: "Celá místnost: {0}",
+      bezPokoju: "Bez místnosti",
+      pojedyncze: "Jednotlivé",
+      grupaIle: "skupina · {0} křídla",
+      przeciagnij: "Přetáhněte pro záměnu",
+      zamienPodpis: "Chyťte křídlo v nákresu nebo ⠿ u řádku a pusťte na jiné – vymění se."
     }
   };
 
@@ -3226,7 +3382,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Hotovo"
       },
       podpisy: {
-        silnik: "Zobrazujem len tienenia, ktoré ešte nie sú v Motor HA.",
+        silnik: "Všetky tienenia z Home Assistanta. Tie už použité v inom zariadení sú označené.",
         uklad: "Ťukni na najpodobnejšie rozloženie.",
         przypisz: "Každé pole: motor a senzor. Návrhy sú už vyplnené.",
         czujniki: "Nájdené v miestnosti a v dome. Ťuknutím vypneš alebo zmeníš.",
@@ -3283,7 +3439,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Večer zatvoriť",
         slonce: "Chrániť pred slnkom",
         blokada: "Nezatvárať pri otvorenom okne",
-        wietrzenie: "Vyklopené okno = tienenie napoly",
+        wietrzenie: "Vyklopené okno = zdvihnúť tienenie",
         wiatr: "Silný vietor = zatiahnuť",
         deszcz: "Dážď = zatiahnuť"
       },
@@ -3334,7 +3490,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Bez telefónu sa upozornenia zobrazia len v Home Assistante.",
       naPanel: "Pridať na panel",
       nazwa: "Názov",
-      zapisano: "Uložené ✓"
+      zapisano: "Uložené ✓",
+      wszystkie: "Zobraziť všetko",
+      prog: "Prah",
+      pozycja: "Poloha",
+      odTemp: "od teploty",
+      zrodlo: "Zdroj",
+      przypiszPodpis: "Ťuknite na krídlo na nákrese: vyberte motor a snímač okna.",
+      wschodSlonca: "Východ slnka",
+      zachodSlonca: "Západ slnka",
+      godzina: "Čas",
+      przesuniecie: "Posun",
+      poWsch: "{0} min po východe",
+      przedWsch: "{0} min pred východom",
+      poZach: "{0} min po západe",
+      przedZach: "{0} min pred západom",
+      oknaWieczorem: "Večer pri snímačoch okien",
+      nieZjedzie: "nezíde",
+      zjedzieDo: "zíde na {0} %",
+      zjedzieNormalnie: "zíde normálne",
+      pozniej: "Keď okno zatvoríte, tienenie dôjde samo.",
+      kazdy: "Každý motor zvlášť",
+      slupek: "Stĺpik / múr",
+      belka: "Priečnik",
+      brak: "žiadny",
+      wUrzadzeniu: "aj v: {0}",
+      grupa: "skupina",
+      calyPokoj: "Celá miestnosť: {0}",
+      bezPokoju: "Bez miestnosti",
+      pojedyncze: "Jednotlivé",
+      grupaIle: "skupina · {0} krídla",
+      przeciagnij: "Potiahnite na výmenu",
+      zamienPodpis: "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa."
     }
   };
 
@@ -3637,7 +3824,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Listo"
       },
       podpisy: {
-        silnik: "Solo se muestran los estores que aún no están en Motor HA.",
+        silnik: "Todas las persianas de Home Assistant. Las ya usadas en otro dispositivo están marcadas.",
         uklad: "Toca la distribución más parecida.",
         przypisz: "Cada paño: un motor y un sensor. Las sugerencias ya están puestas.",
         czujniki: "Encontrado en la habitación y en la casa. Toca para desactivar o cambiar.",
@@ -3694,7 +3881,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Cerrar por la tarde",
         slonce: "Proteger del sol",
         blokada: "No cerrar con la ventana abierta",
-        wietrzenie: "Ventana abatida = estor a media altura",
+        wietrzenie: "Ventana abatida = subir el estor",
         wiatr: "Viento fuerte = recoger",
         deszcz: "Lluvia = recoger"
       },
@@ -3745,7 +3932,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Sin teléfono, los avisos solo aparecen en Home Assistant.",
       naPanel: "Añadir al panel",
       nazwa: "Nombre",
-      zapisano: "Guardado ✓"
+      zapisano: "Guardado ✓",
+      wszystkie: "Mostrar todo",
+      prog: "Umbral",
+      pozycja: "Posición",
+      odTemp: "desde temp.",
+      zrodlo: "Fuente",
+      przypiszPodpis: "Toca una hoja en el dibujo para elegir su motor y sensor de ventana.",
+      wschodSlonca: "Amanecer",
+      zachodSlonca: "Atardecer",
+      godzina: "Hora",
+      przesuniecie: "Desfase",
+      poWsch: "{0} min después del amanecer",
+      przedWsch: "{0} min antes del amanecer",
+      poZach: "{0} min después del atardecer",
+      przedZach: "{0} min antes del atardecer",
+      oknaWieczorem: "Por la noche, con sensores de ventana",
+      nieZjedzie: "no baja",
+      zjedzieDo: "baja al {0} %",
+      zjedzieNormalnie: "baja con normalidad",
+      pozniej: "Al cerrar la ventana, la persiana termina sola.",
+      kazdy: "Cada motor por separado",
+      slupek: "Parteluz / muro",
+      belka: "Travesaño",
+      brak: "ninguno",
+      wUrzadzeniu: "también en: {0}",
+      grupa: "grupo",
+      calyPokoj: "Toda la habitación: {0}",
+      bezPokoju: "Sin habitación",
+      pojedyncze: "Individuales",
+      grupaIle: "grupo · {0} hojas",
+      przeciagnij: "Arrastra para cambiar",
+      zamienPodpis: "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas."
     }
   };
 
@@ -4048,7 +4266,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Fatto"
       },
       podpisy: {
-        silnik: "Mostro solo le tende non ancora in Motor HA.",
+        silnik: "Tutte le tapparelle di Home Assistant. Quelle già usate in un altro dispositivo sono indicate.",
         uklad: "Tocca la disposizione più simile.",
         przypisz: "Ogni anta: un motore e un sensore. I suggerimenti sono già inseriti.",
         czujniki: "Trovato nella stanza e in casa. Tocca per disattivare o cambiare.",
@@ -4105,7 +4323,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Chiudi la sera",
         slonce: "Proteggi dal sole",
         blokada: "Non chiudere con la finestra aperta",
-        wietrzenie: "Finestra a ribalta = tenda a metà",
+        wietrzenie: "Finestra a ribalta = alza la tenda",
         wiatr: "Vento forte = ritira",
         deszcz: "Pioggia = ritira"
       },
@@ -4156,7 +4374,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Senza telefono, le notifiche appaiono solo in Home Assistant.",
       naPanel: "Aggiungi alla dashboard",
       nazwa: "Nome",
-      zapisano: "Salvato ✓"
+      zapisano: "Salvato ✓",
+      wszystkie: "Mostra tutto",
+      prog: "Soglia",
+      pozycja: "Posizione",
+      odTemp: "da temp.",
+      zrodlo: "Fonte",
+      przypiszPodpis: "Tocca un'anta nel disegno per sceglierne motore e sensore finestra.",
+      wschodSlonca: "Alba",
+      zachodSlonca: "Tramonto",
+      godzina: "Ora",
+      przesuniecie: "Scostamento",
+      poWsch: "{0} min dopo l'alba",
+      przedWsch: "{0} min prima dell'alba",
+      poZach: "{0} min dopo il tramonto",
+      przedZach: "{0} min prima del tramonto",
+      oknaWieczorem: "La sera, con i sensori finestra",
+      nieZjedzie: "non scende",
+      zjedzieDo: "scende al {0} %",
+      zjedzieNormalnie: "scende normalmente",
+      pozniej: "Chiusa la finestra, la tapparella finisce da sola.",
+      kazdy: "Ogni motore separatamente",
+      slupek: "Montante / muro",
+      belka: "Traverso",
+      brak: "nessuno",
+      wUrzadzeniu: "anche in: {0}",
+      grupa: "gruppo",
+      calyPokoj: "Tutta la stanza: {0}",
+      bezPokoju: "Senza stanza",
+      pojedyncze: "Singole",
+      grupaIle: "gruppo · {0} ante",
+      przeciagnij: "Trascina per scambiare",
+      zamienPodpis: "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle."
     }
   };
 
@@ -4459,7 +4708,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Klaar"
       },
       podpisy: {
-        silnik: "Alleen zonwering die nog niet in Motor HA zit, wordt getoond.",
+        silnik: "Alle zonwering uit Home Assistant. Al in een ander apparaat gebruikte zijn gemarkeerd.",
         uklad: "Tik op de indeling die het meest lijkt.",
         przypisz: "Elk vak: een motor en een sensor. Suggesties zijn al ingevuld.",
         czujniki: "Gevonden in de kamer en in huis. Tik om uit te zetten of te wijzigen.",
@@ -4516,7 +4765,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "’s Avonds sluiten",
         slonce: "Beschermen tegen zon",
         blokada: "Niet sluiten bij open raam",
-        wietrzenie: "Raam op kiepstand = zonwering half",
+        wietrzenie: "Raam op kiepstand = zonwering omhoog",
         wiatr: "Harde wind = intrekken",
         deszcz: "Regen = intrekken"
       },
@@ -4567,7 +4816,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Zonder telefoon verschijnen meldingen alleen in Home Assistant.",
       naPanel: "Toevoegen aan dashboard",
       nazwa: "Naam",
-      zapisano: "Opgeslagen ✓"
+      zapisano: "Opgeslagen ✓",
+      wszystkie: "Alles tonen",
+      prog: "Drempel",
+      pozycja: "Positie",
+      odTemp: "vanaf temp.",
+      zrodlo: "Bron",
+      przypiszPodpis: "Tik op een vleugel in de tekening om motor en raamsensor te kiezen.",
+      wschodSlonca: "Zonsopkomst",
+      zachodSlonca: "Zonsondergang",
+      godzina: "Tijd",
+      przesuniecie: "Verschuiving",
+      poWsch: "{0} min na zonsopkomst",
+      przedWsch: "{0} min voor zonsopkomst",
+      poZach: "{0} min na zonsondergang",
+      przedZach: "{0} min voor zonsondergang",
+      oknaWieczorem: "'s Avonds met raamsensoren",
+      nieZjedzie: "gaat niet dicht",
+      zjedzieDo: "gaat naar {0} %",
+      zjedzieNormalnie: "gaat normaal dicht",
+      pozniej: "Zodra het raam dicht is, gaat het scherm vanzelf verder.",
+      kazdy: "Elke motor apart",
+      slupek: "Stijl / muur",
+      belka: "Kalf",
+      brak: "geen",
+      wUrzadzeniu: "ook in: {0}",
+      grupa: "groep",
+      calyPokoj: "Hele ruimte: {0}",
+      bezPokoju: "Geen ruimte",
+      pojedyncze: "Los",
+      grupaIle: "groep · {0} vleugels",
+      przeciagnij: "Sleep om te wisselen",
+      zamienPodpis: "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen."
     }
   };
 
@@ -4870,7 +5150,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Concluído"
       },
       podpisy: {
-        silnik: "Só são mostradas proteções que ainda não estão no Motor HA.",
+        silnik: "Todas as persianas do Home Assistant. As já usadas noutro dispositivo estão assinaladas.",
         uklad: "Toque na disposição mais parecida.",
         przypisz: "Cada folha: um motor e um sensor. As sugestões já estão preenchidas.",
         czujniki: "Encontrado na divisão e na casa. Toque para desligar ou alterar.",
@@ -4927,7 +5207,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Fechar à noite",
         slonce: "Proteger do sol",
         blokada: "Não fechar com a janela aberta",
-        wietrzenie: "Janela basculada = proteção a meio",
+        wietrzenie: "Janela basculada = subir a proteção",
         wiatr: "Vento forte = recolher",
         deszcz: "Chuva = recolher"
       },
@@ -4978,7 +5258,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Sem telemóvel, as notificações só aparecem no Home Assistant.",
       naPanel: "Adicionar ao painel",
       nazwa: "Nome",
-      zapisano: "Guardado ✓"
+      zapisano: "Guardado ✓",
+      wszystkie: "Mostrar tudo",
+      prog: "Limite",
+      pozycja: "Posição",
+      odTemp: "a partir de temp.",
+      zrodlo: "Fonte",
+      przypiszPodpis: "Toque numa folha no desenho para escolher o motor e o sensor de janela.",
+      wschodSlonca: "Nascer do sol",
+      zachodSlonca: "Pôr do sol",
+      godzina: "Hora",
+      przesuniecie: "Desvio",
+      poWsch: "{0} min após o nascer do sol",
+      przedWsch: "{0} min antes do nascer do sol",
+      poZach: "{0} min após o pôr do sol",
+      przedZach: "{0} min antes do pôr do sol",
+      oknaWieczorem: "À noite, com sensores de janela",
+      nieZjedzie: "não desce",
+      zjedzieDo: "desce até {0} %",
+      zjedzieNormalnie: "desce normalmente",
+      pozniej: "Ao fechar a janela, a persiana termina sozinha.",
+      kazdy: "Cada motor separadamente",
+      slupek: "Pilar / parede",
+      belka: "Travessa",
+      brak: "nenhum",
+      wUrzadzeniu: "também em: {0}",
+      grupa: "grupo",
+      calyPokoj: "Divisão inteira: {0}",
+      bezPokoju: "Sem divisão",
+      pojedyncze: "Individuais",
+      grupaIle: "grupo · {0} folhas",
+      przeciagnij: "Arraste para trocar",
+      zamienPodpis: "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar."
     }
   };
 
@@ -5281,7 +5592,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Готово"
       },
       podpisy: {
-        silnik: "Показано лише штори, яких ще немає в Motor HA.",
+        silnik: "Усі штори з Home Assistant. Уже використані в іншому пристрої підписані.",
         uklad: "Торкніться найсхожішої схеми.",
         przypisz: "Кожна стулка: мотор і датчик. Підказки вже заповнено.",
         czujniki: "Знайдено в кімнаті та вдома. Торкніться, щоб вимкнути або змінити.",
@@ -5338,7 +5649,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Закривати ввечері",
         slonce: "Захищати від сонця",
         blokada: "Не закривати при відчиненому вікні",
-        wietrzenie: "Відкинуте вікно = штора наполовину",
+        wietrzenie: "Відкинуте вікно = підняти штору",
         wiatr: "Сильний вітер = прибрати",
         deszcz: "Дощ = прибрати"
       },
@@ -5389,7 +5700,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Без телефона сповіщення з’являються лише в Home Assistant.",
       naPanel: "Додати на панель",
       nazwa: "Назва",
-      zapisano: "Збережено ✓"
+      zapisano: "Збережено ✓",
+      wszystkie: "Показати все",
+      prog: "Поріг",
+      pozycja: "Положення",
+      odTemp: "від темп.",
+      zrodlo: "Джерело",
+      przypiszPodpis: "Торкніться стулки на малюнку: виберіть мотор і датчик вікна.",
+      wschodSlonca: "Схід сонця",
+      zachodSlonca: "Захід сонця",
+      godzina: "Час",
+      przesuniecie: "Зсув",
+      poWsch: "через {0} хв після сходу",
+      przedWsch: "за {0} хв до сходу",
+      poZach: "через {0} хв після заходу",
+      przedZach: "за {0} хв до заходу",
+      oknaWieczorem: "Увечері з датчиками вікон",
+      nieZjedzie: "не опуститься",
+      zjedzieDo: "опуститься до {0} %",
+      zjedzieNormalnie: "опуститься як завжди",
+      pozniej: "Коли закриєте вікно, штора доїде сама.",
+      kazdy: "Кожен мотор окремо",
+      slupek: "Імпост / стіна",
+      belka: "Перемичка",
+      brak: "немає",
+      wUrzadzeniu: "також у: {0}",
+      grupa: "група",
+      calyPokoj: "Уся кімната: {0}",
+      bezPokoju: "Без кімнати",
+      pojedyncze: "Окремі",
+      grupaIle: "група · стулок: {0}",
+      przeciagnij: "Перетягніть, щоб поміняти",
+      zamienPodpis: "Візьміть стулку на малюнку або ⠿ біля рядка й відпустіть на іншій – вони поміняються місцями."
     }
   };
 
@@ -5692,7 +6034,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "Готово"
       },
       podpisy: {
-        silnik: "Показаны только шторы, которых ещё нет в Motor HA.",
+        silnik: "Все шторы из Home Assistant. Уже используемые в другом устройстве подписаны.",
         uklad: "Нажмите на самую похожую схему.",
         przypisz: "Каждая створка: мотор и датчик. Подсказки уже заполнены.",
         czujniki: "Найдено в комнате и в доме. Нажмите, чтобы выключить или изменить.",
@@ -5749,7 +6091,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Закрывать вечером",
         slonce: "Защищать от солнца",
         blokada: "Не закрывать при открытом окне",
-        wietrzenie: "Откинутое окно = штора наполовину",
+        wietrzenie: "Откинутое окно = поднять штору",
         wiatr: "Сильный ветер = убрать",
         deszcz: "Дождь = убрать"
       },
@@ -5800,7 +6142,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Без телефона уведомления появляются только в Home Assistant.",
       naPanel: "Добавить на панель",
       nazwa: "Название",
-      zapisano: "Сохранено ✓"
+      zapisano: "Сохранено ✓",
+      wszystkie: "Показать все",
+      prog: "Порог",
+      pozycja: "Положение",
+      odTemp: "от темп.",
+      zrodlo: "Источник",
+      przypiszPodpis: "Нажмите на створку на рисунке: выберите мотор и датчик окна.",
+      wschodSlonca: "Восход",
+      zachodSlonca: "Закат",
+      godzina: "Время",
+      przesuniecie: "Сдвиг",
+      poWsch: "через {0} мин после восхода",
+      przedWsch: "за {0} мин до восхода",
+      poZach: "через {0} мин после заката",
+      przedZach: "за {0} мин до заката",
+      oknaWieczorem: "Вечером с датчиками окон",
+      nieZjedzie: "не опустится",
+      zjedzieDo: "опустится до {0} %",
+      zjedzieNormalnie: "опустится как обычно",
+      pozniej: "Когда закроете окно, штора доедет сама.",
+      kazdy: "Каждый мотор отдельно",
+      slupek: "Импост / стена",
+      belka: "Перемычка",
+      brak: "нет",
+      wUrzadzeniu: "также в: {0}",
+      grupa: "группа",
+      calyPokoj: "Вся комната: {0}",
+      bezPokoju: "Без комнаты",
+      pojedyncze: "Отдельные",
+      grupaIle: "группа · створок: {0}",
+      przeciagnij: "Перетащите, чтобы поменять",
+      zamienPodpis: "Возьмите створку на рисунке или ⠿ у строки и отпустите на другой – они поменяются местами."
     }
   };
 
@@ -6103,7 +6476,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "完了"
       },
       podpisy: {
-        silnik: "まだ Motor HA にないシェードだけを表示します。",
+        silnik: "Home Assistant のすべてのカバー。ほかのデバイスで使用中のものには表示があります。",
         uklad: "いちばん近いレイアウトをタップします。",
         przypisz: "各区画にモーターとセンサー。候補は入力済みです。",
         czujniki: "部屋と家の中で見つかりました。タップでオフまたは変更。",
@@ -6160,7 +6533,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "夜に閉める",
         slonce: "日差しから守る",
         blokada: "窓が開いていたら閉めない",
-        wietrzenie: "内倒しの窓 = シェード半分",
+        wietrzenie: "内倒しの窓 = シェードを上げる",
         wiatr: "強風 = 収納",
         deszcz: "雨 = 収納"
       },
@@ -6211,7 +6584,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "スマホがない場合、通知は Home Assistant にのみ表示されます。",
       naPanel: "ダッシュボードに追加",
       nazwa: "名前",
-      zapisano: "保存しました ✓"
+      zapisano: "保存しました ✓",
+      wszystkie: "すべて表示",
+      prog: "しきい値",
+      pozycja: "位置",
+      odTemp: "気温から",
+      zrodlo: "ソース",
+      przypiszPodpis: "図のサッシをタップして、モーターと窓センサーを選びます。",
+      wschodSlonca: "日の出",
+      zachodSlonca: "日の入り",
+      godzina: "時刻",
+      przesuniecie: "ずらし",
+      poWsch: "日の出の{0}分後",
+      przedWsch: "日の出の{0}分前",
+      poZach: "日の入りの{0}分後",
+      przedZach: "日の入りの{0}分前",
+      oknaWieczorem: "夜、窓センサーとの連動",
+      nieZjedzie: "閉まりません",
+      zjedzieDo: "{0} %まで閉まります",
+      zjedzieNormalnie: "通常どおり閉まります",
+      pozniej: "窓を閉めると、カバーは自動で閉まりきります。",
+      kazdy: "モーターごと",
+      slupek: "方立 / 壁",
+      belka: "無目",
+      brak: "なし",
+      wUrzadzeniu: "{0} でも使用",
+      grupa: "グループ",
+      calyPokoj: "部屋全体：{0}",
+      bezPokoju: "部屋なし",
+      pojedyncze: "単独",
+      grupaIle: "グループ · {0} 枚",
+      przeciagnij: "ドラッグで入れ替え",
+      zamienPodpis: "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。"
     }
   };
 
@@ -6514,7 +6918,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         gotowe: "完成"
       },
       podpisy: {
-        silnik: "只显示尚未加入 Motor HA 的遮阳。",
+        silnik: "Home Assistant 中的所有遮阳。已在其他设备中使用的会标注。",
         uklad: "点击最接近的布局。",
         przypisz: "每个窗格：一个电机和一个传感器。建议已填好。",
         czujniki: "在房间和家中找到。点击可关闭或更改。",
@@ -6571,7 +6975,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "晚上关闭",
         slonce: "防晒",
         blokada: "窗户打开时不关闭",
-        wietrzenie: "内倒窗 = 遮阳半开",
+        wietrzenie: "内倒窗 = 升起遮阳",
         wiatr: "大风 = 收起",
         deszcz: "下雨 = 收起"
       },
@@ -6622,7 +7026,38 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "没有手机时，通知只显示在 Home Assistant 中。",
       naPanel: "添加到仪表板",
       nazwa: "名称",
-      zapisano: "已保存 ✓"
+      zapisano: "已保存 ✓",
+      wszystkie: "显示全部",
+      prog: "阈值",
+      pozycja: "位置",
+      odTemp: "起始温度",
+      zrodlo: "来源",
+      przypiszPodpis: "点按图中的窗扇，选择电机和窗户传感器。",
+      wschodSlonca: "日出",
+      zachodSlonca: "日落",
+      godzina: "时间",
+      przesuniecie: "偏移",
+      poWsch: "日出后 {0} 分钟",
+      przedWsch: "日出前 {0} 分钟",
+      poZach: "日落后 {0} 分钟",
+      przedZach: "日落前 {0} 分钟",
+      oknaWieczorem: "晚上与窗户传感器联动",
+      nieZjedzie: "不会关闭",
+      zjedzieDo: "关到 {0} %",
+      zjedzieNormalnie: "正常关闭",
+      pozniej: "关窗后，遮阳会自动关完。",
+      kazdy: "每个电机单独",
+      slupek: "竖梃 / 墙",
+      belka: "横档",
+      brak: "无",
+      wUrzadzeniu: "也在：{0}",
+      grupa: "组",
+      calyPokoj: "整个房间：{0}",
+      bezPokoju: "无房间",
+      pojedyncze: "单个",
+      grupaIle: "组 · {0} 扇",
+      przeciagnij: "拖动以交换",
+      zamienPodpis: "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。"
     }
   };
 
@@ -6940,6 +7375,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         const k = P.filter((p) => p.x === x), dol = Math.max(...k.map((p) => p.y + p.h));
         return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
       }).join("") : "";
+      const xs = P ? [...new Set(P.map((p) => p.x))].sort((a, b) => a - b) : [];
+      const mury = xs.slice(1).map((x, i) => {
+        const pk = P.find((p) => p.x === xs[i]), od2 = pk.x + pk.w;
+        return x - od2 > 4e-3 ? `<div class="mur" style="left:${od2 * 100}%;width:${(x - od2) * 100}%"></div>` : "";
+      }).join("");
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
       const skrzydlo = (i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}"${miejsce(i)}><div class="szyba">
@@ -6953,7 +7393,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
   ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
-   ${ramy}${zew ? "" : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
+   ${mury}${ramy}${zew ? "" : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
    ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
@@ -7272,8 +7712,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         const opisPg = ws.entity_id && h.formatEntityState ? h.formatEntityState(ws) : this._lok(`component.weather.entity_component._.state.${ws.state}`, "");
         if (opisPg) czesci.push(opisPg + (typeof t === "number" ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || "°C"}` : ""));
       }
+      const ileCz = this._uk ? c.pola.filter((p) => p.czujnik).length : czl.length;
       okno.forEach((o, k) => {
-        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${czl.length > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
+        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${ileCz > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
       });
       this._opisStanu = czesci;
       this._automatyka(c, h);
@@ -7981,6 +8422,16 @@ button svg{fill:var(--primary-color);flex:none}
   var ik = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI2[n]}"/></svg>`;
   var esc6 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var okr = (v) => Math.round(v * 1e3) / 1e3;
+  var PROC = (v) => v + " %";
+  var PAR = {
+    wiatr_prog: { mn: 20, mx: 90, krok: 5, dom: 40, fmt: (v) => v + " km/h" },
+    wiatr_poz: { mn: 0, mx: 100, krok: 10, dom: 100, fmt: PROC },
+    deszcz_poz: { mn: 0, mx: 100, krok: 10, dom: 100, fmt: PROC },
+    wietrzenie_poz: { mn: 10, mx: 100, krok: 10, dom: 50, fmt: PROC },
+    slonce_temp: { mn: 15, mx: 35, krok: 1, dom: 24, fmt: (v) => v + " °C" },
+    przes_otw: { mn: -120, mx: 120, krok: 5, dom: 0, fmt: (v) => (v > 0 ? "+" : "") + v + " min" },
+    przes_zam: { mn: -120, mx: 120, krok: 5, dom: 0, fmt: (v) => (v > 0 ? "+" : "") + v + " min" }
+  };
   var SAMO = /[aeiouyąęóаеиоуыэюяіїєáéíóúýěůäöüàèìòù]/i;
   var dziel = (s) => String(s ?? "").replace(/\S{11,}/g, (w) => {
     const sr = Math.floor(w.length / 2);
@@ -8004,18 +8455,39 @@ button svg{fill:var(--primary-color);flex:none}
   var RAMY_TAB = Object.keys(RAMA_Z_KLUCZA);
   var STRONY = [["n", 0], ["e", 90], ["s", 180], ["w", 270]];
   var AUTO_ZEW = ["markiza", "fasadowa", "fasadowaz", "screen"];
-  function prostokaty(u) {
-    const K = u.kol, suma = K.reduce((a, k) => a + k.w, 0) || 1, out = [];
+  var sumaKol = (K) => K.reduce((a, k, i) => a + k.w + (i < K.length - 1 ? +k.mur || 0 : 0), 0) || 1;
+  var sumaWierszy = (k) => k.r.reduce((a, h, j) => a + h + (j < k.r.length - 1 ? +k.bel?.[j] || 0 : 0), 0) || 1;
+  function przerwy(u) {
+    const K = u.kol, suma = sumaKol(K), out = [];
     let x = 0;
-    K.forEach((k) => {
-      const w = k.w / suma, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0) || 1;
+    K.forEach((k, c) => {
+      const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
       let y = 0;
-      k.r.forEach((h) => {
-        const hh = h / sr * wys;
-        out.push([okr(x), okr(y), okr(w), okr(hh)]);
-        y += hh;
+      k.r.forEach((h, j) => {
+        y += h / sr * wys;
+        const b = j < k.r.length - 1 ? (+k.bel?.[j] || 0) / sr * wys : 0;
+        if (b > 0) out.push([x, y, w, b, "bel", c, j]);
+        y += b;
       });
       x += w;
+      const m = c < K.length - 1 ? (+k.mur || 0) / suma : 0;
+      if (m > 0) out.push([x, 0, m, 1, "mur", c]);
+      x += m;
+    });
+    return out;
+  }
+  function prostokaty(u) {
+    const K = u.kol, suma = sumaKol(K), out = [];
+    let x = 0;
+    K.forEach((k) => {
+      const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
+      let y = 0;
+      k.r.forEach((h, j) => {
+        const hh = h / sr * wys;
+        out.push([okr(x), okr(y), okr(w), okr(hh)]);
+        y += hh + (+k.bel?.[j] || 0) / sr * wys;
+      });
+      x += w + (+k.mur || 0) / suma;
     });
     return out;
   }
@@ -8028,7 +8500,7 @@ button svg{fill:var(--primary-color);flex:none}
     });
     return { kol: kol.length ? kol : [{ w: 1, r: [1], dol: 0 }] };
   }
-  var kopia = (u) => ({ kol: u.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0 })) });
+  var kopia = (u) => ({ kol: u.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0, mur: +k.mur || 0, bel: (k.bel || []).map(Number) })) });
   var takiSam = (a, b) => JSON.stringify(prostokaty(a)) === JSON.stringify(prostokaty(b));
   var szablon = (u) => {
     const i = UKLADY.findIndex(([, P]) => takiSam(zSzablonu(P), u));
@@ -8081,6 +8553,12 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
+.wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
+#duzeOkno svg{touch-action:none}
+.linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
+.linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
+.kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
 .siatka.k4{grid-template-columns:repeat(4,minmax(0,1fr))} .siatka.k2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .kaf{position:relative;background:var(--tile);border:2px solid transparent;border-radius:14px;padding:8px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;color:var(--fg);text-align:center;min-width:0;transition:transform .12s}
 .kaf:active{transform:scale(.97)}
@@ -8108,7 +8586,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .suw{display:flex;align-items:center;gap:10px;padding:0 12px 10px 64px;margin-top:-6px;margin-bottom:8px;color:var(--fg2);font-size:12px}
 .suw input{flex:1;min-width:0;accent-color:var(--primary)}
 .suw span{min-width:44px;text-align:end}
-.suw.chipy{gap:6px}
+.okw{margin:4px 0 10px 52px;padding:8px 10px;border-radius:10px;background:var(--tile);font-size:13px}
+.okw .et{display:flex;align-items:center;gap:6px;font-weight:500;margin-bottom:4px}.okw .et svg{fill:var(--accent);width:16px!important;height:16px;flex:none}
+.okw .ow{display:flex;gap:8px;align-items:baseline;margin:3px 0}.okw .nr{flex:none;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#3a2600;font-size:11px;font-weight:700;display:grid;place-items:center}
+.okw .pod{margin-top:6px}
+.suw.chipy{gap:6px;flex-wrap:wrap}
+.suw .et{min-width:64px;text-align:start;color:var(--fg2)}
 .chipy{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;min-height:32px;padding:0 12px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;max-width:100%}
 .chip svg{fill:currentColor}
@@ -8205,7 +8688,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         S.o.oslona = S.brama ? k === "garage" ? "segmentowa" : "przesuwna" : k === "awning" ? "markiza" : k === "shutter" ? "natynkowa" : pierwsza.lamele ? "zaluzja" : czyBrama(S.o.oslona) ? "zebra" : S.o.oslona || "zebra";
       }
       if (!S.recznie.uklad && !S.brama) {
-        S.u = zSzablonu(UKLADY[n >= 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
+        if (n <= 4) S.u = zSzablonu(UKLADY[n === 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
+        else {
+          const c = Math.min(4, Math.ceil(n / (n > 8 ? 3 : 2))), m = Math.min(n, 12);
+          S.u = { kol: Array.from({ length: c }, (_, i) => ({ w: 1, r: Array(Math.floor(m / c) + (i < m % c ? 1 : 0)).fill(1), dol: 0, mur: 0, bel: [] })) };
+        }
         S.szablon = szablon(S.u);
       }
       if (!S.recznie.tytul) {
@@ -8278,6 +8765,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const iw = W2 - 2 * pad, ih = H2 - 2 * pad, id = opt.id || "p";
       const d = [`<svg viewBox="0 0 ${W2} ${H2}" width="${W2}" height="${H2}" style="max-width:100%;height:auto" role="img" aria-label="${esc6(this.t.kroki.uklad)}">`];
       d.push(`<defs><linearGradient id="n${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
+      for (const [x, y, w, h, typ] of przerwy(S.u)) if (typ === "mur") d.push(this._przerwa(pad + x * iw - 1, 1, w * iw + 2, H2 - 2, "mur"));
       const xs = [...new Set(pl.map((p) => p[0]))];
       for (const x of xs) {
         const k = pl.filter((p) => p[0] === x), dol = Math.max(...k.map((p) => p[1] + p[3]));
@@ -8292,11 +8780,17 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         if (opt.numery) {
           const on = opt.wybrane === i;
           d.push(`<g data-pole="${i}" style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${on ? "rgba(255,152,0,.25)" : "transparent"}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
-          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text></g>`);
+          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>${this._znakCzujnika(i, x + w / 2, y + h / 2 + 22)}</g>`);
         }
       });
       d.push("</svg>");
       return d.join("");
+    }
+    // znaczek pod numerem pola: pomarańczowy z oknem = czujnik przypisany (ukośna kreska = uchylone), przerywany „+” = brak czujnika
+    _znakCzujnika(i, cx, cy) {
+      const p = this.S.pola[i] || {};
+      if (!p.czujnik) return `<circle cx="${cx}" cy="${cy}" r="8" fill="rgba(255,255,255,.75)" stroke="#ff9800" stroke-width="1.6" stroke-dasharray="3 2"/><path d="M${cx - 4} ${cy}h8M${cx} ${cy - 4}v8" stroke="#ff9800" stroke-width="2"/>`;
+      return `<circle cx="${cx}" cy="${cy}" r="9" fill="#ff9800" stroke="#fff" stroke-width="1.6"/><rect x="${cx - 4.5}" y="${cy - 5}" width="9" height="10" fill="none" stroke="#3a2600" stroke-width="1.5"/>` + (p.tryb === "otworz" ? `<path d="M${cx - 4.5} ${cy - 5}l4 1.6v10l-4-1.6z" fill="#3a2600"/>` : `<path d="M${cx - 4.5} ${cy + 5}l2.4-7h4.2" fill="none" stroke="#3a2600" stroke-width="1.4"/>`);
     }
     _brama(typ) {
       return rysunekBramy(typ, this._kolor(), this._rama(), false, false);
@@ -8321,17 +8815,39 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // --- kroki ---
     str_silnik() {
       const S = this.S, t = this.t, d = this.dane;
-      const pokoj = this._oslona(S.rolety[0])?.area;
-      const lista = d.oslony.filter((o) => !o.zajeta || S.rolety.includes(o.id)).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || (a.pokoj || "~").localeCompare(b.pokoj || "~") || a.nazwa.localeCompare(b.nazwa));
-      if (!lista.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
-      const [n1] = this._nieba();
-      return `<div class="siatka k2">${lista.map((o) => {
+      if (!d.oslony.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
+      const [n1] = this._nieba(), pierwszy = this._oslona(S.rolety[0])?.area;
+      const kafel = (o) => {
+        const czl = (o.czlonkowie || []).filter((e) => this._oslona(e)), grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every((e) => S.rolety.includes(e));
         const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
-        return `<button class="kaf ${nr >= 0 ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
-        ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="10" y="4" width="44" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/>
-        <rect x="11" y="5" width="42" height="${34 * (1 - poz / 100) + 1}" fill="var(--fg2)" opacity=".7"/></svg>`}
-        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6([o.pokoj, `${poz} %`].filter(Boolean).join(" · "))}</span></button>`;
-      }).join("")}</div>${S.wykryty ? `<p class="pod" style="margin-top:12px">${esc6(wstaw(t.wykryty, S.wykryty))}</p>` : ""}`;
+        return `<button class="kaf ${nr >= 0 || grWyb ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
+        ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
+        <rect x="12" y="6" width="40" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), 12, 6, 40, 32, Math.max(poz, 8), this._kolor())}</svg>`}
+        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6(`${poz} %`)}</span>${o.zajeta && nr < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc6(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc6(czl.length > 1 ? wstaw(t.grupaIle, czl.length) : t.grupa)}</span>` : ""}</button>`;
+      };
+      const pokoje = [...new Set(d.oslony.map((o) => o.area || ""))].sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || "").localeCompare(this._nazwaPokoju(b) || ""));
+      const w = pokoje.map((a) => {
+        const tu = d.oslony.filter((o) => (o.area || "") === a).sort((x, y) => !!y.grupa - !!x.grupa || x.nazwa.localeCompare(y.nazwa));
+        const poj = tu.filter((o) => !o.grupa && !o.brama), caly = a && poj.length > 1 && poj.every((o) => S.rolety.includes(o.id)) && S.rolety.length === poj.length;
+        const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? "wyb" : ""}" data-pokojcaly="${esc6(a)}" aria-pressed="${caly}">
+        <svg viewBox="0 0 ${12 + poj.length * 36} 44" aria-hidden="true">${poj.map((o, i) => `<rect x="${6 + i * 36}" y="4" width="32" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/><rect x="${7 + i * 36}" y="5" width="30" height="14" fill="var(--fg2)" opacity=".7"/>`).join("")}</svg>
+        <b>${esc6(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc6(poj.map((o) => o.nazwa).join(" + "))}</span></button>` : "";
+        const grupy = tu.filter((o) => o.grupa), reszta = tu.filter((o) => !o.grupa);
+        const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc6(t.pojedyncze)}</span></div>` : "";
+        return `<div class="sek">${esc6(a ? this._nazwaPokoju(a) : t.bezPokoju)}</div><div class="siatka k2">${podp}${grupy.map(kafel).join("")}${linia}${reszta.map(kafel).join("")}</div>`;
+      });
+      return w.join("") + (S.wykryty ? `<p class="pod" style="margin-top:12px">${esc6(wstaw(t.wykryty, S.wykryty))}</p>` : "");
+    }
+    // rysunek kafelka: rodzaj osłony zgadnięty z klasy, lamel albo nazwy
+    _typOslony(o) {
+      if (o.klasa === "awning") return "markiza";
+      if (o.klasa === "shutter") return "natynkowa";
+      if (o.lamele || /żaluzj|zaluzj|jalous|blind/i.test(o.nazwa)) return "zaluzja";
+      if (/rolet|roller|shutter/i.test(o.nazwa)) return "pelna";
+      return this.S.o.oslona && !czyBrama(this.S.o.oslona) ? this.S.o.oslona : "zebra";
+    }
+    _nazwaPokoju(a) {
+      return this.dane.oslony.find((o) => o.area === a)?.pokoj || a;
     }
     str_uklad() {
       const S = this.S, t = this.t;
@@ -8340,6 +8856,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       <div class="chipy" style="justify-content:center;margin:10px 0 4px">
         <button class="chip" data-op="poz">${ik("uklad", 16)} ${esc6(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik("uklad", 16)} ${esc6(t.wzdluz)}</button>
         <button class="chip" data-op="usun">${esc6(t.usun)}</button></div>
+      <div id="przerwy">${this._suwakiPrzerw()}</div>
       <p class="pod" style="text-align:center">${esc6(t.wlasnyPodpis)}</p><div class="sek">${esc6(t.zSzablonu)}</div>` : "";
       return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
       <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
@@ -8361,12 +8878,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     str_przypisz() {
       const S = this.S, t = this.t;
-      return `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
-      <div style="margin-top:14px">${prostokaty(S.u).map((_, i) => {
+      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
+      <p class="pod" style="text-align:center;margin:8px 0 0">${esc6(t.zamienPodpis)}</p>
+      <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
-        return `<button class="wiersz" data-pole="${i}"><span class="ik">${i + 1}</span><span class="t"><b>${esc6(o ? o.nazwa : t.wybierzSilnik)}</b>
-          <small>${c ? `✓ ${esc6(c)} · ${esc6(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : esc6(t.bezCzujnikaOkna)}</small></span></button>`;
+        return `<button class="wiersz" data-pole="${i}"><span class="chwyt" title="${esc6(t.przeciagnij)}" aria-hidden="true">⠿</span><span class="ik">${i + 1}</span><span class="t"><b>${esc6(o ? o.nazwa : t.wybierzSilnik)}</b>
+          <small>${c ? `✓ ${esc6(c)} · ${esc6(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : `<span style="color:var(--accent)">+ ${esc6(t.czujnikPola)}</span>`}</small></span></button>`;
       }).join("")}</div>`;
     }
     _nazwa(e) {
@@ -8408,28 +8926,79 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // automatyka: [klucz, ikona, włączona?, opis, suwak]
     str_auto() {
-      const S = this.S, o = S.o, t = this.t, sl = o.harm_tryb === "slonce";
+      const S = this.S, o = S.o, t = this.t;
       const okna = S.pola.some((p) => p.czujnik), w = [];
       const harm = !!o.f_harmonogram;
       const wiersz = (k, i, on, tyt, opis, extra = "") => w.push(`<button class="wiersz ${on ? "" : "wyl"}" data-auto="${k}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(tyt)}</b><small>${esc6(opis)}</small></span><span class="przel"></span></button>${on ? extra : ""}`);
       const rano = harm && o.harm_otwieraj !== false, wieczor = harm && o.harm_zamykaj !== false;
-      const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw"><input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc6(tekst)}"><span>${esc6(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
-      wiersz("rano", "wschod", rano, t.auto.rano, sl ? t.oWschodzie : wstaw(t.oGodz, godz(minuty(o.otworz || "07:00"))), sl ? "" : suwak("otworz", 300, 660, minuty(o.otworz || "07:00"), t.auto.rano));
-      wiersz("wieczor", "zachod", wieczor, t.auto.wieczor, sl ? t.oZachodzie : wstaw(t.oGodz, godz(minuty(o.zamknij || "21:00"))), sl ? "" : suwak("zamknij", 1020, 1410, minuty(o.zamknij || "21:00"), t.auto.wieczor));
-      if (rano || wieczor) w.push(`<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-zeslonca="1">${ik("slonce", 16)} ${esc6(t.zeSloncem)}</button></div>`);
+      const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw">${g === "slonce" ? `<span class="et">${esc6(t.pozycja)}</span>` : ""}<input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc6(tekst)}"><span>${esc6(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
+      const pora = (k, ikona, on, tyt, klucz, godzKlucz, dom, mn, mx, slonceTekst) => {
+        const sl = this._harm(k) === "slonce";
+        const tryby = `<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-harm="${k}" data-v="slonce">${ik(ikona, 16)} ${esc6(slonceTekst)}</button><button class="chip ${sl ? "" : "wyb"}" data-harm="${k}" data-v="godziny">${ik("stoper", 16)} ${esc6(t.godzina)}</button></div>`;
+        wiersz(k, ikona, on, tyt, this._opisPory(k), tryby + (sl ? this._par(klucz, t.przesuniecie) : suwak(godzKlucz, mn, mx, minuty(o[godzKlucz] || dom), tyt)));
+      };
+      pora("rano", "wschod", rano, t.auto.rano, "przes_otw", "otworz", "07:00", 300, 660, t.wschodSlonca);
+      pora("wieczor", "zachod", wieczor, t.auto.wieczor, "przes_zam", "zamknij", "21:00", 1020, 1410, t.zachodSlonca);
+      if (okna && wieczor) w.push(this._oknaWieczorem());
       if (!o.bez_slonca) {
         const poz = 100 - (+o.slonce_poz || 20);
-        wiersz("slonce", "slonce", !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak("slonce", 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5) + `<div class="suw chipy"><span style="min-width:auto">${esc6(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? "wyb" : ""}" data-azymut="${a}">${esc6(t.strony[k])}</button>`).join("")}</div>`);
+        wiersz("slonce", "slonce", !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak("slonce", 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5) + (o.czujnik_temp || o.pogoda ? this._par("slonce_temp", t.odTemp) : "") + `<div class="suw chipy"><span style="min-width:auto">${esc6(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? "wyb" : ""}" data-azymut="${a}">${esc6(t.strony[k])}</button>`).join("")}</div>`);
       }
       if (okna) {
         wiersz("blokada", "tarcza", !!o.f_blokada, t.auto.blokada, t.okienne);
-        wiersz("wietrzenie", "okno", !!o.f_wietrzenie, t.auto.wietrzenie, t.okienne);
+        wiersz("wietrzenie", "okno", !!o.f_wietrzenie, t.auto.wietrzenie, t.okienne, this._par("wietrzenie_poz", t.pozycja));
       }
       const zew = czyZew(o.oslona);
-      if (zew && (o.pogoda || o.czujnik_wiatr)) wiersz("wiatr", "wiatr", !!o.f_wiatr, t.auto.wiatr, wstaw(t.wiatrOpis, o.wiatr_prog || 40));
-      if (AUTO_ZEW.includes(o.oslona) && (o.pogoda || o.czujnik_deszcz)) wiersz("deszcz", "deszcz", !!o.f_deszcz, t.auto.deszcz, t.deszczOpis);
+      if (zew && (o.pogoda || o.czujnik_wiatr)) wiersz(
+        "wiatr",
+        "wiatr",
+        !!o.f_wiatr,
+        t.auto.wiatr,
+        wstaw(t.wiatrOpis, o.wiatr_prog ?? 40),
+        this._zrodlo("wiatr", "czujnik_wiatr") + this._par("wiatr_prog", t.prog) + this._par("wiatr_poz", t.pozycja)
+      );
+      if (AUTO_ZEW.includes(o.oslona) && (o.pogoda || o.czujnik_deszcz)) wiersz(
+        "deszcz",
+        "deszcz",
+        !!o.f_deszcz,
+        t.auto.deszcz,
+        t.deszczOpis,
+        this._zrodlo("deszcz", "czujnik_deszcz") + this._par("deszcz_poz", t.pozycja)
+      );
       if (!zew || !(o.pogoda || o.czujnik_wiatr)) w.push(`<p class="pod" style="margin-top:6px">${esc6(t.autoPodpis)}</p>`);
       return w.join("");
+    }
+    _harm(k) {
+      const o = this.S.o;
+      return o[k === "rano" ? "harm_rano" : "harm_wieczor"] || o.harm_tryb || "godziny";
+    }
+    _opisPory(k) {
+      const o = this.S.o, t = this.t, rano = k === "rano";
+      if (this._harm(k) !== "slonce") return wstaw(t.oGodz, godz(minuty(o[rano ? "otworz" : "zamknij"] || (rano ? "07:00" : "21:00"))));
+      const m = +(o[rano ? "przes_otw" : "przes_zam"] ?? 0);
+      if (!m) return rano ? t.oWschodzie : t.oZachodzie;
+      return wstaw(t[(m > 0 ? "po" : "przed") + (rano ? "Wsch" : "Zach")], Math.abs(m));
+    }
+    // co wieczorne zamykanie zrobi przy każdym skrzydle z czujnikiem okna
+    _oknaWieczorem() {
+      const S = this.S, o = S.o, t = this.t;
+      const wiersze = S.pola.map((p, i) => [p, i]).filter(([p]) => p.czujnik).map(([p, i]) => {
+        const uch = p.tryb !== "otworz";
+        const co = uch && o.f_wietrzenie ? wstaw(t.zjedzieDo, o.wietrzenie_poz ?? PAR.wietrzenie_poz.dom) : o.f_blokada ? t.nieZjedzie : t.zjedzieNormalnie;
+        return `<div class="ow"><span class="nr">${i + 1}</span><span><b>${esc6(this._nazwa(p.czujnik))}</b> · ${esc6(uch ? t.uchyl : t.otworz)} → ${esc6(co)}</span></div>`;
+      });
+      return `<div class="okw"><div class="et">${ik("okno", 16)} ${esc6(t.oknaWieczorem)}</div>${wiersze.join("")}<div class="pod">${esc6(t.pozniej)}</div></div>`;
+    }
+    // ustawienia włączonej automatyki: z czego bierze dane, próg i pozycja (suwaki pod wierszem)
+    _par(k, etykieta) {
+      const d = PAR[k], v = +(this.S.o[k] ?? d.dom);
+      return `<div class="suw"><span class="et">${esc6(etykieta)}</span><input type="range" min="${d.mn}" max="${d.mx}" step="${d.krok}" value="${v}" data-par="${k}" aria-label="${esc6(etykieta)}"><span>${esc6(d.fmt(v))}</span></div>`;
+    }
+    _zrodlo(r, klucz) {
+      const o = this.S.o, t = this.t, lista = this._czujnik(r).lista;
+      const opcje = [...lista.map((x) => [x.id, x.nazwa]), ...o.pogoda ? [["", this._nazwa(o.pogoda)]] : []];
+      if (opcje.length < 2) return "";
+      return `<div class="suw chipy"><span class="et">${esc6(t.zrodlo)}</span>${opcje.map(([id, n]) => `<button class="chip ${(o[klucz] || "") === id ? "wyb" : ""}" data-zrodlo="${esc6(id)}" data-klucz="${klucz}">${esc6(n)}</button>`).join("")}</div>`;
     }
     str_stoper() {
       const S = this.S, t = this.t, p = S.pomiar || {};
@@ -8437,6 +9006,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return `<div class="duzy"><div id="okKal">${this._oknoNaZywo()}</div>
       <div class="zegar" id="zegar">${p.trwa ? this._sekundy() : czas ? `${String(czas).replace(".", this._przecinek())} s${p.czas ? " ✓" : ""}` : "— s"}</div>
       <button class="btn" id="mierz" ${p.trwa || !S.rolety.length ? "disabled" : ""}>${esc6(p.trwa ? t.mierze : czas ? t.zmierzZnow : t.zmierz)}</button>
+      ${p.silniki?.length > 1 ? `<div class="okw" style="margin:0;align-self:stretch"><div class="et">${ik("stoper", 16)} ${esc6(t.kazdy)}</div>${p.silniki.map((x, i) => `<div class="ow"><span class="nr">${i + 1}</span><span style="flex:1">${esc6(x.nazwa)}</span><b>${String(x.czas).replace(".", this._przecinek())} s</b></div>`).join("")}</div>` : ""}
       ${p.blad ? `<p class="blad">${esc6(p.blad)}</p>` : ""}
       <p class="pod" style="text-align:center">${esc6(t.pomin)}</p></div>`;
     }
@@ -8478,7 +9048,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const w = await this._hass.callWS({ type: "motor_ha/kreator/mierz", rolety });
         if (w.czas) {
           S.o.czas = w.czas;
-          S.pomiar = { czas: w.czas };
+          S.pomiar = { czas: w.czas, silniki: w.silniki || [] };
         } else S.pomiar = { blad: w.brak?.length ? wstaw(t.nieOdp, w.brak.join(", ")) : w.wynik === "kalibracja_od_razu" ? t.odRazu : t.bladPomiaru };
       } catch (e) {
         S.pomiar = { blad: t.bladPomiaru };
@@ -8537,64 +9107,126 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // --- edytor własnego układu: duże okno z uchwytami do przeciągania i wybieranym polem ---
     edytor() {
-      const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), iw = EW - 2 * EP, ih = EH - 2 * EP;
+      const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
       const [n1] = this._nieba(), d = [];
       d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc6(this.t.wlasnyTytul)}">`);
       d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
+      for (const [x2, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x2 * iw, EP + y * ih, w * iw, h * ih, typ));
       P.forEach((p, i) => {
         const x2 = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
         d.push(`<g data-ep="${i}"><rect x="${x2}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
-        <rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${on ? "rgba(255,152,0,.35)" : n1}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
-        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="var(--fg)">${i + 1}</text></g>`);
+        <rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>
+        ${on ? `<rect x="${x2 + 1.5}" y="${y + 1.5}" width="${Math.max(0, w - 3)}" height="${Math.max(0, h - 3)}" fill="none" stroke="#ff9800" stroke-width="3"/>` : ""}
+        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? "#e65100" : "#1c3a4a"}">${i + 1}</text></g>`);
       });
       const uchwyt = (typ, id, x2, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? "ns" : "ew"}-resize"><circle cx="${x2}" cy="${y}" r="16" fill="transparent"/>
       <rect x="${x2 - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
       let x = 0;
       K.forEach((k, c) => {
-        const w = k.w / suma, X = EP + x * iw, W2 = w * iw, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
+        const w = k.w / suma, X = EP + x * iw, W2 = w * iw, wys = 1 - k.dol, sr = sumaWierszy(k);
         let y = 0;
         k.r.forEach((h, j) => {
           y += h / sr * wys;
-          if (j < k.r.length - 1) d.push(uchwyt("r", `${c}-${j}`, X + W2 / 2, EP + y * ih, true));
+          if (j < k.r.length - 1) {
+            const b = (+k.bel?.[j] || 0) / sr * wys;
+            d.push(uchwyt("r", `${c}-${j}`, X + W2 / 2, EP + (y + b / 2) * ih, true));
+            y += b;
+          }
         });
+        if (k.dol >= 0.08 && k.r.length < 3) d.push(`<g data-dodaj="${c}" style="cursor:pointer"><rect x="${X + 4}" y="${EP + wys * ih + 10}" width="${Math.max(0, W2 - 8)}" height="${Math.max(0, k.dol * ih - 14)}" rx="4" fill="transparent" stroke="var(--fg2)" stroke-dasharray="5 4"/>
+        <text x="${X + W2 / 2}" y="${EP + (wys + k.dol / 2) * ih + 11}" text-anchor="middle" font-size="22" fill="var(--fg2)">+</text></g>`);
         d.push(uchwyt("d", c, X + W2 / 2, EP + wys * ih, true));
         x += w;
-        if (c < K.length - 1) d.push(uchwyt("k", c, EP + x * iw, EP + ih * 0.5, false));
+        const m = c < K.length - 1 ? (+k.mur || 0) / suma : 0;
+        if (c < K.length - 1) d.push(uchwyt("k", c, EP + (x + m / 2) * iw, EP + ih * 0.5, false));
+        x += m;
       });
       d.push("</svg>");
       this._ed = { EW, EH, EP };
       return d.join("");
     }
-    _odswiezUklad() {
+    // wąski odstęp = słupek w kolorze ramy, szeroki = kawałek ściany (cegły)
+    _przerwa(x, y, w, h, typ) {
+      const wasko = Math.min(w, h) < 12;
+      if (wasko) return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>`;
+      const d = [`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#c9bfb2" stroke="#000" stroke-opacity=".25"/>`];
+      for (let yy = y + 7, n = 0; yy < y + h; yy += 7, n++) {
+        d.push(`<line x1="${x}" x2="${x + w}" y1="${yy}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+        for (let xx = x + (n % 2 ? 6 : 12); xx < x + w; xx += 12) d.push(`<line x1="${xx}" x2="${xx}" y1="${yy - 7}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+      }
+      return `<g>${d.join("")}</g>`;
+    }
+    // gdzie jest wybrane pole: kolumna c i wiersz j
+    _gdzie(i) {
+      const K = this.S.u.kol;
+      let c = 0;
+      while (c < K.length - 1 && i >= K[c].r.length) {
+        i -= K[c].r.length;
+        c++;
+      }
+      return [c, i];
+    }
+    // suwaki grubości: słupek/mur obok wybranego pola i belka pod nim
+    _suwakiPrzerw() {
+      const S = this.S, t = this.t, K = S.u.kol, [c, j] = this._gdzie(Math.min(S.wyb, prostokaty(S.u).length - 1)), w = [];
+      const cm = c < K.length - 1 ? c : c - 1, k = K[c];
+      const sw = K.reduce((a, x) => a + x.w, 0), sr = k.r.reduce((a, b) => a + b, 0);
+      if (cm >= 0) {
+        const v = Math.round((+K[cm].mur || 0) / sw * 100);
+        w.push(`<div class="suw"><span class="et">${esc6(t.slupek)}</span><input type="range" min="0" max="40" step="1" value="${v}" data-przerwa="mur:${cm}" aria-label="${esc6(t.slupek)}"><span>${v ? v + " %" : esc6(t.brak)}</span></div>`);
+      }
+      const jb = j < k.r.length - 1 ? j : j - 1;
+      if (jb >= 0) {
+        const v = Math.round((+k.bel?.[jb] || 0) / sr * 100);
+        w.push(`<div class="suw"><span class="et">${esc6(t.belka)}</span><input type="range" min="0" max="30" step="1" value="${v}" data-przerwa="bel:${c}:${jb}" aria-label="${esc6(t.belka)}"><span>${v ? v + " %" : esc6(t.brak)}</span></div>`);
+      }
+      return w.join("");
+    }
+    _odswiezUklad(bezSuwakow) {
       this._dopasujPola(false);
       const r = this.shadowRoot, e = r.getElementById("edytor");
       if (e) e.innerHTML = this.edytor();
+      const pz = r.getElementById("przerwy");
+      if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
       const k = r.querySelector("[data-wlasny]");
       if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
     }
     operacja(op) {
       const S = this.S, K = S.u.kol, P = prostokaty(S.u);
-      let i = Math.min(S.wyb, P.length - 1), c = 0;
-      while (i >= K[c].r.length) {
+      let i = op === "dodaj" ? arguments[1] : Math.min(S.wyb, P.length - 1), c = 0;
+      if (op !== "dodaj") while (i >= K[c].r.length) {
         i -= K[c].r.length;
         c++;
       }
       const k = K[c];
+      if (op === "dodaj") {
+        const kd = K[i], wys = 1 - kd.dol, sr = kd.r.reduce((a, b) => a + b, 0);
+        kd.r = [...kd.r.map((h) => h / sr * wys), kd.dol];
+        kd.dol = 0;
+        kd.bel = [...(kd.bel || []).map((b) => b / sr * wys), 0];
+        S.wyb = K.slice(0, i).reduce((a, x) => a + x.r.length, 0) + kd.r.length - 1;
+        this._dopasujPola(false);
+        return this.rysuj();
+      }
       if (op === "poz" && k.r.length < 3) {
         const h = k.r[i] / 2;
         k.r.splice(i, 1, h, h);
+        (k.bel = k.bel || []).splice(i, 0, 0);
       }
       if (op === "pion" && K.length < 4) {
         k.w /= 2;
-        K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol });
+        K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol, bel: [...k.bel || []], mur: k.mur || 0 });
+        k.mur = 0;
       }
       if (op === "usun" && P.length > 1) {
         if (k.r.length > 1) {
           const h = k.r.splice(i, 1)[0];
-          k.r[Math.max(0, i - 1)] += h;
+          k.r[Math.max(0, i - 1)] += h + (+k.bel?.[Math.min(i, k.r.length - 1)] || 0);
+          k.bel?.splice(Math.min(i, k.r.length - 1), 1);
         } else {
-          const w = K.splice(c, 1)[0].w;
-          K[Math.max(0, c - 1)].w += w;
+          const u = K.splice(c, 1)[0];
+          K[Math.max(0, c - 1)].w += u.w + (+u.mur || 0);
+          if (c >= K.length && K.length) K[K.length - 1].mur = 0;
         }
         S.wyb = 0;
       }
@@ -8606,40 +9238,53 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (!svg2 || !this._uch) return;
       const { EW, EH, EP } = this._ed, r = svg2.getBoundingClientRect(), sk = EW / r.width;
       const fx = Math.min(1, Math.max(0, ((e.clientX - r.left) * sk - EP) / (EW - 2 * EP))), fy = Math.min(1, Math.max(0, ((e.clientY - r.top) * sk - EP) / (EH - 2 * EP)));
-      const K = this.S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), [typ, id] = this._uch.split(":");
+      const K = this.S.u.kol, suma = sumaKol(K), [typ, id] = this._uch.split(":");
       if (typ === "k") {
-        const c = +id, przed = K.slice(0, c).reduce((a, k) => a + k.w, 0) / suma, para = (K[c].w + K[c + 1].w) / suma;
-        const lewa = Math.min(para - 0.08, Math.max(0.08, fx - przed));
+        const c = +id, przed = K.slice(0, c).reduce((a, k) => a + k.w + (+k.mur || 0), 0) / suma, m = (+K[c].mur || 0) / suma, para = (K[c].w + K[c + 1].w) / suma;
+        const lewa = Math.min(para - 0.08, Math.max(0.08, fx - przed - m / 2));
         K[c].w = lewa * suma;
         K[c + 1].w = (para - lewa) * suma;
       } else if (typ === "d") {
         K[+id].dol = Math.min(0.6, Math.max(0, Math.round((1 - fy) * 50) / 50));
       } else {
-        const [c, j] = id.split("-").map(Number), k = K[c], wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
-        const gora = k.r.slice(0, j).reduce((a, b) => a + b, 0) / sr * wys, para = (k.r[j] + k.r[j + 1]) / sr * wys;
-        const g = Math.min(para - 0.06, Math.max(0.06, fy - gora));
+        const [c, j] = id.split("-").map(Number), k = K[c], wys = 1 - k.dol, sr = sumaWierszy(k), bel = k.bel || [];
+        const gora = k.r.slice(0, j).reduce((a, b2, i) => a + b2 + (+bel[i] || 0), 0) / sr * wys, b = (+bel[j] || 0) / sr * wys, para = (k.r[j] + k.r[j + 1]) / sr * wys;
+        const g = Math.min(para - 0.06, Math.max(0.06, fy - gora - b / 2));
         k.r[j] = g / wys * sr;
         k.r[j + 1] = (para - g) / wys * sr;
       }
       this._odswiezUklad();
     }
+    // listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (i to, co już wybrane); reszta domu po „Pokaż wszystkie”
+    _polePod(e) {
+      const el = this.shadowRoot.elementsFromPoint?.(e.clientX, e.clientY).find((x) => x.closest?.("[data-pole]"))?.closest("[data-pole]");
+      return el ? +el.dataset.pole : null;
+    }
+    _tylkoTu(lista, tu, wybrane) {
+      if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: "" };
+      return {
+        lista: lista.filter((x) => tu(x) || wybrane.includes(x.id)),
+        wiecej: `<button class="chip" data-wszystkie="1">${esc6(this.t.wszystkie)}</button>`
+      };
+    }
     arkusz() {
       const S = this.S, t = this.t, i = S.arkusz, p = S.pola[i] || (S.pola[i] = { tryb: "uchyl" });
       const pokoj = this._oslona(S.rolety[0])?.area;
-      const silniki = this.dane.oslony.filter((o) => !o.brama && (!o.zajeta || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa));
-      const okna = this._czujnik("okno").lista;
+      const sil = this._tylkoTu(this.dane.oslony.filter((o) => !o.brama && (!o.grupa || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa)), (o) => pokoj && o.area === pokoj, [p.silnik, ...S.rolety]);
+      const silniki = sil.lista;
+      const ok = this._tylkoTu(this._czujnik("okno").lista, (c) => c.tu, [p.czujnik]), okna = ok.lista;
       return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(wstaw(t.pole, i + 1))}"><div class="uchwyt"></div><h2>${esc6(wstaw(t.pole, i + 1))}</h2>
-      <div class="sek">${esc6(t.silnikPola)}</div><div class="chipy">${silniki.map((o) => `<button class="chip ${p.silnik === o.id ? "wyb" : ""}" data-silnik="${esc6(o.id)}">${esc6(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc6(o.pokoj)}</span>` : ""}</button>`).join("")}</div>
+      <div class="sek">${esc6(t.silnikPola)}</div><div class="chipy">${silniki.map((o) => `<button class="chip ${p.silnik === o.id ? "wyb" : ""}" data-silnik="${esc6(o.id)}">${esc6(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc6(o.pokoj)}</span>` : ""}</button>`).join("")}${sil.wiecej}</div>
       <div class="sek">${esc6(t.czujnikPola)}</div><div class="chipy">${okna.map((c) => `<button class="chip ${p.czujnik === c.id ? "wyb" : ""}" data-czuj="${esc6(c.id)}">${esc6(c.nazwa)}${c.tu && c.pokoj ? `<span class="p">${esc6(c.pokoj)}</span>` : ""}</button>`).join("")}
-      <button class="chip ${!p.czujnik ? "wyb" : ""}" data-czuj="">${esc6(t.bezCzujnika)}</button></div>
+      ${ok.wiecej}<button class="chip ${!p.czujnik ? "wyb" : ""}" data-czuj="">${esc6(t.bezCzujnika)}</button></div>
       ${p.czujnik ? `<div class="sek">${esc6(t.gdyOtwarte)}</div><div class="chipy">${["uchyl", "otworz"].map((k) => `<button class="chip ${p.tryb === k ? "wyb" : ""}" data-tryb="${k}">${esc6(t[k])}</button>`).join("")}</div>` : ""}
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
     }
     arkuszCzujnika(r) {
-      const S = this.S, t = this.t, klucz = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._czujnik(r);
+      const S = this.S, t = this.t, klucz = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._tylkoTu(this._czujnik(r).lista, (x) => x.tu, [S.o[klucz]]);
       return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(t.czujniki[r])}"><div class="uchwyt"></div><h2>${esc6(t.czujniki[r])}</h2>
       <div class="chipy" style="margin-top:12px">${c.lista.map((x) => `<button class="chip ${S.o[klucz] === x.id ? "wyb" : ""}" data-wybierz="${esc6(x.id)}" data-klucz="${klucz}">${esc6(x.nazwa)}${x.pokoj ? `<span class="p">${esc6(x.pokoj)}</span>` : ""}</button>`).join("")}
-      <button class="chip ${!S.o[klucz] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz}">${esc6(t.nieUzywaj)}</button></div>
+      ${c.wiecej}<button class="chip ${!S.o[klucz] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz}">${esc6(t.nieUzywaj)}</button></div>
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
     }
     // --- budowa i rysowanie ---
@@ -8655,6 +9300,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.addEventListener("click", (e) => this._klik(e));
       r.addEventListener("input", (e) => this._wpis(e));
       r.addEventListener("pointerdown", (e) => {
+        const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]"));
+        if (zp) {
+          this._zamiana = { z: +zp.dataset.pole, x: e.clientX, y: e.clientY, jedzie: false };
+          try {
+            e.target.setPointerCapture(e.pointerId);
+          } catch (x) {
+          }
+        }
         const u = e.target.closest?.("[data-uch]"), p = e.target.closest?.("[data-ep]");
         if (u) {
           this._uch = u.dataset.uch;
@@ -8672,6 +9325,30 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       });
       r.addEventListener("pointermove", (e) => {
         if (this._uch) this._ciagnij(e);
+        const z = this._zamiana;
+        if (!z) return;
+        if (!z.jedzie && Math.hypot(e.clientX - z.x, e.clientY - z.y) > 8) z.jedzie = true;
+        if (z.jedzie) {
+          const cel = this._polePod(e);
+          z.do = cel;
+          r.querySelectorAll("[data-pole]").forEach((el) => el.classList.toggle("cel", +el.dataset.pole === cel && cel !== z.z));
+        }
+      });
+      r.addEventListener("pointerup", (e) => {
+        const z = this._zamiana;
+        this._zamiana = null;
+        if (!z?.jedzie) return;
+        this._poZamianie = true;
+        setTimeout(() => {
+          this._poZamianie = false;
+        }, 50);
+        const cel = this._polePod(e) ?? z.do ?? null, S = this.S;
+        if (cel !== null && cel !== z.z) {
+          const a = S.pola[z.z] || {};
+          S.pola[z.z] = S.pola[cel] || {};
+          S.pola[cel] = a;
+        }
+        this.rysuj();
       });
       const koniec = () => {
         if (this._uch) {
@@ -8713,7 +9390,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this.shadowRoot.getElementById("tresc").scrollTop = 0;
     }
     async _klik(e) {
-      const b = e.target.closest("button, g[data-pole], [data-zamknij]");
+      if (this._poZamianie) return;
+      const b = e.target.closest("button, g[data-pole], g[data-dodaj], [data-zamknij]");
       if (!b) return;
       const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
       if (d.x) return this._p.zamknij();
@@ -8722,20 +9400,33 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (b.id === "dalej") return S.krok < kroki.length - 1 ? this._idz(S.krok + 1) : this._zapisz(b);
       if (b.id === "mierz") return this._mierz();
       if (d.idz) return this._idz(kroki.indexOf(d.idz));
-      if (d.oslona) {
+      if (d.oslona || d.pokojcaly) {
         const i = S.rolety.indexOf(d.oslona), x = this._oslona(d.oslona);
-        if (i >= 0) S.rolety.splice(i, 1);
+        const czl = (x?.czlonkowie || []).filter((e2) => this._oslona(e2));
+        if (d.pokojcaly) {
+          const kol = (n) => /lew|left/i.test(n) ? 0 : /środ|srod|mid/i.test(n) ? 1 : /praw|right/i.test(n) ? 2 : 3;
+          S.rolety = this.dane.oslony.filter((o2) => o2.area === d.pokojcaly && !o2.grupa && !o2.brama).sort((x2, y2) => kol(x2.nazwa) - kol(y2.nazwa) || x2.nazwa.localeCompare(y2.nazwa)).map((o2) => o2.id).slice(0, 12);
+          S.wykryty = null;
+        } else if (czl.length > 1 && i < 0) {
+          S.rolety = czl.slice(0, 12);
+          S.zGrupy = x.nazwa;
+          S.wykryty = null;
+        } else if (i >= 0) S.rolety.splice(i, 1);
         else {
           if (S.rolety.some((e2) => !!this._oslona(e2)?.brama !== !!x?.brama)) S.rolety = [];
           S.rolety.push(d.oslona);
           S.wykryty = null;
           if (S.rolety.length === 1 && x?.area && !x.brama && this.dane.nowy) {
-            const reszta = this.dane.oslony.filter((o2) => o2.area === x.area && o2.id !== x.id && !o2.zajeta && !o2.brama).map((o2) => o2.id);
+            const reszta = this.dane.oslony.filter((o2) => o2.area === x.area && o2.id !== x.id && !o2.zajeta && !o2.grupa && !o2.brama).map((o2) => o2.id);
             if (reszta.length) {
               S.rolety.push(...reszta.slice(0, 11));
               S.wykryty = x.pokoj;
             }
           }
+        }
+        if (S.rolety.length && prostokaty(S.u).length !== S.rolety.length) {
+          S.recznie.uklad = false;
+          S.pola = [];
         }
         try {
           this.dane = { ...this.dane, ...await this._hass.callWS({ type: "motor_ha/kreator/dane", rolety: S.rolety, ...this._p.entry_id ? { entry_id: this._p.entry_id } : {} }), opcje: this.dane.opcje, nowy: this.dane.nowy };
@@ -8752,6 +9443,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         S.recznie.uklad = true;
         S.wyb = 0;
       } else if (d.op) return this.operacja(d.op);
+      else if (d.dodaj !== void 0) return this.operacja("dodaj", +d.dodaj);
       else if (d.rodzaj) {
         o.oslona = d.rodzaj;
         S.recznie.rodzaj = true;
@@ -8761,11 +9453,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       } else if (d.rama) {
         o.rama = d.rama;
         delete o.rama_wlasna;
-      } else if (d.pole !== void 0) S.arkusz = +d.pole;
-      else if (d.zamknij) {
+      } else if (d.pole !== void 0) {
+        S.arkusz = +d.pole;
+        S.wszystkie = false;
+      } else if (d.zamknij) {
         S.arkusz = null;
         S.arkuszC = null;
-      } else if (d.silnik) {
+        S.wszystkie = false;
+      } else if (d.wszystkie) S.wszystkie = true;
+      else if (d.silnik) {
         S.pola[S.arkusz].silnik = d.silnik;
         if (!S.rolety.includes(d.silnik)) S.rolety.push(d.silnik);
       } else if (d.czuj !== void 0) S.pola[S.arkusz].czujnik = d.czuj || void 0;
@@ -8773,13 +9469,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       else if (d.slonce) {
         o.bez_slonca = !o.bez_slonca;
         if (o.bez_slonca) o.f_slonce = false;
-      } else if (d.czujnik) S.arkuszC = d.czujnik;
-      else if (d.wybierz !== void 0) {
+      } else if (d.czujnik) {
+        S.arkuszC = d.czujnik;
+        S.wszystkie = false;
+      } else if (d.zrodlo !== void 0) {
+        if (d.zrodlo) o[d.klucz] = d.zrodlo;
+        else delete o[d.klucz];
+      } else if (d.wybierz !== void 0) {
         if (d.wybierz) o[d.klucz] = d.wybierz;
         else delete o[d.klucz];
         S.arkuszC = null;
+        S.wszystkie = false;
       } else if (d.auto) this._przelacz(d.auto);
-      else if (d.zeslonca) o.harm_tryb = o.harm_tryb === "slonce" ? "godziny" : "slonce";
+      else if (d.harm) o[d.harm === "rano" ? "harm_rano" : "harm_wieczor"] = d.v;
       else if (d.azymut) o.azymut = +d.azymut;
       else if (d.tel) {
         const g = new Set(o.powiadom_gdzie || []);
@@ -8827,14 +9529,39 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         }
         return;
       }
+      if (el.dataset?.przerwa) {
+        const [typ, c, j] = el.dataset.przerwa.split(":"), K = S.u.kol, v2 = +el.value, k = K[+c];
+        if (typ === "mur") k.mur = v2 / 100 * K.reduce((a, x) => a + x.w, 0);
+        else {
+          k.bel = k.bel || [];
+          k.bel[+j] = v2 / 100 * k.r.reduce((a, b) => a + b, 0);
+        }
+        el.nextElementSibling.textContent = v2 ? v2 + " %" : this.t.brak;
+        S.szablon = "w";
+        return this._odswiezUklad(true);
+      }
+      if (el.dataset?.par) {
+        const k = el.dataset.par, v2 = +el.value;
+        S.o[k] = v2;
+        el.nextElementSibling.textContent = PAR[k].fmt(v2);
+        if (k === "przes_otw" || k === "przes_zam") {
+          const r = k === "przes_otw" ? "rano" : "wieczor", sm2 = el.closest(".suw").parentElement.querySelector(`[data-auto="${r}"] small`);
+          if (sm2) sm2.textContent = this._opisPory(r);
+        }
+        if (k === "wiatr_prog") {
+          const sm2 = el.closest(".suw").parentElement.querySelector('[data-auto="wiatr"] small');
+          if (sm2) sm2.textContent = wstaw(this.t.wiatrOpis, v2);
+        }
+        return;
+      }
       const g = el.dataset?.suw;
       if (!g) return;
       const v = +el.value;
       if (g === "slonce") S.o.slonce_poz = v;
       else S.o[g] = godz(v) + ":00";
       el.nextElementSibling.textContent = g === "slonce" ? 100 - v + " %" : godz(v);
-      const sm = el.closest(".suw").previousElementSibling.querySelector("small");
-      if (sm) sm.textContent = g === "slonce" ? wstaw(this.t.zaslon, 100 - v) : wstaw(this.t.oGodz, godz(v));
+      const sm = g === "slonce" ? el.closest(".suw").previousElementSibling.querySelector("small") : el.closest(".suw").parentElement.querySelector(`[data-auto="${g === "otworz" ? "rano" : "wieczor"}"] small`);
+      if (sm) sm.textContent = g === "slonce" ? wstaw(this.t.zaslon, 100 - v) : this._opisPory(g === "otworz" ? "rano" : "wieczor");
     }
     _zapisz(b) {
       const S = this.S;
