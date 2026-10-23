@@ -135,7 +135,8 @@
     "powiadom": "Benachrichtige mich, wenn",
     "powiadom_gdzie": "Auch senden an",
     "na_panel": "Karte zum Dashboard hinzufügen",
-    "wstecz": "Zurück zum vorigen Schritt"
+    "wstecz": "Zurück zum vorigen Schritt",
+    "osobno": "Zwei Flügel getrennt steuern"
   },
   "pomoc": {
     "kopiuj_z": "Leer = von vorne beginnen.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Luxmeter oder Solarleistung – statt nur des Sonnenstands.",
     "czujnik_swieta": "Workday-Integration – Feiertage zählen wie Wochenende.",
     "powiadom_gdzie": "Die HA-App auf dem Handy. Nichts gewählt – nur Benachrichtigungen in HA.",
-    "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
+    "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten.",
+    "osobno": "Der Schieberegler des linken Behangs steht links vom Fenster, der des rechten rechts. Jeder bewegt nur seinen Behang."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: Das Tor ist länger als {minuty} min offen.",
     "brama_niedomknieta": "{nazwa}: Das Tor hat sich nicht geschlossen.",
     "przeszkoda": "{nazwa}: Etwas steht im Tor (Lichtschranke).",
-    "nie_motor_ha": "Das ist kein Motor-HA-Gerät."
+    "nie_motor_ha": "Das ist kein Motor-HA-Gerät.",
+    "kalibracja_brak": "{nazwa}: Kalibrierung fehlgeschlagen – keine Antwort von: {lista}. Prüfe Stromversorgung und Reichweite dieses Behangs und versuche es erneut.",
+    "kalibracja_od_razu": "{nazwa}: Kalibrierung konnte die Zeit nicht messen – der Motor meldet das Ende direkt nach dem Start. Trage die Fahrzeit im Schritt „Motor“ ein oder füge dort die Motorgeschwindigkeit hinzu."
   },
   "uslugi": {
     "wstrzymaj": [

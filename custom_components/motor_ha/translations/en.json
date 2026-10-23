@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Step {nr} of {z}: Wizard mode",
-        "description": "{pasek}\n\n**What:** Choose how many questions you want to see.\n\n**Why:** Basic is enough for most people. Advanced shows every option and extra devices. You can change the mode later in “Configure”.{porada}",
+        "description": "{pasek}\n\n**What:** Choose how many questions you want to see.\n\n**Why:** Basic is enough for most people. Advanced shows every option and extra devices. You can change the mode later in “Configure”.{porada}{galeria}",
         "data": {
           "tryb": "Mode",
           "kopiuj_z": "Copy settings from another device",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Step {nr} of {z}: What you have at home",
-        "description": "{pasek}\n\n**What:** Tick what you have. The wizard searched Home Assistant and ticked what it found.\n\n**Why:** The wizard shows only the steps and features for ticked devices. You can add the rest later in “Configure”.\n\nFound: {znalezione}{porada}",
+        "description": "{pasek}\n\n**What:** Tick what you have. The wizard searched Home Assistant and ticked what it found.\n\n**Why:** The wizard shows only the steps and features for ticked devices. You can add the rest later in “Configure”.\n\nFound: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "I have at home",
           "wstecz": "Go back to the previous step"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Step {nr} of {z}: Device",
-        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor. Talk to Assist using the device name, e.g. “close Kitchen pleated blind”.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor. Talk to Assist using the device name, e.g. “close Kitchen pleated blind”.{porada}{galeria}",
         "data": {
           "rolety": "Motor (one or two entities)",
           "name": "Name",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Step {nr} of {z}: Type",
-        "description": "{pasek}\n\n**What:** Choose exactly what you have.\n\n**Why:** The card draws this device, and the automation knows what it can use.{porada}",
+        "description": "{pasek}\n\n**What:** Choose exactly what you have.\n\n**Why:** The card draws this device, and the automation knows what it can use.{porada}{galeria}",
         "data": {
           "oslona": "Type",
           "wstecz": "Go back to the previous step"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Step {nr} of {z}: Slats",
-        "description": "{pasek}\n\n**What:** Set how the slats tilt.\n\n**Why:** You let light in without raising the blind.{porada}",
+        "description": "{pasek}\n\n**What:** Set how the slats tilt.\n\n**Why:** You let light in without raising the blind.{porada}{galeria}",
         "data": {
           "lamele_kat": "Slat angle in sunshine",
           "lamele_tryb": "Slat control",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Step {nr} of {z}: Colours",
-        "description": "{pasek}\n\n**What:** Choose the colour of the shade and the frame.\n\n**Why:** The window on screen looks like the real one.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the colour of the shade and the frame.\n\n**Why:** The window on screen looks like the real one.{porada}{galeria}",
         "data": {
           "kolor": "Shade colour",
           "rama": "Frame colour",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Step {nr} of {z}: Window",
-        "description": "{pasek}\n\n**What:** How many sashes the window has and how big it is on the card.\n\n**Why:** Each sash can have its own motor.{porada}",
+        "description": "{pasek}\n\n**What:** How many sashes the window has and how big it is on the card.\n\n**Why:** Each sash can have its own motor.{porada}{galeria}",
         "data": {
           "skrzydla": "Sashes",
           "wysokosc": "Height on the card",
+          "osobno": "Two sashes controlled separately",
           "odwroc": "Reversed percentages",
           "wstecz": "Go back to the previous step"
         },
         "data_description": {
+          "osobno": "The left shade's slider sits on the left of the window, the right one's on the right. Each moves only its own shade.",
           "odwroc": "Turn on when the motor reports 100 % with the shade closed.",
           "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
         }
       },
       "czujniki": {
         "title": "Step {nr} of {z}: Sensors",
-        "description": "{pasek}\n\n**What:** Choose the window and door opening sensors.\n\n**Why:** The card shows a tilted or open sash, and the lock never lowers the shade onto an open window.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the window and door opening sensors.\n\n**Why:** The card shows a tilted or open sash, and the lock never lowers the shade onto an open window.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Left sash sensor",
           "tryb_lewe": "Left sash",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Step {nr} of {z}: Photocell",
-        "description": "{pasek}\n\n**What:** Pick the gate obstacle sensor and the state that means “something is in the gate”.\n\n**Why:** The card shows the obstacle and you can get a notification. The photocell in the controller still stops the gate by itself.{porada}",
+        "description": "{pasek}\n\n**What:** Pick the gate obstacle sensor and the state that means “something is in the gate”.\n\n**Why:** The card shows the obstacle and you can get a notification. The photocell in the controller still stops the gate by itself.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Photocell (obstacle sensor)",
           "foto_stan": "Obstacle when the sensor state is",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Step {nr} of {z}: Motor",
-        "description": "{pasek}\n\n**What:** Enter the full travel time or leave 0.\n\n**Why:** The drawing moves as fast as the real motor. With 0 the card learns the time by itself after a few moves.{porada}",
+        "description": "{pasek}\n\n**What:** Enter the full travel time or leave 0.\n\n**Why:** The drawing moves as fast as the real motor. With 0 the card learns the time by itself after a few moves.{porada}{galeria}",
         "data": {
           "czas": "Full travel time",
           "kalibruj": "Calibrate now (the shade goes up, down and up)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Step {nr} of {z}: Weather",
-        "description": "{pasek}\n\n**What:** Choose the weather and outdoor sensors.\n\n**Why:** Real weather shows behind the glass, and the automation protects the shade from wind, rain and sun.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the weather and outdoor sensors.\n\n**Why:** Real weather shows behind the glass, and the automation protects the shade from wind, rain and sun.{porada}{galeria}",
         "data": {
           "pogoda": "Weather",
           "czujnik_temp": "Outdoor temperature",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Step {nr} of {z}: Household",
-        "description": "{pasek}\n\n**What:** Choose presence, motion and household sensors.\n\n**Why:** The shade can react to whether someone is in the room or at home.{porada}",
+        "description": "{pasek}\n\n**What:** Choose presence, motion and household sensors.\n\n**Why:** The shade can react to whether someone is in the room or at home.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Presence sensor (someone is there)",
           "czujnik_ruch": "Motion sensor (someone came in)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Step {nr} of {z}: Automation",
-        "description": "{pasek}\n\n**What:** Turn on the features that may move the shade by themselves.\n\n**Why:** Your home looks after the shades without writing automations. All are off until you turn them on.{porada}",
+        "description": "{pasek}\n\n**What:** Turn on the features that may move the shade by themselves.\n\n**Why:** Your home looks after the shades without writing automations. All are off until you turn them on.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Schedule",
           "f_slonce": "Sun protection",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Step {nr} of {z}: Settings",
-        "description": "{pasek}\n\n**What:** Adjust the features you turned on.\n\n**Why:** The defaults suit most homes.{porada}",
+        "description": "{pasek}\n\n**What:** Adjust the features you turned on.\n\n**Why:** The defaults suit most homes.{porada}{galeria}",
         "data": {
           "azymut": "Window direction",
           "szer_slonca": "Sun width in the window",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Step {nr} of {z}: Notifications",
-        "description": "{pasek}\n\n**What:** Choose what to tell you about.\n\n**Why:** You know right away which device has a problem. Notifications go to HA and, if you choose, to your phone.{porada}",
+        "description": "{pasek}\n\n**What:** Choose what to tell you about.\n\n**Why:** You know right away which device has a problem. Notifications go to HA and, if you choose, to your phone.{porada}{galeria}",
         "data": {
           "powiadom": "Notify me when",
           "powiadom_gdzie": "Also send to",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Step {nr} of {z}: Dashboard",
-        "description": "{pasek}\n\n**What:** Which dashboard to add the card to.\n\n**Why:** The card appears by itself, nothing to click.{porada}",
+        "description": "{pasek}\n\n**What:** Which dashboard to add the card to.\n\n**Why:** The card appears by itself, nothing to click.{porada}{galeria}",
         "data": {
           "na_panel": "Add the card to a dashboard",
           "wstecz": "Go back to the previous step"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Step {nr} of {z}: Wizard mode",
-        "description": "{pasek}\n\n**What:** Choose how many questions you want to see.\n\n**Why:** Basic is enough for most people. Advanced shows every option and extra devices. You can change the mode later in “Configure”.{porada}",
+        "description": "{pasek}\n\n**What:** Choose how many questions you want to see.\n\n**Why:** Basic is enough for most people. Advanced shows every option and extra devices. You can change the mode later in “Configure”.{porada}{galeria}",
         "data": {
           "tryb": "Mode",
           "kopiuj_z": "Copy settings from another device",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Step {nr} of {z}: What you have at home",
-        "description": "{pasek}\n\n**What:** Tick what you have. The wizard searched Home Assistant and ticked what it found.\n\n**Why:** The wizard shows only the steps and features for ticked devices. You can add the rest later in “Configure”.\n\nFound: {znalezione}{porada}",
+        "description": "{pasek}\n\n**What:** Tick what you have. The wizard searched Home Assistant and ticked what it found.\n\n**Why:** The wizard shows only the steps and features for ticked devices. You can add the rest later in “Configure”.\n\nFound: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "I have at home",
           "wstecz": "Go back to the previous step"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Step {nr} of {z}: Device",
-        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor. Talk to Assist using the device name, e.g. “close Kitchen pleated blind”.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor. Talk to Assist using the device name, e.g. “close Kitchen pleated blind”.{porada}{galeria}",
         "data": {
           "rolety": "Motor (one or two entities)",
           "name": "Name",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Step {nr} of {z}: Type",
-        "description": "{pasek}\n\n**What:** Choose exactly what you have.\n\n**Why:** The card draws this device, and the automation knows what it can use.{porada}",
+        "description": "{pasek}\n\n**What:** Choose exactly what you have.\n\n**Why:** The card draws this device, and the automation knows what it can use.{porada}{galeria}",
         "data": {
           "oslona": "Type",
           "wstecz": "Go back to the previous step"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Step {nr} of {z}: Slats",
-        "description": "{pasek}\n\n**What:** Set how the slats tilt.\n\n**Why:** You let light in without raising the blind.{porada}",
+        "description": "{pasek}\n\n**What:** Set how the slats tilt.\n\n**Why:** You let light in without raising the blind.{porada}{galeria}",
         "data": {
           "lamele_kat": "Slat angle in sunshine",
           "lamele_tryb": "Slat control",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Step {nr} of {z}: Colours",
-        "description": "{pasek}\n\n**What:** Choose the colour of the shade and the frame.\n\n**Why:** The window on screen looks like the real one.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the colour of the shade and the frame.\n\n**Why:** The window on screen looks like the real one.{porada}{galeria}",
         "data": {
           "kolor": "Shade colour",
           "rama": "Frame colour",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Step {nr} of {z}: Window",
-        "description": "{pasek}\n\n**What:** How many sashes the window has and how big it is on the card.\n\n**Why:** Each sash can have its own motor.{porada}",
+        "description": "{pasek}\n\n**What:** How many sashes the window has and how big it is on the card.\n\n**Why:** Each sash can have its own motor.{porada}{galeria}",
         "data": {
           "skrzydla": "Sashes",
           "wysokosc": "Height on the card",
+          "osobno": "Two sashes controlled separately",
           "odwroc": "Reversed percentages",
           "wstecz": "Go back to the previous step"
         },
         "data_description": {
+          "osobno": "The left shade's slider sits on the left of the window, the right one's on the right. Each moves only its own shade.",
           "odwroc": "Turn on when the motor reports 100 % with the shade closed.",
           "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
         }
       },
       "czujniki": {
         "title": "Step {nr} of {z}: Sensors",
-        "description": "{pasek}\n\n**What:** Choose the window and door opening sensors.\n\n**Why:** The card shows a tilted or open sash, and the lock never lowers the shade onto an open window.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the window and door opening sensors.\n\n**Why:** The card shows a tilted or open sash, and the lock never lowers the shade onto an open window.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Left sash sensor",
           "tryb_lewe": "Left sash",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Step {nr} of {z}: Photocell",
-        "description": "{pasek}\n\n**What:** Pick the gate obstacle sensor and the state that means “something is in the gate”.\n\n**Why:** The card shows the obstacle and you can get a notification. The photocell in the controller still stops the gate by itself.{porada}",
+        "description": "{pasek}\n\n**What:** Pick the gate obstacle sensor and the state that means “something is in the gate”.\n\n**Why:** The card shows the obstacle and you can get a notification. The photocell in the controller still stops the gate by itself.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Photocell (obstacle sensor)",
           "foto_stan": "Obstacle when the sensor state is",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Step {nr} of {z}: Motor",
-        "description": "{pasek}\n\n**What:** Enter the full travel time or leave 0.\n\n**Why:** The drawing moves as fast as the real motor. With 0 the card learns the time by itself after a few moves.{porada}",
+        "description": "{pasek}\n\n**What:** Enter the full travel time or leave 0.\n\n**Why:** The drawing moves as fast as the real motor. With 0 the card learns the time by itself after a few moves.{porada}{galeria}",
         "data": {
           "czas": "Full travel time",
           "kalibruj": "Calibrate now (the shade goes up, down and up)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Step {nr} of {z}: Weather",
-        "description": "{pasek}\n\n**What:** Choose the weather and outdoor sensors.\n\n**Why:** Real weather shows behind the glass, and the automation protects the shade from wind, rain and sun.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the weather and outdoor sensors.\n\n**Why:** Real weather shows behind the glass, and the automation protects the shade from wind, rain and sun.{porada}{galeria}",
         "data": {
           "pogoda": "Weather",
           "czujnik_temp": "Outdoor temperature",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Step {nr} of {z}: Household",
-        "description": "{pasek}\n\n**What:** Choose presence, motion and household sensors.\n\n**Why:** The shade can react to whether someone is in the room or at home.{porada}",
+        "description": "{pasek}\n\n**What:** Choose presence, motion and household sensors.\n\n**Why:** The shade can react to whether someone is in the room or at home.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Presence sensor (someone is there)",
           "czujnik_ruch": "Motion sensor (someone came in)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Step {nr} of {z}: Automation",
-        "description": "{pasek}\n\n**What:** Turn on the features that may move the shade by themselves.\n\n**Why:** Your home looks after the shades without writing automations. All are off until you turn them on.{porada}",
+        "description": "{pasek}\n\n**What:** Turn on the features that may move the shade by themselves.\n\n**Why:** Your home looks after the shades without writing automations. All are off until you turn them on.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Schedule",
           "f_slonce": "Sun protection",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Step {nr} of {z}: Settings",
-        "description": "{pasek}\n\n**What:** Adjust the features you turned on.\n\n**Why:** The defaults suit most homes.{porada}",
+        "description": "{pasek}\n\n**What:** Adjust the features you turned on.\n\n**Why:** The defaults suit most homes.{porada}{galeria}",
         "data": {
           "azymut": "Window direction",
           "szer_slonca": "Sun width in the window",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Step {nr} of {z}: Notifications",
-        "description": "{pasek}\n\n**What:** Choose what to tell you about.\n\n**Why:** You know right away which device has a problem. Notifications go to HA and, if you choose, to your phone.{porada}",
+        "description": "{pasek}\n\n**What:** Choose what to tell you about.\n\n**Why:** You know right away which device has a problem. Notifications go to HA and, if you choose, to your phone.{porada}{galeria}",
         "data": {
           "powiadom": "Notify me when",
           "powiadom_gdzie": "Also send to",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "This is not a Motor HA device."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa}: calibration failed – no response from: {lista}. Check that shade's power and range, then try again."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa}: calibration could not measure the time – the motor reports the end right after it starts. Enter the travel time in the “Motor” step or add the motor speed entity there."
     },
     "powod_brak": {
       "message": "No automation"

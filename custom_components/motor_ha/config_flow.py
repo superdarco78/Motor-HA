@@ -29,7 +29,10 @@ from .const import (
     CONF_KOLOR_WLASNY,
     CONF_NA_PANEL,
     CONF_NAZWA,
+    CONF_KARTA,
+    KARTA_Z_KREATORA,
     CONF_ODWROC,
+    CONF_OSOBNO,
     CONF_OSLONA,
     CONF_OSOBY,
     CONF_POGODA,
@@ -68,11 +71,14 @@ from .const import (
     ZAAWANSOWANY,
     BRAMY as RODZAJE_BRAM,
 )
-from . import skan
+from . import galeria, skan
 from .pasek import async_obrazek
 from .urzadzenie import assist
 
 WSTECZ = "wstecz"
+IDZ = "idz_do"
+# kroki z żywym podglądem okna (wygląd)
+PODGLAD = ("rodzaj", "lamele", "kolory", "okno")
 KOPIUJ = "kopiuj_z"
 
 # które parametry pokazać przy włączonej funkcji (tryb podstawowy: tylko pierwsze z listy)
@@ -122,9 +128,11 @@ def _lista(opcje: list[str], klucz: str, wiele: bool = False, lista: bool = Fals
 
 
 def _encja(domena: str | list[str], wiele: bool = False, klasa: str | list[str] | None = None,
-           wyklucz: list[str] | None = None) -> sel.EntitySelector:
+           wyklucz: list[str] | None = None, tylko: list[str] | None = None) -> sel.EntitySelector:
     cfg: dict[str, Any] = {"domain": domena, "multiple": wiele}
-    if klasa:
+    if tylko:
+        cfg["include_entities"] = tylko   # sama lista pasujących (klasa niepotrzebna, a odcięłaby czujniki bez klasy)
+    elif klasa:
         cfg["device_class"] = klasa
     if wyklucz:
         cfg["exclude_entities"] = wyklucz
@@ -172,7 +180,16 @@ class Kreator:
 
     @property
     def brama(self) -> bool:
-        return "brama" in self.mam or self.o.get(CONF_OSLONA) in BRAMY
+        """To urządzenie jest bramą: silnik ma klasę bramy/garażu albo wybrano rodzaj bramy.
+
+        „Brama” na liście „Co masz w domu” znaczy tylko, że w domu jest brama – okno w salonie
+        nie staje się przez to bramą."""
+        stany = [s for e in self.o.get(CONF_ROLETY) or [] if (s := self.hass.states.get(e))]
+        if any(skan.czy_brama(s) for s in stany):
+            return True
+        if any(s.attributes.get("device_class") for s in stany):
+            return False
+        return self.o.get(CONF_OSLONA) in BRAMY
 
     @property
     def roleta(self) -> str | None:
@@ -235,19 +252,33 @@ class Kreator:
         nr = lista.index(krok) if krok in lista else 0
         if nr > 0:
             schemat[vol.Optional(WSTECZ, default=False)] = sel.BooleanSelector()
-        pasek = await async_obrazek(self.hass, lista, nr, self.hass.config.language)
+        pasek = await async_obrazek(self.hass, lista, nr, self.hass.config.language,
+                                    self._podglad() if krok in PODGLAD else None)
+        # IDZ: kliknięcie w pasek kroków (karta dokłada je do danych formularza) – pole niewidoczne w formularzu
         return self.async_show_form(  # type: ignore[attr-defined]
-            step_id=krok, data_schema=vol.Schema(schemat), errors=bledy or {}, last_step=krok == lista[-1] or getattr(self, "_jeden", None) == krok,
+            step_id=krok, data_schema=vol.Schema(schemat, extra=vol.ALLOW_EXTRA), errors=bledy or {}, last_step=krok == lista[-1] or getattr(self, "_jeden", None) == krok,
             description_placeholders={"pasek": f"![]({pasek})", "nr": str(nr + 1),
                                       "z": str(len(lista)), "porada": await self._porada(krok),
-                                      "nazwa": self.tytul or "", **(dodatki or {})})
+                                      "nazwa": self.tytul or "", "galeria": "", **(dodatki or {})})
+
+    def _podglad(self) -> dict[str, Any]:
+        """Ustawienia wyglądu dla żywego podglądu okna w kreatorze (karta/src/kreator.js)."""
+        return {k: self.o[k] for k in (CONF_OSLONA, CONF_KOLOR, CONF_RAMA, CONF_SKRZYDLA, CONF_OSOBNO, CONF_ODWROC,
+                                       "wysokosc", CONF_KOLOR_WLASNY, CONF_RAMA_WLASNA) if self.o.get(k) not in (None, "")}
 
     async def _dalej(self, krok: str, dane: dict[str, Any] | None) -> ConfigFlowResult | None:
         """Zapisuje odpowiedzi i przechodzi do następnego (albo poprzedniego) kroku."""
         if dane is None:
             return None
         wstecz = dane.pop(WSTECZ, False)
-        self.o.update(dane)
+        idz = dane.pop(IDZ, None)
+        self.o.update({k: v for k, v in dane.items() if not k.startswith("_")})
+        lista = self.kroki()
+        # pasek kroków: przy „Konfiguruj” od razu dowolny krok („Dalej” zapisuje), przy dodawaniu – tylko wstecz
+        if idz in lista and idz != krok and (self.konfiguracja or lista.index(idz) < lista.index(krok)):
+            if self.konfiguracja:
+                self._jeden = idz
+            return await getattr(self, f"async_step_{idz}")()
         if getattr(self, "_jeden", None) == krok and not wstecz:
             return await self._koniec()
         self._jeden = None
@@ -318,13 +349,35 @@ class Kreator:
         schemat = {
             vol.Required(CONF_ROLETY, **_dom(self.o, CONF_ROLETY)): _encja("cover", True, klasa, nasze),
             vol.Optional(CONF_NAZWA, **_sug(self.tytul)): sel.TextSelector(),
-            vol.Optional(CONF_POKOJ, **_sug(self.o.get(CONF_POKOJ))): sel.AreaSelector(),
+            vol.Optional(CONF_POKOJ, **_sug(self.o.get(CONF_POKOJ) or self._pokoj()[0])): sel.AreaSelector(),
         }
         if not self.brama:
-            schemat[vol.Required(CONF_RODZAJ_POKOJU, default=self.o.get(CONF_RODZAJ_POKOJU, "salon"))] = \
+            # puste = rozpoznaj z pomieszczenia albo nazwy silnika (po „Dalej”)
+            schemat[vol.Optional(CONF_RODZAJ_POKOJU, **_sug(self.o.get(CONF_RODZAJ_POKOJU) or self._pokoj()[1]))] = \
                 _lista(POKOJE, "pokoje")
         schemat[vol.Optional(CONF_UKRYJ_ZRODLO, default=bool(self.o.get(CONF_UKRYJ_ZRODLO)))] = sel.BooleanSelector()
         return await self._formularz("urzadzenie", schemat, bledy)
+
+    def _pokoj(self) -> tuple[str | None, str | None]:
+        """(pomieszczenie, rodzaj) wybranego już silnika – podpowiedź w formularzu."""
+        if not (r := self.roleta):
+            return None, None
+        s = self.hass.states.get(r)
+        a = skan.obszar(self.hass, r)
+        return a, skan.rodzaj_pokoju(self.hass, a, s.name if s else r)
+
+    def _wybor(self, klucz: str, rodzaj: str, domena: str | list[str], wiele: bool = False,
+               klasa: str | list[str] | None = None, wymagane: bool = False) -> tuple[Any, sel.EntitySelector]:
+        """Pole encji z listą tylko tego, co pasuje (z pokoju osłony na górze), i samą podpowiedzią."""
+        zn = getattr(self, "_znalezione", None) or skan.znajdz(self.hass)
+        lista = skan.pasujace(self.hass, rodzaj, self.roleta, zn)
+        teraz = self.o.get(klucz)
+        for e in teraz if isinstance(teraz, list) else [teraz] if teraz else []:
+            if lista and e not in lista:
+                lista.append(e)   # wybrana wcześniej ręcznie zostaje na liście
+        wartosc = teraz or (lista if wiele and rodzaj == "osoby" else skan.podpowiedz(self.hass, rodzaj, self.roleta, lista))
+        pole = (vol.Required if wymagane else vol.Optional)(klucz, **_sug(wartosc))
+        return pole, _encja(domena, wiele=wiele, klasa=klasa, tylko=lista or None)
 
     def _uzupelnij(self, rolety: list[str]) -> None:
         """Podpowiedzi po wyborze osłony: rodzaj, czujniki okna, prędkość silnika, pomieszczenie."""
@@ -332,8 +385,15 @@ class Kreator:
             return
         pierwsza = rolety[0]
         s = self.hass.states.get(pierwsza)
+        if list(self.o.get(CONF_ROLETY) or []) != list(rolety):
+            # inny silnik (albo kopia ustawień z innego okna): podpowiedzi z poprzedniego pokoju nie pasują
+            for k in (CONF_CZUJNIK_LEWE, CONF_CZUJNIK_PRAWE, CONF_PREDKOSC_LEWA, CONF_PREDKOSC_PRAWA):
+                self.o.pop(k, None)
         if not self.o.get(CONF_POKOJ) and (a := skan.obszar(self.hass, pierwsza)):
             self.o[CONF_POKOJ] = a
+        if not self.o.get(CONF_RODZAJ_POKOJU) and (r := skan.rodzaj_pokoju(self.hass, self.o.get(CONF_POKOJ),
+                                                                            s.name if s else pierwsza)):
+            self.o[CONF_RODZAJ_POKOJU] = r
         if CONF_OSLONA not in self.o or (self.brama and self.o[CONF_OSLONA] not in BRAMY):
             klasa = s.attributes.get("device_class") if s else None
             self.o[CONF_OSLONA] = ("segmentowa" if klasa == "garage" else "przesuwna" if self.brama
@@ -371,16 +431,22 @@ class Kreator:
     async def async_step_rodzaj(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
         if (w := await self._dalej("rodzaj", dane)) is not None:
             return w
-        if self.brama:
+        stany = [s for e in self.o.get(CONF_ROLETY) or [] if (s := self.hass.states.get(e))]
+        bez_klasy = not any(s.attributes.get("device_class") for s in stany)
+        if self.brama and not bez_klasy:
             opcje = RODZAJE_BRAM
-        elif "lamele" in self.mam:
-            opcje = [k for k in Z_LAMELAMI if self.zaaw or k != "pionowa" or True]
         elif "zew" in self.mam:
             opcje = OSLONY_ZEW + OSLONY_WEW
         else:
             opcje = OSLONY_WEW + OSLONY_ZEW
+        if "lamele" in self.mam and not self.brama:   # z lamelami na początku, reszta dalej – nic nie znika
+            opcje = [k for k in Z_LAMELAMI if k in opcje] + [k for k in opcje if k not in Z_LAMELAMI]
+        if bez_klasy and "brama" in self.mam:   # silnik bez klasy: bramy też do wyboru (bramy pierwsze, gdy to brama)
+            opcje = RODZAJE_BRAM + opcje if self.brama else opcje + RODZAJE_BRAM
         domyslny = self.o.get(CONF_OSLONA) if self.o.get(CONF_OSLONA) in opcje else opcje[0]
-        return await self._formularz("rodzaj", {vol.Required(CONF_OSLONA, default=domyslny): _lista(opcje, "oslony")})
+        return await self._formularz("rodzaj", {vol.Required(CONF_OSLONA, default=domyslny): _lista(opcje, "oslony")},
+                                     dodatki={"galeria": await galeria.async_obrazek(
+                                         self.hass, "rodzaj", CONF_OSLONA, opcje, domyslny, "oslony")})
 
     async def async_step_lamele(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
         if (w := await self._dalej("lamele", dane)) is not None:
@@ -406,7 +472,11 @@ class Kreator:
         if self.zaaw:
             schemat[vol.Optional(CONF_KOLOR_WLASNY, **_sug(self.o.get(CONF_KOLOR_WLASNY)))] = sel.ColorRGBSelector()
             schemat[vol.Optional(CONF_RAMA_WLASNA, **_sug(self.o.get(CONF_RAMA_WLASNA)))] = sel.ColorRGBSelector()
-        return await self._formularz("kolory", schemat)
+        palety = (await galeria.async_obrazek(self.hass, "kolory", CONF_KOLOR, list(KOLORY),
+                                              self.o.get(CONF_KOLOR, DOMYSLNE[CONF_KOLOR]), "kolory", "kolor")
+                  + await galeria.async_obrazek(self.hass, "kolory", CONF_RAMA, list(RAMY),
+                                                self.o.get(CONF_RAMA, DOMYSLNE[CONF_RAMA]), "ramy", "kolor"))
+        return await self._formularz("kolory", schemat, dodatki={"galeria": palety})
 
     async def async_step_okno(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
         if (w := await self._dalej("okno", dane)) is not None:
@@ -417,6 +487,9 @@ class Kreator:
                 sel.NumberSelector(sel.NumberSelectorConfig(min=160, max=480, step=10, unit_of_measurement="px",
                                                             mode=sel.NumberSelectorMode.SLIDER)),
         }
+        karta = self.o.get(CONF_KARTA) or {}
+        schemat[vol.Required(CONF_OSOBNO, default=bool(self.o.get(CONF_OSOBNO, karta.get(CONF_OSOBNO, False))))] = \
+            sel.BooleanSelector()
         if self.zaaw:
             schemat[vol.Required(CONF_ODWROC, default=bool(self.o.get(CONF_ODWROC)))] = sel.BooleanSelector()
         return await self._formularz("okno", schemat)
@@ -428,19 +501,21 @@ class Kreator:
                     self.o.pop(k, None)
         if (w := await self._dalej("czujniki", dane)) is not None:
             return w
-        bin_okna = _encja("binary_sensor")
         schemat: dict = {}
         if "okno" in self.mam:
             dwa = str(self.o.get(CONF_SKRZYDLA, "2")) == "2"
             for czujnik, tryb, jest in ((CONF_CZUJNIK_LEWE, CONF_TRYB_LEWE, True), (CONF_CZUJNIK_PRAWE, CONF_TRYB_PRAWE, dwa)):
                 if not jest:
                     continue
-                schemat[vol.Optional(czujnik, **_sug(self.o.get(czujnik)))] = bin_okna
+                pole, wybor = self._wybor(czujnik, "okno", "binary_sensor")
+                if czujnik == CONF_CZUJNIK_PRAWE and not self.o.get(czujnik):
+                    pole = vol.Optional(czujnik)   # ten sam czujnik nie może być podpowiedziany dwa razy
+                schemat[pole] = wybor
                 schemat[vol.Required(tryb, default=self.o.get(tryb, "uchyl"))] = _lista(TRYBY_SKRZYDLA, "tryby", lista=True)
         if self.zaaw and "drzwi" in self.mam:
-            schemat[vol.Optional(CZUJNIKI["drzwi"], **_sug(self.o.get(CZUJNIKI["drzwi"])))] = bin_okna
+            schemat.__setitem__(*self._wybor(CZUJNIKI["drzwi"], "drzwi", "binary_sensor"))
         if self.zaaw and "przeszkoda" in self.mam:
-            schemat[vol.Optional(CZUJNIKI["przeszkoda"], **_sug(self.o.get(CZUJNIKI["przeszkoda"])))] = bin_okna
+            schemat.__setitem__(*self._wybor(CZUJNIKI["przeszkoda"], "przeszkoda", "binary_sensor"))
         return await self._formularz("czujniki", schemat)
 
     async def async_step_fotokomorka(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
@@ -452,7 +527,7 @@ class Kreator:
             if zn.get("foto"):
                 self.o[pole] = skan.najblizsze(self.hass, zn["foto"], self.roleta)[0]
         schemat = {
-            vol.Optional(pole, **_sug(self.o.get(pole))): _encja(["binary_sensor", "sensor"]),
+            **dict([self._wybor(pole, "foto", ["binary_sensor", "sensor"])]),
             vol.Required(CONF_FOTO_STAN, default=self.o.get(CONF_FOTO_STAN, "on")): sel.TextSelector(),
         }
         return await self._formularz("fotokomorka", schemat)
@@ -470,21 +545,20 @@ class Kreator:
             schemat[vol.Required(CONF_KALIBRACJA_50, default=bool(self.o.get(CONF_KALIBRACJA_50)))] = sel.BooleanSelector()
         if self.zaaw and not self.brama:
             for k in (CONF_PREDKOSC_LEWA, CONF_PREDKOSC_PRAWA):
-                schemat[vol.Optional(k, **_sug(self.o.get(k)))] = _encja(["number", "sensor"])
+                schemat.__setitem__(*self._wybor(k, "predkosc", ["number", "sensor"]))
         if self.brama and "brama_otwarta" in POWIADOMIENIA:
             schemat[vol.Required("brama_minuty", default=self.o.get("brama_minuty", PARAMETRY["brama_minuty"]))] = \
                 _liczba("brama_minuty")
         return await self._formularz("silnik", schemat)
 
     async def async_step_pogoda(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
-        pola = {"pogoda": (CONF_POGODA, _encja("weather")),
-                "temp": (CZUJNIKI["temp"], _encja("sensor", klasa="temperature")),
-                "temp_pokoj": (CZUJNIKI["temp_pokoj"], _encja("sensor", klasa="temperature")),
-                "jasnosc": (CZUJNIKI["jasnosc"], _encja("sensor", klasa=["illuminance", "power"])),
-                "wiatr": (CZUJNIKI["wiatr"], _encja("sensor")),
-                "deszcz": (CZUJNIKI["deszcz"], _encja(["binary_sensor", "sensor"])),
-                "drgania": (CZUJNIKI["drgania"], _encja("binary_sensor")),
-                "ostrzezenia": (CZUJNIKI["ostrzezenia"], _encja(["binary_sensor", "sensor"]))}
+        pola = {"pogoda": (CONF_POGODA, "weather", None), "temp": (CZUJNIKI["temp"], "sensor", "temperature"),
+                "temp_pokoj": (CZUJNIKI["temp_pokoj"], "sensor", "temperature"),
+                "jasnosc": (CZUJNIKI["jasnosc"], "sensor", ["illuminance", "power"]),
+                "wiatr": (CZUJNIKI["wiatr"], "sensor", None),
+                "deszcz": (CZUJNIKI["deszcz"], ["binary_sensor", "sensor"], None),
+                "drgania": (CZUJNIKI["drgania"], "binary_sensor", None),
+                "ostrzezenia": (CZUJNIKI["ostrzezenia"], ["binary_sensor", "sensor"], None)}
         widoczne = [k for k in pola if k in self.mam and (self.zaaw or not URZADZENIA.get(k, False))]
         if dane is not None:
             for k in widoczne:
@@ -492,15 +566,13 @@ class Kreator:
                     self.o.pop(pola[k][0], None)
         if (w := await self._dalej("pogoda", dane)) is not None:
             return w
-        schemat = {vol.Optional(pola[k][0], **_sug(self.o.get(pola[k][0]))): pola[k][1] for k in widoczne}
+        schemat = dict(self._wybor(pola[k][0], k, pola[k][1], klasa=pola[k][2]) for k in widoczne)
         return await self._formularz("pogoda", schemat)
 
     async def async_step_domownicy(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
-        pola = {"obecnosc": (CZUJNIKI["obecnosc"], _encja("binary_sensor")),
-                "ruch": (CZUJNIKI["ruch"], _encja("binary_sensor")),
-                "osoby": (CONF_OSOBY, _encja("person", wiele=True)),
-                "dym": (CZUJNIKI["dym"], _encja("binary_sensor")),
-                "alarm": (CZUJNIKI["alarm"], _encja("alarm_control_panel"))}
+        pola = {"obecnosc": (CZUJNIKI["obecnosc"], "binary_sensor"), "ruch": (CZUJNIKI["ruch"], "binary_sensor"),
+                "osoby": (CONF_OSOBY, "person"), "dym": (CZUJNIKI["dym"], "binary_sensor"),
+                "alarm": (CZUJNIKI["alarm"], "alarm_control_panel")}
         widoczne = [k for k in pola if k in self.mam and (self.zaaw or not URZADZENIA.get(k, False))]
         if dane is not None:
             for k in widoczne:
@@ -508,9 +580,9 @@ class Kreator:
                     self.o.pop(pola[k][0], None)
         if (w := await self._dalej("domownicy", dane)) is not None:
             return w
-        schemat = {vol.Optional(pola[k][0], **_sug(self.o.get(pola[k][0]))): pola[k][1] for k in widoczne}
+        schemat = dict(self._wybor(pola[k][0], k, pola[k][1], wiele=k == "osoby") for k in widoczne)
         if self.zaaw:
-            schemat[vol.Optional(CONF_SWIETA, **_sug(self.o.get(CONF_SWIETA)))] = _encja("binary_sensor")
+            schemat.__setitem__(*self._wybor(CONF_SWIETA, "swieta", "binary_sensor"))
         return await self._formularz("domownicy", schemat)
 
     async def async_step_automatyka(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
@@ -550,8 +622,10 @@ class Kreator:
             rodzaje = [r for r in rodzaje if r != "przeszkoda"]
         if not self.zaaw:
             rodzaje = [r for r in rodzaje if r not in ("czujnik",)]
-        uslugi = sorted(f"notify.{u}" for u in self.hass.services.async_services_for_domain("notify")
-                        if u not in ("send_message", "persistent_notification"))
+        # telefony (aplikacja HA) na górze listy
+        uslugi = sorted((f"notify.{u}" for u in self.hass.services.async_services_for_domain("notify")
+                         if u not in ("send_message", "persistent_notification")),
+                        key=lambda u: (not u.startswith("notify.mobile_app_"), u))
         schemat: dict = {vol.Optional(CONF_POWIADOM, default=[r for r in self.o.get(CONF_POWIADOM, []) if r in rodzaje]):
                          _lista(rodzaje, "powiadomienia", wiele=True)}
         if uslugi:
@@ -618,4 +692,6 @@ class MotorHaOpcje(Kreator, OptionsFlow):
         if entry and entry.options.get(CONF_UKRYJ_ZRODLO):   # wyłączone albo zmieniony silnik: pokaż go znów
             teraz = set(self.o.get(CONF_ROLETY) or []) if self.o.get(CONF_UKRYJ_ZRODLO) else set()
             assist(self.hass, [e for e in entry.options.get(CONF_ROLETY) or [] if e not in teraz], True)
+        if isinstance(karta := self.o.get(CONF_KARTA), dict):
+            self.o[CONF_KARTA] = {k: v for k, v in karta.items() if k not in KARTA_Z_KREATORA}
         return self.async_create_entry(title="", data={k: v for k, v in self.o.items() if k != CONF_NAZWA})

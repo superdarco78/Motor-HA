@@ -135,7 +135,8 @@
     "powiadom": "Powiadom mnie, gdy",
     "powiadom_gdzie": "Wyślij też na",
     "na_panel": "Dodaj kartę na panel",
-    "wstecz": "Wróć do poprzedniego kroku"
+    "wstecz": "Wróć do poprzedniego kroku",
+    "osobno": "Dwa skrzydła sterowane osobno"
   },
   "pomoc": {
     "kopiuj_z": "Puste = zacznij od zera.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Luksomierz albo moc z fotowoltaiki – zamiast samej pozycji słońca.",
     "czujnik_swieta": "Integracja Workday – święta liczą się jak weekend.",
     "powiadom_gdzie": "Aplikacja HA na telefonie. Bez wyboru – tylko powiadomienia w HA.",
-    "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
+    "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają.",
+    "osobno": "Suwak lewej osłony po lewej stronie okna, prawej – po prawej. Każdy jeździ tylko swoją osłoną."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: brama jest otwarta dłużej niż {minuty} min.",
     "brama_niedomknieta": "{nazwa}: brama nie domknęła się.",
     "przeszkoda": "{nazwa}: coś stoi w bramie (fotokomórka).",
-    "nie_motor_ha": "To nie jest urządzenie Motor HA."
+    "nie_motor_ha": "To nie jest urządzenie Motor HA.",
+    "kalibracja_brak": "{nazwa}: kalibracja się nie udała – nie odpowiada: {lista}. Sprawdź zasilanie i zasięg tej osłony i spróbuj jeszcze raz.",
+    "kalibracja_od_razu": "{nazwa}: kalibracja nie zmierzyła czasu – silnik melduje koniec zaraz po ruszeniu. Wpisz czas przejazdu w kroku „Silnik” albo dodaj tam encję prędkości silnika."
   },
   "uslugi": {
     "wstrzymaj": [

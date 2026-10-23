@@ -64,7 +64,7 @@ export class MotorHaKarta extends HTMLElement {
     // suwak w kierunku ruchu: góra-dół – pionowy obok okna, na boki (i bramy) – poziomy pod przyciskami
     const pion = c.suwak !== false && !this._poziomo;
     // osobne sterowanie dwóch skrzydeł: suwak lewej osłony z lewej, prawej z prawej strony okna
-    const dwaSuwaki = pion && !!c.osobno && n > 1 && !zew;
+    const dwaSuwaki = pion && !!c.osobno && n > 1;
     const H = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W = Math.round(H * (n === 1 ? .68 : .92));
     this._kas = KASETA[c.oslona] ?? 12;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
@@ -90,7 +90,7 @@ export class MotorHaKarta extends HTMLElement {
   <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
  ${c.suwak !== false && !pion ? this._suwakHtml(T, false) : ''}
  ${pozycje.length ? `<div class="poz">${pozycje.map(p => `<button data-p="${p}">${p === 100 ? esc(T.karta.zwinieta) : p === 0 ? esc(T.karta.opuszczona) : p + ' %'}</button>`).join('')}</div>` : ''}
- ${this._wpis() ? `<button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button>` : ''}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc(T.urzadzenie.wyglad)}</button></div>` : ''}
 </div></ha-card>`;
     const q = s => root.querySelector(s), qa = s => [...root.querySelectorAll(s)];
     const pola = zew ? qa('.zewo .szyba') : qa('.skrz .szyba');
@@ -113,7 +113,8 @@ export class MotorHaKarta extends HTMLElement {
     E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
     if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
     E.suwaki.forEach(S => this._suwak(S));
-    q('.zmien')?.addEventListener('click', () => konfiguruj(this._wpis()));
+    q('.zmien:not(.wyg)')?.addEventListener('click', () => konfiguruj(this._wpis()));
+    q('.wyg')?.addEventListener('click', () => this._wyglad());
     this._zbudowana = true;
   }
 
@@ -158,7 +159,7 @@ export class MotorHaKarta extends HTMLElement {
   <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
  ${c.suwak !== false && zPoz ? this._suwakHtml(T, false) : ''}
- ${this._wpis() ? `<button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button>` : ''}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc(T.urzadzenie.wyglad)}</button></div>` : ''}
 </div></ha-card>`;
     const q = s => root.querySelector(s);
     this._el = { ...this._wspolne(q), karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), suwak: q('.suwak'), suwaki: [...root.querySelectorAll('.suwak')],
@@ -173,12 +174,20 @@ export class MotorHaKarta extends HTMLElement {
     E.zam?.addEventListener('click', () => this._polecenie(0));
     E.stp?.addEventListener('click', () => this._polecenie(null));
     if (E.suwak) this._suwak(E.suwak);
-    q('.zmien')?.addEventListener('click', () => konfiguruj(this._wpis()));
+    q('.zmien:not(.wyg)')?.addEventListener('click', () => konfiguruj(this._wpis()));
+    q('.wyg')?.addEventListener('click', () => this._wyglad());
     this._zbudowana = true;
   }
 
   _lok(klucz, zapas) { return this._hass?.localize?.(klucz) || zapas; }
   _wiecej() { this.dispatchEvent(new CustomEvent('hass-more-info', { bubbles: true, composed: true, detail: { entityId: this._cfg.entity } })); }
+
+  // „Wygląd”: kreator od razu na kroku kolorów; pasek kroków u góry przenosi do innych kroków
+  async _wyglad() {
+    const wpis = this._wpis();
+    try { await this._hass.callWS({ type: 'motor_ha/krok', entry_id: wpis, krok: this._brama ? 'rodzaj' : 'kolory' }); } catch (e) { /* starszy Motor HA – cały kreator */ }
+    konfiguruj(wpis);
+  }
 
   // polecenie dla wszystkich (albo wybranych) skrzydeł; cel null = stop
   _polecenie(cel, ktore) {

@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Étape {nr} sur {z}: Mode de l'assistant",
-        "description": "{pasek}\n\n**Quoi :** Choisissez combien de questions vous voulez voir.\n\n**Pourquoi :** Le mode simple suffit à la plupart. Le mode avancé montre toutes les options et les appareils en plus. Vous pourrez changer le mode plus tard dans « Configurer ».{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez combien de questions vous voulez voir.\n\n**Pourquoi :** Le mode simple suffit à la plupart. Le mode avancé montre toutes les options et les appareils en plus. Vous pourrez changer le mode plus tard dans « Configurer ».{porada}{galeria}",
         "data": {
           "tryb": "Mode",
           "kopiuj_z": "Copier les réglages d'un autre appareil",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Étape {nr} sur {z}: Ce que vous avez chez vous",
-        "description": "{pasek}\n\n**Quoi :** Cochez ce que vous avez. L'assistant a cherché dans Home Assistant et coché ce qu'il a trouvé.\n\n**Pourquoi :** L'assistant n'affiche que les étapes et fonctions des appareils cochés. Le reste s'ajoute plus tard dans « Configurer ».\n\nTrouvé : {znalezione}{porada}",
+        "description": "{pasek}\n\n**Quoi :** Cochez ce que vous avez. L'assistant a cherché dans Home Assistant et coché ce qu'il a trouvé.\n\n**Pourquoi :** L'assistant n'affiche que les étapes et fonctions des appareils cochés. Le reste s'ajoute plus tard dans « Configurer ».\n\nTrouvé : {znalezione}{porada}{galeria}",
         "data": {
           "mam": "J'ai chez moi",
           "wstecz": "Revenir à l'étape précédente"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Étape {nr} sur {z}: Appareil",
-        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur. Parlez à Assist avec le nom de l'appareil, par ex. « ferme Store plissé cuisine ».{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur. Parlez à Assist avec le nom de l'appareil, par ex. « ferme Store plissé cuisine ».{porada}{galeria}",
         "data": {
           "rolety": "Moteur (une ou deux entités)",
           "name": "Nom",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Étape {nr} sur {z}: Type",
-        "description": "{pasek}\n\n**Quoi :** Choisissez exactement ce que vous avez.\n\n**Pourquoi :** La carte dessine cet appareil et l'automatisme sait ce qu'il peut utiliser.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez exactement ce que vous avez.\n\n**Pourquoi :** La carte dessine cet appareil et l'automatisme sait ce qu'il peut utiliser.{porada}{galeria}",
         "data": {
           "oslona": "Type",
           "wstecz": "Revenir à l'étape précédente"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Étape {nr} sur {z}: Lames",
-        "description": "{pasek}\n\n**Quoi :** Réglez l'orientation des lames.\n\n**Pourquoi :** Vous laissez entrer la lumière sans remonter le store.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Réglez l'orientation des lames.\n\n**Pourquoi :** Vous laissez entrer la lumière sans remonter le store.{porada}{galeria}",
         "data": {
           "lamele_kat": "Angle des lames au soleil",
           "lamele_tryb": "Pilotage des lames",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Étape {nr} sur {z}: Couleurs",
-        "description": "{pasek}\n\n**Quoi :** Choisissez la couleur du store et du cadre.\n\n**Pourquoi :** La fenêtre à l'écran ressemble à la vraie.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez la couleur du store et du cadre.\n\n**Pourquoi :** La fenêtre à l'écran ressemble à la vraie.{porada}{galeria}",
         "data": {
           "kolor": "Couleur du store",
           "rama": "Couleur du cadre",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Étape {nr} sur {z}: Fenêtre",
-        "description": "{pasek}\n\n**Quoi :** Combien de vantaux a la fenêtre et sa taille sur la carte.\n\n**Pourquoi :** Chaque vantail peut avoir son propre moteur.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Combien de vantaux a la fenêtre et sa taille sur la carte.\n\n**Pourquoi :** Chaque vantail peut avoir son propre moteur.{porada}{galeria}",
         "data": {
           "skrzydla": "Vantaux",
           "wysokosc": "Hauteur sur la carte",
+          "osobno": "Deux vantaux commandés séparément",
           "odwroc": "Pourcentages inversés",
           "wstecz": "Revenir à l'étape précédente"
         },
         "data_description": {
+          "osobno": "Le curseur du store gauche est à gauche de la fenêtre, celui du droit à droite. Chacun ne bouge que son store.",
           "odwroc": "À activer si le moteur indique 100 % quand le store est fermé.",
           "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
         }
       },
       "czujniki": {
         "title": "Étape {nr} sur {z}: Capteurs",
-        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs d'ouverture de fenêtre et de porte.\n\n**Pourquoi :** La carte montre un vantail basculé ou ouvert, et le verrou ne descend jamais le store sur une fenêtre ouverte.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs d'ouverture de fenêtre et de porte.\n\n**Pourquoi :** La carte montre un vantail basculé ou ouvert, et le verrou ne descend jamais le store sur une fenêtre ouverte.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Capteur vantail gauche",
           "tryb_lewe": "Vantail gauche",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Étape {nr} sur {z}: Cellule photo",
-        "description": "{pasek}\n\n**Quoi :** Choisissez le capteur d'obstacle du portail et l'état qui signifie « quelque chose dans le portail ».\n\n**Pourquoi :** La carte montre l'obstacle et vous recevez une notification. La cellule du moteur arrête toujours le portail elle-même.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez le capteur d'obstacle du portail et l'état qui signifie « quelque chose dans le portail ».\n\n**Pourquoi :** La carte montre l'obstacle et vous recevez une notification. La cellule du moteur arrête toujours le portail elle-même.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Cellule photo (capteur d'obstacle)",
           "foto_stan": "Obstacle quand l'état du capteur est",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Étape {nr} sur {z}: Moteur",
-        "description": "{pasek}\n\n**Quoi :** Indiquez la durée d'une course complète ou laissez 0.\n\n**Pourquoi :** Le dessin bouge à la vitesse du vrai moteur. Avec 0, la carte apprend la durée seule après quelques mouvements.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Indiquez la durée d'une course complète ou laissez 0.\n\n**Pourquoi :** Le dessin bouge à la vitesse du vrai moteur. Avec 0, la carte apprend la durée seule après quelques mouvements.{porada}{galeria}",
         "data": {
           "czas": "Durée d'une course complète",
           "kalibruj": "Calibrer maintenant (le store monte, descend et remonte)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Étape {nr} sur {z}: Météo",
-        "description": "{pasek}\n\n**Quoi :** Choisissez la météo et les capteurs extérieurs.\n\n**Pourquoi :** La vraie météo s'affiche derrière la vitre, et l'automatisme protège le store du vent, de la pluie et du soleil.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez la météo et les capteurs extérieurs.\n\n**Pourquoi :** La vraie météo s'affiche derrière la vitre, et l'automatisme protège le store du vent, de la pluie et du soleil.{porada}{galeria}",
         "data": {
           "pogoda": "Météo",
           "czujnik_temp": "Température extérieure",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Étape {nr} sur {z}: Habitants",
-        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs de présence, de mouvement et des habitants.\n\n**Pourquoi :** Le store peut réagir si quelqu'un est dans la pièce ou à la maison.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs de présence, de mouvement et des habitants.\n\n**Pourquoi :** Le store peut réagir si quelqu'un est dans la pièce ou à la maison.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Capteur de présence (quelqu'un est là)",
           "czujnik_ruch": "Détecteur de mouvement (quelqu'un est entré)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Étape {nr} sur {z}: Automatisme",
-        "description": "{pasek}\n\n**Quoi :** Activez les fonctions qui peuvent bouger le store toutes seules.\n\n**Pourquoi :** La maison s'occupe des stores sans écrire d'automatisations. Tout est désactivé tant que vous ne l'activez pas.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Activez les fonctions qui peuvent bouger le store toutes seules.\n\n**Pourquoi :** La maison s'occupe des stores sans écrire d'automatisations. Tout est désactivé tant que vous ne l'activez pas.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Programme",
           "f_slonce": "Protection solaire",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Étape {nr} sur {z}: Réglages",
-        "description": "{pasek}\n\n**Quoi :** Ajustez les fonctions activées.\n\n**Pourquoi :** Les valeurs par défaut conviennent à la plupart des maisons.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Ajustez les fonctions activées.\n\n**Pourquoi :** Les valeurs par défaut conviennent à la plupart des maisons.{porada}{galeria}",
         "data": {
           "azymut": "Orientation de la fenêtre",
           "szer_slonca": "Largeur du soleil dans la fenêtre",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Étape {nr} sur {z}: Notifications",
-        "description": "{pasek}\n\n**Quoi :** Choisissez de quoi être averti.\n\n**Pourquoi :** Vous savez tout de suite quel appareil a un problème. Les notifications arrivent dans HA et, si vous voulez, sur le téléphone.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez de quoi être averti.\n\n**Pourquoi :** Vous savez tout de suite quel appareil a un problème. Les notifications arrivent dans HA et, si vous voulez, sur le téléphone.{porada}{galeria}",
         "data": {
           "powiadom": "Me prévenir quand",
           "powiadom_gdzie": "Envoyer aussi à",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Étape {nr} sur {z}: Tableau de bord",
-        "description": "{pasek}\n\n**Quoi :** Sur quel tableau de bord ajouter la carte.\n\n**Pourquoi :** La carte apparaît toute seule, rien à cliquer.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Sur quel tableau de bord ajouter la carte.\n\n**Pourquoi :** La carte apparaît toute seule, rien à cliquer.{porada}{galeria}",
         "data": {
           "na_panel": "Ajouter la carte à un tableau de bord",
           "wstecz": "Revenir à l'étape précédente"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Étape {nr} sur {z}: Mode de l'assistant",
-        "description": "{pasek}\n\n**Quoi :** Choisissez combien de questions vous voulez voir.\n\n**Pourquoi :** Le mode simple suffit à la plupart. Le mode avancé montre toutes les options et les appareils en plus. Vous pourrez changer le mode plus tard dans « Configurer ».{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez combien de questions vous voulez voir.\n\n**Pourquoi :** Le mode simple suffit à la plupart. Le mode avancé montre toutes les options et les appareils en plus. Vous pourrez changer le mode plus tard dans « Configurer ».{porada}{galeria}",
         "data": {
           "tryb": "Mode",
           "kopiuj_z": "Copier les réglages d'un autre appareil",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Étape {nr} sur {z}: Ce que vous avez chez vous",
-        "description": "{pasek}\n\n**Quoi :** Cochez ce que vous avez. L'assistant a cherché dans Home Assistant et coché ce qu'il a trouvé.\n\n**Pourquoi :** L'assistant n'affiche que les étapes et fonctions des appareils cochés. Le reste s'ajoute plus tard dans « Configurer ».\n\nTrouvé : {znalezione}{porada}",
+        "description": "{pasek}\n\n**Quoi :** Cochez ce que vous avez. L'assistant a cherché dans Home Assistant et coché ce qu'il a trouvé.\n\n**Pourquoi :** L'assistant n'affiche que les étapes et fonctions des appareils cochés. Le reste s'ajoute plus tard dans « Configurer ».\n\nTrouvé : {znalezione}{porada}{galeria}",
         "data": {
           "mam": "J'ai chez moi",
           "wstecz": "Revenir à l'étape précédente"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Étape {nr} sur {z}: Appareil",
-        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur. Parlez à Assist avec le nom de l'appareil, par ex. « ferme Store plissé cuisine ».{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur. Parlez à Assist avec le nom de l'appareil, par ex. « ferme Store plissé cuisine ».{porada}{galeria}",
         "data": {
           "rolety": "Moteur (une ou deux entités)",
           "name": "Nom",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Étape {nr} sur {z}: Type",
-        "description": "{pasek}\n\n**Quoi :** Choisissez exactement ce que vous avez.\n\n**Pourquoi :** La carte dessine cet appareil et l'automatisme sait ce qu'il peut utiliser.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez exactement ce que vous avez.\n\n**Pourquoi :** La carte dessine cet appareil et l'automatisme sait ce qu'il peut utiliser.{porada}{galeria}",
         "data": {
           "oslona": "Type",
           "wstecz": "Revenir à l'étape précédente"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Étape {nr} sur {z}: Lames",
-        "description": "{pasek}\n\n**Quoi :** Réglez l'orientation des lames.\n\n**Pourquoi :** Vous laissez entrer la lumière sans remonter le store.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Réglez l'orientation des lames.\n\n**Pourquoi :** Vous laissez entrer la lumière sans remonter le store.{porada}{galeria}",
         "data": {
           "lamele_kat": "Angle des lames au soleil",
           "lamele_tryb": "Pilotage des lames",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Étape {nr} sur {z}: Couleurs",
-        "description": "{pasek}\n\n**Quoi :** Choisissez la couleur du store et du cadre.\n\n**Pourquoi :** La fenêtre à l'écran ressemble à la vraie.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez la couleur du store et du cadre.\n\n**Pourquoi :** La fenêtre à l'écran ressemble à la vraie.{porada}{galeria}",
         "data": {
           "kolor": "Couleur du store",
           "rama": "Couleur du cadre",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Étape {nr} sur {z}: Fenêtre",
-        "description": "{pasek}\n\n**Quoi :** Combien de vantaux a la fenêtre et sa taille sur la carte.\n\n**Pourquoi :** Chaque vantail peut avoir son propre moteur.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Combien de vantaux a la fenêtre et sa taille sur la carte.\n\n**Pourquoi :** Chaque vantail peut avoir son propre moteur.{porada}{galeria}",
         "data": {
           "skrzydla": "Vantaux",
           "wysokosc": "Hauteur sur la carte",
+          "osobno": "Deux vantaux commandés séparément",
           "odwroc": "Pourcentages inversés",
           "wstecz": "Revenir à l'étape précédente"
         },
         "data_description": {
+          "osobno": "Le curseur du store gauche est à gauche de la fenêtre, celui du droit à droite. Chacun ne bouge que son store.",
           "odwroc": "À activer si le moteur indique 100 % quand le store est fermé.",
           "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
         }
       },
       "czujniki": {
         "title": "Étape {nr} sur {z}: Capteurs",
-        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs d'ouverture de fenêtre et de porte.\n\n**Pourquoi :** La carte montre un vantail basculé ou ouvert, et le verrou ne descend jamais le store sur une fenêtre ouverte.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs d'ouverture de fenêtre et de porte.\n\n**Pourquoi :** La carte montre un vantail basculé ou ouvert, et le verrou ne descend jamais le store sur une fenêtre ouverte.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Capteur vantail gauche",
           "tryb_lewe": "Vantail gauche",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Étape {nr} sur {z}: Cellule photo",
-        "description": "{pasek}\n\n**Quoi :** Choisissez le capteur d'obstacle du portail et l'état qui signifie « quelque chose dans le portail ».\n\n**Pourquoi :** La carte montre l'obstacle et vous recevez une notification. La cellule du moteur arrête toujours le portail elle-même.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez le capteur d'obstacle du portail et l'état qui signifie « quelque chose dans le portail ».\n\n**Pourquoi :** La carte montre l'obstacle et vous recevez une notification. La cellule du moteur arrête toujours le portail elle-même.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Cellule photo (capteur d'obstacle)",
           "foto_stan": "Obstacle quand l'état du capteur est",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Étape {nr} sur {z}: Moteur",
-        "description": "{pasek}\n\n**Quoi :** Indiquez la durée d'une course complète ou laissez 0.\n\n**Pourquoi :** Le dessin bouge à la vitesse du vrai moteur. Avec 0, la carte apprend la durée seule après quelques mouvements.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Indiquez la durée d'une course complète ou laissez 0.\n\n**Pourquoi :** Le dessin bouge à la vitesse du vrai moteur. Avec 0, la carte apprend la durée seule après quelques mouvements.{porada}{galeria}",
         "data": {
           "czas": "Durée d'une course complète",
           "kalibruj": "Calibrer maintenant (le store monte, descend et remonte)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Étape {nr} sur {z}: Météo",
-        "description": "{pasek}\n\n**Quoi :** Choisissez la météo et les capteurs extérieurs.\n\n**Pourquoi :** La vraie météo s'affiche derrière la vitre, et l'automatisme protège le store du vent, de la pluie et du soleil.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez la météo et les capteurs extérieurs.\n\n**Pourquoi :** La vraie météo s'affiche derrière la vitre, et l'automatisme protège le store du vent, de la pluie et du soleil.{porada}{galeria}",
         "data": {
           "pogoda": "Météo",
           "czujnik_temp": "Température extérieure",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Étape {nr} sur {z}: Habitants",
-        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs de présence, de mouvement et des habitants.\n\n**Pourquoi :** Le store peut réagir si quelqu'un est dans la pièce ou à la maison.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez les capteurs de présence, de mouvement et des habitants.\n\n**Pourquoi :** Le store peut réagir si quelqu'un est dans la pièce ou à la maison.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Capteur de présence (quelqu'un est là)",
           "czujnik_ruch": "Détecteur de mouvement (quelqu'un est entré)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Étape {nr} sur {z}: Automatisme",
-        "description": "{pasek}\n\n**Quoi :** Activez les fonctions qui peuvent bouger le store toutes seules.\n\n**Pourquoi :** La maison s'occupe des stores sans écrire d'automatisations. Tout est désactivé tant que vous ne l'activez pas.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Activez les fonctions qui peuvent bouger le store toutes seules.\n\n**Pourquoi :** La maison s'occupe des stores sans écrire d'automatisations. Tout est désactivé tant que vous ne l'activez pas.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Programme",
           "f_slonce": "Protection solaire",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Étape {nr} sur {z}: Réglages",
-        "description": "{pasek}\n\n**Quoi :** Ajustez les fonctions activées.\n\n**Pourquoi :** Les valeurs par défaut conviennent à la plupart des maisons.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Ajustez les fonctions activées.\n\n**Pourquoi :** Les valeurs par défaut conviennent à la plupart des maisons.{porada}{galeria}",
         "data": {
           "azymut": "Orientation de la fenêtre",
           "szer_slonca": "Largeur du soleil dans la fenêtre",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Étape {nr} sur {z}: Notifications",
-        "description": "{pasek}\n\n**Quoi :** Choisissez de quoi être averti.\n\n**Pourquoi :** Vous savez tout de suite quel appareil a un problème. Les notifications arrivent dans HA et, si vous voulez, sur le téléphone.{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez de quoi être averti.\n\n**Pourquoi :** Vous savez tout de suite quel appareil a un problème. Les notifications arrivent dans HA et, si vous voulez, sur le téléphone.{porada}{galeria}",
         "data": {
           "powiadom": "Me prévenir quand",
           "powiadom_gdzie": "Envoyer aussi à",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "Ce n'est pas un appareil Motor HA."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa} : échec de l’étalonnage – pas de réponse de : {lista}. Vérifiez l’alimentation et la portée de ce store, puis réessayez."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa} : l’étalonnage n’a pas pu mesurer le temps – le moteur signale la fin juste après le départ. Saisissez la durée de course à l’étape « Moteur » ou ajoutez-y l’entité de vitesse du moteur."
     },
     "powod_brak": {
       "message": "Pas d'automatisme"

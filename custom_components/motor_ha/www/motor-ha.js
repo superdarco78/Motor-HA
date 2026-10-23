@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.1.6";
+  var WERSJA = "2.1.7";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -138,7 +138,7 @@
     "#6a2e22": ["mahon", 1],
     "#3e3830": ["dab_bagienny", 1]
   };
-  var RAMA_Z_KLUCZA = Object.fromEntries(Object.entries(RAMY).map(([hex2, [k]]) => [k, hex2]));
+  var RAMA_Z_KLUCZA = Object.fromEntries(Object.entries(RAMY).map(([hex3, [k]]) => [k, hex3]));
   var DOMYSLNE = {
     oslona: "zebra",
     kolor: "czarny",
@@ -448,6 +448,8 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .suwak .wart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
  font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);mix-blend-mode:normal}
 /* „⚙ Zmień ustawienia” jak przycisk tekstowy HA */
+.stopka{display:flex;flex-wrap:wrap;gap:var(--ha-space-2,8px);margin:0 calc(-1 * var(--ha-space-2,8px))}
+.stopka .zmien{margin:0}
 .zmien{align-self:flex-start;background:none;border:none;font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);
  color:var(--primary-color);cursor:pointer;padding:0 var(--ha-space-2,8px);margin:0 calc(-1 * var(--ha-space-2,8px));line-height:36px;border-radius:var(--ha-border-radius-md,8px)}
 .zmien:hover{background:color-mix(in srgb,var(--primary-color) 10%,transparent)}
@@ -752,6 +754,17 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
           zapamietaj(this.encja, n ? n * 0.6 + v * 0.4 : v);
         }
         this.nauka = null;
+      }
+      const surowa = st.attributes?.current_position;
+      if (typeof surowa === "number" && poprzedni && s !== poprzedni && (s === "closed" && surowa >= 99 || s === "open" && surowa <= 1)) {
+        const cel = s === "open" !== !!odwroc ? 100 : 0;
+        if (!this.nauka) this.nauka = { t: teraz, p: this.widac };
+        if (!this.komenda || this.komenda.stop) {
+          this.cel = cel;
+          this.komenda = null;
+          this.dociagnij = false;
+        }
+        return;
       }
       if (s === "opening" || s === "closing") {
         if (!this.komenda || this.komenda.stop) {
@@ -1113,7 +1126,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automatycznie",
       automatyka: "Automatyka",
       pauza: "Pauza na dziś",
-      powod: "Powód ruchu"
+      powod: "Powód ruchu",
+      wyglad: "Wygląd"
     }
   };
 
@@ -1379,7 +1393,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automatic",
       automatyka: "Automation",
       pauza: "Pause for today",
-      powod: "Reason for movement"
+      powod: "Reason for movement",
+      wyglad: "Appearance"
     }
   };
 
@@ -1645,7 +1660,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automatisch",
       automatyka: "Automatik",
       pauza: "Pause für heute",
-      powod: "Grund der Bewegung"
+      powod: "Grund der Bewegung",
+      wyglad: "Aussehen"
     }
   };
 
@@ -1911,7 +1927,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automatique",
       automatyka: "Automatisme",
       pauza: "Pause aujourd’hui",
-      powod: "Raison du mouvement"
+      powod: "Raison du mouvement",
+      wyglad: "Apparence"
     }
   };
 
@@ -2177,7 +2194,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automaticky",
       automatyka: "Automatika",
       pauza: "Pauza na dnes",
-      powod: "Důvod pohybu"
+      powod: "Důvod pohybu",
+      wyglad: "Vzhled"
     }
   };
 
@@ -2443,7 +2461,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automaticky",
       automatyka: "Automatika",
       pauza: "Pauza na dnes",
-      powod: "Dôvod pohybu"
+      powod: "Dôvod pohybu",
+      wyglad: "Vzhľad"
     }
   };
 
@@ -2709,7 +2728,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automático",
       automatyka: "Automatización",
       pauza: "Pausa por hoy",
-      powod: "Motivo del movimiento"
+      powod: "Motivo del movimiento",
+      wyglad: "Apariencia"
     }
   };
 
@@ -2975,7 +2995,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automatico",
       automatyka: "Automazione",
       pauza: "Pausa per oggi",
-      powod: "Motivo del movimento"
+      powod: "Motivo del movimento",
+      wyglad: "Aspetto"
     }
   };
 
@@ -3241,7 +3262,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automatisch",
       automatyka: "Automatisering",
       pauza: "Pauze voor vandaag",
-      powod: "Reden van beweging"
+      powod: "Reden van beweging",
+      wyglad: "Uiterlijk"
     }
   };
 
@@ -3507,7 +3529,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "automático",
       automatyka: "Automação",
       pauza: "Pausa por hoje",
-      powod: "Motivo do movimento"
+      powod: "Motivo do movimento",
+      wyglad: "Aparência"
     }
   };
 
@@ -3773,7 +3796,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "автоматично",
       automatyka: "Автоматика",
       pauza: "Пауза на сьогодні",
-      powod: "Причина руху"
+      powod: "Причина руху",
+      wyglad: "Вигляд"
     }
   };
 
@@ -4039,7 +4063,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "автоматически",
       automatyka: "Автоматика",
       pauza: "Пауза на сегодня",
-      powod: "Причина движения"
+      powod: "Причина движения",
+      wyglad: "Внешний вид"
     }
   };
 
@@ -4305,7 +4330,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "自動",
       automatyka: "自動化",
       pauza: "今日は一時停止",
-      powod: "動いた理由"
+      powod: "動いた理由",
+      wyglad: "外観"
     }
   };
 
@@ -4571,7 +4597,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       auto: "自动",
       automatyka: "自动化",
       pauza: "今天暂停",
-      powod: "移动原因"
+      powod: "移动原因",
+      wyglad: "外观"
     }
   };
 
@@ -4682,12 +4709,12 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
             return `<div class="wiersz${dziala ? " klik" : ""}" ${dziala ? `role="button" tabindex="0" data-i="${i}"` : ""}><span>${esc(a)}</span><span>${esc(b)}</span></div>`;
           }).join("");
           lista.querySelectorAll(".klik").forEach((el) => {
-            const idz = () => this._edytuj(wiersze[+el.dataset.i][2]);
-            el.addEventListener("click", idz);
+            const idz2 = () => this._edytuj(wiersze[+el.dataset.i][2]);
+            el.addEventListener("click", idz2);
             el.addEventListener("keydown", (e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                idz();
+                idz2();
               }
             });
           });
@@ -4753,7 +4780,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   };
   function konfiguruj(wpis) {
     const skad = location.pathname + location.search;
-    const idz = (u) => {
+    const idz2 = (u) => {
       history.pushState(null, "", u);
       window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
     };
@@ -4768,7 +4795,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       return null;
     };
     const okno = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
-    idz("/config/integrations/integration/motor_ha");
+    idz2("/config/integrations/integration/motor_ha");
     let n = 0;
     const t = setInterval(() => {
       const w = szukaj(document);
@@ -4781,7 +4808,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
           if (otwarte) bylo = true;
           if (bylo && !otwarte || ++m > 7200) {
             clearInterval(p);
-            if (bylo && location.pathname.startsWith("/config/integrations/integration/motor_ha")) idz(skad);
+            if (bylo && location.pathname.startsWith("/config/integrations/integration/motor_ha")) idz2(skad);
           }
         }, 250);
       } else if (++n > 80) clearInterval(t);
@@ -4872,7 +4899,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._brama = false;
       this._poziomo = POZIOME.includes(c.oslona);
       const pion2 = c.suwak !== false && !this._poziomo;
-      const dwaSuwaki = pion2 && !!c.osobno && n > 1 && !zew;
+      const dwaSuwaki = pion2 && !!c.osobno && n > 1;
       const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W2 = Math.round(H2 * (n === 1 ? 0.68 : 0.92));
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
@@ -4898,7 +4925,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
  ${c.suwak !== false && !pion2 ? this._suwakHtml(T2, false) : ""}
  ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc2(T2.karta.zwinieta) : p === 0 ? esc2(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
- ${this._wpis() ? `<button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button>` : ""}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc2(T2.urzadzenie.wyglad)}</button></div>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
       const pola = zew ? qa(".zewo .szyba") : qa(".skrz .szyba");
@@ -4935,7 +4962,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
       if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
       E.suwaki.forEach((S) => this._suwak(S));
-      q(".zmien")?.addEventListener("click", () => konfiguruj(this._wpis()));
+      q(".zmien:not(.wyg)")?.addEventListener("click", () => konfiguruj(this._wpis()));
+      q(".wyg")?.addEventListener("click", () => this._wyglad());
       this._zbudowana = true;
     }
     // „⚙ Zmień ustawienia” pod oknem na panelu: kreator tego urządzenia, potem powrót na ten sam panel.
@@ -4980,7 +5008,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
  ${c.suwak !== false && zPoz ? this._suwakHtml(T2, false) : ""}
- ${this._wpis() ? `<button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button>` : ""}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc2(T2.urzadzenie.wyglad)}</button></div>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s);
       this._el = {
@@ -5016,7 +5044,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.zam?.addEventListener("click", () => this._polecenie(0));
       E.stp?.addEventListener("click", () => this._polecenie(null));
       if (E.suwak) this._suwak(E.suwak);
-      q(".zmien")?.addEventListener("click", () => konfiguruj(this._wpis()));
+      q(".zmien:not(.wyg)")?.addEventListener("click", () => konfiguruj(this._wpis()));
+      q(".wyg")?.addEventListener("click", () => this._wyglad());
       this._zbudowana = true;
     }
     _lok(klucz, zapas) {
@@ -5024,6 +5053,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     _wiecej() {
       this.dispatchEvent(new CustomEvent("hass-more-info", { bubbles: true, composed: true, detail: { entityId: this._cfg.entity } }));
+    }
+    // „Wygląd”: kreator od razu na kroku kolorów; pasek kroków u góry przenosi do innych kroków
+    async _wyglad() {
+      const wpis = this._wpis();
+      try {
+        await this._hass.callWS({ type: "motor_ha/krok", entry_id: wpis, krok: this._brama ? "rodzaj" : "kolory" });
+      } catch (e) {
+      }
+      konfiguruj(wpis);
     }
     // polecenie dla wszystkich (albo wybranych) skrzydeł; cel null = stop
     _polecenie(cel, ktore) {
@@ -5870,9 +5908,217 @@ button svg{fill:var(--primary-color);flex:none}
     }
   };
 
+  // src/kreator.js
+  var ZNAK = "data-motor-ha-pasek";
+  var GAL = "data-motor-ha-galeria";
+  var PODGLAD = "data-motor-ha-podglad";
+  var PREFIKS = "data:image/svg+xml;base64,";
+  var ENCJA2 = "cover.motor_ha_podglad";
+  var AKCENT = "#ff9800";
+  var WYGLAD = ["oslona", "kolor", "rama", "skrzydla", "osobno", "odwroc", "wysokosc", "kolor_wlasny", "rama_wlasna"];
+  function wszystkie(korzen, szukaj, wynik = [], n = 0) {
+    if (!korzen || n > 12) return wynik;
+    wynik.push(...korzen.querySelectorAll(szukaj));
+    for (const e of korzen.querySelectorAll("*")) if (e.shadowRoot) wszystkie(e.shadowRoot, szukaj, wynik, n + 1);
+    return wynik;
+  }
+  var glebiej = (korzen, szukaj) => wszystkie(korzen, szukaj)[0] || null;
+  var odkoduj = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0)));
+  var zakoduj = (txt) => btoa(String.fromCharCode(...new TextEncoder().encode(txt)));
+  function svgZ(img) {
+    try {
+      const src = img.getAttribute("src") || "";
+      return src.startsWith(PREFIKS) ? odkoduj(src.slice(PREFIKS.length)) : "";
+    } catch (e) {
+      return "";
+    }
+  }
+  function danePaska(svg2) {
+    const m = /data-motor-ha-kroki="([^"]*)"[^>]*data-krok="(\d+)"[^>]*data-aktywny="(\d+)"/.exec(svg2);
+    if (!m) return null;
+    let podglad = null;
+    const p = /data-podglad="([^"]*)"/.exec(svg2);
+    if (p) try {
+      podglad = JSON.parse(odkoduj(p[1]));
+    } catch (e) {
+    }
+    return { kroki: m[1].split(","), krok: +m[2], aktywny: +m[3], podglad };
+  }
+  function daneGalerii(svg2) {
+    const a = (n) => (new RegExp(`${n}="([^"]*)"`).exec(svg2) || [])[1];
+    const pole = a("data-motor-ha-wybor");
+    return pole ? { pole, opcje: (a("data-opcje") || "").split(","), kol: +a("data-kol") || 4 } : null;
+  }
+  function ustaw(form, zmiany) {
+    form._stepData = { ...form._stepData || {}, ...zmiany };
+    form.requestUpdate?.();
+  }
+  async function idz(form, krok) {
+    ustaw(form, { idz_do: krok });
+    if (typeof form._submitStep === "function") await form._submitStep();
+  }
+  var hex2 = (v) => Array.isArray(v) && v.length === 3 ? "#" + v.map((x) => Math.max(0, Math.min(255, +x || 0)).toString(16).padStart(2, "0")).join("") : null;
+  function wygladPodgladu(podglad, odpowiedzi) {
+    const c = { ...podglad || {} };
+    for (const k of WYGLAD) if (odpowiedzi && odpowiedzi[k] !== void 0 && odpowiedzi[k] !== null && odpowiedzi[k] !== "") c[k] = odpowiedzi[k];
+    const kw = hex2(c.kolor_wlasny), rw = hex2(c.rama_wlasna);
+    delete c.kolor_wlasny;
+    delete c.rama_wlasna;
+    if (kw) c.kolor = kw;
+    if (rw) c.rama = rw;
+    return c;
+  }
+  function pasek(form, img) {
+    const d = danePaska(svgZ(img));
+    if (!d) return null;
+    img.setAttribute(ZNAK, "");
+    const klik = (el2) => (e) => {
+      const r = el2.getBoundingClientRect();
+      if (!r.width) return;
+      const i = Math.floor((e.clientX - r.left) / r.width * d.kroki.length);
+      const k = d.kroki[Math.max(0, Math.min(d.kroki.length - 1, i))];
+      if (k && i !== d.aktywny) idz(form, k);
+    };
+    let el = img, nad = img.parentElement;
+    while (nad && nad.tagName !== "HA-MARKDOWN-ELEMENT" && nad.tagName !== "HA-MARKDOWN") {
+      el = nad;
+      nad = nad.parentElement;
+    }
+    const md = img.getRootNode()?.host?.closest?.("ha-markdown") || img.closest("ha-markdown") || el;
+    const blok = md.tagName === "HA-MARKDOWN" ? md : el;
+    if (!blok.parentNode) {
+      img.style.cursor = "pointer";
+      img.addEventListener("click", klik(img));
+      return d;
+    }
+    blok.parentNode.querySelectorAll(`[${ZNAK}="kopia"],[${PODGLAD}]`).forEach((x) => x.remove());
+    const kopia = document.createElement("div");
+    kopia.setAttribute(ZNAK, "kopia");
+    kopia.style.cssText = "position:sticky;top:0;z-index:5;padding:4px 0;background:var(--mdc-theme-surface,var(--ha-dialog-surface-background,var(--card-background-color,#fff)))";
+    const nowy = img.cloneNode(true);
+    nowy.setAttribute(ZNAK, "");
+    nowy.style.cssText = "display:block;max-width:100%;height:auto;margin:0 auto;cursor:pointer";
+    nowy.addEventListener("click", klik(nowy));
+    kopia.appendChild(nowy);
+    blok.parentNode.insertBefore(kopia, blok);
+    img.style.display = "none";
+    if (d.podglad && customElements.get("motor-ha")) {
+      const box = document.createElement("div");
+      box.setAttribute(PODGLAD, "");
+      box.style.cssText = "position:relative;z-index:0;isolation:isolate;max-width:170px;margin:4px auto 0;pointer-events:none";
+      kopia.appendChild(box);
+      form.__motorHaPodglad = { box, podglad: d.podglad, klucz: "" };
+    } else form.__motorHaPodglad = null;
+    return d;
+  }
+  function galeria(form, img) {
+    const svg2 = svgZ(img), d = daneGalerii(svg2);
+    if (!d) return;
+    img.setAttribute(GAL, "");
+    img.setAttribute("src", PREFIKS + zakoduj(svg2.replace(/<rect data-on="1"[^>]*\/>/, "")));
+    const opak = document.createElement("span");
+    opak.style.cssText = "position:relative;display:inline-block;max-width:100%;line-height:0";
+    img.parentNode.insertBefore(opak, img);
+    opak.appendChild(img);
+    img.style.cssText = "display:block;max-width:100%;height:auto;cursor:pointer";
+    const ramka = document.createElement("span");
+    ramka.style.cssText = `position:absolute;box-sizing:border-box;border:3px solid ${AKCENT};border-radius:10px;pointer-events:none;display:none;transition:left .15s,top .15s`;
+    opak.appendChild(ramka);
+    const wiersze = Math.ceil(d.opcje.length / d.kol);
+    img.addEventListener("click", (e) => {
+      const r = img.getBoundingClientRect();
+      if (!r.width) return;
+      const x = Math.floor((e.clientX - r.left) / r.width * d.kol), y = Math.floor((e.clientY - r.top) / r.height * wiersze);
+      const k = d.opcje[y * d.kol + x];
+      if (k) {
+        ustaw(form, { [d.pole]: k });
+        odswiez(form);
+      }
+    });
+    (form.__motorHaGalerie || (form.__motorHaGalerie = [])).push({ ...d, img, ramka, wiersze });
+  }
+  function odswiez(form) {
+    const dane = form._stepData || {};
+    for (const g of form.__motorHaGalerie || []) {
+      if (!g.img.isConnected) continue;
+      const i = g.opcje.indexOf(dane[g.pole]);
+      if (i < 0) {
+        g.ramka.style.display = "none";
+        continue;
+      }
+      const w = 100 / g.kol, h = 100 / g.wiersze;
+      Object.assign(g.ramka.style, {
+        display: "block",
+        left: `calc(${i % g.kol * w}% + 2px)`,
+        top: `calc(${Math.floor(i / g.kol) * h}% + 2px)`,
+        width: `calc(${w}% - 4px)`,
+        height: `calc(${h}% - 4px)`
+      });
+    }
+    const p = form.__motorHaPodglad;
+    if (!p || !p.box.isConnected) return;
+    const ha = document.querySelector("home-assistant")?.hass;
+    if (!ha) return;
+    const c = wygladPodgladu(p.podglad, dane), klucz = JSON.stringify(c);
+    if (klucz === p.klucz) return;
+    p.klucz = klucz;
+    let k = p.box.firstElementChild;
+    if (!k) {
+      k = document.createElement("motor-ha");
+      p.box.appendChild(k);
+    }
+    const brama = ["przesuwna", "skrzydlowa", "segmentowa", "uchylna", "roletowa"].includes(c.oslona);
+    const teraz = (/* @__PURE__ */ new Date()).toISOString();
+    const stan = {
+      entity_id: ENCJA2,
+      state: brama ? "closed" : "open",
+      last_changed: teraz,
+      last_updated: teraz,
+      context: { id: "" },
+      attributes: {
+        current_position: brama ? 0 : 60,
+        friendly_name: " ",
+        supported_features: 15,
+        ...brama ? { device_class: ["przesuwna", "skrzydlowa"].includes(c.oslona) ? "gate" : "garage" } : {}
+      }
+    };
+    k.setConfig({
+      type: "custom:motor-ha",
+      entity: ENCJA2,
+      name: " ",
+      ...c,
+      przyciski: false,
+      suwak: !!c.osobno,
+      _podglad: { pogoda: "sunny", pora: "dzien" }
+    });
+    k.hass = { ...ha, states: { ...ha.states, [ENCJA2]: stan }, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) };
+  }
+  function pilnujKreatora() {
+    const okno = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    if (!okno?._params) return;
+    const form = glebiej(okno.shadowRoot, "step-flow-form");
+    if (!form) return;
+    const img = glebiej(form.shadowRoot, `img[src^="${PREFIKS}"]:not([${ZNAK}]):not([${GAL}])`);
+    if (img && danePaska(svgZ(img))) {
+      form.__motorHaGalerie = [];
+      pasek(form, img);
+    }
+    for (const g of wszystkie(form.shadowRoot, `img[src^="${PREFIKS}"]:not([${ZNAK}]):not([${GAL}])`)) galeria(form, g);
+    if (!form.__motorHaSluch) {
+      form.__motorHaSluch = true;
+      form.addEventListener("value-changed", () => requestAnimationFrame(() => {
+        try {
+          odswiez(form);
+        } catch (e) {
+        }
+      }));
+    }
+    odswiez(form);
+  }
+
   // src/strona.js
   var WZOR = /^\/config\/devices\/device\/([^/?#]+)/;
-  var ZNAK = "data-motor-ha";
+  var ZNAK2 = "data-motor-ha";
   var strona = (k) => {
     for (const x of k.querySelectorAll("*")) {
       if (x.tagName === "HA-CONFIG-DEVICE-PAGE") return x;
@@ -5936,11 +6182,11 @@ button svg{fill:var(--primary-color);flex:none}
       powod = "brak kolumn";
       return;
     }
-    const nasze = [...r.querySelectorAll(`[${ZNAK}]`)];
+    const nasze = [...r.querySelectorAll(`[${ZNAK2}]`)];
     const lista = cele(h, m[1]);
     powod = lista ? "" : `brak encji Motor HA przy urządzeniu (encje: ${Object.keys(h.entities || {}).length})`;
     const klucz = lista ? m[1] + "|" + kolumny.length + "|" + lista.map((x) => x.cel.entity || "dom").join() : "";
-    if (nasze.length && nasze[0].getAttribute(ZNAK) !== klucz) {
+    if (nasze.length && nasze[0].getAttribute(ZNAK2) !== klucz) {
       nasze.forEach((e) => e.remove());
       nasze.length = 0;
     }
@@ -5950,7 +6196,7 @@ button svg{fill:var(--primary-color);flex:none}
       for (const { kolumna, cel } of lista) {
         const nr = Math.min(kolumna, kolumny.length - 1), k = kolumny[nr], i = ile[nr] || 0;
         const e = document.createElement("motor-ha-urzadzenie");
-        e.setAttribute(ZNAK, klucz);
+        e.setAttribute(ZNAK2, klucz);
         e.cel = cel;
         e.hass = h;
         k.insertBefore(e, k.children[i] || null);
@@ -5963,6 +6209,10 @@ button svg{fill:var(--primary-color);flex:none}
   }
   function strony(rejestruj2) {
     setInterval(() => {
+      try {
+        pilnujKreatora();
+      } catch (e) {
+      }
       try {
         pilnuj(rejestruj2);
       } catch (e) {

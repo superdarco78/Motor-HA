@@ -1,5 +1,22 @@
 # 📝 Historia zmian
 
+## v2.1.7 – Kreator z obrazkami i podglądem okna, rysunek jedzie razem z prawdziwą osłoną
+
+- 🪟 Silniki Zigbee (np. Moes przez Zigbee2MQTT), które po komendzie od razu zmieniają stan, a pozycję podają dopiero po dojechaniu: rysunek rusza od razu i jedzie razem z osłoną, zamiast czekać do końca ruchu. Urządzenie Motor HA pokazuje wtedy też „otwiera się” / „zamyka się”
+- 🧭 Kalibracja przy dwóch skrzydłach: gdy jedna osłona nie odpowiada, powiadomienie podaje jej nazwę – i nie czeka już 4 minuty, gdy druga dawno dojechała
+- ⏱️ Kalibracja silnika, który melduje cel zaraz po ruszeniu: czas przejazdu z prędkości silnika (albo z meldunku po zatrzymaniu) zamiast fałszywych 1–4 s. Gdy nie da się zmierzyć – jasne powiadomienie, co wpisać
+- 🪟 Kreator: brama na liście „Co masz w domu” nie zamienia okna w bramę – w kroku „Rodzaj” są wszystkie osłony (bramy na końcu listy)
+- 👆 Kreator: pasek kroków u góry zostaje przyklejony przy przewijaniu, a dotknięcie kroku przenosi od razu do niego. Przy „Zmień ustawienia” do każdego kroku („Dalej” zapisuje), przy dodawaniu – do już przejściowych
+- 🎚️ Nowa opcja w kroku „Okno”: „Dwa skrzydła sterowane osobno” – suwak lewej osłony po lewej stronie okna, prawej po prawej (także przy osłonach zewnętrznych)
+- 🎨 Na karcie obok „Zmień ustawienia” przycisk „Wygląd” – od razu kolory i rama, a paskiem kroków dalej
+- 🔁 Ustawienia z kreatora i zmierzony czas kalibracji wygrywają ze starymi ustawieniami karty (wcześniej np. kolor zmieniony w kreatorze mógł nie zadziałać)
+- 🔤 Podpis „Powiadomienia” na pasku kroków nie jest już ucięty
+- 🖼️ Kreator: w kroku „Rodzaj” każda osłona ma obrazek, a w „Kolorach” są próbki kolorów osłony i ramy – wystarczy dotknąć
+- 👀 Kreator: żywy podgląd okna u góry (razem z paskiem kroków) zmienia się od razu przy wyborze rodzaju, koloru, ramy i skrzydeł
+- 🏠 Kreator: po wyborze silnika pomieszczenie i rodzaj pomieszczenia uzupełniają się same (z obszaru w HA albo z nazwy, np. „Żaluzja lewa salon” → Salon)
+- 🧠 Kreator: pola czujników pokazują tylko to, co pasuje (np. przy oknie same czujniki okien), te z pokoju osłony są na górze i od razu podpowiedziane. Tak samo pogoda, domownicy, fotokomórka i prędkość silnika. W „Powiadomieniach” telefony są na górze listy
+- 🔄 Kreator: po zmianie silnika czujniki i prędkość z poprzedniego pokoju nie zostają przypadkiem w ustawieniach
+
 ## v2.1.6 – Suwak po każdej stronie okna, rysunek jedzie razem z osłoną
 
 - 🎚️ Dwa skrzydła sterowane osobno („Osobno”): suwak lewej osłony stoi z lewej strony okna, prawej – z prawej. Każdy jeździ tylko swoją roletą i pokazuje jej pozycję

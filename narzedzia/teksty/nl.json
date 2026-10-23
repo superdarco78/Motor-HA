@@ -135,7 +135,8 @@
     "powiadom": "Meld het me als",
     "powiadom_gdzie": "Ook sturen naar",
     "na_panel": "Kaart aan een dashboard toevoegen",
-    "wstecz": "Terug naar de vorige stap"
+    "wstecz": "Terug naar de vorige stap",
+    "osobno": "Twee vleugels apart bedienen"
   },
   "pomoc": {
     "kopiuj_z": "Leeg = opnieuw beginnen.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Een luxmeter of zonnestroom – in plaats van alleen de zonnestand.",
     "czujnik_swieta": "Workday-integratie – feestdagen tellen als weekend.",
     "powiadom_gdzie": "De HA-app op je telefoon. Niets gekozen – alleen meldingen in HA.",
-    "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
+    "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft.",
+    "osobno": "De schuifregelaar van het linker scherm staat links van het raam, die van het rechter rechts. Elk beweegt alleen zijn eigen scherm."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: de poort staat langer dan {minuty} min open.",
     "brama_niedomknieta": "{nazwa}: de poort is niet gesloten.",
     "przeszkoda": "{nazwa}: er staat iets in de poort (fotocel).",
-    "nie_motor_ha": "Dit is geen Motor HA-apparaat."
+    "nie_motor_ha": "Dit is geen Motor HA-apparaat.",
+    "kalibracja_brak": "{nazwa}: kalibratie mislukt – geen antwoord van: {lista}. Controleer voeding en bereik van dat scherm en probeer het opnieuw.",
+    "kalibracja_od_razu": "{nazwa}: kalibratie kon de tijd niet meten – de motor meldt het einde direct na het starten. Vul de looptijd in bij de stap „Motor” of voeg daar de motorsnelheid toe."
   },
   "uslugi": {
     "wstrzymaj": [

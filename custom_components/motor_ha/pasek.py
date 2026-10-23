@@ -7,6 +7,7 @@ Jeden pasek, bez drugiego w środku zrzutu. Kolory jak w domyślnym motywie HA, 
 from __future__ import annotations
 
 from base64 import b64encode
+import json
 from html import escape
 
 from aiohttp import web
@@ -63,10 +64,14 @@ class PasekKrokow(HomeAssistantView):
 
 def rysuj(kroki: list[str], aktywny: int, nazwy: dict[str, str]) -> str:
     n = max(1, len(kroki))
-    krok = 76 if n <= 8 else 58
+    # szerokość kroku: podpisy (ok. 7 px na znak) nie mogą wychodzić poza obrazek, np. „Powiadomienia”
+    najdluzszy = max((len(nazwy.get(k, k)) for k in kroki), default=0)
+    krok = max(76, round(najdluzszy * 7 + 8)) if n <= 8 else 58
     szer, wys = n * krok, 70 if n <= 8 else 74
     r = 18 if n <= 8 else 15
+    # data-motor-ha-kroki: karta w przeglądarce robi z paska klikalne kroki (karta/src/kreator.js)
     czesci = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{szer}" height="{wys}" viewBox="0 0 {szer} {wys}" '
+              f'data-motor-ha-kroki="{",".join(kroki)}" data-krok="{krok}" data-aktywny="{aktywny}" '
               'font-family="Roboto, Noto Sans, sans-serif">']
     for i in range(n - 1):
         x1, x2 = i * krok + krok / 2 + r + 3, (i + 1) * krok + krok / 2 - r - 3
@@ -88,16 +93,22 @@ def rysuj(kroki: list[str], aktywny: int, nazwy: dict[str, str]) -> str:
         czesci.append(f'<path d="{IKONY[k]}" fill="{kolor}" transform="translate({cx - 12 * s} {cy - 12 * s}) scale({s})"/>')
         if n <= 8 or i == aktywny:
             waga = 700 if i == aktywny else 400
-            czesci.append(f'<text x="{cx}" y="{2 * r + 22}" text-anchor="middle" font-size="12" font-weight="{waga}" '
+            pol = len(nazwy.get(k, k)) * 3.5   # podpis aktywnego kroku przy brzegu nie może być ucięty
+            tx = min(max(cx, pol + 2), szer - pol - 2)
+            czesci.append(f'<text x="{tx}" y="{2 * r + 22}" text-anchor="middle" font-size="12" font-weight="{waga}" '
                           f'fill="{GLOWNY if i == aktywny else SZARY}">{escape(nazwy.get(k, k))}</text>')
     czesci.append("</svg>")
     return "".join(czesci)
 
 
-async def async_obrazek(hass: HomeAssistant, kroki: list[str], aktywny: int, jezyk: str) -> str:
+async def async_obrazek(hass: HomeAssistant, kroki: list[str], aktywny: int, jezyk: str,
+                        podglad: dict | None = None) -> str:
     """Pasek jako obrazek w treści kreatora (data:), bo przy pierwszym dodaniu integracja nie podaje jeszcze plików."""
     kroki = [k for k in kroki if k in IKONY][:16]
     t = await async_get_translations(hass, jezyk, "selector", {DOMAIN})
     nazwy = {k: t.get(f"component.{DOMAIN}.selector.kroki.options.{k}", k) for k in kroki}
     svg = rysuj(kroki, max(0, min(len(kroki) - 1, aktywny)), nazwy)
+    if podglad:   # wygląd okna dla żywego podglądu (karta/src/kreator.js)
+        dane = b64encode(json.dumps(podglad, ensure_ascii=False).encode()).decode()
+        svg = svg.replace("<svg ", f'<svg data-podglad="{dane}" ', 1)
     return "data:image/svg+xml;base64," + b64encode(svg.encode()).decode()

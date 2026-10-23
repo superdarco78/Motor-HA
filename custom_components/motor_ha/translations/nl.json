@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Stap {nr} van {z}: Modus van de wizard",
-        "description": "{pasek}\n\n**Wat:** Kies hoeveel vragen je wilt zien.\n\n**Waarom:** Basis is genoeg voor de meesten. Geavanceerd toont alle opties en extra apparaten. De modus wijzig je later via „Configureren”.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies hoeveel vragen je wilt zien.\n\n**Waarom:** Basis is genoeg voor de meesten. Geavanceerd toont alle opties en extra apparaten. De modus wijzig je later via „Configureren”.{porada}{galeria}",
         "data": {
           "tryb": "Modus",
           "kopiuj_z": "Instellingen van een ander apparaat kopiëren",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Stap {nr} van {z}: Wat je in huis hebt",
-        "description": "{pasek}\n\n**Wat:** Vink aan wat je hebt. De wizard heeft Home Assistant doorzocht en aangevinkt wat hij vond.\n\n**Waarom:** De wizard toont alleen stappen en functies voor aangevinkte apparaten. De rest voeg je later toe via „Configureren”.\n\nGevonden: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Wat:** Vink aan wat je hebt. De wizard heeft Home Assistant doorzocht en aangevinkt wat hij vond.\n\n**Waarom:** De wizard toont alleen stappen en functies voor aangevinkte apparaten. De rest voeg je later toe via „Configureren”.\n\nGevonden: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Ik heb thuis",
           "wstecz": "Terug naar de vorige stap"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Stap {nr} van {z}: Apparaat",
-        "description": "{pasek}\n\n**Wat:** Kies de motor (zonwering of poort), geef een naam en kies de ruimte.\n\n**Waarom:** Motor HA bestuurt deze motor. Praat met Assist via de apparaatnaam, bijv. „sluit Plissé keuken”.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de motor (zonwering of poort), geef een naam en kies de ruimte.\n\n**Waarom:** Motor HA bestuurt deze motor. Praat met Assist via de apparaatnaam, bijv. „sluit Plissé keuken”.{porada}{galeria}",
         "data": {
           "rolety": "Motor (één of twee entiteiten)",
           "name": "Naam",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Stap {nr} van {z}: Soort",
-        "description": "{pasek}\n\n**Wat:** Kies precies wat je hebt.\n\n**Waarom:** De kaart tekent dit apparaat en de automatisering weet wat ze kan gebruiken.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies precies wat je hebt.\n\n**Waarom:** De kaart tekent dit apparaat en de automatisering weet wat ze kan gebruiken.{porada}{galeria}",
         "data": {
           "oslona": "Soort",
           "wstecz": "Terug naar de vorige stap"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Stap {nr} van {z}: Lamellen",
-        "description": "{pasek}\n\n**Wat:** Stel het kantelen van de lamellen in.\n\n**Waarom:** Je laat licht binnen zonder de jaloezie op te trekken.{porada}",
+        "description": "{pasek}\n\n**Wat:** Stel het kantelen van de lamellen in.\n\n**Waarom:** Je laat licht binnen zonder de jaloezie op te trekken.{porada}{galeria}",
         "data": {
           "lamele_kat": "Lamelhoek bij zon",
           "lamele_tryb": "Lamelbesturing",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Stap {nr} van {z}: Kleuren",
-        "description": "{pasek}\n\n**Wat:** Kies de kleur van zonwering en kozijn.\n\n**Waarom:** Het raam op het scherm lijkt op het echte.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de kleur van zonwering en kozijn.\n\n**Waarom:** Het raam op het scherm lijkt op het echte.{porada}{galeria}",
         "data": {
           "kolor": "Kleur zonwering",
           "rama": "Kleur kozijn",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Stap {nr} van {z}: Raam",
-        "description": "{pasek}\n\n**Wat:** Hoeveel vleugels het raam heeft en hoe groot het op de kaart is.\n\n**Waarom:** Elke vleugel kan een eigen motor hebben.{porada}",
+        "description": "{pasek}\n\n**Wat:** Hoeveel vleugels het raam heeft en hoe groot het op de kaart is.\n\n**Waarom:** Elke vleugel kan een eigen motor hebben.{porada}{galeria}",
         "data": {
           "skrzydla": "Vleugels",
           "wysokosc": "Hoogte op de kaart",
+          "osobno": "Twee vleugels apart bedienen",
           "odwroc": "Omgekeerde percentages",
           "wstecz": "Terug naar de vorige stap"
         },
         "data_description": {
+          "osobno": "De schuifregelaar van het linker scherm staat links van het raam, die van het rechter rechts. Elk beweegt alleen zijn eigen scherm.",
           "odwroc": "Aanzetten als de motor 100 % meldt bij gesloten zonwering.",
           "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
         }
       },
       "czujniki": {
         "title": "Stap {nr} van {z}: Sensoren",
-        "description": "{pasek}\n\n**Wat:** Kies de openingssensoren van raam en deur.\n\n**Waarom:** De kaart toont een gekantelde of open vleugel, en de blokkering laat de zonwering nooit op een open raam zakken.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de openingssensoren van raam en deur.\n\n**Waarom:** De kaart toont een gekantelde of open vleugel, en de blokkering laat de zonwering nooit op een open raam zakken.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensor linkervleugel",
           "tryb_lewe": "Linkervleugel",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Stap {nr} van {z}: Fotocel",
-        "description": "{pasek}\n\n**Wat:** Kies de obstakelsensor van de poort en de toestand die „er staat iets in de poort” betekent.\n\n**Waarom:** De kaart toont het obstakel en je krijgt een melding. De fotocel in de besturing stopt de poort nog steeds zelf.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de obstakelsensor van de poort en de toestand die „er staat iets in de poort” betekent.\n\n**Waarom:** De kaart toont het obstakel en je krijgt een melding. De fotocel in de besturing stopt de poort nog steeds zelf.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotocel (obstakelsensor)",
           "foto_stan": "Obstakel als de sensor de toestand heeft",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Stap {nr} van {z}: Motor",
-        "description": "{pasek}\n\n**Wat:** Vul de volledige looptijd in of laat 0.\n\n**Waarom:** De tekening beweegt zo snel als de echte motor. Bij 0 leert de kaart de tijd zelf na een paar bewegingen.{porada}",
+        "description": "{pasek}\n\n**Wat:** Vul de volledige looptijd in of laat 0.\n\n**Waarom:** De tekening beweegt zo snel als de echte motor. Bij 0 leert de kaart de tijd zelf na een paar bewegingen.{porada}{galeria}",
         "data": {
           "czas": "Volledige looptijd",
           "kalibruj": "Nu kalibreren (zonwering gaat omhoog, omlaag en omhoog)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Stap {nr} van {z}: Weer",
-        "description": "{pasek}\n\n**Wat:** Kies het weer en buitensensoren.\n\n**Waarom:** Achter het glas zie je het echte weer, en de automatisering beschermt de zonwering tegen wind, regen en zon.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies het weer en buitensensoren.\n\n**Waarom:** Achter het glas zie je het echte weer, en de automatisering beschermt de zonwering tegen wind, regen en zon.{porada}{galeria}",
         "data": {
           "pogoda": "Weer",
           "czujnik_temp": "Buitentemperatuur",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Stap {nr} van {z}: Bewoners",
-        "description": "{pasek}\n\n**Wat:** Kies aanwezigheids-, bewegings- en bewonerssensoren.\n\n**Waarom:** De zonwering kan reageren op of er iemand in de ruimte of thuis is.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies aanwezigheids-, bewegings- en bewonerssensoren.\n\n**Waarom:** De zonwering kan reageren op of er iemand in de ruimte of thuis is.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Aanwezigheidssensor (er is iemand)",
           "czujnik_ruch": "Bewegingssensor (iemand kwam binnen)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Stap {nr} van {z}: Automatisering",
-        "description": "{pasek}\n\n**Wat:** Zet de functies aan die de zonwering zelf mogen bewegen.\n\n**Waarom:** Je huis zorgt voor de zonwering zonder automatiseringen te schrijven. Alles staat uit tot je het aanzet.{porada}",
+        "description": "{pasek}\n\n**Wat:** Zet de functies aan die de zonwering zelf mogen bewegen.\n\n**Waarom:** Je huis zorgt voor de zonwering zonder automatiseringen te schrijven. Alles staat uit tot je het aanzet.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Schema",
           "f_slonce": "Zonwering",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Stap {nr} van {z}: Instellingen",
-        "description": "{pasek}\n\n**Wat:** Pas de ingeschakelde functies aan.\n\n**Waarom:** De standaardwaarden passen bij de meeste huizen.{porada}",
+        "description": "{pasek}\n\n**Wat:** Pas de ingeschakelde functies aan.\n\n**Waarom:** De standaardwaarden passen bij de meeste huizen.{porada}{galeria}",
         "data": {
           "azymut": "Richting van het raam",
           "szer_slonca": "Zonbreedte in het raam",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Stap {nr} van {z}: Meldingen",
-        "description": "{pasek}\n\n**Wat:** Kies waarover je bericht wilt.\n\n**Waarom:** Je weet meteen welk apparaat een probleem heeft. Meldingen gaan naar HA en, als je wilt, naar je telefoon.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies waarover je bericht wilt.\n\n**Waarom:** Je weet meteen welk apparaat een probleem heeft. Meldingen gaan naar HA en, als je wilt, naar je telefoon.{porada}{galeria}",
         "data": {
           "powiadom": "Meld het me als",
           "powiadom_gdzie": "Ook sturen naar",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Stap {nr} van {z}: Dashboard",
-        "description": "{pasek}\n\n**Wat:** Op welk dashboard de kaart komt.\n\n**Waarom:** De kaart verschijnt vanzelf, je hoeft niets te klikken.{porada}",
+        "description": "{pasek}\n\n**Wat:** Op welk dashboard de kaart komt.\n\n**Waarom:** De kaart verschijnt vanzelf, je hoeft niets te klikken.{porada}{galeria}",
         "data": {
           "na_panel": "Kaart aan een dashboard toevoegen",
           "wstecz": "Terug naar de vorige stap"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Stap {nr} van {z}: Modus van de wizard",
-        "description": "{pasek}\n\n**Wat:** Kies hoeveel vragen je wilt zien.\n\n**Waarom:** Basis is genoeg voor de meesten. Geavanceerd toont alle opties en extra apparaten. De modus wijzig je later via „Configureren”.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies hoeveel vragen je wilt zien.\n\n**Waarom:** Basis is genoeg voor de meesten. Geavanceerd toont alle opties en extra apparaten. De modus wijzig je later via „Configureren”.{porada}{galeria}",
         "data": {
           "tryb": "Modus",
           "kopiuj_z": "Instellingen van een ander apparaat kopiëren",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Stap {nr} van {z}: Wat je in huis hebt",
-        "description": "{pasek}\n\n**Wat:** Vink aan wat je hebt. De wizard heeft Home Assistant doorzocht en aangevinkt wat hij vond.\n\n**Waarom:** De wizard toont alleen stappen en functies voor aangevinkte apparaten. De rest voeg je later toe via „Configureren”.\n\nGevonden: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Wat:** Vink aan wat je hebt. De wizard heeft Home Assistant doorzocht en aangevinkt wat hij vond.\n\n**Waarom:** De wizard toont alleen stappen en functies voor aangevinkte apparaten. De rest voeg je later toe via „Configureren”.\n\nGevonden: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Ik heb thuis",
           "wstecz": "Terug naar de vorige stap"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Stap {nr} van {z}: Apparaat",
-        "description": "{pasek}\n\n**Wat:** Kies de motor (zonwering of poort), geef een naam en kies de ruimte.\n\n**Waarom:** Motor HA bestuurt deze motor. Praat met Assist via de apparaatnaam, bijv. „sluit Plissé keuken”.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de motor (zonwering of poort), geef een naam en kies de ruimte.\n\n**Waarom:** Motor HA bestuurt deze motor. Praat met Assist via de apparaatnaam, bijv. „sluit Plissé keuken”.{porada}{galeria}",
         "data": {
           "rolety": "Motor (één of twee entiteiten)",
           "name": "Naam",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Stap {nr} van {z}: Soort",
-        "description": "{pasek}\n\n**Wat:** Kies precies wat je hebt.\n\n**Waarom:** De kaart tekent dit apparaat en de automatisering weet wat ze kan gebruiken.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies precies wat je hebt.\n\n**Waarom:** De kaart tekent dit apparaat en de automatisering weet wat ze kan gebruiken.{porada}{galeria}",
         "data": {
           "oslona": "Soort",
           "wstecz": "Terug naar de vorige stap"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Stap {nr} van {z}: Lamellen",
-        "description": "{pasek}\n\n**Wat:** Stel het kantelen van de lamellen in.\n\n**Waarom:** Je laat licht binnen zonder de jaloezie op te trekken.{porada}",
+        "description": "{pasek}\n\n**Wat:** Stel het kantelen van de lamellen in.\n\n**Waarom:** Je laat licht binnen zonder de jaloezie op te trekken.{porada}{galeria}",
         "data": {
           "lamele_kat": "Lamelhoek bij zon",
           "lamele_tryb": "Lamelbesturing",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Stap {nr} van {z}: Kleuren",
-        "description": "{pasek}\n\n**Wat:** Kies de kleur van zonwering en kozijn.\n\n**Waarom:** Het raam op het scherm lijkt op het echte.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de kleur van zonwering en kozijn.\n\n**Waarom:** Het raam op het scherm lijkt op het echte.{porada}{galeria}",
         "data": {
           "kolor": "Kleur zonwering",
           "rama": "Kleur kozijn",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Stap {nr} van {z}: Raam",
-        "description": "{pasek}\n\n**Wat:** Hoeveel vleugels het raam heeft en hoe groot het op de kaart is.\n\n**Waarom:** Elke vleugel kan een eigen motor hebben.{porada}",
+        "description": "{pasek}\n\n**Wat:** Hoeveel vleugels het raam heeft en hoe groot het op de kaart is.\n\n**Waarom:** Elke vleugel kan een eigen motor hebben.{porada}{galeria}",
         "data": {
           "skrzydla": "Vleugels",
           "wysokosc": "Hoogte op de kaart",
+          "osobno": "Twee vleugels apart bedienen",
           "odwroc": "Omgekeerde percentages",
           "wstecz": "Terug naar de vorige stap"
         },
         "data_description": {
+          "osobno": "De schuifregelaar van het linker scherm staat links van het raam, die van het rechter rechts. Elk beweegt alleen zijn eigen scherm.",
           "odwroc": "Aanzetten als de motor 100 % meldt bij gesloten zonwering.",
           "wstecz": "Aanzetten en op „Volgende” klikken om een stap terug te gaan. Wat je invulde blijft."
         }
       },
       "czujniki": {
         "title": "Stap {nr} van {z}: Sensoren",
-        "description": "{pasek}\n\n**Wat:** Kies de openingssensoren van raam en deur.\n\n**Waarom:** De kaart toont een gekantelde of open vleugel, en de blokkering laat de zonwering nooit op een open raam zakken.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de openingssensoren van raam en deur.\n\n**Waarom:** De kaart toont een gekantelde of open vleugel, en de blokkering laat de zonwering nooit op een open raam zakken.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensor linkervleugel",
           "tryb_lewe": "Linkervleugel",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Stap {nr} van {z}: Fotocel",
-        "description": "{pasek}\n\n**Wat:** Kies de obstakelsensor van de poort en de toestand die „er staat iets in de poort” betekent.\n\n**Waarom:** De kaart toont het obstakel en je krijgt een melding. De fotocel in de besturing stopt de poort nog steeds zelf.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies de obstakelsensor van de poort en de toestand die „er staat iets in de poort” betekent.\n\n**Waarom:** De kaart toont het obstakel en je krijgt een melding. De fotocel in de besturing stopt de poort nog steeds zelf.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotocel (obstakelsensor)",
           "foto_stan": "Obstakel als de sensor de toestand heeft",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Stap {nr} van {z}: Motor",
-        "description": "{pasek}\n\n**Wat:** Vul de volledige looptijd in of laat 0.\n\n**Waarom:** De tekening beweegt zo snel als de echte motor. Bij 0 leert de kaart de tijd zelf na een paar bewegingen.{porada}",
+        "description": "{pasek}\n\n**Wat:** Vul de volledige looptijd in of laat 0.\n\n**Waarom:** De tekening beweegt zo snel als de echte motor. Bij 0 leert de kaart de tijd zelf na een paar bewegingen.{porada}{galeria}",
         "data": {
           "czas": "Volledige looptijd",
           "kalibruj": "Nu kalibreren (zonwering gaat omhoog, omlaag en omhoog)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Stap {nr} van {z}: Weer",
-        "description": "{pasek}\n\n**Wat:** Kies het weer en buitensensoren.\n\n**Waarom:** Achter het glas zie je het echte weer, en de automatisering beschermt de zonwering tegen wind, regen en zon.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies het weer en buitensensoren.\n\n**Waarom:** Achter het glas zie je het echte weer, en de automatisering beschermt de zonwering tegen wind, regen en zon.{porada}{galeria}",
         "data": {
           "pogoda": "Weer",
           "czujnik_temp": "Buitentemperatuur",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Stap {nr} van {z}: Bewoners",
-        "description": "{pasek}\n\n**Wat:** Kies aanwezigheids-, bewegings- en bewonerssensoren.\n\n**Waarom:** De zonwering kan reageren op of er iemand in de ruimte of thuis is.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies aanwezigheids-, bewegings- en bewonerssensoren.\n\n**Waarom:** De zonwering kan reageren op of er iemand in de ruimte of thuis is.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Aanwezigheidssensor (er is iemand)",
           "czujnik_ruch": "Bewegingssensor (iemand kwam binnen)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Stap {nr} van {z}: Automatisering",
-        "description": "{pasek}\n\n**Wat:** Zet de functies aan die de zonwering zelf mogen bewegen.\n\n**Waarom:** Je huis zorgt voor de zonwering zonder automatiseringen te schrijven. Alles staat uit tot je het aanzet.{porada}",
+        "description": "{pasek}\n\n**Wat:** Zet de functies aan die de zonwering zelf mogen bewegen.\n\n**Waarom:** Je huis zorgt voor de zonwering zonder automatiseringen te schrijven. Alles staat uit tot je het aanzet.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Schema",
           "f_slonce": "Zonwering",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Stap {nr} van {z}: Instellingen",
-        "description": "{pasek}\n\n**Wat:** Pas de ingeschakelde functies aan.\n\n**Waarom:** De standaardwaarden passen bij de meeste huizen.{porada}",
+        "description": "{pasek}\n\n**Wat:** Pas de ingeschakelde functies aan.\n\n**Waarom:** De standaardwaarden passen bij de meeste huizen.{porada}{galeria}",
         "data": {
           "azymut": "Richting van het raam",
           "szer_slonca": "Zonbreedte in het raam",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Stap {nr} van {z}: Meldingen",
-        "description": "{pasek}\n\n**Wat:** Kies waarover je bericht wilt.\n\n**Waarom:** Je weet meteen welk apparaat een probleem heeft. Meldingen gaan naar HA en, als je wilt, naar je telefoon.{porada}",
+        "description": "{pasek}\n\n**Wat:** Kies waarover je bericht wilt.\n\n**Waarom:** Je weet meteen welk apparaat een probleem heeft. Meldingen gaan naar HA en, als je wilt, naar je telefoon.{porada}{galeria}",
         "data": {
           "powiadom": "Meld het me als",
           "powiadom_gdzie": "Ook sturen naar",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "Dit is geen Motor HA-apparaat."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa}: kalibratie mislukt – geen antwoord van: {lista}. Controleer voeding en bereik van dat scherm en probeer het opnieuw."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa}: kalibratie kon de tijd niet meten – de motor meldt het einde direct na het starten. Vul de looptijd in bij de stap „Motor” of voeg daar de motorsnelheid toe."
     },
     "powod_brak": {
       "message": "Geen automatisering"

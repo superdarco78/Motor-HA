@@ -135,7 +135,8 @@
     "powiadom": "Me prévenir quand",
     "powiadom_gdzie": "Envoyer aussi à",
     "na_panel": "Ajouter la carte à un tableau de bord",
-    "wstecz": "Revenir à l'étape précédente"
+    "wstecz": "Revenir à l'étape précédente",
+    "osobno": "Deux vantaux commandés séparément"
   },
   "pomoc": {
     "kopiuj_z": "Vide = partir de zéro.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Un luxmètre ou la puissance solaire – au lieu de la seule position du soleil.",
     "czujnik_swieta": "Intégration Workday – les jours fériés comptent comme le week-end.",
     "powiadom_gdzie": "L'app HA sur le téléphone. Rien de choisi – notifications dans HA seulement.",
-    "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
+    "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé.",
+    "osobno": "Le curseur du store gauche est à gauche de la fenêtre, celui du droit à droite. Chacun ne bouge que son store."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa} : le portail est ouvert depuis plus de {minuty} min.",
     "brama_niedomknieta": "{nazwa} : le portail ne s'est pas fermé.",
     "przeszkoda": "{nazwa} : quelque chose est dans le portail (cellule photo).",
-    "nie_motor_ha": "Ce n'est pas un appareil Motor HA."
+    "nie_motor_ha": "Ce n'est pas un appareil Motor HA.",
+    "kalibracja_brak": "{nazwa} : échec de l’étalonnage – pas de réponse de : {lista}. Vérifiez l’alimentation et la portée de ce store, puis réessayez.",
+    "kalibracja_od_razu": "{nazwa} : l’étalonnage n’a pas pu mesurer le temps – le moteur signale la fin juste après le départ. Saisissez la durée de course à l’étape « Moteur » ou ajoutez-y l’entité de vitesse du moteur."
   },
   "uslugi": {
     "wstrzymaj": [

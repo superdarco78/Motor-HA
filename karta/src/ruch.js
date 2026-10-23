@@ -55,6 +55,15 @@ export class Ruch {
       this.nauka = null;
     }
 
+    // Zigbee (np. Moes przez Zigbee2MQTT): stan zmienia się od razu po komendzie, a pozycja przychodzi dopiero
+    // po dojechaniu. „Zamknięta” przy 100 % albo „otwarta” przy 0 % = właśnie ruszyła – jedziemy z nią od razu
+    const surowa = st.attributes?.current_position;
+    if (typeof surowa === 'number' && poprzedni && s !== poprzedni && ((s === 'closed' && surowa >= 99) || (s === 'open' && surowa <= 1))) {
+      const cel = (s === 'open') !== !!odwroc ? 100 : 0;
+      if (!this.nauka) this.nauka = { t: teraz, p: this.widac };
+      if (!this.komenda || this.komenda.stop) { this.cel = cel; this.komenda = null; this.dociagnij = false; }
+      return;
+    }
     if (s === 'opening' || s === 'closing') {   // silnik mówi, że jedzie – jedziemy z nim do końca
       if (!this.komenda || this.komenda.stop) { this.cel = s === 'opening' ? 100 : 0; this.komenda = null; }
       return;

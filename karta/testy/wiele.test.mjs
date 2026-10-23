@@ -52,7 +52,7 @@ if (location.pathname.startsWith('/config/devices/')) setTimeout(() => {
 </script><script type="module" src="/motor_ha/motor-ha.js"></script></body></html>`;
 
 let przegladarka;
-before(async () => { przegladarka = await chromium.launch(); if (ZRZUTY) await mkdir(ZRZUTY, { recursive: true }); });
+before(async () => { przegladarka = await chromium.launch(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {}); if (ZRZUTY) await mkdir(ZRZUTY, { recursive: true }); });
 after(async () => { await przegladarka?.close(); });
 
 async function otworz(sciezka, ustawienia = TELEFON) {
@@ -162,3 +162,37 @@ test('pionowy suwak: dotknięcie u góry = otwarte (100 %), u dołu = zamknięte
     assert.ok(poz[0] >= 95 && poz[poz.length - 1] <= 5, `pozycje ${poz}`);
   } finally { await ctx.close(); }
 });
+
+for (const [nazwa, ustawienia] of [['telefon', TELEFON], ['komputer', { viewport: { width: 1400, height: 900 } }]]) {
+  test(`${nazwa}: dwa skrzydła „osobno” – suwak z każdej strony okna (wewnątrz i na zewnątrz), „Wygląd” obok „Zmień ustawienia”`, async () => {
+    const { ctx, page, bledy } = await otworz('/lovelace/okna', ustawienia);
+    try {
+      await page.waitForFunction(() => customElements.get('motor-ha'));
+      const w = await page.evaluate(async () => {
+        const hass = document.querySelector('home-assistant').hass, panel = document.createElement('div');
+        panel.className = 'panel'; document.body.appendChild(panel);
+        hass.states['cover.d1'].attributes.motor_ha.osobno = true;
+        hass.states['cover.d3'].attributes.motor_ha = { ...hass.states['cover.d3'].attributes.motor_ha, skrzydla: 2, osobno: true };
+        const karty = ['d1', 'd3'].map(id => { const k = document.createElement('motor-ha');
+          k.setConfig({ type: 'custom:motor-ha', entity: 'cover.' + id }); k.hass = { ...hass }; panel.appendChild(k); return k; });
+        await new Promise(r => setTimeout(r, 900));
+        return karty.map(k => {
+          const okno = k.shadowRoot.querySelector('.okno').getBoundingClientRect(), karta = k.getBoundingClientRect();
+          const s = [...k.shadowRoot.querySelectorAll('.suwak.pion')].map(x => x.getBoundingClientRect());
+          const b = [...k.shadowRoot.querySelectorAll('.stopka .zmien')].map(x => x.textContent.trim());
+          return { suwaki: s.length, lewy: s[0] && s[0].right <= okno.left + 1, prawy: s[1] && s[1].left >= okno.right - 1,
+            wKarcie: s.every(r => r.left >= karta.left && r.right <= karta.right), przyciski: b };
+        });
+      });
+      for (const k of w) {
+        assert.equal(k.suwaki, 2, 'dwa pionowe suwaki');
+        assert.ok(k.lewy && k.prawy, 'lewy suwak z lewej, prawy z prawej strony okna');
+        assert.ok(k.wKarcie, 'suwaki mieszczą się w karcie');
+        assert.equal(k.przyciski.length, 2);
+        assert.match(k.przyciski[1], /Wygląd/);
+      }
+      assert.deepEqual(bledy, []);
+      if (ZRZUTY) await page.screenshot({ path: `${ZRZUTY}/osobno-${nazwa}.png`, fullPage: true });
+    } finally { await ctx.close(); }
+  });
+}

@@ -135,7 +135,8 @@
     "powiadom": "Avvisami quando",
     "powiadom_gdzie": "Invia anche a",
     "na_panel": "Aggiungi la scheda a una plancia",
-    "wstecz": "Torna al passo precedente"
+    "wstecz": "Torna al passo precedente",
+    "osobno": "Due ante comandate separatamente"
   },
   "pomoc": {
     "kopiuj_z": "Vuoto = parti da zero.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Un luxmetro o la potenza fotovoltaica – invece della sola posizione del sole.",
     "czujnik_swieta": "Integrazione Workday – i festivi contano come weekend.",
     "powiadom_gdzie": "L'app HA sul telefono. Nessuna scelta – solo notifiche in HA.",
-    "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
+    "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano.",
+    "osobno": "Il cursore della tenda sinistra sta a sinistra della finestra, quello della destra a destra. Ognuno muove solo la sua tenda."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: il cancello è aperto da più di {minuty} min.",
     "brama_niedomknieta": "{nazwa}: il cancello non si è chiuso.",
     "przeszkoda": "{nazwa}: c'è qualcosa nel cancello (fotocellula).",
-    "nie_motor_ha": "Questo non è un dispositivo Motor HA."
+    "nie_motor_ha": "Questo non è un dispositivo Motor HA.",
+    "kalibracja_brak": "{nazwa}: calibrazione non riuscita – non risponde: {lista}. Controlla alimentazione e portata di quella tenda e riprova.",
+    "kalibracja_od_razu": "{nazwa}: la calibrazione non ha misurato il tempo – il motore segnala la fine subito dopo la partenza. Inserisci il tempo di corsa nel passo «Motore» o aggiungi lì l’entità della velocità del motore."
   },
   "uslugi": {
     "wstrzymaj": [

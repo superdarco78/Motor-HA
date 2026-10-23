@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Passo {nr} de {z}: Modo do assistente",
-        "description": "{pasek}\n\n**O quê:** Escolha quantas perguntas quer ver.\n\n**Para quê:** O básico chega para a maioria. O avançado mostra todas as opções e dispositivos extra. Pode mudar o modo depois em «Configurar».{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha quantas perguntas quer ver.\n\n**Para quê:** O básico chega para a maioria. O avançado mostra todas as opções e dispositivos extra. Pode mudar o modo depois em «Configurar».{porada}{galeria}",
         "data": {
           "tryb": "Modo",
           "kopiuj_z": "Copiar definições de outro dispositivo",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Passo {nr} de {z}: O que tem em casa",
-        "description": "{pasek}\n\n**O quê:** Marque o que tem. O assistente procurou no Home Assistant e marcou o que encontrou.\n\n**Para quê:** O assistente só mostra passos e funções dos dispositivos marcados. O resto adiciona depois em «Configurar».\n\nEncontrado: {znalezione}{porada}",
+        "description": "{pasek}\n\n**O quê:** Marque o que tem. O assistente procurou no Home Assistant e marcou o que encontrou.\n\n**Para quê:** O assistente só mostra passos e funções dos dispositivos marcados. O resto adiciona depois em «Configurar».\n\nEncontrado: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Tenho em casa",
           "wstecz": "Voltar ao passo anterior"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} de {z}: Dispositivo",
-        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor. Fale com o Assist pelo nome do dispositivo, p. ex. «fecha Plissado cozinha».{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor. Fale com o Assist pelo nome do dispositivo, p. ex. «fecha Plissado cozinha».{porada}{galeria}",
         "data": {
           "rolety": "Motor (uma ou duas entidades)",
           "name": "Nome",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Passo {nr} de {z}: Tipo",
-        "description": "{pasek}\n\n**O quê:** Escolha exatamente o que tem.\n\n**Para quê:** O cartão desenha este dispositivo e a automação sabe o que pode usar.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha exatamente o que tem.\n\n**Para quê:** O cartão desenha este dispositivo e a automação sabe o que pode usar.{porada}{galeria}",
         "data": {
           "oslona": "Tipo",
           "wstecz": "Voltar ao passo anterior"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Passo {nr} de {z}: Lâminas",
-        "description": "{pasek}\n\n**O quê:** Ajuste a orientação das lâminas.\n\n**Para quê:** Deixa entrar luz sem subir a persiana.{porada}",
+        "description": "{pasek}\n\n**O quê:** Ajuste a orientação das lâminas.\n\n**Para quê:** Deixa entrar luz sem subir a persiana.{porada}{galeria}",
         "data": {
           "lamele_kat": "Ângulo das lâminas ao sol",
           "lamele_tryb": "Controlo das lâminas",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Passo {nr} de {z}: Cores",
-        "description": "{pasek}\n\n**O quê:** Escolha a cor do estore e do caixilho.\n\n**Para quê:** A janela no ecrã parece a verdadeira.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha a cor do estore e do caixilho.\n\n**Para quê:** A janela no ecrã parece a verdadeira.{porada}{galeria}",
         "data": {
           "kolor": "Cor do estore",
           "rama": "Cor do caixilho",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Passo {nr} de {z}: Janela",
-        "description": "{pasek}\n\n**O quê:** Quantas folhas tem a janela e o tamanho no cartão.\n\n**Para quê:** Cada folha pode ter o seu motor.{porada}",
+        "description": "{pasek}\n\n**O quê:** Quantas folhas tem a janela e o tamanho no cartão.\n\n**Para quê:** Cada folha pode ter o seu motor.{porada}{galeria}",
         "data": {
           "skrzydla": "Folhas",
           "wysokosc": "Altura no cartão",
+          "osobno": "Duas folhas controladas separadamente",
           "odwroc": "Percentagens invertidas",
           "wstecz": "Voltar ao passo anterior"
         },
         "data_description": {
+          "osobno": "O controle deslizante da cortina esquerda fica à esquerda da janela e o da direita à direita. Cada um move só a sua cortina.",
           "odwroc": "Ligue se o motor indicar 100 % com o estore fechado.",
           "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se."
         }
       },
       "czujniki": {
         "title": "Passo {nr} de {z}: Sensores",
-        "description": "{pasek}\n\n**O quê:** Escolha os sensores de abertura da janela e da porta.\n\n**Para quê:** O cartão mostra uma folha basculante ou aberta, e o bloqueio nunca desce o estore sobre uma janela aberta.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha os sensores de abertura da janela e da porta.\n\n**Para quê:** O cartão mostra uma folha basculante ou aberta, e o bloqueio nunca desce o estore sobre uma janela aberta.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensor folha esquerda",
           "tryb_lewe": "Folha esquerda",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Passo {nr} de {z}: Fotocélula",
-        "description": "{pasek}\n\n**O quê:** Escolha o sensor de obstáculo do portão e o estado que significa «há algo no portão».\n\n**Para quê:** O cartão mostra o obstáculo e recebe uma notificação. A fotocélula do controlador continua a parar o portão sozinha.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o sensor de obstáculo do portão e o estado que significa «há algo no portão».\n\n**Para quê:** O cartão mostra o obstáculo e recebe uma notificação. A fotocélula do controlador continua a parar o portão sozinha.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotocélula (sensor de obstáculo)",
           "foto_stan": "Obstáculo quando o estado do sensor é",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Passo {nr} de {z}: Motor",
-        "description": "{pasek}\n\n**O quê:** Indique o tempo de curso completo ou deixe 0.\n\n**Para quê:** O desenho move-se tão depressa como o motor real. Com 0 o cartão aprende o tempo sozinho após alguns movimentos.{porada}",
+        "description": "{pasek}\n\n**O quê:** Indique o tempo de curso completo ou deixe 0.\n\n**Para quê:** O desenho move-se tão depressa como o motor real. Com 0 o cartão aprende o tempo sozinho após alguns movimentos.{porada}{galeria}",
         "data": {
           "czas": "Tempo de curso completo",
           "kalibruj": "Calibrar agora (o estore sobe, desce e sobe)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Passo {nr} de {z}: Tempo",
-        "description": "{pasek}\n\n**O quê:** Escolha o tempo e os sensores exteriores.\n\n**Para quê:** Atrás do vidro vê-se o tempo real, e a automação protege o estore do vento, da chuva e do sol.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o tempo e os sensores exteriores.\n\n**Para quê:** Atrás do vidro vê-se o tempo real, e a automação protege o estore do vento, da chuva e do sol.{porada}{galeria}",
         "data": {
           "pogoda": "Tempo",
           "czujnik_temp": "Temperatura exterior",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Passo {nr} de {z}: Moradores",
-        "description": "{pasek}\n\n**O quê:** Escolha sensores de presença, movimento e dos moradores.\n\n**Para quê:** O estore pode reagir a haver alguém na divisão ou em casa.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha sensores de presença, movimento e dos moradores.\n\n**Para quê:** O estore pode reagir a haver alguém na divisão ou em casa.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Sensor de presença (está alguém)",
           "czujnik_ruch": "Sensor de movimento (alguém entrou)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Passo {nr} de {z}: Automação",
-        "description": "{pasek}\n\n**O quê:** Ligue as funções que podem mover o estore sozinhas.\n\n**Para quê:** A casa trata dos estores sem escrever automações. Tudo está desligado até o ligar.{porada}",
+        "description": "{pasek}\n\n**O quê:** Ligue as funções que podem mover o estore sozinhas.\n\n**Para quê:** A casa trata dos estores sem escrever automações. Tudo está desligado até o ligar.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Horário",
           "f_slonce": "Proteção solar",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Passo {nr} de {z}: Definições",
-        "description": "{pasek}\n\n**O quê:** Ajuste as funções ligadas.\n\n**Para quê:** Os valores predefinidos servem para a maioria das casas.{porada}",
+        "description": "{pasek}\n\n**O quê:** Ajuste as funções ligadas.\n\n**Para quê:** Os valores predefinidos servem para a maioria das casas.{porada}{galeria}",
         "data": {
           "azymut": "Orientação da janela",
           "szer_slonca": "Largura do sol na janela",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Passo {nr} de {z}: Notificações",
-        "description": "{pasek}\n\n**O quê:** Escolha sobre o que ser avisado.\n\n**Para quê:** Sabe logo qual dispositivo tem um problema. As notificações vão para o HA e, se quiser, para o telemóvel.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha sobre o que ser avisado.\n\n**Para quê:** Sabe logo qual dispositivo tem um problema. As notificações vão para o HA e, se quiser, para o telemóvel.{porada}{galeria}",
         "data": {
           "powiadom": "Avisar-me quando",
           "powiadom_gdzie": "Enviar também para",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Passo {nr} de {z}: Painel",
-        "description": "{pasek}\n\n**O quê:** Em que painel adicionar o cartão.\n\n**Para quê:** O cartão aparece sozinho, não precisa de clicar.{porada}",
+        "description": "{pasek}\n\n**O quê:** Em que painel adicionar o cartão.\n\n**Para quê:** O cartão aparece sozinho, não precisa de clicar.{porada}{galeria}",
         "data": {
           "na_panel": "Adicionar o cartão a um painel",
           "wstecz": "Voltar ao passo anterior"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Passo {nr} de {z}: Modo do assistente",
-        "description": "{pasek}\n\n**O quê:** Escolha quantas perguntas quer ver.\n\n**Para quê:** O básico chega para a maioria. O avançado mostra todas as opções e dispositivos extra. Pode mudar o modo depois em «Configurar».{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha quantas perguntas quer ver.\n\n**Para quê:** O básico chega para a maioria. O avançado mostra todas as opções e dispositivos extra. Pode mudar o modo depois em «Configurar».{porada}{galeria}",
         "data": {
           "tryb": "Modo",
           "kopiuj_z": "Copiar definições de outro dispositivo",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Passo {nr} de {z}: O que tem em casa",
-        "description": "{pasek}\n\n**O quê:** Marque o que tem. O assistente procurou no Home Assistant e marcou o que encontrou.\n\n**Para quê:** O assistente só mostra passos e funções dos dispositivos marcados. O resto adiciona depois em «Configurar».\n\nEncontrado: {znalezione}{porada}",
+        "description": "{pasek}\n\n**O quê:** Marque o que tem. O assistente procurou no Home Assistant e marcou o que encontrou.\n\n**Para quê:** O assistente só mostra passos e funções dos dispositivos marcados. O resto adiciona depois em «Configurar».\n\nEncontrado: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Tenho em casa",
           "wstecz": "Voltar ao passo anterior"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} de {z}: Dispositivo",
-        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor. Fale com o Assist pelo nome do dispositivo, p. ex. «fecha Plissado cozinha».{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor. Fale com o Assist pelo nome do dispositivo, p. ex. «fecha Plissado cozinha».{porada}{galeria}",
         "data": {
           "rolety": "Motor (uma ou duas entidades)",
           "name": "Nome",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Passo {nr} de {z}: Tipo",
-        "description": "{pasek}\n\n**O quê:** Escolha exatamente o que tem.\n\n**Para quê:** O cartão desenha este dispositivo e a automação sabe o que pode usar.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha exatamente o que tem.\n\n**Para quê:** O cartão desenha este dispositivo e a automação sabe o que pode usar.{porada}{galeria}",
         "data": {
           "oslona": "Tipo",
           "wstecz": "Voltar ao passo anterior"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Passo {nr} de {z}: Lâminas",
-        "description": "{pasek}\n\n**O quê:** Ajuste a orientação das lâminas.\n\n**Para quê:** Deixa entrar luz sem subir a persiana.{porada}",
+        "description": "{pasek}\n\n**O quê:** Ajuste a orientação das lâminas.\n\n**Para quê:** Deixa entrar luz sem subir a persiana.{porada}{galeria}",
         "data": {
           "lamele_kat": "Ângulo das lâminas ao sol",
           "lamele_tryb": "Controlo das lâminas",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Passo {nr} de {z}: Cores",
-        "description": "{pasek}\n\n**O quê:** Escolha a cor do estore e do caixilho.\n\n**Para quê:** A janela no ecrã parece a verdadeira.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha a cor do estore e do caixilho.\n\n**Para quê:** A janela no ecrã parece a verdadeira.{porada}{galeria}",
         "data": {
           "kolor": "Cor do estore",
           "rama": "Cor do caixilho",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Passo {nr} de {z}: Janela",
-        "description": "{pasek}\n\n**O quê:** Quantas folhas tem a janela e o tamanho no cartão.\n\n**Para quê:** Cada folha pode ter o seu motor.{porada}",
+        "description": "{pasek}\n\n**O quê:** Quantas folhas tem a janela e o tamanho no cartão.\n\n**Para quê:** Cada folha pode ter o seu motor.{porada}{galeria}",
         "data": {
           "skrzydla": "Folhas",
           "wysokosc": "Altura no cartão",
+          "osobno": "Duas folhas controladas separadamente",
           "odwroc": "Percentagens invertidas",
           "wstecz": "Voltar ao passo anterior"
         },
         "data_description": {
+          "osobno": "O controle deslizante da cortina esquerda fica à esquerda da janela e o da direita à direita. Cada um move só a sua cortina.",
           "odwroc": "Ligue se o motor indicar 100 % com o estore fechado.",
           "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se."
         }
       },
       "czujniki": {
         "title": "Passo {nr} de {z}: Sensores",
-        "description": "{pasek}\n\n**O quê:** Escolha os sensores de abertura da janela e da porta.\n\n**Para quê:** O cartão mostra uma folha basculante ou aberta, e o bloqueio nunca desce o estore sobre uma janela aberta.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha os sensores de abertura da janela e da porta.\n\n**Para quê:** O cartão mostra uma folha basculante ou aberta, e o bloqueio nunca desce o estore sobre uma janela aberta.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensor folha esquerda",
           "tryb_lewe": "Folha esquerda",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Passo {nr} de {z}: Fotocélula",
-        "description": "{pasek}\n\n**O quê:** Escolha o sensor de obstáculo do portão e o estado que significa «há algo no portão».\n\n**Para quê:** O cartão mostra o obstáculo e recebe uma notificação. A fotocélula do controlador continua a parar o portão sozinha.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o sensor de obstáculo do portão e o estado que significa «há algo no portão».\n\n**Para quê:** O cartão mostra o obstáculo e recebe uma notificação. A fotocélula do controlador continua a parar o portão sozinha.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotocélula (sensor de obstáculo)",
           "foto_stan": "Obstáculo quando o estado do sensor é",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Passo {nr} de {z}: Motor",
-        "description": "{pasek}\n\n**O quê:** Indique o tempo de curso completo ou deixe 0.\n\n**Para quê:** O desenho move-se tão depressa como o motor real. Com 0 o cartão aprende o tempo sozinho após alguns movimentos.{porada}",
+        "description": "{pasek}\n\n**O quê:** Indique o tempo de curso completo ou deixe 0.\n\n**Para quê:** O desenho move-se tão depressa como o motor real. Com 0 o cartão aprende o tempo sozinho após alguns movimentos.{porada}{galeria}",
         "data": {
           "czas": "Tempo de curso completo",
           "kalibruj": "Calibrar agora (o estore sobe, desce e sobe)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Passo {nr} de {z}: Tempo",
-        "description": "{pasek}\n\n**O quê:** Escolha o tempo e os sensores exteriores.\n\n**Para quê:** Atrás do vidro vê-se o tempo real, e a automação protege o estore do vento, da chuva e do sol.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o tempo e os sensores exteriores.\n\n**Para quê:** Atrás do vidro vê-se o tempo real, e a automação protege o estore do vento, da chuva e do sol.{porada}{galeria}",
         "data": {
           "pogoda": "Tempo",
           "czujnik_temp": "Temperatura exterior",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Passo {nr} de {z}: Moradores",
-        "description": "{pasek}\n\n**O quê:** Escolha sensores de presença, movimento e dos moradores.\n\n**Para quê:** O estore pode reagir a haver alguém na divisão ou em casa.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha sensores de presença, movimento e dos moradores.\n\n**Para quê:** O estore pode reagir a haver alguém na divisão ou em casa.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Sensor de presença (está alguém)",
           "czujnik_ruch": "Sensor de movimento (alguém entrou)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Passo {nr} de {z}: Automação",
-        "description": "{pasek}\n\n**O quê:** Ligue as funções que podem mover o estore sozinhas.\n\n**Para quê:** A casa trata dos estores sem escrever automações. Tudo está desligado até o ligar.{porada}",
+        "description": "{pasek}\n\n**O quê:** Ligue as funções que podem mover o estore sozinhas.\n\n**Para quê:** A casa trata dos estores sem escrever automações. Tudo está desligado até o ligar.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Horário",
           "f_slonce": "Proteção solar",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Passo {nr} de {z}: Definições",
-        "description": "{pasek}\n\n**O quê:** Ajuste as funções ligadas.\n\n**Para quê:** Os valores predefinidos servem para a maioria das casas.{porada}",
+        "description": "{pasek}\n\n**O quê:** Ajuste as funções ligadas.\n\n**Para quê:** Os valores predefinidos servem para a maioria das casas.{porada}{galeria}",
         "data": {
           "azymut": "Orientação da janela",
           "szer_slonca": "Largura do sol na janela",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Passo {nr} de {z}: Notificações",
-        "description": "{pasek}\n\n**O quê:** Escolha sobre o que ser avisado.\n\n**Para quê:** Sabe logo qual dispositivo tem um problema. As notificações vão para o HA e, se quiser, para o telemóvel.{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha sobre o que ser avisado.\n\n**Para quê:** Sabe logo qual dispositivo tem um problema. As notificações vão para o HA e, se quiser, para o telemóvel.{porada}{galeria}",
         "data": {
           "powiadom": "Avisar-me quando",
           "powiadom_gdzie": "Enviar também para",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "Isto não é um dispositivo Motor HA."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa}: a calibração falhou – sem resposta de: {lista}. Verifique a alimentação e o alcance dessa cortina e tente novamente."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa}: a calibração não conseguiu medir o tempo – o motor informa o fim logo após arrancar. Introduza o tempo de percurso no passo «Motor» ou adicione lá a entidade de velocidade do motor."
     },
     "powod_brak": {
       "message": "Sem automação"

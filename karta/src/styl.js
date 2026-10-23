@@ -123,6 +123,8 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .suwak .wart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
  font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);mix-blend-mode:normal}
 /* „⚙ Zmień ustawienia” jak przycisk tekstowy HA */
+.stopka{display:flex;flex-wrap:wrap;gap:var(--ha-space-2,8px);margin:0 calc(-1 * var(--ha-space-2,8px))}
+.stopka .zmien{margin:0}
 .zmien{align-self:flex-start;background:none;border:none;font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);
  color:var(--primary-color);cursor:pointer;padding:0 var(--ha-space-2,8px);margin:0 calc(-1 * var(--ha-space-2,8px));line-height:36px;border-radius:var(--ha-border-radius-md,8px)}
 .zmien:hover{background:color-mix(in srgb,var(--primary-color) 10%,transparent)}
