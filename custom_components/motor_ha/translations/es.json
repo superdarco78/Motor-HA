@@ -132,6 +132,7 @@
         "data": {
           "czas": "Tiempo de recorrido completo",
           "kalibruj": "Calibrar ahora (el estor sube, baja y sube)",
+          "kalibracja_50": "Tras la calibración, ir al 50 %",
           "predkosc_lewa": "Velocidad del motor – izquierdo",
           "predkosc_prawa": "Velocidad del motor – derecho",
           "brama_minuty": "Portón abierto demasiado tiempo tras",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automático: por la velocidad del motor, la calibración o los movimientos reales.",
+          "kalibracja_50": "La persiana se para a la mitad y ves enseguida que la calibración ha terminado. Desactivado por defecto.",
           "wstecz": "Actívalo y pulsa «Siguiente» para retroceder un paso. Lo introducido se conserva."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Tiempo de recorrido completo",
           "kalibruj": "Calibrar ahora (el estor sube, baja y sube)",
+          "kalibracja_50": "Tras la calibración, ir al 50 %",
           "predkosc_lewa": "Velocidad del motor – izquierdo",
           "predkosc_prawa": "Velocidad del motor – derecho",
           "brama_minuty": "Portón abierto demasiado tiempo tras",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automático: por la velocidad del motor, la calibración o los movimientos reales.",
+          "kalibracja_50": "La persiana se para a la mitad y ves enseguida que la calibración ha terminado. Desactivado por defecto.",
           "wstecz": "Actívalo y pulsa «Siguiente» para retroceder un paso. Lo introducido se conserva."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: el motor ha hecho {ruchy} movimientos desde la calibración. Pulsa «Calibrar» en el dispositivo."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: calibración terminada. Un recorrido completo dura {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: la calibración falló – el motor no llegó en {maks} s. Revisa el motor e inténtalo de nuevo."
     },
     "brama_otwarta": {
       "message": "{nazwa}: el portón lleva abierto más de {minuty} min."

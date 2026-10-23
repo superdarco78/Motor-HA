@@ -475,7 +475,7 @@
 <p><b>Konfiguruj → Silnik →</b> włącz <b>Odwrócone procenty</b>.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Roleta na ekranie jedzie inaczej niż prawdziwa.</h3>
-<p>Naciśnij przycisk <b>Kalibruj</b> na urządzeniu. Silnik pojedzie w górę, w dół i w górę, a karta zapamięta czas.</p>
+<p>Naciśnij przycisk <b>Kalibruj</b> na urządzeniu. Silnik pojedzie w górę, w dół i w górę, a karta zapamięta czas. Na koniec dostaniesz powiadomienie z czasem. Opcja „Po kalibracji ustaw osłonę na 50 %” w kroku „Silnik” (domyślnie wyłączona) zatrzymuje osłonę w połowie, żeby było widać, że kalibracja się skończyła.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Dlaczego osłona sama ruszyła?</h3>
 <p>Zobacz czujnik <b>Powód ruchu</b> albo wiersz pod nazwą na karcie.</p>

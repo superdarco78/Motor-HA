@@ -132,6 +132,7 @@
         "data": {
           "czas": "Doba celého pojezdu",
           "kalibruj": "Kalibrovat teď (stínění vyjede nahoru, dolů a nahoru)",
+          "kalibracja_50": "Po kalibraci nastavit na 50 %",
           "predkosc_lewa": "Rychlost motoru – levý",
           "predkosc_prawa": "Rychlost motoru – pravý",
           "brama_minuty": "Brána otevřená příliš dlouho po",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automaticky: z rychlosti motoru, kalibrace nebo skutečných pohybů.",
+          "kalibracja_50": "Stínění zastaví v polovině, takže hned vidíte, že kalibrace skončila. Ve výchozím stavu vypnuto.",
           "wstecz": "Zapněte a klikněte na „Další“, abyste se vrátili o krok. Zadané údaje zůstanou."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Doba celého pojezdu",
           "kalibruj": "Kalibrovat teď (stínění vyjede nahoru, dolů a nahoru)",
+          "kalibracja_50": "Po kalibraci nastavit na 50 %",
           "predkosc_lewa": "Rychlost motoru – levý",
           "predkosc_prawa": "Rychlost motoru – pravý",
           "brama_minuty": "Brána otevřená příliš dlouho po",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automaticky: z rychlosti motoru, kalibrace nebo skutečných pohybů.",
+          "kalibracja_50": "Stínění zastaví v polovině, takže hned vidíte, že kalibrace skončila. Ve výchozím stavu vypnuto.",
           "wstecz": "Zapněte a klikněte na „Další“, abyste se vrátili o krok. Zadané údaje zůstanou."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: motor od kalibrace udělal {ruchy} pohybů. Stiskněte „Kalibrovat“ na zařízení."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: kalibrace dokončena. Celá jízda trvá {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: kalibrace se nepovedla – motor nedojel do {maks} s. Zkontrolujte motor a zkuste to znovu."
     },
     "brama_otwarta": {
       "message": "{nazwa}: brána je otevřená déle než {minuty} min."

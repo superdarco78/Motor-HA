@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.1.5 – Widać koniec kalibracji
+
+- ✅ Po kalibracji przychodzi jasne powiadomienie „kalibracja zakończona” z czasem pełnego przejazdu – w Home Assistant i na telefon, jeśli wybrano go w „Powiadomieniach”. Gdy się nie uda, powiadomienie mówi, co sprawdzić
+- ↕️ Nowa opcja w kroku „Silnik”: „Po kalibracji ustaw osłonę na 50 %” (domyślnie wyłączona). Osłona staje w połowie, więc od razu widać, że kalibracja się skończyła. Bramy i garaże tej opcji nie mają
+
 ## v2.1.4 – Suwak w kierunku ruchu, Assist po nazwie urządzenia
 
 - ↕️ Rolety, żaluzje, plisy, markizy i inne osłony jadące w górę i w dół mają pionowy suwak obok okna: góra = otwarte, dół = zamknięte

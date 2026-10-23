@@ -132,6 +132,7 @@
         "data": {
           "czas": "Tempo di corsa completa",
           "kalibruj": "Calibra ora (la schermatura sale, scende e sale)",
+          "kalibracja_50": "Dopo la calibrazione, porta al 50 %",
           "predkosc_lewa": "Velocità motore – sinistro",
           "predkosc_prawa": "Velocità motore – destro",
           "brama_minuty": "Cancello aperto troppo a lungo dopo",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automatico: dalla velocità del motore, dalla calibrazione o dai movimenti reali.",
+          "kalibracja_50": "La tenda si ferma a metà, così vedi subito che la calibrazione è finita. Disattivato per impostazione predefinita.",
           "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Tempo di corsa completa",
           "kalibruj": "Calibra ora (la schermatura sale, scende e sale)",
+          "kalibracja_50": "Dopo la calibrazione, porta al 50 %",
           "predkosc_lewa": "Velocità motore – sinistro",
           "predkosc_prawa": "Velocità motore – destro",
           "brama_minuty": "Cancello aperto troppo a lungo dopo",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automatico: dalla velocità del motore, dalla calibrazione o dai movimenti reali.",
+          "kalibracja_50": "La tenda si ferma a metà, così vedi subito che la calibrazione è finita. Disattivato per impostazione predefinita.",
           "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: il motore ha fatto {ruchy} movimenti dalla calibrazione. Premi «Calibra» sul dispositivo."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: calibrazione completata. Una corsa completa dura {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: calibrazione non riuscita – il motore non è arrivato entro {maks} s. Controlla il motore e riprova."
     },
     "brama_otwarta": {
       "message": "{nazwa}: il cancello è aperto da più di {minuty} min."

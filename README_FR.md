@@ -475,7 +475,7 @@
 <p><b>Configurer → Moteur →</b> active <b>Pourcentages inversés</b>.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Le store à l’écran ne bouge pas comme le vrai.</h3>
-<p>Appuie sur <b>Calibrer</b> sur l’appareil. Le moteur monte, descend et remonte, et la carte retient le temps.</p>
+<p>Appuie sur <b>Calibrer</b> sur l’appareil. Le moteur monte, descend et remonte, et la carte retient le temps. À la fin, tu reçois une notification avec le temps. L’option « Après l’étalonnage, aller à 50 % » de l’étape « Moteur » (désactivée par défaut) arrête le store à mi-course, pour voir que l’étalonnage est terminé.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Pourquoi le store a-t-il bougé tout seul ?</h3>
 <p>Regarde le capteur <b>Raison du mouvement</b> ou la ligne sous le nom sur la carte.</p>

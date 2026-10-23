@@ -475,7 +475,7 @@
 <p><b>Nastavit → Motor →</b> zapni <b>Obrácená procenta</b>.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Roleta na obrazovce jede jinak než skutečná.</h3>
-<p>Stiskni <b>Kalibrovat</b> u zařízení. Motor pojede nahoru, dolů a nahoru a karta si zapamatuje čas.</p>
+<p>Stiskni <b>Kalibrovat</b> u zařízení. Motor pojede nahoru, dolů a nahoru a karta si zapamatuje čas. Na konci dostaneš oznámení s časem. Volba „Po kalibraci nastavit na 50 %“ v kroku „Motor“ (ve výchozím stavu vypnutá) zastaví stínění v polovině, aby bylo vidět, že kalibrace skončila.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Proč se stínění pohnulo samo?</h3>
 <p>Podívej se na senzor <b>Důvod pohybu</b> nebo na řádek pod názvem na kartě.</p>

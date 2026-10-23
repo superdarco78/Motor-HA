@@ -24,7 +24,7 @@ POLA_KROKU = {
     "okno": ["skrzydla", "wysokosc", "odwroc"],
     "czujniki": ["czujnik_lewe", "tryb_lewe", "czujnik_prawe", "tryb_prawe", "czujnik_drzwi", "czujnik_przeszkoda"],
     "fotokomorka": ["czujnik_foto", "foto_stan"],
-    "silnik": ["czas", "kalibruj", "predkosc_lewa", "predkosc_prawa", "brama_minuty"],
+    "silnik": ["czas", "kalibruj", "kalibracja_50", "predkosc_lewa", "predkosc_prawa", "brama_minuty"],
     "pogoda": ["pogoda", "czujnik_temp", "czujnik_temp_pokoj", "czujnik_jasnosc", "czujnik_wiatr", "czujnik_deszcz",
                "czujnik_drgania", "czujnik_ostrzezenia"],
     "domownicy": ["czujnik_obecnosc", "czujnik_ruch", "osoby", "czujnik_dym", "czujnik_alarm", "czujnik_swieta"],

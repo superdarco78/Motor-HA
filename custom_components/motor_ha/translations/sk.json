@@ -132,6 +132,7 @@
         "data": {
           "czas": "Čas celého prejazdu",
           "kalibruj": "Kalibrovať teraz (tienenie pôjde hore, dole a hore)",
+          "kalibracja_50": "Po kalibrácii nastaviť na 50 %",
           "predkosc_lewa": "Rýchlosť motora – ľavý",
           "predkosc_prawa": "Rýchlosť motora – pravý",
           "brama_minuty": "Brána otvorená príliš dlho po",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automaticky: z rýchlosti motora, kalibrácie alebo skutočných pohybov.",
+          "kalibracja_50": "Tienenie zastane v polovici, takže hneď vidíte, že kalibrácia skončila. Predvolene vypnuté.",
           "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Čas celého prejazdu",
           "kalibruj": "Kalibrovať teraz (tienenie pôjde hore, dole a hore)",
+          "kalibracja_50": "Po kalibrácii nastaviť na 50 %",
           "predkosc_lewa": "Rýchlosť motora – ľavý",
           "predkosc_prawa": "Rýchlosť motora – pravý",
           "brama_minuty": "Brána otvorená príliš dlho po",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automaticky: z rýchlosti motora, kalibrácie alebo skutočných pohybov.",
+          "kalibracja_50": "Tienenie zastane v polovici, takže hneď vidíte, že kalibrácia skončila. Predvolene vypnuté.",
           "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: motor od kalibrácie urobil {ruchy} pohybov. Stlačte „Kalibrovať“ na zariadení."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: kalibrácia dokončená. Celá jazda trvá {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: kalibrácia sa nepodarila – motor nedošiel do {maks} s. Skontrolujte motor a skúste to znova."
     },
     "brama_otwarta": {
       "message": "{nazwa}: brána je otvorená dlhšie ako {minuty} min."

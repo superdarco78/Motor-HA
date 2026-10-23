@@ -132,6 +132,7 @@
         "data": {
           "czas": "Volle Fahrzeit",
           "kalibruj": "Jetzt kalibrieren (Behang fährt hoch, runter und hoch)",
+          "kalibracja_50": "Nach der Kalibrierung auf 50 % fahren",
           "predkosc_lewa": "Motorgeschwindigkeit – links",
           "predkosc_prawa": "Motorgeschwindigkeit – rechts",
           "brama_minuty": "Tor zu lange offen nach",
@@ -139,6 +140,7 @@
         },
         "data_description": {
           "czas": "0 = automatisch: aus Motorgeschwindigkeit, Kalibrierung oder echten Fahrten.",
+          "kalibracja_50": "Der Behang hält in der Mitte, so siehst du sofort, dass die Kalibrierung fertig ist. Standardmäßig aus.",
           "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
         }
       },
@@ -466,6 +468,7 @@
         "data": {
           "czas": "Volle Fahrzeit",
           "kalibruj": "Jetzt kalibrieren (Behang fährt hoch, runter und hoch)",
+          "kalibracja_50": "Nach der Kalibrierung auf 50 % fahren",
           "predkosc_lewa": "Motorgeschwindigkeit – links",
           "predkosc_prawa": "Motorgeschwindigkeit – rechts",
           "brama_minuty": "Tor zu lange offen nach",
@@ -473,6 +476,7 @@
         },
         "data_description": {
           "czas": "0 = automatisch: aus Motorgeschwindigkeit, Kalibrierung oder echten Fahrten.",
+          "kalibracja_50": "Der Behang hält in der Mitte, so siehst du sofort, dass die Kalibrierung fertig ist. Standardmäßig aus.",
           "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
         }
       },
@@ -971,6 +975,12 @@
     },
     "kalibracja": {
       "message": "{nazwa}: Der Motor hat seit der Kalibrierung {ruchy} Fahrten gemacht. Drücke „Kalibrieren“ am Gerät."
+    },
+    "kalibracja_ok": {
+      "message": "{nazwa}: Kalibrierung fertig. Eine volle Fahrt dauert {czas} s."
+    },
+    "kalibracja_blad": {
+      "message": "{nazwa}: Kalibrierung fehlgeschlagen – der Motor kam nicht innerhalb von {maks} s an. Prüfe den Motor und versuche es erneut."
     },
     "brama_otwarta": {
       "message": "{nazwa}: Das Tor ist länger als {minuty} min offen."

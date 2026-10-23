@@ -475,7 +475,7 @@
 <p><b>Configure → Motor →</b> turn on <b>Reversed percentages</b>.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> The blind on screen moves differently from the real one.</h3>
-<p>Press <b>Calibrate</b> on the device. The motor goes up, down and up, and the card remembers the time.</p>
+<p>Press <b>Calibrate</b> on the device. The motor goes up, down and up, and the card remembers the time. At the end you get a notification with the time. The option “After calibration, move to 50 %” in the “Motor” step (off by default) stops the shade halfway, so you can see that calibration is done.</p>
 
 <h3><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/help-circle.svg" width="28" height="28" align="absmiddle" alt=""> Why did the blind move by itself?</h3>
 <p>Look at the <b>Reason for move</b> sensor or the line under the name on the card.</p>

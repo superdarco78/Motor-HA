@@ -23,6 +23,7 @@ from .const import (
     CONF_CZUJNIK_LEWE,
     CONF_CZUJNIK_PRAWE,
     CONF_FOTO_STAN,
+    CONF_KALIBRACJA_50,
     CONF_KALIBRUJ,
     CONF_KOLOR,
     CONF_KOLOR_WLASNY,
@@ -465,6 +466,8 @@ class Kreator:
                                                             mode=sel.NumberSelectorMode.BOX)),
             vol.Required(CONF_KALIBRUJ, default=False): sel.BooleanSelector(),
         }
+        if not self.brama:   # brama nie rusza się sama
+            schemat[vol.Required(CONF_KALIBRACJA_50, default=bool(self.o.get(CONF_KALIBRACJA_50)))] = sel.BooleanSelector()
         if self.zaaw and not self.brama:
             for k in (CONF_PREDKOSC_LEWA, CONF_PREDKOSC_PRAWA):
                 schemat[vol.Optional(k, **_sug(self.o.get(k)))] = _encja(["number", "sensor"])
