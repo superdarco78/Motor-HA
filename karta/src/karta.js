@@ -370,7 +370,8 @@ export class MotorHaKarta extends HTMLElement {
 
   _rysujSuwak() {
     const S = this._el.suwak; if (!S) return;
-    const w = this._suwakW ?? this._srednia(true);
+    // w trakcie jazdy suwak idzie razem z osłoną na rysunku; cel widać tylko przy przeciąganiu
+    const w = this._suwakW ?? this._srednia();
     // jak ha-control-slider: przy 0 % zostaje pasek z uchwytem, żeby było widać, że to suwak
     S.querySelector('.wyp').style.width = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
     S.setAttribute('aria-valuenow', Math.round(w));

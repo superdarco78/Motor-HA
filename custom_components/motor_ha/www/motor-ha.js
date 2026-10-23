@@ -5259,7 +5259,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     _rysujSuwak() {
       const S = this._el.suwak;
       if (!S) return;
-      const w = this._suwakW ?? this._srednia(true);
+      const w = this._suwakW ?? this._srednia();
       S.querySelector(".wyp").style.width = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
       S.setAttribute("aria-valuenow", Math.round(w));
     }
