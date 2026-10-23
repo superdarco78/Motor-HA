@@ -156,7 +156,14 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .krok:focus-visible .k{box-shadow:0 0 0 3px var(--accent)}
 .podglad{display:flex;justify-content:center;padding-top:8px}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
-.tresc{flex:1;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
+.cialo{flex:1;display:flex;min-height:0}
+.scena{display:none}
+:host([szeroko]) .scena{display:flex;flex:0 0 48%;min-width:0;align-items:center;justify-content:center;padding:20px;border-right:1px solid var(--line);background:var(--bg);overflow:auto}
+:host([szeroko]) .scena[hidden]{display:none}
+.scena > div, .scena > svg{width:100%;max-width:460px;display:flex;justify-content:center}
+.scena svg{width:100%;height:auto;max-height:calc(100dvh - 260px)}
+:host([szeroko]) .wybpol{position:static}
+.tresc{flex:1;min-width:0;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -376,6 +383,16 @@ export class MotorHaKreator extends HTMLElement {
       + (p.tryb === 'otworz' ? `<path d="M${cx - 4.5} ${cy - 5}l4 1.6v10l-4-1.6z" fill="#3a2600"/>` : `<path d="M${cx - 4.5} ${cy + 5}l2.4-7h4.2" fill="none" stroke="#3a2600" stroke-width="1.4"/>`);
   }
   _brama(typ) { return rysunekBramy(typ, this._kolor(), this._rama(), false, false); }
+  // duży rysunek w lewej kolumnie (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
+  _scena(k) {
+    const S = this.S;
+    if (k === 'gotowe') return '';
+    if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
+    const n = prostokaty(S.u).length;
+    if (k === 'przypisz') return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'd', wybrane: S.arkusz })}</div>`;
+    if (['rodzaj', 'kolory'].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'r', wybrane: this._wybR() })}</div>`;
+    return `<div>${this.okno({ w: 440, h: 400, id: 's' })}</div>`;
+  }
   _podgladMaly() { return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' }); }
 
   kafelRodzaju(typ) {
@@ -473,14 +490,14 @@ export class MotorHaKreator extends HTMLElement {
   _wyborPola() {
     const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
     if (S.brama || n < 2) return '';
-    return `<div class="wybpol"><div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: 'r', wybrane: wr })}</div>
+    return `<div class="wybpol">${this._szeroko ? '' : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: 'r', wybrane: wr })}</div>`}
       <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? 'wyb' : ''}" data-calosc="1">${esc(t.caleOkno)}</button>
       ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? 'wyb' : ''}" data-pole="${i}">${esc(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? ' ✎' : ''}</button>`).join('')}</div>
       <p class="pod" style="text-align:center;margin:6px 0 0">${esc(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
   }
   str_przypisz() {
     const S = this.S, t = this.t;
-    return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz })}</div>
+    return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p>${this._szeroko ? '' : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc(t.zamienPodpis)}</p>
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
@@ -796,9 +813,13 @@ export class MotorHaKreator extends HTMLElement {
       <div class="gora"><div class="tytul"><button class="x" data-x="1" aria-label="${esc(t.zamknij)}">${ik('x', 22)}</button>
         <div><span id="nazwaKroku"></span><small id="ktory"></small></div></div>
         <div class="kroki" id="kroki"></div><div class="podglad" id="podglad"></div></div>
-      <div class="tresc" id="tresc"></div>
+      <div class="cialo"><div class="scena" id="scena"></div><div class="tresc" id="tresc"></div></div>
       <div class="dol"><button class="btn plaski" id="wstecz">${esc(t.wstecz)}</button><button class="btn" id="dalej">${esc(t.dalej)}</button></div>`;
     r.addEventListener('click', e => this._klik(e));
+    // szerokie okno (komputer) → dwie kolumny; po zmianie szerokości rysujemy od nowa
+    this._ro?.disconnect();
+    this._ro = new ResizeObserver(() => { if (this.S && (this.clientWidth >= 760) !== !!this._szeroko) this.rysuj(); });
+    this._ro.observe(this);
     r.addEventListener('input', e => this._wpis(e));
     r.addEventListener('pointerdown', e => {
       // Pola: złap pole na rysunku albo uchwyt wiersza i upuść na innym polu – zamiana miejscami
@@ -836,7 +857,12 @@ export class MotorHaKreator extends HTMLElement {
       `<button class="krok ${i === S.krok ? 'teraz' : i < S.krok ? 'zrob' : ''}" data-krok="${i}" aria-label="${esc(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ''}><span class="k">${ik(kk)}</span><span class="n">${esc(t.kroki[kk])}</span></button>`).join('');
     // w „Rodzaj” i „Kolory” przy kilku polach jest jeden duży rysunek do wyboru pola – bez drugiego, małego na górze
     const jedenDuzy = ['rodzaj', 'kolory'].includes(k) && !S.brama && prostokaty(S.u).length > 1;
-    r.getElementById('podglad').innerHTML = PODGLAD.includes(k) && !(k === 'uklad' && S.szablon === 'w') && !jedenDuzy ? this._podgladMaly() : '';
+    // szeroki ekran: z lewej duży rysunek okna (zawsze widoczny), z prawej ustawienia kroku
+    this._szeroko = this.clientWidth >= 760;
+    this.toggleAttribute('szeroko', this._szeroko);
+    const sc = this._szeroko ? this._scena(k) : '';
+    r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
+    r.getElementById('podglad').innerHTML = !this._szeroko && PODGLAD.includes(k) && !(k === 'uklad' && S.szablon === 'w') && !jedenDuzy ? this._podgladMaly() : '';
     const pyt = k === 'rodzaj' && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
     this._kartaEl = null;
     r.getElementById('tresc').innerHTML = `<h2>${esc(pyt)}</h2>${pod ? `<p class="pod">${esc(pod)}</p>` : ''}${this['str_' + k]()}`

@@ -8611,7 +8611,14 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .krok:focus-visible .k{box-shadow:0 0 0 3px var(--accent)}
 .podglad{display:flex;justify-content:center;padding-top:8px}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
-.tresc{flex:1;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
+.cialo{flex:1;display:flex;min-height:0}
+.scena{display:none}
+:host([szeroko]) .scena{display:flex;flex:0 0 48%;min-width:0;align-items:center;justify-content:center;padding:20px;border-right:1px solid var(--line);background:var(--bg);overflow:auto}
+:host([szeroko]) .scena[hidden]{display:none}
+.scena > div, .scena > svg{width:100%;max-width:460px;display:flex;justify-content:center}
+.scena svg{width:100%;height:auto;max-height:calc(100dvh - 260px)}
+:host([szeroko]) .wybpol{position:static}
+.tresc{flex:1;min-width:0;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -8860,6 +8867,16 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _brama(typ) {
       return rysunekBramy(typ, this._kolor(), this._rama(), false, false);
     }
+    // duży rysunek w lewej kolumnie (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
+    _scena(k) {
+      const S = this.S;
+      if (k === "gotowe") return "";
+      if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
+      const n = prostokaty(S.u).length;
+      if (k === "przypisz") return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "d", wybrane: S.arkusz })}</div>`;
+      if (["rodzaj", "kolory"].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "r", wybrane: this._wybR() })}</div>`;
+      return `<div>${this.okno({ w: 440, h: 400, id: "s" })}</div>`;
+    }
     _podgladMaly() {
       return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: "p" });
     }
@@ -8961,14 +8978,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _wyborPola() {
       const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
       if (S.brama || n < 2) return "";
-      return `<div class="wybpol"><div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: "r", wybrane: wr })}</div>
+      return `<div class="wybpol">${this._szeroko ? "" : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: "r", wybrane: wr })}</div>`}
       <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? "wyb" : ""}" data-calosc="1">${esc6(t.caleOkno)}</button>
       ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? "wyb" : ""}" data-pole="${i}">${esc6(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? " ✎" : ""}</button>`).join("")}</div>
       <p class="pod" style="text-align:center;margin:6px 0 0">${esc6(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
     }
     str_przypisz() {
       const S = this.S, t = this.t;
-      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
+      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p>${this._szeroko ? "" : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc6(t.zamienPodpis)}</p>
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
@@ -9385,9 +9402,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       <div class="gora"><div class="tytul"><button class="x" data-x="1" aria-label="${esc6(t.zamknij)}">${ik("x", 22)}</button>
         <div><span id="nazwaKroku"></span><small id="ktory"></small></div></div>
         <div class="kroki" id="kroki"></div><div class="podglad" id="podglad"></div></div>
-      <div class="tresc" id="tresc"></div>
+      <div class="cialo"><div class="scena" id="scena"></div><div class="tresc" id="tresc"></div></div>
       <div class="dol"><button class="btn plaski" id="wstecz">${esc6(t.wstecz)}</button><button class="btn" id="dalej">${esc6(t.dalej)}</button></div>`;
       r.addEventListener("click", (e) => this._klik(e));
+      this._ro?.disconnect();
+      this._ro = new ResizeObserver(() => {
+        if (this.S && this.clientWidth >= 760 !== !!this._szeroko) this.rysuj();
+      });
+      this._ro.observe(this);
       r.addEventListener("input", (e) => this._wpis(e));
       r.addEventListener("pointerdown", (e) => {
         const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]"));
@@ -9457,7 +9479,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
       r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${ik(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
       const jedenDuzy = ["rodzaj", "kolory"].includes(k) && !S.brama && prostokaty(S.u).length > 1;
-      r.getElementById("podglad").innerHTML = PODGLAD.includes(k) && !(k === "uklad" && S.szablon === "w") && !jedenDuzy ? this._podgladMaly() : "";
+      this._szeroko = this.clientWidth >= 760;
+      this.toggleAttribute("szeroko", this._szeroko);
+      const sc = this._szeroko ? this._scena(k) : "";
+      r.getElementById("scena").innerHTML = sc;
+      r.getElementById("scena").hidden = !sc;
+      r.getElementById("podglad").innerHTML = !this._szeroko && PODGLAD.includes(k) && !(k === "uklad" && S.szablon === "w") && !jedenDuzy ? this._podgladMaly() : "";
       const pyt = k === "rodzaj" && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
       this._kartaEl = null;
       r.getElementById("tresc").innerHTML = `<h2>${esc6(pyt)}</h2>${pod ? `<p class="pod">${esc6(pod)}</p>` : ""}${this["str_" + k]()}` + (S.arkusz !== null && k === "przypisz" ? this.arkusz() : "") + (S.arkuszC && k === "czujniki" ? this.arkuszCzujnika(S.arkuszC) : "");
@@ -9892,6 +9919,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     dlg.setAttribute("data-motor-ha-kreator", "");
     dlg.style.cssText = "padding:0;border:0;margin:auto;width:min(100vw,430px);height:min(100dvh,880px);max-width:100vw;max-height:100dvh;border-radius:var(--ha-dialog-border-radius,28px);overflow:hidden;background:var(--card-background-color,#fff)";
     if (innerWidth < 600) Object.assign(dlg.style, { width: "100vw", height: "100dvh", borderRadius: "0" });
+    else if (innerWidth >= 900) dlg.style.width = "min(96vw,1040px)";
     const tlo2 = document.createElement("style");
     tlo2.textContent = "dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}";
     dlg.appendChild(tlo2);
