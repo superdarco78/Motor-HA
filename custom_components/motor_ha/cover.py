@@ -55,6 +55,9 @@ from .const import (
     DOMAIN,
     DOMYSLNE,
     GARAZE,
+    MARKIZY,
+    OKNA,
+    ZASLONY,
     KARTA_Z_KREATORA,
     OSLONY_ZEW,
     RAMY,
@@ -141,8 +144,9 @@ class MotorCover(CoverEntity):
         self._attr_unique_id = entry.entry_id
         self._attr_device_class = (
             CoverDeviceClass.GARAGE if typ in GARAZE else CoverDeviceClass.GATE if typ in BRAMY
-            else CoverDeviceClass.AWNING if typ == "markiza" else CoverDeviceClass.SHUTTER if typ in OSLONY_ZEW
-            else CoverDeviceClass.CURTAIN if typ == "zaslona" else CoverDeviceClass.BLIND if typ in Z_LAMELAMI
+            else CoverDeviceClass.WINDOW if typ in OKNA
+            else CoverDeviceClass.AWNING if typ in MARKIZY else CoverDeviceClass.SHUTTER if typ in OSLONY_ZEW
+            else CoverDeviceClass.CURTAIN if typ in ZASLONY else CoverDeviceClass.BLIND if typ in Z_LAMELAMI
             else CoverDeviceClass.SHADE)
         self._attr_device_info = info_urzadzenia(entry)
         # kreator (i zmierzony czas kalibracji) ma pierwszeństwo przed starym zapisem z edytora karty

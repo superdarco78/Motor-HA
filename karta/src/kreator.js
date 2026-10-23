@@ -4,6 +4,8 @@
 // – kafelki rodzajów osłon i próbki kolorów: dotknięcie wybiera pozycję w polu poniżej,
 // – żywy podgląd okna (prawdziwa karta Motor HA na udawanej osłonie), który zmienia się od razu przy wyborze.
 // Gdy HA zmieni okienko i czegoś nie znajdziemy – zostają zwykłe obrazki i listy, nic się nie psuje.
+import { czyBrama, GARAZE } from './stale.js';
+
 // krok klasycznego kreatora → krok kreatora graficznego (otwarcie „od razu przy kroku”)
 export const Z_KLASYCZNEGO = { rodzaj: 'rodzaj', lamele: 'rodzaj', kolory: 'kolory', okno: 'uklad', czujniki: 'przypisz',
   silnik: 'stoper', automatyka: 'auto', ustawienia: 'auto', powiadomienia: 'dzwonek', panel: 'gotowe' };
@@ -157,11 +159,11 @@ function odswiez(form) {
   p.klucz = klucz;
   let k = p.box.firstElementChild;
   if (!k) { k = document.createElement('motor-ha'); p.box.appendChild(k); }
-  const brama = ['przesuwna', 'skrzydlowa', 'segmentowa', 'uchylna', 'roletowa'].includes(c.oslona);
+  const brama = czyBrama(c.oslona);
   const teraz = new Date().toISOString();
   const stan = { entity_id: ENCJA, state: brama ? 'closed' : 'open', last_changed: teraz, last_updated: teraz, context: { id: '' },
     attributes: { current_position: brama ? 0 : 60, friendly_name: ' ', supported_features: 15,
-      ...(brama ? { device_class: ['przesuwna', 'skrzydlowa'].includes(c.oslona) ? 'gate' : 'garage' } : {}) } };
+      ...(brama ? { device_class: GARAZE.includes(c.oslona) ? 'garage' : 'gate' } : {}) } };
   // sam rysunek okna (suwaki tylko przy „osobno”, żeby było widać oba po bokach)
   k.setConfig({ type: 'custom:motor-ha', entity: ENCJA, name: ' ', ...c, przyciski: false, suwak: !!c.osobno,
     _podglad: { pogoda: 'sunny', pora: 'dzien' } });

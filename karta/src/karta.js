@@ -1,5 +1,5 @@
 // Karta Motor HA: okno z osłoną. Osłona jedzie w tempie silnika, za szybą pogoda i pora dnia, czujniki pokazują otwarte okno.
-import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno, SCIANY } from './stale.js';
+import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno, SCIANY, baza } from './stale.js';
 import { rysunekBramy, ustawBrame, ustawFotokomorke } from './brama.js';
 import { STYL_STALY, stylOkna, stylPola } from './styl.js';
 import { kolorNieba, poraDnia, pogoda, widokSvg, NIEBO_Z_POGODY } from './scena.js';
@@ -38,7 +38,11 @@ export class MotorHaKarta extends HTMLElement {
   // ustawienia: domyślne ← urządzenie Motor HA (atrybut motor_ha) ← karta na panelu
   get _ustawienia() {
     const urz = this._hass?.states?.[this._surowa.entity]?.attributes?.motor_ha;
-    return Object.assign({}, DOMYSLNE, urz && typeof urz === 'object' ? urz : {}, this._surowa, this._surowa._podglad || {});
+    const c = Object.assign({}, DOMYSLNE, urz && typeof urz === 'object' ? urz : {}, this._surowa, this._surowa._podglad || {});
+    // rodzaj z katalogu (np. markiza koszowa) rysuje się jak rodzaj bazowy (markiza); ikona zostaje własna
+    c.rodzaj = c.oslona; c.oslona = baza(c.oslona);
+    if (Array.isArray(c.pola)) c.pola = c.pola.map(p => p?.oslona ? { ...p, oslona: baza(p.oslona) } : p);
+    return c;
   }
   get _T() { return TEKSTY[this._jez]; }
 
@@ -167,7 +171,7 @@ export class MotorHaKarta extends HTMLElement {
 
   // nagłówek jak w kafelku HA + wiersz automatyki (powód ruchu, pauza) – wspólny dla okien i bram
   _naglowek(c) {
-    return `<div class="gl" role="button" tabindex="0"><div class="ik"><ha-icon icon="${IKONY[c.oslona] || IKONY.zebra}"></ha-icon></div>
+    return `<div class="gl" role="button" tabindex="0"><div class="ik"><ha-icon icon="${IKONY[c.rodzaj] || IKONY[c.oslona] || IKONY.zebra}"></ha-icon></div>
   <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
   <svg class="kompas" viewBox="-20 -20 40 40" hidden aria-hidden="true"><circle r="17" fill="none" stroke="var(--divider-color)" stroke-width="2"/>
    <path d="M-9 -15h18" stroke="var(--primary-color)" stroke-width="4" stroke-linecap="round"/><circle class="sl" r="4.5" fill="#ffb300"/></svg></div>
@@ -420,7 +424,7 @@ export class MotorHaKarta extends HTMLElement {
     this._opisStanu = czesci;
     this._automatyka(c, h);
     const otwarte = st.state !== 'closed';
-    E.ikona?.setAttribute('icon', (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.oslona]) || 'mdi:gate');
+    E.ikona?.setAttribute('icon', (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.rodzaj] || IKONY[c.oslona]) || 'mdi:gate');
     E.karta.style.setProperty('--mh-kolor', otwarte ? 'var(--primary-color)' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
     this._animuj();
   }

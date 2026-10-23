@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.2.6"
+VERSION = "2.2.7"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
@@ -101,14 +101,21 @@ CONF_FOTO_STAN = "foto_stan"        # który stan czujnika = przeszkoda
 
 # --- rodzaje urządzeń (te same klucze co w karcie) ---
 OSLONY_WEW = ["pelna", "kasetowa", "zebra", "zaciemniajaca", "plisa", "plaster", "rzymska",
-              "zaluzja", "drewniana", "pionowa", "zaslona"]
-OSLONY_ZEW = ["natynkowa", "podtynkowa", "zewnetrzna", "perforowana", "fasadowa", "fasadowaz", "markiza", "screen"]
-BRAMY = ["przesuwna", "skrzydlowa", "segmentowa", "uchylna", "roletowa"]
-OSLONY = OSLONY_WEW + OSLONY_ZEW
+              "zaluzja", "drewniana", "pionowa", "zaslona",
+              # 2.2.7: katalog jak u producentów (Velux, Fakro, Roto, Anwis)
+              "roleta_zip_wew", "bambusowa", "plisa_gora_dol", "zaslona_wave", "firana", "panel", "ekran", "dach_dkl", "dach_fhb", "dach_pal", "dach_fhl", "dach_dn"]
+OSLONY_ZEW = ["natynkowa", "podtynkowa", "zewnetrzna", "perforowana", "fasadowa", "fasadowaz", "markiza", "screen",
+              "dach_ssl", "dachowa", "dach_msl", "markizeta_dach", "natynkowa_okragla", "adaptacyjna", "roleta_moskitiera", "ekstrudowana", "roleta_drzwi", "fasadowa_f80", "markizoleta", "okiennice", "okiennice_przesuwne", "markiza_otwarta", "markiza_polkasetowa", "markiza_kasetowa", "markiza_volant", "markiza_koszowa", "markiza_wolnostojaca", "markiza_zimowa", "markizeta", "markiza_balkonowa", "markiza_pionowa", "markiza_boczna", "zagiel", "parasol", "pergola", "pergola_tkanina", "zadaszenie", "screen_taras", "moskitiera", "moskitiera_plisa_okno", "moskitiera_drzwi", "moskitiera_zip_drzwi"]
+# okna, świetliki i wyłazy z napędem – tylko ręcznie i licznik, bez automatyk słońca
+OKNA = ["okno_silownik", "okno_dachowe", "okno_plaskie", "swietlik", "wylaz"]
+BRAMY = ["przesuwna", "skrzydlowa", "segmentowa", "uchylna", "roletowa", "furtka", "garaz_boczna", "garaz_skrzydlowa", "szlaban"]
+OSLONY = OSLONY_WEW + OSLONY_ZEW + OKNA
 RODZAJE = OSLONY + BRAMY
-Z_LAMELAMI = ["zaluzja", "drewniana", "fasadowa", "fasadowaz", "pionowa"]
-ZWIJA_DESZCZ = ["markiza", "fasadowa", "fasadowaz", "screen"]   # deszcz szkodzi
-GARAZE = ["segmentowa", "uchylna", "roletowa"]
+Z_LAMELAMI = ["zaluzja", "drewniana", "fasadowa", "fasadowaz", "pionowa", "fasadowa_f80", "dach_pal", "pergola"]
+MARKIZY = ["markiza"] + [k for k in OSLONY_ZEW if k.startswith("markiz")] + ["pergola_tkanina", "zadaszenie", "zagiel", "parasol"]
+ZWIJA_DESZCZ = MARKIZY + ["fasadowa", "fasadowaz", "fasadowa_f80", "screen", "screen_taras", "dach_msl"]   # deszcz szkodzi
+ZASLONY = ["zaslona", "zaslona_wave", "firana", "panel"]
+GARAZE = ["segmentowa", "uchylna", "roletowa", "garaz_boczna", "garaz_skrzydlowa"]
 
 # --- funkcje automatyki: klucz → (wymagane urządzenia z MAM, tylko zaawansowany) ---
 # "zew" oznacza osłonę zewnętrzną (albo żaluzję fasadową), "!brama" – nie dla bram.

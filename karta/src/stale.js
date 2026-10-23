@@ -1,35 +1,27 @@
 // Motor HA 2 – stałe karty: rodzaje osłon, kolory tkanin, kolory ram, ustawienia domyślne.
 // Klucze (nazwy rodzajów, kolorów i ustawień) są takie same jak w wersjach 1.x, żeby zapisane okna działały dalej.
 
-export const WERSJA = '2.2.6';
+import { GRUPY_KAFLI } from './kafle.js';
 
-// Rodzaje osłon w grupach: wewnątrz (widok z pokoju) i na zewnątrz (widok z elewacji).
-export const GRUPY = {
-  wew: {
-    rolety: ['pelna', 'kasetowa', 'zebra', 'zaciemniajaca'],
-    plisy: ['plisa', 'plaster', 'rzymska'],
-    zaluzje: ['zaluzja', 'drewniana'],
-    pionowe: ['pionowa', 'zaslona']
-  },
-  zew: {
-    zrolety: ['natynkowa', 'podtynkowa', 'zewnetrzna', 'perforowana'],
-    fasadowe: ['fasadowa', 'fasadowaz'],
-    taras: ['markiza', 'screen']
-  },
-  brama: {
-    bramy: ['przesuwna', 'skrzydlowa'],
-    garaze: ['segmentowa', 'uchylna', 'roletowa']
-  }
-};
+export const WERSJA = '2.2.7';
+
+// Rodzaje osłon w grupach jak w katalogach producentów (te same grupy i obrazki co w kreatorze, kafle.js).
+export const GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
 export const OSLONY = Object.values(GRUPY).flatMap(g => Object.values(g).flat());
 export const BRAMY = Object.values(GRUPY.brama).flat();
 export const czyBrama = t => BRAMY.includes(t);
+export const GARAZE = [...GRUPY.brama.garaze];
+// rodzaje z 2.2.7 rysowane i animowane w karcie jak najbliższy rodzaj bazowy (osobne animacje w następnej wersji)
+export const BAZA = { roleta_zip_wew: 'kasetowa', bambusowa: 'pelna', plisa_gora_dol: 'plisa', zaslona_wave: 'zaslona', firana: 'zaslona', panel: 'pionowa', ekran: 'pelna', dach_dkl: 'zaciemniajaca', dach_ssl: 'natynkowa', dachowa: 'natynkowa', dach_fhb: 'rzymska', dach_msl: 'screen', markizeta_dach: 'screen', dach_pal: 'zaluzja', dach_fhl: 'plisa', dach_dn: 'zebra', natynkowa_okragla: 'natynkowa', adaptacyjna: 'zewnetrzna', roleta_moskitiera: 'natynkowa', ekstrudowana: 'natynkowa', roleta_drzwi: 'natynkowa', fasadowa_f80: 'fasadowaz', markizoleta: 'screen', okiennice: 'zewnetrzna', okiennice_przesuwne: 'zewnetrzna', markiza_otwarta: 'markiza', markiza_polkasetowa: 'markiza', markiza_kasetowa: 'markiza', markiza_volant: 'markiza', markiza_koszowa: 'markiza', markiza_wolnostojaca: 'markiza', markiza_zimowa: 'markiza', markizeta: 'markiza', markiza_balkonowa: 'markiza', markiza_pionowa: 'markiza', markiza_boczna: 'markiza', zagiel: 'markiza', parasol: 'markiza', pergola: 'fasadowaz', pergola_tkanina: 'markiza', zadaszenie: 'markiza', screen_taras: 'screen', okno_silownik: 'screen', okno_dachowe: 'screen', okno_plaskie: 'screen', swietlik: 'screen', wylaz: 'screen', moskitiera: 'screen', moskitiera_plisa_okno: 'screen', moskitiera_drzwi: 'screen', moskitiera_zip_drzwi: 'screen', furtka: 'skrzydlowa', garaz_boczna: 'segmentowa', garaz_skrzydlowa: 'uchylna', szlaban: 'przesuwna' };
+export const baza = t => BAZA[t] || t;
 // osłony, które zasuwają się w bok (żaluzja pionowa, zasłona), a nie w dół
 export const POZIOME = ['pionowa', 'zaslona'];
 // kolor ściany (muru) między oknami
 export const SCIANY = { biala: '#efebe4', bezowa: '#d6c4a6', szara: '#a5a4a0', cegla: '#a65a3a', grafit: '#56595c' };
-export const ZEWNETRZNE = Object.values(GRUPY.zew).flat();
+export const ZEWNETRZNE = ['natynkowa', 'podtynkowa', 'zewnetrzna', 'perforowana', 'fasadowa', 'fasadowaz', 'markiza', 'screen',
+  'dach_ssl', 'dachowa', 'dach_msl', 'markizeta_dach', 'natynkowa_okragla', 'adaptacyjna', 'roleta_moskitiera', 'ekstrudowana', 'roleta_drzwi', 'fasadowa_f80', 'markizoleta', 'okiennice', 'okiennice_przesuwne', 'markiza_otwarta', 'markiza_polkasetowa', 'markiza_kasetowa', 'markiza_volant', 'markiza_koszowa', 'markiza_wolnostojaca', 'markiza_zimowa', 'markizeta', 'markiza_balkonowa', 'markiza_pionowa', 'markiza_boczna', 'zagiel', 'parasol', 'pergola', 'pergola_tkanina', 'zadaszenie', 'screen_taras', 'okno_silownik', 'okno_dachowe', 'okno_plaskie', 'swietlik', 'wylaz', 'moskitiera', 'moskitiera_plisa_okno', 'moskitiera_drzwi', 'moskitiera_zip_drzwi'];
 export const czyZew = t => ZEWNETRZNE.includes(t);
+export const WEWNETRZNE = OSLONY.filter(t => !czyBrama(t) && !czyZew(t));
 
 export const IKONY = {
   pelna: 'mdi:roller-shade', kasetowa: 'mdi:roller-shade', zebra: 'mdi:roller-shade', zaciemniajaca: 'mdi:roller-shade-closed',
@@ -41,11 +33,17 @@ export const IKONY = {
   pionowa: 'mdi:blinds-vertical', zaslona: 'mdi:curtains',
   przesuwna: 'mdi:gate', skrzydlowa: 'mdi:gate', segmentowa: 'mdi:garage', uchylna: 'mdi:garage', roletowa: 'mdi:garage'
 };
+for (const [t, b] of Object.entries(BAZA)) IKONY[t] ||= IKONY[b];
+Object.assign(IKONY, { okno_silownik: 'mdi:window-open-variant', okno_dachowe: 'mdi:window-open-variant', okno_plaskie: 'mdi:window-open-variant',
+  swietlik: 'mdi:dome-light', wylaz: 'mdi:window-open-variant', parasol: 'mdi:umbrella-outline', szlaban: 'mdi:boom-gate', furtka: 'mdi:gate',
+  pergola: 'mdi:blinds-horizontal', ekran: 'mdi:projector-screen-outline', okiennice: 'mdi:window-shutter', okiennice_przesuwne: 'mdi:window-shutter' });
 // ikona otwartego urządzenia (bramy i garaże zmieniają ikonę jak w HA)
 export const IKONY_OTW = { przesuwna: 'mdi:gate-open', skrzydlowa: 'mdi:gate-open', segmentowa: 'mdi:garage-open', uchylna: 'mdi:garage-open',
   roletowa: 'mdi:garage-open', pionowa: 'mdi:blinds-vertical', zaslona: 'mdi:curtains' };
 export const IKONY_GRUP = { wew: 'mdi:sofa-outline', zew: 'mdi:home-outline', rolety: 'mdi:roller-shade', plisy: 'mdi:blinds',
-  zaluzje: 'mdi:blinds-horizontal', pionowe: 'mdi:blinds-vertical', brama: 'mdi:gate', bramy: 'mdi:gate', garaze: 'mdi:garage', zrolety: 'mdi:window-shutter', fasadowe: 'mdi:blinds-horizontal-closed', taras: 'mdi:awning-outline' };
+  zaluzje: 'mdi:blinds-horizontal', pionowe: 'mdi:blinds-vertical', brama: 'mdi:gate', bramy: 'mdi:gate', garaze: 'mdi:garage', zrolety: 'mdi:window-shutter', fasadowe: 'mdi:blinds-horizontal-closed', taras: 'mdi:awning-outline',
+  dach: 'mdi:home-roof', dachowe: 'mdi:home-roof', markizy: 'mdi:awning-outline', pergole: 'mdi:greenhouse', okna: 'mdi:window-open-variant', moskitiery: 'mdi:grid',
+  zscreen: 'mdi:roller-shade', okiennice: 'mdi:window-shutter', ekrany: 'mdi:projector-screen-outline', szlabany: 'mdi:boom-gate' };
 
 // Kolory tkanin i pancerzy (klucz → kolor).
 export const KOLORY = {
