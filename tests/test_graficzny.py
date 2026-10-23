@@ -140,3 +140,13 @@ def test_wiatr_i_deszcz_pozycja_z_ustawien() -> None:
     assert decyduj(Warunki(teraz=n, wiatr=45), "markiza", {"wiatr"}, p).poz != 60
     assert decyduj(Warunki(teraz=n, wiatr=55), "markiza", {"wiatr"}, p).poz == 60
     assert decyduj(Warunki(teraz=n, wiatr=55), "markiza", {"wiatr"}, PARAMETRY | {"wiatr_prog": 50}).poz == 100
+
+
+def test_uklad_mur_i_belka() -> None:
+    from custom_components.motor_ha.uklad import popraw, prostokaty
+    u = popraw({"kol": [{"w": 1, "r": [1, 1], "dol": 0, "bel": [0.2], "mur": 0.5}, {"w": 1, "r": [1], "dol": 0, "mur": 9}]})
+    assert u["kol"][1]["mur"] == 0   # za ostatnią kolumną muru nie ma
+    p = prostokaty(u)
+    assert len(p) == 3
+    assert p[2][0] == 0.6 and p[0][2] == 0.4   # mur 0,5 z 2,5 jednostek szerokości = 20 % odstępu
+    assert p[1][1] > p[0][3]                    # belka między polami w kolumnie

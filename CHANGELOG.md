@@ -1,8 +1,17 @@
 # 📝 Historia zmian
 
-## v2.2.1 – Krótsze listy w kreatorze
+## v2.2.1 – Kreator: pokoje, grupy, słupki, czujniki przy skrzydłach
 
-- 🧹 Kreator: przy wyborze silnika, czujnika okna, obecności i innych czujników widać najpierw tylko to, co jest w pokoju osłony (plus to, co już wybrane). Reszta domu i telefony – po „Pokaż wszystkie”
+- 🏠 Krok „Osłona”: wszystkie osłony z Home Assistanta pogrupowane według pokoi; na górze pokoju „Cały pokój” – jednym dotknięciem wszystkie silniki z pokoju. Niżej grupy, linia „Pojedyncze” i pojedyncze osłony z rysunkiem. Osłony użyte już w innym urządzeniu są widoczne z podpisem „też w: …”
+- 🔢 Ile rolet, tyle skrzydeł: wybór grupy (np. 2 rolety) albo całego pokoju od razu ustawia tyle pól, a w każdym polu swój silnik – także w „Konfiguruj”
+- 🧱 Układ: suwaki „Słupek / mur” (odstęp między oknami – wąski słupek albo kawałek ściany) i „Belka” (odstęp pod polem). Karta rysuje mur między oknami. Zaznaczone pole ma pomarańczową ramkę
+- ➕ Pusta przestrzeń pod podniesioną kolumną: dotknięcie przerywanego „+” dokłada tam pole
+- 🔗 Krok „Pola”: znaczek czujnika okna na każdym skrzydle (pomarańczowy = przypisany, przerywany „+” = brak) i podpowiedź „Dotknij skrzydła”. Silnik i czujnik można zamienić między polami przeciąganiem (myszką albo palcem)
+- 🧹 Listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (plus to, co już wybrane); reszta domu po „Pokaż wszystkie”. Grupy osłon nie trafiają do pól
+- ⏰ Rano i wieczorem osobno: wschód / zachód słońca z przesunięciem w minutach albo stała godzina. Wieczorem przy każdym skrzydle z czujnikiem widać, co się stanie (otwarte → nie zjedzie, uchylone → zjedzie do ustawionej pozycji, po zamknięciu okna dojedzie sama)
+- 🌬️ Automatyka z ustawieniami: wiatr – źródło, próg i pozycja; deszcz – źródło i pozycja; słońce – od jakiej temperatury; uchylone okno – na ile podnieść osłonę. Opcje okna, wiatru i deszczu pojawiają się tylko, gdy jest taki czujnik albo pogoda
+- ⏱️ Krok „Czas” (ten sam pomiar co „Kalibruj”): widać czas każdego silnika osobno
+- 🪟 Karta: „Okno uchylone” bez numeru, gdy czujnik jest tylko jeden; nic nie wystaje poza szybę
 
 ## v2.2.0 – Kreator graficzny i okna z wieloma polami
 

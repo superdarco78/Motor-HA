@@ -8688,7 +8688,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         S.o.oslona = S.brama ? k === "garage" ? "segmentowa" : "przesuwna" : k === "awning" ? "markiza" : k === "shutter" ? "natynkowa" : pierwsza.lamele ? "zaluzja" : czyBrama(S.o.oslona) ? "zebra" : S.o.oslona || "zebra";
       }
       if (!S.recznie.uklad && !S.brama) {
-        S.u = zSzablonu(UKLADY[n >= 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
+        if (n <= 4) S.u = zSzablonu(UKLADY[n === 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
+        else {
+          const c = Math.min(4, Math.ceil(n / (n > 8 ? 3 : 2))), m = Math.min(n, 12);
+          S.u = { kol: Array.from({ length: c }, (_, i) => ({ w: 1, r: Array(Math.floor(m / c) + (i < m % c ? 1 : 0)).fill(1), dol: 0, mur: 0, bel: [] })) };
+        }
         S.szablon = szablon(S.u);
       }
       if (!S.recznie.tytul) {
@@ -9400,7 +9404,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const i = S.rolety.indexOf(d.oslona), x = this._oslona(d.oslona);
         const czl = (x?.czlonkowie || []).filter((e2) => this._oslona(e2));
         if (d.pokojcaly) {
-          S.rolety = this.dane.oslony.filter((o2) => o2.area === d.pokojcaly && !o2.grupa && !o2.brama).map((o2) => o2.id).slice(0, 12);
+          const kol = (n) => /lew|left/i.test(n) ? 0 : /środ|srod|mid/i.test(n) ? 1 : /praw|right/i.test(n) ? 2 : 3;
+          S.rolety = this.dane.oslony.filter((o2) => o2.area === d.pokojcaly && !o2.grupa && !o2.brama).sort((x2, y2) => kol(x2.nazwa) - kol(y2.nazwa) || x2.nazwa.localeCompare(y2.nazwa)).map((o2) => o2.id).slice(0, 12);
           S.wykryty = null;
         } else if (czl.length > 1 && i < 0) {
           S.rolety = czl.slice(0, 12);
@@ -9418,6 +9423,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
               S.wykryty = x.pokoj;
             }
           }
+        }
+        if (S.rolety.length && prostokaty(S.u).length !== S.rolety.length) {
+          S.recznie.uklad = false;
+          S.pola = [];
         }
         try {
           this.dane = { ...this.dane, ...await this._hass.callWS({ type: "motor_ha/kreator/dane", rolety: S.rolety, ...this._p.entry_id ? { entry_id: this._p.entry_id } : {} }), opcje: this.dane.opcje, nowy: this.dane.nowy };

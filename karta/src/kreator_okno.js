@@ -271,7 +271,11 @@ export class MotorHaKreator extends HTMLElement {
         : pierwsza.lamele ? 'zaluzja' : czyBrama(S.o.oslona) ? 'zebra' : S.o.oslona || 'zebra';
     }
     if (!S.recznie.uklad && !S.brama) {
-      S.u = zSzablonu(UKLADY[n >= 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
+      if (n <= 4) S.u = zSzablonu(UKLADY[n === 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
+      else {   // więcej rolet: do 4 kolumn, w każdej po kilka pól – razem dokładnie tyle pól, ile rolet
+        const c = Math.min(4, Math.ceil(n / (n > 8 ? 3 : 2))), m = Math.min(n, 12);
+        S.u = { kol: Array.from({ length: c }, (_, i) => ({ w: 1, r: Array(Math.floor(m / c) + (i < m % c ? 1 : 0)).fill(1), dol: 0, mur: 0, bel: [] })) };
+      }
       S.szablon = szablon(S.u);
     }
     if (!S.recznie.tytul) {
@@ -846,7 +850,9 @@ export class MotorHaKreator extends HTMLElement {
       const i = S.rolety.indexOf(d.oslona), x = this._oslona(d.oslona);
       const czl = (x?.czlonkowie || []).filter(e => this._oslona(e));
       if (d.pokojcaly) {   // cały pokój jednym dotknięciem: wszystkie pojedyncze silniki z tego pokoju
-        S.rolety = this.dane.oslony.filter(o => o.area === d.pokojcaly && !o.grupa && !o.brama).map(o => o.id).slice(0, 12);
+        const kol = n => /lew|left/i.test(n) ? 0 : /środ|srod|mid/i.test(n) ? 1 : /praw|right/i.test(n) ? 2 : 3;   // od lewej do prawej
+        S.rolety = this.dane.oslony.filter(o => o.area === d.pokojcaly && !o.grupa && !o.brama)
+          .sort((x, y) => kol(x.nazwa) - kol(y.nazwa) || x.nazwa.localeCompare(y.nazwa)).map(o => o.id).slice(0, 12);
         S.wykryty = null;
       } else if (czl.length > 1 && i < 0) {   // grupa: tyle skrzydeł, ile w niej silników, każdy w swoim polu
         S.rolety = czl.slice(0, 12); S.zGrupy = x.nazwa;
@@ -862,6 +868,8 @@ export class MotorHaKreator extends HTMLElement {
           if (reszta.length) { S.rolety.push(...reszta.slice(0, 11)); S.wykryty = x.pokoj; }
         }
       }
+      // tyle skrzydeł, ile wybranych rolet – także w „Konfiguruj”, gdy zmienia się wybór
+      if (S.rolety.length && prostokaty(S.u).length !== S.rolety.length) { S.recznie.uklad = false; S.pola = []; }
       try { this.dane = { ...this.dane, ...(await this._hass.callWS({ type: 'motor_ha/kreator/dane', rolety: S.rolety, ...(this._p.entry_id ? { entry_id: this._p.entry_id } : {}) })), opcje: this.dane.opcje, nowy: this.dane.nowy }; } catch (x2) { /* zostają stare podpowiedzi */ }
       this._podpowiedzi();
     } else if (d.uklad !== undefined) { S.u = zSzablonu(UKLADY[+d.uklad][1]); S.szablon = +d.uklad; S.recznie.uklad = true; this._dopasujPola(false); }
