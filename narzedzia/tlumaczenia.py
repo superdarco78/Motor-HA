@@ -21,7 +21,7 @@ POLA_KROKU = {
     "rodzaj": ["oslona"],
     "lamele": ["lamele_kat", "lamele_tryb", "lamele_noc"],
     "kolory": ["kolor", "rama", "kolor_wlasny", "rama_wlasna"],
-    "okno": ["skrzydla", "wysokosc", "odwroc"],
+    "okno": ["skrzydla", "wysokosc", "osobno", "odwroc"],
     "czujniki": ["czujnik_lewe", "tryb_lewe", "czujnik_prawe", "tryb_prawe", "czujnik_drzwi", "czujnik_przeszkoda"],
     "fotokomorka": ["czujnik_foto", "foto_stan"],
     "silnik": ["czas", "kalibruj", "kalibracja_50", "predkosc_lewa", "predkosc_prawa", "brama_minuty"],
@@ -41,7 +41,7 @@ def zbuduj(jezyk: str, t: dict, karta: dict) -> dict:
     kroki = {}
     for krok, pola in POLA_KROKU.items():
         k = t["kroki"][krok]
-        opis = f"{{pasek}}\n\n**{t['co']}** {k['co']}\n\n**{t['poco']}** {k['poco']}{{porada}}"
+        opis = f"{{pasek}}\n\n**{t['co']}** {k['co']}\n\n**{t['poco']}** {k['poco']}{{porada}}{{galeria}}"
         data, pomoc = {}, {}
         for p in pola:
             data[p] = t["pola"][p]

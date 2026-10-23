@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Krok {nr} z {z}: Režim sprievodcu",
-        "description": "{pasek}\n\n**Čo:** Vyberte, koľko otázok chcete vidieť.\n\n**Prečo:** Základný väčšine ľudí stačí. Pokročilý ukáže všetky možnosti a ďalšie zariadenia. Režim neskôr zmeníte v „Nastaviť“.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte, koľko otázok chcete vidieť.\n\n**Prečo:** Základný väčšine ľudí stačí. Pokročilý ukáže všetky možnosti a ďalšie zariadenia. Režim neskôr zmeníte v „Nastaviť“.{porada}{galeria}",
         "data": {
           "tryb": "Režim",
           "kopiuj_z": "Skopírovať nastavenia z iného zariadenia",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Krok {nr} z {z}: Čo máte doma",
-        "description": "{pasek}\n\n**Čo:** Zaškrtnite, čo máte. Sprievodca prehľadal Home Assistant a zaškrtol, čo našiel.\n\n**Prečo:** Sprievodca ukáže len kroky a funkcie pre zaškrtnuté zariadenia. Zvyšok pridáte neskôr v „Nastaviť“.\n\nNájdené: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Čo:** Zaškrtnite, čo máte. Sprievodca prehľadal Home Assistant a zaškrtol, čo našiel.\n\n**Prečo:** Sprievodca ukáže len kroky a funkcie pre zaškrtnuté zariadenia. Zvyšok pridáte neskôr v „Nastaviť“.\n\nNájdené: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Doma mám",
           "wstecz": "Späť na predchádzajúci krok"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Zariadenie",
-        "description": "{pasek}\n\n**Čo:** Vyberte motor (tienenie alebo bránu), pomenujte ho a vyberte miestnosť.\n\n**Prečo:** Motor HA ovláda tento motor. S Assist hovorte názvom zariadenia, napr. „zatvor Plisé kuchyňa“.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte motor (tienenie alebo bránu), pomenujte ho a vyberte miestnosť.\n\n**Prečo:** Motor HA ovláda tento motor. S Assist hovorte názvom zariadenia, napr. „zatvor Plisé kuchyňa“.{porada}{galeria}",
         "data": {
           "rolety": "Motor (jedna alebo dve entity)",
           "name": "Názov",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Krok {nr} z {z}: Druh",
-        "description": "{pasek}\n\n**Čo:** Vyberte presne, čo máte.\n\n**Prečo:** Karta toto zariadenie nakreslí a automatika vie, čo môže použiť.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte presne, čo máte.\n\n**Prečo:** Karta toto zariadenie nakreslí a automatika vie, čo môže použiť.{porada}{galeria}",
         "data": {
           "oslona": "Druh",
           "wstecz": "Späť na predchádzajúci krok"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Krok {nr} z {z}: Lamely",
-        "description": "{pasek}\n\n**Čo:** Nastavte natáčanie lamiel.\n\n**Prečo:** Pustíte dnu svetlo bez vyťahovania žalúzie.{porada}",
+        "description": "{pasek}\n\n**Čo:** Nastavte natáčanie lamiel.\n\n**Prečo:** Pustíte dnu svetlo bez vyťahovania žalúzie.{porada}{galeria}",
         "data": {
           "lamele_kat": "Uhol lamiel na slnku",
           "lamele_tryb": "Ovládanie lamiel",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Krok {nr} z {z}: Farby",
-        "description": "{pasek}\n\n**Čo:** Vyberte farbu tienenia a rámu.\n\n**Prečo:** Okno na obrazovke vyzerá ako skutočné.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte farbu tienenia a rámu.\n\n**Prečo:** Okno na obrazovke vyzerá ako skutočné.{porada}{galeria}",
         "data": {
           "kolor": "Farba tienenia",
           "rama": "Farba rámu",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Krok {nr} z {z}: Okno",
-        "description": "{pasek}\n\n**Čo:** Koľko krídel má okno a aké veľké je na karte.\n\n**Prečo:** Každé krídlo môže mať vlastný motor.{porada}",
+        "description": "{pasek}\n\n**Čo:** Koľko krídel má okno a aké veľké je na karte.\n\n**Prečo:** Každé krídlo môže mať vlastný motor.{porada}{galeria}",
         "data": {
           "skrzydla": "Krídla",
           "wysokosc": "Výška na karte",
+          "osobno": "Dve krídla ovládané osobitne",
           "odwroc": "Obrátené percentá",
           "wstecz": "Späť na predchádzajúci krok"
         },
         "data_description": {
+          "osobno": "Posuvník ľavej clony je vľavo od okna, pravej vpravo. Každý ovláda iba svoju clonu.",
           "odwroc": "Zapnite, keď motor hlási 100 % pri zatvorenom tienení.",
           "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
         }
       },
       "czujniki": {
         "title": "Krok {nr} z {z}: Snímače",
-        "description": "{pasek}\n\n**Čo:** Vyberte snímače otvorenia okna a dverí.\n\n**Prečo:** Karta ukáže vyklopené alebo otvorené krídlo a blokovanie nikdy nespustí tienenie na otvorené okno.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače otvorenia okna a dverí.\n\n**Prečo:** Karta ukáže vyklopené alebo otvorené krídlo a blokovanie nikdy nespustí tienenie na otvorené okno.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Snímač ľavého krídla",
           "tryb_lewe": "Ľavé krídlo",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Krok {nr} z {z}: Fotobunka",
-        "description": "{pasek}\n\n**Čo:** Vyberte snímač prekážky brány a stav, ktorý znamená „niečo stojí v bráne“.\n\n**Prečo:** Karta ukáže prekážku a dostanete upozornenie. Fotobunka v riadiacej jednotke bránu ďalej zastaví sama.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímač prekážky brány a stav, ktorý znamená „niečo stojí v bráne“.\n\n**Prečo:** Karta ukáže prekážku a dostanete upozornenie. Fotobunka v riadiacej jednotke bránu ďalej zastaví sama.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotobunka (snímač prekážky)",
           "foto_stan": "Prekážka, keď má snímač stav",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Krok {nr} z {z}: Motor",
-        "description": "{pasek}\n\n**Čo:** Zadajte čas celého prejazdu alebo nechajte 0.\n\n**Prečo:** Kresba ide tak rýchlo ako skutočný motor. Pri 0 sa karta čas naučí sama po niekoľkých pohyboch.{porada}",
+        "description": "{pasek}\n\n**Čo:** Zadajte čas celého prejazdu alebo nechajte 0.\n\n**Prečo:** Kresba ide tak rýchlo ako skutočný motor. Pri 0 sa karta čas naučí sama po niekoľkých pohyboch.{porada}{galeria}",
         "data": {
           "czas": "Čas celého prejazdu",
           "kalibruj": "Kalibrovať teraz (tienenie pôjde hore, dole a hore)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Krok {nr} z {z}: Počasie",
-        "description": "{pasek}\n\n**Čo:** Vyberte počasie a vonkajšie snímače.\n\n**Prečo:** Za sklom vidno skutočné počasie a automatika chráni tienenie pred vetrom, dažďom a slnkom.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte počasie a vonkajšie snímače.\n\n**Prečo:** Za sklom vidno skutočné počasie a automatika chráni tienenie pred vetrom, dažďom a slnkom.{porada}{galeria}",
         "data": {
           "pogoda": "Počasie",
           "czujnik_temp": "Vonkajšia teplota",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Krok {nr} z {z}: Obyvatelia",
-        "description": "{pasek}\n\n**Čo:** Vyberte snímače prítomnosti, pohybu a obyvateľov.\n\n**Prečo:** Tienenie môže reagovať na to, či je niekto v miestnosti alebo doma.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače prítomnosti, pohybu a obyvateľov.\n\n**Prečo:** Tienenie môže reagovať na to, či je niekto v miestnosti alebo doma.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Snímač prítomnosti (niekto je tu)",
           "czujnik_ruch": "Snímač pohybu (niekto vošiel)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Krok {nr} z {z}: Automatika",
-        "description": "{pasek}\n\n**Čo:** Zapnite funkcie, ktoré smú tienením hýbať samy.\n\n**Prečo:** Dom sa o tienenie stará bez písania automatizácií. Všetko je vypnuté, kým to nezapnete.{porada}",
+        "description": "{pasek}\n\n**Čo:** Zapnite funkcie, ktoré smú tienením hýbať samy.\n\n**Prečo:** Dom sa o tienenie stará bez písania automatizácií. Všetko je vypnuté, kým to nezapnete.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Plán",
           "f_slonce": "Ochrana pred slnkom",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Krok {nr} z {z}: Nastavenia",
-        "description": "{pasek}\n\n**Čo:** Upravte zapnuté funkcie.\n\n**Prečo:** Predvolené hodnoty sedia väčšine domov.{porada}",
+        "description": "{pasek}\n\n**Čo:** Upravte zapnuté funkcie.\n\n**Prečo:** Predvolené hodnoty sedia väčšine domov.{porada}{galeria}",
         "data": {
           "azymut": "Smer okna",
           "szer_slonca": "Šírka slnka v okne",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Krok {nr} z {z}: Upozornenia",
-        "description": "{pasek}\n\n**Čo:** Vyberte, o čom vám dať vedieť.\n\n**Prečo:** Hneď viete, ktoré zariadenie má problém. Upozornenia prídu do HA a, ak chcete, do telefónu.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte, o čom vám dať vedieť.\n\n**Prečo:** Hneď viete, ktoré zariadenie má problém. Upozornenia prídu do HA a, ak chcete, do telefónu.{porada}{galeria}",
         "data": {
           "powiadom": "Upozorni ma, keď",
           "powiadom_gdzie": "Poslať aj na",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Krok {nr} z {z}: Panel",
-        "description": "{pasek}\n\n**Čo:** Na ktorý panel pridať kartu.\n\n**Prečo:** Karta sa objaví sama, nič nemusíte klikať.{porada}",
+        "description": "{pasek}\n\n**Čo:** Na ktorý panel pridať kartu.\n\n**Prečo:** Karta sa objaví sama, nič nemusíte klikať.{porada}{galeria}",
         "data": {
           "na_panel": "Pridať kartu na panel",
           "wstecz": "Späť na predchádzajúci krok"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Krok {nr} z {z}: Režim sprievodcu",
-        "description": "{pasek}\n\n**Čo:** Vyberte, koľko otázok chcete vidieť.\n\n**Prečo:** Základný väčšine ľudí stačí. Pokročilý ukáže všetky možnosti a ďalšie zariadenia. Režim neskôr zmeníte v „Nastaviť“.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte, koľko otázok chcete vidieť.\n\n**Prečo:** Základný väčšine ľudí stačí. Pokročilý ukáže všetky možnosti a ďalšie zariadenia. Režim neskôr zmeníte v „Nastaviť“.{porada}{galeria}",
         "data": {
           "tryb": "Režim",
           "kopiuj_z": "Skopírovať nastavenia z iného zariadenia",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Krok {nr} z {z}: Čo máte doma",
-        "description": "{pasek}\n\n**Čo:** Zaškrtnite, čo máte. Sprievodca prehľadal Home Assistant a zaškrtol, čo našiel.\n\n**Prečo:** Sprievodca ukáže len kroky a funkcie pre zaškrtnuté zariadenia. Zvyšok pridáte neskôr v „Nastaviť“.\n\nNájdené: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Čo:** Zaškrtnite, čo máte. Sprievodca prehľadal Home Assistant a zaškrtol, čo našiel.\n\n**Prečo:** Sprievodca ukáže len kroky a funkcie pre zaškrtnuté zariadenia. Zvyšok pridáte neskôr v „Nastaviť“.\n\nNájdené: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Doma mám",
           "wstecz": "Späť na predchádzajúci krok"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Zariadenie",
-        "description": "{pasek}\n\n**Čo:** Vyberte motor (tienenie alebo bránu), pomenujte ho a vyberte miestnosť.\n\n**Prečo:** Motor HA ovláda tento motor. S Assist hovorte názvom zariadenia, napr. „zatvor Plisé kuchyňa“.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte motor (tienenie alebo bránu), pomenujte ho a vyberte miestnosť.\n\n**Prečo:** Motor HA ovláda tento motor. S Assist hovorte názvom zariadenia, napr. „zatvor Plisé kuchyňa“.{porada}{galeria}",
         "data": {
           "rolety": "Motor (jedna alebo dve entity)",
           "name": "Názov",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Krok {nr} z {z}: Druh",
-        "description": "{pasek}\n\n**Čo:** Vyberte presne, čo máte.\n\n**Prečo:** Karta toto zariadenie nakreslí a automatika vie, čo môže použiť.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte presne, čo máte.\n\n**Prečo:** Karta toto zariadenie nakreslí a automatika vie, čo môže použiť.{porada}{galeria}",
         "data": {
           "oslona": "Druh",
           "wstecz": "Späť na predchádzajúci krok"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Krok {nr} z {z}: Lamely",
-        "description": "{pasek}\n\n**Čo:** Nastavte natáčanie lamiel.\n\n**Prečo:** Pustíte dnu svetlo bez vyťahovania žalúzie.{porada}",
+        "description": "{pasek}\n\n**Čo:** Nastavte natáčanie lamiel.\n\n**Prečo:** Pustíte dnu svetlo bez vyťahovania žalúzie.{porada}{galeria}",
         "data": {
           "lamele_kat": "Uhol lamiel na slnku",
           "lamele_tryb": "Ovládanie lamiel",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Krok {nr} z {z}: Farby",
-        "description": "{pasek}\n\n**Čo:** Vyberte farbu tienenia a rámu.\n\n**Prečo:** Okno na obrazovke vyzerá ako skutočné.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte farbu tienenia a rámu.\n\n**Prečo:** Okno na obrazovke vyzerá ako skutočné.{porada}{galeria}",
         "data": {
           "kolor": "Farba tienenia",
           "rama": "Farba rámu",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Krok {nr} z {z}: Okno",
-        "description": "{pasek}\n\n**Čo:** Koľko krídel má okno a aké veľké je na karte.\n\n**Prečo:** Každé krídlo môže mať vlastný motor.{porada}",
+        "description": "{pasek}\n\n**Čo:** Koľko krídel má okno a aké veľké je na karte.\n\n**Prečo:** Každé krídlo môže mať vlastný motor.{porada}{galeria}",
         "data": {
           "skrzydla": "Krídla",
           "wysokosc": "Výška na karte",
+          "osobno": "Dve krídla ovládané osobitne",
           "odwroc": "Obrátené percentá",
           "wstecz": "Späť na predchádzajúci krok"
         },
         "data_description": {
+          "osobno": "Posuvník ľavej clony je vľavo od okna, pravej vpravo. Každý ovláda iba svoju clonu.",
           "odwroc": "Zapnite, keď motor hlási 100 % pri zatvorenom tienení.",
           "wstecz": "Zapnite a kliknite na „Ďalej“, aby ste sa vrátili o krok. Zadané údaje zostanú."
         }
       },
       "czujniki": {
         "title": "Krok {nr} z {z}: Snímače",
-        "description": "{pasek}\n\n**Čo:** Vyberte snímače otvorenia okna a dverí.\n\n**Prečo:** Karta ukáže vyklopené alebo otvorené krídlo a blokovanie nikdy nespustí tienenie na otvorené okno.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače otvorenia okna a dverí.\n\n**Prečo:** Karta ukáže vyklopené alebo otvorené krídlo a blokovanie nikdy nespustí tienenie na otvorené okno.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Snímač ľavého krídla",
           "tryb_lewe": "Ľavé krídlo",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Krok {nr} z {z}: Fotobunka",
-        "description": "{pasek}\n\n**Čo:** Vyberte snímač prekážky brány a stav, ktorý znamená „niečo stojí v bráne“.\n\n**Prečo:** Karta ukáže prekážku a dostanete upozornenie. Fotobunka v riadiacej jednotke bránu ďalej zastaví sama.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímač prekážky brány a stav, ktorý znamená „niečo stojí v bráne“.\n\n**Prečo:** Karta ukáže prekážku a dostanete upozornenie. Fotobunka v riadiacej jednotke bránu ďalej zastaví sama.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotobunka (snímač prekážky)",
           "foto_stan": "Prekážka, keď má snímač stav",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Krok {nr} z {z}: Motor",
-        "description": "{pasek}\n\n**Čo:** Zadajte čas celého prejazdu alebo nechajte 0.\n\n**Prečo:** Kresba ide tak rýchlo ako skutočný motor. Pri 0 sa karta čas naučí sama po niekoľkých pohyboch.{porada}",
+        "description": "{pasek}\n\n**Čo:** Zadajte čas celého prejazdu alebo nechajte 0.\n\n**Prečo:** Kresba ide tak rýchlo ako skutočný motor. Pri 0 sa karta čas naučí sama po niekoľkých pohyboch.{porada}{galeria}",
         "data": {
           "czas": "Čas celého prejazdu",
           "kalibruj": "Kalibrovať teraz (tienenie pôjde hore, dole a hore)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Krok {nr} z {z}: Počasie",
-        "description": "{pasek}\n\n**Čo:** Vyberte počasie a vonkajšie snímače.\n\n**Prečo:** Za sklom vidno skutočné počasie a automatika chráni tienenie pred vetrom, dažďom a slnkom.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte počasie a vonkajšie snímače.\n\n**Prečo:** Za sklom vidno skutočné počasie a automatika chráni tienenie pred vetrom, dažďom a slnkom.{porada}{galeria}",
         "data": {
           "pogoda": "Počasie",
           "czujnik_temp": "Vonkajšia teplota",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Krok {nr} z {z}: Obyvatelia",
-        "description": "{pasek}\n\n**Čo:** Vyberte snímače prítomnosti, pohybu a obyvateľov.\n\n**Prečo:** Tienenie môže reagovať na to, či je niekto v miestnosti alebo doma.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte snímače prítomnosti, pohybu a obyvateľov.\n\n**Prečo:** Tienenie môže reagovať na to, či je niekto v miestnosti alebo doma.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Snímač prítomnosti (niekto je tu)",
           "czujnik_ruch": "Snímač pohybu (niekto vošiel)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Krok {nr} z {z}: Automatika",
-        "description": "{pasek}\n\n**Čo:** Zapnite funkcie, ktoré smú tienením hýbať samy.\n\n**Prečo:** Dom sa o tienenie stará bez písania automatizácií. Všetko je vypnuté, kým to nezapnete.{porada}",
+        "description": "{pasek}\n\n**Čo:** Zapnite funkcie, ktoré smú tienením hýbať samy.\n\n**Prečo:** Dom sa o tienenie stará bez písania automatizácií. Všetko je vypnuté, kým to nezapnete.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Plán",
           "f_slonce": "Ochrana pred slnkom",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Krok {nr} z {z}: Nastavenia",
-        "description": "{pasek}\n\n**Čo:** Upravte zapnuté funkcie.\n\n**Prečo:** Predvolené hodnoty sedia väčšine domov.{porada}",
+        "description": "{pasek}\n\n**Čo:** Upravte zapnuté funkcie.\n\n**Prečo:** Predvolené hodnoty sedia väčšine domov.{porada}{galeria}",
         "data": {
           "azymut": "Smer okna",
           "szer_slonca": "Šírka slnka v okne",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Krok {nr} z {z}: Upozornenia",
-        "description": "{pasek}\n\n**Čo:** Vyberte, o čom vám dať vedieť.\n\n**Prečo:** Hneď viete, ktoré zariadenie má problém. Upozornenia prídu do HA a, ak chcete, do telefónu.{porada}",
+        "description": "{pasek}\n\n**Čo:** Vyberte, o čom vám dať vedieť.\n\n**Prečo:** Hneď viete, ktoré zariadenie má problém. Upozornenia prídu do HA a, ak chcete, do telefónu.{porada}{galeria}",
         "data": {
           "powiadom": "Upozorni ma, keď",
           "powiadom_gdzie": "Poslať aj na",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "Toto nie je zariadenie Motor HA."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa}: kalibrácia sa nepodarila – neodpovedá: {lista}. Skontrolujte napájanie a dosah tejto clony a skúste to znova."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa}: kalibrácia nezmerala čas – motor hlási koniec hneď po rozbehu. Zadajte čas jazdy v kroku „Motor“ alebo tam pridajte entitu rýchlosti motora."
     },
     "powod_brak": {
       "message": "Bez automatiky"

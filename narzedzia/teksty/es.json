@@ -135,7 +135,8 @@
     "powiadom": "Avisarme cuando",
     "powiadom_gdzie": "Enviar también a",
     "na_panel": "Añadir la tarjeta a un panel",
-    "wstecz": "Volver al paso anterior"
+    "wstecz": "Volver al paso anterior",
+    "osobno": "Dos hojas controladas por separado"
   },
   "pomoc": {
     "kopiuj_z": "Vacío = empezar de cero.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Un luxómetro o la potencia solar – en vez de solo la posición del sol.",
     "czujnik_swieta": "Integración Workday – los festivos cuentan como fin de semana.",
     "powiadom_gdzie": "La app de HA en el móvil. Sin elegir – solo avisos en HA.",
-    "wstecz": "Actívalo y pulsa «Siguiente» para retroceder un paso. Lo introducido se conserva."
+    "wstecz": "Actívalo y pulsa «Siguiente» para retroceder un paso. Lo introducido se conserva.",
+    "osobno": "El deslizador del estor izquierdo queda a la izquierda de la ventana y el del derecho a la derecha. Cada uno mueve solo su estor."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: el portón lleva abierto más de {minuty} min.",
     "brama_niedomknieta": "{nazwa}: el portón no se cerró.",
     "przeszkoda": "{nazwa}: hay algo en el portón (fotocélula).",
-    "nie_motor_ha": "Esto no es un dispositivo Motor HA."
+    "nie_motor_ha": "Esto no es un dispositivo Motor HA.",
+    "kalibracja_brak": "{nazwa}: la calibración falló – no responde: {lista}. Revisa la alimentación y el alcance de ese estor e inténtalo de nuevo.",
+    "kalibracja_od_razu": "{nazwa}: la calibración no pudo medir el tiempo – el motor informa el final justo al arrancar. Introduce el tiempo de recorrido en el paso «Motor» o añade allí la entidad de velocidad del motor."
   },
   "uslugi": {
     "wstrzymaj": [

@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Krok {nr} z {z}: Tryb kreatora",
-        "description": "{pasek}\n\n**Co:** Wybierz, ile pytań chcesz zobaczyć.\n\n**Po co:** Podstawowy wystarczy większości osób. Zaawansowany pokazuje wszystkie opcje i dodatkowe urządzenia. Tryb zmienisz potem w „Konfiguruj”.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz, ile pytań chcesz zobaczyć.\n\n**Po co:** Podstawowy wystarczy większości osób. Zaawansowany pokazuje wszystkie opcje i dodatkowe urządzenia. Tryb zmienisz potem w „Konfiguruj”.{porada}{galeria}",
         "data": {
           "tryb": "Tryb",
           "kopiuj_z": "Skopiuj ustawienia z innego urządzenia",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Krok {nr} z {z}: Co masz w domu",
-        "description": "{pasek}\n\n**Co:** Zaznacz, co masz. Kreator sam przeszukał Home Assistanta i zaznaczył to, co znalazł.\n\n**Po co:** Kreator pokaże tylko kroki i funkcje dla zaznaczonych urządzeń. Resztę dodasz później w „Konfiguruj”.\n\nZnalezione: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Co:** Zaznacz, co masz. Kreator sam przeszukał Home Assistanta i zaznaczył to, co znalazł.\n\n**Po co:** Kreator pokaże tylko kroki i funkcje dla zaznaczonych urządzeń. Resztę dodasz później w „Konfiguruj”.\n\nZnalezione: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Mam w domu",
           "wstecz": "Wróć do poprzedniego kroku"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Urządzenie",
-        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem. Do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem. Do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”.{porada}{galeria}",
         "data": {
           "rolety": "Silnik (jedna lub dwie encje)",
           "name": "Nazwa",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Krok {nr} z {z}: Rodzaj",
-        "description": "{pasek}\n\n**Co:** Wybierz, co dokładnie masz.\n\n**Po co:** Karta narysuje to urządzenie, a automatyka wie, czego może użyć.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz, co dokładnie masz.\n\n**Po co:** Karta narysuje to urządzenie, a automatyka wie, czego może użyć.{porada}{galeria}",
         "data": {
           "oslona": "Rodzaj",
           "wstecz": "Wróć do poprzedniego kroku"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Krok {nr} z {z}: Lamele",
-        "description": "{pasek}\n\n**Co:** Ustaw obracanie lameli.\n\n**Po co:** Wpuścisz światło bez podnoszenia żaluzji.{porada}",
+        "description": "{pasek}\n\n**Co:** Ustaw obracanie lameli.\n\n**Po co:** Wpuścisz światło bez podnoszenia żaluzji.{porada}{galeria}",
         "data": {
           "lamele_kat": "Kąt lameli przy słońcu",
           "lamele_tryb": "Ustawianie lameli",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Krok {nr} z {z}: Kolory",
-        "description": "{pasek}\n\n**Co:** Wybierz kolor osłony i ramy.\n\n**Po co:** Okno na ekranie wygląda jak prawdziwe.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz kolor osłony i ramy.\n\n**Po co:** Okno na ekranie wygląda jak prawdziwe.{porada}{galeria}",
         "data": {
           "kolor": "Kolor osłony",
           "rama": "Kolor ramy",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Krok {nr} z {z}: Okno",
-        "description": "{pasek}\n\n**Co:** Ile skrzydeł ma okno i jak duże ma być na karcie.\n\n**Po co:** Każde skrzydło może mieć własny silnik.{porada}",
+        "description": "{pasek}\n\n**Co:** Ile skrzydeł ma okno i jak duże ma być na karcie.\n\n**Po co:** Każde skrzydło może mieć własny silnik.{porada}{galeria}",
         "data": {
           "skrzydla": "Skrzydła",
           "wysokosc": "Wysokość na karcie",
+          "osobno": "Dwa skrzydła sterowane osobno",
           "odwroc": "Odwrócone procenty",
           "wstecz": "Wróć do poprzedniego kroku"
         },
         "data_description": {
+          "osobno": "Suwak lewej osłony po lewej stronie okna, prawej – po prawej. Każdy jeździ tylko swoją osłoną.",
           "odwroc": "Włącz, gdy silnik melduje 100 % przy zamkniętej osłonie.",
           "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
         }
       },
       "czujniki": {
         "title": "Krok {nr} z {z}: Czujniki",
-        "description": "{pasek}\n\n**Co:** Wybierz czujniki otwarcia okna i drzwi.\n\n**Po co:** Karta pokaże skrzydło uchylone albo otwarte, a blokada nie opuści osłony na otwarte okno.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki otwarcia okna i drzwi.\n\n**Po co:** Karta pokaże skrzydło uchylone albo otwarte, a blokada nie opuści osłony na otwarte okno.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Czujnik lewego skrzydła",
           "tryb_lewe": "Lewe skrzydło",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Krok {nr} z {z}: Fotokomórka",
-        "description": "{pasek}\n\n**Co:** Wskaż czujnik przeszkody bramy i stan, który znaczy „coś stoi w bramie”.\n\n**Po co:** Karta pokaże przeszkodę i wyślesz sobie powiadomienie. Fotokomórka w sterowniku dalej sama zatrzymuje bramę.{porada}",
+        "description": "{pasek}\n\n**Co:** Wskaż czujnik przeszkody bramy i stan, który znaczy „coś stoi w bramie”.\n\n**Po co:** Karta pokaże przeszkodę i wyślesz sobie powiadomienie. Fotokomórka w sterowniku dalej sama zatrzymuje bramę.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotokomórka (czujnik przeszkody)",
           "foto_stan": "Przeszkoda, gdy czujnik ma stan",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Krok {nr} z {z}: Silnik",
-        "description": "{pasek}\n\n**Co:** Podaj czas pełnego przejazdu albo zostaw 0.\n\n**Po co:** Rysunek jedzie tak szybko jak prawdziwy silnik. Przy 0 karta sama nauczy się czasu po kilku ruchach.{porada}",
+        "description": "{pasek}\n\n**Co:** Podaj czas pełnego przejazdu albo zostaw 0.\n\n**Po co:** Rysunek jedzie tak szybko jak prawdziwy silnik. Przy 0 karta sama nauczy się czasu po kilku ruchach.{porada}{galeria}",
         "data": {
           "czas": "Czas pełnego przejazdu",
           "kalibruj": "Kalibruj teraz (osłona pojedzie w górę, w dół i w górę)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Krok {nr} z {z}: Pogoda",
-        "description": "{pasek}\n\n**Co:** Wybierz pogodę i czujniki na zewnątrz.\n\n**Po co:** Za szybą widać prawdziwą pogodę, a automatyka chroni osłonę przed wiatrem, deszczem i słońcem.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz pogodę i czujniki na zewnątrz.\n\n**Po co:** Za szybą widać prawdziwą pogodę, a automatyka chroni osłonę przed wiatrem, deszczem i słońcem.{porada}{galeria}",
         "data": {
           "pogoda": "Pogoda",
           "czujnik_temp": "Temperatura na zewnątrz",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Krok {nr} z {z}: Domownicy",
-        "description": "{pasek}\n\n**Co:** Wybierz czujniki obecności, ruchu i domowników.\n\n**Po co:** Osłona może reagować na to, czy ktoś jest w pokoju albo w domu.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki obecności, ruchu i domowników.\n\n**Po co:** Osłona może reagować na to, czy ktoś jest w pokoju albo w domu.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Czujnik obecności (ktoś jest)",
           "czujnik_ruch": "Czujnik ruchu (ktoś wszedł)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Krok {nr} z {z}: Automatyka",
-        "description": "{pasek}\n\n**Co:** Włącz funkcje, które mają same ruszać osłoną.\n\n**Po co:** Dom dba o osłony bez pisania automatyzacji. Wszystkie są wyłączone, dopóki ich nie włączysz.{porada}",
+        "description": "{pasek}\n\n**Co:** Włącz funkcje, które mają same ruszać osłoną.\n\n**Po co:** Dom dba o osłony bez pisania automatyzacji. Wszystkie są wyłączone, dopóki ich nie włączysz.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Harmonogram",
           "f_slonce": "Ochrona przed słońcem",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Krok {nr} z {z}: Ustawienia",
-        "description": "{pasek}\n\n**Co:** Dostosuj włączone funkcje.\n\n**Po co:** Domyślne wartości pasują do większości domów.{porada}",
+        "description": "{pasek}\n\n**Co:** Dostosuj włączone funkcje.\n\n**Po co:** Domyślne wartości pasują do większości domów.{porada}{galeria}",
         "data": {
           "azymut": "Kierunek okna",
           "szer_slonca": "Szerokość słońca w oknie",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Krok {nr} z {z}: Powiadomienia",
-        "description": "{pasek}\n\n**Co:** Wybierz, o czym dać Ci znać.\n\n**Po co:** Od razu wiesz, które urządzenie ma problem. Powiadomienia trafiają do HA i, jeśli wybierzesz, na telefon.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz, o czym dać Ci znać.\n\n**Po co:** Od razu wiesz, które urządzenie ma problem. Powiadomienia trafiają do HA i, jeśli wybierzesz, na telefon.{porada}{galeria}",
         "data": {
           "powiadom": "Powiadom mnie, gdy",
           "powiadom_gdzie": "Wyślij też na",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Krok {nr} z {z}: Panel",
-        "description": "{pasek}\n\n**Co:** Na który panel dodać kartę.\n\n**Po co:** Karta pojawi się sama, nic nie musisz klikać.{porada}",
+        "description": "{pasek}\n\n**Co:** Na który panel dodać kartę.\n\n**Po co:** Karta pojawi się sama, nic nie musisz klikać.{porada}{galeria}",
         "data": {
           "na_panel": "Dodaj kartę na panel",
           "wstecz": "Wróć do poprzedniego kroku"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Krok {nr} z {z}: Tryb kreatora",
-        "description": "{pasek}\n\n**Co:** Wybierz, ile pytań chcesz zobaczyć.\n\n**Po co:** Podstawowy wystarczy większości osób. Zaawansowany pokazuje wszystkie opcje i dodatkowe urządzenia. Tryb zmienisz potem w „Konfiguruj”.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz, ile pytań chcesz zobaczyć.\n\n**Po co:** Podstawowy wystarczy większości osób. Zaawansowany pokazuje wszystkie opcje i dodatkowe urządzenia. Tryb zmienisz potem w „Konfiguruj”.{porada}{galeria}",
         "data": {
           "tryb": "Tryb",
           "kopiuj_z": "Skopiuj ustawienia z innego urządzenia",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Krok {nr} z {z}: Co masz w domu",
-        "description": "{pasek}\n\n**Co:** Zaznacz, co masz. Kreator sam przeszukał Home Assistanta i zaznaczył to, co znalazł.\n\n**Po co:** Kreator pokaże tylko kroki i funkcje dla zaznaczonych urządzeń. Resztę dodasz później w „Konfiguruj”.\n\nZnalezione: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Co:** Zaznacz, co masz. Kreator sam przeszukał Home Assistanta i zaznaczył to, co znalazł.\n\n**Po co:** Kreator pokaże tylko kroki i funkcje dla zaznaczonych urządzeń. Resztę dodasz później w „Konfiguruj”.\n\nZnalezione: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Mam w domu",
           "wstecz": "Wróć do poprzedniego kroku"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Urządzenie",
-        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem. Do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem. Do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”.{porada}{galeria}",
         "data": {
           "rolety": "Silnik (jedna lub dwie encje)",
           "name": "Nazwa",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Krok {nr} z {z}: Rodzaj",
-        "description": "{pasek}\n\n**Co:** Wybierz, co dokładnie masz.\n\n**Po co:** Karta narysuje to urządzenie, a automatyka wie, czego może użyć.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz, co dokładnie masz.\n\n**Po co:** Karta narysuje to urządzenie, a automatyka wie, czego może użyć.{porada}{galeria}",
         "data": {
           "oslona": "Rodzaj",
           "wstecz": "Wróć do poprzedniego kroku"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Krok {nr} z {z}: Lamele",
-        "description": "{pasek}\n\n**Co:** Ustaw obracanie lameli.\n\n**Po co:** Wpuścisz światło bez podnoszenia żaluzji.{porada}",
+        "description": "{pasek}\n\n**Co:** Ustaw obracanie lameli.\n\n**Po co:** Wpuścisz światło bez podnoszenia żaluzji.{porada}{galeria}",
         "data": {
           "lamele_kat": "Kąt lameli przy słońcu",
           "lamele_tryb": "Ustawianie lameli",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Krok {nr} z {z}: Kolory",
-        "description": "{pasek}\n\n**Co:** Wybierz kolor osłony i ramy.\n\n**Po co:** Okno na ekranie wygląda jak prawdziwe.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz kolor osłony i ramy.\n\n**Po co:** Okno na ekranie wygląda jak prawdziwe.{porada}{galeria}",
         "data": {
           "kolor": "Kolor osłony",
           "rama": "Kolor ramy",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Krok {nr} z {z}: Okno",
-        "description": "{pasek}\n\n**Co:** Ile skrzydeł ma okno i jak duże ma być na karcie.\n\n**Po co:** Każde skrzydło może mieć własny silnik.{porada}",
+        "description": "{pasek}\n\n**Co:** Ile skrzydeł ma okno i jak duże ma być na karcie.\n\n**Po co:** Każde skrzydło może mieć własny silnik.{porada}{galeria}",
         "data": {
           "skrzydla": "Skrzydła",
           "wysokosc": "Wysokość na karcie",
+          "osobno": "Dwa skrzydła sterowane osobno",
           "odwroc": "Odwrócone procenty",
           "wstecz": "Wróć do poprzedniego kroku"
         },
         "data_description": {
+          "osobno": "Suwak lewej osłony po lewej stronie okna, prawej – po prawej. Każdy jeździ tylko swoją osłoną.",
           "odwroc": "Włącz, gdy silnik melduje 100 % przy zamkniętej osłonie.",
           "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
         }
       },
       "czujniki": {
         "title": "Krok {nr} z {z}: Czujniki",
-        "description": "{pasek}\n\n**Co:** Wybierz czujniki otwarcia okna i drzwi.\n\n**Po co:** Karta pokaże skrzydło uchylone albo otwarte, a blokada nie opuści osłony na otwarte okno.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki otwarcia okna i drzwi.\n\n**Po co:** Karta pokaże skrzydło uchylone albo otwarte, a blokada nie opuści osłony na otwarte okno.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Czujnik lewego skrzydła",
           "tryb_lewe": "Lewe skrzydło",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Krok {nr} z {z}: Fotokomórka",
-        "description": "{pasek}\n\n**Co:** Wskaż czujnik przeszkody bramy i stan, który znaczy „coś stoi w bramie”.\n\n**Po co:** Karta pokaże przeszkodę i wyślesz sobie powiadomienie. Fotokomórka w sterowniku dalej sama zatrzymuje bramę.{porada}",
+        "description": "{pasek}\n\n**Co:** Wskaż czujnik przeszkody bramy i stan, który znaczy „coś stoi w bramie”.\n\n**Po co:** Karta pokaże przeszkodę i wyślesz sobie powiadomienie. Fotokomórka w sterowniku dalej sama zatrzymuje bramę.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotokomórka (czujnik przeszkody)",
           "foto_stan": "Przeszkoda, gdy czujnik ma stan",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Krok {nr} z {z}: Silnik",
-        "description": "{pasek}\n\n**Co:** Podaj czas pełnego przejazdu albo zostaw 0.\n\n**Po co:** Rysunek jedzie tak szybko jak prawdziwy silnik. Przy 0 karta sama nauczy się czasu po kilku ruchach.{porada}",
+        "description": "{pasek}\n\n**Co:** Podaj czas pełnego przejazdu albo zostaw 0.\n\n**Po co:** Rysunek jedzie tak szybko jak prawdziwy silnik. Przy 0 karta sama nauczy się czasu po kilku ruchach.{porada}{galeria}",
         "data": {
           "czas": "Czas pełnego przejazdu",
           "kalibruj": "Kalibruj teraz (osłona pojedzie w górę, w dół i w górę)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Krok {nr} z {z}: Pogoda",
-        "description": "{pasek}\n\n**Co:** Wybierz pogodę i czujniki na zewnątrz.\n\n**Po co:** Za szybą widać prawdziwą pogodę, a automatyka chroni osłonę przed wiatrem, deszczem i słońcem.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz pogodę i czujniki na zewnątrz.\n\n**Po co:** Za szybą widać prawdziwą pogodę, a automatyka chroni osłonę przed wiatrem, deszczem i słońcem.{porada}{galeria}",
         "data": {
           "pogoda": "Pogoda",
           "czujnik_temp": "Temperatura na zewnątrz",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Krok {nr} z {z}: Domownicy",
-        "description": "{pasek}\n\n**Co:** Wybierz czujniki obecności, ruchu i domowników.\n\n**Po co:** Osłona może reagować na to, czy ktoś jest w pokoju albo w domu.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz czujniki obecności, ruchu i domowników.\n\n**Po co:** Osłona może reagować na to, czy ktoś jest w pokoju albo w domu.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Czujnik obecności (ktoś jest)",
           "czujnik_ruch": "Czujnik ruchu (ktoś wszedł)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Krok {nr} z {z}: Automatyka",
-        "description": "{pasek}\n\n**Co:** Włącz funkcje, które mają same ruszać osłoną.\n\n**Po co:** Dom dba o osłony bez pisania automatyzacji. Wszystkie są wyłączone, dopóki ich nie włączysz.{porada}",
+        "description": "{pasek}\n\n**Co:** Włącz funkcje, które mają same ruszać osłoną.\n\n**Po co:** Dom dba o osłony bez pisania automatyzacji. Wszystkie są wyłączone, dopóki ich nie włączysz.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Harmonogram",
           "f_slonce": "Ochrona przed słońcem",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Krok {nr} z {z}: Ustawienia",
-        "description": "{pasek}\n\n**Co:** Dostosuj włączone funkcje.\n\n**Po co:** Domyślne wartości pasują do większości domów.{porada}",
+        "description": "{pasek}\n\n**Co:** Dostosuj włączone funkcje.\n\n**Po co:** Domyślne wartości pasują do większości domów.{porada}{galeria}",
         "data": {
           "azymut": "Kierunek okna",
           "szer_slonca": "Szerokość słońca w oknie",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Krok {nr} z {z}: Powiadomienia",
-        "description": "{pasek}\n\n**Co:** Wybierz, o czym dać Ci znać.\n\n**Po co:** Od razu wiesz, które urządzenie ma problem. Powiadomienia trafiają do HA i, jeśli wybierzesz, na telefon.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz, o czym dać Ci znać.\n\n**Po co:** Od razu wiesz, które urządzenie ma problem. Powiadomienia trafiają do HA i, jeśli wybierzesz, na telefon.{porada}{galeria}",
         "data": {
           "powiadom": "Powiadom mnie, gdy",
           "powiadom_gdzie": "Wyślij też na",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "To nie jest urządzenie Motor HA."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa}: kalibracja się nie udała – nie odpowiada: {lista}. Sprawdź zasilanie i zasięg tej osłony i spróbuj jeszcze raz."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa}: kalibracja nie zmierzyła czasu – silnik melduje koniec zaraz po ruszeniu. Wpisz czas przejazdu w kroku „Silnik” albo dodaj tam encję prędkości silnika."
     },
     "powod_brak": {
       "message": "Brak automatyki"

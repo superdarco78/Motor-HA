@@ -178,7 +178,7 @@ async def test_po_kalibracji(hass: HomeAssistant, monkeypatch) -> None:
     wyslane, ruchy, czasy = [], [], [12.0, 14.0, 12.0]
 
     async def jedz(self, usluga, cel, pierwszy):
-        return czasy.pop(0) if czasy else None
+        return (czasy.pop(0), [], 0.0) if czasy else (None, ["cover.lewa"], 0.0)
 
     async def pozycja(self, **kw):
         ruchy.append(kw["position"])
@@ -199,3 +199,62 @@ async def test_po_kalibracji(hass: HomeAssistant, monkeypatch) -> None:
     await okno._kalibruj()
     await hass.async_block_till_done()
     assert ruchy == [] and "✅" not in wyslane[-1][0], wyslane
+
+
+async def test_okno_w_domu_z_brama(hass: HomeAssistant) -> None:
+    """W domu jest brama („Co masz”: brama), ale silnik okna (Zigbee, bez klasy) to nie brama:
+    „Rodzaj” pokazuje osłony (bramy na końcu), a kroki okna są na miejscu."""
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    hass.states.async_set("cover.brama", "closed", {"device_class": "gate", "supported_features": 3})
+    r = await hass.config_entries.flow.async_init(DOMAIN, context={"source": config_entries.SOURCE_USER})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"tryb": "podstawowy"})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"mam": ["brama", "okno"]})
+    assert r["step_id"] == "urzadzenie"
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"rolety": ROLETY, "name": "Salon",
+                                                                      "rodzaj_pokoju": "salon"})
+    assert r["step_id"] == "rodzaj"
+    opcje = r["data_schema"].schema["oslona"].config["options"]
+    assert opcje[0] != "przesuwna" and "zebra" in opcje and "przesuwna" in opcje, opcje
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"oslona": "zebra"})
+    assert r["step_id"] == "kolory"
+
+
+async def test_pasek_skok_i_osobno(hass: HomeAssistant) -> None:
+    """„Konfiguruj”: kliknięcie w pasek (idz_do) od razu na wybrany krok, „Dalej” zapisuje.
+    Opcja „osobno” w kroku „Okno” trafia do karty i wygrywa ze starym ustawieniem karty."""
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    r, _ = await _przejdz(hass, {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"},
+                                 "panel": {"na_panel": "nie"}})
+    wpis = r["result"]
+    hass.config_entries.async_update_entry(wpis, options={**wpis.options, "karta": {"osobno": False, "kolor": "bialy",
+                                                                                     "przyciski": True}})
+    await hass.async_block_till_done()
+    r = await hass.config_entries.options.async_init(wpis.entry_id)
+    assert r["step_id"] == "tryb"
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {"tryb": "podstawowy", "idz_do": "okno"})
+    assert r["step_id"] == "okno" and r["last_step"], r
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {"skrzydla": "2", "wysokosc": 260,
+                                                                         "osobno": True, "idz_do": "kolory"})
+    assert r["step_id"] == "kolory"
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {"kolor": "czarny", "rama": "biala"})
+    assert r["type"] is FlowResultType.CREATE_ENTRY
+    await hass.async_block_till_done()
+    assert wpis.options["osobno"] is True and wpis.options["kolor"] == "czarny"
+    assert wpis.options["karta"] == {"przyciski": True}   # stara karta nie nadpisuje kreatora
+    okno = [s for s in hass.states.async_all("cover") if s.attributes.get("motor_ha")][0]
+    assert okno.attributes["motor_ha"]["osobno"] is True and okno.attributes["motor_ha"]["kolor"] == "czarny"
+
+
+async def test_dodawanie_pasek_tylko_wstecz(hass: HomeAssistant) -> None:
+    """Przy dodawaniu pasek przenosi tylko do już przejściowych kroków."""
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    r = await hass.config_entries.flow.async_init(DOMAIN, context={"source": config_entries.SOURCE_USER})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"tryb": "podstawowy"})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"mam": [], "idz_do": "silnik"})
+    assert r["step_id"] == "urzadzenie"
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"rolety": ROLETY, "rodzaj_pokoju": "salon",
+                                                                      "idz_do": "tryb"})
+    assert r["step_id"] == "tryb"

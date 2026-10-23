@@ -135,7 +135,8 @@
     "powiadom": "Notify me when",
     "powiadom_gdzie": "Also send to",
     "na_panel": "Add the card to a dashboard",
-    "wstecz": "Go back to the previous step"
+    "wstecz": "Go back to the previous step",
+    "osobno": "Two sashes controlled separately"
   },
   "pomoc": {
     "kopiuj_z": "Empty = start from scratch.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "A lux meter or solar power – instead of the sun position alone.",
     "czujnik_swieta": "Workday integration – holidays count as weekend.",
     "powiadom_gdzie": "The HA app on your phone. Nothing chosen – notifications in HA only.",
-    "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
+    "wstecz": "Turn on and click “Next” to go back one step. What you entered stays.",
+    "osobno": "The left shade's slider sits on the left of the window, the right one's on the right. Each moves only its own shade."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: the gate has been open for more than {minuty} min.",
     "brama_niedomknieta": "{nazwa}: the gate did not close.",
     "przeszkoda": "{nazwa}: something is in the gate (photocell).",
-    "nie_motor_ha": "This is not a Motor HA device."
+    "nie_motor_ha": "This is not a Motor HA device.",
+    "kalibracja_brak": "{nazwa}: calibration failed – no response from: {lista}. Check that shade's power and range, then try again.",
+    "kalibracja_od_razu": "{nazwa}: calibration could not measure the time – the motor reports the end right after it starts. Enter the travel time in the “Motor” step or add the motor speed entity there."
   },
   "uslugi": {
     "wstrzymaj": [

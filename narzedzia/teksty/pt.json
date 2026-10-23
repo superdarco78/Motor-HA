@@ -135,7 +135,8 @@
     "powiadom": "Avisar-me quando",
     "powiadom_gdzie": "Enviar também para",
     "na_panel": "Adicionar o cartão a um painel",
-    "wstecz": "Voltar ao passo anterior"
+    "wstecz": "Voltar ao passo anterior",
+    "osobno": "Duas folhas controladas separadamente"
   },
   "pomoc": {
     "kopiuj_z": "Vazio = começar do zero.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Um luxímetro ou a potência solar – em vez de só a posição do sol.",
     "czujnik_swieta": "Integração Workday – feriados contam como fim de semana.",
     "powiadom_gdzie": "A app HA no telemóvel. Nada escolhido – só notificações no HA.",
-    "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se."
+    "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se.",
+    "osobno": "O controle deslizante da cortina esquerda fica à esquerda da janela e o da direita à direita. Cada um move só a sua cortina."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: o portão está aberto há mais de {minuty} min.",
     "brama_niedomknieta": "{nazwa}: o portão não fechou.",
     "przeszkoda": "{nazwa}: há algo no portão (fotocélula).",
-    "nie_motor_ha": "Isto não é um dispositivo Motor HA."
+    "nie_motor_ha": "Isto não é um dispositivo Motor HA.",
+    "kalibracja_brak": "{nazwa}: a calibração falhou – sem resposta de: {lista}. Verifique a alimentação e o alcance dessa cortina e tente novamente.",
+    "kalibracja_od_razu": "{nazwa}: a calibração não conseguiu medir o tempo – o motor informa o fim logo após arrancar. Introduza o tempo de percurso no passo «Motor» ou adicione lá a entidade de velocidade do motor."
   },
   "uslugi": {
     "wstrzymaj": [

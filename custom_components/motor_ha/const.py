@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.1.6"
+VERSION = "2.1.7"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
@@ -67,8 +67,13 @@ CONF_KALIBRUJ = "kalibruj"
 CONF_KALIBRACJA_50 = "kalibracja_50"   # po udanej kalibracji osłona staje na 50 % (domyślnie nie)
 CONF_POGODA = "pogoda"
 CONF_ODWROC = "odwroc"
+CONF_OSOBNO = "osobno"   # dwa skrzydła sterowane osobno: suwak każdej osłony po jej stronie okna
 CONF_NA_PANEL = "na_panel"
 CONF_KARTA = "karta"            # ustawienia z edytora karty
+# klucze karty, które ustawia też kreator: po „Dalej”/„Zapisz” w kreatorze liczy się kreator, nie stara karta
+KARTA_Z_KREATORA = ("oslona", "kolor", "rama", "wysokosc", "skrzydla", "czas", "pogoda", "tryb_lewe", "tryb_prawe",
+                    "czujnik_lewe", "czujnik_prawe", "predkosc_lewa", "predkosc_prawa", "odwroc", "osobno",
+                    "roleta_lewa", "roleta_prawa", "rodzaj_pokoju", "foto_stan", "przeszkoda")
 
 TRYBY_SKRZYDLA = ["uchyl", "otworz"]
 POKOJE = ["salon", "sypialnia", "kuchnia", "dziecko", "gabinet", "lazienka", "jadalnia", "przedpokoj", "inny"]

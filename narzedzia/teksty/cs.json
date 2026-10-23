@@ -135,7 +135,8 @@
     "powiadom": "Upozornit mě, když",
     "powiadom_gdzie": "Poslat také na",
     "na_panel": "Přidat kartu na panel",
-    "wstecz": "Zpět na předchozí krok"
+    "wstecz": "Zpět na předchozí krok",
+    "osobno": "Dvě křídla ovládaná zvlášť"
   },
   "pomoc": {
     "kopiuj_z": "Prázdné = začít od nuly.",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "Luxmetr nebo výkon fotovoltaiky – místo samotné polohy slunce.",
     "czujnik_swieta": "Integrace Workday – svátky se počítají jako víkend.",
     "powiadom_gdzie": "Aplikace HA v telefonu. Nic nevybráno – jen oznámení v HA.",
-    "wstecz": "Zapněte a klikněte na „Další“, abyste se vrátili o krok. Zadané údaje zůstanou."
+    "wstecz": "Zapněte a klikněte na „Další“, abyste se vrátili o krok. Zadané údaje zůstanou.",
+    "osobno": "Posuvník levé clony je vlevo od okna, pravé vpravo. Každý ovládá jen svou clonu."
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}: brána je otevřená déle než {minuty} min.",
     "brama_niedomknieta": "{nazwa}: brána se nezavřela.",
     "przeszkoda": "{nazwa}: v bráně něco stojí (fotobuňka).",
-    "nie_motor_ha": "Toto není zařízení Motor HA."
+    "nie_motor_ha": "Toto není zařízení Motor HA.",
+    "kalibracja_brak": "{nazwa}: kalibrace se nepovedla – neodpovídá: {lista}. Zkontrolujte napájení a dosah této clony a zkuste to znovu.",
+    "kalibracja_od_razu": "{nazwa}: kalibrace nezměřila čas – motor hlásí konec hned po rozjezdu. Zadejte dobu jízdy v kroku „Motor“ nebo tam přidejte entitu rychlosti motoru."
   },
   "uslugi": {
     "wstrzymaj": [

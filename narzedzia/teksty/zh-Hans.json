@@ -135,7 +135,8 @@
     "powiadom": "在以下情况通知我",
     "powiadom_gdzie": "同时发送到",
     "na_panel": "将卡片添加到仪表盘",
-    "wstecz": "返回上一步"
+    "wstecz": "返回上一步",
+    "osobno": "两扇窗分别控制"
   },
   "pomoc": {
     "kopiuj_z": "留空 = 从头开始。",
@@ -150,7 +151,8 @@
     "czujnik_jasnosc": "照度计或太阳能板功率 – 不只看太阳位置。",
     "czujnik_swieta": "Workday 集成 – 节假日按休息日处理。",
     "powiadom_gdzie": "手机上的 HA 应用。不选 = 仅 HA 通知。",
-    "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
+    "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。",
+    "osobno": "左侧遮阳的滑块在窗户左边，右侧的在右边。每个滑块只控制自己的遮阳。"
   },
   "f": {
     "harmonogram": [
@@ -594,7 +596,9 @@
     "brama_otwarta": "{nazwa}:大门已开启超过 {minuty} 分钟。",
     "brama_niedomknieta": "{nazwa}:大门未关闭。",
     "przeszkoda": "{nazwa}:大门处有东西(光电传感器)。",
-    "nie_motor_ha": "这不是 Motor HA 设备。"
+    "nie_motor_ha": "这不是 Motor HA 设备。",
+    "kalibracja_brak": "{nazwa}：校准失败 – 无响应：{lista}。请检查该遮阳的电源和信号范围，然后重试。",
+    "kalibracja_od_razu": "{nazwa}：校准无法测量时间 – 电机一启动就报告结束。请在“电机”步骤中输入行程时间，或在那里添加电机速度实体。"
   },
   "uslugi": {
     "wstrzymaj": [

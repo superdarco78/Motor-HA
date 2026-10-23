@@ -50,7 +50,7 @@ setTimeout(() => {   // HA pokazuje stronę urządzenia dopiero po wczytaniu dan
 </script><script type="module" src="/motor_ha/motor-ha.js"></script></body></html>`;
 
 let przegladarka;
-before(async () => { przegladarka = await chromium.launch(); });
+before(async () => { przegladarka = await chromium.launch(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {}); });
 after(async () => { await przegladarka?.close(); });
 
 async function otworz(ustawienia, urzadzenie, { opoznienie = 1500, kolumny = 1 } = {}) {

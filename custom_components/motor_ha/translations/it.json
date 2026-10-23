@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Passo {nr} di {z}: Modalità della procedura",
-        "description": "{pasek}\n\n**Cosa:** Scegli quante domande vuoi vedere.\n\n**Perché:** La base basta ai più. L'avanzata mostra tutte le opzioni e i dispositivi extra. Puoi cambiare modalità più tardi in «Configura».{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli quante domande vuoi vedere.\n\n**Perché:** La base basta ai più. L'avanzata mostra tutte le opzioni e i dispositivi extra. Puoi cambiare modalità più tardi in «Configura».{porada}{galeria}",
         "data": {
           "tryb": "Modalità",
           "kopiuj_z": "Copia impostazioni da un altro dispositivo",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Passo {nr} di {z}: Cosa hai in casa",
-        "description": "{pasek}\n\n**Cosa:** Spunta ciò che hai. La procedura ha cercato in Home Assistant e spuntato ciò che ha trovato.\n\n**Perché:** La procedura mostra solo passi e funzioni dei dispositivi spuntati. Il resto lo aggiungi dopo in «Configura».\n\nTrovato: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Cosa:** Spunta ciò che hai. La procedura ha cercato in Home Assistant e spuntato ciò che ha trovato.\n\n**Perché:** La procedura mostra solo passi e funzioni dei dispositivi spuntati. Il resto lo aggiungi dopo in «Configura».\n\nTrovato: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "In casa ho",
           "wstecz": "Torna al passo precedente"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} di {z}: Dispositivo",
-        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore. Parla con Assist usando il nome del dispositivo, ad es. «chiudi Plissé cucina».{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore. Parla con Assist usando il nome del dispositivo, ad es. «chiudi Plissé cucina».{porada}{galeria}",
         "data": {
           "rolety": "Motore (una o due entità)",
           "name": "Nome",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Passo {nr} di {z}: Tipo",
-        "description": "{pasek}\n\n**Cosa:** Scegli esattamente ciò che hai.\n\n**Perché:** La scheda disegna questo dispositivo e l'automazione sa cosa può usare.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli esattamente ciò che hai.\n\n**Perché:** La scheda disegna questo dispositivo e l'automazione sa cosa può usare.{porada}{galeria}",
         "data": {
           "oslona": "Tipo",
           "wstecz": "Torna al passo precedente"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Passo {nr} di {z}: Lamelle",
-        "description": "{pasek}\n\n**Cosa:** Imposta l'orientamento delle lamelle.\n\n**Perché:** Fai entrare luce senza alzare la veneziana.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Imposta l'orientamento delle lamelle.\n\n**Perché:** Fai entrare luce senza alzare la veneziana.{porada}{galeria}",
         "data": {
           "lamele_kat": "Angolo lamelle al sole",
           "lamele_tryb": "Comando lamelle",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Passo {nr} di {z}: Colori",
-        "description": "{pasek}\n\n**Cosa:** Scegli il colore della schermatura e del telaio.\n\n**Perché:** La finestra sullo schermo sembra quella vera.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il colore della schermatura e del telaio.\n\n**Perché:** La finestra sullo schermo sembra quella vera.{porada}{galeria}",
         "data": {
           "kolor": "Colore schermatura",
           "rama": "Colore telaio",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Passo {nr} di {z}: Finestra",
-        "description": "{pasek}\n\n**Cosa:** Quante ante ha la finestra e quanto è grande nella scheda.\n\n**Perché:** Ogni anta può avere il suo motore.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Quante ante ha la finestra e quanto è grande nella scheda.\n\n**Perché:** Ogni anta può avere il suo motore.{porada}{galeria}",
         "data": {
           "skrzydla": "Ante",
           "wysokosc": "Altezza nella scheda",
+          "osobno": "Due ante comandate separatamente",
           "odwroc": "Percentuali invertite",
           "wstecz": "Torna al passo precedente"
         },
         "data_description": {
+          "osobno": "Il cursore della tenda sinistra sta a sinistra della finestra, quello della destra a destra. Ognuno muove solo la sua tenda.",
           "odwroc": "Attiva se il motore segnala 100 % con la schermatura chiusa.",
           "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
         }
       },
       "czujniki": {
         "title": "Passo {nr} di {z}: Sensori",
-        "description": "{pasek}\n\n**Cosa:** Scegli i sensori di apertura di finestra e porta.\n\n**Perché:** La scheda mostra un'anta a ribalta o aperta, e il blocco non abbassa mai la schermatura su una finestra aperta.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli i sensori di apertura di finestra e porta.\n\n**Perché:** La scheda mostra un'anta a ribalta o aperta, e il blocco non abbassa mai la schermatura su una finestra aperta.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensore anta sinistra",
           "tryb_lewe": "Anta sinistra",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Passo {nr} di {z}: Fotocellula",
-        "description": "{pasek}\n\n**Cosa:** Scegli il sensore di ostacolo del cancello e lo stato che significa «c'è qualcosa nel cancello».\n\n**Perché:** La scheda mostra l'ostacolo e ricevi una notifica. La fotocellula della centralina continua a fermare il cancello da sola.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il sensore di ostacolo del cancello e lo stato che significa «c'è qualcosa nel cancello».\n\n**Perché:** La scheda mostra l'ostacolo e ricevi una notifica. La fotocellula della centralina continua a fermare il cancello da sola.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotocellula (sensore ostacolo)",
           "foto_stan": "Ostacolo quando il sensore ha lo stato",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Passo {nr} di {z}: Motore",
-        "description": "{pasek}\n\n**Cosa:** Inserisci il tempo di corsa completa o lascia 0.\n\n**Perché:** Il disegno si muove veloce come il motore vero. Con 0 la scheda impara il tempo da sola dopo qualche movimento.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Inserisci il tempo di corsa completa o lascia 0.\n\n**Perché:** Il disegno si muove veloce come il motore vero. Con 0 la scheda impara il tempo da sola dopo qualche movimento.{porada}{galeria}",
         "data": {
           "czas": "Tempo di corsa completa",
           "kalibruj": "Calibra ora (la schermatura sale, scende e sale)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Passo {nr} di {z}: Meteo",
-        "description": "{pasek}\n\n**Cosa:** Scegli il meteo e i sensori esterni.\n\n**Perché:** Dietro il vetro si vede il meteo reale, e l'automazione protegge la schermatura da vento, pioggia e sole.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il meteo e i sensori esterni.\n\n**Perché:** Dietro il vetro si vede il meteo reale, e l'automazione protegge la schermatura da vento, pioggia e sole.{porada}{galeria}",
         "data": {
           "pogoda": "Meteo",
           "czujnik_temp": "Temperatura esterna",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Passo {nr} di {z}: Abitanti",
-        "description": "{pasek}\n\n**Cosa:** Scegli sensori di presenza, movimento e degli abitanti.\n\n**Perché:** La schermatura può reagire se qualcuno è nella stanza o in casa.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli sensori di presenza, movimento e degli abitanti.\n\n**Perché:** La schermatura può reagire se qualcuno è nella stanza o in casa.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Sensore di presenza (c'è qualcuno)",
           "czujnik_ruch": "Sensore di movimento (qualcuno è entrato)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Passo {nr} di {z}: Automazione",
-        "description": "{pasek}\n\n**Cosa:** Attiva le funzioni che possono muovere la schermatura da sole.\n\n**Perché:** La casa si occupa delle schermature senza scrivere automazioni. È tutto spento finché non lo attivi.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Attiva le funzioni che possono muovere la schermatura da sole.\n\n**Perché:** La casa si occupa delle schermature senza scrivere automazioni. È tutto spento finché non lo attivi.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Programma",
           "f_slonce": "Protezione solare",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Passo {nr} di {z}: Impostazioni",
-        "description": "{pasek}\n\n**Cosa:** Regola le funzioni attive.\n\n**Perché:** I valori predefiniti vanno bene per la maggior parte delle case.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Regola le funzioni attive.\n\n**Perché:** I valori predefiniti vanno bene per la maggior parte delle case.{porada}{galeria}",
         "data": {
           "azymut": "Orientamento della finestra",
           "szer_slonca": "Ampiezza del sole nella finestra",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Passo {nr} di {z}: Notifiche",
-        "description": "{pasek}\n\n**Cosa:** Scegli di cosa essere avvisato.\n\n**Perché:** Sai subito quale dispositivo ha un problema. Le notifiche arrivano in HA e, se vuoi, sul telefono.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli di cosa essere avvisato.\n\n**Perché:** Sai subito quale dispositivo ha un problema. Le notifiche arrivano in HA e, se vuoi, sul telefono.{porada}{galeria}",
         "data": {
           "powiadom": "Avvisami quando",
           "powiadom_gdzie": "Invia anche a",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Passo {nr} di {z}: Plancia",
-        "description": "{pasek}\n\n**Cosa:** Su quale plancia aggiungere la scheda.\n\n**Perché:** La scheda compare da sola, niente da cliccare.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Su quale plancia aggiungere la scheda.\n\n**Perché:** La scheda compare da sola, niente da cliccare.{porada}{galeria}",
         "data": {
           "na_panel": "Aggiungi la scheda a una plancia",
           "wstecz": "Torna al passo precedente"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Passo {nr} di {z}: Modalità della procedura",
-        "description": "{pasek}\n\n**Cosa:** Scegli quante domande vuoi vedere.\n\n**Perché:** La base basta ai più. L'avanzata mostra tutte le opzioni e i dispositivi extra. Puoi cambiare modalità più tardi in «Configura».{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli quante domande vuoi vedere.\n\n**Perché:** La base basta ai più. L'avanzata mostra tutte le opzioni e i dispositivi extra. Puoi cambiare modalità più tardi in «Configura».{porada}{galeria}",
         "data": {
           "tryb": "Modalità",
           "kopiuj_z": "Copia impostazioni da un altro dispositivo",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Passo {nr} di {z}: Cosa hai in casa",
-        "description": "{pasek}\n\n**Cosa:** Spunta ciò che hai. La procedura ha cercato in Home Assistant e spuntato ciò che ha trovato.\n\n**Perché:** La procedura mostra solo passi e funzioni dei dispositivi spuntati. Il resto lo aggiungi dopo in «Configura».\n\nTrovato: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Cosa:** Spunta ciò che hai. La procedura ha cercato in Home Assistant e spuntato ciò che ha trovato.\n\n**Perché:** La procedura mostra solo passi e funzioni dei dispositivi spuntati. Il resto lo aggiungi dopo in «Configura».\n\nTrovato: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "In casa ho",
           "wstecz": "Torna al passo precedente"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} di {z}: Dispositivo",
-        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore. Parla con Assist usando il nome del dispositivo, ad es. «chiudi Plissé cucina».{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore. Parla con Assist usando il nome del dispositivo, ad es. «chiudi Plissé cucina».{porada}{galeria}",
         "data": {
           "rolety": "Motore (una o due entità)",
           "name": "Nome",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Passo {nr} di {z}: Tipo",
-        "description": "{pasek}\n\n**Cosa:** Scegli esattamente ciò che hai.\n\n**Perché:** La scheda disegna questo dispositivo e l'automazione sa cosa può usare.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli esattamente ciò che hai.\n\n**Perché:** La scheda disegna questo dispositivo e l'automazione sa cosa può usare.{porada}{galeria}",
         "data": {
           "oslona": "Tipo",
           "wstecz": "Torna al passo precedente"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Passo {nr} di {z}: Lamelle",
-        "description": "{pasek}\n\n**Cosa:** Imposta l'orientamento delle lamelle.\n\n**Perché:** Fai entrare luce senza alzare la veneziana.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Imposta l'orientamento delle lamelle.\n\n**Perché:** Fai entrare luce senza alzare la veneziana.{porada}{galeria}",
         "data": {
           "lamele_kat": "Angolo lamelle al sole",
           "lamele_tryb": "Comando lamelle",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Passo {nr} di {z}: Colori",
-        "description": "{pasek}\n\n**Cosa:** Scegli il colore della schermatura e del telaio.\n\n**Perché:** La finestra sullo schermo sembra quella vera.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il colore della schermatura e del telaio.\n\n**Perché:** La finestra sullo schermo sembra quella vera.{porada}{galeria}",
         "data": {
           "kolor": "Colore schermatura",
           "rama": "Colore telaio",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Passo {nr} di {z}: Finestra",
-        "description": "{pasek}\n\n**Cosa:** Quante ante ha la finestra e quanto è grande nella scheda.\n\n**Perché:** Ogni anta può avere il suo motore.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Quante ante ha la finestra e quanto è grande nella scheda.\n\n**Perché:** Ogni anta può avere il suo motore.{porada}{galeria}",
         "data": {
           "skrzydla": "Ante",
           "wysokosc": "Altezza nella scheda",
+          "osobno": "Due ante comandate separatamente",
           "odwroc": "Percentuali invertite",
           "wstecz": "Torna al passo precedente"
         },
         "data_description": {
+          "osobno": "Il cursore della tenda sinistra sta a sinistra della finestra, quello della destra a destra. Ognuno muove solo la sua tenda.",
           "odwroc": "Attiva se il motore segnala 100 % con la schermatura chiusa.",
           "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
         }
       },
       "czujniki": {
         "title": "Passo {nr} di {z}: Sensori",
-        "description": "{pasek}\n\n**Cosa:** Scegli i sensori di apertura di finestra e porta.\n\n**Perché:** La scheda mostra un'anta a ribalta o aperta, e il blocco non abbassa mai la schermatura su una finestra aperta.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli i sensori di apertura di finestra e porta.\n\n**Perché:** La scheda mostra un'anta a ribalta o aperta, e il blocco non abbassa mai la schermatura su una finestra aperta.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensore anta sinistra",
           "tryb_lewe": "Anta sinistra",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Passo {nr} di {z}: Fotocellula",
-        "description": "{pasek}\n\n**Cosa:** Scegli il sensore di ostacolo del cancello e lo stato che significa «c'è qualcosa nel cancello».\n\n**Perché:** La scheda mostra l'ostacolo e ricevi una notifica. La fotocellula della centralina continua a fermare il cancello da sola.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il sensore di ostacolo del cancello e lo stato che significa «c'è qualcosa nel cancello».\n\n**Perché:** La scheda mostra l'ostacolo e ricevi una notifica. La fotocellula della centralina continua a fermare il cancello da sola.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Fotocellula (sensore ostacolo)",
           "foto_stan": "Ostacolo quando il sensore ha lo stato",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Passo {nr} di {z}: Motore",
-        "description": "{pasek}\n\n**Cosa:** Inserisci il tempo di corsa completa o lascia 0.\n\n**Perché:** Il disegno si muove veloce come il motore vero. Con 0 la scheda impara il tempo da sola dopo qualche movimento.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Inserisci il tempo di corsa completa o lascia 0.\n\n**Perché:** Il disegno si muove veloce come il motore vero. Con 0 la scheda impara il tempo da sola dopo qualche movimento.{porada}{galeria}",
         "data": {
           "czas": "Tempo di corsa completa",
           "kalibruj": "Calibra ora (la schermatura sale, scende e sale)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Passo {nr} di {z}: Meteo",
-        "description": "{pasek}\n\n**Cosa:** Scegli il meteo e i sensori esterni.\n\n**Perché:** Dietro il vetro si vede il meteo reale, e l'automazione protegge la schermatura da vento, pioggia e sole.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il meteo e i sensori esterni.\n\n**Perché:** Dietro il vetro si vede il meteo reale, e l'automazione protegge la schermatura da vento, pioggia e sole.{porada}{galeria}",
         "data": {
           "pogoda": "Meteo",
           "czujnik_temp": "Temperatura esterna",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Passo {nr} di {z}: Abitanti",
-        "description": "{pasek}\n\n**Cosa:** Scegli sensori di presenza, movimento e degli abitanti.\n\n**Perché:** La schermatura può reagire se qualcuno è nella stanza o in casa.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli sensori di presenza, movimento e degli abitanti.\n\n**Perché:** La schermatura può reagire se qualcuno è nella stanza o in casa.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Sensore di presenza (c'è qualcuno)",
           "czujnik_ruch": "Sensore di movimento (qualcuno è entrato)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Passo {nr} di {z}: Automazione",
-        "description": "{pasek}\n\n**Cosa:** Attiva le funzioni che possono muovere la schermatura da sole.\n\n**Perché:** La casa si occupa delle schermature senza scrivere automazioni. È tutto spento finché non lo attivi.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Attiva le funzioni che possono muovere la schermatura da sole.\n\n**Perché:** La casa si occupa delle schermature senza scrivere automazioni. È tutto spento finché non lo attivi.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Programma",
           "f_slonce": "Protezione solare",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Passo {nr} di {z}: Impostazioni",
-        "description": "{pasek}\n\n**Cosa:** Regola le funzioni attive.\n\n**Perché:** I valori predefiniti vanno bene per la maggior parte delle case.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Regola le funzioni attive.\n\n**Perché:** I valori predefiniti vanno bene per la maggior parte delle case.{porada}{galeria}",
         "data": {
           "azymut": "Orientamento della finestra",
           "szer_slonca": "Ampiezza del sole nella finestra",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Passo {nr} di {z}: Notifiche",
-        "description": "{pasek}\n\n**Cosa:** Scegli di cosa essere avvisato.\n\n**Perché:** Sai subito quale dispositivo ha un problema. Le notifiche arrivano in HA e, se vuoi, sul telefono.{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli di cosa essere avvisato.\n\n**Perché:** Sai subito quale dispositivo ha un problema. Le notifiche arrivano in HA e, se vuoi, sul telefono.{porada}{galeria}",
         "data": {
           "powiadom": "Avvisami quando",
           "powiadom_gdzie": "Invia anche a",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "Questo non è un dispositivo Motor HA."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa}: calibrazione non riuscita – non risponde: {lista}. Controlla alimentazione e portata di quella tenda e riprova."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa}: la calibrazione non ha misurato il tempo – il motore segnala la fine subito dopo la partenza. Inserisci il tempo di corsa nel passo «Motore» o aggiungi lì l’entità della velocità del motore."
     },
     "powod_brak": {
       "message": "Nessuna automazione"

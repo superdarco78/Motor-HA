@@ -4,7 +4,7 @@
     "step": {
       "tryb": {
         "title": "Schritt {nr} von {z}: Assistent-Modus",
-        "description": "{pasek}\n\n**Was:** Wähle, wie viele Fragen du sehen möchtest.\n\n**Wozu:** Einfach reicht den meisten. Erweitert zeigt alle Optionen und Zusatzgeräte. Den Modus änderst du später unter „Konfigurieren“.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle, wie viele Fragen du sehen möchtest.\n\n**Wozu:** Einfach reicht den meisten. Erweitert zeigt alle Optionen und Zusatzgeräte. Den Modus änderst du später unter „Konfigurieren“.{porada}{galeria}",
         "data": {
           "tryb": "Modus",
           "kopiuj_z": "Einstellungen von einem anderen Gerät kopieren",
@@ -17,7 +17,7 @@
       },
       "mam": {
         "title": "Schritt {nr} von {z}: Was du zu Hause hast",
-        "description": "{pasek}\n\n**Was:** Hake an, was du hast. Der Assistent hat Home Assistant durchsucht und Gefundenes angehakt.\n\n**Wozu:** Der Assistent zeigt nur Schritte und Funktionen für angehakte Geräte. Den Rest fügst du später unter „Konfigurieren“ hinzu.\n\nGefunden: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Was:** Hake an, was du hast. Der Assistent hat Home Assistant durchsucht und Gefundenes angehakt.\n\n**Wozu:** Der Assistent zeigt nur Schritte und Funktionen für angehakte Geräte. Den Rest fügst du später unter „Konfigurieren“ hinzu.\n\nGefunden: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Ich habe zu Hause",
           "wstecz": "Zurück zum vorigen Schritt"
@@ -28,7 +28,7 @@
       },
       "urzadzenie": {
         "title": "Schritt {nr} von {z}: Gerät",
-        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor. Sprich mit Assist über den Gerätenamen, z. B. „schließe Plissee Küche“.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor. Sprich mit Assist über den Gerätenamen, z. B. „schließe Plissee Küche“.{porada}{galeria}",
         "data": {
           "rolety": "Motor (eine oder zwei Entitäten)",
           "name": "Name",
@@ -47,7 +47,7 @@
       },
       "rodzaj": {
         "title": "Schritt {nr} von {z}: Art",
-        "description": "{pasek}\n\n**Was:** Wähle genau, was du hast.\n\n**Wozu:** Die Karte zeichnet dieses Gerät, und die Automatik weiß, was sie nutzen kann.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle genau, was du hast.\n\n**Wozu:** Die Karte zeichnet dieses Gerät, und die Automatik weiß, was sie nutzen kann.{porada}{galeria}",
         "data": {
           "oslona": "Art",
           "wstecz": "Zurück zum vorigen Schritt"
@@ -58,7 +58,7 @@
       },
       "lamele": {
         "title": "Schritt {nr} von {z}: Lamellen",
-        "description": "{pasek}\n\n**Was:** Stelle das Wenden der Lamellen ein.\n\n**Wozu:** Du lässt Licht herein, ohne die Jalousie hochzufahren.{porada}",
+        "description": "{pasek}\n\n**Was:** Stelle das Wenden der Lamellen ein.\n\n**Wozu:** Du lässt Licht herein, ohne die Jalousie hochzufahren.{porada}{galeria}",
         "data": {
           "lamele_kat": "Lamellenwinkel bei Sonne",
           "lamele_tryb": "Lamellensteuerung",
@@ -71,7 +71,7 @@
       },
       "kolory": {
         "title": "Schritt {nr} von {z}: Farben",
-        "description": "{pasek}\n\n**Was:** Wähle die Farbe von Behang und Rahmen.\n\n**Wozu:** Das Fenster auf dem Bildschirm sieht aus wie das echte.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle die Farbe von Behang und Rahmen.\n\n**Wozu:** Das Fenster auf dem Bildschirm sieht aus wie das echte.{porada}{galeria}",
         "data": {
           "kolor": "Behangfarbe",
           "rama": "Rahmenfarbe",
@@ -85,21 +85,23 @@
       },
       "okno": {
         "title": "Schritt {nr} von {z}: Fenster",
-        "description": "{pasek}\n\n**Was:** Wie viele Flügel das Fenster hat und wie groß es auf der Karte ist.\n\n**Wozu:** Jeder Flügel kann einen eigenen Motor haben.{porada}",
+        "description": "{pasek}\n\n**Was:** Wie viele Flügel das Fenster hat und wie groß es auf der Karte ist.\n\n**Wozu:** Jeder Flügel kann einen eigenen Motor haben.{porada}{galeria}",
         "data": {
           "skrzydla": "Flügel",
           "wysokosc": "Höhe auf der Karte",
+          "osobno": "Zwei Flügel getrennt steuern",
           "odwroc": "Umgekehrte Prozente",
           "wstecz": "Zurück zum vorigen Schritt"
         },
         "data_description": {
+          "osobno": "Der Schieberegler des linken Behangs steht links vom Fenster, der des rechten rechts. Jeder bewegt nur seinen Behang.",
           "odwroc": "Einschalten, wenn der Motor bei geschlossenem Behang 100 % meldet.",
           "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
         }
       },
       "czujniki": {
         "title": "Schritt {nr} von {z}: Sensoren",
-        "description": "{pasek}\n\n**Was:** Wähle die Öffnungssensoren von Fenster und Tür.\n\n**Wozu:** Die Karte zeigt einen gekippten oder offenen Flügel, und die Sperre fährt den Behang nie auf ein offenes Fenster.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle die Öffnungssensoren von Fenster und Tür.\n\n**Wozu:** Die Karte zeigt einen gekippten oder offenen Flügel, und die Sperre fährt den Behang nie auf ein offenes Fenster.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensor linker Flügel",
           "tryb_lewe": "Linker Flügel",
@@ -115,7 +117,7 @@
       },
       "fotokomorka": {
         "title": "Schritt {nr} von {z}: Lichtschranke",
-        "description": "{pasek}\n\n**Was:** Wähle den Hindernissensor des Tors und den Zustand, der „etwas steht im Tor“ bedeutet.\n\n**Wozu:** Die Karte zeigt das Hindernis und du bekommst eine Benachrichtigung. Die Lichtschranke in der Steuerung stoppt das Tor weiterhin selbst.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle den Hindernissensor des Tors und den Zustand, der „etwas steht im Tor“ bedeutet.\n\n**Wozu:** Die Karte zeigt das Hindernis und du bekommst eine Benachrichtigung. Die Lichtschranke in der Steuerung stoppt das Tor weiterhin selbst.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Lichtschranke (Hindernissensor)",
           "foto_stan": "Hindernis, wenn der Sensor den Zustand hat",
@@ -128,7 +130,7 @@
       },
       "silnik": {
         "title": "Schritt {nr} von {z}: Motor",
-        "description": "{pasek}\n\n**Was:** Gib die volle Fahrzeit ein oder lass 0.\n\n**Wozu:** Die Zeichnung fährt so schnell wie der echte Motor. Bei 0 lernt die Karte die Zeit nach ein paar Fahrten selbst.{porada}",
+        "description": "{pasek}\n\n**Was:** Gib die volle Fahrzeit ein oder lass 0.\n\n**Wozu:** Die Zeichnung fährt so schnell wie der echte Motor. Bei 0 lernt die Karte die Zeit nach ein paar Fahrten selbst.{porada}{galeria}",
         "data": {
           "czas": "Volle Fahrzeit",
           "kalibruj": "Jetzt kalibrieren (Behang fährt hoch, runter und hoch)",
@@ -146,7 +148,7 @@
       },
       "pogoda": {
         "title": "Schritt {nr} von {z}: Wetter",
-        "description": "{pasek}\n\n**Was:** Wähle Wetter und Außensensoren.\n\n**Wozu:** Hinter dem Glas siehst du das echte Wetter, und die Automatik schützt den Behang vor Wind, Regen und Sonne.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle Wetter und Außensensoren.\n\n**Wozu:** Hinter dem Glas siehst du das echte Wetter, und die Automatik schützt den Behang vor Wind, Regen und Sonne.{porada}{galeria}",
         "data": {
           "pogoda": "Wetter",
           "czujnik_temp": "Außentemperatur",
@@ -165,7 +167,7 @@
       },
       "domownicy": {
         "title": "Schritt {nr} von {z}: Bewohner",
-        "description": "{pasek}\n\n**Was:** Wähle Präsenz-, Bewegungs- und Bewohnersensoren.\n\n**Wozu:** Der Behang kann darauf reagieren, ob jemand im Raum oder zu Hause ist.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle Präsenz-, Bewegungs- und Bewohnersensoren.\n\n**Wozu:** Der Behang kann darauf reagieren, ob jemand im Raum oder zu Hause ist.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Präsenzsensor (jemand ist da)",
           "czujnik_ruch": "Bewegungsmelder (jemand kam herein)",
@@ -182,7 +184,7 @@
       },
       "automatyka": {
         "title": "Schritt {nr} von {z}: Automatik",
-        "description": "{pasek}\n\n**Was:** Schalte die Funktionen ein, die den Behang selbst bewegen dürfen.\n\n**Wozu:** Dein Zuhause kümmert sich um die Behänge, ohne Automationen zu schreiben. Alles ist aus, bis du es einschaltest.{porada}",
+        "description": "{pasek}\n\n**Was:** Schalte die Funktionen ein, die den Behang selbst bewegen dürfen.\n\n**Wozu:** Dein Zuhause kümmert sich um die Behänge, ohne Automationen zu schreiben. Alles ist aus, bis du es einschaltest.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Zeitplan",
           "f_slonce": "Sonnenschutz",
@@ -254,7 +256,7 @@
       },
       "ustawienia": {
         "title": "Schritt {nr} von {z}: Einstellungen",
-        "description": "{pasek}\n\n**Was:** Passe die eingeschalteten Funktionen an.\n\n**Wozu:** Die Standardwerte passen für die meisten Häuser.{porada}",
+        "description": "{pasek}\n\n**Was:** Passe die eingeschalteten Funktionen an.\n\n**Wozu:** Die Standardwerte passen für die meisten Häuser.{porada}{galeria}",
         "data": {
           "azymut": "Fensterrichtung",
           "szer_slonca": "Sonnenbreite im Fenster",
@@ -308,7 +310,7 @@
       },
       "powiadomienia": {
         "title": "Schritt {nr} von {z}: Benachrichtigungen",
-        "description": "{pasek}\n\n**Was:** Wähle, worüber du informiert werden willst.\n\n**Wozu:** Du weißt sofort, welches Gerät ein Problem hat. Benachrichtigungen gehen an HA und auf Wunsch aufs Handy.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle, worüber du informiert werden willst.\n\n**Wozu:** Du weißt sofort, welches Gerät ein Problem hat. Benachrichtigungen gehen an HA und auf Wunsch aufs Handy.{porada}{galeria}",
         "data": {
           "powiadom": "Benachrichtige mich, wenn",
           "powiadom_gdzie": "Auch senden an",
@@ -321,7 +323,7 @@
       },
       "panel": {
         "title": "Schritt {nr} von {z}: Dashboard",
-        "description": "{pasek}\n\n**Was:** Auf welches Dashboard die Karte kommt.\n\n**Wozu:** Die Karte erscheint von selbst, du musst nichts klicken.{porada}",
+        "description": "{pasek}\n\n**Was:** Auf welches Dashboard die Karte kommt.\n\n**Wozu:** Die Karte erscheint von selbst, du musst nichts klicken.{porada}{galeria}",
         "data": {
           "na_panel": "Karte zum Dashboard hinzufügen",
           "wstecz": "Zurück zum vorigen Schritt"
@@ -340,7 +342,7 @@
     "step": {
       "tryb": {
         "title": "Schritt {nr} von {z}: Assistent-Modus",
-        "description": "{pasek}\n\n**Was:** Wähle, wie viele Fragen du sehen möchtest.\n\n**Wozu:** Einfach reicht den meisten. Erweitert zeigt alle Optionen und Zusatzgeräte. Den Modus änderst du später unter „Konfigurieren“.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle, wie viele Fragen du sehen möchtest.\n\n**Wozu:** Einfach reicht den meisten. Erweitert zeigt alle Optionen und Zusatzgeräte. Den Modus änderst du später unter „Konfigurieren“.{porada}{galeria}",
         "data": {
           "tryb": "Modus",
           "kopiuj_z": "Einstellungen von einem anderen Gerät kopieren",
@@ -353,7 +355,7 @@
       },
       "mam": {
         "title": "Schritt {nr} von {z}: Was du zu Hause hast",
-        "description": "{pasek}\n\n**Was:** Hake an, was du hast. Der Assistent hat Home Assistant durchsucht und Gefundenes angehakt.\n\n**Wozu:** Der Assistent zeigt nur Schritte und Funktionen für angehakte Geräte. Den Rest fügst du später unter „Konfigurieren“ hinzu.\n\nGefunden: {znalezione}{porada}",
+        "description": "{pasek}\n\n**Was:** Hake an, was du hast. Der Assistent hat Home Assistant durchsucht und Gefundenes angehakt.\n\n**Wozu:** Der Assistent zeigt nur Schritte und Funktionen für angehakte Geräte. Den Rest fügst du später unter „Konfigurieren“ hinzu.\n\nGefunden: {znalezione}{porada}{galeria}",
         "data": {
           "mam": "Ich habe zu Hause",
           "wstecz": "Zurück zum vorigen Schritt"
@@ -364,7 +366,7 @@
       },
       "urzadzenie": {
         "title": "Schritt {nr} von {z}: Gerät",
-        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor. Sprich mit Assist über den Gerätenamen, z. B. „schließe Plissee Küche“.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor. Sprich mit Assist über den Gerätenamen, z. B. „schließe Plissee Küche“.{porada}{galeria}",
         "data": {
           "rolety": "Motor (eine oder zwei Entitäten)",
           "name": "Name",
@@ -383,7 +385,7 @@
       },
       "rodzaj": {
         "title": "Schritt {nr} von {z}: Art",
-        "description": "{pasek}\n\n**Was:** Wähle genau, was du hast.\n\n**Wozu:** Die Karte zeichnet dieses Gerät, und die Automatik weiß, was sie nutzen kann.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle genau, was du hast.\n\n**Wozu:** Die Karte zeichnet dieses Gerät, und die Automatik weiß, was sie nutzen kann.{porada}{galeria}",
         "data": {
           "oslona": "Art",
           "wstecz": "Zurück zum vorigen Schritt"
@@ -394,7 +396,7 @@
       },
       "lamele": {
         "title": "Schritt {nr} von {z}: Lamellen",
-        "description": "{pasek}\n\n**Was:** Stelle das Wenden der Lamellen ein.\n\n**Wozu:** Du lässt Licht herein, ohne die Jalousie hochzufahren.{porada}",
+        "description": "{pasek}\n\n**Was:** Stelle das Wenden der Lamellen ein.\n\n**Wozu:** Du lässt Licht herein, ohne die Jalousie hochzufahren.{porada}{galeria}",
         "data": {
           "lamele_kat": "Lamellenwinkel bei Sonne",
           "lamele_tryb": "Lamellensteuerung",
@@ -407,7 +409,7 @@
       },
       "kolory": {
         "title": "Schritt {nr} von {z}: Farben",
-        "description": "{pasek}\n\n**Was:** Wähle die Farbe von Behang und Rahmen.\n\n**Wozu:** Das Fenster auf dem Bildschirm sieht aus wie das echte.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle die Farbe von Behang und Rahmen.\n\n**Wozu:** Das Fenster auf dem Bildschirm sieht aus wie das echte.{porada}{galeria}",
         "data": {
           "kolor": "Behangfarbe",
           "rama": "Rahmenfarbe",
@@ -421,21 +423,23 @@
       },
       "okno": {
         "title": "Schritt {nr} von {z}: Fenster",
-        "description": "{pasek}\n\n**Was:** Wie viele Flügel das Fenster hat und wie groß es auf der Karte ist.\n\n**Wozu:** Jeder Flügel kann einen eigenen Motor haben.{porada}",
+        "description": "{pasek}\n\n**Was:** Wie viele Flügel das Fenster hat und wie groß es auf der Karte ist.\n\n**Wozu:** Jeder Flügel kann einen eigenen Motor haben.{porada}{galeria}",
         "data": {
           "skrzydla": "Flügel",
           "wysokosc": "Höhe auf der Karte",
+          "osobno": "Zwei Flügel getrennt steuern",
           "odwroc": "Umgekehrte Prozente",
           "wstecz": "Zurück zum vorigen Schritt"
         },
         "data_description": {
+          "osobno": "Der Schieberegler des linken Behangs steht links vom Fenster, der des rechten rechts. Jeder bewegt nur seinen Behang.",
           "odwroc": "Einschalten, wenn der Motor bei geschlossenem Behang 100 % meldet.",
           "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
         }
       },
       "czujniki": {
         "title": "Schritt {nr} von {z}: Sensoren",
-        "description": "{pasek}\n\n**Was:** Wähle die Öffnungssensoren von Fenster und Tür.\n\n**Wozu:** Die Karte zeigt einen gekippten oder offenen Flügel, und die Sperre fährt den Behang nie auf ein offenes Fenster.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle die Öffnungssensoren von Fenster und Tür.\n\n**Wozu:** Die Karte zeigt einen gekippten oder offenen Flügel, und die Sperre fährt den Behang nie auf ein offenes Fenster.{porada}{galeria}",
         "data": {
           "czujnik_lewe": "Sensor linker Flügel",
           "tryb_lewe": "Linker Flügel",
@@ -451,7 +455,7 @@
       },
       "fotokomorka": {
         "title": "Schritt {nr} von {z}: Lichtschranke",
-        "description": "{pasek}\n\n**Was:** Wähle den Hindernissensor des Tors und den Zustand, der „etwas steht im Tor“ bedeutet.\n\n**Wozu:** Die Karte zeigt das Hindernis und du bekommst eine Benachrichtigung. Die Lichtschranke in der Steuerung stoppt das Tor weiterhin selbst.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle den Hindernissensor des Tors und den Zustand, der „etwas steht im Tor“ bedeutet.\n\n**Wozu:** Die Karte zeigt das Hindernis und du bekommst eine Benachrichtigung. Die Lichtschranke in der Steuerung stoppt das Tor weiterhin selbst.{porada}{galeria}",
         "data": {
           "czujnik_foto": "Lichtschranke (Hindernissensor)",
           "foto_stan": "Hindernis, wenn der Sensor den Zustand hat",
@@ -464,7 +468,7 @@
       },
       "silnik": {
         "title": "Schritt {nr} von {z}: Motor",
-        "description": "{pasek}\n\n**Was:** Gib die volle Fahrzeit ein oder lass 0.\n\n**Wozu:** Die Zeichnung fährt so schnell wie der echte Motor. Bei 0 lernt die Karte die Zeit nach ein paar Fahrten selbst.{porada}",
+        "description": "{pasek}\n\n**Was:** Gib die volle Fahrzeit ein oder lass 0.\n\n**Wozu:** Die Zeichnung fährt so schnell wie der echte Motor. Bei 0 lernt die Karte die Zeit nach ein paar Fahrten selbst.{porada}{galeria}",
         "data": {
           "czas": "Volle Fahrzeit",
           "kalibruj": "Jetzt kalibrieren (Behang fährt hoch, runter und hoch)",
@@ -482,7 +486,7 @@
       },
       "pogoda": {
         "title": "Schritt {nr} von {z}: Wetter",
-        "description": "{pasek}\n\n**Was:** Wähle Wetter und Außensensoren.\n\n**Wozu:** Hinter dem Glas siehst du das echte Wetter, und die Automatik schützt den Behang vor Wind, Regen und Sonne.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle Wetter und Außensensoren.\n\n**Wozu:** Hinter dem Glas siehst du das echte Wetter, und die Automatik schützt den Behang vor Wind, Regen und Sonne.{porada}{galeria}",
         "data": {
           "pogoda": "Wetter",
           "czujnik_temp": "Außentemperatur",
@@ -501,7 +505,7 @@
       },
       "domownicy": {
         "title": "Schritt {nr} von {z}: Bewohner",
-        "description": "{pasek}\n\n**Was:** Wähle Präsenz-, Bewegungs- und Bewohnersensoren.\n\n**Wozu:** Der Behang kann darauf reagieren, ob jemand im Raum oder zu Hause ist.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle Präsenz-, Bewegungs- und Bewohnersensoren.\n\n**Wozu:** Der Behang kann darauf reagieren, ob jemand im Raum oder zu Hause ist.{porada}{galeria}",
         "data": {
           "czujnik_obecnosc": "Präsenzsensor (jemand ist da)",
           "czujnik_ruch": "Bewegungsmelder (jemand kam herein)",
@@ -518,7 +522,7 @@
       },
       "automatyka": {
         "title": "Schritt {nr} von {z}: Automatik",
-        "description": "{pasek}\n\n**Was:** Schalte die Funktionen ein, die den Behang selbst bewegen dürfen.\n\n**Wozu:** Dein Zuhause kümmert sich um die Behänge, ohne Automationen zu schreiben. Alles ist aus, bis du es einschaltest.{porada}",
+        "description": "{pasek}\n\n**Was:** Schalte die Funktionen ein, die den Behang selbst bewegen dürfen.\n\n**Wozu:** Dein Zuhause kümmert sich um die Behänge, ohne Automationen zu schreiben. Alles ist aus, bis du es einschaltest.{porada}{galeria}",
         "data": {
           "f_harmonogram": "Zeitplan",
           "f_slonce": "Sonnenschutz",
@@ -590,7 +594,7 @@
       },
       "ustawienia": {
         "title": "Schritt {nr} von {z}: Einstellungen",
-        "description": "{pasek}\n\n**Was:** Passe die eingeschalteten Funktionen an.\n\n**Wozu:** Die Standardwerte passen für die meisten Häuser.{porada}",
+        "description": "{pasek}\n\n**Was:** Passe die eingeschalteten Funktionen an.\n\n**Wozu:** Die Standardwerte passen für die meisten Häuser.{porada}{galeria}",
         "data": {
           "azymut": "Fensterrichtung",
           "szer_slonca": "Sonnenbreite im Fenster",
@@ -644,7 +648,7 @@
       },
       "powiadomienia": {
         "title": "Schritt {nr} von {z}: Benachrichtigungen",
-        "description": "{pasek}\n\n**Was:** Wähle, worüber du informiert werden willst.\n\n**Wozu:** Du weißt sofort, welches Gerät ein Problem hat. Benachrichtigungen gehen an HA und auf Wunsch aufs Handy.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle, worüber du informiert werden willst.\n\n**Wozu:** Du weißt sofort, welches Gerät ein Problem hat. Benachrichtigungen gehen an HA und auf Wunsch aufs Handy.{porada}{galeria}",
         "data": {
           "powiadom": "Benachrichtige mich, wenn",
           "powiadom_gdzie": "Auch senden an",
@@ -993,6 +997,12 @@
     },
     "nie_motor_ha": {
       "message": "Das ist kein Motor-HA-Gerät."
+    },
+    "kalibracja_brak": {
+      "message": "{nazwa}: Kalibrierung fehlgeschlagen – keine Antwort von: {lista}. Prüfe Stromversorgung und Reichweite dieses Behangs und versuche es erneut."
+    },
+    "kalibracja_od_razu": {
+      "message": "{nazwa}: Kalibrierung konnte die Zeit nicht messen – der Motor meldet das Ende direkt nach dem Start. Trage die Fahrzeit im Schritt „Motor“ ein oder füge dort die Motorgeschwindigkeit hinzu."
     },
     "powod_brak": {
       "message": "Keine Automatik"
