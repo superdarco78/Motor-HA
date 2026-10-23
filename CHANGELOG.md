@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.3 – Kreator na komputerze w dwóch kolumnach
+
+- 🖥️ Na komputerze kreator jest szeroki i podzielony na pół: z lewej ustawienia kroku, z prawej duży rysunek okna, który zajmuje całą połowę i zmienia się od razu. Na górze duże ikony kroków. W „Rodzaj”, „Kolory” i „Pola” pola wybiera się na dużym rysunku
+- 📱 Na telefonie rysunek dopasowuje się do ekranu i stoi na górze, a lista rodzajów i kolorów przewija się pod nim; jeden rysunek zamiast dwóch
+- 🎯 Krok „Osłona”: pomarańczowa ramka tylko na dotkniętym kafelku – „Cały pokój” i grupa z tymi samymi roletami nie świecą się już naraz
+- 🪟 „Cały pokój” pokazuje każdą roletę pokoju jako małe okno z jej prawdziwą osłoną
+
 ## v2.2.2 – Każde pole ze swoją osłoną
 
 - 🪟 Rodzaj i kolor osłony osobno dla każdego pola okna: w krokach „Rodzaj” i „Kolory” na górze rysunek okna – „Całe okno” jak dotąd albo dotknięcie pola (lub „Pole 2”) i wybór tylko dla niego, np. wolnowisząca w oknie, plisa w drzwiach. Pole z własnym ustawieniem ma ✎, karta rysuje każde pole po swojemu
