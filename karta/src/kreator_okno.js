@@ -163,8 +163,13 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 :host([szeroko]) .krok .k{width:46px;height:46px;border-width:3px} :host([szeroko]) .krok svg{width:26px;height:26px} :host([szeroko]) .krok .n{font-size:12px} :host([szeroko]) .krok{padding-bottom:18px}
 :host([szeroko]) .scena[hidden]{display:none}
 .scena > div, .scena > svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.scena svg{width:100%;height:100%;max-height:100%}
+.scena > div > svg, .scena #duzeOkno svg{width:100%;height:100%;max-height:100%}
 :host([szeroko]) .wybpol{position:static}
+.scena > .edscena{display:block;height:auto;max-width:560px}
+.edscena #edytor{display:flex;justify-content:center} .edscena #edSvg{width:100%;height:auto;max-height:calc(100dvh - 420px)}
+:host([szeroko]) .krok .n{visibility:visible;color:var(--fg)} :host([szeroko]) .krok.teraz .n{color:var(--primary)}
+:host([szeroko]) .krok:not(.zrob):not(.teraz) .k{border-color:color-mix(in srgb,var(--primary) 45%,var(--line));color:var(--fg)}
+:host([szeroko]) .krok:hover .k{border-color:var(--accent)}
 .tresc{flex:1;min-width:0;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
@@ -388,6 +393,7 @@ export class MotorHaKreator extends HTMLElement {
   // stały rysunek: duży z boku (szeroki ekran) albo mały na górze (telefon); woła się też przy suwakach, bez rysowania całego kroku
   _odswiezScene(k = this.kroki()[this.S.krok], jedenDuzy = ['rodzaj', 'kolory'].includes(k) && !this.S.brama && prostokaty(this.S.u).length > 1) {
     const r = this.shadowRoot, S = this.S;
+    if (k === 'uklad' && this._szeroko && r.getElementById('edSvg') && this._bezSceny) return;
     const sc = this._szeroko ? this._scena(k) : '';
     r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
     r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && S.szablon === 'w') && !jedenDuzy ? this._podgladMaly() : '';
@@ -398,6 +404,7 @@ export class MotorHaKreator extends HTMLElement {
     if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
     if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
     const n = prostokaty(S.u).length;
+    if (k === 'uklad') return `<div class="edscena">${this._edytorCaly()}</div>`;
     if (k === 'przypisz') return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'd', wybrane: S.arkusz })}</div>`;
     if (['rodzaj', 'kolory'].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'r', wybrane: this._wybR() })}</div>`;
     return `<div>${this.okno({ w: 440, h: 400, id: 's' })}</div>`;
@@ -464,15 +471,21 @@ export class MotorHaKreator extends HTMLElement {
     return this.S.o.oslona && !czyBrama(this.S.o.oslona) ? this.S.o.oslona : 'zebra';
   }
   _nazwaPokoju(a) { return this.dane.oslony.find(o => o.area === a)?.pokoj || a; }
-  str_uklad() {
-    const S = this.S, t = this.t;
-    const ed = S.szablon === 'w' ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
-      <div id="edytor">${this.edytor()}</div>
+  // edytor układu: rysunek z uchwytami, przyciski podziału i suwaki słupka / belki
+  _edytorCaly() {
+    const t = this.t;
+    return `<div id="edytor">${this.edytor()}</div>
       <div class="chipy" style="justify-content:center;margin:10px 0 4px">
         <button class="chip" data-op="poz">${ik('uklad', 16)} ${esc(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik('uklad', 16)} ${esc(t.wzdluz)}</button>
         <button class="chip" data-op="usun">${esc(t.usun)}</button></div>
       <div id="przerwy">${this._suwakiPrzerw()}</div>
-      <p class="pod" style="text-align:center">${esc(t.wlasnyPodpis)}</p><div class="sek">${esc(t.zSzablonu)}</div>` : '';
+      <p class="pod" style="text-align:center">${esc(t.wlasnyPodpis)}</p>`;
+  }
+  str_uklad() {
+    const S = this.S, t = this.t;
+    // szeroki ekran: edytuje się prosto na dużym rysunku z boku, tu zostają szablony
+    const ed = S.szablon === 'w' && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
+      ${this._edytorCaly()}<div class="sek">${esc(t.zSzablonu)}</div>` : '';
     return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? 'wyb' : ''}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc(dziel(t.uklady[k]))}</b></button>`).join('')}
       <button class="kaf ${S.szablon === 'w' ? 'wyb' : ''}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc(t.uklady.wlasny)}</b></button></div>`;
   }
@@ -675,18 +688,22 @@ export class MotorHaKreator extends HTMLElement {
 
   // --- edytor własnego układu: duże okno z uchwytami do przeciągania i wybieranym polem ---
   edytor() {
-    const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
-    const [n1] = this._nieba(), d = [];
+    const duzy = this._szeroko, EW = duzy ? 440 : 260, EH = duzy ? 390 : 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
+    const [n1, n2] = this._nieba(), d = [], kol = this._kolor();
     d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc(this.t.wlasnyTytul)}">`);
+    d.push(`<defs><linearGradient id="nE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
     d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
     // słupki i mury między oknami, belki między polami
     for (const [x, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x * iw, EP + y * ih, w * iw, h * ih, typ));
     P.forEach((p, i) => {
       const x = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
+      const pp = S.pola[i] || {}, wi = Math.max(0, w - 8), hi = Math.max(0, h - 8);
       d.push(`<g data-ep="${i}"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
-        <rect x="${x + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>
+        ${duzy ? `<rect x="${x + 4}" y="${y + 4}" width="${wi}" height="${hi}" fill="url(#nE)"/><path d="M${x + 4} ${y + 4 + hi * .78}l${wi * .25} ${-hi * .14} ${wi * .2} ${hi * .08} ${wi * .3} ${-hi * .16} ${wi * .25} ${hi * .1}V${y + 4 + hi}H${x + 4}z" fill="#000" opacity=".12"/>${this.oslona(pp.oslona || S.o.oslona, x + 4, y + 4, wi, hi, 60, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol)}`
+          : `<rect x="${x + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>`}
         ${on ? `<rect x="${x + 1.5}" y="${y + 1.5}" width="${Math.max(0, w - 3)}" height="${Math.max(0, h - 3)}" fill="none" stroke="#ff9800" stroke-width="3"/>` : ''}
-        <text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? '#e65100' : '#1c3a4a'}">${i + 1}</text></g>`);
+        ${duzy ? `<circle cx="${x + w / 2}" cy="${y + h / 2}" r="12" fill="${on ? '#ff9800' : '#009ac7'}" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>`
+          : `<text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? '#e65100' : '#1c3a4a'}">${i + 1}</text>`}</g>`);
     });
     const uchwyt = (typ, id, x, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? 'ns' : 'ew'}-resize"><circle cx="${x}" cy="${y}" r="16" fill="transparent"/>
       <rect x="${x - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
@@ -739,7 +756,7 @@ export class MotorHaKreator extends HTMLElement {
     const r = this.shadowRoot, e = r.getElementById('edytor');
     if (e) e.innerHTML = this.edytor();
     const pz = r.getElementById('przerwy'); if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
-    this._odswiezScene();
+    this._bezSceny = true; this._odswiezScene(); this._bezSceny = false;
     const k = r.querySelector('[data-wlasny]'); if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
   }
   operacja(op) {
