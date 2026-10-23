@@ -63,6 +63,8 @@ export class MotorHaKarta extends HTMLElement {
     this._brama = false; this._poziomo = POZIOME.includes(c.oslona);
     // suwak w kierunku ruchu: góra-dół – pionowy obok okna, na boki (i bramy) – poziomy pod przyciskami
     const pion = c.suwak !== false && !this._poziomo;
+    // osobne sterowanie dwóch skrzydeł: suwak lewej osłony z lewej, prawej z prawej strony okna
+    const dwaSuwaki = pion && !!c.osobno && n > 1 && !zew;
     const H = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W = Math.round(H * (n === 1 ? .68 : .92));
     this._kas = KASETA[c.oslona] ?? 12;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
@@ -76,12 +78,12 @@ export class MotorHaKarta extends HTMLElement {
 <ha-card class="${zew ? 'zew' : 'wew'}${this._poziomo ? ' poziomo' : ''}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion ? ' zs' : ''}">${zew ? '<div class="pg pgz"></div>' : ''}
-  <div class="okno" style="width:min(${pion ? 'calc(100% - 54px)' : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
+  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
    ${zew ? '' : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join('')}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join('')}</div>` : ''}
    ${n > 1 && !c.osobno ? `<div class="oba" title="${esc(T.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ''}
-  </div>${pion ? this._suwakHtml(T, true) : ''}</div>
+  </div>${pion ? this._suwakHtml(T, true, dwaSuwaki ? 1 : null) : ''}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
   <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
@@ -94,7 +96,7 @@ export class MotorHaKarta extends HTMLElement {
     const pola = zew ? qa('.zewo .szyba') : qa('.skrz .szyba');
     this._el = {
       ...this._wspolne(q),
-      karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), oba: q('.oba'), suwak: q('.suwak'), pgz: q('.pgz'),
+      karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), oba: q('.oba'), suwak: q('.suwak'), suwaki: qa('.suwak'), pgz: q('.pgz'),
       otw: q('.otw'), stp: q('.stp'), zam: q('.zam'), poz: qa('.poz button'),
       skrz: qa('.skrz').map((s, i) => ({ s, niebo: s.querySelector('.niebo'), osiedle: s.querySelector('.osiedle-w'), pg: s.querySelector('.pg'), za: qa('.za')[i] })),
       pola: pola.map(p => ({ p, oslona: p.querySelector('.oslona'), listwa: p.querySelector('.listwa'), cel: p.querySelector('.cel'), celT: p.querySelector('.cel span') }))
@@ -110,7 +112,7 @@ export class MotorHaKarta extends HTMLElement {
     E.poz.forEach(b => b.addEventListener('click', () => this._polecenie(+b.dataset.p)));
     E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
     if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
-    if (E.suwak) this._suwak(E.suwak);
+    E.suwaki.forEach(S => this._suwak(S));
     q('.zmien')?.addEventListener('click', () => konfiguruj(this._wpis()));
     this._zbudowana = true;
   }
@@ -159,7 +161,7 @@ export class MotorHaKarta extends HTMLElement {
  ${this._wpis() ? `<button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button>` : ''}
 </div></ha-card>`;
     const q = s => root.querySelector(s);
-    this._el = { ...this._wspolne(q), karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), suwak: q('.suwak'),
+    this._el = { ...this._wspolne(q), karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), suwak: q('.suwak'), suwaki: [...root.querySelectorAll('.suwak')],
       otw: q('.otw'), stp: q('.stp'), zam: q('.zam'), poz: [], skrz: [], pola: [], bramaw: q('.bramaw') };
     this._ruchy = [new Ruch(czl[0])];
     this._czl = null; this._niebo = null; this._zew = false;
@@ -231,24 +233,26 @@ export class MotorHaKarta extends HTMLElement {
     this._polecenie(w > 0 ? 100 : 0, ktore);
   }
 
-  _suwakHtml(T, pion) {
-    return `<div class="suwak${pion ? ' pion' : ''}" role="slider" tabindex="0" aria-orientation="${pion ? 'vertical' : 'horizontal'}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok('ui.card.cover.position', T.karta.pozycja))}"><div class="wyp"></div></div>`;
+  _suwakHtml(T, pion, i = null) {
+    return `<div class="suwak${pion ? ' pion' : ''}"${i === null ? '' : ` data-i="${i}"`} role="slider" tabindex="0" aria-orientation="${pion ? 'vertical' : 'horizontal'}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok('ui.card.cover.position', T.karta.pozycja))}"><div class="wyp"></div></div>`;
   }
 
   _suwak(el) {
     let akt = false;
     const pion = el.classList.contains('pion');
+    // suwak z data-i steruje tylko swoją osłoną (osobne skrzydła), bez – wszystkimi
+    const ktore = el.dataset.i === undefined ? undefined : [+el.dataset.i];
     const wart = e => {
       const r = el.getBoundingClientRect(), u = pion ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
       return Math.round(Math.min(1, Math.max(0, u)) * 100);
     };
-    el.addEventListener('pointerdown', e => { akt = true; this._suwakW = wart(e); el.setPointerCapture?.(e.pointerId); this._rysujSuwak(); });
+    el.addEventListener('pointerdown', e => { akt = true; this._suwakW = wart(e); this._suwakEl = el; el.setPointerCapture?.(e.pointerId); this._rysujSuwak(); });
     el.addEventListener('pointermove', e => { if (akt) { this._suwakW = wart(e); this._rysujSuwak(); } });
-    const koniec = () => { if (!akt) return; akt = false; const w = this._suwakW; this._suwakW = null; this._polecenie(w); };
+    const koniec = () => { if (!akt) return; akt = false; const w = this._suwakW; this._suwakW = null; this._suwakEl = null; this._polecenie(w, ktore); };
     el.addEventListener('pointerup', koniec); el.addEventListener('pointercancel', koniec);
     el.addEventListener('keydown', e => {
       const d = { ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5, PageUp: 10, PageDown: -10 }[e.key];
-      if (d) { e.preventDefault(); this._polecenie(Math.max(0, Math.min(100, Math.round(this._srednia() + d)))); }
+      if (d) { e.preventDefault(); this._polecenie(Math.max(0, Math.min(100, Math.round(this._wartSuwaka(el) + d))), ktore); }
     });
   }
 
@@ -378,13 +382,20 @@ export class MotorHaKarta extends HTMLElement {
     P.celT.textContent = (ciagnie ? '' : '→ ') + p + ' %';
   }
 
+  // pozycja pokazywana na suwaku: jego osłona (osobne skrzydła) albo średnia wszystkich
+  _wartSuwaka(S) {
+    const i = S.dataset.i, r = i === undefined ? null : this._ruchy[+i];
+    return r && r.widac !== null ? r.widac : this._srednia();
+  }
+
   _rysujSuwak() {
-    const S = this._el.suwak; if (!S) return;
-    // w trakcie jazdy suwak idzie razem z osłoną na rysunku; cel widać tylko przy przeciąganiu
-    const w = this._suwakW ?? this._srednia();
-    // jak ha-control-slider: przy 0 % zostaje pasek z uchwytem, żeby było widać, że to suwak
-    S.querySelector('.wyp').style[S.classList.contains('pion') ? 'height' : 'width'] = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
-    S.setAttribute('aria-valuenow', Math.round(w));
+    (this._el.suwaki || []).forEach(S => {
+      // w trakcie jazdy suwak idzie razem z osłoną na rysunku; cel widać tylko przy przeciąganiu
+      const w = (this._suwakEl === S ? this._suwakW : null) ?? this._wartSuwaka(S);
+      // jak ha-control-slider: przy 0 % zostaje pasek z uchwytem, żeby było widać, że to suwak
+      S.querySelector('.wyp').style[S.classList.contains('pion') ? 'height' : 'width'] = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
+      S.setAttribute('aria-valuenow', Math.round(w));
+    });
   }
 
   _rysuj() {

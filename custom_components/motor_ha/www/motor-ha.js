@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.1.5";
+  var WERSJA = "2.1.6";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -769,7 +769,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       }
       if (Math.abs(p - this.widac) > 0.5) {
         this.cel = p;
-        this.dociagnij = !k;
+        this.dociagnij = !k && Math.abs(p - this.widac) <= 3;
       } else this.cel = p;
     }
     // jedna klatka animacji; zwraca true, gdy jeszcze się rusza
@@ -4872,6 +4872,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._brama = false;
       this._poziomo = POZIOME.includes(c.oslona);
       const pion2 = c.suwak !== false && !this._poziomo;
+      const dwaSuwaki = pion2 && !!c.osobno && n > 1 && !zew;
       const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W2 = Math.round(H2 * (n === 1 ? 0.68 : 0.92));
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
@@ -4885,12 +4886,12 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
 <ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
-  <div class="okno" style="width:min(${pion2 ? "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
+  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
    ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
    ${n > 1 && !c.osobno ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
-  </div>${pion2 ? this._suwakHtml(T2, true) : ""}</div>
+  </div>${pion2 ? this._suwakHtml(T2, true, dwaSuwaki ? 1 : null) : ""}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
   <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
@@ -4909,6 +4910,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         ik: q(".ik"),
         oba: q(".oba"),
         suwak: q(".suwak"),
+        suwaki: qa(".suwak"),
         pgz: q(".pgz"),
         otw: q(".otw"),
         stp: q(".stp"),
@@ -4932,7 +4934,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.poz.forEach((b) => b.addEventListener("click", () => this._polecenie(+b.dataset.p)));
       E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
       if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
-      if (E.suwak) this._suwak(E.suwak);
+      E.suwaki.forEach((S) => this._suwak(S));
       q(".zmien")?.addEventListener("click", () => konfiguruj(this._wpis()));
       this._zbudowana = true;
     }
@@ -4988,6 +4990,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         stan: q(".stan"),
         ik: q(".ik"),
         suwak: q(".suwak"),
+        suwaki: [...root.querySelectorAll(".suwak")],
         otw: q(".otw"),
         stp: q(".stp"),
         zam: q(".zam"),
@@ -5088,12 +5091,13 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._kier = w;
       this._polecenie(w > 0 ? 100 : 0, ktore);
     }
-    _suwakHtml(T2, pion2) {
-      return `<div class="suwak${pion2 ? " pion" : ""}" role="slider" tabindex="0" aria-orientation="${pion2 ? "vertical" : "horizontal"}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>`;
+    _suwakHtml(T2, pion2, i = null) {
+      return `<div class="suwak${pion2 ? " pion" : ""}"${i === null ? "" : ` data-i="${i}"`} role="slider" tabindex="0" aria-orientation="${pion2 ? "vertical" : "horizontal"}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>`;
     }
     _suwak(el) {
       let akt = false;
       const pion2 = el.classList.contains("pion");
+      const ktore = el.dataset.i === void 0 ? void 0 : [+el.dataset.i];
       const wart = (e) => {
         const r = el.getBoundingClientRect(), u = pion2 ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
         return Math.round(Math.min(1, Math.max(0, u)) * 100);
@@ -5101,6 +5105,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       el.addEventListener("pointerdown", (e) => {
         akt = true;
         this._suwakW = wart(e);
+        this._suwakEl = el;
         el.setPointerCapture?.(e.pointerId);
         this._rysujSuwak();
       });
@@ -5115,7 +5120,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         akt = false;
         const w = this._suwakW;
         this._suwakW = null;
-        this._polecenie(w);
+        this._suwakEl = null;
+        this._polecenie(w, ktore);
       };
       el.addEventListener("pointerup", koniec);
       el.addEventListener("pointercancel", koniec);
@@ -5123,7 +5129,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         const d = { ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5, PageUp: 10, PageDown: -10 }[e.key];
         if (d) {
           e.preventDefault();
-          this._polecenie(Math.max(0, Math.min(100, Math.round(this._srednia() + d))));
+          this._polecenie(Math.max(0, Math.min(100, Math.round(this._wartSuwaka(el) + d))), ktore);
         }
       });
     }
@@ -5266,12 +5272,17 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       P.cel.style.top = this._gornaListwy(wys, p) + LISTWA + "px";
       P.celT.textContent = (ciagnie ? "" : "→ ") + p + " %";
     }
+    // pozycja pokazywana na suwaku: jego osłona (osobne skrzydła) albo średnia wszystkich
+    _wartSuwaka(S) {
+      const i = S.dataset.i, r = i === void 0 ? null : this._ruchy[+i];
+      return r && r.widac !== null ? r.widac : this._srednia();
+    }
     _rysujSuwak() {
-      const S = this._el.suwak;
-      if (!S) return;
-      const w = this._suwakW ?? this._srednia();
-      S.querySelector(".wyp").style[S.classList.contains("pion") ? "height" : "width"] = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
-      S.setAttribute("aria-valuenow", Math.round(w));
+      (this._el.suwaki || []).forEach((S) => {
+        const w = (this._suwakEl === S ? this._suwakW : null) ?? this._wartSuwaka(S);
+        S.querySelector(".wyp").style[S.classList.contains("pion") ? "height" : "width"] = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
+        S.setAttribute("aria-valuenow", Math.round(w));
+      });
     }
     _rysuj() {
       const E = this._el, ile = E.pola.length;
