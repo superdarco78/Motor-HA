@@ -67,7 +67,9 @@ export class Ruch {
       if (!zatrzymal && teraz < k.do && Math.abs(p - k.cel) > 2) return;
       this.komenda = null;
     }
-    if (Math.abs(p - this.widac) > 0.5) { this.cel = p; this.dociagnij = !k; } else this.cel = p;
+    // ruch spoza karty (pilot, automatyka, kalibracja): wiele silników melduje cel od razu po ruszeniu,
+    // więc duża zmiana jedzie w tempie silnika; małą poprawkę dociągamy szybko
+    if (Math.abs(p - this.widac) > 0.5) { this.cel = p; this.dociagnij = !k && Math.abs(p - this.widac) <= 3; } else this.cel = p;
   }
 
   // jedna klatka animacji; zwraca true, gdy jeszcze się rusza

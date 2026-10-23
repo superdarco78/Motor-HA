@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.1.6 – Suwak po każdej stronie okna, rysunek jedzie razem z osłoną
+
+- 🎚️ Dwa skrzydła sterowane osobno („Osobno”): suwak lewej osłony stoi z lewej strony okna, prawej – z prawej. Każdy jeździ tylko swoją roletą i pokazuje jej pozycję
+- ↕️ Przyciski ▲ ■ ▼ nadal sterują oboma naraz
+- 🪟 Gdy osłona rusza sama (pilot, automatyka, kalibracja), a silnik od razu melduje pozycję docelową, rysunek jedzie w tempie silnika zamiast przeskoczyć na koniec w ułamku sekundy
+
 ## v2.1.5 – Widać koniec kalibracji
 
 - ✅ Po kalibracji przychodzi jasne powiadomienie „kalibracja zakończona” z czasem pełnego przejazdu – w Home Assistant i na telefon, jeśli wybrano go w „Powiadomieniach”. Gdy się nie uda, powiadomienie mówi, co sprawdzić
