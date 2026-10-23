@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.1.5 – Suwak po każdej stronie okna
+
+- 🎚️ Dwa skrzydła sterowane osobno („Osobno”): suwak lewej osłony stoi z lewej strony okna, prawej – z prawej. Każdy jeździ tylko swoją roletą i pokazuje jej pozycję
+- ↕️ Przyciski ▲ ■ ▼ nadal sterują oboma naraz
+
 ## v2.1.4 – Suwak w kierunku ruchu, Assist po nazwie urządzenia
 
 - ↕️ Rolety, żaluzje, plisy, markizy i inne osłony jadące w górę i w dół mają pionowy suwak obok okna: góra = otwarte, dół = zamknięte
