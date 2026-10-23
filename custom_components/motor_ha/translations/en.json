@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "Step {nr} of {z}: Device",
-        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor, and the room lets you talk to Assist, e.g. “close the living room”.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor. Talk to Assist using the device name, e.g. “close Kitchen pleated blind”.{porada}",
         "data": {
           "rolety": "Motor (one or two entities)",
           "name": "Name",
           "pokoj": "Room",
           "rodzaj_pokoju": "Kind of room (for tips)",
+          "ukryj_zrodlo": "Hide the motor from Assist",
           "wstecz": "Go back to the previous step"
         },
         "data_description": {
           "rolety": "For a window with two sashes choose two: first the left one, then the right one.",
           "name": "Empty = the motor's name.",
-          "pokoj": "The device goes to this room. Assist then understands “close the living room”.",
+          "pokoj": "The device goes to this room, so it is easy to find.",
+          "ukryj_zrodlo": "Assist then sees only the Motor HA device, not the motor itself. Helps when Assist says there are several devices with this name. Off by default.",
           "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "Step {nr} of {z}: Device",
-        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor, and the room lets you talk to Assist, e.g. “close the living room”.{porada}",
+        "description": "{pasek}\n\n**What:** Choose the motor (a shade or a gate), give it a name and pick the room.\n\n**Why:** Motor HA controls this motor. Talk to Assist using the device name, e.g. “close Kitchen pleated blind”.{porada}",
         "data": {
           "rolety": "Motor (one or two entities)",
           "name": "Name",
           "pokoj": "Room",
           "rodzaj_pokoju": "Kind of room (for tips)",
+          "ukryj_zrodlo": "Hide the motor from Assist",
           "wstecz": "Go back to the previous step"
         },
         "data_description": {
           "rolety": "For a window with two sashes choose two: first the left one, then the right one.",
           "name": "Empty = the motor's name.",
-          "pokoj": "The device goes to this room. Assist then understands “close the living room”.",
+          "pokoj": "The device goes to this room, so it is easy to find.",
+          "ukryj_zrodlo": "Assist then sees only the Motor HA device, not the motor itself. Helps when Assist says there are several devices with this name. Off by default.",
           "wstecz": "Turn on and click “Next” to go back one step. What you entered stays."
         }
       },

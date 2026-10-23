@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Zařízení",
-        "description": "{pasek}\n\n**Co:** Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.\n\n**Proč:** Motor HA ovládá tento motor a díky místnosti můžete mluvit s Assist, např. „zatáhni obývák“.{porada}",
+        "description": "{pasek}\n\n**Co:** Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.\n\n**Proč:** Motor HA ovládá tento motor. S Assist mluvte názvem zařízení, např. „zavři Plisé kuchyň“.{porada}",
         "data": {
           "rolety": "Motor (jedna nebo dvě entity)",
           "name": "Název",
           "pokoj": "Místnost",
           "rodzaj_pokoju": "Druh místnosti (pro tipy)",
+          "ukryj_zrodlo": "Skrýt motor před Assist",
           "wstecz": "Zpět na předchozí krok"
         },
         "data_description": {
           "rolety": "Pro okno se dvěma křídly vyberte dvě: nejdřív levé, pak pravé.",
           "name": "Prázdné = název motoru.",
-          "pokoj": "Zařízení půjde do této místnosti. Assist pak rozumí „zatáhni obývák“.",
+          "pokoj": "Zařízení půjde do této místnosti, aby se dalo snadno najít.",
+          "ukryj_zrodlo": "Assist pak vidí jen zařízení Motor HA, ne samotný motor. Pomůže, když Assist říká, že je více zařízení s tímto názvem. Ve výchozím stavu vypnuto.",
           "wstecz": "Zapněte a klikněte na „Další“, abyste se vrátili o krok. Zadané údaje zůstanou."
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Zařízení",
-        "description": "{pasek}\n\n**Co:** Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.\n\n**Proč:** Motor HA ovládá tento motor a díky místnosti můžete mluvit s Assist, např. „zatáhni obývák“.{porada}",
+        "description": "{pasek}\n\n**Co:** Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.\n\n**Proč:** Motor HA ovládá tento motor. S Assist mluvte názvem zařízení, např. „zavři Plisé kuchyň“.{porada}",
         "data": {
           "rolety": "Motor (jedna nebo dvě entity)",
           "name": "Název",
           "pokoj": "Místnost",
           "rodzaj_pokoju": "Druh místnosti (pro tipy)",
+          "ukryj_zrodlo": "Skrýt motor před Assist",
           "wstecz": "Zpět na předchozí krok"
         },
         "data_description": {
           "rolety": "Pro okno se dvěma křídly vyberte dvě: nejdřív levé, pak pravé.",
           "name": "Prázdné = název motoru.",
-          "pokoj": "Zařízení půjde do této místnosti. Assist pak rozumí „zatáhni obývák“.",
+          "pokoj": "Zařízení půjde do této místnosti, aby se dalo snadno najít.",
+          "ukryj_zrodlo": "Assist pak vidí jen zařízení Motor HA, ne samotný motor. Pomůže, když Assist říká, že je více zařízení s tímto názvem. Ve výchozím stavu vypnuto.",
           "wstecz": "Zapněte a klikněte na „Další“, abyste se vrátili o krok. Zadané údaje zůstanou."
         }
       },

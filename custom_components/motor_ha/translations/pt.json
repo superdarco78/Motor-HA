@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} de {z}: Dispositivo",
-        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor, e a divisão permite falar com o Assist, p. ex. «fecha a sala».{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor. Fale com o Assist pelo nome do dispositivo, p. ex. «fecha Plissado cozinha».{porada}",
         "data": {
           "rolety": "Motor (uma ou duas entidades)",
           "name": "Nome",
           "pokoj": "Divisão",
           "rodzaj_pokoju": "Tipo de divisão (para dicas)",
+          "ukryj_zrodlo": "Ocultar o motor do Assist",
           "wstecz": "Voltar ao passo anterior"
         },
         "data_description": {
           "rolety": "Para uma janela de duas folhas escolha duas: primeiro a esquerda, depois a direita.",
           "name": "Vazio = nome do motor.",
-          "pokoj": "O dispositivo vai para esta divisão. O Assist percebe então «fecha a sala».",
+          "pokoj": "O dispositivo vai para esta divisão, para o encontrar facilmente.",
+          "ukryj_zrodlo": "O Assist vê então só o dispositivo Motor HA, não o motor. Ajuda quando o Assist diz que há vários dispositivos com este nome. Desligado por predefinição.",
           "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se."
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} de {z}: Dispositivo",
-        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor, e a divisão permite falar com o Assist, p. ex. «fecha a sala».{porada}",
+        "description": "{pasek}\n\n**O quê:** Escolha o motor (estore ou portão), dê um nome e escolha a divisão.\n\n**Para quê:** O Motor HA comanda este motor. Fale com o Assist pelo nome do dispositivo, p. ex. «fecha Plissado cozinha».{porada}",
         "data": {
           "rolety": "Motor (uma ou duas entidades)",
           "name": "Nome",
           "pokoj": "Divisão",
           "rodzaj_pokoju": "Tipo de divisão (para dicas)",
+          "ukryj_zrodlo": "Ocultar o motor do Assist",
           "wstecz": "Voltar ao passo anterior"
         },
         "data_description": {
           "rolety": "Para uma janela de duas folhas escolha duas: primeiro a esquerda, depois a direita.",
           "name": "Vazio = nome do motor.",
-          "pokoj": "O dispositivo vai para esta divisão. O Assist percebe então «fecha a sala».",
+          "pokoj": "O dispositivo vai para esta divisão, para o encontrar facilmente.",
+          "ukryj_zrodlo": "O Assist vê então só o dispositivo Motor HA, não o motor. Ajuda quando o Assist diz que há vários dispositivos com este nome. Desligado por predefinição.",
           "wstecz": "Ligue e clique em «Seguinte» para recuar um passo. O que escreveu mantém-se."
         }
       },

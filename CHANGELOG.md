@@ -1,9 +1,11 @@
 # 📝 Historia zmian
 
-## v2.1.4 – Suwak w kierunku ruchu
+## v2.1.4 – Suwak w kierunku ruchu, Assist po nazwie urządzenia
 
 - ↕️ Rolety, żaluzje, plisy, markizy i inne osłony jadące w górę i w dół mają pionowy suwak obok okna: góra = otwarte, dół = zamknięte
 - ↔️ Zasłony na boki, żaluzje pionowe oraz bramy i garaże zostają z poziomym suwakiem na dole
+- 🗣️ Kreator nie obiecuje już „zasłoń salon” – do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”
+- 🙈 Nowa opcja w kroku „Urządzenie”: „Ukryj silnik przed Assist” (domyślnie wyłączona). Assist widzi wtedy tylko urządzenie Motor HA, więc nie mówi, że jest kilka urządzeń o tej samej nazwie. Po wyłączeniu opcji albo usunięciu urządzenia silnik znów jest widoczny
 
 ## v2.1.3 – „Zmień ustawienia” na panelu, suwak z uchwytem
 

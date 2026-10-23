@@ -139,3 +139,27 @@ async def test_nazwy_po_angielsku(hass: HomeAssistant) -> None:
     from custom_components.motor_ha import _urzadzenie   # działa na starszym i nowszym HA
     u = _urzadzenie(dr.async_get(hass), (DOMAIN, r["result"].entry_id))
     assert u.model and u.model != r["result"].options["oslona"], u.model
+
+
+async def test_ukryj_silnik_przed_assist(hass: HomeAssistant) -> None:
+    """Opcja domyślnie wyłączona; włączona chowa silnik przed Assist, wyłączona pokazuje go znowu."""
+    import time
+    from homeassistant.components.homeassistant.exposed_entities import async_should_expose
+    await async_setup_component(hass, "homeassistant", {})
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    r, _ = await _przejdz(hass, {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"},
+                                 "panel": {"na_panel": "nie"}})
+    wpis = r["result"]
+    assert not wpis.options.get("ukryj_zrodlo")
+    assert async_should_expose(hass, "conversation", "cover.lewa")
+    for wlacz in (True, False):
+        hass.data[DOMAIN]["krok"] = {wpis.entry_id: ("urzadzenie", time.monotonic())}
+        r = await hass.config_entries.options.async_init(wpis.entry_id)
+        assert r["step_id"] == "urzadzenie"
+        r = await hass.config_entries.options.async_configure(
+            r["flow_id"], {"rolety": ROLETY, "rodzaj_pokoju": "salon", "ukryj_zrodlo": wlacz})
+        assert r["type"] is FlowResultType.CREATE_ENTRY
+        await hass.async_block_till_done()
+        for e in ROLETY:
+            assert async_should_expose(hass, "conversation", e) is not wlacz, (e, wlacz)
