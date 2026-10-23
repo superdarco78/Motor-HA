@@ -118,16 +118,47 @@ test('panel z kilkoma kartami: każda narysowana, każda ma „Zmień ustawienia
       const karty = urz.map(([id]) => { const k = document.createElement('motor-ha');
         k.setConfig({ type: 'custom:motor-ha', entity: 'cover.' + id }); k.hass = hass; panel.appendChild(k); return k; });
       await new Promise(r => setTimeout(r, 900));
-      return karty.map(k => ({ h: k.getBoundingClientRect().height, zmien: !!k.shadowRoot.querySelector('.zmien'),
-        suwak: k.shadowRoot.querySelector('.suwak .wyp')?.getBoundingClientRect().width ?? -1 }));
+      return karty.map(k => {
+        const s = k.shadowRoot.querySelector('.suwak'), w = s?.querySelector('.wyp')?.getBoundingClientRect();
+        const okno = k.shadowRoot.querySelector('.okno, .bramaw')?.getBoundingClientRect(), r = s?.getBoundingClientRect();
+        return { h: k.getBoundingClientRect().height, zmien: !!k.shadowRoot.querySelector('.zmien'), pion: !!s?.classList.contains('pion'),
+          suwak: s ? (s.classList.contains('pion') ? w.height : w.width) : -1,
+          obok: !!(r && okno && r.left >= okno.right - 1 && Math.abs(r.height - okno.height) < 50),
+          wKarcie: !!(r && r.right <= k.getBoundingClientRect().right) };
+      });
     }, URZ);
     assert.equal(w.length, URZ.length);
     w.forEach((k, i) => {
       assert.ok(k.h > 200, `${URZ[i][1]}: karta narysowana (${k.h})`);
       assert.ok(k.zmien, `${URZ[i][1]}: „Zmień ustawienia”`);
       assert.ok(k.suwak === -1 || k.suwak >= 12, `${URZ[i][1]}: suwak z uchwytem (${k.suwak})`);
+      // suwak w kierunku ruchu: góra-dół pionowy obok okna; zasłona na boki i brama – poziomy na dole
+      const pion = !['zaslona', 'przesuwna'].includes(URZ[i][2]);
+      assert.equal(k.pion, pion, `${URZ[i][1]}: suwak ${pion ? 'pionowy' : 'poziomy'}`);
+      if (pion) assert.ok(k.obok, `${URZ[i][1]}: pionowy suwak obok okna, tej samej wysokości`);
+      assert.ok(k.wKarcie, `${URZ[i][1]}: suwak mieści się w karcie`);
     });
     assert.deepEqual(bledy, []);
     if (ZRZUTY) await page.screenshot({ path: `${ZRZUTY}/panel.png`, fullPage: true });
+  } finally { await ctx.close(); }
+});
+
+test('pionowy suwak: dotknięcie u góry = otwarte (100 %), u dołu = zamknięte (0 %)', async () => {
+  const { ctx, page } = await otworz('/lovelace/okna');
+  try {
+    await page.waitForFunction(() => customElements.get('motor-ha'));
+    await page.evaluate(async () => {
+      const hass = document.querySelector('home-assistant').hass, k = document.createElement('motor-ha');
+      k.id = 'k'; k.setConfig({ type: 'custom:motor-ha', entity: 'cover.d2' }); k.hass = hass; document.body.appendChild(k);
+      await new Promise(r => setTimeout(r, 600));
+    });
+    const r = await page.evaluate(() => { const b = document.getElementById('k').shadowRoot.querySelector('.suwak.pion').getBoundingClientRect(); return { x: b.x + b.width / 2, g: b.y + 3, d: b.bottom - 3 }; });
+    await page.mouse.click(r.x, r.g);
+    await page.mouse.click(r.x, r.d);
+    await page.waitForTimeout(300);
+    const zapisy = await page.evaluate(() => window.zapisy);
+    const poz = zapisy.filter(z => z[1] === 'set_cover_position').map(z => z[2].position);
+    assert.ok(poz.length >= 2, JSON.stringify(zapisy));
+    assert.ok(poz[0] >= 95 && poz[poz.length - 1] <= 5, `pozycje ${poz}`);
   } finally { await ctx.close(); }
 });

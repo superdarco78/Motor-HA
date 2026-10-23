@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.1.4 – Suwak w kierunku ruchu
+
+- ↕️ Rolety, żaluzje, plisy, markizy i inne osłony jadące w górę i w dół mają pionowy suwak obok okna: góra = otwarte, dół = zamknięte
+- ↔️ Zasłony na boki, żaluzje pionowe oraz bramy i garaże zostają z poziomym suwakiem na dole
+
 ## v2.1.3 – „Zmień ustawienia” na panelu, suwak z uchwytem
 
 - ⚙️ Pod oknem na panelu „Zmień ustawienia”: otwiera kreator tego urządzenia, a po zamknięciu wraca na ten sam panel
