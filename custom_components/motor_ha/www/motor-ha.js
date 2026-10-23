@@ -8618,7 +8618,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
 .wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
 #duzeOkno svg{touch-action:none}
-.wybpol{margin:-4px 0 14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.wybpol{margin:-4px 0 14px;padding:8px 0 12px;border-bottom:1px solid var(--line);position:sticky;top:-14px;z-index:3;background:var(--surface)}
+.wybpol #duzeOkno svg{max-height:30vh;width:auto;max-width:100%}
 .linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
 .linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
 .kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
