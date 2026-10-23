@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.2.5"
+VERSION = "2.2.6"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
@@ -73,7 +73,7 @@ CONF_KARTA = "karta"            # ustawienia z edytora karty
 # klucze karty, które ustawia też kreator: po „Dalej”/„Zapisz” w kreatorze liczy się kreator, nie stara karta
 KARTA_Z_KREATORA = ("oslona", "kolor", "rama", "wysokosc", "skrzydla", "czas", "pogoda", "tryb_lewe", "tryb_prawe",
                     "czujnik_lewe", "czujnik_prawe", "predkosc_lewa", "predkosc_prawa", "odwroc", "osobno",
-                    "roleta_lewa", "roleta_prawa", "rodzaj_pokoju", "foto_stan", "przeszkoda", "pola")
+                    "roleta_lewa", "roleta_prawa", "rodzaj_pokoju", "foto_stan", "przeszkoda", "pola", "sciana")
 
 TRYBY_SKRZYDLA = ["uchyl", "otworz"]
 POKOJE = ["salon", "sypialnia", "kuchnia", "dziecko", "gabinet", "lazienka", "jadalnia", "przedpokoj", "inny"]
@@ -199,6 +199,8 @@ POWIADOMIENIA = ["nie_odpowiada", "nie_dojechala", "bateria", "czujnik", "automa
                  "brama_otwarta", "brama_niedomknieta", "przeszkoda"]
 CONF_POWIADOM = "powiadom"          # lista włączonych rodzajów
 CONF_POWIADOM_GDZIE = "powiadom_gdzie"   # lista usług notify.*
+CONF_SCIANA = "sciana"   # kolor ściany (muru) między oknami
+SCIANY = ["biala", "bezowa", "szara", "cegla", "grafit"]
 BATERIA_PROG = 20
 
 # --- pamięć ---

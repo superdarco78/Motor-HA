@@ -60,6 +60,8 @@ from .const import (
     PARAMETRY,
     POKOJE,
     POWIADOMIENIA,
+    SCIANY,
+    CONF_SCIANA,
     RAMY,
     RODZAJE,
     TRYB,
@@ -130,6 +132,8 @@ def opcje_z_kreatora(hass: HomeAssistant, stare: dict[str, Any], dane: Any) -> t
             o.pop(wlasny, None)
         elif isinstance(k, str) and HEX.match(k):
             o[wlasny] = [int(k[i:i + 2], 16) for i in (1, 3, 5)]
+    if (sc := nowe.get(CONF_SCIANA)) in SCIANY:
+        o[CONF_SCIANA] = sc
     if o.get(CONF_RODZAJ_POKOJU) not in (None, *POKOJE):
         o.pop(CONF_RODZAJ_POKOJU)
 

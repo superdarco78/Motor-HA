@@ -1,5 +1,5 @@
 // Karta Motor HA: okno z osłoną. Osłona jedzie w tempie silnika, za szybą pogoda i pora dnia, czujniki pokazują otwarte okno.
-import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno } from './stale.js';
+import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno, SCIANY } from './stale.js';
 import { rysunekBramy, ustawBrame, ustawFotokomorke } from './brama.js';
 import { STYL_STALY, stylOkna, stylPola } from './styl.js';
 import { kolorNieba, poraDnia, pogoda, widokSvg, NIEBO_Z_POGODY } from './scena.js';
@@ -60,7 +60,7 @@ export class MotorHaKarta extends HTMLElement {
     const c = this._cfg = this._ustawienia;
     this._jez = jezyk(c, this._hass);
     const czl = this._skrzydla(c);
-    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
     if (klucz !== this._klucz) { this._klucz = klucz; this._zbuduj(c, czl); }
     this._aktualizuj(c, czl);
   }
@@ -88,7 +88,10 @@ export class MotorHaKarta extends HTMLElement {
     }).join('') : '';
     // słupek albo mur między osobnymi oknami: odstęp między kolumnami pól
     const xs = P ? [...new Set(P.map(p => p.x))].sort((a, b) => a - b) : [];
-    const mury = xs.slice(1).map((x, i) => { const pk = P.find(p => p.x === xs[i]), od = pk.x + pk.w; return x - od > .004 ? `<div class="mur" style="left:${od * 100}%;width:${(x - od) * 100}%"></div>` : ''; }).join('');
+    // kolor ściany z kreatora; cegła z jasnymi fugami
+    const sc = SCIANY[c.sciana], tloMuru = !sc ? '' : c.sciana === 'cegla'
+      ? `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(240,232,220,.75) 9px 10px),${sc}` : `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.1) 9px 10px),${sc}`;
+    const mury = xs.slice(1).map((x, i) => { const pk = P.find(p => p.x === xs[i]), od = pk.x + pk.w; return x - od > .004 ? `<div class="mur" style="left:${od * 100}%;width:${(x - od) * 100}%${x - od < .035 ? `;background:${rama}` : tloMuru}"></div>` : ''; }).join('');
     this._kas = KASETA[c.oslona] ?? 12;
     // pola z własnym rodzajem/kolorem osłony (z kreatora 2.2.2); rodzaj musi pasować do okna (wewnątrz/na zewnątrz, góra-dół)
     const typPola = i => { const t = P?.[i]?.oslona; return t && !!czyZew(t) === !!zew && !POZIOME.includes(t) && !this._poziomo ? t : c.oslona; };

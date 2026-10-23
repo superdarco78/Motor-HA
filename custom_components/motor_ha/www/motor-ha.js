@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.2.5";
+  var WERSJA = "2.2.6";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -24,6 +24,7 @@
   var BRAMY = Object.values(GRUPY.brama).flat();
   var czyBrama = (t) => BRAMY.includes(t);
   var POZIOME = ["pionowa", "zaslona"];
+  var SCIANY = { biala: "#efebe4", bezowa: "#d6c4a6", szara: "#a5a4a0", cegla: "#a65a3a", grafit: "#56595c" };
   var ZEWNETRZNE = Object.values(GRUPY.zew).flat();
   var czyZew = (t) => ZEWNETRZNE.includes(t);
   var IKONY = {
@@ -1305,6 +1306,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Gdy zamkniesz okno, osłona dojedzie sama.",
       kazdy: "Każdy silnik osobno",
       slupek: "Słupek / mur",
+      przegPion: "Przegroda pionowa",
+      przegPoz: "Przegroda pozioma",
+      obokPola: "obok pola {0}",
+      podPolem: "pod polem {0}",
+      przegRodzaj: { brak: "Brak", slupek: "Słupek", belka: "Belka", sciana: "Ściana" },
+      szerokosc: "Szerokość",
+      dodajSciane: "🧱 Ściana między oknami",
+      sciana: "Ściana",
+      sciany: { biala: "biała", bezowa: "beżowa", szara: "szara", cegla: "cegła", grafit: "grafit" },
       belka: "Belka",
       brak: "brak",
       wUrzadzeniu: "też w: {0}",
@@ -1315,6 +1325,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "grupa · {0} skrzydła",
       przeciagnij: "Przeciągnij, żeby zamienić",
       zamienPodpis: "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami.",
+      jakZaleca: "Ustaw jak zaleca",
       caleOkno: "Całe okno",
       rodzajCalosc: "Dotknij pola na rysunku, żeby dać mu inny rodzaj albo kolor.",
       rodzajPole: "Teraz ustawiasz tylko pole {0}."
@@ -1750,6 +1761,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Once you close the window, the cover finishes on its own.",
       kazdy: "Each motor separately",
       slupek: "Mullion / wall",
+      przegPion: "Vertical divider",
+      przegPoz: "Horizontal divider",
+      obokPola: "next to pane {0}",
+      podPolem: "below pane {0}",
+      przegRodzaj: { brak: "None", slupek: "Mullion", belka: "Transom", sciana: "Wall" },
+      szerokosc: "Width",
+      dodajSciane: "🧱 Wall between windows",
+      sciana: "Wall",
+      sciany: { biala: "white", bezowa: "beige", szara: "grey", cegla: "brick", grafit: "graphite" },
       belka: "Transom",
       brak: "none",
       wUrzadzeniu: "also in: {0}",
@@ -1760,6 +1780,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "group · {0} sashes",
       przeciagnij: "Drag to swap",
       zamienPodpis: "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them.",
+      jakZaleca: "Set as recommended",
       caleOkno: "Whole window",
       rodzajCalosc: "Tap a pane in the drawing to give it a different type or colour.",
       rodzajPole: "You are now setting pane {0} only."
@@ -2195,6 +2216,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Sobald das Fenster zu ist, fährt der Behang von selbst weiter.",
       kazdy: "Jeder Motor einzeln",
       slupek: "Pfosten / Wand",
+      przegPion: "Senkrechte Trennung",
+      przegPoz: "Waagerechte Trennung",
+      obokPola: "neben Feld {0}",
+      podPolem: "unter Feld {0}",
+      przegRodzaj: { brak: "Keine", slupek: "Pfosten", belka: "Kämpfer", sciana: "Wand" },
+      szerokosc: "Breite",
+      dodajSciane: "🧱 Wand zwischen Fenstern",
+      sciana: "Wand",
+      sciany: { biala: "weiß", bezowa: "beige", szara: "grau", cegla: "Ziegel", grafit: "Graphit" },
       belka: "Kämpfer",
       brak: "keiner",
       wUrzadzeniu: "auch in: {0}",
@@ -2205,6 +2235,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "Gruppe · {0} Flügel",
       przeciagnij: "Ziehen zum Tauschen",
       zamienPodpis: "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze.",
+      jakZaleca: "Wie empfohlen einstellen",
       caleOkno: "Ganzes Fenster",
       rodzajCalosc: "Tippe auf ein Feld in der Zeichnung, um ihm eine andere Art oder Farbe zu geben.",
       rodzajPole: "Du stellst jetzt nur Feld {0} ein."
@@ -2640,6 +2671,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Une fois la fenêtre fermée, le volet finit seul.",
       kazdy: "Chaque moteur séparément",
       slupek: "Meneau / mur",
+      przegPion: "Séparation verticale",
+      przegPoz: "Séparation horizontale",
+      obokPola: "à côté du panneau {0}",
+      podPolem: "sous le panneau {0}",
+      przegRodzaj: { brak: "Aucune", slupek: "Meneau", belka: "Traverse", sciana: "Mur" },
+      szerokosc: "Largeur",
+      dodajSciane: "🧱 Mur entre les fenêtres",
+      sciana: "Mur",
+      sciany: { biala: "blanc", bezowa: "beige", szara: "gris", cegla: "brique", grafit: "graphite" },
       belka: "Traverse",
       brak: "aucun",
       wUrzadzeniu: "aussi dans : {0}",
@@ -2650,6 +2690,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "groupe · {0} vantaux",
       przeciagnij: "Glisser pour échanger",
       zamienPodpis: "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger.",
+      jakZaleca: "Régler comme recommandé",
       caleOkno: "Fenêtre entière",
       rodzajCalosc: "Touchez un panneau du dessin pour lui donner un autre type ou une autre couleur.",
       rodzajPole: "Vous réglez maintenant le panneau {0} seulement."
@@ -3085,6 +3126,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Když okno zavřete, stínění dojede samo.",
       kazdy: "Každý motor zvlášť",
       slupek: "Sloupek / zeď",
+      przegPion: "Svislá příčka",
+      przegPoz: "Vodorovná příčka",
+      obokPola: "vedle pole {0}",
+      podPolem: "pod polem {0}",
+      przegRodzaj: { brak: "Žádná", slupek: "Sloupek", belka: "Příčník", sciana: "Zeď" },
+      szerokosc: "Šířka",
+      dodajSciane: "🧱 Zeď mezi okny",
+      sciana: "Zeď",
+      sciany: { biala: "bílá", bezowa: "béžová", szara: "šedá", cegla: "cihla", grafit: "grafit" },
       belka: "Příčník",
       brak: "žádný",
       wUrzadzeniu: "také v: {0}",
@@ -3095,6 +3145,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "skupina · {0} křídla",
       przeciagnij: "Přetáhněte pro záměnu",
       zamienPodpis: "Chyťte křídlo v nákresu nebo ⠿ u řádku a pusťte na jiné – vymění se.",
+      jakZaleca: "Nastavit podle doporučení",
       caleOkno: "Celé okno",
       rodzajCalosc: "Klepněte na pole v nákresu a dejte mu jiný druh nebo barvu.",
       rodzajPole: "Teď nastavujete jen pole {0}."
@@ -3530,6 +3581,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Keď okno zatvoríte, tienenie dôjde samo.",
       kazdy: "Každý motor zvlášť",
       slupek: "Stĺpik / múr",
+      przegPion: "Zvislá priečka",
+      przegPoz: "Vodorovná priečka",
+      obokPola: "vedľa poľa {0}",
+      podPolem: "pod poľom {0}",
+      przegRodzaj: { brak: "Žiadna", slupek: "Stĺpik", belka: "Priečnik", sciana: "Stena" },
+      szerokosc: "Šírka",
+      dodajSciane: "🧱 Stena medzi oknami",
+      sciana: "Stena",
+      sciany: { biala: "biela", bezowa: "béžová", szara: "sivá", cegla: "tehla", grafit: "grafit" },
       belka: "Priečnik",
       brak: "žiadny",
       wUrzadzeniu: "aj v: {0}",
@@ -3540,6 +3600,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "skupina · {0} krídla",
       przeciagnij: "Potiahnite na výmenu",
       zamienPodpis: "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa.",
+      jakZaleca: "Nastaviť podľa odporúčania",
       caleOkno: "Celé okno",
       rodzajCalosc: "Ťuknite na pole na nákrese a dajte mu iný druh alebo farbu.",
       rodzajPole: "Teraz nastavujete len pole {0}."
@@ -3975,6 +4036,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Al cerrar la ventana, la persiana termina sola.",
       kazdy: "Cada motor por separado",
       slupek: "Parteluz / muro",
+      przegPion: "Separación vertical",
+      przegPoz: "Separación horizontal",
+      obokPola: "junto al panel {0}",
+      podPolem: "bajo el panel {0}",
+      przegRodzaj: { brak: "Ninguna", slupek: "Parteluz", belka: "Travesaño", sciana: "Pared" },
+      szerokosc: "Anchura",
+      dodajSciane: "🧱 Pared entre ventanas",
+      sciana: "Pared",
+      sciany: { biala: "blanca", bezowa: "beige", szara: "gris", cegla: "ladrillo", grafit: "grafito" },
       belka: "Travesaño",
       brak: "ninguno",
       wUrzadzeniu: "también en: {0}",
@@ -3985,6 +4055,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "grupo · {0} hojas",
       przeciagnij: "Arrastra para cambiar",
       zamienPodpis: "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas.",
+      jakZaleca: "Ajustar como se recomienda",
       caleOkno: "Ventana entera",
       rodzajCalosc: "Toca un panel del dibujo para darle otro tipo o color.",
       rodzajPole: "Ahora solo ajustas el panel {0}."
@@ -4420,6 +4491,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Chiusa la finestra, la tapparella finisce da sola.",
       kazdy: "Ogni motore separatamente",
       slupek: "Montante / muro",
+      przegPion: "Divisione verticale",
+      przegPoz: "Divisione orizzontale",
+      obokPola: "accanto al pannello {0}",
+      podPolem: "sotto il pannello {0}",
+      przegRodzaj: { brak: "Nessuna", slupek: "Montante", belka: "Traverso", sciana: "Muro" },
+      szerokosc: "Larghezza",
+      dodajSciane: "🧱 Muro tra le finestre",
+      sciana: "Muro",
+      sciany: { biala: "bianco", bezowa: "beige", szara: "grigio", cegla: "mattone", grafit: "grafite" },
       belka: "Traverso",
       brak: "nessuno",
       wUrzadzeniu: "anche in: {0}",
@@ -4430,6 +4510,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "gruppo · {0} ante",
       przeciagnij: "Trascina per scambiare",
       zamienPodpis: "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle.",
+      jakZaleca: "Imposta come consigliato",
       caleOkno: "Finestra intera",
       rodzajCalosc: "Tocca un riquadro nel disegno per dargli un altro tipo o colore.",
       rodzajPole: "Ora imposti solo il riquadro {0}."
@@ -4865,6 +4946,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Zodra het raam dicht is, gaat het scherm vanzelf verder.",
       kazdy: "Elke motor apart",
       slupek: "Stijl / muur",
+      przegPion: "Verticale scheiding",
+      przegPoz: "Horizontale scheiding",
+      obokPola: "naast vak {0}",
+      podPolem: "onder vak {0}",
+      przegRodzaj: { brak: "Geen", slupek: "Stijl", belka: "Kalf", sciana: "Muur" },
+      szerokosc: "Breedte",
+      dodajSciane: "🧱 Muur tussen ramen",
+      sciana: "Muur",
+      sciany: { biala: "wit", bezowa: "beige", szara: "grijs", cegla: "baksteen", grafit: "grafiet" },
       belka: "Kalf",
       brak: "geen",
       wUrzadzeniu: "ook in: {0}",
@@ -4875,6 +4965,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "groep · {0} vleugels",
       przeciagnij: "Sleep om te wisselen",
       zamienPodpis: "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen.",
+      jakZaleca: "Instellen zoals aanbevolen",
       caleOkno: "Hele raam",
       rodzajCalosc: "Tik op een vak in de tekening om het een ander soort of andere kleur te geven.",
       rodzajPole: "Je stelt nu alleen vak {0} in."
@@ -5310,6 +5401,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Ao fechar a janela, a persiana termina sozinha.",
       kazdy: "Cada motor separadamente",
       slupek: "Pilar / parede",
+      przegPion: "Divisória vertical",
+      przegPoz: "Divisória horizontal",
+      obokPola: "ao lado do painel {0}",
+      podPolem: "abaixo do painel {0}",
+      przegRodzaj: { brak: "Nenhuma", slupek: "Montante", belka: "Travessa", sciana: "Parede" },
+      szerokosc: "Largura",
+      dodajSciane: "🧱 Parede entre janelas",
+      sciana: "Parede",
+      sciany: { biala: "branca", bezowa: "bege", szara: "cinza", cegla: "tijolo", grafit: "grafite" },
       belka: "Travessa",
       brak: "nenhum",
       wUrzadzeniu: "também em: {0}",
@@ -5320,6 +5420,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "grupo · {0} folhas",
       przeciagnij: "Arraste para trocar",
       zamienPodpis: "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar.",
+      jakZaleca: "Definir como recomendado",
       caleOkno: "Janela inteira",
       rodzajCalosc: "Toque num painel do desenho para lhe dar outro tipo ou cor.",
       rodzajPole: "Agora está a ajustar só o painel {0}."
@@ -5755,6 +5856,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Коли закриєте вікно, штора доїде сама.",
       kazdy: "Кожен мотор окремо",
       slupek: "Імпост / стіна",
+      przegPion: "Вертикальна перегородка",
+      przegPoz: "Горизонтальна перегородка",
+      obokPola: "біля поля {0}",
+      podPolem: "під полем {0}",
+      przegRodzaj: { brak: "Немає", slupek: "Імпост", belka: "Перемичка", sciana: "Стіна" },
+      szerokosc: "Ширина",
+      dodajSciane: "🧱 Стіна між вікнами",
+      sciana: "Стіна",
+      sciany: { biala: "біла", bezowa: "бежева", szara: "сіра", cegla: "цегла", grafit: "графіт" },
       belka: "Перемичка",
       brak: "немає",
       wUrzadzeniu: "також у: {0}",
@@ -5765,6 +5875,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "група · стулок: {0}",
       przeciagnij: "Перетягніть, щоб поміняти",
       zamienPodpis: "Візьміть стулку на малюнку або ⠿ біля рядка й відпустіть на іншій – вони поміняються місцями.",
+      jakZaleca: "Налаштувати як рекомендовано",
       caleOkno: "Усе вікно",
       rodzajCalosc: "Торкніться поля на малюнку, щоб задати йому інший вид або колір.",
       rodzajPole: "Зараз налаштовується лише поле {0}."
@@ -6200,6 +6311,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "Когда закроете окно, штора доедет сама.",
       kazdy: "Каждый мотор отдельно",
       slupek: "Импост / стена",
+      przegPion: "Вертикальная перегородка",
+      przegPoz: "Горизонтальная перегородка",
+      obokPola: "рядом с полем {0}",
+      podPolem: "под полем {0}",
+      przegRodzaj: { brak: "Нет", slupek: "Импост", belka: "Перемычка", sciana: "Стена" },
+      szerokosc: "Ширина",
+      dodajSciane: "🧱 Стена между окнами",
+      sciana: "Стена",
+      sciany: { biala: "белая", bezowa: "бежевая", szara: "серая", cegla: "кирпич", grafit: "графит" },
       belka: "Перемычка",
       brak: "нет",
       wUrzadzeniu: "также в: {0}",
@@ -6210,6 +6330,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "группа · створок: {0}",
       przeciagnij: "Перетащите, чтобы поменять",
       zamienPodpis: "Возьмите створку на рисунке или ⠿ у строки и отпустите на другой – они поменяются местами.",
+      jakZaleca: "Настроить как рекомендовано",
       caleOkno: "Всё окно",
       rodzajCalosc: "Нажмите на поле на рисунке, чтобы задать ему другой вид или цвет.",
       rodzajPole: "Сейчас настраивается только поле {0}."
@@ -6645,6 +6766,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "窓を閉めると、カバーは自動で閉まりきります。",
       kazdy: "モーターごと",
       slupek: "方立 / 壁",
+      przegPion: "縦の仕切り",
+      przegPoz: "横の仕切り",
+      obokPola: "パネル{0}の横",
+      podPolem: "パネル{0}の下",
+      przegRodzaj: { brak: "なし", slupek: "方立", belka: "無目", sciana: "壁" },
+      szerokosc: "幅",
+      dodajSciane: "🧱 窓の間の壁",
+      sciana: "壁",
+      sciany: { biala: "白", bezowa: "ベージュ", szara: "グレー", cegla: "レンガ", grafit: "グラファイト" },
       belka: "無目",
       brak: "なし",
       wUrzadzeniu: "{0} でも使用",
@@ -6655,6 +6785,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "グループ · {0} 枚",
       przeciagnij: "ドラッグで入れ替え",
       zamienPodpis: "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。",
+      jakZaleca: "おすすめ通りに設定",
       caleOkno: "窓全体",
       rodzajCalosc: "図の区画をタップすると、別の種類や色にできます。",
       rodzajPole: "今は区画 {0} だけを設定しています。"
@@ -7090,6 +7221,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pozniej: "关窗后，遮阳会自动关完。",
       kazdy: "每个电机单独",
       slupek: "竖梃 / 墙",
+      przegPion: "竖向隔断",
+      przegPoz: "横向隔断",
+      obokPola: "窗格{0}旁",
+      podPolem: "窗格{0}下方",
+      przegRodzaj: { brak: "无", slupek: "竖框", belka: "横框", sciana: "墙" },
+      szerokosc: "宽度",
+      dodajSciane: "🧱 窗户之间的墙",
+      sciana: "墙",
+      sciany: { biala: "白色", bezowa: "米色", szara: "灰色", cegla: "砖", grafit: "石墨" },
       belka: "横档",
       brak: "无",
       wUrzadzeniu: "也在：{0}",
@@ -7100,6 +7240,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupaIle: "组 · {0} 扇",
       przeciagnij: "拖动以交换",
       zamienPodpis: "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。",
+      jakZaleca: "按推荐设置",
       caleOkno: "整扇窗",
       rodzajCalosc: "点按图中的格子，可为它设置其他类型或颜色。",
       rodzajPole: "现在只设置第 {0} 格。"
@@ -7396,7 +7537,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
       if (klucz !== this._klucz) {
         this._klucz = klucz;
         this._zbuduj(c, czl);
@@ -7421,9 +7562,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
       }).join("") : "";
       const xs = P ? [...new Set(P.map((p) => p.x))].sort((a, b) => a - b) : [];
+      const sc = SCIANY[c.sciana], tloMuru = !sc ? "" : c.sciana === "cegla" ? `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(240,232,220,.75) 9px 10px),${sc}` : `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.1) 9px 10px),${sc}`;
       const mury = xs.slice(1).map((x, i) => {
         const pk = P.find((p) => p.x === xs[i]), od2 = pk.x + pk.w;
-        return x - od2 > 4e-3 ? `<div class="mur" style="left:${od2 * 100}%;width:${(x - od2) * 100}%"></div>` : "";
+        return x - od2 > 4e-3 ? `<div class="mur" style="left:${od2 * 100}%;width:${(x - od2) * 100}%${x - od2 < 0.035 ? `;background:${rama}` : tloMuru}"></div>` : "";
       }).join("");
       this._kas = KASETA[c.oslona] ?? 12;
       const typPola = (i) => {
@@ -8665,6 +8807,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .przel{width:40px;height:22px;border-radius:11px;background:var(--line);position:relative;flex:0 0 auto;transition:background .15s}
 .przel::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.3)}
 .wiersz:not(.wyl) .przel{background:var(--primary)} .wiersz:not(.wyl) .przel::after{left:21px}
+.przeg{margin-top:6px} .przeg .sek{margin:8px 0 6px} .przeg .sek small{font-weight:400;color:var(--fg2)} .przeg .suw{padding:8px 4px 0;margin:0}
 .suw{display:flex;align-items:center;gap:10px;padding:0 12px 10px 64px;margin-top:-6px;margin-bottom:8px;color:var(--fg2);font-size:12px}
 .suw input{flex:1;min-width:0;accent-color:var(--primary)}
 .suw span{min-width:44px;text-align:end}
@@ -8725,7 +8868,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       delete o.pola;
       S.brama = czyBrama(o.oslona) || this._oslona(S.rolety[0])?.brama;
       S.szablon = szablon(S.u);
-      if (d.nowy) this._podpowiedzi();
+      if (d.nowy) {
+        o.powiadom = [];
+        o.powiadom_gdzie = [];
+        this._podpowiedzi();
+      }
       const kroki = this.kroki();
       const k = kroki.indexOf(p.krok);
       S.krok = k < 0 ? 0 : k;
@@ -8809,10 +8956,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       S.pola = Array.from({ length: ile }, (_, i) => {
         const p = { ...S.pola[i] || {} };
         if ((podpowiedz || nowyUklad || !p.silnik) && R.length) p.silnik = silnikPola(i);
-        if (podpowiedz && !p.czujnik && kolejne[i] && !S.pola.some((q, j) => j !== i && q?.czujnik === kolejne[i])) p.czujnik = kolejne[i];
         p.tryb || (p.tryb = "uchyl");
         return p;
       });
+      if (podpowiedz) {
+        const kolejnosc = [...S.pola.map((p, i) => i).filter((i, _, a) => a.findIndex((j) => S.pola[j].silnik === S.pola[i].silnik) === i), ...S.pola.map((p, i) => i)];
+        const wolne = kolejne.filter((c) => !S.pola.some((q) => q.czujnik === c));
+        for (const i of [...new Set(kolejnosc)]) if (!S.pola[i].czujnik && wolne.length) S.pola[i].czujnik = wolne.shift();
+      }
     }
     // --- rysunki ---
     oslona(typ, x, y, w, h, poz, kolor) {
@@ -8892,7 +9043,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const sc = this._szeroko ? this._scena(k) : "";
       r.getElementById("scena").innerHTML = sc;
       r.getElementById("scena").hidden = !sc;
-      r.getElementById("podglad").innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === "uklad" && S.szablon === "w") && !jedenDuzy ? this._podgladMaly() : "";
+      r.getElementById("podglad").innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === "uklad" && (S.szablon === "w" || prostokaty(S.u).length > 1)) && !jedenDuzy ? this._podgladMaly() : "";
     }
     // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
     _scena(k) {
@@ -8980,7 +9131,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     str_uklad() {
       const S = this.S, t = this.t;
-      const ed = S.szablon === "w" && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
+      const ed = (S.szablon === "w" || prostokaty(S.u).length > 1) && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
       ${this._edytorCaly()}<div class="sek">${esc6(t.zSzablonu)}</div>` : "";
       return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
       <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
@@ -8999,9 +9150,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     str_kolory() {
       const S = this.S, T2 = this.T, t = this.t;
-      const wr = this._wybR(), wybrany = (co, k) => co === "kolor" && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === "kolor" ? "kolor_wlasny" : "rama_wlasna"];
+      const wr = this._wybR(), wybrany = (co, k) => co === "kolor" && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === "kolor" ? "kolor_wlasny" : co + "_wlasna"];
       const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map((k) => `<button class="probka ${wybrany(co, k) ? "wyb" : ""}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc6(dziel(nazwy[k] || k))}</button>`).join("")}</div>`;
-      return this._wyborPola() + `<div class="sek">${esc6(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}<div class="sek">${esc6(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}`;
+      return this._wyborPola() + `<div class="sek">${esc6(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}<div class="sek">${esc6(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}${wr === null && przerwy(S.u).some((p) => p[4] === "mur") ? `<div class="sek">${esc6(t.sciana)}</div>${rzad("sciana", Object.keys(SCIANY), (k) => SCIANY[k], t.sciany)}` : ""}`;
     }
     // „Rodzaj” i „Kolory”: całe okno albo jedno pole (dotknij pola na rysunku)
     _wybR() {
@@ -9020,6 +9171,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t;
       return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p>${this._szeroko ? "" : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc6(t.zamienPodpis)}</p>
+      ${S.rolety.length > 1 ? `<div style="display:flex;justify-content:center;margin-top:8px"><button class="chip" data-zaleca="1">✨ ${esc6(t.jakZaleca)}</button></div>` : ""}
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
@@ -9224,6 +9376,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         oslona: o.oslona,
         kolor: this._kolor(),
         rama: this._rama(),
+        sciana: o.sciana,
         wysokosc: +o.wysokosc || 260,
         czas: +o.czas || "auto",
         odwroc: !!o.odwroc,
@@ -9291,10 +9444,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _przerwa(x, y, w, h, typ) {
       const wasko = Math.min(w, h) < 12;
       if (wasko) return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>`;
-      const d = [`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#c9bfb2" stroke="#000" stroke-opacity=".25"/>`];
+      const sc = this.S.o.sciana, cegla = sc === "cegla", fuga = cegla ? 'stroke="#e9e1d6" stroke-opacity=".7"' : 'stroke="#000" stroke-opacity=".12"';
+      const d = [`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${SCIANY[sc] || "#c9bfb2"}" stroke="#000" stroke-opacity=".25"/>`];
       for (let yy = y + 7, n = 0; yy < y + h; yy += 7, n++) {
-        d.push(`<line x1="${x}" x2="${x + w}" y1="${yy}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
-        for (let xx = x + (n % 2 ? 6 : 12); xx < x + w; xx += 12) d.push(`<line x1="${xx}" x2="${xx}" y1="${yy - 7}" y2="${yy}" stroke="#000" stroke-opacity=".12"/>`);
+        d.push(`<line x1="${x}" x2="${x + w}" y1="${yy}" y2="${yy}" ${fuga}/>`);
+        for (let xx = x + (n % 2 ? 6 : 12); xx < x + w; xx += 12) d.push(`<line x1="${xx}" x2="${xx}" y1="${yy - 7}" y2="${yy}" ${fuga}/>`);
       }
       return `<g>${d.join("")}</g>`;
     }
@@ -9313,15 +9467,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t, K = S.u.kol, [c, j] = this._gdzie(Math.min(S.wyb, prostokaty(S.u).length - 1)), w = [];
       const cm = c < K.length - 1 ? c : c - 1, k = K[c];
       const sw = K.reduce((a, x) => a + x.w, 0), sr = k.r.reduce((a, b) => a + b, 0);
-      if (cm >= 0) {
-        const v = Math.round((+K[cm].mur || 0) / sw * 100);
-        w.push(`<div class="suw"><span class="et">${esc6(t.slupek)}</span><input type="range" min="0" max="40" step="1" value="${v}" data-przerwa="mur:${cm}" aria-label="${esc6(t.slupek)}"><span>${v ? v + " %" : esc6(t.brak)}</span></div>`);
-      }
+      const blok = (tytul, gdzie, typ, id, v, waski) => {
+        const rodzaj = !v ? "brak" : v <= 3 ? "waski" : "sciana", nz = t.przegRodzaj;
+        return `<div class="przeg"><div class="sek">${esc6(tytul)} <small>· ${esc6(gdzie)}</small></div><div class="chipy">${[["brak", nz.brak], ["waski", nz[waski]], ["sciana", nz.sciana]].map(([r, n]) => `<button class="chip ${rodzaj === r ? "wyb" : ""}" data-przeg="${typ}:${id}:${r}">${esc6(n)}</button>`).join("")}</div>
+        ${rodzaj === "sciana" ? `<div class="suw"><span class="et">${esc6(t.szerokosc)}</span><input type="range" min="4" max="${typ.startsWith("mur") ? 40 : 30}" step="1" value="${v}" data-przerwa="${typ}:${id}" aria-label="${esc6(t.szerokosc)}"><span>${v} %</span></div>` : ""}</div>`;
+      };
+      const nr = Math.min(S.wyb, prostokaty(S.u).length - 1) + 1;
+      if (cm >= 0) w.push(blok(t.przegPion, wstaw(t.obokPola, nr), "mur", `${cm}:0`, Math.round((+K[cm].mur || 0) / sw * 100), "slupek"));
       const jb = j < k.r.length - 1 ? j : j - 1;
-      if (jb >= 0) {
-        const v = Math.round((+k.bel?.[jb] || 0) / sr * 100);
-        w.push(`<div class="suw"><span class="et">${esc6(t.belka)}</span><input type="range" min="0" max="30" step="1" value="${v}" data-przerwa="bel:${c}:${jb}" aria-label="${esc6(t.belka)}"><span>${v ? v + " %" : esc6(t.brak)}</span></div>`);
-      }
+      if (jb >= 0) w.push(blok(t.przegPoz, wstaw(t.podPolem, nr), "bel", `${c}:${jb}`, Math.round((+k.bel?.[jb] || 0) / sr * 100), "belka"));
       return w.join("");
     }
     _odswiezUklad(bezSuwakow) {
@@ -9362,6 +9516,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         k.w /= 2;
         K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol, bel: [...k.bel || []], mur: k.mur || 0 });
         k.mur = 0;
+      }
+      if (op === "sciana" && K.length > 1) {
+        const cm = c < K.length - 1 ? c : c - 1, sw = K.reduce((a, x) => a + x.w, 0);
+        K[cm].mur = +K[cm].mur > 0 ? 0 : sw * 0.12;
+        if (K[cm].mur && !this.S.o.sciana) this.S.o.sciana = "biala";
       }
       if (op === "usun" && P.length > 1) {
         if (k.r.length > 1) {
@@ -9589,6 +9748,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
       if (d.x) return this._p.zamknij();
       if (d.krok !== void 0) return this._idz(+d.krok);
+      if (d.zaleca) {
+        S.pola = S.pola.map((p) => ({ ...p, silnik: void 0, czujnik: void 0 }));
+        this._dopasujPola(true);
+        return this.rysuj();
+      }
       if (b.id === "wstecz") return this._idz(Math.max(0, S.krok - 1));
       if (b.id === "dalej") return S.krok < kroki.length - 1 ? this._idz(S.krok + 1) : this._zapisz(b);
       if (b.id === "mierz") return this._mierz();
@@ -9660,6 +9824,18 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       else if (d.rama) {
         o.rama = d.rama;
         delete o.rama_wlasna;
+      } else if (d.sciana) o.sciana = d.sciana;
+      else if (d.przeg) {
+        const [typ, c, j, r] = d.przeg.split(":"), K = S.u.kol, mur = typ === "mur", k = K[+c];
+        const v = r === "brak" ? 0 : r === "waski" ? 2 : mur ? 12 : 10, cal = mur ? K.reduce((a, x) => a + x.w, 0) : k.r.reduce((a, b2) => a + b2, 0);
+        if (mur) k.mur = v / 100 * cal;
+        else {
+          k.bel = k.bel || [];
+          k.bel[+j] = v / 100 * cal;
+        }
+        if (r === "sciana" && !o.sciana) o.sciana = "biala";
+        S.szablon = "w";
+        return this._odswiezUklad();
       } else if (d.pole !== void 0 && ["rodzaj", "kolory"].includes(kroki[S.krok])) S.wybR = this._wybR() === +d.pole ? null : +d.pole;
       else if (d.pole !== void 0) {
         S.arkusz = +d.pole;

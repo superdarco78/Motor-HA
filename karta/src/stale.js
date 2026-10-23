@@ -1,7 +1,7 @@
 // Motor HA 2 – stałe karty: rodzaje osłon, kolory tkanin, kolory ram, ustawienia domyślne.
 // Klucze (nazwy rodzajów, kolorów i ustawień) są takie same jak w wersjach 1.x, żeby zapisane okna działały dalej.
 
-export const WERSJA = '2.2.5';
+export const WERSJA = '2.2.6';
 
 // Rodzaje osłon w grupach: wewnątrz (widok z pokoju) i na zewnątrz (widok z elewacji).
 export const GRUPY = {
@@ -26,6 +26,8 @@ export const BRAMY = Object.values(GRUPY.brama).flat();
 export const czyBrama = t => BRAMY.includes(t);
 // osłony, które zasuwają się w bok (żaluzja pionowa, zasłona), a nie w dół
 export const POZIOME = ['pionowa', 'zaslona'];
+// kolor ściany (muru) między oknami
+export const SCIANY = { biala: '#efebe4', bezowa: '#d6c4a6', szara: '#a5a4a0', cegla: '#a65a3a', grafit: '#56595c' };
 export const ZEWNETRZNE = Object.values(GRUPY.zew).flat();
 export const czyZew = t => ZEWNETRZNE.includes(t);
 
