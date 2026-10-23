@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Choose a motor.",
       "za_duzo": "Choose at most two motors (left and right sash)."
+    },
+    "abort": {
+      "zle_dane": "The wizard sent incomplete settings. Open it again.",
+      "brak_rolety": "Choose a motor for at least one pane.",
+      "za_duzo": "Too many motors (at most 12)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Choose a motor.",
       "za_duzo": "Choose at most two motors (left and right sash)."
+    },
+    "abort": {
+      "zle_dane": "The wizard sent incomplete settings. Open it again.",
+      "brak_rolety": "Choose a motor for at least one pane.",
+      "za_duzo": "Too many motors (at most 12)."
     }
   },
   "selector": {

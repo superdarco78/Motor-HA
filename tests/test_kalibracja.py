@@ -38,7 +38,7 @@ def _silniki(hass: HomeAssistant, przejazd: dict[str, float | None], od_razu: bo
 
 
 async def _okno(hass: HomeAssistant, monkeypatch, silnik: dict | None = None):
-    from custom_components.motor_ha import cover, powiadomienia
+    from custom_components.motor_ha import cover, pomiar, powiadomienia
     await async_setup_component(hass, "http", {})
     r, _ = await _przejdz(hass, {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"},
                                  "silnik": silnik or {"czas": 0, "kalibruj": False},
@@ -49,8 +49,8 @@ async def _okno(hass: HomeAssistant, monkeypatch, silnik: dict | None = None):
                         lambda hass, tresc, title=None, notification_id=None: wyslane.append((title, tresc)))
     monkeypatch.setattr(cover.persistent_notification, "async_create",
                         lambda hass, tresc, title=None, notification_id=None: wyslane.append((title, tresc)))
-    monkeypatch.setattr(cover, "MIN_PRZEJAZD", 1)
-    return wpis, hass.data[DOMAIN]["wpisy"][wpis.entry_id].okno, wyslane, cover
+    monkeypatch.setattr(pomiar, "MIN_PRZEJAZD", 1)
+    return wpis, hass.data[DOMAIN]["wpisy"][wpis.entry_id].okno, wyslane, pomiar
 
 
 async def test_zigbee_pozycja_na_koncu(hass: HomeAssistant, monkeypatch) -> None:
@@ -85,7 +85,7 @@ async def test_cel_od_razu_czas_z_predkosci(hass: HomeAssistant, monkeypatch) ->
     """Silnik melduje cel zaraz po komendzie: czas nie jest „1 s”, tylko z prędkości silnika."""
     wpis, okno, wyslane, cover = await _okno(hass, monkeypatch)
     _silniki(hass, {"cover.lewa": 0, "cover.prawa": 0}, od_razu=True)
-    monkeypatch.setattr(cover.MotorCover, "_czas_z_predkosci", lambda self: 2.5)
+    monkeypatch.setattr(cover, "czas_z_predkosci", lambda hass, p: 2.5)
     await okno._kalibruj()
     await hass.async_block_till_done()
     assert wpis.options["czas"] == 2.5, wpis.options.get("czas")

@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Wähle einen Motor.",
       "za_duzo": "Wähle höchstens zwei Motoren (linker und rechter Flügel)."
+    },
+    "abort": {
+      "zle_dane": "Der Assistent hat unvollständige Einstellungen gesendet. Öffne ihn erneut.",
+      "brak_rolety": "Wähle einen Motor für mindestens ein Feld.",
+      "za_duzo": "Zu viele Motoren (höchstens 12)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Wähle einen Motor.",
       "za_duzo": "Wähle höchstens zwei Motoren (linker und rechter Flügel)."
+    },
+    "abort": {
+      "zle_dane": "Der Assistent hat unvollständige Einstellungen gesendet. Öffne ihn erneut.",
+      "brak_rolety": "Wähle einen Motor für mindestens ein Feld.",
+      "za_duzo": "Zu viele Motoren (höchstens 12)."
     }
   },
   "selector": {

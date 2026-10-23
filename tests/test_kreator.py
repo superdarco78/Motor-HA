@@ -167,7 +167,7 @@ async def test_ukryj_silnik_przed_assist(hass: HomeAssistant) -> None:
 
 async def test_po_kalibracji(hass: HomeAssistant, monkeypatch) -> None:
     """Koniec kalibracji: powiadomienie z czasem; z opcją „50 %” osłona staje w połowie."""
-    from custom_components.motor_ha import cover, powiadomienia
+    from custom_components.motor_ha import cover, pomiar, powiadomienia
     await async_setup_component(hass, "http", {})
     _rolety(hass)
     r, _ = await _przejdz(hass, {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"},
@@ -183,7 +183,7 @@ async def test_po_kalibracji(hass: HomeAssistant, monkeypatch) -> None:
     async def pozycja(self, **kw):
         ruchy.append(kw["position"])
 
-    monkeypatch.setattr(cover.MotorCover, "_jedz", jedz)
+    monkeypatch.setattr(pomiar.Pomiar, "_jedz", jedz)
     monkeypatch.setattr(cover.MotorCover, "async_set_cover_position", pozycja)
     monkeypatch.setattr(powiadomienia.persistent_notification, "async_create",
                         lambda hass, tresc, title=None, notification_id=None: wyslane.append((title, tresc)))

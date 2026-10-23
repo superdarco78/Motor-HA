@@ -35,16 +35,12 @@ from homeassistant.util import dt as dt_util
 
 from .const import (
     BRAMY,
-    CONF_CZUJNIK_LEWE,
-    CONF_CZUJNIK_PRAWE,
     CONF_ODWROC,
     CONF_OSLONA,
     CONF_OSOBY,
     CONF_POGODA,
     CONF_ROLETY,
     CONF_SWIETA,
-    CONF_TRYB_LEWE,
-    CONF_TRYB_PRAWE,
     CZUJNIKI,
     DOMAIN,
     DOMYSLNE,
@@ -54,6 +50,7 @@ from .const import (
     SYGNAL_ZMIANA,
 )
 from .logika import Decyzja, Warunki, decyduj
+from .uklad import czujniki_okna
 
 _LOGGER = logging.getLogger(__name__)
 DESZCZOWE = {"rainy", "pouring", "lightning-rainy", "snowy-rainy", "hail"}
@@ -146,7 +143,7 @@ class Automatyka:
 
     def _czujniki(self) -> list[str | None]:
         lista = [self.o.get(v) for v in CZUJNIKI.values()]
-        lista += [self.o.get(CONF_CZUJNIK_LEWE), self.o.get(CONF_CZUJNIK_PRAWE), self.o.get(CONF_POGODA),
+        lista += [c for c, _ in czujniki_okna(self.o)] + [self.o.get(CONF_POGODA),
                   self.o.get(CONF_SWIETA), "sun.sun"]
         lista += list(self.o.get(CONF_OSOBY) or [])
         return lista
@@ -221,10 +218,9 @@ class Automatyka:
 
     def _okno(self) -> str:
         wynik = "zam"
-        for czujnik, tryb in ((CONF_CZUJNIK_LEWE, CONF_TRYB_LEWE), (CONF_CZUJNIK_PRAWE, CONF_TRYB_PRAWE)):
-            e = self.o.get(czujnik)
-            if e and _wl(self.hass.states.get(e)):
-                if self.o.get(tryb, "uchyl") == "otworz":
+        for e, tryb in czujniki_okna(self.o):   # każde pole okna ze swoim czujnikiem
+            if _wl(self.hass.states.get(e)):
+                if tryb == "otworz":
                     return "otw"
                 wynik = "uch"
         return wynik

@@ -61,14 +61,14 @@ from .const import (
     SYGNAL_ZMIANA,
     Z_LAMELAMI,
 )
+from .pomiar import Pomiar, poz
+from .uklad import CONF_UKLAD, pola, prostokaty, uklad
 from .urzadzenie import Wpis, info_urzadzenia
 
 # klucze przekazywane karcie bez zmian
 PROSTE = ["czujnik_lewe", "czujnik_prawe", "tryb_lewe", "tryb_prawe", "predkosc_lewa", "predkosc_prawa",
           CONF_OSLONA, CONF_KOLOR, CONF_ODWROC, "rodzaj_pokoju", "foto_stan", CONF_OSOBNO]
 SLONECZNE = ("f_slonce", "f_oslepianie", "f_upal", "f_zima", "f_jasnosc", "f_temp_pokoj")
-KALIBRACJA_MAKS = 240   # s na jeden przejazd
-MIN_PRZEJAZD = 5        # s – krótszy „pełny przejazd” to meldunek celu zaraz po ruszeniu, nie pomiar
 
 
 def _ruszyla(s: Any) -> str | None:
@@ -110,6 +110,10 @@ def ustawienia_karty(nazwa: str, o: dict[str, Any]) -> dict[str, Any]:
         k["przeszkoda"] = o[CZUJNIKI["foto"]]
     if any(o.get(f) for f in SLONECZNE):
         k["kompas"] = float(o.get("azymut", 180))   # kierunek okna – karta rysuje słońce względem okna
+    if o.get(CONF_UKLAD):   # układ z kreatora graficznego: pola (x, y, szer., wys.) z własnym silnikiem i czujnikiem
+        k["pola"] = [{"x": x, "y": y, "w": w, "h": h, **{kk: v for kk, v in p.items() if v}}
+                     for (x, y, w, h), p in zip(prostokaty(uklad(o)), pola(o))]
+        k["skrzydla"] = len(k["pola"])
     return k
 
 
@@ -167,8 +171,7 @@ class MotorCover(CoverEntity):
 
     @staticmethod
     def _poz(s) -> float:
-        p = s.attributes.get(ATTR_CURRENT_POSITION)
-        return p if isinstance(p, (int, float)) else 0 if s.state == STATE_CLOSED else 100
+        return poz(s)
 
     @callback
     def _zmiana(self, event: Event[EventStateChangedData]) -> None:
@@ -280,92 +283,16 @@ class MotorCover(CoverEntity):
             return
         self._kalibracja = self.hass.async_create_background_task(self._kalibruj(), f"{DOMAIN} kalibracja")
 
-    def _nazwa(self, encja: str) -> str:
-        s = self.hass.states.get(encja)
-        return str(s.attributes.get("friendly_name") or encja) if s else encja
-
-    async def _jedz(self, usluga: str, cel: int, pierwszy: bool) -> tuple[float | None, list[str], float]:
-        """Jeden przejazd; zwraca (czas, osłony bez odpowiedzi, start). Każdą osłonę śledzi osobno."""
-        przed = {e: (s.last_updated if (s := self.hass.states.get(e)) else None) for e in self._rolety}
-        t0 = monotonic()
-        await self.hass.services.async_call("cover", usluga, {ATTR_ENTITY_ID: self._rolety}, blocking=True)
-        dojechala: dict[str, float] = {}
-        odezwala: set[str] = set()
-        jechala: set[str] = set()
-        while (el := monotonic() - t0) < KALIBRACJA_MAKS:
-            await asyncio.sleep(0.5)
-            for e in self._rolety:
-                s = self.hass.states.get(e)
-                if e in dojechala or not s or s.state in (STATE_UNAVAILABLE, STATE_UNKNOWN):
-                    continue
-                if s.last_updated != przed[e]:
-                    odezwala.add(e)
-                if s.state in (STATE_OPENING, STATE_CLOSING):
-                    jechala.add(e)
-                    continue
-                na_miejscu = abs(self._poz(s) - cel) <= 1
-                # silniki bez „otwiera się”: Zigbee (np. Moes) zmienia stan od razu, a pozycję melduje na końcu
-                if (e in jechala and el > 1) or (na_miejscu and (e in odezwala or el > (1 if pierwszy else 4))):
-                    dojechala[e] = el
-            if len(dojechala) == len(self._rolety):
-                break
-            # inne już dojechały, a ta od komendy milczy – nie czekamy pełnych KALIBRACJA_MAKS
-            if dojechala and el > max(60.0, 3 * max(dojechala.values())) and \
-                    all(e in dojechala or e not in odezwala for e in self._rolety):
-                break
-        brak = [e for e in self._rolety if e not in dojechala]
-        return (max(dojechala.values()) if dojechala and not brak else None), brak, t0
-
-    def _czas_z_predkosci(self) -> float | None:
-        """Czas przejazdu z prędkości silnika (obr/min) – ten sam wzór co w karcie."""
-        czasy = []
-        for klucz in ("predkosc_lewa", "predkosc_prawa"):
-            if (e := self._entry.options.get(klucz)) and (s := self.hass.states.get(e)):
-                try:
-                    obroty = float(s.state)
-                except ValueError:
-                    continue
-                if obroty > 0:
-                    czasy.append(20.2 + 394 / obroty)
-        return round(max(czasy), 1) if czasy else None
-
-    async def _czas_od_razu(self, t0: float) -> float | None:
-        """Silnik zameldował cel zaraz po ruszeniu: czas z prędkości albo z pierwszego meldunku po zatrzymaniu."""
-        if czas := self._czas_z_predkosci():
-            await asyncio.sleep(max(0.0, czas - (monotonic() - t0)))   # niech naprawdę dojedzie przed kolejnym przejazdem
-            return czas
-        przed = {e: (s.last_updated if (s := self.hass.states.get(e)) else None) for e in self._rolety}
-        ostatni = None
-        while monotonic() - t0 < KALIBRACJA_MAKS:
-            await asyncio.sleep(0.5)
-            nowe = [e for e in self._rolety if (s := self.hass.states.get(e)) and s.last_updated != przed[e]]
-            if nowe:
-                ostatni = monotonic() - t0
-                przed.update({e: self.hass.states.get(e).last_updated for e in nowe})
-            elif ostatni is not None and monotonic() - t0 - ostatni > 5:
-                break
-        return round(ostatni, 1) if ostatni and ostatni >= MIN_PRZEJAZD else None
-
     async def _kalibruj(self) -> None:
-        wyniki = []
         nid = f"{DOMAIN}_kal_{self._entry.entry_id}"
-        for n, (usluga, cel) in enumerate((("open_cover", 100), ("close_cover", 0), ("open_cover", 100))):
-            el, brak, t0 = await self._jedz(usluga, cel, n == 0)
-            if brak:
-                lista = ", ".join(self._nazwa(e) for e in brak)
-                await self._koniec_kalibracji(nid, "kalibracja_brak", {"lista": lista, "maks": KALIBRACJA_MAKS})
-                self._zapisz_kalibracje(None)
-                return
-            if n and el is not None and el < MIN_PRZEJAZD:
-                el = await self._czas_od_razu(t0)
-                if el is None:
-                    await self._koniec_kalibracji(nid, "kalibracja_od_razu", {})
-                    self._zapisz_kalibracje(None)
-                    return
-            if n and el is not None:
-                wyniki.append(el)
-        czas = round(sum(wyniki) / len(wyniki), 1)
-        await self._koniec_kalibracji(nid, "kalibracja_ok", {"czas": f"{czas:g}"})
+        o = self._entry.options
+        czas, rodzaj, dane = await Pomiar(self.hass, self._rolety, [o.get("predkosc_lewa"), o.get("predkosc_prawa")]
+                                          + [p.get("predkosc") for p in pola(o)]).async_zmierz()
+        dane.pop("brak", None)
+        await self._koniec_kalibracji(nid, rodzaj, dane)
+        if czas is None:
+            self._zapisz_kalibracje(None)
+            return
         if self._entry.options.get(CONF_KALIBRACJA_50) and self._typ not in BRAMY \
                 and self.supported_features & CoverEntityFeature.SET_POSITION:
             await self.async_set_cover_position(position=50)   # widać, że kalibracja się skończyła

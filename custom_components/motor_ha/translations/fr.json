@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Choisissez un moteur.",
       "za_duzo": "Choisissez au plus deux moteurs (vantail gauche et droit)."
+    },
+    "abort": {
+      "zle_dane": "L’assistant a envoyé des réglages incomplets. Ouvrez-le à nouveau.",
+      "brak_rolety": "Choisissez un moteur pour au moins un panneau.",
+      "za_duzo": "Trop de moteurs (12 au maximum)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Choisissez un moteur.",
       "za_duzo": "Choisissez au plus deux moteurs (vantail gauche et droit)."
+    },
+    "abort": {
+      "zle_dane": "L’assistant a envoyé des réglages incomplets. Ouvrez-le à nouveau.",
+      "brak_rolety": "Choisissez un moteur pour au moins un panneau.",
+      "za_duzo": "Trop de moteurs (12 au maximum)."
     }
   },
   "selector": {

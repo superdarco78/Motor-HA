@@ -4,6 +4,10 @@
 // – kafelki rodzajów osłon i próbki kolorów: dotknięcie wybiera pozycję w polu poniżej,
 // – żywy podgląd okna (prawdziwa karta Motor HA na udawanej osłonie), który zmienia się od razu przy wyborze.
 // Gdy HA zmieni okienko i czegoś nie znajdziemy – zostają zwykłe obrazki i listy, nic się nie psuje.
+// krok klasycznego kreatora → krok kreatora graficznego (otwarcie „od razu przy kroku”)
+export const Z_KLASYCZNEGO = { rodzaj: 'rodzaj', lamele: 'rodzaj', kolory: 'kolory', okno: 'uklad', czujniki: 'przypisz',
+  silnik: 'stoper', automatyka: 'auto', ustawienia: 'auto', powiadomienia: 'dzwonek', panel: 'gotowe' };
+
 const ZNAK = 'data-motor-ha-pasek';
 const GAL = 'data-motor-ha-galeria';
 const PODGLAD = 'data-motor-ha-podglad';
@@ -164,11 +168,60 @@ function odswiez(form) {
   k.hass = { ...ha, states: { ...ha.states, [ENCJA]: stan }, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) };
 }
 
+// kreator graficzny (2.2.0) nad okienkiem HA: raz na każdy kreator Motor HA; gotowe ustawienia idą jak odpowiedź kroku
+const GRAFICZNE = new Set();
+export function czyMotorHa(okno, form) {
+  const p = okno._params || {}, k = okno._step || {};
+  return k.handler === 'motor_ha' || p.domain === 'motor_ha' || p.manifest?.domain === 'motor_ha'
+    || !!(form && wszystkie(form.shadowRoot, `img[${ZNAK}],img[src^="${PREFIKS}"]`).some(i => i.hasAttribute(ZNAK) || danePaska(svgZ(i))));
+}
+
+function graficzny(okno, form) {
+  const krok = okno._step;
+  if (!krok?.flow_id || krok.type !== 'form' || GRAFICZNE.has(krok.flow_id) || !customElements.get('motor-ha-kreator')) return;
+  if (!czyMotorHa(okno, form)) return;
+  const ha = document.querySelector('home-assistant');
+  if (!ha?.hass) return;
+  GRAFICZNE.add(krok.flow_id);
+  const dlg = document.createElement('dialog');
+  dlg.setAttribute('data-motor-ha-kreator', '');
+  dlg.style.cssText = 'padding:0;border:0;margin:auto;width:min(100vw,430px);height:min(100dvh,880px);max-width:100vw;max-height:100dvh;border-radius:var(--ha-dialog-border-radius,28px);overflow:hidden;background:var(--card-background-color,#fff)';
+  if (innerWidth < 600) Object.assign(dlg.style, { width: '100vw', height: '100dvh', borderRadius: '0' });
+  const tlo = document.createElement('style');
+  tlo.textContent = 'dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}';
+  dlg.appendChild(tlo);
+  const k = document.createElement('motor-ha-kreator');
+  dlg.appendChild(k);
+  document.body.appendChild(dlg);
+  let zegar = null;
+  const sprzatnij = () => { clearInterval(zegar); if (dlg.open) dlg.close(); dlg.remove(); };
+  const zamknij = () => { sprzatnij(); okno.closeDialog?.(); };
+  dlg.addEventListener('cancel', e => { e.preventDefault(); zamknij(); });
+  const wyslij = (dane) => {
+    const f = glebiej(okno.shadowRoot, 'step-flow-form');
+    sprzatnij();
+    if (!f) return;
+    ustaw(f, { kreator: JSON.stringify(dane) });
+    if (typeof f._submitStep === 'function') f._submitStep();
+  };
+  const opcje = krok.handler !== 'motor_ha';   // „Konfiguruj”: kreator wpisu (handler = entry_id)
+  dlg.showModal();
+  k.start({ hass: ha.hass, flow_id: krok.flow_id, entry_id: opcje ? krok.handler : null, krok: Z_KLASYCZNEGO[krok.step_id], wyslij, zamknij })
+    .then(() => {
+      zegar = setInterval(() => {
+        if (!okno._params || !okno.isConnected) return sprzatnij();   // okienko HA zamknięte – nasze też
+        if (ha.hass !== k._hass) k.hass = ha.hass;
+      }, 400);
+    })
+    .catch((e) => { console.warn('Motor HA: kreator graficzny niedostępny, zostaje klasyczny', e); sprzatnij(); });
+}
+
 export function pilnujKreatora() {
   const okno = document.querySelector('home-assistant')?.shadowRoot?.querySelector('dialog-data-entry-flow');
   if (!okno?._params) return;
   const form = glebiej(okno.shadowRoot, 'step-flow-form');
   if (!form) return;
+  try { graficzny(okno, form); } catch (e) { /* zostaje klasyczny kreator */ }
   const img = glebiej(form.shadowRoot, `img[src^="${PREFIKS}"]:not([${ZNAK}]):not([${GAL}])`);
   if (img && danePaska(svgZ(img))) { form.__motorHaGalerie = []; pasek(form, img); }
   for (const g of wszystkie(form.shadowRoot, `img[src^="${PREFIKS}"]:not([${ZNAK}]):not([${GAL}])`)) galeria(form, g);

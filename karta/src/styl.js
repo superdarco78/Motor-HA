@@ -45,13 +45,21 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
  background:linear-gradient(90deg,#8d9297,#f4f5f6 45%,#6f7479);box-shadow:0 0 0 1px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.5)}
 .klamka::after{content:"";position:absolute;left:.5px;top:4px;width:7px;height:30px;border-radius:3.5px;transform-origin:3.5px 5px;
  background:linear-gradient(90deg,#7d8287,#fff 45%,#5f6469);box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.5);transition:transform .5s 1s}
-.skrz[data-i="0"] .klamka{right:0}.skrz[data-i="1"] .klamka{left:0}
-.skrz.otw[data-i="0"] .klamka::after{transform:rotate(90deg);transition-delay:0s}
-.skrz.otw[data-i="1"] .klamka::after{transform:rotate(-90deg);transition-delay:0s}
+.skrz[data-s="l"] .klamka{right:0}.skrz[data-s="p"] .klamka{left:0}
+.skrz.otw[data-s="l"] .klamka::after{transform:rotate(90deg);transition-delay:0s}
+.skrz.otw[data-s="p"] .klamka::after{transform:rotate(-90deg);transition-delay:0s}
 .skrz.uch .klamka::after{transform:rotate(180deg);transition-delay:0s}
 .skrz.uch{transform-origin:50% 100%;transform:perspective(700px) rotateX(-14deg) scaleY(.9);box-shadow:0 6px 14px rgba(0,0,0,.5)}
-.skrz.otw[data-i="0"]{transform-origin:0 50%;transform:perspective(700px) rotateY(-42deg);z-index:8}
-.skrz.otw[data-i="1"]{transform-origin:100% 50%;transform:perspective(700px) rotateY(42deg);z-index:8}
+.skrz.otw[data-s="l"]{transform-origin:0 50%;transform:perspective(700px) rotateY(-42deg);z-index:8}
+.skrz.otw[data-s="p"]{transform-origin:100% 50%;transform:perspective(700px) rotateY(42deg);z-index:8}
+/* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
+.okno.uk{background:none!important;box-shadow:none!important;padding:0}
+.uk .kolr{position:absolute;border-radius:3px}
+.uk .skrz{position:absolute;flex:none;margin:0;padding:5px}
+.uk .za{inset:auto}
+.uk .wid{position:absolute}
+.uk .zewo .szyba{position:absolute;flex:none}
+.zew .uk .kolr{box-shadow:0 0 0 5px #c4bdb0,0 0 0 6px rgba(0,0,0,.08),-4px 4px 10px 6px rgba(0,0,0,.28)}
 .skrz.otw,.skrz.uch{transition-delay:.4s}
 .slup{position:absolute;top:0;bottom:0;left:50%;width:0}
 /* środkowy uchwyt: obie osłony naraz */
@@ -188,7 +196,7 @@ export function stylOkna({ rama, drewno, kolor, typ, zew }) {
     listwa = `background:linear-gradient(180deg,${S(.35)},${S(.05)} 55%,${S(-.4)});box-shadow:0 2px 0 rgba(20,20,20,.85),0 3px 3px rgba(0,0,0,.4)`;
   const markiza = typ === 'markiza' ? `.listwa::before{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 7px 0,${kolor} 6.5px,transparent 7px) 0 0/14px 10px repeat-x}` : '';
   return `
-.okno{background:${tlo};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
+.okno,.kolr{background:${tlo};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
 .skrz{background:${(drewno ? SLOJE + ',' : '') + R(-.03)}}
 .oslona{background-image:${t.nakladka ? t.nakladka + ',' : ''}${t.obraz};background-size:${t.nakladka ? '100% 100%,' : ''}100% ${t.okres}px;background-position:${t.nakladka ? '0 0,' : ''}0 100%;background-repeat:${t.nakladka ? 'no-repeat,' : ''}repeat-y}
 .kaseta{${kaseta}}

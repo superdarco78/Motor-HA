@@ -9,6 +9,9 @@ import { TEKSTY, jezyk } from './jezyk.js';
 import { konfiguruj } from './urzadzenie.js';
 
 // klucze, które zostają w karcie na panelu, gdy ustawienia trzyma urządzenie Motor HA
+// pola układu okna (2.2.0) z urządzenia: [{ x, y, w, h, silnik, czujnik, tryb }] albo null (1–2 skrzydła)
+export const polaOkna = c => Array.isArray(c.pola) && c.pola.length && !czyBrama(c.oslona)
+  && c.pola.every(p => [p?.x, p?.y, p?.w, p?.h].every(Number.isFinite)) ? c.pola : null;
 export const KLUCZE_PANELU = ['type', 'entity', 'grid_options', 'view_layout', 'visibility', 'layout_options'];
 // wysokość kasety (px) – od niej zaczyna się osłona
 const KASETA = { pelna: 10, plisa: 8, plaster: 8, rzymska: 8, zaluzja: 9, drewniana: 9, zewnetrzna: 16, perforowana: 16, natynkowa: 20, podtynkowa: 12,
@@ -41,7 +44,12 @@ export class MotorHaKarta extends HTMLElement {
 
   // encje skrzydeł: wybrane ręcznie, członkowie grupy (okno z integracji to też grupa) albo sama encja
   _skrzydla(c) {
-    const s = this._hass.states, n = +c.skrzydla === 1 || czyBrama(c.oslona) ? 1 : 2;
+    const s = this._hass.states;
+    if (polaOkna(c)) {   // układ z polami: każde pole ze swoim silnikiem
+      const grupa = (s[c.entity]?.attributes?.entity_id || []).filter(e => s[e]);
+      return c.pola.map(p => p.silnik && s[p.silnik] ? p.silnik : grupa[0] || c.entity);
+    }
+    const n = +c.skrzydla === 1 || czyBrama(c.oslona) ? 1 : 2;
     const grupa = (s[c.entity]?.attributes?.entity_id || []).filter(e => s[e]);
     const wybor = [c.roleta_lewa, c.roleta_prawa];
     return Array.from({ length: n }, (_, i) => wybor[i] && s[wybor[i]] ? wybor[i] : grupa.length ? grupa[Math.min(i, grupa.length - 1)] : c.entity);
@@ -52,7 +60,7 @@ export class MotorHaKarta extends HTMLElement {
     const c = this._cfg = this._ustawienia;
     this._jez = jezyk(c, this._hass);
     const czl = this._skrzydla(c);
-    const klucz = JSON.stringify([czl.length, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
     if (klucz !== this._klucz) { this._klucz = klucz; this._zbuduj(c, czl); }
     this._aktualizuj(c, czl);
   }
@@ -65,24 +73,36 @@ export class MotorHaKarta extends HTMLElement {
     const pion = c.suwak !== false && !this._poziomo;
     // osobne sterowanie dwóch skrzydeł: suwak lewej osłony z lewej, prawej z prawej strony okna
     const dwaSuwaki = pion && !!c.osobno && n > 1;
-    const H = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W = Math.round(H * (n === 1 ? .68 : .92));
+    const P = polaOkna(c), kol = P ? new Set(P.map(p => p.x)).size : n;
+    this._uk = !!P;
+    const H = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (kol === 1 ? 1.15 : 1),
+      W = Math.round(H * (kol === 1 ? .68 : kol === 2 ? .92 : Math.min(1.5, .46 * kol)));
+    // pole układu: położenie w procentach okna (4 px ramy dookoła każdego pola)
+    const miejsce = (i, wciecie = 4) => P ? ` style="left:calc(${P[i].x * 100}% + ${wciecie}px);top:calc(${P[i].y * 100}% + ${wciecie}px);width:calc(${P[i].w * 100}% - ${2 * wciecie}px);height:calc(${P[i].h * 100}% - ${2 * wciecie}px)"` : '';
+    const strona = i => P ? (P[i].x + P[i].w / 2 <= .5 ? 'l' : 'p') : i ? 'p' : 'l';
+    // widok za szybą jeden na całe okno: każde pole pokazuje swój kawałek
+    const wid = i => P ? ` class="wid" style="left:${-P[i].x / P[i].w * 100}%;top:${-P[i].y / P[i].h * 100}%;width:${100 / P[i].w}%;height:${100 / P[i].h}%"` : ' style="position:absolute;inset:0"';
+    const ramy = P ? [...new Set(P.map(p => p.x))].map(x => {
+      const k = P.filter(p => p.x === x), dol = Math.max(...k.map(p => p.y + p.h));
+      return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
+    }).join('') : '';
     this._kas = KASETA[c.oslona] ?? 12;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
-    const skrzydlo = i => `<div class="skrz" data-i="${i}"><div class="szyba">
-      ${zew ? '<div class="pokoj"></div>' : `<div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div><i class="promien"></i>
+    const skrzydlo = i => `<div class="skrz" data-i="${i}" data-s="${strona(i)}"${miejsce(i)}><div class="szyba">
+      ${zew ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
       <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
-      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 ? '<i class="klamka"></i>' : ''}</div>`;
-    const kolumna = i => `<div class="szyba" data-i="${i}"><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
+      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P || P[i].h >= .4) ? '<i class="klamka"></i>' : ''}</div>`;
+    const kolumna = i => `<div class="szyba" data-i="${i}"${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
     const pozycje = String(c.pozycje || '').split(/[,; ]+/).filter(x => x !== '').map(Number).filter(x => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
     root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
 <ha-card class="${zew ? 'zew' : 'wew'}${this._poziomo ? ' poziomo' : ''}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion ? ' zs' : ''}">${zew ? '<div class="pg pgz"></div>' : ''}
-  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
-   ${zew ? '' : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
+  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno${P ? ' uk' : ''}" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
+   ${ramy}${zew ? '' : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join('')}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join('')}</div>` : ''}
-   ${n > 1 && !c.osobno ? `<div class="oba" title="${esc(T.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ''}
+   ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc(T.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ''}
   </div>${pion ? this._suwakHtml(T, true, dwaSuwaki ? 1 : null) : ''}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
@@ -148,7 +168,7 @@ export class MotorHaKarta extends HTMLElement {
   // brama albo garaż: rysunek zamiast okna, dotknięcie = jak przycisk pilota
   _zbudujBrame(c, czl) {
     const T = this._T, root = this.shadowRoot || this.attachShadow({ mode: 'open' });
-    this._brama = true; this._poziomo = false; this._kas = 0; this._brNoc = null;
+    this._brama = true; this._uk = false; this._poziomo = false; this._kas = 0; this._brNoc = null;
     const st = this._hass.states[c.entity], zPoz = (st?.attributes?.supported_features ?? 0) & 4;
     root.innerHTML = `<style>${STYL_STALY}</style>
 <ha-card class="brama"><div class="mh">
@@ -192,7 +212,8 @@ export class MotorHaKarta extends HTMLElement {
   // polecenie dla wszystkich (albo wybranych) skrzydeł; cel null = stop
   _polecenie(cel, ktore) {
     const c = this._cfg, teraz = performance.now(), czl = this._czl || [];
-    const idx = ktore || czl.map((_, i) => i);
+    // pola na tym samym silniku jadą razem
+    const idx = ktore ? czl.map((_, i) => i).filter(i => ktore.some(k => czl[k] === czl[i])) : czl.map((_, i) => i);
     idx.forEach(i => this._ruchy[i]?.polecenie(cel, teraz));
     this._animuj();
     if (c.wibracja !== false) try { navigator.vibrate?.(10); } catch (e) { /* bez wibracji */ }
@@ -218,14 +239,14 @@ export class MotorHaKarta extends HTMLElement {
     el.addEventListener('pointermove', e => {
       if (start === null || (wart === null && Math.abs(e.clientY - start) < 6)) return;
       wart = this._pozycjaZ(pole(idx[0]), e.clientY);
-      const ktore = srodek || this._cfg.osobno || this._czl?.length < 2 ? idx : this._el.pola.map((_, i) => i);
+      const ktore = srodek || this._cfg.osobno || this._uk || this._czl?.length < 2 ? idx : this._el.pola.map((_, i) => i);
       ktore.forEach(i => this._pokazCel(i, wart, true));
     });
     const koniec = () => {
       if (start === null) return;
       start = null; this._ciagnie = false;
       this._el.pola.forEach((_, i) => this._pokazCel(i, null));
-      const ktore = srodek || !(this._cfg.osobno && this._czl?.length > 1) ? null : idx;
+      const ktore = srodek || !((this._cfg.osobno || this._uk) && this._czl?.length > 1) ? null : idx;
       if (wart !== null) this._polecenie(wart, ktore);
       else if (!srodek) this._dotkniecie(ktore);
     };
@@ -275,7 +296,7 @@ export class MotorHaKarta extends HTMLElement {
     // ruch: meldunki silników i czas przejazdu
     czl.forEach((e, i) => {
       const r = this._ruchy[i];
-      r.czas = czasPrzejazdu(c.czas, obroty(h, e, c[i ? 'predkosc_prawa' : 'predkosc_lewa']), e);
+      r.czas = czasPrzejazdu(c.czas, obroty(h, e, this._uk ? c.pola[i]?.predkosc : c[i ? 'predkosc_prawa' : 'predkosc_lewa']), e);
       const s = h.states[e] || st;
       if (s !== r._ost) { r._ost = s; r.meldunek(s, teraz, c.odwroc); }
     });
@@ -293,19 +314,21 @@ export class MotorHaKarta extends HTMLElement {
       E.skrz.forEach((S, i) => {
         if (S.niebo) S.niebo.style.background = bg;
         if (S.za) S.za.style.background = bg;
-        if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, i, czl.length) : '';
-        if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, i, czl.length);
+        const [nr, ile] = this._uk ? [0, 1] : [i, czl.length];   // pola: jeden widok na całe okno
+        if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, nr, ile) : '';
+        if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, nr, ile);
         S.s.classList.toggle('slonecznie', pora === 'dzien' && (rodzaj === 'slonce' || rodzaj === 'chmurki'));
       });
       if (E.pgz) E.pgz.innerHTML = ['deszcz', 'ulewa', 'burza', 'snieg', 'deszczsnieg', 'mgla'].includes(rodzaj) ? pogoda(rodzaj, pora, 0, 1).replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, '') : '';
     }
     if (this._brama) return this._aktualizujBrame(c, czl, st, pora);
     // czujniki okna
-    const auto = c.auto_czujniki !== false ? czujnikiOkna(h, czl[0]) : [];
-    const okno = [0, 1].map(k => {
-      const id = c[k ? 'czujnik_prawe' : 'czujnik_lewe'] || auto[k], s = id && h.states[id];
-      return s?.state === 'on' ? (c[k ? 'tryb_prawe' : 'tryb_lewe'] === 'otworz' ? 'otw' : 'uch') : '';
-    });
+    const auto = c.auto_czujniki !== false && !this._uk ? czujnikiOkna(h, czl[0]) : [];
+    const okno = this._uk ? c.pola.map(p => h.states[p.czujnik]?.state === 'on' ? (p.tryb === 'otworz' ? 'otw' : 'uch') : '')
+      : [0, 1].map(k => {
+        const id = c[k ? 'czujnik_prawe' : 'czujnik_lewe'] || auto[k], s = id && h.states[id];
+        return s?.state === 'on' ? (c[k ? 'tryb_prawe' : 'tryb_lewe'] === 'otworz' ? 'otw' : 'uch') : '';
+      });
     E.skrz.forEach((S, i) => { S.s.classList.toggle('uch', okno[i] === 'uch'); S.s.classList.toggle('otw', okno[i] === 'otw'); if (S.za) S.za.classList.toggle('widac', !!okno[i]); });
     // opis stanu: stan · pozycja · pogoda · okno
     const czesci = [];
@@ -317,7 +340,7 @@ export class MotorHaKarta extends HTMLElement {
       const opisPg = ws.entity_id && h.formatEntityState ? h.formatEntityState(ws) : this._lok(`component.weather.entity_component._.state.${ws.state}`, '');
       if (opisPg) czesci.push(opisPg + (typeof t === 'number' ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || '°C'}` : ''));
     }
-    okno.forEach((o, k) => { if (o && k < czl.length) czesci.push(`${T.karta.okno}${czl.length > 1 ? ' ' + (k ? T.karta.prawe : T.karta.lewe) : ''} ${o === 'otw' ? T.karta.otwarte : T.karta.uchylone}`); });
+    okno.forEach((o, k) => { if (o && k < czl.length) czesci.push(`${T.karta.okno}${czl.length > 1 ? ' ' + (this._uk ? k + 1 : k ? T.karta.prawe : T.karta.lewe) : ''} ${o === 'otw' ? T.karta.otwarte : T.karta.uchylone}`); });
     this._opisStanu = czesci;
     this._automatyka(c, h);
     const otwarte = this._ruchy.some(r => (r.widac ?? 0) > 0);

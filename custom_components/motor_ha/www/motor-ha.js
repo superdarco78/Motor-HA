@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.1.7";
+  var WERSJA = "2.2.0";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -370,13 +370,21 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
  background:linear-gradient(90deg,#8d9297,#f4f5f6 45%,#6f7479);box-shadow:0 0 0 1px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.5)}
 .klamka::after{content:"";position:absolute;left:.5px;top:4px;width:7px;height:30px;border-radius:3.5px;transform-origin:3.5px 5px;
  background:linear-gradient(90deg,#7d8287,#fff 45%,#5f6469);box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.5);transition:transform .5s 1s}
-.skrz[data-i="0"] .klamka{right:0}.skrz[data-i="1"] .klamka{left:0}
-.skrz.otw[data-i="0"] .klamka::after{transform:rotate(90deg);transition-delay:0s}
-.skrz.otw[data-i="1"] .klamka::after{transform:rotate(-90deg);transition-delay:0s}
+.skrz[data-s="l"] .klamka{right:0}.skrz[data-s="p"] .klamka{left:0}
+.skrz.otw[data-s="l"] .klamka::after{transform:rotate(90deg);transition-delay:0s}
+.skrz.otw[data-s="p"] .klamka::after{transform:rotate(-90deg);transition-delay:0s}
 .skrz.uch .klamka::after{transform:rotate(180deg);transition-delay:0s}
 .skrz.uch{transform-origin:50% 100%;transform:perspective(700px) rotateX(-14deg) scaleY(.9);box-shadow:0 6px 14px rgba(0,0,0,.5)}
-.skrz.otw[data-i="0"]{transform-origin:0 50%;transform:perspective(700px) rotateY(-42deg);z-index:8}
-.skrz.otw[data-i="1"]{transform-origin:100% 50%;transform:perspective(700px) rotateY(42deg);z-index:8}
+.skrz.otw[data-s="l"]{transform-origin:0 50%;transform:perspective(700px) rotateY(-42deg);z-index:8}
+.skrz.otw[data-s="p"]{transform-origin:100% 50%;transform:perspective(700px) rotateY(42deg);z-index:8}
+/* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
+.okno.uk{background:none!important;box-shadow:none!important;padding:0}
+.uk .kolr{position:absolute;border-radius:3px}
+.uk .skrz{position:absolute;flex:none;margin:0;padding:5px}
+.uk .za{inset:auto}
+.uk .wid{position:absolute}
+.uk .zewo .szyba{position:absolute;flex:none}
+.zew .uk .kolr{box-shadow:0 0 0 5px #c4bdb0,0 0 0 6px rgba(0,0,0,.08),-4px 4px 10px 6px rgba(0,0,0,.28)}
 .skrz.otw,.skrz.uch{transition-delay:.4s}
 .slup{position:absolute;top:0;bottom:0;left:50%;width:0}
 /* środkowy uchwyt: obie osłony naraz */
@@ -544,7 +552,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
       listwa = `background:linear-gradient(180deg,${S(0.35)},${S(0.05)} 55%,${S(-0.4)});box-shadow:0 2px 0 rgba(20,20,20,.85),0 3px 3px rgba(0,0,0,.4)`;
     const markiza = typ === "markiza" ? `.listwa::before{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 7px 0,${kolor} 6.5px,transparent 7px) 0 0/14px 10px repeat-x}` : "";
     return `
-.okno{background:${tlo2};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
+.okno,.kolr{background:${tlo2};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
 .skrz{background:${(drewno ? SLOJE + "," : "") + R(-0.03)}}
 .oslona{background-image:${t.nakladka ? t.nakladka + "," : ""}${t.obraz};background-size:${t.nakladka ? "100% 100%," : ""}100% ${t.okres}px;background-position:${t.nakladka ? "0 0," : ""}0 100%;background-repeat:${t.nakladka ? "no-repeat," : ""}repeat-y}
 .kaseta{${kaseta}}
@@ -1128,6 +1136,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pauza na dziś",
       powod: "Powód ruchu",
       wyglad: "Wygląd"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Krok {0} z {1}",
+      zamknij: "Zamknij",
+      wstecz: "Wstecz",
+      dalej: "Dalej",
+      zapisz: "Zapisz",
+      gotowe: "Gotowe",
+      kroki: {
+        silnik: "Osłona",
+        uklad: "Układ",
+        rodzaj: "Rodzaj",
+        kolory: "Kolory",
+        przypisz: "Pola",
+        czujniki: "Czujniki",
+        auto: "Automatyka",
+        stoper: "Czas",
+        dzwonek: "Powiadomienia",
+        gotowe: "Gotowe"
+      },
+      pytania: {
+        silnik: "Którą osłonę dodajesz?",
+        uklad: "Jak wygląda okno?",
+        rodzaj: "Co wisi na oknie?",
+        rodzajBrama: "Jaka to brama?",
+        kolory: "Kolory",
+        przypisz: "Dotknij pole okna",
+        czujniki: "Co Motor HA wie o domu",
+        auto: "Co ma się dziać samo",
+        stoper: "Czas przejazdu",
+        dzwonek: "Gdzie i o czym powiadamiać",
+        gotowe: "Gotowe"
+      },
+      podpisy: {
+        silnik: "Pokazuję tylko osłony, które jeszcze nie są w Motor HA.",
+        uklad: "Dotknij najbliższy układ.",
+        przypisz: "Każde pole: silnik i czujnik. Podpowiedzi są już wpisane.",
+        czujniki: "Znalezione w pokoju i w domu. Dotknij, żeby wyłączyć albo zmienić.",
+        auto: "Nic nie rusza samo, dopóki nie włączysz.",
+        stoper: "Osłony wyjadą, zjadą i wyjadą jeszcze raz. Rysunek będzie jechał w tym tempie.",
+        gotowe: "Tak będzie wyglądać karta na panelu."
+      },
+      wykryty: "{0} wykryty. Pozostałe osłony z tego pokoju zaznaczone same.",
+      brakOslon: "Nie znalazłem wolnych osłon. Dodaj silnik do Home Assistanta.",
+      uklady: {
+        u1: "1 skrzydło",
+        u2: "2 skrzydła",
+        u3: "3 skrzydła",
+        u4: "2 + naświetla",
+        u5: "Okno + drzwi",
+        u6: "Drzwi tarasowe",
+        u7: "Duże środek",
+        u8: "Siatka 2 × 2",
+        wlasny: "Własny"
+      },
+      wlasnyTytul: "Własny układ · przeciągnij linie i dół okna",
+      wPoprzek: "Podziel w poprzek",
+      wzdluz: "Podziel wzdłuż",
+      usun: "Usuń pole",
+      wlasnyPodpis: "Dotknij pole, potem podziel albo usuń. Do 4 kolumn i 3 pól w kolumnie.",
+      zSzablonu: "Albo zacznij od szablonu",
+      oslona: "Osłona",
+      rama: "Rama",
+      pole: "Pole {0}",
+      silnikPola: "Silnik",
+      czujnikPola: "Czujnik okna",
+      bezCzujnika: "bez czujnika",
+      bezCzujnikaOkna: "bez czujnika okna",
+      wybierzSilnik: "Dotknij, żeby wybrać silnik",
+      gdyOtwarte: "Gdy czujnik pokazuje otwarte",
+      uchyl: "uchylone",
+      otworz: "otwarte",
+      czujniki: {
+        okno: "Czujniki okna",
+        slonce: "Słońce",
+        pogoda: "Pogoda",
+        temp: "Temperatura na zewnątrz",
+        obecnosc: "Ktoś w pokoju",
+        wiatr: "Wiatr",
+        deszcz: "Deszcz",
+        foto: "Fotokomórka bramy"
+      },
+      slonceOpis: "Pozycja słońca z Home Assistanta",
+      nieZnalazlem: "Nie znalazłem w domu",
+      nieUzywaj: "Nie używaj",
+      okienBrak: "Dotknij, żeby przypisać do pól",
+      auto: {
+        rano: "Rano otwórz",
+        wieczor: "Wieczorem zamknij",
+        slonce: "Chroń przed słońcem",
+        blokada: "Nie zamykaj na otwarte okno",
+        wietrzenie: "Uchylone okno = osłona do połowy",
+        wiatr: "Silny wiatr = zwiń",
+        deszcz: "Deszcz = zwiń"
+      },
+      oGodz: "o {0}",
+      oWschodzie: "o wschodzie słońca",
+      oZachodzie: "o zachodzie słońca",
+      zeSloncem: "Według słońca",
+      zaslon: "zasłoń do {0} % w upał",
+      okienne: "czujniki okna",
+      wiatrOpis: "od {0} km/h",
+      deszczOpis: "markiza i żaluzje fasadowe",
+      strona: "Okno patrzy na",
+      strony: {
+        n: "północ",
+        e: "wschód",
+        s: "południe",
+        w: "zachód"
+      },
+      autoPodpis: "Wiatr i deszcz pojawią się tu, gdy dodasz takie czujniki albo pogodę.",
+      zmierz: "Zmierz teraz",
+      zmierzZnow: "Zmierz jeszcze raz",
+      mierze: "Mierzę…",
+      pomin: "Możesz pominąć i zmierzyć później przyciskiem „Kalibruj” przy urządzeniu.",
+      nieOdp: "Nie odpowiada: {0}",
+      odRazu: "Silnik melduje koniec od razu. Wpisz prędkość silnika albo pomiń.",
+      bladPomiaru: "Pomiar się nie udał. Spróbuj jeszcze raz.",
+      powiadom: {
+        nie_odpowiada: "Osłona nie odpowiada",
+        nie_dojechala: "Nie dojechała do końca",
+        bateria: "Słaba bateria",
+        czujnik: "Czujnik nie odpowiada",
+        automatyka: "Automatyka ruszyła osłonę",
+        brama_otwarta: "Brama otwarta za długo",
+        brama_niedomknieta: "Brama niedomknięta",
+        przeszkoda: "Przeszkoda w bramie"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "np. silnik bez zasilania",
+        nie_dojechala: "stanęła w połowie",
+        bateria: "silnik albo czujnik okna",
+        czujnik: "czujnik z kreatora",
+        automatyka: "z powodem ruchu",
+        brama_otwarta: "po kilku minutach",
+        brama_niedomknieta: "stanęła w połowie",
+        przeszkoda: "fotokomórka"
+      },
+      telefon: "Telefon (aplikacja HA)",
+      brakTelefonu: "Bez telefonu powiadomienia są tylko w Home Assistancie.",
+      naPanel: "Dodaj na panel",
+      nazwa: "Nazwa",
+      zapisano: "Zapisano ✓"
     }
   };
 
@@ -1395,6 +1547,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pause for today",
       powod: "Reason for movement",
       wyglad: "Appearance"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Step {0} of {1}",
+      zamknij: "Close",
+      wstecz: "Back",
+      dalej: "Next",
+      zapisz: "Save",
+      gotowe: "Done",
+      kroki: {
+        silnik: "Cover",
+        uklad: "Layout",
+        rodzaj: "Type",
+        kolory: "Colours",
+        przypisz: "Panes",
+        czujniki: "Sensors",
+        auto: "Automation",
+        stoper: "Time",
+        dzwonek: "Notifications",
+        gotowe: "Done"
+      },
+      pytania: {
+        silnik: "Which cover are you adding?",
+        uklad: "What does the window look like?",
+        rodzaj: "What hangs on the window?",
+        rodzajBrama: "What kind of gate is it?",
+        kolory: "Colours",
+        przypisz: "Tap a pane of the window",
+        czujniki: "What Motor HA knows about the home",
+        auto: "What should happen on its own",
+        stoper: "Travel time",
+        dzwonek: "Where and what to notify about",
+        gotowe: "Done"
+      },
+      podpisy: {
+        silnik: "Only covers that are not in Motor HA yet are shown.",
+        uklad: "Tap the closest layout.",
+        przypisz: "Each pane: a motor and a sensor. Suggestions are already filled in.",
+        czujniki: "Found in the room and in the home. Tap to turn off or change.",
+        auto: "Nothing moves on its own until you turn it on.",
+        stoper: "The covers go up, down and up again. The drawing will move at this pace.",
+        gotowe: "This is how the card will look on the dashboard."
+      },
+      wykryty: "{0} detected. The other covers in this room are selected automatically.",
+      brakOslon: "No free covers found. Add a motor to Home Assistant.",
+      uklady: {
+        u1: "1 sash",
+        u2: "2 sashes",
+        u3: "3 sashes",
+        u4: "2 + transoms",
+        u5: "Window + door",
+        u6: "Patio door",
+        u7: "Large middle",
+        u8: "2 × 2 grid",
+        wlasny: "Custom"
+      },
+      wlasnyTytul: "Custom layout · drag the lines and the bottom of the window",
+      wPoprzek: "Split across",
+      wzdluz: "Split lengthwise",
+      usun: "Remove pane",
+      wlasnyPodpis: "Tap a pane, then split or remove it. Up to 4 columns and 3 panes in a column.",
+      zSzablonu: "Or start from a template",
+      oslona: "Cover",
+      rama: "Frame",
+      pole: "Pane {0}",
+      silnikPola: "Motor",
+      czujnikPola: "Window sensor",
+      bezCzujnika: "no sensor",
+      bezCzujnikaOkna: "no window sensor",
+      wybierzSilnik: "Tap to choose a motor",
+      gdyOtwarte: "When the sensor shows open",
+      uchyl: "tilted",
+      otworz: "open",
+      czujniki: {
+        okno: "Window sensors",
+        slonce: "Sun",
+        pogoda: "Weather",
+        temp: "Outdoor temperature",
+        obecnosc: "Someone in the room",
+        wiatr: "Wind",
+        deszcz: "Rain",
+        foto: "Gate photocell"
+      },
+      slonceOpis: "Sun position from Home Assistant",
+      nieZnalazlem: "Not found in the home",
+      nieUzywaj: "Don’t use",
+      okienBrak: "Tap to assign to panes",
+      auto: {
+        rano: "Open in the morning",
+        wieczor: "Close in the evening",
+        slonce: "Protect from the sun",
+        blokada: "Don’t close on an open window",
+        wietrzenie: "Tilted window = cover halfway",
+        wiatr: "Strong wind = retract",
+        deszcz: "Rain = retract"
+      },
+      oGodz: "at {0}",
+      oWschodzie: "at sunrise",
+      oZachodzie: "at sunset",
+      zeSloncem: "Follow the sun",
+      zaslon: "cover {0} % in hot weather",
+      okienne: "window sensors",
+      wiatrOpis: "from {0} km/h",
+      deszczOpis: "awning and external venetian blinds",
+      strona: "Window faces",
+      strony: {
+        n: "north",
+        e: "east",
+        s: "south",
+        w: "west"
+      },
+      autoPodpis: "Wind and rain appear here when you add such sensors or weather.",
+      zmierz: "Measure now",
+      zmierzZnow: "Measure again",
+      mierze: "Measuring…",
+      pomin: "You can skip this and measure later with the device’s “Calibrate” button.",
+      nieOdp: "Not responding: {0}",
+      odRazu: "The motor reports the end right away. Set the motor speed or skip.",
+      bladPomiaru: "The measurement failed. Try again.",
+      powiadom: {
+        nie_odpowiada: "Cover not responding",
+        nie_dojechala: "Didn’t reach the end",
+        bateria: "Low battery",
+        czujnik: "Sensor not responding",
+        automatyka: "Automation moved the cover",
+        brama_otwarta: "Gate open too long",
+        brama_niedomknieta: "Gate not fully closed",
+        przeszkoda: "Obstacle in the gate"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "e.g. motor without power",
+        nie_dojechala: "stopped halfway",
+        bateria: "motor or window sensor",
+        czujnik: "sensor from the wizard",
+        automatyka: "with the reason",
+        brama_otwarta: "after a few minutes",
+        brama_niedomknieta: "stopped halfway",
+        przeszkoda: "photocell"
+      },
+      telefon: "Phone (HA app)",
+      brakTelefonu: "Without a phone, notifications appear only in Home Assistant.",
+      naPanel: "Add to dashboard",
+      nazwa: "Name",
+      zapisano: "Saved ✓"
     }
   };
 
@@ -1662,6 +1958,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pause für heute",
       powod: "Grund der Bewegung",
       wyglad: "Aussehen"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Schritt {0} von {1}",
+      zamknij: "Schließen",
+      wstecz: "Zurück",
+      dalej: "Weiter",
+      zapisz: "Speichern",
+      gotowe: "Fertig",
+      kroki: {
+        silnik: "Behang",
+        uklad: "Aufteilung",
+        rodzaj: "Art",
+        kolory: "Farben",
+        przypisz: "Felder",
+        czujniki: "Sensoren",
+        auto: "Automatik",
+        stoper: "Zeit",
+        dzwonek: "Benachrichtigungen",
+        gotowe: "Fertig"
+      },
+      pytania: {
+        silnik: "Welchen Behang fügst du hinzu?",
+        uklad: "Wie sieht das Fenster aus?",
+        rodzaj: "Was hängt am Fenster?",
+        rodzajBrama: "Welche Art von Tor ist es?",
+        kolory: "Farben",
+        przypisz: "Tippe auf ein Fensterfeld",
+        czujniki: "Was Motor HA über das Zuhause weiß",
+        auto: "Was von selbst passieren soll",
+        stoper: "Fahrzeit",
+        dzwonek: "Wohin und worüber benachrichtigen",
+        gotowe: "Fertig"
+      },
+      podpisy: {
+        silnik: "Es werden nur Behänge gezeigt, die noch nicht in Motor HA sind.",
+        uklad: "Tippe auf die ähnlichste Aufteilung.",
+        przypisz: "Jedes Feld: ein Motor und ein Sensor. Vorschläge sind schon eingetragen.",
+        czujniki: "Im Raum und im Zuhause gefunden. Tippe zum Ausschalten oder Ändern.",
+        auto: "Nichts bewegt sich von selbst, bis du es einschaltest.",
+        stoper: "Die Behänge fahren hoch, runter und wieder hoch. Die Zeichnung bewegt sich in diesem Tempo.",
+        gotowe: "So sieht die Karte im Dashboard aus."
+      },
+      wykryty: "{0} erkannt. Die anderen Behänge in diesem Raum sind automatisch ausgewählt.",
+      brakOslon: "Keine freien Behänge gefunden. Füge einen Motor zu Home Assistant hinzu.",
+      uklady: {
+        u1: "1 Flügel",
+        u2: "2 Flügel",
+        u3: "3 Flügel",
+        u4: "2 + Oberlichter",
+        u5: "Fenster + Tür",
+        u6: "Terrassentür",
+        u7: "Groß in der Mitte",
+        u8: "Raster 2 × 2",
+        wlasny: "Eigene"
+      },
+      wlasnyTytul: "Eigene Aufteilung · ziehe die Linien und den unteren Fensterrand",
+      wPoprzek: "Quer teilen",
+      wzdluz: "Längs teilen",
+      usun: "Feld entfernen",
+      wlasnyPodpis: "Tippe auf ein Feld, dann teile oder entferne es. Bis zu 4 Spalten und 3 Felder pro Spalte.",
+      zSzablonu: "Oder starte mit einer Vorlage",
+      oslona: "Behang",
+      rama: "Rahmen",
+      pole: "Feld {0}",
+      silnikPola: "Motor",
+      czujnikPola: "Fenstersensor",
+      bezCzujnika: "ohne Sensor",
+      bezCzujnikaOkna: "ohne Fenstersensor",
+      wybierzSilnik: "Tippe, um einen Motor zu wählen",
+      gdyOtwarte: "Wenn der Sensor offen zeigt",
+      uchyl: "gekippt",
+      otworz: "offen",
+      czujniki: {
+        okno: "Fenstersensoren",
+        slonce: "Sonne",
+        pogoda: "Wetter",
+        temp: "Außentemperatur",
+        obecnosc: "Jemand im Raum",
+        wiatr: "Wind",
+        deszcz: "Regen",
+        foto: "Lichtschranke des Tors"
+      },
+      slonceOpis: "Sonnenstand aus Home Assistant",
+      nieZnalazlem: "Im Zuhause nicht gefunden",
+      nieUzywaj: "Nicht verwenden",
+      okienBrak: "Tippe, um Feldern zuzuweisen",
+      auto: {
+        rano: "Morgens öffnen",
+        wieczor: "Abends schließen",
+        slonce: "Vor Sonne schützen",
+        blokada: "Bei offenem Fenster nicht schließen",
+        wietrzenie: "Gekipptes Fenster = Behang halb",
+        wiatr: "Starker Wind = einfahren",
+        deszcz: "Regen = einfahren"
+      },
+      oGodz: "um {0}",
+      oWschodzie: "bei Sonnenaufgang",
+      oZachodzie: "bei Sonnenuntergang",
+      zeSloncem: "Nach der Sonne",
+      zaslon: "bei Hitze {0} % schließen",
+      okienne: "Fenstersensoren",
+      wiatrOpis: "ab {0} km/h",
+      deszczOpis: "Markise und Raffstores",
+      strona: "Fenster zeigt nach",
+      strony: {
+        n: "Norden",
+        e: "Osten",
+        s: "Süden",
+        w: "Westen"
+      },
+      autoPodpis: "Wind und Regen erscheinen hier, wenn du solche Sensoren oder Wetter hinzufügst.",
+      zmierz: "Jetzt messen",
+      zmierzZnow: "Erneut messen",
+      mierze: "Messung läuft…",
+      pomin: "Du kannst das überspringen und später mit der Taste „Kalibrieren“ des Geräts messen.",
+      nieOdp: "Antwortet nicht: {0}",
+      odRazu: "Der Motor meldet das Ende sofort. Stelle die Motorgeschwindigkeit ein oder überspringe.",
+      bladPomiaru: "Die Messung ist fehlgeschlagen. Versuche es erneut.",
+      powiadom: {
+        nie_odpowiada: "Behang antwortet nicht",
+        nie_dojechala: "Ende nicht erreicht",
+        bateria: "Batterie schwach",
+        czujnik: "Sensor antwortet nicht",
+        automatyka: "Automatik hat den Behang bewegt",
+        brama_otwarta: "Tor zu lange offen",
+        brama_niedomknieta: "Tor nicht ganz geschlossen",
+        przeszkoda: "Hindernis im Tor"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "z. B. Motor ohne Strom",
+        nie_dojechala: "auf halbem Weg stehen geblieben",
+        bateria: "Motor oder Fenstersensor",
+        czujnik: "Sensor aus dem Assistenten",
+        automatyka: "mit dem Grund",
+        brama_otwarta: "nach einigen Minuten",
+        brama_niedomknieta: "auf halbem Weg stehen geblieben",
+        przeszkoda: "Lichtschranke"
+      },
+      telefon: "Telefon (HA-App)",
+      brakTelefonu: "Ohne Telefon erscheinen Benachrichtigungen nur in Home Assistant.",
+      naPanel: "Zum Dashboard hinzufügen",
+      nazwa: "Name",
+      zapisano: "Gespeichert ✓"
     }
   };
 
@@ -1929,6 +2369,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pause aujourd’hui",
       powod: "Raison du mouvement",
       wyglad: "Apparence"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Étape {0} sur {1}",
+      zamknij: "Fermer",
+      wstecz: "Retour",
+      dalej: "Suivant",
+      zapisz: "Enregistrer",
+      gotowe: "Terminé",
+      kroki: {
+        silnik: "Store",
+        uklad: "Disposition",
+        rodzaj: "Type",
+        kolory: "Couleurs",
+        przypisz: "Vantaux",
+        czujniki: "Capteurs",
+        auto: "Automatisme",
+        stoper: "Durée",
+        dzwonek: "Notifications",
+        gotowe: "Terminé"
+      },
+      pytania: {
+        silnik: "Quel store ajoutes-tu ?",
+        uklad: "À quoi ressemble la fenêtre ?",
+        rodzaj: "Qu’y a-t-il sur la fenêtre ?",
+        rodzajBrama: "Quel type de portail ?",
+        kolory: "Couleurs",
+        przypisz: "Touche un vantail de la fenêtre",
+        czujniki: "Ce que Motor HA sait de la maison",
+        auto: "Ce qui doit se faire tout seul",
+        stoper: "Durée de course",
+        dzwonek: "Où et à propos de quoi notifier",
+        gotowe: "Terminé"
+      },
+      podpisy: {
+        silnik: "Seuls les stores pas encore dans Motor HA sont affichés.",
+        uklad: "Touche la disposition la plus proche.",
+        przypisz: "Chaque vantail : un moteur et un capteur. Les suggestions sont déjà remplies.",
+        czujniki: "Trouvé dans la pièce et dans la maison. Touche pour désactiver ou changer.",
+        auto: "Rien ne bouge tout seul tant que tu ne l’actives pas.",
+        stoper: "Les stores montent, descendent et remontent. Le dessin bougera à ce rythme.",
+        gotowe: "Voici la carte telle qu’elle apparaîtra sur le tableau de bord."
+      },
+      wykryty: "{0} détecté. Les autres stores de cette pièce sont choisis automatiquement.",
+      brakOslon: "Aucun store libre trouvé. Ajoute un moteur à Home Assistant.",
+      uklady: {
+        u1: "1 vantail",
+        u2: "2 vantaux",
+        u3: "3 vantaux",
+        u4: "2 + impostes",
+        u5: "Fenêtre + porte",
+        u6: "Porte-fenêtre",
+        u7: "Grand au milieu",
+        u8: "Grille 2 × 2",
+        wlasny: "Personnalisée"
+      },
+      wlasnyTytul: "Disposition perso · fais glisser les lignes et le bas de la fenêtre",
+      wPoprzek: "Diviser en travers",
+      wzdluz: "Diviser en long",
+      usun: "Supprimer le vantail",
+      wlasnyPodpis: "Touche un vantail, puis divise-le ou supprime-le. Jusqu’à 4 colonnes et 3 vantaux par colonne.",
+      zSzablonu: "Ou pars d’un modèle",
+      oslona: "Store",
+      rama: "Cadre",
+      pole: "Vantail {0}",
+      silnikPola: "Moteur",
+      czujnikPola: "Capteur de fenêtre",
+      bezCzujnika: "sans capteur",
+      bezCzujnikaOkna: "sans capteur de fenêtre",
+      wybierzSilnik: "Touche pour choisir un moteur",
+      gdyOtwarte: "Quand le capteur indique ouvert",
+      uchyl: "oscillo-battant",
+      otworz: "ouvert",
+      czujniki: {
+        okno: "Capteurs de fenêtre",
+        slonce: "Soleil",
+        pogoda: "Météo",
+        temp: "Température extérieure",
+        obecnosc: "Quelqu’un dans la pièce",
+        wiatr: "Vent",
+        deszcz: "Pluie",
+        foto: "Cellule du portail"
+      },
+      slonceOpis: "Position du soleil depuis Home Assistant",
+      nieZnalazlem: "Introuvable dans la maison",
+      nieUzywaj: "Ne pas utiliser",
+      okienBrak: "Touche pour attribuer aux vantaux",
+      auto: {
+        rano: "Ouvrir le matin",
+        wieczor: "Fermer le soir",
+        slonce: "Protéger du soleil",
+        blokada: "Ne pas fermer si la fenêtre est ouverte",
+        wietrzenie: "Fenêtre basculée = store à mi-hauteur",
+        wiatr: "Vent fort = remonter",
+        deszcz: "Pluie = remonter"
+      },
+      oGodz: "à {0}",
+      oWschodzie: "au lever du soleil",
+      oZachodzie: "au coucher du soleil",
+      zeSloncem: "Selon le soleil",
+      zaslon: "couvrir {0} % par forte chaleur",
+      okienne: "capteurs de fenêtre",
+      wiatrOpis: "dès {0} km/h",
+      deszczOpis: "banne et brise-soleil",
+      strona: "La fenêtre donne au",
+      strony: {
+        n: "nord",
+        e: "est",
+        s: "sud",
+        w: "ouest"
+      },
+      autoPodpis: "Le vent et la pluie apparaissent ici quand tu ajoutes ces capteurs ou la météo.",
+      zmierz: "Mesurer maintenant",
+      zmierzZnow: "Mesurer à nouveau",
+      mierze: "Mesure en cours…",
+      pomin: "Tu peux passer et mesurer plus tard avec le bouton « Calibrer » de l’appareil.",
+      nieOdp: "Ne répond pas : {0}",
+      odRazu: "Le moteur signale la fin tout de suite. Règle la vitesse du moteur ou passe.",
+      bladPomiaru: "La mesure a échoué. Réessaie.",
+      powiadom: {
+        nie_odpowiada: "Le store ne répond pas",
+        nie_dojechala: "N’est pas allé au bout",
+        bateria: "Batterie faible",
+        czujnik: "Le capteur ne répond pas",
+        automatyka: "L’automatisme a bougé le store",
+        brama_otwarta: "Portail ouvert trop longtemps",
+        brama_niedomknieta: "Portail mal fermé",
+        przeszkoda: "Obstacle dans le portail"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "p. ex. moteur sans courant",
+        nie_dojechala: "arrêté à mi-course",
+        bateria: "moteur ou capteur de fenêtre",
+        czujnik: "capteur de l’assistant",
+        automatyka: "avec la raison",
+        brama_otwarta: "après quelques minutes",
+        brama_niedomknieta: "arrêté à mi-course",
+        przeszkoda: "cellule photoélectrique"
+      },
+      telefon: "Téléphone (app HA)",
+      brakTelefonu: "Sans téléphone, les notifications n’apparaissent que dans Home Assistant.",
+      naPanel: "Ajouter au tableau de bord",
+      nazwa: "Nom",
+      zapisano: "Enregistré ✓"
     }
   };
 
@@ -2196,6 +2780,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pauza na dnes",
       powod: "Důvod pohybu",
       wyglad: "Vzhled"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Krok {0} z {1}",
+      zamknij: "Zavřít",
+      wstecz: "Zpět",
+      dalej: "Další",
+      zapisz: "Uložit",
+      gotowe: "Hotovo",
+      kroki: {
+        silnik: "Stínění",
+        uklad: "Rozvržení",
+        rodzaj: "Druh",
+        kolory: "Barvy",
+        przypisz: "Pole",
+        czujniki: "Senzory",
+        auto: "Automatika",
+        stoper: "Čas",
+        dzwonek: "Oznámení",
+        gotowe: "Hotovo"
+      },
+      pytania: {
+        silnik: "Které stínění přidáváš?",
+        uklad: "Jak vypadá okno?",
+        rodzaj: "Co visí na okně?",
+        rodzajBrama: "Jaký je to druh brány?",
+        kolory: "Barvy",
+        przypisz: "Klepni na pole okna",
+        czujniki: "Co Motor HA ví o domově",
+        auto: "Co se má dít samo",
+        stoper: "Doba jízdy",
+        dzwonek: "Kam a o čem oznamovat",
+        gotowe: "Hotovo"
+      },
+      podpisy: {
+        silnik: "Zobrazuji jen stínění, která ještě nejsou v Motor HA.",
+        uklad: "Klepni na nejpodobnější rozvržení.",
+        przypisz: "Každé pole: motor a senzor. Návrhy jsou už vyplněné.",
+        czujniki: "Nalezeno v místnosti a v domě. Klepnutím vypneš nebo změníš.",
+        auto: "Nic se samo nepohne, dokud to nezapneš.",
+        stoper: "Stínění vyjede nahoru, dolů a znovu nahoru. Kresba se bude pohybovat tímto tempem.",
+        gotowe: "Takto bude karta vypadat na panelu."
+      },
+      wykryty: "Rozpoznáno: {0}. Ostatní stínění v této místnosti jsou vybraná automaticky.",
+      brakOslon: "Nenašel jsem volné stínění. Přidej motor do Home Assistantu.",
+      uklady: {
+        u1: "1 křídlo",
+        u2: "2 křídla",
+        u3: "3 křídla",
+        u4: "2 + nadsvětlíky",
+        u5: "Okno + dveře",
+        u6: "Balkonové dveře",
+        u7: "Velké uprostřed",
+        u8: "Mřížka 2 × 2",
+        wlasny: "Vlastní"
+      },
+      wlasnyTytul: "Vlastní rozvržení · táhni čáry a spodní okraj okna",
+      wPoprzek: "Rozdělit napříč",
+      wzdluz: "Rozdělit podélně",
+      usun: "Odebrat pole",
+      wlasnyPodpis: "Klepni na pole, pak ho rozděl nebo odeber. Až 4 sloupce a 3 pole ve sloupci.",
+      zSzablonu: "Nebo začni ze šablony",
+      oslona: "Stínění",
+      rama: "Rám",
+      pole: "Pole {0}",
+      silnikPola: "Motor",
+      czujnikPola: "Okenní senzor",
+      bezCzujnika: "bez senzoru",
+      bezCzujnikaOkna: "bez okenního senzoru",
+      wybierzSilnik: "Klepnutím vyber motor",
+      gdyOtwarte: "Když senzor ukazuje otevřeno",
+      uchyl: "vyklopené",
+      otworz: "otevřené",
+      czujniki: {
+        okno: "Okenní senzory",
+        slonce: "Slunce",
+        pogoda: "Počasí",
+        temp: "Venkovní teplota",
+        obecnosc: "Někdo v místnosti",
+        wiatr: "Vítr",
+        deszcz: "Déšť",
+        foto: "Fotobuňka brány"
+      },
+      slonceOpis: "Poloha slunce z Home Assistantu",
+      nieZnalazlem: "V domě nenalezeno",
+      nieUzywaj: "Nepoužívat",
+      okienBrak: "Klepnutím přiřadíš k polím",
+      auto: {
+        rano: "Ráno otevřít",
+        wieczor: "Večer zavřít",
+        slonce: "Chránit před sluncem",
+        blokada: "Nezavírat při otevřeném okně",
+        wietrzenie: "Vyklopené okno = stínění napůl",
+        wiatr: "Silný vítr = zatáhnout",
+        deszcz: "Déšť = zatáhnout"
+      },
+      oGodz: "v {0}",
+      oWschodzie: "při východu slunce",
+      oZachodzie: "při západu slunce",
+      zeSloncem: "Podle slunce",
+      zaslon: "v horku zakrýt {0} %",
+      okienne: "okenní senzory",
+      wiatrOpis: "od {0} km/h",
+      deszczOpis: "markýza a venkovní žaluzie",
+      strona: "Okno směřuje na",
+      strony: {
+        n: "sever",
+        e: "východ",
+        s: "jih",
+        w: "západ"
+      },
+      autoPodpis: "Vítr a déšť se tu objeví, když přidáš takové senzory nebo počasí.",
+      zmierz: "Změřit teď",
+      zmierzZnow: "Změřit znovu",
+      mierze: "Měřím…",
+      pomin: "Můžeš to přeskočit a změřit později tlačítkem zařízení „Kalibrovat“.",
+      nieOdp: "Neodpovídá: {0}",
+      odRazu: "Motor hlásí konec hned. Nastav rychlost motoru nebo přeskoč.",
+      bladPomiaru: "Měření se nepovedlo. Zkus to znovu.",
+      powiadom: {
+        nie_odpowiada: "Stínění neodpovídá",
+        nie_dojechala: "Nedojelo do konce",
+        bateria: "Slabá baterie",
+        czujnik: "Senzor neodpovídá",
+        automatyka: "Automatika pohnula stíněním",
+        brama_otwarta: "Brána otevřená příliš dlouho",
+        brama_niedomknieta: "Brána nedovřená",
+        przeszkoda: "Překážka v bráně"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "např. motor bez napájení",
+        nie_dojechala: "zastavilo se v půli",
+        bateria: "motor nebo okenní senzor",
+        czujnik: "senzor z průvodce",
+        automatyka: "s důvodem",
+        brama_otwarta: "po několika minutách",
+        brama_niedomknieta: "zastavila se v půli",
+        przeszkoda: "fotobuňka"
+      },
+      telefon: "Telefon (aplikace HA)",
+      brakTelefonu: "Bez telefonu se oznámení zobrazí jen v Home Assistantu.",
+      naPanel: "Přidat na panel",
+      nazwa: "Název",
+      zapisano: "Uloženo ✓"
     }
   };
 
@@ -2463,6 +3191,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pauza na dnes",
       powod: "Dôvod pohybu",
       wyglad: "Vzhľad"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Krok {0} z {1}",
+      zamknij: "Zavrieť",
+      wstecz: "Späť",
+      dalej: "Ďalej",
+      zapisz: "Uložiť",
+      gotowe: "Hotovo",
+      kroki: {
+        silnik: "Tienenie",
+        uklad: "Rozloženie",
+        rodzaj: "Druh",
+        kolory: "Farby",
+        przypisz: "Polia",
+        czujniki: "Senzory",
+        auto: "Automatika",
+        stoper: "Čas",
+        dzwonek: "Upozornenia",
+        gotowe: "Hotovo"
+      },
+      pytania: {
+        silnik: "Ktoré tienenie pridávaš?",
+        uklad: "Ako vyzerá okno?",
+        rodzaj: "Čo visí na okne?",
+        rodzajBrama: "Aký je to druh brány?",
+        kolory: "Farby",
+        przypisz: "Ťukni na pole okna",
+        czujniki: "Čo Motor HA vie o domove",
+        auto: "Čo sa má diať samo",
+        stoper: "Čas jazdy",
+        dzwonek: "Kam a o čom upozorňovať",
+        gotowe: "Hotovo"
+      },
+      podpisy: {
+        silnik: "Zobrazujem len tienenia, ktoré ešte nie sú v Motor HA.",
+        uklad: "Ťukni na najpodobnejšie rozloženie.",
+        przypisz: "Každé pole: motor a senzor. Návrhy sú už vyplnené.",
+        czujniki: "Nájdené v miestnosti a v dome. Ťuknutím vypneš alebo zmeníš.",
+        auto: "Nič sa samo nepohne, kým to nezapneš.",
+        stoper: "Tienenie vyjde hore, dole a znova hore. Kresba sa bude hýbať týmto tempom.",
+        gotowe: "Takto bude karta vyzerať na paneli."
+      },
+      wykryty: "Rozpoznané: {0}. Ostatné tienenia v tejto miestnosti sú vybrané automaticky.",
+      brakOslon: "Nenašiel som voľné tienenie. Pridaj motor do Home Assistantu.",
+      uklady: {
+        u1: "1 krídlo",
+        u2: "2 krídla",
+        u3: "3 krídla",
+        u4: "2 + nadsvetlíky",
+        u5: "Okno + dvere",
+        u6: "Balkónové dvere",
+        u7: "Veľké v strede",
+        u8: "Mriežka 2 × 2",
+        wlasny: "Vlastné"
+      },
+      wlasnyTytul: "Vlastné rozloženie · ťahaj čiary a spodný okraj okna",
+      wPoprzek: "Rozdeliť naprieč",
+      wzdluz: "Rozdeliť pozdĺžne",
+      usun: "Odobrať pole",
+      wlasnyPodpis: "Ťukni na pole, potom ho rozdeľ alebo odober. Až 4 stĺpce a 3 polia v stĺpci.",
+      zSzablonu: "Alebo začni zo šablóny",
+      oslona: "Tienenie",
+      rama: "Rám",
+      pole: "Pole {0}",
+      silnikPola: "Motor",
+      czujnikPola: "Okenný senzor",
+      bezCzujnika: "bez senzora",
+      bezCzujnikaOkna: "bez okenného senzora",
+      wybierzSilnik: "Ťuknutím vyber motor",
+      gdyOtwarte: "Keď senzor ukazuje otvorené",
+      uchyl: "vyklopené",
+      otworz: "otvorené",
+      czujniki: {
+        okno: "Okenné senzory",
+        slonce: "Slnko",
+        pogoda: "Počasie",
+        temp: "Vonkajšia teplota",
+        obecnosc: "Niekto v miestnosti",
+        wiatr: "Vietor",
+        deszcz: "Dážď",
+        foto: "Fotobunka brány"
+      },
+      slonceOpis: "Poloha slnka z Home Assistantu",
+      nieZnalazlem: "V dome nenájdené",
+      nieUzywaj: "Nepoužívať",
+      okienBrak: "Ťuknutím priradíš k poliam",
+      auto: {
+        rano: "Ráno otvoriť",
+        wieczor: "Večer zatvoriť",
+        slonce: "Chrániť pred slnkom",
+        blokada: "Nezatvárať pri otvorenom okne",
+        wietrzenie: "Vyklopené okno = tienenie napoly",
+        wiatr: "Silný vietor = zatiahnuť",
+        deszcz: "Dážď = zatiahnuť"
+      },
+      oGodz: "o {0}",
+      oWschodzie: "pri východe slnka",
+      oZachodzie: "pri západe slnka",
+      zeSloncem: "Podľa slnka",
+      zaslon: "v horúčave zakryť {0} %",
+      okienne: "okenné senzory",
+      wiatrOpis: "od {0} km/h",
+      deszczOpis: "markíza a vonkajšie žalúzie",
+      strona: "Okno smeruje na",
+      strony: {
+        n: "sever",
+        e: "východ",
+        s: "juh",
+        w: "západ"
+      },
+      autoPodpis: "Vietor a dážď sa tu objavia, keď pridáš také senzory alebo počasie.",
+      zmierz: "Zmerať teraz",
+      zmierzZnow: "Zmerať znova",
+      mierze: "Meriam…",
+      pomin: "Môžeš to preskočiť a zmerať neskôr tlačidlom zariadenia „Kalibrovať“.",
+      nieOdp: "Neodpovedá: {0}",
+      odRazu: "Motor hlási koniec hneď. Nastav rýchlosť motora alebo preskoč.",
+      bladPomiaru: "Meranie sa nepodarilo. Skús to znova.",
+      powiadom: {
+        nie_odpowiada: "Tienenie neodpovedá",
+        nie_dojechala: "Nedošlo do konca",
+        bateria: "Slabá batéria",
+        czujnik: "Senzor neodpovedá",
+        automatyka: "Automatika pohla tienením",
+        brama_otwarta: "Brána otvorená príliš dlho",
+        brama_niedomknieta: "Brána nedovretá",
+        przeszkoda: "Prekážka v bráne"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "napr. motor bez napájania",
+        nie_dojechala: "zastavilo sa v polovici",
+        bateria: "motor alebo okenný senzor",
+        czujnik: "senzor zo sprievodcu",
+        automatyka: "s dôvodom",
+        brama_otwarta: "po niekoľkých minútach",
+        brama_niedomknieta: "zastavila sa v polovici",
+        przeszkoda: "fotobunka"
+      },
+      telefon: "Telefón (aplikácia HA)",
+      brakTelefonu: "Bez telefónu sa upozornenia zobrazia len v Home Assistante.",
+      naPanel: "Pridať na panel",
+      nazwa: "Názov",
+      zapisano: "Uložené ✓"
     }
   };
 
@@ -2730,6 +3602,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pausa por hoy",
       powod: "Motivo del movimiento",
       wyglad: "Apariencia"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Paso {0} de {1}",
+      zamknij: "Cerrar",
+      wstecz: "Atrás",
+      dalej: "Siguiente",
+      zapisz: "Guardar",
+      gotowe: "Listo",
+      kroki: {
+        silnik: "Estor",
+        uklad: "Distribución",
+        rodzaj: "Tipo",
+        kolory: "Colores",
+        przypisz: "Paños",
+        czujniki: "Sensores",
+        auto: "Automatización",
+        stoper: "Tiempo",
+        dzwonek: "Notificaciones",
+        gotowe: "Listo"
+      },
+      pytania: {
+        silnik: "¿Qué estor añades?",
+        uklad: "¿Cómo es la ventana?",
+        rodzaj: "¿Qué cuelga en la ventana?",
+        rodzajBrama: "¿Qué tipo de puerta es?",
+        kolory: "Colores",
+        przypisz: "Toca un paño de la ventana",
+        czujniki: "Lo que Motor HA sabe de la casa",
+        auto: "Qué debe pasar solo",
+        stoper: "Tiempo de recorrido",
+        dzwonek: "Dónde y de qué avisar",
+        gotowe: "Listo"
+      },
+      podpisy: {
+        silnik: "Solo se muestran los estores que aún no están en Motor HA.",
+        uklad: "Toca la distribución más parecida.",
+        przypisz: "Cada paño: un motor y un sensor. Las sugerencias ya están puestas.",
+        czujniki: "Encontrado en la habitación y en la casa. Toca para desactivar o cambiar.",
+        auto: "Nada se mueve solo hasta que lo actives.",
+        stoper: "Los estores suben, bajan y vuelven a subir. El dibujo se moverá a este ritmo.",
+        gotowe: "Así se verá la tarjeta en el panel."
+      },
+      wykryty: "Detectado: {0}. Los demás estores de esta habitación se seleccionan solos.",
+      brakOslon: "No hay estores libres. Añade un motor a Home Assistant.",
+      uklady: {
+        u1: "1 hoja",
+        u2: "2 hojas",
+        u3: "3 hojas",
+        u4: "2 + montantes",
+        u5: "Ventana + puerta",
+        u6: "Puerta de terraza",
+        u7: "Grande en medio",
+        u8: "Cuadrícula 2 × 2",
+        wlasny: "Propia"
+      },
+      wlasnyTytul: "Distribución propia · arrastra las líneas y el borde inferior",
+      wPoprzek: "Dividir a lo ancho",
+      wzdluz: "Dividir a lo largo",
+      usun: "Quitar paño",
+      wlasnyPodpis: "Toca un paño y divídelo o quítalo. Hasta 4 columnas y 3 paños por columna.",
+      zSzablonu: "O empieza con una plantilla",
+      oslona: "Estor",
+      rama: "Marco",
+      pole: "Paño {0}",
+      silnikPola: "Motor",
+      czujnikPola: "Sensor de ventana",
+      bezCzujnika: "sin sensor",
+      bezCzujnikaOkna: "sin sensor de ventana",
+      wybierzSilnik: "Toca para elegir un motor",
+      gdyOtwarte: "Cuando el sensor indica abierto",
+      uchyl: "abatida",
+      otworz: "abierta",
+      czujniki: {
+        okno: "Sensores de ventana",
+        slonce: "Sol",
+        pogoda: "Tiempo",
+        temp: "Temperatura exterior",
+        obecnosc: "Alguien en la habitación",
+        wiatr: "Viento",
+        deszcz: "Lluvia",
+        foto: "Fotocélula de la puerta"
+      },
+      slonceOpis: "Posición del sol de Home Assistant",
+      nieZnalazlem: "No encontrado en la casa",
+      nieUzywaj: "No usar",
+      okienBrak: "Toca para asignar a los paños",
+      auto: {
+        rano: "Abrir por la mañana",
+        wieczor: "Cerrar por la tarde",
+        slonce: "Proteger del sol",
+        blokada: "No cerrar con la ventana abierta",
+        wietrzenie: "Ventana abatida = estor a media altura",
+        wiatr: "Viento fuerte = recoger",
+        deszcz: "Lluvia = recoger"
+      },
+      oGodz: "a las {0}",
+      oWschodzie: "al amanecer",
+      oZachodzie: "al atardecer",
+      zeSloncem: "Según el sol",
+      zaslon: "cubrir {0} % con calor",
+      okienne: "sensores de ventana",
+      wiatrOpis: "desde {0} km/h",
+      deszczOpis: "toldo y celosías exteriores",
+      strona: "La ventana da al",
+      strony: {
+        n: "norte",
+        e: "este",
+        s: "sur",
+        w: "oeste"
+      },
+      autoPodpis: "El viento y la lluvia aparecen aquí cuando añades esos sensores o el tiempo.",
+      zmierz: "Medir ahora",
+      zmierzZnow: "Medir de nuevo",
+      mierze: "Midiendo…",
+      pomin: "Puedes saltarlo y medir después con el botón «Calibrar» del dispositivo.",
+      nieOdp: "No responde: {0}",
+      odRazu: "El motor informa del final enseguida. Ajusta la velocidad del motor o salta este paso.",
+      bladPomiaru: "La medición falló. Inténtalo de nuevo.",
+      powiadom: {
+        nie_odpowiada: "El estor no responde",
+        nie_dojechala: "No llegó al final",
+        bateria: "Batería baja",
+        czujnik: "El sensor no responde",
+        automatyka: "La automatización movió el estor",
+        brama_otwarta: "Puerta abierta demasiado tiempo",
+        brama_niedomknieta: "Puerta no cerrada del todo",
+        przeszkoda: "Obstáculo en la puerta"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "p. ej. motor sin corriente",
+        nie_dojechala: "se paró a medio camino",
+        bateria: "motor o sensor de ventana",
+        czujnik: "sensor del asistente",
+        automatyka: "con el motivo",
+        brama_otwarta: "tras unos minutos",
+        brama_niedomknieta: "se paró a medio camino",
+        przeszkoda: "fotocélula"
+      },
+      telefon: "Teléfono (app de HA)",
+      brakTelefonu: "Sin teléfono, los avisos solo aparecen en Home Assistant.",
+      naPanel: "Añadir al panel",
+      nazwa: "Nombre",
+      zapisano: "Guardado ✓"
     }
   };
 
@@ -2997,6 +4013,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pausa per oggi",
       powod: "Motivo del movimento",
       wyglad: "Aspetto"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Passo {0} di {1}",
+      zamknij: "Chiudi",
+      wstecz: "Indietro",
+      dalej: "Avanti",
+      zapisz: "Salva",
+      gotowe: "Fatto",
+      kroki: {
+        silnik: "Tenda",
+        uklad: "Disposizione",
+        rodzaj: "Tipo",
+        kolory: "Colori",
+        przypisz: "Ante",
+        czujniki: "Sensori",
+        auto: "Automazione",
+        stoper: "Tempo",
+        dzwonek: "Notifiche",
+        gotowe: "Fatto"
+      },
+      pytania: {
+        silnik: "Quale tenda aggiungi?",
+        uklad: "Com’è la finestra?",
+        rodzaj: "Cosa c’è sulla finestra?",
+        rodzajBrama: "Che tipo di cancello è?",
+        kolory: "Colori",
+        przypisz: "Tocca un’anta della finestra",
+        czujniki: "Cosa sa Motor HA della casa",
+        auto: "Cosa deve succedere da solo",
+        stoper: "Tempo di corsa",
+        dzwonek: "Dove e di cosa avvisare",
+        gotowe: "Fatto"
+      },
+      podpisy: {
+        silnik: "Mostro solo le tende non ancora in Motor HA.",
+        uklad: "Tocca la disposizione più simile.",
+        przypisz: "Ogni anta: un motore e un sensore. I suggerimenti sono già inseriti.",
+        czujniki: "Trovato nella stanza e in casa. Tocca per disattivare o cambiare.",
+        auto: "Niente si muove da solo finché non lo attivi.",
+        stoper: "Le tende salgono, scendono e risalgono. Il disegno si muoverà a questo ritmo.",
+        gotowe: "Ecco come apparirà la scheda nella dashboard."
+      },
+      wykryty: "Rilevato: {0}. Le altre tende di questa stanza sono scelte in automatico.",
+      brakOslon: "Nessuna tenda libera trovata. Aggiungi un motore a Home Assistant.",
+      uklady: {
+        u1: "1 anta",
+        u2: "2 ante",
+        u3: "3 ante",
+        u4: "2 + sopraluce",
+        u5: "Finestra + porta",
+        u6: "Portafinestra",
+        u7: "Grande al centro",
+        u8: "Griglia 2 × 2",
+        wlasny: "Personalizzata"
+      },
+      wlasnyTytul: "Disposizione personalizzata · trascina le linee e il bordo inferiore",
+      wPoprzek: "Dividi in larghezza",
+      wzdluz: "Dividi in lunghezza",
+      usun: "Rimuovi anta",
+      wlasnyPodpis: "Tocca un’anta, poi dividila o rimuovila. Fino a 4 colonne e 3 ante per colonna.",
+      zSzablonu: "Oppure parti da un modello",
+      oslona: "Tenda",
+      rama: "Telaio",
+      pole: "Anta {0}",
+      silnikPola: "Motore",
+      czujnikPola: "Sensore finestra",
+      bezCzujnika: "senza sensore",
+      bezCzujnikaOkna: "senza sensore finestra",
+      wybierzSilnik: "Tocca per scegliere un motore",
+      gdyOtwarte: "Quando il sensore indica aperto",
+      uchyl: "a ribalta",
+      otworz: "aperta",
+      czujniki: {
+        okno: "Sensori finestra",
+        slonce: "Sole",
+        pogoda: "Meteo",
+        temp: "Temperatura esterna",
+        obecnosc: "Qualcuno nella stanza",
+        wiatr: "Vento",
+        deszcz: "Pioggia",
+        foto: "Fotocellula del cancello"
+      },
+      slonceOpis: "Posizione del sole da Home Assistant",
+      nieZnalazlem: "Non trovato in casa",
+      nieUzywaj: "Non usare",
+      okienBrak: "Tocca per assegnare alle ante",
+      auto: {
+        rano: "Apri al mattino",
+        wieczor: "Chiudi la sera",
+        slonce: "Proteggi dal sole",
+        blokada: "Non chiudere con la finestra aperta",
+        wietrzenie: "Finestra a ribalta = tenda a metà",
+        wiatr: "Vento forte = ritira",
+        deszcz: "Pioggia = ritira"
+      },
+      oGodz: "alle {0}",
+      oWschodzie: "all’alba",
+      oZachodzie: "al tramonto",
+      zeSloncem: "Secondo il sole",
+      zaslon: "copri {0} % con il caldo",
+      okienne: "sensori finestra",
+      wiatrOpis: "da {0} km/h",
+      deszczOpis: "tenda da sole e frangisole",
+      strona: "La finestra guarda a",
+      strony: {
+        n: "nord",
+        e: "est",
+        s: "sud",
+        w: "ovest"
+      },
+      autoPodpis: "Vento e pioggia compaiono qui quando aggiungi questi sensori o il meteo.",
+      zmierz: "Misura ora",
+      zmierzZnow: "Misura di nuovo",
+      mierze: "Misurazione…",
+      pomin: "Puoi saltare e misurare più tardi con il pulsante «Calibra» del dispositivo.",
+      nieOdp: "Non risponde: {0}",
+      odRazu: "Il motore segnala subito la fine. Imposta la velocità del motore o salta.",
+      bladPomiaru: "Misurazione non riuscita. Riprova.",
+      powiadom: {
+        nie_odpowiada: "La tenda non risponde",
+        nie_dojechala: "Non è arrivata in fondo",
+        bateria: "Batteria scarica",
+        czujnik: "Il sensore non risponde",
+        automatyka: "L’automazione ha mosso la tenda",
+        brama_otwarta: "Cancello aperto troppo a lungo",
+        brama_niedomknieta: "Cancello non chiuso del tutto",
+        przeszkoda: "Ostacolo nel cancello"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "es. motore senza corrente",
+        nie_dojechala: "fermata a metà",
+        bateria: "motore o sensore finestra",
+        czujnik: "sensore della procedura",
+        automatyka: "con il motivo",
+        brama_otwarta: "dopo alcuni minuti",
+        brama_niedomknieta: "fermato a metà",
+        przeszkoda: "fotocellula"
+      },
+      telefon: "Telefono (app HA)",
+      brakTelefonu: "Senza telefono, le notifiche appaiono solo in Home Assistant.",
+      naPanel: "Aggiungi alla dashboard",
+      nazwa: "Nome",
+      zapisano: "Salvato ✓"
     }
   };
 
@@ -3264,6 +4424,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pauze voor vandaag",
       powod: "Reden van beweging",
       wyglad: "Uiterlijk"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Stap {0} van {1}",
+      zamknij: "Sluiten",
+      wstecz: "Terug",
+      dalej: "Volgende",
+      zapisz: "Opslaan",
+      gotowe: "Klaar",
+      kroki: {
+        silnik: "Zonwering",
+        uklad: "Indeling",
+        rodzaj: "Soort",
+        kolory: "Kleuren",
+        przypisz: "Vakken",
+        czujniki: "Sensoren",
+        auto: "Automatisering",
+        stoper: "Tijd",
+        dzwonek: "Meldingen",
+        gotowe: "Klaar"
+      },
+      pytania: {
+        silnik: "Welke zonwering voeg je toe?",
+        uklad: "Hoe ziet het raam eruit?",
+        rodzaj: "Wat hangt er aan het raam?",
+        rodzajBrama: "Wat voor poort is het?",
+        kolory: "Kleuren",
+        przypisz: "Tik op een vak van het raam",
+        czujniki: "Wat Motor HA over het huis weet",
+        auto: "Wat vanzelf moet gebeuren",
+        stoper: "Looptijd",
+        dzwonek: "Waar en waarover melden",
+        gotowe: "Klaar"
+      },
+      podpisy: {
+        silnik: "Alleen zonwering die nog niet in Motor HA zit, wordt getoond.",
+        uklad: "Tik op de indeling die het meest lijkt.",
+        przypisz: "Elk vak: een motor en een sensor. Suggesties zijn al ingevuld.",
+        czujniki: "Gevonden in de kamer en in huis. Tik om uit te zetten of te wijzigen.",
+        auto: "Niets beweegt vanzelf tot je het aanzet.",
+        stoper: "De zonwering gaat omhoog, omlaag en weer omhoog. De tekening beweegt in dit tempo.",
+        gotowe: "Zo ziet de kaart eruit op het dashboard."
+      },
+      wykryty: "{0} herkend. De andere zonwering in deze kamer is automatisch gekozen.",
+      brakOslon: "Geen vrije zonwering gevonden. Voeg een motor toe aan Home Assistant.",
+      uklady: {
+        u1: "1 vleugel",
+        u2: "2 vleugels",
+        u3: "3 vleugels",
+        u4: "2 + bovenlichten",
+        u5: "Raam + deur",
+        u6: "Terrasdeur",
+        u7: "Groot in het midden",
+        u8: "Raster 2 × 2",
+        wlasny: "Eigen"
+      },
+      wlasnyTytul: "Eigen indeling · sleep de lijnen en de onderkant van het raam",
+      wPoprzek: "Dwars splitsen",
+      wzdluz: "In de lengte splitsen",
+      usun: "Vak verwijderen",
+      wlasnyPodpis: "Tik op een vak en splits of verwijder het. Tot 4 kolommen en 3 vakken per kolom.",
+      zSzablonu: "Of begin met een sjabloon",
+      oslona: "Zonwering",
+      rama: "Kozijn",
+      pole: "Vak {0}",
+      silnikPola: "Motor",
+      czujnikPola: "Raamsensor",
+      bezCzujnika: "zonder sensor",
+      bezCzujnikaOkna: "zonder raamsensor",
+      wybierzSilnik: "Tik om een motor te kiezen",
+      gdyOtwarte: "Als de sensor open toont",
+      uchyl: "op kiepstand",
+      otworz: "open",
+      czujniki: {
+        okno: "Raamsensoren",
+        slonce: "Zon",
+        pogoda: "Weer",
+        temp: "Buitentemperatuur",
+        obecnosc: "Iemand in de kamer",
+        wiatr: "Wind",
+        deszcz: "Regen",
+        foto: "Fotocel van de poort"
+      },
+      slonceOpis: "Zonnestand uit Home Assistant",
+      nieZnalazlem: "Niet gevonden in huis",
+      nieUzywaj: "Niet gebruiken",
+      okienBrak: "Tik om aan vakken toe te wijzen",
+      auto: {
+        rano: "’s Ochtends openen",
+        wieczor: "’s Avonds sluiten",
+        slonce: "Beschermen tegen zon",
+        blokada: "Niet sluiten bij open raam",
+        wietrzenie: "Raam op kiepstand = zonwering half",
+        wiatr: "Harde wind = intrekken",
+        deszcz: "Regen = intrekken"
+      },
+      oGodz: "om {0}",
+      oWschodzie: "bij zonsopkomst",
+      oZachodzie: "bij zonsondergang",
+      zeSloncem: "Volgens de zon",
+      zaslon: "bij hitte {0} % dicht",
+      okienne: "raamsensoren",
+      wiatrOpis: "vanaf {0} km/u",
+      deszczOpis: "zonnescherm en screens",
+      strona: "Raam ligt op het",
+      strony: {
+        n: "noorden",
+        e: "oosten",
+        s: "zuiden",
+        w: "westen"
+      },
+      autoPodpis: "Wind en regen verschijnen hier als je zulke sensoren of het weer toevoegt.",
+      zmierz: "Nu meten",
+      zmierzZnow: "Opnieuw meten",
+      mierze: "Meten…",
+      pomin: "Je kunt dit overslaan en later meten met de knop „Kalibreren” van het apparaat.",
+      nieOdp: "Reageert niet: {0}",
+      odRazu: "De motor meldt het einde meteen. Stel de motorsnelheid in of sla over.",
+      bladPomiaru: "Het meten is mislukt. Probeer het opnieuw.",
+      powiadom: {
+        nie_odpowiada: "Zonwering reageert niet",
+        nie_dojechala: "Einde niet bereikt",
+        bateria: "Batterij bijna leeg",
+        czujnik: "Sensor reageert niet",
+        automatyka: "Automatisering bewoog de zonwering",
+        brama_otwarta: "Poort te lang open",
+        brama_niedomknieta: "Poort niet helemaal dicht",
+        przeszkoda: "Obstakel in de poort"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "bijv. motor zonder stroom",
+        nie_dojechala: "halverwege gestopt",
+        bateria: "motor of raamsensor",
+        czujnik: "sensor uit de wizard",
+        automatyka: "met de reden",
+        brama_otwarta: "na een paar minuten",
+        brama_niedomknieta: "halverwege gestopt",
+        przeszkoda: "fotocel"
+      },
+      telefon: "Telefoon (HA-app)",
+      brakTelefonu: "Zonder telefoon verschijnen meldingen alleen in Home Assistant.",
+      naPanel: "Toevoegen aan dashboard",
+      nazwa: "Naam",
+      zapisano: "Opgeslagen ✓"
     }
   };
 
@@ -3531,6 +4835,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Pausa por hoje",
       powod: "Motivo do movimento",
       wyglad: "Aparência"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Passo {0} de {1}",
+      zamknij: "Fechar",
+      wstecz: "Voltar",
+      dalej: "Seguinte",
+      zapisz: "Guardar",
+      gotowe: "Concluído",
+      kroki: {
+        silnik: "Proteção",
+        uklad: "Disposição",
+        rodzaj: "Tipo",
+        kolory: "Cores",
+        przypisz: "Folhas",
+        czujniki: "Sensores",
+        auto: "Automação",
+        stoper: "Tempo",
+        dzwonek: "Notificações",
+        gotowe: "Concluído"
+      },
+      pytania: {
+        silnik: "Que proteção está a adicionar?",
+        uklad: "Como é a janela?",
+        rodzaj: "O que está na janela?",
+        rodzajBrama: "Que tipo de portão é?",
+        kolory: "Cores",
+        przypisz: "Toque numa folha da janela",
+        czujniki: "O que o Motor HA sabe da casa",
+        auto: "O que deve acontecer sozinho",
+        stoper: "Tempo de percurso",
+        dzwonek: "Onde e sobre o que notificar",
+        gotowe: "Concluído"
+      },
+      podpisy: {
+        silnik: "Só são mostradas proteções que ainda não estão no Motor HA.",
+        uklad: "Toque na disposição mais parecida.",
+        przypisz: "Cada folha: um motor e um sensor. As sugestões já estão preenchidas.",
+        czujniki: "Encontrado na divisão e na casa. Toque para desligar ou alterar.",
+        auto: "Nada se move sozinho até o ligar.",
+        stoper: "As proteções sobem, descem e voltam a subir. O desenho vai mover-se a este ritmo.",
+        gotowe: "Assim ficará o cartão no painel."
+      },
+      wykryty: "Detetado: {0}. As outras proteções desta divisão são escolhidas automaticamente.",
+      brakOslon: "Nenhuma proteção livre encontrada. Adicione um motor ao Home Assistant.",
+      uklady: {
+        u1: "1 folha",
+        u2: "2 folhas",
+        u3: "3 folhas",
+        u4: "2 + bandeiras",
+        u5: "Janela + porta",
+        u6: "Porta de varanda",
+        u7: "Grande ao meio",
+        u8: "Grelha 2 × 2",
+        wlasny: "Própria"
+      },
+      wlasnyTytul: "Disposição própria · arraste as linhas e o fundo da janela",
+      wPoprzek: "Dividir na largura",
+      wzdluz: "Dividir no comprimento",
+      usun: "Remover folha",
+      wlasnyPodpis: "Toque numa folha e divida-a ou remova-a. Até 4 colunas e 3 folhas por coluna.",
+      zSzablonu: "Ou comece por um modelo",
+      oslona: "Proteção",
+      rama: "Caixilho",
+      pole: "Folha {0}",
+      silnikPola: "Motor",
+      czujnikPola: "Sensor da janela",
+      bezCzujnika: "sem sensor",
+      bezCzujnikaOkna: "sem sensor da janela",
+      wybierzSilnik: "Toque para escolher um motor",
+      gdyOtwarte: "Quando o sensor indica aberto",
+      uchyl: "basculada",
+      otworz: "aberta",
+      czujniki: {
+        okno: "Sensores de janela",
+        slonce: "Sol",
+        pogoda: "Tempo",
+        temp: "Temperatura exterior",
+        obecnosc: "Alguém na divisão",
+        wiatr: "Vento",
+        deszcz: "Chuva",
+        foto: "Fotocélula do portão"
+      },
+      slonceOpis: "Posição do sol do Home Assistant",
+      nieZnalazlem: "Não encontrado na casa",
+      nieUzywaj: "Não usar",
+      okienBrak: "Toque para atribuir às folhas",
+      auto: {
+        rano: "Abrir de manhã",
+        wieczor: "Fechar à noite",
+        slonce: "Proteger do sol",
+        blokada: "Não fechar com a janela aberta",
+        wietrzenie: "Janela basculada = proteção a meio",
+        wiatr: "Vento forte = recolher",
+        deszcz: "Chuva = recolher"
+      },
+      oGodz: "às {0}",
+      oWschodzie: "ao nascer do sol",
+      oZachodzie: "ao pôr do sol",
+      zeSloncem: "Segundo o sol",
+      zaslon: "cobrir {0} % com calor",
+      okienne: "sensores de janela",
+      wiatrOpis: "a partir de {0} km/h",
+      deszczOpis: "toldo e estores exteriores",
+      strona: "A janela está virada a",
+      strony: {
+        n: "norte",
+        e: "leste",
+        s: "sul",
+        w: "oeste"
+      },
+      autoPodpis: "O vento e a chuva aparecem aqui quando adicionar esses sensores ou o tempo.",
+      zmierz: "Medir agora",
+      zmierzZnow: "Medir de novo",
+      mierze: "A medir…",
+      pomin: "Pode saltar e medir mais tarde com o botão «Calibrar» do dispositivo.",
+      nieOdp: "Não responde: {0}",
+      odRazu: "O motor indica o fim logo. Defina a velocidade do motor ou salte.",
+      bladPomiaru: "A medição falhou. Tente de novo.",
+      powiadom: {
+        nie_odpowiada: "A proteção não responde",
+        nie_dojechala: "Não chegou ao fim",
+        bateria: "Bateria fraca",
+        czujnik: "O sensor não responde",
+        automatyka: "A automação moveu a proteção",
+        brama_otwarta: "Portão aberto demasiado tempo",
+        brama_niedomknieta: "Portão mal fechado",
+        przeszkoda: "Obstáculo no portão"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "p. ex. motor sem energia",
+        nie_dojechala: "parou a meio",
+        bateria: "motor ou sensor da janela",
+        czujnik: "sensor do assistente",
+        automatyka: "com o motivo",
+        brama_otwarta: "após alguns minutos",
+        brama_niedomknieta: "parou a meio",
+        przeszkoda: "fotocélula"
+      },
+      telefon: "Telemóvel (app HA)",
+      brakTelefonu: "Sem telemóvel, as notificações só aparecem no Home Assistant.",
+      naPanel: "Adicionar ao painel",
+      nazwa: "Nome",
+      zapisano: "Guardado ✓"
     }
   };
 
@@ -3798,6 +5246,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Пауза на сьогодні",
       powod: "Причина руху",
       wyglad: "Вигляд"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Крок {0} з {1}",
+      zamknij: "Закрити",
+      wstecz: "Назад",
+      dalej: "Далі",
+      zapisz: "Зберегти",
+      gotowe: "Готово",
+      kroki: {
+        silnik: "Штора",
+        uklad: "Схема",
+        rodzaj: "Тип",
+        kolory: "Кольори",
+        przypisz: "Стулки",
+        czujniki: "Датчики",
+        auto: "Автоматика",
+        stoper: "Час",
+        dzwonek: "Сповіщення",
+        gotowe: "Готово"
+      },
+      pytania: {
+        silnik: "Яку штору ви додаєте?",
+        uklad: "Який вигляд має вікно?",
+        rodzaj: "Що висить на вікні?",
+        rodzajBrama: "Який це тип воріт?",
+        kolory: "Кольори",
+        przypisz: "Торкніться стулки вікна",
+        czujniki: "Що Motor HA знає про дім",
+        auto: "Що має відбуватися саме",
+        stoper: "Час ходу",
+        dzwonek: "Куди і про що сповіщати",
+        gotowe: "Готово"
+      },
+      podpisy: {
+        silnik: "Показано лише штори, яких ще немає в Motor HA.",
+        uklad: "Торкніться найсхожішої схеми.",
+        przypisz: "Кожна стулка: мотор і датчик. Підказки вже заповнено.",
+        czujniki: "Знайдено в кімнаті та вдома. Торкніться, щоб вимкнути або змінити.",
+        auto: "Ніщо не рухається саме, доки ви це не ввімкнете.",
+        stoper: "Штори піднімуться, опустяться й знову піднімуться. Малюнок рухатиметься в цьому темпі.",
+        gotowe: "Так картка виглядатиме на панелі."
+      },
+      wykryty: "Знайдено: {0}. Інші штори цієї кімнати вибрано автоматично.",
+      brakOslon: "Вільних штор не знайдено. Додайте мотор до Home Assistant.",
+      uklady: {
+        u1: "1 стулка",
+        u2: "2 стулки",
+        u3: "3 стулки",
+        u4: "2 + фрамуги",
+        u5: "Вікно + двері",
+        u6: "Балконні двері",
+        u7: "Велика посередині",
+        u8: "Сітка 2 × 2",
+        wlasny: "Своя"
+      },
+      wlasnyTytul: "Своя схема · перетягуйте лінії та низ вікна",
+      wPoprzek: "Поділити впоперек",
+      wzdluz: "Поділити вздовж",
+      usun: "Видалити стулку",
+      wlasnyPodpis: "Торкніться стулки, потім поділіть або видаліть її. До 4 стовпців і 3 стулок у стовпці.",
+      zSzablonu: "Або почніть із шаблону",
+      oslona: "Штора",
+      rama: "Рама",
+      pole: "Стулка {0}",
+      silnikPola: "Мотор",
+      czujnikPola: "Датчик вікна",
+      bezCzujnika: "без датчика",
+      bezCzujnikaOkna: "без датчика вікна",
+      wybierzSilnik: "Торкніться, щоб вибрати мотор",
+      gdyOtwarte: "Коли датчик показує «відчинено»",
+      uchyl: "відкинуто",
+      otworz: "відчинено",
+      czujniki: {
+        okno: "Датчики вікон",
+        slonce: "Сонце",
+        pogoda: "Погода",
+        temp: "Температура надворі",
+        obecnosc: "Хтось у кімнаті",
+        wiatr: "Вітер",
+        deszcz: "Дощ",
+        foto: "Фотоелемент воріт"
+      },
+      slonceOpis: "Положення сонця з Home Assistant",
+      nieZnalazlem: "Вдома не знайдено",
+      nieUzywaj: "Не використовувати",
+      okienBrak: "Торкніться, щоб призначити стулкам",
+      auto: {
+        rano: "Відкривати вранці",
+        wieczor: "Закривати ввечері",
+        slonce: "Захищати від сонця",
+        blokada: "Не закривати при відчиненому вікні",
+        wietrzenie: "Відкинуте вікно = штора наполовину",
+        wiatr: "Сильний вітер = прибрати",
+        deszcz: "Дощ = прибрати"
+      },
+      oGodz: "о {0}",
+      oWschodzie: "на світанку",
+      oZachodzie: "на заході сонця",
+      zeSloncem: "За сонцем",
+      zaslon: "у спеку закрити на {0} %",
+      okienne: "датчики вікон",
+      wiatrOpis: "від {0} км/год",
+      deszczOpis: "маркіза та фасадні жалюзі",
+      strona: "Вікно виходить на",
+      strony: {
+        n: "північ",
+        e: "схід",
+        s: "південь",
+        w: "захід"
+      },
+      autoPodpis: "Вітер і дощ з’являться тут, коли ви додасте такі датчики або погоду.",
+      zmierz: "Виміряти зараз",
+      zmierzZnow: "Виміряти знову",
+      mierze: "Вимірюю…",
+      pomin: "Можна пропустити й виміряти пізніше кнопкою пристрою «Калібрувати».",
+      nieOdp: "Не відповідає: {0}",
+      odRazu: "Мотор одразу повідомляє про кінець ходу. Вкажіть швидкість мотора або пропустіть.",
+      bladPomiaru: "Вимірювання не вдалося. Спробуйте ще раз.",
+      powiadom: {
+        nie_odpowiada: "Штора не відповідає",
+        nie_dojechala: "Не дійшла до кінця",
+        bateria: "Низький заряд батареї",
+        czujnik: "Датчик не відповідає",
+        automatyka: "Автоматика зрушила штору",
+        brama_otwarta: "Ворота відчинені занадто довго",
+        brama_niedomknieta: "Ворота зачинені не до кінця",
+        przeszkoda: "Перешкода у воротах"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "напр. мотор без живлення",
+        nie_dojechala: "зупинилася на півдорозі",
+        bateria: "мотор або датчик вікна",
+        czujnik: "датчик із майстра",
+        automatyka: "з причиною",
+        brama_otwarta: "через кілька хвилин",
+        brama_niedomknieta: "зупинилися на півдорозі",
+        przeszkoda: "фотоелемент"
+      },
+      telefon: "Телефон (застосунок HA)",
+      brakTelefonu: "Без телефона сповіщення з’являються лише в Home Assistant.",
+      naPanel: "Додати на панель",
+      nazwa: "Назва",
+      zapisano: "Збережено ✓"
     }
   };
 
@@ -4065,6 +5657,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "Пауза на сегодня",
       powod: "Причина движения",
       wyglad: "Внешний вид"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "Шаг {0} из {1}",
+      zamknij: "Закрыть",
+      wstecz: "Назад",
+      dalej: "Далее",
+      zapisz: "Сохранить",
+      gotowe: "Готово",
+      kroki: {
+        silnik: "Штора",
+        uklad: "Схема",
+        rodzaj: "Тип",
+        kolory: "Цвета",
+        przypisz: "Створки",
+        czujniki: "Датчики",
+        auto: "Автоматика",
+        stoper: "Время",
+        dzwonek: "Уведомления",
+        gotowe: "Готово"
+      },
+      pytania: {
+        silnik: "Какую штору вы добавляете?",
+        uklad: "Как выглядит окно?",
+        rodzaj: "Что висит на окне?",
+        rodzajBrama: "Какой это тип ворот?",
+        kolory: "Цвета",
+        przypisz: "Нажмите на створку окна",
+        czujniki: "Что Motor HA знает о доме",
+        auto: "Что должно происходить само",
+        stoper: "Время хода",
+        dzwonek: "Куда и о чём уведомлять",
+        gotowe: "Готово"
+      },
+      podpisy: {
+        silnik: "Показаны только шторы, которых ещё нет в Motor HA.",
+        uklad: "Нажмите на самую похожую схему.",
+        przypisz: "Каждая створка: мотор и датчик. Подсказки уже заполнены.",
+        czujniki: "Найдено в комнате и в доме. Нажмите, чтобы выключить или изменить.",
+        auto: "Ничего не движется само, пока вы это не включите.",
+        stoper: "Шторы поднимутся, опустятся и снова поднимутся. Рисунок будет двигаться в этом темпе.",
+        gotowe: "Так карточка будет выглядеть на панели."
+      },
+      wykryty: "Найдено: {0}. Остальные шторы этой комнаты выбраны автоматически.",
+      brakOslon: "Свободных штор не найдено. Добавьте мотор в Home Assistant.",
+      uklady: {
+        u1: "1 створка",
+        u2: "2 створки",
+        u3: "3 створки",
+        u4: "2 + фрамуги",
+        u5: "Окно + дверь",
+        u6: "Балконная дверь",
+        u7: "Большая в центре",
+        u8: "Сетка 2 × 2",
+        wlasny: "Своя"
+      },
+      wlasnyTytul: "Своя схема · перетаскивайте линии и низ окна",
+      wPoprzek: "Разделить поперёк",
+      wzdluz: "Разделить вдоль",
+      usun: "Удалить створку",
+      wlasnyPodpis: "Нажмите на створку, затем разделите или удалите её. До 4 столбцов и 3 створок в столбце.",
+      zSzablonu: "Или начните с шаблона",
+      oslona: "Штора",
+      rama: "Рама",
+      pole: "Створка {0}",
+      silnikPola: "Мотор",
+      czujnikPola: "Датчик окна",
+      bezCzujnika: "без датчика",
+      bezCzujnikaOkna: "без датчика окна",
+      wybierzSilnik: "Нажмите, чтобы выбрать мотор",
+      gdyOtwarte: "Когда датчик показывает «открыто»",
+      uchyl: "откинуто",
+      otworz: "открыто",
+      czujniki: {
+        okno: "Датчики окон",
+        slonce: "Солнце",
+        pogoda: "Погода",
+        temp: "Температура на улице",
+        obecnosc: "Кто-то в комнате",
+        wiatr: "Ветер",
+        deszcz: "Дождь",
+        foto: "Фотоэлемент ворот"
+      },
+      slonceOpis: "Положение солнца из Home Assistant",
+      nieZnalazlem: "В доме не найдено",
+      nieUzywaj: "Не использовать",
+      okienBrak: "Нажмите, чтобы назначить створкам",
+      auto: {
+        rano: "Открывать утром",
+        wieczor: "Закрывать вечером",
+        slonce: "Защищать от солнца",
+        blokada: "Не закрывать при открытом окне",
+        wietrzenie: "Откинутое окно = штора наполовину",
+        wiatr: "Сильный ветер = убрать",
+        deszcz: "Дождь = убрать"
+      },
+      oGodz: "в {0}",
+      oWschodzie: "на рассвете",
+      oZachodzie: "на закате",
+      zeSloncem: "По солнцу",
+      zaslon: "в жару закрыть на {0} %",
+      okienne: "датчики окон",
+      wiatrOpis: "от {0} км/ч",
+      deszczOpis: "маркиза и фасадные жалюзи",
+      strona: "Окно выходит на",
+      strony: {
+        n: "север",
+        e: "восток",
+        s: "юг",
+        w: "запад"
+      },
+      autoPodpis: "Ветер и дождь появятся здесь, когда вы добавите такие датчики или погоду.",
+      zmierz: "Измерить сейчас",
+      zmierzZnow: "Измерить снова",
+      mierze: "Измеряю…",
+      pomin: "Можно пропустить и измерить позже кнопкой устройства «Калибровать».",
+      nieOdp: "Не отвечает: {0}",
+      odRazu: "Мотор сразу сообщает о конце хода. Укажите скорость мотора или пропустите.",
+      bladPomiaru: "Измерение не удалось. Попробуйте ещё раз.",
+      powiadom: {
+        nie_odpowiada: "Штора не отвечает",
+        nie_dojechala: "Не дошла до конца",
+        bateria: "Низкий заряд батареи",
+        czujnik: "Датчик не отвечает",
+        automatyka: "Автоматика сдвинула штору",
+        brama_otwarta: "Ворота открыты слишком долго",
+        brama_niedomknieta: "Ворота закрыты не до конца",
+        przeszkoda: "Препятствие в воротах"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "например, мотор без питания",
+        nie_dojechala: "остановилась на полпути",
+        bateria: "мотор или датчик окна",
+        czujnik: "датчик из мастера",
+        automatyka: "с причиной",
+        brama_otwarta: "через несколько минут",
+        brama_niedomknieta: "остановились на полпути",
+        przeszkoda: "фотоэлемент"
+      },
+      telefon: "Телефон (приложение HA)",
+      brakTelefonu: "Без телефона уведомления появляются только в Home Assistant.",
+      naPanel: "Добавить на панель",
+      nazwa: "Название",
+      zapisano: "Сохранено ✓"
     }
   };
 
@@ -4332,6 +6068,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "今日は一時停止",
       powod: "動いた理由",
       wyglad: "外観"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "ステップ {0} / {1}",
+      zamknij: "閉じる",
+      wstecz: "戻る",
+      dalej: "次へ",
+      zapisz: "保存",
+      gotowe: "完了",
+      kroki: {
+        silnik: "シェード",
+        uklad: "レイアウト",
+        rodzaj: "種類",
+        kolory: "色",
+        przypisz: "窓枠",
+        czujniki: "センサー",
+        auto: "自動化",
+        stoper: "時間",
+        dzwonek: "通知",
+        gotowe: "完了"
+      },
+      pytania: {
+        silnik: "どのシェードを追加しますか？",
+        uklad: "窓はどんな形ですか？",
+        rodzaj: "窓に何が付いていますか？",
+        rodzajBrama: "どの種類のゲートですか？",
+        kolory: "色",
+        przypisz: "窓の区画をタップ",
+        czujniki: "Motor HA が家について知っていること",
+        auto: "自動で行うこと",
+        stoper: "移動時間",
+        dzwonek: "通知先と通知内容",
+        gotowe: "完了"
+      },
+      podpisy: {
+        silnik: "まだ Motor HA にないシェードだけを表示します。",
+        uklad: "いちばん近いレイアウトをタップします。",
+        przypisz: "各区画にモーターとセンサー。候補は入力済みです。",
+        czujniki: "部屋と家の中で見つかりました。タップでオフまたは変更。",
+        auto: "オンにするまで何も自動では動きません。",
+        stoper: "シェードが上、下、また上へ動きます。図はこの速さで動きます。",
+        gotowe: "ダッシュボードのカードはこう見えます。"
+      },
+      wykryty: "{0} を検出しました。この部屋の他のシェードは自動で選ばれます。",
+      brakOslon: "空いているシェードがありません。Home Assistant にモーターを追加してください。",
+      uklady: {
+        u1: "1 枚窓",
+        u2: "2 枚窓",
+        u3: "3 枚窓",
+        u4: "2 + 欄間",
+        u5: "窓 + ドア",
+        u6: "テラスドア",
+        u7: "中央が大きい",
+        u8: "2 × 2 格子",
+        wlasny: "カスタム"
+      },
+      wlasnyTytul: "カスタム · 線と窓の下端をドラッグ",
+      wPoprzek: "横に分割",
+      wzdluz: "縦に分割",
+      usun: "区画を削除",
+      wlasnyPodpis: "区画をタップして分割または削除。最大 4 列、1 列に 3 区画まで。",
+      zSzablonu: "またはテンプレートから",
+      oslona: "シェード",
+      rama: "窓枠",
+      pole: "区画 {0}",
+      silnikPola: "モーター",
+      czujnikPola: "窓センサー",
+      bezCzujnika: "センサーなし",
+      bezCzujnikaOkna: "窓センサーなし",
+      wybierzSilnik: "タップしてモーターを選択",
+      gdyOtwarte: "センサーが「開」のとき",
+      uchyl: "内倒し",
+      otworz: "全開",
+      czujniki: {
+        okno: "窓センサー",
+        slonce: "太陽",
+        pogoda: "天気",
+        temp: "外気温",
+        obecnosc: "部屋に人がいる",
+        wiatr: "風",
+        deszcz: "雨",
+        foto: "ゲートの光電センサー"
+      },
+      slonceOpis: "Home Assistant の太陽の位置",
+      nieZnalazlem: "家の中に見つかりません",
+      nieUzywaj: "使わない",
+      okienBrak: "タップして区画に割り当て",
+      auto: {
+        rano: "朝に開ける",
+        wieczor: "夜に閉める",
+        slonce: "日差しから守る",
+        blokada: "窓が開いていたら閉めない",
+        wietrzenie: "内倒しの窓 = シェード半分",
+        wiatr: "強風 = 収納",
+        deszcz: "雨 = 収納"
+      },
+      oGodz: "{0} に",
+      oWschodzie: "日の出に",
+      oZachodzie: "日没に",
+      zeSloncem: "太陽に合わせる",
+      zaslon: "暑い日は {0} % 閉める",
+      okienne: "窓センサー",
+      wiatrOpis: "{0} km/h から",
+      deszczOpis: "オーニングと外付けブラインド",
+      strona: "窓の向き",
+      strony: {
+        n: "北",
+        e: "東",
+        s: "南",
+        w: "西"
+      },
+      autoPodpis: "風と雨は、該当するセンサーや天気を追加するとここに表示されます。",
+      zmierz: "今すぐ測定",
+      zmierzZnow: "もう一度測定",
+      mierze: "測定中…",
+      pomin: "スキップして、後でデバイスの「校正」ボタンで測定できます。",
+      nieOdp: "応答なし: {0}",
+      odRazu: "モーターがすぐに終点を報告します。モーター速度を設定するかスキップしてください。",
+      bladPomiaru: "測定に失敗しました。もう一度お試しください。",
+      powiadom: {
+        nie_odpowiada: "シェードが応答しない",
+        nie_dojechala: "終点に届かない",
+        bateria: "電池残量低下",
+        czujnik: "センサーが応答しない",
+        automatyka: "自動化がシェードを動かした",
+        brama_otwarta: "ゲートが長く開いている",
+        brama_niedomknieta: "ゲートが閉まりきらない",
+        przeszkoda: "ゲートに障害物"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "例: モーターの電源なし",
+        nie_dojechala: "途中で停止",
+        bateria: "モーターまたは窓センサー",
+        czujnik: "ウィザードのセンサー",
+        automatyka: "理由つき",
+        brama_otwarta: "数分後",
+        brama_niedomknieta: "途中で停止",
+        przeszkoda: "光電センサー"
+      },
+      telefon: "スマホ (HA アプリ)",
+      brakTelefonu: "スマホがない場合、通知は Home Assistant にのみ表示されます。",
+      naPanel: "ダッシュボードに追加",
+      nazwa: "名前",
+      zapisano: "保存しました ✓"
     }
   };
 
@@ -4599,6 +6479,150 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pauza: "今天暂停",
       powod: "移动原因",
       wyglad: "外观"
+    },
+    kreator: {
+      tytul: "Motor HA",
+      krok: "第 {0} 步，共 {1} 步",
+      zamknij: "关闭",
+      wstecz: "返回",
+      dalej: "下一步",
+      zapisz: "保存",
+      gotowe: "完成",
+      kroki: {
+        silnik: "遮阳",
+        uklad: "布局",
+        rodzaj: "类型",
+        kolory: "颜色",
+        przypisz: "窗格",
+        czujniki: "传感器",
+        auto: "自动化",
+        stoper: "时间",
+        dzwonek: "通知",
+        gotowe: "完成"
+      },
+      pytania: {
+        silnik: "要添加哪个遮阳？",
+        uklad: "窗户是什么样的？",
+        rodzaj: "窗上挂的是什么？",
+        rodzajBrama: "是哪种大门？",
+        kolory: "颜色",
+        przypisz: "点击窗户的一个窗格",
+        czujniki: "Motor HA 了解的家中信息",
+        auto: "应自动执行的操作",
+        stoper: "运行时间",
+        dzwonek: "通知到哪里、通知什么",
+        gotowe: "完成"
+      },
+      podpisy: {
+        silnik: "只显示尚未加入 Motor HA 的遮阳。",
+        uklad: "点击最接近的布局。",
+        przypisz: "每个窗格：一个电机和一个传感器。建议已填好。",
+        czujniki: "在房间和家中找到。点击可关闭或更改。",
+        auto: "在你开启之前，什么都不会自动移动。",
+        stoper: "遮阳会上升、下降再上升。图示会按这个速度移动。",
+        gotowe: "卡片在仪表板上会是这样。"
+      },
+      wykryty: "已检测到 {0}。此房间的其他遮阳已自动选中。",
+      brakOslon: "没有找到空闲的遮阳。请在 Home Assistant 中添加电机。",
+      uklady: {
+        u1: "1 扇",
+        u2: "2 扇",
+        u3: "3 扇",
+        u4: "2 扇 + 气窗",
+        u5: "窗 + 门",
+        u6: "阳台门",
+        u7: "中间大扇",
+        u8: "2 × 2 网格",
+        wlasny: "自定义"
+      },
+      wlasnyTytul: "自定义布局 · 拖动分隔线和窗户底边",
+      wPoprzek: "横向分割",
+      wzdluz: "纵向分割",
+      usun: "删除窗格",
+      wlasnyPodpis: "点击窗格，然后分割或删除。最多 4 列，每列 3 个窗格。",
+      zSzablonu: "或从模板开始",
+      oslona: "遮阳",
+      rama: "窗框",
+      pole: "窗格 {0}",
+      silnikPola: "电机",
+      czujnikPola: "窗户传感器",
+      bezCzujnika: "无传感器",
+      bezCzujnikaOkna: "无窗户传感器",
+      wybierzSilnik: "点击选择电机",
+      gdyOtwarte: "当传感器显示打开时",
+      uchyl: "内倒",
+      otworz: "打开",
+      czujniki: {
+        okno: "窗户传感器",
+        slonce: "太阳",
+        pogoda: "天气",
+        temp: "室外温度",
+        obecnosc: "房间有人",
+        wiatr: "风",
+        deszcz: "雨",
+        foto: "大门光电传感器"
+      },
+      slonceOpis: "来自 Home Assistant 的太阳位置",
+      nieZnalazlem: "家中未找到",
+      nieUzywaj: "不使用",
+      okienBrak: "点击分配到窗格",
+      auto: {
+        rano: "早上打开",
+        wieczor: "晚上关闭",
+        slonce: "防晒",
+        blokada: "窗户打开时不关闭",
+        wietrzenie: "内倒窗 = 遮阳半开",
+        wiatr: "大风 = 收起",
+        deszcz: "下雨 = 收起"
+      },
+      oGodz: "{0}",
+      oWschodzie: "日出时",
+      oZachodzie: "日落时",
+      zeSloncem: "跟随太阳",
+      zaslon: "炎热时遮挡 {0} %",
+      okienne: "窗户传感器",
+      wiatrOpis: "从 {0} km/h 起",
+      deszczOpis: "遮阳篷和外遮阳百叶",
+      strona: "窗户朝向",
+      strony: {
+        n: "北",
+        e: "东",
+        s: "南",
+        w: "西"
+      },
+      autoPodpis: "添加相应传感器或天气后，风和雨会显示在这里。",
+      zmierz: "立即测量",
+      zmierzZnow: "重新测量",
+      mierze: "测量中…",
+      pomin: "可以跳过，稍后用设备的“校准”按钮测量。",
+      nieOdp: "无响应：{0}",
+      odRazu: "电机立即报告到位。请设置电机速度或跳过。",
+      bladPomiaru: "测量失败。请重试。",
+      powiadom: {
+        nie_odpowiada: "遮阳无响应",
+        nie_dojechala: "未到达终点",
+        bateria: "电量低",
+        czujnik: "传感器无响应",
+        automatyka: "自动化移动了遮阳",
+        brama_otwarta: "大门打开太久",
+        brama_niedomknieta: "大门未完全关闭",
+        przeszkoda: "大门有障碍物"
+      },
+      powiadomOpis: {
+        nie_odpowiada: "例如电机断电",
+        nie_dojechala: "中途停止",
+        bateria: "电机或窗户传感器",
+        czujnik: "向导中的传感器",
+        automatyka: "附带原因",
+        brama_otwarta: "几分钟后",
+        brama_niedomknieta: "中途停止",
+        przeszkoda: "光电传感器"
+      },
+      telefon: "手机（HA 应用）",
+      brakTelefonu: "没有手机时，通知只显示在 Home Assistant 中。",
+      naPanel: "添加到仪表板",
+      nazwa: "名称",
+      zapisano: "已保存 ✓"
     }
   };
 
@@ -4816,6 +6840,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   }
 
   // src/karta.js
+  var polaOkna = (c) => Array.isArray(c.pola) && c.pola.length && !czyBrama(c.oslona) && c.pola.every((p) => [p?.x, p?.y, p?.w, p?.h].every(Number.isFinite)) ? c.pola : null;
   var KLUCZE_PANELU = ["type", "entity", "grid_options", "view_layout", "visibility", "layout_options"];
   var KASETA = {
     pelna: 10,
@@ -4876,7 +6901,12 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     // encje skrzydeł: wybrane ręcznie, członkowie grupy (okno z integracji to też grupa) albo sama encja
     _skrzydla(c) {
-      const s = this._hass.states, n = +c.skrzydla === 1 || czyBrama(c.oslona) ? 1 : 2;
+      const s = this._hass.states;
+      if (polaOkna(c)) {
+        const grupa2 = (s[c.entity]?.attributes?.entity_id || []).filter((e) => s[e]);
+        return c.pola.map((p) => p.silnik && s[p.silnik] ? p.silnik : grupa2[0] || c.entity);
+      }
+      const n = +c.skrzydla === 1 || czyBrama(c.oslona) ? 1 : 2;
       const grupa = (s[c.entity]?.attributes?.entity_id || []).filter((e) => s[e]);
       const wybor = [c.roleta_lewa, c.roleta_prawa];
       return Array.from({ length: n }, (_, i) => wybor[i] && s[wybor[i]] ? wybor[i] : grupa.length ? grupa[Math.min(i, grupa.length - 1)] : c.entity);
@@ -4886,7 +6916,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz = JSON.stringify([czl.length, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
       if (klucz !== this._klucz) {
         this._klucz = klucz;
         this._zbuduj(c, czl);
@@ -4900,24 +6930,33 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._poziomo = POZIOME.includes(c.oslona);
       const pion2 = c.suwak !== false && !this._poziomo;
       const dwaSuwaki = pion2 && !!c.osobno && n > 1;
-      const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W2 = Math.round(H2 * (n === 1 ? 0.68 : 0.92));
+      const P = polaOkna(c), kol = P ? new Set(P.map((p) => p.x)).size : n;
+      this._uk = !!P;
+      const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (kol === 1 ? 1.15 : 1), W2 = Math.round(H2 * (kol === 1 ? 0.68 : kol === 2 ? 0.92 : Math.min(1.5, 0.46 * kol)));
+      const miejsce = (i, wciecie = 4) => P ? ` style="left:calc(${P[i].x * 100}% + ${wciecie}px);top:calc(${P[i].y * 100}% + ${wciecie}px);width:calc(${P[i].w * 100}% - ${2 * wciecie}px);height:calc(${P[i].h * 100}% - ${2 * wciecie}px)"` : "";
+      const strona2 = (i) => P ? P[i].x + P[i].w / 2 <= 0.5 ? "l" : "p" : i ? "p" : "l";
+      const wid = (i) => P ? ` class="wid" style="left:${-P[i].x / P[i].w * 100}%;top:${-P[i].y / P[i].h * 100}%;width:${100 / P[i].w}%;height:${100 / P[i].h}%"` : ' style="position:absolute;inset:0"';
+      const ramy = P ? [...new Set(P.map((p) => p.x))].map((x) => {
+        const k = P.filter((p) => p.x === x), dol = Math.max(...k.map((p) => p.y + p.h));
+        return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
+      }).join("") : "";
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
-      const skrzydlo = (i) => `<div class="skrz" data-i="${i}"><div class="szyba">
-      ${zew ? '<div class="pokoj"></div>' : `<div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div><i class="promien"></i>
+      const skrzydlo = (i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}"${miejsce(i)}><div class="szyba">
+      ${zew ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
       <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
-      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 ? '<i class="klamka"></i>' : ""}</div>`;
-      const kolumna = (i) => `<div class="szyba" data-i="${i}"><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
+      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P || P[i].h >= 0.4) ? '<i class="klamka"></i>' : ""}</div>`;
+      const kolumna = (i) => `<div class="szyba" data-i="${i}"${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
       const pozycje = String(c.pozycje || "").split(/[,; ]+/).filter((x) => x !== "").map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
       root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
 <ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
-  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
-   ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
+  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
+   ${ramy}${zew ? "" : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
-   ${n > 1 && !c.osobno ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
+   ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
   </div>${pion2 ? this._suwakHtml(T2, true, dwaSuwaki ? 1 : null) : ""}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
@@ -4959,7 +6998,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.zam?.addEventListener("click", () => this._polecenie(0));
       E.stp?.addEventListener("click", () => this._polecenie(null));
       E.poz.forEach((b) => b.addEventListener("click", () => this._polecenie(+b.dataset.p)));
-      E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
+      E.pola.forEach((P2, i) => this._ciagnij(zew ? P2.p : E.skrz[i].s, [i]));
       if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
       E.suwaki.forEach((S) => this._suwak(S));
       q(".zmien:not(.wyg)")?.addEventListener("click", () => konfiguruj(this._wpis()));
@@ -4995,6 +7034,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     _zbudujBrame(c, czl) {
       const T2 = this._T, root = this.shadowRoot || this.attachShadow({ mode: "open" });
       this._brama = true;
+      this._uk = false;
       this._poziomo = false;
       this._kas = 0;
       this._brNoc = null;
@@ -5066,7 +7106,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     // polecenie dla wszystkich (albo wybranych) skrzydeł; cel null = stop
     _polecenie(cel, ktore) {
       const c = this._cfg, teraz = performance.now(), czl = this._czl || [];
-      const idx = ktore || czl.map((_, i) => i);
+      const idx = ktore ? czl.map((_, i) => i).filter((i) => ktore.some((k) => czl[k] === czl[i])) : czl.map((_, i) => i);
       idx.forEach((i) => this._ruchy[i]?.polecenie(cel, teraz));
       this._animuj();
       if (c.wibracja !== false) try {
@@ -5101,7 +7141,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       el.addEventListener("pointermove", (e) => {
         if (start === null || wart === null && Math.abs(e.clientY - start) < 6) return;
         wart = this._pozycjaZ(pole(idx[0]), e.clientY);
-        const ktore = srodek || this._cfg.osobno || this._czl?.length < 2 ? idx : this._el.pola.map((_, i) => i);
+        const ktore = srodek || this._cfg.osobno || this._uk || this._czl?.length < 2 ? idx : this._el.pola.map((_, i) => i);
         ktore.forEach((i) => this._pokazCel(i, wart, true));
       });
       const koniec = () => {
@@ -5109,7 +7149,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         start = null;
         this._ciagnie = false;
         this._el.pola.forEach((_, i) => this._pokazCel(i, null));
-        const ktore = srodek || !(this._cfg.osobno && this._czl?.length > 1) ? null : idx;
+        const ktore = srodek || !((this._cfg.osobno || this._uk) && this._czl?.length > 1) ? null : idx;
         if (wart !== null) this._polecenie(wart, ktore);
         else if (!srodek) this._dotkniecie(ktore);
       };
@@ -5186,7 +7226,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.nazwa.textContent = c.name || st.attributes.friendly_name || c.entity;
       czl.forEach((e, i) => {
         const r = this._ruchy[i];
-        r.czas = czasPrzejazdu(c.czas, obroty(h, e, c[i ? "predkosc_prawa" : "predkosc_lewa"]), e);
+        r.czas = czasPrzejazdu(c.czas, obroty(h, e, this._uk ? c.pola[i]?.predkosc : c[i ? "predkosc_prawa" : "predkosc_lewa"]), e);
         const s = h.states[e] || st;
         if (s !== r._ost) {
           r._ost = s;
@@ -5205,15 +7245,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         E.skrz.forEach((S, i) => {
           if (S.niebo) S.niebo.style.background = bg;
           if (S.za) S.za.style.background = bg;
-          if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, i, czl.length) : "";
-          if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, i, czl.length);
+          const [nr, ile] = this._uk ? [0, 1] : [i, czl.length];
+          if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, nr, ile) : "";
+          if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, nr, ile);
           S.s.classList.toggle("slonecznie", pora === "dzien" && (rodzaj === "slonce" || rodzaj === "chmurki"));
         });
         if (E.pgz) E.pgz.innerHTML = ["deszcz", "ulewa", "burza", "snieg", "deszczsnieg", "mgla"].includes(rodzaj) ? pogoda(rodzaj, pora, 0, 1).replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, "") : "";
       }
       if (this._brama) return this._aktualizujBrame(c, czl, st, pora);
-      const auto = c.auto_czujniki !== false ? czujnikiOkna(h, czl[0]) : [];
-      const okno = [0, 1].map((k) => {
+      const auto = c.auto_czujniki !== false && !this._uk ? czujnikiOkna(h, czl[0]) : [];
+      const okno = this._uk ? c.pola.map((p) => h.states[p.czujnik]?.state === "on" ? p.tryb === "otworz" ? "otw" : "uch" : "") : [0, 1].map((k) => {
         const id = c[k ? "czujnik_prawe" : "czujnik_lewe"] || auto[k], s = id && h.states[id];
         return s?.state === "on" ? c[k ? "tryb_prawe" : "tryb_lewe"] === "otworz" ? "otw" : "uch" : "";
       });
@@ -5232,7 +7273,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (opisPg) czesci.push(opisPg + (typeof t === "number" ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || "°C"}` : ""));
       }
       okno.forEach((o, k) => {
-        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${czl.length > 1 ? " " + (k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
+        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${czl.length > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
       });
       this._opisStanu = czesci;
       this._automatyka(c, h);
@@ -5510,12 +7551,12 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       this._jez = jezyk(this._cfg, this._hass);
       const LISTA = czyBrama(this._w("oslona")) ? KROKI.filter(([k]) => !["okno", "czujniki", "pogoda"].includes(k)) : KROKI;
       this._krok = Math.min(this._krok ?? 0, LISTA.length - 1);
-      const T2 = this._T, n = this._krok, [kl, ik] = LISTA[n], K = T2.kroki[kl];
+      const T2 = this._T, n = this._krok, [kl, ik2] = LISTA[n], K = T2.kroki[kl];
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
       root.innerHTML = `<style>${STYL2}</style><div class="ed">
 <div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? " on" : j < n ? " zrob" : ""}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc3(T2.kroki[k].t)}">
  <span class="k"><ha-icon icon="${i}"></ha-icon></span><span class="p">${esc3(T2.kroki[k].t)}</span></button>`).join("")}</div>
-<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc3(K.t)}<small>${esc3(wstaw(T2.ui.krok, n + 1, LISTA.length))}</small></h3></div>
+<div class="tyt"><span class="k"><ha-icon icon="${ik2}"></ha-icon></span><h3>${esc3(K.t)}<small>${esc3(wstaw(T2.ui.krok, n + 1, LISTA.length))}</small></h3></div>
 <p class="cp"><span><b>${esc3(T2.ui.co)}</b> ${esc3(K.co)}</span><span><b>${esc3(T2.ui.poco)}</b> ${esc3(K.poco)}</span></p>
 <div class="tresc"></div>
 <div class="nav"><button class="bt dr" data-n="-1" ${n ? "" : "hidden"}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc3(T2.ui.wstecz)}</button>
@@ -5908,19 +7949,927 @@ button svg{fill:var(--primary-color);flex:none}
     }
   };
 
+  // src/kreator_okno.js
+  var MDI2 = {
+    silnik: "M3 4h18v3H3zm2 4h14v9h2v2H3v-2h2zm2 0v9h10V8z",
+    uklad: "M3 3h18v18H3zm2 2v6h6V5zm8 0v6h6V5zm-8 8v6h6v-6zm8 0v6h6v-6z",
+    rodzaj: "M4 3h16v2H4zm1 3h14v8H5zm6 9h2v3.3a2 2 0 1 1-2 0z",
+    kolory: "M12 3a9 9 0 0 0 0 18c.8 0 1.5-.7 1.5-1.5 0-.4-.1-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8m-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3",
+    przypisz: "M17 7h-4v2h4a3 3 0 0 1 0 6h-4v2h4a5 5 0 0 0 0-10m-6 8H7a3 3 0 0 1 0-6h4V7H7a5 5 0 0 0 0 10h4zm-3-4h8v2H8z",
+    czujniki: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8m0-14a6 6 0 1 0 6 6 6 6 0 0 0-6-6m0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4m0-6a2 2 0 1 0 2 2 2 2 0 0 0-2-2",
+    auto: "M12 2a2 2 0 0 1 2 2c0 .7-.4 1.4-1 1.7V7h1a7 7 0 0 1 7 7h1v3h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2v-3h1a7 7 0 0 1 7-7h1V5.7A2 2 0 0 1 12 2M7.5 13a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5m9 0a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5",
+    stoper: "M15 1H9v2h6zm-4 13h2V8h-2zm8-6.6 1.4-1.4c-.4-.5-.9-1-1.4-1.4L17.6 6A9 9 0 1 0 19 7.4M12 20a7 7 0 1 1 7-7 7 7 0 0 1-7 7",
+    dzwonek: "M21 19v1H3v-1l2-2v-6c0-3.1 2-5.8 5-6.7V4a2 2 0 0 1 4 0v.3c3 .9 5 3.6 5 6.7v6zm-7 2a2 2 0 0 1-4 0",
+    gotowe: "M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z",
+    okno: "M6 2h12a2 2 0 0 1 2 2v16H4V4a2 2 0 0 1 2-2m0 2v7h5V4zm7 0v7h5V4zm-7 9v5h5v-5zm7 0v5h5v-5z",
+    slonce: "M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10M2 11h3v2H2zm17 0h3v2h-3zM11 2h2v3h-2zm0 17h2v3h-2zM4.2 5.6l1.4-1.4 2.1 2.1-1.4 1.4zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4zm2.1-13.5 1.4 1.4-2.1 2.1-1.4-1.4zM6.3 16.3l1.4 1.4-2.1 2.1-1.4-1.4z",
+    termo: "M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0m-3-9a1 1 0 0 1 1 1v3h-2V5a1 1 0 0 1 1-1",
+    pogoda: "M6 19a5 5 0 0 1-.7-10A7 7 0 0 1 18.6 8 5.5 5.5 0 0 1 18 19z",
+    wiatr: "M4 10a1 1 0 0 1 0-2h10a2 2 0 1 0-2-2 1 1 0 0 1-2 0 4 4 0 1 1 4 4zm15 2a3 3 0 1 1-3 3 1 1 0 0 1 2 0 1 1 0 1 0 1-1H4a1 1 0 0 1 0-2zm-7 4a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z",
+    deszcz: "M6 14a4 4 0 0 1-.6-8A6 6 0 0 1 17 6.6 4 4 0 0 1 18 14zm1 2 1.5 1-2 3-1.5-1zm5 0 1.5 1-2 3-1.5-1zm5 0 1.5 1-2 3-1.5-1z",
+    osoba: "M12 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8m0 10c4.4 0 8 1.8 8 4v2H4v-2c0-2.2 3.6-4 8-4",
+    wschod: "M3 13h18v2H3zm9-8 3 3h-2v3h-2V8H9zM6.3 9.3l1.4 1.4-1.4 1.4-1.4-1.4zm11.4 0 1.4 1.4-1.4 1.4-1.4-1.4z",
+    zachod: "M3 13h18v2H3zm9 0-3-3h2V5h2v5h2zM6.3 9.3l1.4 1.4-1.4 1.4-1.4-1.4zm11.4 0 1.4 1.4-1.4 1.4-1.4-1.4z",
+    tarcza: "M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5zm-1 6h2v6h-2zm0 8h2v2h-2z",
+    telefon: "M17 1H7a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2m0 18H7V5h10z",
+    bateria: "M16 4h-1V2H9v2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 16H8V6h8zm-7-6h6v5H9z",
+    ostrz: "M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z",
+    robot: "M12 2a2 2 0 0 1 2 2c0 .7-.4 1.4-1 1.7V7h1a7 7 0 0 1 7 7h1v3h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2v-3h1a7 7 0 0 1 7-7h1V5.7A2 2 0 0 1 12 2",
+    foto: "M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6m0-5C7 4 2.7 7.1 1 12c1.7 4.9 6 8 11 8s9.3-3.1 11-8c-1.7-4.9-6-8-11-8",
+    x: "M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+  };
+  var ik = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI2[n]}"/></svg>`;
+  var esc6 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var okr = (v) => Math.round(v * 1e3) / 1e3;
+  var SAMO = /[aeiouyąęóаеиоуыэюяіїєáéíóúýěůäöüàèìòù]/i;
+  var dziel = (s) => String(s ?? "").replace(/\S{11,}/g, (w) => {
+    const sr = Math.floor(w.length / 2);
+    for (let d = 0; d < sr - 2; d++) for (const i of [sr + d, sr - d]) if (SAMO.test(w[i - 1]) && !SAMO.test(w[i])) return w.slice(0, i) + "­" + w.slice(i);
+    return w.slice(0, sr) + "­" + w.slice(sr);
+  });
+  var KROKI_OKNA = ["silnik", "uklad", "rodzaj", "kolory", "przypisz", "czujniki", "auto", "stoper", "dzwonek", "gotowe"];
+  var KROKI_BRAMY = ["silnik", "rodzaj", "kolory", "czujniki", "stoper", "dzwonek", "gotowe"];
+  var PODGLAD = ["uklad", "rodzaj", "kolory"];
+  var UKLADY = [
+    ["u1", [[0, 0, 1, 1]]],
+    ["u2", [[0, 0, 0.5, 1], [0.5, 0, 0.5, 1]]],
+    ["u3", [[0, 0, 1 / 3, 1], [1 / 3, 0, 1 / 3, 1], [2 / 3, 0, 1 / 3, 1]]],
+    ["u4", [[0, 0, 0.5, 0.28], [0.5, 0, 0.5, 0.28], [0, 0.28, 0.5, 0.72], [0.5, 0.28, 0.5, 0.72]]],
+    ["u5", [[0, 0, 0.55, 0.22], [0.55, 0, 0.45, 0.22], [0, 0.22, 0.55, 0.5], [0.55, 0.22, 0.45, 0.78]]],
+    ["u6", [[0, 0, 0.5, 1], [0.5, 0, 0.5, 1]], true],
+    ["u7", [[0, 0, 0.25, 1], [0.25, 0, 0.5, 1], [0.75, 0, 0.25, 1]]],
+    ["u8", [[0, 0, 0.5, 0.5], [0.5, 0, 0.5, 0.5], [0, 0.5, 0.5, 0.5], [0.5, 0.5, 0.5, 0.5]]]
+  ];
+  var KOLORY_TAB = Object.keys(KOLORY);
+  var RAMY_TAB = Object.keys(RAMA_Z_KLUCZA);
+  var STRONY = [["n", 0], ["e", 90], ["s", 180], ["w", 270]];
+  var AUTO_ZEW = ["markiza", "fasadowa", "fasadowaz", "screen"];
+  function prostokaty(u) {
+    const K = u.kol, suma = K.reduce((a, k) => a + k.w, 0) || 1, out = [];
+    let x = 0;
+    K.forEach((k) => {
+      const w = k.w / suma, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0) || 1;
+      let y = 0;
+      k.r.forEach((h) => {
+        const hh = h / sr * wys;
+        out.push([okr(x), okr(y), okr(w), okr(hh)]);
+        y += hh;
+      });
+      x += w;
+    });
+    return out;
+  }
+  function zSzablonu(P) {
+    const xs = [...new Set(P.map((p) => okr(p[0])))].sort((a, b) => a - b);
+    const kol = xs.map((x) => {
+      const w = P.filter((p) => okr(p[0]) === x).sort((a, b) => a[1] - b[1]);
+      const dol = 1 - Math.max(...w.map((p) => p[1] + p[3]));
+      return { w: w[0][2], r: w.map((p) => p[3]), dol: Math.max(0, Math.round(dol * 100) / 100) };
+    });
+    return { kol: kol.length ? kol : [{ w: 1, r: [1], dol: 0 }] };
+  }
+  var kopia = (u) => ({ kol: u.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0 })) });
+  var takiSam = (a, b) => JSON.stringify(prostokaty(a)) === JSON.stringify(prostokaty(b));
+  var szablon = (u) => {
+    const i = UKLADY.findIndex(([, P]) => takiSam(zSzablonu(P), u));
+    return i < 0 ? "w" : i;
+  };
+  var godz = (m) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+  var minuty = (t) => {
+    const [h, m] = String(t || "").split(":").map(Number);
+    return (h || 0) * 60 + (m || 0);
+  };
+  function wynik(S) {
+    const o = { ...S.o };
+    if (!S.brama) {
+      o.uklad = kopia(S.u);
+      o.pola = S.pola.slice(0, prostokaty(S.u).length).map((p) => ({ ...p }));
+    } else {
+      o.rolety = [...S.rolety];
+      delete o.uklad;
+      delete o.pola;
+    }
+    return { tytul: S.tytul, opcje: o };
+  }
+  var STYL5 = `
+:host{--bg:var(--primary-background-color,#f0f2f4);--surface:var(--ha-dialog-surface-background,var(--mdc-theme-surface,var(--card-background-color,#fff)));
+ --fg:var(--primary-text-color,#212121);--fg2:var(--secondary-text-color,#6f7377);--line:var(--divider-color,rgba(0,0,0,.12));
+ --primary:var(--primary-color,#009ac7);--accent:var(--accent-color,#ff9800);--on:var(--text-primary-color,#fff);
+ --tile:color-mix(in srgb,var(--fg) 6%,var(--surface));--primary-soft:color-mix(in srgb,var(--primary) 16%,transparent);--ok:var(--success-color,#2e9e5b);
+ display:flex;flex-direction:column;height:100%;background:var(--surface);color:var(--fg);font-family:var(--ha-font-family-body,Roboto,"Noto Sans",system-ui,sans-serif);font-size:14px;position:relative;overflow:hidden}
+*{box-sizing:border-box}
+button{font:inherit;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+.gora{flex:none;z-index:5;background:var(--surface);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:calc(10px + env(safe-area-inset-top,0px));padding-bottom:6px;border-bottom:1px solid var(--line)}
+.tytul{display:flex;align-items:center;gap:14px;font-size:20px;font-weight:500;min-height:40px}
+.tytul .x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--fg);background:none;border:0;cursor:pointer;flex:none}
+.tytul .x svg{fill:currentColor}
+.tytul small{display:block;font-size:12px;color:var(--fg2);font-weight:400}
+.kroki{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:2px}
+.krok{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;background:none;border:0;cursor:pointer;padding:2px 0 14px;color:var(--fg2);position:relative}
+.krok .k{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--line);background:var(--surface)}
+.krok svg{width:18px;height:18px;fill:currentColor}
+.krok.zrob{color:var(--primary)} .krok.zrob .k{border-color:var(--primary)}
+.krok.teraz{color:var(--primary)} .krok.teraz .k{border-color:var(--accent);background:var(--primary);color:var(--on)}
+.krok .n{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:10px;line-height:1;white-space:nowrap;visibility:hidden}
+.krok.teraz .n{visibility:visible;font-weight:700}
+.krok:first-child.teraz .n{left:0;transform:none}.krok:last-child.teraz .n{left:auto;right:0;transform:none}
+.krok:focus-visible .k{box-shadow:0 0 0 3px var(--accent)}
+.podglad{display:flex;justify-content:center;padding-top:8px}
+.podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
+.tresc{flex:1;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
+h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
+.pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
+.siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.siatka.k4{grid-template-columns:repeat(4,minmax(0,1fr))} .siatka.k2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kaf{position:relative;background:var(--tile);border:2px solid transparent;border-radius:14px;padding:8px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;color:var(--fg);text-align:center;min-width:0;transition:transform .12s}
+.kaf:active{transform:scale(.97)}
+.kaf svg{width:100%;height:auto;max-height:84px}
+.kaf b{font-size:11px;font-weight:400;line-height:1.2;color:var(--fg2);overflow-wrap:break-word;hyphens:manual;max-width:100%}
+.kaf.wyb{border-color:var(--accent);background:var(--primary-soft)} .kaf.wyb b{color:var(--fg);font-weight:500}
+.kaf:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
+.kaf.zajeta{opacity:.5}
+.zn{position:absolute;top:5px;right:5px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
+.miejsce{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;color:var(--primary);background:var(--primary-soft);border-radius:10px;padding:2px 7px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sek{margin:18px 0 8px;font-size:13px;font-weight:500;color:var(--fg2);letter-spacing:.02em}
+.probki{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
+.probka{flex:0 0 auto;width:56px;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;cursor:pointer;color:var(--fg2);font-size:10.5px;text-align:center;line-height:1.15}
+.probka i{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:block}
+.probka.wyb i{outline:3px solid var(--accent);outline-offset:2px} .probka.wyb{color:var(--fg);font-weight:500}
+.wiersz{display:flex;align-items:center;gap:12px;background:var(--tile);border-radius:14px;padding:10px 12px;margin-bottom:8px;cursor:pointer;border:2px solid transparent;width:100%;color:var(--fg);text-align:left}
+.wiersz .ik{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary);flex:0 0 auto;font-weight:700}
+.wiersz .ik svg{width:22px;height:22px;fill:currentColor}
+.wiersz .t{flex:1;min-width:0} .wiersz .t b{display:block;font-weight:500;font-size:14px} .wiersz .t small{display:block;color:var(--fg2);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wiersz.wyl .ik{background:var(--tile);color:var(--fg2);border:1px solid var(--line)} .wiersz.wyl .t b{color:var(--fg2)}
+.wiersz.brak{cursor:default}
+.przel{width:40px;height:22px;border-radius:11px;background:var(--line);position:relative;flex:0 0 auto;transition:background .15s}
+.przel::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.wiersz:not(.wyl) .przel{background:var(--primary)} .wiersz:not(.wyl) .przel::after{left:21px}
+.suw{display:flex;align-items:center;gap:10px;padding:0 12px 10px 64px;margin-top:-6px;margin-bottom:8px;color:var(--fg2);font-size:12px}
+.suw input{flex:1;min-width:0;accent-color:var(--primary)}
+.suw span{min-width:44px;text-align:end}
+.suw.chipy{gap:6px}
+.chipy{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;min-height:32px;padding:0 12px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;max-width:100%}
+.chip svg{fill:currentColor}
+.chip.wyb{background:var(--primary-soft);border-color:var(--primary);color:var(--fg)}
+.chip .p{font-size:10px;color:var(--ok);font-weight:700;text-transform:uppercase}
+.chip:disabled{opacity:.45;cursor:default}
+.dol{flex:none;display:flex;justify-content:space-between;align-items:center;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
+.btn{height:44px;padding:0 22px;border-radius:22px;border:0;background:var(--primary);color:var(--on);font-size:15px;font-weight:500;cursor:pointer}
+.btn.plaski{background:none;color:var(--primary)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,.chip:focus-visible,.wiersz:focus-visible,.probka:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.duzy{display:flex;flex-direction:column;align-items:center;gap:14px;padding:6px 0}
+.duzy svg{width:180px;height:auto;max-width:100%}
+.zegar{font-size:40px;font-weight:300;font-variant-numeric:tabular-nums}
+.blad{color:var(--error-color,#db4437);font-size:13px;text-align:center}
+.arkusz{position:absolute;inset:auto 0 0 0;max-height:80%;overflow:auto;background:var(--surface);border-radius:20px 20px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.25);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:10px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8}
+.arkusz .uchwyt{width:36px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 12px}
+.tlo{position:absolute;inset:0;background:rgba(0,0,0,.35);z-index:7}
+.karta{display:block}
+.nazwa{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);font:inherit;font-size:15px;padding:0 12px;margin-bottom:12px}
+.nazwa:focus{outline:2px solid var(--primary);border-color:transparent}
+#edytor{display:flex;justify-content:center;touch-action:none}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}`;
+  var MotorHaKreator = class extends HTMLElement {
+    // start({ hass, flow_id, entry_id, krok, wyslij(dane), zamknij() })
+    async start(p) {
+      this._p = p;
+      this._hass = p.hass;
+      this.T = TEKSTY[jezyk({}, p.hass)];
+      this.t = this.T.kreator;
+      const d = await p.hass.callWS({ type: "motor_ha/kreator/dane", ...p.entry_id ? { entry_id: p.entry_id } : {} });
+      this.dane = d;
+      const o = { ...d.opcje };
+      const S = this.S = {
+        o,
+        tytul: d.tytul || "",
+        rolety: [...o.rolety || []],
+        u: kopia(o.uklad),
+        pola: (o.pola || []).map((x) => ({ ...x })),
+        krok: 0,
+        arkusz: null,
+        wyb: 0,
+        recznie: { uklad: !d.nowy, rodzaj: !d.nowy, tytul: !d.nowy },
+        panel: !!d.nowy && d.panel !== "nie",
+        wykryty: null,
+        pomiar: null
+      };
+      delete o.uklad;
+      delete o.pola;
+      S.brama = czyBrama(o.oslona) || this._oslona(S.rolety[0])?.brama;
+      S.szablon = szablon(S.u);
+      if (d.nowy) this._podpowiedzi();
+      const kroki = this.kroki();
+      const k = kroki.indexOf(p.krok);
+      S.krok = k < 0 ? 0 : k;
+      this._zbuduj();
+      this.rysuj();
+    }
+    set hass(h) {
+      this._hass = h;
+      if (this.S?.pomiar?.trwa || this.kroki()[this.S?.krok] === "stoper") this._odswiezPomiar();
+      if (this._kartaEl) this._kartaEl.hass = this._hassKarty();
+    }
+    kroki() {
+      return this.S?.brama ? KROKI_BRAMY.filter((k) => k !== "czujniki" || this._czujnik("foto").lista.length) : KROKI_OKNA;
+    }
+    _oslona(id) {
+      return this.dane?.oslony.find((x) => x.id === id);
+    }
+    _czujnik(r) {
+      return this.dane?.czujniki?.[r] || { lista: [], podpowiedz: null };
+    }
+    _dark() {
+      return !!this._hass?.themes?.darkMode;
+    }
+    _nieba() {
+      return this._dark() ? ["#4f88ad", "#9cc6de"] : ["#9fd3f2", "#e3f3fc"];
+    }
+    _kolor() {
+      const k = this.S.o.kolor_wlasny;
+      return Array.isArray(k) ? "#" + k.map((x) => (+x).toString(16).padStart(2, "0")).join("") : KOLORY[this.S.o.kolor] || this.S.o.kolor || "#888";
+    }
+    _rama() {
+      const k = this.S.o.rama_wlasna;
+      return Array.isArray(k) ? "#" + k.map((x) => (+x).toString(16).padStart(2, "0")).join("") : RAMA_Z_KLUCZA[this.S.o.rama] || this.S.o.rama || "#f4f4f2";
+    }
+    // --- podpowiedzi po wyborze osłon: układ, rodzaj, pola z silnikami i czujnikami okien, czujniki domu ---
+    _podpowiedzi() {
+      const S = this.S, d = this.dane, n = S.rolety.length;
+      const pierwsza = this._oslona(S.rolety[0]);
+      S.brama = !!pierwsza?.brama;
+      if (!S.recznie.rodzaj && pierwsza) {
+        const k = pierwsza.klasa;
+        S.o.oslona = S.brama ? k === "garage" ? "segmentowa" : "przesuwna" : k === "awning" ? "markiza" : k === "shutter" ? "natynkowa" : pierwsza.lamele ? "zaluzja" : czyBrama(S.o.oslona) ? "zebra" : S.o.oslona || "zebra";
+      }
+      if (!S.recznie.uklad && !S.brama) {
+        S.u = zSzablonu(UKLADY[n >= 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
+        S.szablon = szablon(S.u);
+      }
+      if (!S.recznie.tytul) {
+        const pokoje = new Set(S.rolety.map((e) => this._oslona(e)?.pokoj));
+        S.tytul = pokoje.size === 1 && [...pokoje][0] && n > 1 ? [...pokoje][0] : pierwsza?.nazwa || "";
+      }
+      this._dopasujPola(true);
+      if (d.nowy) for (const [r, klucz] of [
+        ["pogoda", "pogoda"],
+        ["temp", "czujnik_temp"],
+        ["obecnosc", "czujnik_obecnosc"],
+        ["wiatr", "czujnik_wiatr"],
+        ["deszcz", "czujnik_deszcz"],
+        ["foto", "czujnik_foto"]
+      ]) {
+        const c = this._czujnik(r);
+        if (!S.o[klucz] && c.podpowiedz) S.o[klucz] = c.podpowiedz;
+      }
+    }
+    // liczba pól = układ; nowe pola dostają kolejne silniki i czujniki okien z pokoju
+    _dopasujPola(podpowiedz) {
+      const S = this.S, ile = prostokaty(S.u).length, R = S.rolety;
+      const okna = this._czujnik("okno").lista.filter((x) => x.tu).map((x) => x.id);
+      const kolejne = [.../* @__PURE__ */ new Set([...this.dane.okna || [], ...okna])];
+      S.pola = Array.from({ length: ile }, (_, i) => {
+        const p = { ...S.pola[i] || {} };
+        if ((podpowiedz || !p.silnik) && R.length) p.silnik = R[Math.min(i, R.length - 1)];
+        if (podpowiedz && !p.czujnik && kolejne[i] && !S.pola.some((q, j) => j !== i && q?.czujnik === kolejne[i])) p.czujnik = kolejne[i];
+        p.tryb || (p.tryb = "uchyl");
+        return p;
+      });
+    }
+    // --- rysunki ---
+    oslona(typ, x, y, w, h, poz, kolor) {
+      const z = h * (1 - poz / 100), k = kolor, d = [];
+      const t = { plaster: "plisa", natynkowa: "zewnetrzna", podtynkowa: "zewnetrzna", perforowana: "zewnetrzna", fasadowaz: "fasadowa" }[typ] || typ;
+      if (t === "zaslona") {
+        const s = w * (0.18 + 0.32 * (1 - poz / 100));
+        return `<path d="M${x} ${y}h${s}q${-s * 0.25} ${h / 2} 0 ${h}h${-s}z" fill="${k}"/><path d="M${x + w} ${y}h${-s}q${s * 0.25} ${h / 2} 0 ${h}h${s}z" fill="${k}"/>`;
+      }
+      if (t === "pionowa") {
+        const n = 7, s = w / n;
+        for (let i = 0; i < n; i++) d.push(`<rect x="${x + i * s + s * 0.1}" y="${y}" width="${s * (0.15 + 0.7 * (1 - poz / 100))}" height="${h}" fill="${k}" opacity=".9"/>`);
+        return d.join("");
+      }
+      if (z < 1) return `<rect x="${x}" y="${y}" width="${w}" height="2.5" fill="${k}"/>`;
+      if (t === "zebra") {
+        for (let yy = 0; yy < z; yy += 6) d.push(`<rect x="${x}" y="${y + yy}" width="${w}" height="${Math.min(3.4, z - yy)}" fill="${k}"/><rect x="${x}" y="${y + yy + 3.4}" width="${w}" height="${Math.max(0, Math.min(2.6, z - yy - 3.4))}" fill="${k}" opacity=".35"/>`);
+      } else if (t === "plisa") {
+        d.push(`<rect x="${x}" y="${y}" width="${w}" height="${z}" fill="${k}"/>`);
+        for (let yy = 3; yy < z; yy += 4) d.push(`<line x1="${x}" x2="${x + w}" y1="${y + yy}" y2="${y + yy}" stroke="#000" stroke-opacity=".18" stroke-width=".8"/>`);
+      } else if (t === "zaluzja" || t === "drewniana" || t === "fasadowa") {
+        for (let yy = 0; yy < z; yy += 4) d.push(`<rect x="${x}" y="${y + yy}" width="${w}" height="2.6" fill="${k}" rx=".6"/>`);
+      } else if (t === "zewnetrzna") {
+        d.push(`<rect x="${x}" y="${y}" width="${w}" height="${z}" fill="${k}"/>`);
+        for (let yy = 3; yy < z; yy += 3.5) d.push(`<line x1="${x}" x2="${x + w}" y1="${y + yy}" y2="${y + yy}" stroke="#000" stroke-opacity=".25" stroke-width=".7"/>`);
+      } else if (t === "rzymska") {
+        d.push(`<rect x="${x}" y="${y}" width="${w}" height="${z}" fill="${k}"/>`);
+        for (let yy = z - 4; yy > 6; yy -= 9) d.push(`<path d="M${x} ${y + yy - 3}q${w / 2} 6 ${w} 0" fill="none" stroke="#000" stroke-opacity=".22" stroke-width="1.2"/>`);
+      } else if (t === "markiza") {
+        d.push(`<rect x="${x}" y="${y}" width="${w}" height="${z}" fill="${k}" opacity=".92"/>`);
+        for (let xx = 0; xx < w; xx += 8) d.push(`<rect x="${x + xx}" y="${y}" width="4" height="${z}" fill="#fff" opacity=".35"/>`);
+      } else d.push(`<rect x="${x}" y="${y}" width="${w}" height="${z}" fill="${k}" opacity="${t === "zaciemniajaca" ? 1 : t === "screen" ? 0.8 : 0.96}"/>`);
+      d.push(`<rect x="${x}" y="${y + z - 2}" width="${w}" height="2.4" fill="#000" opacity=".45"/>`);
+      return d.join("");
+    }
+    // całe okno: rama (dla każdej kolumny), szyby z widokiem, osłony, numery pól
+    okno(opt = {}) {
+      const S = this.S, W2 = opt.w || 160, H2 = opt.h || 150, pad = 6, pl = prostokaty(S.u), rama = this._rama(), kol = this._kolor(), [n1, n2] = this._nieba();
+      const iw = W2 - 2 * pad, ih = H2 - 2 * pad, id = opt.id || "p";
+      const d = [`<svg viewBox="0 0 ${W2} ${H2}" width="${W2}" height="${H2}" style="max-width:100%;height:auto" role="img" aria-label="${esc6(this.t.kroki.uklad)}">`];
+      d.push(`<defs><linearGradient id="n${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
+      const xs = [...new Set(pl.map((p) => p[0]))];
+      for (const x of xs) {
+        const k = pl.filter((p) => p[0] === x), dol = Math.max(...k.map((p) => p[1] + p[3]));
+        d.push(`<rect x="${x * iw + 1}" y="1" width="${k[0][2] * iw + 2 * pad - 2}" height="${dol * ih + 2 * pad - 2}" rx="4" fill="${rama}" stroke="#000" stroke-opacity=".25"/>`);
+      }
+      pl.forEach((p, i) => {
+        const x = pad + p[0] * iw + 2, y = pad + p[1] * ih + 2, w = p[2] * iw - 4, h = p[3] * ih - 4;
+        d.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#n${id})"/>`);
+        d.push(`<path d="M${x} ${y + h * 0.78}l${w * 0.25} ${-h * 0.14} ${w * 0.2} ${h * 0.08} ${w * 0.3} ${-h * 0.16} ${w * 0.25} ${h * 0.1}V${y + h}H${x}z" fill="#000" opacity=".12"/>`);
+        const poz = opt.poz ? opt.poz(i) : 60;
+        d.push(this.oslona(S.o.oslona, x, y, w, h, poz, kol));
+        if (opt.numery) {
+          const on = opt.wybrane === i;
+          d.push(`<g data-pole="${i}" style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${on ? "rgba(255,152,0,.25)" : "transparent"}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
+          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text></g>`);
+        }
+      });
+      d.push("</svg>");
+      return d.join("");
+    }
+    _brama(typ) {
+      return rysunekBramy(typ, this._kolor(), this._rama(), false, false);
+    }
+    _podgladMaly() {
+      return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: "p" });
+    }
+    kafelRodzaju(typ) {
+      if (czyBrama(typ)) return `<div style="width:100%;pointer-events:none">${this._brama(typ)}</div>`;
+      const [n1] = this._nieba();
+      return `<svg viewBox="0 0 64 60" aria-hidden="true"><rect x="8" y="4" width="48" height="52" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
+      <rect x="11" y="7" width="42" height="46" fill="${n1}"/>${this.oslona(typ, 11, 7, 42, 46, 40, this._kolor())}</svg>`;
+    }
+    kafelUkladu(P, drzwi) {
+      const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
+      P.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
+      <rect x="${7 + x * 52}" y="${5 + y * 50}" width="${Math.max(0, w * 52 - 2)}" height="${h * 50 * 0.45}" fill="var(--fg2)" opacity=".55"/>`));
+      if (drzwi) d.push('<line x1="2" x2="62" y1="55" y2="55" stroke="var(--fg2)"/>');
+      d.push("</svg>");
+      return d.join("");
+    }
+    // --- kroki ---
+    str_silnik() {
+      const S = this.S, t = this.t, d = this.dane;
+      const pokoj = this._oslona(S.rolety[0])?.area;
+      const lista = d.oslony.filter((o) => !o.zajeta || S.rolety.includes(o.id)).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || (a.pokoj || "~").localeCompare(b.pokoj || "~") || a.nazwa.localeCompare(b.nazwa));
+      if (!lista.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
+      const [n1] = this._nieba();
+      return `<div class="siatka k2">${lista.map((o) => {
+        const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
+        return `<button class="kaf ${nr >= 0 ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
+        ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="10" y="4" width="44" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/>
+        <rect x="11" y="5" width="42" height="${34 * (1 - poz / 100) + 1}" fill="var(--fg2)" opacity=".7"/></svg>`}
+        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6([o.pokoj, `${poz} %`].filter(Boolean).join(" · "))}</span></button>`;
+      }).join("")}</div>${S.wykryty ? `<p class="pod" style="margin-top:12px">${esc6(wstaw(t.wykryty, S.wykryty))}</p>` : ""}`;
+    }
+    str_uklad() {
+      const S = this.S, t = this.t;
+      const ed = S.szablon === "w" ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
+      <div id="edytor">${this.edytor()}</div>
+      <div class="chipy" style="justify-content:center;margin:10px 0 4px">
+        <button class="chip" data-op="poz">${ik("uklad", 16)} ${esc6(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik("uklad", 16)} ${esc6(t.wzdluz)}</button>
+        <button class="chip" data-op="usun">${esc6(t.usun)}</button></div>
+      <p class="pod" style="text-align:center">${esc6(t.wlasnyPodpis)}</p><div class="sek">${esc6(t.zSzablonu)}</div>` : "";
+      return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
+      <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
+    }
+    str_rodzaj() {
+      const S = this.S, T2 = this.T;
+      let lista;
+      if (S.brama) lista = BRAMY;
+      else {
+        const wew = Object.values(GRUPY.wew).flat(), zew = Object.values(GRUPY.zew).flat(), k = this._oslona(S.rolety[0])?.klasa;
+        lista = ["shutter", "awning"].includes(k) || czyZew(S.o.oslona) ? [...zew, ...wew] : [...wew, ...zew];
+      }
+      return `<div class="siatka k4">${lista.map((k) => `<button class="kaf ${S.o.oslona === k ? "wyb" : ""}" data-rodzaj="${k}">${this.kafelRodzaju(k)}<b>${esc6(dziel(T2.oslony[k] || k))}</b></button>`).join("")}</div>`;
+    }
+    str_kolory() {
+      const S = this.S, T2 = this.T, t = this.t;
+      const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map((k) => `<button class="probka ${S.o[co] === k && !S.o[co === "kolor" ? "kolor_wlasny" : "rama_wlasna"] ? "wyb" : ""}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc6(dziel(nazwy[k] || k))}</button>`).join("")}</div>`;
+      return `<div class="sek">${esc6(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}<div class="sek">${esc6(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}`;
+    }
+    str_przypisz() {
+      const S = this.S, t = this.t;
+      return `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
+      <div style="margin-top:14px">${prostokaty(S.u).map((_, i) => {
+        const p = S.pola[i] || {}, o = this._oslona(p.silnik);
+        const c = p.czujnik && this._nazwa(p.czujnik);
+        return `<button class="wiersz" data-pole="${i}"><span class="ik">${i + 1}</span><span class="t"><b>${esc6(o ? o.nazwa : t.wybierzSilnik)}</b>
+          <small>${c ? `✓ ${esc6(c)} · ${esc6(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : esc6(t.bezCzujnikaOkna)}</small></span></button>`;
+      }).join("")}</div>`;
+    }
+    _nazwa(e) {
+      const s = this._hass?.states?.[e];
+      return s?.attributes?.friendly_name || this._czujnik("okno").lista.find((x) => x.id === e)?.nazwa || e;
+    }
+    _stan(e) {
+      const s = this._hass?.states?.[e];
+      return s ? this._hass.formatEntityState ? this._hass.formatEntityState(s) : s.state : "";
+    }
+    // czujniki domu: [rodzaj, ikona, klucz w ustawieniach]
+    _listaCzujnikow() {
+      if (this.S.brama) return [["foto", "foto", "czujnik_foto"]];
+      return [
+        ["pogoda", "pogoda", "pogoda"],
+        ["temp", "termo", "czujnik_temp"],
+        ["obecnosc", "osoba", "czujnik_obecnosc"],
+        ["wiatr", "wiatr", "czujnik_wiatr"],
+        ["deszcz", "deszcz", "czujnik_deszcz"]
+      ];
+    }
+    str_czujniki() {
+      const S = this.S, t = this.t, w = [];
+      if (!S.brama) {
+        const okna = [...new Set(S.pola.map((p) => p.czujnik).filter(Boolean))];
+        w.push(`<button class="wiersz ${okna.length ? "" : "wyl"}" data-idz="przypisz"><span class="ik">${ik("okno", 22)}</span><span class="t"><b>${esc6(t.czujniki.okno)}</b><small>${esc6(okna.length ? okna.map((e) => this._nazwa(e)).join(", ") : t.okienBrak)}</small></span><span class="przel"></span></button>`);
+        if (this.dane.slonce) w.push(`<button class="wiersz ${S.o.bez_slonca ? "wyl" : ""}" data-slonce="1"><span class="ik">${ik("slonce", 22)}</span><span class="t"><b>${esc6(t.czujniki.slonce)}</b><small>${esc6(t.slonceOpis)}</small></span><span class="przel"></span></button>`);
+      }
+      for (const [r, i, klucz] of this._listaCzujnikow()) {
+        const c = this._czujnik(r), e = S.o[klucz];
+        if (!c.lista.length && !e) {
+          w.push(`<div class="wiersz wyl brak"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(t.czujniki[r])}</b><small>${esc6(t.nieZnalazlem)}</small></span></div>`);
+          continue;
+        }
+        const st = e && this._stan(e);
+        w.push(`<button class="wiersz ${e ? "" : "wyl"}" data-czujnik="${r}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(t.czujniki[r])}</b><small>${esc6(e ? this._nazwa(e) + (st ? " · " + st : "") : t.nieUzywaj)}</small></span><span class="przel"></span></button>`);
+      }
+      return w.join("");
+    }
+    // automatyka: [klucz, ikona, włączona?, opis, suwak]
+    str_auto() {
+      const S = this.S, o = S.o, t = this.t, sl = o.harm_tryb === "slonce";
+      const okna = S.pola.some((p) => p.czujnik), w = [];
+      const harm = !!o.f_harmonogram;
+      const wiersz = (k, i, on, tyt, opis, extra = "") => w.push(`<button class="wiersz ${on ? "" : "wyl"}" data-auto="${k}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(tyt)}</b><small>${esc6(opis)}</small></span><span class="przel"></span></button>${on ? extra : ""}`);
+      const rano = harm && o.harm_otwieraj !== false, wieczor = harm && o.harm_zamykaj !== false;
+      const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw"><input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc6(tekst)}"><span>${esc6(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
+      wiersz("rano", "wschod", rano, t.auto.rano, sl ? t.oWschodzie : wstaw(t.oGodz, godz(minuty(o.otworz || "07:00"))), sl ? "" : suwak("otworz", 300, 660, minuty(o.otworz || "07:00"), t.auto.rano));
+      wiersz("wieczor", "zachod", wieczor, t.auto.wieczor, sl ? t.oZachodzie : wstaw(t.oGodz, godz(minuty(o.zamknij || "21:00"))), sl ? "" : suwak("zamknij", 1020, 1410, minuty(o.zamknij || "21:00"), t.auto.wieczor));
+      if (rano || wieczor) w.push(`<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-zeslonca="1">${ik("slonce", 16)} ${esc6(t.zeSloncem)}</button></div>`);
+      if (!o.bez_slonca) {
+        const poz = 100 - (+o.slonce_poz || 20);
+        wiersz("slonce", "slonce", !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak("slonce", 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5) + `<div class="suw chipy"><span style="min-width:auto">${esc6(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? "wyb" : ""}" data-azymut="${a}">${esc6(t.strony[k])}</button>`).join("")}</div>`);
+      }
+      if (okna) {
+        wiersz("blokada", "tarcza", !!o.f_blokada, t.auto.blokada, t.okienne);
+        wiersz("wietrzenie", "okno", !!o.f_wietrzenie, t.auto.wietrzenie, t.okienne);
+      }
+      const zew = czyZew(o.oslona);
+      if (zew && (o.pogoda || o.czujnik_wiatr)) wiersz("wiatr", "wiatr", !!o.f_wiatr, t.auto.wiatr, wstaw(t.wiatrOpis, o.wiatr_prog || 40));
+      if (AUTO_ZEW.includes(o.oslona) && (o.pogoda || o.czujnik_deszcz)) wiersz("deszcz", "deszcz", !!o.f_deszcz, t.auto.deszcz, t.deszczOpis);
+      if (!zew || !(o.pogoda || o.czujnik_wiatr)) w.push(`<p class="pod" style="margin-top:6px">${esc6(t.autoPodpis)}</p>`);
+      return w.join("");
+    }
+    str_stoper() {
+      const S = this.S, t = this.t, p = S.pomiar || {};
+      const czas = p.czas ?? (+S.o.czas || 0);
+      return `<div class="duzy"><div id="okKal">${this._oknoNaZywo()}</div>
+      <div class="zegar" id="zegar">${p.trwa ? this._sekundy() : czas ? `${String(czas).replace(".", this._przecinek())} s${p.czas ? " ✓" : ""}` : "— s"}</div>
+      <button class="btn" id="mierz" ${p.trwa || !S.rolety.length ? "disabled" : ""}>${esc6(p.trwa ? t.mierze : czas ? t.zmierzZnow : t.zmierz)}</button>
+      ${p.blad ? `<p class="blad">${esc6(p.blad)}</p>` : ""}
+      <p class="pod" style="text-align:center">${esc6(t.pomin)}</p></div>`;
+    }
+    _przecinek() {
+      return 1.5.toLocaleString(this._hass?.locale?.language || void 0).includes(",") ? "," : ".";
+    }
+    _sekundy() {
+      const p = this.S.pomiar;
+      return ((performance.now() - p.od) / 1e3).toFixed(1).replace(".", this._przecinek()) + " s";
+    }
+    _pozycja(e) {
+      const s = this._hass?.states?.[e];
+      const p = s?.attributes?.current_position;
+      return typeof p === "number" ? p : s?.state === "closed" ? 0 : 100;
+    }
+    _oknoNaZywo() {
+      const S = this.S;
+      if (S.brama) return `<div style="width:200px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
+      return this.okno({ w: 180, h: 165, id: "k", poz: (i) => this._pozycja(S.pola[i]?.silnik || S.rolety[0]) });
+    }
+    _odswiezPomiar() {
+      const r = this.shadowRoot;
+      if (!r) return;
+      const o = r.getElementById("okKal");
+      if (o && !this.S.brama) o.innerHTML = this._oknoNaZywo();
+      const z = r.getElementById("zegar");
+      if (z && this.S.pomiar?.trwa) z.textContent = this._sekundy();
+    }
+    async _mierz() {
+      const S = this.S, t = this.t;
+      const rolety = S.brama ? S.rolety : [...new Set(S.pola.map((p) => p.silnik).filter(Boolean))];
+      S.pomiar = { trwa: true, od: performance.now() };
+      this.rysuj();
+      const tik = setInterval(() => {
+        if (!S.pomiar?.trwa) clearInterval(tik);
+        else this._odswiezPomiar();
+      }, 100);
+      try {
+        const w = await this._hass.callWS({ type: "motor_ha/kreator/mierz", rolety });
+        if (w.czas) {
+          S.o.czas = w.czas;
+          S.pomiar = { czas: w.czas };
+        } else S.pomiar = { blad: w.brak?.length ? wstaw(t.nieOdp, w.brak.join(", ")) : w.wynik === "kalibracja_od_razu" ? t.odRazu : t.bladPomiaru };
+      } catch (e) {
+        S.pomiar = { blad: t.bladPomiaru };
+      }
+      clearInterval(tik);
+      if (this.kroki()[S.krok] === "stoper") this.rysuj();
+    }
+    str_dzwonek() {
+      const S = this.S, o = S.o, t = this.t, w = [];
+      const gdzie = new Set(o.powiadom_gdzie || []), co = new Set(o.powiadom || []);
+      for (const tel of this.dane.telefony) w.push(`<button class="wiersz ${gdzie.has(tel.id) ? "" : "wyl"}" data-tel="${esc6(tel.id)}"><span class="ik">${ik(tel.telefon ? "telefon" : "dzwonek", 22)}</span><span class="t"><b>${esc6(tel.telefon ? t.telefon : tel.nazwa)}</b><small>${esc6(tel.telefon ? tel.nazwa : tel.id)}</small></span><span class="przel"></span></button>`);
+      if (!this.dane.telefony.length) w.push(`<p class="pod">${esc6(t.brakTelefonu)}</p>`);
+      const rodzaje = S.brama ? ["nie_odpowiada", "brama_otwarta", "brama_niedomknieta", ...o.czujnik_foto ? ["przeszkoda"] : [], "bateria"] : ["nie_odpowiada", "nie_dojechala", "bateria", "automatyka"];
+      const ikony = { nie_odpowiada: "ostrz", nie_dojechala: "stoper", bateria: "bateria", automatyka: "robot", brama_otwarta: "ostrz", brama_niedomknieta: "stoper", przeszkoda: "foto" };
+      for (const r of rodzaje) w.push(`<button class="wiersz ${co.has(r) ? "" : "wyl"}" data-powiadom="${r}"><span class="ik">${ik(ikony[r], 22)}</span><span class="t"><b>${esc6(t.powiadom[r])}</b><small>${esc6(t.powiadomOpis[r])}</small></span><span class="przel"></span></button>`);
+      return w.join("");
+    }
+    str_gotowe() {
+      const S = this.S, t = this.t, d = this.dane;
+      const panel = d.panele.find((p) => p.klucz === d.panel);
+      return `<input class="nazwa" id="nazwa" value="${esc6(S.tytul)}" aria-label="${esc6(t.nazwa)}" placeholder="${esc6(t.nazwa)}">
+      <div class="karta" id="karta"></div>
+      ${d.nowy && panel ? `<button class="wiersz ${S.panel ? "" : "wyl"}" data-panel="1" style="margin-top:12px"><span class="ik">${ik("uklad", 22)}</span><span class="t"><b>${esc6(t.naPanel)}</b><small>${esc6(panel.nazwa)}</small></span><span class="przel"></span></button>` : ""}`;
+    }
+    // karta na udawanej encji: dokładnie to, co pokaże panel
+    _konfigKarty() {
+      const S = this.S, o = S.o;
+      const pl = S.brama ? null : prostokaty(S.u).map(([x, y, w, h], i) => ({ x, y, w, h, ...S.pola[i] || {} }));
+      return {
+        type: "custom:motor-ha",
+        entity: "cover.motor_ha_kreator",
+        name: S.tytul || " ",
+        oslona: o.oslona,
+        kolor: this._kolor(),
+        rama: this._rama(),
+        wysokosc: +o.wysokosc || 260,
+        czas: +o.czas || "auto",
+        odwroc: !!o.odwroc,
+        ...pl ? { pola: pl, skrzydla: pl.length } : { skrzydla: 1 },
+        _podglad: { pogoda: "sunny", pora: "dzien" }
+      };
+    }
+    _hassKarty() {
+      const h = this._hass, S = this.S, teraz = (/* @__PURE__ */ new Date()).toISOString();
+      const R = S.brama ? S.rolety : [...new Set(S.pola.map((p) => p.silnik).filter(Boolean))];
+      const poz = R.length ? Math.round(R.reduce((a, e) => a + this._pozycja(e), 0) / R.length) : 60;
+      const stan = {
+        entity_id: "cover.motor_ha_kreator",
+        state: poz > 0 ? "open" : "closed",
+        last_changed: teraz,
+        last_updated: teraz,
+        context: { id: "" },
+        attributes: { current_position: poz, friendly_name: S.tytul, supported_features: 15, entity_id: R }
+      };
+      return { ...h, states: { ...h.states, "cover.motor_ha_kreator": stan }, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) };
+    }
+    // --- edytor własnego układu: duże okno z uchwytami do przeciągania i wybieranym polem ---
+    edytor() {
+      const EW = 260, EH = 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), iw = EW - 2 * EP, ih = EH - 2 * EP;
+      const [n1] = this._nieba(), d = [];
+      d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc6(this.t.wlasnyTytul)}">`);
+      d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
+      P.forEach((p, i) => {
+        const x2 = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
+        d.push(`<g data-ep="${i}"><rect x="${x2}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
+        <rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${on ? "rgba(255,152,0,.35)" : n1}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
+        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="var(--fg)">${i + 1}</text></g>`);
+      });
+      const uchwyt = (typ, id, x2, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? "ns" : "ew"}-resize"><circle cx="${x2}" cy="${y}" r="16" fill="transparent"/>
+      <rect x="${x2 - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
+      let x = 0;
+      K.forEach((k, c) => {
+        const w = k.w / suma, X = EP + x * iw, W2 = w * iw, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
+        let y = 0;
+        k.r.forEach((h, j) => {
+          y += h / sr * wys;
+          if (j < k.r.length - 1) d.push(uchwyt("r", `${c}-${j}`, X + W2 / 2, EP + y * ih, true));
+        });
+        d.push(uchwyt("d", c, X + W2 / 2, EP + wys * ih, true));
+        x += w;
+        if (c < K.length - 1) d.push(uchwyt("k", c, EP + x * iw, EP + ih * 0.5, false));
+      });
+      d.push("</svg>");
+      this._ed = { EW, EH, EP };
+      return d.join("");
+    }
+    _odswiezUklad() {
+      this._dopasujPola(false);
+      const r = this.shadowRoot, e = r.getElementById("edytor");
+      if (e) e.innerHTML = this.edytor();
+      const k = r.querySelector("[data-wlasny]");
+      if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
+    }
+    operacja(op) {
+      const S = this.S, K = S.u.kol, P = prostokaty(S.u);
+      let i = Math.min(S.wyb, P.length - 1), c = 0;
+      while (i >= K[c].r.length) {
+        i -= K[c].r.length;
+        c++;
+      }
+      const k = K[c];
+      if (op === "poz" && k.r.length < 3) {
+        const h = k.r[i] / 2;
+        k.r.splice(i, 1, h, h);
+      }
+      if (op === "pion" && K.length < 4) {
+        k.w /= 2;
+        K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol });
+      }
+      if (op === "usun" && P.length > 1) {
+        if (k.r.length > 1) {
+          const h = k.r.splice(i, 1)[0];
+          k.r[Math.max(0, i - 1)] += h;
+        } else {
+          const w = K.splice(c, 1)[0].w;
+          K[Math.max(0, c - 1)].w += w;
+        }
+        S.wyb = 0;
+      }
+      this._dopasujPola(false);
+      this.rysuj();
+    }
+    _ciagnij(e) {
+      const svg2 = this.shadowRoot.getElementById("edSvg");
+      if (!svg2 || !this._uch) return;
+      const { EW, EH, EP } = this._ed, r = svg2.getBoundingClientRect(), sk = EW / r.width;
+      const fx = Math.min(1, Math.max(0, ((e.clientX - r.left) * sk - EP) / (EW - 2 * EP))), fy = Math.min(1, Math.max(0, ((e.clientY - r.top) * sk - EP) / (EH - 2 * EP)));
+      const K = this.S.u.kol, suma = K.reduce((a, k) => a + k.w, 0), [typ, id] = this._uch.split(":");
+      if (typ === "k") {
+        const c = +id, przed = K.slice(0, c).reduce((a, k) => a + k.w, 0) / suma, para = (K[c].w + K[c + 1].w) / suma;
+        const lewa = Math.min(para - 0.08, Math.max(0.08, fx - przed));
+        K[c].w = lewa * suma;
+        K[c + 1].w = (para - lewa) * suma;
+      } else if (typ === "d") {
+        K[+id].dol = Math.min(0.6, Math.max(0, Math.round((1 - fy) * 50) / 50));
+      } else {
+        const [c, j] = id.split("-").map(Number), k = K[c], wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
+        const gora = k.r.slice(0, j).reduce((a, b) => a + b, 0) / sr * wys, para = (k.r[j] + k.r[j + 1]) / sr * wys;
+        const g = Math.min(para - 0.06, Math.max(0.06, fy - gora));
+        k.r[j] = g / wys * sr;
+        k.r[j + 1] = (para - g) / wys * sr;
+      }
+      this._odswiezUklad();
+    }
+    arkusz() {
+      const S = this.S, t = this.t, i = S.arkusz, p = S.pola[i] || (S.pola[i] = { tryb: "uchyl" });
+      const pokoj = this._oslona(S.rolety[0])?.area;
+      const silniki = this.dane.oslony.filter((o) => !o.brama && (!o.zajeta || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa));
+      const okna = this._czujnik("okno").lista;
+      return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(wstaw(t.pole, i + 1))}"><div class="uchwyt"></div><h2>${esc6(wstaw(t.pole, i + 1))}</h2>
+      <div class="sek">${esc6(t.silnikPola)}</div><div class="chipy">${silniki.map((o) => `<button class="chip ${p.silnik === o.id ? "wyb" : ""}" data-silnik="${esc6(o.id)}">${esc6(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc6(o.pokoj)}</span>` : ""}</button>`).join("")}</div>
+      <div class="sek">${esc6(t.czujnikPola)}</div><div class="chipy">${okna.map((c) => `<button class="chip ${p.czujnik === c.id ? "wyb" : ""}" data-czuj="${esc6(c.id)}">${esc6(c.nazwa)}${c.tu && c.pokoj ? `<span class="p">${esc6(c.pokoj)}</span>` : ""}</button>`).join("")}
+      <button class="chip ${!p.czujnik ? "wyb" : ""}" data-czuj="">${esc6(t.bezCzujnika)}</button></div>
+      ${p.czujnik ? `<div class="sek">${esc6(t.gdyOtwarte)}</div><div class="chipy">${["uchyl", "otworz"].map((k) => `<button class="chip ${p.tryb === k ? "wyb" : ""}" data-tryb="${k}">${esc6(t[k])}</button>`).join("")}</div>` : ""}
+      <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
+    }
+    arkuszCzujnika(r) {
+      const S = this.S, t = this.t, klucz = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._czujnik(r);
+      return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(t.czujniki[r])}"><div class="uchwyt"></div><h2>${esc6(t.czujniki[r])}</h2>
+      <div class="chipy" style="margin-top:12px">${c.lista.map((x) => `<button class="chip ${S.o[klucz] === x.id ? "wyb" : ""}" data-wybierz="${esc6(x.id)}" data-klucz="${klucz}">${esc6(x.nazwa)}${x.pokoj ? `<span class="p">${esc6(x.pokoj)}</span>` : ""}</button>`).join("")}
+      <button class="chip ${!S.o[klucz] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz}">${esc6(t.nieUzywaj)}</button></div>
+      <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
+    }
+    // --- budowa i rysowanie ---
+    _zbuduj() {
+      const r = this.shadowRoot || this.attachShadow({ mode: "open" }), t = this.t;
+      this.lang = jezyk({}, this._hass);
+      r.innerHTML = `<style>${STYL5}</style>
+      <div class="gora"><div class="tytul"><button class="x" data-x="1" aria-label="${esc6(t.zamknij)}">${ik("x", 22)}</button>
+        <div><span id="nazwaKroku"></span><small id="ktory"></small></div></div>
+        <div class="kroki" id="kroki"></div><div class="podglad" id="podglad"></div></div>
+      <div class="tresc" id="tresc"></div>
+      <div class="dol"><button class="btn plaski" id="wstecz">${esc6(t.wstecz)}</button><button class="btn" id="dalej">${esc6(t.dalej)}</button></div>`;
+      r.addEventListener("click", (e) => this._klik(e));
+      r.addEventListener("input", (e) => this._wpis(e));
+      r.addEventListener("pointerdown", (e) => {
+        const u = e.target.closest?.("[data-uch]"), p = e.target.closest?.("[data-ep]");
+        if (u) {
+          this._uch = u.dataset.uch;
+          e.preventDefault();
+          try {
+            r.getElementById("edytor").setPointerCapture(e.pointerId);
+          } catch (x) {
+          }
+          return;
+        }
+        if (p) {
+          this.S.wyb = +p.dataset.ep;
+          this._odswiezUklad();
+        }
+      });
+      r.addEventListener("pointermove", (e) => {
+        if (this._uch) this._ciagnij(e);
+      });
+      const koniec = () => {
+        if (this._uch) {
+          this._uch = null;
+          this.S.szablon = szablon(this.S.u) === "w" ? "w" : this.S.szablon;
+        }
+      };
+      r.addEventListener("pointerup", koniec);
+      r.addEventListener("pointercancel", koniec);
+    }
+    rysuj() {
+      const S = this.S, t = this.t, r = this.shadowRoot, kroki = this.kroki();
+      S.krok = Math.min(S.krok, kroki.length - 1);
+      const k = kroki[S.krok];
+      r.getElementById("nazwaKroku").textContent = t.kroki[k];
+      r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
+      r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${ik(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
+      r.getElementById("podglad").innerHTML = PODGLAD.includes(k) && !(k === "uklad" && S.szablon === "w") ? this._podgladMaly() : "";
+      const pyt = k === "rodzaj" && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
+      this._kartaEl = null;
+      r.getElementById("tresc").innerHTML = `<h2>${esc6(pyt)}</h2>${pod ? `<p class="pod">${esc6(pod)}</p>` : ""}${this["str_" + k]()}` + (S.arkusz !== null && k === "przypisz" ? this.arkusz() : "") + (S.arkuszC && k === "czujniki" ? this.arkuszCzujnika(S.arkuszC) : "");
+      r.getElementById("wstecz").style.visibility = S.krok ? "visible" : "hidden";
+      const dalej = r.getElementById("dalej");
+      dalej.textContent = S.krok === kroki.length - 1 ? t.zapisz : t.dalej;
+      dalej.disabled = !S.rolety.length && !S.pola.some((p) => p.silnik);
+      if (k === "gotowe" && customElements.get("motor-ha")) {
+        const el = document.createElement("motor-ha");
+        el.setConfig(this._konfigKarty());
+        el.hass = this._hassKarty();
+        r.getElementById("karta").appendChild(el);
+        this._kartaEl = el;
+      }
+    }
+    _idz(nr) {
+      this.S.krok = nr;
+      this.S.arkusz = null;
+      this.S.arkuszC = null;
+      this.rysuj();
+      this.shadowRoot.getElementById("tresc").scrollTop = 0;
+    }
+    async _klik(e) {
+      const b = e.target.closest("button, g[data-pole], [data-zamknij]");
+      if (!b) return;
+      const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
+      if (d.x) return this._p.zamknij();
+      if (d.krok !== void 0) return this._idz(+d.krok);
+      if (b.id === "wstecz") return this._idz(Math.max(0, S.krok - 1));
+      if (b.id === "dalej") return S.krok < kroki.length - 1 ? this._idz(S.krok + 1) : this._zapisz(b);
+      if (b.id === "mierz") return this._mierz();
+      if (d.idz) return this._idz(kroki.indexOf(d.idz));
+      if (d.oslona) {
+        const i = S.rolety.indexOf(d.oslona), x = this._oslona(d.oslona);
+        if (i >= 0) S.rolety.splice(i, 1);
+        else {
+          if (S.rolety.some((e2) => !!this._oslona(e2)?.brama !== !!x?.brama)) S.rolety = [];
+          S.rolety.push(d.oslona);
+          S.wykryty = null;
+          if (S.rolety.length === 1 && x?.area && !x.brama && this.dane.nowy) {
+            const reszta = this.dane.oslony.filter((o2) => o2.area === x.area && o2.id !== x.id && !o2.zajeta && !o2.brama).map((o2) => o2.id);
+            if (reszta.length) {
+              S.rolety.push(...reszta.slice(0, 11));
+              S.wykryty = x.pokoj;
+            }
+          }
+        }
+        try {
+          this.dane = { ...this.dane, ...await this._hass.callWS({ type: "motor_ha/kreator/dane", rolety: S.rolety, ...this._p.entry_id ? { entry_id: this._p.entry_id } : {} }), opcje: this.dane.opcje, nowy: this.dane.nowy };
+        } catch (x2) {
+        }
+        this._podpowiedzi();
+      } else if (d.uklad !== void 0) {
+        S.u = zSzablonu(UKLADY[+d.uklad][1]);
+        S.szablon = +d.uklad;
+        S.recznie.uklad = true;
+        this._dopasujPola(false);
+      } else if (d.wlasny) {
+        S.szablon = "w";
+        S.recznie.uklad = true;
+        S.wyb = 0;
+      } else if (d.op) return this.operacja(d.op);
+      else if (d.rodzaj) {
+        o.oslona = d.rodzaj;
+        S.recznie.rodzaj = true;
+      } else if (d.kolor) {
+        o.kolor = d.kolor;
+        delete o.kolor_wlasny;
+      } else if (d.rama) {
+        o.rama = d.rama;
+        delete o.rama_wlasna;
+      } else if (d.pole !== void 0) S.arkusz = +d.pole;
+      else if (d.zamknij) {
+        S.arkusz = null;
+        S.arkuszC = null;
+      } else if (d.silnik) {
+        S.pola[S.arkusz].silnik = d.silnik;
+        if (!S.rolety.includes(d.silnik)) S.rolety.push(d.silnik);
+      } else if (d.czuj !== void 0) S.pola[S.arkusz].czujnik = d.czuj || void 0;
+      else if (d.tryb) S.pola[S.arkusz].tryb = d.tryb;
+      else if (d.slonce) {
+        o.bez_slonca = !o.bez_slonca;
+        if (o.bez_slonca) o.f_slonce = false;
+      } else if (d.czujnik) S.arkuszC = d.czujnik;
+      else if (d.wybierz !== void 0) {
+        if (d.wybierz) o[d.klucz] = d.wybierz;
+        else delete o[d.klucz];
+        S.arkuszC = null;
+      } else if (d.auto) this._przelacz(d.auto);
+      else if (d.zeslonca) o.harm_tryb = o.harm_tryb === "slonce" ? "godziny" : "slonce";
+      else if (d.azymut) o.azymut = +d.azymut;
+      else if (d.tel) {
+        const g = new Set(o.powiadom_gdzie || []);
+        g.has(d.tel) ? g.delete(d.tel) : g.add(d.tel);
+        o.powiadom_gdzie = [...g];
+      } else if (d.powiadom) {
+        const g = new Set(o.powiadom || []);
+        g.has(d.powiadom) ? g.delete(d.powiadom) : g.add(d.powiadom);
+        o.powiadom = [...g];
+      } else if (d.panel) S.panel = !S.panel;
+      else return;
+      const y = this.shadowRoot.getElementById("tresc").scrollTop;
+      this.rysuj();
+      this.shadowRoot.getElementById("tresc").scrollTop = y;
+    }
+    _przelacz(k) {
+      const o = this.S.o;
+      if (k === "rano" || k === "wieczor") {
+        let rano = !!o.f_harmonogram && o.harm_otwieraj !== false, wieczor = !!o.f_harmonogram && o.harm_zamykaj !== false;
+        if (k === "rano") rano = !rano;
+        else wieczor = !wieczor;
+        o.f_harmonogram = rano || wieczor;
+        o.harm_otwieraj = rano || !wieczor;
+        o.harm_zamykaj = wieczor || !rano;
+        if (o.f_harmonogram && !o.harm_tryb) o.harm_tryb = "godziny";
+        if (o.f_harmonogram && o.harm_tryb === "slonce" && !this._zmienionyTryb) {
+          o.harm_tryb = "godziny";
+          this._zmienionyTryb = true;
+        }
+        if (!o.otworz) o.otworz = "07:00:00";
+        if (!o.zamknij) o.zamknij = "21:00:00";
+        return;
+      }
+      o["f_" + k] = !o["f_" + k];
+      if (k === "wietrzenie" && o.f_wietrzenie) o.wietrzenie_poz = 50;
+    }
+    _wpis(e) {
+      const el = e.target, S = this.S;
+      if (el.id === "nazwa") {
+        S.tytul = el.value;
+        S.recznie.tytul = true;
+        if (this._kartaEl) {
+          this._kartaEl.setConfig(this._konfigKarty());
+          this._kartaEl.hass = this._hassKarty();
+        }
+        return;
+      }
+      const g = el.dataset?.suw;
+      if (!g) return;
+      const v = +el.value;
+      if (g === "slonce") S.o.slonce_poz = v;
+      else S.o[g] = godz(v) + ":00";
+      el.nextElementSibling.textContent = g === "slonce" ? 100 - v + " %" : godz(v);
+      const sm = el.closest(".suw").previousElementSibling.querySelector("small");
+      if (sm) sm.textContent = g === "slonce" ? wstaw(this.t.zaslon, 100 - v) : wstaw(this.t.oGodz, godz(v));
+    }
+    _zapisz(b) {
+      const S = this.S;
+      S.o.na_panel = this.dane.nowy && S.panel ? this.dane.panel : "nie";
+      if (!S.recznie.tytul && !S.tytul) S.tytul = this._oslona(S.rolety[0])?.nazwa || "";
+      b.disabled = true;
+      this._p.wyslij(wynik(S));
+    }
+  };
+
   // src/kreator.js
+  var Z_KLASYCZNEGO = {
+    rodzaj: "rodzaj",
+    lamele: "rodzaj",
+    kolory: "kolory",
+    okno: "uklad",
+    czujniki: "przypisz",
+    silnik: "stoper",
+    automatyka: "auto",
+    ustawienia: "auto",
+    powiadomienia: "dzwonek",
+    panel: "gotowe"
+  };
   var ZNAK = "data-motor-ha-pasek";
   var GAL = "data-motor-ha-galeria";
-  var PODGLAD = "data-motor-ha-podglad";
+  var PODGLAD2 = "data-motor-ha-podglad";
   var PREFIKS = "data:image/svg+xml;base64,";
   var ENCJA2 = "cover.motor_ha_podglad";
   var AKCENT = "#ff9800";
   var WYGLAD = ["oslona", "kolor", "rama", "skrzydla", "osobno", "odwroc", "wysokosc", "kolor_wlasny", "rama_wlasna"];
-  function wszystkie(korzen, szukaj, wynik = [], n = 0) {
-    if (!korzen || n > 12) return wynik;
-    wynik.push(...korzen.querySelectorAll(szukaj));
-    for (const e of korzen.querySelectorAll("*")) if (e.shadowRoot) wszystkie(e.shadowRoot, szukaj, wynik, n + 1);
-    return wynik;
+  function wszystkie(korzen, szukaj, wynik2 = [], n = 0) {
+    if (!korzen || n > 12) return wynik2;
+    wynik2.push(...korzen.querySelectorAll(szukaj));
+    for (const e of korzen.querySelectorAll("*")) if (e.shadowRoot) wszystkie(e.shadowRoot, szukaj, wynik2, n + 1);
+    return wynik2;
   }
   var glebiej = (korzen, szukaj) => wszystkie(korzen, szukaj)[0] || null;
   var odkoduj = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0)));
@@ -5991,22 +8940,22 @@ button svg{fill:var(--primary-color);flex:none}
       img.addEventListener("click", klik(img));
       return d;
     }
-    blok.parentNode.querySelectorAll(`[${ZNAK}="kopia"],[${PODGLAD}]`).forEach((x) => x.remove());
-    const kopia = document.createElement("div");
-    kopia.setAttribute(ZNAK, "kopia");
-    kopia.style.cssText = "position:sticky;top:0;z-index:5;padding:4px 0;background:var(--mdc-theme-surface,var(--ha-dialog-surface-background,var(--card-background-color,#fff)))";
+    blok.parentNode.querySelectorAll(`[${ZNAK}="kopia"],[${PODGLAD2}]`).forEach((x) => x.remove());
+    const kopia2 = document.createElement("div");
+    kopia2.setAttribute(ZNAK, "kopia");
+    kopia2.style.cssText = "position:sticky;top:0;z-index:5;padding:4px 0;background:var(--mdc-theme-surface,var(--ha-dialog-surface-background,var(--card-background-color,#fff)))";
     const nowy = img.cloneNode(true);
     nowy.setAttribute(ZNAK, "");
     nowy.style.cssText = "display:block;max-width:100%;height:auto;margin:0 auto;cursor:pointer";
     nowy.addEventListener("click", klik(nowy));
-    kopia.appendChild(nowy);
-    blok.parentNode.insertBefore(kopia, blok);
+    kopia2.appendChild(nowy);
+    blok.parentNode.insertBefore(kopia2, blok);
     img.style.display = "none";
     if (d.podglad && customElements.get("motor-ha")) {
       const box = document.createElement("div");
-      box.setAttribute(PODGLAD, "");
+      box.setAttribute(PODGLAD2, "");
       box.style.cssText = "position:relative;z-index:0;isolation:isolate;max-width:170px;margin:4px auto 0;pointer-events:none";
-      kopia.appendChild(box);
+      kopia2.appendChild(box);
       form.__motorHaPodglad = { box, podglad: d.podglad, klucz: "" };
     } else form.__motorHaPodglad = null;
     return d;
@@ -6093,11 +9042,70 @@ button svg{fill:var(--primary-color);flex:none}
     });
     k.hass = { ...ha, states: { ...ha.states, [ENCJA2]: stan }, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) };
   }
+  var GRAFICZNE = /* @__PURE__ */ new Set();
+  function czyMotorHa(okno, form) {
+    const p = okno._params || {}, k = okno._step || {};
+    return k.handler === "motor_ha" || p.domain === "motor_ha" || p.manifest?.domain === "motor_ha" || !!(form && wszystkie(form.shadowRoot, `img[${ZNAK}],img[src^="${PREFIKS}"]`).some((i) => i.hasAttribute(ZNAK) || danePaska(svgZ(i))));
+  }
+  function graficzny(okno, form) {
+    const krok = okno._step;
+    if (!krok?.flow_id || krok.type !== "form" || GRAFICZNE.has(krok.flow_id) || !customElements.get("motor-ha-kreator")) return;
+    if (!czyMotorHa(okno, form)) return;
+    const ha = document.querySelector("home-assistant");
+    if (!ha?.hass) return;
+    GRAFICZNE.add(krok.flow_id);
+    const dlg = document.createElement("dialog");
+    dlg.setAttribute("data-motor-ha-kreator", "");
+    dlg.style.cssText = "padding:0;border:0;margin:auto;width:min(100vw,430px);height:min(100dvh,880px);max-width:100vw;max-height:100dvh;border-radius:var(--ha-dialog-border-radius,28px);overflow:hidden;background:var(--card-background-color,#fff)";
+    if (innerWidth < 600) Object.assign(dlg.style, { width: "100vw", height: "100dvh", borderRadius: "0" });
+    const tlo2 = document.createElement("style");
+    tlo2.textContent = "dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}";
+    dlg.appendChild(tlo2);
+    const k = document.createElement("motor-ha-kreator");
+    dlg.appendChild(k);
+    document.body.appendChild(dlg);
+    let zegar = null;
+    const sprzatnij = () => {
+      clearInterval(zegar);
+      if (dlg.open) dlg.close();
+      dlg.remove();
+    };
+    const zamknij = () => {
+      sprzatnij();
+      okno.closeDialog?.();
+    };
+    dlg.addEventListener("cancel", (e) => {
+      e.preventDefault();
+      zamknij();
+    });
+    const wyslij = (dane) => {
+      const f = glebiej(okno.shadowRoot, "step-flow-form");
+      sprzatnij();
+      if (!f) return;
+      ustaw(f, { kreator: JSON.stringify(dane) });
+      if (typeof f._submitStep === "function") f._submitStep();
+    };
+    const opcje = krok.handler !== "motor_ha";
+    dlg.showModal();
+    k.start({ hass: ha.hass, flow_id: krok.flow_id, entry_id: opcje ? krok.handler : null, krok: Z_KLASYCZNEGO[krok.step_id], wyslij, zamknij }).then(() => {
+      zegar = setInterval(() => {
+        if (!okno._params || !okno.isConnected) return sprzatnij();
+        if (ha.hass !== k._hass) k.hass = ha.hass;
+      }, 400);
+    }).catch((e) => {
+      console.warn("Motor HA: kreator graficzny niedostępny, zostaje klasyczny", e);
+      sprzatnij();
+    });
+  }
   function pilnujKreatora() {
     const okno = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
     if (!okno?._params) return;
     const form = glebiej(okno.shadowRoot, "step-flow-form");
     if (!form) return;
+    try {
+      graficzny(okno, form);
+    } catch (e) {
+    }
     const img = glebiej(form.shadowRoot, `img[src^="${PREFIKS}"]:not([${ZNAK}]):not([${GAL}])`);
     if (img && danePaska(svgZ(img))) {
       form.__motorHaGalerie = [];
@@ -6145,9 +9153,11 @@ button svg{fill:var(--primary-color);flex:none}
   var zgloszone = "";
   var od = 0;
   var powod = "";
+  var BEZ_STRONY = "brak strony urządzenia";
   function zglos(id) {
     const h = document.querySelector("home-assistant")?.hass;
     if (zgloszone === id || !powod || Date.now() - od < 15e3 || !h?.callService) return;
+    if (document.hidden || powod === BEZ_STRONY) return;
     if (!h.devices?.[id]?.identifiers?.some?.((i) => i[0] === "motor_ha")) return;
     zgloszone = id;
     Promise.resolve(h.callService("system_log", "write", {
@@ -6159,7 +9169,7 @@ button svg{fill:var(--primary-color);flex:none}
   }
   function pilnuj(rejestruj2) {
     const m = WZOR.exec(location.pathname);
-    if (!m) {
+    if (!m || document.hidden) {
       od = 0;
       return;
     }
@@ -6174,7 +9184,7 @@ button svg{fill:var(--primary-color);flex:none}
     }
     const pg = strona(document), r = pg?.shadowRoot, h = pg?.hass;
     if (!r || !h) {
-      powod = "brak strony urządzenia";
+      powod = BEZ_STRONY;
       return;
     }
     const kolumny = [...r.querySelectorAll("div.column")];
@@ -6239,16 +9249,18 @@ button svg{fill:var(--primary-color);flex:none}
     // symulator tylko dla opisu w HACS
     ["motor-ha-urzadzenie", MotorHaUrzadzenie],
     // karta na stronie urządzenia w Ustawieniach (strona.js)
+    ["motor-ha-kreator", MotorHaKreator],
+    // kreator graficzny nad okienkiem HA (kreator.js)
     ["roleta-realistyczna", class extends MotorHaKarta {
     }],
     ["roleta-realistyczna-editor", class extends MotorHaEdytor {
     }]
   ];
-  var rejestruj = (kopia) => {
+  var rejestruj = (kopia2) => {
     for (const [nazwa2, klasa] of ELEMENTY) {
       if (customElements.get(nazwa2)) continue;
       try {
-        customElements.define(nazwa2, kopia ? class extends klasa {
+        customElements.define(nazwa2, kopia2 ? class extends klasa {
         } : klasa);
       } catch (e) {
         console.warn("Motor HA: nie zarejestrowałem", nazwa2, e);

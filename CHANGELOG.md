@@ -1,5 +1,15 @@
 # 📝 Historia zmian
 
+## v2.2.0 – Kreator graficzny i okna z wieloma polami
+
+- 🧭 Nowy kreator graficzny przy „Dodaj urządzenie” i „Konfiguruj”: obrazki zamiast list, żywy podgląd okna w każdym kroku, na telefonie na cały ekran
+- 🪟 Układ okna jako siatka do 4 × 3 pól różnej wielkości: gotowe szablony (np. 2 skrzydła + naświetla, okno + drzwi balkonowe) albo „Własny” – przeciąganie linii i dolnej krawędzi palcem, dzielenie w poprzek i wzdłuż, usuwanie pola
+- 🔗 Każde pole ma swój silnik i swój czujnik okna (uchylone / otwarte); podpowiedzi czujników najpierw z pokoju osłony
+- 🖼️ Karta rysuje okno z polami dokładnie jak w kreatorze, a każde pole jeździ swoją osłoną
+- ⏰ Harmonogram: osobno „Rano otwórz” i „Wieczorem zamknij” – można włączyć tylko jedno
+- ⏱️ Pomiar czasu przejazdu od razu w kreatorze („Zmierz teraz”), jeszcze przed zapisaniem urządzenia
+- 🧹 Log: ostrzeżenie „brak karty na stronie urządzenia” nie pojawia się już na zwykłych stronach (np. przy otwartej karcie w tle w przeglądarce)
+
 ## v2.1.7 – Kreator z obrazkami i podglądem okna, rysunek jedzie razem z prawdziwą osłoną
 
 - 🪟 Silniki Zigbee (np. Moes przez Zigbee2MQTT), które po komendzie od razu zmieniają stan, a pozycję podają dopiero po dojechaniu: rysunek rusza od razu i jedzie razem z osłoną, zamiast czekać do końca ruchu. Urządzenie Motor HA pokazuje wtedy też „otwiera się” / „zamyka się”

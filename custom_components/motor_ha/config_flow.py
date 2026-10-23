@@ -72,6 +72,8 @@ from .const import (
     BRAMY as RODZAJE_BRAM,
 )
 from . import galeria, skan
+from .graficzny import KREATOR, ZleDane, opcje_z_kreatora
+from .uklad import CONF_UKLAD, MAX_POL
 from .pasek import async_obrazek
 from .urzadzenie import assist
 
@@ -270,6 +272,13 @@ class Kreator:
         """Zapisuje odpowiedzi i przechodzi do następnego (albo poprzedniego) kroku."""
         if dane is None:
             return None
+        if KREATOR in dane:   # kreator graficzny (karta) wysłał gotowe ustawienia – od razu zapis
+            try:
+                self.o, tytul = opcje_z_kreatora(self.hass, self.o, dane[KREATOR])
+            except ZleDane as err:
+                return self.async_abort(reason=str(err))  # type: ignore[attr-defined]
+            self.tytul = tytul or self.tytul
+            return await self._koniec()
         wstecz = dane.pop(WSTECZ, False)
         idz = dane.pop(IDZ, None)
         self.o.update({k: v for k, v in dane.items() if not k.startswith("_")})
@@ -330,11 +339,13 @@ class Kreator:
 
     async def async_step_urzadzenie(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
         bledy: dict[str, str] = {}
+        if dane is not None and KREATOR in dane:
+            return await self._dalej("urzadzenie", dane)
         if dane is not None:
             rolety = dane.get(CONF_ROLETY) or []
             if not dane.get(WSTECZ) and not rolety:
                 bledy[CONF_ROLETY] = "brak_rolety"
-            elif not dane.get(WSTECZ) and len(rolety) > 2:
+            elif not dane.get(WSTECZ) and len(rolety) > (MAX_POL if self.o.get(CONF_UKLAD) else 2):
                 bledy[CONF_ROLETY] = "za_duzo"
             else:
                 if nazwa := str(dane.get(CONF_NAZWA) or "").strip():

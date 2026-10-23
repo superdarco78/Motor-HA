@@ -150,7 +150,9 @@ def decyduj(w: Warunki, typ: str, funkcje: set[str], parametry: dict[str, Any] |
         wak = w.wakacje and "wakacje" in f
         d = Decyzja(100 if dzien else 0, ("wakacje" if wak else "harm_dzien") if dzien else ("wakacje_noc" if wak else "harm_noc"),
                     dane={"otw": otw.strftime("%H:%M"), "zam": zam.strftime("%H:%M")})
-        if dzien and not wak:
+        if not wak and not (p["harm_otwieraj"] if dzien else p["harm_zamykaj"]):
+            d = Decyzja(None, "brak")   # tylko otwieranie albo tylko zamykanie
+        elif dzien and not wak:
             if "posrednia" in f and w.teraz >= _o(w.teraz, _godz(p["posrednia_godz"])):
                 d = Decyzja(int(p["posrednia_poz"]), "posrednia", dane={"godz": str(p["posrednia_godz"])[:5]})
             if "obecnosc" in f and w.teraz < _o(w.teraz, _godz(p["obecnosc_rano"])):

@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Escolha um motor.",
       "za_duzo": "Escolha no máximo dois motores (folha esquerda e direita)."
+    },
+    "abort": {
+      "zle_dane": "O assistente enviou definições incompletas. Abra-o novamente.",
+      "brak_rolety": "Escolha um motor para pelo menos um painel.",
+      "za_duzo": "Demasiados motores (no máximo 12)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Escolha um motor.",
       "za_duzo": "Escolha no máximo dois motores (folha esquerda e direita)."
+    },
+    "abort": {
+      "zle_dane": "O assistente enviou definições incompletas. Abra-o novamente.",
+      "brak_rolety": "Escolha um motor para pelo menos um painel.",
+      "za_duzo": "Demasiados motores (no máximo 12)."
     }
   },
   "selector": {

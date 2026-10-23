@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Elige un motor.",
       "za_duzo": "Elige como mucho dos motores (hoja izquierda y derecha)."
+    },
+    "abort": {
+      "zle_dane": "El asistente envió una configuración incompleta. Ábrelo de nuevo.",
+      "brak_rolety": "Elige un motor para al menos un panel.",
+      "za_duzo": "Demasiados motores (12 como máximo)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Elige un motor.",
       "za_duzo": "Elige como mucho dos motores (hoja izquierda y derecha)."
+    },
+    "abort": {
+      "zle_dane": "El asistente envió una configuración incompleta. Ábrelo de nuevo.",
+      "brak_rolety": "Elige un motor para al menos un panel.",
+      "za_duzo": "Demasiados motores (12 como máximo)."
     }
   },
   "selector": {

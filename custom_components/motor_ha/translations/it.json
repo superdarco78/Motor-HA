@@ -336,6 +336,11 @@
     "error": {
       "brak_rolety": "Scegli un motore.",
       "za_duzo": "Scegli al massimo due motori (anta sinistra e destra)."
+    },
+    "abort": {
+      "zle_dane": "La procedura guidata ha inviato impostazioni incomplete. Aprila di nuovo.",
+      "brak_rolety": "Scegli un motore per almeno un riquadro.",
+      "za_duzo": "Troppi motori (al massimo 12)."
     }
   },
   "options": {
@@ -663,6 +668,11 @@
     "error": {
       "brak_rolety": "Scegli un motore.",
       "za_duzo": "Scegli al massimo due motori (anta sinistra e destra)."
+    },
+    "abort": {
+      "zle_dane": "La procedura guidata ha inviato impostazioni incomplete. Aprila di nuovo.",
+      "brak_rolety": "Scegli un motore per almeno un riquadro.",
+      "za_duzo": "Troppi motori (al massimo 12)."
     }
   },
   "selector": {

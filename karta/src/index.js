@@ -6,6 +6,7 @@ import { TEKSTY, kodJezyka } from './jezyk.js';
 import { MotorHaDom } from './dom.js';
 import { MotorHaSymulator } from './symulator.js';
 import { MotorHaUrzadzenie } from './urzadzenie.js';
+import { MotorHaKreator } from './kreator_okno.js';
 import { strony } from './strona.js';
 
 const ELEMENTY = [
@@ -13,6 +14,7 @@ const ELEMENTY = [
   ['motor-ha-editor', MotorHaEdytor], ['okno-ha-editor', class extends MotorHaEdytor {}],
   ['motor-ha-dom', MotorHaDom], ['motor-ha-symulator', MotorHaSymulator],   // symulator tylko dla opisu w HACS
   ['motor-ha-urzadzenie', MotorHaUrzadzenie],   // karta na stronie urządzenia w Ustawieniach (strona.js)
+  ['motor-ha-kreator', MotorHaKreator],   // kreator graficzny nad okienkiem HA (kreator.js)
   ['roleta-realistyczna', class extends MotorHaKarta {}], ['roleta-realistyczna-editor', class extends MotorHaEdytor {}]
 ];
 // HA w trakcie startu potrafi podmienić rejestr elementów (window.customElements). Karta wczytana wcześniej
