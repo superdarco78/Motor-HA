@@ -8502,7 +8502,7 @@ button svg{fill:var(--primary-color);flex:none}
   });
   var KROKI_OKNA = ["silnik", "uklad", "rodzaj", "kolory", "przypisz", "czujniki", "auto", "stoper", "dzwonek", "gotowe"];
   var KROKI_BRAMY = ["silnik", "rodzaj", "kolory", "czujniki", "stoper", "dzwonek", "gotowe"];
-  var PODGLAD = ["uklad", "rodzaj", "kolory"];
+  var BEZ_PODGLADU = ["przypisz", "gotowe"];
   var UKLADY = [
     ["u1", [[0, 0, 1, 1]]],
     ["u2", [[0, 0, 0.5, 1], [0.5, 0, 0.5, 1]]],
@@ -8868,10 +8868,18 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _brama(typ) {
       return rysunekBramy(typ, this._kolor(), this._rama(), false, false);
     }
-    // duży rysunek w lewej kolumnie (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
+    // stały rysunek: duży z boku (szeroki ekran) albo mały na górze (telefon); woła się też przy suwakach, bez rysowania całego kroku
+    _odswiezScene(k = this.kroki()[this.S.krok], jedenDuzy = ["rodzaj", "kolory"].includes(k) && !this.S.brama && prostokaty(this.S.u).length > 1) {
+      const r = this.shadowRoot, S = this.S;
+      const sc = this._szeroko ? this._scena(k) : "";
+      r.getElementById("scena").innerHTML = sc;
+      r.getElementById("scena").hidden = !sc;
+      r.getElementById("podglad").innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === "uklad" && S.szablon === "w") && !jedenDuzy ? this._podgladMaly() : "";
+    }
+    // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
     _scena(k) {
       const S = this.S;
-      if (k === "gotowe") return "";
+      if (k === "gotowe") return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
       if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
       const n = prostokaty(S.u).length;
       if (k === "przypisz") return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "d", wybrane: S.arkusz })}</div>`;
@@ -9178,7 +9186,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t, d = this.dane;
       const panel = d.panele.find((p) => p.klucz === d.panel);
       return `<input class="nazwa" id="nazwa" value="${esc6(S.tytul)}" aria-label="${esc6(t.nazwa)}" placeholder="${esc6(t.nazwa)}">
-      <div class="karta" id="karta"></div>
+      ${this._szeroko ? "" : '<div class="karta" id="karta"></div>'}
       ${d.nowy && panel ? `<button class="wiersz ${S.panel ? "" : "wyl"}" data-panel="1" style="margin-top:12px"><span class="ik">${ik("uklad", 22)}</span><span class="t"><b>${esc6(t.naPanel)}</b><small>${esc6(panel.nazwa)}</small></span><span class="przel"></span></button>` : ""}`;
     }
     // karta na udawanej encji: dokładnie to, co pokaże panel
@@ -9296,6 +9304,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (e) e.innerHTML = this.edytor();
       const pz = r.getElementById("przerwy");
       if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
+      this._odswiezScene();
       const k = r.querySelector("[data-wlasny]");
       if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
     }
@@ -9482,10 +9491,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const jedenDuzy = ["rodzaj", "kolory"].includes(k) && !S.brama && prostokaty(S.u).length > 1;
       this._szeroko = this.clientWidth >= 760;
       this.toggleAttribute("szeroko", this._szeroko);
-      const sc = this._szeroko ? this._scena(k) : "";
-      r.getElementById("scena").innerHTML = sc;
-      r.getElementById("scena").hidden = !sc;
-      r.getElementById("podglad").innerHTML = !this._szeroko && PODGLAD.includes(k) && !(k === "uklad" && S.szablon === "w") && !jedenDuzy ? this._podgladMaly() : "";
+      this._odswiezScene(k, jedenDuzy);
       const pyt = k === "rodzaj" && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
       this._kartaEl = null;
       r.getElementById("tresc").innerHTML = `<h2>${esc6(pyt)}</h2>${pod ? `<p class="pod">${esc6(pod)}</p>` : ""}${this["str_" + k]()}` + (S.arkusz !== null && k === "przypisz" ? this.arkusz() : "") + (S.arkuszC && k === "czujniki" ? this.arkuszCzujnika(S.arkuszC) : "");
@@ -9722,7 +9728,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
   };
   var ZNAK = "data-motor-ha-pasek";
   var GAL = "data-motor-ha-galeria";
-  var PODGLAD2 = "data-motor-ha-podglad";
+  var PODGLAD = "data-motor-ha-podglad";
   var PREFIKS = "data:image/svg+xml;base64,";
   var ENCJA2 = "cover.motor_ha_podglad";
   var AKCENT = "#ff9800";
@@ -9802,7 +9808,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       img.addEventListener("click", klik(img));
       return d;
     }
-    blok.parentNode.querySelectorAll(`[${ZNAK}="kopia"],[${PODGLAD2}]`).forEach((x) => x.remove());
+    blok.parentNode.querySelectorAll(`[${ZNAK}="kopia"],[${PODGLAD}]`).forEach((x) => x.remove());
     const kopia2 = document.createElement("div");
     kopia2.setAttribute(ZNAK, "kopia");
     kopia2.style.cssText = "position:sticky;top:0;z-index:5;padding:4px 0;background:var(--mdc-theme-surface,var(--ha-dialog-surface-background,var(--card-background-color,#fff)))";
@@ -9815,7 +9821,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     img.style.display = "none";
     if (d.podglad && customElements.get("motor-ha")) {
       const box = document.createElement("div");
-      box.setAttribute(PODGLAD2, "");
+      box.setAttribute(PODGLAD, "");
       box.style.cssText = "position:relative;z-index:0;isolation:isolate;max-width:170px;margin:4px auto 0;pointer-events:none";
       kopia2.appendChild(box);
       form.__motorHaPodglad = { box, podglad: d.podglad, klucz: "" };
