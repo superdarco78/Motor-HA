@@ -370,13 +370,21 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
  background:linear-gradient(90deg,#8d9297,#f4f5f6 45%,#6f7479);box-shadow:0 0 0 1px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.5)}
 .klamka::after{content:"";position:absolute;left:.5px;top:4px;width:7px;height:30px;border-radius:3.5px;transform-origin:3.5px 5px;
  background:linear-gradient(90deg,#7d8287,#fff 45%,#5f6469);box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.5);transition:transform .5s 1s}
-.skrz[data-i="0"] .klamka{right:0}.skrz[data-i="1"] .klamka{left:0}
-.skrz.otw[data-i="0"] .klamka::after{transform:rotate(90deg);transition-delay:0s}
-.skrz.otw[data-i="1"] .klamka::after{transform:rotate(-90deg);transition-delay:0s}
+.skrz[data-s="l"] .klamka{right:0}.skrz[data-s="p"] .klamka{left:0}
+.skrz.otw[data-s="l"] .klamka::after{transform:rotate(90deg);transition-delay:0s}
+.skrz.otw[data-s="p"] .klamka::after{transform:rotate(-90deg);transition-delay:0s}
 .skrz.uch .klamka::after{transform:rotate(180deg);transition-delay:0s}
 .skrz.uch{transform-origin:50% 100%;transform:perspective(700px) rotateX(-14deg) scaleY(.9);box-shadow:0 6px 14px rgba(0,0,0,.5)}
-.skrz.otw[data-i="0"]{transform-origin:0 50%;transform:perspective(700px) rotateY(-42deg);z-index:8}
-.skrz.otw[data-i="1"]{transform-origin:100% 50%;transform:perspective(700px) rotateY(42deg);z-index:8}
+.skrz.otw[data-s="l"]{transform-origin:0 50%;transform:perspective(700px) rotateY(-42deg);z-index:8}
+.skrz.otw[data-s="p"]{transform-origin:100% 50%;transform:perspective(700px) rotateY(42deg);z-index:8}
+/* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
+.okno.uk{background:none!important;box-shadow:none!important;padding:0}
+.uk .kolr{position:absolute;border-radius:3px}
+.uk .skrz{position:absolute;flex:none;margin:0;padding:5px}
+.uk .za{inset:auto}
+.uk .wid{position:absolute}
+.uk .zewo .szyba{position:absolute;flex:none}
+.zew .uk .kolr{box-shadow:0 0 0 5px #c4bdb0,0 0 0 6px rgba(0,0,0,.08),-4px 4px 10px 6px rgba(0,0,0,.28)}
 .skrz.otw,.skrz.uch{transition-delay:.4s}
 .slup{position:absolute;top:0;bottom:0;left:50%;width:0}
 /* środkowy uchwyt: obie osłony naraz */
@@ -544,7 +552,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
       listwa = `background:linear-gradient(180deg,${S(0.35)},${S(0.05)} 55%,${S(-0.4)});box-shadow:0 2px 0 rgba(20,20,20,.85),0 3px 3px rgba(0,0,0,.4)`;
     const markiza = typ === "markiza" ? `.listwa::before{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 7px 0,${kolor} 6.5px,transparent 7px) 0 0/14px 10px repeat-x}` : "";
     return `
-.okno{background:${tlo2};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
+.okno,.kolr{background:${tlo2};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
 .skrz{background:${(drewno ? SLOJE + "," : "") + R(-0.03)}}
 .oslona{background-image:${t.nakladka ? t.nakladka + "," : ""}${t.obraz};background-size:${t.nakladka ? "100% 100%," : ""}100% ${t.okres}px;background-position:${t.nakladka ? "0 0," : ""}0 100%;background-repeat:${t.nakladka ? "no-repeat," : ""}repeat-y}
 .kaseta{${kaseta}}
@@ -4816,6 +4824,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   }
 
   // src/karta.js
+  var polaOkna = (c) => Array.isArray(c.pola) && c.pola.length && !czyBrama(c.oslona) && c.pola.every((p) => [p?.x, p?.y, p?.w, p?.h].every(Number.isFinite)) ? c.pola : null;
   var KLUCZE_PANELU = ["type", "entity", "grid_options", "view_layout", "visibility", "layout_options"];
   var KASETA = {
     pelna: 10,
@@ -4876,7 +4885,12 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     // encje skrzydeł: wybrane ręcznie, członkowie grupy (okno z integracji to też grupa) albo sama encja
     _skrzydla(c) {
-      const s = this._hass.states, n = +c.skrzydla === 1 || czyBrama(c.oslona) ? 1 : 2;
+      const s = this._hass.states;
+      if (polaOkna(c)) {
+        const grupa2 = (s[c.entity]?.attributes?.entity_id || []).filter((e) => s[e]);
+        return c.pola.map((p) => p.silnik && s[p.silnik] ? p.silnik : grupa2[0] || c.entity);
+      }
+      const n = +c.skrzydla === 1 || czyBrama(c.oslona) ? 1 : 2;
       const grupa = (s[c.entity]?.attributes?.entity_id || []).filter((e) => s[e]);
       const wybor = [c.roleta_lewa, c.roleta_prawa];
       return Array.from({ length: n }, (_, i) => wybor[i] && s[wybor[i]] ? wybor[i] : grupa.length ? grupa[Math.min(i, grupa.length - 1)] : c.entity);
@@ -4886,7 +4900,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz = JSON.stringify([czl.length, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
       if (klucz !== this._klucz) {
         this._klucz = klucz;
         this._zbuduj(c, czl);
@@ -4900,24 +4914,33 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._poziomo = POZIOME.includes(c.oslona);
       const pion2 = c.suwak !== false && !this._poziomo;
       const dwaSuwaki = pion2 && !!c.osobno && n > 1;
-      const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W2 = Math.round(H2 * (n === 1 ? 0.68 : 0.92));
+      const P = polaOkna(c), kol = P ? new Set(P.map((p) => p.x)).size : n;
+      this._uk = !!P;
+      const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (kol === 1 ? 1.15 : 1), W2 = Math.round(H2 * (kol === 1 ? 0.68 : kol === 2 ? 0.92 : Math.min(1.5, 0.46 * kol)));
+      const miejsce = (i, wciecie = 4) => P ? ` style="left:calc(${P[i].x * 100}% + ${wciecie}px);top:calc(${P[i].y * 100}% + ${wciecie}px);width:calc(${P[i].w * 100}% - ${2 * wciecie}px);height:calc(${P[i].h * 100}% - ${2 * wciecie}px)"` : "";
+      const strona2 = (i) => P ? P[i].x + P[i].w / 2 <= 0.5 ? "l" : "p" : i ? "p" : "l";
+      const wid = (i) => P ? ` class="wid" style="left:${-P[i].x / P[i].w * 100}%;top:${-P[i].y / P[i].h * 100}%;width:${100 / P[i].w}%;height:${100 / P[i].h}%"` : ' style="position:absolute;inset:0"';
+      const ramy = P ? [...new Set(P.map((p) => p.x))].map((x) => {
+        const k = P.filter((p) => p.x === x), dol = Math.max(...k.map((p) => p.y + p.h));
+        return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
+      }).join("") : "";
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
-      const skrzydlo = (i) => `<div class="skrz" data-i="${i}"><div class="szyba">
-      ${zew ? '<div class="pokoj"></div>' : `<div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div><i class="promien"></i>
+      const skrzydlo = (i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}"${miejsce(i)}><div class="szyba">
+      ${zew ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
       <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
-      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 ? '<i class="klamka"></i>' : ""}</div>`;
-      const kolumna = (i) => `<div class="szyba" data-i="${i}"><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
+      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P || P[i].h >= 0.4) ? '<i class="klamka"></i>' : ""}</div>`;
+      const kolumna = (i) => `<div class="szyba" data-i="${i}"${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
       const pozycje = String(c.pozycje || "").split(/[,; ]+/).filter((x) => x !== "").map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
       root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
 <ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
-  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
-   ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
+  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
+   ${ramy}${zew ? "" : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
-   ${n > 1 && !c.osobno ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
+   ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
   </div>${pion2 ? this._suwakHtml(T2, true, dwaSuwaki ? 1 : null) : ""}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
@@ -4959,7 +4982,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.zam?.addEventListener("click", () => this._polecenie(0));
       E.stp?.addEventListener("click", () => this._polecenie(null));
       E.poz.forEach((b) => b.addEventListener("click", () => this._polecenie(+b.dataset.p)));
-      E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
+      E.pola.forEach((P2, i) => this._ciagnij(zew ? P2.p : E.skrz[i].s, [i]));
       if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
       E.suwaki.forEach((S) => this._suwak(S));
       q(".zmien:not(.wyg)")?.addEventListener("click", () => konfiguruj(this._wpis()));
@@ -4995,6 +5018,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     _zbudujBrame(c, czl) {
       const T2 = this._T, root = this.shadowRoot || this.attachShadow({ mode: "open" });
       this._brama = true;
+      this._uk = false;
       this._poziomo = false;
       this._kas = 0;
       this._brNoc = null;
@@ -5066,7 +5090,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     // polecenie dla wszystkich (albo wybranych) skrzydeł; cel null = stop
     _polecenie(cel, ktore) {
       const c = this._cfg, teraz = performance.now(), czl = this._czl || [];
-      const idx = ktore || czl.map((_, i) => i);
+      const idx = ktore ? czl.map((_, i) => i).filter((i) => ktore.some((k) => czl[k] === czl[i])) : czl.map((_, i) => i);
       idx.forEach((i) => this._ruchy[i]?.polecenie(cel, teraz));
       this._animuj();
       if (c.wibracja !== false) try {
@@ -5101,7 +5125,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       el.addEventListener("pointermove", (e) => {
         if (start === null || wart === null && Math.abs(e.clientY - start) < 6) return;
         wart = this._pozycjaZ(pole(idx[0]), e.clientY);
-        const ktore = srodek || this._cfg.osobno || this._czl?.length < 2 ? idx : this._el.pola.map((_, i) => i);
+        const ktore = srodek || this._cfg.osobno || this._uk || this._czl?.length < 2 ? idx : this._el.pola.map((_, i) => i);
         ktore.forEach((i) => this._pokazCel(i, wart, true));
       });
       const koniec = () => {
@@ -5109,7 +5133,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         start = null;
         this._ciagnie = false;
         this._el.pola.forEach((_, i) => this._pokazCel(i, null));
-        const ktore = srodek || !(this._cfg.osobno && this._czl?.length > 1) ? null : idx;
+        const ktore = srodek || !((this._cfg.osobno || this._uk) && this._czl?.length > 1) ? null : idx;
         if (wart !== null) this._polecenie(wart, ktore);
         else if (!srodek) this._dotkniecie(ktore);
       };
@@ -5186,7 +5210,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.nazwa.textContent = c.name || st.attributes.friendly_name || c.entity;
       czl.forEach((e, i) => {
         const r = this._ruchy[i];
-        r.czas = czasPrzejazdu(c.czas, obroty(h, e, c[i ? "predkosc_prawa" : "predkosc_lewa"]), e);
+        r.czas = czasPrzejazdu(c.czas, obroty(h, e, this._uk ? c.pola[i]?.predkosc : c[i ? "predkosc_prawa" : "predkosc_lewa"]), e);
         const s = h.states[e] || st;
         if (s !== r._ost) {
           r._ost = s;
@@ -5205,15 +5229,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         E.skrz.forEach((S, i) => {
           if (S.niebo) S.niebo.style.background = bg;
           if (S.za) S.za.style.background = bg;
-          if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, i, czl.length) : "";
-          if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, i, czl.length);
+          const [nr, ile] = this._uk ? [0, 1] : [i, czl.length];
+          if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, nr, ile) : "";
+          if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, nr, ile);
           S.s.classList.toggle("slonecznie", pora === "dzien" && (rodzaj === "slonce" || rodzaj === "chmurki"));
         });
         if (E.pgz) E.pgz.innerHTML = ["deszcz", "ulewa", "burza", "snieg", "deszczsnieg", "mgla"].includes(rodzaj) ? pogoda(rodzaj, pora, 0, 1).replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, "") : "";
       }
       if (this._brama) return this._aktualizujBrame(c, czl, st, pora);
-      const auto = c.auto_czujniki !== false ? czujnikiOkna(h, czl[0]) : [];
-      const okno = [0, 1].map((k) => {
+      const auto = c.auto_czujniki !== false && !this._uk ? czujnikiOkna(h, czl[0]) : [];
+      const okno = this._uk ? c.pola.map((p) => h.states[p.czujnik]?.state === "on" ? p.tryb === "otworz" ? "otw" : "uch" : "") : [0, 1].map((k) => {
         const id = c[k ? "czujnik_prawe" : "czujnik_lewe"] || auto[k], s = id && h.states[id];
         return s?.state === "on" ? c[k ? "tryb_prawe" : "tryb_lewe"] === "otworz" ? "otw" : "uch" : "";
       });
@@ -5232,7 +5257,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (opisPg) czesci.push(opisPg + (typeof t === "number" ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || "°C"}` : ""));
       }
       okno.forEach((o, k) => {
-        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${czl.length > 1 ? " " + (k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
+        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${czl.length > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
       });
       this._opisStanu = czesci;
       this._automatyka(c, h);
@@ -6145,9 +6170,11 @@ button svg{fill:var(--primary-color);flex:none}
   var zgloszone = "";
   var od = 0;
   var powod = "";
+  var BEZ_STRONY = "brak strony urządzenia";
   function zglos(id) {
     const h = document.querySelector("home-assistant")?.hass;
     if (zgloszone === id || !powod || Date.now() - od < 15e3 || !h?.callService) return;
+    if (document.hidden || powod === BEZ_STRONY) return;
     if (!h.devices?.[id]?.identifiers?.some?.((i) => i[0] === "motor_ha")) return;
     zgloszone = id;
     Promise.resolve(h.callService("system_log", "write", {
@@ -6159,7 +6186,7 @@ button svg{fill:var(--primary-color);flex:none}
   }
   function pilnuj(rejestruj2) {
     const m = WZOR.exec(location.pathname);
-    if (!m) {
+    if (!m || document.hidden) {
       od = 0;
       return;
     }
@@ -6174,7 +6201,7 @@ button svg{fill:var(--primary-color);flex:none}
     }
     const pg = strona(document), r = pg?.shadowRoot, h = pg?.hass;
     if (!r || !h) {
-      powod = "brak strony urządzenia";
+      powod = BEZ_STRONY;
       return;
     }
     const kolumny = [...r.querySelectorAll("div.column")];
