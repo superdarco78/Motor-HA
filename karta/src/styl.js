@@ -167,6 +167,10 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 `;
 
 // część stylu zależna od ustawień: kolory ramy, materiał osłony, kaseta i prowadnice danego rodzaju
+// osłona jednego pola innego rodzaju albo koloru niż całe okno: te same reguły, zawężone do pola
+export function stylPola(sel, o) {
+  return stylOkna(o).split('\n').filter(l => /^\.(oslona|kaseta|listwa|prow)/.test(l)).map(l => `${sel} ${l}`).join('\n');
+}
 export function stylOkna({ rama, drewno, kolor, typ, zew }) {
   const t = tekstura(typ, kolor), S = k => J(kolor, k), R = k => J(rama, k);
   const tlo = (drewno ? SLOJE + ',' : '') + rama;

@@ -435,6 +435,9 @@
     "pojedyncze": "単独",
     "grupaIle": "グループ · {0} 枚",
     "przeciagnij": "ドラッグで入れ替え",
-    "zamienPodpis": "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。"
+    "zamienPodpis": "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。",
+    "caleOkno": "窓全体",
+    "rodzajCalosc": "図の区画をタップすると、別の種類や色にできます。",
+    "rodzajPole": "今は区画 {0} だけを設定しています。"
   }
 }

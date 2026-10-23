@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.2.2 – Każde pole ze swoją osłoną
+
+- 🪟 Rodzaj i kolor osłony osobno dla każdego pola okna: w krokach „Rodzaj” i „Kolory” na górze rysunek okna – „Całe okno” jak dotąd albo dotknięcie pola (lub „Pole 2”) i wybór tylko dla niego, np. wolnowisząca w oknie, plisa w drzwiach. Pole z własnym ustawieniem ma ✎, karta rysuje każde pole po swojemu
+- 📦 HACS pobiera integrację plik po pliku zamiast paczki zip z wydania – instalacja działa także wtedy, gdy GitHub odrzuca pobieranie paczek z wydań
+
 ## v2.2.1 – Kreator: pokoje, grupy, słupki, czujniki przy skrzydłach
 
 - 🏠 Krok „Osłona”: wszystkie osłony z Home Assistanta pogrupowane według pokoi; na górze pokoju „Cały pokój” – jednym dotknięciem wszystkie silniki z pokoju. Niżej grupy, linia „Pojedyncze” i pojedyncze osłony z rysunkiem. Osłony użyte już w innym urządzeniu są widoczne z podpisem „też w: …”

@@ -1,7 +1,7 @@
 // Karta Motor HA: okno z osłoną. Osłona jedzie w tempie silnika, za szybą pogoda i pora dnia, czujniki pokazują otwarte okno.
 import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno } from './stale.js';
 import { rysunekBramy, ustawBrame, ustawFotokomorke } from './brama.js';
-import { STYL_STALY, stylOkna } from './styl.js';
+import { STYL_STALY, stylOkna, stylPola } from './styl.js';
 import { kolorNieba, poraDnia, pogoda, widokSvg, NIEBO_Z_POGODY } from './scena.js';
 import { Ruch, czasPrzejazdu } from './ruch.js';
 import { obroty, czujnikiOkna, encjaPogody, pogodaZInternetu, oslonyDoWyboru } from './wykryj.js';
@@ -60,7 +60,7 @@ export class MotorHaKarta extends HTMLElement {
     const c = this._cfg = this._ustawienia;
     this._jez = jezyk(c, this._hass);
     const czl = this._skrzydla(c);
-    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
     if (klucz !== this._klucz) { this._klucz = klucz; this._zbuduj(c, czl); }
     this._aktualizuj(c, czl);
   }
@@ -90,14 +90,26 @@ export class MotorHaKarta extends HTMLElement {
     const xs = P ? [...new Set(P.map(p => p.x))].sort((a, b) => a - b) : [];
     const mury = xs.slice(1).map((x, i) => { const pk = P.find(p => p.x === xs[i]), od = pk.x + pk.w; return x - od > .004 ? `<div class="mur" style="left:${od * 100}%;width:${(x - od) * 100}%"></div>` : ''; }).join('');
     this._kas = KASETA[c.oslona] ?? 12;
+    // pola z własnym rodzajem/kolorem osłony (z kreatora 2.2.2); rodzaj musi pasować do okna (wewnątrz/na zewnątrz, góra-dół)
+    const typPola = i => { const t = P?.[i]?.oslona; return t && !!czyZew(t) === !!zew && !POZIOME.includes(t) && !this._poziomo ? t : c.oslona; };
+    const warianty = [], wariant = i => {
+      if (!P) return 0;
+      const t = typPola(i), k = P[i].kolor ? hex(P[i].kolor) : kolor;
+      if (t === c.oslona && k === kolor) return 0;
+      let w = warianty.findIndex(x => x.t === t && x.k === k);
+      if (w < 0) { warianty.push({ t, k }); w = warianty.length - 1; }
+      return w + 1;
+    };
+    const wPol = P ? P.map((_, i) => wariant(i)) : [];
+    this._kasy = P ? P.map((_, i) => KASETA[typPola(i)] ?? 12) : null;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
-    const skrzydlo = i => `<div class="skrz" data-i="${i}" data-s="${strona(i)}"${miejsce(i)}><div class="szyba">
+    const skrzydlo = i => `<div class="skrz" data-i="${i}" data-s="${strona(i)}"${miejsce(i)}><div class="szyba"${wPol[i] ? ` data-w="${wPol[i]}"` : ''}>
       ${zew ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
       <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
       <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P || P[i].h >= .4) ? '<i class="klamka"></i>' : ''}</div>`;
-    const kolumna = i => `<div class="szyba" data-i="${i}"${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
+    const kolumna = i => `<div class="szyba" data-i="${i}"${wPol[i] ? ` data-w="${wPol[i]}"` : ''}${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
     const pozycje = String(c.pozycje || '').split(/[,; ]+/).filter(x => x !== '').map(Number).filter(x => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
-    root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
+    root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}${warianty.map((x, w) => stylPola(`.szyba[data-w="${w + 1}"]`, { rama, drewno: czyDrewno(c.rama), kolor: x.k, typ: x.t, zew })).join('\n')}</style>
 <ha-card class="${zew ? 'zew' : 'wew'}${this._poziomo ? ' poziomo' : ''}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion ? ' zs' : ''}">${zew ? '<div class="pg pgz"></div>' : ''}
@@ -122,7 +134,7 @@ export class MotorHaKarta extends HTMLElement {
       karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), oba: q('.oba'), suwak: q('.suwak'), suwaki: qa('.suwak'), pgz: q('.pgz'),
       otw: q('.otw'), stp: q('.stp'), zam: q('.zam'), poz: qa('.poz button'),
       skrz: qa('.skrz').map((s, i) => ({ s, niebo: s.querySelector('.niebo'), osiedle: s.querySelector('.osiedle-w'), pg: s.querySelector('.pg'), za: qa('.za')[i] })),
-      pola: pola.map(p => ({ p, oslona: p.querySelector('.oslona'), listwa: p.querySelector('.listwa'), cel: p.querySelector('.cel'), celT: p.querySelector('.cel span') }))
+      pola: pola.map((p, i) => ({ p, kas: this._kasy?.[i] ?? this._kas, oslona: p.querySelector('.oslona'), listwa: p.querySelector('.listwa'), cel: p.querySelector('.cel'), celT: p.querySelector('.cel span') }))
     };
     this._ruchy = czl.map(e => new Ruch(e));
     this._czl = null; this._niebo = null; this._zew = zew;
@@ -230,10 +242,10 @@ export class MotorHaKarta extends HTMLElement {
 
   // pozycja z wysokości palca na szybie
   _pozycjaZ(pole, y) {
-    const r = pole.getBoundingClientRect(), gora = this._kas, zakres = r.height - gora - LISTWA - POD_LISTWA;
+    const r = pole.getBoundingClientRect(), gora = this._el.pola.find(x => x.p === pole)?.kas ?? this._kas, zakres = r.height - gora - LISTWA - POD_LISTWA;
     return Math.round(100 - Math.min(1, Math.max(0, (y - r.top - gora) / zakres)) * 100);
   }
-  _gornaListwy(wys, p) { return this._kas - 2 + (wys - this._kas - LISTWA - POD_LISTWA + 2) * (100 - p) / 100; }
+  _gornaListwy(wys, p, kas = this._kas) { return kas - 2 + (wys - kas - LISTWA - POD_LISTWA + 2) * (100 - p) / 100; }
 
   _ciagnij(el, idx, srodek) {
     let start = null, wart = null;
@@ -415,7 +427,7 @@ export class MotorHaKarta extends HTMLElement {
     if (p === null || p === undefined) { P.cel.style.display = 'none'; return; }
     const wys = P.p.clientHeight;
     P.cel.style.display = 'block';
-    P.cel.style.top = (this._gornaListwy(wys, p) + LISTWA) + 'px';
+    P.cel.style.top = (this._gornaListwy(wys, p, P.kas) + LISTWA) + 'px';
     P.celT.textContent = (ciagnie ? '' : '→ ') + p + ' %';
   }
 
@@ -455,9 +467,9 @@ export class MotorHaKarta extends HTMLElement {
         if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
         return;
       }
-      const gora = this._gornaListwy(wys, r.widac);
-      P.oslona.style.height = Math.max(0, gora - (this._kas - 2) + 1) + 'px';
-      P.oslona.style.top = (this._kas - 2) + 'px';
+      const kas = P.kas ?? this._kas, gora = this._gornaListwy(wys, r.widac, kas);
+      P.oslona.style.height = Math.max(0, gora - (kas - 2) + 1) + 'px';
+      P.oslona.style.top = (kas - 2) + 'px';
       P.listwa.style.transform = `translateY(${gora}px)`;
       if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
       P._dol = P.p.offsetTop + (P.p.parentElement?.offsetTop || 0) + gora + LISTWA / 2;

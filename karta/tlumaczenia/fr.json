@@ -435,6 +435,9 @@
     "pojedyncze": "Individuels",
     "grupaIle": "groupe · {0} vantaux",
     "przeciagnij": "Glisser pour échanger",
-    "zamienPodpis": "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger."
+    "zamienPodpis": "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger.",
+    "caleOkno": "Fenêtre entière",
+    "rodzajCalosc": "Touchez un panneau du dessin pour lui donner un autre type ou une autre couleur.",
+    "rodzajPole": "Vous réglez maintenant le panneau {0} seulement."
   }
 }

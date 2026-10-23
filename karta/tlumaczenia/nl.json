@@ -435,6 +435,9 @@
     "pojedyncze": "Los",
     "grupaIle": "groep · {0} vleugels",
     "przeciagnij": "Sleep om te wisselen",
-    "zamienPodpis": "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen."
+    "zamienPodpis": "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen.",
+    "caleOkno": "Hele raam",
+    "rodzajCalosc": "Tik op een vak in de tekening om het een ander soort of andere kleur te geven.",
+    "rodzajPole": "Je stelt nu alleen vak {0} in."
   }
 }
