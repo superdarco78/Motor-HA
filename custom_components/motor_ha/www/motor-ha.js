@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.2.4";
+  var WERSJA = "2.2.5";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -8605,9 +8605,11 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .krok svg{width:18px;height:18px;fill:currentColor}
 .krok.zrob{color:var(--primary)} .krok.zrob .k{border-color:var(--primary)}
 .krok.teraz{color:var(--primary)} .krok.teraz .k{border-color:var(--accent);background:var(--primary);color:var(--on)}
-.krok .n{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:10px;line-height:1;white-space:nowrap;visibility:hidden}
-.krok.teraz .n{visibility:visible;font-weight:700}
-.krok:first-child.teraz .n{left:0;transform:none}.krok:last-child.teraz .n{left:auto;right:0;transform:none}
+.krok .n{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:10px;line-height:1;white-space:nowrap;color:var(--fg)}
+.krok.teraz .n{font-weight:700;color:var(--primary)}
+:host(:not([szeroko])) .kroki{overflow-x:auto;scrollbar-width:none;justify-content:flex-start;padding:0 4px} :host(:not([szeroko])) .kroki::-webkit-scrollbar{display:none}
+:host(:not([szeroko])) .krok{flex:0 0 auto;min-width:64px}
+.krok:not(.zrob):not(.teraz) .k{border-color:color-mix(in srgb,var(--primary) 45%,var(--line));color:var(--fg)}
 .krok:focus-visible .k{box-shadow:0 0 0 3px var(--accent)}
 .podglad{display:flex;justify-content:center;padding-top:8px}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
@@ -8630,6 +8632,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
 .wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
+.wiersz.zrod{opacity:.45} g.zrod{opacity:.5} #duzeOkno g[data-pole]{touch-action:none;cursor:grab} .wiersz{user-select:none;-webkit-user-select:none}
+.cialo{position:relative} .duch{position:absolute;left:0;top:0;z-index:20;pointer-events:none;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--surface);color:var(--fg);border:2px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:14px;white-space:nowrap}
+.duch .ik{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700}
 #duzeOkno svg{touch-action:none}
 .wybpol{margin:-4px 0 14px;padding:8px 0 12px;border-bottom:1px solid var(--line);position:sticky;top:-14px;z-index:3;background:var(--surface)}
 .wybpol #duzeOkno svg{max-height:30vh;width:auto;max-width:100%}
@@ -8794,9 +8799,16 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, ile = prostokaty(S.u).length, R = S.rolety;
       const okna = this._czujnik("okno").lista.filter((x) => x.tu).map((x) => x.id);
       const kolejne = [.../* @__PURE__ */ new Set([...this.dane.okna || [], ...okna])];
+      const strona2 = (id) => {
+        const n = (this._oslona(id)?.nazwa || id).toLowerCase();
+        return /lew|left|links|gauche/.test(n) ? 0 : /praw|right|rechts|droite/.test(n) ? 2 : 1;
+      };
+      const Rs = [...R].sort((a, b) => strona2(a) - strona2(b)), P = prostokaty(S.u);
+      const silnikPola = (i) => Rs.length >= ile ? Rs[i] : Rs[Math.min(Rs.length - 1, Math.floor((P[i][0] + P[i][2] / 2) * Rs.length))];
+      const nowyUklad = S.pola.length !== ile;
       S.pola = Array.from({ length: ile }, (_, i) => {
         const p = { ...S.pola[i] || {} };
-        if ((podpowiedz || !p.silnik) && R.length) p.silnik = R[Math.min(i, R.length - 1)];
+        if ((podpowiedz || nowyUklad || !p.silnik) && R.length) p.silnik = silnikPola(i);
         if (podpowiedz && !p.czujnik && kolejne[i] && !S.pola.some((q, j) => j !== i && q?.czujnik === kolejne[i])) p.czujnik = kolejne[i];
         p.tryb || (p.tryb = "uchyl");
         return p;
@@ -9389,9 +9401,24 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this._odswiezUklad();
     }
     // listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (i to, co już wybrane); reszta domu po „Pokaż wszystkie”
+    // „duch” przeciąganego pola: numer i silnik idą za palcem / myszką
+    _duch(i) {
+      const o = this._oslona(this.S.pola[i]?.silnik), d = document.createElement("div");
+      d.id = "duch";
+      d.className = "duch";
+      d.innerHTML = `<span class="ik">${i + 1}</span><b>${esc6(o ? o.nazwa : this.t.wybierzSilnik)}</b>`;
+      this.shadowRoot.querySelector(".cialo").append(d);
+    }
     _polePod(e) {
-      const el = this.shadowRoot.elementsFromPoint?.(e.clientX, e.clientY).find((x) => x.closest?.("[data-pole]"))?.closest("[data-pole]");
-      return el ? +el.dataset.pole : null;
+      let naj = null, pole = Infinity;
+      for (const el of this.shadowRoot.querySelectorAll("#duzeOkno g[data-pole] > rect:first-child, .wiersz[data-pole]")) {
+        const b = el.getBoundingClientRect();
+        if (e.clientX >= b.left && e.clientX <= b.right && e.clientY >= b.top && e.clientY <= b.bottom && b.width * b.height < pole) {
+          pole = b.width * b.height;
+          naj = el.closest("[data-pole]");
+        }
+      }
+      return naj ? +naj.dataset.pole : null;
     }
     _tylkoTu(lista, tu, wybrane) {
       if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: "" };
@@ -9438,11 +9465,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this._ro.observe(this);
       r.addEventListener("input", (e) => this._wpis(e));
       r.addEventListener("pointerdown", (e) => {
-        const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]"));
-        if (zp) {
-          this._zamiana = { z: +zp.dataset.pole, x: e.clientX, y: e.clientY, jedzie: false };
+        const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]") || (e.pointerType === "mouse" ? e.target.closest?.(".wiersz[data-pole]") : null));
+        if (zp && e.button === 0) {
+          e.preventDefault();
+          this._zamiana = { z: +zp.dataset.pole, x: e.clientX, y: e.clientY, jedzie: false, id: e.pointerId };
           try {
-            e.target.setPointerCapture(e.pointerId);
+            r.querySelector(".cialo").setPointerCapture(e.pointerId);
           } catch (x) {
           }
         }
@@ -9464,28 +9492,47 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.addEventListener("pointermove", (e) => {
         if (this._uch) this._ciagnij(e);
         const z = this._zamiana;
-        if (!z) return;
-        if (!z.jedzie && Math.hypot(e.clientX - z.x, e.clientY - z.y) > 8) z.jedzie = true;
-        if (z.jedzie) {
-          const cel = this._polePod(e);
-          z.do = cel;
-          r.querySelectorAll("[data-pole]").forEach((el) => el.classList.toggle("cel", +el.dataset.pole === cel && cel !== z.z));
+        if (!z || e.pointerId !== z.id) return;
+        if (!z.jedzie && Math.hypot(e.clientX - z.x, e.clientY - z.y) > 6) {
+          z.jedzie = true;
+          this._duch(z.z);
         }
+        if (!z.jedzie) return;
+        e.preventDefault();
+        const cel = this._polePod(e);
+        z.do = cel;
+        r.querySelectorAll("[data-pole]").forEach((el) => {
+          el.classList.toggle("cel", +el.dataset.pole === cel && cel !== z.z);
+          el.classList.toggle("zrod", +el.dataset.pole === z.z);
+        });
+        const d = r.getElementById("duch"), c = r.querySelector(".cialo").getBoundingClientRect();
+        if (d) d.style.transform = `translate(${Math.max(0, Math.min(c.width - d.offsetWidth - 4, e.clientX - c.left + 12))}px,${e.clientY - c.top + 12}px)`;
       });
       r.addEventListener("pointerup", (e) => {
         const z = this._zamiana;
+        if (!z || e.pointerId !== z.id) return;
         this._zamiana = null;
-        if (!z?.jedzie) return;
+        r.getElementById("duch")?.remove();
+        if (!z.jedzie) {
+          r.querySelectorAll(".zrod").forEach((el) => el.classList.remove("zrod"));
+          return;
+        }
         this._poZamianie = true;
         setTimeout(() => {
           this._poZamianie = false;
-        }, 50);
+        }, 80);
         const cel = this._polePod(e) ?? z.do ?? null, S = this.S;
         if (cel !== null && cel !== z.z) {
           const a = S.pola[z.z] || {};
           S.pola[z.z] = S.pola[cel] || {};
           S.pola[cel] = a;
         }
+        this.rysuj();
+      });
+      r.addEventListener("pointercancel", () => {
+        if (!this._zamiana) return;
+        this._zamiana = null;
+        r.getElementById("duch")?.remove();
         this.rysuj();
       });
       const koniec = () => {
@@ -9504,6 +9551,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.getElementById("nazwaKroku").textContent = t.kroki[k];
       r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
       r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${ik(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
+      {
+        const kr = r.getElementById("kroki"), a = kr.querySelector(".teraz");
+        if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2;
+      }
       const jedenDuzy = ["rodzaj", "kolory"].includes(k) && !S.brama && prostokaty(S.u).length > 1;
       this._szeroko = this.clientWidth >= 760;
       this.toggleAttribute("szeroko", this._szeroko);
