@@ -432,6 +432,7 @@
     "grupa": "Gruppe",
     "calyPokoj": "Ganzer Raum: {0}",
     "bezPokoju": "Ohne Raum",
-    "pojedyncze": "Einzeln"
+    "pojedyncze": "Einzeln",
+    "grupaIle": "Gruppe · {0} Flügel"
   }
 }

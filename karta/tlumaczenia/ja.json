@@ -432,6 +432,7 @@
     "grupa": "グループ",
     "calyPokoj": "部屋全体：{0}",
     "bezPokoju": "部屋なし",
-    "pojedyncze": "単独"
+    "pojedyncze": "単独",
+    "grupaIle": "グループ · {0} 枚"
   }
 }

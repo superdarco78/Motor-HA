@@ -432,6 +432,7 @@
     "grupa": "група",
     "calyPokoj": "Уся кімната: {0}",
     "bezPokoju": "Без кімнати",
-    "pojedyncze": "Окремі"
+    "pojedyncze": "Окремі",
+    "grupaIle": "група · стулок: {0}"
   }
 }

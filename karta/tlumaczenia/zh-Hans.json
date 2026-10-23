@@ -432,6 +432,7 @@
     "grupa": "组",
     "calyPokoj": "整个房间：{0}",
     "bezPokoju": "无房间",
-    "pojedyncze": "单个"
+    "pojedyncze": "单个",
+    "grupaIle": "组 · {0} 扇"
   }
 }

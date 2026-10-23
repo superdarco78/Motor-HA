@@ -219,7 +219,10 @@ async def dane_kreatora(hass: HomeAssistant, entry_id: str | None, rolety: list[
                        "lamele": skan.czy_lamele(s), "klasa": s.attributes.get("device_class"),
                        "zajeta": zajete.get(s.entity_id),
                        # grupa osłon (np. „Żaluzje salon”) – w polu wybiera się pojedynczy silnik
-                       "grupa": isinstance(s.attributes.get("entity_id"), (list, tuple))})
+                       "grupa": isinstance(s.attributes.get("entity_id"), (list, tuple)),
+                       # silniki w grupie: wybór grupy w kreatorze daje tyle skrzydeł, ile w niej osłon
+                       "czlonkowie": [e for e in s.attributes.get("entity_id") or [] if isinstance(e, str) and e.startswith("cover.")]
+                       if isinstance(s.attributes.get("entity_id"), (list, tuple)) else []})
     pierwsza = rolety[0] if rolety else None
     zn = skan.znajdz(hass)
     pokoj = skan.obszar(hass, pierwsza) if pierwsza else None

@@ -432,6 +432,7 @@
     "grupa": "grupo",
     "calyPokoj": "Toda la habitación: {0}",
     "bezPokoju": "Sin habitación",
-    "pojedyncze": "Individuales"
+    "pojedyncze": "Individuales",
+    "grupaIle": "grupo · {0} hojas"
   }
 }

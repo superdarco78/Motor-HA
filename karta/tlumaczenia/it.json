@@ -432,6 +432,7 @@
     "grupa": "gruppo",
     "calyPokoj": "Tutta la stanza: {0}",
     "bezPokoju": "Senza stanza",
-    "pojedyncze": "Singole"
+    "pojedyncze": "Singole",
+    "grupaIle": "gruppo · {0} ante"
   }
 }

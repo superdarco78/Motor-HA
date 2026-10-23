@@ -432,6 +432,7 @@
     "grupa": "grupa",
     "calyPokoj": "Cały pokój: {0}",
     "bezPokoju": "Bez pokoju",
-    "pojedyncze": "Pojedyncze"
+    "pojedyncze": "Pojedyncze",
+    "grupaIle": "grupa · {0} skrzydła"
   }
 }

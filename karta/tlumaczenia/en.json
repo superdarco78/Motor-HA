@@ -432,6 +432,7 @@
     "grupa": "group",
     "calyPokoj": "Whole room: {0}",
     "bezPokoju": "No room",
-    "pojedyncze": "Single"
+    "pojedyncze": "Single",
+    "grupaIle": "group · {0} sashes"
   }
 }

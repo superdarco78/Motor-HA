@@ -432,6 +432,7 @@
     "grupa": "groupe",
     "calyPokoj": "Toute la pièce : {0}",
     "bezPokoju": "Sans pièce",
-    "pojedyncze": "Individuels"
+    "pojedyncze": "Individuels",
+    "grupaIle": "groupe · {0} vantaux"
   }
 }

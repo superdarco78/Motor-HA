@@ -432,6 +432,7 @@
     "grupa": "skupina",
     "calyPokoj": "Celá miestnosť: {0}",
     "bezPokoju": "Bez miestnosti",
-    "pojedyncze": "Jednotlivé"
+    "pojedyncze": "Jednotlivé",
+    "grupaIle": "skupina · {0} krídla"
   }
 }

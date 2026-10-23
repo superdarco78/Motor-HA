@@ -1308,7 +1308,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "grupa",
       calyPokoj: "Cały pokój: {0}",
       bezPokoju: "Bez pokoju",
-      pojedyncze: "Pojedyncze"
+      pojedyncze: "Pojedyncze",
+      grupaIle: "grupa · {0} skrzydła"
     }
   };
 
@@ -1747,7 +1748,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "group",
       calyPokoj: "Whole room: {0}",
       bezPokoju: "No room",
-      pojedyncze: "Single"
+      pojedyncze: "Single",
+      grupaIle: "group · {0} sashes"
     }
   };
 
@@ -2186,7 +2188,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "Gruppe",
       calyPokoj: "Ganzer Raum: {0}",
       bezPokoju: "Ohne Raum",
-      pojedyncze: "Einzeln"
+      pojedyncze: "Einzeln",
+      grupaIle: "Gruppe · {0} Flügel"
     }
   };
 
@@ -2625,7 +2628,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "groupe",
       calyPokoj: "Toute la pièce : {0}",
       bezPokoju: "Sans pièce",
-      pojedyncze: "Individuels"
+      pojedyncze: "Individuels",
+      grupaIle: "groupe · {0} vantaux"
     }
   };
 
@@ -3064,7 +3068,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "skupina",
       calyPokoj: "Celá místnost: {0}",
       bezPokoju: "Bez místnosti",
-      pojedyncze: "Jednotlivé"
+      pojedyncze: "Jednotlivé",
+      grupaIle: "skupina · {0} křídla"
     }
   };
 
@@ -3503,7 +3508,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "skupina",
       calyPokoj: "Celá miestnosť: {0}",
       bezPokoju: "Bez miestnosti",
-      pojedyncze: "Jednotlivé"
+      pojedyncze: "Jednotlivé",
+      grupaIle: "skupina · {0} krídla"
     }
   };
 
@@ -3942,7 +3948,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "grupo",
       calyPokoj: "Toda la habitación: {0}",
       bezPokoju: "Sin habitación",
-      pojedyncze: "Individuales"
+      pojedyncze: "Individuales",
+      grupaIle: "grupo · {0} hojas"
     }
   };
 
@@ -4381,7 +4388,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "gruppo",
       calyPokoj: "Tutta la stanza: {0}",
       bezPokoju: "Senza stanza",
-      pojedyncze: "Singole"
+      pojedyncze: "Singole",
+      grupaIle: "gruppo · {0} ante"
     }
   };
 
@@ -4820,7 +4828,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "groep",
       calyPokoj: "Hele ruimte: {0}",
       bezPokoju: "Geen ruimte",
-      pojedyncze: "Los"
+      pojedyncze: "Los",
+      grupaIle: "groep · {0} vleugels"
     }
   };
 
@@ -5259,7 +5268,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "grupo",
       calyPokoj: "Divisão inteira: {0}",
       bezPokoju: "Sem divisão",
-      pojedyncze: "Individuais"
+      pojedyncze: "Individuais",
+      grupaIle: "grupo · {0} folhas"
     }
   };
 
@@ -5698,7 +5708,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "група",
       calyPokoj: "Уся кімната: {0}",
       bezPokoju: "Без кімнати",
-      pojedyncze: "Окремі"
+      pojedyncze: "Окремі",
+      grupaIle: "група · стулок: {0}"
     }
   };
 
@@ -6137,7 +6148,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "группа",
       calyPokoj: "Вся комната: {0}",
       bezPokoju: "Без комнаты",
-      pojedyncze: "Отдельные"
+      pojedyncze: "Отдельные",
+      grupaIle: "группа · створок: {0}"
     }
   };
 
@@ -6576,7 +6588,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "グループ",
       calyPokoj: "部屋全体：{0}",
       bezPokoju: "部屋なし",
-      pojedyncze: "単独"
+      pojedyncze: "単独",
+      grupaIle: "グループ · {0} 枚"
     }
   };
 
@@ -7015,7 +7028,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       grupa: "组",
       calyPokoj: "整个房间：{0}",
       bezPokoju: "无房间",
-      pojedyncze: "单个"
+      pojedyncze: "单个",
+      grupaIle: "组 · {0} 扇"
     }
   };
 
@@ -8769,11 +8783,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (!d.oslony.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
       const [n1] = this._nieba(), pierwszy = this._oslona(S.rolety[0])?.area;
       const kafel = (o) => {
+        const czl = (o.czlonkowie || []).filter((e) => this._oslona(e)), grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every((e) => S.rolety.includes(e));
         const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
-        return `<button class="kaf ${nr >= 0 ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
+        return `<button class="kaf ${nr >= 0 || grWyb ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
         ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
         <rect x="12" y="6" width="40" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), 12, 6, 40, 32, Math.max(poz, 8), this._kolor())}</svg>`}
-        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6(`${poz} %`)}</span>${o.zajeta && nr < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc6(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc6(t.grupa)}</span>` : ""}</button>`;
+        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6(`${poz} %`)}</span>${o.zajeta && nr < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc6(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc6(czl.length > 1 ? wstaw(t.grupaIle, czl.length) : t.grupa)}</span>` : ""}</button>`;
       };
       const pokoje = [...new Set(d.oslony.map((o) => o.area || ""))].sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || "").localeCompare(this._nazwaPokoju(b) || ""));
       const w = pokoje.map((a) => {
@@ -9314,8 +9329,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (d.idz) return this._idz(kroki.indexOf(d.idz));
       if (d.oslona || d.pokojcaly) {
         const i = S.rolety.indexOf(d.oslona), x = this._oslona(d.oslona);
+        const czl = (x?.czlonkowie || []).filter((e2) => this._oslona(e2));
         if (d.pokojcaly) {
           S.rolety = this.dane.oslony.filter((o2) => o2.area === d.pokojcaly && !o2.grupa && !o2.brama).map((o2) => o2.id).slice(0, 12);
+          S.wykryty = null;
+        } else if (czl.length > 1 && i < 0) {
+          S.rolety = czl.slice(0, 12);
+          S.zGrupy = x.nazwa;
           S.wykryty = null;
         } else if (i >= 0) S.rolety.splice(i, 1);
         else {

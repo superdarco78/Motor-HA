@@ -432,6 +432,7 @@
     "grupa": "grupo",
     "calyPokoj": "Divisão inteira: {0}",
     "bezPokoju": "Sem divisão",
-    "pojedyncze": "Individuais"
+    "pojedyncze": "Individuais",
+    "grupaIle": "grupo · {0} folhas"
   }
 }

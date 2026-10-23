@@ -432,6 +432,7 @@
     "grupa": "groep",
     "calyPokoj": "Hele ruimte: {0}",
     "bezPokoju": "Geen ruimte",
-    "pojedyncze": "Los"
+    "pojedyncze": "Los",
+    "grupaIle": "groep · {0} vleugels"
   }
 }
