@@ -353,7 +353,7 @@
       "wieczor": "’s Avonds sluiten",
       "slonce": "Beschermen tegen zon",
       "blokada": "Niet sluiten bij open raam",
-      "wietrzenie": "Raam op kiepstand = zonwering half",
+      "wietrzenie": "Raam op kiepstand = zonwering omhoog",
       "wiatr": "Harde wind = intrekken",
       "deszcz": "Regen = intrekken"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Zonder telefoon verschijnen meldingen alleen in Home Assistant.",
     "naPanel": "Toevoegen aan dashboard",
     "nazwa": "Naam",
-    "zapisano": "Opgeslagen ✓"
+    "zapisano": "Opgeslagen ✓",
+    "wszystkie": "Alles tonen",
+    "prog": "Drempel",
+    "pozycja": "Positie",
+    "odTemp": "vanaf temp.",
+    "zrodlo": "Bron",
+    "przypiszPodpis": "Tik op een vleugel in de tekening om motor en raamsensor te kiezen.",
+    "wschodSlonca": "Zonsopkomst",
+    "zachodSlonca": "Zonsondergang",
+    "godzina": "Tijd",
+    "przesuniecie": "Verschuiving",
+    "poWsch": "{0} min na zonsopkomst",
+    "przedWsch": "{0} min voor zonsopkomst",
+    "poZach": "{0} min na zonsondergang",
+    "przedZach": "{0} min voor zonsondergang",
+    "oknaWieczorem": "'s Avonds met raamsensoren",
+    "nieZjedzie": "gaat niet dicht",
+    "zjedzieDo": "gaat naar {0} %",
+    "zjedzieNormalnie": "gaat normaal dicht",
+    "pozniej": "Zodra het raam dicht is, gaat het scherm vanzelf verder.",
+    "kazdy": "Elke motor apart"
   }
 }

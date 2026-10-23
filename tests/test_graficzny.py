@@ -131,3 +131,12 @@ def test_harmonogram_tylko_zamyka() -> None:
 
 def test_karta_bez_ukladu_bez_pol() -> None:
     assert "pola" not in ustawienia_karty("x", {"rolety": ["cover.a"], "skrzydla": "1"})
+
+
+def test_wiatr_i_deszcz_pozycja_z_ustawien() -> None:
+    from datetime import datetime
+    n = datetime(2026, 6, 1, 12, 0)
+    p = {**PARAMETRY, "wiatr_prog": 50, "wiatr_poz": 60}
+    assert decyduj(Warunki(teraz=n, wiatr=45), "markiza", {"wiatr"}, p).poz != 60
+    assert decyduj(Warunki(teraz=n, wiatr=55), "markiza", {"wiatr"}, p).poz == 60
+    assert decyduj(Warunki(teraz=n, wiatr=55), "markiza", {"wiatr"}, PARAMETRY | {"wiatr_prog": 50}).poz == 100

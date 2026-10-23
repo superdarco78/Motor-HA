@@ -55,7 +55,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 /* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
 .okno.uk{background:none!important;box-shadow:none!important;padding:0}
 .uk .kolr{position:absolute;border-radius:3px}
-.uk .skrz{position:absolute;flex:none;margin:0;padding:5px}
+.uk .skrz{position:absolute;flex:none;margin:0;padding:5px;overflow:hidden}
 .uk .za{inset:auto}
 .uk .wid{position:absolute}
 .uk .zewo .szyba{position:absolute;flex:none}

@@ -340,7 +340,9 @@ export class MotorHaKarta extends HTMLElement {
       const opisPg = ws.entity_id && h.formatEntityState ? h.formatEntityState(ws) : this._lok(`component.weather.entity_component._.state.${ws.state}`, '');
       if (opisPg) czesci.push(opisPg + (typeof t === 'number' ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || '°C'}` : ''));
     }
-    okno.forEach((o, k) => { if (o && k < czl.length) czesci.push(`${T.karta.okno}${czl.length > 1 ? ' ' + (this._uk ? k + 1 : k ? T.karta.prawe : T.karta.lewe) : ''} ${o === 'otw' ? T.karta.otwarte : T.karta.uchylone}`); });
+    // numer pola tylko wtedy, gdy czujników okna jest kilka (jeden czujnik w polu 9 = po prostu „Okno uchylone”)
+    const ileCz = this._uk ? c.pola.filter(p => p.czujnik).length : czl.length;
+    okno.forEach((o, k) => { if (o && k < czl.length) czesci.push(`${T.karta.okno}${ileCz > 1 ? ' ' + (this._uk ? k + 1 : k ? T.karta.prawe : T.karta.lewe) : ''} ${o === 'otw' ? T.karta.otwarte : T.karta.uchylone}`); });
     this._opisStanu = czesci;
     this._automatyka(c, h);
     const otwarte = this._ruchy.some(r => (r.widac ?? 0) > 0);

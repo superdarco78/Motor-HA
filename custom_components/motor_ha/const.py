@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.2.0"
+VERSION = "2.2.1"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
@@ -169,6 +169,8 @@ PARAMETRY: dict[str, object] = {
     "posrednia_godz": "13:00:00",
     "posrednia_poz": 50,
     "wiatr_prog": 40,         # km/h
+    "wiatr_poz": 100,         # pozycja przy silnym wietrze (100 = zwinięta)
+    "deszcz_poz": 100,        # pozycja przy deszczu
     "mroz_prog": 1,           # °C
     "upal_prog": 28,          # °C jutro
     "temp_pokoj_prog": 25,    # °C w pokoju

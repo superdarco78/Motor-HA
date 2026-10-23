@@ -353,7 +353,7 @@
       "wieczor": "Fermer le soir",
       "slonce": "Protéger du soleil",
       "blokada": "Ne pas fermer si la fenêtre est ouverte",
-      "wietrzenie": "Fenêtre basculée = store à mi-hauteur",
+      "wietrzenie": "Fenêtre basculée = remonter le store",
       "wiatr": "Vent fort = remonter",
       "deszcz": "Pluie = remonter"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Sans téléphone, les notifications n’apparaissent que dans Home Assistant.",
     "naPanel": "Ajouter au tableau de bord",
     "nazwa": "Nom",
-    "zapisano": "Enregistré ✓"
+    "zapisano": "Enregistré ✓",
+    "wszystkie": "Tout afficher",
+    "prog": "Seuil",
+    "pozycja": "Position",
+    "odTemp": "dès temp.",
+    "zrodlo": "Source",
+    "przypiszPodpis": "Touchez un vantail sur le dessin pour choisir son moteur et son capteur de fenêtre.",
+    "wschodSlonca": "Lever du soleil",
+    "zachodSlonca": "Coucher du soleil",
+    "godzina": "Heure",
+    "przesuniecie": "Décalage",
+    "poWsch": "{0} min après le lever",
+    "przedWsch": "{0} min avant le lever",
+    "poZach": "{0} min après le coucher",
+    "przedZach": "{0} min avant le coucher",
+    "oknaWieczorem": "Le soir, avec les capteurs de fenêtre",
+    "nieZjedzie": "ne descend pas",
+    "zjedzieDo": "descend à {0} %",
+    "zjedzieNormalnie": "descend normalement",
+    "pozniej": "Une fois la fenêtre fermée, le volet finit seul.",
+    "kazdy": "Chaque moteur séparément"
   }
 }

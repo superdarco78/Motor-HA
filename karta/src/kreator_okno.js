@@ -36,6 +36,17 @@ const MDI = {
 const ik = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI[n]}"/></svg>`;
 const esc = s => String(s ?? '').replace(/[&<>"]/g, z => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[z]);
 const okr = v => Math.round(v * 1000) / 1000;
+// suwaki ustawień automatyki (klucze jak w PARAMETRY integracji); pozycja: 100 = osłona zwinięta / otwarta
+const PROC = v => v + ' %';
+const PAR = {
+  wiatr_prog: { mn: 20, mx: 90, krok: 5, dom: 40, fmt: v => v + ' km/h' },
+  wiatr_poz: { mn: 0, mx: 100, krok: 10, dom: 100, fmt: PROC },
+  deszcz_poz: { mn: 0, mx: 100, krok: 10, dom: 100, fmt: PROC },
+  wietrzenie_poz: { mn: 10, mx: 100, krok: 10, dom: 50, fmt: PROC },
+  slonce_temp: { mn: 15, mx: 35, krok: 1, dom: 24, fmt: v => v + ' °C' },
+  przes_otw: { mn: -120, mx: 120, krok: 5, dom: 0, fmt: v => (v > 0 ? '+' : '') + v + ' min' },
+  przes_zam: { mn: -120, mx: 120, krok: 5, dom: 0, fmt: v => (v > 0 ? '+' : '') + v + ' min' }
+};
 // długie słowo w wąskim kafelku: miękki dzielnik po samogłosce blisko środka („wolnowi-sząca”), bez łamania w dowolnym miejscu
 const SAMO = /[aeiouyąęóаеиоуыэюяіїєáéíóúýěůäöüàèìòù]/i;
 export const dziel = s => String(s ?? '').replace(/\S{11,}/g, w => {
@@ -157,7 +168,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .suw{display:flex;align-items:center;gap:10px;padding:0 12px 10px 64px;margin-top:-6px;margin-bottom:8px;color:var(--fg2);font-size:12px}
 .suw input{flex:1;min-width:0;accent-color:var(--primary)}
 .suw span{min-width:44px;text-align:end}
-.suw.chipy{gap:6px}
+.okw{margin:4px 0 10px 52px;padding:8px 10px;border-radius:10px;background:var(--tile);font-size:13px}
+.okw .et{display:flex;align-items:center;gap:6px;font-weight:500;margin-bottom:4px}.okw .et svg{fill:var(--accent);width:16px!important;height:16px;flex:none}
+.okw .ow{display:flex;gap:8px;align-items:baseline;margin:3px 0}.okw .nr{flex:none;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#3a2600;font-size:11px;font-weight:700;display:grid;place-items:center}
+.okw .pod{margin-top:6px}
+.suw.chipy{gap:6px;flex-wrap:wrap}
+.suw .et{min-width:64px;text-align:start;color:var(--fg2)}
 .chipy{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;min-height:32px;padding:0 12px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;max-width:100%}
 .chip svg{fill:currentColor}
@@ -313,11 +329,18 @@ export class MotorHaKreator extends HTMLElement {
       if (opt.numery) {
         const on = opt.wybrane === i;
         d.push(`<g data-pole="${i}" style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${on ? 'rgba(255,152,0,.25)' : 'transparent'}" stroke="${on ? '#ff9800' : 'none'}" stroke-width="3"/>
-          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text></g>`);
+          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>${this._znakCzujnika(i, x + w / 2, y + h / 2 + 22)}</g>`);
       }
     });
     d.push('</svg>');
     return d.join('');
+  }
+  // znaczek pod numerem pola: pomarańczowy z oknem = czujnik przypisany (ukośna kreska = uchylone), przerywany „+” = brak czujnika
+  _znakCzujnika(i, cx, cy) {
+    const p = this.S.pola[i] || {};
+    if (!p.czujnik) return `<circle cx="${cx}" cy="${cy}" r="8" fill="rgba(255,255,255,.75)" stroke="#ff9800" stroke-width="1.6" stroke-dasharray="3 2"/><path d="M${cx - 4} ${cy}h8M${cx} ${cy - 4}v8" stroke="#ff9800" stroke-width="2"/>`;
+    return `<circle cx="${cx}" cy="${cy}" r="9" fill="#ff9800" stroke="#fff" stroke-width="1.6"/><rect x="${cx - 4.5}" y="${cy - 5}" width="9" height="10" fill="none" stroke="#3a2600" stroke-width="1.5"/>`
+      + (p.tryb === 'otworz' ? `<path d="M${cx - 4.5} ${cy - 5}l4 1.6v10l-4-1.6z" fill="#3a2600"/>` : `<path d="M${cx - 4.5} ${cy + 5}l2.4-7h4.2" fill="none" stroke="#3a2600" stroke-width="1.4"/>`);
   }
   _brama(typ) { return rysunekBramy(typ, this._kolor(), this._rama(), false, false); }
   _podgladMaly() { return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' }); }
@@ -382,12 +405,12 @@ export class MotorHaKreator extends HTMLElement {
   }
   str_przypisz() {
     const S = this.S, t = this.t;
-    return `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz })}</div>
+    return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz })}</div>
       <div style="margin-top:14px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
         return `<button class="wiersz" data-pole="${i}"><span class="ik">${i + 1}</span><span class="t"><b>${esc(o ? o.nazwa : t.wybierzSilnik)}</b>
-          <small>${c ? `✓ ${esc(c)} · ${esc(p.tryb === 'otworz' ? t.otworz : t.uchyl)}` : esc(t.bezCzujnikaOkna)}</small></span></button>`;
+          <small>${c ? `✓ ${esc(c)} · ${esc(p.tryb === 'otworz' ? t.otworz : t.uchyl)}` : `<span style="color:var(--accent)">+ ${esc(t.czujnikPola)}</span>`}</small></span></button>`;
       }).join('')}</div>`;
   }
   _nazwa(e) { const s = this._hass?.states?.[e]; return s?.attributes?.friendly_name || this._czujnik('okno').lista.find(x => x.id === e)?.nazwa || e; }
@@ -415,29 +438,66 @@ export class MotorHaKreator extends HTMLElement {
   }
   // automatyka: [klucz, ikona, włączona?, opis, suwak]
   str_auto() {
-    const S = this.S, o = S.o, t = this.t, sl = o.harm_tryb === 'slonce';
+    const S = this.S, o = S.o, t = this.t;
     const okna = S.pola.some(p => p.czujnik), w = [];
     const harm = !!o.f_harmonogram;
     const wiersz = (k, i, on, tyt, opis, extra = '') => w.push(`<button class="wiersz ${on ? '' : 'wyl'}" data-auto="${k}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc(tyt)}</b><small>${esc(opis)}</small></span><span class="przel"></span></button>${on ? extra : ''}`);
     const rano = harm && o.harm_otwieraj !== false, wieczor = harm && o.harm_zamykaj !== false;
-    const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw"><input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc(tekst)}"><span>${esc(g === 'slonce' ? 100 - wart + ' %' : godz(wart))}</span></div>`;
-    wiersz('rano', 'wschod', rano, t.auto.rano, sl ? t.oWschodzie : wstaw(t.oGodz, godz(minuty(o.otworz || '07:00'))), sl ? '' : suwak('otworz', 300, 660, minuty(o.otworz || '07:00'), t.auto.rano));
-    wiersz('wieczor', 'zachod', wieczor, t.auto.wieczor, sl ? t.oZachodzie : wstaw(t.oGodz, godz(minuty(o.zamknij || '21:00'))), sl ? '' : suwak('zamknij', 1020, 1410, minuty(o.zamknij || '21:00'), t.auto.wieczor));
-    if (rano || wieczor) w.push(`<div class="suw chipy"><button class="chip ${sl ? 'wyb' : ''}" data-zeslonca="1">${ik('slonce', 16)} ${esc(t.zeSloncem)}</button></div>`);
+    const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw">${g === 'slonce' ? `<span class="et">${esc(t.pozycja)}</span>` : ''}<input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc(tekst)}"><span>${esc(g === 'slonce' ? 100 - wart + ' %' : godz(wart))}</span></div>`;
+    // rano i wieczór osobno: wschód/zachód słońca z przesunięciem albo stała godzina
+    const pora = (k, ikona, on, tyt, klucz, godzKlucz, dom, mn, mx, slonceTekst) => {
+      const sl = this._harm(k) === 'slonce';
+      const tryby = `<div class="suw chipy"><button class="chip ${sl ? 'wyb' : ''}" data-harm="${k}" data-v="slonce">${ik(ikona, 16)} ${esc(slonceTekst)}</button><button class="chip ${sl ? '' : 'wyb'}" data-harm="${k}" data-v="godziny">${ik('stoper', 16)} ${esc(t.godzina)}</button></div>`;
+      wiersz(k, ikona, on, tyt, this._opisPory(k), tryby + (sl ? this._par(klucz, t.przesuniecie) : suwak(godzKlucz, mn, mx, minuty(o[godzKlucz] || dom), tyt)));
+    };
+    pora('rano', 'wschod', rano, t.auto.rano, 'przes_otw', 'otworz', '07:00', 300, 660, t.wschodSlonca);
+    pora('wieczor', 'zachod', wieczor, t.auto.wieczor, 'przes_zam', 'zamknij', '21:00', 1020, 1410, t.zachodSlonca);
+    if (okna && wieczor) w.push(this._oknaWieczorem());
     if (!o.bez_slonca) {
       const poz = 100 - (+o.slonce_poz || 20);
       wiersz('slonce', 'slonce', !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak('slonce', 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5)
-        + `<div class="suw chipy"><span style="min-width:auto">${esc(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? 'wyb' : ''}" data-azymut="${a}">${esc(t.strony[k])}</button>`).join('')}</div>`);
+        + (o.czujnik_temp || o.pogoda ? this._par('slonce_temp', t.odTemp) : '') + `<div class="suw chipy"><span style="min-width:auto">${esc(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? 'wyb' : ''}" data-azymut="${a}">${esc(t.strony[k])}</button>`).join('')}</div>`);
     }
     if (okna) {
       wiersz('blokada', 'tarcza', !!o.f_blokada, t.auto.blokada, t.okienne);
-      wiersz('wietrzenie', 'okno', !!o.f_wietrzenie, t.auto.wietrzenie, t.okienne);
+      wiersz('wietrzenie', 'okno', !!o.f_wietrzenie, t.auto.wietrzenie, t.okienne, this._par('wietrzenie_poz', t.pozycja));
     }
     const zew = czyZew(o.oslona);
-    if (zew && (o.pogoda || o.czujnik_wiatr)) wiersz('wiatr', 'wiatr', !!o.f_wiatr, t.auto.wiatr, wstaw(t.wiatrOpis, o.wiatr_prog || 40));
-    if (AUTO_ZEW.includes(o.oslona) && (o.pogoda || o.czujnik_deszcz)) wiersz('deszcz', 'deszcz', !!o.f_deszcz, t.auto.deszcz, t.deszczOpis);
+    if (zew && (o.pogoda || o.czujnik_wiatr)) wiersz('wiatr', 'wiatr', !!o.f_wiatr, t.auto.wiatr, wstaw(t.wiatrOpis, o.wiatr_prog ?? 40),
+      this._zrodlo('wiatr', 'czujnik_wiatr') + this._par('wiatr_prog', t.prog) + this._par('wiatr_poz', t.pozycja));
+    if (AUTO_ZEW.includes(o.oslona) && (o.pogoda || o.czujnik_deszcz)) wiersz('deszcz', 'deszcz', !!o.f_deszcz, t.auto.deszcz, t.deszczOpis,
+      this._zrodlo('deszcz', 'czujnik_deszcz') + this._par('deszcz_poz', t.pozycja));
     if (!zew || !(o.pogoda || o.czujnik_wiatr)) w.push(`<p class="pod" style="margin-top:6px">${esc(t.autoPodpis)}</p>`);
     return w.join('');
+  }
+  _harm(k) { const o = this.S.o; return o[k === 'rano' ? 'harm_rano' : 'harm_wieczor'] || o.harm_tryb || 'godziny'; }
+  _opisPory(k) {
+    const o = this.S.o, t = this.t, rano = k === 'rano';
+    if (this._harm(k) !== 'slonce') return wstaw(t.oGodz, godz(minuty(o[rano ? 'otworz' : 'zamknij'] || (rano ? '07:00' : '21:00'))));
+    const m = +(o[rano ? 'przes_otw' : 'przes_zam'] ?? 0);
+    if (!m) return rano ? t.oWschodzie : t.oZachodzie;
+    return wstaw(t[(m > 0 ? 'po' : 'przed') + (rano ? 'Wsch' : 'Zach')], Math.abs(m));
+  }
+  // co wieczorne zamykanie zrobi przy każdym skrzydle z czujnikiem okna
+  _oknaWieczorem() {
+    const S = this.S, o = S.o, t = this.t;
+    const wiersze = S.pola.map((p, i) => [p, i]).filter(([p]) => p.czujnik).map(([p, i]) => {
+      const uch = p.tryb !== 'otworz';
+      const co = uch && o.f_wietrzenie ? wstaw(t.zjedzieDo, o.wietrzenie_poz ?? PAR.wietrzenie_poz.dom) : o.f_blokada ? t.nieZjedzie : t.zjedzieNormalnie;
+      return `<div class="ow"><span class="nr">${i + 1}</span><span><b>${esc(this._nazwa(p.czujnik))}</b> · ${esc(uch ? t.uchyl : t.otworz)} → ${esc(co)}</span></div>`;
+    });
+    return `<div class="okw"><div class="et">${ik('okno', 16)} ${esc(t.oknaWieczorem)}</div>${wiersze.join('')}<div class="pod">${esc(t.pozniej)}</div></div>`;
+  }
+  // ustawienia włączonej automatyki: z czego bierze dane, próg i pozycja (suwaki pod wierszem)
+  _par(k, etykieta) {
+    const d = PAR[k], v = +(this.S.o[k] ?? d.dom);
+    return `<div class="suw"><span class="et">${esc(etykieta)}</span><input type="range" min="${d.mn}" max="${d.mx}" step="${d.krok}" value="${v}" data-par="${k}" aria-label="${esc(etykieta)}"><span>${esc(d.fmt(v))}</span></div>`;
+  }
+  _zrodlo(r, klucz) {
+    const o = this.S.o, t = this.t, lista = this._czujnik(r).lista;
+    const opcje = [...lista.map(x => [x.id, x.nazwa]), ...(o.pogoda ? [['', this._nazwa(o.pogoda)]] : [])];
+    if (opcje.length < 2) return '';
+    return `<div class="suw chipy"><span class="et">${esc(t.zrodlo)}</span>${opcje.map(([id, n]) => `<button class="chip ${(o[klucz] || '') === id ? 'wyb' : ''}" data-zrodlo="${esc(id)}" data-klucz="${klucz}">${esc(n)}</button>`).join('')}</div>`;
   }
   str_stoper() {
     const S = this.S, t = this.t, p = S.pomiar || {};
@@ -445,6 +505,7 @@ export class MotorHaKreator extends HTMLElement {
     return `<div class="duzy"><div id="okKal">${this._oknoNaZywo()}</div>
       <div class="zegar" id="zegar">${p.trwa ? this._sekundy() : czas ? `${String(czas).replace('.', this._przecinek())} s${p.czas ? ' ✓' : ''}` : '— s'}</div>
       <button class="btn" id="mierz" ${p.trwa || !S.rolety.length ? 'disabled' : ''}>${esc(p.trwa ? t.mierze : czas ? t.zmierzZnow : t.zmierz)}</button>
+      ${p.silniki?.length > 1 ? `<div class="okw" style="margin:0;align-self:stretch"><div class="et">${ik('stoper', 16)} ${esc(t.kazdy)}</div>${p.silniki.map((x, i) => `<div class="ow"><span class="nr">${i + 1}</span><span style="flex:1">${esc(x.nazwa)}</span><b>${String(x.czas).replace('.', this._przecinek())} s</b></div>`).join('')}</div>` : ''}
       ${p.blad ? `<p class="blad">${esc(p.blad)}</p>` : ''}
       <p class="pod" style="text-align:center">${esc(t.pomin)}</p></div>`;
   }
@@ -469,7 +530,7 @@ export class MotorHaKreator extends HTMLElement {
     const tik = setInterval(() => { if (!S.pomiar?.trwa) clearInterval(tik); else this._odswiezPomiar(); }, 100);
     try {
       const w = await this._hass.callWS({ type: 'motor_ha/kreator/mierz', rolety });
-      if (w.czas) { S.o.czas = w.czas; S.pomiar = { czas: w.czas }; }
+      if (w.czas) { S.o.czas = w.czas; S.pomiar = { czas: w.czas, silniki: w.silniki || [] }; }
       else S.pomiar = { blad: w.brak?.length ? wstaw(t.nieOdp, w.brak.join(', ')) : w.wynik === 'kalibracja_od_razu' ? t.odRazu : t.bladPomiaru };
     } catch (e) { S.pomiar = { blad: t.bladPomiaru }; }
     clearInterval(tik);
@@ -520,7 +581,7 @@ export class MotorHaKreator extends HTMLElement {
       const x = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
       d.push(`<g data-ep="${i}"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
         <rect x="${x + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${on ? 'rgba(255,152,0,.35)' : n1}" stroke="${on ? '#ff9800' : 'none'}" stroke-width="3"/>
-        <text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="var(--fg)">${i + 1}</text></g>`);
+        <text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? '#3a2600' : 'var(--fg)'}">${i + 1}</text></g>`);
     });
     const uchwyt = (typ, id, x, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? 'ns' : 'ew'}-resize"><circle cx="${x}" cy="${y}" r="16" fill="transparent"/>
       <rect x="${x - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
@@ -529,6 +590,9 @@ export class MotorHaKreator extends HTMLElement {
       const w = k.w / suma, X = EP + x * iw, W = w * iw, wys = 1 - k.dol, sr = k.r.reduce((a, b) => a + b, 0);
       let y = 0;
       k.r.forEach((h, j) => { y += h / sr * wys; if (j < k.r.length - 1) d.push(uchwyt('r', `${c}-${j}`, X + W / 2, EP + y * ih, true)); });
+      // puste miejsce pod podniesioną kolumną: dotknięcie dokłada tam pole (np. drzwi pod naświetlem)
+      if (k.dol >= .08 && k.r.length < 3) d.push(`<g data-dodaj="${c}" style="cursor:pointer"><rect x="${X + 4}" y="${EP + wys * ih + 10}" width="${Math.max(0, W - 8)}" height="${Math.max(0, k.dol * ih - 14)}" rx="4" fill="transparent" stroke="var(--fg2)" stroke-dasharray="5 4"/>
+        <text x="${X + W / 2}" y="${EP + (wys + k.dol / 2) * ih + 11}" text-anchor="middle" font-size="22" fill="var(--fg2)">+</text></g>`);
       d.push(uchwyt('d', c, X + W / 2, EP + wys * ih, true));
       x += w;
       if (c < K.length - 1) d.push(uchwyt('k', c, EP + x * iw, EP + ih * .5, false));
@@ -545,9 +609,15 @@ export class MotorHaKreator extends HTMLElement {
   }
   operacja(op) {
     const S = this.S, K = S.u.kol, P = prostokaty(S.u);
-    let i = Math.min(S.wyb, P.length - 1), c = 0;
-    while (i >= K[c].r.length) { i -= K[c].r.length; c++; }
+    let i = op === 'dodaj' ? arguments[1] : Math.min(S.wyb, P.length - 1), c = 0;
+    if (op !== 'dodaj') while (i >= K[c].r.length) { i -= K[c].r.length; c++; }
     const k = K[c];
+    if (op === 'dodaj') {   // pole w pustym miejscu pod kolumną nr i
+      const kd = K[i], wys = 1 - kd.dol, sr = kd.r.reduce((a, b) => a + b, 0);
+      kd.r = [...kd.r.map(h => h / sr * wys), kd.dol]; kd.dol = 0;
+      S.wyb = K.slice(0, i).reduce((a, x) => a + x.r.length, 0) + kd.r.length - 1;
+      this._dopasujPola(false); return this.rysuj();
+    }
     if (op === 'poz' && k.r.length < 3) { const h = k.r[i] / 2; k.r.splice(i, 1, h, h); }
     if (op === 'pion' && K.length < 4) { k.w /= 2; K.splice(c + 1, 0, { w: k.w, r: [...k.r], dol: k.dol }); }
     if (op === 'usun' && P.length > 1) {
@@ -578,24 +648,31 @@ export class MotorHaKreator extends HTMLElement {
     this._odswiezUklad();
   }
 
+  // listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (i to, co już wybrane); reszta domu po „Pokaż wszystkie”
+  _tylkoTu(lista, tu, wybrane) {
+    if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: '' };
+    return { lista: lista.filter(x => tu(x) || wybrane.includes(x.id)),
+      wiecej: `<button class="chip" data-wszystkie="1">${esc(this.t.wszystkie)}</button>` };
+  }
   arkusz() {
     const S = this.S, t = this.t, i = S.arkusz, p = S.pola[i] || (S.pola[i] = { tryb: 'uchyl' });
     const pokoj = this._oslona(S.rolety[0])?.area;
-    const silniki = this.dane.oslony.filter(o => !o.brama && (!o.zajeta || S.rolety.includes(o.id)))
-      .sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa));
-    const okna = this._czujnik('okno').lista;
+    const sil = this._tylkoTu(this.dane.oslony.filter(o => !o.brama && (!o.grupa || S.rolety.includes(o.id)) && (!o.zajeta || S.rolety.includes(o.id)))
+      .sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa)), o => pokoj && o.area === pokoj, [p.silnik, ...S.rolety]);
+    const silniki = sil.lista;
+    const ok = this._tylkoTu(this._czujnik('okno').lista, c => c.tu, [p.czujnik]), okna = ok.lista;
     return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc(wstaw(t.pole, i + 1))}"><div class="uchwyt"></div><h2>${esc(wstaw(t.pole, i + 1))}</h2>
-      <div class="sek">${esc(t.silnikPola)}</div><div class="chipy">${silniki.map(o => `<button class="chip ${p.silnik === o.id ? 'wyb' : ''}" data-silnik="${esc(o.id)}">${esc(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc(o.pokoj)}</span>` : ''}</button>`).join('')}</div>
+      <div class="sek">${esc(t.silnikPola)}</div><div class="chipy">${silniki.map(o => `<button class="chip ${p.silnik === o.id ? 'wyb' : ''}" data-silnik="${esc(o.id)}">${esc(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc(o.pokoj)}</span>` : ''}</button>`).join('')}${sil.wiecej}</div>
       <div class="sek">${esc(t.czujnikPola)}</div><div class="chipy">${okna.map(c => `<button class="chip ${p.czujnik === c.id ? 'wyb' : ''}" data-czuj="${esc(c.id)}">${esc(c.nazwa)}${c.tu && c.pokoj ? `<span class="p">${esc(c.pokoj)}</span>` : ''}</button>`).join('')}
-      <button class="chip ${!p.czujnik ? 'wyb' : ''}" data-czuj="">${esc(t.bezCzujnika)}</button></div>
+      ${ok.wiecej}<button class="chip ${!p.czujnik ? 'wyb' : ''}" data-czuj="">${esc(t.bezCzujnika)}</button></div>
       ${p.czujnik ? `<div class="sek">${esc(t.gdyOtwarte)}</div><div class="chipy">${['uchyl', 'otworz'].map(k => `<button class="chip ${p.tryb === k ? 'wyb' : ''}" data-tryb="${k}">${esc(t[k])}</button>`).join('')}</div>` : ''}
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc(t.gotowe)}</button></div></div>`;
   }
   arkuszCzujnika(r) {
-    const S = this.S, t = this.t, klucz = this._listaCzujnikow().find(x => x[0] === r)[2], c = this._czujnik(r);
+    const S = this.S, t = this.t, klucz = this._listaCzujnikow().find(x => x[0] === r)[2], c = this._tylkoTu(this._czujnik(r).lista, x => x.tu, [S.o[klucz]]);
     return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc(t.czujniki[r])}"><div class="uchwyt"></div><h2>${esc(t.czujniki[r])}</h2>
       <div class="chipy" style="margin-top:12px">${c.lista.map(x => `<button class="chip ${S.o[klucz] === x.id ? 'wyb' : ''}" data-wybierz="${esc(x.id)}" data-klucz="${klucz}">${esc(x.nazwa)}${x.pokoj ? `<span class="p">${esc(x.pokoj)}</span>` : ''}</button>`).join('')}
-      <button class="chip ${!S.o[klucz] ? 'wyb' : ''}" data-wybierz="" data-klucz="${klucz}">${esc(t.nieUzywaj)}</button></div>
+      ${c.wiecej}<button class="chip ${!S.o[klucz] ? 'wyb' : ''}" data-wybierz="" data-klucz="${klucz}">${esc(t.nieUzywaj)}</button></div>
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc(t.gotowe)}</button></div></div>`;
   }
 
@@ -655,7 +732,7 @@ export class MotorHaKreator extends HTMLElement {
   }
 
   async _klik(e) {
-    const b = e.target.closest('button, g[data-pole], [data-zamknij]');
+    const b = e.target.closest('button, g[data-pole], g[data-dodaj], [data-zamknij]');
     if (!b) return;
     const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
     if (d.x) return this._p.zamknij();
@@ -682,19 +759,22 @@ export class MotorHaKreator extends HTMLElement {
     } else if (d.uklad !== undefined) { S.u = zSzablonu(UKLADY[+d.uklad][1]); S.szablon = +d.uklad; S.recznie.uklad = true; this._dopasujPola(false); }
     else if (d.wlasny) { S.szablon = 'w'; S.recznie.uklad = true; S.wyb = 0; }
     else if (d.op) return this.operacja(d.op);
+    else if (d.dodaj !== undefined) return this.operacja('dodaj', +d.dodaj);
     else if (d.rodzaj) { o.oslona = d.rodzaj; S.recznie.rodzaj = true; }
     else if (d.kolor) { o.kolor = d.kolor; delete o.kolor_wlasny; }
     else if (d.rama) { o.rama = d.rama; delete o.rama_wlasna; }
-    else if (d.pole !== undefined) S.arkusz = +d.pole;
-    else if (d.zamknij) { S.arkusz = null; S.arkuszC = null; }
+    else if (d.pole !== undefined) { S.arkusz = +d.pole; S.wszystkie = false; }
+    else if (d.zamknij) { S.arkusz = null; S.arkuszC = null; S.wszystkie = false; }
+    else if (d.wszystkie) S.wszystkie = true;
     else if (d.silnik) { S.pola[S.arkusz].silnik = d.silnik; if (!S.rolety.includes(d.silnik)) S.rolety.push(d.silnik); }
     else if (d.czuj !== undefined) S.pola[S.arkusz].czujnik = d.czuj || undefined;
     else if (d.tryb) S.pola[S.arkusz].tryb = d.tryb;
     else if (d.slonce) { o.bez_slonca = !o.bez_slonca; if (o.bez_slonca) o.f_slonce = false; }
-    else if (d.czujnik) S.arkuszC = d.czujnik;
-    else if (d.wybierz !== undefined) { if (d.wybierz) o[d.klucz] = d.wybierz; else delete o[d.klucz]; S.arkuszC = null; }
+    else if (d.czujnik) { S.arkuszC = d.czujnik; S.wszystkie = false; }
+    else if (d.zrodlo !== undefined) { if (d.zrodlo) o[d.klucz] = d.zrodlo; else delete o[d.klucz]; }
+    else if (d.wybierz !== undefined) { if (d.wybierz) o[d.klucz] = d.wybierz; else delete o[d.klucz]; S.arkuszC = null; S.wszystkie = false; }
     else if (d.auto) this._przelacz(d.auto);
-    else if (d.zeslonca) o.harm_tryb = o.harm_tryb === 'slonce' ? 'godziny' : 'slonce';
+    else if (d.harm) o[d.harm === 'rano' ? 'harm_rano' : 'harm_wieczor'] = d.v;
     else if (d.azymut) o.azymut = +d.azymut;
     else if (d.tel) { const g = new Set(o.powiadom_gdzie || []); g.has(d.tel) ? g.delete(d.tel) : g.add(d.tel); o.powiadom_gdzie = [...g]; }
     else if (d.powiadom) { const g = new Set(o.powiadom || []); g.has(d.powiadom) ? g.delete(d.powiadom) : g.add(d.powiadom); o.powiadom = [...g]; }
@@ -724,12 +804,20 @@ export class MotorHaKreator extends HTMLElement {
   _wpis(e) {
     const el = e.target, S = this.S;
     if (el.id === 'nazwa') { S.tytul = el.value; S.recznie.tytul = true; if (this._kartaEl) { this._kartaEl.setConfig(this._konfigKarty()); this._kartaEl.hass = this._hassKarty(); } return; }
+    if (el.dataset?.par) {
+      const k = el.dataset.par, v = +el.value;
+      S.o[k] = v; el.nextElementSibling.textContent = PAR[k].fmt(v);
+      if (k === 'przes_otw' || k === 'przes_zam') { const r = k === 'przes_otw' ? 'rano' : 'wieczor', sm = el.closest('.suw').parentElement.querySelector(`[data-auto="${r}"] small`); if (sm) sm.textContent = this._opisPory(r); }
+      if (k === 'wiatr_prog') { const sm = el.closest('.suw').parentElement.querySelector('[data-auto="wiatr"] small'); if (sm) sm.textContent = wstaw(this.t.wiatrOpis, v); }
+      return;
+    }
     const g = el.dataset?.suw; if (!g) return;
     const v = +el.value;
     if (g === 'slonce') S.o.slonce_poz = v; else S.o[g] = godz(v) + ':00';
     el.nextElementSibling.textContent = g === 'slonce' ? 100 - v + ' %' : godz(v);
-    const sm = el.closest('.suw').previousElementSibling.querySelector('small');
-    if (sm) sm.textContent = g === 'slonce' ? wstaw(this.t.zaslon, 100 - v) : wstaw(this.t.oGodz, godz(v));
+    const sm = g === 'slonce' ? el.closest('.suw').previousElementSibling.querySelector('small')
+      : el.closest('.suw').parentElement.querySelector(`[data-auto="${g === 'otworz' ? 'rano' : 'wieczor'}"] small`);
+    if (sm) sm.textContent = g === 'slonce' ? wstaw(this.t.zaslon, 100 - v) : this._opisPory(g === 'otworz' ? 'rano' : 'wieczor');
   }
   _zapisz(b) {
     const S = this.S;

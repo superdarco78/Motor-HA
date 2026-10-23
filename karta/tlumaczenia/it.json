@@ -353,7 +353,7 @@
       "wieczor": "Chiudi la sera",
       "slonce": "Proteggi dal sole",
       "blokada": "Non chiudere con la finestra aperta",
-      "wietrzenie": "Finestra a ribalta = tenda a metà",
+      "wietrzenie": "Finestra a ribalta = alza la tenda",
       "wiatr": "Vento forte = ritira",
       "deszcz": "Pioggia = ritira"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Senza telefono, le notifiche appaiono solo in Home Assistant.",
     "naPanel": "Aggiungi alla dashboard",
     "nazwa": "Nome",
-    "zapisano": "Salvato ✓"
+    "zapisano": "Salvato ✓",
+    "wszystkie": "Mostra tutto",
+    "prog": "Soglia",
+    "pozycja": "Posizione",
+    "odTemp": "da temp.",
+    "zrodlo": "Fonte",
+    "przypiszPodpis": "Tocca un'anta nel disegno per sceglierne motore e sensore finestra.",
+    "wschodSlonca": "Alba",
+    "zachodSlonca": "Tramonto",
+    "godzina": "Ora",
+    "przesuniecie": "Scostamento",
+    "poWsch": "{0} min dopo l'alba",
+    "przedWsch": "{0} min prima dell'alba",
+    "poZach": "{0} min dopo il tramonto",
+    "przedZach": "{0} min prima del tramonto",
+    "oknaWieczorem": "La sera, con i sensori finestra",
+    "nieZjedzie": "non scende",
+    "zjedzieDo": "scende al {0} %",
+    "zjedzieNormalnie": "scende normalmente",
+    "pozniej": "Chiusa la finestra, la tapparella finisce da sola.",
+    "kazdy": "Ogni motore separatamente"
   }
 }

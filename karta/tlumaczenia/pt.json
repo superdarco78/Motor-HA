@@ -353,7 +353,7 @@
       "wieczor": "Fechar à noite",
       "slonce": "Proteger do sol",
       "blokada": "Não fechar com a janela aberta",
-      "wietrzenie": "Janela basculada = proteção a meio",
+      "wietrzenie": "Janela basculada = subir a proteção",
       "wiatr": "Vento forte = recolher",
       "deszcz": "Chuva = recolher"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Sem telemóvel, as notificações só aparecem no Home Assistant.",
     "naPanel": "Adicionar ao painel",
     "nazwa": "Nome",
-    "zapisano": "Guardado ✓"
+    "zapisano": "Guardado ✓",
+    "wszystkie": "Mostrar tudo",
+    "prog": "Limite",
+    "pozycja": "Posição",
+    "odTemp": "a partir de temp.",
+    "zrodlo": "Fonte",
+    "przypiszPodpis": "Toque numa folha no desenho para escolher o motor e o sensor de janela.",
+    "wschodSlonca": "Nascer do sol",
+    "zachodSlonca": "Pôr do sol",
+    "godzina": "Hora",
+    "przesuniecie": "Desvio",
+    "poWsch": "{0} min após o nascer do sol",
+    "przedWsch": "{0} min antes do nascer do sol",
+    "poZach": "{0} min após o pôr do sol",
+    "przedZach": "{0} min antes do pôr do sol",
+    "oknaWieczorem": "À noite, com sensores de janela",
+    "nieZjedzie": "não desce",
+    "zjedzieDo": "desce até {0} %",
+    "zjedzieNormalnie": "desce normalmente",
+    "pozniej": "Ao fechar a janela, a persiana termina sozinha.",
+    "kazdy": "Cada motor separadamente"
   }
 }

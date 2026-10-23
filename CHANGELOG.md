@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v2.2.1 – Krótsze listy w kreatorze
+
+- 🧹 Kreator: przy wyborze silnika, czujnika okna, obecności i innych czujników widać najpierw tylko to, co jest w pokoju osłony (plus to, co już wybrane). Reszta domu i telefony – po „Pokaż wszystkie”
+
 ## v2.2.0 – Kreator graficzny i okna z wieloma polami
 
 - 🧭 Nowy kreator graficzny przy „Dodaj urządzenie” i „Konfiguruj”: obrazki zamiast list, żywy podgląd okna w każdym kroku, na telefonie na cały ekran

@@ -353,7 +353,7 @@
       "wieczor": "Wieczorem zamknij",
       "slonce": "Chroń przed słońcem",
       "blokada": "Nie zamykaj na otwarte okno",
-      "wietrzenie": "Uchylone okno = osłona do połowy",
+      "wietrzenie": "Uchylone okno = podnieś osłonę",
       "wiatr": "Silny wiatr = zwiń",
       "deszcz": "Deszcz = zwiń"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Bez telefonu powiadomienia są tylko w Home Assistancie.",
     "naPanel": "Dodaj na panel",
     "nazwa": "Nazwa",
-    "zapisano": "Zapisano ✓"
+    "zapisano": "Zapisano ✓",
+    "wszystkie": "Pokaż wszystkie",
+    "prog": "Próg",
+    "pozycja": "Pozycja",
+    "odTemp": "od temp.",
+    "zrodlo": "Źródło",
+    "przypiszPodpis": "Dotknij skrzydła na rysunku: wybierz silnik i czujnik okna.",
+    "wschodSlonca": "Wschód słońca",
+    "zachodSlonca": "Zachód słońca",
+    "godzina": "Godzina",
+    "przesuniecie": "Przesunięcie",
+    "poWsch": "{0} min po wschodzie",
+    "przedWsch": "{0} min przed wschodem",
+    "poZach": "{0} min po zachodzie",
+    "przedZach": "{0} min przed zachodem",
+    "oknaWieczorem": "Wieczorem przy czujnikach okien",
+    "nieZjedzie": "nie zjedzie",
+    "zjedzieDo": "zjedzie do {0} %",
+    "zjedzieNormalnie": "zjedzie normalnie",
+    "pozniej": "Gdy zamkniesz okno, osłona dojedzie sama.",
+    "kazdy": "Każdy silnik osobno"
   }
 }

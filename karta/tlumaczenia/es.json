@@ -353,7 +353,7 @@
       "wieczor": "Cerrar por la tarde",
       "slonce": "Proteger del sol",
       "blokada": "No cerrar con la ventana abierta",
-      "wietrzenie": "Ventana abatida = estor a media altura",
+      "wietrzenie": "Ventana abatida = subir el estor",
       "wiatr": "Viento fuerte = recoger",
       "deszcz": "Lluvia = recoger"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Sin teléfono, los avisos solo aparecen en Home Assistant.",
     "naPanel": "Añadir al panel",
     "nazwa": "Nombre",
-    "zapisano": "Guardado ✓"
+    "zapisano": "Guardado ✓",
+    "wszystkie": "Mostrar todo",
+    "prog": "Umbral",
+    "pozycja": "Posición",
+    "odTemp": "desde temp.",
+    "zrodlo": "Fuente",
+    "przypiszPodpis": "Toca una hoja en el dibujo para elegir su motor y sensor de ventana.",
+    "wschodSlonca": "Amanecer",
+    "zachodSlonca": "Atardecer",
+    "godzina": "Hora",
+    "przesuniecie": "Desfase",
+    "poWsch": "{0} min después del amanecer",
+    "przedWsch": "{0} min antes del amanecer",
+    "poZach": "{0} min después del atardecer",
+    "przedZach": "{0} min antes del atardecer",
+    "oknaWieczorem": "Por la noche, con sensores de ventana",
+    "nieZjedzie": "no baja",
+    "zjedzieDo": "baja al {0} %",
+    "zjedzieNormalnie": "baja con normalidad",
+    "pozniej": "Al cerrar la ventana, la persiana termina sola.",
+    "kazdy": "Cada motor por separado"
   }
 }

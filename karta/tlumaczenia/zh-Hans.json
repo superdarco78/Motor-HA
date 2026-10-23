@@ -353,7 +353,7 @@
       "wieczor": "晚上关闭",
       "slonce": "防晒",
       "blokada": "窗户打开时不关闭",
-      "wietrzenie": "内倒窗 = 遮阳半开",
+      "wietrzenie": "内倒窗 = 升起遮阳",
       "wiatr": "大风 = 收起",
       "deszcz": "下雨 = 收起"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "没有手机时，通知只显示在 Home Assistant 中。",
     "naPanel": "添加到仪表板",
     "nazwa": "名称",
-    "zapisano": "已保存 ✓"
+    "zapisano": "已保存 ✓",
+    "wszystkie": "显示全部",
+    "prog": "阈值",
+    "pozycja": "位置",
+    "odTemp": "起始温度",
+    "zrodlo": "来源",
+    "przypiszPodpis": "点按图中的窗扇，选择电机和窗户传感器。",
+    "wschodSlonca": "日出",
+    "zachodSlonca": "日落",
+    "godzina": "时间",
+    "przesuniecie": "偏移",
+    "poWsch": "日出后 {0} 分钟",
+    "przedWsch": "日出前 {0} 分钟",
+    "poZach": "日落后 {0} 分钟",
+    "przedZach": "日落前 {0} 分钟",
+    "oknaWieczorem": "晚上与窗户传感器联动",
+    "nieZjedzie": "不会关闭",
+    "zjedzieDo": "关到 {0} %",
+    "zjedzieNormalnie": "正常关闭",
+    "pozniej": "关窗后，遮阳会自动关完。",
+    "kazdy": "每个电机单独"
   }
 }

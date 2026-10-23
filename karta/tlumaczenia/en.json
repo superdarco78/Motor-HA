@@ -353,7 +353,7 @@
       "wieczor": "Close in the evening",
       "slonce": "Protect from the sun",
       "blokada": "Don’t close on an open window",
-      "wietrzenie": "Tilted window = cover halfway",
+      "wietrzenie": "Tilted window = raise the cover",
       "wiatr": "Strong wind = retract",
       "deszcz": "Rain = retract"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Without a phone, notifications appear only in Home Assistant.",
     "naPanel": "Add to dashboard",
     "nazwa": "Name",
-    "zapisano": "Saved ✓"
+    "zapisano": "Saved ✓",
+    "wszystkie": "Show all",
+    "prog": "Threshold",
+    "pozycja": "Position",
+    "odTemp": "from temp.",
+    "zrodlo": "Source",
+    "przypiszPodpis": "Tap a sash in the drawing to pick its motor and window sensor.",
+    "wschodSlonca": "Sunrise",
+    "zachodSlonca": "Sunset",
+    "godzina": "Time",
+    "przesuniecie": "Offset",
+    "poWsch": "{0} min after sunrise",
+    "przedWsch": "{0} min before sunrise",
+    "poZach": "{0} min after sunset",
+    "przedZach": "{0} min before sunset",
+    "oknaWieczorem": "In the evening, with window sensors",
+    "nieZjedzie": "won't close",
+    "zjedzieDo": "closes to {0} %",
+    "zjedzieNormalnie": "closes as usual",
+    "pozniej": "Once you close the window, the cover finishes on its own.",
+    "kazdy": "Each motor separately"
   }
 }

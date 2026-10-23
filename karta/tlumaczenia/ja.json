@@ -353,7 +353,7 @@
       "wieczor": "夜に閉める",
       "slonce": "日差しから守る",
       "blokada": "窓が開いていたら閉めない",
-      "wietrzenie": "内倒しの窓 = シェード半分",
+      "wietrzenie": "内倒しの窓 = シェードを上げる",
       "wiatr": "強風 = 収納",
       "deszcz": "雨 = 収納"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "スマホがない場合、通知は Home Assistant にのみ表示されます。",
     "naPanel": "ダッシュボードに追加",
     "nazwa": "名前",
-    "zapisano": "保存しました ✓"
+    "zapisano": "保存しました ✓",
+    "wszystkie": "すべて表示",
+    "prog": "しきい値",
+    "pozycja": "位置",
+    "odTemp": "気温から",
+    "zrodlo": "ソース",
+    "przypiszPodpis": "図のサッシをタップして、モーターと窓センサーを選びます。",
+    "wschodSlonca": "日の出",
+    "zachodSlonca": "日の入り",
+    "godzina": "時刻",
+    "przesuniecie": "ずらし",
+    "poWsch": "日の出の{0}分後",
+    "przedWsch": "日の出の{0}分前",
+    "poZach": "日の入りの{0}分後",
+    "przedZach": "日の入りの{0}分前",
+    "oknaWieczorem": "夜、窓センサーとの連動",
+    "nieZjedzie": "閉まりません",
+    "zjedzieDo": "{0} %まで閉まります",
+    "zjedzieNormalnie": "通常どおり閉まります",
+    "pozniej": "窓を閉めると、カバーは自動で閉まりきります。",
+    "kazdy": "モーターごと"
   }
 }

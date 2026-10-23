@@ -353,7 +353,7 @@
       "wieczor": "Večer zatvoriť",
       "slonce": "Chrániť pred slnkom",
       "blokada": "Nezatvárať pri otvorenom okne",
-      "wietrzenie": "Vyklopené okno = tienenie napoly",
+      "wietrzenie": "Vyklopené okno = zdvihnúť tienenie",
       "wiatr": "Silný vietor = zatiahnuť",
       "deszcz": "Dážď = zatiahnuť"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Bez telefónu sa upozornenia zobrazia len v Home Assistante.",
     "naPanel": "Pridať na panel",
     "nazwa": "Názov",
-    "zapisano": "Uložené ✓"
+    "zapisano": "Uložené ✓",
+    "wszystkie": "Zobraziť všetko",
+    "prog": "Prah",
+    "pozycja": "Poloha",
+    "odTemp": "od teploty",
+    "zrodlo": "Zdroj",
+    "przypiszPodpis": "Ťuknite na krídlo na nákrese: vyberte motor a snímač okna.",
+    "wschodSlonca": "Východ slnka",
+    "zachodSlonca": "Západ slnka",
+    "godzina": "Čas",
+    "przesuniecie": "Posun",
+    "poWsch": "{0} min po východe",
+    "przedWsch": "{0} min pred východom",
+    "poZach": "{0} min po západe",
+    "przedZach": "{0} min pred západom",
+    "oknaWieczorem": "Večer pri snímačoch okien",
+    "nieZjedzie": "nezíde",
+    "zjedzieDo": "zíde na {0} %",
+    "zjedzieNormalnie": "zíde normálne",
+    "pozniej": "Keď okno zatvoríte, tienenie dôjde samo.",
+    "kazdy": "Každý motor zvlášť"
   }
 }

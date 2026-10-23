@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.2.0";
+  var WERSJA = "2.2.1";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -380,7 +380,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 /* układ z polami (2.2.0): każde pole w swoim miejscu, rama osobno dla każdej kolumny (np. okno nad kaloryferem) */
 .okno.uk{background:none!important;box-shadow:none!important;padding:0}
 .uk .kolr{position:absolute;border-radius:3px}
-.uk .skrz{position:absolute;flex:none;margin:0;padding:5px}
+.uk .skrz{position:absolute;flex:none;margin:0;padding:5px;overflow:hidden}
 .uk .za{inset:auto}
 .uk .wid{position:absolute}
 .uk .zewo .szyba{position:absolute;flex:none}
@@ -1228,7 +1228,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Wieczorem zamknij",
         slonce: "Chroń przed słońcem",
         blokada: "Nie zamykaj na otwarte okno",
-        wietrzenie: "Uchylone okno = osłona do połowy",
+        wietrzenie: "Uchylone okno = podnieś osłonę",
         wiatr: "Silny wiatr = zwiń",
         deszcz: "Deszcz = zwiń"
       },
@@ -1279,7 +1279,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Bez telefonu powiadomienia są tylko w Home Assistancie.",
       naPanel: "Dodaj na panel",
       nazwa: "Nazwa",
-      zapisano: "Zapisano ✓"
+      zapisano: "Zapisano ✓",
+      wszystkie: "Pokaż wszystkie",
+      prog: "Próg",
+      pozycja: "Pozycja",
+      odTemp: "od temp.",
+      zrodlo: "Źródło",
+      przypiszPodpis: "Dotknij skrzydła na rysunku: wybierz silnik i czujnik okna.",
+      wschodSlonca: "Wschód słońca",
+      zachodSlonca: "Zachód słońca",
+      godzina: "Godzina",
+      przesuniecie: "Przesunięcie",
+      poWsch: "{0} min po wschodzie",
+      przedWsch: "{0} min przed wschodem",
+      poZach: "{0} min po zachodzie",
+      przedZach: "{0} min przed zachodem",
+      oknaWieczorem: "Wieczorem przy czujnikach okien",
+      nieZjedzie: "nie zjedzie",
+      zjedzieDo: "zjedzie do {0} %",
+      zjedzieNormalnie: "zjedzie normalnie",
+      pozniej: "Gdy zamkniesz okno, osłona dojedzie sama.",
+      kazdy: "Każdy silnik osobno"
     }
   };
 
@@ -1639,7 +1659,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Close in the evening",
         slonce: "Protect from the sun",
         blokada: "Don’t close on an open window",
-        wietrzenie: "Tilted window = cover halfway",
+        wietrzenie: "Tilted window = raise the cover",
         wiatr: "Strong wind = retract",
         deszcz: "Rain = retract"
       },
@@ -1690,7 +1710,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Without a phone, notifications appear only in Home Assistant.",
       naPanel: "Add to dashboard",
       nazwa: "Name",
-      zapisano: "Saved ✓"
+      zapisano: "Saved ✓",
+      wszystkie: "Show all",
+      prog: "Threshold",
+      pozycja: "Position",
+      odTemp: "from temp.",
+      zrodlo: "Source",
+      przypiszPodpis: "Tap a sash in the drawing to pick its motor and window sensor.",
+      wschodSlonca: "Sunrise",
+      zachodSlonca: "Sunset",
+      godzina: "Time",
+      przesuniecie: "Offset",
+      poWsch: "{0} min after sunrise",
+      przedWsch: "{0} min before sunrise",
+      poZach: "{0} min after sunset",
+      przedZach: "{0} min before sunset",
+      oknaWieczorem: "In the evening, with window sensors",
+      nieZjedzie: "won't close",
+      zjedzieDo: "closes to {0} %",
+      zjedzieNormalnie: "closes as usual",
+      pozniej: "Once you close the window, the cover finishes on its own.",
+      kazdy: "Each motor separately"
     }
   };
 
@@ -2050,7 +2090,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Abends schließen",
         slonce: "Vor Sonne schützen",
         blokada: "Bei offenem Fenster nicht schließen",
-        wietrzenie: "Gekipptes Fenster = Behang halb",
+        wietrzenie: "Gekipptes Fenster = Behang anheben",
         wiatr: "Starker Wind = einfahren",
         deszcz: "Regen = einfahren"
       },
@@ -2101,7 +2141,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Ohne Telefon erscheinen Benachrichtigungen nur in Home Assistant.",
       naPanel: "Zum Dashboard hinzufügen",
       nazwa: "Name",
-      zapisano: "Gespeichert ✓"
+      zapisano: "Gespeichert ✓",
+      wszystkie: "Alle anzeigen",
+      prog: "Schwelle",
+      pozycja: "Position",
+      odTemp: "ab Temp.",
+      zrodlo: "Quelle",
+      przypiszPodpis: "Tippe auf einen Flügel in der Zeichnung: Motor und Fenstersensor wählen.",
+      wschodSlonca: "Sonnenaufgang",
+      zachodSlonca: "Sonnenuntergang",
+      godzina: "Uhrzeit",
+      przesuniecie: "Versatz",
+      poWsch: "{0} Min. nach Sonnenaufgang",
+      przedWsch: "{0} Min. vor Sonnenaufgang",
+      poZach: "{0} Min. nach Sonnenuntergang",
+      przedZach: "{0} Min. vor Sonnenuntergang",
+      oknaWieczorem: "Abends mit Fenstersensoren",
+      nieZjedzie: "fährt nicht zu",
+      zjedzieDo: "fährt auf {0} %",
+      zjedzieNormalnie: "fährt normal zu",
+      pozniej: "Sobald das Fenster zu ist, fährt der Behang von selbst weiter.",
+      kazdy: "Jeder Motor einzeln"
     }
   };
 
@@ -2461,7 +2521,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Fermer le soir",
         slonce: "Protéger du soleil",
         blokada: "Ne pas fermer si la fenêtre est ouverte",
-        wietrzenie: "Fenêtre basculée = store à mi-hauteur",
+        wietrzenie: "Fenêtre basculée = remonter le store",
         wiatr: "Vent fort = remonter",
         deszcz: "Pluie = remonter"
       },
@@ -2512,7 +2572,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Sans téléphone, les notifications n’apparaissent que dans Home Assistant.",
       naPanel: "Ajouter au tableau de bord",
       nazwa: "Nom",
-      zapisano: "Enregistré ✓"
+      zapisano: "Enregistré ✓",
+      wszystkie: "Tout afficher",
+      prog: "Seuil",
+      pozycja: "Position",
+      odTemp: "dès temp.",
+      zrodlo: "Source",
+      przypiszPodpis: "Touchez un vantail sur le dessin pour choisir son moteur et son capteur de fenêtre.",
+      wschodSlonca: "Lever du soleil",
+      zachodSlonca: "Coucher du soleil",
+      godzina: "Heure",
+      przesuniecie: "Décalage",
+      poWsch: "{0} min après le lever",
+      przedWsch: "{0} min avant le lever",
+      poZach: "{0} min après le coucher",
+      przedZach: "{0} min avant le coucher",
+      oknaWieczorem: "Le soir, avec les capteurs de fenêtre",
+      nieZjedzie: "ne descend pas",
+      zjedzieDo: "descend à {0} %",
+      zjedzieNormalnie: "descend normalement",
+      pozniej: "Une fois la fenêtre fermée, le volet finit seul.",
+      kazdy: "Chaque moteur séparément"
     }
   };
 
@@ -2872,7 +2952,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Večer zavřít",
         slonce: "Chránit před sluncem",
         blokada: "Nezavírat při otevřeném okně",
-        wietrzenie: "Vyklopené okno = stínění napůl",
+        wietrzenie: "Vyklopené okno = zvednout stínění",
         wiatr: "Silný vítr = zatáhnout",
         deszcz: "Déšť = zatáhnout"
       },
@@ -2923,7 +3003,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Bez telefonu se oznámení zobrazí jen v Home Assistantu.",
       naPanel: "Přidat na panel",
       nazwa: "Název",
-      zapisano: "Uloženo ✓"
+      zapisano: "Uloženo ✓",
+      wszystkie: "Zobrazit vše",
+      prog: "Práh",
+      pozycja: "Poloha",
+      odTemp: "od teploty",
+      zrodlo: "Zdroj",
+      przypiszPodpis: "Klepněte na křídlo v nákresu: vyberte motor a čidlo okna.",
+      wschodSlonca: "Východ slunce",
+      zachodSlonca: "Západ slunce",
+      godzina: "Čas",
+      przesuniecie: "Posun",
+      poWsch: "{0} min po východu",
+      przedWsch: "{0} min před východem",
+      poZach: "{0} min po západu",
+      przedZach: "{0} min před západem",
+      oknaWieczorem: "Večer u čidel oken",
+      nieZjedzie: "nesjede",
+      zjedzieDo: "sjede na {0} %",
+      zjedzieNormalnie: "sjede normálně",
+      pozniej: "Když okno zavřete, stínění dojede samo.",
+      kazdy: "Každý motor zvlášť"
     }
   };
 
@@ -3283,7 +3383,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Večer zatvoriť",
         slonce: "Chrániť pred slnkom",
         blokada: "Nezatvárať pri otvorenom okne",
-        wietrzenie: "Vyklopené okno = tienenie napoly",
+        wietrzenie: "Vyklopené okno = zdvihnúť tienenie",
         wiatr: "Silný vietor = zatiahnuť",
         deszcz: "Dážď = zatiahnuť"
       },
@@ -3334,7 +3434,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Bez telefónu sa upozornenia zobrazia len v Home Assistante.",
       naPanel: "Pridať na panel",
       nazwa: "Názov",
-      zapisano: "Uložené ✓"
+      zapisano: "Uložené ✓",
+      wszystkie: "Zobraziť všetko",
+      prog: "Prah",
+      pozycja: "Poloha",
+      odTemp: "od teploty",
+      zrodlo: "Zdroj",
+      przypiszPodpis: "Ťuknite na krídlo na nákrese: vyberte motor a snímač okna.",
+      wschodSlonca: "Východ slnka",
+      zachodSlonca: "Západ slnka",
+      godzina: "Čas",
+      przesuniecie: "Posun",
+      poWsch: "{0} min po východe",
+      przedWsch: "{0} min pred východom",
+      poZach: "{0} min po západe",
+      przedZach: "{0} min pred západom",
+      oknaWieczorem: "Večer pri snímačoch okien",
+      nieZjedzie: "nezíde",
+      zjedzieDo: "zíde na {0} %",
+      zjedzieNormalnie: "zíde normálne",
+      pozniej: "Keď okno zatvoríte, tienenie dôjde samo.",
+      kazdy: "Každý motor zvlášť"
     }
   };
 
@@ -3694,7 +3814,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Cerrar por la tarde",
         slonce: "Proteger del sol",
         blokada: "No cerrar con la ventana abierta",
-        wietrzenie: "Ventana abatida = estor a media altura",
+        wietrzenie: "Ventana abatida = subir el estor",
         wiatr: "Viento fuerte = recoger",
         deszcz: "Lluvia = recoger"
       },
@@ -3745,7 +3865,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Sin teléfono, los avisos solo aparecen en Home Assistant.",
       naPanel: "Añadir al panel",
       nazwa: "Nombre",
-      zapisano: "Guardado ✓"
+      zapisano: "Guardado ✓",
+      wszystkie: "Mostrar todo",
+      prog: "Umbral",
+      pozycja: "Posición",
+      odTemp: "desde temp.",
+      zrodlo: "Fuente",
+      przypiszPodpis: "Toca una hoja en el dibujo para elegir su motor y sensor de ventana.",
+      wschodSlonca: "Amanecer",
+      zachodSlonca: "Atardecer",
+      godzina: "Hora",
+      przesuniecie: "Desfase",
+      poWsch: "{0} min después del amanecer",
+      przedWsch: "{0} min antes del amanecer",
+      poZach: "{0} min después del atardecer",
+      przedZach: "{0} min antes del atardecer",
+      oknaWieczorem: "Por la noche, con sensores de ventana",
+      nieZjedzie: "no baja",
+      zjedzieDo: "baja al {0} %",
+      zjedzieNormalnie: "baja con normalidad",
+      pozniej: "Al cerrar la ventana, la persiana termina sola.",
+      kazdy: "Cada motor por separado"
     }
   };
 
@@ -4105,7 +4245,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Chiudi la sera",
         slonce: "Proteggi dal sole",
         blokada: "Non chiudere con la finestra aperta",
-        wietrzenie: "Finestra a ribalta = tenda a metà",
+        wietrzenie: "Finestra a ribalta = alza la tenda",
         wiatr: "Vento forte = ritira",
         deszcz: "Pioggia = ritira"
       },
@@ -4156,7 +4296,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Senza telefono, le notifiche appaiono solo in Home Assistant.",
       naPanel: "Aggiungi alla dashboard",
       nazwa: "Nome",
-      zapisano: "Salvato ✓"
+      zapisano: "Salvato ✓",
+      wszystkie: "Mostra tutto",
+      prog: "Soglia",
+      pozycja: "Posizione",
+      odTemp: "da temp.",
+      zrodlo: "Fonte",
+      przypiszPodpis: "Tocca un'anta nel disegno per sceglierne motore e sensore finestra.",
+      wschodSlonca: "Alba",
+      zachodSlonca: "Tramonto",
+      godzina: "Ora",
+      przesuniecie: "Scostamento",
+      poWsch: "{0} min dopo l'alba",
+      przedWsch: "{0} min prima dell'alba",
+      poZach: "{0} min dopo il tramonto",
+      przedZach: "{0} min prima del tramonto",
+      oknaWieczorem: "La sera, con i sensori finestra",
+      nieZjedzie: "non scende",
+      zjedzieDo: "scende al {0} %",
+      zjedzieNormalnie: "scende normalmente",
+      pozniej: "Chiusa la finestra, la tapparella finisce da sola.",
+      kazdy: "Ogni motore separatamente"
     }
   };
 
@@ -4516,7 +4676,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "’s Avonds sluiten",
         slonce: "Beschermen tegen zon",
         blokada: "Niet sluiten bij open raam",
-        wietrzenie: "Raam op kiepstand = zonwering half",
+        wietrzenie: "Raam op kiepstand = zonwering omhoog",
         wiatr: "Harde wind = intrekken",
         deszcz: "Regen = intrekken"
       },
@@ -4567,7 +4727,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Zonder telefoon verschijnen meldingen alleen in Home Assistant.",
       naPanel: "Toevoegen aan dashboard",
       nazwa: "Naam",
-      zapisano: "Opgeslagen ✓"
+      zapisano: "Opgeslagen ✓",
+      wszystkie: "Alles tonen",
+      prog: "Drempel",
+      pozycja: "Positie",
+      odTemp: "vanaf temp.",
+      zrodlo: "Bron",
+      przypiszPodpis: "Tik op een vleugel in de tekening om motor en raamsensor te kiezen.",
+      wschodSlonca: "Zonsopkomst",
+      zachodSlonca: "Zonsondergang",
+      godzina: "Tijd",
+      przesuniecie: "Verschuiving",
+      poWsch: "{0} min na zonsopkomst",
+      przedWsch: "{0} min voor zonsopkomst",
+      poZach: "{0} min na zonsondergang",
+      przedZach: "{0} min voor zonsondergang",
+      oknaWieczorem: "'s Avonds met raamsensoren",
+      nieZjedzie: "gaat niet dicht",
+      zjedzieDo: "gaat naar {0} %",
+      zjedzieNormalnie: "gaat normaal dicht",
+      pozniej: "Zodra het raam dicht is, gaat het scherm vanzelf verder.",
+      kazdy: "Elke motor apart"
     }
   };
 
@@ -4927,7 +5107,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Fechar à noite",
         slonce: "Proteger do sol",
         blokada: "Não fechar com a janela aberta",
-        wietrzenie: "Janela basculada = proteção a meio",
+        wietrzenie: "Janela basculada = subir a proteção",
         wiatr: "Vento forte = recolher",
         deszcz: "Chuva = recolher"
       },
@@ -4978,7 +5158,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Sem telemóvel, as notificações só aparecem no Home Assistant.",
       naPanel: "Adicionar ao painel",
       nazwa: "Nome",
-      zapisano: "Guardado ✓"
+      zapisano: "Guardado ✓",
+      wszystkie: "Mostrar tudo",
+      prog: "Limite",
+      pozycja: "Posição",
+      odTemp: "a partir de temp.",
+      zrodlo: "Fonte",
+      przypiszPodpis: "Toque numa folha no desenho para escolher o motor e o sensor de janela.",
+      wschodSlonca: "Nascer do sol",
+      zachodSlonca: "Pôr do sol",
+      godzina: "Hora",
+      przesuniecie: "Desvio",
+      poWsch: "{0} min após o nascer do sol",
+      przedWsch: "{0} min antes do nascer do sol",
+      poZach: "{0} min após o pôr do sol",
+      przedZach: "{0} min antes do pôr do sol",
+      oknaWieczorem: "À noite, com sensores de janela",
+      nieZjedzie: "não desce",
+      zjedzieDo: "desce até {0} %",
+      zjedzieNormalnie: "desce normalmente",
+      pozniej: "Ao fechar a janela, a persiana termina sozinha.",
+      kazdy: "Cada motor separadamente"
     }
   };
 
@@ -5338,7 +5538,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Закривати ввечері",
         slonce: "Захищати від сонця",
         blokada: "Не закривати при відчиненому вікні",
-        wietrzenie: "Відкинуте вікно = штора наполовину",
+        wietrzenie: "Відкинуте вікно = підняти штору",
         wiatr: "Сильний вітер = прибрати",
         deszcz: "Дощ = прибрати"
       },
@@ -5389,7 +5589,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Без телефона сповіщення з’являються лише в Home Assistant.",
       naPanel: "Додати на панель",
       nazwa: "Назва",
-      zapisano: "Збережено ✓"
+      zapisano: "Збережено ✓",
+      wszystkie: "Показати все",
+      prog: "Поріг",
+      pozycja: "Положення",
+      odTemp: "від темп.",
+      zrodlo: "Джерело",
+      przypiszPodpis: "Торкніться стулки на малюнку: виберіть мотор і датчик вікна.",
+      wschodSlonca: "Схід сонця",
+      zachodSlonca: "Захід сонця",
+      godzina: "Час",
+      przesuniecie: "Зсув",
+      poWsch: "через {0} хв після сходу",
+      przedWsch: "за {0} хв до сходу",
+      poZach: "через {0} хв після заходу",
+      przedZach: "за {0} хв до заходу",
+      oknaWieczorem: "Увечері з датчиками вікон",
+      nieZjedzie: "не опуститься",
+      zjedzieDo: "опуститься до {0} %",
+      zjedzieNormalnie: "опуститься як завжди",
+      pozniej: "Коли закриєте вікно, штора доїде сама.",
+      kazdy: "Кожен мотор окремо"
     }
   };
 
@@ -5749,7 +5969,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "Закрывать вечером",
         slonce: "Защищать от солнца",
         blokada: "Не закрывать при открытом окне",
-        wietrzenie: "Откинутое окно = штора наполовину",
+        wietrzenie: "Откинутое окно = поднять штору",
         wiatr: "Сильный ветер = убрать",
         deszcz: "Дождь = убрать"
       },
@@ -5800,7 +6020,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "Без телефона уведомления появляются только в Home Assistant.",
       naPanel: "Добавить на панель",
       nazwa: "Название",
-      zapisano: "Сохранено ✓"
+      zapisano: "Сохранено ✓",
+      wszystkie: "Показать все",
+      prog: "Порог",
+      pozycja: "Положение",
+      odTemp: "от темп.",
+      zrodlo: "Источник",
+      przypiszPodpis: "Нажмите на створку на рисунке: выберите мотор и датчик окна.",
+      wschodSlonca: "Восход",
+      zachodSlonca: "Закат",
+      godzina: "Время",
+      przesuniecie: "Сдвиг",
+      poWsch: "через {0} мин после восхода",
+      przedWsch: "за {0} мин до восхода",
+      poZach: "через {0} мин после заката",
+      przedZach: "за {0} мин до заката",
+      oknaWieczorem: "Вечером с датчиками окон",
+      nieZjedzie: "не опустится",
+      zjedzieDo: "опустится до {0} %",
+      zjedzieNormalnie: "опустится как обычно",
+      pozniej: "Когда закроете окно, штора доедет сама.",
+      kazdy: "Каждый мотор отдельно"
     }
   };
 
@@ -6160,7 +6400,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "夜に閉める",
         slonce: "日差しから守る",
         blokada: "窓が開いていたら閉めない",
-        wietrzenie: "内倒しの窓 = シェード半分",
+        wietrzenie: "内倒しの窓 = シェードを上げる",
         wiatr: "強風 = 収納",
         deszcz: "雨 = 収納"
       },
@@ -6211,7 +6451,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "スマホがない場合、通知は Home Assistant にのみ表示されます。",
       naPanel: "ダッシュボードに追加",
       nazwa: "名前",
-      zapisano: "保存しました ✓"
+      zapisano: "保存しました ✓",
+      wszystkie: "すべて表示",
+      prog: "しきい値",
+      pozycja: "位置",
+      odTemp: "気温から",
+      zrodlo: "ソース",
+      przypiszPodpis: "図のサッシをタップして、モーターと窓センサーを選びます。",
+      wschodSlonca: "日の出",
+      zachodSlonca: "日の入り",
+      godzina: "時刻",
+      przesuniecie: "ずらし",
+      poWsch: "日の出の{0}分後",
+      przedWsch: "日の出の{0}分前",
+      poZach: "日の入りの{0}分後",
+      przedZach: "日の入りの{0}分前",
+      oknaWieczorem: "夜、窓センサーとの連動",
+      nieZjedzie: "閉まりません",
+      zjedzieDo: "{0} %まで閉まります",
+      zjedzieNormalnie: "通常どおり閉まります",
+      pozniej: "窓を閉めると、カバーは自動で閉まりきります。",
+      kazdy: "モーターごと"
     }
   };
 
@@ -6571,7 +6831,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         wieczor: "晚上关闭",
         slonce: "防晒",
         blokada: "窗户打开时不关闭",
-        wietrzenie: "内倒窗 = 遮阳半开",
+        wietrzenie: "内倒窗 = 升起遮阳",
         wiatr: "大风 = 收起",
         deszcz: "下雨 = 收起"
       },
@@ -6622,7 +6882,27 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       brakTelefonu: "没有手机时，通知只显示在 Home Assistant 中。",
       naPanel: "添加到仪表板",
       nazwa: "名称",
-      zapisano: "已保存 ✓"
+      zapisano: "已保存 ✓",
+      wszystkie: "显示全部",
+      prog: "阈值",
+      pozycja: "位置",
+      odTemp: "起始温度",
+      zrodlo: "来源",
+      przypiszPodpis: "点按图中的窗扇，选择电机和窗户传感器。",
+      wschodSlonca: "日出",
+      zachodSlonca: "日落",
+      godzina: "时间",
+      przesuniecie: "偏移",
+      poWsch: "日出后 {0} 分钟",
+      przedWsch: "日出前 {0} 分钟",
+      poZach: "日落后 {0} 分钟",
+      przedZach: "日落前 {0} 分钟",
+      oknaWieczorem: "晚上与窗户传感器联动",
+      nieZjedzie: "不会关闭",
+      zjedzieDo: "关到 {0} %",
+      zjedzieNormalnie: "正常关闭",
+      pozniej: "关窗后，遮阳会自动关完。",
+      kazdy: "每个电机单独"
     }
   };
 
@@ -7272,8 +7552,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         const opisPg = ws.entity_id && h.formatEntityState ? h.formatEntityState(ws) : this._lok(`component.weather.entity_component._.state.${ws.state}`, "");
         if (opisPg) czesci.push(opisPg + (typeof t === "number" ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || "°C"}` : ""));
       }
+      const ileCz = this._uk ? c.pola.filter((p) => p.czujnik).length : czl.length;
       okno.forEach((o, k) => {
-        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${czl.length > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
+        if (o && k < czl.length) czesci.push(`${T2.karta.okno}${ileCz > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
       });
       this._opisStanu = czesci;
       this._automatyka(c, h);
@@ -7981,6 +8262,16 @@ button svg{fill:var(--primary-color);flex:none}
   var ik = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI2[n]}"/></svg>`;
   var esc6 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var okr = (v) => Math.round(v * 1e3) / 1e3;
+  var PROC = (v) => v + " %";
+  var PAR = {
+    wiatr_prog: { mn: 20, mx: 90, krok: 5, dom: 40, fmt: (v) => v + " km/h" },
+    wiatr_poz: { mn: 0, mx: 100, krok: 10, dom: 100, fmt: PROC },
+    deszcz_poz: { mn: 0, mx: 100, krok: 10, dom: 100, fmt: PROC },
+    wietrzenie_poz: { mn: 10, mx: 100, krok: 10, dom: 50, fmt: PROC },
+    slonce_temp: { mn: 15, mx: 35, krok: 1, dom: 24, fmt: (v) => v + " °C" },
+    przes_otw: { mn: -120, mx: 120, krok: 5, dom: 0, fmt: (v) => (v > 0 ? "+" : "") + v + " min" },
+    przes_zam: { mn: -120, mx: 120, krok: 5, dom: 0, fmt: (v) => (v > 0 ? "+" : "") + v + " min" }
+  };
   var SAMO = /[aeiouyąęóаеиоуыэюяіїєáéíóúýěůäöüàèìòù]/i;
   var dziel = (s) => String(s ?? "").replace(/\S{11,}/g, (w) => {
     const sr = Math.floor(w.length / 2);
@@ -8108,7 +8399,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .suw{display:flex;align-items:center;gap:10px;padding:0 12px 10px 64px;margin-top:-6px;margin-bottom:8px;color:var(--fg2);font-size:12px}
 .suw input{flex:1;min-width:0;accent-color:var(--primary)}
 .suw span{min-width:44px;text-align:end}
-.suw.chipy{gap:6px}
+.okw{margin:4px 0 10px 52px;padding:8px 10px;border-radius:10px;background:var(--tile);font-size:13px}
+.okw .et{display:flex;align-items:center;gap:6px;font-weight:500;margin-bottom:4px}.okw .et svg{fill:var(--accent);width:16px!important;height:16px;flex:none}
+.okw .ow{display:flex;gap:8px;align-items:baseline;margin:3px 0}.okw .nr{flex:none;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#3a2600;font-size:11px;font-weight:700;display:grid;place-items:center}
+.okw .pod{margin-top:6px}
+.suw.chipy{gap:6px;flex-wrap:wrap}
+.suw .et{min-width:64px;text-align:start;color:var(--fg2)}
 .chipy{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;min-height:32px;padding:0 12px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;max-width:100%}
 .chip svg{fill:currentColor}
@@ -8292,11 +8588,17 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         if (opt.numery) {
           const on = opt.wybrane === i;
           d.push(`<g data-pole="${i}" style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${on ? "rgba(255,152,0,.25)" : "transparent"}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
-          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text></g>`);
+          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>${this._znakCzujnika(i, x + w / 2, y + h / 2 + 22)}</g>`);
         }
       });
       d.push("</svg>");
       return d.join("");
+    }
+    // znaczek pod numerem pola: pomarańczowy z oknem = czujnik przypisany (ukośna kreska = uchylone), przerywany „+” = brak czujnika
+    _znakCzujnika(i, cx, cy) {
+      const p = this.S.pola[i] || {};
+      if (!p.czujnik) return `<circle cx="${cx}" cy="${cy}" r="8" fill="rgba(255,255,255,.75)" stroke="#ff9800" stroke-width="1.6" stroke-dasharray="3 2"/><path d="M${cx - 4} ${cy}h8M${cx} ${cy - 4}v8" stroke="#ff9800" stroke-width="2"/>`;
+      return `<circle cx="${cx}" cy="${cy}" r="9" fill="#ff9800" stroke="#fff" stroke-width="1.6"/><rect x="${cx - 4.5}" y="${cy - 5}" width="9" height="10" fill="none" stroke="#3a2600" stroke-width="1.5"/>` + (p.tryb === "otworz" ? `<path d="M${cx - 4.5} ${cy - 5}l4 1.6v10l-4-1.6z" fill="#3a2600"/>` : `<path d="M${cx - 4.5} ${cy + 5}l2.4-7h4.2" fill="none" stroke="#3a2600" stroke-width="1.4"/>`);
     }
     _brama(typ) {
       return rysunekBramy(typ, this._kolor(), this._rama(), false, false);
@@ -8361,12 +8663,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     str_przypisz() {
       const S = this.S, t = this.t;
-      return `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
+      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
       <div style="margin-top:14px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
         return `<button class="wiersz" data-pole="${i}"><span class="ik">${i + 1}</span><span class="t"><b>${esc6(o ? o.nazwa : t.wybierzSilnik)}</b>
-          <small>${c ? `✓ ${esc6(c)} · ${esc6(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : esc6(t.bezCzujnikaOkna)}</small></span></button>`;
+          <small>${c ? `✓ ${esc6(c)} · ${esc6(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : `<span style="color:var(--accent)">+ ${esc6(t.czujnikPola)}</span>`}</small></span></button>`;
       }).join("")}</div>`;
     }
     _nazwa(e) {
@@ -8408,28 +8710,79 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // automatyka: [klucz, ikona, włączona?, opis, suwak]
     str_auto() {
-      const S = this.S, o = S.o, t = this.t, sl = o.harm_tryb === "slonce";
+      const S = this.S, o = S.o, t = this.t;
       const okna = S.pola.some((p) => p.czujnik), w = [];
       const harm = !!o.f_harmonogram;
       const wiersz = (k, i, on, tyt, opis, extra = "") => w.push(`<button class="wiersz ${on ? "" : "wyl"}" data-auto="${k}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(tyt)}</b><small>${esc6(opis)}</small></span><span class="przel"></span></button>${on ? extra : ""}`);
       const rano = harm && o.harm_otwieraj !== false, wieczor = harm && o.harm_zamykaj !== false;
-      const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw"><input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc6(tekst)}"><span>${esc6(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
-      wiersz("rano", "wschod", rano, t.auto.rano, sl ? t.oWschodzie : wstaw(t.oGodz, godz(minuty(o.otworz || "07:00"))), sl ? "" : suwak("otworz", 300, 660, minuty(o.otworz || "07:00"), t.auto.rano));
-      wiersz("wieczor", "zachod", wieczor, t.auto.wieczor, sl ? t.oZachodzie : wstaw(t.oGodz, godz(minuty(o.zamknij || "21:00"))), sl ? "" : suwak("zamknij", 1020, 1410, minuty(o.zamknij || "21:00"), t.auto.wieczor));
-      if (rano || wieczor) w.push(`<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-zeslonca="1">${ik("slonce", 16)} ${esc6(t.zeSloncem)}</button></div>`);
+      const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw">${g === "slonce" ? `<span class="et">${esc6(t.pozycja)}</span>` : ""}<input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc6(tekst)}"><span>${esc6(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
+      const pora = (k, ikona, on, tyt, klucz, godzKlucz, dom, mn, mx, slonceTekst) => {
+        const sl = this._harm(k) === "slonce";
+        const tryby = `<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-harm="${k}" data-v="slonce">${ik(ikona, 16)} ${esc6(slonceTekst)}</button><button class="chip ${sl ? "" : "wyb"}" data-harm="${k}" data-v="godziny">${ik("stoper", 16)} ${esc6(t.godzina)}</button></div>`;
+        wiersz(k, ikona, on, tyt, this._opisPory(k), tryby + (sl ? this._par(klucz, t.przesuniecie) : suwak(godzKlucz, mn, mx, minuty(o[godzKlucz] || dom), tyt)));
+      };
+      pora("rano", "wschod", rano, t.auto.rano, "przes_otw", "otworz", "07:00", 300, 660, t.wschodSlonca);
+      pora("wieczor", "zachod", wieczor, t.auto.wieczor, "przes_zam", "zamknij", "21:00", 1020, 1410, t.zachodSlonca);
+      if (okna && wieczor) w.push(this._oknaWieczorem());
       if (!o.bez_slonca) {
         const poz = 100 - (+o.slonce_poz || 20);
-        wiersz("slonce", "slonce", !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak("slonce", 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5) + `<div class="suw chipy"><span style="min-width:auto">${esc6(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? "wyb" : ""}" data-azymut="${a}">${esc6(t.strony[k])}</button>`).join("")}</div>`);
+        wiersz("slonce", "slonce", !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak("slonce", 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5) + (o.czujnik_temp || o.pogoda ? this._par("slonce_temp", t.odTemp) : "") + `<div class="suw chipy"><span style="min-width:auto">${esc6(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? "wyb" : ""}" data-azymut="${a}">${esc6(t.strony[k])}</button>`).join("")}</div>`);
       }
       if (okna) {
         wiersz("blokada", "tarcza", !!o.f_blokada, t.auto.blokada, t.okienne);
-        wiersz("wietrzenie", "okno", !!o.f_wietrzenie, t.auto.wietrzenie, t.okienne);
+        wiersz("wietrzenie", "okno", !!o.f_wietrzenie, t.auto.wietrzenie, t.okienne, this._par("wietrzenie_poz", t.pozycja));
       }
       const zew = czyZew(o.oslona);
-      if (zew && (o.pogoda || o.czujnik_wiatr)) wiersz("wiatr", "wiatr", !!o.f_wiatr, t.auto.wiatr, wstaw(t.wiatrOpis, o.wiatr_prog || 40));
-      if (AUTO_ZEW.includes(o.oslona) && (o.pogoda || o.czujnik_deszcz)) wiersz("deszcz", "deszcz", !!o.f_deszcz, t.auto.deszcz, t.deszczOpis);
+      if (zew && (o.pogoda || o.czujnik_wiatr)) wiersz(
+        "wiatr",
+        "wiatr",
+        !!o.f_wiatr,
+        t.auto.wiatr,
+        wstaw(t.wiatrOpis, o.wiatr_prog ?? 40),
+        this._zrodlo("wiatr", "czujnik_wiatr") + this._par("wiatr_prog", t.prog) + this._par("wiatr_poz", t.pozycja)
+      );
+      if (AUTO_ZEW.includes(o.oslona) && (o.pogoda || o.czujnik_deszcz)) wiersz(
+        "deszcz",
+        "deszcz",
+        !!o.f_deszcz,
+        t.auto.deszcz,
+        t.deszczOpis,
+        this._zrodlo("deszcz", "czujnik_deszcz") + this._par("deszcz_poz", t.pozycja)
+      );
       if (!zew || !(o.pogoda || o.czujnik_wiatr)) w.push(`<p class="pod" style="margin-top:6px">${esc6(t.autoPodpis)}</p>`);
       return w.join("");
+    }
+    _harm(k) {
+      const o = this.S.o;
+      return o[k === "rano" ? "harm_rano" : "harm_wieczor"] || o.harm_tryb || "godziny";
+    }
+    _opisPory(k) {
+      const o = this.S.o, t = this.t, rano = k === "rano";
+      if (this._harm(k) !== "slonce") return wstaw(t.oGodz, godz(minuty(o[rano ? "otworz" : "zamknij"] || (rano ? "07:00" : "21:00"))));
+      const m = +(o[rano ? "przes_otw" : "przes_zam"] ?? 0);
+      if (!m) return rano ? t.oWschodzie : t.oZachodzie;
+      return wstaw(t[(m > 0 ? "po" : "przed") + (rano ? "Wsch" : "Zach")], Math.abs(m));
+    }
+    // co wieczorne zamykanie zrobi przy każdym skrzydle z czujnikiem okna
+    _oknaWieczorem() {
+      const S = this.S, o = S.o, t = this.t;
+      const wiersze = S.pola.map((p, i) => [p, i]).filter(([p]) => p.czujnik).map(([p, i]) => {
+        const uch = p.tryb !== "otworz";
+        const co = uch && o.f_wietrzenie ? wstaw(t.zjedzieDo, o.wietrzenie_poz ?? PAR.wietrzenie_poz.dom) : o.f_blokada ? t.nieZjedzie : t.zjedzieNormalnie;
+        return `<div class="ow"><span class="nr">${i + 1}</span><span><b>${esc6(this._nazwa(p.czujnik))}</b> · ${esc6(uch ? t.uchyl : t.otworz)} → ${esc6(co)}</span></div>`;
+      });
+      return `<div class="okw"><div class="et">${ik("okno", 16)} ${esc6(t.oknaWieczorem)}</div>${wiersze.join("")}<div class="pod">${esc6(t.pozniej)}</div></div>`;
+    }
+    // ustawienia włączonej automatyki: z czego bierze dane, próg i pozycja (suwaki pod wierszem)
+    _par(k, etykieta) {
+      const d = PAR[k], v = +(this.S.o[k] ?? d.dom);
+      return `<div class="suw"><span class="et">${esc6(etykieta)}</span><input type="range" min="${d.mn}" max="${d.mx}" step="${d.krok}" value="${v}" data-par="${k}" aria-label="${esc6(etykieta)}"><span>${esc6(d.fmt(v))}</span></div>`;
+    }
+    _zrodlo(r, klucz) {
+      const o = this.S.o, t = this.t, lista = this._czujnik(r).lista;
+      const opcje = [...lista.map((x) => [x.id, x.nazwa]), ...o.pogoda ? [["", this._nazwa(o.pogoda)]] : []];
+      if (opcje.length < 2) return "";
+      return `<div class="suw chipy"><span class="et">${esc6(t.zrodlo)}</span>${opcje.map(([id, n]) => `<button class="chip ${(o[klucz] || "") === id ? "wyb" : ""}" data-zrodlo="${esc6(id)}" data-klucz="${klucz}">${esc6(n)}</button>`).join("")}</div>`;
     }
     str_stoper() {
       const S = this.S, t = this.t, p = S.pomiar || {};
@@ -8437,6 +8790,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return `<div class="duzy"><div id="okKal">${this._oknoNaZywo()}</div>
       <div class="zegar" id="zegar">${p.trwa ? this._sekundy() : czas ? `${String(czas).replace(".", this._przecinek())} s${p.czas ? " ✓" : ""}` : "— s"}</div>
       <button class="btn" id="mierz" ${p.trwa || !S.rolety.length ? "disabled" : ""}>${esc6(p.trwa ? t.mierze : czas ? t.zmierzZnow : t.zmierz)}</button>
+      ${p.silniki?.length > 1 ? `<div class="okw" style="margin:0;align-self:stretch"><div class="et">${ik("stoper", 16)} ${esc6(t.kazdy)}</div>${p.silniki.map((x, i) => `<div class="ow"><span class="nr">${i + 1}</span><span style="flex:1">${esc6(x.nazwa)}</span><b>${String(x.czas).replace(".", this._przecinek())} s</b></div>`).join("")}</div>` : ""}
       ${p.blad ? `<p class="blad">${esc6(p.blad)}</p>` : ""}
       <p class="pod" style="text-align:center">${esc6(t.pomin)}</p></div>`;
     }
@@ -8478,7 +8832,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const w = await this._hass.callWS({ type: "motor_ha/kreator/mierz", rolety });
         if (w.czas) {
           S.o.czas = w.czas;
-          S.pomiar = { czas: w.czas };
+          S.pomiar = { czas: w.czas, silniki: w.silniki || [] };
         } else S.pomiar = { blad: w.brak?.length ? wstaw(t.nieOdp, w.brak.join(", ")) : w.wynik === "kalibracja_od_razu" ? t.odRazu : t.bladPomiaru };
       } catch (e) {
         S.pomiar = { blad: t.bladPomiaru };
@@ -8545,7 +8899,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const x2 = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
         d.push(`<g data-ep="${i}"><rect x="${x2}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
         <rect x="${x2 + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${on ? "rgba(255,152,0,.35)" : n1}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
-        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="var(--fg)">${i + 1}</text></g>`);
+        <text x="${x2 + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? "#3a2600" : "var(--fg)"}">${i + 1}</text></g>`);
       });
       const uchwyt = (typ, id, x2, y, poziomy) => `<g data-uch="${typ}:${id}" style="cursor:${poziomy ? "ns" : "ew"}-resize"><circle cx="${x2}" cy="${y}" r="16" fill="transparent"/>
       <rect x="${x2 - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
@@ -8557,6 +8911,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           y += h / sr * wys;
           if (j < k.r.length - 1) d.push(uchwyt("r", `${c}-${j}`, X + W2 / 2, EP + y * ih, true));
         });
+        if (k.dol >= 0.08 && k.r.length < 3) d.push(`<g data-dodaj="${c}" style="cursor:pointer"><rect x="${X + 4}" y="${EP + wys * ih + 10}" width="${Math.max(0, W2 - 8)}" height="${Math.max(0, k.dol * ih - 14)}" rx="4" fill="transparent" stroke="var(--fg2)" stroke-dasharray="5 4"/>
+        <text x="${X + W2 / 2}" y="${EP + (wys + k.dol / 2) * ih + 11}" text-anchor="middle" font-size="22" fill="var(--fg2)">+</text></g>`);
         d.push(uchwyt("d", c, X + W2 / 2, EP + wys * ih, true));
         x += w;
         if (c < K.length - 1) d.push(uchwyt("k", c, EP + x * iw, EP + ih * 0.5, false));
@@ -8574,12 +8930,20 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     operacja(op) {
       const S = this.S, K = S.u.kol, P = prostokaty(S.u);
-      let i = Math.min(S.wyb, P.length - 1), c = 0;
-      while (i >= K[c].r.length) {
+      let i = op === "dodaj" ? arguments[1] : Math.min(S.wyb, P.length - 1), c = 0;
+      if (op !== "dodaj") while (i >= K[c].r.length) {
         i -= K[c].r.length;
         c++;
       }
       const k = K[c];
+      if (op === "dodaj") {
+        const kd = K[i], wys = 1 - kd.dol, sr = kd.r.reduce((a, b) => a + b, 0);
+        kd.r = [...kd.r.map((h) => h / sr * wys), kd.dol];
+        kd.dol = 0;
+        S.wyb = K.slice(0, i).reduce((a, x) => a + x.r.length, 0) + kd.r.length - 1;
+        this._dopasujPola(false);
+        return this.rysuj();
+      }
       if (op === "poz" && k.r.length < 3) {
         const h = k.r[i] / 2;
         k.r.splice(i, 1, h, h);
@@ -8623,23 +8987,32 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       }
       this._odswiezUklad();
     }
+    // listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (i to, co już wybrane); reszta domu po „Pokaż wszystkie”
+    _tylkoTu(lista, tu, wybrane) {
+      if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: "" };
+      return {
+        lista: lista.filter((x) => tu(x) || wybrane.includes(x.id)),
+        wiecej: `<button class="chip" data-wszystkie="1">${esc6(this.t.wszystkie)}</button>`
+      };
+    }
     arkusz() {
       const S = this.S, t = this.t, i = S.arkusz, p = S.pola[i] || (S.pola[i] = { tryb: "uchyl" });
       const pokoj = this._oslona(S.rolety[0])?.area;
-      const silniki = this.dane.oslony.filter((o) => !o.brama && (!o.zajeta || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa));
-      const okna = this._czujnik("okno").lista;
+      const sil = this._tylkoTu(this.dane.oslony.filter((o) => !o.brama && (!o.grupa || S.rolety.includes(o.id)) && (!o.zajeta || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa)), (o) => pokoj && o.area === pokoj, [p.silnik, ...S.rolety]);
+      const silniki = sil.lista;
+      const ok = this._tylkoTu(this._czujnik("okno").lista, (c) => c.tu, [p.czujnik]), okna = ok.lista;
       return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(wstaw(t.pole, i + 1))}"><div class="uchwyt"></div><h2>${esc6(wstaw(t.pole, i + 1))}</h2>
-      <div class="sek">${esc6(t.silnikPola)}</div><div class="chipy">${silniki.map((o) => `<button class="chip ${p.silnik === o.id ? "wyb" : ""}" data-silnik="${esc6(o.id)}">${esc6(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc6(o.pokoj)}</span>` : ""}</button>`).join("")}</div>
+      <div class="sek">${esc6(t.silnikPola)}</div><div class="chipy">${silniki.map((o) => `<button class="chip ${p.silnik === o.id ? "wyb" : ""}" data-silnik="${esc6(o.id)}">${esc6(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc6(o.pokoj)}</span>` : ""}</button>`).join("")}${sil.wiecej}</div>
       <div class="sek">${esc6(t.czujnikPola)}</div><div class="chipy">${okna.map((c) => `<button class="chip ${p.czujnik === c.id ? "wyb" : ""}" data-czuj="${esc6(c.id)}">${esc6(c.nazwa)}${c.tu && c.pokoj ? `<span class="p">${esc6(c.pokoj)}</span>` : ""}</button>`).join("")}
-      <button class="chip ${!p.czujnik ? "wyb" : ""}" data-czuj="">${esc6(t.bezCzujnika)}</button></div>
+      ${ok.wiecej}<button class="chip ${!p.czujnik ? "wyb" : ""}" data-czuj="">${esc6(t.bezCzujnika)}</button></div>
       ${p.czujnik ? `<div class="sek">${esc6(t.gdyOtwarte)}</div><div class="chipy">${["uchyl", "otworz"].map((k) => `<button class="chip ${p.tryb === k ? "wyb" : ""}" data-tryb="${k}">${esc6(t[k])}</button>`).join("")}</div>` : ""}
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
     }
     arkuszCzujnika(r) {
-      const S = this.S, t = this.t, klucz = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._czujnik(r);
+      const S = this.S, t = this.t, klucz = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._tylkoTu(this._czujnik(r).lista, (x) => x.tu, [S.o[klucz]]);
       return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(t.czujniki[r])}"><div class="uchwyt"></div><h2>${esc6(t.czujniki[r])}</h2>
       <div class="chipy" style="margin-top:12px">${c.lista.map((x) => `<button class="chip ${S.o[klucz] === x.id ? "wyb" : ""}" data-wybierz="${esc6(x.id)}" data-klucz="${klucz}">${esc6(x.nazwa)}${x.pokoj ? `<span class="p">${esc6(x.pokoj)}</span>` : ""}</button>`).join("")}
-      <button class="chip ${!S.o[klucz] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz}">${esc6(t.nieUzywaj)}</button></div>
+      ${c.wiecej}<button class="chip ${!S.o[klucz] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz}">${esc6(t.nieUzywaj)}</button></div>
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
     }
     // --- budowa i rysowanie ---
@@ -8713,7 +9086,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this.shadowRoot.getElementById("tresc").scrollTop = 0;
     }
     async _klik(e) {
-      const b = e.target.closest("button, g[data-pole], [data-zamknij]");
+      const b = e.target.closest("button, g[data-pole], g[data-dodaj], [data-zamknij]");
       if (!b) return;
       const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
       if (d.x) return this._p.zamknij();
@@ -8752,6 +9125,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         S.recznie.uklad = true;
         S.wyb = 0;
       } else if (d.op) return this.operacja(d.op);
+      else if (d.dodaj !== void 0) return this.operacja("dodaj", +d.dodaj);
       else if (d.rodzaj) {
         o.oslona = d.rodzaj;
         S.recznie.rodzaj = true;
@@ -8761,11 +9135,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       } else if (d.rama) {
         o.rama = d.rama;
         delete o.rama_wlasna;
-      } else if (d.pole !== void 0) S.arkusz = +d.pole;
-      else if (d.zamknij) {
+      } else if (d.pole !== void 0) {
+        S.arkusz = +d.pole;
+        S.wszystkie = false;
+      } else if (d.zamknij) {
         S.arkusz = null;
         S.arkuszC = null;
-      } else if (d.silnik) {
+        S.wszystkie = false;
+      } else if (d.wszystkie) S.wszystkie = true;
+      else if (d.silnik) {
         S.pola[S.arkusz].silnik = d.silnik;
         if (!S.rolety.includes(d.silnik)) S.rolety.push(d.silnik);
       } else if (d.czuj !== void 0) S.pola[S.arkusz].czujnik = d.czuj || void 0;
@@ -8773,13 +9151,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       else if (d.slonce) {
         o.bez_slonca = !o.bez_slonca;
         if (o.bez_slonca) o.f_slonce = false;
-      } else if (d.czujnik) S.arkuszC = d.czujnik;
-      else if (d.wybierz !== void 0) {
+      } else if (d.czujnik) {
+        S.arkuszC = d.czujnik;
+        S.wszystkie = false;
+      } else if (d.zrodlo !== void 0) {
+        if (d.zrodlo) o[d.klucz] = d.zrodlo;
+        else delete o[d.klucz];
+      } else if (d.wybierz !== void 0) {
         if (d.wybierz) o[d.klucz] = d.wybierz;
         else delete o[d.klucz];
         S.arkuszC = null;
+        S.wszystkie = false;
       } else if (d.auto) this._przelacz(d.auto);
-      else if (d.zeslonca) o.harm_tryb = o.harm_tryb === "slonce" ? "godziny" : "slonce";
+      else if (d.harm) o[d.harm === "rano" ? "harm_rano" : "harm_wieczor"] = d.v;
       else if (d.azymut) o.azymut = +d.azymut;
       else if (d.tel) {
         const g = new Set(o.powiadom_gdzie || []);
@@ -8827,14 +9211,28 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         }
         return;
       }
+      if (el.dataset?.par) {
+        const k = el.dataset.par, v2 = +el.value;
+        S.o[k] = v2;
+        el.nextElementSibling.textContent = PAR[k].fmt(v2);
+        if (k === "przes_otw" || k === "przes_zam") {
+          const r = k === "przes_otw" ? "rano" : "wieczor", sm2 = el.closest(".suw").parentElement.querySelector(`[data-auto="${r}"] small`);
+          if (sm2) sm2.textContent = this._opisPory(r);
+        }
+        if (k === "wiatr_prog") {
+          const sm2 = el.closest(".suw").parentElement.querySelector('[data-auto="wiatr"] small');
+          if (sm2) sm2.textContent = wstaw(this.t.wiatrOpis, v2);
+        }
+        return;
+      }
       const g = el.dataset?.suw;
       if (!g) return;
       const v = +el.value;
       if (g === "slonce") S.o.slonce_poz = v;
       else S.o[g] = godz(v) + ":00";
       el.nextElementSibling.textContent = g === "slonce" ? 100 - v + " %" : godz(v);
-      const sm = el.closest(".suw").previousElementSibling.querySelector("small");
-      if (sm) sm.textContent = g === "slonce" ? wstaw(this.t.zaslon, 100 - v) : wstaw(this.t.oGodz, godz(v));
+      const sm = g === "slonce" ? el.closest(".suw").previousElementSibling.querySelector("small") : el.closest(".suw").parentElement.querySelector(`[data-auto="${g === "otworz" ? "rano" : "wieczor"}"] small`);
+      if (sm) sm.textContent = g === "slonce" ? wstaw(this.t.zaslon, 100 - v) : this._opisPory(g === "otworz" ? "rano" : "wieczor");
     }
     _zapisz(b) {
       const S = this.S;

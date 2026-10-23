@@ -57,6 +57,8 @@ class Pomiar:
         self.rolety = list(rolety)
         self.predkosci = list(predkosci or [])
         self.context = context
+        self.czasy: dict[str, float] = {}   # czas każdego silnika osobno (średnia z przejazdów po pierwszym)
+        self._ostatnie: dict[str, float] = {}
 
     async def _jedz(self, usluga: str, cel: int, pierwszy: bool) -> tuple[float | None, list[str], float]:
         """Jeden przejazd; zwraca (czas, osłony bez odpowiedzi, start)."""
@@ -88,6 +90,7 @@ class Pomiar:
             if dojechala and el > max(60.0, 3 * max(dojechala.values())) and \
                     all(e in dojechala or e not in odezwala for e in self.rolety):
                 break
+        self._ostatnie = dojechala
         brak = [e for e in self.rolety if e not in dojechala]
         return (max(dojechala.values()) if dojechala and not brak else None), brak, t0
 
@@ -111,6 +114,7 @@ class Pomiar:
     async def async_zmierz(self) -> tuple[float | None, str, dict[str, Any]]:
         """(czas albo None, rodzaj wyniku do powiadomienia, dane do powiadomienia)."""
         wyniki = []
+        osobno: dict[str, list[float]] = {}
         for n, (usluga, cel) in enumerate((("open_cover", 100), ("close_cover", 0), ("open_cover", 100))):
             el, brak, t0 = await self._jedz(usluga, cel, n == 0)
             if brak:
@@ -120,7 +124,11 @@ class Pomiar:
                 el = await self._czas_od_razu(t0)
                 if el is None:
                     return None, "kalibracja_od_razu", {}
+            elif n:
+                for e, c in self._ostatnie.items():
+                    osobno.setdefault(e, []).append(c)
             if n and el is not None:
                 wyniki.append(el)
         czas = round(sum(wyniki) / len(wyniki), 1)
+        self.czasy = {e: round(sum(c) / len(c), 1) for e, c in osobno.items()}
         return czas, "kalibracja_ok", {"czas": f"{czas:g}"}

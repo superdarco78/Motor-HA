@@ -353,7 +353,7 @@
       "wieczor": "Večer zavřít",
       "slonce": "Chránit před sluncem",
       "blokada": "Nezavírat při otevřeném okně",
-      "wietrzenie": "Vyklopené okno = stínění napůl",
+      "wietrzenie": "Vyklopené okno = zvednout stínění",
       "wiatr": "Silný vítr = zatáhnout",
       "deszcz": "Déšť = zatáhnout"
     },
@@ -404,6 +404,26 @@
     "brakTelefonu": "Bez telefonu se oznámení zobrazí jen v Home Assistantu.",
     "naPanel": "Přidat na panel",
     "nazwa": "Název",
-    "zapisano": "Uloženo ✓"
+    "zapisano": "Uloženo ✓",
+    "wszystkie": "Zobrazit vše",
+    "prog": "Práh",
+    "pozycja": "Poloha",
+    "odTemp": "od teploty",
+    "zrodlo": "Zdroj",
+    "przypiszPodpis": "Klepněte na křídlo v nákresu: vyberte motor a čidlo okna.",
+    "wschodSlonca": "Východ slunce",
+    "zachodSlonca": "Západ slunce",
+    "godzina": "Čas",
+    "przesuniecie": "Posun",
+    "poWsch": "{0} min po východu",
+    "przedWsch": "{0} min před východem",
+    "poZach": "{0} min po západu",
+    "przedZach": "{0} min před západem",
+    "oknaWieczorem": "Večer u čidel oken",
+    "nieZjedzie": "nesjede",
+    "zjedzieDo": "sjede na {0} %",
+    "zjedzieNormalnie": "sjede normálně",
+    "pozniej": "Když okno zavřete, stínění dojede samo.",
+    "kazdy": "Každý motor zvlášť"
   }
 }
