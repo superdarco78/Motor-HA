@@ -143,7 +143,10 @@ def opcje_z_kreatora(hass: HomeAssistant, stare: dict[str, Any], dane: Any) -> t
         for p in lista:
             pole = {"silnik": _encja(hass, p.get("silnik"), ("cover",)),
                     "czujnik": _encja(hass, p.get("czujnik"), ("binary_sensor",)),
-                    "tryb": p.get("tryb") if p.get("tryb") in TRYBY_SKRZYDLA else "uchyl"}
+                    "tryb": p.get("tryb") if p.get("tryb") in TRYBY_SKRZYDLA else "uchyl",
+                    # rodzaj i kolor osłony tylko tego pola (2.2.2); brak = jak całe okno
+                    "oslona": p.get("oslona") if p.get("oslona") in RODZAJE and p.get("oslona") not in BRAMY else None,
+                    "kolor": p.get("kolor") if p.get("kolor") in KOLORY or (isinstance(p.get("kolor"), str) and HEX.match(p["kolor"])) else None}
             wynik.append({k: v for k, v in pole.items() if v})
         if not any(p.get("silnik") for p in wynik):
             raise ZleDane("brak_rolety")

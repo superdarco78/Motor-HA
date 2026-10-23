@@ -435,6 +435,9 @@
     "pojedyncze": "Individuales",
     "grupaIle": "grupo · {0} hojas",
     "przeciagnij": "Arrastra para cambiar",
-    "zamienPodpis": "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas."
+    "zamienPodpis": "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas.",
+    "caleOkno": "Ventana entera",
+    "rodzajCalosc": "Toca un panel del dibujo para darle otro tipo o color.",
+    "rodzajPole": "Ahora solo ajustas el panel {0}."
   }
 }

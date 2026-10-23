@@ -435,6 +435,9 @@
     "pojedyncze": "Single",
     "grupaIle": "group · {0} sashes",
     "przeciagnij": "Drag to swap",
-    "zamienPodpis": "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them."
+    "zamienPodpis": "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them.",
+    "caleOkno": "Whole window",
+    "rodzajCalosc": "Tap a pane in the drawing to give it a different type or colour.",
+    "rodzajPole": "You are now setting pane {0} only."
   }
 }

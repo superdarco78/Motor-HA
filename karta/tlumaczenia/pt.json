@@ -435,6 +435,9 @@
     "pojedyncze": "Individuais",
     "grupaIle": "grupo · {0} folhas",
     "przeciagnij": "Arraste para trocar",
-    "zamienPodpis": "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar."
+    "zamienPodpis": "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar.",
+    "caleOkno": "Janela inteira",
+    "rodzajCalosc": "Toque num painel do desenho para lhe dar outro tipo ou cor.",
+    "rodzajPole": "Agora está a ajustar só o painel {0}."
   }
 }

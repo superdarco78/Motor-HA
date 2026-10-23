@@ -435,6 +435,9 @@
     "pojedyncze": "Jednotlivé",
     "grupaIle": "skupina · {0} krídla",
     "przeciagnij": "Potiahnite na výmenu",
-    "zamienPodpis": "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa."
+    "zamienPodpis": "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa.",
+    "caleOkno": "Celé okno",
+    "rodzajCalosc": "Ťuknite na pole na nákrese a dajte mu iný druh alebo farbu.",
+    "rodzajPole": "Teraz nastavujete len pole {0}."
   }
 }

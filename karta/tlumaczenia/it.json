@@ -435,6 +435,9 @@
     "pojedyncze": "Singole",
     "grupaIle": "gruppo · {0} ante",
     "przeciagnij": "Trascina per scambiare",
-    "zamienPodpis": "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle."
+    "zamienPodpis": "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle.",
+    "caleOkno": "Finestra intera",
+    "rodzajCalosc": "Tocca un riquadro nel disegno per dargli un altro tipo o colore.",
+    "rodzajPole": "Ora imposti solo il riquadro {0}."
   }
 }

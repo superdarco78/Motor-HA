@@ -435,6 +435,9 @@
     "pojedyncze": "Einzeln",
     "grupaIle": "Gruppe · {0} Flügel",
     "przeciagnij": "Ziehen zum Tauschen",
-    "zamienPodpis": "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze."
+    "zamienPodpis": "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze.",
+    "caleOkno": "Ganzes Fenster",
+    "rodzajCalosc": "Tippe auf ein Feld in der Zeichnung, um ihm eine andere Art oder Farbe zu geben.",
+    "rodzajPole": "Du stellst jetzt nur Feld {0} ein."
   }
 }

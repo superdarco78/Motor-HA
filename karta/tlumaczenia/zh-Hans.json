@@ -435,6 +435,9 @@
     "pojedyncze": "单个",
     "grupaIle": "组 · {0} 扇",
     "przeciagnij": "拖动以交换",
-    "zamienPodpis": "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。"
+    "zamienPodpis": "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。",
+    "caleOkno": "整扇窗",
+    "rodzajCalosc": "点按图中的格子，可为它设置其他类型或颜色。",
+    "rodzajPole": "现在只设置第 {0} 格。"
   }
 }

@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.2.1";
+  var WERSJA = "2.2.2";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -490,6 +490,9 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .kompas[hidden]{display:none}
 .brak{padding:16px;color:var(--secondary-text-color);font-size:var(--ha-font-size-m,14px)}
 `;
+  function stylPola(sel, o) {
+    return stylOkna(o).split("\n").filter((l) => /^\.(oslona|kaseta|listwa|prow)/.test(l)).map((l) => `${sel} ${l}`).join("\n");
+  }
   function stylOkna({ rama, drewno, kolor, typ, zew }) {
     const t = tekstura(typ, kolor), S = (k) => jasniej(kolor, k), R = (k) => jasniej(rama, k);
     const tlo2 = (drewno ? SLOJE + "," : "") + rama;
@@ -1311,7 +1314,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Pojedyncze",
       grupaIle: "grupa · {0} skrzydła",
       przeciagnij: "Przeciągnij, żeby zamienić",
-      zamienPodpis: "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami."
+      zamienPodpis: "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami.",
+      caleOkno: "Całe okno",
+      rodzajCalosc: "Dotknij pola na rysunku, żeby dać mu inny rodzaj albo kolor.",
+      rodzajPole: "Teraz ustawiasz tylko pole {0}."
     }
   };
 
@@ -1753,7 +1759,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Single",
       grupaIle: "group · {0} sashes",
       przeciagnij: "Drag to swap",
-      zamienPodpis: "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them."
+      zamienPodpis: "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them.",
+      caleOkno: "Whole window",
+      rodzajCalosc: "Tap a pane in the drawing to give it a different type or colour.",
+      rodzajPole: "You are now setting pane {0} only."
     }
   };
 
@@ -2195,7 +2204,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Einzeln",
       grupaIle: "Gruppe · {0} Flügel",
       przeciagnij: "Ziehen zum Tauschen",
-      zamienPodpis: "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze."
+      zamienPodpis: "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze.",
+      caleOkno: "Ganzes Fenster",
+      rodzajCalosc: "Tippe auf ein Feld in der Zeichnung, um ihm eine andere Art oder Farbe zu geben.",
+      rodzajPole: "Du stellst jetzt nur Feld {0} ein."
     }
   };
 
@@ -2637,7 +2649,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Individuels",
       grupaIle: "groupe · {0} vantaux",
       przeciagnij: "Glisser pour échanger",
-      zamienPodpis: "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger."
+      zamienPodpis: "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger.",
+      caleOkno: "Fenêtre entière",
+      rodzajCalosc: "Touchez un panneau du dessin pour lui donner un autre type ou une autre couleur.",
+      rodzajPole: "Vous réglez maintenant le panneau {0} seulement."
     }
   };
 
@@ -3079,7 +3094,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Jednotlivé",
       grupaIle: "skupina · {0} křídla",
       przeciagnij: "Přetáhněte pro záměnu",
-      zamienPodpis: "Chyťte křídlo v nákresu nebo ⠿ u řádku a pusťte na jiné – vymění se."
+      zamienPodpis: "Chyťte křídlo v nákresu nebo ⠿ u řádku a pusťte na jiné – vymění se.",
+      caleOkno: "Celé okno",
+      rodzajCalosc: "Klepněte na pole v nákresu a dejte mu jiný druh nebo barvu.",
+      rodzajPole: "Teď nastavujete jen pole {0}."
     }
   };
 
@@ -3521,7 +3539,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Jednotlivé",
       grupaIle: "skupina · {0} krídla",
       przeciagnij: "Potiahnite na výmenu",
-      zamienPodpis: "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa."
+      zamienPodpis: "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa.",
+      caleOkno: "Celé okno",
+      rodzajCalosc: "Ťuknite na pole na nákrese a dajte mu iný druh alebo farbu.",
+      rodzajPole: "Teraz nastavujete len pole {0}."
     }
   };
 
@@ -3963,7 +3984,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Individuales",
       grupaIle: "grupo · {0} hojas",
       przeciagnij: "Arrastra para cambiar",
-      zamienPodpis: "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas."
+      zamienPodpis: "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas.",
+      caleOkno: "Ventana entera",
+      rodzajCalosc: "Toca un panel del dibujo para darle otro tipo o color.",
+      rodzajPole: "Ahora solo ajustas el panel {0}."
     }
   };
 
@@ -4405,7 +4429,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Singole",
       grupaIle: "gruppo · {0} ante",
       przeciagnij: "Trascina per scambiare",
-      zamienPodpis: "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle."
+      zamienPodpis: "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle.",
+      caleOkno: "Finestra intera",
+      rodzajCalosc: "Tocca un riquadro nel disegno per dargli un altro tipo o colore.",
+      rodzajPole: "Ora imposti solo il riquadro {0}."
     }
   };
 
@@ -4847,7 +4874,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Los",
       grupaIle: "groep · {0} vleugels",
       przeciagnij: "Sleep om te wisselen",
-      zamienPodpis: "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen."
+      zamienPodpis: "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen.",
+      caleOkno: "Hele raam",
+      rodzajCalosc: "Tik op een vak in de tekening om het een ander soort of andere kleur te geven.",
+      rodzajPole: "Je stelt nu alleen vak {0} in."
     }
   };
 
@@ -5289,7 +5319,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Individuais",
       grupaIle: "grupo · {0} folhas",
       przeciagnij: "Arraste para trocar",
-      zamienPodpis: "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar."
+      zamienPodpis: "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar.",
+      caleOkno: "Janela inteira",
+      rodzajCalosc: "Toque num painel do desenho para lhe dar outro tipo ou cor.",
+      rodzajPole: "Agora está a ajustar só o painel {0}."
     }
   };
 
@@ -5731,7 +5764,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Окремі",
       grupaIle: "група · стулок: {0}",
       przeciagnij: "Перетягніть, щоб поміняти",
-      zamienPodpis: "Візьміть стулку на малюнку або ⠿ біля рядка й відпустіть на іншій – вони поміняються місцями."
+      zamienPodpis: "Візьміть стулку на малюнку або ⠿ біля рядка й відпустіть на іншій – вони поміняються місцями.",
+      caleOkno: "Усе вікно",
+      rodzajCalosc: "Торкніться поля на малюнку, щоб задати йому інший вид або колір.",
+      rodzajPole: "Зараз налаштовується лише поле {0}."
     }
   };
 
@@ -6173,7 +6209,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "Отдельные",
       grupaIle: "группа · створок: {0}",
       przeciagnij: "Перетащите, чтобы поменять",
-      zamienPodpis: "Возьмите створку на рисунке или ⠿ у строки и отпустите на другой – они поменяются местами."
+      zamienPodpis: "Возьмите створку на рисунке или ⠿ у строки и отпустите на другой – они поменяются местами.",
+      caleOkno: "Всё окно",
+      rodzajCalosc: "Нажмите на поле на рисунке, чтобы задать ему другой вид или цвет.",
+      rodzajPole: "Сейчас настраивается только поле {0}."
     }
   };
 
@@ -6615,7 +6654,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "単独",
       grupaIle: "グループ · {0} 枚",
       przeciagnij: "ドラッグで入れ替え",
-      zamienPodpis: "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。"
+      zamienPodpis: "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。",
+      caleOkno: "窓全体",
+      rodzajCalosc: "図の区画をタップすると、別の種類や色にできます。",
+      rodzajPole: "今は区画 {0} だけを設定しています。"
     }
   };
 
@@ -7057,7 +7099,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       pojedyncze: "单个",
       grupaIle: "组 · {0} 扇",
       przeciagnij: "拖动以交换",
-      zamienPodpis: "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。"
+      zamienPodpis: "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。",
+      caleOkno: "整扇窗",
+      rodzajCalosc: "点按图中的格子，可为它设置其他类型或颜色。",
+      rodzajPole: "现在只设置第 {0} 格。"
     }
   };
 
@@ -7351,7 +7396,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
       if (klucz !== this._klucz) {
         this._klucz = klucz;
         this._zbuduj(c, czl);
@@ -7381,14 +7426,31 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         return x - od2 > 4e-3 ? `<div class="mur" style="left:${od2 * 100}%;width:${(x - od2) * 100}%"></div>` : "";
       }).join("");
       this._kas = KASETA[c.oslona] ?? 12;
+      const typPola = (i) => {
+        const t = P?.[i]?.oslona;
+        return t && !!czyZew(t) === !!zew && !POZIOME.includes(t) && !this._poziomo ? t : c.oslona;
+      };
+      const warianty = [], wariant = (i) => {
+        if (!P) return 0;
+        const t = typPola(i), k = P[i].kolor ? hex(P[i].kolor) : kolor;
+        if (t === c.oslona && k === kolor) return 0;
+        let w = warianty.findIndex((x) => x.t === t && x.k === k);
+        if (w < 0) {
+          warianty.push({ t, k });
+          w = warianty.length - 1;
+        }
+        return w + 1;
+      };
+      const wPol = P ? P.map((_, i) => wariant(i)) : [];
+      this._kasy = P ? P.map((_, i) => KASETA[typPola(i)] ?? 12) : null;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
-      const skrzydlo = (i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}"${miejsce(i)}><div class="szyba">
+      const skrzydlo = (i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}"${miejsce(i)}><div class="szyba"${wPol[i] ? ` data-w="${wPol[i]}"` : ""}>
       ${zew ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
       <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
       <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P || P[i].h >= 0.4) ? '<i class="klamka"></i>' : ""}</div>`;
-      const kolumna = (i) => `<div class="szyba" data-i="${i}"${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
+      const kolumna = (i) => `<div class="szyba" data-i="${i}"${wPol[i] ? ` data-w="${wPol[i]}"` : ""}${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
       const pozycje = String(c.pozycje || "").split(/[,; ]+/).filter((x) => x !== "").map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
-      root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
+      root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}${warianty.map((x, w) => stylPola(`.szyba[data-w="${w + 1}"]`, { rama, drewno: czyDrewno(c.rama), kolor: x.k, typ: x.t, zew })).join("\n")}</style>
 <ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
@@ -7423,7 +7485,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         zam: q(".zam"),
         poz: qa(".poz button"),
         skrz: qa(".skrz").map((s, i) => ({ s, niebo: s.querySelector(".niebo"), osiedle: s.querySelector(".osiedle-w"), pg: s.querySelector(".pg"), za: qa(".za")[i] })),
-        pola: pola.map((p) => ({ p, oslona: p.querySelector(".oslona"), listwa: p.querySelector(".listwa"), cel: p.querySelector(".cel"), celT: p.querySelector(".cel span") }))
+        pola: pola.map((p, i) => ({ p, kas: this._kasy?.[i] ?? this._kas, oslona: p.querySelector(".oslona"), listwa: p.querySelector(".listwa"), cel: p.querySelector(".cel"), celT: p.querySelector(".cel span") }))
       };
       this._ruchy = czl.map((e) => new Ruch(e));
       this._czl = null;
@@ -7562,11 +7624,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     // pozycja z wysokości palca na szybie
     _pozycjaZ(pole, y) {
-      const r = pole.getBoundingClientRect(), gora = this._kas, zakres = r.height - gora - LISTWA - POD_LISTWA;
+      const r = pole.getBoundingClientRect(), gora = this._el.pola.find((x) => x.p === pole)?.kas ?? this._kas, zakres = r.height - gora - LISTWA - POD_LISTWA;
       return Math.round(100 - Math.min(1, Math.max(0, (y - r.top - gora) / zakres)) * 100);
     }
-    _gornaListwy(wys, p) {
-      return this._kas - 2 + (wys - this._kas - LISTWA - POD_LISTWA + 2) * (100 - p) / 100;
+    _gornaListwy(wys, p, kas = this._kas) {
+      return kas - 2 + (wys - kas - LISTWA - POD_LISTWA + 2) * (100 - p) / 100;
     }
     _ciagnij(el, idx, srodek) {
       let start = null, wart = null;
@@ -7789,7 +7851,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       }
       const wys = P.p.clientHeight;
       P.cel.style.display = "block";
-      P.cel.style.top = this._gornaListwy(wys, p) + LISTWA + "px";
+      P.cel.style.top = this._gornaListwy(wys, p, P.kas) + LISTWA + "px";
       P.celT.textContent = (ciagnie ? "" : "→ ") + p + " %";
     }
     // pozycja pokazywana na suwaku: jego osłona (osobne skrzydła) albo średnia wszystkich
@@ -7824,9 +7886,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
           if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
           return;
         }
-        const gora = this._gornaListwy(wys, r.widac);
-        P.oslona.style.height = Math.max(0, gora - (this._kas - 2) + 1) + "px";
-        P.oslona.style.top = this._kas - 2 + "px";
+        const kas = P.kas ?? this._kas, gora = this._gornaListwy(wys, r.widac, kas);
+        P.oslona.style.height = Math.max(0, gora - (kas - 2) + 1) + "px";
+        P.oslona.style.top = kas - 2 + "px";
         P.listwa.style.transform = `translateY(${gora}px)`;
         if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
         P._dol = P.p.offsetTop + (P.p.parentElement?.offsetTop || 0) + gora + LISTWA / 2;
@@ -8556,6 +8618,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
 .wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
 #duzeOkno svg{touch-action:none}
+.wybpol{margin:-4px 0 14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
 .linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
 .kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
@@ -8776,7 +8839,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         d.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#n${id})"/>`);
         d.push(`<path d="M${x} ${y + h * 0.78}l${w * 0.25} ${-h * 0.14} ${w * 0.2} ${h * 0.08} ${w * 0.3} ${-h * 0.16} ${w * 0.25} ${h * 0.1}V${y + h}H${x}z" fill="#000" opacity=".12"/>`);
         const poz = opt.poz ? opt.poz(i) : 60;
-        d.push(this.oslona(S.o.oslona, x, y, w, h, poz, kol));
+        const pp = S.pola[i] || {};
+        d.push(this.oslona(pp.oslona || S.o.oslona, x, y, w, h, poz, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol));
         if (opt.numery) {
           const on = opt.wybrane === i;
           d.push(`<g data-pole="${i}" style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${on ? "rgba(255,152,0,.25)" : "transparent"}" stroke="${on ? "#ff9800" : "none"}" stroke-width="3"/>
@@ -8869,12 +8933,28 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const wew = Object.values(GRUPY.wew).flat(), zew = Object.values(GRUPY.zew).flat(), k = this._oslona(S.rolety[0])?.klasa;
         lista = ["shutter", "awning"].includes(k) || czyZew(S.o.oslona) ? [...zew, ...wew] : [...wew, ...zew];
       }
-      return `<div class="siatka k4">${lista.map((k) => `<button class="kaf ${S.o.oslona === k ? "wyb" : ""}" data-rodzaj="${k}">${this.kafelRodzaju(k)}<b>${esc6(dziel(T2.oslony[k] || k))}</b></button>`).join("")}</div>`;
+      const wr = this._wybR(), akt = wr === null ? S.o.oslona : S.pola[wr]?.oslona || S.o.oslona;
+      if (wr !== null) lista = lista.filter((k) => !czyBrama(k) && !!czyZew(k) === !!czyZew(S.o.oslona) && !["pionowa", "zaslona"].includes(k));
+      return this._wyborPola() + `<div class="siatka k4">${lista.map((k) => `<button class="kaf ${akt === k ? "wyb" : ""}" data-rodzaj="${k}">${this.kafelRodzaju(k)}<b>${esc6(dziel(T2.oslony[k] || k))}</b></button>`).join("")}</div>`;
     }
     str_kolory() {
       const S = this.S, T2 = this.T, t = this.t;
-      const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map((k) => `<button class="probka ${S.o[co] === k && !S.o[co === "kolor" ? "kolor_wlasny" : "rama_wlasna"] ? "wyb" : ""}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc6(dziel(nazwy[k] || k))}</button>`).join("")}</div>`;
-      return `<div class="sek">${esc6(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}<div class="sek">${esc6(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}`;
+      const wr = this._wybR(), wybrany = (co, k) => co === "kolor" && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === "kolor" ? "kolor_wlasny" : "rama_wlasna"];
+      const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map((k) => `<button class="probka ${wybrany(co, k) ? "wyb" : ""}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc6(dziel(nazwy[k] || k))}</button>`).join("")}</div>`;
+      return this._wyborPola() + `<div class="sek">${esc6(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}<div class="sek">${esc6(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}`;
+    }
+    // „Rodzaj” i „Kolory”: całe okno albo jedno pole (dotknij pola na rysunku)
+    _wybR() {
+      const S = this.S;
+      return S.brama || S.wybR == null || S.wybR >= prostokaty(S.u).length ? null : S.wybR;
+    }
+    _wyborPola() {
+      const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
+      if (S.brama || n < 2) return "";
+      return `<div class="wybpol"><div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 200, h: 170, numery: true, id: "r", wybrane: wr })}</div>
+      <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? "wyb" : ""}" data-calosc="1">${esc6(t.caleOkno)}</button>
+      ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? "wyb" : ""}" data-pole="${i}">${esc6(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? " ✎" : ""}</button>`).join("")}</div>
+      <p class="pod" style="text-align:center;margin:6px 0 0">${esc6(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
     }
     str_przypisz() {
       const S = this.S, t = this.t;
@@ -9390,6 +9470,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this.shadowRoot.getElementById("tresc").scrollTop = 0;
     }
     async _klik(e) {
+      var _a, _b, _c, _d;
       if (this._poZamianie) return;
       const b = e.target.closest("button, g[data-pole], g[data-dodaj], [data-zamknij]");
       if (!b) return;
@@ -9444,16 +9525,26 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         S.wyb = 0;
       } else if (d.op) return this.operacja(d.op);
       else if (d.dodaj !== void 0) return this.operacja("dodaj", +d.dodaj);
-      else if (d.rodzaj) {
+      else if (d.rodzaj && this._wybR() !== null) {
+        const p = (_a = S.pola)[_b = this._wybR()] || (_a[_b] = {});
+        if (d.rodzaj === o.oslona) delete p.oslona;
+        else p.oslona = d.rodzaj;
+      } else if (d.rodzaj) {
         o.oslona = d.rodzaj;
         S.recznie.rodzaj = true;
+      } else if (d.kolor && this._wybR() !== null) {
+        const p = (_c = S.pola)[_d = this._wybR()] || (_c[_d] = {});
+        if (d.kolor === o.kolor) delete p.kolor;
+        else p.kolor = d.kolor;
       } else if (d.kolor) {
         o.kolor = d.kolor;
         delete o.kolor_wlasny;
-      } else if (d.rama) {
+      } else if (d.calosc) S.wybR = null;
+      else if (d.rama) {
         o.rama = d.rama;
         delete o.rama_wlasna;
-      } else if (d.pole !== void 0) {
+      } else if (d.pole !== void 0 && ["rodzaj", "kolory"].includes(kroki[S.krok])) S.wybR = this._wybR() === +d.pole ? null : +d.pole;
+      else if (d.pole !== void 0) {
         S.arkusz = +d.pole;
         S.wszystkie = false;
       } else if (d.zamknij) {

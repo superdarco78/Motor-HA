@@ -435,6 +435,9 @@
     "pojedyncze": "Pojedyncze",
     "grupaIle": "grupa · {0} skrzydła",
     "przeciagnij": "Przeciągnij, żeby zamienić",
-    "zamienPodpis": "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami."
+    "zamienPodpis": "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami.",
+    "caleOkno": "Całe okno",
+    "rodzajCalosc": "Dotknij pola na rysunku, żeby dać mu inny rodzaj albo kolor.",
+    "rodzajPole": "Teraz ustawiasz tylko pole {0}."
   }
 }

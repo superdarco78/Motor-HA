@@ -163,6 +163,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
 .wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
 #duzeOkno svg{touch-action:none}
+.wybpol{margin:-4px 0 14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
 .linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
 .kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
@@ -355,7 +356,8 @@ export class MotorHaKreator extends HTMLElement {
       d.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#n${id})"/>`);
       d.push(`<path d="M${x} ${y + h * .78}l${w * .25} ${-h * .14} ${w * .2} ${h * .08} ${w * .3} ${-h * .16} ${w * .25} ${h * .1}V${y + h}H${x}z" fill="#000" opacity=".12"/>`);
       const poz = opt.poz ? opt.poz(i) : 60;
-      d.push(this.oslona(S.o.oslona, x, y, w, h, poz, kol));
+      const pp = S.pola[i] || {};   // pole może mieć własny rodzaj i kolor osłony
+      d.push(this.oslona(pp.oslona || S.o.oslona, x, y, w, h, poz, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol));
       if (opt.numery) {
         const on = opt.wybrane === i;
         d.push(`<g data-pole="${i}" style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${on ? 'rgba(255,152,0,.25)' : 'transparent'}" stroke="${on ? '#ff9800' : 'none'}" stroke-width="3"/>
@@ -448,12 +450,25 @@ export class MotorHaKreator extends HTMLElement {
       const wew = Object.values(GRUPY.wew).flat(), zew = Object.values(GRUPY.zew).flat(), k = this._oslona(S.rolety[0])?.klasa;
       lista = ['shutter', 'awning'].includes(k) || czyZew(S.o.oslona) ? [...zew, ...wew] : [...wew, ...zew];
     }
-    return `<div class="siatka k4">${lista.map(k => `<button class="kaf ${S.o.oslona === k ? 'wyb' : ''}" data-rodzaj="${k}">${this.kafelRodzaju(k)}<b>${esc(dziel(T.oslony[k] || k))}</b></button>`).join('')}</div>`;
+    const wr = this._wybR(), akt = wr === null ? S.o.oslona : S.pola[wr]?.oslona || S.o.oslona;
+    if (wr !== null) lista = lista.filter(k => !czyBrama(k) && !!czyZew(k) === !!czyZew(S.o.oslona) && !['pionowa', 'zaslona'].includes(k));
+    return this._wyborPola() + `<div class="siatka k4">${lista.map(k => `<button class="kaf ${akt === k ? 'wyb' : ''}" data-rodzaj="${k}">${this.kafelRodzaju(k)}<b>${esc(dziel(T.oslony[k] || k))}</b></button>`).join('')}</div>`;
   }
   str_kolory() {
     const S = this.S, T = this.T, t = this.t;
-    const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map(k => `<button class="probka ${S.o[co] === k && !S.o[co === 'kolor' ? 'kolor_wlasny' : 'rama_wlasna'] ? 'wyb' : ''}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc(dziel(nazwy[k] || k))}</button>`).join('')}</div>`;
-    return `<div class="sek">${esc(t.oslona)}</div>${rzad('kolor', KOLORY_TAB, k => KOLORY[k], T.kolory)}<div class="sek">${esc(t.rama)}</div>${rzad('rama', RAMY_TAB, k => RAMA_Z_KLUCZA[k], T.ramy)}`;
+    const wr = this._wybR(), wybrany = (co, k) => co === 'kolor' && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === 'kolor' ? 'kolor_wlasny' : 'rama_wlasna'];
+    const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map(k => `<button class="probka ${wybrany(co, k) ? 'wyb' : ''}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc(dziel(nazwy[k] || k))}</button>`).join('')}</div>`;
+    return this._wyborPola() + `<div class="sek">${esc(t.oslona)}</div>${rzad('kolor', KOLORY_TAB, k => KOLORY[k], T.kolory)}<div class="sek">${esc(t.rama)}</div>${rzad('rama', RAMY_TAB, k => RAMA_Z_KLUCZA[k], T.ramy)}`;
+  }
+  // „Rodzaj” i „Kolory”: całe okno albo jedno pole (dotknij pola na rysunku)
+  _wybR() { const S = this.S; return S.brama || S.wybR == null || S.wybR >= prostokaty(S.u).length ? null : S.wybR; }
+  _wyborPola() {
+    const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
+    if (S.brama || n < 2) return '';
+    return `<div class="wybpol"><div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 200, h: 170, numery: true, id: 'r', wybrane: wr })}</div>
+      <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? 'wyb' : ''}" data-calosc="1">${esc(t.caleOkno)}</button>
+      ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? 'wyb' : ''}" data-pole="${i}">${esc(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? ' ✎' : ''}</button>`).join('')}</div>
+      <p class="pod" style="text-align:center;margin:6px 0 0">${esc(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
   }
   str_przypisz() {
     const S = this.S, t = this.t;
@@ -876,9 +891,13 @@ export class MotorHaKreator extends HTMLElement {
     else if (d.wlasny) { S.szablon = 'w'; S.recznie.uklad = true; S.wyb = 0; }
     else if (d.op) return this.operacja(d.op);
     else if (d.dodaj !== undefined) return this.operacja('dodaj', +d.dodaj);
+    else if (d.rodzaj && this._wybR() !== null) { const p = S.pola[this._wybR()] ||= {}; if (d.rodzaj === o.oslona) delete p.oslona; else p.oslona = d.rodzaj; }
     else if (d.rodzaj) { o.oslona = d.rodzaj; S.recznie.rodzaj = true; }
+    else if (d.kolor && this._wybR() !== null) { const p = S.pola[this._wybR()] ||= {}; if (d.kolor === o.kolor) delete p.kolor; else p.kolor = d.kolor; }
     else if (d.kolor) { o.kolor = d.kolor; delete o.kolor_wlasny; }
+    else if (d.calosc) S.wybR = null;
     else if (d.rama) { o.rama = d.rama; delete o.rama_wlasna; }
+    else if (d.pole !== undefined && ['rodzaj', 'kolory'].includes(kroki[S.krok])) S.wybR = this._wybR() === +d.pole ? null : +d.pole;
     else if (d.pole !== undefined) { S.arkusz = +d.pole; S.wszystkie = false; }
     else if (d.zamknij) { S.arkusz = null; S.arkuszC = null; S.wszystkie = false; }
     else if (d.wszystkie) S.wszystkie = true;
