@@ -17,7 +17,7 @@ CEL = KORZEN / "custom_components" / "motor_ha"
 POLA_KROKU = {
     "tryb": ["tryb", "kopiuj_z"],
     "mam": ["mam"],
-    "urzadzenie": ["rolety", "name", "pokoj", "rodzaj_pokoju"],
+    "urzadzenie": ["rolety", "name", "pokoj", "rodzaj_pokoju", "ukryj_zrodlo"],
     "rodzaj": ["oslona"],
     "lamele": ["lamele_kat", "lamele_tryb", "lamele_noc"],
     "kolory": ["kolor", "rama", "kolor_wlasny", "rama_wlasna"],

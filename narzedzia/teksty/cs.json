@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Zařízení",
       "co": "Vyberte motor (stínění nebo bránu), pojmenujte ho a vyberte místnost.",
-      "poco": "Motor HA ovládá tento motor a díky místnosti můžete mluvit s Assist, např. „zatáhni obývák“."
+      "poco": "Motor HA ovládá tento motor. S Assist mluvte názvem zařízení, např. „zavři Plisé kuchyň“."
     },
     "rodzaj": {
       "t": "Druh",
@@ -92,6 +92,7 @@
     "name": "Název",
     "pokoj": "Místnost",
     "rodzaj_pokoju": "Druh místnosti (pro tipy)",
+    "ukryj_zrodlo": "Skrýt motor před Assist",
     "oslona": "Druh",
     "lamele_kat": "Úhel lamel na slunci",
     "lamele_tryb": "Ovládání lamel",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Prázdné = začít od nuly.",
     "rolety": "Pro okno se dvěma křídly vyberte dvě: nejdřív levé, pak pravé.",
     "name": "Prázdné = název motoru.",
-    "pokoj": "Zařízení půjde do této místnosti. Assist pak rozumí „zatáhni obývák“.",
+    "pokoj": "Zařízení půjde do této místnosti, aby se dalo snadno najít.",
+    "ukryj_zrodlo": "Assist pak vidí jen zařízení Motor HA, ne samotný motor. Pomůže, když Assist říká, že je více zařízení s tímto názvem. Ve výchozím stavu vypnuto.",
     "odwroc": "Zapněte, když motor hlásí 100 % při zavřeném stínění.",
     "czas": "0 = automaticky: z rychlosti motoru, kalibrace nebo skutečných pohybů.",
     "foto_stan": "Obvykle „on“. U textového čidla zadejte např. „obstructed“.",

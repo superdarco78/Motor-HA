@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Zariadenie",
       "co": "Vyberte motor (tienenie alebo bránu), pomenujte ho a vyberte miestnosť.",
-      "poco": "Motor HA ovláda tento motor a vďaka miestnosti môžete hovoriť s Assist, napr. „zatiahni obývačku“."
+      "poco": "Motor HA ovláda tento motor. S Assist hovorte názvom zariadenia, napr. „zatvor Plisé kuchyňa“."
     },
     "rodzaj": {
       "t": "Druh",
@@ -92,6 +92,7 @@
     "name": "Názov",
     "pokoj": "Miestnosť",
     "rodzaj_pokoju": "Druh miestnosti (pre tipy)",
+    "ukryj_zrodlo": "Skryť motor pred Assist",
     "oslona": "Druh",
     "lamele_kat": "Uhol lamiel na slnku",
     "lamele_tryb": "Ovládanie lamiel",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Prázdne = začať od nuly.",
     "rolety": "Pre okno s dvoma krídlami vyberte dve: najprv ľavé, potom pravé.",
     "name": "Prázdne = názov motora.",
-    "pokoj": "Zariadenie pôjde do tejto miestnosti. Assist potom rozumie „zatiahni obývačku“.",
+    "pokoj": "Zariadenie pôjde do tejto miestnosti, aby sa dalo ľahko nájsť.",
+    "ukryj_zrodlo": "Assist potom vidí iba zariadenie Motor HA, nie samotný motor. Pomôže, keď Assist hovorí, že je viac zariadení s týmto názvom. Predvolene vypnuté.",
     "odwroc": "Zapnite, keď motor hlási 100 % pri zatvorenom tienení.",
     "czas": "0 = automaticky: z rýchlosti motora, kalibrácie alebo skutočných pohybov.",
     "foto_stan": "Zvyčajne „on“. Pri textovom snímači zadajte napr. „obstructed“.",

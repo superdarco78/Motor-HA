@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "设备",
       "co": "选择电机(遮阳或大门),命名并选择房间。",
-      "poco": "Motor HA 控制这个电机,设置房间后可以对 Assist 说「关上客厅」。"
+      "poco": "Motor HA 控制这个电机。对 Assist 说话时请用设备名称,例如「关上厨房百褶帘」。"
     },
     "rodzaj": {
       "t": "类型",
@@ -92,6 +92,7 @@
     "name": "名称",
     "pokoj": "房间",
     "rodzaj_pokoju": "房间类型(用于提示)",
+    "ukryj_zrodlo": "对 Assist 隐藏电机",
     "oslona": "类型",
     "lamele_kat": "阳光下的叶片角度",
     "lamele_tryb": "叶片控制",
@@ -139,7 +140,8 @@
     "kopiuj_z": "留空 = 从头开始。",
     "rolety": "两扇窗请选择两个:先左后右。",
     "name": "留空 = 电机名称。",
-    "pokoj": "设备会放入这个房间。Assist 就能听懂「关上客厅」。",
+    "pokoj": "设备会放入这个房间,方便查找。",
+    "ukryj_zrodlo": "Assist 只会看到 Motor HA 设备,而不是电机本身。当 Assist 提示有多个同名设备时有用。默认关闭。",
     "odwroc": "如果遮阳关闭时电机显示 100 %,请开启。",
     "czas": "0 = 自动:根据电机速度、校准或实际移动。",
     "foto_stan": "通常是「on」。文字类传感器请输入如「obstructed」。",

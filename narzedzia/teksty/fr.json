@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Appareil",
       "co": "Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.",
-      "poco": "Motor HA pilote ce moteur, et la pièce permet de parler à Assist, par ex. « ferme le salon »."
+      "poco": "Motor HA pilote ce moteur. Parlez à Assist avec le nom de l'appareil, par ex. « ferme Store plissé cuisine »."
     },
     "rodzaj": {
       "t": "Type",
@@ -92,6 +92,7 @@
     "name": "Nom",
     "pokoj": "Pièce",
     "rodzaj_pokoju": "Type de pièce (pour les conseils)",
+    "ukryj_zrodlo": "Cacher le moteur à Assist",
     "oslona": "Type",
     "lamele_kat": "Angle des lames au soleil",
     "lamele_tryb": "Pilotage des lames",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Vide = partir de zéro.",
     "rolety": "Pour une fenêtre à deux vantaux, choisissez-en deux : d'abord le gauche, puis le droit.",
     "name": "Vide = nom du moteur.",
-    "pokoj": "L'appareil va dans cette pièce. Assist comprend alors « ferme le salon ».",
+    "pokoj": "L'appareil va dans cette pièce, pour le retrouver facilement.",
+    "ukryj_zrodlo": "Assist ne voit alors que l'appareil Motor HA, pas le moteur lui-même. Utile quand Assist dit qu'il y a plusieurs appareils avec ce nom. Désactivé par défaut.",
     "odwroc": "À activer si le moteur indique 100 % quand le store est fermé.",
     "czas": "0 = automatique : d'après la vitesse du moteur, le calibrage ou les vrais mouvements.",
     "foto_stan": "En général « on ». Pour un capteur texte, entrez par ex. « obstructed ».",

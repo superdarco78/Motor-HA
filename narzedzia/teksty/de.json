@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Gerät",
       "co": "Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.",
-      "poco": "Motor HA steuert diesen Motor, und mit dem Raum verstehst du Assist, z. B. „Wohnzimmer schließen“."
+      "poco": "Motor HA steuert diesen Motor. Sprich mit Assist über den Gerätenamen, z. B. „schließe Plissee Küche“."
     },
     "rodzaj": {
       "t": "Art",
@@ -92,6 +92,7 @@
     "name": "Name",
     "pokoj": "Raum",
     "rodzaj_pokoju": "Raumart (für Tipps)",
+    "ukryj_zrodlo": "Motor vor Assist verbergen",
     "oslona": "Art",
     "lamele_kat": "Lamellenwinkel bei Sonne",
     "lamele_tryb": "Lamellensteuerung",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Leer = von vorne beginnen.",
     "rolety": "Bei einem Fenster mit zwei Flügeln wähle zwei: zuerst den linken, dann den rechten.",
     "name": "Leer = Name des Motors.",
-    "pokoj": "Das Gerät kommt in diesen Raum. Assist versteht dann „Wohnzimmer schließen“.",
+    "pokoj": "Das Gerät kommt in diesen Raum, damit du es leicht findest.",
+    "ukryj_zrodlo": "Assist sieht dann nur das Motor-HA-Gerät, nicht den Motor selbst. Hilft, wenn Assist sagt, dass es mehrere Geräte mit diesem Namen gibt. Standardmäßig aus.",
     "odwroc": "Einschalten, wenn der Motor bei geschlossenem Behang 100 % meldet.",
     "czas": "0 = automatisch: aus Motorgeschwindigkeit, Kalibrierung oder echten Fahrten.",
     "foto_stan": "Meist „on“. Bei einem Textsensor z. B. „obstructed“ eingeben.",

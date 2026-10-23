@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Dispositivo",
       "co": "Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.",
-      "poco": "Motor HA comanda questo motore, e la stanza ti permette di parlare con Assist, ad es. «chiudi il soggiorno»."
+      "poco": "Motor HA comanda questo motore. Parla con Assist usando il nome del dispositivo, ad es. «chiudi Plissé cucina»."
     },
     "rodzaj": {
       "t": "Tipo",
@@ -92,6 +92,7 @@
     "name": "Nome",
     "pokoj": "Stanza",
     "rodzaj_pokoju": "Tipo di stanza (per i consigli)",
+    "ukryj_zrodlo": "Nascondi il motore ad Assist",
     "oslona": "Tipo",
     "lamele_kat": "Angolo lamelle al sole",
     "lamele_tryb": "Comando lamelle",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Vuoto = parti da zero.",
     "rolety": "Per una finestra a due ante scegline due: prima la sinistra, poi la destra.",
     "name": "Vuoto = nome del motore.",
-    "pokoj": "Il dispositivo va in questa stanza. Assist capirà «chiudi il soggiorno».",
+    "pokoj": "Il dispositivo va in questa stanza, così lo trovi facilmente.",
+    "ukryj_zrodlo": "Assist vedrà solo il dispositivo Motor HA, non il motore. Aiuta quando Assist dice che ci sono più dispositivi con questo nome. Disattivato per impostazione predefinita.",
     "odwroc": "Attiva se il motore segnala 100 % con la schermatura chiusa.",
     "czas": "0 = automatico: dalla velocità del motore, dalla calibrazione o dai movimenti reali.",
     "foto_stan": "Di solito «on». Per un sensore di testo inserisci ad es. «obstructed».",

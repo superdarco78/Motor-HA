@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Dispositivo",
       "co": "Escolha o motor (estore ou portão), dê um nome e escolha a divisão.",
-      "poco": "O Motor HA comanda este motor, e a divisão permite falar com o Assist, p. ex. «fecha a sala»."
+      "poco": "O Motor HA comanda este motor. Fale com o Assist pelo nome do dispositivo, p. ex. «fecha Plissado cozinha»."
     },
     "rodzaj": {
       "t": "Tipo",
@@ -92,6 +92,7 @@
     "name": "Nome",
     "pokoj": "Divisão",
     "rodzaj_pokoju": "Tipo de divisão (para dicas)",
+    "ukryj_zrodlo": "Ocultar o motor do Assist",
     "oslona": "Tipo",
     "lamele_kat": "Ângulo das lâminas ao sol",
     "lamele_tryb": "Controlo das lâminas",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Vazio = começar do zero.",
     "rolety": "Para uma janela de duas folhas escolha duas: primeiro a esquerda, depois a direita.",
     "name": "Vazio = nome do motor.",
-    "pokoj": "O dispositivo vai para esta divisão. O Assist percebe então «fecha a sala».",
+    "pokoj": "O dispositivo vai para esta divisão, para o encontrar facilmente.",
+    "ukryj_zrodlo": "O Assist vê então só o dispositivo Motor HA, não o motor. Ajuda quando o Assist diz que há vários dispositivos com este nome. Desligado por predefinição.",
     "odwroc": "Ligue se o motor indicar 100 % com o estore fechado.",
     "czas": "0 = automático: pela velocidade do motor, calibração ou movimentos reais.",
     "foto_stan": "Normalmente «on». Para um sensor de texto escreva p. ex. «obstructed».",

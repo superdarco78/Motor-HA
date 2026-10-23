@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Apparaat",
       "co": "Kies de motor (zonwering of poort), geef een naam en kies de ruimte.",
-      "poco": "Motor HA bestuurt deze motor, en met de ruimte praat je met Assist, bijv. „sluit de woonkamer”."
+      "poco": "Motor HA bestuurt deze motor. Praat met Assist via de apparaatnaam, bijv. „sluit Plissé keuken”."
     },
     "rodzaj": {
       "t": "Soort",
@@ -92,6 +92,7 @@
     "name": "Naam",
     "pokoj": "Ruimte",
     "rodzaj_pokoju": "Soort ruimte (voor tips)",
+    "ukryj_zrodlo": "Motor verbergen voor Assist",
     "oslona": "Soort",
     "lamele_kat": "Lamelhoek bij zon",
     "lamele_tryb": "Lamelbesturing",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Leeg = opnieuw beginnen.",
     "rolety": "Voor een raam met twee vleugels kies je er twee: eerst links, dan rechts.",
     "name": "Leeg = naam van de motor.",
-    "pokoj": "Het apparaat komt in deze ruimte. Assist begrijpt dan „sluit de woonkamer”.",
+    "pokoj": "Het apparaat komt in deze ruimte, zodat je het makkelijk vindt.",
+    "ukryj_zrodlo": "Assist ziet dan alleen het Motor HA-apparaat, niet de motor zelf. Helpt als Assist zegt dat er meerdere apparaten met deze naam zijn. Standaard uit.",
     "odwroc": "Aanzetten als de motor 100 % meldt bij gesloten zonwering.",
     "czas": "0 = automatisch: uit motorsnelheid, kalibratie of echte bewegingen.",
     "foto_stan": "Meestal „on”. Voor een tekstsensor bijv. „obstructed” invullen.",

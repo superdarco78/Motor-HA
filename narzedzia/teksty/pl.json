@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Urządzenie",
       "co": "Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.",
-      "poco": "Motor HA steruje tym silnikiem, a pomieszczenie pozwala mówić do Assist, np. „zasłoń salon”."
+      "poco": "Motor HA steruje tym silnikiem. Do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”."
     },
     "rodzaj": {
       "t": "Rodzaj",
@@ -92,6 +92,7 @@
     "name": "Nazwa",
     "pokoj": "Pomieszczenie",
     "rodzaj_pokoju": "Rodzaj pomieszczenia (do porad)",
+    "ukryj_zrodlo": "Ukryj silnik przed Assist",
     "oslona": "Rodzaj",
     "lamele_kat": "Kąt lameli przy słońcu",
     "lamele_tryb": "Ustawianie lameli",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Puste = zacznij od zera.",
     "rolety": "Dla okna z dwoma skrzydłami wybierz dwie: najpierw lewą, potem prawą.",
     "name": "Puste = nazwa silnika.",
-    "pokoj": "Urządzenie trafi do tego pomieszczenia. Assist zrozumie wtedy „zasłoń salon”.",
+    "pokoj": "Urządzenie trafi do tego pomieszczenia, żeby łatwo je znaleźć.",
+    "ukryj_zrodlo": "Assist widzi wtedy tylko urządzenie Motor HA, a nie sam silnik. Pomaga, gdy Assist mówi, że jest kilka urządzeń o tej nazwie. Domyślnie wyłączone.",
     "odwroc": "Włącz, gdy silnik melduje 100 % przy zamkniętej osłonie.",
     "czas": "0 = automatycznie: z prędkości silnika, z kalibracji albo z prawdziwych ruchów.",
     "foto_stan": "Zwykle „on”. Dla czujnika z tekstem wpisz np. „obstructed”.",
