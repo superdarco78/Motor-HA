@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.2.2";
+  var WERSJA = "2.2.3";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -8611,14 +8611,23 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .krok:focus-visible .k{box-shadow:0 0 0 3px var(--accent)}
 .podglad{display:flex;justify-content:center;padding-top:8px}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
-.tresc{flex:1;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
+.cialo{flex:1;display:flex;min-height:0}
+.scena{display:none}
+:host([szeroko]) .scena{display:flex;order:2;flex:0 0 50%;min-width:0;align-items:center;justify-content:center;padding:16px;border-left:1px solid var(--line);background:var(--bg);overflow:auto}
+:host([szeroko]) .krok .k{width:46px;height:46px;border-width:3px} :host([szeroko]) .krok svg{width:26px;height:26px} :host([szeroko]) .krok .n{font-size:12px} :host([szeroko]) .krok{padding-bottom:18px}
+:host([szeroko]) .scena[hidden]{display:none}
+.scena > div, .scena > svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.scena svg{width:100%;height:100%;max-height:100%}
+:host([szeroko]) .wybpol{position:static}
+.tresc{flex:1;min-width:0;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
 .wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
 #duzeOkno svg{touch-action:none}
-.wybpol{margin:-4px 0 14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.wybpol{margin:-4px 0 14px;padding:8px 0 12px;border-bottom:1px solid var(--line);position:sticky;top:-14px;z-index:3;background:var(--surface)}
+.wybpol #duzeOkno svg{max-height:30vh;width:auto;max-width:100%}
 .linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
 .linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
 .kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
@@ -8859,6 +8868,16 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _brama(typ) {
       return rysunekBramy(typ, this._kolor(), this._rama(), false, false);
     }
+    // duży rysunek w lewej kolumnie (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
+    _scena(k) {
+      const S = this.S;
+      if (k === "gotowe") return "";
+      if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
+      const n = prostokaty(S.u).length;
+      if (k === "przypisz") return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "d", wybrane: S.arkusz })}</div>`;
+      if (["rodzaj", "kolory"].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "r", wybrane: this._wybR() })}</div>`;
+      return `<div>${this.okno({ w: 440, h: 400, id: "s" })}</div>`;
+    }
     _podgladMaly() {
       return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: "p" });
     }
@@ -8881,8 +8900,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t, d = this.dane;
       if (!d.oslony.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
       const [n1] = this._nieba(), pierwszy = this._oslona(S.rolety[0])?.area;
+      const calyPokoj = (a) => {
+        const poj = d.oslony.filter((o) => o.area === a && !o.grupa && !o.brama);
+        return !!a && poj.length > 1 && poj.length === S.rolety.length && poj.every((o) => S.rolety.includes(o.id));
+      };
       const kafel = (o) => {
-        const czl = (o.czlonkowie || []).filter((e) => this._oslona(e)), grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every((e) => S.rolety.includes(e));
+        const czl = (o.czlonkowie || []).filter((e) => this._oslona(e));
+        const grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every((e) => S.rolety.includes(e)) && (S.wybSkad ? S.wybSkad === "grupa:" + o.id : !calyPokoj(o.area));
         const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
         return `<button class="kaf ${nr >= 0 || grWyb ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
         ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
@@ -8892,9 +8916,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const pokoje = [...new Set(d.oslony.map((o) => o.area || ""))].sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || "").localeCompare(this._nazwaPokoju(b) || ""));
       const w = pokoje.map((a) => {
         const tu = d.oslony.filter((o) => (o.area || "") === a).sort((x, y) => !!y.grupa - !!x.grupa || x.nazwa.localeCompare(y.nazwa));
-        const poj = tu.filter((o) => !o.grupa && !o.brama), caly = a && poj.length > 1 && poj.every((o) => S.rolety.includes(o.id)) && S.rolety.length === poj.length;
+        const poj = tu.filter((o) => !o.grupa && !o.brama), caly = calyPokoj(a) && (!S.wybSkad || S.wybSkad === "pokoj:" + a);
+        const okienko = (o, i) => {
+          const x = 4 + i * 44, poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
+          return `<rect x="${x}" y="3" width="40" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/><rect x="${x + 3}" y="6" width="34" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), x + 3, 6, 34, 32, Math.max(poz, 8), this._kolor())}`;
+        };
         const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? "wyb" : ""}" data-pokojcaly="${esc6(a)}" aria-pressed="${caly}">
-        <svg viewBox="0 0 ${12 + poj.length * 36} 44" aria-hidden="true">${poj.map((o, i) => `<rect x="${6 + i * 36}" y="4" width="32" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/><rect x="${7 + i * 36}" y="5" width="30" height="14" fill="var(--fg2)" opacity=".7"/>`).join("")}</svg>
+        <svg viewBox="0 0 ${4 + poj.length * 44} 44" aria-hidden="true">${poj.map(okienko).join("")}</svg>
         <b>${esc6(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc6(poj.map((o) => o.nazwa).join(" + "))}</span></button>` : "";
         const grupy = tu.filter((o) => o.grupa), reszta = tu.filter((o) => !o.grupa);
         const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc6(t.pojedyncze)}</span></div>` : "";
@@ -8951,14 +8979,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _wyborPola() {
       const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
       if (S.brama || n < 2) return "";
-      return `<div class="wybpol"><div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 200, h: 170, numery: true, id: "r", wybrane: wr })}</div>
+      return `<div class="wybpol">${this._szeroko ? "" : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: "r", wybrane: wr })}</div>`}
       <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? "wyb" : ""}" data-calosc="1">${esc6(t.caleOkno)}</button>
       ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? "wyb" : ""}" data-pole="${i}">${esc6(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? " ✎" : ""}</button>`).join("")}</div>
       <p class="pod" style="text-align:center;margin:6px 0 0">${esc6(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
     }
     str_przypisz() {
       const S = this.S, t = this.t;
-      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
+      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p>${this._szeroko ? "" : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc6(t.zamienPodpis)}</p>
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
@@ -9375,9 +9403,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       <div class="gora"><div class="tytul"><button class="x" data-x="1" aria-label="${esc6(t.zamknij)}">${ik("x", 22)}</button>
         <div><span id="nazwaKroku"></span><small id="ktory"></small></div></div>
         <div class="kroki" id="kroki"></div><div class="podglad" id="podglad"></div></div>
-      <div class="tresc" id="tresc"></div>
+      <div class="cialo"><div class="scena" id="scena"></div><div class="tresc" id="tresc"></div></div>
       <div class="dol"><button class="btn plaski" id="wstecz">${esc6(t.wstecz)}</button><button class="btn" id="dalej">${esc6(t.dalej)}</button></div>`;
       r.addEventListener("click", (e) => this._klik(e));
+      this._ro?.disconnect();
+      this._ro = new ResizeObserver(() => {
+        if (this.S && this.clientWidth >= 760 !== !!this._szeroko) this.rysuj();
+      });
+      this._ro.observe(this);
       r.addEventListener("input", (e) => this._wpis(e));
       r.addEventListener("pointerdown", (e) => {
         const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]"));
@@ -9446,7 +9479,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.getElementById("nazwaKroku").textContent = t.kroki[k];
       r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
       r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${ik(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
-      r.getElementById("podglad").innerHTML = PODGLAD.includes(k) && !(k === "uklad" && S.szablon === "w") ? this._podgladMaly() : "";
+      const jedenDuzy = ["rodzaj", "kolory"].includes(k) && !S.brama && prostokaty(S.u).length > 1;
+      this._szeroko = this.clientWidth >= 760;
+      this.toggleAttribute("szeroko", this._szeroko);
+      const sc = this._szeroko ? this._scena(k) : "";
+      r.getElementById("scena").innerHTML = sc;
+      r.getElementById("scena").hidden = !sc;
+      r.getElementById("podglad").innerHTML = !this._szeroko && PODGLAD.includes(k) && !(k === "uklad" && S.szablon === "w") && !jedenDuzy ? this._podgladMaly() : "";
       const pyt = k === "rodzaj" && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
       this._kartaEl = null;
       r.getElementById("tresc").innerHTML = `<h2>${esc6(pyt)}</h2>${pod ? `<p class="pod">${esc6(pod)}</p>` : ""}${this["str_" + k]()}` + (S.arkusz !== null && k === "przypisz" ? this.arkusz() : "") + (S.arkuszC && k === "czujniki" ? this.arkuszCzujnika(S.arkuszC) : "");
@@ -9488,12 +9527,17 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           const kol = (n) => /lew|left/i.test(n) ? 0 : /środ|srod|mid/i.test(n) ? 1 : /praw|right/i.test(n) ? 2 : 3;
           S.rolety = this.dane.oslony.filter((o2) => o2.area === d.pokojcaly && !o2.grupa && !o2.brama).sort((x2, y2) => kol(x2.nazwa) - kol(y2.nazwa) || x2.nazwa.localeCompare(y2.nazwa)).map((o2) => o2.id).slice(0, 12);
           S.wykryty = null;
+          S.wybSkad = "pokoj:" + d.pokojcaly;
         } else if (czl.length > 1 && i < 0) {
           S.rolety = czl.slice(0, 12);
           S.zGrupy = x.nazwa;
           S.wykryty = null;
-        } else if (i >= 0) S.rolety.splice(i, 1);
-        else {
+          S.wybSkad = "grupa:" + x.id;
+        } else if (i >= 0) {
+          S.rolety.splice(i, 1);
+          S.wybSkad = null;
+        } else {
+          S.wybSkad = null;
           if (S.rolety.some((e2) => !!this._oslona(e2)?.brama !== !!x?.brama)) S.rolety = [];
           S.rolety.push(d.oslona);
           S.wykryty = null;
@@ -9876,6 +9920,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     dlg.setAttribute("data-motor-ha-kreator", "");
     dlg.style.cssText = "padding:0;border:0;margin:auto;width:min(100vw,430px);height:min(100dvh,880px);max-width:100vw;max-height:100dvh;border-radius:var(--ha-dialog-border-radius,28px);overflow:hidden;background:var(--card-background-color,#fff)";
     if (innerWidth < 600) Object.assign(dlg.style, { width: "100vw", height: "100dvh", borderRadius: "0" });
+    else if (innerWidth >= 900) Object.assign(dlg.style, { width: "min(96vw,1400px)", height: "min(94dvh,1000px)" });
     const tlo2 = document.createElement("style");
     tlo2.textContent = "dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}";
     dlg.appendChild(tlo2);

@@ -187,6 +187,7 @@ function graficzny(okno, form) {
   dlg.setAttribute('data-motor-ha-kreator', '');
   dlg.style.cssText = 'padding:0;border:0;margin:auto;width:min(100vw,430px);height:min(100dvh,880px);max-width:100vw;max-height:100dvh;border-radius:var(--ha-dialog-border-radius,28px);overflow:hidden;background:var(--card-background-color,#fff)';
   if (innerWidth < 600) Object.assign(dlg.style, { width: '100vw', height: '100dvh', borderRadius: '0' });
+  else if (innerWidth >= 900) Object.assign(dlg.style, { width: 'min(96vw,1400px)', height: 'min(94dvh,1000px)' });   // komputer: rysunek z lewej, ustawienia z prawej
   const tlo = document.createElement('style');
   tlo.textContent = 'dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}';
   dlg.appendChild(tlo);
