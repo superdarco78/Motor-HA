@@ -23,6 +23,7 @@ from homeassistant.exceptions import ServiceValidationError
 from homeassistant.helpers import config_validation as cv, device_registry as dr, entity_registry as er
 from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.event import async_track_time_interval
+from homeassistant.helpers.translation import async_get_translations
 from homeassistant.helpers.typing import ConfigType
 
 from .automatyka import Automatyka
@@ -39,7 +40,7 @@ from .pliki import (
 )
 from .powiadomienia import Powiadomienia
 from .update import RESTART
-from .urzadzenie import HUB, Wpis, info_hub, info_urzadzenia
+from .urzadzenie import HUB, NAZWY_OSLON, Wpis, info_hub, info_urzadzenia
 from .ws import async_rejestruj
 
 _LOGGER = logging.getLogger(__name__)
@@ -102,6 +103,8 @@ async def _usun_stary_folder(hass: HomeAssistant) -> None:
     """Po zmianie nazwy z 1.x HACS potrafił pobrać Motor HA do starego folderu custom_components/okno_ha.
     HA wczytuje wtedy ten folder zamiast motor_ha i nowe wersje „nie działają”. Usuwamy kopię i prosimy o restart."""
     tu = Path(__file__).parent
+    if tu.name != DOMAIN:
+        _LOGGER.warning("Motor HA %s działa z folderu %s (powinien być custom_components/%s)", VERSION, tu, DOMAIN)
 
     def _usun() -> bool:
         cc = tu.parent
@@ -234,6 +237,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         if HUB in d.identifiers and d.id != hub.id \
                 and not er.async_entries_for_device(encje, d.id, include_disabled_entities=True):
             rej.async_update_device(d.id, remove_config_entry_id=entry.entry_id)
+    t = await async_get_translations(hass, hass.config.language, "selector", {DOMAIN})
+    przed = f"component.{DOMAIN}.selector.oslony.options."
+    NAZWY_OSLON.update({k[len(przed):]: v for k, v in t.items() if k.startswith(przed)})
     u = rej.async_get_or_create(config_entry_id=entry.entry_id, **info_urzadzenia(entry))
     if u.via_device_id != hub.id:
         rej.async_update_device(u.id, via_device_id=hub.id)

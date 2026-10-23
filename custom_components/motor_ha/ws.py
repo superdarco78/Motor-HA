@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import time
 from typing import Any
 
 import voluptuous as vol
@@ -62,6 +63,7 @@ def async_rejestruj(hass: HomeAssistant) -> None:
     websocket_api.async_register_command(hass, ws_eksport)
     websocket_api.async_register_command(hass, ws_panele)
     websocket_api.async_register_command(hass, ws_dodaj_karte)
+    websocket_api.async_register_command(hass, ws_krok)
 
 
 def _okno(hass: HomeAssistant, entry_id: str) -> str | None:
@@ -126,3 +128,14 @@ async def ws_dodaj_karte(hass: HomeAssistant, conn: websocket_api.ActiveConnecti
         conn.send_error(msg["id"], "not_found", encja)
         return
     conn.send_result(msg["id"], {"dodano": await panele.async_dodaj_karte(hass, msg["panel"], encja)})
+
+
+# dotknięcie wiersza „Ustawienia Motor HA” (np. Kolor): następny kreator „Konfiguruj” tego wpisu
+# zaczyna od właściwego kroku i po „Dalej” od razu zapisuje
+@websocket_api.websocket_command({vol.Required("type"): f"{DOMAIN}/krok", vol.Required("entry_id"): str,
+                                  vol.Required("krok"): vol.In(["rodzaj", "kolory", "okno", "silnik", "automatyka"])})
+@websocket_api.require_admin
+@callback
+def ws_krok(hass: HomeAssistant, conn: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+    hass.data.setdefault(DOMAIN, {}).setdefault("krok", {})[msg["entry_id"]] = (msg["krok"], time.monotonic())
+    conn.send_result(msg["id"], {})

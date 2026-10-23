@@ -99,3 +99,43 @@ async def test_zaawansowany_wszystko(hass: HomeAssistant) -> None:
         r = await hass.config_entries.options.async_configure(r["flow_id"], {})
     assert r["type"] is FlowResultType.CREATE_ENTRY and n == 14
     await hass.async_block_till_done()
+
+
+async def test_wiersz_otwiera_jeden_krok(hass: HomeAssistant) -> None:
+    """Dotknięcie wiersza „Kolor” na stronie urządzenia: kreator od razu na kroku kolorów, „Dalej” zapisuje."""
+    import time
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    r, _ = await _przejdz(hass, {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"},
+                                 "panel": {"na_panel": "nie"}})
+    wpis = r["result"]
+    hass.data[DOMAIN]["krok"] = {wpis.entry_id: ("kolory", time.monotonic())}
+    r = await hass.config_entries.options.async_init(wpis.entry_id)
+    assert r["step_id"] == "kolory" and r["last_step"]
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {"kolor": "czarny"})
+    assert r["type"] is FlowResultType.CREATE_ENTRY
+    await hass.async_block_till_done()
+    assert wpis.options["kolor"] == "czarny"
+    # następny „Konfiguruj” znowu cały kreator
+    r = await hass.config_entries.options.async_init(wpis.entry_id)
+    assert r["step_id"] == "tryb"
+
+
+async def test_nazwy_po_angielsku(hass: HomeAssistant) -> None:
+    """Model urządzenia i lista „Znaleziono” – przetłumaczone nazwy, nie wewnętrzne klucze (np. „zebra”, „brama”)."""
+    from homeassistant.helpers import device_registry as dr
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    hass.states.async_set("binary_sensor.okno_salon", "off", {"device_class": "window"})
+    r = await hass.config_entries.flow.async_init(DOMAIN, context={"source": config_entries.SOURCE_USER})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"tryb": "podstawowy"})
+    znalezione = r["description_placeholders"]["znalezione"]
+    assert "okno (" not in znalezione and "(1)" in znalezione, znalezione
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"mam": []})
+    odp = {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"}, "panel": {"na_panel": "nie"}}
+    while r["type"] is FlowResultType.FORM:
+        r = await hass.config_entries.flow.async_configure(r["flow_id"], odp.get(r["step_id"], {}))
+    await hass.async_block_till_done()
+    from custom_components.motor_ha import _urzadzenie   # działa na starszym i nowszym HA
+    u = _urzadzenie(dr.async_get(hass), (DOMAIN, r["result"].entry_id))
+    assert u.model and u.model != r["result"].options["oslona"], u.model

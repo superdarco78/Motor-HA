@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.1.2";
+  var WERSJA = "2.1.3";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -442,6 +442,10 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .suwak .wyp::after{content:"";position:absolute;right:6px;top:50%;width:4px;height:50%;transform:translateY(-50%);border-radius:2px;background:var(--white-color,#fff)}
 .suwak .wart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
  font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);mix-blend-mode:normal}
+/* „⚙ Zmień ustawienia” jak przycisk tekstowy HA */
+.zmien{align-self:flex-start;background:none;border:none;font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);
+ color:var(--primary-color);cursor:pointer;padding:0 var(--ha-space-2,8px);margin:0 calc(-1 * var(--ha-space-2,8px));line-height:36px;border-radius:var(--ha-border-radius-md,8px)}
+.zmien:hover{background:color-mix(in srgb,var(--primary-color) 10%,transparent)}
 /* gotowe pozycje jak chipy filtrów HA */
 .poz{display:flex;flex-wrap:wrap;gap:8px}
 .poz button{flex:1 1 auto;height:32px;padding:0 12px;border-radius:var(--ha-border-radius-md,8px);border:1px solid var(--outline-color,var(--divider-color));background:transparent;
@@ -4596,6 +4600,189 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   var jezyk = (cfg, hass) => cfg?.jezyk && cfg.jezyk !== "auto" && TEKSTY[cfg.jezyk] ? cfg.jezyk : kodJezyka(hass?.locale?.language || hass?.language || navigator.language);
   var wstaw = (t, ...a) => String(t ?? "").replace(/\{(\d)\}/g, (_, i) => a[i] ?? "");
 
+  // src/urzadzenie.js
+  var esc = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var STYL = `
+:host{display:block;margin-bottom:var(--ha-space-4,16px)}
+[hidden]{display:none!important}
+.ramka{background:var(--ha-card-background,var(--card-background-color));border-radius:var(--ha-card-border-radius,12px);
+ border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--divider-color));overflow:hidden;color:var(--primary-text-color)}
+.karta{--ha-card-border-width:0;--ha-card-box-shadow:none;--ha-card-border-radius:0}
+.stopka{border-top:1px solid var(--divider-color);padding:var(--ha-space-2,8px) var(--ha-space-2,8px);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.link{background:none;border:none;font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);
+ color:var(--primary-color);cursor:pointer;padding:0 var(--ha-space-2,8px);line-height:36px;border-radius:var(--ha-border-radius-md,8px)}
+.link:hover{background:color-mix(in srgb,var(--primary-color) 10%,transparent)}
+.panele{display:flex;flex-wrap:wrap;gap:6px;padding:0 var(--ha-space-2,8px) var(--ha-space-2,8px);width:100%}
+.panele button{font:inherit;font-size:var(--ha-font-size-s,13px);border:1px solid var(--divider-color);border-radius:18px;padding:6px 12px;cursor:pointer;
+ background:none;color:var(--primary-text-color)}
+.panele button:hover{border-color:var(--primary-color);color:var(--primary-color)}
+.pyt{width:100%;font-size:var(--ha-font-size-s,13px);color:var(--secondary-text-color)}
+.info{font-size:var(--ha-font-size-s,13px);color:var(--secondary-text-color);padding:0 var(--ha-space-2,8px) var(--ha-space-2,8px);width:100%}
+.ust{padding:var(--ha-space-4,16px) var(--ha-space-4,16px) var(--ha-space-2,8px)}
+.ust h2{margin:0 0 var(--ha-space-2,8px);font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500)}
+.wiersz{display:flex;justify-content:space-between;gap:12px;font-size:var(--ha-font-size-m,14px);line-height:28px;border-bottom:1px solid var(--divider-color)}
+.wiersz:last-child{border-bottom:none}
+.wiersz span:first-child{color:var(--secondary-text-color)}
+.wiersz span:last-child{text-align:end}
+.wiersz.klik{cursor:pointer;margin:0 calc(-1 * var(--ha-space-2,8px));padding:0 var(--ha-space-2,8px);border-radius:var(--ha-border-radius-sm,4px)}
+.wiersz.klik span:last-child::after{content:"›";margin-inline-start:8px;color:var(--secondary-text-color)}
+.wiersz.klik:hover{background:color-mix(in srgb,var(--primary-text-color) 6%,transparent)}
+.wiersz.klik:focus-visible{outline:2px solid var(--primary-color);outline-offset:-2px}`;
+  var MotorHaUrzadzenie = class extends HTMLElement {
+    // cel: { entity: 'cover.x', urzadzenie: 'id', wpis: 'entry_id' } albo { dom: true }
+    set cel(c) {
+      this._cel = c;
+      this._zbudowane = false;
+      this._rysuj();
+    }
+    get cel() {
+      return this._cel;
+    }
+    set hass(h) {
+      this._hass = h;
+      this._rysuj();
+    }
+    get hass() {
+      return this._hass;
+    }
+    _rysuj() {
+      const h = this._hass, c = this._cel;
+      if (!h || !c) return;
+      const T2 = TEKSTY[jezyk({}, h)], U = T2.urzadzenie, root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      if (!this._zbudowane) {
+        this._zbudowane = true;
+        root.innerHTML = `<style>${STYL}</style><div class="ramka"><div class="karta"></div>
+        <div class="stopka"><button class="link dodaj">${esc(U.dodaj)}</button>${c.wpis ? `<button class="link zmien">⚙ ${esc(U.zmien)}</button>` : ""}
+        <div class="panele" hidden></div><div class="info" hidden></div></div>
+        ${c.entity ? `<div class="ust" style="border-top:1px solid var(--divider-color)"><h2>${esc(U.ustawienia)}</h2><div class="wiersze"></div></div>` : ""}</div>`;
+        const karta = document.createElement(c.entity ? "motor-ha" : "motor-ha-dom");
+        karta.bezEdycji = true;
+        karta.setConfig(c.entity ? { type: "custom:motor-ha", entity: c.entity } : { type: "custom:motor-ha-dom" });
+        root.querySelector(".karta").appendChild(karta);
+        this._karta = karta;
+        root.querySelector(".dodaj").addEventListener("click", () => this._panele());
+        root.querySelector(".zmien")?.addEventListener("click", () => konfiguruj(c.wpis));
+      }
+      this._karta.hass = h;
+      if (c.entity) {
+        const st = h.states[c.entity], m = st?.attributes?.motor_ha;
+        if (!m) return;
+        const wiersze = this._wiersze(h, T2, U, c, m);
+        const klucz = JSON.stringify(wiersze);
+        if (klucz !== this._ost) {
+          this._ost = klucz;
+          const lista = root.querySelector(".wiersze");
+          lista.innerHTML = wiersze.map(([a, b, cel], i) => {
+            const dziala = cel.encja || c.wpis;
+            return `<div class="wiersz${dziala ? " klik" : ""}" ${dziala ? `role="button" tabindex="0" data-i="${i}"` : ""}><span>${esc(a)}</span><span>${esc(b)}</span></div>`;
+          }).join("");
+          lista.querySelectorAll(".klik").forEach((el) => {
+            const idz = () => this._edytuj(wiersze[+el.dataset.i][2]);
+            el.addEventListener("click", idz);
+            el.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                idz();
+              }
+            });
+          });
+        }
+      }
+    }
+    _wiersze(h, T2, U, c, m) {
+      const stan = (e) => e && h.states[e] ? h.formatEntityState ? h.formatEntityState(h.states[e]) : h.states[e].state : null;
+      const auto = Object.values(h.entities || {}).find((e) => e.device_id === c.urzadzenie && e.platform === "motor_ha" && e.entity_id.startsWith("switch.") && e.entity_id !== m.encje?.pauza);
+      const w = [[U.rodzaj, T2.oslony?.[m.oslona] || m.oslona, { krok: "rodzaj" }]];
+      if (m.kolor) w.push([U.kolor, T2.kolory?.[m.kolor] || m.kolor, { krok: "kolory" }]);
+      if (m.skrzydla) w.push([U.skrzydla, String(m.skrzydla), { krok: "okno" }]);
+      if (m.wysokosc) w.push([U.wysokosc, `${m.wysokosc} px`, { krok: "okno" }]);
+      w.push([U.czas, typeof m.czas === "number" && m.czas > 0 ? `${m.czas} s` : U.auto, { krok: "silnik" }]);
+      if (auto) w.push([U.automatyka, stan(auto.entity_id), { encja: auto.entity_id }]);
+      if (m.encje?.pauza && h.states[m.encje.pauza]) w.push([U.pauza, stan(m.encje.pauza), { encja: m.encje.pauza }]);
+      if (m.encje?.powod && h.states[m.encje.powod]) w.push([U.powod, stan(m.encje.powod), { encja: m.encje.powod }]);
+      return w;
+    }
+    async _edytuj(cel) {
+      if (cel.encja) {
+        this.dispatchEvent(new CustomEvent("hass-more-info", { bubbles: true, composed: true, detail: { entityId: cel.encja } }));
+        return;
+      }
+      try {
+        await this._hass.callWS({ type: "motor_ha/krok", entry_id: this._cel.wpis, krok: cel.krok });
+      } catch (e) {
+      }
+      konfiguruj(this._cel.wpis);
+    }
+    async _panele() {
+      const r = this.shadowRoot, U = TEKSTY[jezyk({}, this._hass)].urzadzenie, pole = r.querySelector(".panele"), info = r.querySelector(".info");
+      if (!pole.hidden) {
+        pole.hidden = true;
+        return;
+      }
+      info.hidden = true;
+      try {
+        const lista = await this._hass.callWS({ type: "motor_ha/panele" });
+        if (!lista.length) {
+          info.textContent = U.brakPaneli;
+          info.hidden = false;
+          return;
+        }
+        pole.innerHTML = `<div class="pyt">${esc(U.ktory)}</div>` + lista.map((p) => `<button data-k="${esc(p.klucz)}">${esc(p.nazwa)}</button>`).join("");
+        pole.hidden = false;
+        pole.querySelectorAll("button").forEach((b) => b.addEventListener("click", async () => {
+          try {
+            const w = await this._hass.callWS({ type: "motor_ha/dodaj_karte", panel: b.dataset.k, ...this._cel.entity ? { entity_id: this._cel.entity } : {} });
+            pole.hidden = true;
+            info.textContent = w.dodano ? `✓ ${U.dodano} ${b.textContent}` : U.blad;
+            info.hidden = false;
+          } catch (e) {
+            info.textContent = U.blad;
+            info.hidden = false;
+          }
+        }));
+      } catch (e) {
+        info.textContent = U.blad;
+        info.hidden = false;
+      }
+    }
+  };
+  function konfiguruj(wpis) {
+    const skad = location.pathname + location.search;
+    const idz = (u) => {
+      history.pushState(null, "", u);
+      window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
+    };
+    const szukaj = (k) => {
+      for (const x of k.querySelectorAll("*")) {
+        if (x.tagName === "HA-CONFIG-ENTRY-ROW" && x.data?.entry?.entry_id === wpis) return x;
+        if (x.shadowRoot) {
+          const y = szukaj(x.shadowRoot);
+          if (y) return y;
+        }
+      }
+      return null;
+    };
+    const okno = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    idz("/config/integrations/integration/motor_ha");
+    let n = 0;
+    const t = setInterval(() => {
+      const w = szukaj(document);
+      if (w && typeof w._showOptions === "function") {
+        clearInterval(t);
+        w._showOptions();
+        let bylo = false, m = 0;
+        const p = setInterval(() => {
+          const o = okno(), otwarte = !!(o && o._params);
+          if (otwarte) bylo = true;
+          if (bylo && !otwarte || ++m > 7200) {
+            clearInterval(p);
+            if (bylo && location.pathname.startsWith("/config/integrations/integration/motor_ha")) idz(skad);
+          }
+        }, 250);
+      } else if (++n > 80) clearInterval(t);
+    }, 250);
+  }
+
   // src/karta.js
   var KLUCZE_PANELU = ["type", "entity", "grid_options", "view_layout", "visibility", "layout_options"];
   var KASETA = {
@@ -4616,7 +4803,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   };
   var LISTWA = 5;
   var POD_LISTWA = 8;
-  var esc = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var esc2 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var MotorHaKarta = class extends HTMLElement {
     static getConfigElement() {
       return document.createElement("motor-ha-editor");
@@ -4667,7 +4854,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz = JSON.stringify([czl.length, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno]);
+      const klucz = JSON.stringify([czl.length, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
       if (klucz !== this._klucz) {
         this._klucz = klucz;
         this._zbuduj(c, czl);
@@ -4696,14 +4883,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
    ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
-   ${n > 1 && !c.osobno ? `<div class="oba" title="${esc(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
+   ${n > 1 && !c.osobno ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
   </div></div>
  ${c.przyciski !== false ? `<div class="przyc">
-  <button class="otw" title="${esc(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
-  <button class="stp" title="${esc(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
-  <button class="zam" title="${esc(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
- ${c.suwak !== false ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
- ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc(T2.karta.zwinieta) : p === 0 ? esc(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
+  <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
+  <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
+  <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
+ ${c.suwak !== false ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
+ ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc2(T2.karta.zwinieta) : p === 0 ? esc2(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
+ ${this._wpis() ? `<button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
       const pola = zew ? qa(".zewo .szyba") : qa(".skrz .szyba");
@@ -4739,7 +4927,16 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
       if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
       if (E.suwak) this._suwak(E.suwak);
+      q(".zmien")?.addEventListener("click", () => konfiguruj(this._wpis()));
       this._zbudowana = true;
+    }
+    // „⚙ Zmień ustawienia” pod oknem na panelu: kreator tego urządzenia, potem powrót na ten sam panel.
+    // Nie w podglądzie, nie w edytorze panelu i nie na stronie urządzenia (tam jest własny przycisk).
+    _wpis() {
+      const h = this._hass, c = this._surowa;
+      if (!h || !c || c._podglad || this.preview || this.bezEdycji || h.user?.is_admin === false) return null;
+      const e = h.entities?.[c.entity];
+      return e?.platform === "motor_ha" ? h.devices?.[e.device_id]?.config_entries?.[0] || null : null;
     }
     // nagłówek jak w kafelku HA + wiersz automatyki (powód ruchu, pauza) – wspólny dla okien i bram
     _naglowek(c) {
@@ -4747,7 +4944,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
   <svg class="kompas" viewBox="-20 -20 40 40" hidden aria-hidden="true"><circle r="17" fill="none" stroke="var(--divider-color)" stroke-width="2"/>
    <path d="M-9 -15h18" stroke="var(--primary-color)" stroke-width="4" stroke-linecap="round"/><circle class="sl" r="4.5" fill="#ffb300"/></svg></div>
- <div class="auto" hidden><ha-icon icon="mdi:robot-outline"></ha-icon><span></span><button class="wzn" hidden>${esc(this._T.karta.wznow)}</button></div>`;
+ <div class="auto" hidden><ha-icon icon="mdi:robot-outline"></ha-icon><span></span><button class="wzn" hidden>${esc2(this._T.karta.wznow)}</button></div>`;
     }
     _wspolne(q) {
       const el = { auto: q(".auto"), autoT: q(".auto span"), autoI: q(".auto ha-icon"), wzn: q(".wzn"), kompas: q(".kompas"), sl: q(".kompas .sl"), ikona: q(".ik ha-icon") };
@@ -4771,10 +4968,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
  ${this._naglowek(c)}
  <div class="scena"><div class="bramaw" role="button" tabindex="0"></div></div>
  ${c.przyciski !== false ? `<div class="przyc">
-  <button class="otw" title="${esc(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
-  <button class="stp" title="${esc(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
-  <button class="zam" title="${esc(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
- ${c.suwak !== false && zPoz ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
+  <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
+  <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
+  <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
+ ${c.suwak !== false && zPoz ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
+ ${this._wpis() ? `<button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s);
       this._el = {
@@ -4809,6 +5007,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.zam?.addEventListener("click", () => this._polecenie(0));
       E.stp?.addEventListener("click", () => this._polecenie(null));
       if (E.suwak) this._suwak(E.suwak);
+      q(".zmien")?.addEventListener("click", () => konfiguruj(this._wpis()));
       this._zbudowana = true;
     }
     _lok(klucz, zapas) {
@@ -4984,7 +5183,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._opisStanu = czesci;
       this._automatyka(c, h);
       const otwarte = this._ruchy.some((r) => (r.widac ?? 0) > 0);
-      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       this._animuj();
     }
     // wiersz automatyki: dlaczego osłona stoi tak, jak stoi; przy pauzie przycisk „Wznów”
@@ -5042,7 +5241,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._automatyka(c, h);
       const otwarte = st.state !== "closed";
       E.ikona?.setAttribute("icon", (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.oslona]) || "mdi:gate");
-      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       this._animuj();
     }
     _pokazCel(i, p, ciagnie) {
@@ -5060,8 +5259,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     _rysujSuwak() {
       const S = this._el.suwak;
       if (!S) return;
-      const w = this._suwakW ?? this._srednia(true);
-      S.querySelector(".wyp").style.width = Math.max(0, Math.min(100, w)) + "%";
+      const w = this._suwakW ?? this._srednia();
+      S.querySelector(".wyp").style.width = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
       S.setAttribute("aria-valuenow", Math.round(w));
     }
     _rysuj() {
@@ -5134,13 +5333,13 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     ["silnik", "mdi:speedometer"],
     ["pogoda", "mdi:weather-partly-cloudy"]
   ];
-  var esc2 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var esc3 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var doHex2 = (v) => Array.isArray(v) && v.length === 3 ? "#" + v.map((x) => (+x).toString(16).padStart(2, "0")).join("") : null;
   var zHex = (h) => {
     const s = String(h).replace("#", "");
     return s.length === 6 ? [0, 2, 4].map((i) => parseInt(s.slice(i, i + 2), 16)) : void 0;
   };
-  var STYL = `
+  var STYL2 = `
 :host{display:block}
 .ed{display:flex;flex-direction:column;gap:var(--ha-space-4,16px)}
 /* pasek kroków: kółka 40 px, podpisy pod spodem */
@@ -5254,14 +5453,14 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       this._krok = Math.min(this._krok ?? 0, LISTA.length - 1);
       const T2 = this._T, n = this._krok, [kl, ik] = LISTA[n], K = T2.kroki[kl];
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
-      root.innerHTML = `<style>${STYL}</style><div class="ed">
-<div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? " on" : j < n ? " zrob" : ""}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc2(T2.kroki[k].t)}">
- <span class="k"><ha-icon icon="${i}"></ha-icon></span><span class="p">${esc2(T2.kroki[k].t)}</span></button>`).join("")}</div>
-<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc2(K.t)}<small>${esc2(wstaw(T2.ui.krok, n + 1, LISTA.length))}</small></h3></div>
-<p class="cp"><span><b>${esc2(T2.ui.co)}</b> ${esc2(K.co)}</span><span><b>${esc2(T2.ui.poco)}</b> ${esc2(K.poco)}</span></p>
+      root.innerHTML = `<style>${STYL2}</style><div class="ed">
+<div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? " on" : j < n ? " zrob" : ""}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc3(T2.kroki[k].t)}">
+ <span class="k"><ha-icon icon="${i}"></ha-icon></span><span class="p">${esc3(T2.kroki[k].t)}</span></button>`).join("")}</div>
+<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc3(K.t)}<small>${esc3(wstaw(T2.ui.krok, n + 1, LISTA.length))}</small></h3></div>
+<p class="cp"><span><b>${esc3(T2.ui.co)}</b> ${esc3(K.co)}</span><span><b>${esc3(T2.ui.poco)}</b> ${esc3(K.poco)}</span></p>
 <div class="tresc"></div>
-<div class="nav"><button class="bt dr" data-n="-1" ${n ? "" : "hidden"}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc2(T2.ui.wstecz)}</button>
- <button class="bt" data-n="1" ${n < LISTA.length - 1 ? "" : "hidden"}>${esc2(T2.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
+<div class="nav"><button class="bt dr" data-n="-1" ${n ? "" : "hidden"}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc3(T2.ui.wstecz)}</button>
+ <button class="bt" data-n="1" ${n < LISTA.length - 1 ? "" : "hidden"}>${esc3(T2.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
       root.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => {
         this._krok = +b.dataset.k;
         this._rysuj();
@@ -5308,7 +5507,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       this._zmien(zm, struktura);
     }
     _info(box, txt, ikona = "mdi:information-outline") {
-      box.insertAdjacentHTML("beforeend", `<div class="info"><ha-icon icon="${ikona}"></ha-icon><span>${esc2(txt)}</span></div>`);
+      box.insertAdjacentHTML("beforeend", `<div class="info"><ha-icon icon="${ikona}"></ha-icon><span>${esc3(txt)}</span></div>`);
     }
     // ── kroki ──
     _urzadzenie(box) {
@@ -5322,9 +5521,9 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     _oslona(box) {
       const T2 = this._T, wyb = this._w("oslona");
       for (const [g, pod] of Object.entries(GRUPY)) {
-        box.insertAdjacentHTML("beforeend", `<div class="gr"><ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>${esc2(T2.grupy[g])}</div>`);
+        box.insertAdjacentHTML("beforeend", `<div class="gr"><ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>${esc3(T2.grupy[g])}</div>`);
         for (const [p, typy] of Object.entries(pod)) {
-          box.insertAdjacentHTML("beforeend", `<div class="pg">${esc2(T2.grupy[p])}</div><div class="kafle">${typy.map((t) => `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i"><ha-icon icon="${IKONY[t]}"></ha-icon></span>${esc2(T2.oslony[t])}</button>`).join("")}</div>`);
+          box.insertAdjacentHTML("beforeend", `<div class="pg">${esc3(T2.grupy[p])}</div><div class="kafle">${typy.map((t) => `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i"><ha-icon icon="${IKONY[t]}"></ha-icon></span>${esc3(T2.oslony[t])}</button>`).join("")}</div>`);
         }
       }
       box.querySelectorAll("[data-t]").forEach((b) => b.addEventListener("click", () => this._zmien({ oslona: b.dataset.t })));
@@ -5332,11 +5531,11 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     _kolory(box) {
       const T2 = this._T, k = this._w("kolor"), r = ramaHex(this._w("rama"));
       const nazwaK = KOLORY[k] ? T2.kolory[k] : hex(k), nazwaR = RAMY[r] ? T2.ramy[RAMY[r][0]] : r;
-      box.insertAdjacentHTML("beforeend", `<h4>${esc2(T2.pola.kolor)}</h4><div class="probki">${Object.entries(KOLORY).map(([kk, h]) => `<button class="pr" data-kolor="${kk}" style="background:${h}" title="${esc2(T2.kolory[kk])}" aria-label="${esc2(T2.kolory[kk])}" aria-pressed="${kk === k}"></button>`).join("")}</div>
-      <p class="wyb">${esc2(T2.ui.wybrany)} <b>${esc2(nazwaK)}</b></p>`);
+      box.insertAdjacentHTML("beforeend", `<h4>${esc3(T2.pola.kolor)}</h4><div class="probki">${Object.entries(KOLORY).map(([kk, h]) => `<button class="pr" data-kolor="${kk}" style="background:${h}" title="${esc3(T2.kolory[kk])}" aria-label="${esc3(T2.kolory[kk])}" aria-pressed="${kk === k}"></button>`).join("")}</div>
+      <p class="wyb">${esc3(T2.ui.wybrany)} <b>${esc3(nazwaK)}</b></p>`);
       this._formularz(box, [{ name: "kolor_wlasny", selector: { color_rgb: {} } }], { kolor_wlasny: KOLORY[k] ? void 0 : zHex(hex(k)) });
-      box.insertAdjacentHTML("beforeend", `<h4>${esc2(T2.pola.rama)}</h4><div class="probki">${Object.entries(RAMY).map(([h, [kk]]) => `<button class="pr" data-rama="${h}" style="background:${h}" title="${esc2(T2.ramy[kk])}" aria-label="${esc2(T2.ramy[kk])}" aria-pressed="${h === r}"></button>`).join("")}</div>
-      <p class="wyb">${esc2(T2.ui.wybrany)} <b>${esc2(nazwaR)}</b></p>`);
+      box.insertAdjacentHTML("beforeend", `<h4>${esc3(T2.pola.rama)}</h4><div class="probki">${Object.entries(RAMY).map(([h, [kk]]) => `<button class="pr" data-rama="${h}" style="background:${h}" title="${esc3(T2.ramy[kk])}" aria-label="${esc3(T2.ramy[kk])}" aria-pressed="${h === r}"></button>`).join("")}</div>
+      <p class="wyb">${esc3(T2.ui.wybrany)} <b>${esc3(nazwaR)}</b></p>`);
       this._formularz(box, [{ name: "rama_wlasna", selector: { color_rgb: {} } }], { rama_wlasna: RAMY[r] ? void 0 : zHex(r) });
       box.querySelectorAll("[data-kolor]").forEach((b) => b.addEventListener("click", () => this._zmien({ kolor: b.dataset.kolor })));
       box.querySelectorAll("[data-rama]").forEach((b) => b.addEventListener("click", () => this._zmien({ rama: b.dataset.rama })));
@@ -5351,7 +5550,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
         { name: "odwroc", selector: { boolean: {} } },
         ...dwa ? [{ name: "osobno", selector: { boolean: {} } }] : []
       ], { skrzydla: String(dwa ? 2 : 1), wysokosc: +this._w("wysokosc"), roleta_lewa: this._cfg.roleta_lewa, roleta_prawa: this._cfg.roleta_prawa, odwroc: !!this._w("odwroc"), osobno: !!this._w("osobno") });
-      box.insertAdjacentHTML("beforeend", `<h4>${esc2(T2.ui.sterowanie)}</h4>`);
+      box.insertAdjacentHTML("beforeend", `<h4>${esc3(T2.ui.sterowanie)}</h4>`);
       this._formularz(box, [
         { name: "przyciski", selector: { boolean: {} } },
         { name: "suwak", selector: { boolean: {} } },
@@ -5395,8 +5594,8 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   };
 
   // src/dom.js
-  var esc3 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
-  var STYL2 = `
+  var esc4 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var STYL3 = `
 .lista{display:flex;flex-direction:column;gap:4px}
 .wiersz{display:flex;align-items:center;gap:10px;min-height:48px}
 .wiersz .opis{cursor:pointer}
@@ -5435,13 +5634,13 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       const klucz = lista.join() + T2.karta.dom;
       if (klucz !== this._klucz) {
         this._klucz = klucz;
-        root.innerHTML = `<style>${STYL_STALY}${STYL2}</style><ha-card><div class="mh">
-        <div class="tytul">${esc3(this._cfg.title ?? T2.karta.dom)}</div>
+        root.innerHTML = `<style>${STYL_STALY}${STYL3}</style><ha-card><div class="mh">
+        <div class="tytul">${esc4(this._cfg.title ?? T2.karta.dom)}</div>
         ${lista.length ? `<div class="lista">${lista.map((e) => `<div class="wiersz" data-e="${e}"><div class="ik"><ha-icon></ha-icon></div>
           <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
-          <div class="male"><button data-u="open_cover" title="${esc3(T2.karta.otworz)}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
-          <button data-u="stop_cover" title="${esc3(T2.karta.stop)}"><ha-icon icon="mdi:stop"></ha-icon></button>
-          <button data-u="close_cover" title="${esc3(T2.karta.zamknij)}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div></div>`).join("")}</div>` : `<div class="brak">${esc3(T2.karta.domBrak)}</div>`}
+          <div class="male"><button data-u="open_cover" title="${esc4(T2.karta.otworz)}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
+          <button data-u="stop_cover" title="${esc4(T2.karta.stop)}"><ha-icon icon="mdi:stop"></ha-icon></button>
+          <button data-u="close_cover" title="${esc4(T2.karta.zamknij)}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div></div>`).join("")}</div>` : `<div class="brak">${esc4(T2.karta.domBrak)}</div>`}
       </div></ha-card>`;
         root.querySelectorAll(".wiersz").forEach((w) => {
           const e = w.dataset.e;
@@ -5461,7 +5660,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
         w.querySelector(".nazwa").textContent = st.attributes.friendly_name || w.dataset.e;
         w.querySelector(".stan").textContent = czesci.join(" · ");
         w.querySelector(".ik ha-icon").setAttribute("icon", (otw ? IKONY_OTW[typ] : null) || IKONY[typ] || "mdi:window-shutter");
-        w.querySelector(".ik").style.setProperty("--mh-kolor", otw ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+        w.querySelector(".ik").style.setProperty("--mh-kolor", otw ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       });
     }
   };
@@ -5521,13 +5720,13 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   var POGODY_EN = { sunny: "Sunny", partlycloudy: "Partly cloudy", cloudy: "Cloudy", rainy: "Rainy", "lightning-rainy": "Lightning, rainy", snowy: "Snowy", fog: "Fog" };
   var BARWY = ["grafit", "bialy", "kremowy", "piaskowy", "szary", "mokka", "granat", "morski", "oliwka", "terakota", "bordo"];
   var RAMA = { bialy: "antracyt", kremowy: "antracyt", piaskowy: "antracyt" };
-  var esc4 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var esc5 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var svgIkony = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI[n] || ""}"/></svg>`;
   var ZAMIENNIKI = `ha-card{display:block;background:var(--ha-card-background,var(--card-background-color,#fff));color:var(--primary-text-color);
  border-radius:var(--ha-card-border-radius,12px);border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--divider-color,#e0e0e0));
  box-shadow:var(--ha-card-box-shadow,none)}
 ha-icon{display:inline-flex}ha-icon svg{width:var(--mdc-icon-size,24px);height:var(--mdc-icon-size,24px);fill:currentColor;display:block}`;
-  var STYL3 = `:host{display:block;font-family:var(--ha-font-family-body,Roboto,sans-serif);color:var(--primary-text-color)}
+  var STYL4 = `:host{display:block;font-family:var(--ha-font-family-body,Roboto,sans-serif);color:var(--primary-text-color)}
 .s{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:16px;align-items:start}
 @media (max-width:640px){.s{grid-template-columns:1fr}}
 .k{min-width:0}
@@ -5591,14 +5790,14 @@ button svg{fill:var(--primary-color);flex:none}
     _rysuj() {
       const T2 = this._T = TEKSTY[this._jez], S = T2.symulator, s = this._s;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
-      const przycisk = (dane, wart, tekst, ikona, kropka) => `<button data-${dane}="${esc4(wart)}"${s[dane] === wart ? ' class="on"' : ""}>${kropka || (ikona ? svgIkony(ikona) : "")}${esc4(tekst)}</button>`;
-      const rodzaje = Object.entries(GRUPY).map(([g, pod]) => `<div class="g">${esc4(T2.grupy[g])}</div><div class="c">${Object.values(pod).flat().map((t) => przycisk("typ", t, T2.oslony[t], IKONY[t])).join("")}</div>`).join("");
-      root.innerHTML = `<style>${STYL3}</style><div class="s"><div class="k"></div><div>
-<p class="t">${esc4(S.tytul)}</p><p class="w">${esc4(S.wskazowka)}</p>
-<div class="r"><div class="l">${esc4(S.pora)}</div><div class="c">${PORY.map((p) => przycisk("pora", p, S[p], IKONY_POR[p])).join("")}</div></div>
-<div class="r"><div class="l">${esc4(S.pogoda)}</div><div class="c">${Object.entries(POGODY).map(([p, i]) => przycisk("pogoda", p, this._pogoda(p), i)).join("")}</div></div>
-<div class="r"><div class="l">${esc4(S.kolor)}</div><div class="c">${BARWY.map((k) => przycisk("kolor", k, T2.kolory[k], null, `<span class="p" style="background:${KOLORY[k]}"></span>`)).join("")}</div></div>
-<div class="r"><div class="l">${esc4(S.rodzaj)}</div>${rodzaje}</div></div></div>`;
+      const przycisk = (dane, wart, tekst, ikona, kropka) => `<button data-${dane}="${esc5(wart)}"${s[dane] === wart ? ' class="on"' : ""}>${kropka || (ikona ? svgIkony(ikona) : "")}${esc5(tekst)}</button>`;
+      const rodzaje = Object.entries(GRUPY).map(([g, pod]) => `<div class="g">${esc5(T2.grupy[g])}</div><div class="c">${Object.values(pod).flat().map((t) => przycisk("typ", t, T2.oslony[t], IKONY[t])).join("")}</div>`).join("");
+      root.innerHTML = `<style>${STYL4}</style><div class="s"><div class="k"></div><div>
+<p class="t">${esc5(S.tytul)}</p><p class="w">${esc5(S.wskazowka)}</p>
+<div class="r"><div class="l">${esc5(S.pora)}</div><div class="c">${PORY.map((p) => przycisk("pora", p, S[p], IKONY_POR[p])).join("")}</div></div>
+<div class="r"><div class="l">${esc5(S.pogoda)}</div><div class="c">${Object.entries(POGODY).map(([p, i]) => przycisk("pogoda", p, this._pogoda(p), i)).join("")}</div></div>
+<div class="r"><div class="l">${esc5(S.kolor)}</div><div class="c">${BARWY.map((k) => przycisk("kolor", k, T2.kolory[k], null, `<span class="p" style="background:${KOLORY[k]}"></span>`)).join("")}</div></div>
+<div class="r"><div class="l">${esc5(S.rodzaj)}</div>${rodzaje}</div></div></div>`;
       root.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
         const [k, v] = Object.entries(b.dataset)[0];
         s[k] = v;
@@ -5649,159 +5848,6 @@ button svg{fill:var(--primary-color);flex:none}
       }
     }
   };
-
-  // src/urzadzenie.js
-  var esc5 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
-  var STYL4 = `
-:host{display:block;margin-bottom:var(--ha-space-4,16px)}
-[hidden]{display:none!important}
-.ramka{background:var(--ha-card-background,var(--card-background-color));border-radius:var(--ha-card-border-radius,12px);
- border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--divider-color));overflow:hidden;color:var(--primary-text-color)}
-.karta{--ha-card-border-width:0;--ha-card-box-shadow:none;--ha-card-border-radius:0}
-.stopka{border-top:1px solid var(--divider-color);padding:var(--ha-space-2,8px) var(--ha-space-2,8px);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
-.link{background:none;border:none;font:inherit;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);
- color:var(--primary-color);cursor:pointer;padding:0 var(--ha-space-2,8px);line-height:36px;border-radius:var(--ha-border-radius-md,8px)}
-.link:hover{background:color-mix(in srgb,var(--primary-color) 10%,transparent)}
-.panele{display:flex;flex-wrap:wrap;gap:6px;padding:0 var(--ha-space-2,8px) var(--ha-space-2,8px);width:100%}
-.panele button{font:inherit;font-size:var(--ha-font-size-s,13px);border:1px solid var(--divider-color);border-radius:18px;padding:6px 12px;cursor:pointer;
- background:none;color:var(--primary-text-color)}
-.panele button:hover{border-color:var(--primary-color);color:var(--primary-color)}
-.pyt{width:100%;font-size:var(--ha-font-size-s,13px);color:var(--secondary-text-color)}
-.info{font-size:var(--ha-font-size-s,13px);color:var(--secondary-text-color);padding:0 var(--ha-space-2,8px) var(--ha-space-2,8px);width:100%}
-.ust{padding:var(--ha-space-4,16px) var(--ha-space-4,16px) var(--ha-space-2,8px)}
-.ust h2{margin:0 0 var(--ha-space-2,8px);font-size:var(--ha-font-size-l,16px);font-weight:var(--ha-font-weight-medium,500)}
-.wiersz{display:flex;justify-content:space-between;gap:12px;font-size:var(--ha-font-size-m,14px);line-height:28px;border-bottom:1px solid var(--divider-color)}
-.wiersz:last-child{border-bottom:none}
-.wiersz span:first-child{color:var(--secondary-text-color)}
-.wiersz span:last-child{text-align:end}`;
-  var MotorHaUrzadzenie = class extends HTMLElement {
-    // cel: { entity: 'cover.x', urzadzenie: 'id', wpis: 'entry_id' } albo { dom: true }
-    set cel(c) {
-      this._cel = c;
-      this._zbudowane = false;
-      this._rysuj();
-    }
-    get cel() {
-      return this._cel;
-    }
-    set hass(h) {
-      this._hass = h;
-      this._rysuj();
-    }
-    get hass() {
-      return this._hass;
-    }
-    _rysuj() {
-      const h = this._hass, c = this._cel;
-      if (!h || !c) return;
-      const T2 = TEKSTY[jezyk({}, h)], U = T2.urzadzenie, root = this.shadowRoot || this.attachShadow({ mode: "open" });
-      if (!this._zbudowane) {
-        this._zbudowane = true;
-        root.innerHTML = `<style>${STYL4}</style><div class="ramka"><div class="karta"></div>
-        <div class="stopka"><button class="link dodaj">${esc5(U.dodaj)}</button>${c.wpis ? `<button class="link zmien">⚙ ${esc5(U.zmien)}</button>` : ""}
-        <div class="panele" hidden></div><div class="info" hidden></div></div>
-        ${c.entity ? `<div class="ust" style="border-top:1px solid var(--divider-color)"><h2>${esc5(U.ustawienia)}</h2><div class="wiersze"></div></div>` : ""}</div>`;
-        const karta = document.createElement(c.entity ? "motor-ha" : "motor-ha-dom");
-        karta.setConfig(c.entity ? { type: "custom:motor-ha", entity: c.entity } : { type: "custom:motor-ha-dom" });
-        root.querySelector(".karta").appendChild(karta);
-        this._karta = karta;
-        root.querySelector(".dodaj").addEventListener("click", () => this._panele());
-        root.querySelector(".zmien")?.addEventListener("click", () => konfiguruj(c.wpis));
-      }
-      this._karta.hass = h;
-      if (c.entity) {
-        const st = h.states[c.entity], m = st?.attributes?.motor_ha;
-        if (!m) return;
-        const wiersze = this._wiersze(h, T2, U, c, m);
-        const klucz = JSON.stringify(wiersze);
-        if (klucz !== this._ost) {
-          this._ost = klucz;
-          root.querySelector(".wiersze").innerHTML = wiersze.map(([a, b]) => `<div class="wiersz"><span>${esc5(a)}</span><span>${esc5(b)}</span></div>`).join("");
-        }
-      }
-    }
-    _wiersze(h, T2, U, c, m) {
-      const stan = (e) => e && h.states[e] ? h.formatEntityState ? h.formatEntityState(h.states[e]) : h.states[e].state : null;
-      const auto = Object.values(h.entities || {}).find((e) => e.device_id === c.urzadzenie && e.platform === "motor_ha" && e.entity_id.startsWith("switch.") && e.entity_id !== m.encje?.pauza);
-      const w = [[U.rodzaj, T2.oslony?.[m.oslona] || m.oslona]];
-      if (m.kolor) w.push([U.kolor, T2.kolory?.[m.kolor] || m.kolor]);
-      if (m.skrzydla) w.push([U.skrzydla, String(m.skrzydla)]);
-      if (m.wysokosc) w.push([U.wysokosc, `${m.wysokosc} px`]);
-      w.push([U.czas, typeof m.czas === "number" && m.czas > 0 ? `${m.czas} s` : U.auto]);
-      if (auto) w.push([U.automatyka, stan(auto.entity_id)]);
-      if (m.encje?.pauza && h.states[m.encje.pauza]) w.push([U.pauza, stan(m.encje.pauza)]);
-      if (m.encje?.powod && h.states[m.encje.powod]) w.push([U.powod, stan(m.encje.powod)]);
-      return w;
-    }
-    async _panele() {
-      const r = this.shadowRoot, U = TEKSTY[jezyk({}, this._hass)].urzadzenie, pole = r.querySelector(".panele"), info = r.querySelector(".info");
-      if (!pole.hidden) {
-        pole.hidden = true;
-        return;
-      }
-      info.hidden = true;
-      try {
-        const lista = await this._hass.callWS({ type: "motor_ha/panele" });
-        if (!lista.length) {
-          info.textContent = U.brakPaneli;
-          info.hidden = false;
-          return;
-        }
-        pole.innerHTML = `<div class="pyt">${esc5(U.ktory)}</div>` + lista.map((p) => `<button data-k="${esc5(p.klucz)}">${esc5(p.nazwa)}</button>`).join("");
-        pole.hidden = false;
-        pole.querySelectorAll("button").forEach((b) => b.addEventListener("click", async () => {
-          try {
-            const w = await this._hass.callWS({ type: "motor_ha/dodaj_karte", panel: b.dataset.k, ...this._cel.entity ? { entity_id: this._cel.entity } : {} });
-            pole.hidden = true;
-            info.textContent = w.dodano ? `✓ ${U.dodano} ${b.textContent}` : U.blad;
-            info.hidden = false;
-          } catch (e) {
-            info.textContent = U.blad;
-            info.hidden = false;
-          }
-        }));
-      } catch (e) {
-        info.textContent = U.blad;
-        info.hidden = false;
-      }
-    }
-  };
-  function konfiguruj(wpis) {
-    const skad = location.pathname + location.search;
-    const idz = (u) => {
-      history.pushState(null, "", u);
-      window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
-    };
-    const szukaj = (k) => {
-      for (const x of k.querySelectorAll("*")) {
-        if (x.tagName === "HA-CONFIG-ENTRY-ROW" && x.data?.entry?.entry_id === wpis) return x;
-        if (x.shadowRoot) {
-          const y = szukaj(x.shadowRoot);
-          if (y) return y;
-        }
-      }
-      return null;
-    };
-    const okno = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
-    idz("/config/integrations/integration/motor_ha");
-    let n = 0;
-    const t = setInterval(() => {
-      const w = szukaj(document);
-      if (w && typeof w._showOptions === "function") {
-        clearInterval(t);
-        w._showOptions();
-        let bylo = false, m = 0;
-        const p = setInterval(() => {
-          const o = okno(), otwarte = !!(o && o._params);
-          if (otwarte) bylo = true;
-          if (bylo && !otwarte || ++m > 7200) {
-            clearInterval(p);
-            if (bylo && location.pathname.startsWith("/config/integrations/integration/motor_ha")) idz(skad);
-          }
-        }, 250);
-      } else if (++n > 80) clearInterval(t);
-    }, 250);
-  }
 
   // src/strona.js
   var WZOR = /^\/config\/devices\/device\/([^/?#]+)/;

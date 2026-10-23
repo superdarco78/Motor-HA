@@ -1,5 +1,16 @@
 # 📝 Historia zmian
 
+## v2.1.3 – „Zmień ustawienia” na panelu, suwak z uchwytem
+
+- ⚙️ Pod oknem na panelu „Zmień ustawienia”: otwiera kreator tego urządzenia, a po zamknięciu wraca na ten sam panel
+- 👆 Na stronie urządzenia każdy wiersz „Ustawienia Motor HA” da się dotknąć: Rodzaj, Kolor, Skrzydła, Wysokość i Czas otwierają od razu właściwy krok kreatora („Dalej” zapisuje), a Automatyka, Pauza i Powód – okienko tej encji
+- 🚪 „Zmień ustawienia” na panelu także przy bramach i garażach
+- 🎚️ Suwak przy zamkniętej osłonie nie jest już pustym paskiem – zawsze widać uchwyt, jak w Home Assistancie
+- 🎚️ W trakcie jazdy suwak przesuwa się razem z osłoną na rysunku, zamiast od razu skakać do celu
+- 🎨 Suwaki i ikony otwartych osłon w kolorze głównym Home Assistanta zamiast fioletu; podgląd w opisie też
+- 🌍 Kreator po angielsku (i w innych językach): „Znaleziono” i model urządzenia pokazują nazwy zamiast wewnętrznych słów (np. „Day-night blind” zamiast „zebra”)
+- 🧹 Gdy Home Assistant wczytuje Motor HA z innego folderu niż ten, do którego pisze HACS, aktualizacja trafia też tam, a w dzienniku jest o tym wpis
+
 ## v2.1.2 – Karta zawsze na stronie urządzenia, też w aplikacji
 
 - 🪟 Karta na stronie urządzenia pokazuje się zawsze – także w aplikacji Home Assistant na Androida, w Chrome na telefonie i na komputerze (sprawdza to stały test przy każdej zmianie)

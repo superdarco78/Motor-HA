@@ -29,13 +29,18 @@ class Wpis:
         return self.entry.options.get(CONF_OSLONA) in BRAMY
 
 
+# przetłumaczone nazwy rodzajów osłon (język HA) – model urządzenia to „Żaluzja dzień-noc”, nie „zebra”;
+# wypełnia async_setup_entry przed utworzeniem urządzenia
+NAZWY_OSLON: dict[str, str] = {}
+
+
 def info_urzadzenia(entry: ConfigEntry) -> DeviceInfo:
     # urządzenie łączy się z „Motor HA” w __init__ (via_device_id) – via_device jest przestarzałe
     return DeviceInfo(
         identifiers={(DOMAIN, entry.entry_id)},
         name=entry.title,
         manufacturer=NAZWA,
-        model=str(entry.options.get(CONF_OSLONA) or ""),
+        model=NAZWY_OSLON.get(oslona := str(entry.options.get(CONF_OSLONA) or ""), oslona),
         sw_version=VERSION,
     )
 

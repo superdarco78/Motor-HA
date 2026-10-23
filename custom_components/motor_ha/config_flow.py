@@ -7,6 +7,7 @@ osłoną, jest domyślnie wyłączona.
 
 from __future__ import annotations
 
+import time
 from typing import Any
 
 import voluptuous as vol
@@ -233,7 +234,7 @@ class Kreator:
             schemat[vol.Optional(WSTECZ, default=False)] = sel.BooleanSelector()
         pasek = await async_obrazek(self.hass, lista, nr, self.hass.config.language)
         return self.async_show_form(  # type: ignore[attr-defined]
-            step_id=krok, data_schema=vol.Schema(schemat), errors=bledy or {}, last_step=krok == lista[-1],
+            step_id=krok, data_schema=vol.Schema(schemat), errors=bledy or {}, last_step=krok == lista[-1] or getattr(self, "_jeden", None) == krok,
             description_placeholders={"pasek": f"![]({pasek})", "nr": str(nr + 1),
                                       "z": str(len(lista)), "porada": await self._porada(krok),
                                       "nazwa": self.tytul or "", **(dodatki or {})})
@@ -244,6 +245,9 @@ class Kreator:
             return None
         wstecz = dane.pop(WSTECZ, False)
         self.o.update(dane)
+        if getattr(self, "_jeden", None) == krok and not wstecz:
+            return await self._koniec()
+        self._jeden = None
         lista = self.kroki()
         nr = lista.index(krok)
         cel = lista[max(0, nr - 1)] if wstecz else (lista[nr + 1] if nr + 1 < len(lista) else None)
@@ -281,7 +285,9 @@ class Kreator:
             domyslne = skan.zaznaczone(self._znalezione)
         opcje = [k for k, tylko_zaaw in URZADZENIA.items() if self.zaaw or not tylko_zaaw]
         domyslne = [k for k in domyslne if k in opcje]
-        znalezione = ", ".join(f"{k} ({len(v)})" for k, v in self._znalezione.items() if v and k in opcje)
+        t = await async_get_translations(self.hass, self.hass.config.language, "selector", {DOMAIN})
+        nazwa = lambda k: t.get(f"component.{DOMAIN}.selector.{MAM}.options.{k}", k)  # noqa: E731
+        znalezione = ", ".join(f"{nazwa(k)} ({len(v)})" for k, v in self._znalezione.items() if v and k in opcje)
         return await self._formularz("mam", {vol.Optional(MAM, default=domyslne): _lista(opcje, MAM, wiele=True)},
                                      dodatki={"znalezione": znalezione or "—"})
 
@@ -592,6 +598,11 @@ class MotorHaOpcje(Kreator, OptionsFlow):
         self._historia = []
 
     async def async_step_init(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
+        # wiersz na stronie urządzenia (motor_ha/krok): od razu ten jeden krok, „Dalej” zapisuje
+        krok, kiedy = self.hass.data.get(DOMAIN, {}).get("krok", {}).pop(self._entry_id, (None, 0.0))
+        if krok in self.kroki() and time.monotonic() - kiedy < 60:
+            self._jeden = krok
+            return await getattr(self, f"async_step_{krok}")()
         return await self.async_step_tryb()
 
     async def _koniec(self) -> ConfigFlowResult:

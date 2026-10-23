@@ -157,6 +157,9 @@ class Aktualizacja(UpdateEntity):
             if (hacs := self._hacs()):
                 await self.hass.services.async_call("update", "install", {"entity_id": hacs, "version": wersja},
                                                     blocking=True)
+                if Path(__file__).parent.name != DOMAIN:
+                    # HA wczytuje Motor HA z innego folderu niż ten, do którego pisze HACS – ten też dostaje nową wersję
+                    await self._pobierz(wersja)
             else:
                 self._postep(40)
                 await self._pobierz(wersja)
