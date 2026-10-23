@@ -487,3 +487,5 @@
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Licencja</h2>
 
 <p>Licencja <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – możesz używać i zmieniać za darmo, ale nie sprzedawać. © superdarco78</p>
+
+<p>Zdjęcia rodzajów osłon w kreatorze (folder <code>custom_components/motor_ha/www/rodzaje</code>) są wygenerowane przez AI w Canvie (AI-generated, Canva). Pozostałe rysunki są narysowane od zera dla Motor HA.</p>

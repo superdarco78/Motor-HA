@@ -1,7 +1,9 @@
 // Kreator graficzny Motor HA (2.2.0): dziesięć kroków z obrazkami zamiast list, żywy podgląd okna,
 // układ okna jako siatka pól (do 4 × 3) edytowana palcem. Otwiera się nad okienkiem „Dodaj urządzenie”
 // i „Konfiguruj” (kreator.js), a gotowe ustawienia wysyła jak zwykłą odpowiedź kroku integracji (pole „kreator”).
-import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza } from './stale.js';
+import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza, wlasnyRuch, WERSJA } from './stale.js';
+import { kafelRuch } from './kafle_ruch.js';
+import { ZDJECIA } from './zdjecia.js';
 import { kafel, GRUPY_KAFLI } from './kafle.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
 import { rysunekBramy } from './brama.js';
@@ -192,6 +194,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .kaf{position:relative;background:var(--tile);border:2px solid transparent;border-radius:14px;padding:8px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;color:var(--fg);text-align:center;min-width:0;transition:transform .12s}
 .kaf:active{transform:scale(.97)}
 .kaf svg{width:100%;height:auto;max-height:84px}
+.kaf img.zdj{display:block;width:100%;height:auto;max-height:84px;aspect-ratio:6/5;object-fit:contain;border-radius:6px;pointer-events:none}
+.ruchP svg{display:block;width:100%;height:auto}
 .kaf b{font-size:11px;font-weight:400;line-height:1.2;color:var(--fg2);overflow-wrap:break-word;hyphens:manual;max-width:100%}
 .kaf.wyb{border-color:var(--accent);background:var(--primary-soft)} .kaf.wyb b{color:var(--fg);font-weight:500}
 .kaf:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
@@ -416,21 +420,45 @@ export class MotorHaKreator extends HTMLElement {
     const sc = this._szeroko ? this._scena(k) : '';
     r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
     r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && (S.szablon === 'w' || prostokaty(S.u).length > 1)) && !jedenDuzy ? this._podgladMaly() : '';
+    this._petlaRuchu();
   }
   // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
   _scena(k) {
     const S = this.S;
     if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
-    if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
     const n = prostokaty(S.u).length;
+    if (this._zRuchem(n)) return `<div class="ruchP" data-ruch="${S.o.oslona}" style="max-width:420px">${this._ruchSvg(0)}</div>`;
+    if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
     if (k === 'uklad') return `<div class="edscena">${this._edytorCaly()}</div>`;
     if (k === 'przypisz') return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'd', wybrane: S.arkusz })}</div>`;
     if (['rodzaj', 'kolory'].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'r', wybrane: this._wybR() })}</div>`;
     return `<div>${this.okno({ w: 440, h: 400, id: 's' })}</div>`;
   }
-  _podgladMaly() { return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' }); }
+  _podgladMaly() {
+    if (this._zRuchem(prostokaty(this.S.u).length)) return `<div class="ruchP" data-ruch="${this.S.o.oslona}" style="width:200px;max-width:100%">${this._ruchSvg(0)}</div>`;
+    return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' });
+  }
+  // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
+  _zRuchem(n) { return wlasnyRuch(this.S.o.oslona) && (this.S.brama || n <= 1); }
+  _ruchSvg(o) { return kafelRuch(this.S.o.oslona, o, this._kolor(), this._rama()); }
+  _petlaRuchu() {
+    if (this._petla) return;
+    const t0 = performance.now();
+    this._petla = setInterval(() => {
+      const el = [...this.shadowRoot.querySelectorAll('.ruchP')];
+      if (!el.length || !this.isConnected) { clearInterval(this._petla); this._petla = null; return; }
+      // 1 s zamknięte, 2 s otwieranie, 1 s otwarte, 2 s zamykanie
+      const t = ((performance.now() - t0) / 1000) % 6, o = t < 1 ? 0 : t < 3 ? (t - 1) / 2 : t < 4 ? 1 : 1 - (t - 4) / 2;
+      const g = o * o * (3 - 2 * o), svg = this._ruchSvg(g);
+      el.forEach(e => { e.innerHTML = svg; });
+    }, 70);
+  }
 
-  kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) { return kafel(typ, kolor, rama) || this._kafelProsty(typ); }
+  kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
+    // zdjęcie z Canvy, jeśli jest dla tego rodzaju; inaczej rysunek
+    if (ZDJECIA.has(typ)) return `<img class="zdj" src="/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}" alt="" loading="lazy" draggable="false">`;
+    return kafel(typ, kolor, rama) || this._kafelProsty(typ);
+  }
   _kafelProsty(typ) {
     if (czyBrama(typ)) return `<div style="width:100%;pointer-events:none">${this._brama(typ)}</div>`;
     const [n1] = this._nieba();

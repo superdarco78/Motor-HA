@@ -319,3 +319,8 @@ export function kafel(typ, kolor = '#3b3f45', rama = '#f4f4f2') {
   P = 'k' + (++nr) + '_';
   return svg(defs(kolor, rama) + f(kolor, rama));
 }
+
+// pomocnicze rysunki dla animacji (kafle_ruch.js): ten sam styl, tło i przejścia co obrazki kreatora
+export function poczatek(kolor = '#3b3f45', rama = '#f4f4f2') { P = 'k' + (++nr) + '_'; return defs(kolor, rama); }
+export const R = { ciem, jas, u, CIEN, okno, tlo, cienR, svg, skrzynka, prowadnice, pancerz, kaseta, dach, oknoD, prowD, belkaD, SOSNA, BIALA, SZARA, ORZECH,
+  elewacja, drzwi, pasyM, balustrada, plac, sztachety, garaz, slupek };

@@ -1,0 +1,2 @@
+// Wygenerowane przez zbuduj.mjs – rodzaje, które mają zdjęcie w www/rodzaje/
+export const ZDJECIA = new Set(["adaptacyjna","bambusowa","dach_ssl","drewniana","ekran","firana","kasetowa","markiza_kasetowa","natynkowa","natynkowa_okragla","panel","pelna","perforowana","pionowa","plaster","plisa","plisa_gora_dol","podtynkowa","roleta_moskitiera","roleta_zip_wew","rzymska","uchylna","zaciemniajaca","zaluzja","zaslona","zaslona_wave","zebra","zewnetrzna"]);

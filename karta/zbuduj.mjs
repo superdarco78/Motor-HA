@@ -1,5 +1,11 @@
 // Składa kartę (src/ + tlumaczenia/) w jeden plik custom_components/motor_ha/www/motor-ha.js.
 import * as esbuild from 'esbuild';
+import { readdirSync, writeFileSync, existsSync } from 'node:fs';
+
+// zdjęcia rodzajów (www/rodzaje/{klucz}.webp, wygenerowane w Canvie): karta bierze tylko te, które są – reszta to rysunki z kafle.js
+const ZDJ = '../custom_components/motor_ha/www/rodzaje';
+const zdjecia = existsSync(ZDJ) ? readdirSync(ZDJ).filter(f => f.endsWith('.webp')).map(f => f.slice(0, -5)).sort() : [];
+writeFileSync('src/zdjecia.js', `// Wygenerowane przez zbuduj.mjs – rodzaje, które mają zdjęcie w www/rodzaje/\nexport const ZDJECIA = new Set(${JSON.stringify(zdjecia)});\n`);
 
 await esbuild.build({
   entryPoints: ['src/index.js'],

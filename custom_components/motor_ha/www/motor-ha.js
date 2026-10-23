@@ -334,9 +334,43 @@
     P = "k" + ++nr + "_";
     return svg(defs(kolor, rama) + f(kolor, rama));
   }
+  function poczatek(kolor = "#3b3f45", rama = "#f4f4f2") {
+    P = "k" + ++nr + "_";
+    return defs(kolor, rama);
+  }
+  var R = {
+    ciem,
+    jas,
+    u,
+    CIEN,
+    okno,
+    tlo,
+    cienR,
+    svg,
+    skrzynka,
+    prowadnice,
+    pancerz,
+    kaseta,
+    dach,
+    oknoD,
+    prowD,
+    belkaD,
+    SOSNA,
+    BIALA,
+    SZARA,
+    ORZECH,
+    elewacja,
+    drzwi,
+    pasyM,
+    balustrada,
+    plac,
+    sztachety,
+    garaz,
+    slupek
+  };
 
   // src/stale.js
-  var WERSJA = "2.2.7";
+  var WERSJA = "2.2.8";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -344,6 +378,8 @@
   var GARAZE = [...GRUPY.brama.garaze];
   var BAZA = { roleta_zip_wew: "kasetowa", bambusowa: "pelna", plisa_gora_dol: "plisa", zaslona_wave: "zaslona", firana: "zaslona", panel: "pionowa", ekran: "pelna", dach_dkl: "zaciemniajaca", dach_ssl: "natynkowa", dachowa: "natynkowa", dach_fhb: "rzymska", dach_msl: "screen", markizeta_dach: "screen", dach_pal: "zaluzja", dach_fhl: "plisa", dach_dn: "zebra", natynkowa_okragla: "natynkowa", adaptacyjna: "zewnetrzna", roleta_moskitiera: "natynkowa", ekstrudowana: "natynkowa", roleta_drzwi: "natynkowa", fasadowa_f80: "fasadowaz", markizoleta: "screen", okiennice: "zewnetrzna", okiennice_przesuwne: "zewnetrzna", markiza_otwarta: "markiza", markiza_polkasetowa: "markiza", markiza_kasetowa: "markiza", markiza_volant: "markiza", markiza_koszowa: "markiza", markiza_wolnostojaca: "markiza", markiza_zimowa: "markiza", markizeta: "markiza", markiza_balkonowa: "markiza", markiza_pionowa: "markiza", markiza_boczna: "markiza", zagiel: "markiza", parasol: "markiza", pergola: "fasadowaz", pergola_tkanina: "markiza", zadaszenie: "markiza", screen_taras: "screen", okno_silownik: "screen", okno_dachowe: "screen", okno_plaskie: "screen", swietlik: "screen", wylaz: "screen", moskitiera: "screen", moskitiera_plisa_okno: "screen", moskitiera_drzwi: "screen", moskitiera_zip_drzwi: "screen", furtka: "skrzydlowa", garaz_boczna: "segmentowa", garaz_skrzydlowa: "uchylna", szlaban: "przesuwna" };
   var baza = (t) => BAZA[t] || t;
+  var Z_SCENA = new Set(["taras", "okna"].flatMap((g) => Object.values(GRUPY[g]).flat()));
+  var wlasnyRuch = (t) => !!t && t !== baza(t) && (Z_SCENA.has(t) || czyBrama(t));
   var POZIOME = ["pionowa", "zaslona"];
   var SCIANY = { biala: "#efebe4", bezowa: "#d6c4a6", szara: "#a5a4a0", cegla: "#a65a3a", grafit: "#56595c" };
   var ZEWNETRZNE = [
@@ -635,10 +671,10 @@
     if (foto) t += fotokomorka();
     return `<svg class="brama" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">${t}</svg>`;
   }
-  function ustawBrame(svg3, typ, p) {
-    if (!svg3) return;
+  function ustawBrame(svg4, typ, p) {
+    if (!svg4) return;
     const f = Math.max(0, Math.min(100, p)) / 100;
-    const g = (s) => svg3.querySelector(s);
+    const g = (s) => svg4.querySelector(s);
     if (typ === "przesuwna") g(".przesuwna")?.setAttribute("transform", `translate(${-f * 186} 0)`);
     else if (typ === "skrzydlowa") {
       const s = Math.cos(f * Math.PI * 0.45);
@@ -648,15 +684,274 @@
       g(".drzwi")?.setAttribute("transform", `translate(0 ${-f * 6}) translate(0 78) scale(1 ${1 - f * 0.88}) translate(0 -78)`);
     } else g(".drzwi")?.setAttribute("transform", `translate(0 ${-f * (ZIEMIA - 78)})`);
   }
-  function ustawFotokomorke(svg3, przeszkoda) {
-    const w = svg3?.querySelector(".wiazka");
+  function ustawFotokomorke(svg4, przeszkoda) {
+    const w = svg4?.querySelector(".wiazka");
     if (!w) return;
     w.setAttribute("stroke", przeszkoda ? "#e53935" : "#43a047");
     w.setAttribute("stroke-dasharray", przeszkoda ? "0" : "5 4");
   }
 
+  // src/kafle_ruch.js
+  var {
+    ciem: ciem2,
+    jas: jas2,
+    u: u2,
+    CIEN: CIEN2,
+    okno: okno2,
+    tlo: tlo3,
+    cienR: cienR2,
+    svg: svg2,
+    skrzynka: skrzynka2,
+    prowadnice: prowadnice2,
+    pancerz: pancerz2,
+    kaseta: kaseta2,
+    dach: dach2,
+    oknoD: oknoD2,
+    prowD: prowD2,
+    belkaD: belkaD2,
+    SOSNA: SOSNA2,
+    BIALA: BIALA2,
+    SZARA: SZARA2,
+    ORZECH: ORZECH2,
+    elewacja: elewacja2,
+    drzwi: drzwi2,
+    pasyM: pasyM2,
+    balustrada: balustrada2,
+    plac: plac2,
+    sztachety: sztachety2,
+    garaz: garaz3,
+    slupek: slupek3
+  } = R;
+  var lin = (a, b, t) => a + (b - a) * t;
+  var zakres = (t, a, b) => Math.min(1, Math.max(0, (t - a) / (b - a)));
+  var rolWew = (k, z, opt = {}) => {
+    const h = lin(2, opt.h ?? 60, z), x = opt.x ?? 35, w = opt.w ?? 50, y = opt.y ?? 21;
+    const tk = opt.tk ? opt.tk(x, y, w, h) : `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${opt.fill || u2("tk")}"/>`;
+    return tk + `<rect x="${x - 0.5}" y="${y + h}" width="${w + 1}" height="2.6" rx="1" fill="${opt.listwa || u2("rm")}"/><rect x="${x}" y="${y + h + 2.6}" width="${w}" height="1.2" fill="rgba(0,0,0,.12)"/>`;
+  };
+  var rolZew = (z, x = 32.5, y = 26, w = 55, h = 58) => `<rect x="${x}" y="${y}" width="${w}" height="${lin(1, h, z)}" fill="${u2("lam")}"/><rect x="${x}" y="${y + lin(1, h, z) - 2.6}" width="${w}" height="2.6" fill="${u2("met")}"/>
+  <rect x="${x}" y="${y + lin(1, h, z)}" width="${w}" height="1.6" fill="rgba(0,0,0,.18)"/>`;
+  var lamele = (k, z, x, y, w, h, n, opt = {}) => {
+    const zj = zakres(z, 0, 0.7), obr = zakres(z, 0.7, 1), ile = Math.max(1, Math.round(n * zj)), krok = h / n;
+    const gr = lin(0.6, krok * 0.92, obr);
+    let s = "";
+    for (let i = 0; i < ile; i++) {
+      const yy = y + (zj < 1 ? i * lin(1.1, krok, zj) : i * krok);
+      s += `<rect x="${x}" y="${yy}" width="${w}" height="${Math.max(0.6, gr)}" fill="${opt.fill || jas2(k, 0.2)}"/><rect x="${x}" y="${yy + Math.max(0.6, gr)}" width="${w}" height=".5" fill="${ciem2(k, 0.4)}"/>`;
+    }
+    return s + (opt.drabinki ? `<path d="M${x + w * 0.25} ${y}v${ile * (zj < 1 ? lin(1.1, krok, zj) : krok)}M${x + w * 0.75} ${y}v${ile * (zj < 1 ? lin(1.1, krok, zj) : krok)}" stroke="${opt.drabinki}" stroke-width=".5"/>` : "") + `<rect x="${x - 0.5}" y="${y + ile * (zj < 1 ? lin(1.1, krok, zj) : krok)}" width="${w + 1}" height="2.4" fill="${opt.dol || u2("met")}"/>`;
+  };
+  var plisa = (c, z, x, y, w, h, opt = {}) => {
+    const hh = lin(3, h, z), n = 12, kr = hh / n;
+    let s = "";
+    for (let i = 0; i < n; i++) s += `<rect x="${x}" y="${y + i * kr}" width="${w}" height="${kr / 2}" fill="${jas2(c, 0.15)}"/><rect x="${x}" y="${y + i * kr + kr / 2}" width="${w}" height="${kr / 2}" fill="${ciem2(c, 0.16)}"/>`;
+    return `<rect x="${x - 1}" y="${y - 3}" width="${w + 2}" height="3" rx="1" fill="${opt.belka || u2("alu")}"/>` + s + `<rect x="${x - 1}" y="${y + hh}" width="${w + 2}" height="3" rx="1" fill="${opt.belka || u2("alu")}"/>`;
+  };
+  var rzymska = (c, z, x, y, w, h) => {
+    const hh = lin(10, h, z), fal = Math.round(lin(4, 1, z));
+    let s = `<rect x="${x}" y="${y}" width="${w}" height="${hh}" fill="${u2("tk")}"/>`;
+    for (let i = 0; i < fal; i++) {
+      const yy = y + hh - i * 5;
+      s += `<path d="M${x} ${yy}q${w / 2} 5 ${w} 0v-5q-${w / 2} 4 -${w} 0z" fill="${ciem2(c, 0.08 + i * 0.06)}"/><path d="M${x} ${yy}q${w / 2} 5 ${w} 0" stroke="${jas2(c, 0.3)}" stroke-width=".6" fill="none"/>`;
+    }
+    return s;
+  };
+  var naBoki = (k, z, rodzaj) => {
+    const sz = lin(10, 46, z), L = 14, P2 = 106;
+    let s = "";
+    if (rodzaj === "pionowa") {
+      const n = 12, kr = lin(1.4, 6, z);
+      for (let i = 0; i < n; i++) s += `<rect x="${L + 10 + i * kr}" y="15" width="${lin(1.2, 5.2, z)}" height="72" fill="${u2("tk")}"/>`;
+      return s;
+    }
+    if (rodzaj === "panel") {
+      for (let i = 0; i < 4; i++) {
+        const x = L + 2 + i * lin(2.5, 22, z);
+        s += `<g filter="${u2("cn")}"><rect x="${x}" y="13" width="21" height="76" fill="${u2("tkv")}"/><rect x="${x}" y="86" width="21" height="3" fill="${u2("alu")}"/></g>`;
+      }
+      return s;
+    }
+    const pan = (x0, w, lewy) => {
+      const f = Math.max(3, Math.round(w / 5));
+      let p = `<path d="M${x0} 12h${w}l${lewy ? 2 : -2} 77H${x0 + (lewy ? -2 : 2)}z" fill="${rodzaj === "firana" ? "#fff" : u2("tk")}" opacity="${rodzaj === "firana" ? 0.6 : 1}"/>`;
+      for (let i = 0; i < f; i++) p += `<path d="M${x0 + (i + 0.5) * w / f} 12v77" stroke="${rodzaj === "firana" ? "#d2ccc0" : ciem2(k, 0.3)}" stroke-width="${rodzaj === "firana" ? 0.6 : 1.4}" opacity=".5"/>`;
+      return p;
+    };
+    return pan(L, sz, true) + pan(P2 - sz, sz, false);
+  };
+  var W2 = (s) => tlo3() + okno2(32, 18, 56, 66) + s;
+  var Z = (s) => tlo3() + okno2(32, 26, 56, 60) + s;
+  var D = (fr, drewno, s) => oknoD2(fr, drewno) + s;
+  var RUCH = {
+    // wewnątrz
+    pelna: (k, r, z) => W2(`<rect x="27" y="11" width="66" height="6" rx="3" fill="${u2("alu")}" filter="${u2("cn")}"/>` + rolWew(k, z, { x: 29, w: 62, y: 17, h: 64, listwa: u2("alu") })),
+    kasetowa: (k, r, z) => W2(kaseta2() + `<rect x="32.5" y="21" width="2.5" height="62" fill="${u2("rm")}"/><rect x="85" y="21" width="2.5" height="62" fill="${u2("rm")}"/>` + rolWew(k, z)),
+    zebra: (k, r, z) => W2(kaseta2() + rolWew(k, z, { tk: (x, y, w, h) => {
+      let s = "";
+      for (let yy = 0; yy < h; yy += 7) s += `<rect x="${x}" y="${y + yy}" width="${w}" height="${Math.min(3.6, h - yy)}" fill="${u2("tk")}"/><rect x="${x}" y="${y + yy + 3.6}" width="${w}" height="${Math.max(0, Math.min(3.4, h - yy - 3.6))}" fill="#fff" opacity=".25"/>`;
+      return s;
+    } })),
+    zaciemniajaca: (k, r, z) => W2(kaseta2() + `<rect x="31" y="21" width="4" height="63" fill="${u2("rm")}"/><rect x="85" y="21" width="4" height="63" fill="${u2("rm")}"/>` + rolWew(k, z, { fill: ciem2(k, 0.35) })),
+    roleta_zip_wew: (k, r, z) => W2(`<rect x="30" y="13" width="60" height="7" rx="1.5" fill="${u2("rm")}" filter="${u2("cn")}"/><rect x="30" y="20" width="4" height="64" fill="${u2("rm")}"/><rect x="86" y="20" width="4" height="64" fill="${u2("rm")}"/>` + rolWew(k, z, { x: 34, w: 52, y: 20 })),
+    bambusowa: (k, r, z) => {
+      const b = "#b8925a";
+      return W2(`<rect x="31" y="14" width="58" height="5" rx="1" fill="${ciem2(b, 0.3)}" filter="${u2("cn")}"/>` + rolWew(b, z, { x: 34, w: 52, y: 19, tk: (x, y, w, h) => {
+        let s = "";
+        for (let yy = 0; yy < h; yy += 1.6) s += `<rect x="${x}" y="${y + yy}" width="${w}" height="1.2" fill="${yy * 10 % 3 > 1.5 ? jas2(b, 0.12) : b}"/>`;
+        return s;
+      }, listwa: ciem2(b, 0.25) }));
+    },
+    ekran: (k, r, z) => `<rect width="120" height="100" fill="${u2("tyn")}"/><rect y="86" width="120" height="14" fill="#a68b6b"/><g filter="${u2("cn")}"><rect x="14" y="8" width="92" height="7" rx="3.5" fill="#26292d"/></g><rect x="18" y="15" width="84" height="${lin(1, 54, z)}" fill="#1b1d20"/><rect x="21" y="15" width="78" height="${Math.max(0, lin(1, 54, z) - 10)}" fill="#fbfbfa"/><rect x="18" y="${15 + lin(1, 54, z)}" width="84" height="2.4" fill="#26292d"/>`,
+    plisa: (k, r, z) => W2(plisa(k, z, 36, 25, 48, 32)),
+    plaster: (k, r, z) => W2(plisa(k, z, 36, 25, 48, 32)),
+    plisa_gora_dol: (k, r, z) => W2(plisa(k, z, 36, lin(25, 38, 0.6), 48, 24)),
+    rzymska: (k, r, z) => W2(`<rect x="28" y="12" width="64" height="4" rx="1" fill="${u2("alu")}" filter="${u2("cn")}"/>` + rzymska(k, z, 29, 16, 62, 52)),
+    zaluzja: (k, r, z) => W2(`<rect x="32" y="15" width="56" height="5" rx="1" fill="${u2("met")}" filter="${u2("cn")}"/>` + lamele(k, z, 33, 20, 54, 44, 15, { drabinki: "#e8e8e8" })),
+    drewniana: (k, r, z) => W2(`<rect x="31" y="15" width="58" height="5" rx="1" fill="#8a5f38" filter="${u2("cn")}"/>` + lamele("#9a6a3f", z, 32, 20, 56, 44, 10, { fill: "#a87a4e", drabinki: k, dol: "#7d5330" })),
+    pionowa: (k, r, z) => W2(`<rect x="22" y="11" width="76" height="4" rx="1" fill="${u2("alu")}" filter="${u2("cn")}"/>` + naBoki(k, z, "pionowa")),
+    panel: (k, r, z) => W2(`<rect x="14" y="9" width="92" height="4" rx="1" fill="${u2("alu")}" filter="${u2("cn")}"/>` + naBoki(k, z, "panel")),
+    zaslona: (k, r, z) => W2(`<rect x="12" y="9" width="96" height="2.6" rx="1.3" fill="${u2("alu")}"/>` + naBoki(k, z, "zaslona")),
+    zaslona_wave: (k, r, z) => W2(`<rect x="10" y="9" width="100" height="3" rx="1" fill="${u2("alu")}"/>` + naBoki(k, z, "zaslona")),
+    firana: (k, r, z) => W2(`<rect x="18" y="10" width="84" height="3.4" rx="1" fill="${u2("alu")}"/>` + naBoki(k, z, "firana")),
+    // na zewnątrz
+    natynkowa: (k, r, z) => Z(cienR2(26, 26, 68) + prowadnice2(32, 26, 56, 60) + rolZew(z) + skrzynka2(26, 8, 68, 16, 4)),
+    natynkowa_okragla: (k, r, z) => Z(cienR2(26, 26, 68) + prowadnice2(32, 26, 56, 60) + rolZew(z) + `<g filter="${u2("cn")}"><path d="M26 8h58a10 10 0 0 1 10 10v6H26z" fill="${u2("met")}"/></g>`),
+    podtynkowa: (k, r, z) => tlo3() + `<rect x="27" y="12" width="66" height="13" fill="#d6cec2"/>` + okno2(32, 26, 56, 60) + `<rect x="31" y="23" width="58" height="3" fill="${u2("met")}"/>` + prowadnice2(32, 24, 56, 62) + rolZew(z, 32.5, 24, 55, 60),
+    zewnetrzna: (k, r, z) => Z(`<rect x="32" y="12" width="56" height="14" fill="${u2("rm")}" filter="${u2("cn")}"/>` + prowadnice2(32, 26, 56, 60, "rm") + rolZew(z)),
+    adaptacyjna: (k, r, z) => tlo3() + okno2(32, 14, 56, 72) + `<g filter="${u2("cn")}"><rect x="32" y="14" width="56" height="12" fill="${u2("met")}"/></g><rect x="34" y="26" width="3.6" height="60" fill="${u2("metp")}"/><rect x="82.4" y="26" width="3.6" height="60" fill="${u2("metp")}"/>` + rolZew(z, 37.6, 26, 44.8, 58),
+    perforowana: (k, r, z) => {
+      let d = "";
+      const h = lin(1, 58, z);
+      for (let y = 27.5; y < 26 + h - 3; y += 3.6) for (let x = 34; x < 87; x += 2.6) d += `<rect x="${x}" y="${y}" width=".9" height=".9" fill="#cfe9f8" opacity=".85"/>`;
+      return Z(prowadnice2(32, 26, 56, 60) + rolZew(z) + d + skrzynka2(26, 8, 68, 16, 4));
+    },
+    roleta_moskitiera: (k, r, z) => Z(prowadnice2(32, 26, 56, 60) + `<rect x="32.5" y="26" width="55" height="58" fill="${u2("sia")}" opacity=".8"/>` + rolZew(z) + skrzynka2(26, 8, 68, 16, 4)),
+    ekstrudowana: (k, r, z) => Z(prowadnice2(32, 26, 56, 60) + rolZew(z) + skrzynka2(25, 6, 70, 20, 4)),
+    roleta_drzwi: (k, r, z) => tlo3() + `<rect x="22" y="26" width="76" height="62" fill="#3b3f45"/><rect x="25" y="29" width="70" height="59" fill="${u2("nb")}"/><rect x="25" y="29" width="70" height="59" fill="${u2("bl")}"/>` + prowadnice2(22, 22, 76, 66) + rolZew(z, 22.5, 22, 75, 66) + skrzynka2(16, 6, 88, 16, 4) + `<rect y="88" width="120" height="12" fill="${u2("ks")}"/>`,
+    fasadowa: (k, r, z) => Z(`<rect x="27" y="15" width="66" height="9" fill="${u2("alu")}" filter="${u2("cn")}"/><rect x="27" y="22" width="3.4" height="64" fill="${u2("alup")}"/><rect x="90" y="22" width="3.4" height="64" fill="${u2("alup")}"/>` + lamele(k, z, 31, 24, 58, 44, 11, { drabinki: "#222" })),
+    fasadowaz: (k, r, z) => RUCH.fasadowa(k, r, z),
+    fasadowa_f80: (k, r, z) => RUCH.fasadowa(k, r, z),
+    screen: (k, r, z) => Z(`<rect x="27" y="25" width="5" height="61" fill="${u2("metp")}"/><rect x="88" y="25" width="5" height="61" fill="${u2("metp")}"/><rect x="32" y="25" width="56" height="${lin(1, 50, z)}" fill="${u2("tkv")}" opacity=".88"/><rect x="32" y="25" width="56" height="${lin(1, 50, z)}" fill="${u2("sia")}" opacity=".5"/><rect x="31" y="${25 + lin(1, 50, z)}" width="58" height="3" fill="${u2("met")}"/><g filter="${u2("cn")}"><rect x="27" y="12" width="66" height="13" rx="3" fill="${u2("met")}"/></g>`),
+    markizoleta: (k, r, z) => {
+      const a = zakres(z, 0, 0.6), b = zakres(z, 0.6, 1), h = lin(1, 34, a);
+      return Z(`<rect x="27" y="24" width="4" height="34" fill="${u2("metp")}"/><rect x="89" y="24" width="4" height="34" fill="${u2("metp")}"/><rect x="31" y="24" width="58" height="${h}" fill="${u2("tkv")}" opacity=".9"/>` + (b > 0 ? `<path d="M31 58h58l${12 * b} ${18 * b}H${31 - 12 * b}z" fill="${u2("tkv")}"/>` : "") + `<rect x="${31 - 12 * b}" y="${24 + h + 18 * b}" width="${58 + 24 * b}" height="3" fill="${u2("met")}"/><g filter="${u2("cn")}"><rect x="26" y="12" width="68" height="12" rx="3" fill="${u2("met")}"/></g>`);
+    },
+    okiennice: (k, r, z) => {
+      const dr = "#3f6b4f", sk = (x0, lewy) => {
+        const w = lin(4, 26, z), x = lewy ? x0 : x0 - w;
+        return `<rect x="${x}" y="22" width="${w}" height="64" fill="${dr}" stroke="${ciem2(dr, 0.4)}"/>` + [...Array(13)].map((_, i) => `<rect x="${x + 1}" y="${25 + i * 4.6}" width="${Math.max(0, w - 2)}" height="2.4" fill="${jas2(dr, 0.2)}"/>`).join("");
+      };
+      return tlo3() + okno2(32, 22, 56, 64) + `<g filter="${u2("cn")}">${sk(32, true)}${sk(88, false)}</g>`;
+    },
+    okiennice_przesuwne: (k, r, z) => {
+      const dr = "#8a5a34", sk = (x) => `<rect x="${x}" y="22" width="27" height="64" fill="${dr}" stroke="${ciem2(dr, 0.4)}"/>` + [...Array(13)].map((_, i) => `<rect x="${x + 2}" y="${25 + i * 4.6}" width="23" height="2.4" fill="${jas2(dr, 0.18)}"/>`).join("");
+      return tlo3() + okno2(32, 22, 56, 64) + `<rect x="6" y="16" width="108" height="3" fill="${u2("met")}"/><g filter="${u2("cn")}">${sk(lin(4, 33, z))}${sk(lin(89, 60, z))}</g>`;
+    },
+    // okna dachowe
+    dach_dkl: (k, r, z) => D(SOSNA2, 1, `<rect x="31" y="14" width="58" height="5" rx="1" fill="#eceded"/>${prowD2()}` + rolWew("#15213d", z, { x: 33.4, w: 53.2, y: 19, h: 64, fill: "#15213d", listwa: "#e6e7e8" })),
+    dach_dn: (k, r, z) => D(SOSNA2, 1, `<rect x="31" y="13" width="58" height="6.4" rx="1.6" fill="${u2("alu")}"/>${prowD2()}` + rolWew("#9ea2a6", z, { x: 33.4, w: 53.2, y: 19.4, h: 62, listwa: "#e6e7e8", tk: (x, y, w, h) => {
+      let s = "";
+      for (let yy = 0; yy < h; yy += 7.6) s += `<rect x="${x}" y="${y + yy}" width="${w}" height="${Math.min(4.2, h - yy)}" fill="#9ea2a6"/>`;
+      return s;
+    } })),
+    dach_fhb: (k, r, z) => D(BIALA2, 0, `<rect x="31" y="14" width="58" height="4" rx="1" fill="#e6e7e8"/>` + rzymska("#cdbfa6", z, 32, 18, 56, 56)),
+    dach_pal: (k, r, z) => D(BIALA2, 0, `<rect x="31" y="14" width="58" height="4" rx="1" fill="${u2("alu")}"/>${prowD2()}` + lamele("#ffffff", z, 33.4, 18.6, 53.2, 63, 19, { fill: "#fdfdfd", drabinki: "#d9d9d9", dol: "#f6f6f6" })),
+    dach_fhl: (k, r, z) => D(ORZECH2, 1, prowD2("#c9a27a") + plisa("#f3ecdc", z, 33.4, 39, 53.2, 31, { belka: "#d9d6d0" })),
+    dach_ssl: (k, r, z) => D(SZARA2, 0, `<rect x="28" y="18" width="3" height="66" fill="${u2("metp")}"/><rect x="89" y="18" width="3" height="66" fill="${u2("metp")}"/>` + rolZew(z, 31, 18, 58, 66) + `<g filter="${u2("cn")}"><rect x="18" y="0" width="84" height="14" rx="1.5" fill="${u2("met")}"/><rect x="24" y="2" width="72" height="8.4" fill="#0f1d36"/></g>`),
+    dach_msl: (k, r, z) => D(BIALA2, 0, `<path d="M20 8h80l${10 * z} ${40 * z}H${20 - 10 * z}z" fill="#2b2f33" opacity=".86"/><path d="M20 8h80l${10 * z} ${40 * z}H${20 - 10 * z}z" fill="${u2("sia")}"/><rect x="${19 - 10 * z}" y="${8 + 40 * z}" width="${82 + 20 * z}" height="3" fill="#2a2d31"/><g filter="${u2("cn")}"><rect x="16" y="0" width="88" height="8" rx="2" fill="#2a2d31"/></g>`),
+    dachowa: (k, r, z) => dach2(`<path d="M33 16h54l${3.8 * z} ${46 * z}H${33 - 3.8 * z}z" fill="${u2("lam")}"/><path d="M${33 - 3.8 * z} ${16 + 46 * z}h${54 + 7.6 * z}v3H${33 - 3.8 * z}z" fill="${u2("met")}"/><g filter="${u2("cn")}"><path d="M29 7h62l2 9H27z" fill="${u2("met")}"/></g>`),
+    markizeta_dach: (k, r, z) => dach2(`<path d="M33 17h54l${4 * z} ${50 * z}H${33 - 4 * z}z" fill="${u2("tkv")}" opacity=".85"/><path d="M${33 - 4 * z} ${17 + 50 * z}h${54 + 8 * z}v2.6H${33 - 4 * z}z" fill="${u2("alu")}"/><path d="M30 13h60v4H30z" fill="${u2("alu")}"/>`)
+  };
+  var markiza = (opt = {}) => (k, r, z) => {
+    const d = lin(0, 28, z), szer = lin(0, 10, z), y0 = opt.y0 ?? 23;
+    let s = (opt.tlo || (() => elewacja2() + drzwi2()))() + (z > 0.05 ? cienR2(4, y0 + d + 6, 112, 12 * z) : "");
+    s += `<path d="M14 ${y0}h92l${szer} ${d}H${14 - szer}z" fill="${u2("tkv")}"/>` + (z > 0.05 ? pasyM2(14, 106, y0, y0 + d, szer, k) : "");
+    if (opt.ramiona !== false && z > 0.05) s += `<path d="M26 ${y0}l${14 * z} ${d * 0.7} ${10 * z} ${-d * 0.6}M94 ${y0}l${-14 * z} ${d * 0.7} ${-10 * z} ${-d * 0.6}" stroke="#e1e4e8" stroke-width="1.8" fill="none" opacity=".85"/>`;
+    s += `<rect x="${4 + 10 - szer}" y="${y0 + d}" width="${92 + 2 * szer}" height="3.4" rx="1" fill="${u2("met")}"/>`;
+    if (opt.volant && z > 0.9) s += `<rect x="${14 - szer}" y="${y0 + d + 3.4}" width="${92 + 2 * szer}" height="${16 * zakres(z, 0.9, 1)}" fill="${u2("tk")}" opacity=".9"/>`;
+    return s + (opt.kaseta || (() => `<g filter="${u2("cn")}"><path d="M10 13h100v9l-5 4H15l-5-4z" fill="${u2("met")}"/></g>`))();
+  };
+  Object.assign(RUCH, {
+    markiza: markiza({ kaseta: () => `<g filter="${u2("cn")}"><rect x="12" y="16" width="96" height="7" rx="3.5" fill="${u2("alu")}"/></g>` }),
+    markiza_otwarta: markiza({ kaseta: () => `<g filter="${u2("cn")}"><rect x="12" y="14" width="96" height="3" fill="${u2("alu")}"/><rect x="14" y="17" width="92" height="6" rx="3" fill="${u2("tk")}"/></g>` }),
+    markiza_polkasetowa: markiza({ kaseta: () => `<g filter="${u2("cn")}"><path d="M10 12h100v6l-4 6H14l-4-6z" fill="${u2("met")}"/></g>` }),
+    markiza_kasetowa: markiza({ y0: 26 }),
+    markiza_volant: markiza({ y0: 25, volant: true }),
+    markiza_koszowa: (k, r, z) => elewacja2() + `<rect x="36" y="38" width="48" height="42" fill="#3b3f45"/><rect x="38" y="40" width="44" height="40" fill="${u2("nb")}"/><g filter="${u2("cn")}"><path d="M28 50V${50 - 16 * z}a32 ${22 * z} 0 0 1 64 0V50z" fill="${u2("tkv")}"/></g><path d="M28 50h64" stroke="${ciem2(k, 0.3)}" stroke-width="1.6"/>`,
+    markiza_wolnostojaca: (k, r, z) => `<rect width="120" height="100" fill="${u2("nb")}"/><path d="M0 58q30-8 60-4t60-2V100H0z" fill="#7da889"/><g filter="${u2("cn")}"><rect x="56" y="14" width="8" height="8" rx="2" fill="${u2("met")}"/>
+    <path d="M60 22L${60 - 46 * z} 40h${92 * z}z" fill="${u2("tkv")}"/></g><rect x="${60 - 48 * z}" y="40" width="${96 * z}" height="3" rx="1" fill="${u2("met")}"/><rect x="58.5" y="22" width="3" height="62" fill="${u2("metp")}"/>`,
+    markiza_zimowa: (k, r, z) => elewacja2(true) + `<path d="M0 30h22v52H0z" fill="${u2("tyn")}"/><path d="M22 30l90 18v34H22z" fill="#d6ecf7" opacity=".55"/><path d="M22 30.4l${84 * z} ${16.8 * z} 0 2.4-${84 * z}-${16.8 * z}z" fill="${u2("tk")}"/><g filter="${u2("cn")}"><path d="M22 26l6 1.2v4L22 30z" fill="${u2("met")}"/></g>`,
+    markizeta: (k, r, z) => elewacja2() + `<rect x="36" y="36" width="48" height="40" fill="#3b3f45"/><rect x="38" y="38" width="44" height="38" fill="${u2("nb")}"/><path d="M35 34h50l${9 * z} ${20 * z}H${35 - 9 * z}z" fill="${u2("tkv")}"/><rect x="${35 - 10 * z}" y="${34 + 20 * z}" width="${50 + 20 * z}" height="3" fill="${u2("met")}"/><g filter="${u2("cn")}"><rect x="34" y="28" width="52" height="6" rx="2" fill="${u2("met")}"/></g>`,
+    markiza_balkonowa: markiza({ tlo: () => elewacja2(true) + balustrada2(), y0: 19, ramiona: false, kaseta: () => `<rect x="16" y="14" width="88" height="5" rx="2" fill="${u2("alu")}"/><rect x="16.3" y="6" width="3.4" height="76" fill="${u2("alup")}"/><rect x="100.3" y="6" width="3.4" height="76" fill="${u2("alup")}"/>` }),
+    markiza_pionowa: (k, r, z) => elewacja2(true) + balustrada2() + `<rect x="20" y="15" width="80" height="${lin(1, 50, z)}" fill="${u2("tk")}"/><rect x="19" y="${15 + lin(1, 50, z)}" width="82" height="3.4" rx="1.4" fill="${u2("met")}"/><g filter="${u2("cn")}"><rect x="18" y="8" width="84" height="7" rx="3.5" fill="${u2("met")}"/></g>`,
+    markiza_boczna: (k, r, z) => elewacja2(true) + `<rect x="0" y="10" width="16" height="70" fill="${u2("tyn")}"/><path d="M21 26h${82 * z}v46H21z" fill="${u2("tk")}"/><rect x="${19 + 82 * z}" y="24" width="4.4" height="54" rx="1" fill="${u2("met")}"/><g filter="${u2("cn")}"><rect x="14" y="22" width="7" height="56" rx="3.5" fill="${u2("met")}"/></g>`,
+    zagiel: (k, r, z) => `<rect width="120" height="100" fill="${u2("nb")}"/><path d="M0 66q40-6 120-2V100H0z" fill="#7da889"/><rect y="80" width="120" height="20" fill="${u2("ks")}"/><rect x="6" y="14" width="3" height="70" fill="${u2("metp")}"/><rect x="110" y="24" width="3" height="60" fill="${u2("metp")}"/>
+    <g filter="${u2("cn")}"><path d="M8 18L${lin(8, 60, z)} ${lin(18, 12, z)}L${lin(8, 111, z)} ${lin(18, 28, z)}L${lin(8, 60, z)} ${lin(18, 40, z)}z" fill="${u2("tkv")}"/></g><rect x="4" y="16" width="7" height="5" rx="2" fill="#333"/>`,
+    parasol: (k, r, z) => {
+      const w = lin(4, 50, z), h = lin(30, 20, z);
+      return `<rect width="120" height="100" fill="${u2("nb")}"/><path d="M0 66q40-6 120-2V100H0z" fill="#7da889"/><rect y="82" width="120" height="18" fill="${u2("ks")}"/><rect x="58.6" y="14" width="2.8" height="68" fill="${u2("alup")}"/>
+    <g filter="${u2("cn")}"><path d="M${60 - w} ${14 + h}Q60 ${14 - 6 * z} ${60 + w} ${14 + h}z" fill="${u2("tkv")}"/></g><path d="M44 86h32l-4-4H48z" fill="#555"/>`;
+    },
+    pergola: (k, r, z) => {
+      let s = "";
+      for (let i = 0; i < 14; i++) {
+        const x = 9 + i * 7.6, a = lin(7, 1.2, z);
+        s += `<path d="M${x} 30l3.4 ${a}" stroke="${jas2(k, 0.3)}" stroke-width="${lin(2.4, 1, z)}"/><path d="M${x + 1.5} 30l3.4 ${a}" stroke="${ciem2(k, 0.3)}" stroke-width=".8"/>`;
+      }
+      return elewacja2(true) + `<g filter="${u2("cn")}"><path d="M6 24h108v6H6z" fill="${u2("met")}"/></g>` + s + `<rect x="9" y="30" width="6" height="52" fill="${u2("metp")}"/><rect x="105" y="30" width="6" height="52" fill="${u2("metp")}"/><rect x="15" y="38" width="90" height="42" fill="#000" opacity="${lin(0.25, 0.05, z)}"/>`;
+    },
+    pergola_tkanina: (k, r, z) => {
+      let s = "";
+      const n = 6, sz = lin(4, 17, z);
+      for (let i = 0; i < n; i++) s += `<path d="M${10 + i * sz} 30q${sz / 2} ${7 * z} ${sz} 0" fill="${jas2(k, i % 2 ? 0.1 : 0.25)}" stroke="${ciem2(k, 0.25)}" stroke-width=".5"/>`;
+      return elewacja2(true) + `<g filter="${u2("cn")}"><path d="M6 24h108v6H6z" fill="${u2("met")}"/></g>` + s + `<rect x="9" y="30" width="6" height="52" fill="${u2("metp")}"/><rect x="105" y="30" width="6" height="52" fill="${u2("metp")}"/>`;
+    },
+    zadaszenie: (k, r, z) => elewacja2() + drzwi2() + `<path d="M6 20h108l-10 16H16z" fill="#d6ecf7" opacity=".85"/><path d="M6 20h${108 * z}l-${10 * z} 16H${6 + 10 * z}z" fill="${u2("tkv")}" opacity=".7"/><rect x="15" y="36" width="90" height="2.6" fill="${u2("alu")}"/><rect x="17" y="38" width="3.4" height="44" fill="${u2("alup")}"/><rect x="100" y="38" width="3.4" height="44" fill="${u2("alup")}"/>`,
+    screen_taras: (k, r, z) => elewacja2() + drzwi2() + `<rect x="6" y="27" width="5" height="55" fill="${u2("metp")}"/><rect x="109" y="27" width="5" height="55" fill="${u2("metp")}"/><rect x="11" y="27" width="98" height="${lin(1, 52, z)}" fill="${u2("tkv")}" opacity=".85"/><rect x="11" y="${27 + lin(1, 52, z)}" width="98" height="3" fill="${u2("met")}"/><g filter="${u2("cn")}"><rect x="6" y="20" width="108" height="7" rx="2" fill="${u2("met")}"/></g>`,
+    // okna z napędem: skrzydło uchyla się
+    okno_silownik: (k, r, z) => tlo3() + `<path d="M27 13h66l-5 5H32v68l-5 5z" fill="#cfc6b8"/><rect x="32" y="18" width="56" height="68" fill="${u2("rm")}"/><rect x="36" y="22" width="48" height="60" fill="#5c6670"/>
+    <g filter="${u2("cn")}"><path d="M35 21h50l${6 * z} ${lin(60, 52, z)}H${35 - 6 * z}z" fill="${u2("rm")}"/><path d="M39 25h42l${5 * z} ${lin(52, 44, z)}H${39 - 5 * z}z" fill="${u2("nb")}"/></g><path d="M60 ${lin(81, 78, z)}v${-8 * z}" stroke="#555" stroke-width="2"/>`,
+    okno_dachowe: (k, r, z) => dach2(`<path d="M32 24h56l6 64H26z" fill="#25282c"/><g filter="${u2("cn")}"><path d="M30 ${lin(20, 8, z)}h60l${lin(2, 8, z)} ${lin(68, 60, z)}H${lin(28, 22, z)}z" fill="#3b3f45"/><path d="M34 ${lin(24, 12, z)}h52l${lin(1.6, 6.6, z)} ${lin(60, 52, z)}H${lin(32.4, 27.4, z)}z" fill="${u2("nb")}"/></g>`),
+    okno_plaskie: (k, r, z) => `<rect width="120" height="100" fill="${u2("nb")}"/><path d="M0 50h120v50H0z" fill="#8f949a"/><path d="M26 62h68l-4 18H30z" fill="#e8e8e6"/><g filter="${u2("cn")}"><path d="M30 60l34 ${-18 * z} 32 ${14 * z}${z < 0.05 ? "" : " -2 4"}z" fill="#3b3f45"/><path d="M33 59l31 ${-15 * z} 28 ${12.4 * z}z" fill="${u2("nb")}"/></g>`,
+    swietlik: (k, r, z) => `<rect width="120" height="100" fill="${u2("nb")}"/><path d="M0 52h120v48H0z" fill="#8f949a"/><path d="M28 70h64l-6 12H34z" fill="#e8e8e6"/><g filter="${u2("cn")}" transform="rotate(${-28 * z} 34 70)"><path d="M34 70q26 -28 58 0z" fill="#dcecf6" opacity=".9"/></g>`,
+    wylaz: (k, r, z) => dach2(`<path d="M34 30h52l6 48H28z" fill="#2c2f33"/><g filter="${u2("cn")}"><path d="M34 30h52l${lin(6, -6, z)} ${lin(48, -22, z)}H${lin(28, 40, z)}z" fill="#3b3f45"/></g>`),
+    // moskitiery
+    moskitiera: (k, r, z) => W2(`<rect x="29" y="19" width="3" height="65" fill="${u2("rm")}"/><rect x="88" y="19" width="3" height="65" fill="${u2("rm")}"/><rect x="32" y="19" width="56" height="${lin(1, 60, z)}" fill="${u2("sia")}"/><rect x="32" y="${19 + lin(1, 60, z)}" width="56" height="3" fill="${u2("rm")}"/><g filter="${u2("cn")}"><rect x="29" y="12" width="62" height="7" rx="2" fill="${u2("rm")}"/></g>`),
+    moskitiera_plisa_okno: (k, r, z) => {
+      const x = lin(36, 84, 1 - z);
+      return W2(`<rect x="31" y="18" width="3" height="66" fill="${u2("rm")}"/><rect x="86" y="18" width="3" height="66" fill="${u2("rm")}"/><rect x="34" y="19" width="${x - 34}" height="64" fill="${u2("sia")}"/><rect x="${x}" y="19" width="2.6" height="64" fill="${u2("rm")}"/>`);
+    },
+    moskitiera_drzwi: (k, r, z) => {
+      const x = lin(39, 82, z);
+      return tlo3() + `<rect x="33" y="8" width="54" height="80" fill="${u2("rm")}"/><rect x="37" y="12" width="46" height="76" fill="${u2("nb")}"/><rect x="37" y="12" width="${x - 37}" height="76" fill="${u2("sia")}"/><rect x="${x}" y="12" width="3" height="76" fill="${u2("alup")}"/>`;
+    },
+    moskitiera_zip_drzwi: (k, r, z) => tlo3() + `<rect x="30" y="12" width="4" height="80" fill="${u2("rm")}"/><rect x="86" y="12" width="4" height="80" fill="${u2("rm")}"/><rect x="34" y="12" width="52" height="80" fill="${u2("nb")}"/><rect x="34" y="12" width="52" height="${lin(1, 78, z)}" fill="${u2("sia")}"/><rect x="34" y="${12 + lin(1, 78, z)}" width="52" height="2.6" fill="${u2("rm")}"/><rect x="30" y="4" width="60" height="8" rx="2" fill="${u2("rm")}"/>`,
+    // bramy (z = zamknięcie)
+    przesuwna: (k, r, z) => plac2() + slupek3(0) + slupek3(110) + `<g filter="${u2("cn")}" transform="translate(${lin(80, 0, z)} 0)">${sztachety2(10, 44, 78, 36)}</g>`,
+    skrzydlowa: (k, r, z) => plac2() + slupek3(2) + slupek3(108) + `<g filter="${u2("cn")}"><g transform="translate(13 0) scale(${lin(0.08, 1, z)} 1) translate(-13 0)">${sztachety2(13, 44, 46, 36)}</g><g transform="translate(107 0) scale(${lin(0.08, 1, z)} 1) translate(-107 0)">${sztachety2(61, 44, 46, 36)}</g></g>`,
+    furtka: (k, r, z) => plac2() + `<rect x="30" y="34" width="10" height="48" fill="#b4ada1"/><rect x="80" y="34" width="10" height="48" fill="#b4ada1"/><g filter="${u2("cn")}" transform="translate(41 0) scale(${lin(0.1, 1, z)} 1) translate(-41 0)">${sztachety2(41, 42, 38, 40)}</g>${sztachety2(0, 46, 29, 36)}${sztachety2(91, 46, 29, 36)}`,
+    // segmenty jadą w górę pod sufit: dolna krawędź bramy podnosi się, widać tylko część poniżej nadproża
+    segmentowa: (k, r, z) => {
+      const dol = 22 + 66 * z;
+      return garaz3(`<rect x="18" y="22" width="84" height="66" fill="#2d3035"/><clipPath id="sg${Math.round(z * 1e3)}"><rect x="18" y="22" width="84" height="66"/></clipPath><g clip-path="url(#sg${Math.round(z * 1e3)})">` + [...Array(4)].map((_, i) => `<rect x="18" y="${dol - (i + 1) * 16.5}" width="84" height="16" fill="${u2("met")}"/><path d="M18 ${dol - i * 16.5 - 0.5}h84" stroke="${ciem2(k, 0.5)}" stroke-width=".8"/>`).join("") + "</g>");
+    },
+    garaz_boczna: (k, r, z) => garaz3(`<rect x="18" y="22" width="84" height="66" fill="#2d3035"/>` + [...Array(Math.max(1, Math.round(14 * z)))].map((_, i) => `<rect x="${18 + i * 6}" y="22" width="5.6" height="66" fill="${u2("metp")}"/>`).join("")),
+    uchylna: (k, r, z) => garaz3(`<rect x="18" y="22" width="84" height="66" fill="#2d3035"/><rect x="18" y="22" width="84" height="${lin(4, 66, z)}" fill="${u2("met")}"/>`),
+    roletowa: (k, r, z) => garaz3(`<rect x="18" y="22" width="84" height="66" fill="#2d3035"/><rect x="16" y="22" width="4" height="66" fill="${u2("metp")}"/><rect x="100" y="22" width="4" height="66" fill="${u2("metp")}"/>` + rolZew(z, 20, 22, 80, 64) + `<g filter="${u2("cn")}"><rect x="14" y="10" width="92" height="12" fill="${u2("met")}"/></g>`),
+    garaz_skrzydlowa: (k, r, z) => garaz3(`<rect x="18" y="22" width="84" height="66" fill="#2d3035"/><rect x="18" y="22" width="${42 * z}" height="66" fill="${u2("met")}"/><rect x="${102 - 42 * z}" y="22" width="${42 * z}" height="66" fill="${u2("met")}"/>`),
+    szlaban: (k, r, z) => plac2() + `<rect x="10" y="50" width="12" height="32" rx="1.5" fill="${u2("met")}" filter="${u2("cn")}"/><g transform="rotate(${lin(-80, 0, z)} 16 56)"><rect x="16" y="54" width="94" height="4" rx="2" fill="#fafafa"/>${[...Array(8)].map((_, i) => `<rect x="${22 + i * 11}" y="54" width="5.5" height="4" fill="#e53935"/>`).join("")}</g>`
+  });
+  var WYSUWANE = (t) => t.startsWith("markiz") || ["dach_msl", "markizeta_dach", "zagiel", "parasol", "pergola", "pergola_tkanina", "zadaszenie", "okno_silownik", "okno_dachowe", "okno_plaskie", "swietlik", "wylaz", "markizoleta"].includes(t) && !["markiza_pionowa", "markiza_boczna"].includes(t);
+  function kafelRuch(typ, o, kolor = "#3b3f45", rama = "#f4f4f2") {
+    const f = RUCH[typ];
+    if (!f) return "";
+    const z = WYSUWANE(typ) ? o : 1 - o;
+    return svg2(poczatek(kolor, rama) + f(kolor, rama, Math.min(1, Math.max(0, z))));
+  }
+  var RODZAJE_RUCHU = Object.keys(RUCH);
+
   // src/tekstury.js
-  var svg2 = (h, tresc, w = 8) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}' preserveAspectRatio='none'>${tresc}</svg>`)}")`;
+  var svg3 = (h, tresc, w = 8) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}' preserveAspectRatio='none'>${tresc}</svg>`)}")`;
   var pion = (id, stopy) => `<defs><linearGradient id='${id}' x1='0' y1='0' x2='0' y2='1'>${stopy.map(([o, c, a = 1]) => `<stop offset='${o}' stop-color='${c}' stop-opacity='${a}'/>`).join("")}</linearGradient></defs>`;
   var pas = (id, y, h) => `<rect x='0' y='${y}' width='8' height='${h}' fill='url(#${id})'/>`;
   function tekstura(typ, k) {
@@ -665,59 +960,59 @@
     const sznurki = (c, w) => `linear-gradient(90deg,transparent calc(22% - ${w / 2}px),${c} calc(22% - ${w / 2}px) calc(22% + ${w / 2}px),transparent calc(22% + ${w / 2}px) calc(78% - ${w / 2}px),${c} calc(78% - ${w / 2}px) calc(78% + ${w / 2}px),transparent calc(78% + ${w / 2}px))`;
     switch (typ) {
       case "zebra":
-        return { okres: 26, nakladka: `${cien},${splot}`, obraz: svg2(
+        return { okres: 26, nakladka: `${cien},${splot}`, obraz: svg3(
           26,
           pion("a", [[0, jasniej(k, 0.1)], [0.12, k], [0.85, k], [1, jasniej(k, -0.22)]]) + pion("b", [[0, jasniej(k, 0.35), 0.5], [1, jasniej(k, 0.45), 0.42]]) + pas("a", 0, 16) + pas("b", 16, 10)
         ) };
       case "pelna":
       case "kasetowa":
-        return { okres: 24, nakladka: `${cien},${splot}`, obraz: svg2(24, pion("a", [[0, k], [0.5, jasniej(k, -0.05)], [1, k]]) + pas("a", 0, 24)) };
+        return { okres: 24, nakladka: `${cien},${splot}`, obraz: svg3(24, pion("a", [[0, k], [0.5, jasniej(k, -0.05)], [1, k]]) + pas("a", 0, 24)) };
       case "zaciemniajaca":
         return {
           okres: 24,
           nakladka: `${cien},linear-gradient(90deg,transparent 25%,rgba(255,255,255,.07) 45%,transparent 65%)`,
-          obraz: svg2(24, pion("a", [[0, jasniej(k, 0.03)], [0.5, k], [1, jasniej(k, 0.03)]]) + pas("a", 0, 24))
+          obraz: svg3(24, pion("a", [[0, jasniej(k, 0.03)], [0.5, k], [1, jasniej(k, 0.03)]]) + pas("a", 0, 24))
         };
       case "plisa":
-        return { okres: 12, nakladka: cien, obraz: svg2(12, pion("a", [[0, jasniej(k, 0.22), 0.95], [0.4, k, 0.94], [1, jasniej(k, -0.26), 0.96]]) + pas("a", 0, 12)) };
+        return { okres: 12, nakladka: cien, obraz: svg3(12, pion("a", [[0, jasniej(k, 0.22), 0.95], [0.4, k, 0.94], [1, jasniej(k, -0.26), 0.96]]) + pas("a", 0, 12)) };
       case "plaster":
-        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.24), 0.96], [0.45, k, 0.94], [0.48, jasniej(k, -0.3), 0.97], [0.52, jasniej(k, 0.08), 0.94], [1, jasniej(k, -0.28), 0.96]]) + pas("a", 0, 14)) };
+        return { okres: 14, nakladka: cien, obraz: svg3(14, pion("a", [[0, jasniej(k, 0.24), 0.96], [0.45, k, 0.94], [0.48, jasniej(k, -0.3), 0.97], [0.52, jasniej(k, 0.08), 0.94], [1, jasniej(k, -0.28), 0.96]]) + pas("a", 0, 14)) };
       case "rzymska":
-        return { okres: 34, nakladka: `${cien},${splot}`, obraz: svg2(34, pion("a", [[0, jasniej(k, 0.02), 0.95], [0.55, jasniej(k, 0.12), 0.95], [0.92, jasniej(k, -0.25), 0.97], [1, jasniej(k, -0.4), 0.97]]) + pas("a", 0, 34)) };
+        return { okres: 34, nakladka: `${cien},${splot}`, obraz: svg3(34, pion("a", [[0, jasniej(k, 0.02), 0.95], [0.55, jasniej(k, 0.12), 0.95], [0.92, jasniej(k, -0.25), 0.97], [1, jasniej(k, -0.4), 0.97]]) + pas("a", 0, 34)) };
       case "zaluzja":
-        return { okres: 13, nakladka: sznurki("rgba(240,240,240,.7)", 1), obraz: svg2(13, pion("a", [[0, jasniej(k, 0.35)], [0.35, k], [1, jasniej(k, -0.3)]]) + pas("a", 0, 10) + `<rect x='0' y='10' width='8' height='1' fill='rgba(0,0,0,.3)'/>`) };
+        return { okres: 13, nakladka: sznurki("rgba(240,240,240,.7)", 1), obraz: svg3(13, pion("a", [[0, jasniej(k, 0.35)], [0.35, k], [1, jasniej(k, -0.3)]]) + pas("a", 0, 10) + `<rect x='0' y='10' width='8' height='1' fill='rgba(0,0,0,.3)'/>`) };
       case "drewniana":
         return {
           okres: 22,
           nakladka: `${sznurki(rgba(jasniej(k, -0.2), 0.95), 6)},repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 1px,transparent 1px 6px,rgba(255,255,255,.05) 6px 7px,transparent 7px 12px)`,
-          obraz: svg2(22, pion("a", [[0, jasniej(k, 0.22)], [0.3, k], [1, jasniej(k, -0.32)]]) + pas("a", 0, 18) + `<rect x='0' y='18' width='8' height='1.5' fill='rgba(0,0,0,.35)'/>`)
+          obraz: svg3(22, pion("a", [[0, jasniej(k, 0.22)], [0.3, k], [1, jasniej(k, -0.32)]]) + pas("a", 0, 18) + `<rect x='0' y='18' width='8' height='1.5' fill='rgba(0,0,0,.35)'/>`)
         };
       case "zewnetrzna":
       case "podtynkowa":
-        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [0.75, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
+        return { okres: 14, nakladka: cien, obraz: svg3(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [0.75, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
       case "natynkowa":
-        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.3)], [0.2, k], [0.46, jasniej(k, 0.08)], [0.5, jasniej(k, -0.22)], [0.56, k], [1, jasniej(k, -0.38)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
+        return { okres: 14, nakladka: cien, obraz: svg3(14, pion("a", [[0, jasniej(k, 0.3)], [0.2, k], [0.46, jasniej(k, 0.08)], [0.5, jasniej(k, -0.22)], [0.56, k], [1, jasniej(k, -0.38)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
       case "perforowana":
-        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/><ellipse cx='4' cy='6' rx='1.3' ry='.8' fill='rgba(255,244,210,.95)'/>`) };
+        return { okres: 14, nakladka: cien, obraz: svg3(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/><ellipse cx='4' cy='6' rx='1.3' ry='.8' fill='rgba(255,244,210,.95)'/>`) };
       case "fasadowa":
-        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.55)", 2), obraz: svg2(16, pion("a", [[0, jasniej(k, -0.3)], [0.2, jasniej(k, 0.28)], [0.5, jasniej(k, 0.08)], [1, jasniej(k, -0.28)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='4' fill='rgba(0,0,0,.45)'/>`) };
+        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.55)", 2), obraz: svg3(16, pion("a", [[0, jasniej(k, -0.3)], [0.2, jasniej(k, 0.28)], [0.5, jasniej(k, 0.08)], [1, jasniej(k, -0.28)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='4' fill='rgba(0,0,0,.45)'/>`) };
       case "fasadowaz":
-        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.45)", 2), obraz: svg2(16, pion("a", [[0, jasniej(k, 0.16)], [0.15, k], [0.85, k], [1, jasniej(k, -0.22)]]) + pas("a", 0, 11) + `<rect x='0' y='11' width='8' height='1.5' fill='#1b1b1b'/><rect x='0' y='12.5' width='8' height='3.5' fill='${jasniej(k, -0.45)}'/>`) };
+        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.45)", 2), obraz: svg3(16, pion("a", [[0, jasniej(k, 0.16)], [0.15, k], [0.85, k], [1, jasniej(k, -0.22)]]) + pas("a", 0, 11) + `<rect x='0' y='11' width='8' height='1.5' fill='#1b1b1b'/><rect x='0' y='12.5' width='8' height='3.5' fill='${jasniej(k, -0.45)}'/>`) };
       case "screen":
-        return { okres: 6, nakladka: "repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 2px)", obraz: svg2(6, pion("a", [[0, k, 0.8], [1, jasniej(k, 0.06), 0.78]]) + pas("a", 0, 6)) };
+        return { okres: 6, nakladka: "repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 2px)", obraz: svg3(6, pion("a", [[0, k, 0.8], [1, jasniej(k, 0.06), 0.78]]) + pas("a", 0, 6)) };
       case "markiza":
-        return { okres: 30, nakladka: `repeating-linear-gradient(90deg,${k} 0 14px,${rgba("#f3efe6", 0.97)} 14px 28px)`, obraz: svg2(30, pion("a", [[0, "#ffffff", 0.12], [0.5, "#000000", 0.12], [1, "#ffffff", 0.12]]) + pas("a", 0, 30)) };
+        return { okres: 30, nakladka: `repeating-linear-gradient(90deg,${k} 0 14px,${rgba("#f3efe6", 0.97)} 14px 28px)`, obraz: svg3(30, pion("a", [[0, "#ffffff", 0.12], [0.5, "#000000", 0.12], [1, "#ffffff", 0.12]]) + pas("a", 0, 30)) };
       case "pionowa":
         return {
           okres: 24,
           nakladka: `repeating-linear-gradient(90deg,${jasniej(k, 0.2)} 0 2px,${k} 2px 15px,${jasniej(k, -0.28)} 15px 17px,rgba(0,0,0,.35) 17px 18px)`,
-          obraz: svg2(24, pion("a", [[0, k], [1, jasniej(k, -0.05)]]) + pas("a", 0, 24))
+          obraz: svg3(24, pion("a", [[0, k], [1, jasniej(k, -0.05)]]) + pas("a", 0, 24))
         };
       case "zaslona":
         return {
           okres: 24,
           nakladka: `repeating-linear-gradient(90deg,${jasniej(k, -0.22)} 0,${jasniej(k, 0.14)} 11px,${jasniej(k, -0.1)} 22px,${jasniej(k, -0.22)} 26px),${splot}`,
-          obraz: svg2(24, pion("a", [[0, k], [1, jasniej(k, -0.08)]]) + pas("a", 0, 24))
+          obraz: svg3(24, pion("a", [[0, k], [1, jasniej(k, -0.08)]]) + pas("a", 0, 24))
         };
       default:
         return tekstura("zebra", k);
@@ -890,75 +1185,75 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
     return stylOkna(o).split("\n").filter((l) => /^\.(oslona|kaseta|listwa|prow)/.test(l)).map((l) => `${sel} ${l}`).join("\n");
   }
   function stylOkna({ rama, drewno, kolor, typ, zew }) {
-    const t = tekstura(typ, kolor), S = (k) => jasniej(kolor, k), R = (k) => jasniej(rama, k);
-    const tlo3 = (drewno ? SLOJE + "," : "") + rama;
+    const t = tekstura(typ, kolor), S = (k) => jasniej(kolor, k), R2 = (k) => jasniej(rama, k);
+    const tlo4 = (drewno ? SLOJE + "," : "") + rama;
     const alu = `linear-gradient(90deg,${S(-0.4)},${S(0.22)} 40%,${S(-0.05)} 70%,${S(-0.45)})`;
-    let kaseta2 = `background:linear-gradient(180deg,#fff,#f1f1f1 55%,#cfcfcf);box-shadow:0 2px 3px rgba(0,0,0,.35)`;
+    let kaseta3 = `background:linear-gradient(180deg,#fff,#f1f1f1 55%,#cfcfcf);box-shadow:0 2px 3px rgba(0,0,0,.35)`;
     let listwa = `background:linear-gradient(180deg,#fafafa,#bdbdbd);box-shadow:0 2px 3px rgba(0,0,0,.4)`;
     let prow = "";
     switch (typ) {
       case "pelna":
-        kaseta2 = `left:3px;right:3px;height:10px;border-radius:10px;background:linear-gradient(180deg,${S(0.3)},${kolor} 50%,${S(-0.38)});box-shadow:0 1px 2px rgba(0,0,0,.4)`;
+        kaseta3 = `left:3px;right:3px;height:10px;border-radius:10px;background:linear-gradient(180deg,${S(0.3)},${kolor} 50%,${S(-0.38)});box-shadow:0 1px 2px rgba(0,0,0,.4)`;
         break;
       case "kasetowa":
-        kaseta2 = `background:linear-gradient(180deg,${R(0.06)},${rama} 50%,${R(-0.18)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
-        prow = `linear-gradient(90deg,${R(-0.2)},${R(0.06)} 45%,${R(-0.14)})`;
+        kaseta3 = `background:linear-gradient(180deg,${R2(0.06)},${rama} 50%,${R2(-0.18)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
+        prow = `linear-gradient(90deg,${R2(-0.2)},${R2(0.06)} 45%,${R2(-0.14)})`;
         break;
       case "zaciemniajaca":
         prow = "linear-gradient(90deg,#c9c9c9,#fafafa 45%,#b5b5b5)";
         break;
       case "plisa":
       case "plaster":
-        kaseta2 = `height:8px;background:linear-gradient(180deg,#f4f4f4,#c9c9c9);box-shadow:0 1px 2px rgba(0,0,0,.35)`;
+        kaseta3 = `height:8px;background:linear-gradient(180deg,#f4f4f4,#c9c9c9);box-shadow:0 1px 2px rgba(0,0,0,.35)`;
         listwa = `background:linear-gradient(180deg,#f4f4f4,#bcbcbc);box-shadow:0 2px 3px rgba(0,0,0,.35)`;
         break;
       case "rzymska":
-        kaseta2 = `height:8px;background:linear-gradient(180deg,${S(0.25)},${S(-0.1)});box-shadow:0 1px 2px rgba(0,0,0,.35)`;
+        kaseta3 = `height:8px;background:linear-gradient(180deg,${S(0.25)},${S(-0.1)});box-shadow:0 1px 2px rgba(0,0,0,.35)`;
         listwa = `background:linear-gradient(180deg,${S(0.05)},${S(-0.35)});box-shadow:0 3px 4px rgba(0,0,0,.3)`;
         break;
       case "zaluzja":
       case "drewniana":
-        kaseta2 = `height:9px;background:linear-gradient(180deg,${S(0.3)},${kolor} 55%,${S(-0.35)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
+        kaseta3 = `height:9px;background:linear-gradient(180deg,${S(0.3)},${kolor} 55%,${S(-0.35)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
         listwa = `background:linear-gradient(180deg,${S(0.3)},${kolor} 50%,${S(-0.3)});box-shadow:0 2px 2px rgba(0,0,0,.35)`;
         break;
       case "zewnetrzna":
       case "perforowana":
-        kaseta2 = `height:16px;background:linear-gradient(180deg,${R(0.05)},${rama} 45%,${R(-0.16)});border-radius:0;box-shadow:inset 0 -2px 0 rgba(0,0,0,.12),0 2px 3px rgba(0,0,0,.35)`;
+        kaseta3 = `height:16px;background:linear-gradient(180deg,${R2(0.05)},${rama} 45%,${R2(-0.16)});border-radius:0;box-shadow:inset 0 -2px 0 rgba(0,0,0,.12),0 2px 3px rgba(0,0,0,.35)`;
         prow = alu;
         break;
       case "natynkowa":
-        kaseta2 = `height:20px;background:linear-gradient(180deg,${S(0.36)},${S(0.18)} 50%,${S(-0.3)} 51%,${S(-0.05)});border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.5)`;
+        kaseta3 = `height:20px;background:linear-gradient(180deg,${S(0.36)},${S(0.18)} 50%,${S(-0.3)} 51%,${S(-0.05)});border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.5)`;
         prow = alu;
         break;
       case "podtynkowa":
-        kaseta2 = `height:12px;background:linear-gradient(180deg,#ebe7de,#d6d1c6 58%,#3a3a3a 60%,#151515);border-radius:0;box-shadow:none`;
+        kaseta3 = `height:12px;background:linear-gradient(180deg,#ebe7de,#d6d1c6 58%,#3a3a3a 60%,#151515);border-radius:0;box-shadow:none`;
         prow = alu;
         break;
       case "fasadowa":
       case "fasadowaz":
-        kaseta2 = `height:14px;background:linear-gradient(180deg,${S(0.3)},${S(0.05)} 70%,${S(-0.3)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
+        kaseta3 = `height:14px;background:linear-gradient(180deg,${S(0.3)},${S(0.05)} 70%,${S(-0.3)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
         prow = alu;
         break;
       case "screen":
-        kaseta2 = `height:16px;background:linear-gradient(180deg,${S(0.3)},${S(0.08)} 60%,${S(-0.35)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
+        kaseta3 = `height:16px;background:linear-gradient(180deg,${S(0.3)},${S(0.08)} 60%,${S(-0.35)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
         prow = `linear-gradient(90deg,${S(-0.45)},${S(0.15)} 35%,#111 50%,${S(0.15)} 65%,${S(-0.45)})`;
         break;
       case "markiza":
-        kaseta2 = `height:16px;background:linear-gradient(180deg,#e8eaec,#c3c7cb 60%,#8d9297);border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.45)`;
+        kaseta3 = `height:16px;background:linear-gradient(180deg,#e8eaec,#c3c7cb 60%,#8d9297);border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.45)`;
         listwa = `height:6px;background:linear-gradient(180deg,#eef0f2,#a7acb1);box-shadow:0 2px 2px rgba(0,0,0,.35)`;
         break;
     }
     if (["zewnetrzna", "perforowana", "natynkowa", "podtynkowa", "fasadowa", "fasadowaz", "screen"].includes(typ))
       listwa = `background:linear-gradient(180deg,${S(0.35)},${S(0.05)} 55%,${S(-0.4)});box-shadow:0 2px 0 rgba(20,20,20,.85),0 3px 3px rgba(0,0,0,.4)`;
-    const markiza = typ === "markiza" ? `.listwa::before{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 7px 0,${kolor} 6.5px,transparent 7px) 0 0/14px 10px repeat-x}` : "";
+    const markiza2 = typ === "markiza" ? `.listwa::before{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 7px 0,${kolor} 6.5px,transparent 7px) 0 0/14px 10px repeat-x}` : "";
     return `
-.okno,.kolr{background:${tlo3};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
-.skrz{background:${(drewno ? SLOJE + "," : "") + R(-0.03)}}
+.okno,.kolr{background:${tlo4};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
+.skrz{background:${(drewno ? SLOJE + "," : "") + R2(-0.03)}}
 .oslona{background-image:${t.nakladka ? t.nakladka + "," : ""}${t.obraz};background-size:${t.nakladka ? "100% 100%," : ""}100% ${t.okres}px;background-position:${t.nakladka ? "0 0," : ""}0 100%;background-repeat:${t.nakladka ? "no-repeat," : ""}repeat-y}
-.kaseta{${kaseta2}}
+.kaseta{${kaseta3}}
 .listwa{${listwa}}
 ${prow ? `.prow{background:${prow}}` : ".prow{display:none}"}
-${markiza}
+${markiza2}
 ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
 .mhr{--mh-rama:${rama};--mh-materialu:${rgba(kolor, 1)}}`;
   }
@@ -8884,8 +9179,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   };
   function konfiguruj(wpis) {
     const skad = location.pathname + location.search;
-    const idz2 = (u2) => {
-      history.pushState(null, "", u2);
+    const idz2 = (u3) => {
+      history.pushState(null, "", u3);
       window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
     };
     const szukaj = (k) => {
@@ -8898,7 +9193,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       }
       return null;
     };
-    const okno2 = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    const okno3 = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
     idz2("/config/integrations/integration/motor_ha");
     let n = 0;
     const t = setInterval(() => {
@@ -8908,7 +9203,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         w._showOptions();
         let bylo = false, m = 0;
         const p = setInterval(() => {
-          const o = okno2(), otwarte = !!(o && o._params);
+          const o = okno3(), otwarte = !!(o && o._params);
           if (otwarte) bylo = true;
           if (bylo && !otwarte || ++m > 7200) {
             clearInterval(p);
@@ -9000,7 +9295,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
       if (klucz !== this._klucz) {
         this._klucz = klucz;
         this._zbuduj(c, czl);
@@ -9008,7 +9303,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._aktualizuj(c, czl);
     }
     _zbuduj(c, czl) {
-      if (czyBrama(c.oslona)) return this._zbudujBrame(c, czl);
+      if (czyBrama(c.oslona) || wlasnyRuch(c.rodzaj) && !polaOkna(c)) return this._zbudujBrame(c, czl);
       const T2 = this._T, n = czl.length, zew = czyZew(c.oslona), rama = ramaHex(c.rama), kolor = hex(c.kolor);
       this._brama = false;
       this._poziomo = POZIOME.includes(c.oslona);
@@ -9016,7 +9311,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const dwaSuwaki = pion2 && !!c.osobno && n > 1;
       const P2 = polaOkna(c), kol = P2 ? new Set(P2.map((p) => p.x)).size : n;
       this._uk = !!P2;
-      const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (kol === 1 ? 1.15 : 1), W2 = Math.round(H2 * (kol === 1 ? 0.68 : kol === 2 ? 0.92 : Math.min(1.5, 0.46 * kol)));
+      const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (kol === 1 ? 1.15 : 1), W3 = Math.round(H2 * (kol === 1 ? 0.68 : kol === 2 ? 0.92 : Math.min(1.5, 0.46 * kol)));
       const miejsce = (i, wciecie = 4) => P2 ? ` style="left:calc(${P2[i].x * 100}% + ${wciecie}px);top:calc(${P2[i].y * 100}% + ${wciecie}px);width:calc(${P2[i].w * 100}% - ${2 * wciecie}px);height:calc(${P2[i].h * 100}% - ${2 * wciecie}px)"` : "";
       const strona2 = (i) => P2 ? P2[i].x + P2[i].w / 2 <= 0.5 ? "l" : "p" : i ? "p" : "l";
       const wid = (i) => P2 ? ` class="wid" style="left:${-P2[i].x / P2[i].w * 100}%;top:${-P2[i].y / P2[i].h * 100}%;width:${100 / P2[i].w}%;height:${100 / P2[i].h}%"` : ' style="position:absolute;inset:0"';
@@ -9059,7 +9354,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
 <ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
-  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P2 ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
+  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P2 ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W3}px);aspect-ratio:${W3}/${Math.round(H2)}">
    ${mury}${ramy}${zew ? "" : czl.map((_, i) => P2 ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
@@ -9145,6 +9440,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._poziomo = false;
       this._kas = 0;
       this._brNoc = null;
+      this._scenaRuchu = wlasnyRuch(c.rodzaj) ? c.rodzaj : null;
+      this._ostO = null;
       const st = this._hass.states[c.entity], zPoz = (st?.attributes?.supported_features ?? 0) & 4;
       root.innerHTML = `<style>${STYL_STALY}</style>
 <ha-card class="brama"><div class="mh">
@@ -9229,8 +9526,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     // pozycja z wysokości palca na szybie
     _pozycjaZ(pole, y) {
-      const r = pole.getBoundingClientRect(), gora = this._el.pola.find((x) => x.p === pole)?.kas ?? this._kas, zakres = r.height - gora - LISTWA - POD_LISTWA;
-      return Math.round(100 - Math.min(1, Math.max(0, (y - r.top - gora) / zakres)) * 100);
+      const r = pole.getBoundingClientRect(), gora = this._el.pola.find((x) => x.p === pole)?.kas ?? this._kas, zakres2 = r.height - gora - LISTWA - POD_LISTWA;
+      return Math.round(100 - Math.min(1, Math.max(0, (y - r.top - gora) / zakres2)) * 100);
     }
     _gornaListwy(wys, p, kas = this._kas) {
       return kas - 2 + (wys - kas - LISTWA - POD_LISTWA + 2) * (100 - p) / 100;
@@ -9284,8 +9581,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const pion2 = el.classList.contains("pion");
       const ktore = el.dataset.i === void 0 ? void 0 : [+el.dataset.i];
       const wart = (e) => {
-        const r = el.getBoundingClientRect(), u2 = pion2 ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
-        return Math.round(Math.min(1, Math.max(0, u2)) * 100);
+        const r = el.getBoundingClientRect(), u3 = pion2 ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
+        return Math.round(Math.min(1, Math.max(0, u3)) * 100);
       };
       el.addEventListener("pointerdown", (e) => {
         akt = true;
@@ -9361,14 +9658,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       }
       if (this._brama) return this._aktualizujBrame(c, czl, st, pora);
       const auto = c.auto_czujniki !== false && !this._uk ? czujnikiOkna(h, czl[0]) : [];
-      const okno2 = this._uk ? c.pola.map((p) => h.states[p.czujnik]?.state === "on" ? p.tryb === "otworz" ? "otw" : "uch" : "") : [0, 1].map((k) => {
+      const okno3 = this._uk ? c.pola.map((p) => h.states[p.czujnik]?.state === "on" ? p.tryb === "otworz" ? "otw" : "uch" : "") : [0, 1].map((k) => {
         const id = c[k ? "czujnik_prawe" : "czujnik_lewe"] || auto[k], s = id && h.states[id];
         return s?.state === "on" ? c[k ? "tryb_prawe" : "tryb_lewe"] === "otworz" ? "otw" : "uch" : "";
       });
       E.skrz.forEach((S, i) => {
-        S.s.classList.toggle("uch", okno2[i] === "uch");
-        S.s.classList.toggle("otw", okno2[i] === "otw");
-        if (S.za) S.za.classList.toggle("widac", !!okno2[i]);
+        S.s.classList.toggle("uch", okno3[i] === "uch");
+        S.s.classList.toggle("otw", okno3[i] === "otw");
+        if (S.za) S.za.classList.toggle("widac", !!okno3[i]);
       });
       const czesci = [];
       const pos = st.attributes.current_position;
@@ -9380,7 +9677,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (opisPg) czesci.push(opisPg + (typeof t === "number" ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || "°C"}` : ""));
       }
       const ileCz = this._uk ? c.pola.filter((p) => p.czujnik).length : czl.length;
-      okno2.forEach((o, k) => {
+      okno3.forEach((o, k) => {
         if (o && k < czl.length) czesci.push(`${T2.karta.okno}${ileCz > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
       });
       this._opisStanu = czesci;
@@ -9425,7 +9722,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     _aktualizujBrame(c, czl, st, pora) {
       const h = this._hass, T2 = this._T, E = this._el, noc = pora === "noc" || pora === "zmierzch";
-      if (noc !== this._brNoc) {
+      if (this._scenaRuchu) E.bramaw.setAttribute("aria-label", T2.oslony[c.rodzaj] || "");
+      else if (noc !== this._brNoc) {
         this._brNoc = noc;
         E.bramaw.innerHTML = rysunekBramy(c.oslona, hex(c.kolor), ramaHex(c.rama), noc, !!c.przeszkoda);
         E.svg = E.bramaw.querySelector("svg");
@@ -9443,7 +9741,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._opisStanu = czesci;
       this._automatyka(c, h);
       const otwarte = st.state !== "closed";
-      E.ikona?.setAttribute("icon", (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.rodzaj] || IKONY[c.oslona]) || "mdi:gate");
+      E.ikona?.setAttribute("icon", otwarte && IKONY_OTW[c.rodzaj === c.oslona || czyBrama(c.rodzaj) ? c.oslona : ""] || IKONY[c.rodzaj] || IKONY[c.oslona] || "mdi:gate");
       E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       this._animuj();
     }
@@ -9473,7 +9771,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     _rysuj() {
       const E = this._el, ile = E.pola.length;
-      if (this._brama && this._ruchy[0]?.widac !== null) ustawBrame(E.svg, this._cfg.oslona, this._ruchy[0].widac);
+      if (this._brama && this._ruchy[0]?.widac !== null) {
+        const w = this._ruchy[0].widac;
+        if (!this._scenaRuchu) ustawBrame(E.svg, this._cfg.oslona, w);
+        else if (this._ostO === null || Math.abs(w - this._ostO) >= 0.4 || w !== this._ostO && (w === 0 || w === 100)) {
+          this._ostO = w;
+          E.bramaw.innerHTML = kafelRuch(this._scenaRuchu, w / 100, hex(this._cfg.kolor), ramaHex(this._cfg.rama));
+        }
+      }
       E.pola.forEach((P2, i) => {
         const r = this._ruchy[Math.min(i, this._ruchy.length - 1)];
         if (!r || r.widac === null) return;
@@ -10057,6 +10362,9 @@ button svg{fill:var(--primary-color);flex:none}
     }
   };
 
+  // src/zdjecia.js
+  var ZDJECIA = /* @__PURE__ */ new Set(["adaptacyjna", "bambusowa", "dach_ssl", "drewniana", "ekran", "firana", "kasetowa", "markiza_kasetowa", "natynkowa", "natynkowa_okragla", "panel", "pelna", "perforowana", "pionowa", "plaster", "plisa", "plisa_gora_dol", "podtynkowa", "roleta_moskitiera", "roleta_zip_wew", "rzymska", "uchylna", "zaciemniajaca", "zaluzja", "zaslona", "zaslona_wave", "zebra", "zewnetrzna"]);
+
   // src/kreator_okno.js
   var MDI2 = {
     silnik: "M3 4h18v3H3zm2 4h14v9h2v2H3v-2h2zm2 0v9h10V8z",
@@ -10124,8 +10432,8 @@ button svg{fill:var(--primary-color);flex:none}
   var AUTO_ZEW = ["markiza", "fasadowa", "fasadowaz", "screen"];
   var sumaKol = (K) => K.reduce((a, k, i) => a + k.w + (i < K.length - 1 ? +k.mur || 0 : 0), 0) || 1;
   var sumaWierszy = (k) => k.r.reduce((a, h, j) => a + h + (j < k.r.length - 1 ? +k.bel?.[j] || 0 : 0), 0) || 1;
-  function przerwy(u2) {
-    const K = u2.kol, suma = sumaKol(K), out = [];
+  function przerwy(u3) {
+    const K = u3.kol, suma = sumaKol(K), out = [];
     let x = 0;
     K.forEach((k, c) => {
       const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
@@ -10143,8 +10451,8 @@ button svg{fill:var(--primary-color);flex:none}
     });
     return out;
   }
-  function prostokaty(u2) {
-    const K = u2.kol, suma = sumaKol(K), out = [];
+  function prostokaty(u3) {
+    const K = u3.kol, suma = sumaKol(K), out = [];
     let x = 0;
     K.forEach((k) => {
       const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
@@ -10167,10 +10475,10 @@ button svg{fill:var(--primary-color);flex:none}
     });
     return { kol: kol.length ? kol : [{ w: 1, r: [1], dol: 0 }] };
   }
-  var kopia = (u2) => ({ kol: u2.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0, mur: +k.mur || 0, bel: (k.bel || []).map(Number) })) });
+  var kopia = (u3) => ({ kol: u3.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0, mur: +k.mur || 0, bel: (k.bel || []).map(Number) })) });
   var takiSam = (a, b) => JSON.stringify(prostokaty(a)) === JSON.stringify(prostokaty(b));
-  var szablon = (u2) => {
-    const i = UKLADY.findIndex(([, P2]) => takiSam(zSzablonu(P2), u2));
+  var szablon = (u3) => {
+    const i = UKLADY.findIndex(([, P2]) => takiSam(zSzablonu(P2), u3));
     return i < 0 ? "w" : i;
   };
   var godz = (m) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
@@ -10250,6 +10558,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .kaf{position:relative;background:var(--tile);border:2px solid transparent;border-radius:14px;padding:8px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;color:var(--fg);text-align:center;min-width:0;transition:transform .12s}
 .kaf:active{transform:scale(.97)}
 .kaf svg{width:100%;height:auto;max-height:84px}
+.kaf img.zdj{display:block;width:100%;height:auto;max-height:84px;aspect-ratio:6/5;object-fit:contain;border-radius:6px;pointer-events:none}
+.ruchP svg{display:block;width:100%;height:auto}
 .kaf b{font-size:11px;font-weight:400;line-height:1.2;color:var(--fg2);overflow-wrap:break-word;hyphens:manual;max-width:100%}
 .kaf.wyb{border-color:var(--accent);background:var(--primary-soft)} .kaf.wyb b{color:var(--fg);font-weight:500}
 .kaf:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
@@ -10407,19 +10717,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // liczba pól = układ; nowe pola dostają kolejne silniki i czujniki okien z pokoju
     _dopasujPola(podpowiedz) {
-      const S = this.S, ile = prostokaty(S.u).length, R = S.rolety;
+      const S = this.S, ile = prostokaty(S.u).length, R2 = S.rolety;
       const okna = this._czujnik("okno").lista.filter((x) => x.tu).map((x) => x.id);
       const kolejne = [.../* @__PURE__ */ new Set([...this.dane.okna || [], ...okna])];
       const strona2 = (id) => {
         const n = (this._oslona(id)?.nazwa || id).toLowerCase();
         return /lew|left|links|gauche/.test(n) ? 0 : /praw|right|rechts|droite/.test(n) ? 2 : 1;
       };
-      const Rs = [...R].sort((a, b) => strona2(a) - strona2(b)), P2 = prostokaty(S.u);
+      const Rs = [...R2].sort((a, b) => strona2(a) - strona2(b)), P2 = prostokaty(S.u);
       const silnikPola = (i) => Rs.length >= ile ? Rs[i] : Rs[Math.min(Rs.length - 1, Math.floor((P2[i][0] + P2[i][2] / 2) * Rs.length))];
       const nowyUklad = S.pola.length !== ile;
       S.pola = Array.from({ length: ile }, (_, i) => {
         const p = { ...S.pola[i] || {} };
-        if ((podpowiedz || nowyUklad || !p.silnik) && R.length) p.silnik = silnikPola(i);
+        if ((podpowiedz || nowyUklad || !p.silnik) && R2.length) p.silnik = silnikPola(i);
         p.tryb || (p.tryb = "uchyl");
         return p;
       });
@@ -10466,9 +10776,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // całe okno: rama (dla każdej kolumny), szyby z widokiem, osłony, numery pól
     okno(opt = {}) {
-      const S = this.S, W2 = opt.w || 160, H2 = opt.h || 150, pad = 6, pl = prostokaty(S.u), rama = this._rama(), kol = this._kolor(), [n1, n2] = this._nieba();
-      const iw = W2 - 2 * pad, ih = H2 - 2 * pad, id = opt.id || "p";
-      const d = [`<svg viewBox="0 0 ${W2} ${H2}" width="${W2}" height="${H2}" style="max-width:100%;height:auto" role="img" aria-label="${esc6(this.t.kroki.uklad)}">`];
+      const S = this.S, W3 = opt.w || 160, H2 = opt.h || 150, pad = 6, pl = prostokaty(S.u), rama = this._rama(), kol = this._kolor(), [n1, n2] = this._nieba();
+      const iw = W3 - 2 * pad, ih = H2 - 2 * pad, id = opt.id || "p";
+      const d = [`<svg viewBox="0 0 ${W3} ${H2}" width="${W3}" height="${H2}" style="max-width:100%;height:auto" role="img" aria-label="${esc6(this.t.kroki.uklad)}">`];
       d.push(`<defs><linearGradient id="n${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
       for (const [x, y, w, h, typ] of przerwy(S.u)) if (typ === "mur") d.push(this._przerwa(pad + x * iw - 1, 1, w * iw + 2, H2 - 2, "mur"));
       const xs = [...new Set(pl.map((p) => p[0]))];
@@ -10509,22 +10819,50 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.getElementById("scena").innerHTML = sc;
       r.getElementById("scena").hidden = !sc;
       r.getElementById("podglad").innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === "uklad" && (S.szablon === "w" || prostokaty(S.u).length > 1)) && !jedenDuzy ? this._podgladMaly() : "";
+      this._petlaRuchu();
     }
     // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
     _scena(k) {
       const S = this.S;
       if (k === "gotowe") return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
-      if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
       const n = prostokaty(S.u).length;
+      if (this._zRuchem(n)) return `<div class="ruchP" data-ruch="${S.o.oslona}" style="max-width:420px">${this._ruchSvg(0)}</div>`;
+      if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
       if (k === "uklad") return `<div class="edscena">${this._edytorCaly()}</div>`;
       if (k === "przypisz") return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "d", wybrane: S.arkusz })}</div>`;
       if (["rodzaj", "kolory"].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: "r", wybrane: this._wybR() })}</div>`;
       return `<div>${this.okno({ w: 440, h: 400, id: "s" })}</div>`;
     }
     _podgladMaly() {
+      if (this._zRuchem(prostokaty(this.S.u).length)) return `<div class="ruchP" data-ruch="${this.S.o.oslona}" style="width:200px;max-width:100%">${this._ruchSvg(0)}</div>`;
       return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: "p" });
     }
+    // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
+    _zRuchem(n) {
+      return wlasnyRuch(this.S.o.oslona) && (this.S.brama || n <= 1);
+    }
+    _ruchSvg(o) {
+      return kafelRuch(this.S.o.oslona, o, this._kolor(), this._rama());
+    }
+    _petlaRuchu() {
+      if (this._petla) return;
+      const t0 = performance.now();
+      this._petla = setInterval(() => {
+        const el = [...this.shadowRoot.querySelectorAll(".ruchP")];
+        if (!el.length || !this.isConnected) {
+          clearInterval(this._petla);
+          this._petla = null;
+          return;
+        }
+        const t = (performance.now() - t0) / 1e3 % 6, o = t < 1 ? 0 : t < 3 ? (t - 1) / 2 : t < 4 ? 1 : 1 - (t - 4) / 2;
+        const g = o * o * (3 - 2 * o), svg4 = this._ruchSvg(g);
+        el.forEach((e) => {
+          e.innerHTML = svg4;
+        });
+      }, 70);
+    }
     kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
+      if (ZDJECIA.has(typ)) return `<img class="zdj" src="/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}" alt="" loading="lazy" draggable="false">`;
       return kafel(typ, kolor, rama) || this._kafelProsty(typ);
     }
     _kafelProsty(typ) {
@@ -10533,11 +10871,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return `<svg viewBox="0 0 64 60" aria-hidden="true"><rect x="8" y="4" width="48" height="52" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
       <rect x="11" y="7" width="42" height="46" fill="${n1}"/>${this.oslona(typ, 11, 7, 42, 46, 40, this._kolor())}</svg>`;
     }
-    kafelUkladu(P2, drzwi2) {
+    kafelUkladu(P2, drzwi3) {
       const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
       P2.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
       <rect x="${7 + x * 52}" y="${5 + y * 50}" width="${Math.max(0, w * 52 - 2)}" height="${h * 50 * 0.45}" fill="var(--fg2)" opacity=".55"/>`));
-      if (drzwi2) d.push('<line x1="2" x2="62" y1="55" y2="55" stroke="var(--fg2)"/>');
+      if (drzwi3) d.push('<line x1="2" x2="62" y1="55" y2="55" stroke="var(--fg2)"/>');
       d.push("</svg>");
       return d.join("");
     }
@@ -10601,7 +10939,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t;
       const ed = (S.szablon === "w" || prostokaty(S.u).length > 1) && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
       ${this._edytorCaly()}<div class="sek">${esc6(t.zSzablonu)}</div>` : "";
-      return ed + `<div class="siatka k4">${UKLADY.map(([k, P2, drzwi2], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P2, drzwi2)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
+      return ed + `<div class="siatka k4">${UKLADY.map(([k, P2, drzwi3], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P2, drzwi3)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
       <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
     }
     // „Rodzaj”: grupy jak w katalogach producentów, realistyczny obrazek i nazwa (z kodem modelu) pod każdym
@@ -10857,15 +11195,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     _hassKarty() {
       const h = this._hass, S = this.S, teraz = (/* @__PURE__ */ new Date()).toISOString();
-      const R = S.brama ? S.rolety : [...new Set(S.pola.map((p) => p.silnik).filter(Boolean))];
-      const poz = R.length ? Math.round(R.reduce((a, e) => a + this._pozycja(e), 0) / R.length) : 60;
+      const R2 = S.brama ? S.rolety : [...new Set(S.pola.map((p) => p.silnik).filter(Boolean))];
+      const poz = R2.length ? Math.round(R2.reduce((a, e) => a + this._pozycja(e), 0) / R2.length) : 60;
       const stan = {
         entity_id: "cover.motor_ha_kreator",
         state: poz > 0 ? "open" : "closed",
         last_changed: teraz,
         last_updated: teraz,
         context: { id: "" },
-        attributes: { current_position: poz, friendly_name: S.tytul, supported_features: 15, entity_id: R }
+        attributes: { current_position: poz, friendly_name: S.tytul, supported_features: 15, entity_id: R2 }
       };
       return { ...h, states: { ...h.states, "cover.motor_ha_kreator": stan }, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) };
     }
@@ -10889,19 +11227,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       <rect x="${x2 - (poziomy ? 14 : 4)}" y="${y - (poziomy ? 4 : 14)}" width="${poziomy ? 28 : 8}" height="${poziomy ? 8 : 28}" rx="4" fill="#009ac7" stroke="#fff" stroke-width="1.5"/></g>`;
       let x = 0;
       K.forEach((k, c) => {
-        const w = k.w / suma, X = EP + x * iw, W2 = w * iw, wys = 1 - k.dol, sr = sumaWierszy(k);
+        const w = k.w / suma, X = EP + x * iw, W3 = w * iw, wys = 1 - k.dol, sr = sumaWierszy(k);
         let y = 0;
         k.r.forEach((h, j) => {
           y += h / sr * wys;
           if (j < k.r.length - 1) {
             const b = (+k.bel?.[j] || 0) / sr * wys;
-            d.push(uchwyt("r", `${c}-${j}`, X + W2 / 2, EP + (y + b / 2) * ih, true));
+            d.push(uchwyt("r", `${c}-${j}`, X + W3 / 2, EP + (y + b / 2) * ih, true));
             y += b;
           }
         });
-        if (k.dol >= 0.08 && k.r.length < 3) d.push(`<g data-dodaj="${c}" style="cursor:pointer"><rect x="${X + 4}" y="${EP + wys * ih + 10}" width="${Math.max(0, W2 - 8)}" height="${Math.max(0, k.dol * ih - 14)}" rx="4" fill="transparent" stroke="var(--fg2)" stroke-dasharray="5 4"/>
-        <text x="${X + W2 / 2}" y="${EP + (wys + k.dol / 2) * ih + 11}" text-anchor="middle" font-size="22" fill="var(--fg2)">+</text></g>`);
-        d.push(uchwyt("d", c, X + W2 / 2, EP + wys * ih, true));
+        if (k.dol >= 0.08 && k.r.length < 3) d.push(`<g data-dodaj="${c}" style="cursor:pointer"><rect x="${X + 4}" y="${EP + wys * ih + 10}" width="${Math.max(0, W3 - 8)}" height="${Math.max(0, k.dol * ih - 14)}" rx="4" fill="transparent" stroke="var(--fg2)" stroke-dasharray="5 4"/>
+        <text x="${X + W3 / 2}" y="${EP + (wys + k.dol / 2) * ih + 11}" text-anchor="middle" font-size="22" fill="var(--fg2)">+</text></g>`);
+        d.push(uchwyt("d", c, X + W3 / 2, EP + wys * ih, true));
         x += w;
         const m = c < K.length - 1 ? (+k.mur || 0) / suma : 0;
         if (c < K.length - 1) d.push(uchwyt("k", c, EP + (x + m / 2) * iw, EP + ih * 0.5, false));
@@ -10999,8 +11337,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           k.r[Math.max(0, i - 1)] += h + (+k.bel?.[Math.min(i, k.r.length - 1)] || 0);
           k.bel?.splice(Math.min(i, k.r.length - 1), 1);
         } else {
-          const u2 = K.splice(c, 1)[0];
-          K[Math.max(0, c - 1)].w += u2.w + (+u2.mur || 0);
+          const u3 = K.splice(c, 1)[0];
+          K[Math.max(0, c - 1)].w += u3.w + (+u3.mur || 0);
           if (c >= K.length && K.length) K[K.length - 1].mur = 0;
         }
         S.wyb = 0;
@@ -11009,9 +11347,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this.rysuj();
     }
     _ciagnij(e) {
-      const svg3 = this.shadowRoot.getElementById("edSvg");
-      if (!svg3 || !this._uch) return;
-      const { EW, EH, EP } = this._ed, r = svg3.getBoundingClientRect(), sk = EW / r.width;
+      const svg4 = this.shadowRoot.getElementById("edSvg");
+      if (!svg4 || !this._uch) return;
+      const { EW, EH, EP } = this._ed, r = svg4.getBoundingClientRect(), sk = EW / r.width;
       const fx = Math.min(1, Math.max(0, ((e.clientX - r.left) * sk - EP) / (EW - 2 * EP))), fy = Math.min(1, Math.max(0, ((e.clientY - r.top) * sk - EP) / (EH - 2 * EP)));
       const K = this.S.u.kol, suma = sumaKol(K), [typ, id] = this._uch.split(":");
       if (typ === "k") {
@@ -11104,9 +11442,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           } catch (x) {
           }
         }
-        const u2 = e.target.closest?.("[data-uch]"), p = e.target.closest?.("[data-ep]");
-        if (u2) {
-          this._uch = u2.dataset.uch;
+        const u3 = e.target.closest?.("[data-uch]"), p = e.target.closest?.("[data-ep]");
+        if (u3) {
+          this._uch = u3.dataset.uch;
           e.preventDefault();
           try {
             r.getElementById("edytor").setPointerCapture(e.pointerId);
@@ -11464,19 +11802,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return "";
     }
   }
-  function danePaska(svg3) {
-    const m = /data-motor-ha-kroki="([^"]*)"[^>]*data-krok="(\d+)"[^>]*data-aktywny="(\d+)"/.exec(svg3);
+  function danePaska(svg4) {
+    const m = /data-motor-ha-kroki="([^"]*)"[^>]*data-krok="(\d+)"[^>]*data-aktywny="(\d+)"/.exec(svg4);
     if (!m) return null;
     let podglad = null;
-    const p = /data-podglad="([^"]*)"/.exec(svg3);
+    const p = /data-podglad="([^"]*)"/.exec(svg4);
     if (p) try {
       podglad = JSON.parse(odkoduj(p[1]));
     } catch (e) {
     }
     return { kroki: m[1].split(","), krok: +m[2], aktywny: +m[3], podglad };
   }
-  function daneGalerii(svg3) {
-    const a = (n) => (new RegExp(`${n}="([^"]*)"`).exec(svg3) || [])[1];
+  function daneGalerii(svg4) {
+    const a = (n) => (new RegExp(`${n}="([^"]*)"`).exec(svg4) || [])[1];
     const pole = a("data-motor-ha-wybor");
     return pole ? { pole, opcje: (a("data-opcje") || "").split(","), kol: +a("data-kol") || 4 } : null;
   }
@@ -11543,10 +11881,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     return d;
   }
   function galeria(form, img) {
-    const svg3 = svgZ(img), d = daneGalerii(svg3);
+    const svg4 = svgZ(img), d = daneGalerii(svg4);
     if (!d) return;
     img.setAttribute(GAL, "");
-    img.setAttribute("src", PREFIKS + zakoduj(svg3.replace(/<rect data-on="1"[^>]*\/>/, "")));
+    img.setAttribute("src", PREFIKS + zakoduj(svg4.replace(/<rect data-on="1"[^>]*\/>/, "")));
     const opak = document.createElement("span");
     opak.style.cssText = "position:relative;display:inline-block;max-width:100%;line-height:0";
     img.parentNode.insertBefore(opak, img);
@@ -11625,14 +11963,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     k.hass = { ...ha, states: { ...ha.states, [ENCJA2]: stan }, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) };
   }
   var GRAFICZNE = /* @__PURE__ */ new Set();
-  function czyMotorHa(okno2, form) {
-    const p = okno2._params || {}, k = okno2._step || {};
+  function czyMotorHa(okno3, form) {
+    const p = okno3._params || {}, k = okno3._step || {};
     return k.handler === "motor_ha" || p.domain === "motor_ha" || p.manifest?.domain === "motor_ha" || !!(form && wszystkie(form.shadowRoot, `img[${ZNAK}],img[src^="${PREFIKS}"]`).some((i) => i.hasAttribute(ZNAK) || danePaska(svgZ(i))));
   }
-  function graficzny(okno2, form) {
-    const krok = okno2._step;
+  function graficzny(okno3, form) {
+    const krok = okno3._step;
     if (!krok?.flow_id || krok.type !== "form" || GRAFICZNE.has(krok.flow_id) || !customElements.get("motor-ha-kreator")) return;
-    if (!czyMotorHa(okno2, form)) return;
+    if (!czyMotorHa(okno3, form)) return;
     const ha = document.querySelector("home-assistant");
     if (!ha?.hass) return;
     GRAFICZNE.add(krok.flow_id);
@@ -11641,9 +11979,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     dlg.style.cssText = "padding:0;border:0;margin:auto;width:min(100vw,430px);height:min(100dvh,880px);max-width:100vw;max-height:100dvh;border-radius:var(--ha-dialog-border-radius,28px);overflow:hidden;background:var(--card-background-color,#fff)";
     if (innerWidth < 600) Object.assign(dlg.style, { width: "100vw", height: "100dvh", borderRadius: "0" });
     else if (innerWidth >= 900) Object.assign(dlg.style, { width: "min(96vw,1400px)", height: "min(94dvh,1000px)" });
-    const tlo3 = document.createElement("style");
-    tlo3.textContent = "dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}";
-    dlg.appendChild(tlo3);
+    const tlo4 = document.createElement("style");
+    tlo4.textContent = "dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}";
+    dlg.appendChild(tlo4);
     const k = document.createElement("motor-ha-kreator");
     dlg.appendChild(k);
     document.body.appendChild(dlg);
@@ -11655,14 +11993,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     };
     const zamknij = () => {
       sprzatnij();
-      okno2.closeDialog?.();
+      okno3.closeDialog?.();
     };
     dlg.addEventListener("cancel", (e) => {
       e.preventDefault();
       zamknij();
     });
     const wyslij = (dane) => {
-      const f = glebiej(okno2.shadowRoot, "step-flow-form");
+      const f = glebiej(okno3.shadowRoot, "step-flow-form");
       sprzatnij();
       if (!f) return;
       ustaw(f, { kreator: JSON.stringify(dane) });
@@ -11672,7 +12010,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     dlg.showModal();
     k.start({ hass: ha.hass, flow_id: krok.flow_id, entry_id: opcje ? krok.handler : null, krok: Z_KLASYCZNEGO[krok.step_id], wyslij, zamknij }).then(() => {
       zegar = setInterval(() => {
-        if (!okno2._params || !okno2.isConnected) return sprzatnij();
+        if (!okno3._params || !okno3.isConnected) return sprzatnij();
         if (ha.hass !== k._hass) k.hass = ha.hass;
       }, 400);
     }).catch((e) => {
@@ -11681,12 +12019,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     });
   }
   function pilnujKreatora() {
-    const okno2 = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
-    if (!okno2?._params) return;
-    const form = glebiej(okno2.shadowRoot, "step-flow-form");
+    const okno3 = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    if (!okno3?._params) return;
+    const form = glebiej(okno3.shadowRoot, "step-flow-form");
     if (!form) return;
     try {
-      graficzny(okno2, form);
+      graficzny(okno3, form);
     } catch (e) {
     }
     const img = glebiej(form.shadowRoot, `img[src^="${PREFIKS}"]:not([${ZNAK}]):not([${GAL}])`);
@@ -11725,8 +12063,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     const urz = h.devices?.[id];
     if (!urz || !encje.some((e) => e.device_id === id)) return null;
     const wpis = urz.config_entries?.[0];
-    const okno2 = encje.find((e) => e.device_id === id && e.entity_id.startsWith("cover."));
-    if (okno2) return [{ kolumna: 0, cel: { entity: okno2.entity_id, urzadzenie: id, wpis } }];
+    const okno3 = encje.find((e) => e.device_id === id && e.entity_id.startsWith("cover."));
+    if (okno3) return [{ kolumna: 0, cel: { entity: okno3.entity_id, urzadzenie: id, wpis } }];
     const okna = encje.filter((e) => e.entity_id.startsWith("cover.") && h.states[e.entity_id]).sort((a, b) => String(h.states[a.entity_id].attributes.friendly_name).localeCompare(String(h.states[b.entity_id].attributes.friendly_name)));
     return [
       { kolumna: 0, cel: { dom: true } },
