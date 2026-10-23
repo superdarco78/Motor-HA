@@ -1,5 +1,6 @@
 """Automatyka w działającym HA: słońce, blokada okna, ręczny ruch i powiadomienia."""
 
+import pytest
 from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry, async_mock_service
@@ -7,6 +8,12 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry, async_
 from custom_components.motor_ha.const import DOMAIN, DOMYSLNE
 
 ROLETY = ["cover.lewa", "cover.prawa"]
+
+
+@pytest.fixture(autouse=True)
+def _poludnie(freezer) -> None:
+    """Słońce liczy się z godziny wschodu i zachodu – testy zawsze w południe (strefa testowego HA: US/Pacific)."""
+    freezer.move_to("2026-06-21T19:00:00+00:00")
 
 
 async def _wpis(hass: HomeAssistant, **opcje) -> MockConfigEntry:

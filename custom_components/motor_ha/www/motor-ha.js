@@ -5183,7 +5183,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._opisStanu = czesci;
       this._automatyka(c, h);
       const otwarte = this._ruchy.some((r) => (r.widac ?? 0) > 0);
-      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       this._animuj();
     }
     // wiersz automatyki: dlaczego osłona stoi tak, jak stoi; przy pauzie przycisk „Wznów”
@@ -5241,7 +5241,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._automatyka(c, h);
       const otwarte = st.state !== "closed";
       E.ikona?.setAttribute("icon", (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.oslona]) || "mdi:gate");
-      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+      E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       this._animuj();
     }
     _pokazCel(i, p, ciagnie) {
@@ -5660,7 +5660,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
         w.querySelector(".nazwa").textContent = st.attributes.friendly_name || w.dataset.e;
         w.querySelector(".stan").textContent = czesci.join(" · ");
         w.querySelector(".ik ha-icon").setAttribute("icon", (otw ? IKONY_OTW[typ] : null) || IKONY[typ] || "mdi:window-shutter");
-        w.querySelector(".ik").style.setProperty("--mh-kolor", otw ? "var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
+        w.querySelector(".ik").style.setProperty("--mh-kolor", otw ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       });
     }
   };

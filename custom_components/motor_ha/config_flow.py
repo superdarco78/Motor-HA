@@ -285,7 +285,9 @@ class Kreator:
             domyslne = skan.zaznaczone(self._znalezione)
         opcje = [k for k, tylko_zaaw in URZADZENIA.items() if self.zaaw or not tylko_zaaw]
         domyslne = [k for k in domyslne if k in opcje]
-        znalezione = ", ".join(f"{k} ({len(v)})" for k, v in self._znalezione.items() if v and k in opcje)
+        t = await async_get_translations(self.hass, self.hass.config.language, "selector", {DOMAIN})
+        nazwa = lambda k: t.get(f"component.{DOMAIN}.selector.{MAM}.options.{k}", k)  # noqa: E731
+        znalezione = ", ".join(f"{nazwa(k)} ({len(v)})" for k, v in self._znalezione.items() if v and k in opcje)
         return await self._formularz("mam", {vol.Optional(MAM, default=domyslne): _lista(opcje, MAM, wiele=True)},
                                      dodatki={"znalezione": znalezione or "—"})
 

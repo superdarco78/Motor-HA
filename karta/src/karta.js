@@ -298,7 +298,7 @@ export class MotorHaKarta extends HTMLElement {
     this._opisStanu = czesci;
     this._automatyka(c, h);
     const otwarte = this._ruchy.some(r => (r.widac ?? 0) > 0);
-    E.karta.style.setProperty('--mh-kolor', otwarte ? 'var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
+    E.karta.style.setProperty('--mh-kolor', otwarte ? 'var(--primary-color)' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
     this._animuj();
   }
 
@@ -355,7 +355,7 @@ export class MotorHaKarta extends HTMLElement {
     this._automatyka(c, h);
     const otwarte = st.state !== 'closed';
     E.ikona?.setAttribute('icon', (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.oslona]) || 'mdi:gate');
-    E.karta.style.setProperty('--mh-kolor', otwarte ? 'var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
+    E.karta.style.setProperty('--mh-kolor', otwarte ? 'var(--primary-color)' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
     this._animuj();
   }
 

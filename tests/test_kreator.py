@@ -119,3 +119,22 @@ async def test_wiersz_otwiera_jeden_krok(hass: HomeAssistant) -> None:
     # następny „Konfiguruj” znowu cały kreator
     r = await hass.config_entries.options.async_init(wpis.entry_id)
     assert r["step_id"] == "tryb"
+
+
+async def test_nazwy_po_angielsku(hass: HomeAssistant) -> None:
+    """Model urządzenia i lista „Znaleziono” – przetłumaczone nazwy, nie wewnętrzne klucze (np. „zebra”, „brama”)."""
+    from homeassistant.helpers import device_registry as dr
+    await async_setup_component(hass, "http", {})
+    _rolety(hass)
+    hass.states.async_set("binary_sensor.okno_salon", "off", {"device_class": "window"})
+    r = await hass.config_entries.flow.async_init(DOMAIN, context={"source": config_entries.SOURCE_USER})
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"tryb": "podstawowy"})
+    znalezione = r["description_placeholders"]["znalezione"]
+    assert "okno (" not in znalezione and "(1)" in znalezione, znalezione
+    r = await hass.config_entries.flow.async_configure(r["flow_id"], {"mam": []})
+    odp = {"urzadzenie": {"rolety": ROLETY, "name": "Salon", "rodzaj_pokoju": "salon"}, "panel": {"na_panel": "nie"}}
+    while r["type"] is FlowResultType.FORM:
+        r = await hass.config_entries.flow.async_configure(r["flow_id"], odp.get(r["step_id"], {}))
+    await hass.async_block_till_done()
+    u = next(iter(dr.async_get(hass).async_get_devices(identifiers={(DOMAIN, r["result"].entry_id)})))
+    assert u.model and u.model != r["result"].options["oslona"], u.model

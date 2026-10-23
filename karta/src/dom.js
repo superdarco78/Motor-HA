@@ -61,7 +61,7 @@ export class MotorHaDom extends HTMLElement {
       w.querySelector('.nazwa').textContent = st.attributes.friendly_name || w.dataset.e;
       w.querySelector('.stan').textContent = czesci.join(' · ');
       w.querySelector('.ik ha-icon').setAttribute('icon', (otw ? IKONY_OTW[typ] : null) || IKONY[typ] || 'mdi:window-shutter');
-      w.querySelector('.ik').style.setProperty('--mh-kolor', otw ? 'var(--state-cover-active-color,var(--state-active-color,var(--primary-color)))' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
+      w.querySelector('.ik').style.setProperty('--mh-kolor', otw ? 'var(--primary-color)' : 'var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))');
     });
   }
 }
