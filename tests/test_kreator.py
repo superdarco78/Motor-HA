@@ -136,5 +136,6 @@ async def test_nazwy_po_angielsku(hass: HomeAssistant) -> None:
     while r["type"] is FlowResultType.FORM:
         r = await hass.config_entries.flow.async_configure(r["flow_id"], odp.get(r["step_id"], {}))
     await hass.async_block_till_done()
-    u = next(iter(dr.async_get(hass).async_get_devices(identifiers={(DOMAIN, r["result"].entry_id)})))
+    from custom_components.motor_ha import _urzadzenie   # działa na starszym i nowszym HA
+    u = _urzadzenie(dr.async_get(hass), (DOMAIN, r["result"].entry_id))
     assert u.model and u.model != r["result"].options["oslona"], u.model
