@@ -1,7 +1,8 @@
 // Kreator graficzny Motor HA (2.2.0): dziesięć kroków z obrazkami zamiast list, żywy podgląd okna,
 // układ okna jako siatka pól (do 4 × 3) edytowana palcem. Otwiera się nad okienkiem „Dodaj urządzenie”
 // i „Konfiguruj” (kreator.js), a gotowe ustawienia wysyła jak zwykłą odpowiedź kroku integracji (pole „kreator”).
-import { KOLORY, RAMA_Z_KLUCZA, GRUPY, BRAMY, SCIANY, czyBrama, czyZew } from './stale.js';
+import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza } from './stale.js';
+import { kafel, GRUPY_KAFLI } from './kafle.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
 import { rysunekBramy } from './brama.js';
 
@@ -198,6 +199,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .zn{position:absolute;top:5px;right:5px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
 .miejsce{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;color:var(--primary);background:var(--primary-soft);border-radius:10px;padding:2px 7px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sek{margin:18px 0 8px;font-size:13px;font-weight:500;color:var(--fg2);letter-spacing:.02em}
+.grupaR{margin:20px 0 2px;font-size:16px;font-weight:500;color:var(--primary)} .grupaR:first-child{margin-top:4px}
 .probki{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
 .probka{flex:0 0 auto;width:56px;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;cursor:pointer;color:var(--fg2);font-size:10.5px;text-align:center;line-height:1.15}
 .probka i{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:block}
@@ -338,6 +340,7 @@ export class MotorHaKreator extends HTMLElement {
   // --- rysunki ---
   oslona(typ, x, y, w, h, poz, kolor) {
     const z = h * (1 - poz / 100), k = kolor, d = [];
+    typ = baza(typ);
     const t = { plaster: 'plisa', natynkowa: 'zewnetrzna', podtynkowa: 'zewnetrzna', perforowana: 'zewnetrzna', fasadowaz: 'fasadowa' }[typ] || typ;
     if (t === 'zaslona') {
       const s = w * (.18 + .32 * (1 - poz / 100));
@@ -405,7 +408,7 @@ export class MotorHaKreator extends HTMLElement {
     return `<circle cx="${cx}" cy="${cy}" r="9" fill="#ff9800" stroke="#fff" stroke-width="1.6"/><rect x="${cx - 4.5}" y="${cy - 5}" width="9" height="10" fill="none" stroke="#3a2600" stroke-width="1.5"/>`
       + (p.tryb === 'otworz' ? `<path d="M${cx - 4.5} ${cy - 5}l4 1.6v10l-4-1.6z" fill="#3a2600"/>` : `<path d="M${cx - 4.5} ${cy + 5}l2.4-7h4.2" fill="none" stroke="#3a2600" stroke-width="1.4"/>`);
   }
-  _brama(typ) { return rysunekBramy(typ, this._kolor(), this._rama(), false, false); }
+  _brama(typ) { return rysunekBramy(baza(typ), this._kolor(), this._rama(), false, false); }
   // stały rysunek: duży z boku (szeroki ekran) albo mały na górze (telefon); woła się też przy suwakach, bez rysowania całego kroku
   _odswiezScene(k = this.kroki()[this.S.krok], jedenDuzy = ['rodzaj', 'kolory'].includes(k) && !this.S.brama && prostokaty(this.S.u).length > 1) {
     const r = this.shadowRoot, S = this.S;
@@ -427,7 +430,8 @@ export class MotorHaKreator extends HTMLElement {
   }
   _podgladMaly() { return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' }); }
 
-  kafelRodzaju(typ) {
+  kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) { return kafel(typ, kolor, rama) || this._kafelProsty(typ); }
+  _kafelProsty(typ) {
     if (czyBrama(typ)) return `<div style="width:100%;pointer-events:none">${this._brama(typ)}</div>`;
     const [n1] = this._nieba();
     return `<svg viewBox="0 0 64 60" aria-hidden="true"><rect x="8" y="4" width="48" height="52" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
@@ -505,17 +509,22 @@ export class MotorHaKreator extends HTMLElement {
     return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? 'wyb' : ''}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc(dziel(t.uklady[k]))}</b></button>`).join('')}
       <button class="kaf ${S.szablon === 'w' ? 'wyb' : ''}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc(t.uklady.wlasny)}</b></button></div>`;
   }
+  // „Rodzaj”: grupy jak w katalogach producentów, realistyczny obrazek i nazwa (z kodem modelu) pod każdym
   str_rodzaj() {
-    const S = this.S, T = this.T;
-    let lista;
-    if (S.brama) lista = BRAMY;
-    else {
-      const wew = Object.values(GRUPY.wew).flat(), zew = Object.values(GRUPY.zew).flat(), k = this._oslona(S.rolety[0])?.klasa;
-      lista = ['shutter', 'awning'].includes(k) || czyZew(S.o.oslona) ? [...zew, ...wew] : [...wew, ...zew];
-    }
+    const S = this.S, T = this.T, k = this._oslona(S.rolety[0])?.klasa;
     const wr = this._wybR(), akt = wr === null ? S.o.oslona : S.pola[wr]?.oslona || S.o.oslona;
-    if (wr !== null) lista = lista.filter(k => !czyBrama(k) && !!czyZew(k) === !!czyZew(S.o.oslona) && !['pionowa', 'zaslona'].includes(k));
-    return this._wyborPola() + `<div class="siatka k4">${lista.map(k => `<button class="kaf ${akt === k ? 'wyb' : ''}" data-rodzaj="${k}">${this.kafelRodzaju(k)}<b>${esc(dziel(T.oslony[k] || k))}</b></button>`).join('')}</div>`;
+    const zewPierwsze = ['shutter', 'awning'].includes(k) || czyZew(S.o.oslona);
+    let grupy = GRUPY_KAFLI.filter(([g]) => S.brama ? g === 'brama' : g !== 'brama');
+    if (zewPierwsze) grupy = [...grupy.filter(([g]) => g !== 'wew'), ...grupy.filter(([g]) => g === 'wew')];
+    // jedno pole okna: tylko rodzaje z tej samej strony okna, bez zasuwanych w bok
+    const pasuje = t => wr === null || (!czyBrama(t) && !!czyZew(t) === !!czyZew(S.o.oslona) && !POZIOME.includes(baza(t)));
+    const kolor = this._kolor(), rama = this._rama();
+    return this._wyborPola() + grupy.map(([g, pod]) => {
+      const sek = pod.map(([p, typy]) => [p, typy.filter(pasuje)]).filter(([, typy]) => typy.length);
+      if (!sek.length) return '';
+      return `<div class="grupaR">${esc(T.grupy[g] || g)}</div>` + sek.map(([p, typy]) => (p !== g ? `<div class="sek">${esc(T.grupy[p] || p)}</div>` : '')
+        + `<div class="siatka k4">${typy.map(t => `<button class="kaf ${akt === t ? 'wyb' : ''}" data-rodzaj="${t}">${this.kafelRodzaju(t, kolor, rama)}<b>${esc(dziel(T.oslony[t] || t))}</b></button>`).join('')}</div>`).join('');
+    }).join('');
   }
   str_kolory() {
     const S = this.S, T = this.T, t = this.t;

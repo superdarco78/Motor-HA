@@ -19,6 +19,7 @@ from homeassistant.helpers.translation import async_get_translations
 
 from .const import (
     BRAMY,
+    OKNA,
     CONF_CZAS,
     CONF_CZUJNIK_LEWE,
     CONF_CZUJNIK_PRAWE,
@@ -447,9 +448,9 @@ class Kreator:
         if self.brama and not bez_klasy:
             opcje = RODZAJE_BRAM
         elif "zew" in self.mam:
-            opcje = OSLONY_ZEW + OSLONY_WEW
+            opcje = OSLONY_ZEW + OSLONY_WEW + OKNA
         else:
-            opcje = OSLONY_WEW + OSLONY_ZEW
+            opcje = OSLONY_WEW + OSLONY_ZEW + OKNA
         if "lamele" in self.mam and not self.brama:   # z lamelami na początku, reszta dalej – nic nie znika
             opcje = [k for k in Z_LAMELAMI if k in opcje] + [k for k in opcje if k not in Z_LAMELAMI]
         if bez_klasy and "brama" in self.mam:   # silnik bez klasy: bramy też do wyboru (bramy pierwsze, gdy to brama)

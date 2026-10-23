@@ -7,6 +7,9 @@ HA pokazuje w liście wyboru tylko tekst, więc nad polem jest obrazek SVG z kaf
 from __future__ import annotations
 
 from base64 import b64encode
+import json
+from pathlib import Path
+import re
 from html import escape
 
 from homeassistant.core import HomeAssistant
@@ -35,8 +38,17 @@ def _paski(x0: float, y0: float, x1: float, y1: float, krok: float, kolor: str, 
     return "".join(out)
 
 
+# realistyczne obrazki rodzajów z karty (karta/src/kafle.js → kafle.json przy budowaniu)
+try:
+    KAFLE: dict[str, str] = json.loads((Path(__file__).parent / "kafle.json").read_text(encoding="utf-8"))
+except (OSError, ValueError):
+    KAFLE = {}
+
+
 def rysunek(typ: str, x: float, y: float) -> str:
     """Rysunek 64×60 osłony danego rodzaju w punkcie (x, y)."""
+    if k := KAFLE.get(typ):
+        return re.sub(r"^<svg [^>]*>", f'<svg x="{x}" y="{y}" width="64" height="60" viewBox="0 0 120 100">', k)
     o = _okno(x, y)
     L, P, G, D = x + 11, x + 53, y + 9, y + 57      # wnętrze okna
     if typ in ("pelna", "kasetowa", "zaciemniajaca", "screen"):

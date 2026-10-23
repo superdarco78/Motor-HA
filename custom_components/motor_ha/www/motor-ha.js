@@ -1,32 +1,402 @@
 /* Motor HA – karta okna z osłoną · © superdarco78 · CC BY-NC-SA 4.0 · github.com/superdarco78/Motor-HA
    Źródło: karta/src (npm run build) */
 (() => {
-  // src/stale.js
-  var WERSJA = "2.2.6";
-  var GRUPY = {
-    wew: {
-      rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
-      plisy: ["plisa", "plaster", "rzymska"],
-      zaluzje: ["zaluzja", "drewniana"],
-      pionowe: ["pionowa", "zaslona"]
+  // src/kafle.js
+  var P = "k0";
+  var nr = 0;
+  var rgb = (h) => {
+    h = String(h).replace("#", "");
+    if (h.length === 3) h = [...h].map((c) => c + c).join("");
+    return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) || 0);
+  };
+  var mix = (a, b, t) => "#" + rgb(a).map((x, i) => Math.round(x + (rgb(b)[i] - x) * t).toString(16).padStart(2, "0")).join("");
+  var ciem = (h, t = 0.3) => mix(h, "#000000", t);
+  var jas = (h, t = 0.3) => mix(h, "#ffffff", t);
+  var u = (n) => `url(#${P}${n})`;
+  var CIEN = "rgba(0,0,0,.22)";
+  function defs(k, r) {
+    return `<defs>
+  <linearGradient id="${P}tyn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efebe5"/><stop offset="1" stop-color="#d9d2c7"/></linearGradient>
+  <linearGradient id="${P}nb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb8e0"/><stop offset=".65" stop-color="#cfe9f8"/><stop offset="1" stop-color="#e8f5fc"/></linearGradient>
+  <linearGradient id="${P}bl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".35"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <linearGradient id="${P}met" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${jas(k, 0.35)}"/><stop offset=".45" stop-color="${k}"/><stop offset="1" stop-color="${ciem(k, 0.35)}"/></linearGradient>
+  <linearGradient id="${P}metp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${ciem(k, 0.25)}"/><stop offset=".5" stop-color="${jas(k, 0.2)}"/><stop offset="1" stop-color="${ciem(k, 0.3)}"/></linearGradient>
+  <linearGradient id="${P}alu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef0f2"/><stop offset=".5" stop-color="#c3c8ce"/><stop offset="1" stop-color="#8f969e"/></linearGradient>
+  <linearGradient id="${P}alup" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9aa1a9"/><stop offset=".5" stop-color="#e3e6e9"/><stop offset="1" stop-color="#8f969e"/></linearGradient>
+  <linearGradient id="${P}rm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${jas(r, 0.25)}"/><stop offset="1" stop-color="${ciem(r, 0.12)}"/></linearGradient>
+  <linearGradient id="${P}tk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${ciem(k, 0.12)}"/><stop offset=".3" stop-color="${jas(k, 0.08)}"/><stop offset=".7" stop-color="${k}"/><stop offset="1" stop-color="${ciem(k, 0.15)}"/></linearGradient>
+  <linearGradient id="${P}tkv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${ciem(k, 0.2)}"/><stop offset="1" stop-color="${jas(k, 0.12)}"/></linearGradient>
+  <linearGradient id="${P}ks" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9b2a6"/><stop offset="1" stop-color="#8f887c"/></linearGradient>
+  <linearGradient id="${P}dh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3553c"/><stop offset="1" stop-color="#6f3424"/></linearGradient>
+  <pattern id="${P}lam" width="10" height="3.6" patternUnits="userSpaceOnUse"><rect width="10" height="3.6" fill="${k}"/><rect width="10" height="1.1" fill="${jas(k, 0.28)}"/><rect y="2.8" width="10" height=".8" fill="${ciem(k, 0.45)}"/></pattern>
+  <pattern id="${P}sia" width="1.6" height="1.6" patternUnits="userSpaceOnUse"><path d="M0 0h1.6M0 0v1.6" stroke="#20262c" stroke-width=".3" opacity=".55"/></pattern>
+  <filter id="${P}fk" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .09 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  <linearGradient id="${P}cr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+  <pattern id="${P}lamg" width="10" height="5" patternUnits="userSpaceOnUse"><rect width="10" height="5" fill="${k}"/><rect width="10" height="1.6" fill="${jas(k, 0.32)}"/><rect y="3.8" width="10" height="1.2" fill="${ciem(k, 0.5)}"/></pattern>
+  <filter id="${P}cn" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="1.4" stdDeviation="1.2" flood-opacity=".35"/></filter>
+  </defs>`;
+  }
+  function okno(x, y, w, h) {
+    const r = 4.5, gx = x + r, gy = y + r, gw = w - 2 * r, gh = h - 2 * r;
+    return `<path d="M${x - 5} ${y - 5}h${w + 10}l-5 5H${x}v${h}l-5 5z" fill="#cfc6b8"/><path d="M${x + w + 5} ${y - 5}v${h + 10}l-5-5V${y}z" fill="#e2dbd0"/>
+    <rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${u("rm")}" stroke="${CIEN}" stroke-width=".6"/>
+    <rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" fill="${u("nb")}"/>
+    <path d="M${gx} ${gy + gh * 0.78}c${gw * 0.2} ${-gh * 0.14} ${gw * 0.32} ${-gh * 0.1} ${gw * 0.5} ${-gh * 0.02}s${gw * 0.35} ${-gh * 0.12} ${gw * 0.5} ${-gh * 0.06}V${gy + gh}H${gx}z" fill="#7da889"/>
+    <path d="M${gx} ${gy + gh * 0.88}c${gw * 0.3} ${-gh * 0.08} ${gw * 0.6} ${-gh * 0.02} ${gw} ${-gh * 0.07}V${gy + gh}H${gx}z" fill="#5e8f6b"/>
+    <rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" fill="${u("bl")}"/>
+    ${w > 50 ? `<rect x="${x + w / 2 - 2}" y="${y}" width="4" height="${h}" fill="${u("rm")}" stroke="${CIEN}" stroke-width=".5"/>` : ""}
+    <path d="M${x - 7} ${y + h}h${w + 14}l-2 4H${x - 5}z" fill="#f4f2ee" stroke="${CIEN}" stroke-width=".5"/><rect x="${x - 5}" y="${y + h + 4}" width="${w + 10}" height="1.6" fill="rgba(0,0,0,.18)"/>`;
+  }
+  var tlo = () => `<rect width="120" height="100" fill="${u("tyn")}"/><rect width="120" height="100" fill="#fff" filter="${u("fk")}"/>`;
+  var cienR = (x, y, w, h = 8) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${u("cr")}"/>`;
+  var svg = (s) => `<svg viewBox="0 0 120 100" aria-hidden="true" style="display:block;width:100%;height:auto;border-radius:6px">${s}</svg>`;
+  var skrzynka = (x, y, w, h, sk = 4) => `<g filter="${u("cn")}"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${u("met")}"/>
+  <path d="M${x} ${y + h}h${w}l-${sk} ${sk}H${x + sk}z" fill="${u("metp")}" opacity=".9"/><path d="M${x + w} ${y}l${sk} ${sk * 0.6}v${h}l-${sk} ${sk * 0.4}z" fill="${u("metp")}"/></g>`;
+  var prowadnice = (x, y, w, h, met = "metp") => `<rect x="${x - 3.5}" y="${y}" width="4.5" height="${h}" fill="${u(met)}" stroke="${CIEN}" stroke-width=".4"/><rect x="${x + w - 1}" y="${y}" width="4.5" height="${h}" fill="${u(met)}" stroke="${CIEN}" stroke-width=".4"/>`;
+  var pancerz = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${u("lam")}"/><rect x="${x}" y="${y + h - 2.6}" width="${w}" height="2.6" fill="${u("met")}"/>
+  <rect x="${x}" y="${y + h}" width="${w}" height="2" fill="rgba(0,0,0,.18)"/>`;
+  var kaseta = () => `<rect x="31" y="13" width="58" height="8" rx="2" fill="${u("rm")}" filter="${u("cn")}"/>`;
+  var WEW = {
+    pelna: (k) => tlo() + okno(32, 18, 56, 66) + `<rect x="27" y="11" width="66" height="6" rx="3" fill="${u("alu")}" filter="${u("cn")}"/><rect x="29" y="16" width="62" height="40" fill="${u("tk")}"/>
+    <rect x="28.5" y="55" width="63" height="3" rx="1.5" fill="${u("alu")}"/><path d="M86 17v34" stroke="#bbb" stroke-width=".6" stroke-dasharray=".8 .8"/>`,
+    kasetowa: () => tlo() + okno(32, 18, 56, 66) + kaseta() + `<rect x="32.5" y="21" width="2.5" height="62" fill="${u("rm")}"/><rect x="85" y="21" width="2.5" height="62" fill="${u("rm")}"/><rect x="35" y="21" width="50" height="34" fill="${u("tk")}"/><rect x="35" y="55" width="50" height="2.6" fill="${u("rm")}"/>`,
+    zebra: (k) => {
+      const d = [];
+      for (let y = 21; y < 57; y += 7) d.push(`<rect x="35" y="${y}" width="50" height="3.6" fill="${u("tk")}"/><rect x="35" y="${y + 3.6}" width="50" height="3.4" fill="#fff" opacity=".25"/><path d="M35 ${y + 3.6}h50" stroke="${ciem(k, 0.35)}" stroke-width=".4"/>`);
+      return tlo() + okno(32, 18, 56, 66) + kaseta() + d.join("") + `<rect x="35" y="55" width="50" height="2.6" fill="${u("rm")}"/>`;
     },
-    zew: {
-      zrolety: ["natynkowa", "podtynkowa", "zewnetrzna", "perforowana"],
-      fasadowe: ["fasadowa", "fasadowaz"],
-      taras: ["markiza", "screen"]
+    zaciemniajaca: (k) => tlo() + okno(32, 18, 56, 66) + kaseta() + `<rect x="31" y="21" width="4" height="63" fill="${u("rm")}"/><rect x="85" y="21" width="4" height="63" fill="${u("rm")}"/><rect x="35" y="21" width="50" height="46" fill="${ciem(k, 0.35)}"/><rect x="35" y="21" width="50" height="46" fill="${u("tk")}" opacity=".35"/><rect x="35" y="67" width="50" height="2.6" fill="${u("rm")}"/>`,
+    plisa: (k) => {
+      const d = [];
+      for (let y = 25; y < 57; y += 2.6) d.push(`<rect x="36" y="${y}" width="48" height="1.3" fill="${jas(k, 0.18)}"/><rect x="36" y="${y + 1.3}" width="48" height="1.3" fill="${ciem(k, 0.18)}"/>`);
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="34" y="22" width="52" height="3" rx="1" fill="${u("alu")}"/>${d.join("")}<rect x="34" y="57" width="52" height="3" rx="1" fill="${u("alu")}"/><path d="M35 25v57M85 25v57" stroke="#555" stroke-width=".4"/><path d="M36 25${[...Array(12)].map((_, i) => `l${i % 2 ? 1.4 : -1.4} 2.6`).join("")}M84 25${[...Array(12)].map((_, i) => `l${i % 2 ? -1.4 : 1.4} 2.6`).join("")}" stroke="${ciem(k, 0.4)}" stroke-width=".5" fill="none"/>`;
     },
-    brama: {
-      bramy: ["przesuwna", "skrzydlowa"],
-      garaze: ["segmentowa", "uchylna", "roletowa"]
+    plaster: (k) => {
+      const d = [];
+      for (let y = 25; y < 55; y += 4) for (let x = 36 + y / 4 % 2 * 2.5; x < 81; x += 5) d.push(`<path d="M${x} ${y + 2}l1.2-2h2.6l1.2 2-1.2 2h-2.6z" fill="${jas(k, 0.1)}" stroke="${ciem(k, 0.3)}" stroke-width=".4"/>`);
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="34" y="22" width="52" height="3" rx="1" fill="${u("alu")}"/><rect x="36" y="25" width="48" height="32" fill="${k}"/>${d.join("")}<rect x="34" y="57" width="52" height="3" rx="1" fill="${u("alu")}"/>`;
+    },
+    rzymska: (k) => tlo() + okno(32, 18, 56, 66) + `<rect x="28" y="12" width="64" height="4" rx="1" fill="${u("alu")}" filter="${u("cn")}"/><rect x="29" y="16" width="62" height="22" fill="${u("tk")}"/>
+    ${[0, 1, 2].map((i) => `<path d="M29 ${38 + i * 6}q31 ${6 - i} 62 0v-6q-31 ${5 - i} -62 0z" fill="${ciem(k, 0.1 + i * 0.07)}"/><path d="M29 ${38 + i * 6}q31 ${6 - i} 62 0" stroke="${jas(k, 0.25)}" stroke-width=".6" fill="none"/>`).join("")}`,
+    zaluzja: (k) => {
+      const d = [];
+      for (let y = 20; y < 63; y += 3) d.push(`<path d="M33 ${y}h54l-1 1.8H34z" fill="${jas(k, 0.2)}"/><path d="M34 ${y + 1.8}h52" stroke="${ciem(k, 0.35)}" stroke-width=".5"/>`);
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="32" y="15" width="56" height="5" rx="1" fill="${u("met")}" filter="${u("cn")}"/>${d.join("")}<path d="M46 20v44M74 20v44" stroke="#e8e8e8" stroke-width=".5"/><rect x="32" y="63" width="56" height="3" rx="1" fill="${u("met")}"/>`;
+    },
+    drewniana: (k) => {
+      const dr = "#9a6a3f", d = [];
+      for (let y = 20; y < 63; y += 4.4) d.push(`<path d="M32 ${y}h56l-1 3.4H33z" fill="${jas(dr, 0.12)}"/><path d="M33 ${y + 3.4}h54" stroke="#5b3a20" stroke-width=".6"/><path d="M36 ${y + 1.5}q20 -.8 44 0" stroke="#7d5330" stroke-width=".35" fill="none"/>`);
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="31" y="15" width="58" height="5" rx="1" fill="${ciem(dr, 0.1)}" filter="${u("cn")}"/>${d.join("")}<rect x="44" y="20" width="3.4" height="46" fill="${k}" opacity=".9"/><rect x="73" y="20" width="3.4" height="46" fill="${k}" opacity=".9"/>`;
+    },
+    pionowa: (k) => {
+      const d = [];
+      for (let x = 24; x < 96; x += 6) d.push(`<rect x="${x}" y="15" width="5.2" height="72" fill="${u("tk")}"/><rect x="${x}" y="15" width="1" height="72" fill="${ciem(k, 0.3)}" opacity=".6"/>`);
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="22" y="11" width="76" height="4" rx="1" fill="${u("alu")}" filter="${u("cn")}"/>${d.join("")}`;
+    },
+    zaslona: (k) => {
+      const pan = (x0) => `<path d="M${x0} 12h22l3 76H${x0 - 2}z" fill="${u("tk")}"/>` + [0, 1, 2, 3].map((i) => `<path d="M${x0 + 3 + i * 5.5} 12l${i % 2 ? 1 : -1} 76" stroke="${ciem(k, 0.35)}" stroke-width="1.6" opacity=".45"/><path d="M${x0 + 5 + i * 5.5} 12l${i % 2 ? 1 : -1} 76" stroke="${jas(k, 0.3)}" stroke-width="1" opacity=".5"/>`).join("");
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="12" y="9" width="96" height="2.6" rx="1.3" fill="${u("alu")}"/><circle cx="12" cy="10.3" r="2.6" fill="#8a8f96"/><circle cx="108" cy="10.3" r="2.6" fill="#8a8f96"/>${pan(14)}${pan(84)}`;
+    },
+    firana: () => tlo() + okno(32, 18, 56, 66) + `<rect x="18" y="10" width="84" height="3.4" rx="1" fill="${u("alu")}" filter="${u("cn")}"/><rect x="20" y="13" width="80" height="76" fill="#fff" opacity=".55"/>` + [...Array(16)].map((_, i) => `<path d="M${21 + i * 5} 13q${i % 2 ? 1.5 : -1.5} 38 0 76" stroke="#fff" stroke-width="2.2" opacity=".8" fill="none"/><path d="M${23.5 + i * 5} 13q${i % 2 ? 1.5 : -1.5} 38 0 76" stroke="#c9c3b8" stroke-width=".6" opacity=".7" fill="none"/>`).join("") + [...Array(14)].map((_, i) => `<circle cx="${21 + i * 6}" cy="13" r=".9" fill="#7d8389"/>`).join(""),
+    panel: (k) => tlo() + okno(32, 18, 56, 66) + `<rect x="14" y="9" width="92" height="4" rx="1" fill="${u("alu")}" filter="${u("cn")}"/>` + [[16, 0], [36, 0.06], [62, 0.12], [84, 0]].map(([x, t]) => `<g filter="${u("cn")}"><rect x="${x}" y="13" width="21" height="76" fill="${u("tkv")}"/><rect x="${x}" y="13" width="21" height="76" fill="#000" opacity="${t}"/><rect x="${x}" y="86" width="21" height="3" fill="${u("alu")}"/></g>`).join(""),
+    roleta_zip_wew: () => tlo() + okno(32, 18, 56, 66) + `<rect x="30" y="13" width="60" height="7" rx="1.5" fill="${u("rm")}" filter="${u("cn")}"/><rect x="30" y="20" width="4" height="64" fill="${u("rm")}"/><rect x="86" y="20" width="4" height="64" fill="${u("rm")}"/>
+    <rect x="34" y="20" width="52" height="40" fill="${u("tk")}"/><rect x="34" y="60" width="52" height="3" fill="${u("rm")}"/><path d="M34 20v40M86 20v40" stroke="#333" stroke-width=".9" stroke-dasharray=".7 .7"/>`,
+    plisa_gora_dol: (k) => {
+      const d = [];
+      for (let y = 38; y < 62; y += 2.6) d.push(`<rect x="36" y="${y}" width="48" height="1.3" fill="${jas(k, 0.18)}"/><rect x="36" y="${y + 1.3}" width="48" height="1.3" fill="${ciem(k, 0.18)}"/>`);
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="34" y="35" width="52" height="3" rx="1" fill="${u("alu")}"/>${d.join("")}<rect x="34" y="62" width="52" height="3" rx="1" fill="${u("alu")}"/><path d="M35 22v60M85 22v60" stroke="#555" stroke-width=".4"/><path d="M52 24v-4l-2 2M52 20l2 2M68 76v4l-2-2M68 80l2-2" stroke="#ff9800" stroke-width=".9" fill="none"/>`;
+    },
+    bambusowa: () => {
+      const b = "#b8925a", d = [];
+      for (let y = 20; y < 56; y += 1.6) d.push(`<rect x="34" y="${y}" width="52" height="1.2" fill="${y * 10 % 3 > 1.5 ? jas(b, 0.12) : b}"/>`);
+      return tlo() + okno(32, 18, 56, 66) + `<rect x="31" y="14" width="58" height="5" rx="1" fill="${ciem(b, 0.3)}" filter="${u("cn")}"/>${d.join("")}<path d="M46 19v38M74 19v38" stroke="#6b4a24" stroke-width=".8"/><rect x="33" y="55" width="54" height="3" rx="1.5" fill="${ciem(b, 0.25)}"/>`;
+    },
+    zaslona_wave: (k) => tlo() + okno(32, 18, 56, 66) + `<rect x="10" y="9" width="100" height="3" rx="1" fill="${u("alu")}" filter="${u("cn")}"/>` + [8, 82].map((x0) => `<path d="M${x0} 12${[...Array(5)].map(() => "q3 4 6 0").join("")}V89${[...Array(5)].map(() => "q-3 -2 -6 0").join("").replace(/^/, "")}H${x0}z" fill="${u("tk")}"/>` + [...Array(5)].map((_, i) => `<path d="M${x0 + 3 + i * 6} 14v75" stroke="${ciem(k, 0.3)}" stroke-width="2" opacity=".5"/><path d="M${x0 + 1 + i * 6} 13v76" stroke="${jas(k, 0.3)}" stroke-width="1" opacity=".5"/>`).join("")).join(""),
+    ekran: () => `<rect width="120" height="100" fill="${u("tyn")}"/><rect y="86" width="120" height="14" fill="#a68b6b"/><path d="M0 86h120" stroke="rgba(0,0,0,.2)"/>
+    <g filter="${u("cn")}"><rect x="14" y="8" width="92" height="7" rx="3.5" fill="#26292d"/></g><rect x="18" y="15" width="84" height="54" fill="#1b1d20"/><rect x="21" y="18" width="78" height="44" fill="#fbfbfa"/>
+    <path d="M21 18h78v44z" fill="#000" opacity=".04"/><rect x="18" y="69" width="84" height="2.4" fill="#26292d"/><path d="M32 52l14-14 10 9 8-6 16 11z" fill="#cfe1ee" opacity=".7"/>`
+  };
+  var ZEW = {
+    natynkowa: () => tlo() + okno(32, 26, 56, 60) + cienR(26, 26, 68) + skrzynka(26, 8, 68, 16, 4) + prowadnice(32, 26, 56, 60) + pancerz(32.5, 26, 55, 36),
+    natynkowa_okragla: () => tlo() + okno(32, 26, 56, 60) + cienR(26, 26, 68) + `<g filter="${u("cn")}"><path d="M26 8h58a10 10 0 0 1 10 10v6H26z" fill="${u("met")}"/><path d="M94 8.6l3 1.6v14l-3-.2z" fill="${u("metp")}"/></g>` + prowadnice(32, 26, 56, 60) + pancerz(32.5, 26, 55, 36),
+    ekstrudowana: () => tlo() + okno(32, 26, 56, 60) + cienR(25, 27, 70) + skrzynka(25, 6, 70, 20, 4) + prowadnice(32, 26, 56, 60) + `<rect x="32.5" y="26" width="55" height="44" fill="${u("lamg")}"/><rect x="32.5" y="67" width="55" height="3.4" fill="${u("met")}"/><rect x="32.5" y="70.4" width="55" height="2" fill="rgba(0,0,0,.2)"/>
+    <rect x="55" y="62" width="10" height="2" rx="1" fill="#1a1a1a"/>`,
+    roleta_drzwi: () => tlo() + `<path d="M17 21h86l-5 5H22v62l-5 0z" fill="#cfc6b8"/><rect x="22" y="26" width="76" height="62" fill="#3b3f45"/><rect x="25" y="29" width="34" height="59" fill="${u("nb")}"/><rect x="61" y="29" width="34" height="59" fill="${u("nb")}"/><rect x="25" y="29" width="70" height="59" fill="${u("bl")}"/>
+    <path d="M25 76q20-6 70-2V88H25z" fill="#7da889"/>` + cienR(16, 22, 88) + skrzynka(16, 6, 88, 16, 4) + prowadnice(22, 22, 76, 66) + pancerz(22.5, 22, 75, 34) + `<rect y="88" width="120" height="12" fill="${u("ks")}"/>`,
+    podtynkowa: () => tlo() + `<rect x="27" y="12" width="66" height="13" fill="#d6cec2"/><path d="M27 25h66" stroke="rgba(0,0,0,.25)"/><path d="M27 12h66" stroke="rgba(0,0,0,.12)" stroke-dasharray="2 1.5"/>` + okno(32, 26, 56, 60) + `<rect x="31" y="23" width="58" height="3" fill="${u("met")}"/>` + prowadnice(32, 24, 56, 62) + pancerz(32.5, 24, 55, 38),
+    zewnetrzna: () => tlo() + okno(32, 26, 56, 60) + `<rect x="32" y="12" width="56" height="14" fill="${u("rm")}" filter="${u("cn")}"/><rect x="33" y="24" width="54" height="2" fill="rgba(0,0,0,.15)"/>` + prowadnice(32, 26, 56, 60, "rm") + pancerz(32.5, 26, 55, 34),
+    adaptacyjna: () => tlo() + okno(32, 14, 56, 72) + `<g filter="${u("cn")}"><rect x="32" y="14" width="56" height="12" fill="${u("met")}"/><path d="M32 26h56l-3 3H35z" fill="${u("metp")}"/></g><rect x="34" y="28" width="3.6" height="58" fill="${u("metp")}"/><rect x="82.4" y="28" width="3.6" height="58" fill="${u("metp")}"/>` + pancerz(37.6, 28, 44.8, 30),
+    perforowana: () => {
+      const d = [];
+      for (let y = 27.5; y < 70; y += 3.6) for (let x = 34; x < 87; x += 2.6) d.push(`<rect x="${x}" y="${y}" width=".9" height=".9" fill="#cfe9f8" opacity=".85"/>`);
+      return tlo() + okno(32, 26, 56, 60) + skrzynka(26, 8, 68, 16, 4) + prowadnice(32, 26, 56, 60) + pancerz(32.5, 26, 55, 46) + d.join("");
+    },
+    roleta_moskitiera: () => tlo() + okno(32, 26, 56, 60) + skrzynka(26, 8, 68, 16, 4) + prowadnice(32, 26, 56, 60) + pancerz(32.5, 26, 55, 20) + `<rect x="32.5" y="48" width="55" height="22" fill="${u("sia")}"/><rect x="32.5" y="48" width="55" height="22" fill="#1d2329" opacity=".18"/><rect x="32.5" y="70" width="55" height="2.4" fill="${u("alu")}"/>`,
+    fasadowa: (k) => {
+      const d = [];
+      for (let y = 25; y < 66; y += 4.2) d.push(`<path d="M31 ${y + 2.6}q29 -3.4 58 0v-1q-29 -3.6 -58 0z" fill="${jas(k, 0.25)}"/><path d="M31 ${y + 2.6}q29 -3.4 58 0v1.2q-29 -3.2 -58 0z" fill="${ciem(k, 0.2)}"/>`);
+      return tlo() + okno(32, 26, 56, 60) + `<rect x="27" y="15" width="66" height="9" fill="${u("alu")}" filter="${u("cn")}"/>${d.join("")}<rect x="27" y="22" width="3.4" height="64" fill="${u("alup")}"/><rect x="90" y="22" width="3.4" height="64" fill="${u("alup")}"/>
+      <path d="M45 24v44M75 24v44" stroke="#222" stroke-width=".45"/><rect x="30" y="68" width="60" height="3.2" fill="${u("met")}"/>`;
+    },
+    fasadowa_f80: (k) => {
+      const d = [];
+      for (let y = 25; y < 66; y += 4.2) d.push(`<rect x="31" y="${y}" width="58" height="3" fill="${u("met")}"/><path d="M31 ${y + 3}h58" stroke="${ciem(k, 0.5)}" stroke-width=".5"/>`);
+      return tlo() + okno(32, 26, 56, 60) + cienR(27, 24, 66) + `<rect x="27" y="15" width="66" height="9" fill="${u("alu")}" filter="${u("cn")}"/>${d.join("")}<rect x="27" y="22" width="3.4" height="64" fill="${u("alup")}"/><rect x="90" y="22" width="3.4" height="64" fill="${u("alup")}"/><rect x="30" y="68" width="60" height="3.2" fill="${u("met")}"/>`;
+    },
+    fasadowaz: (k) => {
+      const d = [];
+      for (let y = 25; y < 66; y += 4.2) d.push(`<path d="M31 ${y}h58v1.8l-2 1.6H31z" fill="${jas(k, 0.2)}"/><path d="M31 ${y + 3.4}h56l2-1.6" stroke="${ciem(k, 0.45)}" stroke-width=".6" fill="none"/>`);
+      return tlo() + okno(32, 26, 56, 60) + `<rect x="27" y="15" width="66" height="9" fill="${u("alu")}" filter="${u("cn")}"/>${d.join("")}<rect x="27" y="22" width="3.4" height="64" fill="${u("alup")}"/><rect x="90" y="22" width="3.4" height="64" fill="${u("alup")}"/><rect x="30" y="68" width="60" height="3.2" fill="${u("met")}"/>`;
+    },
+    screen: () => tlo() + okno(32, 26, 56, 60) + `<g filter="${u("cn")}"><rect x="27" y="12" width="66" height="13" rx="3" fill="${u("met")}"/></g>
+    <rect x="32" y="25" width="56" height="44" fill="${u("tkv")}" opacity=".88"/><rect x="32" y="25" width="56" height="44" fill="${u("sia")}" opacity=".5"/>
+    <rect x="27" y="25" width="5" height="61" fill="${u("metp")}"/><rect x="88" y="25" width="5" height="61" fill="${u("metp")}"/><rect x="31" y="69" width="58" height="3" fill="${u("met")}"/>
+    <path d="M32 25v44M88 25v44" stroke="#111" stroke-width="1.2" stroke-dasharray=".7 .7"/>`,
+    okiennice_przesuwne: () => {
+      const dr = "#8a5a34", sk = (x) => `<rect x="${x}" y="22" width="27" height="64" fill="${dr}" stroke="${ciem(dr, 0.4)}" stroke-width="1"/>` + [...Array(13)].map((_, i) => `<path d="M${x + 2} ${25 + i * 4.6}h23l-1 2.4H${x + 3}z" fill="${jas(dr, 0.18)}"/>`).join("");
+      return tlo() + okno(32, 22, 56, 64) + `<rect x="6" y="16" width="108" height="3" fill="${u("met")}"/><g filter="${u("cn")}">${sk(8)}${sk(62)}</g><path d="M8 19h106" stroke="#222" stroke-width=".5"/>`;
+    },
+    markizoleta: (k) => tlo() + okno(32, 26, 56, 60) + cienR(26, 26, 68) + `<g filter="${u("cn")}"><rect x="26" y="12" width="68" height="12" rx="3" fill="${u("met")}"/></g><rect x="27" y="24" width="4" height="34" fill="${u("metp")}"/><rect x="89" y="24" width="4" height="34" fill="${u("metp")}"/>
+    <rect x="31" y="24" width="58" height="34" fill="${u("tkv")}" opacity=".9"/><path d="M31 58h58l12 18H19z" fill="${u("tkv")}"/>${pasyM(31, 89, 58, 76, 12, k)}<rect x="18" y="76" width="84" height="3" fill="${u("met")}"/><path d="M29 58l-10 18M91 58l10 18" stroke="${u("alup")}" stroke-width="2"/>`,
+    okiennice: () => {
+      const dr = "#3f6b4f", sk = (x, w) => `<rect x="${x}" y="22" width="${w}" height="64" fill="${dr}" stroke="${ciem(dr, 0.4)}" stroke-width="1.2"/>` + [...Array(13)].map((_, i) => `<path d="M${x + 2} ${25 + i * 4.6}h${w - 4}l-1 2.4H${x + 3}z" fill="${jas(dr, 0.2)}"/><path d="M${x + 2} ${27.4 + i * 4.6}h${w - 4}" stroke="${ciem(dr, 0.45)}" stroke-width=".5"/>`).join("") + `<rect x="${x}" y="52" width="${w}" height="3" fill="${ciem(dr, 0.2)}"/>`;
+      return tlo() + okno(32, 22, 56, 64) + `<g filter="${u("cn")}">${sk(14, 18)}${sk(88, 18)}</g><circle cx="33" cy="30" r="1" fill="#222"/><circle cx="33" cy="78" r="1" fill="#222"/><circle cx="87" cy="30" r="1" fill="#222"/><circle cx="87" cy="78" r="1" fill="#222"/>
+      <path d="M32 52h8M80 52h8" stroke="#666" stroke-width="1.6"/>`;
     }
   };
+  var dach = (s) => `<rect width="120" height="100" fill="${u("dh")}"/>${[...Array(12)].map((_, i) => `<path d="M0 ${4 + i * 8.4}h120" stroke="#5c2a1d" stroke-width="1.6"/><path d="M0 ${5.4 + i * 8.4}h120" stroke="#b9694c" stroke-width=".6"/>`).join("")}
+  <path d="M28 12h64l7 80H21z" fill="#3b3f45"/><path d="M31 15h58l6 74H25z" fill="${u("rm")}"/><path d="M35 19h50l5 66H30z" fill="${u("nb")}"/><path d="M35 19h50l5 66H30z" fill="${u("bl")}"/>${s}`;
+  var oknoD = (fr, drewno) => {
+    const g = `<linearGradient id="${P}od" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${jas(fr, 0.22)}"/><stop offset=".55" stop-color="${fr}"/><stop offset="1" stop-color="${ciem(fr, 0.2)}"/></linearGradient>
+    <filter id="${P}sl" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".02 .9" numOctaves="3" seed="7"/><feColorMatrix values="0 0 0 0 .25  0 0 0 0 .13  0 0 0 0 .02  0 0 0 .55 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+    <pattern id="${P}spl" width="1.4" height="1.4" patternUnits="userSpaceOnUse"><path d="M0 .35h1.4M.35 0v1.4" stroke="#fff" stroke-width=".35" opacity=".18"/><path d="M0 1.05h1.4M1.05 0v1.4" stroke="#000" stroke-width=".35" opacity=".14"/></pattern>`;
+    const sl = drewno ? `<rect x="22" y="6" width="76" height="90" fill="#fff" filter="${u("sl")}"/>` : "";
+    return tlo() + `<defs>${g}</defs><path d="M10 0h100l-12 6H22z" fill="#d5ccbf"/><path d="M10 0l12 6v90l-12 4z" fill="#e4ddd2"/><path d="M110 0l-12 6v90l12 4z" fill="#cfc6b8"/><path d="M10 100l12-4h76l12 4z" fill="#c6bdaf"/>
+    <g filter="${u("cn")}"><rect x="22" y="6" width="76" height="90" fill="${u("od")}"/>${sl}<rect x="22" y="6" width="76" height="90" fill="none" stroke="${ciem(fr, 0.35)}" stroke-width=".6"/>
+    <rect x="28" y="12" width="64" height="78" fill="${ciem(fr, 0.1)}"/><rect x="29" y="13" width="62" height="76" fill="${u("od")}"/>${drewno ? `<rect x="29" y="13" width="62" height="76" fill="#fff" filter="${u("sl")}"/>` : ""}</g>
+    <rect x="33" y="17" width="54" height="68" fill="${u("nb")}"/><path d="M33 64q14-7 30-4t24-2V85H33z" fill="#86ad8f"/><path d="M33 74q22-5 54-1V85H33z" fill="#5e8f6b"/><rect x="33" y="17" width="54" height="68" fill="${u("bl")}"/>
+    <rect x="33" y="17" width="54" height="1.6" fill="rgba(0,0,0,.25)"/><rect x="48" y="9" width="24" height="2.6" rx="1.3" fill="#d4d8dc" stroke="${CIEN}" stroke-width=".4"/>`;
+  };
+  var prowD = (c = "#e6e7e8") => `<rect x="31" y="17" width="2.4" height="68" fill="${c}" stroke="${CIEN}" stroke-width=".3"/><rect x="86.6" y="17" width="2.4" height="68" fill="${c}" stroke="${CIEN}" stroke-width=".3"/>`;
+  var belkaD = (y, c = "#e6e7e8") => `<rect x="31" y="${y}" width="58" height="3.2" rx=".8" fill="${c}" stroke="${CIEN}" stroke-width=".3"/><rect x="56" y="${y + 3.2}" width="8" height="1.6" rx=".8" fill="#9aa1a9"/>`;
+  var SOSNA = "#d29b55";
+  var BIALA = "#f3f3f1";
+  var SZARA = "#7e858c";
+  var ORZECH = "#734322";
+  var DACH = {
+    // zaciemniająca: granatowa tkanina na całej szybie, prowadnice, kaseta
+    dach_dkl: () => oknoD(SOSNA, 1) + `<rect x="31" y="14" width="58" height="5" rx="1" fill="#eceded" stroke="${CIEN}" stroke-width=".3"/>${prowD()}
+    <rect x="33.4" y="19" width="53.2" height="52" fill="#15213d"/><rect x="33.4" y="19" width="53.2" height="52" fill="url(#${P}spl)"/><path d="M33.4 19h53.2v52H33.4z" fill="${u("bl")}" opacity=".35"/>${belkaD(71)}`,
+    // solarna zewnętrzna: kaseta z panelem fotowoltaicznym, metalowe lamele na zewnątrz, widoczna przez szybę
+    dach_ssl: () => oknoD(SZARA, 0) + `<g filter="${u("cn")}"><rect x="18" y="0" width="84" height="14" rx="1.5" fill="${u("met")}"/><rect x="24" y="2" width="72" height="8.4" fill="#0f1d36"/>
+    ${[...Array(12)].map((_, i) => `<path d="M${24 + i * 6} 2v8.4" stroke="#3d5d8f" stroke-width=".45"/>`).join("")}<path d="M24 6.2h72" stroke="#3d5d8f" stroke-width=".45"/><path d="M24 2l20 8.4" stroke="#fff" stroke-width="1.2" opacity=".18"/></g>
+    ${[...Array(12)].map((_, i) => `<rect x="33" y="${17 + i * 3.6}" width="54" height="3.6" fill="${u("met")}"/><path d="M33 ${20.6 + i * 3.6}h54" stroke="#1f2226" stroke-width=".5"/>`).join("")}<rect x="33" y="60" width="54" height="2.4" fill="#2a2d31"/>`,
+    // rzymska: lniane fałdy z cieniem między nimi
+    dach_fhb: (k) => {
+      const len = "#cdbfa6";
+      return oknoD(BIALA, 0) + `<rect x="31" y="14" width="58" height="4" rx="1" fill="#e6e7e8"/><rect x="32" y="18" width="56" height="14" fill="${len}"/><rect x="32" y="18" width="56" height="14" fill="url(#${P}spl)"/>
+    ${[0, 1, 2, 3].map((i) => `<path d="M32 ${32 + i * 6}q28 ${6 - i} 56 0v-6.4q-28 ${5 - i} -56 0z" fill="${ciem(len, 0.05 + i * 0.06)}"/><path d="M32 ${32 + i * 6}q28 ${6 - i} 56 0v-6.4q-28 ${5 - i} -56 0z" fill="url(#${P}spl)"/>
+      <path d="M32 ${32 + i * 6}q28 ${6 - i} 56 0" stroke="${jas(len, 0.35)}" stroke-width=".8" fill="none"/><path d="M32 ${33.2 + i * 6}q28 ${5 - i} 56 0" stroke="rgba(0,0,0,.25)" stroke-width=".8" fill="none"/>`).join("")}`;
+    },
+    // markiza solarna: siatka na zewnątrz, odsunięta od szyby na ramionach, panel w kasecie
+    dach_msl: () => oknoD(BIALA, 0) + `<path d="M33 17h54v40H33z" fill="#000" opacity=".22"/><g filter="${u("cn")}"><rect x="16" y="0" width="88" height="8" rx="2" fill="#2a2d31"/><rect x="20" y="1.6" width="26" height="4.4" fill="#0f1d36"/>${[...Array(5)].map((_, i) => `<path d="M${20 + i * 5.2} 1.6v4.4" stroke="#3d5d8f" stroke-width=".4"/>`).join("")}
+    <path d="M20 8h80l10 40H10z" fill="#2b2f33" opacity=".86"/><path d="M20 8h80l10 40H10z" fill="${u("sia")}"/><rect x="9" y="48" width="102" height="3" rx="1" fill="#2a2d31"/></g><path d="M18 8L9 48M102 8l9 40" stroke="#3a3e43" stroke-width="2.4"/>`,
+    // żaluzja: białe lamele 3D z drabinkami
+    dach_pal: () => oknoD(BIALA, 0) + `<rect x="31" y="14" width="58" height="4" rx="1" fill="${u("alu")}"/>${prowD()}${[...Array(19)].map((_, i) => `<path d="M33.4 ${18.6 + i * 3.4}h53.2l-1 2.2H34.4z" fill="#fdfdfd"/><path d="M34.4 ${20.8 + i * 3.4}h51.2" stroke="#a9adb2" stroke-width=".55"/><path d="M33.4 ${18.6 + i * 3.4}h53.2" stroke="#fff" stroke-width=".4"/>`).join("")}
+    <path d="M46 18v66M74 18v66" stroke="#d9d9d9" stroke-width=".5"/>${belkaD(82, "#f6f6f6")}`,
+    // plisowana: kremowa plisa w środku szyby, wyraźny zygzak i linki
+    dach_fhl: () => {
+      const c = "#f3ecdc";
+      return oknoD(ORZECH, 1) + prowD("#c9a27a") + belkaD(36, "#d9d6d0") + [...Array(11)].map((_, i) => `<path d="M33.4 ${39.2 + i * 2.8}h53.2v1.4H33.4z" fill="${c}"/><path d="M33.4 ${40.6 + i * 2.8}h53.2v1.4H33.4z" fill="${ciem(c, 0.14)}"/>`).join("") + `<path d="M34.6 39.2${[...Array(11)].map((_, i) => `l${i % 2 ? 1.2 : -1.2} 2.8`).join("")}M85.4 39.2${[...Array(11)].map((_, i) => `l${i % 2 ? -1.2 : 1.2} 2.8`).join("")}" stroke="${ciem(c, 0.35)}" stroke-width=".5" fill="none"/>
+    <path d="M44 39v31M76 39v31" stroke="#9b968c" stroke-width=".3"/>${belkaD(70, "#d9d6d0")}`;
+    },
+    // dzień/noc w kasecie: pasy pełne i przezroczyste w dwóch warstwach
+    dach_dn: () => {
+      const c = "#9ea2a6";
+      return oknoD(SOSNA, 1) + `<rect x="31" y="13" width="58" height="6.4" rx="1.6" fill="${u("alu")}" filter="${u("cn")}"/>${prowD()}` + [...Array(7)].map((_, i) => `<rect x="33.4" y="${19.4 + i * 7.6}" width="53.2" height="4.2" fill="${c}"/><rect x="33.4" y="${19.4 + i * 7.6}" width="53.2" height="4.2" fill="url(#${P}spl)"/><rect x="33.4" y="${23.6 + i * 7.6}" width="53.2" height="3.4" fill="#fff" opacity=".35"/>`).join("") + belkaD(72);
+    },
+    dachowa: () => dach(`<g filter="${u("cn")}"><path d="M29 7h62l2 9H27z" fill="${u("met")}"/></g><path d="M33 16h54l3.8 46H29.2z" fill="${u("lam")}"/><path d="M29.2 62h61.6l.4 3H28.8z" fill="${u("met")}"/>
+    <path d="M33 16l-3.8 46M87 16l3.8 46" stroke="#2a2d31" stroke-width="2.2"/>`),
+    markizeta_dach: () => dach(`<path d="M30 13h60v4H30z" fill="${u("alu")}"/><path d="M33 17h54l4 50H29z" fill="${u("tkv")}" opacity=".85"/><path d="M33 17h54l4 50H29z" fill="${u("sia")}" opacity=".6"/><path d="M28.6 67h62.8v2.6H28.6z" fill="${u("alu")}"/>`),
+    dachowa_plisa: (k) => `<rect width="120" height="100" fill="#f1ece4"/><path d="M0 0h120v20L0 34z" fill="#e3dccf"/><path d="M26 10h68l9 84H17z" fill="#d6cdbe"/><path d="M30 14h60l8 76H22z" fill="${u("rm")}" filter="${u("cn")}"/><path d="M34 18h52l7 68H27z" fill="${u("nb")}"/>
+    ${[...Array(14)].map((_, i) => `<path d="M${33.6 - i * 0.26} ${30 + i * 2.6}h${52.8 + i * 0.52}l-.1 1.3H${33.5 - i * 0.26}z" fill="${jas(k, 0.2)}"/><path d="M${33.4 - i * 0.26} ${31.3 + i * 2.6}h${53.2 + i * 0.52}" stroke="${ciem(k, 0.25)}" stroke-width="1.2"/>`).join("")}
+    <path d="M33 28h54v2H33z" fill="${u("alu")}"/><path d="M29.6 66.4h60.8v2.4H29.6z" fill="${u("alu")}"/><path d="M32 18l-4.6 68M88 18l4.6 68" stroke="#9aa1a9" stroke-width="1.6"/>`,
+    dachowa_zaluzja: (k) => `<rect width="120" height="100" fill="#f1ece4"/><path d="M0 0h120v20L0 34z" fill="#e3dccf"/><path d="M26 10h68l9 84H17z" fill="#d6cdbe"/><path d="M30 14h60l8 76H22z" fill="${u("rm")}" filter="${u("cn")}"/><path d="M34 18h52l7 68H27z" fill="${u("nb")}"/>
+    ${[...Array(19)].map((_, i) => `<path d="M${34 - i * 0.37} ${20 + i * 3.4}h${52 + i * 0.74}l-.6 1.8H${34.6 - i * 0.37}z" fill="${jas(k, 0.35)}"/><path d="M${34.6 - i * 0.37} ${21.8 + i * 3.4}h${50.8 + i * 0.74}" stroke="${ciem(k, 0.3)}" stroke-width=".4"/>`).join("")}
+    <path d="M32 18l-4.6 68M88 18l4.6 68" stroke="#9aa1a9" stroke-width="1.6"/>`,
+    dachowa_wew: () => `<rect width="120" height="100" fill="#f1ece4"/><path d="M0 0h120v20L0 34z" fill="#e3dccf"/><path d="M26 10h68l9 84H17z" fill="#d6cdbe"/><path d="M30 14h60l8 76H22z" fill="${u("rm")}" filter="${u("cn")}"/><path d="M34 18h52l7 68H27z" fill="${u("nb")}"/>
+    <path d="M34 18h52l3.6 36H30.4z" fill="${u("tk")}"/><path d="M30 54h60v3H30z" fill="${u("alu")}"/><path d="M32 18l-4.6 68M88 18l4.6 68" stroke="#9aa1a9" stroke-width="1.6"/>`
+  };
+  var elewacja = (niebo = false) => `<rect width="120" height="100" fill="${niebo ? "#cfe8f6" : u("tyn")}"/>${niebo ? `<rect width="120" height="62" fill="${u("nb")}"/>` : ""}
+  <path d="M0 80h120v20H0z" fill="${u("ks")}"/>${[...Array(9)].map((_, i) => `<path d="M${i * 15 - 6} 100l${8 + i} -20" stroke="#7d766b" stroke-width=".6"/>`).join("")}<path d="M0 86h120M0 93h120" stroke="#7d766b" stroke-width=".5"/>`;
+  var drzwi = (x = 34, w = 52) => `<rect x="${x}" y="40" width="${w}" height="40" fill="#3b3f45"/><rect x="${x + 2}" y="42" width="${w / 2 - 3}" height="38" fill="${u("nb")}"/><rect x="${x + w / 2 + 1}" y="42" width="${w / 2 - 3}" height="38" fill="${u("nb")}"/><rect x="${x + 2}" y="42" width="${w - 4}" height="38" fill="${u("bl")}"/>`;
+  var pasyM = (x1, x2, y1, y2, d, k) => [...Array(10)].map((_, i) => `<path d="M${x1 + i * (x2 - x1) / 10} ${y1}L${x1 - d + i * (x2 - x1 + 2 * d) / 10} ${y2}" stroke="${ciem(k, 0.2)}" stroke-width=".5"/>`).join("");
+  var balustrada = () => `<rect x="0" y="62" width="120" height="3" fill="#8a8f96"/>${[...Array(14)].map((_, i) => `<path d="M${4 + i * 8.5} 65v15" stroke="#8a8f96" stroke-width="1.4"/>`).join("")}`;
+  var TARAS = {
+    markiza: (k) => elewacja() + drzwi() + cienR(4, 58, 112, 12) + `<g filter="${u("cn")}"><rect x="12" y="16" width="96" height="7" rx="3.5" fill="${u("alu")}"/></g><path d="M14 23h92l10 28H4z" fill="${u("tkv")}"/>${pasyM(14, 106, 23, 51, 10, k)}
+    <path d="M4 51h112v4H4z" fill="${ciem(k, 0.15)}"/>${[...Array(19)].map((_, i) => `<path d="M${4 + i * 6} 55q3 3 6 0" fill="${ciem(k, 0.15)}"/>`).join("")}
+    <path d="M26 23l14 20 10 -16M94 23l-14 20-10 -16" stroke="#e1e4e8" stroke-width="1.8" fill="none" opacity=".85"/><path d="M4 82h112" stroke="rgba(0,0,0,.12)" stroke-width="8"/>`,
+    markiza_otwarta: (k) => elewacja() + drzwi() + cienR(4, 56, 112, 12) + `<g filter="${u("cn")}"><rect x="12" y="14" width="96" height="3" fill="${u("alu")}"/><rect x="14" y="17" width="92" height="6" rx="3" fill="${u("tk")}"/><rect x="14" y="17" width="92" height="2" rx="1" fill="#fff" opacity=".25"/></g>
+    <path d="M14 23h92l10 28H4z" fill="${u("tkv")}"/>${pasyM(14, 106, 23, 51, 10, k)}<rect x="4" y="51" width="112" height="3" rx="1" fill="${u("alu")}"/><path d="M26 23l14 20 10 -16M94 23l-14 20-10 -16" stroke="#e1e4e8" stroke-width="1.8" fill="none" opacity=".85"/>`,
+    markiza_polkasetowa: (k) => elewacja() + drzwi() + cienR(4, 56, 112, 12) + `<g filter="${u("cn")}"><path d="M10 12h100v6l-4 6H14l-4-6z" fill="${u("met")}"/></g><rect x="14" y="20" width="92" height="5" rx="2.5" fill="${u("tk")}"/>
+    <path d="M14 24h92l10 27H4z" fill="${u("tkv")}"/>${pasyM(14, 106, 24, 51, 10, k)}<rect x="4" y="51" width="112" height="3.4" rx="1" fill="${u("met")}"/>`,
+    markiza_volant: (k) => elewacja() + drzwi() + `<g filter="${u("cn")}"><path d="M10 12h100v9l-5 4H15l-5-4z" fill="${u("met")}"/></g><path d="M15 25h90l10 22H5z" fill="${u("tkv")}"/>${pasyM(15, 105, 25, 47, 10, k)}
+    <rect x="4" y="47" width="112" height="4" rx="1.2" fill="${u("met")}"/><rect x="6" y="51" width="108" height="16" fill="${u("tk")}" opacity=".92"/><rect x="6" y="51" width="108" height="16" fill="${u("sia")}" opacity=".3"/><rect x="6" y="67" width="108" height="2" fill="${u("met")}"/>`,
+    markiza_wolnostojaca: (k) => `<rect width="120" height="100" fill="${u("nb")}"/><path d="M0 58q30-8 60-4t60-2V100H0z" fill="#7da889"/><path d="M0 74q40-6 120-2V100H0z" fill="#5e8f6b"/>
+    <g filter="${u("cn")}"><rect x="56" y="14" width="8" height="8" rx="2" fill="${u("met")}"/><path d="M60 22L14 40h92z" fill="${u("tkv")}"/></g>${pasyM(58, 62, 22, 40, 46, k)}<rect x="12" y="40" width="96" height="3" rx="1" fill="${u("met")}"/>
+    <rect x="22" y="40" width="3" height="44" fill="${u("metp")}"/><rect x="95" y="40" width="3" height="44" fill="${u("metp")}"/><rect x="58.5" y="22" width="3" height="62" fill="${u("metp")}"/><path d="M16 85h88" stroke="rgba(0,0,0,.2)" stroke-width="3"/>`,
+    markiza_koszowa: (k) => elewacja() + `<rect x="36" y="38" width="48" height="42" fill="#3b3f45"/><rect x="38" y="40" width="44" height="40" fill="${u("nb")}"/><rect x="38" y="40" width="44" height="40" fill="${u("bl")}"/>` + cienR(28, 52, 64, 10) + `<g filter="${u("cn")}"><path d="M28 50V34a32 22 0 0 1 64 0v16z" fill="${u("tkv")}"/></g>${[0, 1, 2, 3, 4].map((i) => `<path d="M60 12q${-32 + i * 16} 6 ${-32 + i * 16} 38" stroke="${ciem(k, 0.3)}" stroke-width=".8" fill="none"/>`).join("")}
+    <path d="M28 50h64" stroke="${ciem(k, 0.3)}" stroke-width="1.6"/>${[...Array(11)].map((_, i) => `<path d="M${28 + i * 5.8} 50q2.9 3 5.8 0" fill="${ciem(k, 0.15)}"/>`).join("")}`,
+    markiza_zimowa: (k) => elewacja(true) + `<path d="M0 30h22v52H0z" fill="${u("tyn")}"/><path d="M22 30l90 18v34H22z" fill="#d6ecf7" opacity=".55"/>${[0, 1, 2, 3, 4].map((i) => `<path d="M${22 + i * 22.5} ${30 + i * 4.5}v${52 - i * 4.5}" stroke="#eef0f2" stroke-width="1.6"/>`).join("")}
+    <g filter="${u("cn")}"><path d="M22 26l90 18v4L22 30z" fill="${u("met")}"/><path d="M24 28.4l86 17.2-8 -1.6-78 -15.6z" fill="${u("tk")}"/><path d="M22 30.4l84 16.8 0 2.4-84-16.8z" fill="${u("tk")}"/></g><path d="M112 44v40" stroke="${u("alup")}" stroke-width="3"/>`,
+    markiza_kasetowa: (k) => elewacja() + drzwi() + `<g filter="${u("cn")}"><path d="M10 13h100v9l-5 4H15l-5-4z" fill="${u("met")}"/></g><path d="M15 26h90l10 26H5z" fill="${u("tkv")}"/>${pasyM(15, 105, 26, 52, 10, k)}
+    <rect x="4" y="52" width="112" height="4.4" rx="1.2" fill="${u("met")}"/><path d="M4 82h112" stroke="rgba(0,0,0,.12)" stroke-width="8"/>`,
+    markizeta: (k) => elewacja() + `<rect x="36" y="36" width="48" height="40" fill="#3b3f45"/><rect x="38" y="38" width="44" height="38" fill="${u("nb")}"/><rect x="38" y="38" width="44" height="38" fill="${u("bl")}"/>
+    <g filter="${u("cn")}"><rect x="34" y="28" width="52" height="6" rx="2" fill="${u("met")}"/></g><path d="M35 34h50l9 20H26z" fill="${u("tkv")}"/>${pasyM(35, 85, 34, 54, 9, k)}<rect x="25" y="54" width="70" height="3" fill="${u("met")}"/>
+    <path d="M37 64l-11-10M83 64l11-10" stroke="#9aa1a9" stroke-width="1.8"/><circle cx="37" cy="64" r="1.6" fill="#555"/><circle cx="83" cy="64" r="1.6" fill="#555"/>`,
+    markiza_balkonowa: (k) => elewacja(true) + balustrada() + `<rect x="16.3" y="6" width="3.4" height="76" fill="${u("alup")}"/><rect x="100.3" y="6" width="3.4" height="76" fill="${u("alup")}"/><rect x="16" y="14" width="88" height="5" rx="2" fill="${u("alu")}"/><path d="M18 19h84l10 20H8z" fill="${u("tkv")}"/>${pasyM(18, 102, 19, 39, 10, k)}<rect x="8" y="39" width="104" height="3" fill="${ciem(k, 0.15)}"/>`,
+    markiza_pionowa: () => elewacja(true) + balustrada() + `<g filter="${u("cn")}"><rect x="18" y="8" width="84" height="7" rx="3.5" fill="${u("met")}"/></g><rect x="20" y="15" width="80" height="50" fill="${u("tk")}"/><rect x="19" y="65" width="82" height="3.4" rx="1.4" fill="${u("met")}"/><path d="M23 68l-2 8M97 68l2 8" stroke="#555" stroke-width=".8"/>`,
+    markiza_boczna: () => elewacja(true) + `<rect x="0" y="10" width="16" height="70" fill="${u("tyn")}"/><g filter="${u("cn")}"><rect x="14" y="22" width="7" height="56" rx="3.5" fill="${u("met")}"/></g>
+    <path d="M21 26h82v46H21z" fill="${u("tk")}"/><rect x="101" y="24" width="4.4" height="54" rx="1" fill="${u("met")}"/><path d="M99 79h10" stroke="#333" stroke-width="2"/>`,
+    pergola: (k) => elewacja(true) + `<g filter="${u("cn")}"><path d="M6 24h108v6H6z" fill="${u("met")}"/></g>${[...Array(14)].map((_, i) => `<path d="M${9 + i * 7.6} 30l3.4 7" stroke="${jas(k, 0.3)}" stroke-width="2.4"/><path d="M${10.5 + i * 7.6} 30l3.4 7" stroke="${ciem(k, 0.3)}" stroke-width=".8"/>`).join("")}
+    <path d="M8 30h104l-2 8H10z" fill="${ciem(k, 0.2)}" opacity=".45"/><rect x="9" y="30" width="6" height="52" fill="${u("metp")}"/><rect x="105" y="30" width="6" height="52" fill="${u("metp")}"/><rect x="15" y="38" width="90" height="42" fill="#e8f2f7" opacity=".25"/>
+    <path d="M4 83h112" stroke="rgba(0,0,0,.15)" stroke-width="4"/>`,
+    pergola_tkanina: (k) => elewacja(true) + `<g filter="${u("cn")}"><path d="M6 24h108v6H6z" fill="${u("met")}"/></g>${[...Array(6)].map((_, i) => `<path d="M${10 + i * 17} 30q8.5 7 17 0" fill="${jas(k, i % 2 ? 0.1 : 0.25)}" stroke="${ciem(k, 0.25)}" stroke-width=".5"/>`).join("")}
+    <rect x="9" y="30" width="6" height="52" fill="${u("metp")}"/><rect x="105" y="30" width="6" height="52" fill="${u("metp")}"/><rect x="15" y="40" width="90" height="40" fill="#e8f2f7" opacity=".2"/><path d="M4 83h112" stroke="rgba(0,0,0,.15)" stroke-width="4"/>`,
+    zagiel: (k) => `<rect width="120" height="100" fill="${u("nb")}"/><path d="M0 66q40-6 120-2V100H0z" fill="#7da889"/><rect y="80" width="120" height="20" fill="${u("ks")}"/>
+    <rect x="6" y="14" width="3" height="70" fill="${u("metp")}"/><rect x="110" y="24" width="3" height="60" fill="${u("metp")}"/><rect x="58" y="10" width="3" height="74" fill="${u("metp")}"/>
+    <g filter="${u("cn")}"><path d="M8 18L60 12L111 28L60 40z" fill="${u("tkv")}"/><path d="M8 18q26 10 52 22q26-6 51-12" stroke="${ciem(k, 0.25)}" stroke-width=".7" fill="none"/></g><rect x="4" y="16" width="7" height="5" rx="2" fill="#333"/>`,
+    parasol: (k) => `<rect width="120" height="100" fill="${u("nb")}"/><path d="M0 66q40-6 120-2V100H0z" fill="#7da889"/><rect y="82" width="120" height="18" fill="${u("ks")}"/>
+    <g filter="${u("cn")}"><path d="M10 34Q60 0 110 34z" fill="${u("tkv")}"/>${[...Array(8)].map((_, i) => `<path d="M60 14L${10 + i * 14.3} 34" stroke="${ciem(k, 0.25)}" stroke-width=".8"/>`).join("")}${[...Array(8)].map((_, i) => `<path d="M${10 + i * 12.5} 34q3.1 3 6.2 0" fill="${ciem(k, 0.15)}"/>`).join("")}</g>
+    <rect x="58.6" y="14" width="2.8" height="68" fill="${u("alup")}"/><path d="M44 86h32l-4-4H48z" fill="#555"/><rect x="56" y="58" width="8" height="6" rx="1" fill="#333"/>`,
+    zadaszenie: () => elewacja() + drzwi() + `<path d="M6 20h108l-10 16H16z" fill="#d6ecf7" opacity=".85"/><path d="M6 20h108l-10 16H16z" fill="${u("tkv")}" opacity=".55"/>${[...Array(7)].map((_, i) => `<path d="M${8 + i * 17.3} 20l${5 - i * 1.6} 16" stroke="#c3c8ce" stroke-width="1.6"/>`).join("")}
+    <rect x="15" y="36" width="90" height="2.6" fill="${u("alu")}"/><rect x="17" y="38" width="3.4" height="44" fill="${u("alup")}"/><rect x="100" y="38" width="3.4" height="44" fill="${u("alup")}"/>`,
+    screen_taras: () => elewacja() + drzwi() + `<g filter="${u("cn")}"><rect x="6" y="20" width="108" height="7" rx="2" fill="${u("met")}"/></g><rect x="6" y="27" width="5" height="55" fill="${u("metp")}"/><rect x="109" y="27" width="5" height="55" fill="${u("metp")}"/>
+    <rect x="11" y="27" width="98" height="40" fill="${u("tkv")}" opacity=".85"/><rect x="11" y="27" width="98" height="40" fill="${u("sia")}" opacity=".45"/><rect x="11" y="67" width="98" height="3" fill="${u("met")}"/>`
+  };
+  var OKNA = {
+    okno_silownik: () => tlo() + `<path d="M27 13h66l-5 5H32v68l-5 5z" fill="#cfc6b8"/><rect x="32" y="18" width="56" height="68" fill="${u("rm")}"/><rect x="36" y="22" width="48" height="60" fill="#5c6670"/>
+    <g filter="${u("cn")}"><path d="M35 21h50l6 52H29z" fill="${u("rm")}"/><path d="M39 25h42l5 44H34z" fill="${u("nb")}"/><path d="M39 25h42l5 44H34z" fill="${u("bl")}"/></g>
+    <rect x="52" y="78" width="16" height="5" rx="1" fill="#9aa1a9"/><path d="M60 78v-8" stroke="#555" stroke-width="2" stroke-dasharray="1.2 .6"/><path d="M25 86h70l-2 4H27z" fill="#f4f2ee"/>`,
+    okno_dachowe: () => `<rect width="120" height="100" fill="${u("dh")}"/>${[...Array(12)].map((_, i) => `<path d="M0 ${4 + i * 8.4}h120" stroke="#5c2a1d" stroke-width="1.6"/><path d="M0 ${5.4 + i * 8.4}h120" stroke="#b9694c" stroke-width=".6"/>`).join("")}
+    <path d="M28 20h64l7 72H21z" fill="#3b3f45"/><path d="M32 24h56l6 64H26z" fill="#25282c"/><g filter="${u("cn")}"><path d="M30 8h60l8 60H22z" fill="#3b3f45"/><path d="M34 12h52l6.6 52H27.4z" fill="${u("nb")}"/><path d="M34 12h52l6.6 52H27.4z" fill="${u("bl")}"/></g>
+    <path d="M60 68v14" stroke="#9aa1a9" stroke-width="2.4"/>`,
+    okno_plaskie: () => `<rect width="120" height="100" fill="${u("nb")}"/><path d="M0 50h120v50H0z" fill="#8f949a"/>${[...Array(6)].map((_, i) => `<path d="M0 ${58 + i * 7}h120" stroke="#9ea3a8" stroke-width=".4"/>`).join("")}
+    <path d="M26 62h68l-4 18H30z" fill="#e8e8e6" stroke="${CIEN}"/><g filter="${u("cn")}"><path d="M30 60l34 -18 32 14 -2 4z" fill="#3b3f45"/><path d="M33 59l31 -15 28 12.4z" fill="${u("nb")}"/><path d="M33 59l31 -15 28 12.4z" fill="${u("bl")}"/></g><path d="M58 62l4 -14" stroke="#555" stroke-width="2"/>`,
+    wylaz: () => dach(`<path d="M34 30h52l6 48H28z" fill="#2c2f33"/><g filter="${u("cn")}"><path d="M34 30h52l-6 -22H40z" fill="#3b3f45"/><path d="M37 28h46l-5 -18H42z" fill="#4b5056"/></g><path d="M48 30l-4 -16" stroke="#9aa1a9" stroke-width="2"/><path d="M40 34h40M40 42h40M40 50h40M40 58h40M40 66h40" stroke="#777" stroke-width="1.4"/>`),
+    swietlik: () => `<rect width="120" height="100" fill="${u("nb")}"/><path d="M0 52h120v48H0z" fill="#8f949a"/><path d="M0 52h120" stroke="#6d7277" stroke-width="1.4"/>${[...Array(6)].map((_, i) => `<path d="M0 ${60 + i * 7}h120" stroke="#9ea3a8" stroke-width=".4"/>`).join("")}
+    <path d="M28 70h64l-6 12H34z" fill="#e8e8e6" stroke="${CIEN}"/><g filter="${u("cn")}"><path d="M34 70q26 -46 58 -18z" fill="#dcecf6" opacity=".9"/><path d="M34 70q26 -46 58 -18" stroke="#fff" stroke-width="2" fill="none"/></g>
+    <path d="M44 72l18 -16" stroke="#555" stroke-width="2.2"/><path d="M40 47q12 -10 24 -6" stroke="#fff" stroke-width="1.6" opacity=".8" fill="none"/>`
+  };
+  var MOSK = {
+    moskitiera_plisa_okno: () => tlo() + okno(32, 18, 56, 66) + `<rect x="31" y="18" width="3" height="66" fill="${u("rm")}"/><rect x="86" y="18" width="3" height="66" fill="${u("rm")}"/><rect x="31" y="16" width="58" height="3" fill="${u("rm")}"/>
+    <rect x="34" y="19" width="34" height="64" fill="${u("sia")}"/>${[...Array(9)].map((_, i) => `<path d="M${68 + i % 2 * 1.6} ${19 + i * 7.1}l${i % 2 ? -1.6 : 1.6} 7.1" stroke="#9aa1a9" stroke-width="1.6"/>`).join("")}<rect x="66" y="19" width="2.6" height="64" fill="${u("rm")}"/>`,
+    moskitiera_zip_drzwi: () => tlo() + `<rect x="30" y="4" width="60" height="8" rx="2" fill="${u("rm")}" filter="${u("cn")}"/><rect x="30" y="12" width="4" height="80" fill="${u("rm")}"/><rect x="86" y="12" width="4" height="80" fill="${u("rm")}"/>
+    <rect x="34" y="12" width="52" height="80" fill="${u("nb")}"/><rect x="34" y="12" width="52" height="56" fill="${u("sia")}"/><rect x="34" y="12" width="52" height="56" fill="#1d2329" opacity=".12"/><rect x="34" y="68" width="52" height="2.6" fill="${u("rm")}"/><rect x="24" y="92" width="72" height="4" fill="#f4f2ee"/>
+    <path d="M34 12v56M86 12v56" stroke="#333" stroke-width=".9" stroke-dasharray=".7 .7"/>`,
+    moskitiera: () => tlo() + okno(32, 18, 56, 66) + `<g filter="${u("cn")}"><rect x="29" y="12" width="62" height="7" rx="2" fill="${u("rm")}"/></g><rect x="29" y="19" width="3" height="65" fill="${u("rm")}"/><rect x="88" y="19" width="3" height="65" fill="${u("rm")}"/>
+    <rect x="32" y="19" width="56" height="44" fill="${u("sia")}"/><rect x="32" y="19" width="56" height="44" fill="#1d2329" opacity=".12"/><rect x="32" y="63" width="56" height="3" fill="${u("rm")}"/>`,
+    moskitiera_drzwi: () => tlo() + `<rect x="33" y="8" width="54" height="80" fill="${u("rm")}" filter="${u("cn")}"/><rect x="37" y="12" width="46" height="76" fill="${u("nb")}"/><rect x="37" y="12" width="46" height="76" fill="${u("bl")}"/>
+    <rect x="37" y="12" width="28" height="76" fill="${u("sia")}"/>${[...Array(10)].map((_, i) => `<path d="M${65 + i % 2 * 2} ${12 + i * 7.6}l${i % 2 ? -2 : 2} 7.6" stroke="#9aa1a9" stroke-width="1.8"/>`).join("")}<rect x="62" y="12" width="3" height="76" fill="${u("alup")}"/><rect x="28" y="88" width="64" height="4" fill="#f4f2ee"/>`
+  };
+  var plac = () => `<rect width="120" height="100" fill="${u("nb")}"/><path d="M0 70q30-8 60-3t60-4V80H0z" fill="#7da889"/><rect y="80" width="120" height="20" fill="${u("ks")}"/>`;
+  var sztachety = (x, y, w, h) => `<rect x="${x}" y="${y + 4}" width="${w}" height="3" fill="${u("met")}"/><rect x="${x}" y="${y + h - 7}" width="${w}" height="3" fill="${u("met")}"/>` + [...Array(Math.floor(w / 4.5))].map((_, i) => `<rect x="${x + 1 + i * 4.5}" y="${y}" width="3" height="${h}" fill="${u("metp")}"/>`).join("");
+  var garaz = (s) => `<rect width="120" height="100" fill="${u("tyn")}"/><rect y="88" width="120" height="12" fill="${u("ks")}"/><rect x="14" y="18" width="92" height="70" fill="#c7bfb2"/><path d="M14 18h92l-4 4H18v66l-4 0z" fill="#b3ab9e"/>${s}`;
+  var slupek = (x) => `<rect x="${x}" y="36" width="10" height="46" fill="#b4ada1"/><rect x="${x - 1}" y="33" width="12" height="3.4" fill="#8f887c"/><rect x="${x + 7}" y="36" width="3" height="46" fill="rgba(0,0,0,.12)"/>`;
+  var BRAMY = {
+    przesuwna: (k) => plac() + slupek(0) + slupek(110) + `<g filter="${u("cn")}">${sztachety(10, 44, 78, 36)}</g><circle cx="20" cy="81" r="2.4" fill="#333"/><circle cx="78" cy="81" r="2.4" fill="#333"/>
+    <path d="M90 62h16" stroke="${k}" stroke-dasharray="3 2" stroke-width="1.2"/><path d="M104 59l3 3-3 3" stroke="${k}" fill="none"/>`,
+    skrzydlowa: () => plac() + slupek(2) + slupek(108) + `<g filter="${u("cn")}">${sztachety(13, 44, 46, 36)}${sztachety(61, 44, 46, 36)}</g>`,
+    segmentowa: (k) => garaz([...Array(4)].map((_, i) => `<rect x="18" y="${22 + i * 16.5}" width="84" height="16" fill="${u("met")}"/><path d="M18 ${38 + i * 16.5}h84" stroke="${ciem(k, 0.5)}" stroke-width=".8"/>${[...Array(3)].map((_2, j) => `<path d="M20 ${26 + i * 16.5 + j * 4}h80" stroke="${jas(k, 0.2)}" stroke-width=".5"/>`).join("")}`).join("") + `<rect x="55" y="80" width="10" height="2" rx="1" fill="#333"/>`),
+    uchylna: (k) => garaz(`<rect x="18" y="22" width="84" height="66" fill="${u("met")}"/>${[...Array(14)].map((_, i) => `<path d="M${22 + i * 6} 24v62" stroke="${ciem(k, 0.3)}" stroke-width=".9"/><path d="M${23 + i * 6} 24v62" stroke="${jas(k, 0.25)}" stroke-width=".4"/>`).join("")}<rect x="54" y="52" width="12" height="3" rx="1.5" fill="#333"/>`),
+    furtka: () => plac() + `<rect x="0" y="44" width="38" height="38" fill="${u("ks")}" opacity=".0"/><rect x="30" y="34" width="10" height="48" fill="#b4ada1"/><rect x="80" y="34" width="10" height="48" fill="#b4ada1"/><g filter="${u("cn")}">${sztachety(41, 42, 38, 40)}</g>
+    <rect x="72" y="60" width="5" height="3" rx="1" fill="#222"/><rect x="82.5" y="48" width="5" height="7" rx="1" fill="#333"/><circle cx="85" cy="51" r="1.2" fill="#4caf50"/>${sztachety(0, 46, 29, 36)}${sztachety(91, 46, 29, 36)}`,
+    garaz_skrzydlowa: (k) => garaz(`<rect x="18" y="22" width="42" height="66" fill="${u("met")}"/><rect x="60" y="22" width="42" height="66" fill="${u("met")}"/><path d="M60 22v66" stroke="${ciem(k, 0.5)}" stroke-width="1"/>
+    ${[...Array(7)].map((_, i) => `<path d="M${22 + i * 5.6} 24v62M${64 + i * 5.6} 24v62" stroke="${ciem(k, 0.3)}" stroke-width=".8"/>`).join("")}<rect x="55" y="52" width="2" height="8" rx="1" fill="#222"/><rect x="63" y="52" width="2" height="8" rx="1" fill="#222"/>`),
+    garaz_boczna: (k) => garaz([...Array(10)].map((_, i) => `<rect x="${18 + i * 6}" y="22" width="5.6" height="66" fill="${u("metp")}"/>`).join("") + `<path d="M78 22v66" stroke="#222" stroke-width=".8"/><rect x="78" y="22" width="24" height="66" fill="#2d3035"/><rect x="18" y="20" width="84" height="2" fill="#555"/>
+    <path d="M84 54h12M93 51l3 3-3 3" stroke="#ff9800" stroke-width="1" fill="none"/>`),
+    szlaban: () => plac() + `<rect x="10" y="50" width="12" height="32" rx="1.5" fill="${u("met")}" filter="${u("cn")}"/><rect x="12" y="54" width="8" height="2" fill="#ffb300"/>
+    <g filter="${u("cn")}"><rect x="20" y="54" width="94" height="4" rx="2" fill="#fafafa"/>${[...Array(8)].map((_, i) => `<rect x="${26 + i * 11}" y="54" width="5.5" height="4" fill="#e53935"/>`).join("")}</g><rect x="108" y="58" width="2" height="24" fill="#888"/>`,
+    roletowa: () => garaz(`<g filter="${u("cn")}"><rect x="14" y="10" width="92" height="12" fill="${u("met")}"/></g><rect x="16" y="22" width="4" height="66" fill="${u("metp")}"/><rect x="100" y="22" width="4" height="66" fill="${u("metp")}"/>${pancerz(20, 22, 80, 64)}`)
+  };
+  var GRUPY_KAFLI = [
+    ["wew", [["rolety", ["pelna", "kasetowa", "zebra", "zaciemniajaca", "roleta_zip_wew", "bambusowa"]], ["plisy", ["plisa", "plisa_gora_dol", "plaster", "rzymska"]], ["zaluzje", ["zaluzja", "drewniana"]], ["pionowe", ["pionowa", "panel", "zaslona", "zaslona_wave", "firana"]], ["ekrany", ["ekran"]]]],
+    ["zew", [["zrolety", ["natynkowa", "natynkowa_okragla", "podtynkowa", "zewnetrzna", "adaptacyjna", "perforowana", "roleta_moskitiera", "ekstrudowana", "roleta_drzwi"]], ["fasadowe", ["fasadowa", "fasadowaz", "fasadowa_f80"]], ["zscreen", ["screen", "markizoleta"]], ["okiennice", ["okiennice", "okiennice_przesuwne"]]]],
+    ["dach", [["dachowe", ["dach_dkl", "dach_ssl", "dachowa", "dach_fhb", "dach_msl", "markizeta_dach", "dach_pal", "dach_fhl", "dach_dn"]]]],
+    ["taras", [["markizy", ["markiza_otwarta", "markiza", "markiza_polkasetowa", "markiza_kasetowa", "markiza_volant", "markiza_koszowa", "markiza_wolnostojaca", "markiza_zimowa", "markizeta", "markiza_balkonowa", "markiza_pionowa", "markiza_boczna"]], ["pergole", ["zagiel", "parasol", "pergola", "pergola_tkanina", "zadaszenie", "screen_taras"]]]],
+    ["okna", [["okna", ["okno_silownik", "okno_dachowe", "okno_plaskie", "swietlik", "wylaz"]]]],
+    ["moskitiery", [["moskitiery", ["moskitiera", "moskitiera_plisa_okno", "moskitiera_drzwi", "moskitiera_zip_drzwi"]]]],
+    ["brama", [["bramy", ["przesuwna", "skrzydlowa", "furtka"]], ["garaze", ["segmentowa", "garaz_boczna", "uchylna", "roletowa", "garaz_skrzydlowa"]], ["szlabany", ["szlaban"]]]]
+  ];
+  function kafel(typ, kolor = "#3b3f45", rama = "#f4f4f2") {
+    const f = WEW[typ] || ZEW[typ] || OKNA[typ] || MOSK[typ] || TARAS[typ] || DACH[typ] || BRAMY[typ];
+    if (!f) return "";
+    P = "k" + ++nr + "_";
+    return svg(defs(kolor, rama) + f(kolor, rama));
+  }
+
+  // src/stale.js
+  var WERSJA = "2.2.7";
+  var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
-  var BRAMY = Object.values(GRUPY.brama).flat();
-  var czyBrama = (t) => BRAMY.includes(t);
+  var BRAMY2 = Object.values(GRUPY.brama).flat();
+  var czyBrama = (t) => BRAMY2.includes(t);
+  var GARAZE = [...GRUPY.brama.garaze];
+  var BAZA = { roleta_zip_wew: "kasetowa", bambusowa: "pelna", plisa_gora_dol: "plisa", zaslona_wave: "zaslona", firana: "zaslona", panel: "pionowa", ekran: "pelna", dach_dkl: "zaciemniajaca", dach_ssl: "natynkowa", dachowa: "natynkowa", dach_fhb: "rzymska", dach_msl: "screen", markizeta_dach: "screen", dach_pal: "zaluzja", dach_fhl: "plisa", dach_dn: "zebra", natynkowa_okragla: "natynkowa", adaptacyjna: "zewnetrzna", roleta_moskitiera: "natynkowa", ekstrudowana: "natynkowa", roleta_drzwi: "natynkowa", fasadowa_f80: "fasadowaz", markizoleta: "screen", okiennice: "zewnetrzna", okiennice_przesuwne: "zewnetrzna", markiza_otwarta: "markiza", markiza_polkasetowa: "markiza", markiza_kasetowa: "markiza", markiza_volant: "markiza", markiza_koszowa: "markiza", markiza_wolnostojaca: "markiza", markiza_zimowa: "markiza", markizeta: "markiza", markiza_balkonowa: "markiza", markiza_pionowa: "markiza", markiza_boczna: "markiza", zagiel: "markiza", parasol: "markiza", pergola: "fasadowaz", pergola_tkanina: "markiza", zadaszenie: "markiza", screen_taras: "screen", okno_silownik: "screen", okno_dachowe: "screen", okno_plaskie: "screen", swietlik: "screen", wylaz: "screen", moskitiera: "screen", moskitiera_plisa_okno: "screen", moskitiera_drzwi: "screen", moskitiera_zip_drzwi: "screen", furtka: "skrzydlowa", garaz_boczna: "segmentowa", garaz_skrzydlowa: "uchylna", szlaban: "przesuwna" };
+  var baza = (t) => BAZA[t] || t;
   var POZIOME = ["pionowa", "zaslona"];
   var SCIANY = { biala: "#efebe4", bezowa: "#d6c4a6", szara: "#a5a4a0", cegla: "#a65a3a", grafit: "#56595c" };
-  var ZEWNETRZNE = Object.values(GRUPY.zew).flat();
+  var ZEWNETRZNE = [
+    "natynkowa",
+    "podtynkowa",
+    "zewnetrzna",
+    "perforowana",
+    "fasadowa",
+    "fasadowaz",
+    "markiza",
+    "screen",
+    "dach_ssl",
+    "dachowa",
+    "dach_msl",
+    "markizeta_dach",
+    "natynkowa_okragla",
+    "adaptacyjna",
+    "roleta_moskitiera",
+    "ekstrudowana",
+    "roleta_drzwi",
+    "fasadowa_f80",
+    "markizoleta",
+    "okiennice",
+    "okiennice_przesuwne",
+    "markiza_otwarta",
+    "markiza_polkasetowa",
+    "markiza_kasetowa",
+    "markiza_volant",
+    "markiza_koszowa",
+    "markiza_wolnostojaca",
+    "markiza_zimowa",
+    "markizeta",
+    "markiza_balkonowa",
+    "markiza_pionowa",
+    "markiza_boczna",
+    "zagiel",
+    "parasol",
+    "pergola",
+    "pergola_tkanina",
+    "zadaszenie",
+    "screen_taras",
+    "okno_silownik",
+    "okno_dachowe",
+    "okno_plaskie",
+    "swietlik",
+    "wylaz",
+    "moskitiera",
+    "moskitiera_plisa_okno",
+    "moskitiera_drzwi",
+    "moskitiera_zip_drzwi"
+  ];
   var czyZew = (t) => ZEWNETRZNE.includes(t);
+  var WEWNETRZNE = OSLONY.filter((t) => !czyBrama(t) && !czyZew(t));
   var IKONY = {
     pelna: "mdi:roller-shade",
     kasetowa: "mdi:roller-shade",
@@ -53,6 +423,21 @@
     uchylna: "mdi:garage",
     roletowa: "mdi:garage"
   };
+  for (const [t, b] of Object.entries(BAZA)) IKONY[t] || (IKONY[t] = IKONY[b]);
+  Object.assign(IKONY, {
+    okno_silownik: "mdi:window-open-variant",
+    okno_dachowe: "mdi:window-open-variant",
+    okno_plaskie: "mdi:window-open-variant",
+    swietlik: "mdi:dome-light",
+    wylaz: "mdi:window-open-variant",
+    parasol: "mdi:umbrella-outline",
+    szlaban: "mdi:boom-gate",
+    furtka: "mdi:gate",
+    pergola: "mdi:blinds-horizontal",
+    ekran: "mdi:projector-screen-outline",
+    okiennice: "mdi:window-shutter",
+    okiennice_przesuwne: "mdi:window-shutter"
+  });
   var IKONY_OTW = {
     przesuwna: "mdi:gate-open",
     skrzydlowa: "mdi:gate-open",
@@ -74,7 +459,17 @@
     garaze: "mdi:garage",
     zrolety: "mdi:window-shutter",
     fasadowe: "mdi:blinds-horizontal-closed",
-    taras: "mdi:awning-outline"
+    taras: "mdi:awning-outline",
+    dach: "mdi:home-roof",
+    dachowe: "mdi:home-roof",
+    markizy: "mdi:awning-outline",
+    pergole: "mdi:greenhouse",
+    okna: "mdi:window-open-variant",
+    moskitiery: "mdi:grid",
+    zscreen: "mdi:roller-shade",
+    okiennice: "mdi:window-shutter",
+    ekrany: "mdi:projector-screen-outline",
+    szlabany: "mdi:boom-gate"
   };
   var KOLORY = {
     czarny: "#232427",
@@ -172,7 +567,7 @@
   var czyDrewno = (r) => !!RAMY[ramaHex(r)]?.[1];
 
   // src/kolor.js
-  var rgb = (h) => {
+  var rgb2 = (h) => {
     let s = String(h || "").replace("#", "");
     if (s.length === 3) s = [...s].map((x) => x + x).join("");
     const n = parseInt(s.slice(0, 6), 16);
@@ -180,16 +575,16 @@
   };
   var doHex = (a) => "#" + a.map((x) => Math.max(0, Math.min(255, Math.round(x))).toString(16).padStart(2, "0")).join("");
   var jasniej = (h, t) => {
-    const c = rgb(h), d = t < 0 ? 0 : 255;
+    const c = rgb2(h), d = t < 0 ? 0 : 255;
     return doHex(c.map((x) => x + (d - x) * Math.abs(t)));
   };
-  var rgba = (h, a) => `rgba(${rgb(h).join(",")},${a})`;
+  var rgba = (h, a) => `rgba(${rgb2(h).join(",")},${a})`;
 
   // src/brama.js
   var W = 320;
   var H = 200;
   var ZIEMIA = 172;
-  function tlo(noc) {
+  function tlo2(noc) {
     const niebo = noc ? ["#1b2540", "#2c3a5c"] : ["#8fc3ea", "#d7ecf8"];
     return `<defs><linearGradient id="mhN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${niebo[0]}"/><stop offset="1" stop-color="${niebo[1]}"/></linearGradient>
   <clipPath id="mhOtw"><rect x="74" y="78" width="172" height="${ZIEMIA - 78}"/></clipPath>
@@ -203,14 +598,14 @@
     return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="none" stroke="${k}" stroke-width="5"/>
   <rect x="${x}" y="${y + h / 2 - 2}" width="${w}" height="4" fill="${jasniej(k, -0.15)}"/>${prety}`;
   }
-  function slupek(x, k) {
+  function slupek2(x, k) {
     return `<rect x="${x - 7}" y="${ZIEMIA - 98}" width="14" height="98" fill="${jasniej(k, 0.12)}"/><rect x="${x - 9}" y="${ZIEMIA - 102}" width="18" height="6" fill="${jasniej(k, -0.1)}"/>`;
   }
   function fotokomorka() {
     return `<g class="foto"><rect x="62" y="${ZIEMIA - 22}" width="6" height="16" rx="1" fill="#333"/><rect x="252" y="${ZIEMIA - 22}" width="6" height="16" rx="1" fill="#333"/>
   <line class="wiazka" x1="68" y1="${ZIEMIA - 16}" x2="252" y2="${ZIEMIA - 16}" stroke-width="2" stroke-dasharray="5 4"/></g>`;
   }
-  function garaz(k, rama, noc) {
+  function garaz2(k, rama, noc) {
     return `<rect x="34" y="40" width="252" height="${ZIEMIA - 40}" fill="${noc ? "#6c675f" : "#e3ddd1"}"/>
   <path d="M24 44L160 8L296 44z" fill="${noc ? "#4c2f28" : "#9c4b37"}"/>
   <rect x="70" y="74" width="180" height="${ZIEMIA - 74}" fill="${rama}"/>
@@ -228,22 +623,22 @@
   ${typ !== "roletowa" ? `<rect x="${x + w / 2 - 12}" y="${ZIEMIA - 34}" width="24" height="5" rx="2" fill="${jasniej(k, -0.45)}"/>` : ""}</g>`;
   }
   function rysunekBramy(typ, k, rama, noc, foto) {
-    let t = tlo(noc);
+    let t = tlo2(noc);
     if (typ === "przesuwna") {
-      t += `${slupek(258, rama)}<g clip-path="url(#mhPrz)"><g class="przesuwna">${przesło(64, ZIEMIA - 86, 190, 80, k)}<circle cx="90" cy="${ZIEMIA - 3}" r="4" fill="#222"/><circle cx="230" cy="${ZIEMIA - 3}" r="4" fill="#222"/></g></g>
-    <rect x="0" y="${ZIEMIA - 92}" width="56" height="92" fill="${noc ? "#5a5650" : "#cfc8bb"}"/><rect x="0" y="${ZIEMIA - 96}" width="58" height="5" fill="${noc ? "#47443f" : "#b3ab9c"}"/>${slupek(62, rama)}`;
+      t += `${slupek2(258, rama)}<g clip-path="url(#mhPrz)"><g class="przesuwna">${przesło(64, ZIEMIA - 86, 190, 80, k)}<circle cx="90" cy="${ZIEMIA - 3}" r="4" fill="#222"/><circle cx="230" cy="${ZIEMIA - 3}" r="4" fill="#222"/></g></g>
+    <rect x="0" y="${ZIEMIA - 92}" width="56" height="92" fill="${noc ? "#5a5650" : "#cfc8bb"}"/><rect x="0" y="${ZIEMIA - 96}" width="58" height="5" fill="${noc ? "#47443f" : "#b3ab9c"}"/>${slupek2(62, rama)}`;
     } else if (typ === "skrzydlowa") {
-      t += `${slupek(62, rama)}${slupek(258, rama)}<g class="lewe">${przesło(68, ZIEMIA - 88, 92, 82, k)}</g><g class="prawe">${przesło(160, ZIEMIA - 88, 92, 82, k)}</g>`;
+      t += `${slupek2(62, rama)}${slupek2(258, rama)}<g class="lewe">${przesło(68, ZIEMIA - 88, 92, 82, k)}</g><g class="prawe">${przesło(160, ZIEMIA - 88, 92, 82, k)}</g>`;
     } else {
-      t += garaz(k, rama, noc) + `<g clip-path="url(#mhOtw)">${drzwiGarazu(typ, k)}</g>`;
+      t += garaz2(k, rama, noc) + `<g clip-path="url(#mhOtw)">${drzwiGarazu(typ, k)}</g>`;
     }
     if (foto) t += fotokomorka();
     return `<svg class="brama" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">${t}</svg>`;
   }
-  function ustawBrame(svg2, typ, p) {
-    if (!svg2) return;
+  function ustawBrame(svg3, typ, p) {
+    if (!svg3) return;
     const f = Math.max(0, Math.min(100, p)) / 100;
-    const g = (s) => svg2.querySelector(s);
+    const g = (s) => svg3.querySelector(s);
     if (typ === "przesuwna") g(".przesuwna")?.setAttribute("transform", `translate(${-f * 186} 0)`);
     else if (typ === "skrzydlowa") {
       const s = Math.cos(f * Math.PI * 0.45);
@@ -253,15 +648,15 @@
       g(".drzwi")?.setAttribute("transform", `translate(0 ${-f * 6}) translate(0 78) scale(1 ${1 - f * 0.88}) translate(0 -78)`);
     } else g(".drzwi")?.setAttribute("transform", `translate(0 ${-f * (ZIEMIA - 78)})`);
   }
-  function ustawFotokomorke(svg2, przeszkoda) {
-    const w = svg2?.querySelector(".wiazka");
+  function ustawFotokomorke(svg3, przeszkoda) {
+    const w = svg3?.querySelector(".wiazka");
     if (!w) return;
     w.setAttribute("stroke", przeszkoda ? "#e53935" : "#43a047");
     w.setAttribute("stroke-dasharray", przeszkoda ? "0" : "5 4");
   }
 
   // src/tekstury.js
-  var svg = (h, tresc, w = 8) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}' preserveAspectRatio='none'>${tresc}</svg>`)}")`;
+  var svg2 = (h, tresc, w = 8) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}' preserveAspectRatio='none'>${tresc}</svg>`)}")`;
   var pion = (id, stopy) => `<defs><linearGradient id='${id}' x1='0' y1='0' x2='0' y2='1'>${stopy.map(([o, c, a = 1]) => `<stop offset='${o}' stop-color='${c}' stop-opacity='${a}'/>`).join("")}</linearGradient></defs>`;
   var pas = (id, y, h) => `<rect x='0' y='${y}' width='8' height='${h}' fill='url(#${id})'/>`;
   function tekstura(typ, k) {
@@ -270,59 +665,59 @@
     const sznurki = (c, w) => `linear-gradient(90deg,transparent calc(22% - ${w / 2}px),${c} calc(22% - ${w / 2}px) calc(22% + ${w / 2}px),transparent calc(22% + ${w / 2}px) calc(78% - ${w / 2}px),${c} calc(78% - ${w / 2}px) calc(78% + ${w / 2}px),transparent calc(78% + ${w / 2}px))`;
     switch (typ) {
       case "zebra":
-        return { okres: 26, nakladka: `${cien},${splot}`, obraz: svg(
+        return { okres: 26, nakladka: `${cien},${splot}`, obraz: svg2(
           26,
           pion("a", [[0, jasniej(k, 0.1)], [0.12, k], [0.85, k], [1, jasniej(k, -0.22)]]) + pion("b", [[0, jasniej(k, 0.35), 0.5], [1, jasniej(k, 0.45), 0.42]]) + pas("a", 0, 16) + pas("b", 16, 10)
         ) };
       case "pelna":
       case "kasetowa":
-        return { okres: 24, nakladka: `${cien},${splot}`, obraz: svg(24, pion("a", [[0, k], [0.5, jasniej(k, -0.05)], [1, k]]) + pas("a", 0, 24)) };
+        return { okres: 24, nakladka: `${cien},${splot}`, obraz: svg2(24, pion("a", [[0, k], [0.5, jasniej(k, -0.05)], [1, k]]) + pas("a", 0, 24)) };
       case "zaciemniajaca":
         return {
           okres: 24,
           nakladka: `${cien},linear-gradient(90deg,transparent 25%,rgba(255,255,255,.07) 45%,transparent 65%)`,
-          obraz: svg(24, pion("a", [[0, jasniej(k, 0.03)], [0.5, k], [1, jasniej(k, 0.03)]]) + pas("a", 0, 24))
+          obraz: svg2(24, pion("a", [[0, jasniej(k, 0.03)], [0.5, k], [1, jasniej(k, 0.03)]]) + pas("a", 0, 24))
         };
       case "plisa":
-        return { okres: 12, nakladka: cien, obraz: svg(12, pion("a", [[0, jasniej(k, 0.22), 0.95], [0.4, k, 0.94], [1, jasniej(k, -0.26), 0.96]]) + pas("a", 0, 12)) };
+        return { okres: 12, nakladka: cien, obraz: svg2(12, pion("a", [[0, jasniej(k, 0.22), 0.95], [0.4, k, 0.94], [1, jasniej(k, -0.26), 0.96]]) + pas("a", 0, 12)) };
       case "plaster":
-        return { okres: 14, nakladka: cien, obraz: svg(14, pion("a", [[0, jasniej(k, 0.24), 0.96], [0.45, k, 0.94], [0.48, jasniej(k, -0.3), 0.97], [0.52, jasniej(k, 0.08), 0.94], [1, jasniej(k, -0.28), 0.96]]) + pas("a", 0, 14)) };
+        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.24), 0.96], [0.45, k, 0.94], [0.48, jasniej(k, -0.3), 0.97], [0.52, jasniej(k, 0.08), 0.94], [1, jasniej(k, -0.28), 0.96]]) + pas("a", 0, 14)) };
       case "rzymska":
-        return { okres: 34, nakladka: `${cien},${splot}`, obraz: svg(34, pion("a", [[0, jasniej(k, 0.02), 0.95], [0.55, jasniej(k, 0.12), 0.95], [0.92, jasniej(k, -0.25), 0.97], [1, jasniej(k, -0.4), 0.97]]) + pas("a", 0, 34)) };
+        return { okres: 34, nakladka: `${cien},${splot}`, obraz: svg2(34, pion("a", [[0, jasniej(k, 0.02), 0.95], [0.55, jasniej(k, 0.12), 0.95], [0.92, jasniej(k, -0.25), 0.97], [1, jasniej(k, -0.4), 0.97]]) + pas("a", 0, 34)) };
       case "zaluzja":
-        return { okres: 13, nakladka: sznurki("rgba(240,240,240,.7)", 1), obraz: svg(13, pion("a", [[0, jasniej(k, 0.35)], [0.35, k], [1, jasniej(k, -0.3)]]) + pas("a", 0, 10) + `<rect x='0' y='10' width='8' height='1' fill='rgba(0,0,0,.3)'/>`) };
+        return { okres: 13, nakladka: sznurki("rgba(240,240,240,.7)", 1), obraz: svg2(13, pion("a", [[0, jasniej(k, 0.35)], [0.35, k], [1, jasniej(k, -0.3)]]) + pas("a", 0, 10) + `<rect x='0' y='10' width='8' height='1' fill='rgba(0,0,0,.3)'/>`) };
       case "drewniana":
         return {
           okres: 22,
           nakladka: `${sznurki(rgba(jasniej(k, -0.2), 0.95), 6)},repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 1px,transparent 1px 6px,rgba(255,255,255,.05) 6px 7px,transparent 7px 12px)`,
-          obraz: svg(22, pion("a", [[0, jasniej(k, 0.22)], [0.3, k], [1, jasniej(k, -0.32)]]) + pas("a", 0, 18) + `<rect x='0' y='18' width='8' height='1.5' fill='rgba(0,0,0,.35)'/>`)
+          obraz: svg2(22, pion("a", [[0, jasniej(k, 0.22)], [0.3, k], [1, jasniej(k, -0.32)]]) + pas("a", 0, 18) + `<rect x='0' y='18' width='8' height='1.5' fill='rgba(0,0,0,.35)'/>`)
         };
       case "zewnetrzna":
       case "podtynkowa":
-        return { okres: 14, nakladka: cien, obraz: svg(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [0.75, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
+        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [0.75, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
       case "natynkowa":
-        return { okres: 14, nakladka: cien, obraz: svg(14, pion("a", [[0, jasniej(k, 0.3)], [0.2, k], [0.46, jasniej(k, 0.08)], [0.5, jasniej(k, -0.22)], [0.56, k], [1, jasniej(k, -0.38)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
+        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.3)], [0.2, k], [0.46, jasniej(k, 0.08)], [0.5, jasniej(k, -0.22)], [0.56, k], [1, jasniej(k, -0.38)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/>`) };
       case "perforowana":
-        return { okres: 14, nakladka: cien, obraz: svg(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/><ellipse cx='4' cy='6' rx='1.3' ry='.8' fill='rgba(255,244,210,.95)'/>`) };
+        return { okres: 14, nakladka: cien, obraz: svg2(14, pion("a", [[0, jasniej(k, 0.28)], [0.25, k], [1, jasniej(k, -0.35)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='2' fill='rgba(0,0,0,.6)'/><ellipse cx='4' cy='6' rx='1.3' ry='.8' fill='rgba(255,244,210,.95)'/>`) };
       case "fasadowa":
-        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.55)", 2), obraz: svg(16, pion("a", [[0, jasniej(k, -0.3)], [0.2, jasniej(k, 0.28)], [0.5, jasniej(k, 0.08)], [1, jasniej(k, -0.28)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='4' fill='rgba(0,0,0,.45)'/>`) };
+        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.55)", 2), obraz: svg2(16, pion("a", [[0, jasniej(k, -0.3)], [0.2, jasniej(k, 0.28)], [0.5, jasniej(k, 0.08)], [1, jasniej(k, -0.28)]]) + pas("a", 0, 12) + `<rect x='0' y='12' width='8' height='4' fill='rgba(0,0,0,.45)'/>`) };
       case "fasadowaz":
-        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.45)", 2), obraz: svg(16, pion("a", [[0, jasniej(k, 0.16)], [0.15, k], [0.85, k], [1, jasniej(k, -0.22)]]) + pas("a", 0, 11) + `<rect x='0' y='11' width='8' height='1.5' fill='#1b1b1b'/><rect x='0' y='12.5' width='8' height='3.5' fill='${jasniej(k, -0.45)}'/>`) };
+        return { okres: 16, nakladka: sznurki("rgba(25,25,25,.45)", 2), obraz: svg2(16, pion("a", [[0, jasniej(k, 0.16)], [0.15, k], [0.85, k], [1, jasniej(k, -0.22)]]) + pas("a", 0, 11) + `<rect x='0' y='11' width='8' height='1.5' fill='#1b1b1b'/><rect x='0' y='12.5' width='8' height='3.5' fill='${jasniej(k, -0.45)}'/>`) };
       case "screen":
-        return { okres: 6, nakladka: "repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 2px)", obraz: svg(6, pion("a", [[0, k, 0.8], [1, jasniej(k, 0.06), 0.78]]) + pas("a", 0, 6)) };
+        return { okres: 6, nakladka: "repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 2px)", obraz: svg2(6, pion("a", [[0, k, 0.8], [1, jasniej(k, 0.06), 0.78]]) + pas("a", 0, 6)) };
       case "markiza":
-        return { okres: 30, nakladka: `repeating-linear-gradient(90deg,${k} 0 14px,${rgba("#f3efe6", 0.97)} 14px 28px)`, obraz: svg(30, pion("a", [[0, "#ffffff", 0.12], [0.5, "#000000", 0.12], [1, "#ffffff", 0.12]]) + pas("a", 0, 30)) };
+        return { okres: 30, nakladka: `repeating-linear-gradient(90deg,${k} 0 14px,${rgba("#f3efe6", 0.97)} 14px 28px)`, obraz: svg2(30, pion("a", [[0, "#ffffff", 0.12], [0.5, "#000000", 0.12], [1, "#ffffff", 0.12]]) + pas("a", 0, 30)) };
       case "pionowa":
         return {
           okres: 24,
           nakladka: `repeating-linear-gradient(90deg,${jasniej(k, 0.2)} 0 2px,${k} 2px 15px,${jasniej(k, -0.28)} 15px 17px,rgba(0,0,0,.35) 17px 18px)`,
-          obraz: svg(24, pion("a", [[0, k], [1, jasniej(k, -0.05)]]) + pas("a", 0, 24))
+          obraz: svg2(24, pion("a", [[0, k], [1, jasniej(k, -0.05)]]) + pas("a", 0, 24))
         };
       case "zaslona":
         return {
           okres: 24,
           nakladka: `repeating-linear-gradient(90deg,${jasniej(k, -0.22)} 0,${jasniej(k, 0.14)} 11px,${jasniej(k, -0.1)} 22px,${jasniej(k, -0.22)} 26px),${splot}`,
-          obraz: svg(24, pion("a", [[0, k], [1, jasniej(k, -0.08)]]) + pas("a", 0, 24))
+          obraz: svg2(24, pion("a", [[0, k], [1, jasniej(k, -0.08)]]) + pas("a", 0, 24))
         };
       default:
         return tekstura("zebra", k);
@@ -496,17 +891,17 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
   }
   function stylOkna({ rama, drewno, kolor, typ, zew }) {
     const t = tekstura(typ, kolor), S = (k) => jasniej(kolor, k), R = (k) => jasniej(rama, k);
-    const tlo2 = (drewno ? SLOJE + "," : "") + rama;
+    const tlo3 = (drewno ? SLOJE + "," : "") + rama;
     const alu = `linear-gradient(90deg,${S(-0.4)},${S(0.22)} 40%,${S(-0.05)} 70%,${S(-0.45)})`;
-    let kaseta = `background:linear-gradient(180deg,#fff,#f1f1f1 55%,#cfcfcf);box-shadow:0 2px 3px rgba(0,0,0,.35)`;
+    let kaseta2 = `background:linear-gradient(180deg,#fff,#f1f1f1 55%,#cfcfcf);box-shadow:0 2px 3px rgba(0,0,0,.35)`;
     let listwa = `background:linear-gradient(180deg,#fafafa,#bdbdbd);box-shadow:0 2px 3px rgba(0,0,0,.4)`;
     let prow = "";
     switch (typ) {
       case "pelna":
-        kaseta = `left:3px;right:3px;height:10px;border-radius:10px;background:linear-gradient(180deg,${S(0.3)},${kolor} 50%,${S(-0.38)});box-shadow:0 1px 2px rgba(0,0,0,.4)`;
+        kaseta2 = `left:3px;right:3px;height:10px;border-radius:10px;background:linear-gradient(180deg,${S(0.3)},${kolor} 50%,${S(-0.38)});box-shadow:0 1px 2px rgba(0,0,0,.4)`;
         break;
       case "kasetowa":
-        kaseta = `background:linear-gradient(180deg,${R(0.06)},${rama} 50%,${R(-0.18)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
+        kaseta2 = `background:linear-gradient(180deg,${R(0.06)},${rama} 50%,${R(-0.18)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
         prow = `linear-gradient(90deg,${R(-0.2)},${R(0.06)} 45%,${R(-0.14)})`;
         break;
       case "zaciemniajaca":
@@ -514,42 +909,42 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
         break;
       case "plisa":
       case "plaster":
-        kaseta = `height:8px;background:linear-gradient(180deg,#f4f4f4,#c9c9c9);box-shadow:0 1px 2px rgba(0,0,0,.35)`;
+        kaseta2 = `height:8px;background:linear-gradient(180deg,#f4f4f4,#c9c9c9);box-shadow:0 1px 2px rgba(0,0,0,.35)`;
         listwa = `background:linear-gradient(180deg,#f4f4f4,#bcbcbc);box-shadow:0 2px 3px rgba(0,0,0,.35)`;
         break;
       case "rzymska":
-        kaseta = `height:8px;background:linear-gradient(180deg,${S(0.25)},${S(-0.1)});box-shadow:0 1px 2px rgba(0,0,0,.35)`;
+        kaseta2 = `height:8px;background:linear-gradient(180deg,${S(0.25)},${S(-0.1)});box-shadow:0 1px 2px rgba(0,0,0,.35)`;
         listwa = `background:linear-gradient(180deg,${S(0.05)},${S(-0.35)});box-shadow:0 3px 4px rgba(0,0,0,.3)`;
         break;
       case "zaluzja":
       case "drewniana":
-        kaseta = `height:9px;background:linear-gradient(180deg,${S(0.3)},${kolor} 55%,${S(-0.35)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
+        kaseta2 = `height:9px;background:linear-gradient(180deg,${S(0.3)},${kolor} 55%,${S(-0.35)});box-shadow:0 2px 3px rgba(0,0,0,.35)`;
         listwa = `background:linear-gradient(180deg,${S(0.3)},${kolor} 50%,${S(-0.3)});box-shadow:0 2px 2px rgba(0,0,0,.35)`;
         break;
       case "zewnetrzna":
       case "perforowana":
-        kaseta = `height:16px;background:linear-gradient(180deg,${R(0.05)},${rama} 45%,${R(-0.16)});border-radius:0;box-shadow:inset 0 -2px 0 rgba(0,0,0,.12),0 2px 3px rgba(0,0,0,.35)`;
+        kaseta2 = `height:16px;background:linear-gradient(180deg,${R(0.05)},${rama} 45%,${R(-0.16)});border-radius:0;box-shadow:inset 0 -2px 0 rgba(0,0,0,.12),0 2px 3px rgba(0,0,0,.35)`;
         prow = alu;
         break;
       case "natynkowa":
-        kaseta = `height:20px;background:linear-gradient(180deg,${S(0.36)},${S(0.18)} 50%,${S(-0.3)} 51%,${S(-0.05)});border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.5)`;
+        kaseta2 = `height:20px;background:linear-gradient(180deg,${S(0.36)},${S(0.18)} 50%,${S(-0.3)} 51%,${S(-0.05)});border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.5)`;
         prow = alu;
         break;
       case "podtynkowa":
-        kaseta = `height:12px;background:linear-gradient(180deg,#ebe7de,#d6d1c6 58%,#3a3a3a 60%,#151515);border-radius:0;box-shadow:none`;
+        kaseta2 = `height:12px;background:linear-gradient(180deg,#ebe7de,#d6d1c6 58%,#3a3a3a 60%,#151515);border-radius:0;box-shadow:none`;
         prow = alu;
         break;
       case "fasadowa":
       case "fasadowaz":
-        kaseta = `height:14px;background:linear-gradient(180deg,${S(0.3)},${S(0.05)} 70%,${S(-0.3)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
+        kaseta2 = `height:14px;background:linear-gradient(180deg,${S(0.3)},${S(0.05)} 70%,${S(-0.3)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
         prow = alu;
         break;
       case "screen":
-        kaseta = `height:16px;background:linear-gradient(180deg,${S(0.3)},${S(0.08)} 60%,${S(-0.35)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
+        kaseta2 = `height:16px;background:linear-gradient(180deg,${S(0.3)},${S(0.08)} 60%,${S(-0.35)});border-radius:0;box-shadow:0 2px 3px rgba(0,0,0,.4)`;
         prow = `linear-gradient(90deg,${S(-0.45)},${S(0.15)} 35%,#111 50%,${S(0.15)} 65%,${S(-0.45)})`;
         break;
       case "markiza":
-        kaseta = `height:16px;background:linear-gradient(180deg,#e8eaec,#c3c7cb 60%,#8d9297);border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.45)`;
+        kaseta2 = `height:16px;background:linear-gradient(180deg,#e8eaec,#c3c7cb 60%,#8d9297);border-radius:0;box-shadow:0 3px 5px rgba(0,0,0,.45)`;
         listwa = `height:6px;background:linear-gradient(180deg,#eef0f2,#a7acb1);box-shadow:0 2px 2px rgba(0,0,0,.35)`;
         break;
     }
@@ -557,10 +952,10 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
       listwa = `background:linear-gradient(180deg,${S(0.35)},${S(0.05)} 55%,${S(-0.4)});box-shadow:0 2px 0 rgba(20,20,20,.85),0 3px 3px rgba(0,0,0,.4)`;
     const markiza = typ === "markiza" ? `.listwa::before{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 7px 0,${kolor} 6.5px,transparent 7px) 0 0/14px 10px repeat-x}` : "";
     return `
-.okno,.kolr{background:${tlo2};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
+.okno,.kolr{background:${tlo3};box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.4)}
 .skrz{background:${(drewno ? SLOJE + "," : "") + R(-0.03)}}
 .oslona{background-image:${t.nakladka ? t.nakladka + "," : ""}${t.obraz};background-size:${t.nakladka ? "100% 100%," : ""}100% ${t.okres}px;background-position:${t.nakladka ? "0 0," : ""}0 100%;background-repeat:${t.nakladka ? "no-repeat," : ""}repeat-y}
-.kaseta{${kaseta}}
+.kaseta{${kaseta2}}
 .listwa{${listwa}}
 ${prow ? `.prow{background:${prow}}` : ".prow{display:none}"}
 ${markiza}
@@ -1016,11 +1411,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Żaluzje",
       zrolety: "Rolety zewnętrzne",
       fasadowe: "Żaluzje fasadowe",
-      taras: "Taras",
+      taras: "Taras i ogród",
       pionowe: "Pionowe i zasłony",
       brama: "Brama i garaż",
       bramy: "Bramy wjazdowe",
-      garaze: "Bramy garażowe"
+      garaze: "Bramy garażowe",
+      dach: "Okna dachowe",
+      dachowe: "Osłony okien dachowych",
+      markizy: "Markizy",
+      pergole: "Pergole i zadaszenia",
+      okna: "Okna i świetliki z napędem",
+      moskitiery: "Moskitiery",
+      zscreen: "Screeny",
+      okiennice: "Okiennice",
+      ekrany: "Ekrany",
+      szlabany: "Szlabany"
     },
     oslony: {
       pelna: "Roleta wolnowisząca",
@@ -1032,9 +1437,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       rzymska: "Rzymska",
       zaluzja: "Żaluzja aluminiowa",
       drewniana: "Żaluzja drewniana",
-      natynkowa: "Roleta natynkowa",
-      podtynkowa: "Roleta podtynkowa",
-      zewnetrzna: "Roleta nadstawna",
+      natynkowa: "Roleta natynkowa (SK)",
+      podtynkowa: "Roleta podtynkowa (SP)",
+      zewnetrzna: "Roleta nadstawna (SKN)",
       perforowana: "Roleta z perforacją",
       fasadowa: "Żaluzja fasadowa C80",
       fasadowaz: "Żaluzja fasadowa Z90",
@@ -1046,7 +1451,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Brama skrzydłowa",
       segmentowa: "Brama segmentowa",
       uchylna: "Brama uchylna",
-      roletowa: "Brama roletowa"
+      roletowa: "Brama roletowa",
+      roleta_zip_wew: "Roleta z prowadnicami",
+      bambusowa: "Roleta bambusowa",
+      plisa_gora_dol: "Plisa góra-dół",
+      zaslona_wave: "Zasłona fala (wave)",
+      firana: "Firana na szynie",
+      panel: "Panele japońskie",
+      ekran: "Ekran projekcyjny",
+      dach_dkl: "Roleta zaciemniająca (DKL)",
+      dach_ssl: "Roleta zewnętrzna solarna (SSL)",
+      dachowa: "Roleta zewnętrzna (ARZ)",
+      dach_fhb: "Roleta rzymska (FHB)",
+      dach_msl: "Markiza solarna (MSL / MHL)",
+      markizeta_dach: "Markiza zewnętrzna (AMZ)",
+      dach_pal: "Żaluzja (PAL)",
+      dach_fhl: "Roleta plisowana (FHL)",
+      dach_dn: "Roleta dzień/noc w kasecie",
+      natynkowa_okragla: "Roleta natynkowa okrągła (SKO)",
+      adaptacyjna: "Roleta adaptacyjna (na ramę)",
+      roleta_moskitiera: "Roleta z moskitierą",
+      ekstrudowana: "Roleta antywłamaniowa",
+      roleta_drzwi: "Roleta na drzwi tarasowe",
+      fasadowa_f80: "Żaluzja fasadowa F80 (płaska)",
+      markizoleta: "Markizoleta (screen z wysięgiem)",
+      okiennice: "Okiennice",
+      okiennice_przesuwne: "Okiennice przesuwne",
+      markiza_otwarta: "Markiza otwarta (bez kasety)",
+      markiza_polkasetowa: "Markiza półkasetowa",
+      markiza_kasetowa: "Markiza kasetowa",
+      markiza_volant: "Markiza z opuszczaną falbaną (volant)",
+      markiza_koszowa: "Markiza koszowa",
+      markiza_wolnostojaca: "Markiza wolnostojąca (ogrodowa)",
+      markiza_zimowa: "Markiza na ogród zimowy",
+      markizeta: "Markiza okienna (markizeta)",
+      markiza_balkonowa: "Markiza balkonowa zaciskowa",
+      markiza_pionowa: "Markiza pionowa balkonowa",
+      markiza_boczna: "Markiza boczna (parawan)",
+      zagiel: "Żagiel zwijany",
+      parasol: "Parasol ogrodowy",
+      pergola: "Pergola bioklimatyczna (lamele)",
+      pergola_tkanina: "Pergola z dachem z tkaniny",
+      zadaszenie: "Zadaszenie tarasu",
+      screen_taras: "Screen tarasowy",
+      okno_silownik: "Okno z siłownikiem",
+      okno_dachowe: "Okno dachowe otwierane",
+      okno_plaskie: "Okno do dachu płaskiego",
+      swietlik: "Świetlik / klapa dachowa",
+      wylaz: "Wyłaz dachowy",
+      moskitiera: "Moskitiera rolowana",
+      moskitiera_plisa_okno: "Moskitiera plisowana okienna",
+      moskitiera_drzwi: "Moskitiera plisowana drzwiowa",
+      moskitiera_zip_drzwi: "Moskitiera rolowana drzwiowa",
+      furtka: "Furtka",
+      garaz_boczna: "Brama segmentowa boczna",
+      garaz_skrzydlowa: "Brama garażowa dwuskrzydłowa",
+      szlaban: "Szlaban"
     },
     kolory: {
       czarny: "czarny",
@@ -1310,11 +1770,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Przegroda pozioma",
       obokPola: "obok pola {0}",
       podPolem: "pod polem {0}",
-      przegRodzaj: { brak: "Brak", slupek: "Słupek", belka: "Belka", sciana: "Ściana" },
+      przegRodzaj: {
+        brak: "Brak",
+        slupek: "Słupek",
+        belka: "Belka",
+        sciana: "Ściana"
+      },
       szerokosc: "Szerokość",
       dodajSciane: "🧱 Ściana między oknami",
       sciana: "Ściana",
-      sciany: { biala: "biała", bezowa: "beżowa", szara: "szara", cegla: "cegła", grafit: "grafit" },
+      sciany: {
+        biala: "biała",
+        bezowa: "beżowa",
+        szara: "szara",
+        cegla: "cegła",
+        grafit: "grafit"
+      },
       belka: "Belka",
       brak: "brak",
       wUrzadzeniu: "też w: {0}",
@@ -1471,11 +1942,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Venetian blinds",
       zrolety: "Roller shutters",
       fasadowe: "External venetian blinds",
-      taras: "Terrace",
+      taras: "Patio and garden",
       pionowe: "Vertical and curtains",
       brama: "Gate and garage",
       bramy: "Driveway gates",
-      garaze: "Garage doors"
+      garaze: "Garage doors",
+      dach: "Roof windows",
+      dachowe: "Roof window covers",
+      markizy: "Awnings",
+      pergole: "Pergolas and roofs",
+      okna: "Motorised windows and skylights",
+      moskitiery: "Insect screens",
+      zscreen: "Screens",
+      okiennice: "Shutters",
+      ekrany: "Screens",
+      szlabany: "Barriers"
     },
     oslony: {
       pelna: "Free-hanging roller blind",
@@ -1501,7 +1982,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Swing gate",
       segmentowa: "Sectional door",
       uchylna: "Up-and-over door",
-      roletowa: "Roller door"
+      roletowa: "Roller door",
+      roleta_zip_wew: "Roller blind with side guides",
+      bambusowa: "Bamboo blind",
+      plisa_gora_dol: "Top-down pleated blind",
+      zaslona_wave: "Wave curtain",
+      firana: "Sheer curtain on track",
+      panel: "Japanese panels",
+      ekran: "Projection screen",
+      dach_dkl: "Blackout blind (DKL)",
+      dach_ssl: "Solar roller shutter (SSL)",
+      dachowa: "Roof roller shutter (ARZ)",
+      dach_fhb: "Roman blind (FHB)",
+      dach_msl: "Solar awning blind (MSL / MHL)",
+      markizeta_dach: "Roof awning blind (AMZ)",
+      dach_pal: "Venetian blind (PAL)",
+      dach_fhl: "Pleated blind (FHL)",
+      dach_dn: "Day/night blind in cassette",
+      natynkowa_okragla: "Surface shutter, round box (SKO)",
+      adaptacyjna: "Frame-mounted shutter",
+      roleta_moskitiera: "Shutter with insect screen",
+      ekstrudowana: "Security roller shutter",
+      roleta_drzwi: "Patio door shutter",
+      fasadowa_f80: "External venetian F80 (flat)",
+      markizoleta: "Drop-arm screen",
+      okiennice: "Shutters",
+      okiennice_przesuwne: "Sliding shutters",
+      markiza_otwarta: "Open awning (no cassette)",
+      markiza_polkasetowa: "Semi-cassette awning",
+      markiza_kasetowa: "Full-cassette awning",
+      markiza_volant: "Awning with drop valance",
+      markiza_koszowa: "Dome awning",
+      markiza_wolnostojaca: "Freestanding garden awning",
+      markiza_zimowa: "Conservatory awning",
+      markizeta: "Window awning",
+      markiza_balkonowa: "Clamp-on balcony awning",
+      markiza_pionowa: "Vertical balcony awning",
+      markiza_boczna: "Side awning",
+      zagiel: "Retractable shade sail",
+      parasol: "Garden umbrella",
+      pergola: "Bioclimatic louvred pergola",
+      pergola_tkanina: "Fabric-roof pergola",
+      zadaszenie: "Patio roof",
+      screen_taras: "Patio screen",
+      okno_silownik: "Window with actuator",
+      okno_dachowe: "Opening roof window",
+      okno_plaskie: "Flat-roof window",
+      swietlik: "Skylight dome",
+      wylaz: "Roof hatch",
+      moskitiera: "Roller insect screen",
+      moskitiera_plisa_okno: "Pleated window insect screen",
+      moskitiera_drzwi: "Pleated door insect screen",
+      moskitiera_zip_drzwi: "Roller door insect screen",
+      furtka: "Garden gate",
+      garaz_boczna: "Side sectional door",
+      garaz_skrzydlowa: "Side-hinged garage door",
+      szlaban: "Barrier gate"
     },
     kolory: {
       czarny: "black",
@@ -1765,11 +2301,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Horizontal divider",
       obokPola: "next to pane {0}",
       podPolem: "below pane {0}",
-      przegRodzaj: { brak: "None", slupek: "Mullion", belka: "Transom", sciana: "Wall" },
+      przegRodzaj: {
+        brak: "None",
+        slupek: "Mullion",
+        belka: "Transom",
+        sciana: "Wall"
+      },
       szerokosc: "Width",
       dodajSciane: "🧱 Wall between windows",
       sciana: "Wall",
-      sciany: { biala: "white", bezowa: "beige", szara: "grey", cegla: "brick", grafit: "graphite" },
+      sciany: {
+        biala: "white",
+        bezowa: "beige",
+        szara: "grey",
+        cegla: "brick",
+        grafit: "graphite"
+      },
       belka: "Transom",
       brak: "none",
       wUrzadzeniu: "also in: {0}",
@@ -1926,11 +2473,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Jalousien",
       zrolety: "Rollläden",
       fasadowe: "Raffstores",
-      taras: "Terrasse",
+      taras: "Terrasse und Garten",
       pionowe: "Vertikal und Vorhänge",
       brama: "Tor und Garage",
       bramy: "Einfahrtstore",
-      garaze: "Garagentore"
+      garaze: "Garagentore",
+      dach: "Dachfenster",
+      dachowe: "Dachfenster-Beschattung",
+      markizy: "Markisen",
+      pergole: "Pergolen und Überdachungen",
+      okna: "Fenster und Lichtkuppeln mit Antrieb",
+      moskitiery: "Insektenschutz",
+      zscreen: "Screens",
+      okiennice: "Fensterläden",
+      ekrany: "Leinwände",
+      szlabany: "Schranken"
     },
     oslony: {
       pelna: "Freihängendes Rollo",
@@ -1956,7 +2513,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Flügeltor",
       segmentowa: "Sektionaltor",
       uchylna: "Schwingtor",
-      roletowa: "Rolltor"
+      roletowa: "Rolltor",
+      roleta_zip_wew: "Rollo mit Seitenführung",
+      bambusowa: "Bambusrollo",
+      plisa_gora_dol: "Plissee von oben und unten",
+      zaslona_wave: "Wellenvorhang",
+      firana: "Gardine auf Schiene",
+      panel: "Flächenvorhang",
+      ekran: "Leinwand",
+      dach_dkl: "Verdunkelungsrollo (DKL)",
+      dach_ssl: "Solar-Rollladen (SSL)",
+      dachowa: "Dach-Rollladen (ARZ)",
+      dach_fhb: "Raffrollo (FHB)",
+      dach_msl: "Solar-Hitzeschutz (MSL / MHL)",
+      markizeta_dach: "Hitzeschutz-Markise (AMZ)",
+      dach_pal: "Jalousie (PAL)",
+      dach_fhl: "Plissee (FHL)",
+      dach_dn: "Doppelrollo in Kassette",
+      natynkowa_okragla: "Vorbaurollladen rund (SKO)",
+      adaptacyjna: "Aufsatz-Rollladen am Rahmen",
+      roleta_moskitiera: "Rollladen mit Insektenschutz",
+      ekstrudowana: "Einbruchschutz-Rollladen",
+      roleta_drzwi: "Terrassentür-Rollladen",
+      fasadowa_f80: "Raffstore F80 (flach)",
+      markizoleta: "Markisolette",
+      okiennice: "Fensterläden",
+      okiennice_przesuwne: "Schiebeläden",
+      markiza_otwarta: "Offene Markise",
+      markiza_polkasetowa: "Halbkassettenmarkise",
+      markiza_kasetowa: "Kassettenmarkise",
+      markiza_volant: "Markise mit Volant-Rollo",
+      markiza_koszowa: "Korbmarkise",
+      markiza_wolnostojaca: "Freistehende Markise",
+      markiza_zimowa: "Wintergartenmarkise",
+      markizeta: "Fenstermarkise",
+      markiza_balkonowa: "Klemmmarkise",
+      markiza_pionowa: "Senkrechtmarkise",
+      markiza_boczna: "Seitenmarkise",
+      zagiel: "Aufrollbares Sonnensegel",
+      parasol: "Sonnenschirm",
+      pergola: "Lamellen-Pergola",
+      pergola_tkanina: "Pergola mit Stoffdach",
+      zadaszenie: "Terrassendach",
+      screen_taras: "Terrassen-Screen",
+      okno_silownik: "Fenster mit Antrieb",
+      okno_dachowe: "Dachfenster mit Antrieb",
+      okno_plaskie: "Flachdachfenster",
+      swietlik: "Lichtkuppel",
+      wylaz: "Dachausstieg",
+      moskitiera: "Insektenschutzrollo",
+      moskitiera_plisa_okno: "Plissee-Insektenschutz Fenster",
+      moskitiera_drzwi: "Plissee-Insektenschutz Tür",
+      moskitiera_zip_drzwi: "Insektenschutzrollo Tür",
+      furtka: "Gartentor",
+      garaz_boczna: "Seiten-Sectionaltor",
+      garaz_skrzydlowa: "Flügel-Garagentor",
+      szlaban: "Schranke"
     },
     kolory: {
       czarny: "schwarz",
@@ -2220,11 +2832,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Waagerechte Trennung",
       obokPola: "neben Feld {0}",
       podPolem: "unter Feld {0}",
-      przegRodzaj: { brak: "Keine", slupek: "Pfosten", belka: "Kämpfer", sciana: "Wand" },
+      przegRodzaj: {
+        brak: "Keine",
+        slupek: "Pfosten",
+        belka: "Kämpfer",
+        sciana: "Wand"
+      },
       szerokosc: "Breite",
       dodajSciane: "🧱 Wand zwischen Fenstern",
       sciana: "Wand",
-      sciany: { biala: "weiß", bezowa: "beige", szara: "grau", cegla: "Ziegel", grafit: "Graphit" },
+      sciany: {
+        biala: "weiß",
+        bezowa: "beige",
+        szara: "grau",
+        cegla: "Ziegel",
+        grafit: "Graphit"
+      },
       belka: "Kämpfer",
       brak: "keiner",
       wUrzadzeniu: "auch in: {0}",
@@ -2381,11 +3004,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Stores vénitiens",
       zrolety: "Volets roulants",
       fasadowe: "Brise-soleil orientables",
-      taras: "Terrasse",
+      taras: "Terrasse et jardin",
       pionowe: "Verticaux et rideaux",
       brama: "Portail et garage",
       bramy: "Portails",
-      garaze: "Portes de garage"
+      garaze: "Portes de garage",
+      dach: "Fenêtres de toit",
+      dachowe: "Occultations de fenêtres de toit",
+      markizy: "Stores bannes",
+      pergole: "Pergolas et toitures",
+      okna: "Fenêtres et lanterneaux motorisés",
+      moskitiery: "Moustiquaires",
+      zscreen: "Screens",
+      okiennice: "Volets",
+      ekrany: "Écrans",
+      szlabany: "Barrières"
     },
     oslony: {
       pelna: "Store enrouleur libre",
@@ -2411,7 +3044,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Portail battant",
       segmentowa: "Porte sectionnelle",
       uchylna: "Porte basculante",
-      roletowa: "Porte enroulable"
+      roletowa: "Porte enroulable",
+      roleta_zip_wew: "Store à guidage latéral",
+      bambusowa: "Store en bambou",
+      plisa_gora_dol: "Store plissé haut-bas",
+      zaslona_wave: "Rideau à vague",
+      firana: "Voilage sur rail",
+      panel: "Panneaux japonais",
+      ekran: "Écran de projection",
+      dach_dkl: "Store occultant (DKL)",
+      dach_ssl: "Volet roulant solaire (SSL)",
+      dachowa: "Volet roulant de toit (ARZ)",
+      dach_fhb: "Store bateau (FHB)",
+      dach_msl: "Store extérieur solaire (MSL / MHL)",
+      markizeta_dach: "Store extérieur (AMZ)",
+      dach_pal: "Store vénitien (PAL)",
+      dach_fhl: "Store plissé (FHL)",
+      dach_dn: "Store jour/nuit à cassette",
+      natynkowa_okragla: "Volet en applique arrondi (SKO)",
+      adaptacyjna: "Volet adapté sur cadre",
+      roleta_moskitiera: "Volet avec moustiquaire",
+      ekstrudowana: "Volet anti-effraction",
+      roleta_drzwi: "Volet de baie vitrée",
+      fasadowa_f80: "Brise-soleil F80 (plat)",
+      markizoleta: "Store à projection (markisolette)",
+      okiennice: "Volets battants",
+      okiennice_przesuwne: "Volets coulissants",
+      markiza_otwarta: "Store banne ouvert",
+      markiza_polkasetowa: "Store banne semi-coffre",
+      markiza_kasetowa: "Store banne coffre",
+      markiza_volant: "Store banne à lambrequin",
+      markiza_koszowa: "Marquise corbeille",
+      markiza_wolnostojaca: "Store banne autoportant",
+      markiza_zimowa: "Store de véranda",
+      markizeta: "Store à l'italienne",
+      markiza_balkonowa: "Store de balcon à pince",
+      markiza_pionowa: "Store vertical de balcon",
+      markiza_boczna: "Store latéral",
+      zagiel: "Voile d'ombrage enroulable",
+      parasol: "Parasol de jardin",
+      pergola: "Pergola bioclimatique",
+      pergola_tkanina: "Pergola à toile",
+      zadaszenie: "Toiture de terrasse",
+      screen_taras: "Screen de terrasse",
+      okno_silownik: "Fenêtre motorisée",
+      okno_dachowe: "Fenêtre de toit motorisée",
+      okno_plaskie: "Fenêtre pour toit plat",
+      swietlik: "Lanterneau",
+      wylaz: "Trappe de toit",
+      moskitiera: "Moustiquaire enroulable",
+      moskitiera_plisa_okno: "Moustiquaire plissée fenêtre",
+      moskitiera_drzwi: "Moustiquaire plissée porte",
+      moskitiera_zip_drzwi: "Moustiquaire enroulable porte",
+      furtka: "Portillon",
+      garaz_boczna: "Porte sectionnelle latérale",
+      garaz_skrzydlowa: "Porte de garage battante",
+      szlaban: "Barrière levante"
     },
     kolory: {
       czarny: "noir",
@@ -2675,11 +3363,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Séparation horizontale",
       obokPola: "à côté du panneau {0}",
       podPolem: "sous le panneau {0}",
-      przegRodzaj: { brak: "Aucune", slupek: "Meneau", belka: "Traverse", sciana: "Mur" },
+      przegRodzaj: {
+        brak: "Aucune",
+        slupek: "Meneau",
+        belka: "Traverse",
+        sciana: "Mur"
+      },
       szerokosc: "Largeur",
       dodajSciane: "🧱 Mur entre les fenêtres",
       sciana: "Mur",
-      sciany: { biala: "blanc", bezowa: "beige", szara: "gris", cegla: "brique", grafit: "graphite" },
+      sciany: {
+        biala: "blanc",
+        bezowa: "beige",
+        szara: "gris",
+        cegla: "brique",
+        grafit: "graphite"
+      },
       belka: "Traverse",
       brak: "aucun",
       wUrzadzeniu: "aussi dans : {0}",
@@ -2836,11 +3535,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Žaluzie",
       zrolety: "Venkovní rolety",
       fasadowe: "Venkovní žaluzie",
-      taras: "Terasa",
+      taras: "Terasa a zahrada",
       pionowe: "Vertikální a závěsy",
       brama: "Brána a garáž",
       bramy: "Vjezdové brány",
-      garaze: "Garážová vrata"
+      garaze: "Garážová vrata",
+      dach: "Střešní okna",
+      dachowe: "Stínění střešních oken",
+      markizy: "Markýzy",
+      pergole: "Pergoly a zastřešení",
+      okna: "Okna a světlíky s pohonem",
+      moskitiery: "Sítě proti hmyzu",
+      zscreen: "Screeny",
+      okiennice: "Okenice",
+      ekrany: "Plátna",
+      szlabany: "Závory"
     },
     oslony: {
       pelna: "Volně visící roleta",
@@ -2866,7 +3575,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Křídlová brána",
       segmentowa: "Sekční vrata",
       uchylna: "Výklopná vrata",
-      roletowa: "Rolovací vrata"
+      roletowa: "Rolovací vrata",
+      roleta_zip_wew: "Roleta s vodicími lištami",
+      bambusowa: "Bambusová roleta",
+      plisa_gora_dol: "Plisé shora i zdola",
+      zaslona_wave: "Vlnový závěs",
+      firana: "Záclona na kolejnici",
+      panel: "Japonské stěny",
+      ekran: "Promítací plátno",
+      dach_dkl: "Zatemňovací roleta (DKL)",
+      dach_ssl: "Solární venkovní roleta (SSL)",
+      dachowa: "Venkovní roleta střešní (ARZ)",
+      dach_fhb: "Římská roleta (FHB)",
+      dach_msl: "Solární markýza (MSL / MHL)",
+      markizeta_dach: "Venkovní markýza (AMZ)",
+      dach_pal: "Žaluzie (PAL)",
+      dach_fhl: "Plisé roleta (FHL)",
+      dach_dn: "Roleta den/noc v kazetě",
+      natynkowa_okragla: "Předokenní roleta oblá (SKO)",
+      adaptacyjna: "Adaptační roleta na rám",
+      roleta_moskitiera: "Roleta se sítí proti hmyzu",
+      ekstrudowana: "Bezpečnostní roleta",
+      roleta_drzwi: "Roleta na terasové dveře",
+      fasadowa_f80: "Venkovní žaluzie F80 (plochá)",
+      markizoleta: "Markýzoleta",
+      okiennice: "Okenice",
+      okiennice_przesuwne: "Posuvné okenice",
+      markiza_otwarta: "Otevřená markýza",
+      markiza_polkasetowa: "Polokazetová markýza",
+      markiza_kasetowa: "Kazetová markýza",
+      markiza_volant: "Markýza s volánem",
+      markiza_koszowa: "Košová markýza",
+      markiza_wolnostojaca: "Volně stojící markýza",
+      markiza_zimowa: "Markýza na zimní zahradu",
+      markizeta: "Okenní markýza",
+      markiza_balkonowa: "Balkonová upínací markýza",
+      markiza_pionowa: "Svislá balkonová markýza",
+      markiza_boczna: "Boční markýza",
+      zagiel: "Svinovací stínicí plachta",
+      parasol: "Zahradní slunečník",
+      pergola: "Bioklimatická pergola",
+      pergola_tkanina: "Pergola s látkovou střechou",
+      zadaszenie: "Zastřešení terasy",
+      screen_taras: "Terasový screen",
+      okno_silownik: "Okno s pohonem",
+      okno_dachowe: "Střešní okno s pohonem",
+      okno_plaskie: "Okno do ploché střechy",
+      swietlik: "Světlík",
+      wylaz: "Střešní výlez",
+      moskitiera: "Rolovací síť proti hmyzu",
+      moskitiera_plisa_okno: "Plisé síť do okna",
+      moskitiera_drzwi: "Plisé síť do dveří",
+      moskitiera_zip_drzwi: "Rolovací síť do dveří",
+      furtka: "Branka",
+      garaz_boczna: "Boční sekční vrata",
+      garaz_skrzydlowa: "Křídlová garážová vrata",
+      szlaban: "Závora"
     },
     kolory: {
       czarny: "černá",
@@ -3130,11 +3894,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Vodorovná příčka",
       obokPola: "vedle pole {0}",
       podPolem: "pod polem {0}",
-      przegRodzaj: { brak: "Žádná", slupek: "Sloupek", belka: "Příčník", sciana: "Zeď" },
+      przegRodzaj: {
+        brak: "Žádná",
+        slupek: "Sloupek",
+        belka: "Příčník",
+        sciana: "Zeď"
+      },
       szerokosc: "Šířka",
       dodajSciane: "🧱 Zeď mezi okny",
       sciana: "Zeď",
-      sciany: { biala: "bílá", bezowa: "béžová", szara: "šedá", cegla: "cihla", grafit: "grafit" },
+      sciany: {
+        biala: "bílá",
+        bezowa: "béžová",
+        szara: "šedá",
+        cegla: "cihla",
+        grafit: "grafit"
+      },
       belka: "Příčník",
       brak: "žádný",
       wUrzadzeniu: "také v: {0}",
@@ -3291,11 +4066,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Žalúzie",
       zrolety: "Vonkajšie rolety",
       fasadowe: "Vonkajšie žalúzie",
-      taras: "Terasa",
+      taras: "Terasa a záhrada",
       pionowe: "Vertikálne a závesy",
       brama: "Brána a garáž",
       bramy: "Vjazdové brány",
-      garaze: "Garážové brány"
+      garaze: "Garážové brány",
+      dach: "Strešné okná",
+      dachowe: "Tienenie strešných okien",
+      markizy: "Markízy",
+      pergole: "Pergoly a zastrešenia",
+      okna: "Okná a svetlíky s pohonom",
+      moskitiery: "Siete proti hmyzu",
+      zscreen: "Screeny",
+      okiennice: "Okenice",
+      ekrany: "Plátna",
+      szlabany: "Závory"
     },
     oslony: {
       pelna: "Voľne visiaca roleta",
@@ -3321,7 +4106,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Krídlová brána",
       segmentowa: "Sekčná brána",
       uchylna: "Výklopná brána",
-      roletowa: "Rolovacia brána"
+      roletowa: "Rolovacia brána",
+      roleta_zip_wew: "Roleta s vodiacimi lištami",
+      bambusowa: "Bambusová roleta",
+      plisa_gora_dol: "Plisé zhora aj zdola",
+      zaslona_wave: "Vlnový záves",
+      firana: "Záclona na koľajnici",
+      panel: "Japonské steny",
+      ekran: "Premietacie plátno",
+      dach_dkl: "Zatemňovacia roleta (DKL)",
+      dach_ssl: "Solárna vonkajšia roleta (SSL)",
+      dachowa: "Vonkajšia strešná roleta (ARZ)",
+      dach_fhb: "Rímska roleta (FHB)",
+      dach_msl: "Solárna markíza (MSL / MHL)",
+      markizeta_dach: "Vonkajšia markíza (AMZ)",
+      dach_pal: "Žalúzia (PAL)",
+      dach_fhl: "Plisé roleta (FHL)",
+      dach_dn: "Roleta deň/noc v kazete",
+      natynkowa_okragla: "Predokenná roleta oblá (SKO)",
+      adaptacyjna: "Adaptačná roleta na rám",
+      roleta_moskitiera: "Roleta so sieťkou proti hmyzu",
+      ekstrudowana: "Bezpečnostná roleta",
+      roleta_drzwi: "Roleta na terasové dvere",
+      fasadowa_f80: "Vonkajšia žalúzia F80 (plochá)",
+      markizoleta: "Markízoleta",
+      okiennice: "Okenice",
+      okiennice_przesuwne: "Posuvné okenice",
+      markiza_otwarta: "Otvorená markíza",
+      markiza_polkasetowa: "Polokazetová markíza",
+      markiza_kasetowa: "Kazetová markíza",
+      markiza_volant: "Markíza s volánom",
+      markiza_koszowa: "Košová markíza",
+      markiza_wolnostojaca: "Voľne stojaca markíza",
+      markiza_zimowa: "Markíza na zimnú záhradu",
+      markizeta: "Okenná markíza",
+      markiza_balkonowa: "Balkónová upínacia markíza",
+      markiza_pionowa: "Zvislá balkónová markíza",
+      markiza_boczna: "Bočná markíza",
+      zagiel: "Zvinovacia tieniaca plachta",
+      parasol: "Záhradný slnečník",
+      pergola: "Bioklimatická pergola",
+      pergola_tkanina: "Pergola s látkovou strechou",
+      zadaszenie: "Zastrešenie terasy",
+      screen_taras: "Terasový screen",
+      okno_silownik: "Okno s pohonom",
+      okno_dachowe: "Strešné okno s pohonom",
+      okno_plaskie: "Okno do plochej strechy",
+      swietlik: "Svetlík",
+      wylaz: "Strešný výlez",
+      moskitiera: "Rolovacia sieť proti hmyzu",
+      moskitiera_plisa_okno: "Plisé sieť do okna",
+      moskitiera_drzwi: "Plisé sieť do dverí",
+      moskitiera_zip_drzwi: "Rolovacia sieť do dverí",
+      furtka: "Bránka",
+      garaz_boczna: "Bočná sekčná brána",
+      garaz_skrzydlowa: "Krídlová garážová brána",
+      szlaban: "Závora"
     },
     kolory: {
       czarny: "čierna",
@@ -3585,11 +4425,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Vodorovná priečka",
       obokPola: "vedľa poľa {0}",
       podPolem: "pod poľom {0}",
-      przegRodzaj: { brak: "Žiadna", slupek: "Stĺpik", belka: "Priečnik", sciana: "Stena" },
+      przegRodzaj: {
+        brak: "Žiadna",
+        slupek: "Stĺpik",
+        belka: "Priečnik",
+        sciana: "Stena"
+      },
       szerokosc: "Šírka",
       dodajSciane: "🧱 Stena medzi oknami",
       sciana: "Stena",
-      sciany: { biala: "biela", bezowa: "béžová", szara: "sivá", cegla: "tehla", grafit: "grafit" },
+      sciany: {
+        biala: "biela",
+        bezowa: "béžová",
+        szara: "sivá",
+        cegla: "tehla",
+        grafit: "grafit"
+      },
       belka: "Priečnik",
       brak: "žiadny",
       wUrzadzeniu: "aj v: {0}",
@@ -3746,11 +4597,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Venecianas",
       zrolety: "Persianas",
       fasadowe: "Lamas orientables",
-      taras: "Terraza",
+      taras: "Terraza y jardín",
       pionowe: "Verticales y cortinas",
       brama: "Portón y garaje",
       bramy: "Portones",
-      garaze: "Puertas de garaje"
+      garaze: "Puertas de garaje",
+      dach: "Ventanas de tejado",
+      dachowe: "Cortinas para ventanas de tejado",
+      markizy: "Toldos",
+      pergole: "Pérgolas y techos",
+      okna: "Ventanas y lucernarios motorizados",
+      moskitiery: "Mosquiteras",
+      zscreen: "Screens",
+      okiennice: "Contraventanas",
+      ekrany: "Pantallas",
+      szlabany: "Barreras"
     },
     oslony: {
       pelna: "Estor enrollable libre",
@@ -3776,7 +4637,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Portón batiente",
       segmentowa: "Puerta seccional",
       uchylna: "Puerta basculante",
-      roletowa: "Puerta enrollable"
+      roletowa: "Puerta enrollable",
+      roleta_zip_wew: "Estor con guías laterales",
+      bambusowa: "Estor de bambú",
+      plisa_gora_dol: "Plisado arriba-abajo",
+      zaslona_wave: "Cortina ondulada",
+      firana: "Visillo en riel",
+      panel: "Paneles japoneses",
+      ekran: "Pantalla de proyección",
+      dach_dkl: "Estor opaco (DKL)",
+      dach_ssl: "Persiana solar (SSL)",
+      dachowa: "Persiana de tejado (ARZ)",
+      dach_fhb: "Estor romano (FHB)",
+      dach_msl: "Toldo solar (MSL / MHL)",
+      markizeta_dach: "Toldo exterior (AMZ)",
+      dach_pal: "Veneciana (PAL)",
+      dach_fhl: "Estor plisado (FHL)",
+      dach_dn: "Estor noche/día en cofre",
+      natynkowa_okragla: "Persiana de cajón redondo (SKO)",
+      adaptacyjna: "Persiana adaptable al marco",
+      roleta_moskitiera: "Persiana con mosquitera",
+      ekstrudowana: "Persiana de seguridad",
+      roleta_drzwi: "Persiana para puerta de terraza",
+      fasadowa_f80: "Celosía exterior F80 (plana)",
+      markizoleta: "Toldo de brazo con screen",
+      okiennice: "Contraventanas",
+      okiennice_przesuwne: "Contraventanas correderas",
+      markiza_otwarta: "Toldo abierto",
+      markiza_polkasetowa: "Toldo semicofre",
+      markiza_kasetowa: "Toldo cofre",
+      markiza_volant: "Toldo con faldón",
+      markiza_koszowa: "Toldo capota",
+      markiza_wolnostojaca: "Toldo independiente",
+      markiza_zimowa: "Toldo para invernadero",
+      markizeta: "Toldo de ventana",
+      markiza_balkonowa: "Toldo de balcón a presión",
+      markiza_pionowa: "Toldo vertical de balcón",
+      markiza_boczna: "Toldo lateral",
+      zagiel: "Vela de sombra enrollable",
+      parasol: "Sombrilla de jardín",
+      pergola: "Pérgola bioclimática",
+      pergola_tkanina: "Pérgola de lona",
+      zadaszenie: "Techo de terraza",
+      screen_taras: "Screen de terraza",
+      okno_silownik: "Ventana con motor",
+      okno_dachowe: "Ventana de tejado motorizada",
+      okno_plaskie: "Ventana para cubierta plana",
+      swietlik: "Lucernario",
+      wylaz: "Escotilla de tejado",
+      moskitiera: "Mosquitera enrollable",
+      moskitiera_plisa_okno: "Mosquitera plisada de ventana",
+      moskitiera_drzwi: "Mosquitera plisada de puerta",
+      moskitiera_zip_drzwi: "Mosquitera enrollable de puerta",
+      furtka: "Puerta peatonal",
+      garaz_boczna: "Puerta seccional lateral",
+      garaz_skrzydlowa: "Puerta de garaje batiente",
+      szlaban: "Barrera"
     },
     kolory: {
       czarny: "negro",
@@ -4040,11 +4956,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Separación horizontal",
       obokPola: "junto al panel {0}",
       podPolem: "bajo el panel {0}",
-      przegRodzaj: { brak: "Ninguna", slupek: "Parteluz", belka: "Travesaño", sciana: "Pared" },
+      przegRodzaj: {
+        brak: "Ninguna",
+        slupek: "Parteluz",
+        belka: "Travesaño",
+        sciana: "Pared"
+      },
       szerokosc: "Anchura",
       dodajSciane: "🧱 Pared entre ventanas",
       sciana: "Pared",
-      sciany: { biala: "blanca", bezowa: "beige", szara: "gris", cegla: "ladrillo", grafit: "grafito" },
+      sciany: {
+        biala: "blanca",
+        bezowa: "beige",
+        szara: "gris",
+        cegla: "ladrillo",
+        grafit: "grafito"
+      },
       belka: "Travesaño",
       brak: "ninguno",
       wUrzadzeniu: "también en: {0}",
@@ -4201,11 +5128,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Veneziane",
       zrolety: "Tapparelle",
       fasadowe: "Frangisole",
-      taras: "Terrazza",
+      taras: "Terrazza e giardino",
       pionowe: "Verticali e tende",
       brama: "Cancello e garage",
       bramy: "Cancelli",
-      garaze: "Porte da garage"
+      garaze: "Porte da garage",
+      dach: "Finestre per tetti",
+      dachowe: "Tende per finestre da tetto",
+      markizy: "Tende da sole",
+      pergole: "Pergole e coperture",
+      okna: "Finestre e lucernari motorizzati",
+      moskitiery: "Zanzariere",
+      zscreen: "Screen",
+      okiennice: "Persiane",
+      ekrany: "Schermi",
+      szlabany: "Barriere"
     },
     oslony: {
       pelna: "Tenda a rullo libera",
@@ -4231,7 +5168,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Cancello a battente",
       segmentowa: "Porta sezionale",
       uchylna: "Porta basculante",
-      roletowa: "Porta avvolgibile"
+      roletowa: "Porta avvolgibile",
+      roleta_zip_wew: "Tenda a rullo con guide",
+      bambusowa: "Tenda in bambù",
+      plisa_gora_dol: "Plissettata alto-basso",
+      zaslona_wave: "Tenda a onda",
+      firana: "Tenda velata su binario",
+      panel: "Pannelli giapponesi",
+      ekran: "Schermo per proiezione",
+      dach_dkl: "Tenda oscurante (DKL)",
+      dach_ssl: "Tapparella solare (SSL)",
+      dachowa: "Tapparella per tetto (ARZ)",
+      dach_fhb: "Tenda a pacchetto (FHB)",
+      dach_msl: "Tenda esterna solare (MSL / MHL)",
+      markizeta_dach: "Tenda esterna (AMZ)",
+      dach_pal: "Veneziana (PAL)",
+      dach_fhl: "Tenda plissettata (FHL)",
+      dach_dn: "Tenda giorno/notte in cassonetto",
+      natynkowa_okragla: "Tapparella con cassonetto tondo (SKO)",
+      adaptacyjna: "Tapparella su telaio",
+      roleta_moskitiera: "Tapparella con zanzariera",
+      ekstrudowana: "Tapparella antieffrazione",
+      roleta_drzwi: "Tapparella per portafinestra",
+      fasadowa_f80: "Frangisole F80 (piatto)",
+      markizoleta: "Tenda a caduta con braccetti",
+      okiennice: "Persiane a battente",
+      okiennice_przesuwne: "Persiane scorrevoli",
+      markiza_otwarta: "Tenda aperta",
+      markiza_polkasetowa: "Tenda semicassonata",
+      markiza_kasetowa: "Tenda cassonata",
+      markiza_volant: "Tenda con mantovana",
+      markiza_koszowa: "Tenda a cappottina",
+      markiza_wolnostojaca: "Tenda autoportante",
+      markiza_zimowa: "Tenda per giardino d'inverno",
+      markizeta: "Tenda da finestra",
+      markiza_balkonowa: "Tenda da balcone a pressione",
+      markiza_pionowa: "Tenda verticale da balcone",
+      markiza_boczna: "Tenda laterale",
+      zagiel: "Vela ombreggiante avvolgibile",
+      parasol: "Ombrellone",
+      pergola: "Pergola bioclimatica",
+      pergola_tkanina: "Pergola con telo",
+      zadaszenie: "Copertura per terrazza",
+      screen_taras: "Screen per terrazza",
+      okno_silownik: "Finestra motorizzata",
+      okno_dachowe: "Finestra per tetti motorizzata",
+      okno_plaskie: "Finestra per tetto piano",
+      swietlik: "Lucernario a cupola",
+      wylaz: "Botola per tetto",
+      moskitiera: "Zanzariera avvolgibile",
+      moskitiera_plisa_okno: "Zanzariera plissé per finestra",
+      moskitiera_drzwi: "Zanzariera plissé per porta",
+      moskitiera_zip_drzwi: "Zanzariera avvolgibile per porta",
+      furtka: "Cancelletto",
+      garaz_boczna: "Portone sezionale laterale",
+      garaz_skrzydlowa: "Portone a battente",
+      szlaban: "Barriera"
     },
     kolory: {
       czarny: "nero",
@@ -4495,11 +5487,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Divisione orizzontale",
       obokPola: "accanto al pannello {0}",
       podPolem: "sotto il pannello {0}",
-      przegRodzaj: { brak: "Nessuna", slupek: "Montante", belka: "Traverso", sciana: "Muro" },
+      przegRodzaj: {
+        brak: "Nessuna",
+        slupek: "Montante",
+        belka: "Traverso",
+        sciana: "Muro"
+      },
       szerokosc: "Larghezza",
       dodajSciane: "🧱 Muro tra le finestre",
       sciana: "Muro",
-      sciany: { biala: "bianco", bezowa: "beige", szara: "grigio", cegla: "mattone", grafit: "grafite" },
+      sciany: {
+        biala: "bianco",
+        bezowa: "beige",
+        szara: "grigio",
+        cegla: "mattone",
+        grafit: "grafite"
+      },
       belka: "Traverso",
       brak: "nessuno",
       wUrzadzeniu: "anche in: {0}",
@@ -4656,11 +5659,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Jaloezieën",
       zrolety: "Rolluiken",
       fasadowe: "Buitenjaloezieën",
-      taras: "Terras",
+      taras: "Terras en tuin",
       pionowe: "Verticaal en gordijnen",
       brama: "Poort en garage",
       bramy: "Opritpoorten",
-      garaze: "Garagedeuren"
+      garaze: "Garagedeuren",
+      dach: "Dakramen",
+      dachowe: "Dakraamzonwering",
+      markizy: "Zonneschermen",
+      pergole: "Pergola's en overkappingen",
+      okna: "Ramen en lichtkoepels met motor",
+      moskitiery: "Horren",
+      zscreen: "Screens",
+      okiennice: "Luiken",
+      ekrany: "Schermen",
+      szlabany: "Slagbomen"
     },
     oslony: {
       pelna: "Vrijhangend rolgordijn",
@@ -4686,7 +5699,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Draaipoort",
       segmentowa: "Sectionaaldeur",
       uchylna: "Kanteldeur",
-      roletowa: "Roldeur"
+      roletowa: "Roldeur",
+      roleta_zip_wew: "Rolgordijn met zijgeleiding",
+      bambusowa: "Bamboe rolgordijn",
+      plisa_gora_dol: "Plissé boven-onder",
+      zaslona_wave: "Wave-gordijn",
+      firana: "Vitrage op rail",
+      panel: "Paneelgordijn",
+      ekran: "Projectiescherm",
+      dach_dkl: "Verduisterend rolgordijn (DKL)",
+      dach_ssl: "Zonne-rolluik (SSL)",
+      dachowa: "Dakrolluik (ARZ)",
+      dach_fhb: "Vouwgordijn (FHB)",
+      dach_msl: "Zonne-buitenzonwering (MSL / MHL)",
+      markizeta_dach: "Buitenzonwering (AMZ)",
+      dach_pal: "Jaloezie (PAL)",
+      dach_fhl: "Plisségordijn (FHL)",
+      dach_dn: "Duo-rolgordijn in cassette",
+      natynkowa_okragla: "Opbouwrolluik rond (SKO)",
+      adaptacyjna: "Rolluik op het kozijn",
+      roleta_moskitiera: "Rolluik met horscherm",
+      ekstrudowana: "Inbraakwerend rolluik",
+      roleta_drzwi: "Rolluik voor terrasdeur",
+      fasadowa_f80: "Buitenjaloezie F80 (vlak)",
+      markizoleta: "Markisolette",
+      okiennice: "Luiken",
+      okiennice_przesuwne: "Schuifluiken",
+      markiza_otwarta: "Open knikarmscherm",
+      markiza_polkasetowa: "Halfcassettescherm",
+      markiza_kasetowa: "Cassettescherm",
+      markiza_volant: "Knikarmscherm met volant",
+      markiza_koszowa: "Uitvalscherm korf",
+      markiza_wolnostojaca: "Vrijstaand scherm",
+      markiza_zimowa: "Serrezonwering",
+      markizeta: "Uitvalscherm",
+      markiza_balkonowa: "Klembalkonscherm",
+      markiza_pionowa: "Verticaal balkonscherm",
+      markiza_boczna: "Zijscherm",
+      zagiel: "Oprolbaar schaduwdoek",
+      parasol: "Parasol",
+      pergola: "Lamellenoverkapping",
+      pergola_tkanina: "Pergola met doek",
+      zadaszenie: "Terrasoverkapping",
+      screen_taras: "Terrasscreen",
+      okno_silownik: "Raam met motor",
+      okno_dachowe: "Dakraam met motor",
+      okno_plaskie: "Platdakraam",
+      swietlik: "Lichtkoepel",
+      wylaz: "Dakluik",
+      moskitiera: "Rolhor",
+      moskitiera_plisa_okno: "Plissé hor voor raam",
+      moskitiera_drzwi: "Plissé hordeur",
+      moskitiera_zip_drzwi: "Rolhor voor deur",
+      furtka: "Poortje",
+      garaz_boczna: "Zijwaartse sectionaaldeur",
+      garaz_skrzydlowa: "Openslaande garagedeur",
+      szlaban: "Slagboom"
     },
     kolory: {
       czarny: "zwart",
@@ -4950,11 +6018,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Horizontale scheiding",
       obokPola: "naast vak {0}",
       podPolem: "onder vak {0}",
-      przegRodzaj: { brak: "Geen", slupek: "Stijl", belka: "Kalf", sciana: "Muur" },
+      przegRodzaj: {
+        brak: "Geen",
+        slupek: "Stijl",
+        belka: "Kalf",
+        sciana: "Muur"
+      },
       szerokosc: "Breedte",
       dodajSciane: "🧱 Muur tussen ramen",
       sciana: "Muur",
-      sciany: { biala: "wit", bezowa: "beige", szara: "grijs", cegla: "baksteen", grafit: "grafiet" },
+      sciany: {
+        biala: "wit",
+        bezowa: "beige",
+        szara: "grijs",
+        cegla: "baksteen",
+        grafit: "grafiet"
+      },
       belka: "Kalf",
       brak: "geen",
       wUrzadzeniu: "ook in: {0}",
@@ -5111,11 +6190,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Venezianas",
       zrolety: "Estores exteriores",
       fasadowe: "Lâminas orientáveis",
-      taras: "Terraço",
+      taras: "Terraço e jardim",
       pionowe: "Verticais e cortinas",
       brama: "Portão e garagem",
       bramy: "Portões",
-      garaze: "Portas de garagem"
+      garaze: "Portas de garagem",
+      dach: "Janelas de telhado",
+      dachowe: "Proteções para janelas de telhado",
+      markizy: "Toldos",
+      pergole: "Pérgolas e coberturas",
+      okna: "Janelas e claraboias motorizadas",
+      moskitiery: "Mosquiteiras",
+      zscreen: "Screens",
+      okiennice: "Portadas",
+      ekrany: "Telas",
+      szlabany: "Cancelas"
     },
     oslony: {
       pelna: "Estore de rolo livre",
@@ -5141,7 +6230,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Portão de batente",
       segmentowa: "Porta seccionada",
       uchylna: "Porta basculante",
-      roletowa: "Porta de enrolar"
+      roletowa: "Porta de enrolar",
+      roleta_zip_wew: "Estore com guias laterais",
+      bambusowa: "Estore de bambu",
+      plisa_gora_dol: "Plissado cima-baixo",
+      zaslona_wave: "Cortina ondulada",
+      firana: "Cortinado em calha",
+      panel: "Painéis japoneses",
+      ekran: "Tela de projeção",
+      dach_dkl: "Estore blackout (DKL)",
+      dach_ssl: "Estore exterior solar (SSL)",
+      dachowa: "Estore de telhado (ARZ)",
+      dach_fhb: "Estore romano (FHB)",
+      dach_msl: "Toldo solar (MSL / MHL)",
+      markizeta_dach: "Toldo exterior (AMZ)",
+      dach_pal: "Persiana veneziana (PAL)",
+      dach_fhl: "Estore plissado (FHL)",
+      dach_dn: "Estore dia/noite em caixa",
+      natynkowa_okragla: "Estore de caixa redonda (SKO)",
+      adaptacyjna: "Estore adaptado ao caixilho",
+      roleta_moskitiera: "Estore com rede mosquiteira",
+      ekstrudowana: "Estore de segurança",
+      roleta_drzwi: "Estore para porta de terraço",
+      fasadowa_f80: "Estore veneziano F80 (plano)",
+      markizoleta: "Toldo com braço projetante",
+      okiennice: "Portadas",
+      okiennice_przesuwne: "Portadas de correr",
+      markiza_otwarta: "Toldo aberto",
+      markiza_polkasetowa: "Toldo semicofre",
+      markiza_kasetowa: "Toldo cofre",
+      markiza_volant: "Toldo com sanefa",
+      markiza_koszowa: "Toldo capota",
+      markiza_wolnostojaca: "Toldo independente",
+      markiza_zimowa: "Toldo para jardim de inverno",
+      markizeta: "Toldo de janela",
+      markiza_balkonowa: "Toldo de varanda de pressão",
+      markiza_pionowa: "Toldo vertical de varanda",
+      markiza_boczna: "Toldo lateral",
+      zagiel: "Vela de sombra enrolável",
+      parasol: "Guarda-sol",
+      pergola: "Pérgola bioclimática",
+      pergola_tkanina: "Pérgola com toldo",
+      zadaszenie: "Cobertura de terraço",
+      screen_taras: "Screen de terraço",
+      okno_silownik: "Janela motorizada",
+      okno_dachowe: "Janela de telhado motorizada",
+      okno_plaskie: "Janela para cobertura plana",
+      swietlik: "Claraboia",
+      wylaz: "Escotilha de telhado",
+      moskitiera: "Mosquiteira de enrolar",
+      moskitiera_plisa_okno: "Mosquiteira plissada de janela",
+      moskitiera_drzwi: "Mosquiteira plissada de porta",
+      moskitiera_zip_drzwi: "Mosquiteira de enrolar de porta",
+      furtka: "Portão pedonal",
+      garaz_boczna: "Porta seccionada lateral",
+      garaz_skrzydlowa: "Porta de garagem de batente",
+      szlaban: "Cancela"
     },
     kolory: {
       czarny: "preto",
@@ -5405,11 +6549,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Divisória horizontal",
       obokPola: "ao lado do painel {0}",
       podPolem: "abaixo do painel {0}",
-      przegRodzaj: { brak: "Nenhuma", slupek: "Montante", belka: "Travessa", sciana: "Parede" },
+      przegRodzaj: {
+        brak: "Nenhuma",
+        slupek: "Montante",
+        belka: "Travessa",
+        sciana: "Parede"
+      },
       szerokosc: "Largura",
       dodajSciane: "🧱 Parede entre janelas",
       sciana: "Parede",
-      sciany: { biala: "branca", bezowa: "bege", szara: "cinza", cegla: "tijolo", grafit: "grafite" },
+      sciany: {
+        biala: "branca",
+        bezowa: "bege",
+        szara: "cinza",
+        cegla: "tijolo",
+        grafit: "grafite"
+      },
       belka: "Travessa",
       brak: "nenhum",
       wUrzadzeniu: "também em: {0}",
@@ -5566,11 +6721,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Жалюзі",
       zrolety: "Ролети",
       fasadowe: "Фасадні жалюзі",
-      taras: "Тераса",
+      taras: "Тераса і сад",
       pionowe: "Вертикальні та штори",
       brama: "Ворота і гараж",
       bramy: "В'їзні ворота",
-      garaze: "Гаражні ворота"
+      garaze: "Гаражні ворота",
+      dach: "Мансардні вікна",
+      dachowe: "Захист мансардних вікон",
+      markizy: "Маркізи",
+      pergole: "Перголи та навіси",
+      okna: "Вікна та світлові люки з приводом",
+      moskitiery: "Москітні сітки",
+      zscreen: "Скріни",
+      okiennice: "Віконниці",
+      ekrany: "Екрани",
+      szlabany: "Шлагбауми"
     },
     oslony: {
       pelna: "Відкрита рулонна штора",
@@ -5596,7 +6761,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Розпашні ворота",
       segmentowa: "Секційні ворота",
       uchylna: "Підйомно-поворотні ворота",
-      roletowa: "Рулонні ворота"
+      roletowa: "Рулонні ворота",
+      roleta_zip_wew: "Ролета з напрямними",
+      bambusowa: "Бамбукова ролета",
+      plisa_gora_dol: "Плісе вгору-вниз",
+      zaslona_wave: "Штора хвиля",
+      firana: "Тюль на карнизі",
+      panel: "Японські панелі",
+      ekran: "Проекційний екран",
+      dach_dkl: "Затемнювальна ролета (DKL)",
+      dach_ssl: "Сонячна зовнішня ролета (SSL)",
+      dachowa: "Зовнішня ролета (ARZ)",
+      dach_fhb: "Римська штора (FHB)",
+      dach_msl: "Сонячна маркіза (MSL / MHL)",
+      markizeta_dach: "Зовнішня маркіза (AMZ)",
+      dach_pal: "Жалюзі (PAL)",
+      dach_fhl: "Плісе (FHL)",
+      dach_dn: "Ролета день/ніч у касеті",
+      natynkowa_okragla: "Накладна ролета кругла (SKO)",
+      adaptacyjna: "Адаптаційна ролета на раму",
+      roleta_moskitiera: "Ролета з москітною сіткою",
+      ekstrudowana: "Протизламна ролета",
+      roleta_drzwi: "Ролета на терасні двері",
+      fasadowa_f80: "Фасадні жалюзі F80 (пласкі)",
+      markizoleta: "Маркізолета",
+      okiennice: "Віконниці",
+      okiennice_przesuwne: "Розсувні віконниці",
+      markiza_otwarta: "Відкрита маркіза",
+      markiza_polkasetowa: "Напівкасетна маркіза",
+      markiza_kasetowa: "Касетна маркіза",
+      markiza_volant: "Маркіза з воланом",
+      markiza_koszowa: "Купольна маркіза",
+      markiza_wolnostojaca: "Окремостояча маркіза",
+      markiza_zimowa: "Маркіза для зимового саду",
+      markizeta: "Віконна маркіза",
+      markiza_balkonowa: "Балконна розпірна маркіза",
+      markiza_pionowa: "Вертикальна балконна маркіза",
+      markiza_boczna: "Бічна маркіза",
+      zagiel: "Згортальний тіньовий парус",
+      parasol: "Садова парасоля",
+      pergola: "Біокліматична пергола",
+      pergola_tkanina: "Пергола з тканинним дахом",
+      zadaszenie: "Навіс над терасою",
+      screen_taras: "Терасний скрін",
+      okno_silownik: "Вікно з приводом",
+      okno_dachowe: "Мансардне вікно з приводом",
+      okno_plaskie: "Вікно для пласкої покрівлі",
+      swietlik: "Світловий купол",
+      wylaz: "Дахова ляда",
+      moskitiera: "Рулонна москітна сітка",
+      moskitiera_plisa_okno: "Плісе-сітка на вікно",
+      moskitiera_drzwi: "Плісе-сітка на двері",
+      moskitiera_zip_drzwi: "Рулонна сітка на двері",
+      furtka: "Хвіртка",
+      garaz_boczna: "Бічні секційні ворота",
+      garaz_skrzydlowa: "Розпашні гаражні ворота",
+      szlaban: "Шлагбаум"
     },
     kolory: {
       czarny: "чорний",
@@ -5860,11 +7080,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Горизонтальна перегородка",
       obokPola: "біля поля {0}",
       podPolem: "під полем {0}",
-      przegRodzaj: { brak: "Немає", slupek: "Імпост", belka: "Перемичка", sciana: "Стіна" },
+      przegRodzaj: {
+        brak: "Немає",
+        slupek: "Імпост",
+        belka: "Перемичка",
+        sciana: "Стіна"
+      },
       szerokosc: "Ширина",
       dodajSciane: "🧱 Стіна між вікнами",
       sciana: "Стіна",
-      sciany: { biala: "біла", bezowa: "бежева", szara: "сіра", cegla: "цегла", grafit: "графіт" },
+      sciany: {
+        biala: "біла",
+        bezowa: "бежева",
+        szara: "сіра",
+        cegla: "цегла",
+        grafit: "графіт"
+      },
       belka: "Перемичка",
       brak: "немає",
       wUrzadzeniu: "також у: {0}",
@@ -6021,11 +7252,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "Жалюзи",
       zrolety: "Рольставни",
       fasadowe: "Фасадные жалюзи",
-      taras: "Терраса",
+      taras: "Терраса и сад",
       pionowe: "Вертикальные и шторы",
       brama: "Ворота и гараж",
       bramy: "Въездные ворота",
-      garaze: "Гаражные ворота"
+      garaze: "Гаражные ворота",
+      dach: "Мансардные окна",
+      dachowe: "Защита мансардных окон",
+      markizy: "Маркизы",
+      pergole: "Перголы и навесы",
+      okna: "Окна и световые люки с приводом",
+      moskitiery: "Москитные сетки",
+      zscreen: "Скрины",
+      okiennice: "Ставни",
+      ekrany: "Экраны",
+      szlabany: "Шлагбаумы"
     },
     oslony: {
       pelna: "Открытая рулонная штора",
@@ -6051,7 +7292,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "Распашные ворота",
       segmentowa: "Секционные ворота",
       uchylna: "Подъёмно-поворотные ворота",
-      roletowa: "Рулонные ворота"
+      roletowa: "Рулонные ворота",
+      roleta_zip_wew: "Рулонная штора с направляющими",
+      bambusowa: "Бамбуковая штора",
+      plisa_gora_dol: "Плиссе сверху и снизу",
+      zaslona_wave: "Штора волна",
+      firana: "Тюль на карнизе",
+      panel: "Японские панели",
+      ekran: "Проекционный экран",
+      dach_dkl: "Затемняющая штора (DKL)",
+      dach_ssl: "Солнечная наружная ролета (SSL)",
+      dachowa: "Наружная ролета (ARZ)",
+      dach_fhb: "Римская штора (FHB)",
+      dach_msl: "Солнечная маркиза (MSL / MHL)",
+      markizeta_dach: "Наружная маркиза (AMZ)",
+      dach_pal: "Жалюзи (PAL)",
+      dach_fhl: "Плиссе (FHL)",
+      dach_dn: "Штора день/ночь в кассете",
+      natynkowa_okragla: "Накладная ролета круглая (SKO)",
+      adaptacyjna: "Адаптационная ролета на раму",
+      roleta_moskitiera: "Ролета с москитной сеткой",
+      ekstrudowana: "Противовзломная ролета",
+      roleta_drzwi: "Ролета на террасную дверь",
+      fasadowa_f80: "Фасадные жалюзи F80 (плоские)",
+      markizoleta: "Маркизолета",
+      okiennice: "Ставни",
+      okiennice_przesuwne: "Раздвижные ставни",
+      markiza_otwarta: "Открытая маркиза",
+      markiza_polkasetowa: "Полукассетная маркиза",
+      markiza_kasetowa: "Кассетная маркиза",
+      markiza_volant: "Маркиза с воланом",
+      markiza_koszowa: "Купольная маркиза",
+      markiza_wolnostojaca: "Отдельностоящая маркиза",
+      markiza_zimowa: "Маркиза для зимнего сада",
+      markizeta: "Оконная маркиза",
+      markiza_balkonowa: "Балконная распорная маркиза",
+      markiza_pionowa: "Вертикальная балконная маркиза",
+      markiza_boczna: "Боковая маркиза",
+      zagiel: "Сворачиваемый теневой парус",
+      parasol: "Садовый зонт",
+      pergola: "Биоклиматическая пергола",
+      pergola_tkanina: "Пергола с тканевой крышей",
+      zadaszenie: "Навес над террасой",
+      screen_taras: "Террасный скрин",
+      okno_silownik: "Окно с приводом",
+      okno_dachowe: "Мансардное окно с приводом",
+      okno_plaskie: "Окно для плоской кровли",
+      swietlik: "Световой купол",
+      wylaz: "Кровельный люк",
+      moskitiera: "Рулонная москитная сетка",
+      moskitiera_plisa_okno: "Плиссе-сетка на окно",
+      moskitiera_drzwi: "Плиссе-сетка на дверь",
+      moskitiera_zip_drzwi: "Рулонная сетка на дверь",
+      furtka: "Калитка",
+      garaz_boczna: "Боковые секционные ворота",
+      garaz_skrzydlowa: "Распашные гаражные ворота",
+      szlaban: "Шлагбаум"
     },
     kolory: {
       czarny: "чёрный",
@@ -6315,11 +7611,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "Горизонтальная перегородка",
       obokPola: "рядом с полем {0}",
       podPolem: "под полем {0}",
-      przegRodzaj: { brak: "Нет", slupek: "Импост", belka: "Перемычка", sciana: "Стена" },
+      przegRodzaj: {
+        brak: "Нет",
+        slupek: "Импост",
+        belka: "Перемычка",
+        sciana: "Стена"
+      },
       szerokosc: "Ширина",
       dodajSciane: "🧱 Стена между окнами",
       sciana: "Стена",
-      sciany: { biala: "белая", bezowa: "бежевая", szara: "серая", cegla: "кирпич", grafit: "графит" },
+      sciany: {
+        biala: "белая",
+        bezowa: "бежевая",
+        szara: "серая",
+        cegla: "кирпич",
+        grafit: "графит"
+      },
       belka: "Перемычка",
       brak: "нет",
       wUrzadzeniu: "также в: {0}",
@@ -6476,11 +7783,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "ブラインド",
       zrolety: "シャッター",
       fasadowe: "外付けブラインド",
-      taras: "テラス",
+      taras: "テラスと庭",
       pionowe: "縦型とカーテン",
       brama: "門とガレージ",
       bramy: "門扉",
-      garaze: "ガレージドア"
+      garaze: "ガレージドア",
+      dach: "天窓",
+      dachowe: "天窓用シェード",
+      markizy: "オーニング",
+      pergole: "パーゴラと屋根",
+      okna: "電動窓と天窓",
+      moskitiery: "網戸",
+      zscreen: "スクリーン",
+      okiennice: "よろい戸",
+      ekrany: "スクリーン",
+      szlabany: "遮断機"
     },
     oslony: {
       pelna: "オープン型ロールスクリーン",
@@ -6506,7 +7823,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "開き戸式門扉",
       segmentowa: "セクショナルドア",
       uchylna: "跳ね上げ式ドア",
-      roletowa: "シャッター"
+      roletowa: "シャッター",
+      roleta_zip_wew: "サイドガイド付きロールスクリーン",
+      bambusowa: "竹製ロールスクリーン",
+      plisa_gora_dol: "上下開閉プリーツ",
+      zaslona_wave: "ウェーブカーテン",
+      firana: "レースカーテン",
+      panel: "パネルスクリーン",
+      ekran: "プロジェクタースクリーン",
+      dach_dkl: "遮光ブラインド (DKL)",
+      dach_ssl: "ソーラー外付けシャッター (SSL)",
+      dachowa: "外付けシャッター (ARZ)",
+      dach_fhb: "シェード (FHB)",
+      dach_msl: "ソーラー外付けスクリーン (MSL / MHL)",
+      markizeta_dach: "外付けスクリーン (AMZ)",
+      dach_pal: "ベネチアンブラインド (PAL)",
+      dach_fhl: "プリーツスクリーン (FHL)",
+      dach_dn: "カセット付き調光ロールスクリーン",
+      natynkowa_okragla: "丸型ボックスシャッター (SKO)",
+      adaptacyjna: "窓枠取付シャッター",
+      roleta_moskitiera: "網戸付きシャッター",
+      ekstrudowana: "防犯シャッター",
+      roleta_drzwi: "テラスドア用シャッター",
+      fasadowa_f80: "外付けブラインド F80（平型）",
+      markizoleta: "マーキソレット",
+      okiennice: "よろい戸",
+      okiennice_przesuwne: "引き戸式よろい戸",
+      markiza_otwarta: "オープン型オーニング",
+      markiza_polkasetowa: "セミカセットオーニング",
+      markiza_kasetowa: "フルカセットオーニング",
+      markiza_volant: "バランス付きオーニング",
+      markiza_koszowa: "ドーム型オーニング",
+      markiza_wolnostojaca: "自立式オーニング",
+      markiza_zimowa: "サンルーム用オーニング",
+      markizeta: "窓用オーニング",
+      markiza_balkonowa: "突っ張り式バルコニーオーニング",
+      markiza_pionowa: "縦型バルコニーオーニング",
+      markiza_boczna: "サイドオーニング",
+      zagiel: "巻き取り式シェードセイル",
+      parasol: "ガーデンパラソル",
+      pergola: "ルーバーパーゴラ",
+      pergola_tkanina: "布屋根パーゴラ",
+      zadaszenie: "テラス屋根",
+      screen_taras: "テラススクリーン",
+      okno_silownik: "電動窓",
+      okno_dachowe: "電動天窓",
+      okno_plaskie: "陸屋根用天窓",
+      swietlik: "ドーム型天窓",
+      wylaz: "屋根ハッチ",
+      moskitiera: "ロール網戸",
+      moskitiera_plisa_okno: "窓用プリーツ網戸",
+      moskitiera_drzwi: "ドア用プリーツ網戸",
+      moskitiera_zip_drzwi: "ドア用ロール網戸",
+      furtka: "門扉",
+      garaz_boczna: "横引き式セクショナルドア",
+      garaz_skrzydlowa: "観音開きガレージドア",
+      szlaban: "遮断機"
     },
     kolory: {
       czarny: "黒",
@@ -6770,11 +8142,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "横の仕切り",
       obokPola: "パネル{0}の横",
       podPolem: "パネル{0}の下",
-      przegRodzaj: { brak: "なし", slupek: "方立", belka: "無目", sciana: "壁" },
+      przegRodzaj: {
+        brak: "なし",
+        slupek: "方立",
+        belka: "無目",
+        sciana: "壁"
+      },
       szerokosc: "幅",
       dodajSciane: "🧱 窓の間の壁",
       sciana: "壁",
-      sciany: { biala: "白", bezowa: "ベージュ", szara: "グレー", cegla: "レンガ", grafit: "グラファイト" },
+      sciany: {
+        biala: "白",
+        bezowa: "ベージュ",
+        szara: "グレー",
+        cegla: "レンガ",
+        grafit: "グラファイト"
+      },
       belka: "無目",
       brak: "なし",
       wUrzadzeniu: "{0} でも使用",
@@ -6931,11 +8314,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zaluzje: "百叶帘",
       zrolety: "卷帘门窗",
       fasadowe: "外遮阳百叶",
-      taras: "露台",
+      taras: "露台与花园",
       pionowe: "垂直帘与窗帘",
       brama: "大门与车库",
       bramy: "庭院大门",
-      garaze: "车库门"
+      garaze: "车库门",
+      dach: "天窗",
+      dachowe: "天窗遮阳",
+      markizy: "遮阳篷",
+      pergole: "凉亭与雨棚",
+      okna: "电动窗与天窗",
+      moskitiery: "纱窗",
+      zscreen: "卷帘屏",
+      okiennice: "百叶窗扇",
+      ekrany: "幕布",
+      szlabany: "道闸"
     },
     oslony: {
       pelna: "开放式卷帘",
@@ -6961,7 +8354,62 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       skrzydlowa: "平开门",
       segmentowa: "分节门",
       uchylna: "翻板门",
-      roletowa: "卷帘门"
+      roletowa: "卷帘门",
+      roleta_zip_wew: "带侧导轨卷帘",
+      bambusowa: "竹帘",
+      plisa_gora_dol: "上下双开百褶帘",
+      zaslona_wave: "波浪窗帘",
+      firana: "纱帘",
+      panel: "日式推拉帘",
+      ekran: "投影幕",
+      dach_dkl: "遮光卷帘 (DKL)",
+      dach_ssl: "太阳能外卷帘 (SSL)",
+      dachowa: "外卷帘 (ARZ)",
+      dach_fhb: "罗马帘 (FHB)",
+      dach_msl: "太阳能遮阳篷 (MSL / MHL)",
+      markizeta_dach: "外遮阳篷 (AMZ)",
+      dach_pal: "百叶帘 (PAL)",
+      dach_fhl: "百褶帘 (FHL)",
+      dach_dn: "盒式日夜帘",
+      natynkowa_okragla: "圆形外装卷帘 (SKO)",
+      adaptacyjna: "窗框式卷帘",
+      roleta_moskitiera: "带纱窗卷帘",
+      ekstrudowana: "防盗卷帘",
+      roleta_drzwi: "露台门卷帘",
+      fasadowa_f80: "外遮阳百叶 F80（平板）",
+      markizoleta: "外推式遮阳帘",
+      okiennice: "百叶窗扇",
+      okiennice_przesuwne: "推拉百叶窗",
+      markiza_otwarta: "开放式遮阳篷",
+      markiza_polkasetowa: "半盒式遮阳篷",
+      markiza_kasetowa: "全盒式遮阳篷",
+      markiza_volant: "带垂帘遮阳篷",
+      markiza_koszowa: "半圆遮阳篷",
+      markiza_wolnostojaca: "独立式遮阳篷",
+      markiza_zimowa: "阳光房遮阳篷",
+      markizeta: "窗户遮阳篷",
+      markiza_balkonowa: "阳台夹式遮阳篷",
+      markiza_pionowa: "垂直阳台遮阳篷",
+      markiza_boczna: "侧面遮阳帘",
+      zagiel: "可收卷遮阳帆",
+      parasol: "庭院遮阳伞",
+      pergola: "百叶凉亭",
+      pergola_tkanina: "布顶凉亭",
+      zadaszenie: "露台雨棚",
+      screen_taras: "露台卷帘",
+      okno_silownik: "电动窗",
+      okno_dachowe: "电动天窗",
+      okno_plaskie: "平屋顶窗",
+      swietlik: "采光穹顶",
+      wylaz: "屋顶检修口",
+      moskitiera: "卷式纱窗",
+      moskitiera_plisa_okno: "窗用折叠纱窗",
+      moskitiera_drzwi: "门用折叠纱窗",
+      moskitiera_zip_drzwi: "门用卷式纱窗",
+      furtka: "小门",
+      garaz_boczna: "侧开分节门",
+      garaz_skrzydlowa: "对开车库门",
+      szlaban: "道闸"
     },
     kolory: {
       czarny: "黑色",
@@ -7225,11 +8673,22 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       przegPoz: "横向隔断",
       obokPola: "窗格{0}旁",
       podPolem: "窗格{0}下方",
-      przegRodzaj: { brak: "无", slupek: "竖框", belka: "横框", sciana: "墙" },
+      przegRodzaj: {
+        brak: "无",
+        slupek: "竖框",
+        belka: "横框",
+        sciana: "墙"
+      },
       szerokosc: "宽度",
       dodajSciane: "🧱 窗户之间的墙",
       sciana: "墙",
-      sciany: { biala: "白色", bezowa: "米色", szara: "灰色", cegla: "砖", grafit: "石墨" },
+      sciany: {
+        biala: "白色",
+        bezowa: "米色",
+        szara: "灰色",
+        cegla: "砖",
+        grafit: "石墨"
+      },
       belka: "横档",
       brak: "无",
       wUrzadzeniu: "也在：{0}",
@@ -7265,7 +8724,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     ja: "日本語",
     "zh-Hans": "简体中文"
   };
-  var scal = (baza, x) => baza && typeof baza === "object" && !Array.isArray(baza) ? Object.fromEntries(Object.entries(baza).map(([k, v]) => [k, scal(v, x?.[k])])) : typeof x === typeof baza ? x : baza;
+  var scal = (baza2, x) => baza2 && typeof baza2 === "object" && !Array.isArray(baza2) ? Object.fromEntries(Object.entries(baza2).map(([k, v]) => [k, scal(v, x?.[k])])) : typeof x === typeof baza2 ? x : baza2;
   var TEKSTY = Object.fromEntries(Object.entries(SUROWE).map(([k, v]) => [k, k === "en" ? en_default : scal(en_default, v)]));
   function kodJezyka(s) {
     const k = String(s || "").replace("_", "-");
@@ -7425,8 +8884,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   };
   function konfiguruj(wpis) {
     const skad = location.pathname + location.search;
-    const idz2 = (u) => {
-      history.pushState(null, "", u);
+    const idz2 = (u2) => {
+      history.pushState(null, "", u2);
       window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
     };
     const szukaj = (k) => {
@@ -7439,7 +8898,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       }
       return null;
     };
-    const okno = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    const okno2 = () => document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
     idz2("/config/integrations/integration/motor_ha");
     let n = 0;
     const t = setInterval(() => {
@@ -7449,7 +8908,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         w._showOptions();
         let bylo = false, m = 0;
         const p = setInterval(() => {
-          const o = okno(), otwarte = !!(o && o._params);
+          const o = okno2(), otwarte = !!(o && o._params);
           if (otwarte) bylo = true;
           if (bylo && !otwarte || ++m > 7200) {
             clearInterval(p);
@@ -7515,7 +8974,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     // ustawienia: domyślne ← urządzenie Motor HA (atrybut motor_ha) ← karta na panelu
     get _ustawienia() {
       const urz = this._hass?.states?.[this._surowa.entity]?.attributes?.motor_ha;
-      return Object.assign({}, DOMYSLNE, urz && typeof urz === "object" ? urz : {}, this._surowa, this._surowa._podglad || {});
+      const c = Object.assign({}, DOMYSLNE, urz && typeof urz === "object" ? urz : {}, this._surowa, this._surowa._podglad || {});
+      c.rodzaj = c.oslona;
+      c.oslona = baza(c.oslona);
+      if (Array.isArray(c.pola)) c.pola = c.pola.map((p) => p?.oslona ? { ...p, oslona: baza(p.oslona) } : p);
+      return c;
     }
     get _T() {
       return TEKSTY[this._jez];
@@ -7551,30 +9014,30 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._poziomo = POZIOME.includes(c.oslona);
       const pion2 = c.suwak !== false && !this._poziomo;
       const dwaSuwaki = pion2 && !!c.osobno && n > 1;
-      const P = polaOkna(c), kol = P ? new Set(P.map((p) => p.x)).size : n;
-      this._uk = !!P;
+      const P2 = polaOkna(c), kol = P2 ? new Set(P2.map((p) => p.x)).size : n;
+      this._uk = !!P2;
       const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (kol === 1 ? 1.15 : 1), W2 = Math.round(H2 * (kol === 1 ? 0.68 : kol === 2 ? 0.92 : Math.min(1.5, 0.46 * kol)));
-      const miejsce = (i, wciecie = 4) => P ? ` style="left:calc(${P[i].x * 100}% + ${wciecie}px);top:calc(${P[i].y * 100}% + ${wciecie}px);width:calc(${P[i].w * 100}% - ${2 * wciecie}px);height:calc(${P[i].h * 100}% - ${2 * wciecie}px)"` : "";
-      const strona2 = (i) => P ? P[i].x + P[i].w / 2 <= 0.5 ? "l" : "p" : i ? "p" : "l";
-      const wid = (i) => P ? ` class="wid" style="left:${-P[i].x / P[i].w * 100}%;top:${-P[i].y / P[i].h * 100}%;width:${100 / P[i].w}%;height:${100 / P[i].h}%"` : ' style="position:absolute;inset:0"';
-      const ramy = P ? [...new Set(P.map((p) => p.x))].map((x) => {
-        const k = P.filter((p) => p.x === x), dol = Math.max(...k.map((p) => p.y + p.h));
+      const miejsce = (i, wciecie = 4) => P2 ? ` style="left:calc(${P2[i].x * 100}% + ${wciecie}px);top:calc(${P2[i].y * 100}% + ${wciecie}px);width:calc(${P2[i].w * 100}% - ${2 * wciecie}px);height:calc(${P2[i].h * 100}% - ${2 * wciecie}px)"` : "";
+      const strona2 = (i) => P2 ? P2[i].x + P2[i].w / 2 <= 0.5 ? "l" : "p" : i ? "p" : "l";
+      const wid = (i) => P2 ? ` class="wid" style="left:${-P2[i].x / P2[i].w * 100}%;top:${-P2[i].y / P2[i].h * 100}%;width:${100 / P2[i].w}%;height:${100 / P2[i].h}%"` : ' style="position:absolute;inset:0"';
+      const ramy = P2 ? [...new Set(P2.map((p) => p.x))].map((x) => {
+        const k = P2.filter((p) => p.x === x), dol = Math.max(...k.map((p) => p.y + p.h));
         return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
       }).join("") : "";
-      const xs = P ? [...new Set(P.map((p) => p.x))].sort((a, b) => a - b) : [];
+      const xs = P2 ? [...new Set(P2.map((p) => p.x))].sort((a, b) => a - b) : [];
       const sc = SCIANY[c.sciana], tloMuru = !sc ? "" : c.sciana === "cegla" ? `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(240,232,220,.75) 9px 10px),${sc}` : `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.1) 9px 10px),${sc}`;
       const mury = xs.slice(1).map((x, i) => {
-        const pk = P.find((p) => p.x === xs[i]), od2 = pk.x + pk.w;
+        const pk = P2.find((p) => p.x === xs[i]), od2 = pk.x + pk.w;
         return x - od2 > 4e-3 ? `<div class="mur" style="left:${od2 * 100}%;width:${(x - od2) * 100}%${x - od2 < 0.035 ? `;background:${rama}` : tloMuru}"></div>` : "";
       }).join("");
       this._kas = KASETA[c.oslona] ?? 12;
       const typPola = (i) => {
-        const t = P?.[i]?.oslona;
+        const t = P2?.[i]?.oslona;
         return t && !!czyZew(t) === !!zew && !POZIOME.includes(t) && !this._poziomo ? t : c.oslona;
       };
       const warianty = [], wariant = (i) => {
-        if (!P) return 0;
-        const t = typPola(i), k = P[i].kolor ? hex(P[i].kolor) : kolor;
+        if (!P2) return 0;
+        const t = typPola(i), k = P2[i].kolor ? hex(P2[i].kolor) : kolor;
         if (t === c.oslona && k === kolor) return 0;
         let w = warianty.findIndex((x) => x.t === t && x.k === k);
         if (w < 0) {
@@ -7583,24 +9046,24 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         }
         return w + 1;
       };
-      const wPol = P ? P.map((_, i) => wariant(i)) : [];
-      this._kasy = P ? P.map((_, i) => KASETA[typPola(i)] ?? 12) : null;
+      const wPol = P2 ? P2.map((_, i) => wariant(i)) : [];
+      this._kasy = P2 ? P2.map((_, i) => KASETA[typPola(i)] ?? 12) : null;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
       const skrzydlo = (i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}"${miejsce(i)}><div class="szyba"${wPol[i] ? ` data-w="${wPol[i]}"` : ""}>
       ${zew ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
       <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
-      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P || P[i].h >= 0.4) ? '<i class="klamka"></i>' : ""}</div>`;
+      <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P2 || P2[i].h >= 0.4) ? '<i class="klamka"></i>' : ""}</div>`;
       const kolumna = (i) => `<div class="szyba" data-i="${i}"${wPol[i] ? ` data-w="${wPol[i]}"` : ""}${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
       const pozycje = String(c.pozycje || "").split(/[,; ]+/).filter((x) => x !== "").map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
       root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}${warianty.map((x, w) => stylPola(`.szyba[data-w="${w + 1}"]`, { rama, drewno: czyDrewno(c.rama), kolor: x.k, typ: x.t, zew })).join("\n")}</style>
 <ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
-  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
-   ${mury}${ramy}${zew ? "" : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
+  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno${P2 ? " uk" : ""}" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
+   ${mury}${ramy}${zew ? "" : czl.map((_, i) => P2 ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
-   ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
+   ${n > 1 && !c.osobno && !P2 ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
   </div>${pion2 ? this._suwakHtml(T2, true, dwaSuwaki ? 1 : null) : ""}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
@@ -7642,7 +9105,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       E.zam?.addEventListener("click", () => this._polecenie(0));
       E.stp?.addEventListener("click", () => this._polecenie(null));
       E.poz.forEach((b) => b.addEventListener("click", () => this._polecenie(+b.dataset.p)));
-      E.pola.forEach((P2, i) => this._ciagnij(zew ? P2.p : E.skrz[i].s, [i]));
+      E.pola.forEach((P3, i) => this._ciagnij(zew ? P3.p : E.skrz[i].s, [i]));
       if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
       E.suwaki.forEach((S) => this._suwak(S));
       q(".zmien:not(.wyg)")?.addEventListener("click", () => konfiguruj(this._wpis()));
@@ -7659,7 +9122,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
     // nagłówek jak w kafelku HA + wiersz automatyki (powód ruchu, pauza) – wspólny dla okien i bram
     _naglowek(c) {
-      return `<div class="gl" role="button" tabindex="0"><div class="ik"><ha-icon icon="${IKONY[c.oslona] || IKONY.zebra}"></ha-icon></div>
+      return `<div class="gl" role="button" tabindex="0"><div class="ik"><ha-icon icon="${IKONY[c.rodzaj] || IKONY[c.oslona] || IKONY.zebra}"></ha-icon></div>
   <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
   <svg class="kompas" viewBox="-20 -20 40 40" hidden aria-hidden="true"><circle r="17" fill="none" stroke="var(--divider-color)" stroke-width="2"/>
    <path d="M-9 -15h18" stroke="var(--primary-color)" stroke-width="4" stroke-linecap="round"/><circle class="sl" r="4.5" fill="#ffb300"/></svg></div>
@@ -7821,8 +9284,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const pion2 = el.classList.contains("pion");
       const ktore = el.dataset.i === void 0 ? void 0 : [+el.dataset.i];
       const wart = (e) => {
-        const r = el.getBoundingClientRect(), u = pion2 ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
-        return Math.round(Math.min(1, Math.max(0, u)) * 100);
+        const r = el.getBoundingClientRect(), u2 = pion2 ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
+        return Math.round(Math.min(1, Math.max(0, u2)) * 100);
       };
       el.addEventListener("pointerdown", (e) => {
         akt = true;
@@ -7889,23 +9352,23 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         E.skrz.forEach((S, i) => {
           if (S.niebo) S.niebo.style.background = bg;
           if (S.za) S.za.style.background = bg;
-          const [nr, ile] = this._uk ? [0, 1] : [i, czl.length];
-          if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, nr, ile) : "";
-          if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, nr, ile);
+          const [nr2, ile] = this._uk ? [0, 1] : [i, czl.length];
+          if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, nr2, ile) : "";
+          if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, nr2, ile);
           S.s.classList.toggle("slonecznie", pora === "dzien" && (rodzaj === "slonce" || rodzaj === "chmurki"));
         });
         if (E.pgz) E.pgz.innerHTML = ["deszcz", "ulewa", "burza", "snieg", "deszczsnieg", "mgla"].includes(rodzaj) ? pogoda(rodzaj, pora, 0, 1).replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, "") : "";
       }
       if (this._brama) return this._aktualizujBrame(c, czl, st, pora);
       const auto = c.auto_czujniki !== false && !this._uk ? czujnikiOkna(h, czl[0]) : [];
-      const okno = this._uk ? c.pola.map((p) => h.states[p.czujnik]?.state === "on" ? p.tryb === "otworz" ? "otw" : "uch" : "") : [0, 1].map((k) => {
+      const okno2 = this._uk ? c.pola.map((p) => h.states[p.czujnik]?.state === "on" ? p.tryb === "otworz" ? "otw" : "uch" : "") : [0, 1].map((k) => {
         const id = c[k ? "czujnik_prawe" : "czujnik_lewe"] || auto[k], s = id && h.states[id];
         return s?.state === "on" ? c[k ? "tryb_prawe" : "tryb_lewe"] === "otworz" ? "otw" : "uch" : "";
       });
       E.skrz.forEach((S, i) => {
-        S.s.classList.toggle("uch", okno[i] === "uch");
-        S.s.classList.toggle("otw", okno[i] === "otw");
-        if (S.za) S.za.classList.toggle("widac", !!okno[i]);
+        S.s.classList.toggle("uch", okno2[i] === "uch");
+        S.s.classList.toggle("otw", okno2[i] === "otw");
+        if (S.za) S.za.classList.toggle("widac", !!okno2[i]);
       });
       const czesci = [];
       const pos = st.attributes.current_position;
@@ -7917,7 +9380,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (opisPg) czesci.push(opisPg + (typeof t === "number" ? ` ${Math.round(t)} ${ws.attributes.temperature_unit || "°C"}` : ""));
       }
       const ileCz = this._uk ? c.pola.filter((p) => p.czujnik).length : czl.length;
-      okno.forEach((o, k) => {
+      okno2.forEach((o, k) => {
         if (o && k < czl.length) czesci.push(`${T2.karta.okno}${ileCz > 1 ? " " + (this._uk ? k + 1 : k ? T2.karta.prawe : T2.karta.lewe) : ""} ${o === "otw" ? T2.karta.otwarte : T2.karta.uchylone}`);
       });
       this._opisStanu = czesci;
@@ -7980,21 +9443,21 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._opisStanu = czesci;
       this._automatyka(c, h);
       const otwarte = st.state !== "closed";
-      E.ikona?.setAttribute("icon", (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.oslona]) || "mdi:gate");
+      E.ikona?.setAttribute("icon", (otwarte ? IKONY_OTW[c.oslona] : IKONY[c.rodzaj] || IKONY[c.oslona]) || "mdi:gate");
       E.karta.style.setProperty("--mh-kolor", otwarte ? "var(--primary-color)" : "var(--state-cover-inactive-color,var(--state-inactive-color,var(--disabled-color)))");
       this._animuj();
     }
     _pokazCel(i, p, ciagnie) {
-      const P = this._el.pola[i];
-      if (!P) return;
+      const P2 = this._el.pola[i];
+      if (!P2) return;
       if (p === null || p === void 0) {
-        P.cel.style.display = "none";
+        P2.cel.style.display = "none";
         return;
       }
-      const wys = P.p.clientHeight;
-      P.cel.style.display = "block";
-      P.cel.style.top = this._gornaListwy(wys, p, P.kas) + LISTWA + "px";
-      P.celT.textContent = (ciagnie ? "" : "→ ") + p + " %";
+      const wys = P2.p.clientHeight;
+      P2.cel.style.display = "block";
+      P2.cel.style.top = this._gornaListwy(wys, p, P2.kas) + LISTWA + "px";
+      P2.celT.textContent = (ciagnie ? "" : "→ ") + p + " %";
     }
     // pozycja pokazywana na suwaku: jego osłona (osobne skrzydła) albo średnia wszystkich
     _wartSuwaka(S) {
@@ -8011,32 +9474,32 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     _rysuj() {
       const E = this._el, ile = E.pola.length;
       if (this._brama && this._ruchy[0]?.widac !== null) ustawBrame(E.svg, this._cfg.oslona, this._ruchy[0].widac);
-      E.pola.forEach((P, i) => {
+      E.pola.forEach((P2, i) => {
         const r = this._ruchy[Math.min(i, this._ruchy.length - 1)];
         if (!r || r.widac === null) return;
-        const wys = P.p.clientHeight;
+        const wys = P2.p.clientHeight;
         if (!wys) return;
         if (this._poziomo) {
           const z = 100 - r.widac;
-          P.oslona.style.top = this._kas - 2 + "px";
-          P.oslona.style.height = wys - this._kas + 2 + "px";
+          P2.oslona.style.top = this._kas - 2 + "px";
+          P2.oslona.style.height = wys - this._kas + 2 + "px";
           if (this._cfg.oslona === "zaslona") {
             const pol = (z / 2).toFixed(2);
-            P.oslona.style.clipPath = "";
-            P.oslona.style.maskImage = P.oslona.style.webkitMaskImage = `linear-gradient(90deg,#000 0 calc(${pol}% + 6px),transparent calc(${pol}% + 6px) calc(${100 - pol}% - 6px),#000 calc(${100 - pol}% - 6px))`;
-          } else P.oslona.style.clipPath = `inset(0 ${(100 - Math.max(4, z)).toFixed(2)}% 0 0)`;
+            P2.oslona.style.clipPath = "";
+            P2.oslona.style.maskImage = P2.oslona.style.webkitMaskImage = `linear-gradient(90deg,#000 0 calc(${pol}% + 6px),transparent calc(${pol}% + 6px) calc(${100 - pol}% - 6px),#000 calc(${100 - pol}% - 6px))`;
+          } else P2.oslona.style.clipPath = `inset(0 ${(100 - Math.max(4, z)).toFixed(2)}% 0 0)`;
           if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
           return;
         }
-        const kas = P.kas ?? this._kas, gora = this._gornaListwy(wys, r.widac, kas);
-        P.oslona.style.height = Math.max(0, gora - (kas - 2) + 1) + "px";
-        P.oslona.style.top = kas - 2 + "px";
-        P.listwa.style.transform = `translateY(${gora}px)`;
+        const kas = P2.kas ?? this._kas, gora = this._gornaListwy(wys, r.widac, kas);
+        P2.oslona.style.height = Math.max(0, gora - (kas - 2) + 1) + "px";
+        P2.oslona.style.top = kas - 2 + "px";
+        P2.listwa.style.transform = `translateY(${gora}px)`;
         if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
-        P._dol = P.p.offsetTop + (P.p.parentElement?.offsetTop || 0) + gora + LISTWA / 2;
+        P2._dol = P2.p.offsetTop + (P2.p.parentElement?.offsetTop || 0) + gora + LISTWA / 2;
       });
       if (E.oba && ile > 1) {
-        const y = E.pola.reduce((a, P) => a + (P._dol || 0), 0) / ile;
+        const y = E.pola.reduce((a, P2) => a + (P2._dol || 0), 0) / ile;
         E.oba.style.transform = `translateY(${y + 6 + 8}px)`;
       }
       const teraz = Math.round(this._srednia()), cel = Math.round(this._srednia(true)), jedzie = this._ruchy.some((r) => r.jedzie);
@@ -8661,8 +10124,8 @@ button svg{fill:var(--primary-color);flex:none}
   var AUTO_ZEW = ["markiza", "fasadowa", "fasadowaz", "screen"];
   var sumaKol = (K) => K.reduce((a, k, i) => a + k.w + (i < K.length - 1 ? +k.mur || 0 : 0), 0) || 1;
   var sumaWierszy = (k) => k.r.reduce((a, h, j) => a + h + (j < k.r.length - 1 ? +k.bel?.[j] || 0 : 0), 0) || 1;
-  function przerwy(u) {
-    const K = u.kol, suma = sumaKol(K), out = [];
+  function przerwy(u2) {
+    const K = u2.kol, suma = sumaKol(K), out = [];
     let x = 0;
     K.forEach((k, c) => {
       const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
@@ -8680,8 +10143,8 @@ button svg{fill:var(--primary-color);flex:none}
     });
     return out;
   }
-  function prostokaty(u) {
-    const K = u.kol, suma = sumaKol(K), out = [];
+  function prostokaty(u2) {
+    const K = u2.kol, suma = sumaKol(K), out = [];
     let x = 0;
     K.forEach((k) => {
       const w = k.w / suma, wys = 1 - k.dol, sr = sumaWierszy(k);
@@ -8695,19 +10158,19 @@ button svg{fill:var(--primary-color);flex:none}
     });
     return out;
   }
-  function zSzablonu(P) {
-    const xs = [...new Set(P.map((p) => okr(p[0])))].sort((a, b) => a - b);
+  function zSzablonu(P2) {
+    const xs = [...new Set(P2.map((p) => okr(p[0])))].sort((a, b) => a - b);
     const kol = xs.map((x) => {
-      const w = P.filter((p) => okr(p[0]) === x).sort((a, b) => a[1] - b[1]);
+      const w = P2.filter((p) => okr(p[0]) === x).sort((a, b) => a[1] - b[1]);
       const dol = 1 - Math.max(...w.map((p) => p[1] + p[3]));
       return { w: w[0][2], r: w.map((p) => p[3]), dol: Math.max(0, Math.round(dol * 100) / 100) };
     });
     return { kol: kol.length ? kol : [{ w: 1, r: [1], dol: 0 }] };
   }
-  var kopia = (u) => ({ kol: u.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0, mur: +k.mur || 0, bel: (k.bel || []).map(Number) })) });
+  var kopia = (u2) => ({ kol: u2.kol.map((k) => ({ w: +k.w, r: k.r.map(Number), dol: +k.dol || 0, mur: +k.mur || 0, bel: (k.bel || []).map(Number) })) });
   var takiSam = (a, b) => JSON.stringify(prostokaty(a)) === JSON.stringify(prostokaty(b));
-  var szablon = (u) => {
-    const i = UKLADY.findIndex(([, P]) => takiSam(zSzablonu(P), u));
+  var szablon = (u2) => {
+    const i = UKLADY.findIndex(([, P2]) => takiSam(zSzablonu(P2), u2));
     return i < 0 ? "w" : i;
   };
   var godz = (m) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
@@ -8794,6 +10257,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .zn{position:absolute;top:5px;right:5px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
 .miejsce{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;color:var(--primary);background:var(--primary-soft);border-radius:10px;padding:2px 7px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sek{margin:18px 0 8px;font-size:13px;font-weight:500;color:var(--fg2);letter-spacing:.02em}
+.grupaR{margin:20px 0 2px;font-size:16px;font-weight:500;color:var(--primary)} .grupaR:first-child{margin-top:4px}
 .probki{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
 .probka{flex:0 0 auto;width:56px;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;cursor:pointer;color:var(--fg2);font-size:10.5px;text-align:center;line-height:1.15}
 .probka i{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:block}
@@ -8950,8 +10414,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const n = (this._oslona(id)?.nazwa || id).toLowerCase();
         return /lew|left|links|gauche/.test(n) ? 0 : /praw|right|rechts|droite/.test(n) ? 2 : 1;
       };
-      const Rs = [...R].sort((a, b) => strona2(a) - strona2(b)), P = prostokaty(S.u);
-      const silnikPola = (i) => Rs.length >= ile ? Rs[i] : Rs[Math.min(Rs.length - 1, Math.floor((P[i][0] + P[i][2] / 2) * Rs.length))];
+      const Rs = [...R].sort((a, b) => strona2(a) - strona2(b)), P2 = prostokaty(S.u);
+      const silnikPola = (i) => Rs.length >= ile ? Rs[i] : Rs[Math.min(Rs.length - 1, Math.floor((P2[i][0] + P2[i][2] / 2) * Rs.length))];
       const nowyUklad = S.pola.length !== ile;
       S.pola = Array.from({ length: ile }, (_, i) => {
         const p = { ...S.pola[i] || {} };
@@ -8968,6 +10432,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // --- rysunki ---
     oslona(typ, x, y, w, h, poz, kolor) {
       const z = h * (1 - poz / 100), k = kolor, d = [];
+      typ = baza(typ);
       const t = { plaster: "plisa", natynkowa: "zewnetrzna", podtynkowa: "zewnetrzna", perforowana: "zewnetrzna", fasadowaz: "fasadowa" }[typ] || typ;
       if (t === "zaslona") {
         const s = w * (0.18 + 0.32 * (1 - poz / 100));
@@ -9034,7 +10499,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return `<circle cx="${cx}" cy="${cy}" r="9" fill="#ff9800" stroke="#fff" stroke-width="1.6"/><rect x="${cx - 4.5}" y="${cy - 5}" width="9" height="10" fill="none" stroke="#3a2600" stroke-width="1.5"/>` + (p.tryb === "otworz" ? `<path d="M${cx - 4.5} ${cy - 5}l4 1.6v10l-4-1.6z" fill="#3a2600"/>` : `<path d="M${cx - 4.5} ${cy + 5}l2.4-7h4.2" fill="none" stroke="#3a2600" stroke-width="1.4"/>`);
     }
     _brama(typ) {
-      return rysunekBramy(typ, this._kolor(), this._rama(), false, false);
+      return rysunekBramy(baza(typ), this._kolor(), this._rama(), false, false);
     }
     // stały rysunek: duży z boku (szeroki ekran) albo mały na górze (telefon); woła się też przy suwakach, bez rysowania całego kroku
     _odswiezScene(k = this.kroki()[this.S.krok], jedenDuzy = ["rodzaj", "kolory"].includes(k) && !this.S.brama && prostokaty(this.S.u).length > 1) {
@@ -9059,17 +10524,20 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _podgladMaly() {
       return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: "p" });
     }
-    kafelRodzaju(typ) {
+    kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
+      return kafel(typ, kolor, rama) || this._kafelProsty(typ);
+    }
+    _kafelProsty(typ) {
       if (czyBrama(typ)) return `<div style="width:100%;pointer-events:none">${this._brama(typ)}</div>`;
       const [n1] = this._nieba();
       return `<svg viewBox="0 0 64 60" aria-hidden="true"><rect x="8" y="4" width="48" height="52" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
       <rect x="11" y="7" width="42" height="46" fill="${n1}"/>${this.oslona(typ, 11, 7, 42, 46, 40, this._kolor())}</svg>`;
     }
-    kafelUkladu(P, drzwi) {
+    kafelUkladu(P2, drzwi2) {
       const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
-      P.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
+      P2.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
       <rect x="${7 + x * 52}" y="${5 + y * 50}" width="${Math.max(0, w * 52 - 2)}" height="${h * 50 * 0.45}" fill="var(--fg2)" opacity=".55"/>`));
-      if (drzwi) d.push('<line x1="2" x2="62" y1="55" y2="55" stroke="var(--fg2)"/>');
+      if (drzwi2) d.push('<line x1="2" x2="62" y1="55" y2="55" stroke="var(--fg2)"/>');
       d.push("</svg>");
       return d.join("");
     }
@@ -9082,14 +10550,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const poj = d.oslony.filter((o) => o.area === a && !o.grupa && !o.brama);
         return !!a && poj.length > 1 && poj.length === S.rolety.length && poj.every((o) => S.rolety.includes(o.id));
       };
-      const kafel = (o) => {
+      const kafel2 = (o) => {
         const czl = (o.czlonkowie || []).filter((e) => this._oslona(e));
         const grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every((e) => S.rolety.includes(e)) && (S.wybSkad ? S.wybSkad === "grupa:" + o.id : !calyPokoj(o.area));
-        const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
-        return `<button class="kaf ${nr >= 0 || grWyb ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ""}
+        const nr2 = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
+        return `<button class="kaf ${nr2 >= 0 || grWyb ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr2 >= 0}">${nr2 >= 0 ? `<span class="zn">${nr2 + 1}</span>` : ""}
         ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
         <rect x="12" y="6" width="40" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), 12, 6, 40, 32, Math.max(poz, 8), this._kolor())}</svg>`}
-        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6(`${poz} %`)}</span>${o.zajeta && nr < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc6(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc6(czl.length > 1 ? wstaw(t.grupaIle, czl.length) : t.grupa)}</span>` : ""}</button>`;
+        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6(`${poz} %`)}</span>${o.zajeta && nr2 < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc6(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc6(czl.length > 1 ? wstaw(t.grupaIle, czl.length) : t.grupa)}</span>` : ""}</button>`;
       };
       const pokoje = [...new Set(d.oslony.map((o) => o.area || ""))].sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || "").localeCompare(this._nazwaPokoju(b) || ""));
       const w = pokoje.map((a) => {
@@ -9104,7 +10572,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         <b>${esc6(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc6(poj.map((o) => o.nazwa).join(" + "))}</span></button>` : "";
         const grupy = tu.filter((o) => o.grupa), reszta = tu.filter((o) => !o.grupa);
         const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc6(t.pojedyncze)}</span></div>` : "";
-        return `<div class="sek">${esc6(a ? this._nazwaPokoju(a) : t.bezPokoju)}</div><div class="siatka k2">${podp}${grupy.map(kafel).join("")}${linia}${reszta.map(kafel).join("")}</div>`;
+        return `<div class="sek">${esc6(a ? this._nazwaPokoju(a) : t.bezPokoju)}</div><div class="siatka k2">${podp}${grupy.map(kafel2).join("")}${linia}${reszta.map(kafel2).join("")}</div>`;
       });
       return w.join("") + (S.wykryty ? `<p class="pod" style="margin-top:12px">${esc6(wstaw(t.wykryty, S.wykryty))}</p>` : "");
     }
@@ -9133,20 +10601,23 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t;
       const ed = (S.szablon === "w" || prostokaty(S.u).length > 1) && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
       ${this._edytorCaly()}<div class="sek">${esc6(t.zSzablonu)}</div>` : "";
-      return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
+      return ed + `<div class="siatka k4">${UKLADY.map(([k, P2, drzwi2], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P2, drzwi2)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
       <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
     }
+    // „Rodzaj”: grupy jak w katalogach producentów, realistyczny obrazek i nazwa (z kodem modelu) pod każdym
     str_rodzaj() {
-      const S = this.S, T2 = this.T;
-      let lista;
-      if (S.brama) lista = BRAMY;
-      else {
-        const wew = Object.values(GRUPY.wew).flat(), zew = Object.values(GRUPY.zew).flat(), k = this._oslona(S.rolety[0])?.klasa;
-        lista = ["shutter", "awning"].includes(k) || czyZew(S.o.oslona) ? [...zew, ...wew] : [...wew, ...zew];
-      }
+      const S = this.S, T2 = this.T, k = this._oslona(S.rolety[0])?.klasa;
       const wr = this._wybR(), akt = wr === null ? S.o.oslona : S.pola[wr]?.oslona || S.o.oslona;
-      if (wr !== null) lista = lista.filter((k) => !czyBrama(k) && !!czyZew(k) === !!czyZew(S.o.oslona) && !["pionowa", "zaslona"].includes(k));
-      return this._wyborPola() + `<div class="siatka k4">${lista.map((k) => `<button class="kaf ${akt === k ? "wyb" : ""}" data-rodzaj="${k}">${this.kafelRodzaju(k)}<b>${esc6(dziel(T2.oslony[k] || k))}</b></button>`).join("")}</div>`;
+      const zewPierwsze = ["shutter", "awning"].includes(k) || czyZew(S.o.oslona);
+      let grupy = GRUPY_KAFLI.filter(([g]) => S.brama ? g === "brama" : g !== "brama");
+      if (zewPierwsze) grupy = [...grupy.filter(([g]) => g !== "wew"), ...grupy.filter(([g]) => g === "wew")];
+      const pasuje = (t) => wr === null || !czyBrama(t) && !!czyZew(t) === !!czyZew(S.o.oslona) && !POZIOME.includes(baza(t));
+      const kolor = this._kolor(), rama = this._rama();
+      return this._wyborPola() + grupy.map(([g, pod]) => {
+        const sek = pod.map(([p, typy]) => [p, typy.filter(pasuje)]).filter(([, typy]) => typy.length);
+        if (!sek.length) return "";
+        return `<div class="grupaR">${esc6(T2.grupy[g] || g)}</div>` + sek.map(([p, typy]) => (p !== g ? `<div class="sek">${esc6(T2.grupy[p] || p)}</div>` : "") + `<div class="siatka k4">${typy.map((t) => `<button class="kaf ${akt === t ? "wyb" : ""}" data-rodzaj="${t}">${this.kafelRodzaju(t, kolor, rama)}<b>${esc6(dziel(T2.oslony[t] || t))}</b></button>`).join("")}</div>`).join("");
+      }).join("");
     }
     str_kolory() {
       const S = this.S, T2 = this.T, t = this.t;
@@ -9400,13 +10871,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     }
     // --- edytor własnego układu: duże okno z uchwytami do przeciągania i wybieranym polem ---
     edytor() {
-      const duzy = this._szeroko, EW = duzy ? 440 : 260, EH = duzy ? 390 : 230, EP = 10, S = this.S, P = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
+      const duzy = this._szeroko, EW = duzy ? 440 : 260, EH = duzy ? 390 : 230, EP = 10, S = this.S, P2 = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
       const [n1, n2] = this._nieba(), d = [], kol = this._kolor();
       d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc6(this.t.wlasnyTytul)}">`);
       d.push(`<defs><linearGradient id="nE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
       d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
       for (const [x2, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x2 * iw, EP + y * ih, w * iw, h * ih, typ));
-      P.forEach((p, i) => {
+      P2.forEach((p, i) => {
         const x2 = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
         const pp = S.pola[i] || {}, wi = Math.max(0, w - 8), hi = Math.max(0, h - 8);
         d.push(`<g data-ep="${i}"><rect x="${x2}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
@@ -9472,10 +10943,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         return `<div class="przeg"><div class="sek">${esc6(tytul)} <small>· ${esc6(gdzie)}</small></div><div class="chipy">${[["brak", nz.brak], ["waski", nz[waski]], ["sciana", nz.sciana]].map(([r, n]) => `<button class="chip ${rodzaj === r ? "wyb" : ""}" data-przeg="${typ}:${id}:${r}">${esc6(n)}</button>`).join("")}</div>
         ${rodzaj === "sciana" ? `<div class="suw"><span class="et">${esc6(t.szerokosc)}</span><input type="range" min="4" max="${typ.startsWith("mur") ? 40 : 30}" step="1" value="${v}" data-przerwa="${typ}:${id}" aria-label="${esc6(t.szerokosc)}"><span>${v} %</span></div>` : ""}</div>`;
       };
-      const nr = Math.min(S.wyb, prostokaty(S.u).length - 1) + 1;
-      if (cm >= 0) w.push(blok(t.przegPion, wstaw(t.obokPola, nr), "mur", `${cm}:0`, Math.round((+K[cm].mur || 0) / sw * 100), "slupek"));
+      const nr2 = Math.min(S.wyb, prostokaty(S.u).length - 1) + 1;
+      if (cm >= 0) w.push(blok(t.przegPion, wstaw(t.obokPola, nr2), "mur", `${cm}:0`, Math.round((+K[cm].mur || 0) / sw * 100), "slupek"));
       const jb = j < k.r.length - 1 ? j : j - 1;
-      if (jb >= 0) w.push(blok(t.przegPoz, wstaw(t.podPolem, nr), "bel", `${c}:${jb}`, Math.round((+k.bel?.[jb] || 0) / sr * 100), "belka"));
+      if (jb >= 0) w.push(blok(t.przegPoz, wstaw(t.podPolem, nr2), "bel", `${c}:${jb}`, Math.round((+k.bel?.[jb] || 0) / sr * 100), "belka"));
       return w.join("");
     }
     _odswiezUklad(bezSuwakow) {
@@ -9491,8 +10962,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));
     }
     operacja(op) {
-      const S = this.S, K = S.u.kol, P = prostokaty(S.u);
-      let i = op === "dodaj" ? arguments[1] : Math.min(S.wyb, P.length - 1), c = 0;
+      const S = this.S, K = S.u.kol, P2 = prostokaty(S.u);
+      let i = op === "dodaj" ? arguments[1] : Math.min(S.wyb, P2.length - 1), c = 0;
       if (op !== "dodaj") while (i >= K[c].r.length) {
         i -= K[c].r.length;
         c++;
@@ -9522,14 +10993,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         K[cm].mur = +K[cm].mur > 0 ? 0 : sw * 0.12;
         if (K[cm].mur && !this.S.o.sciana) this.S.o.sciana = "biala";
       }
-      if (op === "usun" && P.length > 1) {
+      if (op === "usun" && P2.length > 1) {
         if (k.r.length > 1) {
           const h = k.r.splice(i, 1)[0];
           k.r[Math.max(0, i - 1)] += h + (+k.bel?.[Math.min(i, k.r.length - 1)] || 0);
           k.bel?.splice(Math.min(i, k.r.length - 1), 1);
         } else {
-          const u = K.splice(c, 1)[0];
-          K[Math.max(0, c - 1)].w += u.w + (+u.mur || 0);
+          const u2 = K.splice(c, 1)[0];
+          K[Math.max(0, c - 1)].w += u2.w + (+u2.mur || 0);
           if (c >= K.length && K.length) K[K.length - 1].mur = 0;
         }
         S.wyb = 0;
@@ -9538,9 +11009,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this.rysuj();
     }
     _ciagnij(e) {
-      const svg2 = this.shadowRoot.getElementById("edSvg");
-      if (!svg2 || !this._uch) return;
-      const { EW, EH, EP } = this._ed, r = svg2.getBoundingClientRect(), sk = EW / r.width;
+      const svg3 = this.shadowRoot.getElementById("edSvg");
+      if (!svg3 || !this._uch) return;
+      const { EW, EH, EP } = this._ed, r = svg3.getBoundingClientRect(), sk = EW / r.width;
       const fx = Math.min(1, Math.max(0, ((e.clientX - r.left) * sk - EP) / (EW - 2 * EP))), fy = Math.min(1, Math.max(0, ((e.clientY - r.top) * sk - EP) / (EH - 2 * EP)));
       const K = this.S.u.kol, suma = sumaKol(K), [typ, id] = this._uch.split(":");
       if (typ === "k") {
@@ -9633,9 +11104,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           } catch (x) {
           }
         }
-        const u = e.target.closest?.("[data-uch]"), p = e.target.closest?.("[data-ep]");
-        if (u) {
-          this._uch = u.dataset.uch;
+        const u2 = e.target.closest?.("[data-uch]"), p = e.target.closest?.("[data-ep]");
+        if (u2) {
+          this._uch = u2.dataset.uch;
           e.preventDefault();
           try {
             r.getElementById("edytor").setPointerCapture(e.pointerId);
@@ -9733,8 +11204,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         this._kartaEl = el;
       }
     }
-    _idz(nr) {
-      this.S.krok = nr;
+    _idz(nr2) {
+      this.S.krok = nr2;
       this.S.arkusz = null;
       this.S.arkuszC = null;
       this.rysuj();
@@ -9993,19 +11464,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return "";
     }
   }
-  function danePaska(svg2) {
-    const m = /data-motor-ha-kroki="([^"]*)"[^>]*data-krok="(\d+)"[^>]*data-aktywny="(\d+)"/.exec(svg2);
+  function danePaska(svg3) {
+    const m = /data-motor-ha-kroki="([^"]*)"[^>]*data-krok="(\d+)"[^>]*data-aktywny="(\d+)"/.exec(svg3);
     if (!m) return null;
     let podglad = null;
-    const p = /data-podglad="([^"]*)"/.exec(svg2);
+    const p = /data-podglad="([^"]*)"/.exec(svg3);
     if (p) try {
       podglad = JSON.parse(odkoduj(p[1]));
     } catch (e) {
     }
     return { kroki: m[1].split(","), krok: +m[2], aktywny: +m[3], podglad };
   }
-  function daneGalerii(svg2) {
-    const a = (n) => (new RegExp(`${n}="([^"]*)"`).exec(svg2) || [])[1];
+  function daneGalerii(svg3) {
+    const a = (n) => (new RegExp(`${n}="([^"]*)"`).exec(svg3) || [])[1];
     const pole = a("data-motor-ha-wybor");
     return pole ? { pole, opcje: (a("data-opcje") || "").split(","), kol: +a("data-kol") || 4 } : null;
   }
@@ -10072,10 +11543,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     return d;
   }
   function galeria(form, img) {
-    const svg2 = svgZ(img), d = daneGalerii(svg2);
+    const svg3 = svgZ(img), d = daneGalerii(svg3);
     if (!d) return;
     img.setAttribute(GAL, "");
-    img.setAttribute("src", PREFIKS + zakoduj(svg2.replace(/<rect data-on="1"[^>]*\/>/, "")));
+    img.setAttribute("src", PREFIKS + zakoduj(svg3.replace(/<rect data-on="1"[^>]*\/>/, "")));
     const opak = document.createElement("span");
     opak.style.cssText = "position:relative;display:inline-block;max-width:100%;line-height:0";
     img.parentNode.insertBefore(opak, img);
@@ -10127,7 +11598,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       k = document.createElement("motor-ha");
       p.box.appendChild(k);
     }
-    const brama = ["przesuwna", "skrzydlowa", "segmentowa", "uchylna", "roletowa"].includes(c.oslona);
+    const brama = czyBrama(c.oslona);
     const teraz = (/* @__PURE__ */ new Date()).toISOString();
     const stan = {
       entity_id: ENCJA2,
@@ -10139,7 +11610,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         current_position: brama ? 0 : 60,
         friendly_name: " ",
         supported_features: 15,
-        ...brama ? { device_class: ["przesuwna", "skrzydlowa"].includes(c.oslona) ? "gate" : "garage" } : {}
+        ...brama ? { device_class: GARAZE.includes(c.oslona) ? "garage" : "gate" } : {}
       }
     };
     k.setConfig({
@@ -10154,14 +11625,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     k.hass = { ...ha, states: { ...ha.states, [ENCJA2]: stan }, callService: () => Promise.resolve(), callWS: () => Promise.resolve(null) };
   }
   var GRAFICZNE = /* @__PURE__ */ new Set();
-  function czyMotorHa(okno, form) {
-    const p = okno._params || {}, k = okno._step || {};
+  function czyMotorHa(okno2, form) {
+    const p = okno2._params || {}, k = okno2._step || {};
     return k.handler === "motor_ha" || p.domain === "motor_ha" || p.manifest?.domain === "motor_ha" || !!(form && wszystkie(form.shadowRoot, `img[${ZNAK}],img[src^="${PREFIKS}"]`).some((i) => i.hasAttribute(ZNAK) || danePaska(svgZ(i))));
   }
-  function graficzny(okno, form) {
-    const krok = okno._step;
+  function graficzny(okno2, form) {
+    const krok = okno2._step;
     if (!krok?.flow_id || krok.type !== "form" || GRAFICZNE.has(krok.flow_id) || !customElements.get("motor-ha-kreator")) return;
-    if (!czyMotorHa(okno, form)) return;
+    if (!czyMotorHa(okno2, form)) return;
     const ha = document.querySelector("home-assistant");
     if (!ha?.hass) return;
     GRAFICZNE.add(krok.flow_id);
@@ -10170,9 +11641,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     dlg.style.cssText = "padding:0;border:0;margin:auto;width:min(100vw,430px);height:min(100dvh,880px);max-width:100vw;max-height:100dvh;border-radius:var(--ha-dialog-border-radius,28px);overflow:hidden;background:var(--card-background-color,#fff)";
     if (innerWidth < 600) Object.assign(dlg.style, { width: "100vw", height: "100dvh", borderRadius: "0" });
     else if (innerWidth >= 900) Object.assign(dlg.style, { width: "min(96vw,1400px)", height: "min(94dvh,1000px)" });
-    const tlo2 = document.createElement("style");
-    tlo2.textContent = "dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}";
-    dlg.appendChild(tlo2);
+    const tlo3 = document.createElement("style");
+    tlo3.textContent = "dialog[data-motor-ha-kreator]::backdrop{background:rgba(0,0,0,.45)}";
+    dlg.appendChild(tlo3);
     const k = document.createElement("motor-ha-kreator");
     dlg.appendChild(k);
     document.body.appendChild(dlg);
@@ -10184,14 +11655,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     };
     const zamknij = () => {
       sprzatnij();
-      okno.closeDialog?.();
+      okno2.closeDialog?.();
     };
     dlg.addEventListener("cancel", (e) => {
       e.preventDefault();
       zamknij();
     });
     const wyslij = (dane) => {
-      const f = glebiej(okno.shadowRoot, "step-flow-form");
+      const f = glebiej(okno2.shadowRoot, "step-flow-form");
       sprzatnij();
       if (!f) return;
       ustaw(f, { kreator: JSON.stringify(dane) });
@@ -10201,7 +11672,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     dlg.showModal();
     k.start({ hass: ha.hass, flow_id: krok.flow_id, entry_id: opcje ? krok.handler : null, krok: Z_KLASYCZNEGO[krok.step_id], wyslij, zamknij }).then(() => {
       zegar = setInterval(() => {
-        if (!okno._params || !okno.isConnected) return sprzatnij();
+        if (!okno2._params || !okno2.isConnected) return sprzatnij();
         if (ha.hass !== k._hass) k.hass = ha.hass;
       }, 400);
     }).catch((e) => {
@@ -10210,12 +11681,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     });
   }
   function pilnujKreatora() {
-    const okno = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
-    if (!okno?._params) return;
-    const form = glebiej(okno.shadowRoot, "step-flow-form");
+    const okno2 = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    if (!okno2?._params) return;
+    const form = glebiej(okno2.shadowRoot, "step-flow-form");
     if (!form) return;
     try {
-      graficzny(okno, form);
+      graficzny(okno2, form);
     } catch (e) {
     }
     const img = glebiej(form.shadowRoot, `img[src^="${PREFIKS}"]:not([${ZNAK}]):not([${GAL}])`);
@@ -10254,8 +11725,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     const urz = h.devices?.[id];
     if (!urz || !encje.some((e) => e.device_id === id)) return null;
     const wpis = urz.config_entries?.[0];
-    const okno = encje.find((e) => e.device_id === id && e.entity_id.startsWith("cover."));
-    if (okno) return [{ kolumna: 0, cel: { entity: okno.entity_id, urzadzenie: id, wpis } }];
+    const okno2 = encje.find((e) => e.device_id === id && e.entity_id.startsWith("cover."));
+    if (okno2) return [{ kolumna: 0, cel: { entity: okno2.entity_id, urzadzenie: id, wpis } }];
     const okna = encje.filter((e) => e.entity_id.startsWith("cover.") && h.states[e.entity_id]).sort((a, b) => String(h.states[a.entity_id].attributes.friendly_name).localeCompare(String(h.states[b.entity_id].attributes.friendly_name)));
     return [
       { kolumna: 0, cel: { dom: true } },
@@ -10316,13 +11787,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     if (!nasze.length) {
       const ile = {};
       for (const { kolumna, cel } of lista) {
-        const nr = Math.min(kolumna, kolumny.length - 1), k = kolumny[nr], i = ile[nr] || 0;
+        const nr2 = Math.min(kolumna, kolumny.length - 1), k = kolumny[nr2], i = ile[nr2] || 0;
         const e = document.createElement("motor-ha-urzadzenie");
         e.setAttribute(ZNAK2, klucz);
         e.cel = cel;
         e.hass = h;
         k.insertBefore(e, k.children[i] || null);
-        ile[nr] = i + 1;
+        ile[nr2] = i + 1;
         nasze.push(e);
       }
     }

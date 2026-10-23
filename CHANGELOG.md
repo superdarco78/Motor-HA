@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.7 – Katalog rodzajów jak u producentów
+
+- 🖼️ Krok „Rodzaj”: realistyczne obrazki i nazwy w grupach jak w katalogach (wewnątrz, na zewnątrz, okna dachowe, taras i ogród, okna z napędem, moskitiery, brama i garaż)
+- ➕ 55 nowych rodzajów, razem 79: m.in. osłony okien dachowych (DKL, SSL, ARZ, FHB, MSL/MHL, AMZ, PAL, FHL, dzień/noc), markizy (otwarta, półkasetowa, kasetowa, z falbaną, koszowa, wolnostojąca, na ogród zimowy, balkonowe), pergole, żagiel, parasol, okiennice, rolety SK/SKO/SP/SKN, antywłamaniowa, na drzwi tarasowe, moskitiery, okna z siłownikiem, świetlik, wyłaz, furtka, szlaban, bramy garażowe boczne i dwuskrzydłowe
+- 🃏 Karta: nowe rodzaje rysuje i animuje jak najbliższy rodzaj (osobne animacje w następnej wersji); ikony i klasy urządzeń w HA dopasowane (markiza, okno, zasłona, garaż, brama)
+- 🌍 Nazwy we wszystkich 14 językach
+
 ## v2.2.6 – Przegrody, ściana w kolorze i „Ustaw jak zaleca”
 
 - 🧱 Krok „Układ”: przy każdej przerwie między polami wybór „Brak / Słupek / Ściana” (w poziomie „Brak / Belka / Ściana”), osobno dla każdej przerwy, pokazuje się sam przy 2 i więcej polach; szerokość ściany suwakiem

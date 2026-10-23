@@ -35,6 +35,7 @@ from homeassistant.util import dt as dt_util
 
 from .const import (
     BRAMY,
+    OKNA,
     CONF_ODWROC,
     CONF_OSLONA,
     CONF_OSOBY,
@@ -60,7 +61,7 @@ _KOLEJKA = asyncio.Lock()    # „po kolei, nie naraz” – wspólna dla całeg
 
 def funkcje_wlaczone(o: dict[str, Any]) -> set[str]:
     f = {k for k in FUNKCJE if o.get(f"f_{k}")}
-    if o.get(CONF_OSLONA) in BRAMY:
+    if o.get(CONF_OSLONA) in BRAMY or o.get(CONF_OSLONA) in OKNA:
         f &= set(FUNKCJE_BRAMY)
     return f
 
