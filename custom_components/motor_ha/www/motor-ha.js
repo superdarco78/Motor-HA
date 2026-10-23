@@ -8613,10 +8613,11 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
 .cialo{flex:1;display:flex;min-height:0}
 .scena{display:none}
-:host([szeroko]) .scena{display:flex;flex:0 0 48%;min-width:0;align-items:center;justify-content:center;padding:20px;border-right:1px solid var(--line);background:var(--bg);overflow:auto}
+:host([szeroko]) .scena{display:flex;order:2;flex:0 0 50%;min-width:0;align-items:center;justify-content:center;padding:16px;border-left:1px solid var(--line);background:var(--bg);overflow:auto}
+:host([szeroko]) .krok .k{width:46px;height:46px;border-width:3px} :host([szeroko]) .krok svg{width:26px;height:26px} :host([szeroko]) .krok .n{font-size:12px} :host([szeroko]) .krok{padding-bottom:18px}
 :host([szeroko]) .scena[hidden]{display:none}
-.scena > div, .scena > svg{width:100%;max-width:460px;display:flex;justify-content:center}
-.scena svg{width:100%;height:auto;max-height:calc(100dvh - 260px)}
+.scena > div, .scena > svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.scena svg{width:100%;height:100%;max-height:100%}
 :host([szeroko]) .wybpol{position:static}
 .tresc{flex:1;min-width:0;overflow:auto;overscroll-behavior:contain;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:14px;padding-bottom:24px}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
