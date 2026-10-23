@@ -397,8 +397,12 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S, t = this.t, d = this.dane;
     if (!d.oslony.length) return `<p class="pod">${esc(t.brakOslon)}</p>`;
     const [n1] = this._nieba(), pierwszy = this._oslona(S.rolety[0])?.area;
+    // pokój, w którym „Cały pokój” obejmuje dokładnie wybrane silniki – wtedy ta sama grupa nie świeci się drugi raz
+    const calyPokoj = a => { const poj = d.oslony.filter(o => o.area === a && !o.grupa && !o.brama); return !!a && poj.length > 1 && poj.length === S.rolety.length && poj.every(o => S.rolety.includes(o.id)); };
     const kafel = o => {
-      const czl = (o.czlonkowie || []).filter(e => this._oslona(e)), grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every(e => S.rolety.includes(e));
+      const czl = (o.czlonkowie || []).filter(e => this._oslona(e));
+      const grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every(e => S.rolety.includes(e))
+        && (S.wybSkad ? S.wybSkad === 'grupa:' + o.id : !calyPokoj(o.area));
       const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === 'number' ? o.poz : o.stan === 'closed' ? 0 : 100;
       return `<button class="kaf ${nr >= 0 || grWyb ? 'wyb' : ''}" data-oslona="${esc(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ''}
         ${o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join('')}</svg>`
@@ -411,9 +415,12 @@ export class MotorHaKreator extends HTMLElement {
       .sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || '').localeCompare(this._nazwaPokoju(b) || ''));
     const w = pokoje.map(a => {
       const tu = d.oslony.filter(o => (o.area || '') === a).sort((x, y) => !!y.grupa - !!x.grupa || x.nazwa.localeCompare(y.nazwa));
-      const poj = tu.filter(o => !o.grupa && !o.brama), caly = a && poj.length > 1 && poj.every(o => S.rolety.includes(o.id)) && S.rolety.length === poj.length;
+      const poj = tu.filter(o => !o.grupa && !o.brama), caly = calyPokoj(a) && (!S.wybSkad || S.wybSkad === 'pokoj:' + a);
+      // każdy silnik pokoju jako małe okno z jego prawdziwą osłoną
+      const okienko = (o, i) => { const x = 4 + i * 44, poz = typeof o.poz === 'number' ? o.poz : o.stan === 'closed' ? 0 : 100;
+        return `<rect x="${x}" y="3" width="40" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/><rect x="${x + 3}" y="6" width="34" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), x + 3, 6, 34, 32, Math.max(poz, 8), this._kolor())}`; };
       const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? 'wyb' : ''}" data-pokojcaly="${esc(a)}" aria-pressed="${caly}">
-        <svg viewBox="0 0 ${12 + poj.length * 36} 44" aria-hidden="true">${poj.map((o, i) => `<rect x="${6 + i * 36}" y="4" width="32" height="36" rx="2" fill="${n1}" stroke="var(--fg2)"/><rect x="${7 + i * 36}" y="5" width="30" height="14" fill="var(--fg2)" opacity=".7"/>`).join('')}</svg>
+        <svg viewBox="0 0 ${4 + poj.length * 44} 44" aria-hidden="true">${poj.map(okienko).join('')}</svg>
         <b>${esc(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc(poj.map(o => o.nazwa).join(' + '))}</span></button>` : '';
       const grupy = tu.filter(o => o.grupa), reszta = tu.filter(o => !o.grupa);
       const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc(t.pojedyncze)}</span></div>` : '';
@@ -868,12 +875,13 @@ export class MotorHaKreator extends HTMLElement {
         const kol = n => /lew|left/i.test(n) ? 0 : /środ|srod|mid/i.test(n) ? 1 : /praw|right/i.test(n) ? 2 : 3;   // od lewej do prawej
         S.rolety = this.dane.oslony.filter(o => o.area === d.pokojcaly && !o.grupa && !o.brama)
           .sort((x, y) => kol(x.nazwa) - kol(y.nazwa) || x.nazwa.localeCompare(y.nazwa)).map(o => o.id).slice(0, 12);
-        S.wykryty = null;
+        S.wykryty = null; S.wybSkad = 'pokoj:' + d.pokojcaly;
       } else if (czl.length > 1 && i < 0) {   // grupa: tyle skrzydeł, ile w niej silników, każdy w swoim polu
         S.rolety = czl.slice(0, 12); S.zGrupy = x.nazwa;
-        S.wykryty = null;
-      } else if (i >= 0) S.rolety.splice(i, 1);
+        S.wykryty = null; S.wybSkad = 'grupa:' + x.id;
+      } else if (i >= 0) { S.rolety.splice(i, 1); S.wybSkad = null; }
       else {
+        S.wybSkad = null;
         // brama i okno to osobne urządzenia
         if (S.rolety.some(e => !!this._oslona(e)?.brama !== !!x?.brama)) S.rolety = [];
         S.rolety.push(d.oslona);
