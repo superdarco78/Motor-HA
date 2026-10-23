@@ -160,6 +160,9 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
+.wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
+#duzeOkno svg{touch-action:none}
 .linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
 .linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
 .kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
@@ -451,10 +454,11 @@ export class MotorHaKreator extends HTMLElement {
   str_przypisz() {
     const S = this.S, t = this.t;
     return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz })}</div>
-      <div style="margin-top:14px">${prostokaty(S.u).map((_, i) => {
+      <p class="pod" style="text-align:center;margin:8px 0 0">${esc(t.zamienPodpis)}</p>
+      <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
-        return `<button class="wiersz" data-pole="${i}"><span class="ik">${i + 1}</span><span class="t"><b>${esc(o ? o.nazwa : t.wybierzSilnik)}</b>
+        return `<button class="wiersz" data-pole="${i}"><span class="chwyt" title="${esc(t.przeciagnij)}" aria-hidden="true">⠿</span><span class="ik">${i + 1}</span><span class="t"><b>${esc(o ? o.nazwa : t.wybierzSilnik)}</b>
           <small>${c ? `✓ ${esc(c)} · ${esc(p.tryb === 'otworz' ? t.otworz : t.uchyl)}` : `<span style="color:var(--accent)">+ ${esc(t.czujnikPola)}</span>`}</small></span></button>`;
       }).join('')}</div>`;
   }
@@ -726,6 +730,10 @@ export class MotorHaKreator extends HTMLElement {
   }
 
   // listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (i to, co już wybrane); reszta domu po „Pokaż wszystkie”
+  _polePod(e) {
+    const el = this.shadowRoot.elementsFromPoint?.(e.clientX, e.clientY).find(x => x.closest?.('[data-pole]'))?.closest('[data-pole]');
+    return el ? +el.dataset.pole : null;
+  }
   _tylkoTu(lista, tu, wybrane) {
     if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: '' };
     return { lista: lista.filter(x => tu(x) || wybrane.includes(x.id)),
@@ -766,11 +774,26 @@ export class MotorHaKreator extends HTMLElement {
     r.addEventListener('click', e => this._klik(e));
     r.addEventListener('input', e => this._wpis(e));
     r.addEventListener('pointerdown', e => {
+      // Pola: złap pole na rysunku albo uchwyt wiersza i upuść na innym polu – zamiana miejscami
+      const zp = this.kroki()[this.S.krok] === 'przypisz' && (e.target.closest?.('#duzeOkno g[data-pole]') || e.target.closest?.('.chwyt')?.closest('[data-pole]'));
+      if (zp) { this._zamiana = { z: +zp.dataset.pole, x: e.clientX, y: e.clientY, jedzie: false }; try { e.target.setPointerCapture(e.pointerId); } catch (x) { /* bez przechwycenia */ } }
       const u = e.target.closest?.('[data-uch]'), p = e.target.closest?.('[data-ep]');
       if (u) { this._uch = u.dataset.uch; e.preventDefault(); try { r.getElementById('edytor').setPointerCapture(e.pointerId); } catch (x) { /* bez przechwycenia */ } return; }
       if (p) { this.S.wyb = +p.dataset.ep; this._odswiezUklad(); }
     });
-    r.addEventListener('pointermove', e => { if (this._uch) this._ciagnij(e); });
+    r.addEventListener('pointermove', e => {
+      if (this._uch) this._ciagnij(e);
+      const z = this._zamiana; if (!z) return;
+      if (!z.jedzie && Math.hypot(e.clientX - z.x, e.clientY - z.y) > 8) z.jedzie = true;
+      if (z.jedzie) { const cel = this._polePod(e); z.do = cel; r.querySelectorAll('[data-pole]').forEach(el => el.classList.toggle('cel', +el.dataset.pole === cel && cel !== z.z)); }
+    });
+    r.addEventListener('pointerup', e => {
+      const z = this._zamiana; this._zamiana = null; if (!z?.jedzie) return;
+      this._poZamianie = true; setTimeout(() => { this._poZamianie = false; }, 50);
+      const cel = this._polePod(e) ?? z.do ?? null, S = this.S;
+      if (cel !== null && cel !== z.z) { const a = S.pola[z.z] || {}; S.pola[z.z] = S.pola[cel] || {}; S.pola[cel] = a; }
+      this.rysuj();
+    });
     const koniec = () => { if (this._uch) { this._uch = null; this.S.szablon = szablon(this.S.u) === 'w' ? 'w' : this.S.szablon; } };
     r.addEventListener('pointerup', koniec);
     r.addEventListener('pointercancel', koniec);
@@ -809,6 +832,7 @@ export class MotorHaKreator extends HTMLElement {
   }
 
   async _klik(e) {
+    if (this._poZamianie) return;
     const b = e.target.closest('button, g[data-pole], g[data-dodaj], [data-zamknij]');
     if (!b) return;
     const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();

@@ -433,6 +433,8 @@
     "calyPokoj": "Cały pokój: {0}",
     "bezPokoju": "Bez pokoju",
     "pojedyncze": "Pojedyncze",
-    "grupaIle": "grupa · {0} skrzydła"
+    "grupaIle": "grupa · {0} skrzydła",
+    "przeciagnij": "Przeciągnij, żeby zamienić",
+    "zamienPodpis": "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami."
   }
 }

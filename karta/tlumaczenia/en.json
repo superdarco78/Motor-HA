@@ -433,6 +433,8 @@
     "calyPokoj": "Whole room: {0}",
     "bezPokoju": "No room",
     "pojedyncze": "Single",
-    "grupaIle": "group · {0} sashes"
+    "grupaIle": "group · {0} sashes",
+    "przeciagnij": "Drag to swap",
+    "zamienPodpis": "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them."
   }
 }

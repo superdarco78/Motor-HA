@@ -433,6 +433,8 @@
     "calyPokoj": "Tutta la stanza: {0}",
     "bezPokoju": "Senza stanza",
     "pojedyncze": "Singole",
-    "grupaIle": "gruppo · {0} ante"
+    "grupaIle": "gruppo · {0} ante",
+    "przeciagnij": "Trascina per scambiare",
+    "zamienPodpis": "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle."
   }
 }

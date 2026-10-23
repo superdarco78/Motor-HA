@@ -433,6 +433,8 @@
     "calyPokoj": "部屋全体：{0}",
     "bezPokoju": "部屋なし",
     "pojedyncze": "単独",
-    "grupaIle": "グループ · {0} 枚"
+    "grupaIle": "グループ · {0} 枚",
+    "przeciagnij": "ドラッグで入れ替え",
+    "zamienPodpis": "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。"
   }
 }

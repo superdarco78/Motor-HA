@@ -433,6 +433,8 @@
     "calyPokoj": "Celá miestnosť: {0}",
     "bezPokoju": "Bez miestnosti",
     "pojedyncze": "Jednotlivé",
-    "grupaIle": "skupina · {0} krídla"
+    "grupaIle": "skupina · {0} krídla",
+    "przeciagnij": "Potiahnite na výmenu",
+    "zamienPodpis": "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa."
   }
 }

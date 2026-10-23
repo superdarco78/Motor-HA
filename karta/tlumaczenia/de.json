@@ -433,6 +433,8 @@
     "calyPokoj": "Ganzer Raum: {0}",
     "bezPokoju": "Ohne Raum",
     "pojedyncze": "Einzeln",
-    "grupaIle": "Gruppe · {0} Flügel"
+    "grupaIle": "Gruppe · {0} Flügel",
+    "przeciagnij": "Ziehen zum Tauschen",
+    "zamienPodpis": "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze."
   }
 }

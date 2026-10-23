@@ -433,6 +433,8 @@
     "calyPokoj": "Toute la pièce : {0}",
     "bezPokoju": "Sans pièce",
     "pojedyncze": "Individuels",
-    "grupaIle": "groupe · {0} vantaux"
+    "grupaIle": "groupe · {0} vantaux",
+    "przeciagnij": "Glisser pour échanger",
+    "zamienPodpis": "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger."
   }
 }

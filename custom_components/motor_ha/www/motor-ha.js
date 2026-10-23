@@ -1309,7 +1309,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Cały pokój: {0}",
       bezPokoju: "Bez pokoju",
       pojedyncze: "Pojedyncze",
-      grupaIle: "grupa · {0} skrzydła"
+      grupaIle: "grupa · {0} skrzydła",
+      przeciagnij: "Przeciągnij, żeby zamienić",
+      zamienPodpis: "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami."
     }
   };
 
@@ -1749,7 +1751,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Whole room: {0}",
       bezPokoju: "No room",
       pojedyncze: "Single",
-      grupaIle: "group · {0} sashes"
+      grupaIle: "group · {0} sashes",
+      przeciagnij: "Drag to swap",
+      zamienPodpis: "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them."
     }
   };
 
@@ -2189,7 +2193,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Ganzer Raum: {0}",
       bezPokoju: "Ohne Raum",
       pojedyncze: "Einzeln",
-      grupaIle: "Gruppe · {0} Flügel"
+      grupaIle: "Gruppe · {0} Flügel",
+      przeciagnij: "Ziehen zum Tauschen",
+      zamienPodpis: "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze."
     }
   };
 
@@ -2629,7 +2635,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Toute la pièce : {0}",
       bezPokoju: "Sans pièce",
       pojedyncze: "Individuels",
-      grupaIle: "groupe · {0} vantaux"
+      grupaIle: "groupe · {0} vantaux",
+      przeciagnij: "Glisser pour échanger",
+      zamienPodpis: "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger."
     }
   };
 
@@ -3069,7 +3077,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Celá místnost: {0}",
       bezPokoju: "Bez místnosti",
       pojedyncze: "Jednotlivé",
-      grupaIle: "skupina · {0} křídla"
+      grupaIle: "skupina · {0} křídla",
+      przeciagnij: "Přetáhněte pro záměnu",
+      zamienPodpis: "Chyťte křídlo v nákresu nebo ⠿ u řádku a pusťte na jiné – vymění se."
     }
   };
 
@@ -3509,7 +3519,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Celá miestnosť: {0}",
       bezPokoju: "Bez miestnosti",
       pojedyncze: "Jednotlivé",
-      grupaIle: "skupina · {0} krídla"
+      grupaIle: "skupina · {0} krídla",
+      przeciagnij: "Potiahnite na výmenu",
+      zamienPodpis: "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa."
     }
   };
 
@@ -3949,7 +3961,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Toda la habitación: {0}",
       bezPokoju: "Sin habitación",
       pojedyncze: "Individuales",
-      grupaIle: "grupo · {0} hojas"
+      grupaIle: "grupo · {0} hojas",
+      przeciagnij: "Arrastra para cambiar",
+      zamienPodpis: "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas."
     }
   };
 
@@ -4389,7 +4403,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Tutta la stanza: {0}",
       bezPokoju: "Senza stanza",
       pojedyncze: "Singole",
-      grupaIle: "gruppo · {0} ante"
+      grupaIle: "gruppo · {0} ante",
+      przeciagnij: "Trascina per scambiare",
+      zamienPodpis: "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle."
     }
   };
 
@@ -4829,7 +4845,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Hele ruimte: {0}",
       bezPokoju: "Geen ruimte",
       pojedyncze: "Los",
-      grupaIle: "groep · {0} vleugels"
+      grupaIle: "groep · {0} vleugels",
+      przeciagnij: "Sleep om te wisselen",
+      zamienPodpis: "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen."
     }
   };
 
@@ -5269,7 +5287,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Divisão inteira: {0}",
       bezPokoju: "Sem divisão",
       pojedyncze: "Individuais",
-      grupaIle: "grupo · {0} folhas"
+      grupaIle: "grupo · {0} folhas",
+      przeciagnij: "Arraste para trocar",
+      zamienPodpis: "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar."
     }
   };
 
@@ -5709,7 +5729,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Уся кімната: {0}",
       bezPokoju: "Без кімнати",
       pojedyncze: "Окремі",
-      grupaIle: "група · стулок: {0}"
+      grupaIle: "група · стулок: {0}",
+      przeciagnij: "Перетягніть, щоб поміняти",
+      zamienPodpis: "Візьміть стулку на малюнку або ⠿ біля рядка й відпустіть на іншій – вони поміняються місцями."
     }
   };
 
@@ -6149,7 +6171,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "Вся комната: {0}",
       bezPokoju: "Без комнаты",
       pojedyncze: "Отдельные",
-      grupaIle: "группа · створок: {0}"
+      grupaIle: "группа · створок: {0}",
+      przeciagnij: "Перетащите, чтобы поменять",
+      zamienPodpis: "Возьмите створку на рисунке или ⠿ у строки и отпустите на другой – они поменяются местами."
     }
   };
 
@@ -6589,7 +6613,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "部屋全体：{0}",
       bezPokoju: "部屋なし",
       pojedyncze: "単独",
-      grupaIle: "グループ · {0} 枚"
+      grupaIle: "グループ · {0} 枚",
+      przeciagnij: "ドラッグで入れ替え",
+      zamienPodpis: "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。"
     }
   };
 
@@ -7029,7 +7055,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       calyPokoj: "整个房间：{0}",
       bezPokoju: "无房间",
       pojedyncze: "单个",
-      grupaIle: "组 · {0} 扇"
+      grupaIle: "组 · {0} 扇",
+      przeciagnij: "拖动以交换",
+      zamienPodpis: "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。"
     }
   };
 
@@ -8525,6 +8553,9 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
+.wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
+#duzeOkno svg{touch-action:none}
 .linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
 .linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
 .kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
@@ -8844,10 +8875,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     str_przypisz() {
       const S = this.S, t = this.t;
       return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p><div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>
-      <div style="margin-top:14px">${prostokaty(S.u).map((_, i) => {
+      <p class="pod" style="text-align:center;margin:8px 0 0">${esc6(t.zamienPodpis)}</p>
+      <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
-        return `<button class="wiersz" data-pole="${i}"><span class="ik">${i + 1}</span><span class="t"><b>${esc6(o ? o.nazwa : t.wybierzSilnik)}</b>
+        return `<button class="wiersz" data-pole="${i}"><span class="chwyt" title="${esc6(t.przeciagnij)}" aria-hidden="true">⠿</span><span class="ik">${i + 1}</span><span class="t"><b>${esc6(o ? o.nazwa : t.wybierzSilnik)}</b>
           <small>${c ? `✓ ${esc6(c)} · ${esc6(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : `<span style="color:var(--accent)">+ ${esc6(t.czujnikPola)}</span>`}</small></span></button>`;
       }).join("")}</div>`;
     }
@@ -9220,6 +9252,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this._odswiezUklad();
     }
     // listy w arkuszach: najpierw tylko to, co jest w pokoju osłony (i to, co już wybrane); reszta domu po „Pokaż wszystkie”
+    _polePod(e) {
+      const el = this.shadowRoot.elementsFromPoint?.(e.clientX, e.clientY).find((x) => x.closest?.("[data-pole]"))?.closest("[data-pole]");
+      return el ? +el.dataset.pole : null;
+    }
     _tylkoTu(lista, tu, wybrane) {
       if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: "" };
       return {
@@ -9260,6 +9296,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.addEventListener("click", (e) => this._klik(e));
       r.addEventListener("input", (e) => this._wpis(e));
       r.addEventListener("pointerdown", (e) => {
+        const zp = this.kroki()[this.S.krok] === "przypisz" && (e.target.closest?.("#duzeOkno g[data-pole]") || e.target.closest?.(".chwyt")?.closest("[data-pole]"));
+        if (zp) {
+          this._zamiana = { z: +zp.dataset.pole, x: e.clientX, y: e.clientY, jedzie: false };
+          try {
+            e.target.setPointerCapture(e.pointerId);
+          } catch (x) {
+          }
+        }
         const u = e.target.closest?.("[data-uch]"), p = e.target.closest?.("[data-ep]");
         if (u) {
           this._uch = u.dataset.uch;
@@ -9277,6 +9321,30 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       });
       r.addEventListener("pointermove", (e) => {
         if (this._uch) this._ciagnij(e);
+        const z = this._zamiana;
+        if (!z) return;
+        if (!z.jedzie && Math.hypot(e.clientX - z.x, e.clientY - z.y) > 8) z.jedzie = true;
+        if (z.jedzie) {
+          const cel = this._polePod(e);
+          z.do = cel;
+          r.querySelectorAll("[data-pole]").forEach((el) => el.classList.toggle("cel", +el.dataset.pole === cel && cel !== z.z));
+        }
+      });
+      r.addEventListener("pointerup", (e) => {
+        const z = this._zamiana;
+        this._zamiana = null;
+        if (!z?.jedzie) return;
+        this._poZamianie = true;
+        setTimeout(() => {
+          this._poZamianie = false;
+        }, 50);
+        const cel = this._polePod(e) ?? z.do ?? null, S = this.S;
+        if (cel !== null && cel !== z.z) {
+          const a = S.pola[z.z] || {};
+          S.pola[z.z] = S.pola[cel] || {};
+          S.pola[cel] = a;
+        }
+        this.rysuj();
       });
       const koniec = () => {
         if (this._uch) {
@@ -9318,6 +9386,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this.shadowRoot.getElementById("tresc").scrollTop = 0;
     }
     async _klik(e) {
+      if (this._poZamianie) return;
       const b = e.target.closest("button, g[data-pole], g[data-dodaj], [data-zamknij]");
       if (!b) return;
       const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
