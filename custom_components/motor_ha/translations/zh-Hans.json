@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "第 {nr} 步,共 {z} 步: 设备",
-        "description": "{pasek}\n\n**内容:** 选择电机(遮阳或大门),命名并选择房间。\n\n**用途:** Motor HA 控制这个电机,设置房间后可以对 Assist 说「关上客厅」。{porada}",
+        "description": "{pasek}\n\n**内容:** 选择电机(遮阳或大门),命名并选择房间。\n\n**用途:** Motor HA 控制这个电机。对 Assist 说话时请用设备名称,例如「关上厨房百褶帘」。{porada}",
         "data": {
           "rolety": "电机(一个或两个实体)",
           "name": "名称",
           "pokoj": "房间",
           "rodzaj_pokoju": "房间类型(用于提示)",
+          "ukryj_zrodlo": "对 Assist 隐藏电机",
           "wstecz": "返回上一步"
         },
         "data_description": {
           "rolety": "两扇窗请选择两个:先左后右。",
           "name": "留空 = 电机名称。",
-          "pokoj": "设备会放入这个房间。Assist 就能听懂「关上客厅」。",
+          "pokoj": "设备会放入这个房间,方便查找。",
+          "ukryj_zrodlo": "Assist 只会看到 Motor HA 设备,而不是电机本身。当 Assist 提示有多个同名设备时有用。默认关闭。",
           "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "第 {nr} 步,共 {z} 步: 设备",
-        "description": "{pasek}\n\n**内容:** 选择电机(遮阳或大门),命名并选择房间。\n\n**用途:** Motor HA 控制这个电机,设置房间后可以对 Assist 说「关上客厅」。{porada}",
+        "description": "{pasek}\n\n**内容:** 选择电机(遮阳或大门),命名并选择房间。\n\n**用途:** Motor HA 控制这个电机。对 Assist 说话时请用设备名称,例如「关上厨房百褶帘」。{porada}",
         "data": {
           "rolety": "电机(一个或两个实体)",
           "name": "名称",
           "pokoj": "房间",
           "rodzaj_pokoju": "房间类型(用于提示)",
+          "ukryj_zrodlo": "对 Assist 隐藏电机",
           "wstecz": "返回上一步"
         },
         "data_description": {
           "rolety": "两扇窗请选择两个:先左后右。",
           "name": "留空 = 电机名称。",
-          "pokoj": "设备会放入这个房间。Assist 就能听懂「关上客厅」。",
+          "pokoj": "设备会放入这个房间,方便查找。",
+          "ukryj_zrodlo": "Assist 只会看到 Motor HA 设备,而不是电机本身。当 Assist 提示有多个同名设备时有用。默认关闭。",
           "wstecz": "开启后点击「下一步」即可返回一步。已输入内容会保留。"
         }
       },

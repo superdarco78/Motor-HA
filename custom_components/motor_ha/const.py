@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.1.3"
+VERSION = "2.1.4"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
@@ -48,6 +48,7 @@ CONF_ROLETY = "rolety"
 CONF_NAZWA = "name"
 CONF_POKOJ = "pokoj"            # obszar HA (area_id)
 CONF_RODZAJ_POKOJU = "rodzaj_pokoju"
+CONF_UKRYJ_ZRODLO = "ukryj_zrodlo"   # silnik źródłowy niewidoczny dla Assist (domyślnie nie)
 CONF_OSLONA = "oslona"
 CONF_KOLOR = "kolor"
 CONF_RAMA = "rama"

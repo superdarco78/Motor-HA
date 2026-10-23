@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Urządzenie",
-        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem, a pomieszczenie pozwala mówić do Assist, np. „zasłoń salon”.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem. Do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”.{porada}",
         "data": {
           "rolety": "Silnik (jedna lub dwie encje)",
           "name": "Nazwa",
           "pokoj": "Pomieszczenie",
           "rodzaj_pokoju": "Rodzaj pomieszczenia (do porad)",
+          "ukryj_zrodlo": "Ukryj silnik przed Assist",
           "wstecz": "Wróć do poprzedniego kroku"
         },
         "data_description": {
           "rolety": "Dla okna z dwoma skrzydłami wybierz dwie: najpierw lewą, potem prawą.",
           "name": "Puste = nazwa silnika.",
-          "pokoj": "Urządzenie trafi do tego pomieszczenia. Assist zrozumie wtedy „zasłoń salon”.",
+          "pokoj": "Urządzenie trafi do tego pomieszczenia, żeby łatwo je znaleźć.",
+          "ukryj_zrodlo": "Assist widzi wtedy tylko urządzenie Motor HA, a nie sam silnik. Pomaga, gdy Assist mówi, że jest kilka urządzeń o tej nazwie. Domyślnie wyłączone.",
           "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "Krok {nr} z {z}: Urządzenie",
-        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem, a pomieszczenie pozwala mówić do Assist, np. „zasłoń salon”.{porada}",
+        "description": "{pasek}\n\n**Co:** Wybierz silnik (osłonę albo bramę), nadaj nazwę i wskaż pomieszczenie.\n\n**Po co:** Motor HA steruje tym silnikiem. Do Assist mów nazwą urządzenia, np. „zamknij Plisa kuchnia”.{porada}",
         "data": {
           "rolety": "Silnik (jedna lub dwie encje)",
           "name": "Nazwa",
           "pokoj": "Pomieszczenie",
           "rodzaj_pokoju": "Rodzaj pomieszczenia (do porad)",
+          "ukryj_zrodlo": "Ukryj silnik przed Assist",
           "wstecz": "Wróć do poprzedniego kroku"
         },
         "data_description": {
           "rolety": "Dla okna z dwoma skrzydłami wybierz dwie: najpierw lewą, potem prawą.",
           "name": "Puste = nazwa silnika.",
-          "pokoj": "Urządzenie trafi do tego pomieszczenia. Assist zrozumie wtedy „zasłoń salon”.",
+          "pokoj": "Urządzenie trafi do tego pomieszczenia, żeby łatwo je znaleźć.",
+          "ukryj_zrodlo": "Assist widzi wtedy tylko urządzenie Motor HA, a nie sam silnik. Pomaga, gdy Assist mówi, że jest kilka urządzeń o tej nazwie. Domyślnie wyłączone.",
           "wstecz": "Włącz i kliknij „Dalej”, żeby cofnąć się o krok. Wpisane dane zostają."
         }
       },

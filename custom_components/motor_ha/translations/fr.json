@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "Étape {nr} sur {z}: Appareil",
-        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur, et la pièce permet de parler à Assist, par ex. « ferme le salon ».{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur. Parlez à Assist avec le nom de l'appareil, par ex. « ferme Store plissé cuisine ».{porada}",
         "data": {
           "rolety": "Moteur (une ou deux entités)",
           "name": "Nom",
           "pokoj": "Pièce",
           "rodzaj_pokoju": "Type de pièce (pour les conseils)",
+          "ukryj_zrodlo": "Cacher le moteur à Assist",
           "wstecz": "Revenir à l'étape précédente"
         },
         "data_description": {
           "rolety": "Pour une fenêtre à deux vantaux, choisissez-en deux : d'abord le gauche, puis le droit.",
           "name": "Vide = nom du moteur.",
-          "pokoj": "L'appareil va dans cette pièce. Assist comprend alors « ferme le salon ».",
+          "pokoj": "L'appareil va dans cette pièce, pour le retrouver facilement.",
+          "ukryj_zrodlo": "Assist ne voit alors que l'appareil Motor HA, pas le moteur lui-même. Utile quand Assist dit qu'il y a plusieurs appareils avec ce nom. Désactivé par défaut.",
           "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "Étape {nr} sur {z}: Appareil",
-        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur, et la pièce permet de parler à Assist, par ex. « ferme le salon ».{porada}",
+        "description": "{pasek}\n\n**Quoi :** Choisissez le moteur (store ou portail), donnez un nom et choisissez la pièce.\n\n**Pourquoi :** Motor HA pilote ce moteur. Parlez à Assist avec le nom de l'appareil, par ex. « ferme Store plissé cuisine ».{porada}",
         "data": {
           "rolety": "Moteur (une ou deux entités)",
           "name": "Nom",
           "pokoj": "Pièce",
           "rodzaj_pokoju": "Type de pièce (pour les conseils)",
+          "ukryj_zrodlo": "Cacher le moteur à Assist",
           "wstecz": "Revenir à l'étape précédente"
         },
         "data_description": {
           "rolety": "Pour une fenêtre à deux vantaux, choisissez-en deux : d'abord le gauche, puis le droit.",
           "name": "Vide = nom du moteur.",
-          "pokoj": "L'appareil va dans cette pièce. Assist comprend alors « ferme le salon ».",
+          "pokoj": "L'appareil va dans cette pièce, pour le retrouver facilement.",
+          "ukryj_zrodlo": "Assist ne voit alors que l'appareil Motor HA, pas le moteur lui-même. Utile quand Assist dit qu'il y a plusieurs appareils avec ce nom. Désactivé par défaut.",
           "wstecz": "Activez et cliquez sur « Suivant » pour revenir d'une étape. Ce que vous avez saisi est conservé."
         }
       },

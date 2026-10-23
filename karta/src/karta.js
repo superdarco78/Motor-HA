@@ -61,6 +61,8 @@ export class MotorHaKarta extends HTMLElement {
     if (czyBrama(c.oslona)) return this._zbudujBrame(c, czl);
     const T = this._T, n = czl.length, zew = czyZew(c.oslona), rama = ramaHex(c.rama), kolor = hex(c.kolor);
     this._brama = false; this._poziomo = POZIOME.includes(c.oslona);
+    // suwak w kierunku ruchu: góra-dół – pionowy obok okna, na boki (i bramy) – poziomy pod przyciskami
+    const pion = c.suwak !== false && !this._poziomo;
     const H = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W = Math.round(H * (n === 1 ? .68 : .92));
     this._kas = KASETA[c.oslona] ?? 12;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
@@ -73,18 +75,18 @@ export class MotorHaKarta extends HTMLElement {
     root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
 <ha-card class="${zew ? 'zew' : 'wew'}${this._poziomo ? ' poziomo' : ''}"><div class="mh">
  ${this._naglowek(c)}
- <div class="scena">${zew ? '<div class="pg pgz"></div>' : ''}
-  <div class="okno" style="width:min(100%,${W}px);aspect-ratio:${W}/${Math.round(H)}">
+ <div class="scena${pion ? ' zs' : ''}">${zew ? '<div class="pg pgz"></div>' : ''}
+  <div class="okno" style="width:min(${pion ? 'calc(100% - 54px)' : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
    ${zew ? '' : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join('')}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join('')}</div>` : ''}
    ${n > 1 && !c.osobno ? `<div class="oba" title="${esc(T.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ''}
-  </div></div>
+  </div>${pion ? this._suwakHtml(T, true) : ''}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
   <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
- ${c.suwak !== false ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok('ui.card.cover.position', T.karta.pozycja))}"><div class="wyp"></div></div>` : ''}
+ ${c.suwak !== false && !pion ? this._suwakHtml(T, false) : ''}
  ${pozycje.length ? `<div class="poz">${pozycje.map(p => `<button data-p="${p}">${p === 100 ? esc(T.karta.zwinieta) : p === 0 ? esc(T.karta.opuszczona) : p + ' %'}</button>`).join('')}</div>` : ''}
  ${this._wpis() ? `<button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button>` : ''}
 </div></ha-card>`;
@@ -153,7 +155,7 @@ export class MotorHaKarta extends HTMLElement {
   <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
   <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
- ${c.suwak !== false && zPoz ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok('ui.card.cover.position', T.karta.pozycja))}"><div class="wyp"></div></div>` : ''}
+ ${c.suwak !== false && zPoz ? this._suwakHtml(T, false) : ''}
  ${this._wpis() ? `<button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button>` : ''}
 </div></ha-card>`;
     const q = s => root.querySelector(s);
@@ -229,11 +231,19 @@ export class MotorHaKarta extends HTMLElement {
     this._polecenie(w > 0 ? 100 : 0, ktore);
   }
 
+  _suwakHtml(T, pion) {
+    return `<div class="suwak${pion ? ' pion' : ''}" role="slider" tabindex="0" aria-orientation="${pion ? 'vertical' : 'horizontal'}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(this._lok('ui.card.cover.position', T.karta.pozycja))}"><div class="wyp"></div></div>`;
+  }
+
   _suwak(el) {
     let akt = false;
-    const wart = x => { const r = el.getBoundingClientRect(); return Math.round(Math.min(1, Math.max(0, (x - r.left) / r.width)) * 100); };
-    el.addEventListener('pointerdown', e => { akt = true; this._suwakW = wart(e.clientX); el.setPointerCapture?.(e.pointerId); this._rysujSuwak(); });
-    el.addEventListener('pointermove', e => { if (akt) { this._suwakW = wart(e.clientX); this._rysujSuwak(); } });
+    const pion = el.classList.contains('pion');
+    const wart = e => {
+      const r = el.getBoundingClientRect(), u = pion ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
+      return Math.round(Math.min(1, Math.max(0, u)) * 100);
+    };
+    el.addEventListener('pointerdown', e => { akt = true; this._suwakW = wart(e); el.setPointerCapture?.(e.pointerId); this._rysujSuwak(); });
+    el.addEventListener('pointermove', e => { if (akt) { this._suwakW = wart(e); this._rysujSuwak(); } });
     const koniec = () => { if (!akt) return; akt = false; const w = this._suwakW; this._suwakW = null; this._polecenie(w); };
     el.addEventListener('pointerup', koniec); el.addEventListener('pointercancel', koniec);
     el.addEventListener('keydown', e => {
@@ -373,7 +383,7 @@ export class MotorHaKarta extends HTMLElement {
     // w trakcie jazdy suwak idzie razem z osłoną na rysunku; cel widać tylko przy przeciąganiu
     const w = this._suwakW ?? this._srednia();
     // jak ha-control-slider: przy 0 % zostaje pasek z uchwytem, żeby było widać, że to suwak
-    S.querySelector('.wyp').style.width = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
+    S.querySelector('.wyp').style[S.classList.contains('pion') ? 'height' : 'width'] = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
     S.setAttribute('aria-valuenow', Math.round(w));
   }
 

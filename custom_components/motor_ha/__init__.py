@@ -27,7 +27,7 @@ from homeassistant.helpers.translation import async_get_translations
 from homeassistant.helpers.typing import ConfigType
 
 from .automatyka import Automatyka
-from .const import CONF_NA_PANEL, DOMAIN, KARTA_PLIK, MAM, PODSTAWOWY, TRYB, VERSION
+from .const import CONF_NA_PANEL, CONF_ROLETY, CONF_UKRYJ_ZRODLO, DOMAIN, KARTA_PLIK, MAM, PODSTAWOWY, TRYB, VERSION
 from .migracja import async_przenies
 from .pasek import PasekKrokow
 from .pliki import (
@@ -40,7 +40,7 @@ from .pliki import (
 )
 from .powiadomienia import Powiadomienia
 from .update import RESTART
-from .urzadzenie import HUB, NAZWY_OSLON, Wpis, info_hub, info_urzadzenia
+from .urzadzenie import HUB, NAZWY_OSLON, Wpis, assist, info_hub, info_urzadzenia
 from .ws import async_rejestruj
 
 _LOGGER = logging.getLogger(__name__)
@@ -252,6 +252,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     await w.auto.async_start()
     w.powiadomienia.async_start()
+    if entry.options.get(CONF_UKRYJ_ZRODLO):
+        assist(hass, list(entry.options.get(CONF_ROLETY) or []), False)
     if (pokoj := entry.options.get("pokoj")) and (u := _urzadzenie(dr.async_get(hass), (DOMAIN, entry.entry_id))):
         if not u.area_id:
             dr.async_get(hass).async_update_device(u.id, area_id=pokoj)
@@ -288,6 +290,8 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     """Usunięto ostatnie urządzenie: sprzątnij pliki, ładowacz i wpisy po Motor HA."""
+    if entry.options.get(CONF_UKRYJ_ZRODLO):   # silnik zostaje w HA – niech Assist znów go widzi
+        assist(hass, list(entry.options.get(CONF_ROLETY) or []), True)
     if any(e.entry_id != entry.entry_id for e in hass.config_entries.async_entries(DOMAIN)):
         return
     await async_usun_pliki(hass)

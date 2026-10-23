@@ -16,7 +16,7 @@
     "urzadzenie": {
       "t": "Device",
       "co": "Choose the motor (a shade or a gate), give it a name and pick the room.",
-      "poco": "Motor HA controls this motor, and the room lets you talk to Assist, e.g. “close the living room”."
+      "poco": "Motor HA controls this motor. Talk to Assist using the device name, e.g. “close Kitchen pleated blind”."
     },
     "rodzaj": {
       "t": "Type",
@@ -92,6 +92,7 @@
     "name": "Name",
     "pokoj": "Room",
     "rodzaj_pokoju": "Kind of room (for tips)",
+    "ukryj_zrodlo": "Hide the motor from Assist",
     "oslona": "Type",
     "lamele_kat": "Slat angle in sunshine",
     "lamele_tryb": "Slat control",
@@ -139,7 +140,8 @@
     "kopiuj_z": "Empty = start from scratch.",
     "rolety": "For a window with two sashes choose two: first the left one, then the right one.",
     "name": "Empty = the motor's name.",
-    "pokoj": "The device goes to this room. Assist then understands “close the living room”.",
+    "pokoj": "The device goes to this room, so it is easy to find.",
+    "ukryj_zrodlo": "Assist then sees only the Motor HA device, not the motor itself. Helps when Assist says there are several devices with this name. Off by default.",
     "odwroc": "Turn on when the motor reports 100 % with the shade closed.",
     "czas": "0 = automatic: from the motor speed, calibration or real moves.",
     "foto_stan": "Usually “on”. For a text sensor enter e.g. “obstructed”.",

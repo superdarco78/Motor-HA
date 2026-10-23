@@ -2,7 +2,7 @@
    Źródło: karta/src (npm run build) */
 (() => {
   // src/stale.js
-  var WERSJA = "2.1.3";
+  var WERSJA = "2.1.4";
   var GRUPY = {
     wew: {
       rolety: ["pelna", "kasetowa", "zebra", "zaciemniajaca"],
@@ -440,6 +440,11 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .suwak:focus-visible{box-shadow:0 0 0 2px var(--mh-kolor)}
 .suwak .wyp{position:absolute;left:0;top:0;bottom:0;background:var(--mh-kolor);transition:width .1s}
 .suwak .wyp::after{content:"";position:absolute;right:6px;top:50%;width:4px;height:50%;transform:translateY(-50%);border-radius:2px;background:var(--white-color,#fff)}
+/* pionowy suwak obok okna (osłony góra-dół, garaże): wypełnienie od dołu, uchwyt u góry wypełnienia */
+.scena.zs{gap:12px;align-items:stretch}
+.suwak.pion{flex:none;width:var(--feature-height,42px);height:auto;align-self:stretch}
+.suwak.pion .wyp{right:0;top:auto;bottom:0;transition:height .1s}
+.suwak.pion .wyp::after{right:auto;left:50%;top:6px;width:50%;height:4px;transform:translateX(-50%)}
 .suwak .wart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
  font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);mix-blend-mode:normal}
 /* „⚙ Zmień ustawienia” jak przycisk tekstowy HA */
@@ -4866,6 +4871,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const T2 = this._T, n = czl.length, zew = czyZew(c.oslona), rama = ramaHex(c.rama), kolor = hex(c.kolor);
       this._brama = false;
       this._poziomo = POZIOME.includes(c.oslona);
+      const pion2 = c.suwak !== false && !this._poziomo;
       const H2 = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (n === 1 ? 1.15 : 1), W2 = Math.round(H2 * (n === 1 ? 0.68 : 0.92));
       this._kas = KASETA[c.oslona] ?? 12;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
@@ -4878,18 +4884,18 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}</style>
 <ha-card class="${zew ? "zew" : "wew"}${this._poziomo ? " poziomo" : ""}"><div class="mh">
  ${this._naglowek(c)}
- <div class="scena">${zew ? '<div class="pg pgz"></div>' : ""}
-  <div class="okno" style="width:min(100%,${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
+ <div class="scena${pion2 ? " zs" : ""}">${zew ? '<div class="pg pgz"></div>' : ""}
+  <div class="okno" style="width:min(${pion2 ? "calc(100% - 54px)" : "100%"},${W2}px);aspect-ratio:${W2}/${Math.round(H2)}">
    ${zew ? "" : czl.map((_, i) => `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
    ${n > 1 && !c.osobno ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
-  </div></div>
+  </div>${pion2 ? this._suwakHtml(T2, true) : ""}</div>
  ${c.przyciski !== false ? `<div class="przyc">
   <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
   <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
- ${c.suwak !== false ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
+ ${c.suwak !== false && !pion2 ? this._suwakHtml(T2, false) : ""}
  ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc2(T2.karta.zwinieta) : p === 0 ? esc2(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
  ${this._wpis() ? `<button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button>` : ""}
 </div></ha-card>`;
@@ -4971,7 +4977,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
   <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
   <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ""}
- ${c.suwak !== false && zPoz ? `<div class="suwak" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>` : ""}
+ ${c.suwak !== false && zPoz ? this._suwakHtml(T2, false) : ""}
  ${this._wpis() ? `<button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s);
@@ -5082,21 +5088,25 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._kier = w;
       this._polecenie(w > 0 ? 100 : 0, ktore);
     }
+    _suwakHtml(T2, pion2) {
+      return `<div class="suwak${pion2 ? " pion" : ""}" role="slider" tabindex="0" aria-orientation="${pion2 ? "vertical" : "horizontal"}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>`;
+    }
     _suwak(el) {
       let akt = false;
-      const wart = (x) => {
-        const r = el.getBoundingClientRect();
-        return Math.round(Math.min(1, Math.max(0, (x - r.left) / r.width)) * 100);
+      const pion2 = el.classList.contains("pion");
+      const wart = (e) => {
+        const r = el.getBoundingClientRect(), u = pion2 ? (r.bottom - e.clientY) / r.height : (e.clientX - r.left) / r.width;
+        return Math.round(Math.min(1, Math.max(0, u)) * 100);
       };
       el.addEventListener("pointerdown", (e) => {
         akt = true;
-        this._suwakW = wart(e.clientX);
+        this._suwakW = wart(e);
         el.setPointerCapture?.(e.pointerId);
         this._rysujSuwak();
       });
       el.addEventListener("pointermove", (e) => {
         if (akt) {
-          this._suwakW = wart(e.clientX);
+          this._suwakW = wart(e);
           this._rysujSuwak();
         }
       });
@@ -5260,7 +5270,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const S = this._el.suwak;
       if (!S) return;
       const w = this._suwakW ?? this._srednia();
-      S.querySelector(".wyp").style.width = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
+      S.querySelector(".wyp").style[S.classList.contains("pion") ? "height" : "width"] = `calc(16px + (100% - 16px) * ${Math.max(0, Math.min(100, w)) / 100})`;
       S.setAttribute("aria-valuenow", Math.round(w));
     }
     _rysuj() {

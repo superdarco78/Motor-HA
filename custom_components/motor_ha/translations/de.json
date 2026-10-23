@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "Schritt {nr} von {z}: Gerät",
-        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor, und mit dem Raum verstehst du Assist, z. B. „Wohnzimmer schließen“.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor. Sprich mit Assist über den Gerätenamen, z. B. „schließe Plissee Küche“.{porada}",
         "data": {
           "rolety": "Motor (eine oder zwei Entitäten)",
           "name": "Name",
           "pokoj": "Raum",
           "rodzaj_pokoju": "Raumart (für Tipps)",
+          "ukryj_zrodlo": "Motor vor Assist verbergen",
           "wstecz": "Zurück zum vorigen Schritt"
         },
         "data_description": {
           "rolety": "Bei einem Fenster mit zwei Flügeln wähle zwei: zuerst den linken, dann den rechten.",
           "name": "Leer = Name des Motors.",
-          "pokoj": "Das Gerät kommt in diesen Raum. Assist versteht dann „Wohnzimmer schließen“.",
+          "pokoj": "Das Gerät kommt in diesen Raum, damit du es leicht findest.",
+          "ukryj_zrodlo": "Assist sieht dann nur das Motor-HA-Gerät, nicht den Motor selbst. Hilft, wenn Assist sagt, dass es mehrere Geräte mit diesem Namen gibt. Standardmäßig aus.",
           "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "Schritt {nr} von {z}: Gerät",
-        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor, und mit dem Raum verstehst du Assist, z. B. „Wohnzimmer schließen“.{porada}",
+        "description": "{pasek}\n\n**Was:** Wähle den Motor (Behang oder Tor), gib einen Namen und wähle den Raum.\n\n**Wozu:** Motor HA steuert diesen Motor. Sprich mit Assist über den Gerätenamen, z. B. „schließe Plissee Küche“.{porada}",
         "data": {
           "rolety": "Motor (eine oder zwei Entitäten)",
           "name": "Name",
           "pokoj": "Raum",
           "rodzaj_pokoju": "Raumart (für Tipps)",
+          "ukryj_zrodlo": "Motor vor Assist verbergen",
           "wstecz": "Zurück zum vorigen Schritt"
         },
         "data_description": {
           "rolety": "Bei einem Fenster mit zwei Flügeln wähle zwei: zuerst den linken, dann den rechten.",
           "name": "Leer = Name des Motors.",
-          "pokoj": "Das Gerät kommt in diesen Raum. Assist versteht dann „Wohnzimmer schließen“.",
+          "pokoj": "Das Gerät kommt in diesen Raum, damit du es leicht findest.",
+          "ukryj_zrodlo": "Assist sieht dann nur das Motor-HA-Gerät, nicht den Motor selbst. Hilft, wenn Assist sagt, dass es mehrere Geräte mit diesem Namen gibt. Standardmäßig aus.",
           "wstecz": "Einschalten und „Weiter“ klicken, um einen Schritt zurückzugehen. Eingaben bleiben erhalten."
         }
       },

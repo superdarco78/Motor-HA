@@ -115,6 +115,11 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .suwak:focus-visible{box-shadow:0 0 0 2px var(--mh-kolor)}
 .suwak .wyp{position:absolute;left:0;top:0;bottom:0;background:var(--mh-kolor);transition:width .1s}
 .suwak .wyp::after{content:"";position:absolute;right:6px;top:50%;width:4px;height:50%;transform:translateY(-50%);border-radius:2px;background:var(--white-color,#fff)}
+/* pionowy suwak obok okna (osłony góra-dół, garaże): wypełnienie od dołu, uchwyt u góry wypełnienia */
+.scena.zs{gap:12px;align-items:stretch}
+.suwak.pion{flex:none;width:var(--feature-height,42px);height:auto;align-self:stretch}
+.suwak.pion .wyp{right:0;top:auto;bottom:0;transition:height .1s}
+.suwak.pion .wyp::after{right:auto;left:50%;top:6px;width:50%;height:4px;transform:translateX(-50%)}
 .suwak .wart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
  font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font-weight-medium,500);color:var(--primary-text-color);mix-blend-mode:normal}
 /* „⚙ Zmień ustawienia” jak przycisk tekstowy HA */

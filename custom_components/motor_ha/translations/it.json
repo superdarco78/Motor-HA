@@ -28,18 +28,20 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} di {z}: Dispositivo",
-        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore, e la stanza ti permette di parlare con Assist, ad es. «chiudi il soggiorno».{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore. Parla con Assist usando il nome del dispositivo, ad es. «chiudi Plissé cucina».{porada}",
         "data": {
           "rolety": "Motore (una o due entità)",
           "name": "Nome",
           "pokoj": "Stanza",
           "rodzaj_pokoju": "Tipo di stanza (per i consigli)",
+          "ukryj_zrodlo": "Nascondi il motore ad Assist",
           "wstecz": "Torna al passo precedente"
         },
         "data_description": {
           "rolety": "Per una finestra a due ante scegline due: prima la sinistra, poi la destra.",
           "name": "Vuoto = nome del motore.",
-          "pokoj": "Il dispositivo va in questa stanza. Assist capirà «chiudi il soggiorno».",
+          "pokoj": "Il dispositivo va in questa stanza, così lo trovi facilmente.",
+          "ukryj_zrodlo": "Assist vedrà solo il dispositivo Motor HA, non il motore. Aiuta quando Assist dice che ci sono più dispositivi con questo nome. Disattivato per impostazione predefinita.",
           "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
         }
       },
@@ -360,18 +362,20 @@
       },
       "urzadzenie": {
         "title": "Passo {nr} di {z}: Dispositivo",
-        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore, e la stanza ti permette di parlare con Assist, ad es. «chiudi il soggiorno».{porada}",
+        "description": "{pasek}\n\n**Cosa:** Scegli il motore (schermatura o cancello), dagli un nome e scegli la stanza.\n\n**Perché:** Motor HA comanda questo motore. Parla con Assist usando il nome del dispositivo, ad es. «chiudi Plissé cucina».{porada}",
         "data": {
           "rolety": "Motore (una o due entità)",
           "name": "Nome",
           "pokoj": "Stanza",
           "rodzaj_pokoju": "Tipo di stanza (per i consigli)",
+          "ukryj_zrodlo": "Nascondi il motore ad Assist",
           "wstecz": "Torna al passo precedente"
         },
         "data_description": {
           "rolety": "Per una finestra a due ante scegline due: prima la sinistra, poi la destra.",
           "name": "Vuoto = nome del motore.",
-          "pokoj": "Il dispositivo va in questa stanza. Assist capirà «chiudi il soggiorno».",
+          "pokoj": "Il dispositivo va in questa stanza, così lo trovi facilmente.",
+          "ukryj_zrodlo": "Assist vedrà solo il dispositivo Motor HA, non il motore. Aiuta quando Assist dice che ci sono più dispositivi con questo nome. Disattivato per impostazione predefinita.",
           "wstecz": "Attiva e clicca «Avanti» per tornare indietro di un passo. I dati inseriti restano."
         }
       },

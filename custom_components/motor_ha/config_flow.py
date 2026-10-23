@@ -45,6 +45,7 @@ from .const import (
     CONF_SWIETA,
     CONF_TRYB_LEWE,
     CONF_TRYB_PRAWE,
+    CONF_UKRYJ_ZRODLO,
     CONF_WYSOKOSC,
     CZUJNIKI,
     DOMAIN,
@@ -68,6 +69,7 @@ from .const import (
 )
 from . import skan
 from .pasek import async_obrazek
+from .urzadzenie import assist
 
 WSTECZ = "wstecz"
 KOPIUJ = "kopiuj_z"
@@ -320,6 +322,7 @@ class Kreator:
         if not self.brama:
             schemat[vol.Required(CONF_RODZAJ_POKOJU, default=self.o.get(CONF_RODZAJ_POKOJU, "salon"))] = \
                 _lista(POKOJE, "pokoje")
+        schemat[vol.Optional(CONF_UKRYJ_ZRODLO, default=bool(self.o.get(CONF_UKRYJ_ZRODLO)))] = sel.BooleanSelector()
         return await self._formularz("urzadzenie", schemat, bledy)
 
     def _uzupelnij(self, rolety: list[str]) -> None:
@@ -609,4 +612,7 @@ class MotorHaOpcje(Kreator, OptionsFlow):
         entry = self.hass.config_entries.async_get_entry(self._entry_id)
         if entry and self.tytul and self.tytul != entry.title:
             self.hass.config_entries.async_update_entry(entry, title=self.tytul)
+        if entry and entry.options.get(CONF_UKRYJ_ZRODLO):   # wyłączone albo zmieniony silnik: pokaż go znów
+            teraz = set(self.o.get(CONF_ROLETY) or []) if self.o.get(CONF_UKRYJ_ZRODLO) else set()
+            assist(self.hass, [e for e in entry.options.get(CONF_ROLETY) or [] if e not in teraz], True)
         return self.async_create_entry(title="", data={k: v for k, v in self.o.items() if k != CONF_NAZWA})
