@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.20";
+  var WERSJA = "2.2.21";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();

@@ -5,6 +5,8 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { WebGLPathTracer, GradientEquirectTexture } from 'three-gpu-pathtracer';
 import { RAMA, polaNaObrazku } from './okno3d_uklad.js';
 
 // ---------- rodzaje: każdy z 79 rodzajów to rodzina (jak jest zbudowana i jak jedzie) + szczegóły ----------
@@ -96,7 +98,11 @@ const markTx = () => tex('mark', 64, 4, (x) => { x.fillStyle = '#fff'; x.fillRec
 // ---------- materiały ----------
 const MAT = new Map();
 function mat(klucz, f) { if (!MAT.has(klucz)) MAT.set(klucz, f()); return MAT.get(klucz); }
-const std = o => new THREE.MeshStandardMaterial(o);
+const std = o => {   // fizyczny materiał: tkaniny dostają połysk włókien (sheen), widoczny w obrazie dokładnym
+  const m = new THREE.MeshPhysicalMaterial(o);
+  if (o.map && TX.splot && o.map === TX.splot) { m.sheen = .45; m.sheenRoughness = .7; m.sheenColor.set('#ffffff'); }
+  return m;
+};
 const metal = kol => mat('metal' + kol, () => std({ color: kol, roughness: .32, metalness: .55, envMapIntensity: 1 }));
 function tkanina(rodz, kol) {   // każdy kawałek tkaniny ma własną kopię tekstury (własna skala splotu)
   const m = (() => {
@@ -124,6 +130,15 @@ const zaokr = (w, h, d, r = .004) => { const k = [w, h, d, r].map(v => v.toFixed
 function klocek(w, h, d, m, r) { const o = new THREE.Mesh(zaokr(w, h, d, r), m); o.castShadow = o.receiveShadow = true; return o; }
 const ust = (o, x, y, z) => { o.position.set(x, y, z); return o; };
 const PLASZ = new THREE.PlaneGeometry(1, 1);
+// lamela rolety zewnętrznej: wypukły profil z zamkiem (przekrój wyciągnięty na szerokość osłony)
+function profilRolety(sw, ph) {
+  const k = 'prof' + sw.toFixed(4) + ph; if (GEO.has(k)) return GEO.get(k);
+  const s = new THREE.Shape(), d = ph * .22, h = ph * .96;
+  s.moveTo(0, -h / 2); for (let i = 1; i <= 10; i++) { const t = i / 10; s.lineTo(d * Math.sin(t * Math.PI), -h / 2 + h * t); }
+  s.lineTo(-.002, h / 2); s.lineTo(-.002, h / 2 - .005); s.lineTo(-.006, h / 2 - .005); s.lineTo(-.006, -h / 2 + .005); s.lineTo(-.002, -h / 2 + .005); s.lineTo(-.002, -h / 2);
+  const g = new THREE.ExtrudeGeometry(s, { depth: sw, bevelEnabled: false, curveSegments: 4 });
+  g.rotateY(Math.PI / 2); g.translate(-sw / 2, 0, 0); g.computeVertexNormals(); GEO.set(k, g); return g;   // wypukłość na zewnątrz (-z)
+}
 // harmonijka (plisa, plaster, rzymska): stała liczba fałd, przy podnoszeniu fałdy się zagęszczają
 function harmonijka(w, dl, pelna, faldy, gl, miekka) {
   const n = Math.max(2, Math.round(pelna / faldy)), fh = dl / n, d = Math.sqrt(Math.max(0, (faldy / 2) ** 2 - (fh / 2) ** 2)) * (gl / (faldy / 2)) + .0015;
@@ -220,13 +235,19 @@ function oslona(g, p) {
     const ph = M.prof || .039, n = Math.ceil(L / ph) + 1;
     const m = M.perf ? std({ color: kol, roughness: .4, metalness: .3, alphaMap: perfor().clone(), alphaTest: .5, side: THREE.DoubleSide }) : mat('prof' + kol, () => std({ color: kol, roughness: .42, metalness: .35 }));
     if (M.perf) m.alphaMap.repeat.set(sw / .06, 1);
-    const pr = new THREE.InstancedMesh(zaokr(sw, ph * .96, .012, .005), m, n); pr.castShadow = pr.receiveShadow = true; g.add(pr);
+    const pr = new THREE.InstancedMesh(profilRolety(sw, ph), m, n); pr.castShadow = pr.receiveShadow = true; g.add(pr);
     const skrM = mat('skrz' + kol, () => std({ color: kol, roughness: .45, metalness: .3 }));
-    if (M.skrz === 'natynk') g.add(ust(klocek(sw + .05, .17, .17, skrM, .01), 0, top + .085, z - .03));
+    if (M.skrz === 'natynk') {   // skrzynka natynkowa ze skosem 45° od dołu na zewnątrz
+      const k = new THREE.Shape([new THREE.Vector2(0, 0), new THREE.Vector2(.12, 0), new THREE.Vector2(.165, .045), new THREE.Vector2(.165, .165), new THREE.Vector2(0, .165)]);
+      const kg = new THREE.ExtrudeGeometry(k, { depth: sw + .05, bevelEnabled: true, bevelSize: .003, bevelThickness: .003, bevelSegments: 2 });
+      kg.rotateY(Math.PI / 2); kg.translate(-(sw + .05) / 2, 0, 0); kg.computeVertexNormals();
+      const ko = new THREE.Mesh(kg, skrM); ko.position.set(0, top - .005, z + .07); ko.castShadow = ko.receiveShadow = true; g.add(ko);
+    }
     if (M.skrz === 'okragla') g.add(ust(new THREE.Mesh(new THREE.CylinderGeometry(.09, .09, sw + .05, 32).rotateZ(Math.PI / 2), skrM), 0, top + .07, z - .04));
     if (M.skrz === 'nadstawna') g.add(ust(klocek(sw + .05, .05, .2, skrM, .01), 0, top + .025, z));
-    for (const s of [-1, 1]) g.add(ust(klocek(.04, L + .06, .05, skrM, .006), s * (sw / 2 + .012), top - L / 2 + .03, z));
-    const dol = ust(klocek(sw, .03, .022, skrM, .006), 0, 0, z); g.add(dol);
+    const kanal = mat('kanal', () => std({ color: '#1b1c1e', roughness: .8 }));
+    for (const s of [-1, 1]) { g.add(ust(klocek(.04, L + .06, .05, skrM, .006), s * (sw / 2 + .012), top - L / 2 + .03, z)); g.add(ust(klocek(.012, L + .06, .052, kanal, .002), s * (sw / 2 - .002), top - L / 2 + .03, z)); }
+    const dol = new THREE.Group(); dol.add(ust(klocek(sw, .045, .024, skrM, .006), 0, .012, 0), ust(klocek(sw - .01, .007, .016, kanal, .002), 0, -.013, 0)); dol.position.z = z; g.add(dol);
     let siatka = null;
     if (M.siatka) { siatka = new THREE.Mesh(PLASZ, tkanina('siatka', kol)); siatka.scale.set(sw, L, 1); siatka.position.set(0, top - L / 2, z + .02); g.add(siatka); }
     const o = new THREE.Object3D();
@@ -323,7 +344,7 @@ export class Okno3D {
   }
   // opt: { pola, typy, kolory, rama, W, H, margines, sciana, pozycje, jasnosc }
   ustaw(opt) {
-    const klucz = JSON.stringify([opt.pola, opt.typy, opt.kolory, opt.rama, opt.W, opt.H, opt.margines, opt.sciana, opt.kas, opt.uchyl]);
+    const klucz = JSON.stringify([opt.pola, opt.typy, opt.kolory, opt.rama, opt.W, opt.H, opt.margines, opt.sciana, opt.kas, opt.uchyl, opt.strona]);
     this.opt = opt;
     if (klucz !== this._klucz) { this._klucz = klucz; this._zbuduj(); }
     this.pozycje(opt.pozycje || []);
@@ -345,7 +366,17 @@ export class Okno3D {
       const mO = std({ color: o.sciana || '#e4e1dc', roughness: .95 });
       for (const [w, h, x, y] of [[W, .002, 0, H / 2], [.002, H, -W / 2, 0], [.002, H, W / 2, 0]]) { const s = ust(new THREE.Mesh(new THREE.BoxGeometry(w, h, .22), mO), x, y, .03); s.receiveShadow = true; gr.add(s); }
     }
-    if (m > 0) gr.add(ust(klocek(W + .14, .03, .2, std({ color: '#f2f1ee', roughness: .4 }), .008), 0, -H / 2 - .015, .1));
+    const zew = o.strona === 'zew';
+    if (zew && m > 0 && o.sciana) {   // elewacja: tynk z ościeżem, okno osadzone w murze, parapet z blachy
+      const sh = new THREE.Shape([new THREE.Vector2(-W * 3, -H * 3), new THREE.Vector2(W * 3, -H * 3), new THREE.Vector2(W * 3, H * 3), new THREE.Vector2(-W * 3, H * 3)]);
+      sh.holes.push(new THREE.Path([new THREE.Vector2(-W / 2, -H / 2), new THREE.Vector2(-W / 2, H / 2), new THREE.Vector2(W / 2, H / 2), new THREE.Vector2(W / 2, -H / 2)]));
+      const mT = std({ color: o.sciana, roughness: .95, side: THREE.DoubleSide });
+      const el = new THREE.Mesh(new THREE.ShapeGeometry(sh), mT); el.position.z = -.3; el.receiveShadow = true; gr.add(el);
+      for (const [w, h, x, y] of [[W, .002, 0, H / 2], [.002, H, -W / 2, 0], [.002, H, W / 2, 0]]) { const s = ust(new THREE.Mesh(new THREE.BoxGeometry(w, h, .3), mT), x, y, -.15); s.receiveShadow = true; gr.add(s); }
+      const par = new THREE.Shape([new THREE.Vector2(0, 0), new THREE.Vector2(-.36, -.025), new THREE.Vector2(-.36, -.06), new THREE.Vector2(-.37, -.06), new THREE.Vector2(-.37, -.02), new THREE.Vector2(0, .012)]);
+      const pg = new THREE.ExtrudeGeometry(par, { depth: W + .06, bevelEnabled: false }); pg.rotateY(-Math.PI / 2); pg.translate((W + .06) / 2, 0, 0);
+      const pa = new THREE.Mesh(pg, std({ color: '#a4a7aa', roughness: .3, metalness: .7 })); pa.position.y = -H / 2; pa.castShadow = pa.receiveShadow = true; gr.add(pa);
+    } else if (m > 0) gr.add(ust(klocek(W + .14, .03, .2, std({ color: '#f2f1ee', roughness: .4 }), .008), 0, -H / 2 - .015, .1));
     // widok za oknem: zdjęcie daleko za szybą
     // widok za oknem: zdjęcie za szybą, dokładnie na tyle duże, żeby było go widać tylko przez okno (tło dookoła przezroczyste)
     const S0 = H / (1 - 2 * m), D = S0 / 2 / Math.tan(THREE.MathUtils.degToRad(this.cam.fov / 2)), ZW = 1.4, k = (D + .04 + ZW) / (D + .04);
@@ -353,6 +384,10 @@ export class Okno3D {
     const pg = new THREE.PlaneGeometry(ww, wh), uv = pg.attributes.uv;
     for (let i = 0; i < uv.count; i++) uv.setXY(i, .5 + (uv.getX(i) - .5) * ww / (img * 1.5), .5 + (uv.getY(i) - .5) * wh / img);
     this.widok = ust(new THREE.Mesh(pg, this.widokM), 0, 0, -ZW); gr.add(this.widok);
+    if (zew) {   // z zewnątrz za szybą widać pokój: ciepły półmrok, firanka przy brzegu
+      this.widok.visible = false;
+      const pok = ust(new THREE.Mesh(new THREE.BoxGeometry(W + 1, H + 1, 2), std({ color: '#7d766c', roughness: .9, side: THREE.BackSide })), 0, 0, 1.1); gr.add(pok);
+    }
     // ościeżnica
     gr.add(ust(klocek(W, F, .08, mR), 0, H / 2 - F / 2, 0), ust(klocek(W, F, .08, mR), 0, -H / 2 + F / 2, 0), ust(klocek(F, H, .08, mR), -W / 2 + F / 2, 0, 0), ust(klocek(F, H, .08, mR), W / 2 - F / 2, 0, 0));
     const iW = W - 2 * F, iH = H - 2 * F;
@@ -369,8 +404,9 @@ export class Okno3D {
       this.skrz.push({ piv, typ });
       this.ruchy.push(oslona(g, { gw, gh, typ, kol: o.kolory?.[i] || '#e6dcc8', kas: o.kas }));
     });
-    this.cam.position.set(0, 0, .04 + D);
-    this.cam.lookAt(0, 0, 0);
+    this.cam.position.set(0, 0, zew ? -(.34 + D) : .04 + D);
+    this.cam.lookAt(0, 0, zew ? -.3 : 0);
+    this.slonce.position.set(-2.4, 3.2, zew ? -4.2 : 4.2);
     this._poz = null;
   }
   // pozycje 0–100 (100 = osłona zwinięta/otwarta), po jednej na pole
@@ -403,6 +439,7 @@ export class Okno3D {
       const w = this.host.clientWidth, h = this.host.clientHeight; if (!w || !h || !this.grupa) return;
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       this._klatka(Math.round(w * dpr), Math.round(h * dpr));
+      dokladnie(this);
     });
   }
   _klatka(W, H) {
@@ -411,13 +448,18 @@ export class Okno3D {
     this.cam.aspect = W / H; this.cam.updateProjectionMatrix();
     r.render(this.scena, this.cam);
     if (this.cv.width !== W || this.cv.height !== H) { this.cv.width = W; this.cv.height = H; }
-    this.ctx.clearRect(0, 0, W, H); this.ctx.drawImage(r.domElement, 0, 0);
+    this._kopiuj(r.domElement, W, H);
+  }
+  // widok z zewnątrz rysuje się w lustrze, żeby pole 1 zostało tam, gdzie w układzie (przyciski i suwaki leżą na obrazie)
+  _kopiuj(src, W, H) {
+    const c = this.ctx; c.clearRect(0, 0, W, H);
+    if (this.opt.strona === 'zew') { c.save(); c.scale(-1, 1); c.drawImage(src, -W, 0); c.restore(); } else c.drawImage(src, 0, 0);
   }
   // nowy element strony (kreator rysuje krok od nowa): ten sam obraz, bez budowania okna od zera
   przenies(host) {
     if (host === this.host) return; this._ro.disconnect(); this.host = host; host.prepend(this.cv); this._ro.observe(host); this.rysuj();
   }
-  zniszcz() { this._ro.disconnect(); cancelAnimationFrame(this._raf); this.cv.remove(); }
+  zniszcz() { this._ro.disconnect(); cancelAnimationFrame(this._raf); this.cv.remove(); if (PT.okno === this) PT.okno = null; }
 }
 
 // obrazek kafelka (lista rodzajów w kreatorze): jedno okno z osłoną w wybranych kolorach → data: URL, raz na rodzaj i kolor
@@ -435,3 +477,79 @@ export function kafel(typ, kolor, rama, widok, w = 240, h = 200) {
 }
 let startKafli = 0;
 export function widokKafli(url) { if (!startKafli) startKafli = performance.now(); kafelOkno ||= new Okno3D(document.createElement('div'), null); kafelOkno.widokZ(url); }
+
+// ---------- obraz dokładny: światło liczone fizycznie (path tracing, jak Blender Cycles) ----------
+// Po każdej zmianie karta od razu pokazuje zwykły obraz 3D, a gdy okno stoi (0,4 s), liczy w tle obraz dokładny:
+// odbicia, miękkie cienie, światło odbite od ściany i osłon. Liczy się jedno okno naraz, aż obraz będzie gładki.
+// Telefon, który nie da rady (brak WebGL2, błąd albo za wolno), zostaje przy zwykłym obrazie 3D.
+const PT = { pt: null, okno: null, kolejka: [], wyl: false, t: 0, start: 0, raf: 0, gotowe: new WeakSet() };
+const CEL = 40, OPOZNIENIE = 400;
+try { PT.wyl = localStorage.getItem('motor_ha_dokladny') === '0'; } catch (e) { /* bez pamięci przeglądarki */ }
+// three-gpu-pathtracer czyta obrót nieba ze sceny (pola nowszego three.js, w 0.160 ich nie ma)
+for (const k of ['environmentRotation', 'backgroundRotation']) if (!(k in THREE.Scene.prototype) && !(k in new THREE.Scene())) THREE.Scene.prototype[k] = new THREE.Euler();
+let NIEBO = null;
+const niebo = () => { if (NIEBO) return NIEBO; NIEBO = new GradientEquirectTexture(); NIEBO.topColor.set('#dfe9f3'); NIEBO.bottomColor.set('#8f8a82'); NIEBO.update(); return NIEBO; };
+function dokladnie(okno) {
+  if (PT.wyl || !okno.host.isConnected || okno === kafelOkno) return;
+  PT.gotowe.delete(okno);
+  if (PT.okno === okno) PT.okno = null;
+  clearTimeout(okno._ptT);
+  okno._ptT = setTimeout(() => { if (!PT.kolejka.includes(okno)) PT.kolejka.push(okno); dalej(); }, OPOZNIENIE);
+}
+function dalej() {
+  if (PT.okno || PT.raf) return;
+  while (PT.kolejka.length && !PT.kolejka[0].host.isConnected) PT.kolejka.shift();
+  const okno = PT.kolejka.shift(); if (!okno) return;
+  if (!przygotuj(okno)) return;
+  PT.okno = okno; PT.start = performance.now(); PT.raf = requestAnimationFrame(krok);
+}
+// three-gpu-pathtracer nie zna InstancedMesh, HemisphereLight i MeshBasicMaterial: na czas wczytania sceny
+// lamele zamieniają się w zwykłą siatkę, a zdjęcie widoku w świecący materiał
+function przygotuj(okno) {
+  const { r } = gl();
+  try {
+    if (!r.capabilities.isWebGL2) throw new Error('brak WebGL2');
+    PT.pt ||= Object.assign(new WebGLPathTracer(r), { renderDelay: 0, minSamples: 1, fadeDuration: 0, rasterizeScene: false, dynamicLowRes: false });
+    PT.pt.tiles.set(2, 2); PT.pt.bounces = 5; PT.pt.filterGlossyFactor = .5;
+    const sc = okno.scena, zmiany = [], dodane = [];
+    sc.updateMatrixWorld(true);
+    sc.traverse(o => {
+      if (o.isInstancedMesh && o.visible) {
+        const geos = [], m = new THREE.Matrix4();
+        for (let i = 0; i < o.count; i++) { o.getMatrixAt(i, m); if (Math.abs(m.determinant()) < 1e-12) continue; const g = o.geometry.clone(); g.applyMatrix4(m); geos.push(g.index ? g.toNonIndexed() : g); }
+        if (geos.length) { const z = new THREE.Mesh(mergeGeometries(geos), o.material); o.parent.add(z); z.position.copy(o.position); z.quaternion.copy(o.quaternion); z.scale.copy(o.scale); dodane.push(z); }
+        zmiany.push(() => { o.visible = true; }); o.visible = false;
+      } else if (o.isMesh && o.material?.isMeshBasicMaterial) {
+        const b = o.material; o.material = new THREE.MeshStandardMaterial({ color: '#000', emissive: b.color, emissiveMap: b.map, emissiveIntensity: 1.1 });
+        zmiany.push(() => { o.material.dispose(); o.material = b; });
+      } else if (o.isHemisphereLight) { zmiany.push(() => { o.visible = true; }); o.visible = false; }
+    });
+    const env = sc.environment; sc.environment = niebo(); sc.environmentIntensity = .9;
+    const W = okno.cv.width, H = okno.cv.height; if (!W || !H) return false; r.setSize(W, H, false); okno.cam.aspect = W / H; okno.cam.updateProjectionMatrix();
+    PT.pt.setScene(sc, okno.cam);
+    sc.environment = env; sc.environmentIntensity = 1;
+    dodane.forEach(z => { z.parent.remove(z); z.geometry.dispose(); }); zmiany.forEach(f => f());
+    PT.rozmiar = [W, H];
+    return true;
+  } catch (e) { wylacz(e); return false; }
+}
+function krok() {
+  PT.raf = 0;
+  const okno = PT.okno; if (!okno) return dalej();
+  if (!okno.host.isConnected) { PT.okno = null; return dalej(); }
+  const { r } = gl(), [W, H] = PT.rozmiar;
+  try {
+    if (r.domElement.width !== W || r.domElement.height !== H) { r.setSize(W, H, false); PT.pt.reset(); }
+    PT.pt.renderSample();
+  } catch (e) { return wylacz(e); }
+  const n = PT.pt.samples, czas = performance.now() - PT.start;
+  if (n < 2 && czas > 8000) return wylacz(new Error('za wolno'));   // słaby telefon: zostaje zwykły obraz 3D
+  if (n >= 4 && Number.isInteger(n) && okno.cv.width === W && okno.cv.height === H) { okno._kopiuj(r.domElement, W, H); }
+  if (n >= CEL) { PT.gotowe.add(okno); PT.okno = null; return dalej(); }
+  PT.raf = requestAnimationFrame(krok);
+}
+function wylacz(e) {
+  console.warn('Motor HA: obraz dokładny wyłączony, zostaje zwykłe 3D –', e?.message || e, e?.stack);
+  PT.wyl = true; PT.okno = null; PT.kolejka.length = 0;
+}
+export const dokladny = () => !PT.wyl;
