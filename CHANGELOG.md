@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.2.14 – Podgląd = to samo zdjęcie co kafelek
+
+- 🖼️ „Osłona”: miniatury i duży podgląd to zdjęcia z Canvy (rodzaj zgadnięty po osłonie, np. dzień-noc dla żaluzji bez lameli)
+- 🪟 „Układ”: duży podgląd to zdjęcie wybranego kafelka; edytor pól tylko przy „Własny”
+- 🎨 „Rodzaj” i „Kolory”: duży podgląd to zdjęcie wybranego rodzaju w wybranym kolorze, 1:1 jak kafelek; pola okna jako przyciski 1, 2… pod zdjęciem, zawsze widoczne
+
 ## v2.2.13 – Kreator graficzny od pierwszego urządzenia
 
 - 🪄 Po świeżej instalacji pierwsze „Dodaj urządzenie” wczytuje integrację i prosi o odświeżenie strony; potem od razu otwiera się kreator graficzny (z roletami w kroku „Osłona”, nowymi ikonami i zdjęciami) zamiast starego kreatora z polami wyboru
