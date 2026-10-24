@@ -854,10 +854,11 @@ export class MotorHaKreator extends HTMLElement {
     const [gx, gy, gw, gh] = SZYBY.u1[0], X = x + gx * w, Y = y + gy * h, W = gw * w, H = gh * h, rk = RAMKI[typ];
     let tk = '';
     if (rk && ZDJECIA.has(typ)) {
-      const [bx, by, bw, bh] = rk, z = .6;
-      tk = `<defs><mask id="em${i}" maskContentUnits="userSpaceOnUse"><image href="/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA}" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></mask></defs>
-        <svg x="${X}" y="${Y}" width="${W}" height="${H * z}" overflow="hidden"><svg y="${-H * (1 - z)}" width="${W}" height="${H}" viewBox="${bx} ${by} ${bw} ${bh}" preserveAspectRatio="none">
-        <image href="${zKolorem(typ, kol) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" x="0" y="0" width="1" height="1" preserveAspectRatio="none" mask="url(#em${i})"/></svg></svg>`;
+      // osłona w proporcjach zdjęcia (jak kafelek): wycinek zdjęcia wypełnia zasłoniętą część szyby bez rozciągania
+      const [bx, by, bw, bh] = rk, z = .6, f = n => +n.toFixed(2);
+      tk = `<defs><mask id="em${i}" maskUnits="userSpaceOnUse" x="0" y="0" width="193" height="161"><image href="/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA}" x="0" y="0" width="193" height="161" preserveAspectRatio="none"/></mask></defs>
+        <svg x="${X}" y="${Y}" width="${W}" height="${H * z}" viewBox="${f(bx * 193)} ${f(by * 161)} ${f(bw * 193)} ${f(bh * 161)}" preserveAspectRatio="xMidYMid slice" overflow="hidden">
+        <image href="${zKolorem(typ, kol) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" x="0" y="0" width="193" height="161" preserveAspectRatio="none" mask="url(#em${i})"/></svg>`;
     }
     return `<image href="/motor_ha/ui/u1.webp?v=${WERSJA}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>${tk}`;
   }
