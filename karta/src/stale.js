@@ -3,7 +3,7 @@
 
 import { GRUPY_KAFLI } from './kafle.js';
 
-export const WERSJA = '2.2.14';
+export const WERSJA = '2.2.15';
 
 // Rodzaje osłon w grupach jak w katalogach producentów (te same grupy i obrazki co w kreatorze, kafle.js).
 export const GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));

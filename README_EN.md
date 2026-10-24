@@ -22,7 +22,7 @@
 <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/cs.svg" width="19%" alt="Čeština"></a>
 </p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/en.svg" width="100%" alt="Motor HA – Open in HACS"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/en-ciemny.png"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/en.png" width="100%" alt="Motor HA – Open in HACS"></picture></a></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/pokaz/en-ciemny.webp" width="100%" alt="Four devices: day-night blind, external venetian blind, awning and gate. Day, night and weather behind the glass."><sub>Four devices: day-night blind, external venetian blind, awning and gate. Day, night and weather behind the glass.</sub></p>
 
@@ -487,3 +487,5 @@
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> License</h2>
 
 <p>License <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – free to use and change, but not to sell. © superdarco78</p>
+
+<p>Images generated with AI in Canva: photos of shade types, window layouts and views behind the window, icons and banners (folders <code>custom_components/motor_ha/www/rodzaje</code>, <code>ui</code>, <code>widok</code>, <code>img/baner</code>).</p>

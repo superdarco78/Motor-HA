@@ -22,7 +22,7 @@
 <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/cs.svg" width="19%" alt="Čeština"></a>
 </p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/fr.svg" width="100%" alt="Motor HA – Ouvrir dans HACS"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/fr-ciemny.png"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/fr.png" width="100%" alt="Motor HA – Ouvrir dans HACS"></picture></a></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/pokaz/fr-ciemny.webp" width="100%" alt="Quatre appareils : store jour-nuit, brise-soleil orientable, store banne et portail. Jour, nuit et météo derrière la vitre."><sub>Quatre appareils : store jour-nuit, brise-soleil orientable, store banne et portail. Jour, nuit et météo derrière la vitre.</sub></p>
 
@@ -487,3 +487,5 @@
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Licence</h2>
 
 <p>Licence <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – libre d’utiliser et de modifier, mais pas de vendre. © superdarco78</p>
+
+<p>Images générées par IA dans Canva : photos des types de protections, des dispositions de fenêtres et des vues, icônes et bannières (dossiers <code>custom_components/motor_ha/www/rodzaje</code>, <code>ui</code>, <code>widok</code>, <code>img/baner</code>).</p>

@@ -1,13 +1,18 @@
 // Karta Motor HA: okno z osłoną. Osłona jedzie w tempie silnika, za szybą pogoda i pora dnia, czujniki pokazują otwarte okno.
-import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno, SCIANY, baza, wlasnyRuch } from './stale.js';
+import { DOMYSLNE, IKONY, IKONY_OTW, POZIOME, czyBrama, czyZew, hex, ramaHex, czyDrewno, SCIANY, baza, wlasnyRuch, WERSJA } from './stale.js';
 import { rysunekBramy, ustawBrame, ustawFotokomorke } from './brama.js';
 import { kafelRuch } from './kafle_ruch.js';
 import { STYL_STALY, stylOkna, stylPola } from './styl.js';
-import { kolorNieba, poraDnia, pogoda, widokSvg, NIEBO_Z_POGODY } from './scena.js';
+import { kolorNieba, poraDnia, pogoda, widokSvg, zdjecieWidoku, NIEBO_Z_POGODY } from './scena.js';
+import { WIDOK } from './zdjecia.js';
 import { Ruch, czasPrzejazdu } from './ruch.js';
 import { obroty, czujnikiOkna, encjaPogody, pogodaZInternetu, oslonyDoWyboru } from './wykryj.js';
 import { TEKSTY, jezyk } from './jezyk.js';
 import { konfiguruj } from './urzadzenie.js';
+import { ikUI, STYL_IKU } from './ikony_ui.js';
+import { SZYBY, nazwaUkladu, tkanina } from './foto_okno.js';
+import { przekoloruj } from './przekolor.js';
+import { maZdjecieBramy, bramaZdjecie, ustawBrameZdj, STYL_BRAMY } from './brama_foto.js';
 
 // klucze, które zostają w karcie na panelu, gdy ustawienia trzyma urządzenie Motor HA
 // pola układu okna (2.2.0) z urządzenia: [{ x, y, w, h, silnik, czujnik, tryb }] albo null (1–2 skrzydła)
@@ -80,14 +85,19 @@ export class MotorHaKarta extends HTMLElement {
     const dwaSuwaki = pion && !!c.osobno && n > 1;
     const P = polaOkna(c), kol = P ? new Set(P.map(p => p.x)).size : n;
     this._uk = !!P;
+    // okno ze zdjęć (Canva): zdjęcie układu, a na szybach osłona wycięta ze zdjęcia rodzaju – gdy jest zdjęcie układu i każdego rodzaju
+    const typP = i => { const t = P?.[i]?.oslona; return t && !!czyZew(t) === !!zew && !POZIOME.includes(t) && !POZIOME.includes(c.oslona) ? t : c.oslona; };
+    const fotUk = POZIOME.includes(c.oslona) ? null : P ? nazwaUkladu(P.map(p => [p.x, p.y, p.w, p.h])) : n === 1 ? 'u1' : n === 2 ? 'u2' : null;
+    const foto = this._foto = !!fotUk && Array.from({ length: n }, (_, i) => tkanina(typP(i), '#000')).every(Boolean);
+    const zw = zew && !foto;   // na zdjęciu osłona zewnętrzna też jest na szybie – bez widoku z ulicy
     const H = Math.max(140, Math.min(600, +c.wysokosc || 260)) * (kol === 1 ? 1.15 : 1),
-      W = Math.round(H * (kol === 1 ? .68 : kol === 2 ? .92 : Math.min(1.5, .46 * kol)));
+      W = foto ? Math.round(H * 193 / 161) : Math.round(H * (kol === 1 ? .68 : kol === 2 ? .92 : Math.min(1.5, .46 * kol)));
     // pole układu: położenie w procentach okna (4 px ramy dookoła każdego pola)
-    const miejsce = (i, wciecie = 4) => P ? ` style="left:calc(${P[i].x * 100}% + ${wciecie}px);top:calc(${P[i].y * 100}% + ${wciecie}px);width:calc(${P[i].w * 100}% - ${2 * wciecie}px);height:calc(${P[i].h * 100}% - ${2 * wciecie}px)"` : '';
+    const miejsce = (i, wciecie = 4) => foto ? ` style="left:${SZYBY[fotUk][i][0] * 100}%;top:${SZYBY[fotUk][i][1] * 100}%;width:${SZYBY[fotUk][i][2] * 100}%;height:${SZYBY[fotUk][i][3] * 100}%"` : P ? ` style="left:calc(${P[i].x * 100}% + ${wciecie}px);top:calc(${P[i].y * 100}% + ${wciecie}px);width:calc(${P[i].w * 100}% - ${2 * wciecie}px);height:calc(${P[i].h * 100}% - ${2 * wciecie}px)"` : '';
     const strona = i => P ? (P[i].x + P[i].w / 2 <= .5 ? 'l' : 'p') : i ? 'p' : 'l';
     // widok za szybą jeden na całe okno: każde pole pokazuje swój kawałek
     const wid = i => P ? ` class="wid" style="left:${-P[i].x / P[i].w * 100}%;top:${-P[i].y / P[i].h * 100}%;width:${100 / P[i].w}%;height:${100 / P[i].h}%"` : ' style="position:absolute;inset:0"';
-    const ramy = P ? [...new Set(P.map(p => p.x))].map(x => {
+    const ramy = foto ? `<img class="ftlo" src="/motor_ha/ui/${fotUk}.webp?v=${WERSJA}" alt="" draggable="false">` : P ? [...new Set(P.map(p => p.x))].map(x => {
       const k = P.filter(p => p.x === x), dol = Math.max(...k.map(p => p.y + p.h));
       return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
     }).join('') : '';
@@ -96,7 +106,7 @@ export class MotorHaKarta extends HTMLElement {
     // kolor ściany z kreatora; cegła z jasnymi fugami
     const sc = SCIANY[c.sciana], tloMuru = !sc ? '' : c.sciana === 'cegla'
       ? `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(240,232,220,.75) 9px 10px),${sc}` : `;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.1) 9px 10px),${sc}`;
-    const mury = xs.slice(1).map((x, i) => { const pk = P.find(p => p.x === xs[i]), od = pk.x + pk.w; return x - od > .004 ? `<div class="mur" style="left:${od * 100}%;width:${(x - od) * 100}%${x - od < .035 ? `;background:${rama}` : tloMuru}"></div>` : ''; }).join('');
+    const mury = foto ? '' : xs.slice(1).map((x, i) => { const pk = P.find(p => p.x === xs[i]), od = pk.x + pk.w; return x - od > .004 ? `<div class="mur" style="left:${od * 100}%;width:${(x - od) * 100}%${x - od < .035 ? `;background:${rama}` : tloMuru}"></div>` : ''; }).join('');
     this._kas = KASETA[c.oslona] ?? 12;
     // pola z własnym rodzajem/kolorem osłony (z kreatora 2.2.2); rodzaj musi pasować do okna (wewnątrz/na zewnątrz, góra-dół)
     const typPola = i => { const t = P?.[i]?.oslona; return t && !!czyZew(t) === !!zew && !POZIOME.includes(t) && !this._poziomo ? t : c.oslona; };
@@ -112,31 +122,31 @@ export class MotorHaKarta extends HTMLElement {
     this._kasy = P ? P.map((_, i) => KASETA[typPola(i)] ?? 12) : null;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
     const skrzydlo = i => `<div class="skrz" data-i="${i}" data-s="${strona(i)}"${miejsce(i)}><div class="szyba"${wPol[i] ? ` data-w="${wPol[i]}"` : ''}>
-      ${zew ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
-      <div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>`}
+      ${zw ? '<div class="pokoj"></div>' : `<div${wid(i)}><div class="niebo"></div><div class="osiedle-w"></div><div class="pg"></div></div><i class="promien"></i>
+      ${foto ? `<div class="oslona"><div class="ftkp">${tkanina(typP(i), P?.[i]?.kolor ? hex(P[i].kolor) : kolor)}</div></div><div class="listwa"></div>` : '<div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i>'}`}
       <div class="blask"></div><div class="cel"><span></span></div></div>${n > 1 && (!P || P[i].h >= .4) ? '<i class="klamka"></i>' : ''}</div>`;
     const kolumna = i => `<div class="szyba" data-i="${i}"${wPol[i] ? ` data-w="${wPol[i]}"` : ''}${miejsce(i, 0)}><div class="oslona"></div><div class="listwa"></div><div class="kaseta"></div><i class="prow l"></i><i class="prow p"></i><div class="cel"><span></span></div></div>`;
     const pozycje = String(c.pozycje || '').split(/[,; ]+/).filter(x => x !== '').map(Number).filter(x => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
-    root.innerHTML = `<style>${STYL_STALY}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}${warianty.map((x, w) => stylPola(`.szyba[data-w="${w + 1}"]`, { rama, drewno: czyDrewno(c.rama), kolor: x.k, typ: x.t, zew })).join('\n')}</style>
-<ha-card class="${zew ? 'zew' : 'wew'}${this._poziomo ? ' poziomo' : ''}"><div class="mh">
+    root.innerHTML = `<style>${STYL_STALY}${STYL_IKU}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew })}${warianty.map((x, w) => stylPola(`.szyba[data-w="${w + 1}"]`, { rama, drewno: czyDrewno(c.rama), kolor: x.k, typ: x.t, zew })).join('\n')}</style>
+<ha-card class="${zw ? 'zew' : 'wew'}${this._poziomo ? ' poziomo' : ''}${foto ? ' foto' : ''}"><div class="mh">
  ${this._naglowek(c)}
- <div class="scena${pion ? ' zs' : ''}">${zew ? '<div class="pg pgz"></div>' : ''}
-  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno${P ? ' uk' : ''}" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
-   ${mury}${ramy}${zew ? '' : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
+ <div class="scena${pion ? ' zs' : ''}">${zw ? '<div class="pg pgz"></div>' : ''}
+  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno${P || foto ? ' uk' : ''}" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${W}px);aspect-ratio:${W}/${Math.round(H)}">
+   ${mury}${ramy}${zw || foto ? '' : czl.map((_, i) => P ? `<div class="za"${miejsce(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? '50%' : '6px'};right:${i ? '6px' : '50%'}` : ''}"></div>`).join('')}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join('')}
-   ${zew ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join('')}</div>` : ''}
+   ${zw ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join('')}</div>` : ''}
    ${n > 1 && !c.osobno && !P ? `<div class="oba" title="${esc(T.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ''}
   </div>${pion ? this._suwakHtml(T, true, dwaSuwaki ? 1 : null) : ''}</div>
  ${c.przyciski !== false ? `<div class="przyc">
-  <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
-  <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
-  <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
+  <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}">${ikUI('gora', '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
+  <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}">${ikUI('stop', '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
+  <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}">${ikUI('dol', '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ''}
  ${c.suwak !== false && !pion ? this._suwakHtml(T, false) : ''}
  ${pozycje.length ? `<div class="poz">${pozycje.map(p => `<button data-p="${p}">${p === 100 ? esc(T.karta.zwinieta) : p === 0 ? esc(T.karta.opuszczona) : p + ' %'}</button>`).join('')}</div>` : ''}
  ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc(T.urzadzenie.wyglad)}</button></div>` : ''}
 </div></ha-card>`;
     const q = s => root.querySelector(s), qa = s => [...root.querySelectorAll(s)];
-    const pola = zew ? qa('.zewo .szyba') : qa('.skrz .szyba');
+    const pola = zw ? qa('.zewo .szyba') : qa('.skrz .szyba');
     this._el = {
       ...this._wspolne(q),
       karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), oba: q('.oba'), suwak: q('.suwak'), suwaki: qa('.suwak'), pgz: q('.pgz'),
@@ -145,7 +155,7 @@ export class MotorHaKarta extends HTMLElement {
       pola: pola.map((p, i) => ({ p, kas: this._kasy?.[i] ?? this._kas, oslona: p.querySelector('.oslona'), listwa: p.querySelector('.listwa'), cel: p.querySelector('.cel'), celT: p.querySelector('.cel span') }))
     };
     this._ruchy = czl.map(e => new Ruch(e));
-    this._czl = null; this._niebo = null; this._zew = zew;
+    this._czl = null; this._niebo = null; this._zew = zw;
     const E = this._el;
     q('.gl').addEventListener('click', () => this._wiecej());
     q('.gl').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') this._wiecej(); });
@@ -153,11 +163,12 @@ export class MotorHaKarta extends HTMLElement {
     E.zam?.addEventListener('click', () => this._polecenie(0));
     E.stp?.addEventListener('click', () => this._polecenie(null));
     E.poz.forEach(b => b.addEventListener('click', () => this._polecenie(+b.dataset.p)));
-    E.pola.forEach((P, i) => this._ciagnij(zew ? P.p : E.skrz[i].s, [i]));
+    E.pola.forEach((P, i) => this._ciagnij(zw ? P.p : E.skrz[i].s, [i]));
     if (E.oba) this._ciagnij(E.oba, czl.map((_, i) => i), true);
     E.suwaki.forEach(S => this._suwak(S));
     q('.zmien:not(.wyg)')?.addEventListener('click', () => konfiguruj(this._wpis()));
     q('.wyg')?.addEventListener('click', () => this._wyglad());
+    root.querySelectorAll('img[data-przek]').forEach(im => przekoloruj(im.dataset.przek, im.dataset.kol, WERSJA).then(u => { if (u && im.isConnected) im.src = u; }));
     this._zbudowana = true;
   }
 
@@ -176,10 +187,10 @@ export class MotorHaKarta extends HTMLElement {
   <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
   <svg class="kompas" viewBox="-20 -20 40 40" hidden aria-hidden="true"><circle r="17" fill="none" stroke="var(--divider-color)" stroke-width="2"/>
    <path d="M-9 -15h18" stroke="var(--primary-color)" stroke-width="4" stroke-linecap="round"/><circle class="sl" r="4.5" fill="#ffb300"/></svg></div>
- <div class="auto" hidden><ha-icon icon="mdi:robot-outline"></ha-icon><span></span><button class="wzn" hidden>${esc(this._T.karta.wznow)}</button></div>`;
+ <div class="auto" hidden><i class="aik"></i><span></span><button class="wzn" hidden>${esc(this._T.karta.wznow)}</button></div>`;
   }
   _wspolne(q) {
-    const el = { auto: q('.auto'), autoT: q('.auto span'), autoI: q('.auto ha-icon'), wzn: q('.wzn'), kompas: q('.kompas'), sl: q('.kompas .sl'), ikona: q('.ik ha-icon') };
+    const el = { auto: q('.auto'), autoT: q('.auto span'), aik: q('.auto .aik'), wzn: q('.wzn'), kompas: q('.kompas'), sl: q('.kompas .sl'), ikona: q('.ik ha-icon') };
     el.wzn?.addEventListener('click', e => {
       e.stopPropagation();
       const b = this._cfg?.encje?.wznow;
@@ -193,16 +204,17 @@ export class MotorHaKarta extends HTMLElement {
     const T = this._T, root = this.shadowRoot || this.attachShadow({ mode: 'open' });
     this._brama = true; this._uk = false; this._poziomo = false; this._kas = 0; this._brNoc = null;
     // nowy rodzaj (markiza koszowa, okno dachowe, szlaban…): własny rysunek z kafle_ruch.js, jedzie razem z silnikiem
-    this._scenaRuchu = wlasnyRuch(c.rodzaj) ? c.rodzaj : null; this._ostO = null;
+    this._brTyp = maZdjecieBramy(c.rodzaj) ? c.rodzaj : c.oslona;
+    this._scenaRuchu = wlasnyRuch(c.rodzaj) && !maZdjecieBramy(this._brTyp) ? c.rodzaj : null; this._ostO = null;
     const st = this._hass.states[c.entity], zPoz = (st?.attributes?.supported_features ?? 0) & 4;
-    root.innerHTML = `<style>${STYL_STALY}</style>
+    root.innerHTML = `<style>${STYL_STALY}${STYL_IKU}${STYL_BRAMY}</style>
 <ha-card class="brama"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena"><div class="bramaw" role="button" tabindex="0"></div></div>
  ${c.przyciski !== false ? `<div class="przyc">
-  <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
-  <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}"><ha-icon icon="mdi:stop"></ha-icon></button>
-  <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div>` : ''}
+  <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}">${ikUI('gora', '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
+  <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}">${ikUI('stop', '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
+  <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}">${ikUI('dol', '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ''}
  ${c.suwak !== false && zPoz ? this._suwakHtml(T, false) : ''}
  ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc(T.urzadzenie.wyglad)}</button></div>` : ''}
 </div></ha-card>`;
@@ -336,12 +348,17 @@ export class MotorHaKarta extends HTMLElement {
       this._niebo = kn;
       E.karta.classList.toggle('noc', pora === 'noc' || pora === 'zmierzch');
       const bg = kolorNieba(rodzaj, pora);
+      // zdjęcie z Canvy (pora × pogoda); na nim tylko żywe krople, płatki, mgła i błysk – słońce, chmury i gwiazdy są już na zdjęciu
+      const fot = c.widok !== false ? zdjecieWidoku(WIDOK, rodzaj, pora) : null;
+      const bezNieba = h => h.replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, '');
       E.skrz.forEach((S, i) => {
         if (S.niebo) S.niebo.style.background = bg;
         if (S.za) S.za.style.background = bg;
         const [nr, ile] = this._uk ? [0, 1] : [i, czl.length];   // pola: jeden widok na całe okno
-        if (S.osiedle) S.osiedle.innerHTML = c.widok !== false ? widokSvg(rodzaj, pora, nr, ile) : '';
-        if (S.pg) S.pg.innerHTML = pogoda(rodzaj, pora, nr, ile);
+        if (S.osiedle) S.osiedle.innerHTML = fot
+          ? `<img class="fotw" src="/motor_ha/widok/${fot.plik}.webp?v=${WERSJA}" alt="" draggable="false" style="width:${ile * 100}%;left:${-nr * 100}%${fot.filtr ? ';filter:' + fot.filtr : ''}">`
+          : c.widok !== false ? widokSvg(rodzaj, pora, nr, ile) : '';
+        if (S.pg) S.pg.innerHTML = fot ? bezNieba(pogoda(rodzaj, pora, nr, ile)) : pogoda(rodzaj, pora, nr, ile);
         S.s.classList.toggle('slonecznie', pora === 'dzien' && (rodzaj === 'slonce' || rodzaj === 'chmurki'));
       });
       if (E.pgz) E.pgz.innerHTML = ['deszcz', 'ulewa', 'burza', 'snieg', 'deszczsnieg', 'mgla'].includes(rodzaj) ? pogoda(rodzaj, pora, 0, 1).replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, '') : '';
@@ -378,6 +395,7 @@ export class MotorHaKarta extends HTMLElement {
   // wiersz automatyki: dlaczego osłona stoi tak, jak stoi; przy pauzie przycisk „Wznów”
   _automatyka(c, h) {
     const E = this._el, enc = c.encje || {};
+    E.karta.classList.toggle('ciemny', !!h.themes?.darkMode);
     const ps = enc.powod && h.states[enc.powod], pz = enc.pauza && h.states[enc.pauza];
     const pokaz = ps && !['brak', 'wylaczona', 'unavailable', 'unknown'].includes(ps.state);
     if (E.auto) {
@@ -394,7 +412,8 @@ export class MotorHaKarta extends HTMLElement {
         E.wzn.hidden = !(pauza && enc.wznow);
         const blad = ['blokada', 'przeszkoda'].includes(ps.state);
         E.auto.classList.toggle('blad', blad);
-        E.autoI.setAttribute('icon', pauza ? 'mdi:pause-circle-outline' : blad ? 'mdi:alert-circle-outline' : 'mdi:robot-outline');
+        const ik = pauza ? 'pauza' : blad ? 'uwaga' : 'automat';
+        if (E.aik.dataset.n !== ik) { E.aik.dataset.n = ik; E.aik.innerHTML = ikUI(ik, `<ha-icon icon="${{ pauza: 'mdi:pause-circle-outline', uwaga: 'mdi:alert-circle-outline', automat: 'mdi:robot-outline' }[ik]}"></ha-icon>`); }
       }
     }
     // kompas: kierunek okna u góry, słońce tam, gdzie jest względem okna
@@ -415,7 +434,8 @@ export class MotorHaKarta extends HTMLElement {
     if (this._scenaRuchu) E.bramaw.setAttribute('aria-label', T.oslony[c.rodzaj] || '');
     else if (noc !== this._brNoc) {
       this._brNoc = noc;
-      E.bramaw.innerHTML = rysunekBramy(c.oslona, hex(c.kolor), ramaHex(c.rama), noc, !!c.przeszkoda);
+      this._brZdj = maZdjecieBramy(this._brTyp);
+      E.bramaw.innerHTML = this._brZdj ? bramaZdjecie(this._brTyp, noc) : rysunekBramy(c.oslona, hex(c.kolor), ramaHex(c.rama), noc, !!c.przeszkoda);
       E.svg = E.bramaw.querySelector('svg');
       E.bramaw.setAttribute('aria-label', T.oslony[c.oslona] || '');
     }
@@ -462,7 +482,8 @@ export class MotorHaKarta extends HTMLElement {
     const E = this._el, ile = E.pola.length;
     if (this._brama && this._ruchy[0]?.widac !== null) {
       const w = this._ruchy[0].widac;
-      if (!this._scenaRuchu) ustawBrame(E.svg, this._cfg.oslona, w);
+      if (this._brZdj) ustawBrameZdj(E.bramaw, this._brTyp, w);
+      else if (!this._scenaRuchu) ustawBrame(E.svg, this._cfg.oslona, w);
       else if (this._ostO === null || Math.abs(w - this._ostO) >= .4 || (w !== this._ostO && (w === 0 || w === 100))) {
         this._ostO = w;
         E.bramaw.innerHTML = kafelRuch(this._scenaRuchu, w / 100, hex(this._cfg.kolor), ramaHex(this._cfg.rama));
@@ -483,6 +504,13 @@ export class MotorHaKarta extends HTMLElement {
             `linear-gradient(90deg,#000 0 calc(${pol}% + 6px),transparent calc(${pol}% + 6px) calc(${100 - pol}% - 6px),#000 calc(${100 - pol}% - 6px))`;
         } else P.oslona.style.clipPath = `inset(0 ${(100 - Math.max(4, z)).toFixed(2)}% 0 0)`;
         if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
+        return;
+      }
+      if (this._foto) {   // zdjęcie osłony: odsłania się od dołu, dolna listwa jest na zdjęciu
+        P.oslona.style.top = '0'; P.oslona.style.height = (100 - r.widac).toFixed(2) + '%';
+        P.oslona.firstElementChild.style.height = wys + 'px';
+        if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
+        P._dol = P.p.offsetTop + (P.p.parentElement?.offsetTop || 0) + wys * (100 - r.widac) / 100;
         return;
       }
       const kas = P.kas ?? this._kas, gora = this._gornaListwy(wys, r.widac, kas);

@@ -1,5 +1,16 @@
 # 📝 Historia zmian
 
+## v2.2.15 – Wszystko ze zdjęć z Canvy
+
+- 🪟 Kreator: od kroku „Układ” do „Gotowe” podgląd to zdjęcie wybranego układu, a na każdej szybie wybrany rodzaj osłony w wybranym kolorze (1:1 z kafelkami); w „Rodzaj”, „Kolory” i „Pola” pola dotyka się na zdjęciu
+- 🏠 Karta na panelu: to samo okno ze zdjęć, osłona zjeżdża i wyjeżdża na żywo; za szybą zdjęcie widoku według pory dnia (słońce) i pogody z HA (słonecznie, chmury, deszcz, burza, śnieg, mgła)
+- ✏️ „Własny” układ: kafelek i edytor też ze zdjęć
+- 🚪 Bramy, garaże i szlaban ze zdjęć: skrzydło wycięte ze zdjęcia odjeżdża w bok, unosi się, otwiera albo podnosi ramię – na karcie i w kreatorze
+- 🔼 Karta: przyciski „W górę”, „Stop”, „W dół” i wiersz automatyki (automat, pauza, uwaga) z ikonami z Canvy, w jasnym i ciemnym motywie
+- 🧭 Edytor karty: ikony kroków z Canvy (jak w kreatorze)
+- 🌤️ Symulator w opisie HACS: ikony pory dnia i pogody z Canvy
+- 🖼️ README: nowe banery z Canvy (PL, EN, DE, FR, CS), osobno dla jasnego i ciemnego motywu GitHuba
+
 ## v2.2.14 – Podgląd = to samo zdjęcie co kafelek
 
 - 🖼️ „Osłona”: miniatury i duży podgląd to zdjęcia z Canvy (rodzaj zgadnięty po osłonie, np. dzień-noc dla żaluzji bez lameli)

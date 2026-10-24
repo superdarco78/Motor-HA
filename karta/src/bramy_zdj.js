@@ -1,0 +1,2 @@
+// Wygenerowane przez narzedzia/bramy.py – ramka skrzydła na zdjęciu bramy (www/bramy): [x, y, szer., wys.]
+export const BRAMY_ZDJ = {"furtka": [0.2758, 0.124, 0.4425, 0.7615], "garaz_boczna": [0.0992, 0.1917, 0.8017, 0.6281], "garaz_skrzydlowa": [0.1142, 0.124, 0.7708, 0.7438], "przesuwna": [0.0958, 0.1615, 0.8033, 0.6344], "roletowa": [0.1617, 0.201, 0.6742, 0.699], "segmentowa": [0.12, 0.1615, 0.76, 0.751], "skrzydlowa": [0.1008, 0.1271, 0.7983, 0.701], "szlaban": [0.1992, 0.3302, 0.76, 0.0823], "uchylna": [0.1292, 0.1427, 0.7417, 0.7062]};

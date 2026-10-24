@@ -22,7 +22,7 @@
 <a href="https://github.com/superdarco78/Motor-HA/blob/main/README_CS.md"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/jezyki/cs-on.svg" width="19%" alt="Čeština"></a>
 </p>
 
-<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/cs.svg" width="100%" alt="Motor HA – Otevřít v HACS"></a></p>
+<p align="center"><a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/cs-ciemny.png"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/baner/cs.png" width="100%" alt="Motor HA – Otevřít v HACS"></picture></a></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/pokaz/cs-ciemny.webp" width="100%" alt="Čtyři zařízení: roleta den-noc, venkovní žaluzie, markýza a brána. Den, noc a počasí za sklem."><sub>Čtyři zařízení: roleta den-noc, venkovní žaluzie, markýza a brána. Den, noc a počasí za sklem.</sub></p>
 
@@ -487,3 +487,5 @@
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Licence</h2>
 
 <p>Licence <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – můžeš zdarma používat a upravovat, ale ne prodávat. © superdarco78</p>
+
+<p>Obrázky vytvořené AI v Canvě: fotografie druhů stínění, rozložení oken a výhledů, ikony a bannery (složky <code>custom_components/motor_ha/www/rodzaje</code>, <code>ui</code>, <code>widok</code>, <code>img/baner</code>).</p>
