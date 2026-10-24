@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.25 – Podgląd po prawej, całe okno widać
+
+- ↔️ Kreator i „Konfiguruj”: ustawienia po lewej, podgląd po prawej
+- 🖼️ Podgląd pokazuje całe okno (wszystkie pola) dopasowane do wysokości, bez przewijania i ucinania
+- 🪟 W krokach Rodzaj i Kolory osłona w podglądzie rusza się tylko trochę i nigdy nie zwija się do końca, więc zawsze widać wybrany rodzaj i kolor
+- 🔍 Większe kafelki rodzajów na komputerze (3 w rzędzie), osłona na kafelku do połowy, żeby było widać kasetę, prowadnice i dół osłony
+
 ## v2.2.24 – Okna dachowe z Blendera, żaluzja C80 wierniej
 
 - 🏠 Okna dachowe (SSL, roleta, MSL, markizeta, samo okno): nowe obrazki z Blendera, od frontu i symetrycznie, z barwieniem osłony i ramy
