@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.2.19 – Kroki kreatora połączone, rama w kolorze
+
+- 🪟 „Osłona”, „Układ”, „Rodzaj”, „Kolory”: podgląd to całe okno w wybranym układzie – na miejscu każdego skrzydła oryginalne zdjęcie kafelka jego osłony (3 skrzydła = 3 zdjęcia); dotknięcie skrzydła wybiera pole
+- 🎨 Kolor ramy działa: rama okna na zdjęciach (kafelki, podgląd, zdjęcia układów i karta na panelu) zmienia się na wybrany kolor
+- 🔗 Wybrane osłony od razu ustawiają rodzaj (np. „Żaluzja …” = dzień-noc), więc podgląd w „Osłona” pasuje do kafelków osłon
+
 ## v2.2.18 – Telefon zawsze bierze nową wersję
 
 - 🔄 Po aktualizacji aplikacja HA i przeglądarka nie biorą starej karty z pamięci: ładowacz w Zasobach ma w adresie numer wersji, a gdy na stronie działa jeszcze starsza wersja, strona raz sama się przeładowuje

@@ -3,8 +3,8 @@
 // i „Konfiguruj” (kreator.js), a gotowe ustawienia wysyła jak zwykłą odpowiedź kroku integracji (pole „kreator”).
 import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza, wlasnyRuch, WERSJA, OKNA_NAPED } from './stale.js';
 import { kafelRuch, RODZAJE_RUCHU } from './kafle_ruch.js';
-import { ZDJECIA, UI, MASKI } from './zdjecia.js';
-import { przekoloruj, zKolorem } from './przekolor.js';
+import { ZDJECIA, UI } from './zdjecia.js';
+import { przekoloruj, zKolorem, daSie } from './przekolor.js';
 import { RAMKI } from './ramki.js';
 import { UKLADY, SZYBY, tkanina } from './foto_okno.js';
 import { maZdjecieBramy, bramaZdjecie } from './brama_foto.js';
@@ -68,6 +68,8 @@ const KROKI_BRAMY = ['silnik', 'rodzaj', 'kolory', 'czujniki', 'stoper', 'dzwone
 // krok klasycznego kreatora (skrót z karty i strony urządzenia) → krok kreatora graficznego
 // telefon: mały rysunek okna na górze w każdym kroku (stały, zmienia się od razu); „Pola” mają własny duży, „Gotowe” – kartę
 const BEZ_PODGLADU = ['przypisz', 'gotowe'];
+// kroki, w których podgląd to całe okno ze zdjęć kafelków (każde skrzydło ze swoją osłoną), a nie zdjęcie samego układu
+const KROKI_ZESTAWU = ['silnik', 'uklad', 'rodzaj', 'kolory'];
 const UL = v => +(v * 100).toFixed(3) + '%';
 // szablony układów: pola (x, y, szer., wys.) w ułamkach okna; trzeci element – drzwi do podłogi
 const KOLORY_TAB = Object.keys(KOLORY);
@@ -189,6 +191,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .fbr .fbo,.fbr .fbs{position:absolute;inset:0}
 .fokno{position:relative;width:100%;max-width:100%;border-radius:12px;overflow:hidden;background:#d9dadb;user-select:none;-webkit-user-select:none}
 .fokno .ftlo{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
+.fzest{position:relative;width:100%;max-width:100%;user-select:none;-webkit-user-select:none}
+.fzest .fzp{position:absolute;padding:3px;box-sizing:border-box;margin:0;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.fzest .fzp img{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:10px;pointer-events:none;display:block}
+.fzest .fzp.wyb img{outline:3px solid #ff9800;outline-offset:-1px}
+.fzest .fzp .fnr{position:absolute;left:8px;top:8px;width:22px;height:22px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 12px/1 var(--ha-font-family-body,Roboto,sans-serif);pointer-events:none}
 .fsz{position:absolute;overflow:hidden}
 .fsz .obsz{position:absolute;inset:0}
 .ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
@@ -309,8 +316,8 @@ export class MotorHaKreator extends HTMLElement {
     S.brama = !!pierwsza?.brama;
     if (!S.recznie.rodzaj && pierwsza) {
       const k = pierwsza.klasa;
-      S.o.oslona = S.brama ? (k === 'garage' ? 'segmentowa' : 'przesuwna') : k === 'awning' ? 'markiza' : k === 'shutter' ? 'natynkowa'
-        : pierwsza.lamele ? 'zaluzja' : czyBrama(S.o.oslona) ? 'zebra' : S.o.oslona || 'zebra';
+      // ten sam rodzaj, co na kafelku osłony w kroku „Osłona” (z klasy, lamel albo nazwy)
+      S.o.oslona = S.brama ? (k === 'garage' ? 'segmentowa' : 'przesuwna') : this._typOslony(pierwsza);
     }
     if (!S.recznie.uklad && !S.brama) {
       if (n <= 4) S.u = zSzablonu(UKLADY[n === 4 ? 7 : n === 3 ? 2 : n === 2 ? 1 : 0][1]);
@@ -399,7 +406,7 @@ export class MotorHaKreator extends HTMLElement {
     const gotowy = nazwa && UI.has(nazwa + '.webp') && SZYBY[nazwa];
     const proporcja = '193/161';
     const d = [`<div class="fokno" data-id="${id}" role="img" aria-label="${esc(this.t.kroki.uklad)}" style="aspect-ratio:${proporcja}${opt.w ? `;width:${opt.w}px` : ''}">`];
-    if (gotowy) d.push(`<img class="ftlo" src="/motor_ha/ui/${nazwa}.webp?v=${WERSJA}" alt="" draggable="false">`);
+    if (gotowy) d.push(this._img('ftlo', nazwa, `/motor_ha/ui/${nazwa}.webp?v=${WERSJA}`, '', this._rama()));
     const u1 = SZYBY.u1[0];
     pl.forEach((p, i) => {
       const pp = S.pola[i] || {}, typ = pp.oslona || S.o.oslona, kol = pp.kolor ? KOLORY[pp.kolor] || pp.kolor : this._kolor();
@@ -407,7 +414,7 @@ export class MotorHaKreator extends HTMLElement {
       let sz;
       if (gotowy) sz = SZYBY[nazwa][i];
       else {   // własny: zdjęcie skrzydła na całe pole, szyba jak na tym zdjęciu
-        d.push(`<img class="ftlo" src="/motor_ha/ui/u1.webp?v=${WERSJA}" alt="" draggable="false" style="left:${UL(p[0])};top:${UL(p[1])};width:${UL(p[2])};height:${UL(p[3])}">`);
+        d.push(this._img('ftlo', 'u1', `/motor_ha/ui/u1.webp?v=${WERSJA}`, '', this._rama(), `left:${UL(p[0])};top:${UL(p[1])};width:${UL(p[2])};height:${UL(p[3])}`));
         sz = [p[0] + u1[0] * p[2], p[1] + u1[1] * p[3], u1[2] * p[2], u1[3] * p[3]];
       }
       const [x, y, w, h] = sz, rk = RAMKI[typ], on = opt.wybrane === i;
@@ -439,17 +446,38 @@ export class MotorHaKreator extends HTMLElement {
     this._przekolorujZdj();
   }
   // zdjęcie rodzaju z Canvy w wybranym kolorze (barwienie maską po wczytaniu), albo null, gdy rodzaj nie ma zdjęcia
-  _zdj(typ, kolor = this._kolor(), styl = '') {
+  _zdj(typ, kolor = this._kolor(), styl = '', rama = this._rama()) {
     if (!ZDJECIA.has(typ)) return null;
-    const src = `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`;
-    return MASKI.has(typ) ? `<img class="zdj" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false"${styl ? ` style="${styl}"` : ''}>`
-      : `<img class="zdj" src="${src}" alt="" draggable="false"${styl ? ` style="${styl}"` : ''}>`;
+    return this._img('zdj', typ, `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`, kolor, rama, styl);
+  }
+  // zdjęcie z Canvy w kolorze osłony i ramy: od razu z pamięci, a gdy jeszcze się liczy – oryginał, podmieniany po chwili
+  _img(klasa, typ, src, kolor, rama, styl = '') {
+    const st = styl ? ` style="${styl}"` : '';
+    return daSie(typ, kolor, rama) ? `<img class="${klasa}" data-przek="${typ}" data-kol="${kolor || ''}" data-ram="${rama || ''}" src="${zKolorem(typ, kolor, rama) || src}" alt="" draggable="false"${st}>`
+      : `<img class="${klasa}" src="${src}" alt="" draggable="false"${st}>`;
   }
   _przekolorujZdj() {
     this.shadowRoot.querySelectorAll('img[data-przek]').forEach(im => {
-      const t = im.dataset.przek, k = im.dataset.kol;
-      przekoloruj(t, k, WERSJA).then(u => { if (u && im.dataset.przek === t && im.dataset.kol === k && im.src !== u) im.src = u; });
+      const t = im.dataset.przek, k = im.dataset.kol, r = im.dataset.ram;
+      przekoloruj(t, k, WERSJA, r).then(u => { if (u && im.dataset.przek === t && im.dataset.kol === k && im.dataset.ram === r && im.src !== u) im.src = u; });
     });
+  }
+  // całe okno jak w wybranym układzie: na miejscu każdego skrzydła oryginalne zdjęcie kafelka jego osłony (Canva),
+  // w kolorze osłony pola i ramy okna – nic nie wycinane. Dotknięcie skrzydła wybiera pole (Rodzaj, Kolory).
+  _zestaw(opt = {}) {
+    const S = this.S, P = prostokaty(S.u), rama = this._rama();
+    // proporcje całości tak, żeby każde skrzydło było jak najbliżej proporcji zdjęcia (193 × 161)
+    const A = Math.max(.8, Math.min(3, P.map(([, , w, h]) => 1.2 * h / w).sort((a, b) => a - b)[Math.floor(P.length / 2)]));
+    const d = [`<div class="fzest" role="group" aria-label="${esc(this.t.kroki.uklad)}" style="aspect-ratio:${+A.toFixed(3)}">`];
+    P.forEach(([x, y, w, h], i) => {
+      const pp = S.pola[i] || {}, typ = pp.oslona || S.o.oslona, kol = pp.kolor ? KOLORY[pp.kolor] || pp.kolor : this._kolor();
+      const zdj = this._zdj(typ, kol, '', rama) || `<div style="width:100%;height:100%">${this.kafelRodzaju(typ, kol, rama)}</div>`;
+      const nr = opt.numery && P.length > 1 ? `<span class="fnr">${i + 1}</span>` : '';
+      const tag = opt.wybor ? 'button' : 'div';
+      d.push(`<${tag} class="fzp${opt.wybor && opt.wybrane === i ? ' wyb' : ''}"${opt.wybor ? ` data-pole="${i}" aria-label="${esc(wstaw(this.t.pole, i + 1))}"` : ''} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}">${zdj}${nr}</${tag}>`);
+    });
+    d.push('</div>');
+    return d.join('');
   }
   // duży podgląd w kolumnie z boku (szeroki ekran): zawsze oryginalne zdjęcia z Canvy (kafelek rodzaju albo układu)
   _scena(k) {
@@ -459,14 +487,9 @@ export class MotorHaKreator extends HTMLElement {
     const zdjecie = t => duze(this._zdj(t, t === this._akt() ? this._aktKolor() : this._kolor(), 'max-height:none;width:100%;border-radius:12px'));
     // brama: oryginalne zdjęcie kafelka wybranego rodzaju (Canva), jak przy osłonach
     if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : `<div>${this._brama(S.o.oslona)}</div>`;
-    if (k === 'silnik') {   // osłony jeszcze bez układu: zdjęcie rodzaju pierwszej wybranej osłony
-      const t = this._oslona(S.rolety[0]) ? this._typOslony(this._oslona(S.rolety[0])) : S.o.oslona;
-      if (ZDJECIA.has(t)) return zdjecie(t);
-    }
     if (k === 'uklad' && S.szablon === 'w') return `<div class="edscena">${this._edytorCaly()}</div>`;
-    if (k === 'uklad') return duze(this.okno({ poz: () => 100 }));
-    // Rodzaj i Kolory: oryginalne zdjęcie kafelka (Canva) wybranego pola albo całego okna, w wybranym kolorze – nic nie składane
-    if (['rodzaj', 'kolory'].includes(k) && ZDJECIA.has(this._akt())) return zdjecie(this._akt());
+    // Osłona, Układ, Rodzaj, Kolory: całe okno w wybranym układzie, na każdym skrzydle zdjęcie kafelka jego osłony w jego kolorach
+    if (KROKI_ZESTAWU.includes(k)) return duze(`<div style="width:100%">${this._zestaw({ numery: true, wybor: ['rodzaj', 'kolory'].includes(k), wybrane: this._wybR() })}</div>`);
     // dalsze kroki: oryginalne zdjęcie układu z numerami pól, bez nakładanych osłon
     if (k === 'przypisz') return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: 'd', wybrane: S.arkusz, poz: () => 100 })}</div>`);
     return duze(this.okno({ id: 's', poz: () => 100 }));
@@ -475,8 +498,7 @@ export class MotorHaKreator extends HTMLElement {
     const k = this.kroki()[this.S.krok], S = this.S;
     const zdj = t => `<div style="width:200px;max-width:100%">${this._zdj(t, this._aktKolor(), 'max-height:none;width:100%;border-radius:8px')}</div>`;
     if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
-    if (k === 'silnik' && ZDJECIA.has(this._akt())) return zdj(this._akt());
-    if (['rodzaj', 'kolory'].includes(k) && ZDJECIA.has(this._akt())) return zdj(this._akt());
+    if (KROKI_ZESTAWU.includes(k)) return `<div style="width:${prostokaty(S.u).length > 1 ? 280 : 200}px;max-width:100%">${this._zestaw({ numery: true })}</div>`;
     return `<div style="width:220px;max-width:100%">${this.okno({ id: 'p', poz: () => 100 })}</div>`;
   }
   // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
@@ -510,8 +532,7 @@ export class MotorHaKreator extends HTMLElement {
   kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
     // zdjęcie z Canvy, jeśli jest dla tego rodzaju; inaczej rysunek
     // z maską: zdjęcie od razu w wybranym kolorze (gdy jeszcze się liczy – oryginał, podmieniany po chwili)
-    if (ZDJECIA.has(typ) && MASKI.has(typ)) return `<img class="zdj" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" alt="" draggable="false">`;
-    if (ZDJECIA.has(typ)) return `<img class="zdj" src="/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}" alt="" loading="lazy" draggable="false">`;
+    if (ZDJECIA.has(typ)) return this._zdj(typ, kolor, '', rama);
     return kafel(typ, kolor, rama) || this._kafelProsty(typ);
   }
   _kafelProsty(typ) {
@@ -528,7 +549,7 @@ export class MotorHaKreator extends HTMLElement {
   }
   kafelUkladu(P, drzwi, klucz) {
     const f = klucz && [klucz + '.webp', klucz + '.png'].find(x => UI.has(x));
-    if (f) return `<img class="zdj" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="" loading="lazy">`;
+    if (f) return this._img('zdj', klucz, `/motor_ha/ui/${f}?v=${WERSJA}`, '', f.endsWith('.webp') ? this._rama() : '');
     const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
     P.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
       <rect x="${7 + x * 52}" y="${5 + y * 50}" width="${Math.max(0, w * 52 - 2)}" height="${h * 50 * .45}" fill="var(--fg2)" opacity=".55"/>`));
@@ -550,7 +571,7 @@ export class MotorHaKreator extends HTMLElement {
         && (S.wybSkad ? S.wybSkad === 'grupa:' + o.id : !calyPokoj(o.area));
       const nr = S.rolety.indexOf(o.id), poz = typeof o.poz === 'number' ? o.poz : o.stan === 'closed' ? 0 : 100;
       return `<button class="kaf ${nr >= 0 || grWyb ? 'wyb' : ''}" data-oslona="${esc(o.id)}" aria-pressed="${nr >= 0}">${nr >= 0 ? `<span class="zn">${nr + 1}</span>` : ''}
-        ${this._zdj(o.brama ? (czyBrama(S.o.oslona) ? S.o.oslona : 'przesuwna') : this._typOslony(o)) || (o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join('')}</svg>`
+        ${this._zdj(o.brama ? (czyBrama(S.o.oslona) ? S.o.oslona : 'przesuwna') : this._typKafla(o)) || (o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join('')}</svg>`
         : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
         <rect x="12" y="6" width="40" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), 12, 6, 40, 32, Math.max(poz, 8), this._kolor())}</svg>`)}
         <b>${esc(o.nazwa)}</b><span class="miejsce">${esc(`${poz} %`)}</span>${o.zajeta && nr < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc(czl.length > 1 ? wstaw(t.grupaIle, czl.length) : t.grupa)}</span>` : ''}</button>`;
@@ -565,7 +586,7 @@ export class MotorHaKreator extends HTMLElement {
       const okienko = (o, i) => { const x = 4 + i * 44, poz = typeof o.poz === 'number' ? o.poz : o.stan === 'closed' ? 0 : 100;
         return `<rect x="${x}" y="3" width="40" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/><rect x="${x + 3}" y="6" width="34" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), x + 3, 6, 34, 32, Math.max(poz, 8), this._kolor())}`; };
       const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? 'wyb' : ''}" data-pokojcaly="${esc(a)}" aria-pressed="${caly}">
-        ${poj.every(o => ZDJECIA.has(this._typOslony(o))) ? `<div class="zdjRzad">${poj.map(o => this._zdj(this._typOslony(o))).join('')}</div>` : `<svg viewBox="0 0 ${4 + poj.length * 44} 44" aria-hidden="true">${poj.map(okienko).join('')}</svg>`}
+        ${poj.every(o => ZDJECIA.has(this._typKafla(o))) ? `<div class="zdjRzad">${poj.map(o => this._zdj(this._typKafla(o))).join('')}</div>` : `<svg viewBox="0 0 ${4 + poj.length * 44} 44" aria-hidden="true">${poj.map(okienko).join('')}</svg>`}
         <b>${esc(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc(poj.map(o => o.nazwa).join(' + '))}</span></button>` : '';
       const grupy = tu.filter(o => o.grupa), reszta = tu.filter(o => !o.grupa);
       const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc(t.pojedyncze)}</span></div>` : '';
@@ -582,6 +603,12 @@ export class MotorHaKreator extends HTMLElement {
     if (/żaluzj|zaluzj|jalous|blind/i.test(o.nazwa)) return 'zebra';
     if (/rolet|roller|shutter/i.test(o.nazwa)) return 'pelna';
     return this.S.o.oslona && !czyBrama(this.S.o.oslona) ? this.S.o.oslona : 'zebra';
+  }
+  // wybrana osłona pokazuje rodzaj ustawiony w urządzeniu (ten sam co w podglądzie), reszta – zgadnięty
+  _typKafla(o) {
+    const S = this.S;
+    if (!S.rolety.includes(o.id)) return this._typOslony(o);
+    return S.pola.find(p => p.silnik === o.id && p.oslona)?.oslona || S.o.oslona;
   }
   _nazwaPokoju(a) { return this.dane.oslony.find(o => o.area === a)?.pokoj || a; }
   // edytor układu: rysunek z uchwytami, przyciski podziału i suwaki słupka / belki
@@ -631,7 +658,7 @@ export class MotorHaKreator extends HTMLElement {
   _wyborPola() {
     const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
     if (S.brama || n < 2) return '';
-    return `<div class="wybpol">${this._szeroko ? '' : ZDJECIA.has(this._akt()) ? `<div style="display:flex;justify-content:center"><div style="width:min(100%,36vh,320px)">${this._zdj(this._akt(), this._aktKolor(), 'max-height:none;width:100%;border-radius:12px')}</div></div>` : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: 'r', wybrane: wr })}</div>`}
+    return `<div class="wybpol">${this._szeroko ? '' : `<div style="display:flex;justify-content:center"><div style="width:min(100%,340px)">${this._zestaw({ numery: true, wybor: true, wybrane: wr })}</div></div>`}
       <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? 'wyb' : ''}" data-calosc="1">${esc(t.caleOkno)}</button>
       ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? 'wyb' : ''}" data-pole="${i}">${esc(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? ' ✎' : ''}</button>`).join('')}</div>
       <p class="pod" style="text-align:center;margin:6px 0 0">${esc(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
