@@ -340,7 +340,8 @@
     "abort": {
       "zle_dane": "Kreator wysłał niepełne ustawienia. Otwórz go jeszcze raz.",
       "brak_rolety": "Wybierz silnik co najmniej dla jednego pola.",
-      "za_duzo": "Za dużo silników (najwyżej 12)."
+      "za_duzo": "Za dużo silników (najwyżej 12).",
+      "odswiez": "Kreator graficzny Motor HA właśnie się wczytał. Odśwież stronę (w przeglądarce Ctrl+Shift+R, w aplikacji zamknij ją i otwórz) i kliknij „Dodaj urządzenie” jeszcze raz."
     }
   },
   "options": {

@@ -340,7 +340,8 @@
     "abort": {
       "zle_dane": "Průvodce odeslal neúplné nastavení. Otevřete ho znovu.",
       "brak_rolety": "Vyberte motor alespoň pro jedno pole.",
-      "za_duzo": "Příliš mnoho motorů (nejvýše 12)."
+      "za_duzo": "Příliš mnoho motorů (nejvýše 12).",
+      "odswiez": "Grafický průvodce Motor HA se právě načetl. Obnovte stránku (v prohlížeči Ctrl+Shift+R, aplikaci zavřete a znovu otevřete) a znovu klikněte na „Přidat zařízení“."
     }
   },
   "options": {

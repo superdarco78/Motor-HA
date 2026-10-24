@@ -340,7 +340,8 @@
     "abort": {
       "zle_dane": "向导发送的设置不完整。请重新打开。",
       "brak_rolety": "请至少为一个窗格选择电机。",
-      "za_duzo": "电机太多（最多 12 个）。"
+      "za_duzo": "电机太多（最多 12 个）。",
+      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
     }
   },
   "options": {

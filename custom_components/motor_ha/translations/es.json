@@ -340,7 +340,8 @@
     "abort": {
       "zle_dane": "El asistente envió una configuración incompleta. Ábrelo de nuevo.",
       "brak_rolety": "Elige un motor para al menos un panel.",
-      "za_duzo": "Demasiados motores (12 como máximo)."
+      "za_duzo": "Demasiados motores (12 como máximo).",
+      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
     }
   },
   "options": {
