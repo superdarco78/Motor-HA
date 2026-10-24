@@ -33,8 +33,8 @@ jobs:
       matrix:
         ha: ${{ fromJSON(github.event_name == 'schedule' && '["stable","beta","dev"]' || format('["{0}"]', inputs.wersja || 'stable')) }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: npm ci
@@ -46,7 +46,7 @@ jobs:
       - name: Kreator na telefonie
         run: node --test e2e/kreator.test.mjs
       - if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: wyniki-ha-${{ matrix.ha }}
           path: e2e/wyniki/
@@ -63,12 +63,12 @@ jobs:
       contents: write        # zrzuty trafiają na osobną gałąź „zrzuty” (nie na main)
       pull-requests: write   # komentarz w PR
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.base.sha }}
           path: przed-repo
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: npm ci
@@ -81,7 +81,7 @@ jobs:
           MOTOR_HA_SRC="$PWD/przed-repo/custom_components/motor_ha" e2e/uruchom.sh stable
           WYNIKI="$PWD/wyniki/przed" node --test e2e/kreator.test.mjs
       - name: Po – wyniki z tego PR
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         continue-on-error: true
         with:
           name: wyniki-ha-stable
