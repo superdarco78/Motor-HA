@@ -1,5 +1,14 @@
 # 📝 Historia zmian
 
+## v2.2.20 – Okno 3D
+
+- 🧊 Okno budowane w 3D na żywo z Twoich ustawień: układ, rodzaj osłony na każdym polu, kolor osłony i ramy – działa dla każdego układu i wszystkich 79 rodzajów osłon (bramy zostają ze zdjęć)
+- 🎬 Osłony jadą naprawdę: kaseta, materiał, lamele, pancerz, fałdy plisy i zasłony, ze światłem i cieniem; w „Rodzaj” i „Kolory” osłony w podglądzie jeżdżą w górę i w dół
+- 🖼️ Kreator: podgląd w każdym kroku i kafelki rodzajów to to samo okno 3D, w wybranych kolorach; karta na panelu i edycja – też
+- 🌦️ Za szybą zostaje widok z Canvy wg pogody i pory dnia
+- 🔄 Po restarcie HA z nową wersją strona sama raz się odświeża (także gdy kreator jest otwarty)
+- 💸 Za darmo i bez internetu: three.js jest w integracji, nic nie trzeba instalować ani zakładać kont
+
 ## v2.2.19 – Kroki kreatora połączone, rama w kolorze
 
 - 🪟 „Osłona”, „Układ”, „Rodzaj”, „Kolory”: podgląd to całe okno w wybranym układzie – na miejscu każdego skrzydła oryginalne zdjęcie kafelka jego osłony (3 skrzydła = 3 zdjęcia); dotknięcie skrzydła wybiera pole

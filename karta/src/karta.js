@@ -12,6 +12,7 @@ import { konfiguruj } from './urzadzenie.js';
 import { ikUI, STYL_IKU } from './ikony_ui.js';
 import { SZYBY, nazwaUkladu, tkanina } from './foto_okno.js';
 import { przekoloruj, zKolorem } from './przekolor.js';
+import { polaNaObrazku, wymiary, proporcja, NA_BOKI, moze3d, okno3d, JASNOSC } from './okno3d_uklad.js';
 import { maZdjecieBramy, bramaZdjecie, ustawBrameZdj, STYL_BRAMY } from './brama_foto.js';
 
 // klucze, które zostają w karcie na panelu, gdy ustawienia trzyma urządzenie Motor HA
@@ -47,7 +48,7 @@ export class MotorHaKarta extends HTMLElement {
     const c = Object.assign({}, DOMYSLNE, urz && typeof urz === 'object' ? urz : {}, this._surowa, this._surowa._podglad || {});
     // rodzaj z katalogu (np. markiza koszowa) rysuje się jak rodzaj bazowy (markiza); ikona zostaje własna
     c.rodzaj = c.oslona; c.oslona = baza(c.oslona);
-    if (Array.isArray(c.pola)) c.pola = c.pola.map(p => p?.oslona ? { ...p, oslona: baza(p.oslona) } : p);
+    if (Array.isArray(c.pola)) c.pola = c.pola.map(p => p?.oslona ? { ...p, rodzaj: p.oslona, oslona: baza(p.oslona) } : p);
     return c;
   }
   get _T() { return TEKSTY[this._jez]; }
@@ -70,12 +71,14 @@ export class MotorHaKarta extends HTMLElement {
     const c = this._cfg = this._ustawienia;
     this._jez = jezyk(c, this._hass);
     const czl = this._skrzydla(c);
-    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+    const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map(p => [p.x, p.y, p.w, p.h, p.rodzaj, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
     if (klucz !== this._klucz) { this._klucz = klucz; this._zbuduj(c, czl); }
     this._aktualizuj(c, czl);
   }
 
   _zbuduj(c, czl) {
+    this._d3 = false; this._o3?.zniszcz(); this._o3 = null;
+    if (!czyBrama(c.oslona) && !czyBrama(c.rodzaj) && !this.bez3d && moze3d()) return this._zbuduj3d(c, czl);
     if (czyBrama(c.oslona) || (wlasnyRuch(c.rodzaj) && !polaOkna(c))) return this._zbudujBrame(c, czl);
     const T = this._T, n = czl.length, zew = czyZew(c.oslona), rama = ramaHex(c.rama), kolor = hex(c.kolor);
     this._brama = false; this._poziomo = POZIOME.includes(c.oslona);
@@ -172,6 +175,70 @@ export class MotorHaKarta extends HTMLElement {
     root.querySelectorAll('img[data-przek]').forEach(im => przekoloruj(im.dataset.przek, im.dataset.kol, WERSJA, im.dataset.ram).then(u => { if (u && im.isConnected) im.src = u; }));
     this._zbudowana = true;
   }
+
+  // okno 3D (okno3d.js): budowane z układu, rodzaju na każdym polu i kolorów; na nim przezroczyste pola do przeciągania
+  _zbuduj3d(c, czl) {
+    const T = this._T, n = czl.length, rama = ramaHex(c.rama), kolor = hex(c.kolor);
+    this._brama = false; this._foto = false; this._zew = false; this._d3 = true; this._kas = 0; this._kasy = null;
+    const P = polaOkna(c);
+    this._uk = !!P; this._poziomo = NA_BOKI.includes(c.rodzaj) && !P;
+    const pion = c.suwak !== false && !this._poziomo, dwaSuwaki = pion && !!c.osobno && n > 1;
+    const pola = P ? P.map(p => [p.x, p.y, p.w, p.h]) : n === 1 ? [[0, 0, 1, 1]] : [[0, 0, .5, 1], [.5, 0, .5, 1]];
+    const prop = proporcja(pola);
+    const { W, H } = wymiary(prop), Hp = Math.max(140, Math.min(600, +c.wysokosc || 260)) * 1.1, Wp = Math.round(Hp * prop);
+    const R = polaNaObrazku(pola, W, H, 0), pr = v => (v * 100).toFixed(3) + '%';
+    this._o3cfg = { pola, typy: pola.map((_, i) => P?.[i]?.rodzaj || c.rodzaj), kolory: pola.map((_, i) => P?.[i]?.kolor ? hex(P[i].kolor) : kolor),
+      rama, drewno: czyDrewno(c.rama), W, H, margines: 0 };
+    const strona = i => pola[i][0] + pola[i][2] / 2 <= .5 ? 'l' : 'p';
+    const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
+    const pozycje = String(c.pozycje || '').split(/[,; ]+/).filter(x => x !== '').map(Number).filter(x => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
+    root.innerHTML = `<style>${STYL_STALY}${STYL_IKU}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew: false })}
+.okno.o3{display:block;padding:0;background:none!important;box-shadow:none!important;border-radius:0}.o3h{position:absolute;inset:0}
+.o3 .skrz{position:absolute;padding:0;margin:0;background:none!important;box-shadow:none!important;transform:none!important;border-radius:0}.o3 .skrz+.skrz{margin:0}
+.o3 .szyba{background:none;box-shadow:none;overflow:visible}.poziomo .o3 .skrz{cursor:pointer}</style>
+<ha-card class="wew${this._poziomo ? ' poziomo' : ''}"><div class="mh">
+ ${this._naglowek(c)}
+ <div class="scena${pion ? ' zs' : ''}">
+  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno o3" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${Wp}px);aspect-ratio:${W}/${H}">
+   <div class="o3h"></div>
+   ${czl.map((_, i) => `<div class="skrz" data-i="${i}" data-s="${strona(i)}" style="left:${pr(R[i][0])};top:${pr(R[i][1])};width:${pr(R[i][2])};height:${pr(R[i][3])}"><div class="szyba"><div class="cel"><span></span></div></div></div>`).join('')}
+  </div>${pion ? this._suwakHtml(T, true, dwaSuwaki ? 1 : null) : ''}</div>
+ ${c.przyciski !== false ? `<div class="przyc">
+  <button class="otw" title="${esc(this._lok('ui.card.cover.open_cover', T.karta.otworz))}">${ikUI('gora', '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
+  <button class="stp" title="${esc(this._lok('ui.card.cover.stop_cover', T.karta.stop))}">${ikUI('stop', '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
+  <button class="zam" title="${esc(this._lok('ui.card.cover.close_cover', T.karta.zamknij))}">${ikUI('dol', '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ''}
+ ${c.suwak !== false && !pion ? this._suwakHtml(T, false) : ''}
+ ${pozycje.length ? `<div class="poz">${pozycje.map(p => `<button data-p="${p}">${p === 100 ? esc(T.karta.zwinieta) : p === 0 ? esc(T.karta.opuszczona) : p + ' %'}</button>`).join('')}</div>` : ''}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc(T.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc(T.urzadzenie.wyglad)}</button></div>` : ''}
+</div></ha-card>`;
+    const q = s => root.querySelector(s), qa = s => [...root.querySelectorAll(s)];
+    const E = this._el = {
+      ...this._wspolne(q),
+      karta: q('ha-card'), nazwa: q('.nazwa'), stan: q('.stan'), ik: q('.ik'), oba: null, suwak: q('.suwak'), suwaki: qa('.suwak'), pgz: null,
+      otw: q('.otw'), stp: q('.stp'), zam: q('.zam'), poz: qa('.poz button'),
+      skrz: qa('.skrz').map(s => ({ s, niebo: null, osiedle: null, pg: null, za: null })),
+      pola: qa('.skrz .szyba').map(p => ({ p, kas: 0, oslona: null, listwa: null, cel: p.querySelector('.cel'), celT: p.querySelector('.cel span') }))
+    };
+    this._ruchy = czl.map(e => new Ruch(e));
+    this._czl = null; this._niebo = null;
+    q('.gl').addEventListener('click', () => this._wiecej());
+    q('.gl').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') this._wiecej(); });
+    E.otw?.addEventListener('click', () => this._polecenie(100));
+    E.zam?.addEventListener('click', () => this._polecenie(0));
+    E.stp?.addEventListener('click', () => this._polecenie(null));
+    E.poz.forEach(b => b.addEventListener('click', () => this._polecenie(+b.dataset.p)));
+    E.skrz.forEach((S, i) => this._ciagnij(S.s, [i]));
+    E.suwaki.forEach(S => this._suwak(S));
+    q('.zmien:not(.wyg)')?.addEventListener('click', () => konfiguruj(this._wpis()));
+    q('.wyg')?.addEventListener('click', () => this._wyglad());
+    okno3d(WERSJA).then(m => {
+      if (this._el !== E) return;
+      this._o3 = new m.Okno3D(q('.o3h'), { ...this._o3cfg, pozycje: this._poz3d() });
+      this._o3.widokZ(this._o3url); this._o3.swiatlo(this._o3jas ?? 1);
+    }).catch(e => console.error('Motor HA: okno 3D', e));
+    this._zbudowana = true;
+  }
+  _poz3d() { return this._el.pola.map((_, i) => this._ruchy[Math.min(i, this._ruchy.length - 1)]?.widac ?? 100); }
 
   // „⚙ Zmień ustawienia” pod oknem na panelu: kreator tego urządzenia, potem powrót na ten sam panel.
   // Nie w podglądzie, nie w edytorze panelu i nie na stronie urządzenia (tam jest własny przycisk).
@@ -351,6 +418,10 @@ export class MotorHaKarta extends HTMLElement {
       const bg = kolorNieba(rodzaj, pora);
       // zdjęcie z Canvy (pora × pogoda); na nim tylko żywe krople, płatki, mgła i błysk – słońce, chmury i gwiazdy są już na zdjęciu
       const fot = c.widok !== false ? zdjecieWidoku(WIDOK, rodzaj, pora) : null;
+      if (this._d3) {
+        this._o3url = fot ? `/motor_ha/widok/${fot.plik}.webp?v=${WERSJA}` : null; this._o3jas = JASNOSC[pora] ?? 1;
+        this._o3?.widokZ(this._o3url); this._o3?.swiatlo(this._o3jas);
+      }
       const bezNieba = h => h.replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, '');
       E.skrz.forEach((S, i) => {
         if (S.niebo) S.niebo.style.background = bg;
@@ -459,6 +530,7 @@ export class MotorHaKarta extends HTMLElement {
     if (p === null || p === undefined) { P.cel.style.display = 'none'; return; }
     const wys = P.p.clientHeight;
     P.cel.style.display = 'block';
+    if (this._d3) { P.cel.style.top = (100 - p) + '%'; P.celT.textContent = (ciagnie ? '' : '→ ') + p + ' %'; return; }
     P.cel.style.top = (this._gornaListwy(wys, p, P.kas) + LISTWA) + 'px';
     P.celT.textContent = (ciagnie ? '' : '→ ') + p + ' %';
   }
@@ -490,8 +562,10 @@ export class MotorHaKarta extends HTMLElement {
         E.bramaw.innerHTML = kafelRuch(this._scenaRuchu, w / 100, hex(this._cfg.kolor), ramaHex(this._cfg.rama));
       }
     }
+    if (this._d3) this._o3?.pozycje(this._poz3d());
     E.pola.forEach((P, i) => {
       const r = this._ruchy[Math.min(i, this._ruchy.length - 1)]; if (!r || r.widac === null) return;
+      if (this._d3) { if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null); return; }
       const wys = P.p.clientHeight; if (!wys) return;
       if (this._poziomo) {
         // zasłania od boku: żaluzja pionowa zjeżdża w prawo, zasłona rozsuwa się na dwie strony
