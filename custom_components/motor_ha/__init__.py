@@ -5,6 +5,7 @@ Każde urządzenie = jeden wpis z własną kartą, kreatorem, automatyką i powi
 
 from __future__ import annotations
 
+from contextlib import suppress
 import importlib
 import json
 import logging
@@ -14,7 +15,7 @@ from pathlib import Path
 
 import voluptuous as vol
 
-from homeassistant.components.frontend import add_extra_js_url
+from homeassistant.components.frontend import add_extra_js_url, async_register_built_in_panel
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ENTITY_ID, EVENT_COMPONENT_LOADED, EVENT_HOMEASSISTANT_STARTED, Platform
@@ -27,7 +28,7 @@ from homeassistant.helpers.translation import async_get_translations
 from homeassistant.helpers.typing import ConfigType
 
 from .automatyka import Automatyka
-from .const import CONF_NA_PANEL, CONF_ROLETY, CONF_UKRYJ_ZRODLO, DOMAIN, KARTA_PLIK, MAM, PODSTAWOWY, TRYB, VERSION
+from .const import CONF_NA_PANEL, CONF_ROLETY, CONF_UKRYJ_ZRODLO, DOMAIN, KARTA_PLIK, MAM, PODSTAWOWY, START, TRYB, VERSION
 from .migracja import async_przenies
 from .pasek import PasekKrokow
 from .pliki import (
@@ -70,6 +71,12 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             return False
         add_extra_js_url(hass, f"/{DOMAIN}/{KARTA_PLIK}?v={VERSION}")
         add_extra_js_url(hass, f"/{DOMAIN}/motor-ha-hacs.js?v={VERSION}")
+        # ukryta strona /motor-ha-start: przy pierwszym urządzeniu strona HA (index.html z pamięci przeglądarki)
+        # nie ma jeszcze skryptów Motor HA – ta strona wczytuje je bez odświeżania i wraca do dodawania urządzenia
+        with suppress(ValueError):   # już jest (druga rejestracja)
+            async_register_built_in_panel(hass, "custom", frontend_url_path=START, require_admin=True, config={
+                "_panel_custom": {"name": START, "module_url": f"/{DOMAIN}/{KARTA_PLIK}?v={VERSION}",
+                                  "embed_iframe": False, "trust_external": False}})
         return True
 
     if not _skrypty():   # frontend jeszcze się nie wczytał – karta na stronie urządzenia musi być zawsze

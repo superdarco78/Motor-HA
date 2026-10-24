@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.2.22 – Kreator od pierwszego dodania
+
+- 🧭 Pierwsze „Dodaj urządzenie” po instalacji: zamiast „odśwież stronę” jest link „Otwórz kreator graficzny” – kreator wczytuje się od razu, bez odświeżania i bez zamykania aplikacji (strona HA z pamięci przeglądarki nie miała jeszcze skryptów Motor HA)
+- 🌍 strings.json ma wszystkie teksty z en.json (brakowało 55 nazw osłon)
+- 🧪 Test w prawdziwym HA: kreator graficzny najpóźniej w drugiej próbie
+
 ## v2.2.21 – Światło liczone fizycznie
 
 - 🪟 Roleta wierniej: skrzynka ze skosem 45°, prowadnice z kanałem, listwa dolna z uszczelką

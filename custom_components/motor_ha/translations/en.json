@@ -341,7 +341,7 @@
       "zle_dane": "The wizard sent incomplete settings. Open it again.",
       "brak_rolety": "Choose a motor for at least one pane.",
       "za_duzo": "Too many motors (at most 12).",
-      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
+      "odswiez": "Motor HA has just started. **[Open the graphical wizard](/motor-ha-start)**"
     }
   },
   "options": {

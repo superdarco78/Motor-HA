@@ -341,7 +341,7 @@
       "zle_dane": "Sprievodca odoslal neúplné nastavenia. Otvorte ho znova.",
       "brak_rolety": "Vyberte motor aspoň pre jedno pole.",
       "za_duzo": "Príliš veľa motorov (najviac 12).",
-      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
+      "odswiez": "Motor HA sa práve spustil. **[Otvoriť grafického sprievodcu](/motor-ha-start)**"
     }
   },
   "options": {

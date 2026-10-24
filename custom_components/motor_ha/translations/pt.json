@@ -341,7 +341,7 @@
       "zle_dane": "O assistente enviou definições incompletas. Abra-o novamente.",
       "brak_rolety": "Escolha um motor para pelo menos um painel.",
       "za_duzo": "Demasiados motores (no máximo 12).",
-      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
+      "odswiez": "O Motor HA acabou de iniciar. **[Abrir o assistente gráfico](/motor-ha-start)**"
     }
   },
   "options": {
