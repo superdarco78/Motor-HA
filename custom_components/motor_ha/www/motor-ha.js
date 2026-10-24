@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.22";
+  var WERSJA = "2.2.23";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -12724,7 +12724,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
   // src/index.js
   var MotorHaStart = class extends HTMLElement {
     connectedCallback() {
-      history.replaceState(null, "", "/config/integrations/dashboard/add?domain=motor_ha");
+      const cel = new URLSearchParams(location.search).get("do");
+      history.replaceState(null, "", cel?.startsWith("/config/") ? cel : "/config/integrations/dashboard/add?domain=motor_ha");
       window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: true } }));
     }
   };

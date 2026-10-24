@@ -18,6 +18,8 @@ from homeassistant.helpers import selector as sel
 from homeassistant.helpers.translation import async_get_translations
 
 from .const import (
+    LINK_KREATORA,
+    START,
     BRAMY,
     OKNA,
     CONF_CZAS,
@@ -260,9 +262,17 @@ class Kreator:
         # IDZ: kliknięcie w pasek kroków (karta dokłada je do danych formularza) – pole niewidoczne w formularzu
         return self.async_show_form(  # type: ignore[attr-defined]
             step_id=krok, data_schema=vol.Schema(schemat, extra=vol.ALLOW_EXTRA), errors=bledy or {}, last_step=krok == lista[-1] or getattr(self, "_jeden", None) == krok,
-            description_placeholders={"pasek": f"![]({pasek})", "nr": str(nr + 1),
+            description_placeholders={"pasek": f"![]({pasek}){self._link_kreatora()}", "nr": str(nr + 1),
                                       "z": str(len(lista)), "porada": await self._porada(krok),
                                       "nazwa": self.tytul or "", "galeria": "", **(dodatki or {})})
+
+    def _link_kreatora(self) -> str:
+        """Link widoczny tylko w zwykłym formularzu HA, czyli gdy strona nie ma skryptów Motor HA (np. przeglądarka
+        wzięła z pamięci stronę HA zapisaną w trakcie restartu, zanim Motor HA wystartował). Kreator graficzny zasłania go."""
+        napis = LINK_KREATORA.get(self.hass.config.language.split("-")[0], LINK_KREATORA["en"])
+        wroc = "/config/integrations/dashboard/add?domain=motor_ha" if not self.konfiguracja \
+            else "/config/integrations/integration/motor_ha"
+        return f"\n\n**[🪄 {napis}](/{START}?do={wroc})**"
 
     def _podglad(self) -> dict[str, Any]:
         """Ustawienia wyglądu dla żywego podglądu okna w kreatorze (karta/src/kreator.js)."""
