@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.24 – Okna dachowe z Blendera, żaluzja C80 wierniej
+
+- 🏠 Okna dachowe (SSL, roleta, MSL, markizeta, samo okno): nowe obrazki z Blendera, od frontu i symetrycznie, z barwieniem osłony i ramy
+- 🪟 Okno 3D: lamela żaluzji C80 łukowa, uchylona na zewnątrz, z drabinkami; głowica i prowadnice w kolorze osłony
+- 🌗 Dzień‑noc: pas woalu z prześwitem
+- 🩹 Naprawa: podgląd po lewej nie znika już po chwili (czarne tło z samymi numerami pól). Obraz dokładny (path tracing) jest wyłączony, bo na części komputerów karta graficzna gubiła przy nim obraz. Gdy karta graficzna zgubi obraz, zostaje ostatni narysowany.
+
 ## v2.2.23 – Kreator graficzny zawsze pod ręką
 
 - 🪄 Gdy przeglądarka lub aplikacja HA wczyta stronę bez Motor HA (np. odświeżona w trakcie restartu HA, zanim Motor HA wystartował), zamiast samego zwykłego formularza HA jest link „Pokaż kreator graficzny” – jedno kliknięcie wczytuje kreator, bez odświeżania strony i czyszczenia pamięci
