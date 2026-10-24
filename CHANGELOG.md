@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.2.12 – Zdjęcia w wybranym kolorze i grafiki kreatora
+
+- 🎨 Zdjęcia rodzajów w kroku „Rodzaj” mają kolor wybrany w „Kolory” (tkanina, pancerz, lamele); rama i cień zostają z oryginału
+- 🪟 Nowe kafelki Układu (zdjęcia z Canvy) i nowe ikony paska kroków, osobne na jasny i ciemny motyw
+- 🧩 Edytor karty: kafelki rodzajów pokazują miniaturę zdjęcia zamiast ikony
+
 ## v2.2.11 – Podgląd 1:1 dla każdego rodzaju
 
 - 🪟 Kroki „Rodzaj” i „Kolory”: podgląd zawsze rysuje dokładnie wybrany rodzaj, także rolety SK, SKO, SP, SKN, bambusowe, plisy i inne podstawowe (wcześniej pokazywały wspólne okno)
