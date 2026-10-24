@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.16";
+  var WERSJA = "2.2.17";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -11057,7 +11057,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (k === "gotowe") return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
       const duze = (html) => `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:480px">${html}</div>`;
       const zdjecie = (t) => duze(this._zdj(t, t === this._akt() ? this._aktKolor() : this._kolor(), "max-height:none;width:100%;border-radius:12px"));
-      if (S.brama) return maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : `<div>${this._brama(S.o.oslona)}</div>`;
+      if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : `<div>${this._brama(S.o.oslona)}</div>`;
       if (k === "silnik") {
         const t = this._oslona(S.rolety[0]) ? this._typOslony(this._oslona(S.rolety[0])) : S.o.oslona;
         if (ZDJECIA.has(t)) return zdjecie(t);
@@ -11071,7 +11071,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _podgladMaly() {
       const k = this.kroki()[this.S.krok], S = this.S;
       const zdj = (t) => `<div style="width:200px;max-width:100%">${this._zdj(t, this._aktKolor(), "max-height:none;width:100%;border-radius:8px")}</div>`;
-      if (S.brama) return maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
+      if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
       if (k === "silnik" && ZDJECIA.has(this._akt())) return zdj(this._akt());
       if (["rodzaj", "kolory"].includes(k) && ZDJECIA.has(this._akt())) return zdj(this._akt());
       return `<div style="width:220px;max-width:100%">${this.okno({ id: "p", poz: () => 100 })}</div>`;

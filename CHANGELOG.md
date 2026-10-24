@@ -1,11 +1,15 @@
 # 📝 Historia zmian
 
-## v2.2.16 – Podgląd = oryginalne zdjęcie kafelka
+## v2.2.17 – Podgląd = oryginalne zdjęcie kafelka
 
 - 🖼️ „Rodzaj” i „Kolory”: podgląd to dokładnie to samo zdjęcie z Canvy co wybrany kafelek, w wybranym kolorze – nic nie wycinane ani nie składane; pole wybiera się przyciskami „Całe okno”, „Pole 1”…
+- 🚪 Bramy, garaże i szlaban: w kreatorze podgląd to też zdjęcie kafelka
 - 🪟 „Pola”, „Czujniki”, „Automatyka”, „Czas”, „Powiadomienia”: oryginalne zdjęcie wybranego układu z numerami pól
-- ↔️ Kreator na komputerze: podgląd po lewej, wybór i ustawienia po prawej
 - 🪟 Karta i edytor „Własny”: osłona na szybie w proporcjach zdjęcia, bez rozciągania
+
+## v2.2.16 – Podgląd po lewej, ustawienia po prawej
+
+- ↔️ Kreator na komputerze: duże zdjęcie okna po lewej stronie, wybór i ustawienia po prawej
 - 🔄 Aplikacja HA na telefonie: po aktualizacji sama wczytuje nową wersję przy powrocie do aplikacji, także gdy kreator był otwarty (wcześniej mogła zostać stara karta z rysunkami)
 
 ## v2.2.15 – Wszystko ze zdjęć z Canvy
