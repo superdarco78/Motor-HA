@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.2.16 – Podgląd po lewej, ustawienia po prawej
+- 🔄 Aplikacja HA na telefonie: po aktualizacji sama wczytuje nową wersję przy powrocie do aplikacji, także gdy kreator był otwarty (wcześniej mogła zostać stara karta z rysunkami)
+
+- ↔️ Kreator na komputerze: duże zdjęcie okna po lewej stronie, wybór i ustawienia po prawej
+
 ## v2.2.15 – Wszystko ze zdjęć z Canvy
 
 - 🪟 Kreator: od kroku „Układ” do „Gotowe” podgląd to zdjęcie wybranego układu, a na każdej szybie wybrany rodzaj osłony w wybranym kolorze (1:1 z kafelkami); w „Rodzaj”, „Kolory” i „Pola” pola dotyka się na zdjęciu

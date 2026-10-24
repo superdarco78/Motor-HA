@@ -46,6 +46,8 @@ window.customCards.push({ type: 'motor-ha-dom', name: T.karta.dom, description: 
 if (!window.__motorHaStrony && !window.frameElement) { window.__motorHaStrony = true; strony(() => rejestruj(true)); }
 
 // dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku
+// wersja kodu, który naprawdę działa na stronie (pierwszy wczytany moduł rejestruje elementy)
+window.__motorHaDziala ??= WERSJA;
 window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
 
 console.info(`%c Motor HA %c ${WERSJA} `, 'background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px', 'background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px');

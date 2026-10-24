@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.15";
+  var WERSJA = "2.2.16";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -10724,7 +10724,7 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
 .cialo{flex:1;display:flex;min-height:0}
 .scena{display:none}
-:host([szeroko]) .scena{display:flex;order:2;flex:0 0 50%;min-width:0;align-items:center;justify-content:center;padding:16px;border-left:1px solid var(--line);background:var(--bg);overflow:auto}
+:host([szeroko]) .scena{display:flex;order:-1;flex:0 0 50%;min-width:0;align-items:center;justify-content:center;padding:16px;border-right:1px solid var(--line);background:var(--bg);overflow:auto}
 :host([szeroko]) .krok .k{width:46px;height:46px;border-width:3px} :host([szeroko]) .krok svg{width:26px;height:26px} :host([szeroko]) .krok .n{font-size:12px} :host([szeroko]) .krok{padding-bottom:18px}
 :host([szeroko]) .scena[hidden]{display:none}
 .scena > div, .scena > svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
@@ -12500,6 +12500,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     window.__motorHaStrony = true;
     strony(() => rejestruj(true));
   }
+  window.__motorHaDziala ?? (window.__motorHaDziala = WERSJA);
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");
 })();

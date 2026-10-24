@@ -38,7 +38,9 @@ if (!window.__motorHaLoader) {{
     try {{
       const w = (await (await fetch(`/{DOMAIN}/wersja.txt?t=${{Date.now()}}`, {{ cache: "no-store" }})).text()).trim();
       if (wersja === null) wersja = w;
-      else if (w && w !== wersja && (teraz || Date.now() - ruch > 60000) && !document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow")) location.reload();
+      // porównanie z kodem, który działa na stronie: aplikacja HA potrafi przetrwać restart HA ze starą kartą w pamięci
+      const dziala = window.__motorHaDziala || wersja;
+      if (w && w !== dziala && (teraz || (Date.now() - ruch > 60000 && !document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow")))) location.reload();
     }} catch (e) {{ /* HA w trakcie restartu */ }}
   }};
   let teraz = false;
