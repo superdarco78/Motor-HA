@@ -55,6 +55,7 @@ export const naBoki = t => ['pion', 'zas', 'okien'].includes(model(t).f);
 
 // ---------- wspólny WebGL ----------
 let GL = null;
+const OKNA = new Set();   // żywe okna (po odzyskaniu obrazu przez kartę graficzną rysują się od nowa)
 function gl() {
   if (GL) return GL;
   const r = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -62,6 +63,9 @@ function gl() {
   r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.05; r.outputColorSpace = THREE.SRGBColorSpace;
   r.setClearColor(0x000000, 0);
   const env = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), .04).texture;
+  // utrata obrazu przez kartę graficzną: liczenie dokładne się wyłącza, a po odzyskaniu wszystkie okna rysują się od nowa
+  r.domElement.addEventListener('webglcontextlost', e => { e.preventDefault(); PT.wyl = true; PT.okno = null; PT.kolejka.length = 0; });
+  r.domElement.addEventListener('webglcontextrestored', () => OKNA.forEach(o => o.rysuj()));
   return GL = { r, env };
 }
 export const dziala = () => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } };
@@ -344,7 +348,7 @@ function oslona(g, p) {
 // ---------- okno ----------
 export class Okno3D {
   constructor(host, opt = {}) {
-    this.host = host; this.cv = document.createElement('canvas');
+    OKNA.add(this); this.host = host; this.cv = document.createElement('canvas');
     this.cv.style.cssText = 'display:block;width:100%;height:100%;pointer-events:none';
     host.prepend(this.cv); this.ctx = this.cv.getContext('2d');
     this.scena = new THREE.Scene(); this.scena.environment = gl().env;
@@ -461,6 +465,7 @@ export class Okno3D {
   }
   _klatka(W, H) {
     const { r } = gl();
+    if (r.getContext().isContextLost()) return;   // karta graficzna zgubiła obraz: zostaje ostatni narysowany
     r.setPixelRatio(1); r.setSize(W, H, false);
     this.cam.aspect = W / H; this.cam.updateProjectionMatrix();
     r.render(this.scena, this.cam);
@@ -469,6 +474,7 @@ export class Okno3D {
   }
   // widok z zewnątrz rysuje się w lustrze, żeby pole 1 zostało tam, gdzie w układzie (przyciski i suwaki leżą na obrazie)
   _kopiuj(src, W, H) {
+    if (gl().r.getContext().isContextLost()) return;
     const c = this.ctx; c.clearRect(0, 0, W, H);
     if (this.opt.strona === 'zew') { c.save(); c.scale(-1, 1); c.drawImage(src, -W, 0); c.restore(); } else c.drawImage(src, 0, 0);
   }
@@ -476,7 +482,7 @@ export class Okno3D {
   przenies(host) {
     if (host === this.host) return; this._ro.disconnect(); this.host = host; host.prepend(this.cv); this._ro.observe(host); this.rysuj();
   }
-  zniszcz() { this._ro.disconnect(); cancelAnimationFrame(this._raf); this.cv.remove(); if (PT.okno === this) PT.okno = null; }
+  zniszcz() { OKNA.delete(this); this._ro.disconnect(); cancelAnimationFrame(this._raf); this.cv.remove(); if (PT.okno === this) PT.okno = null; }
 }
 
 // obrazek kafelka (lista rodzajów w kreatorze): jedno okno z osłoną w wybranych kolorach → data: URL, raz na rodzaj i kolor
@@ -499,9 +505,10 @@ export function widokKafli(url) { if (!startKafli) startKafli = performance.now(
 // Po każdej zmianie karta od razu pokazuje zwykły obraz 3D, a gdy okno stoi (0,4 s), liczy w tle obraz dokładny:
 // odbicia, miękkie cienie, światło odbite od ściany i osłon. Liczy się jedno okno naraz, aż obraz będzie gładki.
 // Telefon, który nie da rady (brak WebGL2, błąd albo za wolno), zostaje przy zwykłym obrazie 3D.
-const PT = { pt: null, okno: null, kolejka: [], wyl: false, t: 0, start: 0, raf: 0, gotowe: new WeakSet() };
+const PT = { pt: null, okno: null, kolejka: [], wyl: true, t: 0, start: 0, raf: 0, gotowe: new WeakSet() };
 const CEL = 40, OPOZNIENIE = 400;
-try { PT.wyl = localStorage.getItem('motor_ha_dokladny') === '0'; } catch (e) { /* bez pamięci przeglądarki */ }
+// domyślnie wyłączony: na części komputerów karta graficzna nie wytrzymuje liczenia i gubi obraz (czarny podgląd)
+try { PT.wyl = localStorage.getItem('motor_ha_dokladny') !== '1'; } catch (e) { /* bez pamięci przeglądarki */ }
 // three-gpu-pathtracer czyta obrót nieba ze sceny (pola nowszego three.js, w 0.160 ich nie ma)
 for (const k of ['environmentRotation', 'backgroundRotation']) if (!(k in THREE.Scene.prototype) && !(k in new THREE.Scene())) THREE.Scene.prototype[k] = new THREE.Euler();
 let NIEBO = null;
@@ -561,9 +568,24 @@ function krok() {
   } catch (e) { return wylacz(e); }
   const n = PT.pt.samples, czas = performance.now() - PT.start;
   if (n < 2 && czas > 8000) return wylacz(new Error('za wolno'));   // słaby telefon: zostaje zwykły obraz 3D
-  if (n >= 4 && Number.isInteger(n) && okno.cv.width === W && okno.cv.height === H) { okno._kopiuj(r.domElement, W, H); }
+  if (n >= 4 && Number.isInteger(n) && okno.cv.width === W && okno.cv.height === H) {
+    // niektóre karty graficzne liczą czarny lub pusty obraz – wtedy zostaje zwykły obraz 3D (nigdy czarny podgląd)
+    if (n === 4 && !widac(r.domElement)) { wylacz(new Error('pusty obraz')); return okno._klatka(W, H); }
+    okno._kopiuj(r.domElement, W, H);
+  }
   if (n >= CEL) { PT.gotowe.add(okno); PT.okno = null; return dalej(); }
   PT.raf = requestAnimationFrame(krok);
+}
+// czy obraz ma treść: średnia jasność i krycie z miniatury 16×16
+let probka = null;
+function widac(src) {
+  try {
+    probka ||= Object.assign(document.createElement('canvas'), { width: 16, height: 16 });
+    const c = probka.getContext('2d', { willReadFrequently: true }); c.clearRect(0, 0, 16, 16); c.drawImage(src, 0, 0, 16, 16);
+    const d = c.getImageData(0, 0, 16, 16).data; let jas = 0, krycie = 0;
+    for (let i = 0; i < d.length; i += 4) { jas += d[i] + d[i + 1] + d[i + 2]; krycie += d[i + 3]; }
+    return krycie / 256 > 128 && jas / 768 > 12;
+  } catch (e) { return false; }
 }
 function wylacz(e) {
   console.warn('Motor HA: obraz dokładny wyłączony, zostaje zwykłe 3D –', e?.message || e, e?.stack);
