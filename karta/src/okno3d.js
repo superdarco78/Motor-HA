@@ -80,7 +80,7 @@ const splot = () => tex('splot', 128, 128, (x, w, h) => {   // tkanina: jasna, z
   for (let i = 0; i < 3200; i++) { x.fillStyle = `rgba(${losuj() < .5 ? '255,255,255' : '0,0,0'},.07)`; x.fillRect(losuj() * w, losuj() * h, 1, 2); }
   for (let y = 0; y < h; y += 2) { x.fillStyle = 'rgba(0,0,0,.035)'; x.fillRect(0, y, w, 1); }
 });
-const paski = () => tex('paski', 4, 64, (x) => { x.fillStyle = '#fff'; x.fillRect(0, 0, 4, 36); x.fillStyle = '#4a4a4a'; x.fillRect(0, 36, 4, 28); });
+const paski = () => tex('paski', 4, 64, (x) => { x.fillStyle = '#fff'; x.fillRect(0, 0, 4, 36); x.fillStyle = '#3a3a3a'; x.fillRect(0, 36, 4, 28); x.fillStyle = '#5a5a5a'; x.fillRect(0, 36, 4, 1); x.fillRect(0, 63, 4, 1); });   // dzień‑noc: pas pełny i pas woalu (prześwit)
 const perfor = () => tex('perfor', 32, 32, (x) => { x.fillStyle = '#fff'; x.fillRect(0, 0, 32, 32); x.fillStyle = '#000'; for (let i = 0; i < 4; i++) for (let j = 0; j < 2; j++) x.fillRect(4 + i * 8, 8 + j * 14, 3, 2); });
 const oczka = () => tex('oczka', 16, 16, (x) => { x.fillStyle = '#222'; x.fillRect(0, 0, 16, 16); x.fillStyle = '#fff'; x.fillRect(0, 0, 16, 2); x.fillRect(0, 0, 2, 16); });
 const screenTx = () => tex('screen', 16, 16, (x) => { x.fillStyle = '#aaa'; x.fillRect(0, 0, 16, 16); x.fillStyle = '#fff'; for (let i = 0; i < 16; i += 4) { x.fillRect(i, 0, 2, 16); x.fillRect(0, i, 16, 2); } });
@@ -122,7 +122,7 @@ function tkanina(rodz, kol) {   // każdy kawałek tkaniny ma własną kopię te
   if (m.alphaMap) { m.alphaMap = m.alphaMap.clone(); m.alphaMap.needsUpdate = true; }
   return m;
 }
-const zebraMat = kol => { const m = std({ color: kol, roughness: .93, map: splot().clone(), alphaMap: paski().clone(), alphaTest: .4, side: THREE.DoubleSide }); m.alphaMap.needsUpdate = true; return m; };
+const zebraMat = kol => { const m = std({ color: kol, roughness: .93, map: splot().clone(), alphaMap: paski().clone(), transparent: true, depthWrite: false, side: THREE.DoubleSide }); m.alphaMap.needsUpdate = true; return m; };
 
 // ---------- geometria ----------
 const GEO = new Map();
@@ -138,6 +138,18 @@ function profilRolety(sw, ph) {
   s.lineTo(-.002, h / 2); s.lineTo(-.002, h / 2 - .005); s.lineTo(-.006, h / 2 - .005); s.lineTo(-.006, -h / 2 + .005); s.lineTo(-.002, -h / 2 + .005); s.lineTo(-.002, -h / 2);
   const g = new THREE.ExtrudeGeometry(s, { depth: sw, bevelEnabled: false, curveSegments: 4 });
   g.rotateY(Math.PI / 2); g.translate(-sw / 2, 0, 0); g.computeVertexNormals(); GEO.set(k, g); return g;   // wypukłość na zewnątrz (-z)
+}
+// lamela żaluzji fasadowej C80: łuk z blachy 0,45 mm z zawiniętymi brzegami (przekrój wyciągnięty na szerokość)
+function lamelaC80(sw, gl) {
+  const k = 'c80' + sw.toFixed(4) + gl; if (GEO.has(k)) return GEO.get(k);
+  const s = new THREE.Shape(), n = 14, R = gl / 2, f = gl * .11, t = .0012, pts = [];
+  for (let i = 0; i <= n; i++) { const u = -1 + 2 * i / n; pts.push([u * R, f * (1 - u * u)]); }
+  s.moveTo(pts[0][0] - .0015, pts[0][1] - .002); pts.forEach(([a, b]) => s.lineTo(a, b));
+  s.lineTo(pts[n][0] + .0015, pts[n][1] - .002); s.lineTo(pts[n][0] + .0015 - t, pts[n][1] - .002);
+  for (let i = n; i >= 0; i--) s.lineTo(pts[i][0], pts[i][1] - t);
+  s.lineTo(pts[0][0] - .0015 + t, pts[0][1] - .002);
+  const g = new THREE.ExtrudeGeometry(s, { depth: sw, bevelEnabled: false, curveSegments: 2 });
+  g.rotateY(Math.PI / 2); g.translate(-sw / 2, 0, 0); g.computeVertexNormals(); GEO.set(k, g); return g;   // szerokość lameli wzdłuż z
 }
 // harmonijka (plisa, plaster, rzymska): stała liczba fałd, przy podnoszeniu fałdy się zagęszczają
 function harmonijka(w, dl, pelna, faldy, gl, miekka) {
@@ -166,7 +178,8 @@ function oslona(g, p) {
   const M = model(p.typ), kol = p.kol, zew = M.zew || M.f === 'rolz' || M.f === 'okien' || M.f === 'mark';
   const z = zew ? -.075 : .085, top = p.gh / 2 + .015, L = p.gh + .03, sw = p.gw + .03;
   const bialy = metal(p.kas || '#e9e9e7'), listwa = metal(M.mat === 'drewno' ? '#6b5440' : p.kas || '#e9e9e7');
-  const guide = (szer) => { for (const s of [-1, 1]) g.add(ust(klocek(.014, L + .02, szer, bialy, .003), s * (sw / 2 + .006), top - L / 2 - .01, z)); };
+  const prowM = M.zew && M.f === 'lam' ? mat('prof' + kol, () => std({ color: kol, roughness: .42, metalness: .35 })) : bialy;
+  const guide = (szer) => { for (const s of [-1, 1]) g.add(ust(klocek(M.zew && M.f === 'lam' ? .026 : .014, L + .02, szer, prowM, .003), s * (sw / 2 + .006), top - L / 2 - .01, z)); };
 
   if (M.f === 'rol') {
     const zz = M.zew ? -.075 : .085;
@@ -209,18 +222,22 @@ function oslona(g, p) {
     const zz = M.zew ? -.09 : .085, glebL = M.lam, n = Math.max(3, Math.round(L / (glebL * .85))), krok = L / n;
     const m = M.mat === 'drewno' ? mat('drewno' + kol, () => std({ color: kol, roughness: .62, map: slojeTx() })) : mat('lam' + kol, () => std({ color: kol, roughness: .35, metalness: .45, envMapIntensity: 1.1 }));
     const geo = M.z ? zaokr(sw, glebL, .004, .0015) : new THREE.CylinderGeometry(glebL * 1.6, glebL * 1.6, sw, 24, 1, true, -Math.asin(.31), 2 * Math.asin(.31)).rotateZ(Math.PI / 2).translate(0, 0, -glebL * 1.52);
-    const lam = new THREE.InstancedMesh(M.plaska || M.mat === 'drewno' ? zaokr(sw, glebL, M.mat === 'drewno' ? .005 : .003, .0015) : geo, m, n);
+    const c80 = M.zew && !M.z && !M.plaska;
+    const lam = new THREE.InstancedMesh(c80 ? lamelaC80(sw, glebL) : M.plaska || M.mat === 'drewno' ? zaokr(sw, glebL, M.mat === 'drewno' ? .005 : .003, .0015) : geo, m, n);
     lam.castShadow = lam.receiveShadow = true; g.add(lam);
     if (M.mat === 'alu' && !M.plaska && !M.z) lam.material.side = THREE.DoubleSide;
-    g.add(ust(klocek(sw + .01, M.zew ? .1 : .03, M.zew ? .12 : .035, bialy, .006), 0, top + (M.zew ? .05 : .015), zz));
+    const glow = M.zew ? mat('prof' + kol, () => std({ color: kol, roughness: .42, metalness: .35 })) : bialy;
+    g.add(ust(klocek(sw + .01, M.zew ? .1 : .03, M.zew ? .12 : .035, glow, .006), 0, top + (M.zew ? .05 : .015), zz));
     const dol = ust(klocek(sw, .018, glebL * .9, listwa, .005), 0, 0, zz); g.add(dol);
     if (M.prow) guide(.02);
     const sznur = mat(M.tasma ? 'tasma' + kol : 'sznur', () => std({ color: M.tasma ? kol : '#e8e8e4', roughness: .9 }));
-    const drab = [-1, 1].map(s => { const o = new THREE.Mesh(PLASZ, sznur); o.position.x = s * sw * .32; o.position.z = zz + glebL * .5; g.add(o); return o; });
+    // drabinki: z przodu i z tyłu lameli (fasadowa: ciemne linki tekstylne, widać obie)
+    const linka = M.zew ? mat('linka', () => std({ color: '#2a2b2d', roughness: .8 })) : sznur;
+    const drab = [-1, 1].flatMap(s => (M.zew ? [1, -1] : [1]).map(t => { const o = new THREE.Mesh(PLASZ, linka); o.position.x = s * sw * .32; o.position.z = zz + t * glebL * .5; g.add(o); return o; }));
     const o = new THREE.Object3D();
     return zak => {
       const k = Math.round(n * zak), pak = M.mat === 'drewno' ? .007 : M.zew ? .012 : .0035;
-      const nach = M.zew ? .9 : 1.15 - .25 * zak;   // pochylenie lameli
+      const nach = c80 ? -.62 : M.zew ? .9 : 1.15 - .25 * zak;   // pochylenie lameli (C80: uchylone, widać prześwity jak na renderach)
       for (let i = 0; i < n; i++) {
         if (i < n - k) { o.position.set(0, top - .03 - i * pak, zz); o.rotation.set(0, 0, 0); }
         else { const j = i - (n - k); o.position.set(0, top - .03 - (n - k) * pak - (j + .5) * krok, zz); o.rotation.set(nach, 0, 0); }
@@ -228,7 +245,7 @@ function oslona(g, p) {
       }
       lam.instanceMatrix.needsUpdate = true;
       const yd = top - .03 - (n - k) * pak - k * krok - .012; dol.position.y = yd;
-      drab.forEach(d => { const hh = Math.max(.002, top - yd); d.scale.set(M.tasma ? .025 : .003, hh, 1); d.position.y = top - hh / 2; d.visible = k > 0; });
+      drab.forEach(d => { const hh = Math.max(.002, top - yd); d.scale.set(M.tasma ? .025 : M.zew ? .0025 : .003, hh, 1); d.position.y = top - hh / 2; d.visible = k > 0; });
     };
   }
   if (M.f === 'rolz') {   // roleta zewnętrzna za szybą: pancerz z profili, prowadnice, skrzynka
