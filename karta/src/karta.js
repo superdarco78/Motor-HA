@@ -11,7 +11,7 @@ import { TEKSTY, jezyk } from './jezyk.js';
 import { konfiguruj } from './urzadzenie.js';
 import { ikUI, STYL_IKU } from './ikony_ui.js';
 import { SZYBY, nazwaUkladu, tkanina } from './foto_okno.js';
-import { przekoloruj } from './przekolor.js';
+import { przekoloruj, zKolorem } from './przekolor.js';
 import { maZdjecieBramy, bramaZdjecie, ustawBrameZdj, STYL_BRAMY } from './brama_foto.js';
 
 // klucze, które zostają w karcie na panelu, gdy ustawienia trzyma urządzenie Motor HA
@@ -97,7 +97,8 @@ export class MotorHaKarta extends HTMLElement {
     const strona = i => P ? (P[i].x + P[i].w / 2 <= .5 ? 'l' : 'p') : i ? 'p' : 'l';
     // widok za szybą jeden na całe okno: każde pole pokazuje swój kawałek
     const wid = i => P ? ` class="wid" style="left:${-P[i].x / P[i].w * 100}%;top:${-P[i].y / P[i].h * 100}%;width:${100 / P[i].w}%;height:${100 / P[i].h}%"` : ' style="position:absolute;inset:0"';
-    const ramy = foto ? `<img class="ftlo" src="/motor_ha/ui/${fotUk}.webp?v=${WERSJA}" alt="" draggable="false">` : P ? [...new Set(P.map(p => p.x))].map(x => {
+    // zdjęcie układu z ramą w kolorze z ustawień (maska ramy, przekolor.js)
+    const ramy = foto ? `<img class="ftlo" data-przek="${fotUk}" data-kol="" data-ram="${rama}" src="${zKolorem(fotUk, '', rama) || `/motor_ha/ui/${fotUk}.webp?v=${WERSJA}`}" alt="" draggable="false">` : P ? [...new Set(P.map(p => p.x))].map(x => {
       const k = P.filter(p => p.x === x), dol = Math.max(...k.map(p => p.y + p.h));
       return `<div class="kolr" style="left:${x * 100}%;top:0;width:${k[0].w * 100}%;height:${dol * 100}%"></div>`;
     }).join('') : '';
@@ -168,7 +169,7 @@ export class MotorHaKarta extends HTMLElement {
     E.suwaki.forEach(S => this._suwak(S));
     q('.zmien:not(.wyg)')?.addEventListener('click', () => konfiguruj(this._wpis()));
     q('.wyg')?.addEventListener('click', () => this._wyglad());
-    root.querySelectorAll('img[data-przek]').forEach(im => przekoloruj(im.dataset.przek, im.dataset.kol, WERSJA).then(u => { if (u && im.isConnected) im.src = u; }));
+    root.querySelectorAll('img[data-przek]').forEach(im => przekoloruj(im.dataset.przek, im.dataset.kol, WERSJA, im.dataset.ram).then(u => { if (u && im.isConnected) im.src = u; }));
     this._zbudowana = true;
   }
 
