@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.19";
+  var WERSJA = "2.2.20";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -1946,7 +1946,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Zapisz",
       gotowe: "Gotowe",
       kroki: {
-        silnik: "Osłona",
+        silnik: "Urządzenie",
         uklad: "Układ",
         rodzaj: "Rodzaj",
         kolory: "Kolory",
@@ -2477,7 +2477,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Save",
       gotowe: "Done",
       kroki: {
-        silnik: "Cover",
+        silnik: "Device",
         uklad: "Layout",
         rodzaj: "Type",
         kolory: "Colours",
@@ -3008,7 +3008,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Speichern",
       gotowe: "Fertig",
       kroki: {
-        silnik: "Behang",
+        silnik: "Gerät",
         uklad: "Aufteilung",
         rodzaj: "Art",
         kolory: "Farben",
@@ -3539,7 +3539,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Enregistrer",
       gotowe: "Terminé",
       kroki: {
-        silnik: "Store",
+        silnik: "Appareil",
         uklad: "Disposition",
         rodzaj: "Type",
         kolory: "Couleurs",
@@ -4070,7 +4070,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Uložit",
       gotowe: "Hotovo",
       kroki: {
-        silnik: "Stínění",
+        silnik: "Zařízení",
         uklad: "Rozvržení",
         rodzaj: "Druh",
         kolory: "Barvy",
@@ -4601,7 +4601,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Uložiť",
       gotowe: "Hotovo",
       kroki: {
-        silnik: "Tienenie",
+        silnik: "Zariadenie",
         uklad: "Rozloženie",
         rodzaj: "Druh",
         kolory: "Farby",
@@ -5132,7 +5132,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Guardar",
       gotowe: "Listo",
       kroki: {
-        silnik: "Estor",
+        silnik: "Dispositivo",
         uklad: "Distribución",
         rodzaj: "Tipo",
         kolory: "Colores",
@@ -5663,7 +5663,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Salva",
       gotowe: "Fatto",
       kroki: {
-        silnik: "Tenda",
+        silnik: "Dispositivo",
         uklad: "Disposizione",
         rodzaj: "Tipo",
         kolory: "Colori",
@@ -6194,7 +6194,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Opslaan",
       gotowe: "Klaar",
       kroki: {
-        silnik: "Zonwering",
+        silnik: "Apparaat",
         uklad: "Indeling",
         rodzaj: "Soort",
         kolory: "Kleuren",
@@ -6725,7 +6725,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Guardar",
       gotowe: "Concluído",
       kroki: {
-        silnik: "Proteção",
+        silnik: "Dispositivo",
         uklad: "Disposição",
         rodzaj: "Tipo",
         kolory: "Cores",
@@ -7256,7 +7256,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Зберегти",
       gotowe: "Готово",
       kroki: {
-        silnik: "Штора",
+        silnik: "Пристрій",
         uklad: "Схема",
         rodzaj: "Тип",
         kolory: "Кольори",
@@ -7787,7 +7787,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Сохранить",
       gotowe: "Готово",
       kroki: {
-        silnik: "Штора",
+        silnik: "Устройство",
         uklad: "Схема",
         rodzaj: "Тип",
         kolory: "Цвета",
@@ -8318,7 +8318,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "保存",
       gotowe: "完了",
       kroki: {
-        silnik: "シェード",
+        silnik: "デバイス",
         uklad: "レイアウト",
         rodzaj: "種類",
         kolory: "色",
@@ -8849,7 +8849,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "保存",
       gotowe: "完成",
       kroki: {
-        silnik: "遮阳",
+        silnik: "设备",
         uklad: "布局",
         rodzaj: "类型",
         kolory: "颜色",
@@ -9380,6 +9380,32 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:calc(${W3} * ${n(1 / bw)});height:calc(${H2} * ${n(1 / bh)});left:calc((100cqw - ${W3}) / 2 - ${W3} * ${n(bx / bw)});top:calc((100cqh - ${H2}) / 2 - ${H2} * ${n(by / bh)});-webkit-mask-image:${mk};mask-image:${mk}">`;
   }
 
+  // src/okno3d_uklad.js
+  var RAMA = 0.07;
+  function polaNaObrazku(pola, W3, H2, m = 0) {
+    const iW = W3 - 2 * RAMA, iH = H2 - 2 * RAMA, s = 1 - 2 * m;
+    return pola.map(([x, y, w, h]) => [m + s * (RAMA + x * iW) / W3, m + s * (RAMA + y * iH) / H2, s * w * iW / W3, s * h * iH / H2]);
+  }
+  var wymiary = (proporcja2) => ({ W: +(1.5 * proporcja2).toFixed(3), H: 1.5 });
+  var NA_BOKI = ["pionowa", "panel", "zaslona", "zaslona_wave", "firana", "okiennice", "okiennice_przesuwne", "markiza_boczna"];
+  var gl3 = null;
+  var moze3d = () => {
+    if (gl3 === null) try {
+      const c = document.createElement("canvas");
+      gl3 = !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl")));
+    } catch (e) {
+      gl3 = false;
+    }
+    return gl3;
+  };
+  var mod = null;
+  var okno3d = (wersja) => mod || (mod = import(`/motor_ha/okno3d.js?v=${wersja}`));
+  var JASNOSC = { dzien: 1, zloto: 0.85, swit: 0.8, zmierzch: 0.55, noc: 0.3 };
+  var proporcja = (pola) => {
+    const kol = new Set(pola.map((p) => +(+p[0]).toFixed(3))).size, rz = new Set(pola.map((p) => +(+p[1]).toFixed(3))).size;
+    return Math.max(0.6, Math.min(2.4, (kol === 1 ? 0.78 : kol === 2 ? 1.12 : 0.55 * kol) * (rz > 2 ? 0.85 : 1)));
+  };
+
   // src/bramy_zdj.js
   var BRAMY_ZDJ = { "furtka": [0.2758, 0.124, 0.4425, 0.7615], "garaz_boczna": [0.0992, 0.1917, 0.8017, 0.6281], "garaz_skrzydlowa": [0.1142, 0.124, 0.7708, 0.7438], "przesuwna": [0.0958, 0.1615, 0.8033, 0.6344], "roletowa": [0.1617, 0.201, 0.6742, 0.699], "segmentowa": [0.12, 0.1615, 0.76, 0.751], "skrzydlowa": [0.1008, 0.1271, 0.7983, 0.701], "szlaban": [0.1992, 0.3302, 0.76, 0.0823], "uchylna": [0.1292, 0.1427, 0.7417, 0.7062] };
 
@@ -9465,7 +9491,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = Object.assign({}, DOMYSLNE, urz && typeof urz === "object" ? urz : {}, this._surowa, this._surowa._podglad || {});
       c.rodzaj = c.oslona;
       c.oslona = baza(c.oslona);
-      if (Array.isArray(c.pola)) c.pola = c.pola.map((p) => p?.oslona ? { ...p, oslona: baza(p.oslona) } : p);
+      if (Array.isArray(c.pola)) c.pola = c.pola.map((p) => p?.oslona ? { ...p, rodzaj: p.oslona, oslona: baza(p.oslona) } : p);
       return c;
     }
     get _T() {
@@ -9488,7 +9514,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz2 = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+      const klucz2 = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.rodzaj, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
       if (klucz2 !== this._klucz) {
         this._klucz = klucz2;
         this._zbuduj(c, czl);
@@ -9496,6 +9522,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._aktualizuj(c, czl);
     }
     _zbuduj(c, czl) {
+      this._d3 = false;
+      this._o3?.zniszcz();
+      this._o3 = null;
+      if (!czyBrama(c.oslona) && !czyBrama(c.rodzaj) && !this.bez3d && moze3d()) return this._zbuduj3d(c, czl);
       if (czyBrama(c.oslona) || wlasnyRuch(c.rodzaj) && !polaOkna(c)) return this._zbudujBrame(c, czl);
       const T2 = this._T, n = czl.length, zew = czyZew(c.oslona), rama = ramaHex(c.rama), kolor = hex(c.kolor);
       this._brama = false;
@@ -9609,6 +9639,99 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (u3 && im.isConnected) im.src = u3;
       }));
       this._zbudowana = true;
+    }
+    // okno 3D (okno3d.js): budowane z układu, rodzaju na każdym polu i kolorów; na nim przezroczyste pola do przeciągania
+    _zbuduj3d(c, czl) {
+      const T2 = this._T, n = czl.length, rama = ramaHex(c.rama), kolor = hex(c.kolor);
+      this._brama = false;
+      this._foto = false;
+      this._zew = false;
+      this._d3 = true;
+      this._kas = 0;
+      this._kasy = null;
+      const P3 = polaOkna(c);
+      this._uk = !!P3;
+      this._poziomo = NA_BOKI.includes(c.rodzaj) && !P3;
+      const pion2 = c.suwak !== false && !this._poziomo, dwaSuwaki = pion2 && !!c.osobno && n > 1;
+      const pola = P3 ? P3.map((p) => [p.x, p.y, p.w, p.h]) : n === 1 ? [[0, 0, 1, 1]] : [[0, 0, 0.5, 1], [0.5, 0, 0.5, 1]];
+      const prop = proporcja(pola);
+      const { W: W3, H: H2 } = wymiary(prop), Hp = Math.max(140, Math.min(600, +c.wysokosc || 260)) * 1.1, Wp = Math.round(Hp * prop);
+      const R2 = polaNaObrazku(pola, W3, H2, 0), pr = (v) => (v * 100).toFixed(3) + "%";
+      this._o3cfg = {
+        pola,
+        typy: pola.map((_, i) => P3?.[i]?.rodzaj || c.rodzaj),
+        kolory: pola.map((_, i) => P3?.[i]?.kolor ? hex(P3[i].kolor) : kolor),
+        rama,
+        drewno: czyDrewno(c.rama),
+        W: W3,
+        H: H2,
+        margines: 0
+      };
+      const strona2 = (i) => pola[i][0] + pola[i][2] / 2 <= 0.5 ? "l" : "p";
+      const root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      const pozycje = String(c.pozycje || "").split(/[,; ]+/).filter((x) => x !== "").map(Number).filter((x) => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
+      root.innerHTML = `<style>${STYL_STALY}${STYL_IKU}${stylOkna({ rama, drewno: czyDrewno(c.rama), kolor, typ: c.oslona, zew: false })}
+.okno.o3{display:block;padding:0;background:none!important;box-shadow:none!important;border-radius:0}.o3h{position:absolute;inset:0}
+.o3 .skrz{position:absolute;padding:0;margin:0;background:none!important;box-shadow:none!important;transform:none!important;border-radius:0}.o3 .skrz+.skrz{margin:0}
+.o3 .szyba{background:none;box-shadow:none;overflow:visible}.poziomo .o3 .skrz{cursor:pointer}</style>
+<ha-card class="wew${this._poziomo ? " poziomo" : ""}"><div class="mh">
+ ${this._naglowek(c)}
+ <div class="scena${pion2 ? " zs" : ""}">
+  ${dwaSuwaki ? this._suwakHtml(T2, true, 0) : ""}<div class="okno o3" style="width:min(${pion2 ? dwaSuwaki ? "calc(100% - 108px)" : "calc(100% - 54px)" : "100%"},${Wp}px);aspect-ratio:${W3}/${H2}">
+   <div class="o3h"></div>
+   ${czl.map((_, i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}" style="left:${pr(R2[i][0])};top:${pr(R2[i][1])};width:${pr(R2[i][2])};height:${pr(R2[i][3])}"><div class="szyba"><div class="cel"><span></span></div></div></div>`).join("")}
+  </div>${pion2 ? this._suwakHtml(T2, true, dwaSuwaki ? 1 : null) : ""}</div>
+ ${c.przyciski !== false ? `<div class="przyc">
+  <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}">${ikUI("gora", '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
+  <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}">${ikUI("stop", '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
+  <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}">${ikUI("dol", '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ""}
+ ${c.suwak !== false && !pion2 ? this._suwakHtml(T2, false) : ""}
+ ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc2(T2.karta.zwinieta) : p === 0 ? esc2(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc2(T2.urzadzenie.wyglad)}</button></div>` : ""}
+</div></ha-card>`;
+      const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
+      const E = this._el = {
+        ...this._wspolne(q),
+        karta: q("ha-card"),
+        nazwa: q(".nazwa"),
+        stan: q(".stan"),
+        ik: q(".ik"),
+        oba: null,
+        suwak: q(".suwak"),
+        suwaki: qa(".suwak"),
+        pgz: null,
+        otw: q(".otw"),
+        stp: q(".stp"),
+        zam: q(".zam"),
+        poz: qa(".poz button"),
+        skrz: qa(".skrz").map((s) => ({ s, niebo: null, osiedle: null, pg: null, za: null })),
+        pola: qa(".skrz .szyba").map((p) => ({ p, kas: 0, oslona: null, listwa: null, cel: p.querySelector(".cel"), celT: p.querySelector(".cel span") }))
+      };
+      this._ruchy = czl.map((e) => new Ruch(e));
+      this._czl = null;
+      this._niebo = null;
+      q(".gl").addEventListener("click", () => this._wiecej());
+      q(".gl").addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") this._wiecej();
+      });
+      E.otw?.addEventListener("click", () => this._polecenie(100));
+      E.zam?.addEventListener("click", () => this._polecenie(0));
+      E.stp?.addEventListener("click", () => this._polecenie(null));
+      E.poz.forEach((b) => b.addEventListener("click", () => this._polecenie(+b.dataset.p)));
+      E.skrz.forEach((S, i) => this._ciagnij(S.s, [i]));
+      E.suwaki.forEach((S) => this._suwak(S));
+      q(".zmien:not(.wyg)")?.addEventListener("click", () => konfiguruj(this._wpis()));
+      q(".wyg")?.addEventListener("click", () => this._wyglad());
+      okno3d(WERSJA).then((m) => {
+        if (this._el !== E) return;
+        this._o3 = new m.Okno3D(q(".o3h"), { ...this._o3cfg, pozycje: this._poz3d() });
+        this._o3.widokZ(this._o3url);
+        this._o3.swiatlo(this._o3jas ?? 1);
+      }).catch((e) => console.error("Motor HA: okno 3D", e));
+      this._zbudowana = true;
+    }
+    _poz3d() {
+      return this._el.pola.map((_, i) => this._ruchy[Math.min(i, this._ruchy.length - 1)]?.widac ?? 100);
     }
     // „⚙ Zmień ustawienia” pod oknem na panelu: kreator tego urządzenia, potem powrót na ten sam panel.
     // Nie w podglądzie, nie w edytorze panelu i nie na stronie urządzenia (tam jest własny przycisk).
@@ -9851,6 +9974,12 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         E.karta.classList.toggle("noc", pora === "noc" || pora === "zmierzch");
         const bg = kolorNieba(rodzaj, pora);
         const fot = c.widok !== false ? zdjecieWidoku(WIDOK, rodzaj, pora) : null;
+        if (this._d3) {
+          this._o3url = fot ? `/motor_ha/widok/${fot.plik}.webp?v=${WERSJA}` : null;
+          this._o3jas = JASNOSC[pora] ?? 1;
+          this._o3?.widokZ(this._o3url);
+          this._o3?.swiatlo(this._o3jas);
+        }
         const bezNieba = (h2) => h2.replace(/<i class="(slonce|ksiezyc|chm|gw)[^>]*><\/i>/g, "");
         E.skrz.forEach((S, i) => {
           if (S.niebo) S.niebo.style.background = bg;
@@ -9966,6 +10095,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       }
       const wys = P3.p.clientHeight;
       P3.cel.style.display = "block";
+      if (this._d3) {
+        P3.cel.style.top = 100 - p + "%";
+        P3.celT.textContent = (ciagnie ? "" : "→ ") + p + " %";
+        return;
+      }
       P3.cel.style.top = this._gornaListwy(wys, p, P3.kas) + LISTWA + "px";
       P3.celT.textContent = (ciagnie ? "" : "→ ") + p + " %";
     }
@@ -9992,9 +10126,14 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
           E.bramaw.innerHTML = kafelRuch(this._scenaRuchu, w / 100, hex(this._cfg.kolor), ramaHex(this._cfg.rama));
         }
       }
+      if (this._d3) this._o3?.pozycje(this._poz3d());
       E.pola.forEach((P3, i) => {
         const r = this._ruchy[Math.min(i, this._ruchy.length - 1)];
         if (!r || r.widac === null) return;
+        if (this._d3) {
+          if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
+          return;
+        }
         const wys = P3.p.clientHeight;
         if (!wys) return;
         if (this._poziomo) {
@@ -10460,7 +10599,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   };
   var POGODY_EN = { sunny: "Sunny", partlycloudy: "Partly cloudy", cloudy: "Cloudy", rainy: "Rainy", "lightning-rainy": "Lightning, rainy", snowy: "Snowy", fog: "Fog" };
   var BARWY = ["grafit", "bialy", "kremowy", "piaskowy", "szary", "mokka", "granat", "morski", "oliwka", "terakota", "bordo"];
-  var RAMA = { bialy: "antracyt", kremowy: "antracyt", piaskowy: "antracyt" };
+  var RAMA2 = { bialy: "antracyt", kremowy: "antracyt", piaskowy: "antracyt" };
   var esc5 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var svgIkony = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI[n] || ""}"/></svg>`;
   var ZAMIENNIKI = `ha-card{display:block;background:var(--ha-card-background,var(--card-background-color,#fff));color:var(--primary-text-color);
@@ -10560,7 +10699,7 @@ button .iku{--iku:20px}
         entity: ENCJA,
         oslona: s.typ,
         kolor: s.kolor,
-        rama: RAMA[s.kolor] || "biala",
+        rama: RAMA2[s.kolor] || "biala",
         jezyk: this._jez,
         name: this._T.oslony[s.typ],
         _podglad: { pogoda: s.pogoda, pora: s.pora }
@@ -10643,6 +10782,8 @@ button .iku{--iku:20px}
   var KROKI_BRAMY = ["silnik", "rodzaj", "kolory", "czujniki", "stoper", "dzwonek", "gotowe"];
   var BEZ_PODGLADU = ["przypisz", "gotowe"];
   var KROKI_ZESTAWU = ["silnik", "uklad", "rodzaj", "kolory"];
+  var KAFLE3D = /* @__PURE__ */ new Map();
+  var PUSTY = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
   var UL = (v) => +(v * 100).toFixed(3) + "%";
   var KOLORY_TAB = Object.keys(KOLORY);
   var RAMY_TAB = Object.keys(RAMA_Z_KLUCZA);
@@ -10781,6 +10922,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .fzest .fzp.wyb img{outline:3px solid #ff9800;outline-offset:-1px}
 .fzest .fzp .fnr{position:absolute;left:8px;top:8px;width:22px;height:22px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 12px/1 var(--ha-font-family-body,Roboto,sans-serif);pointer-events:none}
 .fsz{position:absolute;overflow:hidden}
+.o3k{position:relative;background:none!important}.o3k .o3h{position:absolute;inset:0;border-radius:12px;overflow:hidden}.scena .fokno.o3k{width:min(100%,calc((100cqh - 24px) * var(--a)))}
+.o3k .fzp{position:absolute;padding:0;border:0;background:none;cursor:pointer}.o3k .fzp.wyb{box-shadow:inset 0 0 0 3px #ff9800}.o3k .fsz{background:none}
 .fsz .obsz{position:absolute;inset:0}
 .ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
 .ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
@@ -11018,11 +11161,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // całe okno ze zdjęć (Canva): zdjęcie wybranego układu, a na każdej szybie osłona pola (wycinek zdjęcia rodzaju spod maski,
     // w kolorze pola), opuszczona do poz. Własny układ: każde pole to zdjęcie jednego skrzydła (u1) rozciągnięte na pole.
     okno(opt = {}) {
+      if (moze3d() && !this.bez3d) return this._okno3d({ ...opt, klasa: "fokno", pole: "fsz", tag: "div", wybor: opt.numery, numery: opt.numery });
       const S = this.S, pl = prostokaty(S.u), id = opt.id || "p";
       const nazwa2 = typeof S.szablon === "number" && UKLADY[S.szablon] && UKLADY[S.szablon][1].length === pl.length ? UKLADY[S.szablon][0] : null;
       const gotowy = nazwa2 && UI.has(nazwa2 + ".webp") && SZYBY[nazwa2];
-      const proporcja = "193/161";
-      const d = [`<div class="fokno" data-id="${id}" role="img" aria-label="${esc6(this.t.kroki.uklad)}" style="aspect-ratio:${proporcja}${opt.w ? `;width:${opt.w}px` : ""}">`];
+      const proporcja2 = "193/161";
+      const d = [`<div class="fokno" data-id="${id}" role="img" aria-label="${esc6(this.t.kroki.uklad)}" style="aspect-ratio:${proporcja2}${opt.w ? `;width:${opt.w}px` : ""}">`];
       if (gotowy) d.push(this._img("ftlo", nazwa2, `/motor_ha/ui/${nazwa2}.webp?v=${WERSJA}`, "", this._rama()));
       const u1 = SZYBY.u1[0];
       pl.forEach((p, i) => {
@@ -11043,6 +11187,101 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       });
       d.push("</div>");
       return d.join("");
+    }
+    // okno 3D (okno3d.js) z układu, rodzaju i koloru każdego pola i koloru ramy; na nim przezroczyste pola (numer, wybór, czujnik)
+    _okno3d(opt) {
+      const S = this.S, P3 = prostokaty(S.u), pola = P3.map((p) => p.slice(0, 4)), prop = proporcja(pola), { W: W3, H: H2 } = wymiary(prop), m = 0.06;
+      const cfg = {
+        pola,
+        typy: P3.map((_, i) => S.pola[i]?.oslona || S.o.oslona),
+        kolory: P3.map((_, i) => {
+          const k = S.pola[i]?.kolor;
+          return k ? KOLORY[k] || k : this._kolor();
+        }),
+        rama: this._rama(),
+        W: W3,
+        H: H2,
+        margines: m,
+        sciana: S.sciana && SCIANY[S.sciana] || null,
+        pozycje: P3.map((_, i) => opt.poz ? opt.poz(i) : 35)
+      };
+      const R2 = polaNaObrazku(pola, W3, H2, m), id = opt.id || opt.klasa;
+      const d = [`<div class="${opt.klasa} o3k" data-id="${id}" data-o3="${esc6(JSON.stringify(cfg))}"${opt.ruch ? ' data-ruch="1"' : ""} role="${opt.wybor ? "group" : "img"}" aria-label="${esc6(this.t.kroki.uklad)}" style="aspect-ratio:${W3}/${H2};--a:${(W3 / H2).toFixed(4)}${opt.w ? `;width:${opt.w}px` : ""}"><div class="o3h"></div>`];
+      R2.forEach(([x, y, w, h], i) => {
+        const on = opt.wybrane === i, nr2 = opt.numery && P3.length > 1 || opt.klasa === "fokno" && opt.numery ? `<span class="fnr">${i + 1}</span>` : "";
+        const cz = opt.klasa === "fokno" && opt.numery ? `<svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : "";
+        d.push(`<${opt.tag} class="${opt.pole}${on ? " wyb" : ""}"${opt.wybor ? ` data-pole="${i}" aria-label="${esc6(wstaw(this.t.pole, i + 1))}"` : ""} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}">${opt.pole === "fsz" ? '<i class="obsz"></i>' : ""}${nr2}${cz}</${opt.tag}>`);
+      });
+      d.push("</div>");
+      return d.join("");
+    }
+    // kafelki rodzajów: po jednym na klatkę, żeby telefon nie przycinał
+    _kafle3d(m) {
+      const widok = new URL(`/motor_ha/widok/dzien-sunny.webp?v=${WERSJA}`, location.href).href;
+      m.widokKafli(widok);
+      const krok = () => {
+        const im = [...this.shadowRoot?.querySelectorAll("img.k3d") || []].filter((i) => !KAFLE3D.has(i.dataset.k3d));
+        if (!im.length) {
+          this._kafleRaf = null;
+          return;
+        }
+        const [t, k, r] = im[0].dataset.k3d.split("|"), u3 = m.kafel(t, k, r, widok);
+        if (u3) {
+          KAFLE3D.set(im[0].dataset.k3d, u3);
+          this.shadowRoot.querySelectorAll(`img.k3d[data-k3d="${CSS.escape(im[0].dataset.k3d)}"]`).forEach((i) => {
+            i.src = u3;
+          });
+        }
+        this._kafleRaf = requestAnimationFrame(krok);
+      };
+      if (!this._kafleRaf) this._kafleRaf = requestAnimationFrame(krok);
+    }
+    // po narysowaniu kroku: okna 3D w nowych miejscach (to samo okno o tym samym id tylko się przenosi)
+    _montuj3d() {
+      const r = this.shadowRoot;
+      if (!r) return;
+      if (r.querySelector("img.k3d")) okno3d(WERSJA).then((m) => this._kafle3d(m)).catch((e) => console.error("Motor HA: kafelki 3D", e));
+      const hosty = [...r.querySelectorAll(".o3k")];
+      this._o3 || (this._o3 = /* @__PURE__ */ new Map());
+      for (const [id, o] of this._o3) if (!hosty.some((h) => h.dataset.id === id)) {
+        o.zniszcz();
+        this._o3.delete(id);
+      }
+      if (!hosty.length) return;
+      okno3d(WERSJA).then((m) => {
+        hosty.forEach((h) => {
+          if (!h.isConnected) return;
+          const cfg = JSON.parse(h.dataset.o3), id = h.dataset.id, host = h.querySelector(".o3h");
+          let o = this._o3.get(id);
+          if (o) {
+            o.przenies(host);
+            o.ustaw(cfg);
+          } else {
+            o = new m.Okno3D(host, cfg);
+            this._o3.set(id, o);
+          }
+          o.widokZ(`/motor_ha/widok/dzien-sunny.webp?v=${WERSJA}`);
+          o._ruch = !!h.dataset.ruch;
+          o._cfgPoz = cfg.pozycje;
+        });
+        this._ruch3d();
+      }).catch((e) => console.error("Motor HA: okno 3D", e));
+    }
+    // w „Rodzaj” i „Kolory” osłony jadą w górę i w dół w kółko, żeby było widać, jak pracują
+    _ruch3d() {
+      if (this._petla3d) return;
+      const t0 = performance.now();
+      const klatka = () => {
+        const ruchome = [...this._o3?.values() || []].filter((o2) => o2._ruch && o2.host.isConnected);
+        if (!ruchome.length || !this.isConnected) {
+          this._petla3d = null;
+          return;
+        }
+        const t = (performance.now() - t0) / 1e3 % 7, o = t < 1.5 ? 0 : t < 3.5 ? (t - 1.5) / 2 : t < 5 ? 1 : 1 - (t - 5) / 2, g = o * o * (3 - 2 * o);
+        ruchome.forEach((x) => x.pozycje(x._cfgPoz.map(() => Math.round((35 + 65 * g) * 10) / 10)));
+        this._petla3d = requestAnimationFrame(klatka);
+      };
+      this._petla3d = requestAnimationFrame(klatka);
     }
     // znaczek pod numerem pola: pomarańczowy z oknem = czujnik przypisany (ukośna kreska = uchylone), przerywany „+” = brak czujnika
     _znakCzujnika(i, cx, cy) {
@@ -11075,6 +11314,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return daSie(typ, kolor, rama) ? `<img class="${klasa}" data-przek="${typ}" data-kol="${kolor || ""}" data-ram="${rama || ""}" src="${zKolorem(typ, kolor, rama) || src}" alt="" draggable="false"${st}>` : `<img class="${klasa}" src="${src}" alt="" draggable="false"${st}>`;
     }
     _przekolorujZdj() {
+      this._montuj3d();
       this.shadowRoot.querySelectorAll("img[data-przek]").forEach((im) => {
         const t = im.dataset.przek, k = im.dataset.kol, r = im.dataset.ram;
         przekoloruj(t, k, WERSJA, r).then((u3) => {
@@ -11085,6 +11325,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // całe okno jak w wybranym układzie: na miejscu każdego skrzydła oryginalne zdjęcie kafelka jego osłony (Canva),
     // w kolorze osłony pola i ramy okna – nic nie wycinane. Dotknięcie skrzydła wybiera pole (Rodzaj, Kolory).
     _zestaw(opt = {}) {
+      if (moze3d() && !this.bez3d) return this._okno3d({ ...opt, klasa: "fzest", pole: "fzp", tag: opt.wybor ? "button" : "div", poz: () => 35, ruch: ["rodzaj", "kolory"].includes(this.kroki()[this.S.krok]) });
       const S = this.S, P3 = prostokaty(S.u), rama = this._rama();
       const A = Math.max(0.8, Math.min(3, P3.map(([, , w, h]) => 1.2 * h / w).sort((a, b) => a - b)[Math.floor(P3.length / 2)]));
       const d = [`<div class="fzest" role="group" aria-label="${esc6(this.t.kroki.uklad)}" style="aspect-ratio:${+A.toFixed(3)}">`];
@@ -11155,6 +11396,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       }, 70);
     }
     kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
+      if (moze3d() && !this.bez3d && !czyBrama(typ)) return `<img class="zdj k3d" data-k3d="${esc6([typ, kolor, rama].join("|"))}" src="${KAFLE3D.get([typ, kolor, rama].join("|")) || PUSTY}" alt="" draggable="false">`;
       if (ZDJECIA.has(typ)) return this._zdj(typ, kolor, "", rama);
       return kafel(typ, kolor, rama) || this._kafelProsty(typ);
     }

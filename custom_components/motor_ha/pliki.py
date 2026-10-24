@@ -26,29 +26,31 @@ STARA = "okno_ha"
 STARE_ZASOBY = ("/local/okno-ha-loader.js", "/okno_ha/okno-ha-loader.js", "/okno_ha/okno-ha.js")
 
 LADOWACZ = f"""// Motor HA – ładowacz. Przy każdym otwarciu strony bierze świeże skrypty (?t=), a po aktualizacji
-// Motor HA raz sam odświeża stronę: po powrocie do aplikacji/karty albo gdy nikt jej nie dotyka przez minutę.
+// Motor HA (nowa wersja po restarcie HA) sam od razu odświeża stronę – stary kreator i tak nie pokazałby zmian.
 if (!window.__motorHaLoader) {{
   window.__motorHaLoader = true;
   const t = Date.now();
   import(`/{DOMAIN}/motor-ha-hacs.js?v={VERSION}&t=${{t}}`).catch(() => {{}});
   import(`/{DOMAIN}/{KARTA_PLIK}?v={VERSION}&t=${{t}}`).catch((e) => console.error("Motor HA: nie wczytałem karty", e));
-  let wersja = null, ruch = Date.now();
-  ["pointerdown", "keydown", "wheel", "touchstart"].forEach((n) => addEventListener(n, () => {{ ruch = Date.now(); }}, {{ passive: true }}));
+  let wersja = null;
   const sprawdz = async () => {{
     try {{
       const w = (await (await fetch(`/{DOMAIN}/wersja.txt?t=${{Date.now()}}`, {{ cache: "no-store" }})).text()).trim();
       if (wersja === null) wersja = w;
       // porównanie z kodem, który działa na stronie: aplikacja HA potrafi przetrwać restart HA ze starą kartą w pamięci
       const dziala = window.__motorHaDziala || wersja;
-      if (w && w !== dziala && (teraz || (Date.now() - ruch > 60000 && !document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow")))) location.reload();
+      if (w && w !== dziala) {{
+        let juz = null;   // raz na wersję – bez pętli przeładowań, gdyby coś poszło nie tak
+        try {{ juz = sessionStorage.getItem("motorHaLadowacz"); sessionStorage.setItem("motorHaLadowacz", w); }} catch (e) {{ /* bez pamięci sesji */ }}
+        if (juz !== w) location.reload();
+      }}
     }} catch (e) {{ /* HA w trakcie restartu */ }}
   }};
-  let teraz = false;
   sprawdz();
-  setInterval(sprawdz, 60000);
+  setInterval(sprawdz, 15000);
   // aplikacja HA (Android/iOS) trzyma stronę otwartą tygodniami: po powrocie do aplikacji nowa wersja wczytuje się od razu
   document.addEventListener("visibilitychange", () => {{
-    if (document.visibilityState === "visible") {{ teraz = true; sprawdz().finally(() => {{ teraz = false; }}); }}
+    if (document.visibilityState === "visible") sprawdz();
   }});
 }}
 """

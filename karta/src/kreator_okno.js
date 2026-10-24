@@ -6,6 +6,7 @@ import { kafelRuch, RODZAJE_RUCHU } from './kafle_ruch.js';
 import { ZDJECIA, UI } from './zdjecia.js';
 import { przekoloruj, zKolorem, daSie } from './przekolor.js';
 import { RAMKI } from './ramki.js';
+import { polaNaObrazku, wymiary, proporcja, moze3d, okno3d } from './okno3d_uklad.js';
 import { UKLADY, SZYBY, tkanina } from './foto_okno.js';
 import { maZdjecieBramy, bramaZdjecie } from './brama_foto.js';
 export { UKLADY };
@@ -70,6 +71,7 @@ const KROKI_BRAMY = ['silnik', 'rodzaj', 'kolory', 'czujniki', 'stoper', 'dzwone
 const BEZ_PODGLADU = ['przypisz', 'gotowe'];
 // kroki, w których podgląd to całe okno ze zdjęć kafelków (każde skrzydło ze swoją osłoną), a nie zdjęcie samego układu
 const KROKI_ZESTAWU = ['silnik', 'uklad', 'rodzaj', 'kolory'];
+const KAFLE3D = new Map(), PUSTY = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 const UL = v => +(v * 100).toFixed(3) + '%';
 // szablony układów: pola (x, y, szer., wys.) w ułamkach okna; trzeci element – drzwi do podłogi
 const KOLORY_TAB = Object.keys(KOLORY);
@@ -197,6 +199,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .fzest .fzp.wyb img{outline:3px solid #ff9800;outline-offset:-1px}
 .fzest .fzp .fnr{position:absolute;left:8px;top:8px;width:22px;height:22px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 12px/1 var(--ha-font-family-body,Roboto,sans-serif);pointer-events:none}
 .fsz{position:absolute;overflow:hidden}
+.o3k{position:relative;background:none!important}.o3k .o3h{position:absolute;inset:0;border-radius:12px;overflow:hidden}.scena .fokno.o3k{width:min(100%,calc((100cqh - 24px) * var(--a)))}
+.o3k .fzp{position:absolute;padding:0;border:0;background:none;cursor:pointer}.o3k .fzp.wyb{box-shadow:inset 0 0 0 3px #ff9800}.o3k .fsz{background:none}
 .fsz .obsz{position:absolute;inset:0}
 .ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
 .ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
@@ -401,6 +405,7 @@ export class MotorHaKreator extends HTMLElement {
   // całe okno ze zdjęć (Canva): zdjęcie wybranego układu, a na każdej szybie osłona pola (wycinek zdjęcia rodzaju spod maski,
   // w kolorze pola), opuszczona do poz. Własny układ: każde pole to zdjęcie jednego skrzydła (u1) rozciągnięte na pole.
   okno(opt = {}) {
+    if (moze3d() && !this.bez3d) return this._okno3d({ ...opt, klasa: 'fokno', pole: 'fsz', tag: 'div', wybor: opt.numery, numery: opt.numery });
     const S = this.S, pl = prostokaty(S.u), id = opt.id || 'p';
     const nazwa = typeof S.szablon === 'number' && UKLADY[S.szablon] && UKLADY[S.szablon][1].length === pl.length ? UKLADY[S.szablon][0] : null;
     const gotowy = nazwa && UI.has(nazwa + '.webp') && SZYBY[nazwa];
@@ -426,6 +431,66 @@ export class MotorHaKreator extends HTMLElement {
     });
     d.push('</div>');
     return d.join('');
+  }
+  // okno 3D (okno3d.js) z układu, rodzaju i koloru każdego pola i koloru ramy; na nim przezroczyste pola (numer, wybór, czujnik)
+  _okno3d(opt) {
+    const S = this.S, P = prostokaty(S.u), pola = P.map(p => p.slice(0, 4)), prop = proporcja(pola), { W, H } = wymiary(prop), m = .06;
+    const cfg = { pola, typy: P.map((_, i) => S.pola[i]?.oslona || S.o.oslona), kolory: P.map((_, i) => { const k = S.pola[i]?.kolor; return k ? KOLORY[k] || k : this._kolor(); }),
+      rama: this._rama(), W, H, margines: m, sciana: S.sciana && SCIANY[S.sciana] || null, pozycje: P.map((_, i) => opt.poz ? opt.poz(i) : 35) };
+    const R = polaNaObrazku(pola, W, H, m), id = opt.id || opt.klasa;
+    const d = [`<div class="${opt.klasa} o3k" data-id="${id}" data-o3="${esc(JSON.stringify(cfg))}"${opt.ruch ? ' data-ruch="1"' : ''} role="${opt.wybor ? 'group' : 'img'}" aria-label="${esc(this.t.kroki.uklad)}" style="aspect-ratio:${W}/${H};--a:${(W / H).toFixed(4)}${opt.w ? `;width:${opt.w}px` : ''}"><div class="o3h"></div>`];
+    R.forEach(([x, y, w, h], i) => {
+      const on = opt.wybrane === i, nr = opt.numery && P.length > 1 || opt.klasa === 'fokno' && opt.numery ? `<span class="fnr">${i + 1}</span>` : '';
+      const cz = opt.klasa === 'fokno' && opt.numery ? `<svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : '';
+      d.push(`<${opt.tag} class="${opt.pole}${on ? ' wyb' : ''}"${opt.wybor ? ` data-pole="${i}" aria-label="${esc(wstaw(this.t.pole, i + 1))}"` : ''} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}">${opt.pole === 'fsz' ? '<i class="obsz"></i>' : ''}${nr}${cz}</${opt.tag}>`);
+    });
+    d.push('</div>');
+    return d.join('');
+  }
+  // kafelki rodzajów: po jednym na klatkę, żeby telefon nie przycinał
+  _kafle3d(m) {
+    const widok = new URL(`/motor_ha/widok/dzien-sunny.webp?v=${WERSJA}`, location.href).href;
+    m.widokKafli(widok);
+    const krok = () => {
+      const im = [...(this.shadowRoot?.querySelectorAll('img.k3d') || [])].filter(i => !KAFLE3D.has(i.dataset.k3d));
+      if (!im.length) { this._kafleRaf = null; return; }
+      const [t, k, r] = im[0].dataset.k3d.split('|'), u = m.kafel(t, k, r, widok);
+      if (u) { KAFLE3D.set(im[0].dataset.k3d, u); this.shadowRoot.querySelectorAll(`img.k3d[data-k3d="${CSS.escape(im[0].dataset.k3d)}"]`).forEach(i => { i.src = u; }); }
+      this._kafleRaf = requestAnimationFrame(krok);
+    };
+    if (!this._kafleRaf) this._kafleRaf = requestAnimationFrame(krok);
+  }
+  // po narysowaniu kroku: okna 3D w nowych miejscach (to samo okno o tym samym id tylko się przenosi)
+  _montuj3d() {
+    const r = this.shadowRoot; if (!r) return;
+    if (r.querySelector('img.k3d')) okno3d(WERSJA).then(m => this._kafle3d(m)).catch(e => console.error('Motor HA: kafelki 3D', e));
+    const hosty = [...r.querySelectorAll('.o3k')]; this._o3 ||= new Map();
+    for (const [id, o] of this._o3) if (!hosty.some(h => h.dataset.id === id)) { o.zniszcz(); this._o3.delete(id); }
+    if (!hosty.length) return;
+    okno3d(WERSJA).then(m => {
+      hosty.forEach(h => {
+        if (!h.isConnected) return;
+        const cfg = JSON.parse(h.dataset.o3), id = h.dataset.id, host = h.querySelector('.o3h');
+        let o = this._o3.get(id);
+        if (o) { o.przenies(host); o.ustaw(cfg); } else { o = new m.Okno3D(host, cfg); this._o3.set(id, o); }
+        o.widokZ(`/motor_ha/widok/dzien-sunny.webp?v=${WERSJA}`);
+        o._ruch = !!h.dataset.ruch; o._cfgPoz = cfg.pozycje;
+      });
+      this._ruch3d();
+    }).catch(e => console.error('Motor HA: okno 3D', e));
+  }
+  // w „Rodzaj” i „Kolory” osłony jadą w górę i w dół w kółko, żeby było widać, jak pracują
+  _ruch3d() {
+    if (this._petla3d) return;
+    const t0 = performance.now();
+    const klatka = () => {
+      const ruchome = [...(this._o3?.values() || [])].filter(o => o._ruch && o.host.isConnected);
+      if (!ruchome.length || !this.isConnected) { this._petla3d = null; return; }
+      const t = ((performance.now() - t0) / 1000) % 7, o = t < 1.5 ? 0 : t < 3.5 ? (t - 1.5) / 2 : t < 5 ? 1 : 1 - (t - 5) / 2, g = o * o * (3 - 2 * o);
+      ruchome.forEach(x => x.pozycje(x._cfgPoz.map(() => Math.round((35 + 65 * g) * 10) / 10)));
+      this._petla3d = requestAnimationFrame(klatka);
+    };
+    this._petla3d = requestAnimationFrame(klatka);
   }
   // znaczek pod numerem pola: pomarańczowy z oknem = czujnik przypisany (ukośna kreska = uchylone), przerywany „+” = brak czujnika
   _znakCzujnika(i, cx, cy) {
@@ -457,6 +522,7 @@ export class MotorHaKreator extends HTMLElement {
       : `<img class="${klasa}" src="${src}" alt="" draggable="false"${st}>`;
   }
   _przekolorujZdj() {
+    this._montuj3d();
     this.shadowRoot.querySelectorAll('img[data-przek]').forEach(im => {
       const t = im.dataset.przek, k = im.dataset.kol, r = im.dataset.ram;
       przekoloruj(t, k, WERSJA, r).then(u => { if (u && im.dataset.przek === t && im.dataset.kol === k && im.dataset.ram === r && im.src !== u) im.src = u; });
@@ -465,6 +531,7 @@ export class MotorHaKreator extends HTMLElement {
   // całe okno jak w wybranym układzie: na miejscu każdego skrzydła oryginalne zdjęcie kafelka jego osłony (Canva),
   // w kolorze osłony pola i ramy okna – nic nie wycinane. Dotknięcie skrzydła wybiera pole (Rodzaj, Kolory).
   _zestaw(opt = {}) {
+    if (moze3d() && !this.bez3d) return this._okno3d({ ...opt, klasa: 'fzest', pole: 'fzp', tag: opt.wybor ? 'button' : 'div', poz: () => 35, ruch: ['rodzaj', 'kolory'].includes(this.kroki()[this.S.krok]) });
     const S = this.S, P = prostokaty(S.u), rama = this._rama();
     // proporcje całości tak, żeby każde skrzydło było jak najbliżej proporcji zdjęcia (193 × 161)
     const A = Math.max(.8, Math.min(3, P.map(([, , w, h]) => 1.2 * h / w).sort((a, b) => a - b)[Math.floor(P.length / 2)]));
@@ -530,6 +597,8 @@ export class MotorHaKreator extends HTMLElement {
   }
 
   kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
+    // okno 3D z tą osłoną w wybranych kolorach (to samo co podgląd i karta); rysowane po kolei, po wyświetleniu kroku
+    if (moze3d() && !this.bez3d && !czyBrama(typ)) return `<img class="zdj k3d" data-k3d="${esc([typ, kolor, rama].join('|'))}" src="${KAFLE3D.get([typ, kolor, rama].join('|')) || PUSTY}" alt="" draggable="false">`;
     // zdjęcie z Canvy, jeśli jest dla tego rodzaju; inaczej rysunek
     // z maską: zdjęcie od razu w wybranym kolorze (gdy jeszcze się liczy – oryginał, podmieniany po chwili)
     if (ZDJECIA.has(typ)) return this._zdj(typ, kolor, '', rama);
