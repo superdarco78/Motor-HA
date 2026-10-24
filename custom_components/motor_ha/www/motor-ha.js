@@ -1946,7 +1946,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Zapisz",
       gotowe: "Gotowe",
       kroki: {
-        silnik: "Osłona",
+        silnik: "Urządzenie",
         uklad: "Układ",
         rodzaj: "Rodzaj",
         kolory: "Kolory",
@@ -2477,7 +2477,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Save",
       gotowe: "Done",
       kroki: {
-        silnik: "Cover",
+        silnik: "Device",
         uklad: "Layout",
         rodzaj: "Type",
         kolory: "Colours",
@@ -3008,7 +3008,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Speichern",
       gotowe: "Fertig",
       kroki: {
-        silnik: "Behang",
+        silnik: "Gerät",
         uklad: "Aufteilung",
         rodzaj: "Art",
         kolory: "Farben",
@@ -3539,7 +3539,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Enregistrer",
       gotowe: "Terminé",
       kroki: {
-        silnik: "Store",
+        silnik: "Appareil",
         uklad: "Disposition",
         rodzaj: "Type",
         kolory: "Couleurs",
@@ -4070,7 +4070,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Uložit",
       gotowe: "Hotovo",
       kroki: {
-        silnik: "Stínění",
+        silnik: "Zařízení",
         uklad: "Rozvržení",
         rodzaj: "Druh",
         kolory: "Barvy",
@@ -4601,7 +4601,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Uložiť",
       gotowe: "Hotovo",
       kroki: {
-        silnik: "Tienenie",
+        silnik: "Zariadenie",
         uklad: "Rozloženie",
         rodzaj: "Druh",
         kolory: "Farby",
@@ -5132,7 +5132,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Guardar",
       gotowe: "Listo",
       kroki: {
-        silnik: "Estor",
+        silnik: "Dispositivo",
         uklad: "Distribución",
         rodzaj: "Tipo",
         kolory: "Colores",
@@ -5663,7 +5663,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Salva",
       gotowe: "Fatto",
       kroki: {
-        silnik: "Tenda",
+        silnik: "Dispositivo",
         uklad: "Disposizione",
         rodzaj: "Tipo",
         kolory: "Colori",
@@ -6194,7 +6194,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Opslaan",
       gotowe: "Klaar",
       kroki: {
-        silnik: "Zonwering",
+        silnik: "Apparaat",
         uklad: "Indeling",
         rodzaj: "Soort",
         kolory: "Kleuren",
@@ -6725,7 +6725,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Guardar",
       gotowe: "Concluído",
       kroki: {
-        silnik: "Proteção",
+        silnik: "Dispositivo",
         uklad: "Disposição",
         rodzaj: "Tipo",
         kolory: "Cores",
@@ -7256,7 +7256,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Зберегти",
       gotowe: "Готово",
       kroki: {
-        silnik: "Штора",
+        silnik: "Пристрій",
         uklad: "Схема",
         rodzaj: "Тип",
         kolory: "Кольори",
@@ -7787,7 +7787,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "Сохранить",
       gotowe: "Готово",
       kroki: {
-        silnik: "Штора",
+        silnik: "Устройство",
         uklad: "Схема",
         rodzaj: "Тип",
         kolory: "Цвета",
@@ -8318,7 +8318,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "保存",
       gotowe: "完了",
       kroki: {
-        silnik: "シェード",
+        silnik: "デバイス",
         uklad: "レイアウト",
         rodzaj: "種類",
         kolory: "色",
@@ -8849,7 +8849,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zapisz: "保存",
       gotowe: "完成",
       kroki: {
-        silnik: "遮阳",
+        silnik: "设备",
         uklad: "布局",
         rodzaj: "类型",
         kolory: "颜色",

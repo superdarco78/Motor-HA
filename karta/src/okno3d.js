@@ -337,17 +337,22 @@ export class Okno3D {
     const mR = mat('rama' + rama + !!o.drewno, () => std({ color: rama, roughness: o.drewno ? .6 : .36, metalness: 0, envMapIntensity: .8, map: o.drewno ? slojeTx() : null }));
     const mSz = mat('szyba', () => new THREE.MeshPhysicalMaterial({ color: '#dfeef6', roughness: .02, transparent: true, opacity: .1, envMapIntensity: 1.6, depthWrite: false }));
     // ściana z otworem, ościeże i parapet (widać tylko z marginesem)
-    if (m > 0) {
+    // bez wybranego koloru ściany tło zostaje przezroczyste (motyw HA, jasny i ciemny)
+    if (m > 0 && o.sciana) {
       const sh = new THREE.Shape([new THREE.Vector2(-W * 3, -H * 3), new THREE.Vector2(W * 3, -H * 3), new THREE.Vector2(W * 3, H * 3), new THREE.Vector2(-W * 3, H * 3)]);
       sh.holes.push(new THREE.Path([new THREE.Vector2(-W / 2, -H / 2), new THREE.Vector2(-W / 2, H / 2), new THREE.Vector2(W / 2, H / 2), new THREE.Vector2(W / 2, -H / 2)]));
       const sc = new THREE.Mesh(new THREE.ShapeGeometry(sh), std({ color: o.sciana || '#ebe8e3', roughness: .95 })); sc.position.z = .14; sc.receiveShadow = true; gr.add(sc);
       const mO = std({ color: o.sciana || '#e4e1dc', roughness: .95 });
       for (const [w, h, x, y] of [[W, .002, 0, H / 2], [.002, H, -W / 2, 0], [.002, H, W / 2, 0]]) { const s = ust(new THREE.Mesh(new THREE.BoxGeometry(w, h, .22), mO), x, y, .03); s.receiveShadow = true; gr.add(s); }
-      gr.add(ust(klocek(W + .14, .03, .26, std({ color: '#f2f1ee', roughness: .4 }), .008), 0, -H / 2 - .015, .17));
     }
+    if (m > 0) gr.add(ust(klocek(W + .14, .03, .2, std({ color: '#f2f1ee', roughness: .4 }), .008), 0, -H / 2 - .015, .1));
     // widok za oknem: zdjęcie daleko za szybą
-    const wd = Math.max(W, H) * 2.4;
-    this.widok = ust(new THREE.Mesh(new THREE.PlaneGeometry(wd * 1.5, wd), this.widokM), 0, .1, -2.4); gr.add(this.widok);
+    // widok za oknem: zdjęcie za szybą, dokładnie na tyle duże, żeby było go widać tylko przez okno (tło dookoła przezroczyste)
+    const S0 = H / (1 - 2 * m), D = S0 / 2 / Math.tan(THREE.MathUtils.degToRad(this.cam.fov / 2)), ZW = 1.4, k = (D + .04 + ZW) / (D + .04);
+    const ww = (W - .02) * k, wh = (H - .02) * k, img = Math.max(ww / 1.5, wh);   // zdjęcie 3:2, przycięte do okna
+    const pg = new THREE.PlaneGeometry(ww, wh), uv = pg.attributes.uv;
+    for (let i = 0; i < uv.count; i++) uv.setXY(i, .5 + (uv.getX(i) - .5) * ww / (img * 1.5), .5 + (uv.getY(i) - .5) * wh / img);
+    this.widok = ust(new THREE.Mesh(pg, this.widokM), 0, 0, -ZW); gr.add(this.widok);
     // ościeżnica
     gr.add(ust(klocek(W, F, .08, mR), 0, H / 2 - F / 2, 0), ust(klocek(W, F, .08, mR), 0, -H / 2 + F / 2, 0), ust(klocek(F, H, .08, mR), -W / 2 + F / 2, 0, 0), ust(klocek(F, H, .08, mR), W / 2 - F / 2, 0, 0));
     const iW = W - 2 * F, iH = H - 2 * F;
@@ -364,8 +369,7 @@ export class Okno3D {
       this.skrz.push({ piv, typ });
       this.ruchy.push(oslona(g, { gw, gh, typ, kol: o.kolory?.[i] || '#e6dcc8', kas: o.kas }));
     });
-    const S = H / (1 - 2 * m);
-    this.cam.position.set(0, 0, .04 + S / 2 / Math.tan(THREE.MathUtils.degToRad(this.cam.fov / 2)));
+    this.cam.position.set(0, 0, .04 + D);
     this.cam.lookAt(0, 0, 0);
     this._poz = null;
   }
