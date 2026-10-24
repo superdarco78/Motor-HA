@@ -332,6 +332,10 @@ class Kreator:
         t = await async_get_translations(self.hass, self.hass.config.language, "selector", {DOMAIN})
         nazwa = lambda k: t.get(f"component.{DOMAIN}.selector.{MAM}.options.{k}", k)  # noqa: E731
         znalezione = ", ".join(f"{nazwa(k)} ({len(v)})" for k, v in self._znalezione.items() if v and k in opcje)
+        # silniki rolet i żaluzji (wybiera się je w następnym kroku) – też na liście znalezionych, na początku
+        if n := len(self._znalezione.get("oslony", [])):
+            rolety = "Silniki rolet i żaluzji" if self.hass.config.language.startswith("pl") else "Blind and shade motors"
+            znalezione = f"{rolety} ({n})" + (", " + znalezione if znalezione else "")
         return await self._formularz("mam", {vol.Optional(MAM, default=domyslne): _lista(opcje, MAM, wiele=True)},
                                      dodatki={"znalezione": znalezione or "—"})
 
@@ -660,6 +664,12 @@ class MotorHaFlow(Kreator, ConfigFlow, domain=DOMAIN):
         return MotorHaOpcje(entry)
 
     async def async_step_user(self, dane: dict[str, Any] | None = None) -> ConfigFlowResult:
+        # pierwsze urządzenie po instalacji: integracja jeszcze nie działa, więc przeglądarka nie ma kreatora graficznego
+        # (wczytuje się razem z integracją). Wczytaj ją teraz i poproś o odświeżenie strony zamiast pokazywać zwykłe pola.
+        if DOMAIN not in self.hass.data:
+            from homeassistant.setup import async_setup_component
+            await async_setup_component(self.hass, DOMAIN, {})
+            return self.async_abort(reason="odswiez")
         return await self.async_step_tryb()
 
     async def async_step_import(self, dane: dict[str, Any]) -> ConfigFlowResult:

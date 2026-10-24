@@ -340,7 +340,8 @@
     "abort": {
       "zle_dane": "De wizard stuurde onvolledige instellingen. Open hem opnieuw.",
       "brak_rolety": "Kies een motor voor minstens één vak.",
-      "za_duzo": "Te veel motoren (maximaal 12)."
+      "za_duzo": "Te veel motoren (maximaal 12).",
+      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
     }
   },
   "options": {

@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.2.13 – Kreator graficzny od pierwszego urządzenia
+
+- 🪄 Po świeżej instalacji pierwsze „Dodaj urządzenie” wczytuje integrację i prosi o odświeżenie strony; potem od razu otwiera się kreator graficzny (z roletami w kroku „Osłona”, nowymi ikonami i zdjęciami) zamiast starego kreatora z polami wyboru
+- 🔎 Stary kreator (gdyby się pokazał): w „Znalezione” są też silniki rolet i żaluzji z liczbą
+
 ## v2.2.12 – Zdjęcia w wybranym kolorze i grafiki kreatora
 
 - 🎨 Zdjęcia rodzajów w kroku „Rodzaj” mają kolor wybrany w „Kolory” (tkanina, pancerz, lamele); rama i cień zostają z oryginału

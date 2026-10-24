@@ -340,7 +340,8 @@
     "abort": {
       "zle_dane": "Der Assistent hat unvollständige Einstellungen gesendet. Öffne ihn erneut.",
       "brak_rolety": "Wähle einen Motor für mindestens ein Feld.",
-      "za_duzo": "Zu viele Motoren (höchstens 12)."
+      "za_duzo": "Zu viele Motoren (höchstens 12).",
+      "odswiez": "Der grafische Assistent von Motor HA wurde gerade geladen. Lade die Seite neu (Strg+Umschalt+R im Browser, App schließen und neu öffnen) und klicke erneut auf „Gerät hinzufügen“."
     }
   },
   "options": {
