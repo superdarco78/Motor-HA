@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.21 – Światło liczone fizycznie
+
+- 🪟 Roleta wierniej: skrzynka ze skosem 45°, prowadnice z kanałem, listwa dolna z uszczelką
+- ☀️ Obraz dokładny: gdy okno stoi chwilę, karta liczy w tle obraz z fizycznym światłem (path tracing) i podmienia nim podgląd 3D – cienie, odbicia i materiały wyglądają prawdziwiej
+- 📱 Liczy jedno okno naraz; na wolnym telefonie, bez WebGL2 albo przy błędzie zostaje zwykły obraz 3D
+- 💸 Nadal za darmo i bez internetu: three-gpu-pathtracer i three-mesh-bvh (MIT) są w integracji
+
 ## v2.2.20 – Okno 3D
 
 - 🧊 Okno budowane w 3D na żywo z Twoich ustawień: układ, rodzaj osłony na każdym polu, kolor osłony i ramy – działa dla każdego układu i wszystkich 79 rodzajów osłon (bramy zostają ze zdjęć)
