@@ -4,11 +4,19 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.2.22"
+VERSION = "2.2.23"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
 START = "motor-ha-start"   # ukryta strona: wczytuje skrypty Motor HA i wraca do dodawania urządzenia
+# link w zwykłym formularzu HA, gdy na stronie nie ma kreatora graficznego (config_flow._link_kreatora)
+LINK_KREATORA = {
+    "pl": "Pokaż kreator graficzny", "en": "Show the graphical wizard", "de": "Grafischen Assistenten anzeigen",
+    "cs": "Zobrazit grafického průvodce", "sk": "Zobraziť grafického sprievodcu", "fr": "Afficher l’assistant graphique",
+    "es": "Mostrar el asistente gráfico", "it": "Mostra la procedura guidata grafica", "nl": "Grafische wizard tonen",
+    "pt": "Mostrar o assistente gráfico", "ru": "Показать графический мастер", "uk": "Показати графічний майстер",
+    "ja": "グラフィカルウィザードを表示", "zh": "显示图形向导",
+}
 LOADER = "motor-ha-loader.js"
 PACZKA = "motor_ha.zip"
 

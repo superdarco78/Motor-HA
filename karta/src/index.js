@@ -10,9 +10,11 @@ import { MotorHaKreator } from './kreator_okno.js';
 import { strony } from './strona.js';
 
 // Strona /motor-ha-start: HA wczytał ją razem z tym plikiem, więc kreator już jest – wracamy do dodawania urządzenia
+// (albo tam, skąd przyszedł link „Pokaż kreator graficzny”: ?do=/config/…)
 class MotorHaStart extends HTMLElement {
   connectedCallback() {
-    history.replaceState(null, '', '/config/integrations/dashboard/add?domain=motor_ha');
+    const cel = new URLSearchParams(location.search).get('do');
+    history.replaceState(null, '', cel?.startsWith('/config/') ? cel : '/config/integrations/dashboard/add?domain=motor_ha');
     window.dispatchEvent(new CustomEvent('location-changed', { detail: { replace: true } }));
   }
 }

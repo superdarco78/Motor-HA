@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.2.23 – Kreator graficzny zawsze pod ręką
+
+- 🪄 Gdy przeglądarka lub aplikacja HA wczyta stronę bez Motor HA (np. odświeżona w trakcie restartu HA, zanim Motor HA wystartował), zamiast samego zwykłego formularza HA jest link „Pokaż kreator graficzny” – jedno kliknięcie wczytuje kreator, bez odświeżania strony i czyszczenia pamięci
+- ⚙️ Dotyczy dodawania i „Konfiguruj”; przy działającym kreatorze link jest pod nim niewidoczny
+
 ## v2.2.22 – Kreator od pierwszego dodania
 
 - 🧭 Pierwsze „Dodaj urządzenie” po instalacji: zamiast „odśwież stronę” jest link „Otwórz kreator graficzny” – kreator wczytuje się od razu, bez odświeżania i bez zamykania aplikacji (strona HA z pamięci przeglądarki nie miała jeszcze skryptów Motor HA)

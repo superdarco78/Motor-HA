@@ -75,7 +75,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         # nie ma jeszcze skryptów Motor HA – ta strona wczytuje je bez odświeżania i wraca do dodawania urządzenia
         with suppress(ValueError):   # już jest (druga rejestracja)
             async_register_built_in_panel(hass, "custom", frontend_url_path=START, require_admin=True, config={
-                "_panel_custom": {"name": START, "module_url": f"/{DOMAIN}/{KARTA_PLIK}?v={VERSION}",
+                "_panel_custom": {"name": START, "module_url": f"/{DOMAIN}/{KARTA_PLIK}?v={VERSION}&s=1",
                                   "embed_iframe": False, "trust_external": False}})
         return True
 
