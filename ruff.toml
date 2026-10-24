@@ -1,0 +1,9 @@
+# Ruff: szuka prawdziwych błędów w Pythonie (niezdefiniowane i nieużywane nazwy, typowe pułapki).
+# Styl zapisu zostaje taki jak jest (bez reguł formatowania).
+target-version = "py313"
+line-length = 160
+extend-exclude = ["e2e/.config"]
+
+[lint]
+select = ["F", "E9", "B"]
+ignore = ["B905"]  # zip() bez strict= – w tym kodzie celowo

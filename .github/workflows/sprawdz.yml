@@ -20,6 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: home-assistant/actions/hassfest@master
+  ruff:
+    name: Ruff (Python)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/ruff-action@v3
   testy:
     name: Testy
     runs-on: ubuntu-latest
@@ -39,6 +45,9 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
+        working-directory: karta
+      - name: ESLint (JavaScript)
+        run: npm run lint
         working-directory: karta
       - run: npx playwright install --with-deps chromium
         working-directory: karta

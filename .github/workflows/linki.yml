@@ -1,0 +1,27 @@
+name: 🔗 Linki w README
+
+# Sprawdza, czy linki i obrazki w README (wszystkie języki) działają. Raz w tygodniu i przy zmianie README.
+on:
+  pull_request:
+    paths: ['README*.md', 'img/**', '.github/workflows/linki.yml']
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linki:
+    name: Linki i obrazki
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-concurrency 8 --max-retries 3
+            --accept '200..=299,403,429'
+            --root-dir "${{ github.workspace }}"
+            'README*.md'
+          fail: true

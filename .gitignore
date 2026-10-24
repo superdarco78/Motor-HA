@@ -2,3 +2,6 @@ __pycache__/
 .pytest_cache/
 *.pyc
 karta/node_modules/
+e2e/.config/
+e2e/.tokeny.json
+e2e/wyniki/

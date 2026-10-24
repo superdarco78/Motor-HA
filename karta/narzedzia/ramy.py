@@ -1,6 +1,6 @@
 # Maski ram (www/rodzaje/ramy/*.png, www/ui/ramy/u*.png): biały = rama okna na zdjęciu z Canvy; kreator i karta
 # przemalowują ją na wybrany kolor ramy. Uruchamiać po maski.py (z katalogu karta/): python3 narzedzia/ramy.py
-import numpy as np,glob,os,cv2,sys
+import numpy as np,glob,os,cv2
 W=os.path.join(os.path.dirname(os.path.abspath(__file__)),'../../custom_components/motor_ha/www/')
 def rama(src, maska=None, grubosc=7.5):
     a=cv2.imread(src); h,w=a.shape[:2]
