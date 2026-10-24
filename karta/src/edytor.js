@@ -11,6 +11,12 @@ export const KROKI = [
   ['urzadzenie', 'mdi:window-shutter-cog'], ['oslona', 'mdi:roller-shade'], ['kolory', 'mdi:palette'], ['okno', 'mdi:window-closed-variant'],
   ['czujniki', 'mdi:window-open-variant'], ['silnik', 'mdi:speedometer'], ['pogoda', 'mdi:weather-partly-cloudy']
 ];
+// obrazek kroku z Canvy (www/ui): na niebieskim kółku i w ciemnym motywie wersja „-ciemny”; bez obrazka zostaje ikona mdi
+const PLIK_KROKU = { okno: 'uklad' };
+const ikKroku = (k, mdi, ciem) => {
+  const n = PLIK_KROKU[k] || k, f = [ciem ? n + '-ciemny.png' : null, n + '.png'].find(x => x && UI.has(x));
+  return f ? `<img class="ikk" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="">` : `<ha-icon icon="${mdi}"></ha-icon>`;
+};
 const esc = s => String(s ?? '').replace(/[&<>"]/g, z => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[z]);
 const doHex = v => Array.isArray(v) && v.length === 3 ? '#' + v.map(x => (+x).toString(16).padStart(2, '0')).join('') : null;
 const zHex = h => { const s = String(h).replace('#', ''); return s.length === 6 ? [0, 2, 4].map(i => parseInt(s.slice(i, i + 2), 16)) : undefined; };
@@ -26,6 +32,7 @@ const STYL = `
 .kr .k{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;box-sizing:border-box;
  background:var(--card-background-color,var(--ha-card-background));box-shadow:inset 0 0 0 1px var(--divider-color);color:var(--secondary-text-color);transition:background .15s}
 .kr .k ha-icon{--mdc-icon-size:22px;display:flex}
+.k img.ikk{width:72%;height:72%;object-fit:contain;pointer-events:none}
 .kr.zrob .k{background:color-mix(in srgb,var(--primary-color) 20%,var(--card-background-color,#fff));box-shadow:none;color:var(--primary-color)}
 .kr.on .k{background:var(--primary-color);box-shadow:none;color:var(--text-primary-color,#fff)}
 .kr .p{font-size:var(--ha-font-size-s,12px);line-height:1.25;text-align:center;max-width:100%;overflow-wrap:anywhere}
@@ -122,11 +129,11 @@ export class MotorHaEdytor extends HTMLElement {
     const LISTA = czyBrama(this._w('oslona')) ? KROKI.filter(([k]) => !['okno', 'czujniki', 'pogoda'].includes(k)) : KROKI;
     this._krok = Math.min(this._krok ?? 0, LISTA.length - 1);
     const T = this._T, n = this._krok, [kl, ik] = LISTA[n], K = T.kroki[kl];
-    const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
+    const root = this.shadowRoot || this.attachShadow({ mode: 'open' }), ciem = !!this._hass?.themes?.darkMode;
     root.innerHTML = `<style>${STYL}</style><div class="ed">
 <div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? ' on' : j < n ? ' zrob' : ''}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc(T.kroki[k].t)}">
- <span class="k"><ha-icon icon="${i}"></ha-icon></span><span class="p">${esc(T.kroki[k].t)}</span></button>`).join('')}</div>
-<div class="tyt"><span class="k"><ha-icon icon="${ik}"></ha-icon></span><h3>${esc(K.t)}<small>${esc(wstaw(T.ui.krok, n + 1, LISTA.length))}</small></h3></div>
+ <span class="k">${ikKroku(k, i, ciem || j === n)}</span><span class="p">${esc(T.kroki[k].t)}</span></button>`).join('')}</div>
+<div class="tyt"><span class="k">${ikKroku(kl, ik, ciem)}</span><h3>${esc(K.t)}<small>${esc(wstaw(T.ui.krok, n + 1, LISTA.length))}</small></h3></div>
 <p class="cp"><span><b>${esc(T.ui.co)}</b> ${esc(K.co)}</span><span><b>${esc(T.ui.poco)}</b> ${esc(K.poco)}</span></p>
 <div class="tresc"></div>
 <div class="nav"><button class="bt dr" data-n="-1" ${n ? '' : 'hidden'}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc(T.ui.wstecz)}</button>

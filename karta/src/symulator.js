@@ -5,6 +5,7 @@
 import { GRUPY, IKONY, KOLORY } from './stale.js';
 import { TEKSTY, jezyk as jezykZ } from './jezyk.js';
 import { MDI } from './ikony_mdi.js';
+import { ikUI, STYL_IKU } from './ikony_ui.js';
 
 const ENCJA = 'cover.motor_ha_podglad';
 const PORY = ['dzien', 'zloto', 'zmierzch', 'noc'];
@@ -39,6 +40,7 @@ button:hover{background:color-mix(in srgb,var(--primary-text-color) 8%,transpare
 button:focus-visible{box-shadow:0 0 0 2px var(--primary-color)}
 button.on{background:color-mix(in srgb,var(--primary-color) 20%,transparent);border-color:transparent}
 button svg{fill:var(--primary-color);flex:none}
+button .iku{--iku:20px}
 .p{width:16px;height:16px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(127,127,127,.5)}`;
 
 export class MotorHaSymulator extends HTMLElement {
@@ -75,10 +77,10 @@ export class MotorHaSymulator extends HTMLElement {
   _rysuj() {
     const T = this._T = TEKSTY[this._jez], S = T.symulator, s = this._s;
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
-    const przycisk = (dane, wart, tekst, ikona, kropka) => `<button data-${dane}="${esc(wart)}"${s[dane] === wart ? ' class="on"' : ''}>${kropka || (ikona ? svgIkony(ikona) : '')}${esc(tekst)}</button>`;
+    const przycisk = (dane, wart, tekst, ikona, kropka) => `<button data-${dane}="${esc(wart)}"${s[dane] === wart ? ' class="on"' : ''}>${kropka || (ikona ? (dane === 'pora' || dane === 'pogoda' ? ikUI(wart, svgIkony(ikona)) : svgIkony(ikona)) : '')}${esc(tekst)}</button>`;
     const rodzaje = Object.entries(GRUPY).map(([g, pod]) => `<div class="g">${esc(T.grupy[g])}</div><div class="c">${Object.values(pod).flat()
       .map(t => przycisk('typ', t, T.oslony[t], IKONY[t])).join('')}</div>`).join('');
-    root.innerHTML = `<style>${STYL}</style><div class="s"><div class="k"></div><div>
+    root.innerHTML = `<style>${STYL}${STYL_IKU}</style><div class="s${this._gora?.themes?.darkMode ? ' ciemny' : ''}"><div class="k"></div><div>
 <p class="t">${esc(S.tytul)}</p><p class="w">${esc(S.wskazowka)}</p>
 <div class="r"><div class="l">${esc(S.pora)}</div><div class="c">${PORY.map(p => przycisk('pora', p, S[p], IKONY_POR[p])).join('')}</div></div>
 <div class="r"><div class="l">${esc(S.pogoda)}</div><div class="c">${Object.entries(POGODY).map(([p, i]) => przycisk('pogoda', p, this._pogoda(p), i)).join('')}</div></div>

@@ -31,6 +31,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .szyba{position:relative;height:100%;overflow:hidden;border-radius:1px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2),inset 0 3px 8px rgba(0,0,0,.28)}
 .niebo,.pg,.osiedle,.osiedle-w,.blask,.pokoj{position:absolute;inset:0}
 .osiedle{width:100%;height:100%}
+.fotw{position:absolute;top:0;height:100%;max-width:none;object-fit:cover;pointer-events:none;user-select:none}
 .pg{overflow:hidden;pointer-events:none}
 .pg i{position:absolute;display:block}
 .blask{background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.14) 38%,transparent 46%);pointer-events:none;z-index:5}
@@ -118,6 +119,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .przyc button:focus-visible{box-shadow:0 0 0 2px var(--secondary-text-color)}
 .przyc button:disabled{cursor:default;color:var(--disabled-text-color);background:color-mix(in srgb,var(--disabled-color,#bdbdbd) 20%,transparent)}
 .przyc ha-icon{--mdc-icon-size:24px;display:flex}
+.przyc button{--iku:26px}.przyc button:disabled .iku{opacity:.4;filter:grayscale(1)}
 /* suwak pozycji jak ha-control-slider */
 .suwak{position:relative;height:var(--feature-height,42px);border-radius:var(--ha-card-features-border-radius,var(--ha-border-radius-lg,12px));overflow:hidden;cursor:pointer;
  background:color-mix(in srgb,var(--mh-kolor) 20%,transparent);touch-action:none;outline:none}
@@ -145,6 +147,15 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .poz button.on{background:color-mix(in srgb,var(--primary-text-color) 15%,transparent);border-color:transparent}
 .poziomo .listwa,.poziomo .prow{display:none}
 .poziomo .oslona{will-change:clip-path,mask-image}
+/* okno ze zdjęć (Canva): zdjęcie układu, szyby w miejscach szyb na zdjęciu, osłona = wycinek zdjęcia rodzaju */
+.foto .okno{padding:0;display:block;background:#d9dadb!important;box-shadow:none!important;border-radius:var(--ha-border-radius-md,8px);overflow:hidden}
+.foto .okno .ftlo{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none}
+.foto .skrz{position:absolute;padding:0;margin:0;background:none!important;border-radius:0;box-shadow:none}
+.foto .szyba{border-radius:0}
+.foto .oslona{background:none!important;overflow:hidden;box-shadow:none}
+.foto .oslona .ftkp{position:absolute;left:0;right:0;bottom:0}
+.foto .oslona .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.foto .listwa,.foto .klamka{display:none}
 .poziomo .skrz,.poziomo .zewo{cursor:pointer}
 /* brama i garaż */
 .bramaw{position:relative;width:min(100%,420px);border-radius:var(--ha-border-radius-md,8px);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -154,6 +165,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
  background:color-mix(in srgb,var(--primary-color) 12%,transparent);color:var(--primary-text-color);font-size:var(--ha-font-size-s,12px);line-height:16px}
 .auto[hidden]{display:none}
 .auto ha-icon{--mdc-icon-size:18px;display:flex;color:var(--primary-color);flex:none}
+.auto .aik{--iku:22px;display:flex;flex:none;font-style:normal}
 .auto span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .auto.blad{background:color-mix(in srgb,var(--error-color,#db4437) 14%,transparent)}
 .auto.blad ha-icon{color:var(--error-color,#db4437)}

@@ -118,3 +118,15 @@ export function widokSvg(rodzaj, pora, skrzydlo, ile) {
   return `<svg class="osiedle" viewBox="${vb}" preserveAspectRatio="${pa}" aria-hidden="true"><g style="filter:${o.filtr}">${o.tlo}</g>` +
     (o.swiatla ? `<defs><radialGradient id="mhLampa"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".9"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient></defs>${o.swiatla}` : '') + '</svg>';
 }
+
+// Zdjęcie widoku z Canvy (www/widok/{pora}-{pogoda}.webp) zamiast rysunku. Brakująca pora: zdjęcie dnia z tą samą pogodą,
+// przyciemnione filtrem. Bez zdjęcia → null (zostaje rysunek).
+const POGODA_ZDJ = { slonce: 'sunny', chmurki: 'partlycloudy', wiatr: 'partlycloudy', chmury: 'cloudy', mgla: 'fog', deszcz: 'rainy', ulewa: 'rainy',
+  burza: 'lightning-rainy', snieg: 'snowy', deszczsnieg: 'snowy' };
+const FILTR_PORY = { zloto: 'brightness(.85) sepia(.35) saturate(1.3)', zmierzch: 'brightness(.5) saturate(.8) hue-rotate(-10deg)', noc: 'brightness(.28) saturate(.55)' };
+export function zdjecieWidoku(widoki, rodzaj, pora) {
+  const p = POGODA_ZDJ[rodzaj] || 'cloudy';
+  for (const [k, f] of [[`${pora}-${p}`, ''], [`dzien-${p}`, FILTR_PORY[pora] || ''], [`${pora}-cloudy`, ''], ['dzien-cloudy', FILTR_PORY[pora] || '']])
+    if (widoki.has(k)) return { plik: k, filtr: f };
+  return null;
+}

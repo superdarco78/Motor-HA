@@ -9,7 +9,10 @@ const zdjecia = existsSync(ZDJ) ? readdirSync(ZDJ).filter(f => f.endsWith('.webp
 // grafiki kreatora (www/ui: kafelki Układu u1…u8/wlasny, ikony kroków {krok}.png i {krok}-ciemny.png, Canva)
 const UI = '../custom_components/motor_ha/www/ui';
 const ui = existsSync(UI) ? readdirSync(UI).filter(f => /\.(webp|png)$/.test(f)).sort() : [];
-writeFileSync('src/zdjecia.js', `// Wygenerowane przez zbuduj.mjs – rodzaje, które mają zdjęcie w www/rodzaje/, i grafiki z www/ui/\nexport const ZDJECIA = new Set(${JSON.stringify(zdjecia)});\nexport const UI = new Set(${JSON.stringify(ui)});\nexport const MASKI = new Set(${JSON.stringify(maski)});\n`);
+// widok za oknem (www/widok/{pora}-{pogoda}.webp, Canva): zdjęcia pory dnia × pogody
+const WID = '../custom_components/motor_ha/www/widok';
+const widok = existsSync(WID) ? readdirSync(WID).filter(f => f.endsWith('.webp')).map(f => f.slice(0, -5)).sort() : [];
+writeFileSync('src/zdjecia.js', `// Wygenerowane przez zbuduj.mjs – rodzaje, które mają zdjęcie w www/rodzaje/, grafiki z www/ui/ i widoki z www/widok/\nexport const ZDJECIA = new Set(${JSON.stringify(zdjecia)});\nexport const UI = new Set(${JSON.stringify(ui)});\nexport const MASKI = new Set(${JSON.stringify(maski)});\nexport const WIDOK = new Set(${JSON.stringify(widok)});\n`);
 
 await esbuild.build({
   entryPoints: ['src/index.js'],

@@ -1,5 +1,12 @@
 # 📝 Historia zmian
 
+## v2.2.15 – Ikony i banery z Canvy
+
+- 🔼 Karta: przyciski „W górę”, „Stop”, „W dół” i wiersz automatyki (automat, pauza, uwaga) z ikonami z Canvy, w jasnym i ciemnym motywie
+- 🧭 Edytor karty: ikony kroków z Canvy (jak w kreatorze)
+- 🌤️ Symulator w opisie HACS: ikony pory dnia i pogody z Canvy
+- 🖼️ README: nowe banery z Canvy (PL, EN, DE, FR, CS), osobno dla jasnego i ciemnego motywu GitHuba
+
 ## v2.2.14 – Podgląd = to samo zdjęcie co kafelek
 
 - 🖼️ „Osłona”: miniatury i duży podgląd to zdjęcia z Canvy (rodzaj zgadnięty po osłonie, np. dzień-noc dla żaluzji bez lameli)

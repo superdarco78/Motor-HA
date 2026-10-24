@@ -5,6 +5,9 @@ import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, 
 import { kafelRuch, RODZAJE_RUCHU } from './kafle_ruch.js';
 import { ZDJECIA, UI, MASKI } from './zdjecia.js';
 import { przekoloruj, zKolorem } from './przekolor.js';
+import { RAMKI } from './ramki.js';
+import { UKLADY, SZYBY, tkanina } from './foto_okno.js';
+export { UKLADY };
 import { kafel, GRUPY_KAFLI } from './kafle.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
 import { rysunekBramy } from './brama.js';
@@ -64,17 +67,8 @@ const KROKI_BRAMY = ['silnik', 'rodzaj', 'kolory', 'czujniki', 'stoper', 'dzwone
 // krok klasycznego kreatora (skrót z karty i strony urządzenia) → krok kreatora graficznego
 // telefon: mały rysunek okna na górze w każdym kroku (stały, zmienia się od razu); „Pola” mają własny duży, „Gotowe” – kartę
 const BEZ_PODGLADU = ['przypisz', 'gotowe'];
+const UL = v => +(v * 100).toFixed(3) + '%';
 // szablony układów: pola (x, y, szer., wys.) w ułamkach okna; trzeci element – drzwi do podłogi
-export const UKLADY = [
-  ['u1', [[0, 0, 1, 1]]],
-  ['u2', [[0, 0, .5, 1], [.5, 0, .5, 1]]],
-  ['u3', [[0, 0, 1 / 3, 1], [1 / 3, 0, 1 / 3, 1], [2 / 3, 0, 1 / 3, 1]]],
-  ['u4', [[0, 0, .5, .28], [.5, 0, .5, .28], [0, .28, .5, .72], [.5, .28, .5, .72]]],
-  ['u5', [[0, 0, .55, .22], [.55, 0, .45, .22], [0, .22, .55, .5], [.55, .22, .45, .78]]],
-  ['u6', [[0, 0, .5, 1], [.5, 0, .5, 1]], true],
-  ['u7', [[0, 0, .25, 1], [.25, 0, .5, 1], [.75, 0, .25, 1]]],
-  ['u8', [[0, 0, .5, .5], [.5, 0, .5, .5], [0, .5, .5, .5], [.5, .5, .5, .5]]],
-];
 const KOLORY_TAB = Object.keys(KOLORY);
 const RAMY_TAB = Object.keys(RAMA_Z_KLUCZA);
 const STRONY = [['n', 0], ['e', 90], ['s', 180], ['w', 270]];
@@ -169,9 +163,10 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 :host([szeroko]) .krok .k{width:46px;height:46px;border-width:3px} :host([szeroko]) .krok svg{width:26px;height:26px} :host([szeroko]) .krok .n{font-size:12px} :host([szeroko]) .krok{padding-bottom:18px}
 :host([szeroko]) .scena[hidden]{display:none}
 .scena > div, .scena > svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.scena > div > svg, .scena #duzeOkno svg{width:100%;height:100%;max-height:100%}
+.scena > div > svg, .scena #duzeOkno > svg{width:100%;height:100%;max-height:100%}
 :host([szeroko]) .wybpol{position:static}
 .scena > .edscena{display:block;height:auto;max-width:560px}
+.scena{container-type:size}.scena .fokno{width:min(100%,calc((100cqh - 24px) * 193 / 161));margin:0 auto}
 .edscena #edytor{display:flex;justify-content:center} .edscena #edSvg{width:100%;height:auto;max-height:calc(100dvh - 420px)}
 :host([szeroko]) .krok .n{visibility:visible;color:var(--fg)} :host([szeroko]) .krok.teraz .n{color:var(--primary)}
 :host([szeroko]) .krok:not(.zrob):not(.teraz) .k{border-color:color-mix(in srgb,var(--primary) 45%,var(--line));color:var(--fg)}
@@ -181,13 +176,24 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .pod{margin:0 0 14px;color:var(--fg2);font-size:13px}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .chwyt{flex:none;width:28px;height:40px;display:grid;place-items:center;color:var(--fg2);font-size:20px;cursor:grab;touch-action:none;margin:-8px 0 -8px -6px}
-.wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} g.cel rect:first-child{fill:rgba(255,152,0,.35);stroke:#ff9800;stroke-width:3}
-.wiersz.zrod{opacity:.45} g.zrod{opacity:.5} #duzeOkno g[data-pole]{touch-action:none;cursor:grab} .wiersz{user-select:none;-webkit-user-select:none}
+.wiersz.cel{outline:3px solid var(--accent);outline-offset:-3px} .fsz.cel{background:rgba(255,152,0,.35);box-shadow:inset 0 0 0 3px #ff9800}
+.wiersz.zrod{opacity:.45} .fsz.zrod{opacity:.5} #duzeOkno .fsz[data-pole]{touch-action:none;cursor:grab} .wiersz{user-select:none;-webkit-user-select:none}
 .cialo{position:relative} .duch{position:absolute;left:0;top:0;z-index:20;pointer-events:none;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--surface);color:var(--fg);border:2px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:14px;white-space:nowrap}
 .duch .ik{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700}
 #duzeOkno svg{touch-action:none}
 .wybpol{margin:-4px 0 14px;padding:8px 0 12px;border-bottom:1px solid var(--line);position:sticky;top:-14px;z-index:3;background:var(--surface)}
-.wybpol #duzeOkno svg{max-height:30vh;width:auto;max-width:100%}
+.wybpol #duzeOkno .fokno{width:min(100%,36vh)}
+.fokno{position:relative;width:100%;max-width:100%;border-radius:12px;overflow:hidden;background:#d9dadb;user-select:none;-webkit-user-select:none}
+.fokno .ftlo{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
+.fsz{position:absolute;overflow:hidden}
+.fsz .obsz{position:absolute;inset:0}
+.ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
+.ftkp{position:absolute;left:0;right:0;bottom:0}
+.ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.fsz.wyb{box-shadow:inset 0 0 0 3px #ff9800;background:rgba(255,152,0,.18)}
+.fsz .fnr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;
+ box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 13px/1 var(--ha-font-family-body,Roboto,sans-serif);pointer-events:none}
+.fsz .fcz{width:24px;height:24px;position:absolute;left:50%;top:calc(50% + 24px);transform:translate(-50%,-50%);pointer-events:none}
 .linia{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--fg2);font-size:12px;margin:4px 0}
 .linia::before,.linia::after{content:"";flex:1;border-top:1px solid var(--line)}
 .kaf.caly{grid-column:1/-1;border:1.5px dashed var(--accent)} .kaf.caly .miejsce{white-space:normal;text-align:center;max-width:100%} .kaf.caly.wyb{border-style:solid}
@@ -381,32 +387,33 @@ export class MotorHaKreator extends HTMLElement {
     return d.join('');
   }
 
-  // całe okno: rama (dla każdej kolumny), szyby z widokiem, osłony, numery pól
+  // całe okno ze zdjęć (Canva): zdjęcie wybranego układu, a na każdej szybie osłona pola (wycinek zdjęcia rodzaju spod maski,
+  // w kolorze pola), opuszczona do poz. Własny układ: każde pole to zdjęcie jednego skrzydła (u1) rozciągnięte na pole.
   okno(opt = {}) {
-    const S = this.S, W = opt.w || 160, H = opt.h || 150, pad = 6, pl = prostokaty(S.u), rama = this._rama(), kol = this._kolor(), [n1, n2] = this._nieba();
-    const iw = W - 2 * pad, ih = H - 2 * pad, id = opt.id || 'p';
-    const d = [`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="max-width:100%;height:auto" role="img" aria-label="${esc(this.t.kroki.uklad)}">`];
-    d.push(`<defs><linearGradient id="n${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
-    for (const [x, y, w, h, typ] of przerwy(S.u)) if (typ === 'mur') d.push(this._przerwa(pad + x * iw - 1, 1, w * iw + 2, H - 2, 'mur'));
-    const xs = [...new Set(pl.map(p => p[0]))];
-    for (const x of xs) {
-      const k = pl.filter(p => p[0] === x), dol = Math.max(...k.map(p => p[1] + p[3]));
-      d.push(`<rect x="${x * iw + 1}" y="1" width="${k[0][2] * iw + 2 * pad - 2}" height="${dol * ih + 2 * pad - 2}" rx="4" fill="${rama}" stroke="#000" stroke-opacity=".25"/>`);
-    }
+    const S = this.S, pl = prostokaty(S.u), id = opt.id || 'p';
+    const nazwa = typeof S.szablon === 'number' && UKLADY[S.szablon] && UKLADY[S.szablon][1].length === pl.length ? UKLADY[S.szablon][0] : null;
+    const gotowy = nazwa && UI.has(nazwa + '.webp') && SZYBY[nazwa];
+    const proporcja = '193/161';
+    const d = [`<div class="fokno" data-id="${id}" role="img" aria-label="${esc(this.t.kroki.uklad)}" style="aspect-ratio:${proporcja}${opt.w ? `;width:${opt.w}px` : ''}">`];
+    if (gotowy) d.push(`<img class="ftlo" src="/motor_ha/ui/${nazwa}.webp?v=${WERSJA}" alt="" draggable="false">`);
+    const u1 = SZYBY.u1[0];
     pl.forEach((p, i) => {
-      const x = pad + p[0] * iw + 2, y = pad + p[1] * ih + 2, w = p[2] * iw - 4, h = p[3] * ih - 4;
-      d.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#n${id})"/>`);
-      d.push(`<path d="M${x} ${y + h * .78}l${w * .25} ${-h * .14} ${w * .2} ${h * .08} ${w * .3} ${-h * .16} ${w * .25} ${h * .1}V${y + h}H${x}z" fill="#000" opacity=".12"/>`);
-      const poz = opt.poz ? opt.poz(i) : 60;
-      const pp = S.pola[i] || {};   // pole może mieć własny rodzaj i kolor osłony
-      d.push(this.oslona(pp.oslona || S.o.oslona, x, y, w, h, poz, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol));
-      if (opt.numery) {
-        const on = opt.wybrane === i;
-        d.push(`<g data-pole="${i}" style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${on ? 'rgba(255,152,0,.25)' : 'transparent'}" stroke="${on ? '#ff9800' : 'none'}" stroke-width="3"/>
-          <circle cx="${x + w / 2}" cy="${y + h / 2}" r="11" fill="#009ac7" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>${this._znakCzujnika(i, x + w / 2, y + h / 2 + 22)}</g>`);
+      const pp = S.pola[i] || {}, typ = pp.oslona || S.o.oslona, kol = pp.kolor ? KOLORY[pp.kolor] || pp.kolor : this._kolor();
+      const poz = opt.poz ? opt.poz(i) : 40, zakryte = Math.max(0, Math.min(100, 100 - poz));
+      let sz;
+      if (gotowy) sz = SZYBY[nazwa][i];
+      else {   // własny: zdjęcie skrzydła na całe pole, szyba jak na tym zdjęciu
+        d.push(`<img class="ftlo" src="/motor_ha/ui/u1.webp?v=${WERSJA}" alt="" draggable="false" style="left:${UL(p[0])};top:${UL(p[1])};width:${UL(p[2])};height:${UL(p[3])}">`);
+        sz = [p[0] + u1[0] * p[2], p[1] + u1[1] * p[3], u1[2] * p[2], u1[3] * p[3]];
       }
+      const [x, y, w, h] = sz, rk = RAMKI[typ], on = opt.wybrane === i;
+      let tk = '';
+      if (rk && ZDJECIA.has(typ) && zakryte > 0)
+        tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp" style="height:${+(10000 / zakryte).toFixed(3)}%">${tkanina(typ, kol)}</div></div>`;
+      const nr = opt.numery ? `<span class="fnr">${i + 1}</span><svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : '';
+      d.push(`<div class="fsz${on ? ' wyb' : ''}"${opt.numery ? ` data-pole="${i}"` : ''} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}"><i class="obsz"></i>${tk}${nr}</div>`);
     });
-    d.push('</svg>');
+    d.push('</div>');
     return d.join('');
   }
   // znaczek pod numerem pola: pomarańczowy z oknem = czujnik przypisany (ukośna kreska = uchylone), przerywany „+” = brak czujnika
@@ -423,7 +430,7 @@ export class MotorHaKreator extends HTMLElement {
     if (k === 'uklad' && this._szeroko && r.getElementById('edSvg') && this._bezSceny) return;
     const sc = this._szeroko ? this._scena(k) : '';
     r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
-    r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && (S.szablon === 'w' || prostokaty(S.u).length > 1)) && !jedenDuzy ? this._podgladMaly() : '';
+    r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && S.szablon === 'w') && !jedenDuzy ? this._podgladMaly() : '';
     this._petlaRuchu();
     this._przekolorujZdj();
   }
@@ -440,39 +447,35 @@ export class MotorHaKreator extends HTMLElement {
       przekoloruj(t, k, WERSJA).then(u => { if (u && im.dataset.przek === t && im.dataset.kol === k && im.src !== u) im.src = u; });
     });
   }
-  // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
+  // duży podgląd w kolumnie z boku (szeroki ekran): zawsze zdjęcia z Canvy, od kroku Układ – zdjęcie wybranego układu,
+  // a na każdej szybie wybrany rodzaj w wybranym kolorze (1:1 z kafelkami); w Rodzaj, Kolory i Pola pola można dotykać
   _scena(k) {
     const S = this.S;
     if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
-    const n = prostokaty(S.u).length;
-    // Rodzaj i Kolory: duże zdjęcie wybranego rodzaju (Canva) w wybranym kolorze, 1:1 jak kafelek; przy kilku polach pod spodem przyciski pól
-    if (['rodzaj', 'kolory'].includes(k) && ZDJECIA.has(this._akt())) {
-      const zdj = this._zdj(this._akt(), this._aktKolor(), 'max-height:none;width:100%;border-radius:12px');
-      const wr = this._wybR(), pola = n > 1 && !S.brama ? `<div class="polaP">${Array.from({ length: n }, (_, i) => `<button class="probkaP ${wr === i ? 'wyb' : ''}" data-pole="${i}" aria-pressed="${wr === i}">${i + 1}</button>`).join('')}</div>` : '';
-      return `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:420px">${zdj}${pola}</div>`;
+    const duze = html => `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:480px">${html}</div>`;
+    const zdjecie = t => duze(this._zdj(t, t === this._akt() ? this._aktKolor() : this._kolor(), 'max-height:none;width:100%;border-radius:12px'));
+    if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : `<div>${this._brama(S.o.oslona)}</div>`;
+    if (k === 'silnik') {   // osłony jeszcze bez układu: zdjęcie rodzaju pierwszej wybranej osłony
+      const t = this._oslona(S.rolety[0]) ? this._typOslony(this._oslona(S.rolety[0])) : S.o.oslona;
+      if (ZDJECIA.has(t)) return zdjecie(t);
     }
-    // Układ: wybrany gotowy układ jako to samo zdjęcie co na kafelku; edytor tylko dla „Własny”
-    if (k === 'uklad' && typeof S.szablon === 'number' && UKLADY[S.szablon] && UI.has(UKLADY[S.szablon][0] + '.webp'))
-      return `<div style="width:100%;max-width:420px"><img class="zdj" src="/motor_ha/ui/${UKLADY[S.szablon][0]}.webp?v=${WERSJA}" alt="" style="width:100%;border-radius:12px"></div>`;
-    if (this._zRuchem(n, k)) {
-      const ruch = `<div class="ruchP" data-ruch="${this._akt()}" style="max-width:420px;width:100%">${this._ruchSvg(0)}</div>`;
-      // kilka pól: duży rysunek wybranego rodzaju, a pod nim małe okno do wybrania pola
-      if (['rodzaj', 'kolory'].includes(k) && n > 1 && !S.brama) return `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%">${ruch}<div id="duzeOkno">${this.okno({ w: 240, h: 200, numery: true, id: 'r', wybrane: this._wybR() })}</div></div>`;
-      return ruch;
+    if (k === 'uklad' && S.szablon === 'w') return `<div class="edscena">${this._edytorCaly()}</div>`;
+    if (k === 'uklad') return duze(this.okno({ poz: () => 100 }));
+    if (['rodzaj', 'kolory'].includes(k)) {
+      // rodzaj bez osłony na szybie (okno dachowe z napędem, firana): samo zdjęcie rodzaju
+      if (!RAMKI[this._akt()] && ZDJECIA.has(this._akt())) return zdjecie(this._akt());
+      return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: prostokaty(S.u).length > 1, id: 'r', wybrane: this._wybR() })}</div>`);
     }
-    const tS = k === 'silnik' && (this._oslona(S.rolety[0]) && !S.brama ? this._typOslony(this._oslona(S.rolety[0])) : S.o.oslona);
-    if (k === 'silnik' && ZDJECIA.has(tS)) return `<div style="width:100%;max-width:420px">${this._zdj(tS, this._kolor(), 'max-height:none;width:100%;border-radius:12px')}</div>`;
-    if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
-    if (k === 'uklad') return `<div class="edscena">${this._edytorCaly()}</div>`;
-    if (k === 'przypisz') return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'd', wybrane: S.arkusz })}</div>`;
-    if (['rodzaj', 'kolory'].includes(k) && n > 1) return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'r', wybrane: this._wybR() })}</div>`;
-    return `<div>${this.okno({ w: 440, h: 400, id: 's' })}</div>`;
+    if (k === 'przypisz') return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: 'd', wybrane: S.arkusz })}</div>`);
+    return duze(this.okno({ id: 's' }));
   }
   _podgladMaly() {
-    const k = this.kroki()[this.S.krok];
-    if (['rodzaj', 'kolory', 'silnik'].includes(k) && ZDJECIA.has(this._akt())) return `<div style="width:200px;max-width:100%">${this._zdj(this._akt(), this._aktKolor(), 'max-height:none;width:100%;border-radius:8px')}</div>`;
-    if (this._zRuchem(prostokaty(this.S.u).length, this.kroki()[this.S.krok])) return `<div class="ruchP" data-ruch="${this._akt()}" style="width:200px;max-width:100%">${this._ruchSvg(0)}</div>`;
-    return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' });
+    const k = this.kroki()[this.S.krok], S = this.S;
+    const zdj = t => `<div style="width:200px;max-width:100%">${this._zdj(t, this._aktKolor(), 'max-height:none;width:100%;border-radius:8px')}</div>`;
+    if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
+    if (k === 'silnik' && ZDJECIA.has(this._akt())) return zdj(this._akt());
+    if (['rodzaj', 'kolory'].includes(k) && !RAMKI[this._akt()] && ZDJECIA.has(this._akt())) return zdj(this._akt());
+    return `<div style="width:220px;max-width:100%">${this.okno({ id: 'p', poz: k === 'uklad' ? () => 100 : undefined })}</div>`;
   }
   // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
   // w „Rodzaj” i „Kolory” każdy rodzaj pokazuje własny rysunek jak na kafelku (1:1), także rolety SK/SKO/SP/SKN, a nie wspólne okno
@@ -592,10 +595,10 @@ export class MotorHaKreator extends HTMLElement {
   str_uklad() {
     const S = this.S, t = this.t;
     // szeroki ekran: edytuje się prosto na dużym rysunku z boku, tu zostają szablony
-    const ed = (S.szablon === 'w' || prostokaty(S.u).length > 1) && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
+    const ed = S.szablon === 'w' && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
       ${this._edytorCaly()}<div class="sek">${esc(t.zSzablonu)}</div>` : '';
     return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? 'wyb' : ''}" data-uklad="${i}">${this.kafelUkladu(P, drzwi, k)}<b>${esc(dziel(t.uklady[k]))}</b></button>`).join('')}
-      <button class="kaf ${S.szablon === 'w' ? 'wyb' : ''}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc(t.uklady.wlasny)}</b></button></div>`;
+      <button class="kaf ${S.szablon === 'w' ? 'wyb' : ''}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u), false, "wlasny")}<b>${esc(t.uklady.wlasny)}</b></button></div>`;
   }
   // „Rodzaj”: grupy jak w katalogach producentów, realistyczny obrazek i nazwa (z kodem modelu) pod każdym
   str_rodzaj() {
@@ -814,8 +817,7 @@ export class MotorHaKreator extends HTMLElement {
       const x = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
       const pp = S.pola[i] || {}, wi = Math.max(0, w - 8), hi = Math.max(0, h - 8);
       d.push(`<g data-ep="${i}"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
-        ${duzy ? `<rect x="${x + 4}" y="${y + 4}" width="${wi}" height="${hi}" fill="url(#nE)"/><path d="M${x + 4} ${y + 4 + hi * .78}l${wi * .25} ${-hi * .14} ${wi * .2} ${hi * .08} ${wi * .3} ${-hi * .16} ${wi * .25} ${hi * .1}V${y + 4 + hi}H${x + 4}z" fill="#000" opacity=".12"/>${this.oslona(pp.oslona || S.o.oslona, x + 4, y + 4, wi, hi, 60, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol)}`
-          : `<rect x="${x + 3}" y="${y + 3}" width="${Math.max(0, w - 6)}" height="${Math.max(0, h - 6)}" fill="${n1}"/>`}
+        ${this._poleZdj(x, y, w, h, pp.oslona || S.o.oslona, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol, i)}
         ${on ? `<rect x="${x + 1.5}" y="${y + 1.5}" width="${Math.max(0, w - 3)}" height="${Math.max(0, h - 3)}" fill="none" stroke="#ff9800" stroke-width="3"/>` : ''}
         ${duzy ? `<circle cx="${x + w / 2}" cy="${y + h / 2}" r="12" fill="${on ? '#ff9800' : '#009ac7'}" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>`
           : `<text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? '#e65100' : '#1c3a4a'}">${i + 1}</text>`}</g>`);
@@ -842,6 +844,18 @@ export class MotorHaKreator extends HTMLElement {
     d.push('</svg>');
     this._ed = { EW, EH, EP };
     return d.join('');
+  }
+  // pole w edytorze własnego układu: zdjęcie skrzydła (u1) rozciągnięte na pole, a na szybie osłona ze zdjęcia rodzaju (maska)
+  _poleZdj(x, y, w, h, typ, kol, i) {
+    const [gx, gy, gw, gh] = SZYBY.u1[0], X = x + gx * w, Y = y + gy * h, W = gw * w, H = gh * h, rk = RAMKI[typ];
+    let tk = '';
+    if (rk && ZDJECIA.has(typ)) {
+      const [bx, by, bw, bh] = rk, z = .6;
+      tk = `<defs><mask id="em${i}" maskContentUnits="userSpaceOnUse"><image href="/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA}" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></mask></defs>
+        <svg x="${X}" y="${Y}" width="${W}" height="${H * z}" overflow="hidden"><svg y="${-H * (1 - z)}" width="${W}" height="${H}" viewBox="${bx} ${by} ${bw} ${bh}" preserveAspectRatio="none">
+        <image href="${zKolorem(typ, kol) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" x="0" y="0" width="1" height="1" preserveAspectRatio="none" mask="url(#em${i})"/></svg></svg>`;
+    }
+    return `<image href="/motor_ha/ui/u1.webp?v=${WERSJA}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>${tk}`;
   }
   // wąski odstęp = słupek w kolorze ramy, szeroki = kawałek ściany (cegły)
   _przerwa(x, y, w, h, typ) {
@@ -939,7 +953,7 @@ export class MotorHaKreator extends HTMLElement {
   _polePod(e) {
     // po geometrii samego pola (nie po kółku z numerem czy ikonie czujnika, które mogą wystawać na sąsiada)
     let naj = null, pole = Infinity;
-    for (const el of this.shadowRoot.querySelectorAll('#duzeOkno g[data-pole] > rect:first-child, .wiersz[data-pole]')) {
+    for (const el of this.shadowRoot.querySelectorAll('#duzeOkno .fsz[data-pole] > .obsz, .wiersz[data-pole]')) {
       const b = el.getBoundingClientRect();
       if (e.clientX >= b.left && e.clientX <= b.right && e.clientY >= b.top && e.clientY <= b.bottom && b.width * b.height < pole) { pole = b.width * b.height; naj = el.closest('[data-pole]'); }
     }
@@ -990,7 +1004,7 @@ export class MotorHaKreator extends HTMLElement {
     r.addEventListener('input', e => this._wpis(e));
     r.addEventListener('pointerdown', e => {
       // Pola: złap pole na rysunku albo wiersz (palcem: uchwyt ⠿) i upuść na innym polu – zamiana miejscami
-      const zp = this.kroki()[this.S.krok] === 'przypisz' && (e.target.closest?.('#duzeOkno g[data-pole]') || e.target.closest?.('.chwyt')?.closest('[data-pole]')
+      const zp = this.kroki()[this.S.krok] === 'przypisz' && (e.target.closest?.('#duzeOkno .fsz[data-pole]') || e.target.closest?.('.chwyt')?.closest('[data-pole]')
         || (e.pointerType === 'mouse' ? e.target.closest?.('.wiersz[data-pole]') : null));
       if (zp && e.button === 0) {
         e.preventDefault();   // bez zaznaczania tekstu i bez natywnego przeciągania w Chrome
@@ -1068,7 +1082,7 @@ export class MotorHaKreator extends HTMLElement {
 
   async _klik(e) {
     if (this._poZamianie) return;
-    const b = e.target.closest('button, g[data-pole], g[data-dodaj], [data-zamknij]');
+    const b = e.target.closest('button, .fsz[data-pole], g[data-dodaj], [data-zamknij]');
     if (!b) return;
     const S = this.S, o = S.o, d = b.dataset, kroki = this.kroki();
     if (d.x) return this._p.zamknij();
