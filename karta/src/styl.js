@@ -156,6 +156,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .foto .oslona .ftkp{position:absolute;left:0;right:0;bottom:0}
 .foto .oslona .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .foto .listwa,.foto .klamka{display:none}
+.foto.noc .okno .ftlo,.foto.noc .oslona .ftki{filter:brightness(.62) saturate(.85);transition:filter 1.5s}
 .poziomo .skrz,.poziomo .zewo{cursor:pointer}
 /* brama i garaż */
 .bramaw{position:relative;width:min(100%,420px);border-radius:var(--ha-border-radius-md,8px);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
