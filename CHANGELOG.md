@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.2.11 – Podgląd 1:1 dla każdego rodzaju
+
+- 🪟 Kroki „Rodzaj” i „Kolory”: podgląd zawsze rysuje dokładnie wybrany rodzaj, także rolety SK, SKO, SP, SKN, bambusowe, plisy i inne podstawowe (wcześniej pokazywały wspólne okno)
+- 🔢 Okno z kilkoma polami: duży podgląd pokazuje rodzaj i kolor zaznaczonego pola, pod nim małe okno do wybrania pola
+- 🖼️ Zdjęcia (wygenerowane przez AI w Canvie) dla wszystkich 79 rodzajów, także bram i garaży
+
 ## v2.2.10 – Nowa ikona
 
 - 🏠 Nowa ikona Motor HA (dom z roletą, garażem i bramą) w HA, HACS i na stronie integracji

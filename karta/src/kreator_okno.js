@@ -427,7 +427,12 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S;
     if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
     const n = prostokaty(S.u).length;
-    if (this._zRuchem(n, k)) return `<div class="ruchP" data-ruch="${S.o.oslona}" style="max-width:420px">${this._ruchSvg(0)}</div>`;
+    if (this._zRuchem(n, k)) {
+      const ruch = `<div class="ruchP" data-ruch="${this._akt()}" style="max-width:420px;width:100%">${this._ruchSvg(0)}</div>`;
+      // kilka pól: duży rysunek wybranego rodzaju, a pod nim małe okno do wybrania pola
+      if (['rodzaj', 'kolory'].includes(k) && n > 1 && !S.brama) return `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%">${ruch}<div id="duzeOkno">${this.okno({ w: 240, h: 200, numery: true, id: 'r', wybrane: this._wybR() })}</div></div>`;
+      return ruch;
+    }
     if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
     if (k === 'uklad') return `<div class="edscena">${this._edytorCaly()}</div>`;
     if (k === 'przypisz') return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'd', wybrane: S.arkusz })}</div>`;
@@ -435,18 +440,24 @@ export class MotorHaKreator extends HTMLElement {
     return `<div>${this.okno({ w: 440, h: 400, id: 's' })}</div>`;
   }
   _podgladMaly() {
-    if (this._zRuchem(prostokaty(this.S.u).length, this.kroki()[this.S.krok])) return `<div class="ruchP" data-ruch="${this.S.o.oslona}" style="width:200px;max-width:100%">${this._ruchSvg(0)}</div>`;
+    if (this._zRuchem(prostokaty(this.S.u).length, this.kroki()[this.S.krok])) return `<div class="ruchP" data-ruch="${this._akt()}" style="width:200px;max-width:100%">${this._ruchSvg(0)}</div>`;
     return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' });
   }
   // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
-  // w „Rodzaj” i „Kolory” każdy rodzaj z katalogu pokazuje własny rysunek (jak wybrany, 1:1), a nie najbliższy rodzaj bazowy
+  // w „Rodzaj” i „Kolory” każdy rodzaj pokazuje własny rysunek jak na kafelku (1:1), także rolety SK/SKO/SP/SKN, a nie wspólne okno
   _zRuchem(n, k) {
-    const t = this.S.o.oslona;
+    const t = this._akt();
     if (!RODZAJE_RUCHU.includes(t)) return false;
-    if (['rodzaj', 'kolory'].includes(k) && this._wybR() === null && baza(t) !== t) return true;
+    if (['rodzaj', 'kolory'].includes(k)) return true;
     return wlasnyRuch(t) && (this.S.brama || n <= 1);
   }
-  _ruchSvg(o) { return kafelRuch(this.S.o.oslona, o, this._kolor(), this._rama()); }
+  // rodzaj i kolor, które teraz widać: wybranego pola (Rodzaj/Kolory) albo całego okna
+  _akt() { const S = this.S, wr = ['rodzaj', 'kolory'].includes(this.kroki()[S.krok]) ? this._wybR() : null; return wr === null ? S.o.oslona : S.pola[wr]?.oslona || S.o.oslona; }
+  _aktKolor() {
+    const S = this.S, wr = ['rodzaj', 'kolory'].includes(this.kroki()[S.krok]) ? this._wybR() : null, k = wr === null ? null : S.pola[wr]?.kolor;
+    return k ? KOLORY[k] || k : this._kolor();
+  }
+  _ruchSvg(o) { return kafelRuch(this._akt(), o, this._aktKolor(), this._rama()); }
   _petlaRuchu() {
     if (this._petla) return;
     const t0 = performance.now();
