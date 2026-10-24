@@ -44,5 +44,9 @@ export function tkanina(typ, kolor) {
   const rk = RAMKI[typ];
   if (!rk || !ZDJECIA.has(typ)) return '';
   const [bx, by, bw, bh] = rk, src = `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`, mk = `url(/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA})`;
-  return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:${UL(1 / bw)};height:${UL(1 / bh)};left:${UL(-bx / bw)};top:${UL(-by / bh)};-webkit-mask-image:${mk};mask-image:${mk}">`;
+  // osłona ze zdjęcia w proporcjach zdjęcia (jak kafelek), bez rozciągania: wypełnia zasłoniętą część szyby
+  // jak object-fit:cover – kaseta u góry, dolna listwa na dole, lamele i paski w tej samej gęstości co na kafelku
+  const A = +(bw * 193 / (bh * 161)).toFixed(4), W = `max(100cqw, 100cqh * ${A})`, H = `(${W} / ${A})`;
+  const n = v => +v.toFixed(4);
+  return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:calc(${W} * ${n(1 / bw)});height:calc(${H} * ${n(1 / bh)});left:calc((100cqw - ${W}) / 2 - ${W} * ${n(bx / bw)});top:calc((100cqh - ${H}) / 2 - ${H} * ${n(by / bh)});-webkit-mask-image:${mk};mask-image:${mk}">`;
 }

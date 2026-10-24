@@ -192,7 +192,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .fsz{position:absolute;overflow:hidden}
 .fsz .obsz{position:absolute;inset:0}
 .ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
-.ftkp{position:absolute;left:0;right:0;bottom:0}
+.ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
 .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .fsz.wyb{box-shadow:inset 0 0 0 3px #ff9800;background:rgba(255,152,0,.18)}
 .fsz .fnr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;
@@ -413,7 +413,7 @@ export class MotorHaKreator extends HTMLElement {
       const [x, y, w, h] = sz, rk = RAMKI[typ], on = opt.wybrane === i;
       let tk = '';
       if (rk && ZDJECIA.has(typ) && zakryte > 0)
-        tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp" style="height:${+(10000 / zakryte).toFixed(3)}%">${tkanina(typ, kol)}</div></div>`;
+        tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp">${tkanina(typ, kol)}</div></div>`;
       const nr = opt.numery ? `<span class="fnr">${i + 1}</span><svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : '';
       d.push(`<div class="fsz${on ? ' wyb' : ''}"${opt.numery ? ` data-pole="${i}"` : ''} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}"><i class="obsz"></i>${tk}${nr}</div>`);
     });

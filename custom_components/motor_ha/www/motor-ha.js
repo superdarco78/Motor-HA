@@ -1170,7 +1170,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .foto .skrz{position:absolute;padding:0;margin:0;background:none!important;border-radius:0;box-shadow:none}
 .foto .szyba{border-radius:0}
 .foto .oslona{background:none!important;overflow:hidden;box-shadow:none}
-.foto .oslona .ftkp{position:absolute;left:0;right:0;bottom:0}
+.foto .oslona .ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
 .foto .oslona .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .foto .listwa,.foto .klamka{display:none}
 .foto.noc .okno .ftlo,.foto.noc .oslona .ftki{filter:brightness(.62) saturate(.85);transition:filter 1.5s}
@@ -9344,7 +9344,6 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     u7: [[0.111, 0.165, 0.111, 0.612], [0.295, 0.151, 0.408, 0.635], [0.777, 0.165, 0.106, 0.612]],
     u8: [[0.202, 0.109, 0.266, 0.335], [0.534, 0.107, 0.264, 0.339], [0.203, 0.52, 0.263, 0.325], [0.535, 0.52, 0.263, 0.326]]
   };
-  var UL = (v) => +(v * 100).toFixed(3) + "%";
   function nazwaUkladu(pola) {
     if (!pola?.length) return null;
     const blisko = (a, b) => Math.abs(a - b) < 0.02;
@@ -9355,7 +9354,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     const rk = RAMKI[typ];
     if (!rk || !ZDJECIA.has(typ)) return "";
     const [bx, by, bw, bh] = rk, src = `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`, mk = `url(/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA})`;
-    return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:${UL(1 / bw)};height:${UL(1 / bh)};left:${UL(-bx / bw)};top:${UL(-by / bh)};-webkit-mask-image:${mk};mask-image:${mk}">`;
+    const A = +(bw * 193 / (bh * 161)).toFixed(4), W3 = `max(100cqw, 100cqh * ${A})`, H2 = `(${W3} / ${A})`;
+    const n = (v) => +v.toFixed(4);
+    return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:calc(${W3} * ${n(1 / bw)});height:calc(${H2} * ${n(1 / bh)});left:calc((100cqw - ${W3}) / 2 - ${W3} * ${n(bx / bw)});top:calc((100cqh - ${H2}) / 2 - ${H2} * ${n(by / bh)});-webkit-mask-image:${mk};mask-image:${mk}">`;
   }
 
   // src/bramy_zdj.js
@@ -9990,7 +9991,6 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (this._foto) {
           P3.oslona.style.top = "0";
           P3.oslona.style.height = (100 - r.widac).toFixed(2) + "%";
-          P3.oslona.firstElementChild.style.height = wys + "px";
           if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
           P3._dol = P3.p.offsetTop + (P3.p.parentElement?.offsetTop || 0) + wys * (100 - r.widac) / 100;
           return;
@@ -10621,7 +10621,7 @@ button .iku{--iku:20px}
   var KROKI_OKNA = ["silnik", "uklad", "rodzaj", "kolory", "przypisz", "czujniki", "auto", "stoper", "dzwonek", "gotowe"];
   var KROKI_BRAMY = ["silnik", "rodzaj", "kolory", "czujniki", "stoper", "dzwonek", "gotowe"];
   var BEZ_PODGLADU = ["przypisz", "gotowe"];
-  var UL2 = (v) => +(v * 100).toFixed(3) + "%";
+  var UL = (v) => +(v * 100).toFixed(3) + "%";
   var KOLORY_TAB = Object.keys(KOLORY);
   var RAMY_TAB = Object.keys(RAMA_Z_KLUCZA);
   var STRONY = [["n", 0], ["e", 90], ["s", 180], ["w", 270]];
@@ -10756,7 +10756,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .fsz{position:absolute;overflow:hidden}
 .fsz .obsz{position:absolute;inset:0}
 .ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
-.ftkp{position:absolute;left:0;right:0;bottom:0}
+.ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
 .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .fsz.wyb{box-shadow:inset 0 0 0 3px #ff9800;background:rgba(255,152,0,.18)}
 .fsz .fnr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;
@@ -11004,15 +11004,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         let sz;
         if (gotowy) sz = SZYBY[nazwa2][i];
         else {
-          d.push(`<img class="ftlo" src="/motor_ha/ui/u1.webp?v=${WERSJA}" alt="" draggable="false" style="left:${UL2(p[0])};top:${UL2(p[1])};width:${UL2(p[2])};height:${UL2(p[3])}">`);
+          d.push(`<img class="ftlo" src="/motor_ha/ui/u1.webp?v=${WERSJA}" alt="" draggable="false" style="left:${UL(p[0])};top:${UL(p[1])};width:${UL(p[2])};height:${UL(p[3])}">`);
           sz = [p[0] + u1[0] * p[2], p[1] + u1[1] * p[3], u1[2] * p[2], u1[3] * p[3]];
         }
         const [x, y, w, h] = sz, rk = RAMKI[typ], on = opt.wybrane === i;
         let tk = "";
         if (rk && ZDJECIA.has(typ) && zakryte > 0)
-          tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp" style="height:${+(1e4 / zakryte).toFixed(3)}%">${tkanina(typ, kol)}</div></div>`;
+          tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp">${tkanina(typ, kol)}</div></div>`;
         const nr2 = opt.numery ? `<span class="fnr">${i + 1}</span><svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : "";
-        d.push(`<div class="fsz${on ? " wyb" : ""}"${opt.numery ? ` data-pole="${i}"` : ""} style="left:${UL2(x)};top:${UL2(y)};width:${UL2(w)};height:${UL2(h)}"><i class="obsz"></i>${tk}${nr2}</div>`);
+        d.push(`<div class="fsz${on ? " wyb" : ""}"${opt.numery ? ` data-pole="${i}"` : ""} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}"><i class="obsz"></i>${tk}${nr2}</div>`);
       });
       d.push("</div>");
       return d.join("");

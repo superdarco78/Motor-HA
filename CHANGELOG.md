@@ -1,6 +1,7 @@
 # 📝 Historia zmian
 
 ## v2.2.16 – Podgląd po lewej, ustawienia po prawej
+- 🪟 Osłona na szybie wygląda jak na kafelku: zdjęcie w swoich proporcjach, bez rozciągania (paski dzień-noc, plisy i lamele w tej samej gęstości co na kafelku), w kreatorze i na karcie
 - 🔄 Aplikacja HA na telefonie: po aktualizacji sama wczytuje nową wersję przy powrocie do aplikacji, także gdy kreator był otwarty (wcześniej mogła zostać stara karta z rysunkami)
 
 - ↔️ Kreator na komputerze: duże zdjęcie okna po lewej stronie, wybór i ustawienia po prawej
