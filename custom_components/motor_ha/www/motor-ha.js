@@ -12500,6 +12500,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     window.__motorHaStrony = true;
     strony(() => rejestruj(true));
   }
+  window.__motorHaDziala ?? (window.__motorHaDziala = WERSJA);
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");
 })();
