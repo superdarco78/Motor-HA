@@ -341,7 +341,7 @@
       "zle_dane": "Мастер отправил неполные настройки. Откройте его ещё раз.",
       "brak_rolety": "Выберите мотор хотя бы для одного поля.",
       "za_duzo": "Слишком много моторов (не более 12).",
-      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
+      "odswiez": "Motor HA только что запустился. **[Открыть графический мастер](/motor-ha-start)**"
     }
   },
   "options": {

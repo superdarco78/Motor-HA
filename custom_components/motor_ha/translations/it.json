@@ -341,7 +341,7 @@
       "zle_dane": "La procedura guidata ha inviato impostazioni incomplete. Aprila di nuovo.",
       "brak_rolety": "Scegli un motore per almeno un riquadro.",
       "za_duzo": "Troppi motori (al massimo 12).",
-      "odswiez": "The Motor HA graphical wizard has just been loaded. Refresh the page (Ctrl+Shift+R in the browser, close and reopen the app) and click “Add device” again."
+      "odswiez": "Motor HA si è appena avviato. **[Apri la procedura guidata grafica](/motor-ha-start)**"
     }
   },
   "options": {

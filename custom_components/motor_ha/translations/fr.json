@@ -341,7 +341,7 @@
       "zle_dane": "L’assistant a envoyé des réglages incomplets. Ouvrez-le à nouveau.",
       "brak_rolety": "Choisissez un moteur pour au moins un panneau.",
       "za_duzo": "Trop de moteurs (12 au maximum).",
-      "odswiez": "L’assistant graphique de Motor HA vient d’être chargé. Actualisez la page (Ctrl+Maj+R dans le navigateur, fermez et rouvrez l’application) puis cliquez à nouveau sur « Ajouter un appareil »."
+      "odswiez": "Motor HA vient de démarrer. **[Ouvrir l’assistant graphique](/motor-ha-start)**"
     }
   },
   "options": {

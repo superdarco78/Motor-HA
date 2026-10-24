@@ -77,25 +77,31 @@ test('kreator na telefonie: dodanie osłony od początku do końca', { timeout: 
   // pierwsze wejście: karta Motor HA może raz sama odświeżyć stronę (nowa wersja) – czekamy, aż się uspokoi
   await strona.goto(HA + '/config/integrations/dashboard');
   await strona.waitForTimeout(15_000);
-  // pierwsze „Dodaj” po instalacji może: poprosić o odświeżenie albo pokazać zwykły formularz HA bez grafiki –
-  // wtedy robimy to, co użytkownik: zamykamy, odświeżamy stronę i klikamy „Dodaj” jeszcze raz
+  // pierwsze „Dodaj” po instalacji uruchamia integrację i pokazuje link „Otwórz kreator graficzny” (strona HA nie ma
+  // jeszcze skryptów Motor HA) – klikamy go jak użytkownik; druga próba musi już dać kreator graficzny
   const kreator = strona.locator('motor-ha-kreator');
   let graficzny = false;
-  for (let proba = 1; proba <= 3 && !graficzny; proba++) {
+  for (let proba = 1; proba <= 2 && !graficzny; proba++) {
     await strona.goto(HA + '/config/integrations/dashboard/add?domain=motor_ha');
     const ok = await czekajNaPrzycisk(['OK']);
     assert.ok(ok, 'pytanie „Czy chcesz skonfigurować Motor HA?”');
     await ok.el.click();
     graficzny = !!(await czekajNaPrzycisk(['Dalej'], 15, kreator));
-    const widok = graficzny ? 'kreator graficzny' : (await przycisk(['Zamknij'])) ? 'prośba o odświeżenie' : 'zwykły formularz HA';
+    const link = graficzny ? null : await przycisk(['Otwórz kreator graficzny']);
+    const widok = graficzny ? 'kreator graficzny' : link ? 'link do kreatora' : 'zwykły formularz HA';
     kroki.push({ proba, widok });
     if (!graficzny) {
       await strona.screenshot({ path: WYNIKI + `proba-${proba}.png` });
-      await strona.reload();
-      await strona.waitForTimeout(8000);
+      if (!link) break;
+      await link.el.click();
+      const ok2 = await czekajNaPrzycisk(['OK']);
+      assert.ok(ok2, 'po linku: pytanie „Czy chcesz skonfigurować Motor HA?”');
+      await ok2.el.click();
+      graficzny = !!(await czekajNaPrzycisk(['Dalej'], 25, kreator));
+      kroki.push({ proba, widok: graficzny ? 'kreator graficzny po linku' : 'brak kreatora po linku' });
     }
   }
-  assert.ok(graficzny, 'kreator graficzny Motor HA nie pojawił się po 3 próbach');
+  assert.ok(graficzny, 'kreator graficzny Motor HA nie pojawił się po 2 próbach');
   await strona.waitForTimeout(3000);
   // krok 1: pierwsza udawana roleta z integracji demo
   await strona.getByText('Hall Window', { exact: true }).click();

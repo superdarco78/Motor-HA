@@ -9,12 +9,21 @@ import { MotorHaUrzadzenie } from './urzadzenie.js';
 import { MotorHaKreator } from './kreator_okno.js';
 import { strony } from './strona.js';
 
+// Strona /motor-ha-start: HA wczytał ją razem z tym plikiem, więc kreator już jest – wracamy do dodawania urządzenia
+class MotorHaStart extends HTMLElement {
+  connectedCallback() {
+    history.replaceState(null, '', '/config/integrations/dashboard/add?domain=motor_ha');
+    window.dispatchEvent(new CustomEvent('location-changed', { detail: { replace: true } }));
+  }
+}
+
 const ELEMENTY = [
   ['motor-ha', MotorHaKarta], ['okno-ha', class extends MotorHaKarta {}],
   ['motor-ha-editor', MotorHaEdytor], ['okno-ha-editor', class extends MotorHaEdytor {}],
   ['motor-ha-dom', MotorHaDom], ['motor-ha-symulator', MotorHaSymulator],   // symulator tylko dla opisu w HACS
   ['motor-ha-urzadzenie', MotorHaUrzadzenie],   // karta na stronie urządzenia w Ustawieniach (strona.js)
   ['motor-ha-kreator', MotorHaKreator],   // kreator graficzny nad okienkiem HA (kreator.js)
+  ['motor-ha-start', MotorHaStart],   // ukryta strona /motor-ha-start (pierwsze urządzenie po instalacji)
   ['roleta-realistyczna', class extends MotorHaKarta {}], ['roleta-realistyczna-editor', class extends MotorHaEdytor {}]
 ];
 // HA w trakcie startu potrafi podmienić rejestr elementów (window.customElements). Karta wczytana wcześniej

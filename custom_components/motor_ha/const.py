@@ -4,10 +4,11 @@ from __future__ import annotations
 
 DOMAIN = "motor_ha"
 NAZWA = "Motor HA"
-VERSION = "2.2.21"
+VERSION = "2.2.22"
 WLASCICIEL = "superdarco78"
 REPO = "Motor-HA"
 KARTA_PLIK = "motor-ha.js"
+START = "motor-ha-start"   # ukryta strona: wczytuje skrypty Motor HA i wraca do dodawania urządzenia
 LOADER = "motor-ha-loader.js"
 PACZKA = "motor_ha.zip"
 
