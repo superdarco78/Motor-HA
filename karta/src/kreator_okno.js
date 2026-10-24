@@ -7,6 +7,7 @@ import { ZDJECIA, UI, MASKI } from './zdjecia.js';
 import { przekoloruj, zKolorem } from './przekolor.js';
 import { RAMKI } from './ramki.js';
 import { UKLADY, SZYBY, tkanina } from './foto_okno.js';
+import { maZdjecieBramy, bramaZdjecie } from './brama_foto.js';
 export { UKLADY };
 import { kafel, GRUPY_KAFLI } from './kafle.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
@@ -183,6 +184,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 #duzeOkno svg{touch-action:none}
 .wybpol{margin:-4px 0 14px;padding:8px 0 12px;border-bottom:1px solid var(--line);position:sticky;top:-14px;z-index:3;background:var(--surface)}
 .wybpol #duzeOkno .fokno{width:min(100%,36vh)}
+.fbr{position:relative;width:100%;aspect-ratio:5/4;border-radius:12px;overflow:hidden;background:#d9dadb}
+.fbr img{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none;user-select:none}
+.fbr .fbo,.fbr .fbs{position:absolute;inset:0}
 .fokno{position:relative;width:100%;max-width:100%;border-radius:12px;overflow:hidden;background:#d9dadb;user-select:none;-webkit-user-select:none}
 .fokno .ftlo{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
 .fsz{position:absolute;overflow:hidden}
@@ -454,7 +458,7 @@ export class MotorHaKreator extends HTMLElement {
     if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
     const duze = html => `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:480px">${html}</div>`;
     const zdjecie = t => duze(this._zdj(t, t === this._akt() ? this._aktKolor() : this._kolor(), 'max-height:none;width:100%;border-radius:12px'));
-    if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : `<div>${this._brama(S.o.oslona)}</div>`;
+    if (S.brama) return maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : `<div>${this._brama(S.o.oslona)}</div>`;
     if (k === 'silnik') {   // osłony jeszcze bez układu: zdjęcie rodzaju pierwszej wybranej osłony
       const t = this._oslona(S.rolety[0]) ? this._typOslony(this._oslona(S.rolety[0])) : S.o.oslona;
       if (ZDJECIA.has(t)) return zdjecie(t);
@@ -472,7 +476,7 @@ export class MotorHaKreator extends HTMLElement {
   _podgladMaly() {
     const k = this.kroki()[this.S.krok], S = this.S;
     const zdj = t => `<div style="width:200px;max-width:100%">${this._zdj(t, this._aktKolor(), 'max-height:none;width:100%;border-radius:8px')}</div>`;
-    if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
+    if (S.brama) return maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
     if (k === 'silnik' && ZDJECIA.has(this._akt())) return zdj(this._akt());
     if (['rodzaj', 'kolory'].includes(k) && !RAMKI[this._akt()] && ZDJECIA.has(this._akt())) return zdj(this._akt());
     return `<div style="width:220px;max-width:100%">${this.okno({ id: 'p', poz: k === 'uklad' ? () => 100 : undefined })}</div>`;

@@ -12,6 +12,7 @@ import { konfiguruj } from './urzadzenie.js';
 import { ikUI, STYL_IKU } from './ikony_ui.js';
 import { SZYBY, nazwaUkladu, tkanina } from './foto_okno.js';
 import { przekoloruj } from './przekolor.js';
+import { maZdjecieBramy, bramaZdjecie, ustawBrameZdj, STYL_BRAMY } from './brama_foto.js';
 
 // klucze, które zostają w karcie na panelu, gdy ustawienia trzyma urządzenie Motor HA
 // pola układu okna (2.2.0) z urządzenia: [{ x, y, w, h, silnik, czujnik, tryb }] albo null (1–2 skrzydła)
@@ -203,9 +204,10 @@ export class MotorHaKarta extends HTMLElement {
     const T = this._T, root = this.shadowRoot || this.attachShadow({ mode: 'open' });
     this._brama = true; this._uk = false; this._poziomo = false; this._kas = 0; this._brNoc = null;
     // nowy rodzaj (markiza koszowa, okno dachowe, szlaban…): własny rysunek z kafle_ruch.js, jedzie razem z silnikiem
-    this._scenaRuchu = wlasnyRuch(c.rodzaj) ? c.rodzaj : null; this._ostO = null;
+    this._brTyp = maZdjecieBramy(c.rodzaj) ? c.rodzaj : c.oslona;
+    this._scenaRuchu = wlasnyRuch(c.rodzaj) && !maZdjecieBramy(this._brTyp) ? c.rodzaj : null; this._ostO = null;
     const st = this._hass.states[c.entity], zPoz = (st?.attributes?.supported_features ?? 0) & 4;
-    root.innerHTML = `<style>${STYL_STALY}${STYL_IKU}</style>
+    root.innerHTML = `<style>${STYL_STALY}${STYL_IKU}${STYL_BRAMY}</style>
 <ha-card class="brama"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena"><div class="bramaw" role="button" tabindex="0"></div></div>
@@ -432,7 +434,8 @@ export class MotorHaKarta extends HTMLElement {
     if (this._scenaRuchu) E.bramaw.setAttribute('aria-label', T.oslony[c.rodzaj] || '');
     else if (noc !== this._brNoc) {
       this._brNoc = noc;
-      E.bramaw.innerHTML = rysunekBramy(c.oslona, hex(c.kolor), ramaHex(c.rama), noc, !!c.przeszkoda);
+      this._brZdj = maZdjecieBramy(this._brTyp);
+      E.bramaw.innerHTML = this._brZdj ? bramaZdjecie(this._brTyp, noc) : rysunekBramy(c.oslona, hex(c.kolor), ramaHex(c.rama), noc, !!c.przeszkoda);
       E.svg = E.bramaw.querySelector('svg');
       E.bramaw.setAttribute('aria-label', T.oslony[c.oslona] || '');
     }
@@ -479,7 +482,8 @@ export class MotorHaKarta extends HTMLElement {
     const E = this._el, ile = E.pola.length;
     if (this._brama && this._ruchy[0]?.widac !== null) {
       const w = this._ruchy[0].widac;
-      if (!this._scenaRuchu) ustawBrame(E.svg, this._cfg.oslona, w);
+      if (this._brZdj) ustawBrameZdj(E.bramaw, this._brTyp, w);
+      else if (!this._scenaRuchu) ustawBrame(E.svg, this._cfg.oslona, w);
       else if (this._ostO === null || Math.abs(w - this._ostO) >= .4 || (w !== this._ostO && (w === 0 || w === 100))) {
         this._ostO = w;
         E.bramaw.innerHTML = kafelRuch(this._scenaRuchu, w / 100, hex(this._cfg.kolor), ramaHex(this._cfg.rama));
