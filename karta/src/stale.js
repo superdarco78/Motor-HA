@@ -3,7 +3,7 @@
 
 import { GRUPY_KAFLI } from './kafle.js';
 
-export const WERSJA = '2.2.8';
+export const WERSJA = '2.2.9';
 
 // Rodzaje osłon w grupach jak w katalogach producentów (te same grupy i obrazki co w kreatorze, kafle.js).
 export const GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
@@ -16,6 +16,8 @@ export const BAZA = { roleta_zip_wew: 'kasetowa', bambusowa: 'pelna', plisa_gora
 export const baza = t => BAZA[t] || t;
 // rodzaje z własnym rysunkiem i ruchem w karcie (kafle_ruch.js): tarasy, okna i nowe bramy – bez rysowania okna
 const Z_SCENA = new Set(['taras', 'okna'].flatMap(g => Object.values(GRUPY[g]).flat()));
+// okna z napędem nie mają osłony – w kreatorze tylko kolor ramy
+export const OKNA_NAPED = Object.values(GRUPY.okna).flat();
 export const wlasnyRuch = t => !!t && t !== baza(t) && (Z_SCENA.has(t) || czyBrama(t));
 // osłony, które zasuwają się w bok (żaluzja pionowa, zasłona), a nie w dół
 export const POZIOME = ['pionowa', 'zaslona'];

@@ -43,10 +43,16 @@ try:
     KAFLE: dict[str, str] = json.loads((Path(__file__).parent / "kafle.json").read_text(encoding="utf-8"))
 except (OSError, ValueError):
     KAFLE = {}
+# zdjęcia rodzajów (Canva, www/rodzaje) – w obrazku wbudowane, bo SVG jako <img> nie wczytuje innych plików
+ZDJECIA: dict[str, str] = {}
+for _p in (Path(__file__).parent / "www" / "rodzaje").glob("*.webp"):
+    ZDJECIA[_p.stem] = "data:image/webp;base64," + b64encode(_p.read_bytes()).decode()
 
 
 def rysunek(typ: str, x: float, y: float) -> str:
     """Rysunek 64×60 osłony danego rodzaju w punkcie (x, y)."""
+    if z := ZDJECIA.get(typ):
+        return f'<image x="{x}" y="{y}" width="64" height="60" href="{z}" preserveAspectRatio="xMidYMid meet"/>'
     if k := KAFLE.get(typ):
         return re.sub(r"^<svg [^>]*>", f'<svg x="{x}" y="{y}" width="64" height="60" viewBox="0 0 120 100">', k)
     o = _okno(x, y)

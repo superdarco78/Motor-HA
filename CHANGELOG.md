@@ -1,5 +1,11 @@
 # 📝 Historia zmian
 
+## v2.2.9 – Podgląd na żywo i zdjęcia prawie wszystkich rodzajów
+
+- 🎨 Kolor osłony i kolor ramy od razu zmieniają podgląd przy każdym z 79 rodzajów (okna dachowe, markizy, pergole, bramy, moskitiery, okiennice…); okna z napędem mają tylko kolor ramy
+- 🪟 Kroki „Rodzaj” i „Kolory”: podgląd pokazuje dokładnie wybrany rodzaj (np. markiza koszowa, okno dachowe), także przy oknie z kilkoma polami
+- 🖼️ Zdjęcia (wygenerowane przez AI w Canvie) dla 71 z 79 rodzajów, także w klasycznym kreatorze; bramy i garaże dostaną zdjęcia w następnej wersji
+
 ## v2.2.8 – Animacje każdego rodzaju i zdjęcia w kreatorze
 
 - 🎬 Każdy rodzaj otwiera się po swojemu: markizy wysuwają się na ramionach, okna dachowe i z siłownikiem się uchylają, świetlik podnosi kopułę, parasol i żagiel się rozkładają, szlaban podnosi ramię, furtka i bramy garażowe boczne/dwuskrzydłowe jadą jak w rzeczywistości
