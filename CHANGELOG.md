@@ -1,10 +1,12 @@
 # 📝 Historia zmian
 
-## v2.2.16 – Podgląd po lewej, ustawienia po prawej
-- 🪟 Osłona na szybie wygląda jak na kafelku: zdjęcie w swoich proporcjach, bez rozciągania (paski dzień-noc, plisy i lamele w tej samej gęstości co na kafelku), w kreatorze, w edytorze „Własny” i na karcie
-- 🔄 Aplikacja HA na telefonie: po aktualizacji sama wczytuje nową wersję przy powrocie do aplikacji, także gdy kreator był otwarty (wcześniej mogła zostać stara karta z rysunkami)
+## v2.2.16 – Podgląd = oryginalne zdjęcie kafelka
 
-- ↔️ Kreator na komputerze: duże zdjęcie okna po lewej stronie, wybór i ustawienia po prawej
+- 🖼️ „Rodzaj” i „Kolory”: podgląd to dokładnie to samo zdjęcie z Canvy co wybrany kafelek, w wybranym kolorze – nic nie wycinane ani nie składane; pole wybiera się przyciskami „Całe okno”, „Pole 1”…
+- 🪟 „Pola”, „Czujniki”, „Automatyka”, „Czas”, „Powiadomienia”: oryginalne zdjęcie wybranego układu z numerami pól
+- ↔️ Kreator na komputerze: podgląd po lewej, wybór i ustawienia po prawej
+- 🪟 Karta i edytor „Własny”: osłona na szybie w proporcjach zdjęcia, bez rozciągania
+- 🔄 Aplikacja HA na telefonie: po aktualizacji sama wczytuje nową wersję przy powrocie do aplikacji, także gdy kreator był otwarty (wcześniej mogła zostać stara karta z rysunkami)
 
 ## v2.2.15 – Wszystko ze zdjęć z Canvy
 
