@@ -1,8 +1,8 @@
 // Kreator graficzny Motor HA (2.2.0): dziesięć kroków z obrazkami zamiast list, żywy podgląd okna,
 // układ okna jako siatka pól (do 4 × 3) edytowana palcem. Otwiera się nad okienkiem „Dodaj urządzenie”
 // i „Konfiguruj” (kreator.js), a gotowe ustawienia wysyła jak zwykłą odpowiedź kroku integracji (pole „kreator”).
-import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza, wlasnyRuch, WERSJA } from './stale.js';
-import { kafelRuch } from './kafle_ruch.js';
+import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza, wlasnyRuch, WERSJA, OKNA_NAPED } from './stale.js';
+import { kafelRuch, RODZAJE_RUCHU } from './kafle_ruch.js';
 import { ZDJECIA } from './zdjecia.js';
 import { kafel, GRUPY_KAFLI } from './kafle.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
@@ -427,7 +427,7 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S;
     if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
     const n = prostokaty(S.u).length;
-    if (this._zRuchem(n)) return `<div class="ruchP" data-ruch="${S.o.oslona}" style="max-width:420px">${this._ruchSvg(0)}</div>`;
+    if (this._zRuchem(n, k)) return `<div class="ruchP" data-ruch="${S.o.oslona}" style="max-width:420px">${this._ruchSvg(0)}</div>`;
     if (S.brama) return `<div>${this._brama(S.o.oslona)}</div>`;
     if (k === 'uklad') return `<div class="edscena">${this._edytorCaly()}</div>`;
     if (k === 'przypisz') return `<div id="duzeOkno">${this.okno({ w: 440, h: 400, numery: true, id: 'd', wybrane: S.arkusz })}</div>`;
@@ -435,11 +435,17 @@ export class MotorHaKreator extends HTMLElement {
     return `<div>${this.okno({ w: 440, h: 400, id: 's' })}</div>`;
   }
   _podgladMaly() {
-    if (this._zRuchem(prostokaty(this.S.u).length)) return `<div class="ruchP" data-ruch="${this.S.o.oslona}" style="width:200px;max-width:100%">${this._ruchSvg(0)}</div>`;
+    if (this._zRuchem(prostokaty(this.S.u).length, this.kroki()[this.S.krok])) return `<div class="ruchP" data-ruch="${this.S.o.oslona}" style="width:200px;max-width:100%">${this._ruchSvg(0)}</div>`;
     return this.S.brama ? `<div style="width:170px;max-width:100%">${this._brama(this.S.o.oslona)}</div>` : this.okno({ id: 'p' });
   }
   // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
-  _zRuchem(n) { return wlasnyRuch(this.S.o.oslona) && (this.S.brama || n <= 1); }
+  // w „Rodzaj” i „Kolory” każdy rodzaj z katalogu pokazuje własny rysunek (jak wybrany, 1:1), a nie najbliższy rodzaj bazowy
+  _zRuchem(n, k) {
+    const t = this.S.o.oslona;
+    if (!RODZAJE_RUCHU.includes(t)) return false;
+    if (['rodzaj', 'kolory'].includes(k) && this._wybR() === null && baza(t) !== t) return true;
+    return wlasnyRuch(t) && (this.S.brama || n <= 1);
+  }
   _ruchSvg(o) { return kafelRuch(this.S.o.oslona, o, this._kolor(), this._rama()); }
   _petlaRuchu() {
     if (this._petla) return;
@@ -558,7 +564,8 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S, T = this.T, t = this.t;
     const wr = this._wybR(), wybrany = (co, k) => co === 'kolor' && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === 'kolor' ? 'kolor_wlasny' : co + '_wlasna'];
     const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map(k => `<button class="probka ${wybrany(co, k) ? 'wyb' : ''}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc(dziel(nazwy[k] || k))}</button>`).join('')}</div>`;
-    return this._wyborPola() + `<div class="sek">${esc(t.oslona)}</div>${rzad('kolor', KOLORY_TAB, k => KOLORY[k], T.kolory)}<div class="sek">${esc(t.rama)}</div>${rzad('rama', RAMY_TAB, k => RAMA_Z_KLUCZA[k], T.ramy)}${wr === null && przerwy(S.u).some(p => p[4] === 'mur') ? `<div class="sek">${esc(t.sciana)}</div>${rzad('sciana', Object.keys(SCIANY), k => SCIANY[k], t.sciany)}` : ''}`;
+    const bezOslony = wr === null && OKNA_NAPED.includes(S.o.oslona);
+    return this._wyborPola() + (bezOslony ? '' : `<div class="sek">${esc(t.oslona)}</div>${rzad('kolor', KOLORY_TAB, k => KOLORY[k], T.kolory)}`) + `<div class="sek">${esc(t.rama)}</div>${rzad('rama', RAMY_TAB, k => RAMA_Z_KLUCZA[k], T.ramy)}${wr === null && przerwy(S.u).some(p => p[4] === 'mur') ? `<div class="sek">${esc(t.sciana)}</div>${rzad('sciana', Object.keys(SCIANY), k => SCIANY[k], t.sciany)}` : ''}`;
   }
   // „Rodzaj” i „Kolory”: całe okno albo jedno pole (dotknij pola na rysunku)
   _wybR() { const S = this.S; return S.brama || S.wybR == null || S.wybR >= prostokaty(S.u).length ? null : S.wybR; }
