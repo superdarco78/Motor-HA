@@ -3,7 +3,7 @@
 // i „Konfiguruj” (kreator.js), a gotowe ustawienia wysyła jak zwykłą odpowiedź kroku integracji (pole „kreator”).
 import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza, wlasnyRuch, WERSJA, OKNA_NAPED } from './stale.js';
 import { kafelRuch, RODZAJE_RUCHU } from './kafle_ruch.js';
-import { ZDJECIA } from './zdjecia.js';
+import { ZDJECIA, UI } from './zdjecia.js';
 import { kafel, GRUPY_KAFLI } from './kafle.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
 import { rysunekBramy } from './brama.js';
@@ -196,6 +196,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .kaf svg{width:100%;height:auto;max-height:84px}
 .kaf img.zdj{display:block;width:100%;height:auto;max-height:84px;aspect-ratio:6/5;object-fit:contain;border-radius:6px;pointer-events:none}
 .ruchP svg{display:block;width:100%;height:auto}
+.krok .k img.ikk{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
 .kaf b{font-size:11px;font-weight:400;line-height:1.2;color:var(--fg2);overflow-wrap:break-word;hyphens:manual;max-width:100%}
 .kaf.wyb{border-color:var(--accent);background:var(--primary-soft)} .kaf.wyb b{color:var(--fg);font-weight:500}
 .kaf:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
@@ -482,7 +483,15 @@ export class MotorHaKreator extends HTMLElement {
     return `<svg viewBox="0 0 64 60" aria-hidden="true"><rect x="8" y="4" width="48" height="52" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
       <rect x="11" y="7" width="42" height="46" fill="${n1}"/>${this.oslona(typ, 11, 7, 42, 46, 40, this._kolor())}</svg>`;
   }
-  kafelUkladu(P, drzwi) {
+  // ikona kroku: grafika z Canvy (www/ui, osobna dla ciemnego motywu), a gdy jej nie ma – ikona mdi
+  _ikKroku(kk) {
+    const n = { silnik: 'oslona', przypisz: 'pola', stoper: 'czas', dzwonek: 'powiadomienia' }[kk] || kk;
+    const f = [this._dark() ? n + '-ciemny.png' : null, n + '.png'].find(x => x && UI.has(x));
+    return f ? `<img class="ikk" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="">` : ik(kk);
+  }
+  kafelUkladu(P, drzwi, klucz) {
+    const f = klucz && [klucz + '.webp', klucz + '.png'].find(x => UI.has(x));
+    if (f) return `<img class="zdj" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="" loading="lazy">`;
     const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
     P.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
       <rect x="${7 + x * 52}" y="${5 + y * 50}" width="${Math.max(0, w * 52 - 2)}" height="${h * 50 * .45}" fill="var(--fg2)" opacity=".55"/>`));
@@ -551,7 +560,7 @@ export class MotorHaKreator extends HTMLElement {
     // szeroki ekran: edytuje się prosto na dużym rysunku z boku, tu zostają szablony
     const ed = (S.szablon === 'w' || prostokaty(S.u).length > 1) && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc(t.wlasnyTytul)}</div>
       ${this._edytorCaly()}<div class="sek">${esc(t.zSzablonu)}</div>` : '';
-    return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? 'wyb' : ''}" data-uklad="${i}">${this.kafelUkladu(P, drzwi)}<b>${esc(dziel(t.uklady[k]))}</b></button>`).join('')}
+    return ed + `<div class="siatka k4">${UKLADY.map(([k, P, drzwi], i) => `<button class="kaf ${S.szablon === i ? 'wyb' : ''}" data-uklad="${i}">${this.kafelUkladu(P, drzwi, k)}<b>${esc(dziel(t.uklady[k]))}</b></button>`).join('')}
       <button class="kaf ${S.szablon === 'w' ? 'wyb' : ''}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc(t.uklady.wlasny)}</b></button></div>`;
   }
   // „Rodzaj”: grupy jak w katalogach producentów, realistyczny obrazek i nazwa (z kodem modelu) pod każdym
@@ -991,7 +1000,7 @@ export class MotorHaKreator extends HTMLElement {
     r.getElementById('nazwaKroku').textContent = t.kroki[k];
     r.getElementById('ktory').textContent = wstaw(t.krok, S.krok + 1, kroki.length);
     r.getElementById('kroki').innerHTML = kroki.map((kk, i) =>
-      `<button class="krok ${i === S.krok ? 'teraz' : i < S.krok ? 'zrob' : ''}" data-krok="${i}" aria-label="${esc(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ''}><span class="k">${ik(kk)}</span><span class="n">${esc(t.kroki[kk])}</span></button>`).join('');
+      `<button class="krok ${i === S.krok ? 'teraz' : i < S.krok ? 'zrob' : ''}" data-krok="${i}" aria-label="${esc(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ''}><span class="k">${this._ikKroku(kk)}</span><span class="n">${esc(t.kroki[kk])}</span></button>`).join('');
     { const kr = r.getElementById('kroki'), a = kr.querySelector('.teraz'); if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2; }
     // w „Rodzaj” i „Kolory” przy kilku polach jest jeden duży rysunek do wyboru pola – bez drugiego, małego na górze
     const jedenDuzy = ['rodzaj', 'kolory'].includes(k) && !S.brama && prostokaty(S.u).length > 1;

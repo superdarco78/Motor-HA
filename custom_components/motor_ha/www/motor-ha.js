@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.11";
+  var WERSJA = "2.2.12";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -9837,6 +9837,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     }
   };
 
+  // src/zdjecia.js
+  var ZDJECIA = /* @__PURE__ */ new Set(["adaptacyjna", "bambusowa", "dach_dkl", "dach_dn", "dach_fhb", "dach_fhl", "dach_msl", "dach_pal", "dach_ssl", "dachowa", "drewniana", "ekran", "ekstrudowana", "fasadowa", "fasadowa_f80", "fasadowaz", "firana", "furtka", "garaz_boczna", "garaz_skrzydlowa", "kasetowa", "markiza", "markiza_balkonowa", "markiza_boczna", "markiza_kasetowa", "markiza_koszowa", "markiza_otwarta", "markiza_pionowa", "markiza_polkasetowa", "markiza_volant", "markiza_wolnostojaca", "markiza_zimowa", "markizeta", "markizeta_dach", "markizoleta", "moskitiera", "moskitiera_drzwi", "moskitiera_plisa_okno", "moskitiera_zip_drzwi", "natynkowa", "natynkowa_okragla", "okiennice", "okiennice_przesuwne", "okno_dachowe", "okno_plaskie", "okno_silownik", "panel", "parasol", "pelna", "perforowana", "pergola", "pergola_tkanina", "pionowa", "plaster", "plisa", "plisa_gora_dol", "podtynkowa", "przesuwna", "roleta_drzwi", "roleta_moskitiera", "roleta_zip_wew", "roletowa", "rzymska", "screen", "screen_taras", "segmentowa", "skrzydlowa", "swietlik", "szlaban", "uchylna", "wylaz", "zaciemniajaca", "zadaszenie", "zagiel", "zaluzja", "zaslona", "zaslona_wave", "zebra", "zewnetrzna"]);
+  var UI = /* @__PURE__ */ new Set(["auto-ciemny.png", "auto.png", "czas-ciemny.png", "czas.png", "czujniki-ciemny.png", "czujniki.png", "kolory-ciemny.png", "kolory.png", "oslona-ciemny.png", "oslona.png", "pola-ciemny.png", "pola.png", "powiadomienia-ciemny.png", "powiadomienia.png", "rodzaj-ciemny.png", "rodzaj.png", "u1.webp", "u2.webp", "u3.webp", "u4.webp", "u5.webp", "u7.webp", "u8.webp", "uklad-ciemny.png", "uklad.png"]);
+
   // src/edytor.js
   var KROKI = [
     ["urzadzenie", "mdi:window-shutter-cog"],
@@ -9895,6 +9899,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
 .kaf .i{flex:none;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
  background:color-mix(in srgb,var(--primary-color) 20%,transparent);color:var(--primary-color)}
 .kaf .i ha-icon{--mdc-icon-size:20px;display:flex}
+.kaf .i img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.gr img.ikg{width:24px;height:24px;border-radius:50%;vertical-align:middle}
 .kaf[aria-pressed="true"]{border:2px solid var(--primary-color);padding:5px 9px;background:color-mix(in srgb,var(--primary-color) 10%,var(--card-background-color,#fff))}
 /* próbki kolorów */
 .probki{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:8px;justify-items:center}
@@ -10035,9 +10041,9 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     _oslona(box) {
       const T2 = this._T, wyb = this._w("oslona");
       for (const [g, pod] of Object.entries(GRUPY)) {
-        box.insertAdjacentHTML("beforeend", `<div class="gr"><ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>${esc3(T2.grupy[g])}</div>`);
+        box.insertAdjacentHTML("beforeend", `<div class="gr">${UI.has(g + ".png") ? `<img class="ikg" src="/motor_ha/ui/${g}.png?v=${WERSJA}" alt="">` : `<ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>`}${esc3(T2.grupy[g])}</div>`);
         for (const [p, typy] of Object.entries(pod)) {
-          box.insertAdjacentHTML("beforeend", `<div class="pg">${esc3(T2.grupy[p])}</div><div class="kafle">${typy.map((t) => `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i"><ha-icon icon="${IKONY[t]}"></ha-icon></span>${esc3(T2.oslony[t])}</button>`).join("")}</div>`);
+          box.insertAdjacentHTML("beforeend", `<div class="pg">${esc3(T2.grupy[p])}</div><div class="kafle">${typy.map((t) => `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i">${ZDJECIA.has(t) ? `<img src="/motor_ha/rodzaje/${t}.webp?v=${WERSJA}" alt="" loading="lazy">` : `<ha-icon icon="${IKONY[t]}"></ha-icon>`}</span>${esc3(T2.oslony[t])}</button>`).join("")}</div>`);
         }
       }
       box.querySelectorAll("[data-t]").forEach((b) => b.addEventListener("click", () => this._zmien({ oslona: b.dataset.t })));
@@ -10363,9 +10369,6 @@ button svg{fill:var(--primary-color);flex:none}
     }
   };
 
-  // src/zdjecia.js
-  var ZDJECIA = /* @__PURE__ */ new Set(["adaptacyjna", "bambusowa", "dach_dkl", "dach_dn", "dach_fhb", "dach_fhl", "dach_msl", "dach_pal", "dach_ssl", "dachowa", "drewniana", "ekran", "ekstrudowana", "fasadowa", "fasadowa_f80", "fasadowaz", "firana", "furtka", "garaz_boczna", "garaz_skrzydlowa", "kasetowa", "markiza", "markiza_balkonowa", "markiza_boczna", "markiza_kasetowa", "markiza_koszowa", "markiza_otwarta", "markiza_pionowa", "markiza_polkasetowa", "markiza_volant", "markiza_wolnostojaca", "markiza_zimowa", "markizeta", "markizeta_dach", "markizoleta", "moskitiera", "moskitiera_drzwi", "moskitiera_plisa_okno", "moskitiera_zip_drzwi", "natynkowa", "natynkowa_okragla", "okiennice", "okiennice_przesuwne", "okno_dachowe", "okno_plaskie", "okno_silownik", "panel", "parasol", "pelna", "perforowana", "pergola", "pergola_tkanina", "pionowa", "plaster", "plisa", "plisa_gora_dol", "podtynkowa", "przesuwna", "roleta_drzwi", "roleta_moskitiera", "roleta_zip_wew", "roletowa", "rzymska", "screen", "screen_taras", "segmentowa", "skrzydlowa", "swietlik", "szlaban", "uchylna", "wylaz", "zaciemniajaca", "zadaszenie", "zagiel", "zaluzja", "zaslona", "zaslona_wave", "zebra", "zewnetrzna"]);
-
   // src/kreator_okno.js
   var MDI2 = {
     silnik: "M3 4h18v3H3zm2 4h14v9h2v2H3v-2h2zm2 0v9h10V8z",
@@ -10561,6 +10564,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .kaf svg{width:100%;height:auto;max-height:84px}
 .kaf img.zdj{display:block;width:100%;height:auto;max-height:84px;aspect-ratio:6/5;object-fit:contain;border-radius:6px;pointer-events:none}
 .ruchP svg{display:block;width:100%;height:auto}
+.krok .k img.ikk{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
 .kaf b{font-size:11px;font-weight:400;line-height:1.2;color:var(--fg2);overflow-wrap:break-word;hyphens:manual;max-width:100%}
 .kaf.wyb{border-color:var(--accent);background:var(--primary-soft)} .kaf.wyb b{color:var(--fg);font-weight:500}
 .kaf:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
@@ -10889,7 +10893,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return `<svg viewBox="0 0 64 60" aria-hidden="true"><rect x="8" y="4" width="48" height="52" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
       <rect x="11" y="7" width="42" height="46" fill="${n1}"/>${this.oslona(typ, 11, 7, 42, 46, 40, this._kolor())}</svg>`;
     }
-    kafelUkladu(P2, drzwi3) {
+    // ikona kroku: grafika z Canvy (www/ui, osobna dla ciemnego motywu), a gdy jej nie ma – ikona mdi
+    _ikKroku(kk) {
+      const n = { silnik: "oslona", przypisz: "pola", stoper: "czas", dzwonek: "powiadomienia" }[kk] || kk;
+      const f = [this._dark() ? n + "-ciemny.png" : null, n + ".png"].find((x) => x && UI.has(x));
+      return f ? `<img class="ikk" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="">` : ik(kk);
+    }
+    kafelUkladu(P2, drzwi3, klucz) {
+      const f = klucz && [klucz + ".webp", klucz + ".png"].find((x) => UI.has(x));
+      if (f) return `<img class="zdj" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="" loading="lazy">`;
       const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
       P2.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
       <rect x="${7 + x * 52}" y="${5 + y * 50}" width="${Math.max(0, w * 52 - 2)}" height="${h * 50 * 0.45}" fill="var(--fg2)" opacity=".55"/>`));
@@ -10957,7 +10969,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t;
       const ed = (S.szablon === "w" || prostokaty(S.u).length > 1) && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
       ${this._edytorCaly()}<div class="sek">${esc6(t.zSzablonu)}</div>` : "";
-      return ed + `<div class="siatka k4">${UKLADY.map(([k, P2, drzwi3], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P2, drzwi3)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
+      return ed + `<div class="siatka k4">${UKLADY.map(([k, P2, drzwi3], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P2, drzwi3, k)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
       <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u))}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
     }
     // „Rodzaj”: grupy jak w katalogach producentów, realistyczny obrazek i nazwa (z kodem modelu) pod każdym
@@ -11537,7 +11549,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const k = kroki[S.krok];
       r.getElementById("nazwaKroku").textContent = t.kroki[k];
       r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
-      r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${ik(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
+      r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${this._ikKroku(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
       {
         const kr = r.getElementById("kroki"), a = kr.querySelector(".teraz");
         if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2;

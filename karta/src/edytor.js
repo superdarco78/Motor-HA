@@ -1,6 +1,7 @@
 // Edytor karty Motor HA: 7 kroków z kółkami (te same co w kreatorze integracji), w każdym „Co” i „Po co”.
 // Pola to zwykłe pola Home Assistanta (ha-form), więc wyglądają i działają jak w HA.
-import { DOMYSLNE, GRUPY, IKONY, IKONY_GRUP, KOLORY, RAMY, czyBrama, hex, ramaHex } from './stale.js';
+import { DOMYSLNE, GRUPY, IKONY, IKONY_GRUP, KOLORY, RAMY, czyBrama, hex, ramaHex, WERSJA } from './stale.js';
+import { ZDJECIA, UI } from './zdjecia.js';
 import { KLUCZE_PANELU } from './karta.js';
 import { TEKSTY, NAZWY_JEZYKOW, jezyk, wstaw } from './jezyk.js';
 import { czasPrzejazdu, nauczony } from './ruch.js';
@@ -56,6 +57,8 @@ const STYL = `
 .kaf .i{flex:none;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
  background:color-mix(in srgb,var(--primary-color) 20%,transparent);color:var(--primary-color)}
 .kaf .i ha-icon{--mdc-icon-size:20px;display:flex}
+.kaf .i img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.gr img.ikg{width:24px;height:24px;border-radius:50%;vertical-align:middle}
 .kaf[aria-pressed="true"]{border:2px solid var(--primary-color);padding:5px 9px;background:color-mix(in srgb,var(--primary-color) 10%,var(--card-background-color,#fff))}
 /* próbki kolorów */
 .probki{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:8px;justify-items:center}
@@ -171,10 +174,10 @@ export class MotorHaEdytor extends HTMLElement {
   _oslona(box) {
     const T = this._T, wyb = this._w('oslona');
     for (const [g, pod] of Object.entries(GRUPY)) {
-      box.insertAdjacentHTML('beforeend', `<div class="gr"><ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>${esc(T.grupy[g])}</div>`);
+      box.insertAdjacentHTML('beforeend', `<div class="gr">${UI.has(g + '.png') ? `<img class="ikg" src="/motor_ha/ui/${g}.png?v=${WERSJA}" alt="">` : `<ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>`}${esc(T.grupy[g])}</div>`);
       for (const [p, typy] of Object.entries(pod)) {
         box.insertAdjacentHTML('beforeend', `<div class="pg">${esc(T.grupy[p])}</div><div class="kafle">${typy.map(t =>
-          `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i"><ha-icon icon="${IKONY[t]}"></ha-icon></span>${esc(T.oslony[t])}</button>`).join('')}</div>`);
+          `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i">${ZDJECIA.has(t) ? `<img src="/motor_ha/rodzaje/${t}.webp?v=${WERSJA}" alt="" loading="lazy">` : `<ha-icon icon="${IKONY[t]}"></ha-icon>`}</span>${esc(T.oslony[t])}</button>`).join('')}</div>`);
       }
     }
     box.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => this._zmien({ oslona: b.dataset.t })));
