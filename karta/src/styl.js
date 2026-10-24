@@ -153,7 +153,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .foto .skrz{position:absolute;padding:0;margin:0;background:none!important;border-radius:0;box-shadow:none}
 .foto .szyba{border-radius:0}
 .foto .oslona{background:none!important;overflow:hidden;box-shadow:none}
-.foto .oslona .ftkp{position:absolute;left:0;right:0;bottom:0}
+.foto .oslona .ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
 .foto .oslona .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .foto .listwa,.foto .klamka{display:none}
 .foto.noc .okno .ftlo,.foto.noc .oslona .ftki{filter:brightness(.62) saturate(.85);transition:filter 1.5s}

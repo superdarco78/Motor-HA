@@ -523,7 +523,7 @@
     "zamienPodpis": "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them.",
     "jakZaleca": "Set as recommended",
     "caleOkno": "Whole window",
-    "rodzajCalosc": "Tap a pane in the drawing to give it a different type or colour.",
+    "rodzajCalosc": "Choose a pane to give it a different type or colour.",
     "rodzajPole": "You are now setting pane {0} only."
   }
 }

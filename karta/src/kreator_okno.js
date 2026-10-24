@@ -192,9 +192,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .fsz{position:absolute;overflow:hidden}
 .fsz .obsz{position:absolute;inset:0}
 .ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
-.ftkp{position:absolute;left:0;right:0;bottom:0}
+.ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
 .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-.fsz.wyb{box-shadow:inset 0 0 0 3px #ff9800;background:rgba(255,152,0,.18)}
+.fsz.wyb::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 3px #ff9800;pointer-events:none;z-index:3}
 .fsz .fnr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;
  box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 13px/1 var(--ha-font-family-body,Roboto,sans-serif);pointer-events:none}
 .fsz .fcz{width:24px;height:24px;position:absolute;left:50%;top:calc(50% + 24px);transform:translate(-50%,-50%);pointer-events:none}
@@ -413,7 +413,7 @@ export class MotorHaKreator extends HTMLElement {
       const [x, y, w, h] = sz, rk = RAMKI[typ], on = opt.wybrane === i;
       let tk = '';
       if (rk && ZDJECIA.has(typ) && zakryte > 0)
-        tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp" style="height:${+(10000 / zakryte).toFixed(3)}%">${tkanina(typ, kol)}</div></div>`;
+        tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp">${tkanina(typ, kol)}</div></div>`;
       const nr = opt.numery ? `<span class="fnr">${i + 1}</span><svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : '';
       d.push(`<div class="fsz${on ? ' wyb' : ''}"${opt.numery ? ` data-pole="${i}"` : ''} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}"><i class="obsz"></i>${tk}${nr}</div>`);
     });
@@ -451,35 +451,33 @@ export class MotorHaKreator extends HTMLElement {
       przekoloruj(t, k, WERSJA).then(u => { if (u && im.dataset.przek === t && im.dataset.kol === k && im.src !== u) im.src = u; });
     });
   }
-  // duży podgląd w kolumnie z boku (szeroki ekran): zawsze zdjęcia z Canvy, od kroku Układ – zdjęcie wybranego układu,
-  // a na każdej szybie wybrany rodzaj w wybranym kolorze (1:1 z kafelkami); w Rodzaj, Kolory i Pola pola można dotykać
+  // duży podgląd w kolumnie z boku (szeroki ekran): zawsze oryginalne zdjęcia z Canvy (kafelek rodzaju albo układu)
   _scena(k) {
     const S = this.S;
     if (k === 'gotowe') return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
     const duze = html => `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:480px">${html}</div>`;
     const zdjecie = t => duze(this._zdj(t, t === this._akt() ? this._aktKolor() : this._kolor(), 'max-height:none;width:100%;border-radius:12px'));
-    if (S.brama) return maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : `<div>${this._brama(S.o.oslona)}</div>`;
+    // brama: oryginalne zdjęcie kafelka wybranego rodzaju (Canva), jak przy osłonach
+    if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : `<div>${this._brama(S.o.oslona)}</div>`;
     if (k === 'silnik') {   // osłony jeszcze bez układu: zdjęcie rodzaju pierwszej wybranej osłony
       const t = this._oslona(S.rolety[0]) ? this._typOslony(this._oslona(S.rolety[0])) : S.o.oslona;
       if (ZDJECIA.has(t)) return zdjecie(t);
     }
     if (k === 'uklad' && S.szablon === 'w') return `<div class="edscena">${this._edytorCaly()}</div>`;
     if (k === 'uklad') return duze(this.okno({ poz: () => 100 }));
-    if (['rodzaj', 'kolory'].includes(k)) {
-      // rodzaj bez osłony na szybie (okno dachowe z napędem, firana): samo zdjęcie rodzaju
-      if (!RAMKI[this._akt()] && ZDJECIA.has(this._akt())) return zdjecie(this._akt());
-      return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: prostokaty(S.u).length > 1, id: 'r', wybrane: this._wybR() })}</div>`);
-    }
-    if (k === 'przypisz') return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: 'd', wybrane: S.arkusz })}</div>`);
-    return duze(this.okno({ id: 's' }));
+    // Rodzaj i Kolory: oryginalne zdjęcie kafelka (Canva) wybranego pola albo całego okna, w wybranym kolorze – nic nie składane
+    if (['rodzaj', 'kolory'].includes(k) && ZDJECIA.has(this._akt())) return zdjecie(this._akt());
+    // dalsze kroki: oryginalne zdjęcie układu z numerami pól, bez nakładanych osłon
+    if (k === 'przypisz') return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: 'd', wybrane: S.arkusz, poz: () => 100 })}</div>`);
+    return duze(this.okno({ id: 's', poz: () => 100 }));
   }
   _podgladMaly() {
     const k = this.kroki()[this.S.krok], S = this.S;
     const zdj = t => `<div style="width:200px;max-width:100%">${this._zdj(t, this._aktKolor(), 'max-height:none;width:100%;border-radius:8px')}</div>`;
-    if (S.brama) return maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
+    if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
     if (k === 'silnik' && ZDJECIA.has(this._akt())) return zdj(this._akt());
-    if (['rodzaj', 'kolory'].includes(k) && !RAMKI[this._akt()] && ZDJECIA.has(this._akt())) return zdj(this._akt());
-    return `<div style="width:220px;max-width:100%">${this.okno({ id: 'p', poz: k === 'uklad' ? () => 100 : undefined })}</div>`;
+    if (['rodzaj', 'kolory'].includes(k) && ZDJECIA.has(this._akt())) return zdj(this._akt());
+    return `<div style="width:220px;max-width:100%">${this.okno({ id: 'p', poz: () => 100 })}</div>`;
   }
   // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
   // w „Rodzaj” i „Kolory” każdy rodzaj pokazuje własny rysunek jak na kafelku (1:1), także rolety SK/SKO/SP/SKN, a nie wspólne okno
@@ -628,19 +626,19 @@ export class MotorHaKreator extends HTMLElement {
     const bezOslony = wr === null && OKNA_NAPED.includes(S.o.oslona);
     return this._wyborPola() + (bezOslony ? '' : `<div class="sek">${esc(t.oslona)}</div>${rzad('kolor', KOLORY_TAB, k => KOLORY[k], T.kolory)}`) + `<div class="sek">${esc(t.rama)}</div>${rzad('rama', RAMY_TAB, k => RAMA_Z_KLUCZA[k], T.ramy)}${wr === null && przerwy(S.u).some(p => p[4] === 'mur') ? `<div class="sek">${esc(t.sciana)}</div>${rzad('sciana', Object.keys(SCIANY), k => SCIANY[k], t.sciany)}` : ''}`;
   }
-  // „Rodzaj” i „Kolory”: całe okno albo jedno pole (dotknij pola na rysunku)
+  // „Rodzaj” i „Kolory”: całe okno albo jedno pole (przyciski pól; podgląd = zdjęcie kafelka wybranego rodzaju)
   _wybR() { const S = this.S; return S.brama || S.wybR == null || S.wybR >= prostokaty(S.u).length ? null : S.wybR; }
   _wyborPola() {
     const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
     if (S.brama || n < 2) return '';
-    return `<div class="wybpol">${this._szeroko ? '' : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: 'r', wybrane: wr })}</div>`}
+    return `<div class="wybpol">${this._szeroko ? '' : ZDJECIA.has(this._akt()) ? `<div style="display:flex;justify-content:center"><div style="width:min(100%,36vh,320px)">${this._zdj(this._akt(), this._aktKolor(), 'max-height:none;width:100%;border-radius:12px')}</div></div>` : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: 'r', wybrane: wr })}</div>`}
       <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? 'wyb' : ''}" data-calosc="1">${esc(t.caleOkno)}</button>
       ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? 'wyb' : ''}" data-pole="${i}">${esc(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? ' ✎' : ''}</button>`).join('')}</div>
       <p class="pod" style="text-align:center;margin:6px 0 0">${esc(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
   }
   str_przypisz() {
     const S = this.S, t = this.t;
-    return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p>${this._szeroko ? '' : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz })}</div>`}
+    return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p>${this._szeroko ? '' : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz, poz: () => 100 })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc(t.zamienPodpis)}</p>
       ${S.rolety.length > 1 ? `<div style="display:flex;justify-content:center;margin-top:8px"><button class="chip" data-zaleca="1">✨ ${esc(t.jakZaleca)}</button></div>` : ''}
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
@@ -854,10 +852,11 @@ export class MotorHaKreator extends HTMLElement {
     const [gx, gy, gw, gh] = SZYBY.u1[0], X = x + gx * w, Y = y + gy * h, W = gw * w, H = gh * h, rk = RAMKI[typ];
     let tk = '';
     if (rk && ZDJECIA.has(typ)) {
-      const [bx, by, bw, bh] = rk, z = .6;
-      tk = `<defs><mask id="em${i}" maskContentUnits="userSpaceOnUse"><image href="/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA}" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></mask></defs>
-        <svg x="${X}" y="${Y}" width="${W}" height="${H * z}" overflow="hidden"><svg y="${-H * (1 - z)}" width="${W}" height="${H}" viewBox="${bx} ${by} ${bw} ${bh}" preserveAspectRatio="none">
-        <image href="${zKolorem(typ, kol) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" x="0" y="0" width="1" height="1" preserveAspectRatio="none" mask="url(#em${i})"/></svg></svg>`;
+      // osłona w proporcjach zdjęcia (jak kafelek): wycinek zdjęcia wypełnia zasłoniętą część szyby bez rozciągania
+      const [bx, by, bw, bh] = rk, z = .6, f = n => +n.toFixed(2);
+      tk = `<defs><mask id="em${i}" maskUnits="userSpaceOnUse" x="0" y="0" width="193" height="161"><image href="/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA}" x="0" y="0" width="193" height="161" preserveAspectRatio="none"/></mask></defs>
+        <svg x="${X}" y="${Y}" width="${W}" height="${H * z}" viewBox="${f(bx * 193)} ${f(by * 161)} ${f(bw * 193)} ${f(bh * 161)}" preserveAspectRatio="xMidYMid slice" overflow="hidden">
+        <image href="${zKolorem(typ, kol) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" x="0" y="0" width="193" height="161" preserveAspectRatio="none" mask="url(#em${i})"/></svg>`;
     }
     return `<image href="/motor_ha/ui/u1.webp?v=${WERSJA}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>${tk}`;
   }

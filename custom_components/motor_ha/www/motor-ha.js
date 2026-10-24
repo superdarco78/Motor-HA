@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.16";
+  var WERSJA = "2.2.17";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -1170,7 +1170,7 @@ ha-card{overflow:hidden;height:100%;box-sizing:border-box}
 .foto .skrz{position:absolute;padding:0;margin:0;background:none!important;border-radius:0;box-shadow:none}
 .foto .szyba{border-radius:0}
 .foto .oslona{background:none!important;overflow:hidden;box-shadow:none}
-.foto .oslona .ftkp{position:absolute;left:0;right:0;bottom:0}
+.foto .oslona .ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
 .foto .oslona .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .foto .listwa,.foto .klamka{display:none}
 .foto.noc .okno .ftlo,.foto.noc .oslona .ftki{filter:brightness(.62) saturate(.85);transition:filter 1.5s}
@@ -2132,7 +2132,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Złap skrzydło na rysunku albo ⠿ przy wierszu i upuść na innym – zamienią się miejscami.",
       jakZaleca: "Ustaw jak zaleca",
       caleOkno: "Całe okno",
-      rodzajCalosc: "Dotknij pola na rysunku, żeby dać mu inny rodzaj albo kolor.",
+      rodzajCalosc: "Wybierz pole, żeby dać mu inny rodzaj albo kolor.",
       rodzajPole: "Teraz ustawiasz tylko pole {0}."
     }
   };
@@ -2663,7 +2663,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Grab a sash in the drawing or ⠿ on a row and drop it on another to swap them.",
       jakZaleca: "Set as recommended",
       caleOkno: "Whole window",
-      rodzajCalosc: "Tap a pane in the drawing to give it a different type or colour.",
+      rodzajCalosc: "Choose a pane to give it a different type or colour.",
       rodzajPole: "You are now setting pane {0} only."
     }
   };
@@ -3194,7 +3194,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Flügel in der Zeichnung oder ⠿ an einer Zeile greifen und auf einem anderen ablegen – sie tauschen die Plätze.",
       jakZaleca: "Wie empfohlen einstellen",
       caleOkno: "Ganzes Fenster",
-      rodzajCalosc: "Tippe auf ein Feld in der Zeichnung, um ihm eine andere Art oder Farbe zu geben.",
+      rodzajCalosc: "Wähle ein Feld, um ihm eine andere Art oder Farbe zu geben.",
       rodzajPole: "Du stellst jetzt nur Feld {0} ein."
     }
   };
@@ -3725,7 +3725,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Saisissez un vantail du dessin ou ⠿ d'une ligne et déposez-le sur un autre pour les échanger.",
       jakZaleca: "Régler comme recommandé",
       caleOkno: "Fenêtre entière",
-      rodzajCalosc: "Touchez un panneau du dessin pour lui donner un autre type ou une autre couleur.",
+      rodzajCalosc: "Choisissez un panneau pour lui donner un autre type ou une autre couleur.",
       rodzajPole: "Vous réglez maintenant le panneau {0} seulement."
     }
   };
@@ -4256,7 +4256,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Chyťte křídlo v nákresu nebo ⠿ u řádku a pusťte na jiné – vymění se.",
       jakZaleca: "Nastavit podle doporučení",
       caleOkno: "Celé okno",
-      rodzajCalosc: "Klepněte na pole v nákresu a dejte mu jiný druh nebo barvu.",
+      rodzajCalosc: "Vyberte pole a dejte mu jiný druh nebo barvu.",
       rodzajPole: "Teď nastavujete jen pole {0}."
     }
   };
@@ -4787,7 +4787,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Chyťte krídlo na nákrese alebo ⠿ pri riadku a pustite na iné – vymenia sa.",
       jakZaleca: "Nastaviť podľa odporúčania",
       caleOkno: "Celé okno",
-      rodzajCalosc: "Ťuknite na pole na nákrese a dajte mu iný druh alebo farbu.",
+      rodzajCalosc: "Vyberte pole a dajte mu iný druh alebo farbu.",
       rodzajPole: "Teraz nastavujete len pole {0}."
     }
   };
@@ -5318,7 +5318,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Arrastra una hoja del dibujo o ⠿ de una fila y suéltala sobre otra para intercambiarlas.",
       jakZaleca: "Ajustar como se recomienda",
       caleOkno: "Ventana entera",
-      rodzajCalosc: "Toca un panel del dibujo para darle otro tipo o color.",
+      rodzajCalosc: "Elige un panel para darle otro tipo o color.",
       rodzajPole: "Ahora solo ajustas el panel {0}."
     }
   };
@@ -5849,7 +5849,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Afferra un'anta nel disegno o ⠿ su una riga e rilasciala su un'altra per scambiarle.",
       jakZaleca: "Imposta come consigliato",
       caleOkno: "Finestra intera",
-      rodzajCalosc: "Tocca un riquadro nel disegno per dargli un altro tipo o colore.",
+      rodzajCalosc: "Scegli un riquadro per dargli un altro tipo o colore.",
       rodzajPole: "Ora imposti solo il riquadro {0}."
     }
   };
@@ -6380,7 +6380,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Pak een vleugel in de tekening of ⠿ bij een rij en zet hem op een andere om te wisselen.",
       jakZaleca: "Instellen zoals aanbevolen",
       caleOkno: "Hele raam",
-      rodzajCalosc: "Tik op een vak in de tekening om het een ander soort of andere kleur te geven.",
+      rodzajCalosc: "Kies een vak om het een ander soort of andere kleur te geven.",
       rodzajPole: "Je stelt nu alleen vak {0} in."
     }
   };
@@ -6911,7 +6911,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Agarre uma folha no desenho ou ⠿ numa linha e largue noutra para as trocar.",
       jakZaleca: "Definir como recomendado",
       caleOkno: "Janela inteira",
-      rodzajCalosc: "Toque num painel do desenho para lhe dar outro tipo ou cor.",
+      rodzajCalosc: "Escolha um painel para lhe dar outro tipo ou cor.",
       rodzajPole: "Agora está a ajustar só o painel {0}."
     }
   };
@@ -7442,7 +7442,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Візьміть стулку на малюнку або ⠿ біля рядка й відпустіть на іншій – вони поміняються місцями.",
       jakZaleca: "Налаштувати як рекомендовано",
       caleOkno: "Усе вікно",
-      rodzajCalosc: "Торкніться поля на малюнку, щоб задати йому інший вид або колір.",
+      rodzajCalosc: "Виберіть поле, щоб задати йому інший вид або колір.",
       rodzajPole: "Зараз налаштовується лише поле {0}."
     }
   };
@@ -7973,7 +7973,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "Возьмите створку на рисунке или ⠿ у строки и отпустите на другой – они поменяются местами.",
       jakZaleca: "Настроить как рекомендовано",
       caleOkno: "Всё окно",
-      rodzajCalosc: "Нажмите на поле на рисунке, чтобы задать ему другой вид или цвет.",
+      rodzajCalosc: "Выберите поле, чтобы задать ему другой вид или цвет.",
       rodzajPole: "Сейчас настраивается только поле {0}."
     }
   };
@@ -8504,7 +8504,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "図のサッシか行の ⠿ をつかんで別の上で放すと入れ替わります。",
       jakZaleca: "おすすめ通りに設定",
       caleOkno: "窓全体",
-      rodzajCalosc: "図の区画をタップすると、別の種類や色にできます。",
+      rodzajCalosc: "区画を選ぶと、別の種類や色にできます。",
       rodzajPole: "今は区画 {0} だけを設定しています。"
     }
   };
@@ -9035,7 +9035,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       zamienPodpis: "拖住图中的窗扇或行旁的 ⠿，放到另一个上即可交换。",
       jakZaleca: "按推荐设置",
       caleOkno: "整扇窗",
-      rodzajCalosc: "点按图中的格子，可为它设置其他类型或颜色。",
+      rodzajCalosc: "选择一个格子，可为它设置其他类型或颜色。",
       rodzajPole: "现在只设置第 {0} 格。"
     }
   };
@@ -9344,7 +9344,6 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     u7: [[0.111, 0.165, 0.111, 0.612], [0.295, 0.151, 0.408, 0.635], [0.777, 0.165, 0.106, 0.612]],
     u8: [[0.202, 0.109, 0.266, 0.335], [0.534, 0.107, 0.264, 0.339], [0.203, 0.52, 0.263, 0.325], [0.535, 0.52, 0.263, 0.326]]
   };
-  var UL = (v) => +(v * 100).toFixed(3) + "%";
   function nazwaUkladu(pola) {
     if (!pola?.length) return null;
     const blisko = (a, b) => Math.abs(a - b) < 0.02;
@@ -9355,7 +9354,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     const rk = RAMKI[typ];
     if (!rk || !ZDJECIA.has(typ)) return "";
     const [bx, by, bw, bh] = rk, src = `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`, mk = `url(/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA})`;
-    return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:${UL(1 / bw)};height:${UL(1 / bh)};left:${UL(-bx / bw)};top:${UL(-by / bh)};-webkit-mask-image:${mk};mask-image:${mk}">`;
+    const A = +(bw * 193 / (bh * 161)).toFixed(4), W3 = `max(100cqw, 100cqh * ${A})`, H2 = `(${W3} / ${A})`;
+    const n = (v) => +v.toFixed(4);
+    return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:calc(${W3} * ${n(1 / bw)});height:calc(${H2} * ${n(1 / bh)});left:calc((100cqw - ${W3}) / 2 - ${W3} * ${n(bx / bw)});top:calc((100cqh - ${H2}) / 2 - ${H2} * ${n(by / bh)});-webkit-mask-image:${mk};mask-image:${mk}">`;
   }
 
   // src/bramy_zdj.js
@@ -9990,7 +9991,6 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         if (this._foto) {
           P3.oslona.style.top = "0";
           P3.oslona.style.height = (100 - r.widac).toFixed(2) + "%";
-          P3.oslona.firstElementChild.style.height = wys + "px";
           if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
           P3._dol = P3.p.offsetTop + (P3.p.parentElement?.offsetTop || 0) + wys * (100 - r.widac) / 100;
           return;
@@ -10621,7 +10621,7 @@ button .iku{--iku:20px}
   var KROKI_OKNA = ["silnik", "uklad", "rodzaj", "kolory", "przypisz", "czujniki", "auto", "stoper", "dzwonek", "gotowe"];
   var KROKI_BRAMY = ["silnik", "rodzaj", "kolory", "czujniki", "stoper", "dzwonek", "gotowe"];
   var BEZ_PODGLADU = ["przypisz", "gotowe"];
-  var UL2 = (v) => +(v * 100).toFixed(3) + "%";
+  var UL = (v) => +(v * 100).toFixed(3) + "%";
   var KOLORY_TAB = Object.keys(KOLORY);
   var RAMY_TAB = Object.keys(RAMA_Z_KLUCZA);
   var STRONY = [["n", 0], ["e", 90], ["s", 180], ["w", 270]];
@@ -10756,9 +10756,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .fsz{position:absolute;overflow:hidden}
 .fsz .obsz{position:absolute;inset:0}
 .ftk{position:absolute;left:0;right:0;top:0;overflow:hidden;pointer-events:none;transition:height .25s linear}
-.ftkp{position:absolute;left:0;right:0;bottom:0}
+.ftkp{position:absolute;inset:0;overflow:hidden;container-type:size}
 .ftki{position:absolute;max-width:none;max-height:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-.fsz.wyb{box-shadow:inset 0 0 0 3px #ff9800;background:rgba(255,152,0,.18)}
+.fsz.wyb::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 3px #ff9800;pointer-events:none;z-index:3}
 .fsz .fnr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:#009ac7;color:#fff;border:2px solid #fff;
  box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 13px/1 var(--ha-font-family-body,Roboto,sans-serif);pointer-events:none}
 .fsz .fcz{width:24px;height:24px;position:absolute;left:50%;top:calc(50% + 24px);transform:translate(-50%,-50%);pointer-events:none}
@@ -11004,15 +11004,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         let sz;
         if (gotowy) sz = SZYBY[nazwa2][i];
         else {
-          d.push(`<img class="ftlo" src="/motor_ha/ui/u1.webp?v=${WERSJA}" alt="" draggable="false" style="left:${UL2(p[0])};top:${UL2(p[1])};width:${UL2(p[2])};height:${UL2(p[3])}">`);
+          d.push(`<img class="ftlo" src="/motor_ha/ui/u1.webp?v=${WERSJA}" alt="" draggable="false" style="left:${UL(p[0])};top:${UL(p[1])};width:${UL(p[2])};height:${UL(p[3])}">`);
           sz = [p[0] + u1[0] * p[2], p[1] + u1[1] * p[3], u1[2] * p[2], u1[3] * p[3]];
         }
         const [x, y, w, h] = sz, rk = RAMKI[typ], on = opt.wybrane === i;
         let tk = "";
         if (rk && ZDJECIA.has(typ) && zakryte > 0)
-          tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp" style="height:${+(1e4 / zakryte).toFixed(3)}%">${tkanina(typ, kol)}</div></div>`;
+          tk = `<div class="ftk" style="height:${zakryte}%"><div class="ftkp">${tkanina(typ, kol)}</div></div>`;
         const nr2 = opt.numery ? `<span class="fnr">${i + 1}</span><svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : "";
-        d.push(`<div class="fsz${on ? " wyb" : ""}"${opt.numery ? ` data-pole="${i}"` : ""} style="left:${UL2(x)};top:${UL2(y)};width:${UL2(w)};height:${UL2(h)}"><i class="obsz"></i>${tk}${nr2}</div>`);
+        d.push(`<div class="fsz${on ? " wyb" : ""}"${opt.numery ? ` data-pole="${i}"` : ""} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}"><i class="obsz"></i>${tk}${nr2}</div>`);
       });
       d.push("</div>");
       return d.join("");
@@ -11051,34 +11051,30 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         });
       });
     }
-    // duży podgląd w kolumnie z boku (szeroki ekran): zawsze zdjęcia z Canvy, od kroku Układ – zdjęcie wybranego układu,
-    // a na każdej szybie wybrany rodzaj w wybranym kolorze (1:1 z kafelkami); w Rodzaj, Kolory i Pola pola można dotykać
+    // duży podgląd w kolumnie z boku (szeroki ekran): zawsze oryginalne zdjęcia z Canvy (kafelek rodzaju albo układu)
     _scena(k) {
       const S = this.S;
       if (k === "gotowe") return '<div class="karta" id="karta" style="display:block;width:100%;max-width:420px;zoom:1.3"></div>';
       const duze = (html) => `<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:480px">${html}</div>`;
       const zdjecie = (t) => duze(this._zdj(t, t === this._akt() ? this._aktKolor() : this._kolor(), "max-height:none;width:100%;border-radius:12px"));
-      if (S.brama) return maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : `<div>${this._brama(S.o.oslona)}</div>`;
+      if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : `<div>${this._brama(S.o.oslona)}</div>`;
       if (k === "silnik") {
         const t = this._oslona(S.rolety[0]) ? this._typOslony(this._oslona(S.rolety[0])) : S.o.oslona;
         if (ZDJECIA.has(t)) return zdjecie(t);
       }
       if (k === "uklad" && S.szablon === "w") return `<div class="edscena">${this._edytorCaly()}</div>`;
       if (k === "uklad") return duze(this.okno({ poz: () => 100 }));
-      if (["rodzaj", "kolory"].includes(k)) {
-        if (!RAMKI[this._akt()] && ZDJECIA.has(this._akt())) return zdjecie(this._akt());
-        return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: prostokaty(S.u).length > 1, id: "r", wybrane: this._wybR() })}</div>`);
-      }
-      if (k === "przypisz") return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: "d", wybrane: S.arkusz })}</div>`);
-      return duze(this.okno({ id: "s" }));
+      if (["rodzaj", "kolory"].includes(k) && ZDJECIA.has(this._akt())) return zdjecie(this._akt());
+      if (k === "przypisz") return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: "d", wybrane: S.arkusz, poz: () => 100 })}</div>`);
+      return duze(this.okno({ id: "s", poz: () => 100 }));
     }
     _podgladMaly() {
       const k = this.kroki()[this.S.krok], S = this.S;
       const zdj = (t) => `<div style="width:200px;max-width:100%">${this._zdj(t, this._aktKolor(), "max-height:none;width:100%;border-radius:8px")}</div>`;
-      if (S.brama) return maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
+      if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
       if (k === "silnik" && ZDJECIA.has(this._akt())) return zdj(this._akt());
-      if (["rodzaj", "kolory"].includes(k) && !RAMKI[this._akt()] && ZDJECIA.has(this._akt())) return zdj(this._akt());
-      return `<div style="width:220px;max-width:100%">${this.okno({ id: "p", poz: k === "uklad" ? () => 100 : void 0 })}</div>`;
+      if (["rodzaj", "kolory"].includes(k) && ZDJECIA.has(this._akt())) return zdj(this._akt());
+      return `<div style="width:220px;max-width:100%">${this.okno({ id: "p", poz: () => 100 })}</div>`;
     }
     // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
     // w „Rodzaj” i „Kolory” każdy rodzaj pokazuje własny rysunek jak na kafelku (1:1), także rolety SK/SKO/SP/SKN, a nie wspólne okno
@@ -11230,7 +11226,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const bezOslony = wr === null && OKNA_NAPED.includes(S.o.oslona);
       return this._wyborPola() + (bezOslony ? "" : `<div class="sek">${esc6(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}`) + `<div class="sek">${esc6(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}${wr === null && przerwy(S.u).some((p) => p[4] === "mur") ? `<div class="sek">${esc6(t.sciana)}</div>${rzad("sciana", Object.keys(SCIANY), (k) => SCIANY[k], t.sciany)}` : ""}`;
     }
-    // „Rodzaj” i „Kolory”: całe okno albo jedno pole (dotknij pola na rysunku)
+    // „Rodzaj” i „Kolory”: całe okno albo jedno pole (przyciski pól; podgląd = zdjęcie kafelka wybranego rodzaju)
     _wybR() {
       const S = this.S;
       return S.brama || S.wybR == null || S.wybR >= prostokaty(S.u).length ? null : S.wybR;
@@ -11238,14 +11234,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     _wyborPola() {
       const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
       if (S.brama || n < 2) return "";
-      return `<div class="wybpol">${this._szeroko ? "" : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: "r", wybrane: wr })}</div>`}
+      return `<div class="wybpol">${this._szeroko ? "" : ZDJECIA.has(this._akt()) ? `<div style="display:flex;justify-content:center"><div style="width:min(100%,36vh,320px)">${this._zdj(this._akt(), this._aktKolor(), "max-height:none;width:100%;border-radius:12px")}</div></div>` : `<div id="duzeOkno" style="display:flex;justify-content:center">${this.okno({ w: 320, h: 280, numery: true, id: "r", wybrane: wr })}</div>`}
       <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? "wyb" : ""}" data-calosc="1">${esc6(t.caleOkno)}</button>
       ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? "wyb" : ""}" data-pole="${i}">${esc6(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? " ✎" : ""}</button>`).join("")}</div>
       <p class="pod" style="text-align:center;margin:6px 0 0">${esc6(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
     }
     str_przypisz() {
       const S = this.S, t = this.t;
-      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p>${this._szeroko ? "" : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz })}</div>`}
+      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p>${this._szeroko ? "" : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz, poz: () => 100 })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc6(t.zamienPodpis)}</p>
       ${S.rolety.length > 1 ? `<div style="display:flex;justify-content:center;margin-top:8px"><button class="chip" data-zaleca="1">✨ ${esc6(t.jakZaleca)}</button></div>` : ""}
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
@@ -11521,10 +11517,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const [gx, gy, gw, gh] = SZYBY.u1[0], X = x + gx * w, Y = y + gy * h, W3 = gw * w, H2 = gh * h, rk = RAMKI[typ];
       let tk = "";
       if (rk && ZDJECIA.has(typ)) {
-        const [bx, by, bw, bh] = rk, z = 0.6;
-        tk = `<defs><mask id="em${i}" maskContentUnits="userSpaceOnUse"><image href="/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA}" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></mask></defs>
-        <svg x="${X}" y="${Y}" width="${W3}" height="${H2 * z}" overflow="hidden"><svg y="${-H2 * (1 - z)}" width="${W3}" height="${H2}" viewBox="${bx} ${by} ${bw} ${bh}" preserveAspectRatio="none">
-        <image href="${zKolorem(typ, kol) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" x="0" y="0" width="1" height="1" preserveAspectRatio="none" mask="url(#em${i})"/></svg></svg>`;
+        const [bx, by, bw, bh] = rk, z = 0.6, f = (n) => +n.toFixed(2);
+        tk = `<defs><mask id="em${i}" maskUnits="userSpaceOnUse" x="0" y="0" width="193" height="161"><image href="/motor_ha/rodzaje/maski/${typ}.png?v=${WERSJA}" x="0" y="0" width="193" height="161" preserveAspectRatio="none"/></mask></defs>
+        <svg x="${X}" y="${Y}" width="${W3}" height="${H2 * z}" viewBox="${f(bx * 193)} ${f(by * 161)} ${f(bw * 193)} ${f(bh * 161)}" preserveAspectRatio="xMidYMid slice" overflow="hidden">
+        <image href="${zKolorem(typ, kol) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" x="0" y="0" width="193" height="161" preserveAspectRatio="none" mask="url(#em${i})"/></svg>`;
       }
       return `<image href="/motor_ha/ui/u1.webp?v=${WERSJA}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>${tk}`;
     }

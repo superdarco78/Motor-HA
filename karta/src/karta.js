@@ -508,7 +508,6 @@ export class MotorHaKarta extends HTMLElement {
       }
       if (this._foto) {   // zdjęcie osłony: odsłania się od dołu, dolna listwa jest na zdjęciu
         P.oslona.style.top = '0'; P.oslona.style.height = (100 - r.widac).toFixed(2) + '%';
-        P.oslona.firstElementChild.style.height = wys + 'px';
         if (!this._ciagnie) this._pokazCel(i, r.jedzie && r.komenda ? Math.round(r.cel) : null);
         P._dol = P.p.offsetTop + (P.p.parentElement?.offsetTop || 0) + wys * (100 - r.widac) / 100;
         return;
