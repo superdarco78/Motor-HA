@@ -13,8 +13,8 @@ import { RAMA, polaNaObrazku } from './okno3d_uklad.js';
 const R = (f, o = {}) => ({ f, ...o });
 export const MODELE = {
   // wewnątrz: rolety
-  pelna: R('rol', { mat: 'tkanina' }), kasetowa: R('rol', { mat: 'tkanina', kas: 'kaseta', prow: 1 }), zebra: R('rol', { mat: 'zebra', kas: 'kaseta' }),
-  zaciemniajaca: R('rol', { mat: 'blackout', kas: 'kaseta', prow: 1 }), roleta_zip_wew: R('rol', { mat: 'tkanina', kas: 'kaseta', prow: 2 }),
+  pelna: R('rol', { mat: 'tkanina', wal: 1, lanc: 1 }), kasetowa: R('rol', { mat: 'tkanina', kas: 'kaseta', prow: 1, lanc: 1 }), zebra: R('rol', { mat: 'zebra', kas: 'kaseta' }),
+  zaciemniajaca: R('rol', { mat: 'blackout', kas: 'kaseta', prow: 3, lanc: 1 }), roleta_zip_wew: R('rol', { mat: 'tkanina', kas: 'kwadrat', prow: 2, cieza: 1 }),
   bambusowa: R('rol', { mat: 'bambus', kas: 'belka' }), ekran: R('rol', { mat: 'ekran', kas: 'kaseta' }),
   // plisy
   plisa: R('har', { faldy: .03, gl: .015 }), plisa_gora_dol: R('har', { faldy: .03, gl: .015, gd: 1 }), plaster: R('har', { faldy: .04, gl: .022, plaster: 1 }),
@@ -34,10 +34,11 @@ export const MODELE = {
   screen: R('rol', { mat: 'screen', kas: 'zew', prow: 2, zew: 1 }), markizoleta: R('rol', { mat: 'screen', kas: 'zew', zew: 1, wysieg: 1 }),
   okiennice: R('okien'), okiennice_przesuwne: R('okien', { przesuw: 1 }),
   // okna dachowe (od środka)
-  dach_dkl: R('rol', { mat: 'blackout', kas: 'kaseta', prow: 2 }), dach_ssl: R('rolz', { skrz: 'natynk' }), dachowa: R('rolz', { skrz: 'natynk' }),
-  dach_fhb: R('rol', { mat: 'tkanina', kas: 'kaseta', prow: 2 }), dach_msl: R('rol', { mat: 'screen', kas: 'zew', zew: 1, prow: 2 }),
-  markizeta_dach: R('rol', { mat: 'screen', kas: 'zew', zew: 1, prow: 2 }), dach_pal: R('lam', { lam: .025, mat: 'alu', prow: 1 }),
-  dach_fhl: R('har', { faldy: .03, gl: .015, prow: 1 }), dach_dn: R('rol', { mat: 'blackout', kas: 'kaseta', prow: 2, pod: 'har' }),
+  // dach: okno w skosie (klamka-listwa u góry skrzydła, osłony w bocznych prowadnicach, uchwyt na dolnej listwie)
+  dach_dkl: R('rol', { mat: 'blackout', kas: 'kaseta', prow: 2, dach: 1, uchwyt: 1 }), dach_ssl: R('rolz', { skrz: 'dach', dach: 1 }), dachowa: R('rolz', { skrz: 'dach', dach: 1, prof: .045 }),
+  dach_fhb: R('rol', { mat: 'tkanina', kas: 'kaseta', prow: 2, dach: 1, uchwyt: 1 }), dach_msl: R('rol', { mat: 'screen', kas: 'brak', zew: 1, prow: 2, dach: 1 }),
+  markizeta_dach: R('rol', { mat: 'screen', kas: 'brak', zew: 1, prow: 2, dach: 1, haki: 1 }), dach_pal: R('lam', { lam: .025, mat: 'alu', prow: 1, dach: 1, uchwyt: 1 }),
+  dach_fhl: R('har', { faldy: .03, gl: .015, prow: 1, dach: 1, uchwyt: 1 }), dach_dn: R('rol', { mat: 'blackout', kas: 'kaseta', prow: 2, pod: 'har', dach: 1, uchwyt: 1 }),
   // taras (widok z pokoju: markiza nad oknem na zewnątrz)
   markiza_otwarta: R('mark'), markiza: R('mark', { kas: 1 }), markiza_polkasetowa: R('mark', { kas: 1 }), markiza_kasetowa: R('mark', { kas: 1 }),
   markiza_volant: R('mark', { volant: 1 }), markiza_koszowa: R('mark', { kosz: 1 }), markiza_wolnostojaca: R('mark'), markiza_zimowa: R('mark', { kas: 1 }),
@@ -45,7 +46,7 @@ export const MODELE = {
   markiza_boczna: R('pion', { lam: .5, panel: 1, zew: 1, tkan: 1 }), zagiel: R('mark', { zagiel: 1 }), parasol: R('mark', { zagiel: 1 }),
   pergola: R('lam', { lam: .16, mat: 'alu', zew: 1, prow: 1 }), pergola_tkanina: R('mark'), zadaszenie: R('mark', { szklo: 1 }), screen_taras: R('rol', { mat: 'screen', kas: 'zew', prow: 2, zew: 1 }),
   // okna z napędem: skrzydło się uchyla
-  okno_silownik: R('okno'), okno_dachowe: R('okno'), okno_plaskie: R('okno'), swietlik: R('okno', { kopula: 1 }), wylaz: R('okno'),
+  okno_silownik: R('okno'), okno_dachowe: R('okno', { dach: 1, srodek: 1 }), okno_plaskie: R('okno'), swietlik: R('okno', { kopula: 1 }), wylaz: R('okno'),
   // moskitiery
   moskitiera: R('rol', { mat: 'siatka', kas: 'zew', prow: 1, zew: 1 }), moskitiera_plisa_okno: R('har', { faldy: .02, gl: .01, siatka: 1, zew: 1 }),
   moskitiera_drzwi: R('rol', { mat: 'siatka', kas: 'zew', prow: 1, zew: 1 }), moskitiera_zip_drzwi: R('rol', { mat: 'siatka', kas: 'zew', prow: 2, zew: 1 })
@@ -119,9 +120,10 @@ function tkanina(rodz, kol) {   // każdy kawałek tkaniny ma własną kopię te
       case 'siatka': return std({ color: '#444', roughness: .9, alphaMap: oczka(), transparent: true, opacity: .55, side: D, depthWrite: false });
       case 'firana': return std({ color: kol, roughness: 1, map: splot(), transparent: true, opacity: .42, side: D, depthWrite: false });
       case 'mark': return std({ color: kol, roughness: .9, map: markTx(), side: D });
-      default: return std({ color: kol, roughness: .92, map: splot(), side: D });
+      default: return std({ color: kol, roughness: .92, map: splot(), side: D, emissive: kol, emissiveIntensity: .3, emissiveMap: splot() });
     }
   })();
+  if (m.emissiveMap) { m.emissiveMap = m.emissiveMap.clone(); m.emissiveMap.needsUpdate = true; m.userData.przeswit = m.emissiveIntensity; }   // światło dnia prześwituje przez tkaninę (zaciemniająca – nie)
   if (m.map) { m.map = m.map.clone(); m.map.needsUpdate = true; }
   if (m.alphaMap) { m.alphaMap = m.alphaMap.clone(); m.alphaMap.needsUpdate = true; }
   return m;
@@ -183,19 +185,29 @@ function oslona(g, p) {
   const z = zew ? -.075 : .085, top = p.gh / 2 + .015, L = p.gh + .03, sw = p.gw + .03;
   const bialy = metal(p.kas || '#e9e9e7'), listwa = metal(M.mat === 'drewno' ? '#6b5440' : p.kas || '#e9e9e7');
   const prowM = M.zew && M.f === 'lam' ? mat('prof' + kol, () => std({ color: kol, roughness: .42, metalness: .35 })) : bialy;
-  const guide = (szer) => { for (const s of [-1, 1]) g.add(ust(klocek(M.zew && M.f === 'lam' ? .026 : .014, L + .02, szer, prowM, .003), s * (sw / 2 + .006), top - L / 2 - .01, z)); };
+  const guide = (szer, gr = M.zew && M.f === 'lam' ? .026 : .014) => { for (const s of [-1, 1]) g.add(ust(klocek(gr, L + .02, szer, prowM, .003), s * (sw / 2 + .006 - (gr - .014) / 2), top - L / 2 - .01, z)); };
 
   if (M.f === 'rol') {
     const zz = M.zew ? -.075 : .085;
-    if (M.kas === 'kaseta' || M.kas === 'zew') g.add(ust(klocek(sw + .03, .06, .055, bialy, .012), 0, top + .03, zz));
+    if (M.kas === 'kaseta' || M.kas === 'zew') {   // kaseta z zaokrąglonym frontem i zaślepkami po bokach
+      g.add(ust(klocek(sw + .03, .06, .055, bialy, .02), 0, top + .03, zz));
+      for (const s of [-1, 1]) g.add(ust(klocek(.012, .064, .058, metal('#c9cac8'), .004), s * (sw / 2 + .018), top + .03, zz));
+    } else if (M.kas === 'kwadrat') g.add(ust(klocek(sw + .05, .075, .07, bialy, .003), 0, top + .037, zz));   // ZIP: kanciasta kaseta
+    else if (M.wal) {   // wolnowisząca: odkryty wałek z nawiniętą tkaniną na dwóch wspornikach
+      const w = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, sw, 28).rotateZ(Math.PI / 2), tkanina(M.mat, kol)); w.castShadow = true; g.add(ust(w, 0, top + .02, zz + .012));
+      for (const s of [-1, 1]) g.add(ust(klocek(.018, .07, .05, bialy, .006), s * (sw / 2 + .012), top + .02, zz));
+    }
     else if (M.kas === 'belka') g.add(ust(klocek(sw + .02, .03, .04, mat('belka' + kol, () => std({ color: '#8a6a45', roughness: .7, map: slojeTx() })), .006), 0, top + .015, zz));
     else g.add(ust(new THREE.Mesh(new THREE.CylinderGeometry(.022, .022, sw, 20).rotateZ(Math.PI / 2), bialy), 0, top + .015, zz));
-    if (M.prow) guide(M.prow === 2 ? .03 : .018);
+    if (M.prow) M.prow === 3 ? guide(.05, .04) : guide(M.prow === 2 ? .03 : .018, M.prow === 2 ? .024 : .014);
+    if (M.lanc) for (const dx of [-.012, .012]) g.add(ust(new THREE.Mesh(new THREE.CylinderGeometry(.0025, .0025, L * .6, 6), metal('#d8d8d6')), sw / 2 + .028 + dx, top - L * .3, zz + .02));   // łańcuszek z boku
     const zebra = M.mat === 'zebra', m = zebra ? zebraMat(kol) : tkanina(M.mat, kol);
     const tk = new THREE.Mesh(PLASZ, m); tk.castShadow = M.mat !== 'siatka' && M.mat !== 'screen'; tk.receiveShadow = true; g.add(tk);
     let tyl = null; if (zebra) { tyl = new THREE.Mesh(PLASZ, zebraMat(kol)); g.add(tyl); }
-    const bar = ust(klocek(sw, .02, .022, M.mat === 'bambus' ? mat('belka' + kol, () => std({ color: '#8a6a45', roughness: .7 })) : listwa, .007), 0, 0, zz);
+    const bar = ust(klocek(sw, M.cieza || M.dach ? .035 : M.wal ? .014 : .02, M.cieza || M.dach ? .03 : .022, M.mat === 'bambus' ? mat('belka' + kol, () => std({ color: '#8a6a45', roughness: .7 })) : M.dach ? metal('#c9cac8') : listwa, M.wal ? .007 : .005), 0, 0, zz);
     if (M.mat !== 'ekran') g.add(bar);
+    if (M.uchwyt) bar.add(ust(klocek(.14, .022, .03, metal('#9a9b9d'), .008), 0, -.012, .018));   // uchwyt do przesuwania (okno dachowe)
+    if (M.haki) for (const s of [-1, 1]) bar.add(ust(klocek(.03, .05, .02, metal('#3a3b3d'), .004), s * (sw / 2 - .02), -.02, 0));   // haki markizy zaczepiane na dole okna
     const rep = m.map?.repeat;
     return zak => {
       const dl = Math.max(.002, L * zak);
@@ -211,6 +223,7 @@ function oslona(g, p) {
     const zz = M.zew ? -.06 : .085, m = M.siatka ? tkanina('siatka', kol) : std({ color: kol, roughness: M.plaster ? .97 : .88, map: splot().clone(), side: THREE.DoubleSide });
     const gorna = klocek(sw, .022, .03, bialy, .006), dolna = klocek(sw, .022, .03, bialy, .006);
     g.add(ust(gorna, 0, top + .011, zz)); g.add(dolna);
+    if (M.uchwyt) dolna.add(ust(klocek(.14, .022, .03, metal('#9a9b9d'), .008), 0, -.014, .018));
     if (M.prow) guide(.018);
     let mesh = null;
     return zak => {
@@ -233,6 +246,7 @@ function oslona(g, p) {
     const glow = M.zew ? mat('prof' + kol, () => std({ color: kol, roughness: .42, metalness: .35 })) : bialy;
     g.add(ust(klocek(sw + .01, M.zew ? .1 : .03, M.zew ? .12 : .035, glow, .006), 0, top + (M.zew ? .05 : .015), zz));
     const dol = ust(klocek(sw, .018, glebL * .9, listwa, .005), 0, 0, zz); g.add(dol);
+    if (M.uchwyt) dol.add(ust(klocek(.14, .022, .03, metal('#9a9b9d'), .008), 0, -.014, .018));
     if (M.prow) guide(.02);
     const sznur = mat(M.tasma ? 'tasma' + kol : 'sznur', () => std({ color: M.tasma ? kol : '#e8e8e4', roughness: .9 }));
     // drabinki: z przodu i z tyłu lameli (fasadowa: ciemne linki tekstylne, widać obie)
@@ -407,7 +421,7 @@ export class Okno3D {
     this.widok = ust(new THREE.Mesh(pg, this.widokM), 0, 0, -ZW); gr.add(this.widok);
     if (zew) {   // z zewnątrz za szybą widać pokój: ciepły półmrok, firanka przy brzegu
       this.widok.visible = false;
-      const pok = ust(new THREE.Mesh(new THREE.BoxGeometry(W + 1, H + 1, 2), std({ color: '#7d766c', roughness: .9, side: THREE.BackSide })), 0, 0, 1.1); gr.add(pok);
+      const pok = ust(new THREE.Mesh(new THREE.BoxGeometry(m > 0 && o.sciana ? W + 1 : W - .02, m > 0 && o.sciana ? H + 1 : H - .02, 2), std({ color: m > 0 && o.sciana ? '#7d766c' : '#4b4945', roughness: .9, side: THREE.BackSide })), 0, 0, 1.1); gr.add(pok);   // bez ściany: pokój tylko za szybą (tło kafelka przezroczyste)
     }
     // ościeżnica
     gr.add(ust(klocek(W, F, .08, mR), 0, H / 2 - F / 2, 0), ust(klocek(W, F, .08, mR), 0, -H / 2 + F / 2, 0), ust(klocek(F, H, .08, mR), -W / 2 + F / 2, 0, 0), ust(klocek(F, H, .08, mR), W / 2 - F / 2, 0, 0));
@@ -418,12 +432,16 @@ export class Okno3D {
       const piv = new THREE.Group(); piv.position.set(x0 + w / 2, y0, .005); gr.add(piv);   // oś u góry (uchylanie okna z napędem)
       const g = new THREE.Group(); g.position.y = -h / 2; piv.add(g);
       g.add(ust(klocek(w, SZ, .07, mR), 0, h / 2 - SZ / 2, 0), ust(klocek(w, SZ, .07, mR), 0, -h / 2 + SZ / 2, 0), ust(klocek(SZ, h, .07, mR), -w / 2 + SZ / 2, 0, 0), ust(klocek(SZ, h, .07, mR), w / 2 - SZ / 2, 0, 0));
-      const gw = w - 2 * SZ, gh = h - 2 * SZ;
-      const sz = new THREE.Mesh(PLASZ, mSz); sz.scale.set(gw, gh, 1); g.add(sz);
-      if (h > .8 && w > .3) g.add(ust(klocek(.024, .14, .03, metal(rama === '#f4f4f2' ? '#f4f4f2' : '#b8b8b8'), .008), (px + pw / 2 <= .5 ? 1 : -1) * (w / 2 - SZ / 2), -.04, .05));
-      const typ = o.typy?.[i] || 'pelna';
+      const typ = o.typy?.[i] || 'pelna', dach = model(typ).dach;
+      const gw = w - 2 * SZ, gh = h - 2 * SZ - (dach ? .05 : 0);
+      const sz = new THREE.Mesh(PLASZ, mSz); sz.scale.set(gw, gh, 1); sz.position.y = dach ? -.025 : 0; g.add(sz);
+      const dg = new THREE.Group(); dg.position.y = dach ? -.025 : 0; g.add(dg);   // osłona pod listwą-klamką
+      if (dach) {   // okno dachowe: szersze skrzydło, u góry listwa-klamka z nawiewnikiem na całą szerokość
+        g.add(ust(klocek(w - SZ * 2, .05, .035, mR, .008), 0, h / 2 - SZ - .025, .045));
+        g.add(ust(klocek((w - SZ * 2) * .72, .028, .03, metal('#a8a9ab'), .01), 0, h / 2 - SZ - .028, .07));
+      } else if (h > .8 && w > .3) g.add(ust(klocek(.024, .14, .03, metal(rama === '#f4f4f2' ? '#f4f4f2' : '#b8b8b8'), .008), (px + pw / 2 <= .5 ? 1 : -1) * (w / 2 - SZ / 2), -.04, .05));
       this.skrz.push({ piv, typ });
-      this.ruchy.push(oslona(g, { gw, gh, typ, kol: o.kolory?.[i] || '#e6dcc8', kas: o.kas }));
+      this.ruchy.push(oslona(dg, { gw, gh, typ, kol: o.kolory?.[i] || '#e6dcc8', kas: o.kas }));
     });
     this.cam.position.set(0, 0, zew ? -(.34 + D) : .04 + D);
     this.cam.lookAt(0, 0, zew ? -.3 : 0);
@@ -449,6 +467,7 @@ export class Okno3D {
   swiatlo(j) {
     if (j === this._jas) return; this._jas = j;
     this.slonce.intensity = 2.3 * Math.max(.25, j); this.nieboL.intensity = .55 * Math.max(.4, j);
+    this.grupa?.traverse(o => { const p = o.material?.userData?.przeswit; if (p) o.material.emissiveIntensity = p * j; });
     if (this.widokM.map) this.widokM.color.set('#ffffff').multiplyScalar(j); else this.widokM.color.set('#cfe0ea').multiplyScalar(j);
     this.rysuj();
   }
@@ -487,16 +506,35 @@ export class Okno3D {
 
 // obrazek kafelka (lista rodzajów w kreatorze): jedno okno z osłoną w wybranych kolorach → data: URL, raz na rodzaj i kolor
 const KAFLE = new Map();
+const naZew = t => { const M = model(t); return !M.dach && (M.zew || ['rolz', 'mark', 'okien'].includes(M.f)); };
 let kafelOkno = null;
 export function kafel(typ, kolor, rama, widok, w = 240, h = 200) {
   const k = [typ, kolor, rama].join('|');
   if (KAFLE.has(k)) return KAFLE.get(k);
   const f = model(typ).f, poz = f === 'okno' ? 80 : ['pion', 'zas', 'okien'].includes(f) ? 45 : f === 'mark' ? 35 : 50;
   kafelOkno ||= new Okno3D(document.createElement('div'), null);
-  kafelOkno.ustaw({ pola: [[0, 0, 1, 1]], typy: [typ], kolory: [kolor], rama, W: 1.32, H: 1.1, margines: .07, pozycje: [poz] });
+  const d = model(typ).dach, zw = naZew(typ);   // okno dachowe: wysokie i wąskie jak w skosie; osłona zewnętrzna: widok od ulicy
+  kafelOkno.ustaw({ pola: [[0, 0, 1, 1]], typy: [typ], kolory: [kolor], rama, W: d ? .9 : 1.32, H: d ? 1.4 : 1.1, margines: .07, pozycje: [poz], strona: zw ? 'zew' : undefined });
   if (widok && !kafelOkno.widokM.map && performance.now() - startKafli < 4000) return null;   // najpierw zdjęcie widoku (widokZ), potem kafelki
   kafelOkno._klatka(w * 2, h * 2);
-  const url = kafelOkno.cv.toDataURL('image/webp', .9); KAFLE.set(k, url); return url;
+  const c = document.createElement('canvas'); c.width = w * 2; c.height = h * 2;
+  const x = c.getContext('2d'); x.drawImage(kafelOkno.cv, 0, 0);
+  lupa(x, kafelOkno, typ, w * 2, h * 2);
+  const url = c.toDataURL('image/webp', .9); KAFLE.set(k, url); return url;
+}
+// lupa w rogu kafelka: zbliżenie górnego rogu osłony (kaseta, skrzynka, prowadnica, łańcuszek) – po tym rozróżnia się podobne rodzaje
+function lupa(x, okno, typ, W, H) {
+  const f = model(typ).f; if (['zas', 'pion', 'okien'].includes(f)) return;
+  const o = okno.opt, cam = okno.cam, p = cam.position.clone(), fov = cam.fov, r = Math.round(H * .25);
+  const cx = o.W / 2 - RAMA - .1, cy = o.H / 2 - RAMA - (f === 'mark' ? -.05 : .1), zew = o.strona === 'zew';
+  cam.position.set(cx - .42, cy - .3, zew ? -.85 : .75); cam.fov = 20; cam.lookAt(cx, cy, zew ? -.12 : .05);
+  okno._klatka(r * 2, r * 2);
+  const xs = W - r - W * .035, ys = r + H * .045;
+  x.save(); x.beginPath(); x.arc(xs, ys, r, 0, Math.PI * 2); x.closePath();
+  x.shadowColor = 'rgba(0,0,0,.35)'; x.shadowBlur = r * .12; x.fillStyle = '#fff'; x.fill(); x.shadowColor = 'transparent';
+  x.clip(); x.fillStyle = '#e9ecef'; x.fillRect(xs - r, ys - r, r * 2, r * 2); x.drawImage(okno.cv, xs - r, ys - r, r * 2, r * 2); x.restore();
+  x.beginPath(); x.arc(xs, ys, r, 0, Math.PI * 2); x.lineWidth = Math.max(2, r * .06); x.strokeStyle = '#fff'; x.stroke();
+  cam.position.copy(p); cam.fov = fov; cam.lookAt(0, 0, zew ? -.3 : 0); cam.updateProjectionMatrix();
 }
 let startKafli = 0;
 export function widokKafli(url) { if (!startKafli) startKafli = performance.now(); kafelOkno ||= new Okno3D(document.createElement('div'), null); kafelOkno.widokZ(url); }
