@@ -1,5 +1,10 @@
 # 📝 Historia zmian
 
+## v2.2.18 – Telefon zawsze bierze nową wersję
+
+- 🔄 Po aktualizacji aplikacja HA i przeglądarka nie biorą starej karty z pamięci: ładowacz w Zasobach ma w adresie numer wersji, a gdy na stronie działa jeszcze starsza wersja, strona raz sama się przeładowuje
+- 🔢 Kreator: przy „Krok X z 10” widać numer wersji (np. v2.2.18), więc od razu wiadomo, czy telefon ma nową
+
 ## v2.2.17 – Podgląd = oryginalne zdjęcie kafelka
 
 - 🖼️ „Rodzaj” i „Kolory”: podgląd to dokładnie to samo zdjęcie z Canvy co wybrany kafelek, w wybranym kolorze – nic nie wycinane ani nie składane; pole wybiera się przyciskami „Całe okno”, „Pole 1”…

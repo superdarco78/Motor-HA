@@ -48,6 +48,13 @@ if (!window.__motorHaStrony && !window.frameElement) { window.__motorHaStrony = 
 // dane dla opisu w HACS (żywa symulacja): rodzaje osłon, kroki i teksty w każdym języku
 // wersja kodu, który naprawdę działa na stronie (pierwszy wczytany moduł rejestruje elementy)
 window.__motorHaDziala ??= WERSJA;
+// na stronie działa już starsza wersja (np. aplikacja HA wzięła stary plik z pamięci) – nowa nie może podmienić
+// zarejestrowanych elementów, więc strona raz się przeładowuje i wczytuje tylko nowe pliki (adresy z ?v=)
+if (window.__motorHaDziala !== WERSJA) {
+  let juz = null;
+  try { juz = sessionStorage.getItem('motorHaPrzeladowanie'); sessionStorage.setItem('motorHaPrzeladowanie', WERSJA); } catch (e) { /* bez pamięci sesji */ }
+  if (juz !== WERSJA) location.reload();
+}
 window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
 
 console.info(`%c Motor HA %c ${WERSJA} `, 'background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px', 'background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px');

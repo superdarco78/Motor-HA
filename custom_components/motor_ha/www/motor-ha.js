@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.17";
+  var WERSJA = "2.2.18";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -11792,7 +11792,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       S.krok = Math.min(S.krok, kroki.length - 1);
       const k = kroki[S.krok];
       r.getElementById("nazwaKroku").textContent = t.kroki[k];
-      r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
+      r.getElementById("ktory").textContent = `${wstaw(t.krok, S.krok + 1, kroki.length)} · v${WERSJA}`;
       r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${this._ikKroku(kk, i === S.krok)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
       {
         const kr = r.getElementById("kroki"), a = kr.querySelector(".teraz");
@@ -12497,6 +12497,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     strony(() => rejestruj(true));
   }
   window.__motorHaDziala ?? (window.__motorHaDziala = WERSJA);
+  if (window.__motorHaDziala !== WERSJA) {
+    let juz = null;
+    try {
+      juz = sessionStorage.getItem("motorHaPrzeladowanie");
+      sessionStorage.setItem("motorHaPrzeladowanie", WERSJA);
+    } catch (e) {
+    }
+    if (juz !== WERSJA) location.reload();
+  }
   window.__motorHa = { wersja: WERSJA, grupy: GRUPY, ikony: IKONY, kolory: KOLORY, kroki: KROKI, teksty: TEKSTY };
   console.info(`%c Motor HA %c ${WERSJA} `, "background:#009ac7;color:#fff;border-radius:3px 0 0 3px;padding:1px 4px", "background:#ff9800;color:#fff;border-radius:0 3px 3px 0;padding:1px 4px");
 })();

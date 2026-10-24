@@ -1049,7 +1049,7 @@ export class MotorHaKreator extends HTMLElement {
     S.krok = Math.min(S.krok, kroki.length - 1);
     const k = kroki[S.krok];
     r.getElementById('nazwaKroku').textContent = t.kroki[k];
-    r.getElementById('ktory').textContent = wstaw(t.krok, S.krok + 1, kroki.length);
+    r.getElementById('ktory').textContent = `${wstaw(t.krok, S.krok + 1, kroki.length)} · v${WERSJA}`;   // numer wersji: od razu widać, czy telefon ma nową
     r.getElementById('kroki').innerHTML = kroki.map((kk, i) =>
       `<button class="krok ${i === S.krok ? 'teraz' : i < S.krok ? 'zrob' : ''}" data-krok="${i}" aria-label="${esc(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ''}><span class="k">${this._ikKroku(kk, i === S.krok)}</span><span class="n">${esc(t.kroki[kk])}</span></button>`).join('');
     { const kr = r.getElementById('kroki'), a = kr.querySelector('.teraz'); if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2; }
