@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v2.2.10 – Nowa ikona
+
+- 🏠 Nowa ikona Motor HA (dom z roletą, garażem i bramą) w HA, HACS i na stronie integracji
+
 ## v2.2.9 – Podgląd na żywo i zdjęcia prawie wszystkich rodzajów
 
 - 🎨 Kolor osłony i kolor ramy od razu zmieniają podgląd przy każdym z 79 rodzajów (okna dachowe, markizy, pergole, bramy, moskitiery, okiennice…); okna z napędem mają tylko kolor ramy

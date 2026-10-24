@@ -1,6 +1,6 @@
 {
   "name": "motor-ha-karta",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "description": "Karta Motor HA – okno z osłoną dla Home Assistanta (wbudowana w integrację)",
   "private": true,
   "type": "module",
