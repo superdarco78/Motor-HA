@@ -487,3 +487,5 @@
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Lizenz</h2>
 
 <p>Lizenz <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – frei nutzen und ändern, aber nicht verkaufen. © superdarco78</p>
+
+<p>Bilder mit KI in Canva erzeugt: Fotos der Behangarten, Fensteraufteilungen und Ausblicke, Symbole und Banner (Ordner <code>custom_components/motor_ha/www/rodzaje</code>, <code>ui</code>, <code>widok</code>, <code>img/baner</code>).</p>

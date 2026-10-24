@@ -487,3 +487,5 @@
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Licence</h2>
 
 <p>Licence <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – můžeš zdarma používat a upravovat, ale ne prodávat. © superdarco78</p>
+
+<p>Obrázky vytvořené AI v Canvě: fotografie druhů stínění, rozložení oken a výhledů, ikony a bannery (složky <code>custom_components/motor_ha/www/rodzaje</code>, <code>ui</code>, <code>widok</code>, <code>img/baner</code>).</p>

@@ -487,3 +487,5 @@
 <h2><img src="https://raw.githubusercontent.com/superdarco78/Motor-HA/main/img/ikony/scale-balance.svg" width="34" height="34" align="absmiddle" alt=""> Licence</h2>
 
 <p>Licence <a href="https://github.com/superdarco78/Motor-HA/blob/main/LICENSE">CC BY-NC-SA 4.0</a> – libre d’utiliser et de modifier, mais pas de vendre. © superdarco78</p>
+
+<p>Images générées par IA dans Canva : photos des types de protections, des dispositions de fenêtres et des vues, icônes et bannières (dossiers <code>custom_components/motor_ha/www/rodzaje</code>, <code>ui</code>, <code>widok</code>, <code>img/baner</code>).</p>
