@@ -491,7 +491,7 @@ let kafelOkno = null;
 export function kafel(typ, kolor, rama, widok, w = 240, h = 200) {
   const k = [typ, kolor, rama].join('|');
   if (KAFLE.has(k)) return KAFLE.get(k);
-  const f = model(typ).f, poz = f === 'okno' ? 80 : ['pion', 'zas', 'okien'].includes(f) ? 45 : f === 'mark' ? 30 : 30;
+  const f = model(typ).f, poz = f === 'okno' ? 80 : ['pion', 'zas', 'okien'].includes(f) ? 45 : f === 'mark' ? 35 : 50;
   kafelOkno ||= new Okno3D(document.createElement('div'), null);
   kafelOkno.ustaw({ pola: [[0, 0, 1, 1]], typy: [typ], kolory: [kolor], rama, W: 1.32, H: 1.1, margines: .07, pozycje: [poz] });
   if (widok && !kafelOkno.widokM.map && performance.now() - startKafli < 4000) return null;   // najpierw zdjęcie widoku (widokZ), potem kafelki

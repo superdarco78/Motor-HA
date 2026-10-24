@@ -164,14 +164,16 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}
 .podglad svg{width:150px;height:auto;max-width:100%;max-height:min(150px,18vh);display:block}
 .cialo{flex:1;display:flex;min-height:0}
 .scena{display:none}
-:host([szeroko]) .scena{display:flex;order:-1;flex:0 0 50%;min-width:0;align-items:center;justify-content:center;padding:16px;border-right:1px solid var(--line);background:var(--bg);overflow:auto}
+:host([szeroko]) .scena{display:flex;order:1;flex:0 0 50%;min-width:0;align-items:center;justify-content:center;padding:16px;border-left:1px solid var(--line);background:var(--bg);overflow:auto}
 :host([szeroko]) .krok .k{width:46px;height:46px;border-width:3px} :host([szeroko]) .krok svg{width:26px;height:26px} :host([szeroko]) .krok .n{font-size:12px} :host([szeroko]) .krok{padding-bottom:18px}
 :host([szeroko]) .scena[hidden]{display:none}
 .scena > div, .scena > svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .scena > div > svg, .scena #duzeOkno > svg{width:100%;height:100%;max-height:100%}
 :host([szeroko]) .wybpol{position:static}
 .scena > .edscena{display:block;height:auto;max-width:560px}
-.scena{container-type:size}.scena .fokno{width:min(100%,calc((100cqh - 24px) * 193 / 161));margin:0 auto}
+.scena{container-type:size}.scena .zest{width:100%;display:flex;justify-content:center}.scena .zest > .fzest{width:min(100%,calc((100cqh - 8px) * var(--a)));margin:0 auto}
+:host([szeroko]) .kaf img.zdj{max-height:none} :host([szeroko]) .siatka.k4{grid-template-columns:repeat(3,minmax(0,1fr))}
+.scena .fokno{width:min(100%,calc((100cqh - 24px) * 193 / 161));margin:0 auto}
 .edscena #edytor{display:flex;justify-content:center} .edscena #edSvg{width:100%;height:auto;max-height:calc(100dvh - 420px)}
 :host([szeroko]) .krok .n{visibility:visible;color:var(--fg)} :host([szeroko]) .krok.teraz .n{color:var(--primary)}
 :host([szeroko]) .krok:not(.zrob):not(.teraz) .k{border-color:color-mix(in srgb,var(--primary) 45%,var(--line));color:var(--fg)}
@@ -487,7 +489,7 @@ export class MotorHaKreator extends HTMLElement {
       const ruchome = [...(this._o3?.values() || [])].filter(o => o._ruch && o.host.isConnected);
       if (!ruchome.length || !this.isConnected) { this._petla3d = null; return; }
       const t = ((performance.now() - t0) / 1000) % 7, o = t < 1.5 ? 0 : t < 3.5 ? (t - 1.5) / 2 : t < 5 ? 1 : 1 - (t - 5) / 2, g = o * o * (3 - 2 * o);
-      ruchome.forEach(x => x.pozycje(x._cfgPoz.map(() => Math.round((35 + 65 * g) * 10) / 10)));
+      ruchome.forEach(x => x.pozycje(x._cfgPoz.map(() => Math.round((25 + 35 * g) * 10) / 10)));
       this._petla3d = requestAnimationFrame(klatka);
     };
     this._petla3d = requestAnimationFrame(klatka);
@@ -535,7 +537,7 @@ export class MotorHaKreator extends HTMLElement {
     const S = this.S, P = prostokaty(S.u), rama = this._rama();
     // proporcje całości tak, żeby każde skrzydło było jak najbliżej proporcji zdjęcia (193 × 161)
     const A = Math.max(.8, Math.min(3, P.map(([, , w, h]) => 1.2 * h / w).sort((a, b) => a - b)[Math.floor(P.length / 2)]));
-    const d = [`<div class="fzest" role="group" aria-label="${esc(this.t.kroki.uklad)}" style="aspect-ratio:${+A.toFixed(3)}">`];
+    const d = [`<div class="fzest" role="group" aria-label="${esc(this.t.kroki.uklad)}" style="aspect-ratio:${+A.toFixed(3)};--a:${+A.toFixed(3)}">`];
     P.forEach(([x, y, w, h], i) => {
       const pp = S.pola[i] || {}, typ = pp.oslona || S.o.oslona, kol = pp.kolor ? KOLORY[pp.kolor] || pp.kolor : this._kolor();
       const zdj = this._zdj(typ, kol, '', rama) || `<div style="width:100%;height:100%">${this.kafelRodzaju(typ, kol, rama)}</div>`;
@@ -556,7 +558,7 @@ export class MotorHaKreator extends HTMLElement {
     if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdjecie(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? duze(bramaZdjecie(S.o.oslona)) : `<div>${this._brama(S.o.oslona)}</div>`;
     if (k === 'uklad' && S.szablon === 'w') return `<div class="edscena">${this._edytorCaly()}</div>`;
     // Osłona, Układ, Rodzaj, Kolory: całe okno w wybranym układzie, na każdym skrzydle zdjęcie kafelka jego osłony w jego kolorach
-    if (KROKI_ZESTAWU.includes(k)) return duze(`<div style="width:100%">${this._zestaw({ numery: true, wybor: ['rodzaj', 'kolory'].includes(k), wybrane: this._wybR() })}</div>`);
+    if (KROKI_ZESTAWU.includes(k)) return `<div class="zest">${this._zestaw({ numery: true, wybor: ['rodzaj', 'kolory'].includes(k), wybrane: this._wybR() })}</div>`;
     // dalsze kroki: oryginalne zdjęcie układu z numerami pól, bez nakładanych osłon
     if (k === 'przypisz') return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: 'd', wybrane: S.arkusz, poz: () => 100 })}</div>`);
     return duze(this.okno({ id: 's', poz: () => 100 }));
