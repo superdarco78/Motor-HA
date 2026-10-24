@@ -1,6 +1,7 @@
 name: 🔗 Linki w README
 
 # Sprawdza, czy linki i obrazki w README (wszystkie języki) działają. Raz w tygodniu i przy zmianie README.
+# Pominięte: strona gwiazdek GitHuba – działa w przeglądarce, ale robotom GitHub zwraca 404.
 on:
   pull_request:
     paths: ['README*.md', 'img/**', '.github/workflows/linki.yml']
@@ -22,6 +23,7 @@ jobs:
           args: >-
             --no-progress --max-concurrency 8 --max-retries 3
             --accept '200..=299,403,429'
+            --exclude 'github\.com/[^/]+/[^/]+/stargazers'
             --root-dir "${{ github.workspace }}"
             'README*.md'
           fail: true
