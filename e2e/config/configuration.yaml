@@ -1,0 +1,19 @@
+# Testowy Home Assistant do sprawdzania Motor HA w GitHub Actions (nie dla użytkowników).
+default_config:
+
+homeassistant:
+  name: Test Motor HA
+  country: PL
+  language: pl
+  time_zone: Europe/Warsaw
+  unit_system: metric
+  latitude: 52.23
+  longitude: 21.01
+
+logger:
+  default: warning
+  logs:
+    custom_components.motor_ha: debug
+
+# udawane rolety i pogoda, żeby kreator miał co wybrać
+demo:

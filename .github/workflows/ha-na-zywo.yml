@@ -1,0 +1,113 @@
+name: 🏠 Prawdziwy Home Assistant
+
+# Czysty Home Assistant w Dockerze + Motor HA z tego repozytorium. Przeglądarka udaje aplikację HA na Galaxy S24 Ultra
+# i przechodzi cały kreator dodawania osłony. Wyniki (zrzut każdego kroku, film, log HA) są w „Artifacts” przebiegu.
+# W PR dodatkowo komentarz ze zrzutami „przed” (main) i „po” (ten PR) obok siebie.
+# Co poniedziałek test także z HA beta i dev – wcześniej widać, co zepsuje nowa wersja HA (przy błędzie GitHub wysyła e-mail).
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      wersja:
+        description: 'Wersja HA: stable, beta, dev albo numer, np. 2026.10.3'
+        default: stable
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ha-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kreator:
+    name: Kreator w HA ${{ matrix.ha }}
+    runs-on: ubuntu-24.04   # Playwright 1.56 nie obsługuje jeszcze Ubuntu 26.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        ha: ${{ fromJSON(github.event_name == 'schedule' && '["stable","beta","dev"]' || format('["{0}"]', inputs.wersja || 'stable')) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+        working-directory: karta
+      - run: npx playwright install --with-deps chromium
+        working-directory: karta
+      - name: Uruchom Home Assistant ${{ matrix.ha }}
+        run: e2e/uruchom.sh ${{ matrix.ha }}
+      - name: Kreator na telefonie
+        run: node --test e2e/kreator.test.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wyniki-ha-${{ matrix.ha }}
+          path: e2e/wyniki/
+          retention-days: 14
+
+  przed-po:
+    name: Zrzuty przed i po
+    needs: kreator
+    # tylko PR z tego repozytorium (PR z cudzej kopii nie może dodać komentarza)
+    if: always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write        # zrzuty trafiają na osobną gałąź „zrzuty” (nie na main)
+      pull-requests: write   # komentarz w PR
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: przed-repo
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+        working-directory: karta
+      - run: npx playwright install --with-deps chromium
+        working-directory: karta
+      - name: Przed – obecna wersja z main
+        continue-on-error: true
+        run: |
+          MOTOR_HA_SRC="$PWD/przed-repo/custom_components/motor_ha" e2e/uruchom.sh stable
+          WYNIKI="$PWD/wyniki/przed" node --test e2e/kreator.test.mjs
+      - name: Po – wyniki z tego PR
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: wyniki-ha-stable
+          path: wyniki/po
+      - name: Zrzuty na gałąź „zrzuty” i komentarz w PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          D="pr-$PR/${SHA:0:7}"
+          mkdir -p wyniki/przed wyniki/po
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898283+github-actions[bot]@users.noreply.github.com'
+          git init -q zrzuty && cd zrzuty
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q --depth 1 origin zrzuty; then git checkout -q -b zrzuty FETCH_HEAD; else git checkout -q --orphan zrzuty; fi
+          mkdir -p "$D/przed" "$D/po"
+          cp ../wyniki/przed/*.png "$D/przed/" 2>/dev/null || true
+          cp ../wyniki/po/*.png "$D/po/" 2>/dev/null || true
+          git add -A
+          git commit -qm "Zrzuty kreatora $D" || true
+          git push -q origin HEAD:zrzuty || { git fetch -q --depth 1 origin zrzuty && git rebase -q FETCH_HEAD && git push -q origin HEAD:zrzuty; }
+          cd ..
+          python3 e2e/komentarz.py wyniki/przed wyniki/po \
+            "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/zrzuty/$D" \
+            "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > komentarz.md
+          gh pr comment "$PR" --body-file komentarz.md --edit-last 2>/dev/null || gh pr comment "$PR" --body-file komentarz.md

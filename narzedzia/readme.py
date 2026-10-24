@@ -23,7 +23,7 @@ MDI = json.loads((Path(__file__).parent / "mdi.json").read_text(encoding="utf-8"
 REPO = "superdarco78/Motor-HA"
 GH = f"https://github.com/{REPO}"
 RAW = f"https://raw.githubusercontent.com/{REPO}/main/"
-HACS = f"https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"
+HACS = "https://my.home-assistant.io/redirect/hacs_repository/?owner=superdarco78&repository=Motor-HA&category=integration"
 DODAJ = "https://my.home-assistant.io/redirect/config_flow_start/?domain=motor_ha"
 RESTART = "https://my.home-assistant.io/redirect/system_dashboard/"
 PANELE = "https://my.home-assistant.io/redirect/lovelace_dashboards/"
@@ -313,7 +313,6 @@ def readme(j: str) -> str:
     for nr, (img, guzik, tytul, lista, uwaga) in enumerate(kt["instalacja"], 1):
         w.append(f'<a name="krok-{nr}"></a>\n<h3>{ik(IKONY_INSTALACJI[img], 28)} {nr}. {escape(tytul)}</h3>\n')
         # przycisk i obrazek prowadzą do tego samego miejsca w Twoim HA (obrazki HACS – do repozytorium w HACS)
-        link = f'{gh}{"" if j == "pl" else "/blob/main/" + L["plik"]}#krok-{nr}'
         if guzik:
             g = GUZIKI[guzik]
             napis = {"hacs": L["hacs"], "dodaj": L["dodaj"]}.get(guzik) or kt["guzik_" + guzik]

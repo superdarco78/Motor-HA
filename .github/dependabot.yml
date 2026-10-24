@@ -1,0 +1,33 @@
+# Dependabot: raz w tygodniu sam sprawdza nowe wersje narzędzi i otwiera PR. Nic nie scala sam – scala Dariusz.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Warsaw
+    commit-message:
+      prefix: '⬆️ Akcje'
+    groups:
+      akcje:
+        patterns: ['*']
+    open-pull-requests-limit: 3
+
+  - package-ecosystem: npm
+    directory: /karta
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Warsaw
+    commit-message:
+      prefix: '⬆️ Narzędzia karty'
+    groups:
+      narzedzia:
+        dependency-type: development
+    ignore:
+      # three trafia do pliku karty u użytkowników – nowsza wersja tylko świadomie, razem z wydaniem
+      - dependency-name: three
+    open-pull-requests-limit: 3
