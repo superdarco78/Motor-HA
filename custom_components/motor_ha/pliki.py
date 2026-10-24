@@ -30,8 +30,8 @@ LADOWACZ = f"""// Motor HA – ładowacz. Przy każdym otwarciu strony bierze ś
 if (!window.__motorHaLoader) {{
   window.__motorHaLoader = true;
   const t = Date.now();
-  import(`/{DOMAIN}/motor-ha-hacs.js?t=${{t}}`).catch(() => {{}});
-  import(`/{DOMAIN}/{KARTA_PLIK}?t=${{t}}`).catch((e) => console.error("Motor HA: nie wczytałem karty", e));
+  import(`/{DOMAIN}/motor-ha-hacs.js?v={VERSION}&t=${{t}}`).catch(() => {{}});
+  import(`/{DOMAIN}/{KARTA_PLIK}?v={VERSION}&t=${{t}}`).catch((e) => console.error("Motor HA: nie wczytałem karty", e));
   let wersja = null, ruch = Date.now();
   ["pointerdown", "keydown", "wheel", "touchstart"].forEach((n) => addEventListener(n, () => {{ ruch = Date.now(); }}, {{ passive: true }}));
   const sprawdz = async () => {{
@@ -124,7 +124,8 @@ async def async_dodaj_zasob(hass: HomeAssistant) -> None:
         if not zasoby.loaded:
             await zasoby.async_load()
             zasoby.loaded = True
-        adres = hass.data.get(DOMAIN, {}).get("adres", ADRES)
+        # adres z numerem wersji: po aktualizacji przeglądarka i aplikacja HA nie wezmą starego ładowacza z pamięci
+        adres = f'{hass.data.get(DOMAIN, {}).get("adres", ADRES)}?v={VERSION}'
         nasze = [z for z in zasoby.async_items() if str(z.get("url", "")).split("?")[0] in STARE_ADRESY]
         if not nasze:
             await zasoby.async_create_item({"res_type": "module", "url": adres})
