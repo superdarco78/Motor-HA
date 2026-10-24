@@ -1542,11 +1542,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     const s = k === 0 ? dzien ? "sunny" : "clear-night" : k <= 2 ? "partlycloudy" : k === 3 ? "cloudy" : k <= 48 ? "fog" : k <= 63 || k === 80 || k === 81 ? "rainy" : k === 65 || k === 82 ? "pouring" : k <= 67 ? "snowy-rainy" : k <= 77 || k === 85 || k === 86 ? "snowy" : k === 95 ? "lightning-rainy" : k >= 96 ? "hail" : "cloudy";
     return wiatr > 40 && ["sunny", "partlycloudy", "cloudy"].includes(s) ? "windy" : s;
   };
-  function pogodaZInternetu(h, gotowe) {
+  function pogodaZInternetu(h, gotowe2) {
     const lat = h?.config?.latitude, lon = h?.config?.longitude;
     if (lat == null || lon == null) return null;
     if (Date.now() - NET.t < 15 * 6e4) return NET.dane;
-    NET.czeka.add(gotowe);
+    NET.czeka.add(gotowe2);
     if (!NET.trwa) {
       NET.trwa = true;
       fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=weather_code,temperature_2m,is_day,wind_speed_10m`).then((r) => r.json()).then((j) => {
@@ -9100,9 +9100,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         const st = h.states[c.entity], m = st?.attributes?.motor_ha;
         if (!m) return;
         const wiersze = this._wiersze(h, T2, U, c, m);
-        const klucz = JSON.stringify(wiersze);
-        if (klucz !== this._ost) {
-          this._ost = klucz;
+        const klucz2 = JSON.stringify(wiersze);
+        if (klucz2 !== this._ost) {
+          this._ost = klucz2;
           const lista = root.querySelector(".wiersze");
           lista.innerHTML = wiersze.map(([a, b, cel], i) => {
             const dziala = cel.encja || c.wpis;
@@ -9296,9 +9296,9 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const c = this._cfg = this._ustawienia;
       this._jez = jezyk(c, this._hass);
       const czl = this._skrzydla(c);
-      const klucz = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
-      if (klucz !== this._klucz) {
-        this._klucz = klucz;
+      const klucz2 = JSON.stringify([czl.length, polaOkna(c) && c.pola.map((p) => [p.x, p.y, p.w, p.h, p.oslona, p.kolor]), c.sciana, c.oslona, c.rodzaj, c.kolor, c.rama, c.wysokosc, c.przyciski, c.suwak, c.pozycje, this._jez, c.osobno, !!this._wpis()]);
+      if (klucz2 !== this._klucz) {
+        this._klucz = klucz2;
         this._zbuduj(c, czl);
       }
       this._aktualizuj(c, czl);
@@ -9493,8 +9493,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       q(".wyg")?.addEventListener("click", () => this._wyglad());
       this._zbudowana = true;
     }
-    _lok(klucz, zapas) {
-      return this._hass?.localize?.(klucz) || zapas;
+    _lok(klucz2, zapas) {
+      return this._hass?.localize?.(klucz2) || zapas;
     }
     _wiecej() {
       this.dispatchEvent(new CustomEvent("hass-more-info", { bubbles: true, composed: true, detail: { entityId: this._cfg.entity } }));
@@ -9839,7 +9839,8 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
 
   // src/zdjecia.js
   var ZDJECIA = /* @__PURE__ */ new Set(["adaptacyjna", "bambusowa", "dach_dkl", "dach_dn", "dach_fhb", "dach_fhl", "dach_msl", "dach_pal", "dach_ssl", "dachowa", "drewniana", "ekran", "ekstrudowana", "fasadowa", "fasadowa_f80", "fasadowaz", "firana", "furtka", "garaz_boczna", "garaz_skrzydlowa", "kasetowa", "markiza", "markiza_balkonowa", "markiza_boczna", "markiza_kasetowa", "markiza_koszowa", "markiza_otwarta", "markiza_pionowa", "markiza_polkasetowa", "markiza_volant", "markiza_wolnostojaca", "markiza_zimowa", "markizeta", "markizeta_dach", "markizoleta", "moskitiera", "moskitiera_drzwi", "moskitiera_plisa_okno", "moskitiera_zip_drzwi", "natynkowa", "natynkowa_okragla", "okiennice", "okiennice_przesuwne", "okno_dachowe", "okno_plaskie", "okno_silownik", "panel", "parasol", "pelna", "perforowana", "pergola", "pergola_tkanina", "pionowa", "plaster", "plisa", "plisa_gora_dol", "podtynkowa", "przesuwna", "roleta_drzwi", "roleta_moskitiera", "roleta_zip_wew", "roletowa", "rzymska", "screen", "screen_taras", "segmentowa", "skrzydlowa", "swietlik", "szlaban", "uchylna", "wylaz", "zaciemniajaca", "zadaszenie", "zagiel", "zaluzja", "zaslona", "zaslona_wave", "zebra", "zewnetrzna"]);
-  var UI = /* @__PURE__ */ new Set(["auto-ciemny.png", "auto.png", "czas-ciemny.png", "czas.png", "czujniki-ciemny.png", "czujniki.png", "kolory-ciemny.png", "kolory.png", "oslona-ciemny.png", "oslona.png", "pola-ciemny.png", "pola.png", "powiadomienia-ciemny.png", "powiadomienia.png", "rodzaj-ciemny.png", "rodzaj.png", "u1.webp", "u2.webp", "u3.webp", "u4.webp", "u5.webp", "u7.webp", "u8.webp", "uklad-ciemny.png", "uklad.png"]);
+  var UI = /* @__PURE__ */ new Set(["auto-ciemny.png", "auto.png", "czas-ciemny.png", "czas.png", "czujniki-ciemny.png", "czujniki.png", "gotowe-ciemny.png", "gotowe.png", "kolory-ciemny.png", "kolory.png", "oslona-ciemny.png", "oslona.png", "pola-ciemny.png", "pola.png", "powiadomienia-ciemny.png", "powiadomienia.png", "rodzaj-ciemny.png", "rodzaj.png", "u1.webp", "u2.webp", "u3.webp", "u4.webp", "u5.webp", "u6.webp", "u7.webp", "u8.webp", "uklad-ciemny.png", "uklad.png", "wlasny.webp", "wstecz-ciemny.png", "wstecz.png"]);
+  var MASKI = /* @__PURE__ */ new Set(["adaptacyjna", "bambusowa", "dach_dkl", "dach_dn", "dach_fhb", "dach_fhl", "dach_msl", "dach_pal", "dach_ssl", "dachowa", "drewniana", "ekran", "ekstrudowana", "fasadowa", "fasadowa_f80", "fasadowaz", "furtka", "garaz_boczna", "garaz_skrzydlowa", "kasetowa", "markiza", "markiza_balkonowa", "markiza_boczna", "markiza_kasetowa", "markiza_koszowa", "markiza_otwarta", "markiza_pionowa", "markiza_polkasetowa", "markiza_volant", "markiza_wolnostojaca", "markiza_zimowa", "markizeta", "markizeta_dach", "markizoleta", "moskitiera", "moskitiera_drzwi", "moskitiera_plisa_okno", "moskitiera_zip_drzwi", "natynkowa", "natynkowa_okragla", "okiennice", "okiennice_przesuwne", "panel", "parasol", "pelna", "perforowana", "pergola", "pergola_tkanina", "pionowa", "plaster", "plisa", "plisa_gora_dol", "podtynkowa", "przesuwna", "roleta_drzwi", "roleta_moskitiera", "roleta_zip_wew", "roletowa", "rzymska", "screen", "screen_taras", "segmentowa", "skrzydlowa", "szlaban", "uchylna", "zaciemniajaca", "zadaszenie", "zagiel", "zaluzja", "zaslona", "zaslona_wave", "zebra", "zewnetrzna"]);
 
   // src/edytor.js
   var KROKI = [
@@ -10151,9 +10152,9 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       if (!h || !this._cfg) return;
       const T2 = TEKSTY[jezyk(this._cfg, h)], lista = this._urzadzenia(), root = this.shadowRoot || this.attachShadow({ mode: "open" });
       this._ile = lista.length;
-      const klucz = lista.join() + T2.karta.dom;
-      if (klucz !== this._klucz) {
-        this._klucz = klucz;
+      const klucz2 = lista.join() + T2.karta.dom;
+      if (klucz2 !== this._klucz) {
+        this._klucz = klucz2;
         root.innerHTML = `<style>${STYL_STALY}${STYL3}</style><ha-card><div class="mh">
         <div class="tytul">${esc4(this._cfg.title ?? T2.karta.dom)}</div>
         ${lista.length ? `<div class="lista">${lista.map((e) => `<div class="wiersz" data-e="${e}"><div class="ik"><ha-icon></ha-icon></div>
@@ -10369,6 +10370,64 @@ button svg{fill:var(--primary-color);flex:none}
     }
   };
 
+  // src/przekolor.js
+  var gotowe = /* @__PURE__ */ new Map();
+  var wToku = /* @__PURE__ */ new Map();
+  var wczytaj = (src) => new Promise((ok, zle) => {
+    const i = new Image();
+    i.onload = () => ok(i);
+    i.onerror = zle;
+    i.src = src;
+  });
+  var rgb3 = (h) => {
+    const m = /^#?([0-9a-f]{6})$/i.exec(h || "");
+    if (!m) return null;
+    const n = parseInt(m[1], 16);
+    return [n >> 16, n >> 8 & 255, n & 255];
+  };
+  var klucz = (typ, kolor) => typ + "|" + kolor;
+  var zKolorem = (typ, kolor) => gotowe.get(klucz(typ, kolor));
+  function przekoloruj(typ, kolor, wersja) {
+    const k = klucz(typ, kolor), c = rgb3(kolor);
+    if (gotowe.has(k)) return Promise.resolve(gotowe.get(k));
+    if (!c) return Promise.resolve(null);
+    if (wToku.has(k)) return wToku.get(k);
+    const p = Promise.all([wczytaj(`/motor_ha/rodzaje/${typ}.webp?v=${wersja}`), wczytaj(`/motor_ha/rodzaje/maski/${typ}.png?v=${wersja}`)]).then(([z, m]) => {
+      const w = z.naturalWidth, h = z.naturalHeight, cv = document.createElement("canvas");
+      cv.width = w;
+      cv.height = h;
+      const x = cv.getContext("2d", { willReadFrequently: true });
+      x.drawImage(m, 0, 0, w, h);
+      const mk = x.getImageData(0, 0, w, h).data;
+      x.clearRect(0, 0, w, h);
+      x.drawImage(z, 0, 0, w, h);
+      const im = x.getImageData(0, 0, w, h), d = im.data;
+      let s = 0, n = 0;
+      for (let i = 0; i < d.length; i += 4) {
+        const a = mk[i] / 255;
+        s += a * (d[i] + d[i + 1] + d[i + 2]) / 3;
+        n += a;
+      }
+      const sr = n ? s / n : 128;
+      for (let i = 0; i < d.length; i += 4) {
+        const a = mk[i] / 255;
+        if (!a) continue;
+        const g = 1 + 1.8 * ((d[i] + d[i + 1] + d[i + 2]) / 3 - sr) / Math.max(sr, 1);
+        for (let j = 0; j < 3; j++) d[i + j] = d[i + j] * (1 - a) + Math.max(0, Math.min(255, c[j] * g)) * a;
+      }
+      x.putImageData(im, 0, 0);
+      const url = cv.toDataURL("image/webp", 0.9);
+      gotowe.set(k, url);
+      wToku.delete(k);
+      return url;
+    }).catch(() => {
+      wToku.delete(k);
+      return null;
+    });
+    wToku.set(k, p);
+    return p;
+  }
+
   // src/kreator_okno.js
   var MDI2 = {
     silnik: "M3 4h18v3H3zm2 4h14v9h2v2H3v-2h2zm2 0v9h10V8z",
@@ -10564,7 +10623,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .kaf svg{width:100%;height:auto;max-height:84px}
 .kaf img.zdj{display:block;width:100%;height:auto;max-height:84px;aspect-ratio:6/5;object-fit:contain;border-radius:6px;pointer-events:none}
 .ruchP svg{display:block;width:100%;height:auto}
-.krok .k img.ikk{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.krok .k img.ikk{width:72%;height:72%;object-fit:contain;display:block}
 .kaf b{font-size:11px;font-weight:400;line-height:1.2;color:var(--fg2);overflow-wrap:break-word;hyphens:manual;max-width:100%}
 .kaf.wyb{border-color:var(--accent);background:var(--primary-soft)} .kaf.wyb b{color:var(--fg);font-weight:500}
 .kaf:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
@@ -10708,7 +10767,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         S.tytul = pokoje.size === 1 && [...pokoje][0] && n > 1 ? [...pokoje][0] : pierwsza?.nazwa || "";
       }
       this._dopasujPola(true);
-      if (d.nowy) for (const [r, klucz] of [
+      if (d.nowy) for (const [r, klucz2] of [
         ["pogoda", "pogoda"],
         ["temp", "czujnik_temp"],
         ["obecnosc", "czujnik_obecnosc"],
@@ -10717,7 +10776,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         ["foto", "czujnik_foto"]
       ]) {
         const c = this._czujnik(r);
-        if (!S.o[klucz] && c.podpowiedz) S.o[klucz] = c.podpowiedz;
+        if (!S.o[klucz2] && c.podpowiedz) S.o[klucz2] = c.podpowiedz;
       }
     }
     // liczba pól = układ; nowe pola dostają kolejne silniki i czujniki okien z pokoju
@@ -10825,6 +10884,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       r.getElementById("scena").hidden = !sc;
       r.getElementById("podglad").innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === "uklad" && (S.szablon === "w" || prostokaty(S.u).length > 1)) && !jedenDuzy ? this._podgladMaly() : "";
       this._petlaRuchu();
+      this._przekolorujZdj();
+    }
+    _przekolorujZdj() {
+      this.shadowRoot.querySelectorAll("img[data-przek]").forEach((im) => {
+        const t = im.dataset.przek, k = im.dataset.kol;
+        przekoloruj(t, k, WERSJA).then((u3) => {
+          if (u3 && im.dataset.przek === t && im.dataset.kol === k && im.src !== u3) im.src = u3;
+        });
+      });
     }
     // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
     _scena(k) {
@@ -10884,6 +10952,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       }, 70);
     }
     kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
+      if (ZDJECIA.has(typ) && MASKI.has(typ)) return `<img class="zdj" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" alt="" draggable="false">`;
       if (ZDJECIA.has(typ)) return `<img class="zdj" src="/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}" alt="" loading="lazy" draggable="false">`;
       return kafel(typ, kolor, rama) || this._kafelProsty(typ);
     }
@@ -10894,13 +10963,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       <rect x="11" y="7" width="42" height="46" fill="${n1}"/>${this.oslona(typ, 11, 7, 42, 46, 40, this._kolor())}</svg>`;
     }
     // ikona kroku: grafika z Canvy (www/ui, osobna dla ciemnego motywu), a gdy jej nie ma – ikona mdi
-    _ikKroku(kk) {
+    _ikKroku(kk, teraz) {
       const n = { silnik: "oslona", przypisz: "pola", stoper: "czas", dzwonek: "powiadomienia" }[kk] || kk;
-      const f = [this._dark() ? n + "-ciemny.png" : null, n + ".png"].find((x) => x && UI.has(x));
+      const f = [this._dark() || teraz ? n + "-ciemny.png" : null, n + ".png"].find((x) => x && UI.has(x));
       return f ? `<img class="ikk" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="">` : ik(kk);
     }
-    kafelUkladu(P2, drzwi3, klucz) {
-      const f = klucz && [klucz + ".webp", klucz + ".png"].find((x) => UI.has(x));
+    kafelUkladu(P2, drzwi3, klucz2) {
+      const f = klucz2 && [klucz2 + ".webp", klucz2 + ".png"].find((x) => UI.has(x));
       if (f) return `<img class="zdj" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="" loading="lazy">`;
       const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
       P2.forEach(([x, y, w, h]) => d.push(`<rect x="${6 + x * 52}" y="${4 + y * 50}" width="${w * 52}" height="${h * 50}" fill="${n1}" stroke="var(--fg2)" stroke-width="1.4"/>
@@ -11045,8 +11114,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         w.push(`<button class="wiersz ${okna.length ? "" : "wyl"}" data-idz="przypisz"><span class="ik">${ik("okno", 22)}</span><span class="t"><b>${esc6(t.czujniki.okno)}</b><small>${esc6(okna.length ? okna.map((e) => this._nazwa(e)).join(", ") : t.okienBrak)}</small></span><span class="przel"></span></button>`);
         if (this.dane.slonce) w.push(`<button class="wiersz ${S.o.bez_slonca ? "wyl" : ""}" data-slonce="1"><span class="ik">${ik("slonce", 22)}</span><span class="t"><b>${esc6(t.czujniki.slonce)}</b><small>${esc6(t.slonceOpis)}</small></span><span class="przel"></span></button>`);
       }
-      for (const [r, i, klucz] of this._listaCzujnikow()) {
-        const c = this._czujnik(r), e = S.o[klucz];
+      for (const [r, i, klucz2] of this._listaCzujnikow()) {
+        const c = this._czujnik(r), e = S.o[klucz2];
         if (!c.lista.length && !e) {
           w.push(`<div class="wiersz wyl brak"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(t.czujniki[r])}</b><small>${esc6(t.nieZnalazlem)}</small></span></div>`);
           continue;
@@ -11064,10 +11133,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const wiersz = (k, i, on, tyt, opis, extra = "") => w.push(`<button class="wiersz ${on ? "" : "wyl"}" data-auto="${k}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(tyt)}</b><small>${esc6(opis)}</small></span><span class="przel"></span></button>${on ? extra : ""}`);
       const rano = harm && o.harm_otwieraj !== false, wieczor = harm && o.harm_zamykaj !== false;
       const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw">${g === "slonce" ? `<span class="et">${esc6(t.pozycja)}</span>` : ""}<input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc6(tekst)}"><span>${esc6(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
-      const pora = (k, ikona, on, tyt, klucz, godzKlucz, dom, mn, mx, slonceTekst) => {
+      const pora = (k, ikona, on, tyt, klucz2, godzKlucz, dom, mn, mx, slonceTekst) => {
         const sl = this._harm(k) === "slonce";
         const tryby = `<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-harm="${k}" data-v="slonce">${ik(ikona, 16)} ${esc6(slonceTekst)}</button><button class="chip ${sl ? "" : "wyb"}" data-harm="${k}" data-v="godziny">${ik("stoper", 16)} ${esc6(t.godzina)}</button></div>`;
-        wiersz(k, ikona, on, tyt, this._opisPory(k), tryby + (sl ? this._par(klucz, t.przesuniecie) : suwak(godzKlucz, mn, mx, minuty(o[godzKlucz] || dom), tyt)));
+        wiersz(k, ikona, on, tyt, this._opisPory(k), tryby + (sl ? this._par(klucz2, t.przesuniecie) : suwak(godzKlucz, mn, mx, minuty(o[godzKlucz] || dom), tyt)));
       };
       pora("rano", "wschod", rano, t.auto.rano, "przes_otw", "otworz", "07:00", 300, 660, t.wschodSlonca);
       pora("wieczor", "zachod", wieczor, t.auto.wieczor, "przes_zam", "zamknij", "21:00", 1020, 1410, t.zachodSlonca);
@@ -11126,11 +11195,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const d = PAR[k], v = +(this.S.o[k] ?? d.dom);
       return `<div class="suw"><span class="et">${esc6(etykieta)}</span><input type="range" min="${d.mn}" max="${d.mx}" step="${d.krok}" value="${v}" data-par="${k}" aria-label="${esc6(etykieta)}"><span>${esc6(d.fmt(v))}</span></div>`;
     }
-    _zrodlo(r, klucz) {
+    _zrodlo(r, klucz2) {
       const o = this.S.o, t = this.t, lista = this._czujnik(r).lista;
       const opcje = [...lista.map((x) => [x.id, x.nazwa]), ...o.pogoda ? [["", this._nazwa(o.pogoda)]] : []];
       if (opcje.length < 2) return "";
-      return `<div class="suw chipy"><span class="et">${esc6(t.zrodlo)}</span>${opcje.map(([id, n]) => `<button class="chip ${(o[klucz] || "") === id ? "wyb" : ""}" data-zrodlo="${esc6(id)}" data-klucz="${klucz}">${esc6(n)}</button>`).join("")}</div>`;
+      return `<div class="suw chipy"><span class="et">${esc6(t.zrodlo)}</span>${opcje.map(([id, n]) => `<button class="chip ${(o[klucz2] || "") === id ? "wyb" : ""}" data-zrodlo="${esc6(id)}" data-klucz="${klucz2}">${esc6(n)}</button>`).join("")}</div>`;
     }
     str_stoper() {
       const S = this.S, t = this.t, p = S.pomiar || {};
@@ -11440,10 +11509,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
     }
     arkuszCzujnika(r) {
-      const S = this.S, t = this.t, klucz = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._tylkoTu(this._czujnik(r).lista, (x) => x.tu, [S.o[klucz]]);
+      const S = this.S, t = this.t, klucz2 = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._tylkoTu(this._czujnik(r).lista, (x) => x.tu, [S.o[klucz2]]);
       return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(t.czujniki[r])}"><div class="uchwyt"></div><h2>${esc6(t.czujniki[r])}</h2>
-      <div class="chipy" style="margin-top:12px">${c.lista.map((x) => `<button class="chip ${S.o[klucz] === x.id ? "wyb" : ""}" data-wybierz="${esc6(x.id)}" data-klucz="${klucz}">${esc6(x.nazwa)}${x.pokoj ? `<span class="p">${esc6(x.pokoj)}</span>` : ""}</button>`).join("")}
-      ${c.wiecej}<button class="chip ${!S.o[klucz] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz}">${esc6(t.nieUzywaj)}</button></div>
+      <div class="chipy" style="margin-top:12px">${c.lista.map((x) => `<button class="chip ${S.o[klucz2] === x.id ? "wyb" : ""}" data-wybierz="${esc6(x.id)}" data-klucz="${klucz2}">${esc6(x.nazwa)}${x.pokoj ? `<span class="p">${esc6(x.pokoj)}</span>` : ""}</button>`).join("")}
+      ${c.wiecej}<button class="chip ${!S.o[klucz2] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz2}">${esc6(t.nieUzywaj)}</button></div>
       <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
     }
     // --- budowa i rysowanie ---
@@ -11549,7 +11618,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const k = kroki[S.krok];
       r.getElementById("nazwaKroku").textContent = t.kroki[k];
       r.getElementById("ktory").textContent = wstaw(t.krok, S.krok + 1, kroki.length);
-      r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${this._ikKroku(kk)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
+      r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${this._ikKroku(kk, i === S.krok)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
       {
         const kr = r.getElementById("kroki"), a = kr.querySelector(".teraz");
         if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2;
@@ -11561,6 +11630,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const pyt = k === "rodzaj" && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
       this._kartaEl = null;
       r.getElementById("tresc").innerHTML = `<h2>${esc6(pyt)}</h2>${pod ? `<p class="pod">${esc6(pod)}</p>` : ""}${this["str_" + k]()}` + (S.arkusz !== null && k === "przypisz" ? this.arkusz() : "") + (S.arkuszC && k === "czujniki" ? this.arkuszCzujnika(S.arkuszC) : "");
+      this._przekolorujZdj();
       r.getElementById("wstecz").style.visibility = S.krok ? "visible" : "hidden";
       const dalej = r.getElementById("dalej");
       dalej.textContent = S.krok === kroki.length - 1 ? t.zapisz : t.dalej;
@@ -11959,9 +12029,9 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     if (!p || !p.box.isConnected) return;
     const ha = document.querySelector("home-assistant")?.hass;
     if (!ha) return;
-    const c = wygladPodgladu(p.podglad, dane), klucz = JSON.stringify(c);
-    if (klucz === p.klucz) return;
-    p.klucz = klucz;
+    const c = wygladPodgladu(p.podglad, dane), klucz2 = JSON.stringify(c);
+    if (klucz2 === p.klucz) return;
+    p.klucz = klucz2;
     let k = p.box.firstElementChild;
     if (!k) {
       k = document.createElement("motor-ha");
@@ -12147,8 +12217,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     const nasze = [...r.querySelectorAll(`[${ZNAK2}]`)];
     const lista = cele(h, m[1]);
     powod = lista ? "" : `brak encji Motor HA przy urządzeniu (encje: ${Object.keys(h.entities || {}).length})`;
-    const klucz = lista ? m[1] + "|" + kolumny.length + "|" + lista.map((x) => x.cel.entity || "dom").join() : "";
-    if (nasze.length && nasze[0].getAttribute(ZNAK2) !== klucz) {
+    const klucz2 = lista ? m[1] + "|" + kolumny.length + "|" + lista.map((x) => x.cel.entity || "dom").join() : "";
+    if (nasze.length && nasze[0].getAttribute(ZNAK2) !== klucz2) {
       nasze.forEach((e) => e.remove());
       nasze.length = 0;
     }
@@ -12158,7 +12228,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       for (const { kolumna, cel } of lista) {
         const nr2 = Math.min(kolumna, kolumny.length - 1), k = kolumny[nr2], i = ile[nr2] || 0;
         const e = document.createElement("motor-ha-urzadzenie");
-        e.setAttribute(ZNAK2, klucz);
+        e.setAttribute(ZNAK2, klucz2);
         e.cel = cel;
         e.hass = h;
         k.insertBefore(e, k.children[i] || null);

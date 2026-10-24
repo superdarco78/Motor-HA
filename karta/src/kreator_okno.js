@@ -3,7 +3,8 @@
 // i „Konfiguruj” (kreator.js), a gotowe ustawienia wysyła jak zwykłą odpowiedź kroku integracji (pole „kreator”).
 import { KOLORY, RAMA_Z_KLUCZA, BRAMY, SCIANY, WEWNETRZNE, ZEWNETRZNE, POZIOME, czyBrama, czyZew, baza, wlasnyRuch, WERSJA, OKNA_NAPED } from './stale.js';
 import { kafelRuch, RODZAJE_RUCHU } from './kafle_ruch.js';
-import { ZDJECIA, UI } from './zdjecia.js';
+import { ZDJECIA, UI, MASKI } from './zdjecia.js';
+import { przekoloruj, zKolorem } from './przekolor.js';
 import { kafel, GRUPY_KAFLI } from './kafle.js';
 import { TEKSTY, jezyk, wstaw } from './jezyk.js';
 import { rysunekBramy } from './brama.js';
@@ -196,7 +197,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
 .kaf svg{width:100%;height:auto;max-height:84px}
 .kaf img.zdj{display:block;width:100%;height:auto;max-height:84px;aspect-ratio:6/5;object-fit:contain;border-radius:6px;pointer-events:none}
 .ruchP svg{display:block;width:100%;height:auto}
-.krok .k img.ikk{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.krok .k img.ikk{width:72%;height:72%;object-fit:contain;display:block}
 .kaf b{font-size:11px;font-weight:400;line-height:1.2;color:var(--fg2);overflow-wrap:break-word;hyphens:manual;max-width:100%}
 .kaf.wyb{border-color:var(--accent);background:var(--primary-soft)} .kaf.wyb b{color:var(--fg);font-weight:500}
 .kaf:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
@@ -422,6 +423,13 @@ export class MotorHaKreator extends HTMLElement {
     r.getElementById('scena').innerHTML = sc; r.getElementById('scena').hidden = !sc;
     r.getElementById('podglad').innerHTML = !this._szeroko && !BEZ_PODGLADU.includes(k) && !(k === 'uklad' && (S.szablon === 'w' || prostokaty(S.u).length > 1)) && !jedenDuzy ? this._podgladMaly() : '';
     this._petlaRuchu();
+    this._przekolorujZdj();
+  }
+  _przekolorujZdj() {
+    this.shadowRoot.querySelectorAll('img[data-przek]').forEach(im => {
+      const t = im.dataset.przek, k = im.dataset.kol;
+      przekoloruj(t, k, WERSJA).then(u => { if (u && im.dataset.przek === t && im.dataset.kol === k && im.src !== u) im.src = u; });
+    });
   }
   // duży rysunek w kolumnie z boku (szeroki ekran); w Rodzaj, Kolory i Pola można na nim dotykać pól
   _scena(k) {
@@ -474,6 +482,8 @@ export class MotorHaKreator extends HTMLElement {
 
   kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
     // zdjęcie z Canvy, jeśli jest dla tego rodzaju; inaczej rysunek
+    // z maską: zdjęcie od razu w wybranym kolorze (gdy jeszcze się liczy – oryginał, podmieniany po chwili)
+    if (ZDJECIA.has(typ) && MASKI.has(typ)) return `<img class="zdj" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || `/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}`}" alt="" draggable="false">`;
     if (ZDJECIA.has(typ)) return `<img class="zdj" src="/motor_ha/rodzaje/${typ}.webp?v=${WERSJA}" alt="" loading="lazy" draggable="false">`;
     return kafel(typ, kolor, rama) || this._kafelProsty(typ);
   }
@@ -484,9 +494,9 @@ export class MotorHaKreator extends HTMLElement {
       <rect x="11" y="7" width="42" height="46" fill="${n1}"/>${this.oslona(typ, 11, 7, 42, 46, 40, this._kolor())}</svg>`;
   }
   // ikona kroku: grafika z Canvy (www/ui, osobna dla ciemnego motywu), a gdy jej nie ma – ikona mdi
-  _ikKroku(kk) {
+  _ikKroku(kk, teraz) {
     const n = { silnik: 'oslona', przypisz: 'pola', stoper: 'czas', dzwonek: 'powiadomienia' }[kk] || kk;
-    const f = [this._dark() ? n + '-ciemny.png' : null, n + '.png'].find(x => x && UI.has(x));
+    const f = [this._dark() || teraz ? n + '-ciemny.png' : null, n + '.png'].find(x => x && UI.has(x));
     return f ? `<img class="ikk" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="">` : ik(kk);
   }
   kafelUkladu(P, drzwi, klucz) {
@@ -1000,7 +1010,7 @@ export class MotorHaKreator extends HTMLElement {
     r.getElementById('nazwaKroku').textContent = t.kroki[k];
     r.getElementById('ktory').textContent = wstaw(t.krok, S.krok + 1, kroki.length);
     r.getElementById('kroki').innerHTML = kroki.map((kk, i) =>
-      `<button class="krok ${i === S.krok ? 'teraz' : i < S.krok ? 'zrob' : ''}" data-krok="${i}" aria-label="${esc(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ''}><span class="k">${this._ikKroku(kk)}</span><span class="n">${esc(t.kroki[kk])}</span></button>`).join('');
+      `<button class="krok ${i === S.krok ? 'teraz' : i < S.krok ? 'zrob' : ''}" data-krok="${i}" aria-label="${esc(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ''}><span class="k">${this._ikKroku(kk, i === S.krok)}</span><span class="n">${esc(t.kroki[kk])}</span></button>`).join('');
     { const kr = r.getElementById('kroki'), a = kr.querySelector('.teraz'); if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2; }
     // w „Rodzaj” i „Kolory” przy kilku polach jest jeden duży rysunek do wyboru pola – bez drugiego, małego na górze
     const jedenDuzy = ['rodzaj', 'kolory'].includes(k) && !S.brama && prostokaty(S.u).length > 1;
@@ -1012,6 +1022,7 @@ export class MotorHaKreator extends HTMLElement {
     this._kartaEl = null;
     r.getElementById('tresc').innerHTML = `<h2>${esc(pyt)}</h2>${pod ? `<p class="pod">${esc(pod)}</p>` : ''}${this['str_' + k]()}`
       + (S.arkusz !== null && k === 'przypisz' ? this.arkusz() : '') + (S.arkuszC && k === 'czujniki' ? this.arkuszCzujnika(S.arkuszC) : '');
+    this._przekolorujZdj();
     r.getElementById('wstecz').style.visibility = S.krok ? 'visible' : 'hidden';
     const dalej = r.getElementById('dalej');
     dalej.textContent = S.krok === kroki.length - 1 ? t.zapisz : t.dalej;
