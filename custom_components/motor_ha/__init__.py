@@ -40,7 +40,7 @@ from .pliki import (
     async_usun_zasob,
 )
 from .powiadomienia import Powiadomienia
-from .update import RESTART
+from .update import RESTART, prosba_o_restart
 from .urzadzenie import HUB, NAZWY_OSLON, Wpis, assist, info_hub, info_urzadzenia
 from .ws import async_rejestruj
 
@@ -146,7 +146,7 @@ async def _usun_stary_folder(hass: HomeAssistant) -> None:
 @callback
 def _pilnuj_plikow(hass: HomeAssistant) -> None:
     """Nowa wersja pobrana (HACS albo nasza aktualizacja), a działa jeszcze stara: w Ustawieniach pojawia się
-    „Motor HA … – restart” z przyciskiem. Prośba o restart przychodzi dopiero, gdy pliki są już na dysku."""
+    „Motor HA … – restart” z przyciskiem (tylko gdy HACS nie pokazuje już swojego „Restart required”). Prośba o restart przychodzi dopiero, gdy pliki są już na dysku."""
     plik = Path(__file__).parent / "manifest.json"
 
     def _wersja() -> str | None:
@@ -157,9 +157,7 @@ def _pilnuj_plikow(hass: HomeAssistant) -> None:
 
     async def _sprawdz(_t=None) -> None:
         if (nowa := await hass.async_add_executor_job(_wersja)) and nowa != VERSION:
-            ir.async_create_issue(hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
-                                  severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
-                                  translation_placeholders={"wersja": nowa})
+            prosba_o_restart(hass, nowa)
 
     async_track_time_interval(hass, _sprawdz, timedelta(seconds=30), cancel_on_shutdown=True)
 
