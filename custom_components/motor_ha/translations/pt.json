@@ -953,6 +953,14 @@
         "mahon": "mogno",
         "dab_bagienny": "carvalho de pântano"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Fechar tudo",
+        "odslon": "Abrir tudo",
+        "pauza": "Pausar automação",
+        "wznow": "Retomar automação"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lâminas",
           "description": "Ângulo das lâminas."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Todas as janelas",
+      "description": "Fecha ou abre todas as janelas do Motor HA de uma vez, ou pausa a sua automação (atalhos no painel).",
+      "fields": {
+        "akcja": {
+          "name": "Ação",
+          "description": "O que fazer com todas as janelas."
+        },
+        "minuty": {
+          "name": "Minutos",
+          "description": "Quanto tempo dura a pausa."
         }
       }
     }

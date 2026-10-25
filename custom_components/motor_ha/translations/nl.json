@@ -953,6 +953,14 @@
         "mahon": "mahonie",
         "dab_bagienny": "moeraseiken"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Alles sluiten",
+        "odslon": "Alles openen",
+        "pauza": "Automatisering pauzeren",
+        "wznow": "Automatisering hervatten"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lamellen",
           "description": "Lamelhoek."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Alle ramen",
+      "description": "Sluit of opent alle Motor HA-ramen tegelijk, of pauzeert hun automatisering (snelknoppen op het dashboard).",
+      "fields": {
+        "akcja": {
+          "name": "Actie",
+          "description": "Wat er met alle ramen moet gebeuren."
+        },
+        "minuty": {
+          "name": "Minuten",
+          "description": "Hoe lang de pauze duurt."
         }
       }
     }

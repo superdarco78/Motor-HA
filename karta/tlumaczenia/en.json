@@ -525,5 +525,300 @@
     "caleOkno": "Whole window",
     "rodzajCalosc": "Choose a pane to give it a different type or colour.",
     "rodzajPole": "You are now setting pane {0} only."
+  },
+  "ekran": {
+    "witaj": "Welcome to Motor HA",
+    "nowaWersja": "New Motor HA version",
+    "wersja": "Version {0}",
+    "coNowego": "What's new in {0}",
+    "nowe": [
+      "This screen: you choose what Motor HA adds to Home Assistant",
+      "Window card on the dashboard, view and place you pick, shortcuts for the whole home and a sidebar panel",
+      "Layout tiles and the custom layout editor drawn as a real window, shades visible in every wizard step"
+    ],
+    "jak": "How do you want to use Motor HA?",
+    "tryby": {
+      "pelny": [
+        "Everything",
+        "Window, card, automation, notifications"
+      ],
+      "samo": [
+        "Device only",
+        "Just the shade in HA, no card or automation"
+      ],
+      "wlasny": [
+        "My choice",
+        "I pick below"
+      ]
+    },
+    "co": "What should Motor HA add to Home Assistant?",
+    "opcje": {
+      "karta": [
+        "Window card on a dashboard",
+        "Every new window gets a card. Choose the dashboard and place."
+      ],
+      "dom": [
+        "“Whole home” card",
+        "All windows on one card."
+      ],
+      "skroty": [
+        "Dashboard shortcuts",
+        "Buttons for the whole home."
+      ],
+      "pasek": [
+        "“Motor HA” panel in the sidebar",
+        "All windows, reason for each move and history in one place."
+      ],
+      "assist": [
+        "Voice control (Assist)",
+        "Windows listen to commands, e.g. “close the living room”."
+      ],
+      "ukryj": [
+        "Hide plain motors from voice",
+        "Assist only sees Motor HA windows, no duplicate names."
+      ],
+      "powiadom": [
+        "Notifications",
+        "When something is wrong with a shade or sensor."
+      ],
+      "auto": [
+        "Automation",
+        "Shades react on their own to the time of day, sun, weather and sensors."
+      ],
+      "nowa_wersja": [
+        "New version info",
+        "This screen with “What's new” after every update."
+      ]
+    },
+    "jakDziala": "How it works",
+    "gdyWyl": "When off",
+    "opisy": {
+      "karta": [
+        "When you add a window, Motor HA puts its card on the chosen dashboard, view and place. It never removes or moves anything. If the card is already there, it does nothing.",
+        "The card is not put on any dashboard. Add it yourself: Edit dashboard → Add card → Motor HA."
+      ],
+      "dom": [
+        "The dashboard chosen for the window card gets one card with all windows of the home: the state of each window and open, stop, close buttons.",
+        "No whole-home card, only cards of single windows."
+      ],
+      "skroty": [
+        "Above the window cards there are three buttons for the whole home. Pause stops the automation of all windows for 2 hours.",
+        "No buttons; you control the whole home from the “Whole home” card or by voice."
+      ],
+      "pasek": [
+        "The HA sidebar gets a “Motor HA” item: all windows with their cards, the reason for the last move, the move history and these settings.",
+        "No sidebar item. You find the windows in Settings → Devices → Motor HA."
+      ],
+      "assist": [
+        "Motor HA windows are visible to Assist under their name and room, e.g. “close the living room”, “open the kitchen window”.",
+        "Assist does not see Motor HA windows; you control them from the card and the automation."
+      ],
+      "ukryj": [
+        "The plain motors Motor HA windows are made from are hidden from Assist. Voice does not mix up “living room blind” and “living room window”.",
+        "Assist sees both the motor and the Motor HA window (there may be two similar names)."
+      ],
+      "powiadom": [
+        "You get a message when a motor does not respond, a shade did not reach its position, a battery is low or the automation could not move a shade (e.g. because of an open window).",
+        "No messages. You see the state on the card and in the window history."
+      ],
+      "auto": [
+        "Every window gets the scenarios below. They work in order of importance: a higher one wins over or limits a lower one. You can change each later in “Configure” of the window.",
+        "Shades only move when you say so: card, voice, button or your own HA automations. Motor HA does nothing on its own."
+      ],
+      "nowa_wersja": [
+        "After every update this screen appears with “What's new” and your settings to check.",
+        "Updates without this screen. “What's new” is only in HACS."
+      ]
+    },
+    "panel": "Dashboard",
+    "widok": "View",
+    "miejsce": "Place",
+    "proponowane": "suggested",
+    "nowyWidok": "New “Windows” view",
+    "miejsca": {
+      "sekcja": "“Motor HA” section at the end",
+      "gora": "“Motor HA” section at the top",
+      "pokoj": "In the section of the window's room"
+    },
+    "miniOpis": {
+      "sekcja": "Motor HA cards together in one section at the end of the view, nothing else moves.",
+      "gora": "Motor HA section at the very top of the view.",
+      "pokoj": "Card in the section whose heading is the window's room (e.g. Living room). Without such a section – in the Motor HA section."
+    },
+    "miniNowy": "On a separate “Windows” view.",
+    "oknoMini": "Window",
+    "salon": "Living room",
+    "kuchnia": "Kitchen",
+    "brakPanelu": "There is no dashboard saved from the UI, so the card will not be added. Create a dashboard in Settings → Dashboards and open this screen again.",
+    "skroty": [
+      "⬇ Close all",
+      "⬆ Open all",
+      "⏸ Pause automation 2 h"
+    ],
+    "skrotyOpis": "On the same dashboard, above the window cards.",
+    "telefon": "Also to the phone (HA app)",
+    "wHa": "They always go to HA notifications too (bell in the sidebar).",
+    "brakTelefonu": "There is no phone with the HA app – notifications only go to HA (bell in the sidebar).",
+    "scenOpis": "All scenarios in order of importance (1 is the most important). A scenario without the sensor it needs skips itself. You can turn each off:",
+    "skad": "How it knows",
+    "scen": {
+      "cisza": [
+        "Quiet after HA start",
+        "for 5 minutes after an HA restart shades stay still until the sensors report their state",
+        "–"
+      ],
+      "dym": [
+        "Smoke",
+        "smoke detector → the shade opens (escape route and light)",
+        "smoke detector"
+      ],
+      "wiatr": [
+        "Wind, hail, vibration",
+        "wind from 40 km/h or vibration → the outdoor shade retracts; hail warning → awning retracted, shutter closed (protects the glass)",
+        "weather, anemometer, vibration sensor, warnings"
+      ],
+      "deszcz": [
+        "Rain",
+        "awnings, screens and external venetian blinds retract; shutters stay as they are",
+        "weather or rain sensor"
+      ],
+      "mroz": [
+        "Frost",
+        "at 1 °C and below the outdoor shade does not move (it may be frozen)",
+        "outdoor temperature or weather"
+      ],
+      "pauza": [
+        "Your manual move",
+        "when you move the shade yourself, the automation waits 2 hours",
+        "shade motor"
+      ],
+      "alarm": [
+        "Alarm",
+        "when the alarm is armed, the shade closes",
+        "HA alarm"
+      ],
+      "spie": [
+        "Sleeping",
+        "“Sleeping” switch on → the shade stays closed and does not open in the morning",
+        "“Sleeping” switch of the window"
+      ],
+      "nikogo": [
+        "Nobody home",
+        "nobody home → the shade is closed; in vacation mode it moves at a slightly different time every morning and evening",
+        "household phones"
+      ],
+      "rano": [
+        "Open in the morning",
+        "at sunrise (or at the time you set) the shade opens",
+        "HA sun, clock"
+      ],
+      "wieczor": [
+        "Close in the evening",
+        "at sunset (or at the time you set) the shade closes",
+        "HA sun, clock"
+      ],
+      "obecnosc": [
+        "Wait for someone in the morning",
+        "until 10:00 the shade opens only when someone enters the room",
+        "presence or motion sensor"
+      ],
+      "posrednia": [
+        "Afternoon position",
+        "from 13:00 the shade stays at 50 % instead of fully open",
+        "clock"
+      ],
+      "slonce": [
+        "Sun and heat",
+        "the sun shines into this window and it is 24 °C or more outside (or heat is forecast) → the shade goes down to 20 % open",
+        "HA sun, weather, temperature"
+      ],
+      "oslepianie": [
+        "Glare",
+        "sun in the window → the shade goes down so the sun reaches no further than 3 m into the room (e.g. to the TV or desk)",
+        "HA sun"
+      ],
+      "pokoj": [
+        "Warm room",
+        "25 °C or more in the room and sun in the window → the shade goes to 20 % open",
+        "room thermometer"
+      ],
+      "zima": [
+        "Winter",
+        "from November to March the shade is open in the sun (free heat) and closed at night (less heat loss)",
+        "HA sun, calendar"
+      ],
+      "okno": [
+        "Open window and door",
+        "tilted window: the shade does not go lower than 20 %; open window: it does not go down; open balcony door: not lower than 80 %",
+        "window and door sensor"
+      ],
+      "przeszkoda": [
+        "Obstacle",
+        "obstacle sensor at the balcony door → the shade does not go down",
+        "obstacle sensor"
+      ],
+      "granice": [
+        "Travel limits and slats",
+        "the shade never goes beyond the limits you set; blind slats turn to the angle of the sun",
+        "–"
+      ]
+    },
+    "sprawdz": "Check what wins when several things happen at once",
+    "przyklad": "Example: outdoor roller shutter, south-facing window, July. It is calculated by the same logic that runs your windows.",
+    "zaznacz": "Tick what is happening now:",
+    "pora": "Time",
+    "pory": {
+      "rano": "Morning 7:30",
+      "dzien": "Day 14:00",
+      "wieczor": "Evening (after sunset)",
+      "noc": "Night 23:00"
+    },
+    "warunki": {
+      "slonce": "Sun shines into the window",
+      "upal": "Heat (30 °C)",
+      "wiatr": "Strong wind (60 km/h)",
+      "deszcz": "Rain",
+      "okno": "Window tilted",
+      "dym": "Smoke detector",
+      "alarm": "Alarm armed",
+      "spie": "“Sleeping” on",
+      "nikogo": "Nobody home",
+      "reka": "You moved the shade by hand"
+    },
+    "oslona": "Shade: {0} % open",
+    "stoi": "The shade stays where it is",
+    "wygrywa": "Wins: {0}",
+    "nic": "nothing is happening",
+    "ogranicza": "The open window limits it: it should be {0} %, it is {1} %.",
+    "ogrStoi": "The open window limits it: it should be {0} %, the shade does not go down.",
+    "kolejnosc": "Ticked now:",
+    "stany": {
+      "wygrywa": "wins",
+      "ogranicza": "limits",
+      "przegrywa": "loses",
+      "nie_dziala": "not active now"
+    },
+    "istniejace": "Also apply to my windows ({0}): dashboard card, notifications and scenarios",
+    "stopka": "You can change this later: “Motor HA” panel in the sidebar or Settings → Devices → Motor HA.",
+    "pozniej": "Later",
+    "zapisz": "Save",
+    "zapiszDodaj": "Save and add a window",
+    "zapisano": "Saved.",
+    "blad": "Not saved:",
+    "zrobione": {
+      "skroty": "The shortcuts are on the dashboard.",
+      "dom": "The “Whole home” card is on the dashboard.",
+      "karty": "The window cards are on the dashboard.",
+      "okna": "The windows have the new settings.",
+      "blad": "Not everything worked – details in the HA log."
+    }
+  },
+  "panel": {
+    "ustawienia": "Settings",
+    "historia": "History",
+    "powod": "Reason",
+    "brak": "There are no Motor HA windows yet.",
+    "dodaj": "Add a window",
+    "tytul": "Motor HA"
   }
 }

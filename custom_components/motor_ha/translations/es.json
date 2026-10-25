@@ -953,6 +953,14 @@
         "mahon": "caoba",
         "dab_bagienny": "roble de pantano"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Cerrar todo",
+        "odslon": "Abrir todo",
+        "pauza": "Pausar automatización",
+        "wznow": "Reanudar automatización"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lamas",
           "description": "Ángulo de las lamas."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Todas las ventanas",
+      "description": "Cierra o abre a la vez todas las ventanas de Motor HA, o pausa su automatización (accesos directos del panel).",
+      "fields": {
+        "akcja": {
+          "name": "Acción",
+          "description": "Qué hacer con todas las ventanas."
+        },
+        "minuty": {
+          "name": "Minutos",
+          "description": "Cuánto dura la pausa."
         }
       }
     }

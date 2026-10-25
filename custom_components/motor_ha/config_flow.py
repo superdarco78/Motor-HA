@@ -74,7 +74,7 @@ from .const import (
     ZAAWANSOWANY,
     BRAMY as RODZAJE_BRAM,
 )
-from . import galeria, skan
+from . import galeria, skan, ustawienia
 from .graficzny import KREATOR, ZleDane, opcje_z_kreatora
 from .uklad import CONF_UKLAD, MAX_POL
 from .pasek import async_obrazek
@@ -680,6 +680,7 @@ class MotorHaFlow(Kreator, ConfigFlow, domain=DOMAIN):
             from homeassistant.setup import async_setup_component
             await async_setup_component(self.hass, DOMAIN, {})
             return self.async_abort(reason="odswiez")
+        self.o.update(ustawienia.domyslne_okna(self.hass))   # z pierwszego ekranu Motor HA
         return await self.async_step_tryb()
 
     async def async_step_import(self, dane: dict[str, Any]) -> ConfigFlowResult:
@@ -691,12 +692,13 @@ class MotorHaFlow(Kreator, ConfigFlow, domain=DOMAIN):
         if (w := await self._dalej("panel", dane)) is not None:
             return w
         lista, propozycja = await async_lista(self.hass)
+        propozycja = ustawienia.panel_domyslny(self.hass, propozycja)
         opcje = [sel.SelectOptionDict(value=NIE, label="—")] + [sel.SelectOptionDict(value=k, label=n) for k, n in lista]
         return await self._formularz("panel", {vol.Required(CONF_NA_PANEL, default=propozycja): sel.SelectSelector(
             sel.SelectSelectorConfig(options=opcje, mode=sel.SelectSelectorMode.DROPDOWN))})
 
     async def _koniec(self) -> ConfigFlowResult:
-        o = {k: v for k, v in self.o.items() if k != CONF_NAZWA}
+        o = ustawienia.popraw_funkcje(self.hass, {k: v for k, v in self.o.items() if k != CONF_NAZWA})
         return self.async_create_entry(title=self.tytul or "Motor HA", data={}, options=o)
 
 

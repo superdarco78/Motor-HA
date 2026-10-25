@@ -13,6 +13,18 @@ function zdjecie(url, gotowy) {
   z.czeka.push(gotowy); return null;
 }
 
+// całe okno (opt jak w Okno3D.ustaw) wpasowane w prostokąt w × h na środku
+function narysuj(x, w, h, o, poz, widok, jas) {
+  const m = o.margines || 0, CW = o.W / (1 - 2 * m), CH = o.H / (1 - 2 * m), s = Math.min(w / CW, h / CH);
+  x.clearRect(0, 0, w, h); x.imageSmoothingQuality = 'high'; x.save();
+  x.translate((w - CW * s) / 2, (h - CH * s) / 2);
+  const pola = o.pola || [[0, 0, 1, 1]];
+  rysujOkno(x, s, { pola, typy: pola.map((_, i) => o.typy?.[i] || 'pelna'), kolory: pola.map((_, i) => o.kolory?.[i] || '#e6dcc8'),
+    zak: pola.map((_, i) => 1 - Math.max(0, Math.min(100, +(poz[i] ?? poz[0] ?? 100))) / 100),
+    rama: o.rama || '#f4f4f2', W: o.W, H: o.H, ox: m * CW, oy: m * CH, CW, CH, sciana: o.sciana || null, widok, jas });
+  x.restore();
+}
+
 export class Okno3D {
   constructor(host, opt = {}) {
     this.host = host; this.cv = document.createElement('canvas');
@@ -36,17 +48,12 @@ export class Okno3D {
     this._raf = requestAnimationFrame(() => { this._raf = null; this._klatka(); });
   }
   _klatka() {
-    const o = this.opt, w = this.host.clientWidth, h = this.host.clientHeight;
-    if (!w || !h || !o.W || !gotowe()) return;
-    const dpr = Math.min(2, window.devicePixelRatio || 1), m = o.margines || 0, CW = o.W / (1 - 2 * m), CH = o.H / (1 - 2 * m);
-    const s = Math.min(w / CW, h / CH), x = this.ctx;
+    const w = this.host.clientWidth, h = this.host.clientHeight;
+    if (!w || !h || !this.opt.W || !gotowe()) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
     if (this.cv.width !== Math.round(w * dpr) || this.cv.height !== Math.round(h * dpr)) { this.cv.width = Math.round(w * dpr); this.cv.height = Math.round(h * dpr); }
-    x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, w, h); x.imageSmoothingQuality = 'high';
-    x.translate((w - CW * s) / 2, (h - CH * s) / 2);
-    const pola = o.pola || [[0, 0, 1, 1]], widok = this._url ? zdjecie(this._url, () => this.rysuj()) : null;
-    rysujOkno(x, s, { pola, typy: pola.map((_, i) => o.typy?.[i] || 'pelna'), kolory: pola.map((_, i) => o.kolory?.[i] || '#e6dcc8'),
-      zak: pola.map((_, i) => 1 - Math.max(0, Math.min(100, +(this._poz[i] ?? this._poz[0] ?? 100))) / 100),
-      rama: o.rama || '#f4f4f2', W: o.W, H: o.H, ox: m * CW, oy: m * CH, CW, CH, sciana: o.sciana || null, widok, jas: this._jas });
+    this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    narysuj(this.ctx, w, h, this.opt, this._poz, this._url ? zdjecie(this._url, () => this.rysuj()) : null, this._jas);
   }
   // nowy element strony (kreator rysuje krok od nowa): ten sam obraz w nowym miejscu
   przenies(host) {
@@ -75,4 +82,15 @@ export function kafel(typ, kolor, rama, widok, w = 240, h = 200) {
   const zak = p.f === 'okno' ? .2 : .55;
   rysujOkno(x, s, { pola: [[0, 0, 1, 1]], typy: [typ], kolory: [kolor], zak: [zak], rama, W, H, ox, oy, CW, CH, sciana: MUR_KAFLA[v], widok: zdj, jas: 1 });
   const url = cv.toDataURL('image/webp', .9); KAFLE.set(k, url); return url;
+}
+
+// obrazek całego okna (kafelki układów, edytor własnego układu) → data: URL; null, dopóki klocki i widok się wczytują
+export function obrazOkna(opt, w = 240, h = 200, widok) {
+  if (!gotowe()) { laduj(WERSJA); return null; }
+  const url = widokK || widok, zdj = url ? zdjecie(url, () => {}) : null;
+  if (url && !zdj && performance.now() - startKafli < 4000) return null;
+  const cv = document.createElement('canvas'); cv.width = Math.round(w * 2); cv.height = Math.round(h * 2);
+  const x = cv.getContext('2d'); x.scale(2, 2);
+  narysuj(x, w, h, opt, opt.pozycje || [], zdj, 1);
+  return cv.toDataURL('image/webp', .9);
 }

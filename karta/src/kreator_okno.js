@@ -455,10 +455,16 @@ export class MotorHaKreator extends HTMLElement {
     const widok = new URL(`/motor_ha/widok/dzien-sunny.webp?v=${WERSJA}`, location.href).href;
     m.widokKafli(widok);
     const krok = () => {
-      const im = [...(this.shadowRoot?.querySelectorAll('img.k3d') || [])].filter(i => !KAFLE3D.has(i.dataset.k3d));
+      const im = [...(this.shadowRoot?.querySelectorAll('.k3d') || [])].filter(i => !KAFLE3D.has(i.dataset.k3d));
       if (!im.length) { this._kafleRaf = null; return; }
-      const [t, k, r] = im[0].dataset.k3d.split('|'), u = m.kafel(t, k, r, widok);
-      if (u) { KAFLE3D.set(im[0].dataset.k3d, u); this.shadowRoot.querySelectorAll(`img.k3d[data-k3d="${CSS.escape(im[0].dataset.k3d)}"]`).forEach(i => { i.src = u; }); }
+      const klu = im[0].dataset.k3d, ed = im[0].tagName.toLowerCase() === 'image';
+      let u;
+      if (klu[0] === 'U') u = m.obrazOkna(JSON.parse(klu.slice(1)), ed ? +im[0].getAttribute('width') : 240, ed ? +im[0].getAttribute('height') : 200, widok);
+      else { const [t, k, r] = klu.split('|'); u = m.kafel(t, k, r, widok); }
+      if (u) {
+        KAFLE3D.set(klu, u); if (KAFLE3D.size > 400) KAFLE3D.delete(KAFLE3D.keys().next().value);
+        this.shadowRoot.querySelectorAll(`.k3d[data-k3d="${CSS.escape(klu)}"]`).forEach(i => { if (i.tagName.toLowerCase() === 'image') i.setAttribute('href', u); else i.src = u; });
+      }
       this._kafleRaf = requestAnimationFrame(krok);
     };
     if (!this._kafleRaf) this._kafleRaf = requestAnimationFrame(krok);
@@ -466,7 +472,7 @@ export class MotorHaKreator extends HTMLElement {
   // po narysowaniu kroku: okna 3D w nowych miejscach (to samo okno o tym samym id tylko się przenosi)
   _montuj3d() {
     const r = this.shadowRoot; if (!r) return;
-    if (r.querySelector('img.k3d')) okno3d(WERSJA).then(m => this._kafle3d(m)).catch(e => console.error('Motor HA: kafelki 3D', e));
+    if (r.querySelector('.k3d')) okno3d(WERSJA).then(m => this._kafle3d(m)).catch(e => console.error('Motor HA: kafelki 3D', e));
     const hosty = [...r.querySelectorAll('.o3k')]; this._o3 ||= new Map();
     for (const [id, o] of this._o3) if (!hosty.some(h => h.dataset.id === id)) { o.zniszcz(); this._o3.delete(id); }
     if (!hosty.length) return;
@@ -561,15 +567,15 @@ export class MotorHaKreator extends HTMLElement {
     // Osłona, Układ, Rodzaj, Kolory: całe okno w wybranym układzie, na każdym skrzydle zdjęcie kafelka jego osłony w jego kolorach
     if (KROKI_ZESTAWU.includes(k)) return `<div class="zest">${this._zestaw({ numery: true, wybor: ['rodzaj', 'kolory'].includes(k), wybrane: this._wybR() })}</div>`;
     // dalsze kroki: oryginalne zdjęcie układu z numerami pól, bez nakładanych osłon
-    if (k === 'przypisz') return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: 'd', wybrane: S.arkusz, poz: () => 100 })}</div>`);
-    return duze(this.okno({ id: 's', poz: () => 100 }));
+    if (k === 'przypisz') return duze(`<div id="duzeOkno" style="width:100%">${this.okno({ numery: true, id: 'd', wybrane: S.arkusz, poz: () => 50 })}</div>`);
+    return duze(this.okno({ id: 's', poz: () => 50 }));
   }
   _podgladMaly() {
     const k = this.kroki()[this.S.krok], S = this.S;
     const zdj = t => `<div style="width:200px;max-width:100%">${this._zdj(t, this._aktKolor(), 'max-height:none;width:100%;border-radius:8px')}</div>`;
     if (S.brama) return ZDJECIA.has(S.o.oslona) ? zdj(S.o.oslona) : maZdjecieBramy(S.o.oslona) ? `<div style="width:220px;max-width:100%">${bramaZdjecie(S.o.oslona)}</div>` : `<div style="width:170px;max-width:100%">${this._brama(S.o.oslona)}</div>`;
     if (KROKI_ZESTAWU.includes(k)) return `<div style="width:${prostokaty(S.u).length > 1 ? 280 : 200}px;max-width:100%">${this._zestaw({ numery: true })}</div>`;
-    return `<div style="width:220px;max-width:100%">${this.okno({ id: 'p', poz: () => 100 })}</div>`;
+    return `<div style="width:220px;max-width:100%">${this.okno({ id: 'p', poz: () => 50 })}</div>`;
   }
   // nowe rodzaje (markizy, okna, nowe bramy) – w karcie mają własny rysunek, więc i tu: otwiera się i zamyka w kółko
   // w „Rodzaj” i „Kolory” każdy rodzaj pokazuje własny rysunek jak na kafelku (1:1), także rolety SK/SKO/SP/SKN, a nie wspólne okno
@@ -620,6 +626,13 @@ export class MotorHaKreator extends HTMLElement {
     return f ? `<img class="ikk" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="">` : ik(kk);
   }
   kafelUkladu(P, drzwi, klucz) {
+    if (moze3d() && !this.bez3d && !this.S.brama) {   // całe okno z klocków z Blendera: ten układ, wybrany rodzaj i kolory
+      const pola = P.map(p => p.slice(0, 4).map(Number)), wlasny = klucz === 'wlasny' || !klucz, S = this.S, { W, H } = wymiary(proporcja(pola));
+      const typy = pola.map((_, i) => (wlasny && S.pola[i]?.oslona) || S.o.oslona);
+      const kolory = pola.map((_, i) => { const kk = wlasny && S.pola[i]?.kolor; return kk ? KOLORY[kk] || kk : this._kolor(); });
+      const klu = 'U' + JSON.stringify({ pola, typy, kolory, rama: this._rama(), W, H, margines: marginesDla(typy, W, H, .03), sciana: S.sciana && SCIANY[S.sciana] || null, pozycje: pola.map(() => 50) });
+      return `<img class="zdj k3d" data-k3d="${esc(klu)}" src="${KAFLE3D.get(klu) || PUSTY}" alt="" draggable="false">`;
+    }
     const f = klucz && [klucz + '.webp', klucz + '.png'].find(x => UI.has(x));
     if (f) return this._img('zdj', klucz, `/motor_ha/ui/${f}?v=${WERSJA}`, '', f.endsWith('.webp') ? this._rama() : '');
     const [n1] = this._nieba(), d = ['<svg viewBox="0 0 64 60" aria-hidden="true">'];
@@ -737,7 +750,7 @@ export class MotorHaKreator extends HTMLElement {
   }
   str_przypisz() {
     const S = this.S, t = this.t;
-    return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p>${this._szeroko ? '' : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz, poz: () => 100 })}</div>`}
+    return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc(t.przypiszPodpis)}</p>${this._szeroko ? '' : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: 'd', wybrane: S.arkusz, poz: () => 50 })}</div>`}
       <p class="pod" style="text-align:center;margin:8px 0 0">${esc(t.zamienPodpis)}</p>
       ${S.rolety.length > 1 ? `<div style="display:flex;justify-content:center;margin-top:8px"><button class="chip" data-zaleca="1">✨ ${esc(t.jakZaleca)}</button></div>` : ''}
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
@@ -912,13 +925,20 @@ export class MotorHaKreator extends HTMLElement {
     d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc(this.t.wlasnyTytul)}">`);
     d.push(`<defs><linearGradient id="nE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
     d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
+    const klocki = moze3d() && !this.bez3d;
+    if (klocki) {   // całe okno z klocków z Blendera (rama, słupki, osłona na każdym polu), pola i uchwyty na wierzchu
+      const pola = P.map(p => p.slice(0, 4)), typy = pola.map((_, i) => S.pola[i]?.oslona || S.o.oslona);
+      const kolory = pola.map((_, i) => { const kk = S.pola[i]?.kolor; return kk ? KOLORY[kk] || kk : kol; });
+      const klu = 'U' + JSON.stringify({ pola, typy, kolory, rama: this._rama(), W: +(1.5 * iw / ih).toFixed(3), H: 1.5, margines: 0, sciana: null, pozycje: pola.map(() => 50) });
+      d.push(`<image class="k3d" data-k3d="${esc(klu)}" href="${KAFLE3D.get(klu) || PUSTY}" x="${EP}" y="${EP}" width="${iw}" height="${ih}" preserveAspectRatio="none"/>`);
+    }
     // słupki i mury między oknami, belki między polami
     for (const [x, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x * iw, EP + y * ih, w * iw, h * ih, typ));
     P.forEach((p, i) => {
       const x = EP + p[0] * iw, y = EP + p[1] * ih, w = p[2] * iw, h = p[3] * ih, on = S.wyb === i;
       const pp = S.pola[i] || {}, wi = Math.max(0, w - 8), hi = Math.max(0, h - 8);
-      d.push(`<g data-ep="${i}"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
-        ${this._poleZdj(x, y, w, h, pp.oslona || S.o.oslona, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol, i)}
+      d.push(`<g data-ep="${i}">${klocki ? `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="transparent"/>` : `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${this._rama()}" stroke="#000" stroke-opacity=".3"/>
+        ${this._poleZdj(x, y, w, h, pp.oslona || S.o.oslona, pp.kolor ? KOLORY[pp.kolor] || pp.kolor : kol, i)}`}
         ${on ? `<rect x="${x + 1.5}" y="${y + 1.5}" width="${Math.max(0, w - 3)}" height="${Math.max(0, h - 3)}" fill="none" stroke="#ff9800" stroke-width="3"/>` : ''}
         ${duzy ? `<circle cx="${x + w / 2}" cy="${y + h / 2}" r="12" fill="${on ? '#ff9800' : '#009ac7'}" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${i + 1}</text>`
           : `<text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${on ? '#e65100' : '#1c3a4a'}">${i + 1}</text>`}</g>`);
@@ -994,7 +1014,7 @@ export class MotorHaKreator extends HTMLElement {
   _odswiezUklad(bezSuwakow) {
     this._dopasujPola(false);
     const r = this.shadowRoot, e = r.getElementById('edytor');
-    if (e) e.innerHTML = this.edytor();
+    if (e) { e.innerHTML = this.edytor(); if (e.querySelector('.k3d')) okno3d(WERSJA).then(m => this._kafle3d(m)).catch(() => {}); }
     const pz = r.getElementById('przerwy'); if (pz && !bezSuwakow) pz.innerHTML = this._suwakiPrzerw();
     this._bezSceny = true; this._odswiezScene(); this._bezSceny = false;
     const k = r.querySelector('[data-wlasny]'); if (k) k.firstElementChild.outerHTML = this.kafelUkladu(prostokaty(this.S.u));

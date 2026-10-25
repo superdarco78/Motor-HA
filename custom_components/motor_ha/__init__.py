@@ -43,15 +43,19 @@ from .powiadomienia import Powiadomienia
 from .update import RESTART, prosba_o_restart
 from .urzadzenie import HUB, NAZWY_OSLON, Wpis, assist, info_hub, info_urzadzenia
 from .ws import async_rejestruj
+from . import ustawienia
 
 _LOGGER = logging.getLogger(__name__)
 PLATFORMS = [Platform.COVER, Platform.BUTTON, Platform.SENSOR, Platform.SWITCH, Platform.UPDATE]
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 USLUGI = {
-    "wstrzymaj": vol.Schema({vol.Required(ATTR_ENTITY_ID): cv.entity_ids,
+    "wstrzymaj": vol.Schema({vol.Optional(ATTR_ENTITY_ID): cv.entity_ids,
                              vol.Optional("minuty"): vol.All(vol.Coerce(float), vol.Range(min=0))}),
-    "wznow": vol.Schema({vol.Required(ATTR_ENTITY_ID): cv.entity_ids}),
+    "wznow": vol.Schema({vol.Optional(ATTR_ENTITY_ID): cv.entity_ids}),
+    # skróty na panelu (pierwszy ekran): cały dom naraz
+    "wszystkie": vol.Schema({vol.Required("akcja"): vol.In(["zaslon", "odslon", "pauza", "wznow"]),
+                             vol.Optional("minuty", default=120): vol.All(vol.Coerce(float), vol.Range(min=0))}),
     "przelicz": vol.Schema({vol.Required(ATTR_ENTITY_ID): cv.entity_ids}),
     "kalibruj": vol.Schema({vol.Required(ATTR_ENTITY_ID): cv.entity_ids}),
     "ustaw": vol.Schema({vol.Required(ATTR_ENTITY_ID): cv.entity_ids,
@@ -62,6 +66,7 @@ USLUGI = {
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     hass.data[DOMAIN] = {"wpisy": {}}
+    await ustawienia.async_wczytaj(hass)
     katalog = await async_przygotuj(hass)
     await hass.http.async_register_static_paths([StaticPathConfig(f"/{DOMAIN}", str(katalog), False)])
     hass.http.register_view(PasekKrokow(hass))
@@ -77,6 +82,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             async_register_built_in_panel(hass, "custom", frontend_url_path=START, require_admin=True, config={
                 "_panel_custom": {"name": START, "module_url": f"/{DOMAIN}/{KARTA_PLIK}?v={VERSION}&s=1",
                                   "embed_iframe": False, "trust_external": False}})
+        ustawienia.pasek(hass)   # panel „Motor HA” w pasku bocznym (pierwszy ekran)
         return True
 
     if not _skrypty():   # frontend jeszcze się nie wczytał – karta na stronie urządzenia musi być zawsze
@@ -98,6 +104,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             await _zasoby()
         hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STARTED, _po_starcie)
     async_rejestruj(hass)
+    ustawienia.async_rejestruj(hass)
     async_ikona_hacs(hass)
     _uslugi(hass)
     ir.async_delete_issue(hass, DOMAIN, RESTART)
@@ -167,6 +174,8 @@ def _uslugi(hass: HomeAssistant) -> None:
     """Akcje do własnych automatyzacji: wstrzymaj, wznów, przelicz, kalibruj, ustaw."""
 
     def _wpisy(call: ServiceCall) -> list[Wpis]:
+        if ATTR_ENTITY_ID not in call.data:   # bez wyboru – cały dom
+            return [w for w in hass.data[DOMAIN]["wpisy"].values() if not w.brama]
         rej = er.async_get(hass)
         wynik = []
         for e in call.data[ATTR_ENTITY_ID]:
@@ -203,8 +212,22 @@ def _uslugi(hass: HomeAssistant) -> None:
             if w.auto and not w.brama:
                 await w.auto.async_jedz(call.data["pozycja"], call.data.get("lamele"))
 
+    async def wszystkie(call: ServiceCall) -> None:
+        wpisy = [w for w in hass.data[DOMAIN]["wpisy"].values() if not w.brama]
+        akcja = call.data["akcja"]
+        if akcja in ("pauza", "wznow"):
+            for w in wpisy:
+                if w.auto:
+                    await w.auto.async_pauza(call.data["minuty"] if akcja == "pauza" else 0)
+            return
+        rej = er.async_get(hass)
+        encje = [e for w in wpisy if (e := rej.async_get_entity_id("cover", DOMAIN, w.entry.entry_id))]
+        if encje:
+            await hass.services.async_call("cover", "close_cover" if akcja == "zaslon" else "open_cover",
+                                           {ATTR_ENTITY_ID: encje}, blocking=False, context=call.context)
+
     for nazwa, f in (("wstrzymaj", wstrzymaj), ("wznow", wznow), ("przelicz", przelicz),
-                     ("kalibruj", kalibruj), ("ustaw", ustaw)):
+                     ("kalibruj", kalibruj), ("ustaw", ustaw), ("wszystkie", wszystkie)):
         hass.services.async_register(DOMAIN, nazwa, f, schema=USLUGI[nazwa])
 
 
@@ -262,11 +285,17 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if (pokoj := entry.options.get("pokoj")) and (u := _urzadzenie(dr.async_get(hass), (DOMAIN, entry.entry_id))):
         if not u.area_id:
             dr.async_get(hass).async_update_device(u.id, area_id=pokoj)
-    if (panel := entry.options.get(CONF_NA_PANEL)):
+    encja = er.async_get(hass).async_get_entity_id("cover", DOMAIN, entry.entry_id)
+    if (panel := entry.options.get(CONF_NA_PANEL)):   # nowe urządzenie (tylko raz, zaraz po dodaniu)
+        if encja:
+            ustawienia.assist_okien(hass, [encja])   # Assist jak na pierwszym ekranie
         from .panele import NIE, async_dodaj_karte
-        if panel != NIE and (encja := er.async_get(hass).async_get_entity_id("cover", DOMAIN, entry.entry_id)):
+        if panel != NIE and encja:
+            ust = ustawienia.u(hass) if ustawienia.zapisane(hass) else {}
+            from .skan import nazwa_obszaru, obszar
             try:
-                await async_dodaj_karte(hass, panel, encja)
+                await async_dodaj_karte(hass, panel, encja, ust.get("widok", 0), ust.get("miejsce", "sekcja"),
+                                        nazwa_obszaru(hass, obszar(hass, encja)))
             except Exception:  # noqa: BLE001 – panel nie może zepsuć urządzenia
                 _LOGGER.exception("Motor HA: nie dodałem karty na panel %s", panel)
         hass.config_entries.async_update_entry(entry, options={k: v for k, v in entry.options.items()

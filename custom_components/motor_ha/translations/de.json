@@ -953,6 +953,14 @@
         "mahon": "Mahagoni",
         "dab_bagienny": "Mooreiche"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Alle schließen",
+        "odslon": "Alle öffnen",
+        "pauza": "Automatik pausieren",
+        "wznow": "Automatik fortsetzen"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lamellen",
           "description": "Lamellenwinkel."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Alle Fenster",
+      "description": "Schließt oder öffnet alle Motor-HA-Fenster auf einmal oder pausiert ihre Automatik (Schnelltasten im Dashboard).",
+      "fields": {
+        "akcja": {
+          "name": "Aktion",
+          "description": "Was mit allen Fenstern geschehen soll."
+        },
+        "minuty": {
+          "name": "Minuten",
+          "description": "Wie lange die Pause dauert."
         }
       }
     }

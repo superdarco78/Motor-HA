@@ -953,6 +953,14 @@
         "mahon": "acajou",
         "dab_bagienny": "chêne des marais"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Tout fermer",
+        "odslon": "Tout ouvrir",
+        "pauza": "Mettre l’automatisme en pause",
+        "wznow": "Reprendre l’automatisme"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lames",
           "description": "Angle des lames."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Toutes les fenêtres",
+      "description": "Ferme ou ouvre toutes les fenêtres Motor HA en même temps, ou met leur automatisme en pause (raccourcis du tableau de bord).",
+      "fields": {
+        "akcja": {
+          "name": "Action",
+          "description": "Que faire de toutes les fenêtres."
+        },
+        "minuty": {
+          "name": "Minutes",
+          "description": "Durée de la pause."
         }
       }
     }

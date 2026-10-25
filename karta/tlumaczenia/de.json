@@ -525,5 +525,300 @@
     "caleOkno": "Ganzes Fenster",
     "rodzajCalosc": "Wähle ein Feld, um ihm eine andere Art oder Farbe zu geben.",
     "rodzajPole": "Du stellst jetzt nur Feld {0} ein."
+  },
+  "ekran": {
+    "witaj": "Willkommen bei Motor HA",
+    "nowaWersja": "Neue Version von Motor HA",
+    "wersja": "Version {0}",
+    "coNowego": "Neu in {0}",
+    "nowe": [
+      "Dieser Bildschirm: Du entscheidest, was Motor HA zu Home Assistant hinzufügt",
+      "Fensterkarte auf dem gewählten Dashboard, in der gewählten Ansicht und Stelle, Schnelltasten für das ganze Haus und ein Panel in der Seitenleiste",
+      "Layout-Kacheln und der Editor für eigene Layouts als echtes Fenster, Behänge in jedem Schritt des Assistenten sichtbar"
+    ],
+    "jak": "Wie möchtest du Motor HA nutzen?",
+    "tryby": {
+      "pelny": [
+        "Alles",
+        "Fenster, Karte, Automatik, Benachrichtigungen"
+      ],
+      "samo": [
+        "Nur das Gerät",
+        "Nur der Behang in HA, ohne Karte und Automatik"
+      ],
+      "wlasny": [
+        "Meine Auswahl",
+        "Ich wähle unten selbst"
+      ]
+    },
+    "co": "Was soll Motor HA zu Home Assistant hinzufügen?",
+    "opcje": {
+      "karta": [
+        "Fensterkarte auf einem Dashboard",
+        "Jedes neue Fenster bekommt eine Karte. Wähle Dashboard und Stelle."
+      ],
+      "dom": [
+        "Karte „Ganzes Haus“",
+        "Alle Fenster auf einer Karte."
+      ],
+      "skroty": [
+        "Schnelltasten auf dem Dashboard",
+        "Tasten für das ganze Haus."
+      ],
+      "pasek": [
+        "Panel „Motor HA“ in der Seitenleiste",
+        "Alle Fenster, Grund jeder Bewegung und Verlauf an einem Ort."
+      ],
+      "assist": [
+        "Sprachsteuerung (Assist)",
+        "Fenster hören auf Befehle, z. B. „Wohnzimmer schließen“."
+      ],
+      "ukryj": [
+        "Einfache Motoren vor der Sprache verbergen",
+        "Assist sieht nur Motor-HA-Fenster, keine doppelten Namen."
+      ],
+      "powiadom": [
+        "Benachrichtigungen",
+        "Wenn mit einem Behang oder Sensor etwas nicht stimmt."
+      ],
+      "auto": [
+        "Automatik",
+        "Behänge reagieren selbst auf Tageszeit, Sonne, Wetter und Sensoren."
+      ],
+      "nowa_wersja": [
+        "Info zur neuen Version",
+        "Dieser Bildschirm mit „Neu“ nach jedem Update."
+      ]
+    },
+    "jakDziala": "So funktioniert es",
+    "gdyWyl": "Wenn aus",
+    "opisy": {
+      "karta": [
+        "Wenn du ein Fenster hinzufügst, legt Motor HA seine Karte auf das gewählte Dashboard, in die gewählte Ansicht und Stelle. Es entfernt und verschiebt nichts. Ist die Karte schon da, passiert nichts.",
+        "Die Karte kommt auf kein Dashboard. Füge sie selbst hinzu: Dashboard bearbeiten → Karte hinzufügen → Motor HA."
+      ],
+      "dom": [
+        "Auf dem Dashboard der Fensterkarte gibt es eine Karte mit allen Fenstern des Hauses: Zustand jedes Fensters und Tasten Öffnen, Stopp, Schließen.",
+        "Keine Karte für das ganze Haus, nur Karten einzelner Fenster."
+      ],
+      "skroty": [
+        "Über den Fensterkarten gibt es drei Tasten für das ganze Haus. Pause stoppt die Automatik aller Fenster für 2 Stunden.",
+        "Keine Tasten; das ganze Haus steuerst du über die Karte „Ganzes Haus“ oder per Sprache."
+      ],
+      "pasek": [
+        "Die HA-Seitenleiste bekommt den Eintrag „Motor HA“: alle Fenster mit Karten, Grund der letzten Bewegung, Bewegungsverlauf und diese Einstellungen.",
+        "Kein Eintrag in der Seitenleiste. Die Fenster findest du unter Einstellungen → Geräte → Motor HA."
+      ],
+      "assist": [
+        "Motor-HA-Fenster sind für Assist unter ihrem Namen und Raum sichtbar, z. B. „Wohnzimmer schließen“, „Küchenfenster öffnen“.",
+        "Assist sieht keine Motor-HA-Fenster; du steuerst sie über die Karte und die Automatik."
+      ],
+      "ukryj": [
+        "Die einfachen Motoren, aus denen Motor-HA-Fenster entstanden sind, sind vor Assist verborgen. Die Sprache verwechselt „Rollladen Wohnzimmer“ nicht mit „Fenster Wohnzimmer“.",
+        "Assist sieht den Motor und das Motor-HA-Fenster (es kann zwei ähnliche Namen geben)."
+      ],
+      "powiadom": [
+        "Du bekommst eine Nachricht, wenn ein Motor nicht antwortet, ein Behang seine Position nicht erreicht hat, eine Batterie schwach ist oder die Automatik einen Behang nicht bewegen konnte (z. B. wegen eines offenen Fensters).",
+        "Keine Nachrichten. Den Zustand siehst du auf der Karte und im Verlauf des Fensters."
+      ],
+      "auto": [
+        "Jedes Fenster bekommt die Szenarien unten. Sie wirken nach Wichtigkeit: ein höheres gewinnt gegen ein niedrigeres oder begrenzt es. Jedes änderst du später unter „Konfigurieren“ des Fensters.",
+        "Behänge bewegen sich nur auf deinen Befehl: Karte, Sprache, Taste oder deine eigenen HA-Automationen. Motor HA macht nichts selbst."
+      ],
+      "nowa_wersja": [
+        "Nach jedem Update erscheint dieser Bildschirm mit „Neu“ und deinen Einstellungen zum Prüfen.",
+        "Updates ohne diesen Bildschirm. „Neu“ steht nur in HACS."
+      ]
+    },
+    "panel": "Dashboard",
+    "widok": "Ansicht",
+    "miejsce": "Stelle",
+    "proponowane": "empfohlen",
+    "nowyWidok": "Neue Ansicht „Fenster“",
+    "miejsca": {
+      "sekcja": "Abschnitt „Motor HA“ am Ende",
+      "gora": "Abschnitt „Motor HA“ oben",
+      "pokoj": "Im Abschnitt des Raums des Fensters"
+    },
+    "miniOpis": {
+      "sekcja": "Motor-HA-Karten zusammen in einem Abschnitt am Ende der Ansicht, sonst verschiebt sich nichts.",
+      "gora": "Abschnitt Motor HA ganz oben in der Ansicht.",
+      "pokoj": "Karte im Abschnitt, dessen Überschrift der Raum des Fensters ist (z. B. Wohnzimmer). Ohne solchen Abschnitt – im Abschnitt Motor HA."
+    },
+    "miniNowy": "In einer eigenen Ansicht „Fenster“.",
+    "oknoMini": "Fenster",
+    "salon": "Wohnzimmer",
+    "kuchnia": "Küche",
+    "brakPanelu": "Es gibt kein in der Oberfläche gespeichertes Dashboard, daher wird die Karte nicht hinzugefügt. Lege ein Dashboard unter Einstellungen → Dashboards an und öffne diesen Bildschirm erneut.",
+    "skroty": [
+      "⬇ Alle schließen",
+      "⬆ Alle öffnen",
+      "⏸ Automatik 2 h pausieren"
+    ],
+    "skrotyOpis": "Auf demselben Dashboard, über den Fensterkarten.",
+    "telefon": "Auch aufs Handy (HA-App)",
+    "wHa": "Sie landen immer auch in den HA-Benachrichtigungen (Glocke in der Seitenleiste).",
+    "brakTelefonu": "Kein Handy mit der HA-App – Benachrichtigungen gehen nur an HA (Glocke in der Seitenleiste).",
+    "scenOpis": "Alle Szenarien nach Wichtigkeit (1 ist das wichtigste). Ein Szenario ohne den nötigen Sensor überspringt sich selbst. Jedes kannst du ausschalten:",
+    "skad": "Woher es das weiß",
+    "scen": {
+      "cisza": [
+        "Ruhe nach dem HA-Start",
+        "5 Minuten nach einem HA-Neustart stehen die Behänge still, bis die Sensoren ihren Zustand melden",
+        "–"
+      ],
+      "dym": [
+        "Rauch",
+        "Rauchmelder → der Behang öffnet sich (Fluchtweg und Licht)",
+        "Rauchmelder"
+      ],
+      "wiatr": [
+        "Wind, Hagel, Vibration",
+        "Wind ab 40 km/h oder Vibration → der Außenbehang fährt ein; Hagelwarnung → Markise eingefahren, Rollladen zu (schützt die Scheibe)",
+        "Wetter, Windmesser, Vibrationssensor, Warnungen"
+      ],
+      "deszcz": [
+        "Regen",
+        "Markisen, Screens und Raffstores fahren ein; Rollläden bleiben, wie sie sind",
+        "Wetter oder Regensensor"
+      ],
+      "mroz": [
+        "Frost",
+        "ab 1 °C abwärts bewegt sich der Außenbehang nicht (er kann festgefroren sein)",
+        "Außentemperatur oder Wetter"
+      ],
+      "pauza": [
+        "Deine Handbewegung",
+        "wenn du den Behang selbst bewegst, wartet die Automatik 2 Stunden",
+        "Motor des Behangs"
+      ],
+      "alarm": [
+        "Alarm",
+        "wenn die Alarmanlage scharf ist, schließt der Behang",
+        "HA-Alarm"
+      ],
+      "spie": [
+        "Ich schlafe",
+        "Schalter „Ich schlafe“ an → der Behang bleibt zu und öffnet morgens nicht",
+        "Schalter „Ich schlafe“ des Fensters"
+      ],
+      "nikogo": [
+        "Niemand zu Hause",
+        "niemand zu Hause → der Behang ist zu; im Urlaubsmodus bewegt er sich morgens und abends jeden Tag zu etwas anderer Zeit",
+        "Handys der Bewohner"
+      ],
+      "rano": [
+        "Morgens öffnen",
+        "bei Sonnenaufgang (oder zur eingestellten Zeit) öffnet der Behang",
+        "HA-Sonne, Uhr"
+      ],
+      "wieczor": [
+        "Abends schließen",
+        "bei Sonnenuntergang (oder zur eingestellten Zeit) schließt der Behang",
+        "HA-Sonne, Uhr"
+      ],
+      "obecnosc": [
+        "Morgens auf jemanden warten",
+        "bis 10:00 öffnet der Behang erst, wenn jemand den Raum betritt",
+        "Präsenz- oder Bewegungssensor"
+      ],
+      "posrednia": [
+        "Position am Nachmittag",
+        "ab 13:00 steht der Behang auf 50 % statt ganz offen",
+        "Uhr"
+      ],
+      "slonce": [
+        "Sonne und Hitze",
+        "die Sonne scheint in dieses Fenster und draußen sind es 24 °C oder mehr (oder Hitze ist vorhergesagt) → der Behang fährt auf 20 % offen",
+        "HA-Sonne, Wetter, Temperatur"
+      ],
+      "oslepianie": [
+        "Blendung",
+        "Sonne im Fenster → der Behang fährt so weit herunter, dass die Sonne nicht weiter als 3 m in den Raum reicht (z. B. bis zum Fernseher oder Schreibtisch)",
+        "HA-Sonne"
+      ],
+      "pokoj": [
+        "Warmer Raum",
+        "25 °C oder mehr im Raum und Sonne im Fenster → der Behang auf 20 % offen",
+        "Raumthermometer"
+      ],
+      "zima": [
+        "Winter",
+        "von November bis März ist der Behang in der Sonne offen (kostenlose Wärme) und nachts zu (weniger Wärmeverlust)",
+        "HA-Sonne, Kalender"
+      ],
+      "okno": [
+        "Offenes Fenster und offene Tür",
+        "gekipptes Fenster: der Behang fährt nicht tiefer als 20 %; offenes Fenster: er fährt nicht herunter; offene Balkontür: nicht tiefer als 80 %",
+        "Fenster- und Türsensor"
+      ],
+      "przeszkoda": [
+        "Hindernis",
+        "Hindernissensor an der Balkontür → der Behang fährt nicht herunter",
+        "Hindernissensor"
+      ],
+      "granice": [
+        "Fahrgrenzen und Lamellen",
+        "der Behang fährt nie über die eingestellten Grenzen hinaus; Lamellen stellen sich nach dem Sonnenwinkel",
+        "–"
+      ]
+    },
+    "sprawdz": "Prüfe, was gewinnt, wenn mehreres gleichzeitig passiert",
+    "przyklad": "Beispiel: Außenrollladen, Fenster nach Süden, Juli. Berechnet von derselben Logik, die deine Fenster steuert.",
+    "zaznacz": "Markiere, was gerade passiert:",
+    "pora": "Zeit",
+    "pory": {
+      "rano": "Morgen 7:30",
+      "dzien": "Tag 14:00",
+      "wieczor": "Abend (nach Sonnenuntergang)",
+      "noc": "Nacht 23:00"
+    },
+    "warunki": {
+      "slonce": "Sonne scheint ins Fenster",
+      "upal": "Hitze (30 °C)",
+      "wiatr": "Starker Wind (60 km/h)",
+      "deszcz": "Regen",
+      "okno": "Fenster gekippt",
+      "dym": "Rauchmelder",
+      "alarm": "Alarm scharf",
+      "spie": "„Ich schlafe“ an",
+      "nikogo": "Niemand zu Hause",
+      "reka": "Du hast den Behang von Hand bewegt"
+    },
+    "oslona": "Behang: {0} % offen",
+    "stoi": "Der Behang bleibt, wo er ist",
+    "wygrywa": "Gewinnt: {0}",
+    "nic": "nichts passiert",
+    "ogranicza": "Das offene Fenster begrenzt: es sollten {0} % sein, es sind {1} %.",
+    "ogrStoi": "Das offene Fenster begrenzt: es sollten {0} % sein, der Behang fährt nicht herunter.",
+    "kolejnosc": "Jetzt markiert:",
+    "stany": {
+      "wygrywa": "gewinnt",
+      "ogranicza": "begrenzt",
+      "przegrywa": "verliert",
+      "nie_dziala": "gerade nicht aktiv"
+    },
+    "istniejace": "Auch auf meine Fenster anwenden ({0}): Dashboard-Karte, Benachrichtigungen und Szenarien",
+    "stopka": "Du kannst das später ändern: Panel „Motor HA“ in der Seitenleiste oder Einstellungen → Geräte → Motor HA.",
+    "pozniej": "Später",
+    "zapisz": "Speichern",
+    "zapiszDodaj": "Speichern und Fenster hinzufügen",
+    "zapisano": "Gespeichert.",
+    "blad": "Nicht gespeichert:",
+    "zrobione": {
+      "skroty": "Die Schnelltasten sind auf dem Dashboard.",
+      "dom": "Die Karte „Ganzes Haus“ ist auf dem Dashboard.",
+      "karty": "Die Fensterkarten sind auf dem Dashboard.",
+      "okna": "Die Fenster haben die neuen Einstellungen.",
+      "blad": "Nicht alles hat geklappt – Details im HA-Protokoll."
+    }
+  },
+  "panel": {
+    "ustawienia": "Einstellungen",
+    "historia": "Verlauf",
+    "powod": "Grund",
+    "brak": "Es gibt noch keine Motor-HA-Fenster.",
+    "dodaj": "Fenster hinzufügen",
+    "tytul": "Motor HA"
   }
 }

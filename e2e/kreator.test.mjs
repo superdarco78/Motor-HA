@@ -20,6 +20,7 @@ const PRZYCISKI = ['Dalej', 'Zapisz'];
 let przegladarka, kontekst, strona;
 const bledyStrony = [];
 const kroki = [];
+const LOGI = [];
 
 async function api(sciezka) {
   const o = await fetch(HA + sciezka, { headers: { Authorization: `Bearer ${TOKENY.access_token}` } });
@@ -53,6 +54,8 @@ before(async () => {
   await kontekst.addInitScript((t) => localStorage.setItem('hassTokens', t), JSON.stringify(TOKENY));
   strona = await kontekst.newPage();
   strona.on('pageerror', (e) => bledyStrony.push(e.message));
+  strona.on('console', (m) => LOGI.push(m.type() + ' ' + m.text().slice(0, 200)));
+  strona.on('load', () => LOGI.push('LOAD ' + strona.url()));
 });
 
 after(async () => {
@@ -122,6 +125,31 @@ test('kreator na telefonie: dodanie osłony od początku do końca', { timeout: 
   await strona.screenshot({ path: WYNIKI + 'po-zapisaniu.png' });
   const wpisy = await api('/api/config/config_entries/entry');
   assert.ok(wpisy.some((w) => w.domain === 'motor_ha' && w.state === 'loaded'), 'urządzenie Motor HA dodane i działa');
+});
+
+test('pierwszy ekran Motor HA po instalacji: zapis ustawień i panel w pasku bocznym', { timeout: 120_000 }, async () => {
+  // ekran czeka, aż zamknie się okienko dodawania urządzenia – potem pokazuje się sam
+  const ekran = strona.locator('motor-ha-ekran');
+  const koniec = await czekajNaPrzycisk(['Pomiń i zakończ', 'Zakończ'], 10);   // „Nazwij i przypisz” HA po dodaniu
+  if (koniec) await koniec.el.click();
+  let widac = false;
+  for (let i = 0; i < 40 && !widac; i++) {
+    widac = (await ekran.count()) > 0 && await ekran.locator('.dlg').isVisible().catch(() => false);
+    if (!widac) await strona.waitForTimeout(1000);
+  }
+  if (!widac) console.log('DIAG', await strona.evaluate(() => JSON.stringify({ url: location.href, ekran: document.querySelectorAll('motor-ha-ekran').length,
+    pozniej: sessionStorage.getItem('motorHaEkranPozniej'), dlg: !!document.querySelector('home-assistant')?.shadowRoot?.querySelector('dialog-data-entry-flow') })), LOGI.slice(-30).join('\n'));
+  assert.ok(widac, 'pierwszy ekran Motor HA się nie pokazał');
+  await strona.waitForTimeout(1500);
+  await strona.screenshot({ path: WYNIKI + 'pierwszy-ekran.png' });
+  await ekran.locator('#zapisz').click();
+  await strona.waitForTimeout(3000);
+  const ws = (m) => strona.evaluate((x) => document.querySelector('home-assistant').hass.callWS(x), m);
+  const u = await ws({ type: 'motor_ha/ustawienia' });
+  assert.equal(u.ustawienia.widziana, u.wersja, 'ustawienia zapisane');
+  assert.equal(u.pokaz, false, 'ekran nie wraca po zapisaniu');
+  assert.ok((await ws({ type: 'get_panels' }))['motor-ha'], 'panel „Motor HA” w pasku bocznym');
+  kroki.push({ pierwszyEkran: 'zapisany' });
 });
 
 test('brak błędów JavaScript na stronie', () => {

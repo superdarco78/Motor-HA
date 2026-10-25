@@ -525,5 +525,300 @@
     "caleOkno": "Celé okno",
     "rodzajCalosc": "Vyberte pole a dejte mu jiný druh nebo barvu.",
     "rodzajPole": "Teď nastavujete jen pole {0}."
+  },
+  "ekran": {
+    "witaj": "Vítejte v Motor HA",
+    "nowaWersja": "Nová verze Motor HA",
+    "wersja": "Verze {0}",
+    "coNowego": "Co je nového ve {0}",
+    "nowe": [
+      "Tato obrazovka: sami vyberete, co Motor HA přidá do Home Assistantu",
+      "Karta okna na vybraném panelu, pohledu a místě, zkratky pro celý dům a panel v postranním panelu",
+      "Dlaždice rozložení a editor vlastního rozložení jako skutečné okno, stínění viditelné v každém kroku průvodce"
+    ],
+    "jak": "Jak chcete Motor HA používat?",
+    "tryby": {
+      "pelny": [
+        "Všechno",
+        "Okno, karta, automatika, oznámení"
+      ],
+      "samo": [
+        "Jen zařízení",
+        "Jen stínění v HA, bez karty a automatiky"
+      ],
+      "wlasny": [
+        "Můj výběr",
+        "Zaškrtnu sám níže"
+      ]
+    },
+    "co": "Co má Motor HA přidat do Home Assistantu?",
+    "opcje": {
+      "karta": [
+        "Karta okna na panelu",
+        "Každé nové okno dostane kartu. Vyberte panel a místo."
+      ],
+      "dom": [
+        "Karta „Celý dům“",
+        "Všechna okna na jedné kartě."
+      ],
+      "skroty": [
+        "Zkratky na panelu",
+        "Tlačítka pro celý dům."
+      ],
+      "pasek": [
+        "Panel „Motor HA“ v postranním panelu",
+        "Všechna okna, důvod každého pohybu a historie na jednom místě."
+      ],
+      "assist": [
+        "Hlasové ovládání (Assist)",
+        "Okna poslouchají příkazy, např. „zatáhni obývák“."
+      ],
+      "ukryj": [
+        "Skrýt obyčejné motory před hlasem",
+        "Assist vidí jen okna Motor HA, bez dvojích názvů."
+      ],
+      "powiadom": [
+        "Oznámení",
+        "Když je něco špatně se stíněním nebo senzorem."
+      ],
+      "auto": [
+        "Automatika",
+        "Stínění samo reaguje na denní dobu, slunce, počasí a senzory."
+      ],
+      "nowa_wersja": [
+        "Informace o nové verzi",
+        "Tato obrazovka s „Co je nového“ po každé aktualizaci."
+      ]
+    },
+    "jakDziala": "Jak to funguje",
+    "gdyWyl": "Když je vypnuto",
+    "opisy": {
+      "karta": [
+        "Po přidání okna Motor HA vloží jeho kartu na vybraný panel, pohled a místo. Nic neodstraní ani nepřesune. Když tam karta už je, nic neudělá.",
+        "Karta se nepřidá na žádný panel. Přidáte ji sami: Upravit panel → Přidat kartu → Motor HA."
+      ],
+      "dom": [
+        "Na panelu zvoleném pro kartu okna je jedna karta se všemi okny domu: stav každého okna a tlačítka otevřít, stop, zavřít.",
+        "Žádná karta celého domu, jen karty jednotlivých oken."
+      ],
+      "skroty": [
+        "Nad kartami oken jsou tři tlačítka pro celý dům. Pauza zastaví automatiku všech oken na 2 hodiny.",
+        "Bez tlačítek; celý dům ovládáte z karty „Celý dům“ nebo hlasem."
+      ],
+      "pasek": [
+        "V postranním panelu HA je položka „Motor HA“: všechna okna s kartami, důvod posledního pohybu, historie pohybů a tato nastavení.",
+        "Bez položky v postranním panelu. Okna najdete v Nastavení → Zařízení → Motor HA."
+      ],
+      "assist": [
+        "Okna Motor HA vidí Assist pod jejich názvem a místností, např. „zatáhni obývák“, „vytáhni okno v kuchyni“.",
+        "Assist okna Motor HA nevidí; ovládáte je z karty a automatikou."
+      ],
+      "ukryj": [
+        "Obyčejné motory, ze kterých okna Motor HA vznikla, jsou před Assist skryté. Hlas nesplete „roleta obývák“ s „okno obývák“.",
+        "Assist vidí motor i okno Motor HA (mohou být dva podobné názvy)."
+      ],
+      "powiadom": [
+        "Zprávu dostanete, když motor neodpovídá, stínění nedojelo, slábne baterie nebo automatika nemohla stínění pohnout (např. kvůli otevřenému oknu).",
+        "Bez zpráv. Stav vidíte na kartě a v historii okna."
+      ],
+      "auto": [
+        "Každé okno dostane scénáře níže. Fungují podle důležitosti: vyšší vyhrává nad nižším nebo ho omezuje. Každý později změníte v „Konfigurovat“ u okna.",
+        "Stínění se hýbe jen na váš pokyn: karta, hlas, tlačítko nebo vaše vlastní automatizace HA. Motor HA sám nic nedělá."
+      ],
+      "nowa_wersja": [
+        "Po každé aktualizaci se objeví tato obrazovka s „Co je nového“ a vašimi nastaveními ke kontrole.",
+        "Aktualizace bez této obrazovky. „Co je nového“ je jen v HACS."
+      ]
+    },
+    "panel": "Panel",
+    "widok": "Pohled",
+    "miejsce": "Místo",
+    "proponowane": "doporučeno",
+    "nowyWidok": "Nový pohled „Okna“",
+    "miejsca": {
+      "sekcja": "Sekce „Motor HA“ na konci",
+      "gora": "Sekce „Motor HA“ nahoře",
+      "pokoj": "V sekci místnosti okna"
+    },
+    "miniOpis": {
+      "sekcja": "Karty Motor HA spolu v jedné sekci na konci pohledu, nic jiného se neposune.",
+      "gora": "Sekce Motor HA úplně nahoře v pohledu.",
+      "pokoj": "Karta v sekci, jejíž nadpis je místnost okna (např. Obývák). Bez takové sekce – v sekci Motor HA."
+    },
+    "miniNowy": "Na samostatném pohledu „Okna“.",
+    "oknoMini": "Okno",
+    "salon": "Obývák",
+    "kuchnia": "Kuchyně",
+    "brakPanelu": "Není žádný panel uložený z rozhraní, takže se karta nepřidá. Vytvořte panel v Nastavení → Panely a otevřete tuto obrazovku znovu.",
+    "skroty": [
+      "⬇ Zatáhnout vše",
+      "⬆ Vytáhnout vše",
+      "⏸ Pauza automatiky 2 h"
+    ],
+    "skrotyOpis": "Na stejném panelu, nad kartami oken.",
+    "telefon": "Také do telefonu (aplikace HA)",
+    "wHa": "Vždy přijdou i do oznámení HA (zvonek v postranním panelu).",
+    "brakTelefonu": "Není telefon s aplikací HA – oznámení přijdou jen do HA (zvonek v postranním panelu).",
+    "scenOpis": "Všechny scénáře podle důležitosti (1 je nejdůležitější). Scénář bez potřebného senzoru se sám přeskočí. Každý můžete vypnout:",
+    "skad": "Odkud to ví",
+    "scen": {
+      "cisza": [
+        "Klid po startu HA",
+        "5 minut po restartu HA stínění stojí, než senzory nahlásí stav",
+        "–"
+      ],
+      "dym": [
+        "Kouř",
+        "detektor kouře → stínění se otevře (úniková cesta a světlo)",
+        "detektor kouře"
+      ],
+      "wiatr": [
+        "Vítr, kroupy, vibrace",
+        "vítr od 40 km/h nebo vibrace → venkovní stínění se stáhne; varování před kroupami → markýza stažená, roleta zavřená (chrání sklo)",
+        "počasí, anemometr, senzor vibrací, varování"
+      ],
+      "deszcz": [
+        "Déšť",
+        "markýzy, screeny a venkovní žaluzie se stáhnou; rolety zůstanou, jak jsou",
+        "počasí nebo senzor deště"
+      ],
+      "mroz": [
+        "Mráz",
+        "od 1 °C dolů se venkovní stínění nehýbe (může být přimrzlé)",
+        "venkovní teplota nebo počasí"
+      ],
+      "pauza": [
+        "Váš ruční pohyb",
+        "když stíněním pohnete sami, automatika počká 2 hodiny",
+        "motor stínění"
+      ],
+      "alarm": [
+        "Alarm",
+        "po zapnutí alarmu se stínění zavře",
+        "alarm HA"
+      ],
+      "spie": [
+        "Spím",
+        "přepínač „Spím“ zapnutý → stínění zůstane zavřené a ráno se neotevře",
+        "přepínač „Spím“ u okna"
+      ],
+      "nikogo": [
+        "Nikdo doma",
+        "nikdo doma → stínění zavřené; v režimu dovolené se ráno a večer hýbe každý den v trochu jiný čas",
+        "telefony obyvatel"
+      ],
+      "rano": [
+        "Ráno otevřít",
+        "při východu slunce (nebo v nastavený čas) se stínění otevře",
+        "slunce HA, hodiny"
+      ],
+      "wieczor": [
+        "Večer zavřít",
+        "při západu slunce (nebo v nastavený čas) se stínění zavře",
+        "slunce HA, hodiny"
+      ],
+      "obecnosc": [
+        "Ráno počkat na někoho",
+        "do 10:00 se stínění otevře, až když někdo vejde do místnosti",
+        "senzor přítomnosti nebo pohybu"
+      ],
+      "posrednia": [
+        "Odpolední poloha",
+        "od 13:00 stojí stínění na 50 % místo úplně otevřeného",
+        "hodiny"
+      ],
+      "slonce": [
+        "Slunce a horko",
+        "slunce svítí do tohoto okna a venku je 24 °C a více (nebo je předpověď horka) → stínění sjede na 20 % otevření",
+        "slunce HA, počasí, teplota"
+      ],
+      "oslepianie": [
+        "Oslnění",
+        "slunce v okně → stínění sjede tak, aby slunce nesahalo dál než 3 m do místnosti (např. k televizi nebo stolu)",
+        "slunce HA"
+      ],
+      "pokoj": [
+        "Teplo v místnosti",
+        "25 °C a více v místnosti a slunce v okně → stínění na 20 % otevření",
+        "teploměr v místnosti"
+      ],
+      "zima": [
+        "Zima",
+        "od listopadu do března je stínění na slunci otevřené (teplo zdarma) a v noci zavřené (menší ztráty tepla)",
+        "slunce HA, kalendář"
+      ],
+      "okno": [
+        "Otevřené okno a dveře",
+        "okno na ventilaci: stínění nesjede níž než 20 %; otevřené okno: nesjíždí; otevřené balkonové dveře: ne níž než 80 %",
+        "senzor okna a dveří"
+      ],
+      "przeszkoda": [
+        "Překážka",
+        "senzor překážky u balkonových dveří → stínění nesjíždí dolů",
+        "senzor překážky"
+      ],
+      "granice": [
+        "Meze pohybu a lamely",
+        "stínění nikdy nepřejede nastavené meze; lamely žaluzií se natáčejí podle úhlu slunce",
+        "–"
+      ]
+    },
+    "sprawdz": "Zjistěte, co vyhraje, když se stane několik věcí najednou",
+    "przyklad": "Příklad: venkovní roleta, okno na jih, červenec. Počítá to stejná logika, která řídí vaše okna.",
+    "zaznacz": "Zaškrtněte, co se právě děje:",
+    "pora": "Čas",
+    "pory": {
+      "rano": "Ráno 7:30",
+      "dzien": "Den 14:00",
+      "wieczor": "Večer (po západu slunce)",
+      "noc": "Noc 23:00"
+    },
+    "warunki": {
+      "slonce": "Slunce svítí do okna",
+      "upal": "Horko (30 °C)",
+      "wiatr": "Silný vítr (60 km/h)",
+      "deszcz": "Déšť",
+      "okno": "Okno na ventilaci",
+      "dym": "Detektor kouře",
+      "alarm": "Alarm zapnutý",
+      "spie": "Zapnuto „Spím“",
+      "nikogo": "Nikdo doma",
+      "reka": "Pohnuli jste stíněním ručně"
+    },
+    "oslona": "Stínění: {0} % otevřeno",
+    "stoi": "Stínění zůstane, kde je",
+    "wygrywa": "Vyhrává: {0}",
+    "nic": "nic se neděje",
+    "ogranicza": "Otevřené okno omezuje: mělo být {0} %, je {1} %.",
+    "ogrStoi": "Otevřené okno omezuje: mělo být {0} %, stínění nesjíždí.",
+    "kolejnosc": "Teď zaškrtnuto:",
+    "stany": {
+      "wygrywa": "vyhrává",
+      "ogranicza": "omezuje",
+      "przegrywa": "prohrává",
+      "nie_dziala": "teď nepůsobí"
+    },
+    "istniejace": "Použít i na moje okna ({0}): karta na panelu, oznámení a scénáře",
+    "stopka": "Později to změníte: panel „Motor HA“ v postranním panelu nebo Nastavení → Zařízení → Motor HA.",
+    "pozniej": "Později",
+    "zapisz": "Uložit",
+    "zapiszDodaj": "Uložit a přidat okno",
+    "zapisano": "Uloženo.",
+    "blad": "Neuloženo:",
+    "zrobione": {
+      "skroty": "Zkratky jsou na panelu.",
+      "dom": "Karta „Celý dům“ je na panelu.",
+      "karty": "Karty oken jsou na panelu.",
+      "okna": "Okna mají nová nastavení.",
+      "blad": "Ne všechno se povedlo – podrobnosti v protokolu HA."
+    }
+  },
+  "panel": {
+    "ustawienia": "Nastavení",
+    "historia": "Historie",
+    "powod": "Důvod",
+    "brak": "Zatím tu nejsou žádná okna Motor HA.",
+    "dodaj": "Přidat okno",
+    "tytul": "Motor HA"
   }
 }

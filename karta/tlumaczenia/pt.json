@@ -525,5 +525,300 @@
     "caleOkno": "Janela inteira",
     "rodzajCalosc": "Escolha um painel para lhe dar outro tipo ou cor.",
     "rodzajPole": "Agora está a ajustar só o painel {0}."
+  },
+  "ekran": {
+    "witaj": "Bem-vindo ao Motor HA",
+    "nowaWersja": "Nova versão do Motor HA",
+    "wersja": "Versão {0}",
+    "coNowego": "Novidades da {0}",
+    "nowe": [
+      "Este ecrã: escolhe o que o Motor HA adiciona ao Home Assistant",
+      "Cartão da janela no painel, na vista e no lugar que escolheres, atalhos para toda a casa e um painel na barra lateral",
+      "Mosaicos de disposição e editor de disposição própria desenhados como uma janela real, proteções visíveis em cada passo do assistente"
+    ],
+    "jak": "Como queres usar o Motor HA?",
+    "tryby": {
+      "pelny": [
+        "Tudo",
+        "Janela, cartão, automação, notificações"
+      ],
+      "samo": [
+        "Só o dispositivo",
+        "Só a proteção no HA, sem cartão nem automação"
+      ],
+      "wlasny": [
+        "A minha escolha",
+        "Eu marco abaixo"
+      ]
+    },
+    "co": "O que deve o Motor HA adicionar ao Home Assistant?",
+    "opcje": {
+      "karta": [
+        "Cartão da janela num painel",
+        "Cada janela nova recebe um cartão. Escolhe o painel e o lugar."
+      ],
+      "dom": [
+        "Cartão «Casa inteira»",
+        "Todas as janelas num cartão."
+      ],
+      "skroty": [
+        "Atalhos no painel",
+        "Botões para toda a casa."
+      ],
+      "pasek": [
+        "Painel «Motor HA» na barra lateral",
+        "Todas as janelas, o motivo de cada movimento e o histórico num só lugar."
+      ],
+      "assist": [
+        "Controlo por voz (Assist)",
+        "As janelas ouvem comandos, p. ex. «fecha a sala»."
+      ],
+      "ukryj": [
+        "Esconder os motores simples da voz",
+        "O Assist só vê as janelas do Motor HA, sem nomes duplicados."
+      ],
+      "powiadom": [
+        "Notificações",
+        "Quando algo corre mal com uma proteção ou um sensor."
+      ],
+      "auto": [
+        "Automação",
+        "As proteções reagem sozinhas à hora, ao sol, ao tempo e aos sensores."
+      ],
+      "nowa_wersja": [
+        "Aviso de nova versão",
+        "Este ecrã com «Novidades» após cada atualização."
+      ]
+    },
+    "jakDziala": "Como funciona",
+    "gdyWyl": "Quando desligado",
+    "opisy": {
+      "karta": [
+        "Ao adicionar uma janela, o Motor HA coloca o seu cartão no painel, na vista e no lugar escolhidos. Não remove nem move nada. Se o cartão já lá estiver, não faz nada.",
+        "O cartão não vai para nenhum painel. Adiciona-o tu: Editar painel → Adicionar cartão → Motor HA."
+      ],
+      "dom": [
+        "O painel escolhido para o cartão da janela recebe um cartão com todas as janelas da casa: o estado de cada uma e os botões abrir, parar, fechar.",
+        "Sem cartão da casa inteira, só cartões de janelas individuais."
+      ],
+      "skroty": [
+        "Por cima dos cartões das janelas há três botões para toda a casa. Pausa para a automação de todas as janelas durante 2 horas.",
+        "Sem botões; controlas toda a casa pelo cartão «Casa inteira» ou por voz."
+      ],
+      "pasek": [
+        "A barra lateral do HA recebe a entrada «Motor HA»: todas as janelas com os seus cartões, o motivo do último movimento, o histórico e estas definições.",
+        "Sem entrada na barra lateral. As janelas estão em Definições → Dispositivos → Motor HA."
+      ],
+      "assist": [
+        "O Assist vê as janelas do Motor HA com o seu nome e divisão, p. ex. «fecha a sala», «abre a janela da cozinha».",
+        "O Assist não vê as janelas do Motor HA; controlas pelo cartão e pela automação."
+      ],
+      "ukryj": [
+        "Os motores simples a partir dos quais foram criadas as janelas do Motor HA ficam escondidos do Assist. A voz não confunde «estore sala» com «janela sala».",
+        "O Assist vê o motor e a janela do Motor HA (pode haver dois nomes parecidos)."
+      ],
+      "powiadom": [
+        "Recebes uma mensagem quando um motor não responde, uma proteção não chega à posição, uma bateria está fraca ou a automação não conseguiu mover uma proteção (p. ex. por causa de uma janela aberta).",
+        "Sem mensagens. O estado vê-se no cartão e no histórico da janela."
+      ],
+      "auto": [
+        "Cada janela recebe os cenários abaixo. Atuam por ordem de importância: um mais alto ganha a um mais baixo ou limita-o. Podes mudar cada um mais tarde em «Configurar» da janela.",
+        "As proteções só se movem quando mandas: cartão, voz, botão ou as tuas próprias automações do HA. O Motor HA não faz nada sozinho."
+      ],
+      "nowa_wersja": [
+        "Após cada atualização aparece este ecrã com «Novidades» e as tuas definições para rever.",
+        "Atualizações sem este ecrã. As «Novidades» estão só no HACS."
+      ]
+    },
+    "panel": "Painel",
+    "widok": "Vista",
+    "miejsce": "Lugar",
+    "proponowane": "recomendado",
+    "nowyWidok": "Nova vista «Janelas»",
+    "miejsca": {
+      "sekcja": "Secção «Motor HA» no fim",
+      "gora": "Secção «Motor HA» no topo",
+      "pokoj": "Na secção da divisão da janela"
+    },
+    "miniOpis": {
+      "sekcja": "Cartões do Motor HA juntos numa secção no fim da vista, nada mais se move.",
+      "gora": "Secção Motor HA no topo da vista.",
+      "pokoj": "Cartão na secção cujo título é a divisão da janela (p. ex. Sala). Sem essa secção – na secção Motor HA."
+    },
+    "miniNowy": "Numa vista à parte «Janelas».",
+    "oknoMini": "Janela",
+    "salon": "Sala",
+    "kuchnia": "Cozinha",
+    "brakPanelu": "Não há nenhum painel guardado pela interface, por isso o cartão não será adicionado. Cria um painel em Definições → Painéis e volta a abrir este ecrã.",
+    "skroty": [
+      "⬇ Fechar tudo",
+      "⬆ Abrir tudo",
+      "⏸ Pausar automação 2 h"
+    ],
+    "skrotyOpis": "No mesmo painel, por cima dos cartões das janelas.",
+    "telefon": "Também para o telemóvel (app HA)",
+    "wHa": "Chegam sempre também às notificações do HA (sino na barra lateral).",
+    "brakTelefonu": "Nenhum telemóvel com a app HA – as notificações só chegam ao HA (sino na barra lateral).",
+    "scenOpis": "Todos os cenários por ordem de importância (1 é o mais importante). Um cenário sem o sensor necessário é saltado sozinho. Podes desligar cada um:",
+    "skad": "Como sabe",
+    "scen": {
+      "cisza": [
+        "Calma após o arranque do HA",
+        "durante 5 minutos após reiniciar o HA as proteções não se movem até os sensores darem o seu estado",
+        "–"
+      ],
+      "dym": [
+        "Fumo",
+        "detetor de fumo → a proteção abre (saída de emergência e luz)",
+        "detetor de fumo"
+      ],
+      "wiatr": [
+        "Vento, granizo, vibração",
+        "vento a partir de 40 km/h ou vibração → a proteção exterior recolhe; aviso de granizo → toldo recolhido, estore fechado (protege o vidro)",
+        "tempo, anemómetro, sensor de vibração, avisos"
+      ],
+      "deszcz": [
+        "Chuva",
+        "toldos, screens e pérgolas recolhem; os estores ficam como estão",
+        "tempo ou sensor de chuva"
+      ],
+      "mroz": [
+        "Gelo",
+        "a 1 °C ou menos a proteção exterior não se move (pode estar congelada)",
+        "temperatura exterior ou tempo"
+      ],
+      "pauza": [
+        "O teu movimento manual",
+        "se moveres a proteção tu mesmo, a automação espera 2 horas",
+        "motor da proteção"
+      ],
+      "alarm": [
+        "Alarme",
+        "ao armar o alarme a proteção fecha",
+        "alarme do HA"
+      ],
+      "spie": [
+        "A dormir",
+        "interruptor «A dormir» ligado → a proteção fica fechada e não abre de manhã",
+        "interruptor «A dormir» da janela"
+      ],
+      "nikogo": [
+        "Ninguém em casa",
+        "ninguém em casa → a proteção está fechada; em modo férias move-se todas as manhãs e noites a uma hora um pouco diferente",
+        "telemóveis da família"
+      ],
+      "rano": [
+        "Abrir de manhã",
+        "ao nascer do sol (ou à hora que definires) a proteção abre",
+        "sol do HA, relógio"
+      ],
+      "wieczor": [
+        "Fechar à noite",
+        "após o pôr do sol (ou à hora que definires) a proteção fecha",
+        "sol do HA, relógio"
+      ],
+      "obecnosc": [
+        "De manhã, esperar por alguém",
+        "até às 10:00 a proteção só abre quando alguém entra na divisão",
+        "sensor de presença ou movimento"
+      ],
+      "posrednia": [
+        "Posição da tarde",
+        "a partir das 13:00 a proteção fica a 50 % em vez de totalmente aberta",
+        "relógio"
+      ],
+      "slonce": [
+        "Sol e calor",
+        "o sol entra por esta janela e lá fora estão 24 °C ou mais (ou prevê-se calor) → a proteção desce até 20 % aberta",
+        "sol do HA, tempo, temperatura"
+      ],
+      "oslepianie": [
+        "Encandeamento",
+        "sol na janela → a proteção desce para que o sol não entre mais de 3 m na divisão (p. ex. até à TV ou à secretária)",
+        "sol do HA"
+      ],
+      "pokoj": [
+        "Divisão quente",
+        "25 °C ou mais na divisão e sol na janela → a proteção a 20 % aberta",
+        "termómetro da divisão"
+      ],
+      "zima": [
+        "Inverno",
+        "de novembro a março a proteção está aberta ao sol (calor grátis) e fechada à noite (menos perda de calor)",
+        "sol do HA, calendário"
+      ],
+      "okno": [
+        "Janela e porta abertas",
+        "janela basculante: a proteção não desce abaixo de 20 %; janela aberta: não desce; porta da varanda aberta: não abaixo de 80 %",
+        "sensor de janela e porta"
+      ],
+      "przeszkoda": [
+        "Obstáculo",
+        "sensor de obstáculo na porta da varanda → a proteção não desce",
+        "sensor de obstáculo"
+      ],
+      "granice": [
+        "Limites de curso e lâminas",
+        "a proteção nunca passa os limites definidos; as lâminas orientam-se pelo ângulo do sol",
+        "–"
+      ]
+    },
+    "sprawdz": "Vê o que ganha quando acontecem várias coisas ao mesmo tempo",
+    "przyklad": "Exemplo: estore exterior, janela virada a sul, julho. Calculado pela mesma lógica que controla as tuas janelas.",
+    "zaznacz": "Marca o que está a acontecer agora:",
+    "pora": "Momento",
+    "pory": {
+      "rano": "Manhã 7:30",
+      "dzien": "Dia 14:00",
+      "wieczor": "Noite (após o pôr do sol)",
+      "noc": "Madrugada 23:00"
+    },
+    "warunki": {
+      "slonce": "O sol entra pela janela",
+      "upal": "Calor (30 °C)",
+      "wiatr": "Vento forte (60 km/h)",
+      "deszcz": "Chuva",
+      "okno": "Janela basculante",
+      "dym": "Detetor de fumo",
+      "alarm": "Alarme armado",
+      "spie": "«A dormir» ligado",
+      "nikogo": "Ninguém em casa",
+      "reka": "Moveste a proteção à mão"
+    },
+    "oslona": "Proteção: {0} % aberta",
+    "stoi": "A proteção fica onde está",
+    "wygrywa": "Ganha: {0}",
+    "nic": "nada acontece",
+    "ogranicza": "A janela aberta limita: devia ser {0} %, é {1} %.",
+    "ogrStoi": "A janela aberta limita: devia ser {0} %, a proteção não desce.",
+    "kolejnosc": "Marcado agora:",
+    "stany": {
+      "wygrywa": "ganha",
+      "ogranicza": "limita",
+      "przegrywa": "perde",
+      "nie_dziala": "inativo agora"
+    },
+    "istniejace": "Aplicar também às minhas janelas ({0}): cartão no painel, notificações e cenários",
+    "stopka": "Podes mudar isto mais tarde: painel «Motor HA» na barra lateral ou Definições → Dispositivos → Motor HA.",
+    "pozniej": "Mais tarde",
+    "zapisz": "Guardar",
+    "zapiszDodaj": "Guardar e adicionar janela",
+    "zapisano": "Guardado.",
+    "blad": "Não guardado:",
+    "zrobione": {
+      "skroty": "Os atalhos estão no painel.",
+      "dom": "O cartão «Casa inteira» está no painel.",
+      "karty": "Os cartões das janelas estão no painel.",
+      "okna": "As janelas têm as novas definições.",
+      "blad": "Nem tudo funcionou – detalhes no registo do HA."
+    }
+  },
+  "panel": {
+    "ustawienia": "Definições",
+    "historia": "Histórico",
+    "powod": "Motivo",
+    "brak": "Ainda não há janelas do Motor HA.",
+    "dodaj": "Adicionar janela",
+    "tytul": "Motor HA"
   }
 }

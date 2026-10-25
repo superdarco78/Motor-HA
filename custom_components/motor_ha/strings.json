@@ -953,6 +953,14 @@
         "mahon": "mahogany",
         "dab_bagienny": "bog oak"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Close all",
+        "odslon": "Open all",
+        "pauza": "Pause automation",
+        "wznow": "Resume automation"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Slats",
           "description": "Slat angle."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "All windows",
+      "description": "Closes or opens all Motor HA windows at once, or pauses their automation (shortcuts on the dashboard).",
+      "fields": {
+        "akcja": {
+          "name": "Action",
+          "description": "What to do with all windows."
+        },
+        "minuty": {
+          "name": "Minutes",
+          "description": "How long the pause lasts."
         }
       }
     }

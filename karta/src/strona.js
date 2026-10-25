@@ -2,6 +2,7 @@
 // wszystkich urządzeń (urządzenie „Motor HA”). HA nie ma na to miejsca, więc karty dokładamy do jej kolumn;
 // gdy HA zmieni stronę i kolumn nie będzie, po prostu nic się nie pokaże.
 import { pilnujKreatora } from './kreator.js';
+import { pilnujEkranu } from './ekran.js';
 
 const WZOR = /^\/config\/devices\/device\/([^/?#]+)/;
 const ZNAK = 'data-motor-ha';
@@ -80,6 +81,7 @@ export function pilnuj(rejestruj) {
 export function strony(rejestruj) {
   setInterval(() => {
     try { pilnujKreatora(); } catch (e) { /* okienko HA wygląda inaczej – pasek zostaje obrazkiem */ }
+    try { pilnujEkranu(); } catch (e) { /* pierwszy ekran pokaże się przy następnym wczytaniu */ }
     try { pilnuj(rejestruj); } catch (e) { powod = String(e?.message || e); }
     const m = WZOR.exec(location.pathname);
     if (m) try { zglos(m[1]); } catch (e) { /* dziennik niedostępny */ }
