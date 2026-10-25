@@ -6,7 +6,7 @@ import { kafelRuch, RODZAJE_RUCHU } from './kafle_ruch.js';
 import { ZDJECIA, UI } from './zdjecia.js';
 import { przekoloruj, zKolorem, daSie } from './przekolor.js';
 import { RAMKI } from './ramki.js';
-import { polaNaObrazku, wymiary, proporcja, moze3d, okno3d } from './okno3d_uklad.js';
+import { polaNaObrazku, wymiary, proporcja, moze3d, okno3d, marginesDla } from './okno3d_uklad.js';
 import { UKLADY, SZYBY, tkanina } from './foto_okno.js';
 import { maZdjecieBramy, bramaZdjecie } from './brama_foto.js';
 export { UKLADY };
@@ -436,8 +436,9 @@ export class MotorHaKreator extends HTMLElement {
   }
   // okno 3D (okno3d.js) z układu, rodzaju i koloru każdego pola i koloru ramy; na nim przezroczyste pola (numer, wybór, czujnik)
   _okno3d(opt) {
-    const S = this.S, P = prostokaty(S.u), pola = P.map(p => p.slice(0, 4)), prop = proporcja(pola), { W, H } = wymiary(prop), m = .06;
-    const cfg = { pola, typy: P.map((_, i) => S.pola[i]?.oslona || S.o.oslona), kolory: P.map((_, i) => { const k = S.pola[i]?.kolor; return k ? KOLORY[k] || k : this._kolor(); }),
+    const S = this.S, P = prostokaty(S.u), pola = P.map(p => p.slice(0, 4)), prop = proporcja(pola), { W, H } = wymiary(prop);
+    const typy = P.map((_, i) => S.pola[i]?.oslona || S.o.oslona), m = marginesDla(typy, W, H, .06);
+    const cfg = { pola, typy, kolory: P.map((_, i) => { const k = S.pola[i]?.kolor; return k ? KOLORY[k] || k : this._kolor(); }),
       rama: this._rama(), W, H, margines: m, sciana: S.sciana && SCIANY[S.sciana] || null, pozycje: P.map((_, i) => opt.poz ? opt.poz(i) : 35) };
     const R = polaNaObrazku(pola, W, H, m), id = opt.id || opt.klasa;
     const d = [`<div class="${opt.klasa} o3k" data-id="${id}" data-o3="${esc(JSON.stringify(cfg))}"${opt.ruch ? ' data-ruch="1"' : ''} role="${opt.wybor ? 'group' : 'img'}" aria-label="${esc(this.t.kroki.uklad)}" style="aspect-ratio:${W}/${H};--a:${(W / H).toFixed(4)}${opt.w ? `;width:${opt.w}px` : ''}"><div class="o3h"></div>`];
