@@ -12,7 +12,7 @@ import { konfiguruj } from './urzadzenie.js';
 import { ikUI, STYL_IKU } from './ikony_ui.js';
 import { SZYBY, nazwaUkladu, tkanina } from './foto_okno.js';
 import { przekoloruj, zKolorem } from './przekolor.js';
-import { polaNaObrazku, wymiary, proporcja, NA_BOKI, moze3d, okno3d, JASNOSC } from './okno3d_uklad.js';
+import { polaNaObrazku, wymiary, proporcja, NA_BOKI, moze3d, okno3d, JASNOSC, marginesDla } from './okno3d_uklad.js';
 import { maZdjecieBramy, bramaZdjecie, ustawBrameZdj, STYL_BRAMY } from './brama_foto.js';
 
 // klucze, które zostają w karcie na panelu, gdy ustawienia trzyma urządzenie Motor HA
@@ -186,9 +186,10 @@ export class MotorHaKarta extends HTMLElement {
     const pola = P ? P.map(p => [p.x, p.y, p.w, p.h]) : n === 1 ? [[0, 0, 1, 1]] : [[0, 0, .5, 1], [.5, 0, .5, 1]];
     const prop = proporcja(pola);
     const { W, H } = wymiary(prop), Hp = Math.max(140, Math.min(600, +c.wysokosc || 260)) * 1.1, Wp = Math.round(Hp * prop);
-    const R = polaNaObrazku(pola, W, H, 0), pr = v => (v * 100).toFixed(3) + '%';
-    this._o3cfg = { pola, typy: pola.map((_, i) => P?.[i]?.rodzaj || c.rodzaj), kolory: pola.map((_, i) => P?.[i]?.kolor ? hex(P[i].kolor) : kolor),
-      rama, drewno: czyDrewno(c.rama), W, H, margines: 0 };
+    const typy = pola.map((_, i) => P?.[i]?.rodzaj || c.rodzaj), m = marginesDla(typy, W, H);
+    const R = polaNaObrazku(pola, W, H, m), pr = v => (v * 100).toFixed(3) + '%';
+    this._o3cfg = { pola, typy, kolory: pola.map((_, i) => P?.[i]?.kolor ? hex(P[i].kolor) : kolor),
+      rama, drewno: czyDrewno(c.rama), W, H, margines: m };
     const strona = i => pola[i][0] + pola[i][2] / 2 <= .5 ? 'l' : 'p';
     const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
     const pozycje = String(c.pozycje || '').split(/[,; ]+/).filter(x => x !== '').map(Number).filter(x => Number.isFinite(x) && x >= 0 && x <= 100).slice(0, 6);
@@ -199,7 +200,7 @@ export class MotorHaKarta extends HTMLElement {
 <ha-card class="wew${this._poziomo ? ' poziomo' : ''}"><div class="mh">
  ${this._naglowek(c)}
  <div class="scena${pion ? ' zs' : ''}">
-  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno o3" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${Wp}px);aspect-ratio:${W}/${H}">
+  ${dwaSuwaki ? this._suwakHtml(T, true, 0) : ''}<div class="okno o3" style="width:min(${pion ? (dwaSuwaki ? 'calc(100% - 108px)' : 'calc(100% - 54px)') : '100%'},${Math.round(Wp / (1 - 2 * m))}px);aspect-ratio:${W}/${H}">
    <div class="o3h"></div>
    ${czl.map((_, i) => `<div class="skrz" data-i="${i}" data-s="${strona(i)}" style="left:${pr(R[i][0])};top:${pr(R[i][1])};width:${pr(R[i][2])};height:${pr(R[i][3])}"><div class="szyba"><div class="cel"><span></span></div></div></div>`).join('')}
   </div>${pion ? this._suwakHtml(T, true, dwaSuwaki ? 1 : null) : ''}</div>

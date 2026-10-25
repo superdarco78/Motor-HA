@@ -1,5 +1,14 @@
 # 📝 Historia zmian
 
+## v2.2.26 – Okno i osłona z Blendera, realistycznie 1:1
+
+- 🪟 Podgląd w kreatorze, na kafelkach rodzajów i na karcie: całe okno z ramą w wybranym kolorze i osłoną złożoną z elementów wyrenderowanych w Blenderze (światło, cień, materiał) – zamiast okna 3D z przeglądarki
+- 🧩 Wszystkie 79 rodzajów: rolety, plisy, rzymskie, żaluzje, pionowe, zasłony, rolety zewnętrzne, fasadowe, screeny, okiennice, markizy, pergole, okna dachowe, okna z napędem, moskitiery
+- 🔲 Dowolny układ: każde pole ze swoim rodzajem i kolorem, słupki między polami, klamka od środka okna
+- 🏠 Widok sam się dobiera: od pokoju, od ulicy (same osłony zewnętrzne), okno dachowe od środka, okno w dachu płaskim z dołu
+- 📐 Wokół okna tyle miejsca, żeby było widać całą osłonę (skrzynkę rolety, markizę, zasłony, otwarte okiennice)
+- 🛠️ Skrypty Blendera do klocków w karta/narzedzia/blender
+
 ## v2.2.25 – Podgląd po prawej, całe okno widać
 
 - ↔️ Kreator i „Konfiguruj”: ustawienia po lewej, podgląd po prawej

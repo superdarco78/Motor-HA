@@ -29,17 +29,17 @@ await esbuild.build({
   logLevel: 'info'
 });
 
-// Okno 3D (three.js) osobno: karta i kreator wczytują je dopiero, gdy rysują okno (import z /motor_ha/okno3d.js)
+// Okno z klocków z Blendera osobno: karta i kreator wczytują je dopiero, gdy rysują okno (import z /motor_ha/okno2d.js)
 await esbuild.build({
-  entryPoints: ['src/okno3d.js'],
-  outfile: '../custom_components/motor_ha/www/okno3d.js',
+  entryPoints: ['src/okno2d.js'],
+  outfile: '../custom_components/motor_ha/www/okno2d.js',
   bundle: true,
   format: 'esm',
   target: 'es2020',
   charset: 'utf8',
   minify: true,
   legalComments: 'none',
-  banner: { js: '/* Motor HA – okno 3D · © superdarco78 · CC BY-NC-SA 4.0 · three.js © three.js authors, MIT */' },
+  banner: { js: '/* Motor HA – okno z klocków (Blender) · © superdarco78 · CC BY-NC-SA 4.0 */' },
   logLevel: 'info'
 });
 
