@@ -18,7 +18,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.util import slugify
 
-from . import panele, skan
+from . import panele, skan, ustawienia
 from .const import (
     BRAMY,
     CONF_CZAS,
@@ -214,7 +214,7 @@ def _telefony(hass: HomeAssistant) -> list[dict[str, str]]:
 
 async def dane_kreatora(hass: HomeAssistant, entry_id: str | None, rolety: list[str] | None) -> dict[str, Any]:
     wpis = hass.config_entries.async_get_entry(entry_id) if entry_id else None
-    o = {**DOMYSLNE, **(wpis.options if wpis else {})}
+    o = {**DOMYSLNE, **(wpis.options if wpis else ustawienia.domyslne_okna(hass))}
     rolety = [e for e in (rolety if rolety is not None else o.get(CONF_ROLETY) or []) if hass.states.get(e)]
     zajete = {e: w.title for w in hass.config_entries.async_entries(DOMAIN) if not wpis or w.entry_id != wpis.entry_id
               for e in w.options.get(CONF_ROLETY) or []}
@@ -243,6 +243,8 @@ async def dane_kreatora(hass: HomeAssistant, entry_id: str | None, rolety: list[
     lewe, prawe = skan.czujniki_okna(hass, pierwsza)
     s = hass.states.get(pierwsza) if pierwsza else None
     lista_paneli, propozycja = await panele.async_lista(hass)
+    if wpis is None:
+        propozycja = ustawienia.panel_domyslny(hass, propozycja)
     return {
         "nowy": wpis is None, "tytul": wpis.title if wpis else (s.name if s else ""),
         "opcje": {**o, CONF_UKLAD: uklad(o), CONF_POLA: pola(o)}, "jest_uklad": bool(o.get(CONF_UKLAD)),

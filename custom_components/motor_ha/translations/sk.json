@@ -953,6 +953,14 @@
         "mahon": "mahagón",
         "dab_bagienny": "bahenný dub"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Zatiahnuť všetko",
+        "odslon": "Vytiahnuť všetko",
+        "pauza": "Pozastaviť automatiku",
+        "wznow": "Obnoviť automatiku"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lamely",
           "description": "Uhol lamiel."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Všetky okná",
+      "description": "Zatiahne alebo vytiahne všetky okná Motor HA naraz alebo pozastaví ich automatiku (skratky na paneli).",
+      "fields": {
+        "akcja": {
+          "name": "Akcia",
+          "description": "Čo urobiť so všetkými oknami."
+        },
+        "minuty": {
+          "name": "Minúty",
+          "description": "Ako dlho trvá pauza."
         }
       }
     }

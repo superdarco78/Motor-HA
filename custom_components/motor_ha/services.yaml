@@ -1,7 +1,7 @@
 wstrzymaj:
   fields:
     entity_id:
-      required: true
+      required: false
       selector:
         entity:
           integration: motor_ha
@@ -16,7 +16,7 @@ wstrzymaj:
 wznow:
   fields:
     entity_id:
-      required: true
+      required: false
       selector:
         entity:
           integration: motor_ha
@@ -62,3 +62,22 @@ ustaw:
           min: 0
           max: 100
           unit_of_measurement: "%"
+wszystkie:
+  fields:
+    akcja:
+      required: true
+      selector:
+        select:
+          translation_key: akcja_wszystkie
+          options:
+            - zaslon
+            - odslon
+            - pauza
+            - wznow
+    minuty:
+      default: 120
+      selector:
+        number:
+          min: 0
+          max: 1440
+          unit_of_measurement: min

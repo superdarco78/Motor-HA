@@ -8,6 +8,8 @@ import { MotorHaSymulator } from './symulator.js';
 import { MotorHaUrzadzenie } from './urzadzenie.js';
 import { MotorHaKreator } from './kreator_okno.js';
 import { strony } from './strona.js';
+import { MotorHaEkran } from './ekran.js';
+import { MotorHaPanel } from './panel.js';
 
 // Strona /motor-ha-start: HA wczytał ją razem z tym plikiem, więc kreator już jest – wracamy do dodawania urządzenia
 // (albo tam, skąd przyszedł link „Pokaż kreator graficzny”: ?do=/config/…)
@@ -26,6 +28,8 @@ const ELEMENTY = [
   ['motor-ha-urzadzenie', MotorHaUrzadzenie],   // karta na stronie urządzenia w Ustawieniach (strona.js)
   ['motor-ha-kreator', MotorHaKreator],   // kreator graficzny nad okienkiem HA (kreator.js)
   ['motor-ha-start', MotorHaStart],   // ukryta strona /motor-ha-start (pierwsze urządzenie po instalacji)
+  ['motor-ha-ekran', MotorHaEkran],   // pierwszy ekran po instalacji i aktualizacji (ekran.js)
+  ['motor-ha-panel', MotorHaPanel],   // panel „Motor HA” w pasku bocznym (panel.js)
   ['roleta-realistyczna', class extends MotorHaKarta {}], ['roleta-realistyczna-editor', class extends MotorHaEdytor {}]
 ];
 // HA w trakcie startu potrafi podmienić rejestr elementów (window.customElements). Karta wczytana wcześniej

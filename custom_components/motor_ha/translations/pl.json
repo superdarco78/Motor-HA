@@ -953,6 +953,14 @@
         "mahon": "mahoń",
         "dab_bagienny": "dąb bagienny"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Zasłoń wszystko",
+        "odslon": "Odsłoń wszystko",
+        "pauza": "Pauza automatyki",
+        "wznow": "Wznów automatykę"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lamele",
           "description": "Kąt lameli."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Wszystkie okna",
+      "description": "Zasłania albo odsłania naraz wszystkie okna Motor HA albo wstrzymuje ich automatykę (skróty na panelu).",
+      "fields": {
+        "akcja": {
+          "name": "Akcja",
+          "description": "Co zrobić ze wszystkimi oknami."
+        },
+        "minuty": {
+          "name": "Minuty",
+          "description": "Jak długo trwa pauza."
         }
       }
     }

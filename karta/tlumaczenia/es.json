@@ -525,5 +525,300 @@
     "caleOkno": "Ventana entera",
     "rodzajCalosc": "Elige un panel para darle otro tipo o color.",
     "rodzajPole": "Ahora solo ajustas el panel {0}."
+  },
+  "ekran": {
+    "witaj": "Bienvenido a Motor HA",
+    "nowaWersja": "Nueva versión de Motor HA",
+    "wersja": "Versión {0}",
+    "coNowego": "Novedades de la {0}",
+    "nowe": [
+      "Esta pantalla: tú eliges qué añade Motor HA a Home Assistant",
+      "Tarjeta de la ventana en el panel, la vista y el lugar que elijas, accesos directos para toda la casa y un panel en la barra lateral",
+      "Mosaicos de distribución y editor de distribución propia dibujados como una ventana real, protecciones visibles en cada paso del asistente"
+    ],
+    "jak": "¿Cómo quieres usar Motor HA?",
+    "tryby": {
+      "pelny": [
+        "Todo",
+        "Ventana, tarjeta, automatización, notificaciones"
+      ],
+      "samo": [
+        "Solo el dispositivo",
+        "Solo la protección en HA, sin tarjeta ni automatización"
+      ],
+      "wlasny": [
+        "Mi elección",
+        "Marco yo abajo"
+      ]
+    },
+    "co": "¿Qué debe añadir Motor HA a Home Assistant?",
+    "opcje": {
+      "karta": [
+        "Tarjeta de la ventana en un panel",
+        "Cada ventana nueva recibe una tarjeta. Elige el panel y el lugar."
+      ],
+      "dom": [
+        "Tarjeta «Toda la casa»",
+        "Todas las ventanas en una tarjeta."
+      ],
+      "skroty": [
+        "Accesos directos en el panel",
+        "Botones para toda la casa."
+      ],
+      "pasek": [
+        "Panel «Motor HA» en la barra lateral",
+        "Todas las ventanas, el motivo de cada movimiento y el historial en un solo lugar."
+      ],
+      "assist": [
+        "Control por voz (Assist)",
+        "Las ventanas escuchan órdenes, p. ej. «cierra el salón»."
+      ],
+      "ukryj": [
+        "Ocultar los motores simples a la voz",
+        "Assist solo ve las ventanas de Motor HA, sin nombres dobles."
+      ],
+      "powiadom": [
+        "Notificaciones",
+        "Cuando algo va mal con una protección o un sensor."
+      ],
+      "auto": [
+        "Automatización",
+        "Las protecciones reaccionan solas a la hora, el sol, el tiempo y los sensores."
+      ],
+      "nowa_wersja": [
+        "Aviso de nueva versión",
+        "Esta pantalla con «Novedades» tras cada actualización."
+      ]
+    },
+    "jakDziala": "Cómo funciona",
+    "gdyWyl": "Si está desactivado",
+    "opisy": {
+      "karta": [
+        "Al añadir una ventana, Motor HA pone su tarjeta en el panel, la vista y el lugar elegidos. No borra ni mueve nada. Si la tarjeta ya está, no hace nada.",
+        "La tarjeta no se pone en ningún panel. Añádela tú: Editar panel → Añadir tarjeta → Motor HA."
+      ],
+      "dom": [
+        "El panel elegido para la tarjeta de la ventana recibe una tarjeta con todas las ventanas de la casa: el estado de cada una y los botones abrir, parar, cerrar.",
+        "Sin tarjeta de toda la casa, solo tarjetas de ventanas sueltas."
+      ],
+      "skroty": [
+        "Encima de las tarjetas de ventanas hay tres botones para toda la casa. Pausa detiene la automatización de todas las ventanas durante 2 horas.",
+        "Sin botones; controlas toda la casa con la tarjeta «Toda la casa» o por voz."
+      ],
+      "pasek": [
+        "La barra lateral de HA recibe la entrada «Motor HA»: todas las ventanas con sus tarjetas, el motivo del último movimiento, el historial y estos ajustes.",
+        "Sin entrada en la barra lateral. Las ventanas están en Ajustes → Dispositivos → Motor HA."
+      ],
+      "assist": [
+        "Assist ve las ventanas de Motor HA con su nombre y su estancia, p. ej. «cierra el salón», «abre la ventana de la cocina».",
+        "Assist no ve las ventanas de Motor HA; las controlas con la tarjeta y la automatización."
+      ],
+      "ukryj": [
+        "Los motores simples con los que se crearon las ventanas de Motor HA se ocultan a Assist. La voz no confunde «persiana salón» con «ventana salón».",
+        "Assist ve el motor y la ventana de Motor HA (puede haber dos nombres parecidos)."
+      ],
+      "powiadom": [
+        "Recibes un mensaje cuando un motor no responde, una protección no llega a su posición, una batería está baja o la automatización no pudo mover una protección (p. ej. por una ventana abierta).",
+        "Sin mensajes. El estado se ve en la tarjeta y en el historial de la ventana."
+      ],
+      "auto": [
+        "Cada ventana recibe los escenarios de abajo. Actúan por orden de importancia: uno más alto gana a uno más bajo o lo limita. Podrás cambiar cada uno después en «Configurar» de la ventana.",
+        "Las protecciones solo se mueven cuando tú lo mandas: tarjeta, voz, botón o tus propias automatizaciones de HA. Motor HA no hace nada solo."
+      ],
+      "nowa_wersja": [
+        "Tras cada actualización aparece esta pantalla con «Novedades» y tus ajustes para revisar.",
+        "Actualizaciones sin esta pantalla. Las «Novedades» solo están en HACS."
+      ]
+    },
+    "panel": "Panel",
+    "widok": "Vista",
+    "miejsce": "Lugar",
+    "proponowane": "recomendado",
+    "nowyWidok": "Nueva vista «Ventanas»",
+    "miejsca": {
+      "sekcja": "Sección «Motor HA» al final",
+      "gora": "Sección «Motor HA» arriba",
+      "pokoj": "En la sección de la estancia de la ventana"
+    },
+    "miniOpis": {
+      "sekcja": "Tarjetas de Motor HA juntas en una sección al final de la vista, nada más se mueve.",
+      "gora": "Sección Motor HA arriba del todo en la vista.",
+      "pokoj": "Tarjeta en la sección cuyo título es la estancia de la ventana (p. ej. Salón). Sin esa sección – en la sección Motor HA."
+    },
+    "miniNowy": "En una vista aparte «Ventanas».",
+    "oknoMini": "Ventana",
+    "salon": "Salón",
+    "kuchnia": "Cocina",
+    "brakPanelu": "No hay ningún panel guardado desde la interfaz, así que la tarjeta no se añadirá. Crea un panel en Ajustes → Paneles y vuelve a abrir esta pantalla.",
+    "skroty": [
+      "⬇ Cerrar todo",
+      "⬆ Abrir todo",
+      "⏸ Pausar automatización 2 h"
+    ],
+    "skrotyOpis": "En el mismo panel, encima de las tarjetas de ventanas.",
+    "telefon": "También al móvil (app de HA)",
+    "wHa": "Siempre llegan también a las notificaciones de HA (campana en la barra lateral).",
+    "brakTelefonu": "No hay móvil con la app de HA – las notificaciones solo llegan a HA (campana en la barra lateral).",
+    "scenOpis": "Todos los escenarios por orden de importancia (1 es el más importante). Un escenario sin el sensor necesario se salta solo. Puedes desactivar cada uno:",
+    "skad": "Cómo lo sabe",
+    "scen": {
+      "cisza": [
+        "Calma tras arrancar HA",
+        "durante 5 minutos tras reiniciar HA las protecciones no se mueven hasta que los sensores informen de su estado",
+        "–"
+      ],
+      "dym": [
+        "Humo",
+        "detector de humo → la protección se abre (vía de escape y luz)",
+        "detector de humo"
+      ],
+      "wiatr": [
+        "Viento, granizo, vibración",
+        "viento desde 40 km/h o vibración → la protección exterior se recoge; aviso de granizo → toldo recogido, persiana cerrada (protege el cristal)",
+        "tiempo, anemómetro, sensor de vibración, avisos"
+      ],
+      "deszcz": [
+        "Lluvia",
+        "toldos, screens y celosías exteriores se recogen; las persianas se quedan como están",
+        "tiempo o sensor de lluvia"
+      ],
+      "mroz": [
+        "Helada",
+        "a 1 °C o menos la protección exterior no se mueve (puede estar congelada)",
+        "temperatura exterior o tiempo"
+      ],
+      "pauza": [
+        "Tu movimiento manual",
+        "si mueves la protección tú mismo, la automatización espera 2 horas",
+        "motor de la protección"
+      ],
+      "alarm": [
+        "Alarma",
+        "al armar la alarma la protección se cierra",
+        "alarma de HA"
+      ],
+      "spie": [
+        "Durmiendo",
+        "interruptor «Durmiendo» activado → la protección sigue cerrada y no se abre por la mañana",
+        "interruptor «Durmiendo» de la ventana"
+      ],
+      "nikogo": [
+        "Nadie en casa",
+        "no hay nadie → la protección está cerrada; en modo vacaciones se mueve cada mañana y tarde a una hora un poco distinta",
+        "móviles de la familia"
+      ],
+      "rano": [
+        "Abrir por la mañana",
+        "al amanecer (o a la hora que pongas) la protección se abre",
+        "sol de HA, reloj"
+      ],
+      "wieczor": [
+        "Cerrar por la tarde",
+        "al anochecer (o a la hora que pongas) la protección se cierra",
+        "sol de HA, reloj"
+      ],
+      "obecnosc": [
+        "Por la mañana, esperar a alguien",
+        "hasta las 10:00 la protección solo se abre cuando alguien entra en la estancia",
+        "sensor de presencia o movimiento"
+      ],
+      "posrednia": [
+        "Posición de tarde",
+        "desde las 13:00 la protección queda al 50 % en vez de abierta del todo",
+        "reloj"
+      ],
+      "slonce": [
+        "Sol y calor",
+        "el sol entra por esta ventana y fuera hay 24 °C o más (o se prevé calor) → la protección baja hasta el 20 % de apertura",
+        "sol de HA, tiempo, temperatura"
+      ],
+      "oslepianie": [
+        "Deslumbramiento",
+        "sol en la ventana → la protección baja para que el sol no llegue a más de 3 m dentro de la estancia (p. ej. hasta la tele o el escritorio)",
+        "sol de HA"
+      ],
+      "pokoj": [
+        "Estancia caliente",
+        "25 °C o más en la estancia y sol en la ventana → la protección al 20 % de apertura",
+        "termómetro de la estancia"
+      ],
+      "zima": [
+        "Invierno",
+        "de noviembre a marzo la protección está abierta al sol (calor gratis) y cerrada de noche (menos pérdida de calor)",
+        "sol de HA, calendario"
+      ],
+      "okno": [
+        "Ventana y puerta abiertas",
+        "ventana abatida: la protección no baja de 20 %; ventana abierta: no baja; puerta de balcón abierta: no baja de 80 %",
+        "sensor de ventana y puerta"
+      ],
+      "przeszkoda": [
+        "Obstáculo",
+        "sensor de obstáculo en la puerta del balcón → la protección no baja",
+        "sensor de obstáculo"
+      ],
+      "granice": [
+        "Límites de recorrido y lamas",
+        "la protección nunca pasa de los límites fijados; las lamas se orientan según el ángulo del sol",
+        "–"
+      ]
+    },
+    "sprawdz": "Comprueba qué gana cuando pasan varias cosas a la vez",
+    "przyklad": "Ejemplo: persiana exterior, ventana al sur, julio. Lo calcula la misma lógica que controla tus ventanas.",
+    "zaznacz": "Marca lo que está pasando ahora:",
+    "pora": "Momento",
+    "pory": {
+      "rano": "Mañana 7:30",
+      "dzien": "Día 14:00",
+      "wieczor": "Tarde (tras la puesta de sol)",
+      "noc": "Noche 23:00"
+    },
+    "warunki": {
+      "slonce": "El sol entra por la ventana",
+      "upal": "Calor (30 °C)",
+      "wiatr": "Viento fuerte (60 km/h)",
+      "deszcz": "Lluvia",
+      "okno": "Ventana abatida",
+      "dym": "Detector de humo",
+      "alarm": "Alarma armada",
+      "spie": "«Durmiendo» activado",
+      "nikogo": "Nadie en casa",
+      "reka": "Has movido la protección a mano"
+    },
+    "oslona": "Protección: {0} % abierta",
+    "stoi": "La protección se queda donde está",
+    "wygrywa": "Gana: {0}",
+    "nic": "no pasa nada",
+    "ogranicza": "La ventana abierta limita: debía ser {0} %, es {1} %.",
+    "ogrStoi": "La ventana abierta limita: debía ser {0} %, la protección no baja.",
+    "kolejnosc": "Marcado ahora:",
+    "stany": {
+      "wygrywa": "gana",
+      "ogranicza": "limita",
+      "przegrywa": "pierde",
+      "nie_dziala": "inactivo ahora"
+    },
+    "istniejace": "Aplicar también a mis ventanas ({0}): tarjeta en el panel, notificaciones y escenarios",
+    "stopka": "Puedes cambiarlo después: panel «Motor HA» en la barra lateral o Ajustes → Dispositivos → Motor HA.",
+    "pozniej": "Más tarde",
+    "zapisz": "Guardar",
+    "zapiszDodaj": "Guardar y añadir ventana",
+    "zapisano": "Guardado.",
+    "blad": "No guardado:",
+    "zrobione": {
+      "skroty": "Los accesos directos están en el panel.",
+      "dom": "La tarjeta «Toda la casa» está en el panel.",
+      "karty": "Las tarjetas de las ventanas están en el panel.",
+      "okna": "Las ventanas tienen los nuevos ajustes.",
+      "blad": "No todo funcionó – detalles en el registro de HA."
+    }
+  },
+  "panel": {
+    "ustawienia": "Ajustes",
+    "historia": "Historial",
+    "powod": "Motivo",
+    "brak": "Todavía no hay ventanas de Motor HA.",
+    "dodaj": "Añadir ventana",
+    "tytul": "Motor HA"
   }
 }

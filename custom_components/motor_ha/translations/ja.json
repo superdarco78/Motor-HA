@@ -953,6 +953,14 @@
         "mahon": "マホガニー",
         "dab_bagienny": "ボグオーク"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "すべて閉じる",
+        "odslon": "すべて開く",
+        "pauza": "自動化を一時停止",
+        "wznow": "自動化を再開"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "スラット",
           "description": "スラットの角度。"
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "すべての窓",
+      "description": "Motor HA のすべての窓をまとめて閉じる・開く、または自動化を一時停止します（ダッシュボードのショートカット）。",
+      "fields": {
+        "akcja": {
+          "name": "操作",
+          "description": "すべての窓に対して行うこと。"
+        },
+        "minuty": {
+          "name": "分",
+          "description": "一時停止する時間。"
         }
       }
     }

@@ -370,7 +370,7 @@
   };
 
   // src/stale.js
-  var WERSJA = "2.2.27";
+  var WERSJA = "2.2.28";
   var GRUPY = Object.fromEntries(GRUPY_KAFLI.map(([g, pod]) => [g, Object.fromEntries(pod)]));
   var OSLONY = Object.values(GRUPY).flatMap((g) => Object.values(g).flat());
   var BRAMY2 = Object.values(GRUPY.brama).flat();
@@ -2135,6 +2135,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Całe okno",
       rodzajCalosc: "Wybierz pole, żeby dać mu inny rodzaj albo kolor.",
       rodzajPole: "Teraz ustawiasz tylko pole {0}."
+    },
+    ekran: {
+      witaj: "Witaj w Motor HA",
+      nowaWersja: "Nowa wersja Motor HA",
+      wersja: "Wersja {0}",
+      coNowego: "Co nowego w {0}",
+      nowe: [
+        "Ten ekran: sam wybierasz, co Motor HA dodaje do Home Assistanta",
+        "Karta okna na wybranym panelu, widoku i miejscu, skróty dla całego domu i panel w pasku bocznym",
+        "Kafelki układów i edytor własnego układu jako prawdziwe okno, osłony widoczne w każdym kroku kreatora"
+      ],
+      jak: "Jak chcesz używać Motor HA?",
+      tryby: {
+        pelny: [
+          "Wszystko",
+          "Okno, karta, automatyka, powiadomienia"
+        ],
+        samo: [
+          "Samo urządzenie",
+          "Tylko osłona w HA, bez karty i automatyki"
+        ],
+        wlasny: [
+          "Mój wybór",
+          "Zaznaczam sam poniżej"
+        ]
+      },
+      co: "Co Motor HA ma dodać do Home Assistanta?",
+      opcje: {
+        karta: [
+          "Karta okna na panelu",
+          "Każde nowe okno dostaje kartę. Wybierz panel i miejsce."
+        ],
+        dom: [
+          "Karta „Cały dom”",
+          "Wszystkie okna na jednej karcie."
+        ],
+        skroty: [
+          "Skróty na panelu",
+          "Przyciski dla całego domu."
+        ],
+        pasek: [
+          "Panel „Motor HA” w pasku bocznym",
+          "Wszystkie okna, powód ruchu i historia w jednym miejscu."
+        ],
+        assist: [
+          "Sterowanie głosem (Assist)",
+          "Okna słuchają poleceń, np. „zasłoń salon”."
+        ],
+        ukryj: [
+          "Ukryj zwykłe silniki przed głosem",
+          "Assist widzi tylko okna Motor HA, bez podwójnych nazw."
+        ],
+        powiadom: [
+          "Powiadomienia",
+          "Gdy coś jest nie tak z osłoną albo czujnikiem."
+        ],
+        auto: [
+          "Automatyka",
+          "Osłony same reagują na porę dnia, słońce, pogodę i czujniki."
+        ],
+        nowa_wersja: [
+          "Informacja o nowej wersji",
+          "Ten ekran z „Co nowego” po każdej aktualizacji."
+        ]
+      },
+      jakDziala: "Jak działa",
+      gdyWyl: "Gdy wyłączone",
+      opisy: {
+        karta: [
+          "Po dodaniu okna Motor HA dokłada jego kartę na wybrany panel, widok i miejsce. Niczego nie usuwa i nie przesuwa. Gdy karta już tam jest, nic nie robi.",
+          "Karta nie trafia na żaden panel. Dodasz ją sam: Edytuj panel → Dodaj kartę → Motor HA."
+        ],
+        dom: [
+          "Na panelu wybranym przy karcie okna jest jedna karta ze wszystkimi oknami domu: stan każdego okna i przyciski otwórz, stop, zamknij.",
+          "Brak karty całego domu, są tylko karty pojedynczych okien."
+        ],
+        skroty: [
+          "Nad kartami okien są trzy przyciski dla całego domu. Pauza zatrzymuje automatykę wszystkich okien na 2 godziny.",
+          "Bez przycisków; całym domem sterujesz z karty „Cały dom” albo głosem."
+        ],
+        pasek: [
+          "W pasku bocznym HA jest pozycja „Motor HA”: wszystkie okna z kartami, powód ostatniego ruchu, historia ruchów i te ustawienia.",
+          "Bez pozycji w pasku bocznym. Okna znajdziesz w Ustawienia → Urządzenia → Motor HA."
+        ],
+        assist: [
+          "Okna Motor HA są widoczne dla Assist pod swoją nazwą i pokojem, np. „zasłoń salon”, „odsłoń okno w kuchni”.",
+          "Assist nie widzi okien Motor HA; sterujesz z karty i automatyki."
+        ],
+        ukryj: [
+          "Zwykłe silniki, z których powstały okna Motor HA, są ukryte przed Assist. Głos nie myli „rolety salon” z „oknem salon”.",
+          "Assist widzi i silnik, i okno Motor HA (mogą być dwie podobne nazwy)."
+        ],
+        powiadom: [
+          "Wiadomość przychodzi, gdy silnik nie odpowiada, osłona nie dojechała, słabnie bateria albo automatyka nie mogła ruszyć osłony (np. przez otwarte okno).",
+          "Bez wiadomości. Stan widać na karcie i w historii okna."
+        ],
+        auto: [
+          "Każde okno dostaje scenariusze poniżej. Działają w kolejności ważności: wyższy wygrywa albo ogranicza niższy. Każdy zmienisz później w „Konfiguruj” przy oknie.",
+          "Osłony ruszają się tylko, gdy Ty każesz: karta, głos, przycisk albo Twoje własne automatyzacje HA. Motor HA nic sam nie robi."
+        ],
+        nowa_wersja: [
+          "Po każdej aktualizacji pojawia się ten ekran z „Co nowego” i Twoimi ustawieniami do sprawdzenia.",
+          "Aktualizacje bez tego ekranu. „Co nowego” jest tylko w HACS."
+        ]
+      },
+      panel: "Panel",
+      widok: "Widok",
+      miejsce: "Miejsce",
+      proponowane: "proponowane",
+      nowyWidok: "Nowy widok „Okna”",
+      miejsca: {
+        sekcja: "Sekcja „Motor HA” na końcu",
+        gora: "Sekcja „Motor HA” na górze",
+        pokoj: "W sekcji pokoju okna"
+      },
+      miniOpis: {
+        sekcja: "Karty Motor HA razem w jednej sekcji na końcu widoku, nic innego się nie przesuwa.",
+        gora: "Sekcja Motor HA na samej górze widoku.",
+        pokoj: "Karta w sekcji, której nagłówek to nazwa pokoju okna (np. Salon). Bez takiej sekcji – w sekcji Motor HA."
+      },
+      miniNowy: "Na osobnym widoku „Okna”.",
+      oknoMini: "Okno",
+      salon: "Salon",
+      kuchnia: "Kuchnia",
+      brakPanelu: "Nie ma panelu zapisywanego z UI, więc karta się nie doda. Utwórz panel w Ustawienia → Panele i otwórz ten ekran jeszcze raz.",
+      skroty: [
+        "⬇ Zasłoń wszystko",
+        "⬆ Odsłoń wszystko",
+        "⏸ Pauza automatyki 2 h"
+      ],
+      skrotyOpis: "Na tym samym panelu, nad kartami okien.",
+      telefon: "Też na telefon (aplikacja HA)",
+      wHa: "Zawsze trafiają też do powiadomień HA (dzwonek w pasku bocznym).",
+      brakTelefonu: "Nie ma telefonu z aplikacją HA – powiadomienia trafią tylko do HA (dzwonek w pasku bocznym).",
+      scenOpis: "Wszystkie scenariusze w kolejności ważności (1 najważniejszy). Scenariusz bez potrzebnego czujnika sam się pomija. Każdy możesz wyłączyć:",
+      skad: "Skąd wie",
+      scen: {
+        cisza: [
+          "Spokój po starcie HA",
+          "przez 5 minut po restarcie HA osłony stoją, aż czujniki podadzą stan",
+          "–"
+        ],
+        dym: [
+          "Dym",
+          "czujnik dymu → osłona się otwiera (droga ucieczki i światło)",
+          "czujnik dymu"
+        ],
+        wiatr: [
+          "Wiatr, grad, drgania",
+          "wiatr od 40 km/h albo drgania → osłona zewnętrzna się zwija; ostrzeżenie o gradzie → markiza zwinięta, roleta zamknięta (chroni szybę)",
+          "pogoda, wiatromierz, czujnik drgań, ostrzeżenia"
+        ],
+        deszcz: [
+          "Deszcz",
+          "markizy, screeny i żaluzje fasadowe się zwijają; rolety zostają, jak są",
+          "pogoda albo czujnik deszczu"
+        ],
+        mroz: [
+          "Mróz",
+          "od 1 °C w dół osłona zewnętrzna nie rusza (może być przymarznięta)",
+          "temperatura na zewnątrz albo pogoda"
+        ],
+        pauza: [
+          "Twój ręczny ruch",
+          "gdy sam ruszysz osłonę, automatyka czeka 2 godziny",
+          "silnik osłony"
+        ],
+        alarm: [
+          "Alarm",
+          "po uzbrojeniu alarmu osłona się zamyka",
+          "alarm HA"
+        ],
+        spie: [
+          "Śpię",
+          "przełącznik „Śpię” włączony → osłona zamknięta, rano się nie otwiera",
+          "przełącznik „Śpię” przy oknie"
+        ],
+        nikogo: [
+          "Nikogo w domu",
+          "nikogo nie ma → osłona zamknięta; w trybie wakacyjnym rano i wieczorem ruch o trochę innej porze każdego dnia",
+          "telefony domowników"
+        ],
+        rano: [
+          "Rano otwórz",
+          "o wschodzie słońca (albo o godzinie, którą ustawisz) osłona się otwiera",
+          "słońce HA, zegar"
+        ],
+        wieczor: [
+          "Wieczorem zamknij",
+          "o zachodzie słońca (albo o ustawionej godzinie) osłona się zamyka",
+          "słońce HA, zegar"
+        ],
+        obecnosc: [
+          "Rano poczekaj na domownika",
+          "do 10:00 osłona otwiera się dopiero, gdy ktoś wejdzie do pokoju",
+          "czujnik obecności albo ruchu"
+        ],
+        posrednia: [
+          "Pozycja na popołudnie",
+          "od 13:00 osłona stoi na 50 % zamiast w pełni otwarta",
+          "zegar"
+        ],
+        slonce: [
+          "Słońce i upał",
+          "słońce świeci w to okno i na zewnątrz jest od 24 °C (albo prognoza upału) → osłona zjeżdża do 20 % otwarcia",
+          "słońce HA, pogoda, temperatura"
+        ],
+        oslepianie: [
+          "Oślepianie",
+          "słońce w oknie → osłona zjeżdża tak, żeby słońce nie sięgało dalej niż 3 m w głąb pokoju (np. do telewizora albo biurka)",
+          "słońce HA"
+        ],
+        pokoj: [
+          "Ciepło w pokoju",
+          "w pokoju od 25 °C i słońce w oknie → osłona do 20 % otwarcia",
+          "termometr w pokoju"
+        ],
+        zima: [
+          "Zima",
+          "od listopada do marca w słońcu osłona otwarta (darmowe ciepło), w nocy zamknięta (mniej strat ciepła)",
+          "słońce HA, kalendarz"
+        ],
+        okno: [
+          "Otwarte okno i drzwi",
+          "uchylone okno: osłona nie zjedzie niżej niż 20 %; otwarte okno: nie zjeżdża; otwarte drzwi balkonowe: nie niżej niż 80 %",
+          "czujnik okna i drzwi"
+        ],
+        przeszkoda: [
+          "Przeszkoda",
+          "czujnik przeszkody przy drzwiach balkonowych → osłona nie zjeżdża w dół",
+          "czujnik przeszkody"
+        ],
+        granice: [
+          "Granice ruchu i lamele",
+          "osłona nigdy nie wyjedzie poza ustawione granice; lamele żaluzji ustawiają się pod kątem słońca",
+          "–"
+        ]
+      },
+      sprawdz: "Sprawdź, co wygrywa, gdy kilka rzeczy dzieje się naraz",
+      przyklad: "Przykład: roleta zewnętrzna, okno od południa, lipiec. Liczy to ta sama logika, która działa w Twoich oknach.",
+      zaznacz: "Zaznacz, co się teraz dzieje:",
+      pora: "Pora",
+      pory: {
+        rano: "Rano 7:30",
+        dzien: "Dzień 14:00",
+        wieczor: "Wieczór (po zachodzie słońca)",
+        noc: "Noc 23:00"
+      },
+      warunki: {
+        slonce: "Słońce świeci w okno",
+        upal: "Upał (30 °C)",
+        wiatr: "Silny wiatr (60 km/h)",
+        deszcz: "Deszcz",
+        okno: "Okno uchylone",
+        dym: "Czujnik dymu",
+        alarm: "Alarm uzbrojony",
+        spie: "Włączone „Śpię”",
+        nikogo: "Nikogo w domu",
+        reka: "Ręcznie ruszyłeś osłonę"
+      },
+      oslona: "Osłona: {0} % otwarcia",
+      stoi: "Osłona zostaje, gdzie jest",
+      wygrywa: "Wygrywa: {0}",
+      nic: "nic się nie dzieje",
+      ogranicza: "Otwarte okno ogranicza: miało być {0} %, jest {1} %.",
+      ogrStoi: "Otwarte okno ogranicza: miało być {0} %, osłona nie zjeżdża.",
+      kolejnosc: "Zaznaczone teraz:",
+      stany: {
+        wygrywa: "wygrywa",
+        ogranicza: "ogranicza",
+        przegrywa: "przegrywa",
+        nie_dziala: "nie działa teraz"
+      },
+      istniejace: "Zastosuj też do moich okien ({0}): karta na panelu, powiadomienia i scenariusze",
+      stopka: "Zmienisz to później: panel „Motor HA” w pasku bocznym albo Ustawienia → Urządzenia → Motor HA.",
+      pozniej: "Później",
+      zapisz: "Zapisz",
+      zapiszDodaj: "Zapisz i dodaj okno",
+      zapisano: "Zapisano.",
+      blad: "Nie zapisałem:",
+      zrobione: {
+        skroty: "Skróty są na panelu.",
+        dom: "Karta „Cały dom” jest na panelu.",
+        karty: "Karty okien są na panelu.",
+        okna: "Okna mają nowe ustawienia.",
+        blad: "Nie wszystko się udało – szczegóły w dzienniku HA."
+      }
+    },
+    panel: {
+      ustawienia: "Ustawienia",
+      historia: "Historia",
+      powod: "Powód",
+      brak: "Nie ma jeszcze okien Motor HA.",
+      dodaj: "Dodaj okno",
+      tytul: "Motor HA"
     }
   };
 
@@ -2666,6 +2961,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Whole window",
       rodzajCalosc: "Choose a pane to give it a different type or colour.",
       rodzajPole: "You are now setting pane {0} only."
+    },
+    ekran: {
+      witaj: "Welcome to Motor HA",
+      nowaWersja: "New Motor HA version",
+      wersja: "Version {0}",
+      coNowego: "What's new in {0}",
+      nowe: [
+        "This screen: you choose what Motor HA adds to Home Assistant",
+        "Window card on the dashboard, view and place you pick, shortcuts for the whole home and a sidebar panel",
+        "Layout tiles and the custom layout editor drawn as a real window, shades visible in every wizard step"
+      ],
+      jak: "How do you want to use Motor HA?",
+      tryby: {
+        pelny: [
+          "Everything",
+          "Window, card, automation, notifications"
+        ],
+        samo: [
+          "Device only",
+          "Just the shade in HA, no card or automation"
+        ],
+        wlasny: [
+          "My choice",
+          "I pick below"
+        ]
+      },
+      co: "What should Motor HA add to Home Assistant?",
+      opcje: {
+        karta: [
+          "Window card on a dashboard",
+          "Every new window gets a card. Choose the dashboard and place."
+        ],
+        dom: [
+          "“Whole home” card",
+          "All windows on one card."
+        ],
+        skroty: [
+          "Dashboard shortcuts",
+          "Buttons for the whole home."
+        ],
+        pasek: [
+          "“Motor HA” panel in the sidebar",
+          "All windows, reason for each move and history in one place."
+        ],
+        assist: [
+          "Voice control (Assist)",
+          "Windows listen to commands, e.g. “close the living room”."
+        ],
+        ukryj: [
+          "Hide plain motors from voice",
+          "Assist only sees Motor HA windows, no duplicate names."
+        ],
+        powiadom: [
+          "Notifications",
+          "When something is wrong with a shade or sensor."
+        ],
+        auto: [
+          "Automation",
+          "Shades react on their own to the time of day, sun, weather and sensors."
+        ],
+        nowa_wersja: [
+          "New version info",
+          "This screen with “What's new” after every update."
+        ]
+      },
+      jakDziala: "How it works",
+      gdyWyl: "When off",
+      opisy: {
+        karta: [
+          "When you add a window, Motor HA puts its card on the chosen dashboard, view and place. It never removes or moves anything. If the card is already there, it does nothing.",
+          "The card is not put on any dashboard. Add it yourself: Edit dashboard → Add card → Motor HA."
+        ],
+        dom: [
+          "The dashboard chosen for the window card gets one card with all windows of the home: the state of each window and open, stop, close buttons.",
+          "No whole-home card, only cards of single windows."
+        ],
+        skroty: [
+          "Above the window cards there are three buttons for the whole home. Pause stops the automation of all windows for 2 hours.",
+          "No buttons; you control the whole home from the “Whole home” card or by voice."
+        ],
+        pasek: [
+          "The HA sidebar gets a “Motor HA” item: all windows with their cards, the reason for the last move, the move history and these settings.",
+          "No sidebar item. You find the windows in Settings → Devices → Motor HA."
+        ],
+        assist: [
+          "Motor HA windows are visible to Assist under their name and room, e.g. “close the living room”, “open the kitchen window”.",
+          "Assist does not see Motor HA windows; you control them from the card and the automation."
+        ],
+        ukryj: [
+          "The plain motors Motor HA windows are made from are hidden from Assist. Voice does not mix up “living room blind” and “living room window”.",
+          "Assist sees both the motor and the Motor HA window (there may be two similar names)."
+        ],
+        powiadom: [
+          "You get a message when a motor does not respond, a shade did not reach its position, a battery is low or the automation could not move a shade (e.g. because of an open window).",
+          "No messages. You see the state on the card and in the window history."
+        ],
+        auto: [
+          "Every window gets the scenarios below. They work in order of importance: a higher one wins over or limits a lower one. You can change each later in “Configure” of the window.",
+          "Shades only move when you say so: card, voice, button or your own HA automations. Motor HA does nothing on its own."
+        ],
+        nowa_wersja: [
+          "After every update this screen appears with “What's new” and your settings to check.",
+          "Updates without this screen. “What's new” is only in HACS."
+        ]
+      },
+      panel: "Dashboard",
+      widok: "View",
+      miejsce: "Place",
+      proponowane: "suggested",
+      nowyWidok: "New “Windows” view",
+      miejsca: {
+        sekcja: "“Motor HA” section at the end",
+        gora: "“Motor HA” section at the top",
+        pokoj: "In the section of the window's room"
+      },
+      miniOpis: {
+        sekcja: "Motor HA cards together in one section at the end of the view, nothing else moves.",
+        gora: "Motor HA section at the very top of the view.",
+        pokoj: "Card in the section whose heading is the window's room (e.g. Living room). Without such a section – in the Motor HA section."
+      },
+      miniNowy: "On a separate “Windows” view.",
+      oknoMini: "Window",
+      salon: "Living room",
+      kuchnia: "Kitchen",
+      brakPanelu: "There is no dashboard saved from the UI, so the card will not be added. Create a dashboard in Settings → Dashboards and open this screen again.",
+      skroty: [
+        "⬇ Close all",
+        "⬆ Open all",
+        "⏸ Pause automation 2 h"
+      ],
+      skrotyOpis: "On the same dashboard, above the window cards.",
+      telefon: "Also to the phone (HA app)",
+      wHa: "They always go to HA notifications too (bell in the sidebar).",
+      brakTelefonu: "There is no phone with the HA app – notifications only go to HA (bell in the sidebar).",
+      scenOpis: "All scenarios in order of importance (1 is the most important). A scenario without the sensor it needs skips itself. You can turn each off:",
+      skad: "How it knows",
+      scen: {
+        cisza: [
+          "Quiet after HA start",
+          "for 5 minutes after an HA restart shades stay still until the sensors report their state",
+          "–"
+        ],
+        dym: [
+          "Smoke",
+          "smoke detector → the shade opens (escape route and light)",
+          "smoke detector"
+        ],
+        wiatr: [
+          "Wind, hail, vibration",
+          "wind from 40 km/h or vibration → the outdoor shade retracts; hail warning → awning retracted, shutter closed (protects the glass)",
+          "weather, anemometer, vibration sensor, warnings"
+        ],
+        deszcz: [
+          "Rain",
+          "awnings, screens and external venetian blinds retract; shutters stay as they are",
+          "weather or rain sensor"
+        ],
+        mroz: [
+          "Frost",
+          "at 1 °C and below the outdoor shade does not move (it may be frozen)",
+          "outdoor temperature or weather"
+        ],
+        pauza: [
+          "Your manual move",
+          "when you move the shade yourself, the automation waits 2 hours",
+          "shade motor"
+        ],
+        alarm: [
+          "Alarm",
+          "when the alarm is armed, the shade closes",
+          "HA alarm"
+        ],
+        spie: [
+          "Sleeping",
+          "“Sleeping” switch on → the shade stays closed and does not open in the morning",
+          "“Sleeping” switch of the window"
+        ],
+        nikogo: [
+          "Nobody home",
+          "nobody home → the shade is closed; in vacation mode it moves at a slightly different time every morning and evening",
+          "household phones"
+        ],
+        rano: [
+          "Open in the morning",
+          "at sunrise (or at the time you set) the shade opens",
+          "HA sun, clock"
+        ],
+        wieczor: [
+          "Close in the evening",
+          "at sunset (or at the time you set) the shade closes",
+          "HA sun, clock"
+        ],
+        obecnosc: [
+          "Wait for someone in the morning",
+          "until 10:00 the shade opens only when someone enters the room",
+          "presence or motion sensor"
+        ],
+        posrednia: [
+          "Afternoon position",
+          "from 13:00 the shade stays at 50 % instead of fully open",
+          "clock"
+        ],
+        slonce: [
+          "Sun and heat",
+          "the sun shines into this window and it is 24 °C or more outside (or heat is forecast) → the shade goes down to 20 % open",
+          "HA sun, weather, temperature"
+        ],
+        oslepianie: [
+          "Glare",
+          "sun in the window → the shade goes down so the sun reaches no further than 3 m into the room (e.g. to the TV or desk)",
+          "HA sun"
+        ],
+        pokoj: [
+          "Warm room",
+          "25 °C or more in the room and sun in the window → the shade goes to 20 % open",
+          "room thermometer"
+        ],
+        zima: [
+          "Winter",
+          "from November to March the shade is open in the sun (free heat) and closed at night (less heat loss)",
+          "HA sun, calendar"
+        ],
+        okno: [
+          "Open window and door",
+          "tilted window: the shade does not go lower than 20 %; open window: it does not go down; open balcony door: not lower than 80 %",
+          "window and door sensor"
+        ],
+        przeszkoda: [
+          "Obstacle",
+          "obstacle sensor at the balcony door → the shade does not go down",
+          "obstacle sensor"
+        ],
+        granice: [
+          "Travel limits and slats",
+          "the shade never goes beyond the limits you set; blind slats turn to the angle of the sun",
+          "–"
+        ]
+      },
+      sprawdz: "Check what wins when several things happen at once",
+      przyklad: "Example: outdoor roller shutter, south-facing window, July. It is calculated by the same logic that runs your windows.",
+      zaznacz: "Tick what is happening now:",
+      pora: "Time",
+      pory: {
+        rano: "Morning 7:30",
+        dzien: "Day 14:00",
+        wieczor: "Evening (after sunset)",
+        noc: "Night 23:00"
+      },
+      warunki: {
+        slonce: "Sun shines into the window",
+        upal: "Heat (30 °C)",
+        wiatr: "Strong wind (60 km/h)",
+        deszcz: "Rain",
+        okno: "Window tilted",
+        dym: "Smoke detector",
+        alarm: "Alarm armed",
+        spie: "“Sleeping” on",
+        nikogo: "Nobody home",
+        reka: "You moved the shade by hand"
+      },
+      oslona: "Shade: {0} % open",
+      stoi: "The shade stays where it is",
+      wygrywa: "Wins: {0}",
+      nic: "nothing is happening",
+      ogranicza: "The open window limits it: it should be {0} %, it is {1} %.",
+      ogrStoi: "The open window limits it: it should be {0} %, the shade does not go down.",
+      kolejnosc: "Ticked now:",
+      stany: {
+        wygrywa: "wins",
+        ogranicza: "limits",
+        przegrywa: "loses",
+        nie_dziala: "not active now"
+      },
+      istniejace: "Also apply to my windows ({0}): dashboard card, notifications and scenarios",
+      stopka: "You can change this later: “Motor HA” panel in the sidebar or Settings → Devices → Motor HA.",
+      pozniej: "Later",
+      zapisz: "Save",
+      zapiszDodaj: "Save and add a window",
+      zapisano: "Saved.",
+      blad: "Not saved:",
+      zrobione: {
+        skroty: "The shortcuts are on the dashboard.",
+        dom: "The “Whole home” card is on the dashboard.",
+        karty: "The window cards are on the dashboard.",
+        okna: "The windows have the new settings.",
+        blad: "Not everything worked – details in the HA log."
+      }
+    },
+    panel: {
+      ustawienia: "Settings",
+      historia: "History",
+      powod: "Reason",
+      brak: "There are no Motor HA windows yet.",
+      dodaj: "Add a window",
+      tytul: "Motor HA"
     }
   };
 
@@ -3197,6 +3787,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Ganzes Fenster",
       rodzajCalosc: "Wähle ein Feld, um ihm eine andere Art oder Farbe zu geben.",
       rodzajPole: "Du stellst jetzt nur Feld {0} ein."
+    },
+    ekran: {
+      witaj: "Willkommen bei Motor HA",
+      nowaWersja: "Neue Version von Motor HA",
+      wersja: "Version {0}",
+      coNowego: "Neu in {0}",
+      nowe: [
+        "Dieser Bildschirm: Du entscheidest, was Motor HA zu Home Assistant hinzufügt",
+        "Fensterkarte auf dem gewählten Dashboard, in der gewählten Ansicht und Stelle, Schnelltasten für das ganze Haus und ein Panel in der Seitenleiste",
+        "Layout-Kacheln und der Editor für eigene Layouts als echtes Fenster, Behänge in jedem Schritt des Assistenten sichtbar"
+      ],
+      jak: "Wie möchtest du Motor HA nutzen?",
+      tryby: {
+        pelny: [
+          "Alles",
+          "Fenster, Karte, Automatik, Benachrichtigungen"
+        ],
+        samo: [
+          "Nur das Gerät",
+          "Nur der Behang in HA, ohne Karte und Automatik"
+        ],
+        wlasny: [
+          "Meine Auswahl",
+          "Ich wähle unten selbst"
+        ]
+      },
+      co: "Was soll Motor HA zu Home Assistant hinzufügen?",
+      opcje: {
+        karta: [
+          "Fensterkarte auf einem Dashboard",
+          "Jedes neue Fenster bekommt eine Karte. Wähle Dashboard und Stelle."
+        ],
+        dom: [
+          "Karte „Ganzes Haus“",
+          "Alle Fenster auf einer Karte."
+        ],
+        skroty: [
+          "Schnelltasten auf dem Dashboard",
+          "Tasten für das ganze Haus."
+        ],
+        pasek: [
+          "Panel „Motor HA“ in der Seitenleiste",
+          "Alle Fenster, Grund jeder Bewegung und Verlauf an einem Ort."
+        ],
+        assist: [
+          "Sprachsteuerung (Assist)",
+          "Fenster hören auf Befehle, z. B. „Wohnzimmer schließen“."
+        ],
+        ukryj: [
+          "Einfache Motoren vor der Sprache verbergen",
+          "Assist sieht nur Motor-HA-Fenster, keine doppelten Namen."
+        ],
+        powiadom: [
+          "Benachrichtigungen",
+          "Wenn mit einem Behang oder Sensor etwas nicht stimmt."
+        ],
+        auto: [
+          "Automatik",
+          "Behänge reagieren selbst auf Tageszeit, Sonne, Wetter und Sensoren."
+        ],
+        nowa_wersja: [
+          "Info zur neuen Version",
+          "Dieser Bildschirm mit „Neu“ nach jedem Update."
+        ]
+      },
+      jakDziala: "So funktioniert es",
+      gdyWyl: "Wenn aus",
+      opisy: {
+        karta: [
+          "Wenn du ein Fenster hinzufügst, legt Motor HA seine Karte auf das gewählte Dashboard, in die gewählte Ansicht und Stelle. Es entfernt und verschiebt nichts. Ist die Karte schon da, passiert nichts.",
+          "Die Karte kommt auf kein Dashboard. Füge sie selbst hinzu: Dashboard bearbeiten → Karte hinzufügen → Motor HA."
+        ],
+        dom: [
+          "Auf dem Dashboard der Fensterkarte gibt es eine Karte mit allen Fenstern des Hauses: Zustand jedes Fensters und Tasten Öffnen, Stopp, Schließen.",
+          "Keine Karte für das ganze Haus, nur Karten einzelner Fenster."
+        ],
+        skroty: [
+          "Über den Fensterkarten gibt es drei Tasten für das ganze Haus. Pause stoppt die Automatik aller Fenster für 2 Stunden.",
+          "Keine Tasten; das ganze Haus steuerst du über die Karte „Ganzes Haus“ oder per Sprache."
+        ],
+        pasek: [
+          "Die HA-Seitenleiste bekommt den Eintrag „Motor HA“: alle Fenster mit Karten, Grund der letzten Bewegung, Bewegungsverlauf und diese Einstellungen.",
+          "Kein Eintrag in der Seitenleiste. Die Fenster findest du unter Einstellungen → Geräte → Motor HA."
+        ],
+        assist: [
+          "Motor-HA-Fenster sind für Assist unter ihrem Namen und Raum sichtbar, z. B. „Wohnzimmer schließen“, „Küchenfenster öffnen“.",
+          "Assist sieht keine Motor-HA-Fenster; du steuerst sie über die Karte und die Automatik."
+        ],
+        ukryj: [
+          "Die einfachen Motoren, aus denen Motor-HA-Fenster entstanden sind, sind vor Assist verborgen. Die Sprache verwechselt „Rollladen Wohnzimmer“ nicht mit „Fenster Wohnzimmer“.",
+          "Assist sieht den Motor und das Motor-HA-Fenster (es kann zwei ähnliche Namen geben)."
+        ],
+        powiadom: [
+          "Du bekommst eine Nachricht, wenn ein Motor nicht antwortet, ein Behang seine Position nicht erreicht hat, eine Batterie schwach ist oder die Automatik einen Behang nicht bewegen konnte (z. B. wegen eines offenen Fensters).",
+          "Keine Nachrichten. Den Zustand siehst du auf der Karte und im Verlauf des Fensters."
+        ],
+        auto: [
+          "Jedes Fenster bekommt die Szenarien unten. Sie wirken nach Wichtigkeit: ein höheres gewinnt gegen ein niedrigeres oder begrenzt es. Jedes änderst du später unter „Konfigurieren“ des Fensters.",
+          "Behänge bewegen sich nur auf deinen Befehl: Karte, Sprache, Taste oder deine eigenen HA-Automationen. Motor HA macht nichts selbst."
+        ],
+        nowa_wersja: [
+          "Nach jedem Update erscheint dieser Bildschirm mit „Neu“ und deinen Einstellungen zum Prüfen.",
+          "Updates ohne diesen Bildschirm. „Neu“ steht nur in HACS."
+        ]
+      },
+      panel: "Dashboard",
+      widok: "Ansicht",
+      miejsce: "Stelle",
+      proponowane: "empfohlen",
+      nowyWidok: "Neue Ansicht „Fenster“",
+      miejsca: {
+        sekcja: "Abschnitt „Motor HA“ am Ende",
+        gora: "Abschnitt „Motor HA“ oben",
+        pokoj: "Im Abschnitt des Raums des Fensters"
+      },
+      miniOpis: {
+        sekcja: "Motor-HA-Karten zusammen in einem Abschnitt am Ende der Ansicht, sonst verschiebt sich nichts.",
+        gora: "Abschnitt Motor HA ganz oben in der Ansicht.",
+        pokoj: "Karte im Abschnitt, dessen Überschrift der Raum des Fensters ist (z. B. Wohnzimmer). Ohne solchen Abschnitt – im Abschnitt Motor HA."
+      },
+      miniNowy: "In einer eigenen Ansicht „Fenster“.",
+      oknoMini: "Fenster",
+      salon: "Wohnzimmer",
+      kuchnia: "Küche",
+      brakPanelu: "Es gibt kein in der Oberfläche gespeichertes Dashboard, daher wird die Karte nicht hinzugefügt. Lege ein Dashboard unter Einstellungen → Dashboards an und öffne diesen Bildschirm erneut.",
+      skroty: [
+        "⬇ Alle schließen",
+        "⬆ Alle öffnen",
+        "⏸ Automatik 2 h pausieren"
+      ],
+      skrotyOpis: "Auf demselben Dashboard, über den Fensterkarten.",
+      telefon: "Auch aufs Handy (HA-App)",
+      wHa: "Sie landen immer auch in den HA-Benachrichtigungen (Glocke in der Seitenleiste).",
+      brakTelefonu: "Kein Handy mit der HA-App – Benachrichtigungen gehen nur an HA (Glocke in der Seitenleiste).",
+      scenOpis: "Alle Szenarien nach Wichtigkeit (1 ist das wichtigste). Ein Szenario ohne den nötigen Sensor überspringt sich selbst. Jedes kannst du ausschalten:",
+      skad: "Woher es das weiß",
+      scen: {
+        cisza: [
+          "Ruhe nach dem HA-Start",
+          "5 Minuten nach einem HA-Neustart stehen die Behänge still, bis die Sensoren ihren Zustand melden",
+          "–"
+        ],
+        dym: [
+          "Rauch",
+          "Rauchmelder → der Behang öffnet sich (Fluchtweg und Licht)",
+          "Rauchmelder"
+        ],
+        wiatr: [
+          "Wind, Hagel, Vibration",
+          "Wind ab 40 km/h oder Vibration → der Außenbehang fährt ein; Hagelwarnung → Markise eingefahren, Rollladen zu (schützt die Scheibe)",
+          "Wetter, Windmesser, Vibrationssensor, Warnungen"
+        ],
+        deszcz: [
+          "Regen",
+          "Markisen, Screens und Raffstores fahren ein; Rollläden bleiben, wie sie sind",
+          "Wetter oder Regensensor"
+        ],
+        mroz: [
+          "Frost",
+          "ab 1 °C abwärts bewegt sich der Außenbehang nicht (er kann festgefroren sein)",
+          "Außentemperatur oder Wetter"
+        ],
+        pauza: [
+          "Deine Handbewegung",
+          "wenn du den Behang selbst bewegst, wartet die Automatik 2 Stunden",
+          "Motor des Behangs"
+        ],
+        alarm: [
+          "Alarm",
+          "wenn die Alarmanlage scharf ist, schließt der Behang",
+          "HA-Alarm"
+        ],
+        spie: [
+          "Ich schlafe",
+          "Schalter „Ich schlafe“ an → der Behang bleibt zu und öffnet morgens nicht",
+          "Schalter „Ich schlafe“ des Fensters"
+        ],
+        nikogo: [
+          "Niemand zu Hause",
+          "niemand zu Hause → der Behang ist zu; im Urlaubsmodus bewegt er sich morgens und abends jeden Tag zu etwas anderer Zeit",
+          "Handys der Bewohner"
+        ],
+        rano: [
+          "Morgens öffnen",
+          "bei Sonnenaufgang (oder zur eingestellten Zeit) öffnet der Behang",
+          "HA-Sonne, Uhr"
+        ],
+        wieczor: [
+          "Abends schließen",
+          "bei Sonnenuntergang (oder zur eingestellten Zeit) schließt der Behang",
+          "HA-Sonne, Uhr"
+        ],
+        obecnosc: [
+          "Morgens auf jemanden warten",
+          "bis 10:00 öffnet der Behang erst, wenn jemand den Raum betritt",
+          "Präsenz- oder Bewegungssensor"
+        ],
+        posrednia: [
+          "Position am Nachmittag",
+          "ab 13:00 steht der Behang auf 50 % statt ganz offen",
+          "Uhr"
+        ],
+        slonce: [
+          "Sonne und Hitze",
+          "die Sonne scheint in dieses Fenster und draußen sind es 24 °C oder mehr (oder Hitze ist vorhergesagt) → der Behang fährt auf 20 % offen",
+          "HA-Sonne, Wetter, Temperatur"
+        ],
+        oslepianie: [
+          "Blendung",
+          "Sonne im Fenster → der Behang fährt so weit herunter, dass die Sonne nicht weiter als 3 m in den Raum reicht (z. B. bis zum Fernseher oder Schreibtisch)",
+          "HA-Sonne"
+        ],
+        pokoj: [
+          "Warmer Raum",
+          "25 °C oder mehr im Raum und Sonne im Fenster → der Behang auf 20 % offen",
+          "Raumthermometer"
+        ],
+        zima: [
+          "Winter",
+          "von November bis März ist der Behang in der Sonne offen (kostenlose Wärme) und nachts zu (weniger Wärmeverlust)",
+          "HA-Sonne, Kalender"
+        ],
+        okno: [
+          "Offenes Fenster und offene Tür",
+          "gekipptes Fenster: der Behang fährt nicht tiefer als 20 %; offenes Fenster: er fährt nicht herunter; offene Balkontür: nicht tiefer als 80 %",
+          "Fenster- und Türsensor"
+        ],
+        przeszkoda: [
+          "Hindernis",
+          "Hindernissensor an der Balkontür → der Behang fährt nicht herunter",
+          "Hindernissensor"
+        ],
+        granice: [
+          "Fahrgrenzen und Lamellen",
+          "der Behang fährt nie über die eingestellten Grenzen hinaus; Lamellen stellen sich nach dem Sonnenwinkel",
+          "–"
+        ]
+      },
+      sprawdz: "Prüfe, was gewinnt, wenn mehreres gleichzeitig passiert",
+      przyklad: "Beispiel: Außenrollladen, Fenster nach Süden, Juli. Berechnet von derselben Logik, die deine Fenster steuert.",
+      zaznacz: "Markiere, was gerade passiert:",
+      pora: "Zeit",
+      pory: {
+        rano: "Morgen 7:30",
+        dzien: "Tag 14:00",
+        wieczor: "Abend (nach Sonnenuntergang)",
+        noc: "Nacht 23:00"
+      },
+      warunki: {
+        slonce: "Sonne scheint ins Fenster",
+        upal: "Hitze (30 °C)",
+        wiatr: "Starker Wind (60 km/h)",
+        deszcz: "Regen",
+        okno: "Fenster gekippt",
+        dym: "Rauchmelder",
+        alarm: "Alarm scharf",
+        spie: "„Ich schlafe“ an",
+        nikogo: "Niemand zu Hause",
+        reka: "Du hast den Behang von Hand bewegt"
+      },
+      oslona: "Behang: {0} % offen",
+      stoi: "Der Behang bleibt, wo er ist",
+      wygrywa: "Gewinnt: {0}",
+      nic: "nichts passiert",
+      ogranicza: "Das offene Fenster begrenzt: es sollten {0} % sein, es sind {1} %.",
+      ogrStoi: "Das offene Fenster begrenzt: es sollten {0} % sein, der Behang fährt nicht herunter.",
+      kolejnosc: "Jetzt markiert:",
+      stany: {
+        wygrywa: "gewinnt",
+        ogranicza: "begrenzt",
+        przegrywa: "verliert",
+        nie_dziala: "gerade nicht aktiv"
+      },
+      istniejace: "Auch auf meine Fenster anwenden ({0}): Dashboard-Karte, Benachrichtigungen und Szenarien",
+      stopka: "Du kannst das später ändern: Panel „Motor HA“ in der Seitenleiste oder Einstellungen → Geräte → Motor HA.",
+      pozniej: "Später",
+      zapisz: "Speichern",
+      zapiszDodaj: "Speichern und Fenster hinzufügen",
+      zapisano: "Gespeichert.",
+      blad: "Nicht gespeichert:",
+      zrobione: {
+        skroty: "Die Schnelltasten sind auf dem Dashboard.",
+        dom: "Die Karte „Ganzes Haus“ ist auf dem Dashboard.",
+        karty: "Die Fensterkarten sind auf dem Dashboard.",
+        okna: "Die Fenster haben die neuen Einstellungen.",
+        blad: "Nicht alles hat geklappt – Details im HA-Protokoll."
+      }
+    },
+    panel: {
+      ustawienia: "Einstellungen",
+      historia: "Verlauf",
+      powod: "Grund",
+      brak: "Es gibt noch keine Motor-HA-Fenster.",
+      dodaj: "Fenster hinzufügen",
+      tytul: "Motor HA"
     }
   };
 
@@ -3728,6 +4613,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Fenêtre entière",
       rodzajCalosc: "Choisissez un panneau pour lui donner un autre type ou une autre couleur.",
       rodzajPole: "Vous réglez maintenant le panneau {0} seulement."
+    },
+    ekran: {
+      witaj: "Bienvenue dans Motor HA",
+      nowaWersja: "Nouvelle version de Motor HA",
+      wersja: "Version {0}",
+      coNowego: "Nouveautés de la {0}",
+      nowe: [
+        "Cet écran : vous choisissez ce que Motor HA ajoute à Home Assistant",
+        "Carte de fenêtre sur le tableau de bord, la vue et l’emplacement choisis, raccourcis pour toute la maison et panneau dans la barre latérale",
+        "Tuiles de disposition et éditeur de disposition personnalisée dessinés comme une vraie fenêtre, protections visibles à chaque étape de l’assistant"
+      ],
+      jak: "Comment voulez-vous utiliser Motor HA ?",
+      tryby: {
+        pelny: [
+          "Tout",
+          "Fenêtre, carte, automatisme, notifications"
+        ],
+        samo: [
+          "Appareil seul",
+          "Seulement la protection dans HA, sans carte ni automatisme"
+        ],
+        wlasny: [
+          "Mon choix",
+          "Je coche moi-même ci-dessous"
+        ]
+      },
+      co: "Que doit ajouter Motor HA à Home Assistant ?",
+      opcje: {
+        karta: [
+          "Carte de fenêtre sur un tableau de bord",
+          "Chaque nouvelle fenêtre reçoit une carte. Choisissez le tableau de bord et l’emplacement."
+        ],
+        dom: [
+          "Carte « Toute la maison »",
+          "Toutes les fenêtres sur une seule carte."
+        ],
+        skroty: [
+          "Raccourcis sur le tableau de bord",
+          "Boutons pour toute la maison."
+        ],
+        pasek: [
+          "Panneau « Motor HA » dans la barre latérale",
+          "Toutes les fenêtres, la raison de chaque mouvement et l’historique au même endroit."
+        ],
+        assist: [
+          "Commande vocale (Assist)",
+          "Les fenêtres écoutent les commandes, p. ex. « ferme le salon »."
+        ],
+        ukryj: [
+          "Cacher les moteurs simples à la voix",
+          "Assist ne voit que les fenêtres Motor HA, sans noms en double."
+        ],
+        powiadom: [
+          "Notifications",
+          "Quand quelque chose ne va pas avec une protection ou un capteur."
+        ],
+        auto: [
+          "Automatisme",
+          "Les protections réagissent seules à l’heure, au soleil, à la météo et aux capteurs."
+        ],
+        nowa_wersja: [
+          "Info nouvelle version",
+          "Cet écran avec « Nouveautés » après chaque mise à jour."
+        ]
+      },
+      jakDziala: "Comment ça marche",
+      gdyWyl: "Désactivé",
+      opisy: {
+        karta: [
+          "Quand vous ajoutez une fenêtre, Motor HA place sa carte sur le tableau de bord, la vue et l’emplacement choisis. Il ne supprime ni ne déplace rien. Si la carte y est déjà, il ne fait rien.",
+          "La carte n’est placée sur aucun tableau de bord. Ajoutez-la vous-même : Modifier le tableau de bord → Ajouter une carte → Motor HA."
+        ],
+        dom: [
+          "Le tableau de bord choisi pour la carte de fenêtre reçoit une carte avec toutes les fenêtres de la maison : l’état de chacune et les boutons ouvrir, stop, fermer.",
+          "Pas de carte pour toute la maison, seulement des cartes de fenêtres seules."
+        ],
+        skroty: [
+          "Au-dessus des cartes de fenêtres, trois boutons pour toute la maison. Pause arrête l’automatisme de toutes les fenêtres pendant 2 heures.",
+          "Pas de boutons ; vous commandez toute la maison avec la carte « Toute la maison » ou à la voix."
+        ],
+        pasek: [
+          "La barre latérale de HA reçoit l’entrée « Motor HA » : toutes les fenêtres avec leurs cartes, la raison du dernier mouvement, l’historique et ces réglages.",
+          "Pas d’entrée dans la barre latérale. Les fenêtres sont dans Paramètres → Appareils → Motor HA."
+        ],
+        assist: [
+          "Les fenêtres Motor HA sont visibles par Assist sous leur nom et leur pièce, p. ex. « ferme le salon », « ouvre la fenêtre de la cuisine ».",
+          "Assist ne voit pas les fenêtres Motor HA ; vous les commandez par la carte et l’automatisme."
+        ],
+        ukryj: [
+          "Les moteurs simples à partir desquels les fenêtres Motor HA ont été créées sont cachés à Assist. La voix ne confond pas « volet salon » et « fenêtre salon ».",
+          "Assist voit le moteur et la fenêtre Motor HA (il peut y avoir deux noms proches)."
+        ],
+        powiadom: [
+          "Vous recevez un message quand un moteur ne répond pas, qu’une protection n’a pas atteint sa position, qu’une pile est faible ou que l’automatisme n’a pas pu bouger une protection (p. ex. à cause d’une fenêtre ouverte).",
+          "Pas de messages. L’état se voit sur la carte et dans l’historique de la fenêtre."
+        ],
+        auto: [
+          "Chaque fenêtre reçoit les scénarios ci-dessous. Ils agissent par ordre d’importance : un scénario plus haut l’emporte sur un plus bas ou le limite. Vous pourrez changer chacun plus tard dans « Configurer » de la fenêtre.",
+          "Les protections ne bougent que sur votre ordre : carte, voix, bouton ou vos propres automatisations HA. Motor HA ne fait rien seul."
+        ],
+        nowa_wersja: [
+          "Après chaque mise à jour, cet écran s’affiche avec les « Nouveautés » et vos réglages à vérifier.",
+          "Mises à jour sans cet écran. Les « Nouveautés » ne sont que dans HACS."
+        ]
+      },
+      panel: "Tableau de bord",
+      widok: "Vue",
+      miejsce: "Emplacement",
+      proponowane: "conseillé",
+      nowyWidok: "Nouvelle vue « Fenêtres »",
+      miejsca: {
+        sekcja: "Section « Motor HA » à la fin",
+        gora: "Section « Motor HA » en haut",
+        pokoj: "Dans la section de la pièce de la fenêtre"
+      },
+      miniOpis: {
+        sekcja: "Les cartes Motor HA ensemble dans une section à la fin de la vue, rien d’autre ne bouge.",
+        gora: "Section Motor HA tout en haut de la vue.",
+        pokoj: "Carte dans la section dont le titre est la pièce de la fenêtre (p. ex. Salon). Sans une telle section – dans la section Motor HA."
+      },
+      miniNowy: "Sur une vue séparée « Fenêtres ».",
+      oknoMini: "Fenêtre",
+      salon: "Salon",
+      kuchnia: "Cuisine",
+      brakPanelu: "Aucun tableau de bord enregistré depuis l’interface, la carte ne sera donc pas ajoutée. Créez un tableau de bord dans Paramètres → Tableaux de bord et rouvrez cet écran.",
+      skroty: [
+        "⬇ Tout fermer",
+        "⬆ Tout ouvrir",
+        "⏸ Pause de l’automatisme 2 h"
+      ],
+      skrotyOpis: "Sur le même tableau de bord, au-dessus des cartes de fenêtres.",
+      telefon: "Aussi sur le téléphone (appli HA)",
+      wHa: "Elles arrivent toujours aussi dans les notifications de HA (cloche dans la barre latérale).",
+      brakTelefonu: "Aucun téléphone avec l’appli HA – les notifications n’arrivent que dans HA (cloche dans la barre latérale).",
+      scenOpis: "Tous les scénarios par ordre d’importance (1 est le plus important). Un scénario sans le capteur nécessaire s’ignore tout seul. Vous pouvez désactiver chacun :",
+      skad: "Comment il le sait",
+      scen: {
+        cisza: [
+          "Calme après le démarrage de HA",
+          "pendant 5 minutes après un redémarrage de HA, les protections ne bougent pas, le temps que les capteurs donnent leur état",
+          "–"
+        ],
+        dym: [
+          "Fumée",
+          "détecteur de fumée → la protection s’ouvre (issue de secours et lumière)",
+          "détecteur de fumée"
+        ],
+        wiatr: [
+          "Vent, grêle, vibrations",
+          "vent à partir de 40 km/h ou vibrations → la protection extérieure se replie ; alerte grêle → store replié, volet fermé (protège la vitre)",
+          "météo, anémomètre, capteur de vibrations, alertes"
+        ],
+        deszcz: [
+          "Pluie",
+          "stores, screens et brise-soleil orientables se replient ; les volets restent comme ils sont",
+          "météo ou capteur de pluie"
+        ],
+        mroz: [
+          "Gel",
+          "à 1 °C et en dessous, la protection extérieure ne bouge pas (elle peut être gelée)",
+          "température extérieure ou météo"
+        ],
+        pauza: [
+          "Votre mouvement manuel",
+          "quand vous bougez la protection vous-même, l’automatisme attend 2 heures",
+          "moteur de la protection"
+        ],
+        alarm: [
+          "Alarme",
+          "quand l’alarme est armée, la protection se ferme",
+          "alarme HA"
+        ],
+        spie: [
+          "Je dors",
+          "interrupteur « Je dors » activé → la protection reste fermée et ne s’ouvre pas le matin",
+          "interrupteur « Je dors » de la fenêtre"
+        ],
+        nikogo: [
+          "Personne à la maison",
+          "personne à la maison → la protection est fermée ; en mode vacances, elle bouge chaque matin et soir à une heure un peu différente",
+          "téléphones des habitants"
+        ],
+        rano: [
+          "Ouvrir le matin",
+          "au lever du soleil (ou à l’heure que vous réglez) la protection s’ouvre",
+          "soleil HA, horloge"
+        ],
+        wieczor: [
+          "Fermer le soir",
+          "au coucher du soleil (ou à l’heure que vous réglez) la protection se ferme",
+          "soleil HA, horloge"
+        ],
+        obecnosc: [
+          "Le matin, attendre quelqu’un",
+          "jusqu’à 10:00 la protection ne s’ouvre que quand quelqu’un entre dans la pièce",
+          "capteur de présence ou de mouvement"
+        ],
+        posrednia: [
+          "Position de l’après-midi",
+          "à partir de 13:00 la protection reste à 50 % au lieu d’être grande ouverte",
+          "horloge"
+        ],
+        slonce: [
+          "Soleil et chaleur",
+          "le soleil entre par cette fenêtre et il fait 24 °C ou plus dehors (ou de la chaleur est prévue) → la protection descend à 20 % d’ouverture",
+          "soleil HA, météo, température"
+        ],
+        oslepianie: [
+          "Éblouissement",
+          "soleil dans la fenêtre → la protection descend pour que le soleil n’entre pas à plus de 3 m dans la pièce (p. ex. jusqu’à la télé ou au bureau)",
+          "soleil HA"
+        ],
+        pokoj: [
+          "Pièce chaude",
+          "25 °C ou plus dans la pièce et soleil dans la fenêtre → la protection à 20 % d’ouverture",
+          "thermomètre de la pièce"
+        ],
+        zima: [
+          "Hiver",
+          "de novembre à mars, la protection est ouverte au soleil (chaleur gratuite) et fermée la nuit (moins de pertes de chaleur)",
+          "soleil HA, calendrier"
+        ],
+        okno: [
+          "Fenêtre et porte ouvertes",
+          "fenêtre en oscillo : la protection ne descend pas sous 20 % ; fenêtre ouverte : elle ne descend pas ; porte-fenêtre ouverte : pas sous 80 %",
+          "capteur de fenêtre et de porte"
+        ],
+        przeszkoda: [
+          "Obstacle",
+          "capteur d’obstacle à la porte-fenêtre → la protection ne descend pas",
+          "capteur d’obstacle"
+        ],
+        granice: [
+          "Limites de course et lames",
+          "la protection ne dépasse jamais les limites réglées ; les lames s’orientent selon l’angle du soleil",
+          "–"
+        ]
+      },
+      sprawdz: "Voir ce qui l’emporte quand plusieurs choses arrivent en même temps",
+      przyklad: "Exemple : volet roulant extérieur, fenêtre plein sud, juillet. Calculé par la même logique que celle qui pilote vos fenêtres.",
+      zaznacz: "Cochez ce qui se passe maintenant :",
+      pora: "Moment",
+      pory: {
+        rano: "Matin 7:30",
+        dzien: "Journée 14:00",
+        wieczor: "Soir (après le coucher du soleil)",
+        noc: "Nuit 23:00"
+      },
+      warunki: {
+        slonce: "Le soleil entre par la fenêtre",
+        upal: "Chaleur (30 °C)",
+        wiatr: "Vent fort (60 km/h)",
+        deszcz: "Pluie",
+        okno: "Fenêtre en oscillo",
+        dym: "Détecteur de fumée",
+        alarm: "Alarme armée",
+        spie: "« Je dors » activé",
+        nikogo: "Personne à la maison",
+        reka: "Vous avez bougé la protection à la main"
+      },
+      oslona: "Protection : ouverte à {0} %",
+      stoi: "La protection reste où elle est",
+      wygrywa: "L’emporte : {0}",
+      nic: "rien ne se passe",
+      ogranicza: "La fenêtre ouverte limite : il faudrait {0} %, c’est {1} %.",
+      ogrStoi: "La fenêtre ouverte limite : il faudrait {0} %, la protection ne descend pas.",
+      kolejnosc: "Coché maintenant :",
+      stany: {
+        wygrywa: "l’emporte",
+        ogranicza: "limite",
+        przegrywa: "perd",
+        nie_dziala: "inactif pour l’instant"
+      },
+      istniejace: "Appliquer aussi à mes fenêtres ({0}) : carte sur le tableau de bord, notifications et scénarios",
+      stopka: "Vous pourrez changer cela plus tard : panneau « Motor HA » dans la barre latérale ou Paramètres → Appareils → Motor HA.",
+      pozniej: "Plus tard",
+      zapisz: "Enregistrer",
+      zapiszDodaj: "Enregistrer et ajouter une fenêtre",
+      zapisano: "Enregistré.",
+      blad: "Non enregistré :",
+      zrobione: {
+        skroty: "Les raccourcis sont sur le tableau de bord.",
+        dom: "La carte « Toute la maison » est sur le tableau de bord.",
+        karty: "Les cartes des fenêtres sont sur le tableau de bord.",
+        okna: "Les fenêtres ont les nouveaux réglages.",
+        blad: "Tout n’a pas fonctionné – détails dans le journal de HA."
+      }
+    },
+    panel: {
+      ustawienia: "Réglages",
+      historia: "Historique",
+      powod: "Raison",
+      brak: "Il n’y a pas encore de fenêtres Motor HA.",
+      dodaj: "Ajouter une fenêtre",
+      tytul: "Motor HA"
     }
   };
 
@@ -4259,6 +5439,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Celé okno",
       rodzajCalosc: "Vyberte pole a dejte mu jiný druh nebo barvu.",
       rodzajPole: "Teď nastavujete jen pole {0}."
+    },
+    ekran: {
+      witaj: "Vítejte v Motor HA",
+      nowaWersja: "Nová verze Motor HA",
+      wersja: "Verze {0}",
+      coNowego: "Co je nového ve {0}",
+      nowe: [
+        "Tato obrazovka: sami vyberete, co Motor HA přidá do Home Assistantu",
+        "Karta okna na vybraném panelu, pohledu a místě, zkratky pro celý dům a panel v postranním panelu",
+        "Dlaždice rozložení a editor vlastního rozložení jako skutečné okno, stínění viditelné v každém kroku průvodce"
+      ],
+      jak: "Jak chcete Motor HA používat?",
+      tryby: {
+        pelny: [
+          "Všechno",
+          "Okno, karta, automatika, oznámení"
+        ],
+        samo: [
+          "Jen zařízení",
+          "Jen stínění v HA, bez karty a automatiky"
+        ],
+        wlasny: [
+          "Můj výběr",
+          "Zaškrtnu sám níže"
+        ]
+      },
+      co: "Co má Motor HA přidat do Home Assistantu?",
+      opcje: {
+        karta: [
+          "Karta okna na panelu",
+          "Každé nové okno dostane kartu. Vyberte panel a místo."
+        ],
+        dom: [
+          "Karta „Celý dům“",
+          "Všechna okna na jedné kartě."
+        ],
+        skroty: [
+          "Zkratky na panelu",
+          "Tlačítka pro celý dům."
+        ],
+        pasek: [
+          "Panel „Motor HA“ v postranním panelu",
+          "Všechna okna, důvod každého pohybu a historie na jednom místě."
+        ],
+        assist: [
+          "Hlasové ovládání (Assist)",
+          "Okna poslouchají příkazy, např. „zatáhni obývák“."
+        ],
+        ukryj: [
+          "Skrýt obyčejné motory před hlasem",
+          "Assist vidí jen okna Motor HA, bez dvojích názvů."
+        ],
+        powiadom: [
+          "Oznámení",
+          "Když je něco špatně se stíněním nebo senzorem."
+        ],
+        auto: [
+          "Automatika",
+          "Stínění samo reaguje na denní dobu, slunce, počasí a senzory."
+        ],
+        nowa_wersja: [
+          "Informace o nové verzi",
+          "Tato obrazovka s „Co je nového“ po každé aktualizaci."
+        ]
+      },
+      jakDziala: "Jak to funguje",
+      gdyWyl: "Když je vypnuto",
+      opisy: {
+        karta: [
+          "Po přidání okna Motor HA vloží jeho kartu na vybraný panel, pohled a místo. Nic neodstraní ani nepřesune. Když tam karta už je, nic neudělá.",
+          "Karta se nepřidá na žádný panel. Přidáte ji sami: Upravit panel → Přidat kartu → Motor HA."
+        ],
+        dom: [
+          "Na panelu zvoleném pro kartu okna je jedna karta se všemi okny domu: stav každého okna a tlačítka otevřít, stop, zavřít.",
+          "Žádná karta celého domu, jen karty jednotlivých oken."
+        ],
+        skroty: [
+          "Nad kartami oken jsou tři tlačítka pro celý dům. Pauza zastaví automatiku všech oken na 2 hodiny.",
+          "Bez tlačítek; celý dům ovládáte z karty „Celý dům“ nebo hlasem."
+        ],
+        pasek: [
+          "V postranním panelu HA je položka „Motor HA“: všechna okna s kartami, důvod posledního pohybu, historie pohybů a tato nastavení.",
+          "Bez položky v postranním panelu. Okna najdete v Nastavení → Zařízení → Motor HA."
+        ],
+        assist: [
+          "Okna Motor HA vidí Assist pod jejich názvem a místností, např. „zatáhni obývák“, „vytáhni okno v kuchyni“.",
+          "Assist okna Motor HA nevidí; ovládáte je z karty a automatikou."
+        ],
+        ukryj: [
+          "Obyčejné motory, ze kterých okna Motor HA vznikla, jsou před Assist skryté. Hlas nesplete „roleta obývák“ s „okno obývák“.",
+          "Assist vidí motor i okno Motor HA (mohou být dva podobné názvy)."
+        ],
+        powiadom: [
+          "Zprávu dostanete, když motor neodpovídá, stínění nedojelo, slábne baterie nebo automatika nemohla stínění pohnout (např. kvůli otevřenému oknu).",
+          "Bez zpráv. Stav vidíte na kartě a v historii okna."
+        ],
+        auto: [
+          "Každé okno dostane scénáře níže. Fungují podle důležitosti: vyšší vyhrává nad nižším nebo ho omezuje. Každý později změníte v „Konfigurovat“ u okna.",
+          "Stínění se hýbe jen na váš pokyn: karta, hlas, tlačítko nebo vaše vlastní automatizace HA. Motor HA sám nic nedělá."
+        ],
+        nowa_wersja: [
+          "Po každé aktualizaci se objeví tato obrazovka s „Co je nového“ a vašimi nastaveními ke kontrole.",
+          "Aktualizace bez této obrazovky. „Co je nového“ je jen v HACS."
+        ]
+      },
+      panel: "Panel",
+      widok: "Pohled",
+      miejsce: "Místo",
+      proponowane: "doporučeno",
+      nowyWidok: "Nový pohled „Okna“",
+      miejsca: {
+        sekcja: "Sekce „Motor HA“ na konci",
+        gora: "Sekce „Motor HA“ nahoře",
+        pokoj: "V sekci místnosti okna"
+      },
+      miniOpis: {
+        sekcja: "Karty Motor HA spolu v jedné sekci na konci pohledu, nic jiného se neposune.",
+        gora: "Sekce Motor HA úplně nahoře v pohledu.",
+        pokoj: "Karta v sekci, jejíž nadpis je místnost okna (např. Obývák). Bez takové sekce – v sekci Motor HA."
+      },
+      miniNowy: "Na samostatném pohledu „Okna“.",
+      oknoMini: "Okno",
+      salon: "Obývák",
+      kuchnia: "Kuchyně",
+      brakPanelu: "Není žádný panel uložený z rozhraní, takže se karta nepřidá. Vytvořte panel v Nastavení → Panely a otevřete tuto obrazovku znovu.",
+      skroty: [
+        "⬇ Zatáhnout vše",
+        "⬆ Vytáhnout vše",
+        "⏸ Pauza automatiky 2 h"
+      ],
+      skrotyOpis: "Na stejném panelu, nad kartami oken.",
+      telefon: "Také do telefonu (aplikace HA)",
+      wHa: "Vždy přijdou i do oznámení HA (zvonek v postranním panelu).",
+      brakTelefonu: "Není telefon s aplikací HA – oznámení přijdou jen do HA (zvonek v postranním panelu).",
+      scenOpis: "Všechny scénáře podle důležitosti (1 je nejdůležitější). Scénář bez potřebného senzoru se sám přeskočí. Každý můžete vypnout:",
+      skad: "Odkud to ví",
+      scen: {
+        cisza: [
+          "Klid po startu HA",
+          "5 minut po restartu HA stínění stojí, než senzory nahlásí stav",
+          "–"
+        ],
+        dym: [
+          "Kouř",
+          "detektor kouře → stínění se otevře (úniková cesta a světlo)",
+          "detektor kouře"
+        ],
+        wiatr: [
+          "Vítr, kroupy, vibrace",
+          "vítr od 40 km/h nebo vibrace → venkovní stínění se stáhne; varování před kroupami → markýza stažená, roleta zavřená (chrání sklo)",
+          "počasí, anemometr, senzor vibrací, varování"
+        ],
+        deszcz: [
+          "Déšť",
+          "markýzy, screeny a venkovní žaluzie se stáhnou; rolety zůstanou, jak jsou",
+          "počasí nebo senzor deště"
+        ],
+        mroz: [
+          "Mráz",
+          "od 1 °C dolů se venkovní stínění nehýbe (může být přimrzlé)",
+          "venkovní teplota nebo počasí"
+        ],
+        pauza: [
+          "Váš ruční pohyb",
+          "když stíněním pohnete sami, automatika počká 2 hodiny",
+          "motor stínění"
+        ],
+        alarm: [
+          "Alarm",
+          "po zapnutí alarmu se stínění zavře",
+          "alarm HA"
+        ],
+        spie: [
+          "Spím",
+          "přepínač „Spím“ zapnutý → stínění zůstane zavřené a ráno se neotevře",
+          "přepínač „Spím“ u okna"
+        ],
+        nikogo: [
+          "Nikdo doma",
+          "nikdo doma → stínění zavřené; v režimu dovolené se ráno a večer hýbe každý den v trochu jiný čas",
+          "telefony obyvatel"
+        ],
+        rano: [
+          "Ráno otevřít",
+          "při východu slunce (nebo v nastavený čas) se stínění otevře",
+          "slunce HA, hodiny"
+        ],
+        wieczor: [
+          "Večer zavřít",
+          "při západu slunce (nebo v nastavený čas) se stínění zavře",
+          "slunce HA, hodiny"
+        ],
+        obecnosc: [
+          "Ráno počkat na někoho",
+          "do 10:00 se stínění otevře, až když někdo vejde do místnosti",
+          "senzor přítomnosti nebo pohybu"
+        ],
+        posrednia: [
+          "Odpolední poloha",
+          "od 13:00 stojí stínění na 50 % místo úplně otevřeného",
+          "hodiny"
+        ],
+        slonce: [
+          "Slunce a horko",
+          "slunce svítí do tohoto okna a venku je 24 °C a více (nebo je předpověď horka) → stínění sjede na 20 % otevření",
+          "slunce HA, počasí, teplota"
+        ],
+        oslepianie: [
+          "Oslnění",
+          "slunce v okně → stínění sjede tak, aby slunce nesahalo dál než 3 m do místnosti (např. k televizi nebo stolu)",
+          "slunce HA"
+        ],
+        pokoj: [
+          "Teplo v místnosti",
+          "25 °C a více v místnosti a slunce v okně → stínění na 20 % otevření",
+          "teploměr v místnosti"
+        ],
+        zima: [
+          "Zima",
+          "od listopadu do března je stínění na slunci otevřené (teplo zdarma) a v noci zavřené (menší ztráty tepla)",
+          "slunce HA, kalendář"
+        ],
+        okno: [
+          "Otevřené okno a dveře",
+          "okno na ventilaci: stínění nesjede níž než 20 %; otevřené okno: nesjíždí; otevřené balkonové dveře: ne níž než 80 %",
+          "senzor okna a dveří"
+        ],
+        przeszkoda: [
+          "Překážka",
+          "senzor překážky u balkonových dveří → stínění nesjíždí dolů",
+          "senzor překážky"
+        ],
+        granice: [
+          "Meze pohybu a lamely",
+          "stínění nikdy nepřejede nastavené meze; lamely žaluzií se natáčejí podle úhlu slunce",
+          "–"
+        ]
+      },
+      sprawdz: "Zjistěte, co vyhraje, když se stane několik věcí najednou",
+      przyklad: "Příklad: venkovní roleta, okno na jih, červenec. Počítá to stejná logika, která řídí vaše okna.",
+      zaznacz: "Zaškrtněte, co se právě děje:",
+      pora: "Čas",
+      pory: {
+        rano: "Ráno 7:30",
+        dzien: "Den 14:00",
+        wieczor: "Večer (po západu slunce)",
+        noc: "Noc 23:00"
+      },
+      warunki: {
+        slonce: "Slunce svítí do okna",
+        upal: "Horko (30 °C)",
+        wiatr: "Silný vítr (60 km/h)",
+        deszcz: "Déšť",
+        okno: "Okno na ventilaci",
+        dym: "Detektor kouře",
+        alarm: "Alarm zapnutý",
+        spie: "Zapnuto „Spím“",
+        nikogo: "Nikdo doma",
+        reka: "Pohnuli jste stíněním ručně"
+      },
+      oslona: "Stínění: {0} % otevřeno",
+      stoi: "Stínění zůstane, kde je",
+      wygrywa: "Vyhrává: {0}",
+      nic: "nic se neděje",
+      ogranicza: "Otevřené okno omezuje: mělo být {0} %, je {1} %.",
+      ogrStoi: "Otevřené okno omezuje: mělo být {0} %, stínění nesjíždí.",
+      kolejnosc: "Teď zaškrtnuto:",
+      stany: {
+        wygrywa: "vyhrává",
+        ogranicza: "omezuje",
+        przegrywa: "prohrává",
+        nie_dziala: "teď nepůsobí"
+      },
+      istniejace: "Použít i na moje okna ({0}): karta na panelu, oznámení a scénáře",
+      stopka: "Později to změníte: panel „Motor HA“ v postranním panelu nebo Nastavení → Zařízení → Motor HA.",
+      pozniej: "Později",
+      zapisz: "Uložit",
+      zapiszDodaj: "Uložit a přidat okno",
+      zapisano: "Uloženo.",
+      blad: "Neuloženo:",
+      zrobione: {
+        skroty: "Zkratky jsou na panelu.",
+        dom: "Karta „Celý dům“ je na panelu.",
+        karty: "Karty oken jsou na panelu.",
+        okna: "Okna mají nová nastavení.",
+        blad: "Ne všechno se povedlo – podrobnosti v protokolu HA."
+      }
+    },
+    panel: {
+      ustawienia: "Nastavení",
+      historia: "Historie",
+      powod: "Důvod",
+      brak: "Zatím tu nejsou žádná okna Motor HA.",
+      dodaj: "Přidat okno",
+      tytul: "Motor HA"
     }
   };
 
@@ -4790,6 +6265,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Celé okno",
       rodzajCalosc: "Vyberte pole a dajte mu iný druh alebo farbu.",
       rodzajPole: "Teraz nastavujete len pole {0}."
+    },
+    ekran: {
+      witaj: "Vitajte v Motor HA",
+      nowaWersja: "Nová verzia Motor HA",
+      wersja: "Verzia {0}",
+      coNowego: "Čo je nové vo {0}",
+      nowe: [
+        "Táto obrazovka: sami vyberiete, čo Motor HA pridá do Home Assistanta",
+        "Karta okna na vybranom paneli, pohľade a mieste, skratky pre celý dom a panel v bočnom paneli",
+        "Dlaždice rozloženia a editor vlastného rozloženia ako skutočné okno, tienenie viditeľné v každom kroku sprievodcu"
+      ],
+      jak: "Ako chcete Motor HA používať?",
+      tryby: {
+        pelny: [
+          "Všetko",
+          "Okno, karta, automatika, upozornenia"
+        ],
+        samo: [
+          "Iba zariadenie",
+          "Iba tienenie v HA, bez karty a automatiky"
+        ],
+        wlasny: [
+          "Môj výber",
+          "Zaškrtnem sám nižšie"
+        ]
+      },
+      co: "Čo má Motor HA pridať do Home Assistanta?",
+      opcje: {
+        karta: [
+          "Karta okna na paneli",
+          "Každé nové okno dostane kartu. Vyberte panel a miesto."
+        ],
+        dom: [
+          "Karta „Celý dom“",
+          "Všetky okná na jednej karte."
+        ],
+        skroty: [
+          "Skratky na paneli",
+          "Tlačidlá pre celý dom."
+        ],
+        pasek: [
+          "Panel „Motor HA“ v bočnom paneli",
+          "Všetky okná, dôvod každého pohybu a história na jednom mieste."
+        ],
+        assist: [
+          "Hlasové ovládanie (Assist)",
+          "Okná počúvajú príkazy, napr. „zatiahni obývačku“."
+        ],
+        ukryj: [
+          "Skryť obyčajné motory pred hlasom",
+          "Assist vidí iba okná Motor HA, bez dvojitých názvov."
+        ],
+        powiadom: [
+          "Upozornenia",
+          "Keď je niečo zlé s tienením alebo senzorom."
+        ],
+        auto: [
+          "Automatika",
+          "Tienenie samo reaguje na dennú dobu, slnko, počasie a senzory."
+        ],
+        nowa_wersja: [
+          "Informácia o novej verzii",
+          "Táto obrazovka s „Čo je nové“ po každej aktualizácii."
+        ]
+      },
+      jakDziala: "Ako to funguje",
+      gdyWyl: "Keď je vypnuté",
+      opisy: {
+        karta: [
+          "Po pridaní okna Motor HA vloží jeho kartu na vybraný panel, pohľad a miesto. Nič neodstráni ani nepresunie. Keď tam karta už je, nič neurobí.",
+          "Karta sa nepridá na žiadny panel. Pridáte ju sami: Upraviť panel → Pridať kartu → Motor HA."
+        ],
+        dom: [
+          "Na paneli zvolenom pre kartu okna je jedna karta so všetkými oknami domu: stav každého okna a tlačidlá otvoriť, stop, zatvoriť.",
+          "Žiadna karta celého domu, iba karty jednotlivých okien."
+        ],
+        skroty: [
+          "Nad kartami okien sú tri tlačidlá pre celý dom. Pauza zastaví automatiku všetkých okien na 2 hodiny.",
+          "Bez tlačidiel; celý dom ovládate z karty „Celý dom“ alebo hlasom."
+        ],
+        pasek: [
+          "V bočnom paneli HA je položka „Motor HA“: všetky okná s kartami, dôvod posledného pohybu, história pohybov a tieto nastavenia.",
+          "Bez položky v bočnom paneli. Okná nájdete v Nastavenia → Zariadenia → Motor HA."
+        ],
+        assist: [
+          "Okná Motor HA vidí Assist pod ich názvom a miestnosťou, napr. „zatiahni obývačku“, „vytiahni okno v kuchyni“.",
+          "Assist okná Motor HA nevidí; ovládate ich z karty a automatikou."
+        ],
+        ukryj: [
+          "Obyčajné motory, z ktorých okná Motor HA vznikli, sú pred Assist skryté. Hlas nezamení „roleta obývačka“ s „okno obývačka“.",
+          "Assist vidí motor aj okno Motor HA (môžu byť dva podobné názvy)."
+        ],
+        powiadom: [
+          "Správu dostanete, keď motor neodpovedá, tienenie nedošlo do polohy, slabne batéria alebo automatika nemohla tienením pohnúť (napr. pre otvorené okno).",
+          "Bez správ. Stav vidíte na karte a v histórii okna."
+        ],
+        auto: [
+          "Každé okno dostane scenáre nižšie. Fungujú podľa dôležitosti: vyšší vyhráva nad nižším alebo ho obmedzuje. Každý neskôr zmeníte v „Konfigurovať“ pri okne.",
+          "Tienenie sa hýbe iba na váš pokyn: karta, hlas, tlačidlo alebo vaše vlastné automatizácie HA. Motor HA sám nič nerobí."
+        ],
+        nowa_wersja: [
+          "Po každej aktualizácii sa objaví táto obrazovka s „Čo je nové“ a vašimi nastaveniami na kontrolu.",
+          "Aktualizácie bez tejto obrazovky. „Čo je nové“ je iba v HACS."
+        ]
+      },
+      panel: "Panel",
+      widok: "Pohľad",
+      miejsce: "Miesto",
+      proponowane: "odporúčané",
+      nowyWidok: "Nový pohľad „Okná“",
+      miejsca: {
+        sekcja: "Sekcia „Motor HA“ na konci",
+        gora: "Sekcia „Motor HA“ hore",
+        pokoj: "V sekcii miestnosti okna"
+      },
+      miniOpis: {
+        sekcja: "Karty Motor HA spolu v jednej sekcii na konci pohľadu, nič iné sa neposunie.",
+        gora: "Sekcia Motor HA úplne hore v pohľade.",
+        pokoj: "Karta v sekcii, ktorej nadpis je miestnosť okna (napr. Obývačka). Bez takej sekcie – v sekcii Motor HA."
+      },
+      miniNowy: "Na samostatnom pohľade „Okná“.",
+      oknoMini: "Okno",
+      salon: "Obývačka",
+      kuchnia: "Kuchyňa",
+      brakPanelu: "Nie je žiadny panel uložený z rozhrania, takže sa karta nepridá. Vytvorte panel v Nastavenia → Panely a otvorte túto obrazovku znova.",
+      skroty: [
+        "⬇ Zatiahnuť všetko",
+        "⬆ Vytiahnuť všetko",
+        "⏸ Pauza automatiky 2 h"
+      ],
+      skrotyOpis: "Na tom istom paneli, nad kartami okien.",
+      telefon: "Aj do telefónu (aplikácia HA)",
+      wHa: "Vždy prídu aj do upozornení HA (zvonček v bočnom paneli).",
+      brakTelefonu: "Nie je telefón s aplikáciou HA – upozornenia prídu iba do HA (zvonček v bočnom paneli).",
+      scenOpis: "Všetky scenáre podľa dôležitosti (1 je najdôležitejší). Scenár bez potrebného senzora sa sám preskočí. Každý môžete vypnúť:",
+      skad: "Odkiaľ to vie",
+      scen: {
+        cisza: [
+          "Pokoj po štarte HA",
+          "5 minút po reštarte HA tienenie stojí, kým senzory nenahlásia stav",
+          "–"
+        ],
+        dym: [
+          "Dym",
+          "detektor dymu → tienenie sa otvorí (úniková cesta a svetlo)",
+          "detektor dymu"
+        ],
+        wiatr: [
+          "Vietor, krupobitie, vibrácie",
+          "vietor od 40 km/h alebo vibrácie → vonkajšie tienenie sa stiahne; varovanie pred krupobitím → markíza stiahnutá, roleta zatvorená (chráni sklo)",
+          "počasie, anemometer, senzor vibrácií, varovania"
+        ],
+        deszcz: [
+          "Dážď",
+          "markízy, screeny a vonkajšie žalúzie sa stiahnu; rolety zostanú, ako sú",
+          "počasie alebo senzor dažďa"
+        ],
+        mroz: [
+          "Mráz",
+          "od 1 °C nadol sa vonkajšie tienenie nehýbe (môže byť primrznuté)",
+          "vonkajšia teplota alebo počasie"
+        ],
+        pauza: [
+          "Váš ručný pohyb",
+          "keď tienením pohnete sami, automatika počká 2 hodiny",
+          "motor tienenia"
+        ],
+        alarm: [
+          "Alarm",
+          "po zapnutí alarmu sa tienenie zatvorí",
+          "alarm HA"
+        ],
+        spie: [
+          "Spím",
+          "prepínač „Spím“ zapnutý → tienenie zostane zatvorené a ráno sa neotvorí",
+          "prepínač „Spím“ pri okne"
+        ],
+        nikogo: [
+          "Nikto doma",
+          "nikto doma → tienenie zatvorené; v režime dovolenky sa ráno a večer hýbe každý deň v trochu inom čase",
+          "telefóny obyvateľov"
+        ],
+        rano: [
+          "Ráno otvoriť",
+          "pri východe slnka (alebo v nastavenom čase) sa tienenie otvorí",
+          "slnko HA, hodiny"
+        ],
+        wieczor: [
+          "Večer zatvoriť",
+          "pri západe slnka (alebo v nastavenom čase) sa tienenie zatvorí",
+          "slnko HA, hodiny"
+        ],
+        obecnosc: [
+          "Ráno počkať na niekoho",
+          "do 10:00 sa tienenie otvorí, až keď niekto vojde do miestnosti",
+          "senzor prítomnosti alebo pohybu"
+        ],
+        posrednia: [
+          "Popoludňajšia poloha",
+          "od 13:00 stojí tienenie na 50 % namiesto úplne otvoreného",
+          "hodiny"
+        ],
+        slonce: [
+          "Slnko a horúčava",
+          "slnko svieti do tohto okna a vonku je 24 °C a viac (alebo je predpoveď horúčavy) → tienenie zíde na 20 % otvorenia",
+          "slnko HA, počasie, teplota"
+        ],
+        oslepianie: [
+          "Oslnenie",
+          "slnko v okne → tienenie zíde tak, aby slnko nesiahalo ďalej než 3 m do miestnosti (napr. k televízoru alebo stolu)",
+          "slnko HA"
+        ],
+        pokoj: [
+          "Teplo v miestnosti",
+          "25 °C a viac v miestnosti a slnko v okne → tienenie na 20 % otvorenia",
+          "teplomer v miestnosti"
+        ],
+        zima: [
+          "Zima",
+          "od novembra do marca je tienenie na slnku otvorené (teplo zadarmo) a v noci zatvorené (menšie straty tepla)",
+          "slnko HA, kalendár"
+        ],
+        okno: [
+          "Otvorené okno a dvere",
+          "okno na vetranie: tienenie nezíde nižšie než 20 %; otvorené okno: nezíde; otvorené balkónové dvere: nie nižšie než 80 %",
+          "senzor okna a dverí"
+        ],
+        przeszkoda: [
+          "Prekážka",
+          "senzor prekážky pri balkónových dverách → tienenie nezíde nadol",
+          "senzor prekážky"
+        ],
+        granice: [
+          "Hranice pohybu a lamely",
+          "tienenie nikdy neprejde za nastavené hranice; lamely žalúzií sa natáčajú podľa uhla slnka",
+          "–"
+        ]
+      },
+      sprawdz: "Zistite, čo vyhrá, keď sa stane viac vecí naraz",
+      przyklad: "Príklad: vonkajšia roleta, okno na juh, júl. Počíta to tá istá logika, ktorá riadi vaše okná.",
+      zaznacz: "Zaškrtnite, čo sa práve deje:",
+      pora: "Čas",
+      pory: {
+        rano: "Ráno 7:30",
+        dzien: "Deň 14:00",
+        wieczor: "Večer (po západe slnka)",
+        noc: "Noc 23:00"
+      },
+      warunki: {
+        slonce: "Slnko svieti do okna",
+        upal: "Horúčava (30 °C)",
+        wiatr: "Silný vietor (60 km/h)",
+        deszcz: "Dážď",
+        okno: "Okno na vetranie",
+        dym: "Detektor dymu",
+        alarm: "Alarm zapnutý",
+        spie: "Zapnuté „Spím“",
+        nikogo: "Nikto doma",
+        reka: "Pohli ste tienením ručne"
+      },
+      oslona: "Tienenie: {0} % otvorené",
+      stoi: "Tienenie zostane, kde je",
+      wygrywa: "Vyhráva: {0}",
+      nic: "nič sa nedeje",
+      ogranicza: "Otvorené okno obmedzuje: malo byť {0} %, je {1} %.",
+      ogrStoi: "Otvorené okno obmedzuje: malo byť {0} %, tienenie nezíde.",
+      kolejnosc: "Teraz zaškrtnuté:",
+      stany: {
+        wygrywa: "vyhráva",
+        ogranicza: "obmedzuje",
+        przegrywa: "prehráva",
+        nie_dziala: "teraz nepôsobí"
+      },
+      istniejace: "Použiť aj na moje okná ({0}): karta na paneli, upozornenia a scenáre",
+      stopka: "Neskôr to zmeníte: panel „Motor HA“ v bočnom paneli alebo Nastavenia → Zariadenia → Motor HA.",
+      pozniej: "Neskôr",
+      zapisz: "Uložiť",
+      zapiszDodaj: "Uložiť a pridať okno",
+      zapisano: "Uložené.",
+      blad: "Neuložené:",
+      zrobione: {
+        skroty: "Skratky sú na paneli.",
+        dom: "Karta „Celý dom“ je na paneli.",
+        karty: "Karty okien sú na paneli.",
+        okna: "Okná majú nové nastavenia.",
+        blad: "Nie všetko sa podarilo – podrobnosti v denníku HA."
+      }
+    },
+    panel: {
+      ustawienia: "Nastavenia",
+      historia: "História",
+      powod: "Dôvod",
+      brak: "Zatiaľ tu nie sú žiadne okná Motor HA.",
+      dodaj: "Pridať okno",
+      tytul: "Motor HA"
     }
   };
 
@@ -5321,6 +7091,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Ventana entera",
       rodzajCalosc: "Elige un panel para darle otro tipo o color.",
       rodzajPole: "Ahora solo ajustas el panel {0}."
+    },
+    ekran: {
+      witaj: "Bienvenido a Motor HA",
+      nowaWersja: "Nueva versión de Motor HA",
+      wersja: "Versión {0}",
+      coNowego: "Novedades de la {0}",
+      nowe: [
+        "Esta pantalla: tú eliges qué añade Motor HA a Home Assistant",
+        "Tarjeta de la ventana en el panel, la vista y el lugar que elijas, accesos directos para toda la casa y un panel en la barra lateral",
+        "Mosaicos de distribución y editor de distribución propia dibujados como una ventana real, protecciones visibles en cada paso del asistente"
+      ],
+      jak: "¿Cómo quieres usar Motor HA?",
+      tryby: {
+        pelny: [
+          "Todo",
+          "Ventana, tarjeta, automatización, notificaciones"
+        ],
+        samo: [
+          "Solo el dispositivo",
+          "Solo la protección en HA, sin tarjeta ni automatización"
+        ],
+        wlasny: [
+          "Mi elección",
+          "Marco yo abajo"
+        ]
+      },
+      co: "¿Qué debe añadir Motor HA a Home Assistant?",
+      opcje: {
+        karta: [
+          "Tarjeta de la ventana en un panel",
+          "Cada ventana nueva recibe una tarjeta. Elige el panel y el lugar."
+        ],
+        dom: [
+          "Tarjeta «Toda la casa»",
+          "Todas las ventanas en una tarjeta."
+        ],
+        skroty: [
+          "Accesos directos en el panel",
+          "Botones para toda la casa."
+        ],
+        pasek: [
+          "Panel «Motor HA» en la barra lateral",
+          "Todas las ventanas, el motivo de cada movimiento y el historial en un solo lugar."
+        ],
+        assist: [
+          "Control por voz (Assist)",
+          "Las ventanas escuchan órdenes, p. ej. «cierra el salón»."
+        ],
+        ukryj: [
+          "Ocultar los motores simples a la voz",
+          "Assist solo ve las ventanas de Motor HA, sin nombres dobles."
+        ],
+        powiadom: [
+          "Notificaciones",
+          "Cuando algo va mal con una protección o un sensor."
+        ],
+        auto: [
+          "Automatización",
+          "Las protecciones reaccionan solas a la hora, el sol, el tiempo y los sensores."
+        ],
+        nowa_wersja: [
+          "Aviso de nueva versión",
+          "Esta pantalla con «Novedades» tras cada actualización."
+        ]
+      },
+      jakDziala: "Cómo funciona",
+      gdyWyl: "Si está desactivado",
+      opisy: {
+        karta: [
+          "Al añadir una ventana, Motor HA pone su tarjeta en el panel, la vista y el lugar elegidos. No borra ni mueve nada. Si la tarjeta ya está, no hace nada.",
+          "La tarjeta no se pone en ningún panel. Añádela tú: Editar panel → Añadir tarjeta → Motor HA."
+        ],
+        dom: [
+          "El panel elegido para la tarjeta de la ventana recibe una tarjeta con todas las ventanas de la casa: el estado de cada una y los botones abrir, parar, cerrar.",
+          "Sin tarjeta de toda la casa, solo tarjetas de ventanas sueltas."
+        ],
+        skroty: [
+          "Encima de las tarjetas de ventanas hay tres botones para toda la casa. Pausa detiene la automatización de todas las ventanas durante 2 horas.",
+          "Sin botones; controlas toda la casa con la tarjeta «Toda la casa» o por voz."
+        ],
+        pasek: [
+          "La barra lateral de HA recibe la entrada «Motor HA»: todas las ventanas con sus tarjetas, el motivo del último movimiento, el historial y estos ajustes.",
+          "Sin entrada en la barra lateral. Las ventanas están en Ajustes → Dispositivos → Motor HA."
+        ],
+        assist: [
+          "Assist ve las ventanas de Motor HA con su nombre y su estancia, p. ej. «cierra el salón», «abre la ventana de la cocina».",
+          "Assist no ve las ventanas de Motor HA; las controlas con la tarjeta y la automatización."
+        ],
+        ukryj: [
+          "Los motores simples con los que se crearon las ventanas de Motor HA se ocultan a Assist. La voz no confunde «persiana salón» con «ventana salón».",
+          "Assist ve el motor y la ventana de Motor HA (puede haber dos nombres parecidos)."
+        ],
+        powiadom: [
+          "Recibes un mensaje cuando un motor no responde, una protección no llega a su posición, una batería está baja o la automatización no pudo mover una protección (p. ej. por una ventana abierta).",
+          "Sin mensajes. El estado se ve en la tarjeta y en el historial de la ventana."
+        ],
+        auto: [
+          "Cada ventana recibe los escenarios de abajo. Actúan por orden de importancia: uno más alto gana a uno más bajo o lo limita. Podrás cambiar cada uno después en «Configurar» de la ventana.",
+          "Las protecciones solo se mueven cuando tú lo mandas: tarjeta, voz, botón o tus propias automatizaciones de HA. Motor HA no hace nada solo."
+        ],
+        nowa_wersja: [
+          "Tras cada actualización aparece esta pantalla con «Novedades» y tus ajustes para revisar.",
+          "Actualizaciones sin esta pantalla. Las «Novedades» solo están en HACS."
+        ]
+      },
+      panel: "Panel",
+      widok: "Vista",
+      miejsce: "Lugar",
+      proponowane: "recomendado",
+      nowyWidok: "Nueva vista «Ventanas»",
+      miejsca: {
+        sekcja: "Sección «Motor HA» al final",
+        gora: "Sección «Motor HA» arriba",
+        pokoj: "En la sección de la estancia de la ventana"
+      },
+      miniOpis: {
+        sekcja: "Tarjetas de Motor HA juntas en una sección al final de la vista, nada más se mueve.",
+        gora: "Sección Motor HA arriba del todo en la vista.",
+        pokoj: "Tarjeta en la sección cuyo título es la estancia de la ventana (p. ej. Salón). Sin esa sección – en la sección Motor HA."
+      },
+      miniNowy: "En una vista aparte «Ventanas».",
+      oknoMini: "Ventana",
+      salon: "Salón",
+      kuchnia: "Cocina",
+      brakPanelu: "No hay ningún panel guardado desde la interfaz, así que la tarjeta no se añadirá. Crea un panel en Ajustes → Paneles y vuelve a abrir esta pantalla.",
+      skroty: [
+        "⬇ Cerrar todo",
+        "⬆ Abrir todo",
+        "⏸ Pausar automatización 2 h"
+      ],
+      skrotyOpis: "En el mismo panel, encima de las tarjetas de ventanas.",
+      telefon: "También al móvil (app de HA)",
+      wHa: "Siempre llegan también a las notificaciones de HA (campana en la barra lateral).",
+      brakTelefonu: "No hay móvil con la app de HA – las notificaciones solo llegan a HA (campana en la barra lateral).",
+      scenOpis: "Todos los escenarios por orden de importancia (1 es el más importante). Un escenario sin el sensor necesario se salta solo. Puedes desactivar cada uno:",
+      skad: "Cómo lo sabe",
+      scen: {
+        cisza: [
+          "Calma tras arrancar HA",
+          "durante 5 minutos tras reiniciar HA las protecciones no se mueven hasta que los sensores informen de su estado",
+          "–"
+        ],
+        dym: [
+          "Humo",
+          "detector de humo → la protección se abre (vía de escape y luz)",
+          "detector de humo"
+        ],
+        wiatr: [
+          "Viento, granizo, vibración",
+          "viento desde 40 km/h o vibración → la protección exterior se recoge; aviso de granizo → toldo recogido, persiana cerrada (protege el cristal)",
+          "tiempo, anemómetro, sensor de vibración, avisos"
+        ],
+        deszcz: [
+          "Lluvia",
+          "toldos, screens y celosías exteriores se recogen; las persianas se quedan como están",
+          "tiempo o sensor de lluvia"
+        ],
+        mroz: [
+          "Helada",
+          "a 1 °C o menos la protección exterior no se mueve (puede estar congelada)",
+          "temperatura exterior o tiempo"
+        ],
+        pauza: [
+          "Tu movimiento manual",
+          "si mueves la protección tú mismo, la automatización espera 2 horas",
+          "motor de la protección"
+        ],
+        alarm: [
+          "Alarma",
+          "al armar la alarma la protección se cierra",
+          "alarma de HA"
+        ],
+        spie: [
+          "Durmiendo",
+          "interruptor «Durmiendo» activado → la protección sigue cerrada y no se abre por la mañana",
+          "interruptor «Durmiendo» de la ventana"
+        ],
+        nikogo: [
+          "Nadie en casa",
+          "no hay nadie → la protección está cerrada; en modo vacaciones se mueve cada mañana y tarde a una hora un poco distinta",
+          "móviles de la familia"
+        ],
+        rano: [
+          "Abrir por la mañana",
+          "al amanecer (o a la hora que pongas) la protección se abre",
+          "sol de HA, reloj"
+        ],
+        wieczor: [
+          "Cerrar por la tarde",
+          "al anochecer (o a la hora que pongas) la protección se cierra",
+          "sol de HA, reloj"
+        ],
+        obecnosc: [
+          "Por la mañana, esperar a alguien",
+          "hasta las 10:00 la protección solo se abre cuando alguien entra en la estancia",
+          "sensor de presencia o movimiento"
+        ],
+        posrednia: [
+          "Posición de tarde",
+          "desde las 13:00 la protección queda al 50 % en vez de abierta del todo",
+          "reloj"
+        ],
+        slonce: [
+          "Sol y calor",
+          "el sol entra por esta ventana y fuera hay 24 °C o más (o se prevé calor) → la protección baja hasta el 20 % de apertura",
+          "sol de HA, tiempo, temperatura"
+        ],
+        oslepianie: [
+          "Deslumbramiento",
+          "sol en la ventana → la protección baja para que el sol no llegue a más de 3 m dentro de la estancia (p. ej. hasta la tele o el escritorio)",
+          "sol de HA"
+        ],
+        pokoj: [
+          "Estancia caliente",
+          "25 °C o más en la estancia y sol en la ventana → la protección al 20 % de apertura",
+          "termómetro de la estancia"
+        ],
+        zima: [
+          "Invierno",
+          "de noviembre a marzo la protección está abierta al sol (calor gratis) y cerrada de noche (menos pérdida de calor)",
+          "sol de HA, calendario"
+        ],
+        okno: [
+          "Ventana y puerta abiertas",
+          "ventana abatida: la protección no baja de 20 %; ventana abierta: no baja; puerta de balcón abierta: no baja de 80 %",
+          "sensor de ventana y puerta"
+        ],
+        przeszkoda: [
+          "Obstáculo",
+          "sensor de obstáculo en la puerta del balcón → la protección no baja",
+          "sensor de obstáculo"
+        ],
+        granice: [
+          "Límites de recorrido y lamas",
+          "la protección nunca pasa de los límites fijados; las lamas se orientan según el ángulo del sol",
+          "–"
+        ]
+      },
+      sprawdz: "Comprueba qué gana cuando pasan varias cosas a la vez",
+      przyklad: "Ejemplo: persiana exterior, ventana al sur, julio. Lo calcula la misma lógica que controla tus ventanas.",
+      zaznacz: "Marca lo que está pasando ahora:",
+      pora: "Momento",
+      pory: {
+        rano: "Mañana 7:30",
+        dzien: "Día 14:00",
+        wieczor: "Tarde (tras la puesta de sol)",
+        noc: "Noche 23:00"
+      },
+      warunki: {
+        slonce: "El sol entra por la ventana",
+        upal: "Calor (30 °C)",
+        wiatr: "Viento fuerte (60 km/h)",
+        deszcz: "Lluvia",
+        okno: "Ventana abatida",
+        dym: "Detector de humo",
+        alarm: "Alarma armada",
+        spie: "«Durmiendo» activado",
+        nikogo: "Nadie en casa",
+        reka: "Has movido la protección a mano"
+      },
+      oslona: "Protección: {0} % abierta",
+      stoi: "La protección se queda donde está",
+      wygrywa: "Gana: {0}",
+      nic: "no pasa nada",
+      ogranicza: "La ventana abierta limita: debía ser {0} %, es {1} %.",
+      ogrStoi: "La ventana abierta limita: debía ser {0} %, la protección no baja.",
+      kolejnosc: "Marcado ahora:",
+      stany: {
+        wygrywa: "gana",
+        ogranicza: "limita",
+        przegrywa: "pierde",
+        nie_dziala: "inactivo ahora"
+      },
+      istniejace: "Aplicar también a mis ventanas ({0}): tarjeta en el panel, notificaciones y escenarios",
+      stopka: "Puedes cambiarlo después: panel «Motor HA» en la barra lateral o Ajustes → Dispositivos → Motor HA.",
+      pozniej: "Más tarde",
+      zapisz: "Guardar",
+      zapiszDodaj: "Guardar y añadir ventana",
+      zapisano: "Guardado.",
+      blad: "No guardado:",
+      zrobione: {
+        skroty: "Los accesos directos están en el panel.",
+        dom: "La tarjeta «Toda la casa» está en el panel.",
+        karty: "Las tarjetas de las ventanas están en el panel.",
+        okna: "Las ventanas tienen los nuevos ajustes.",
+        blad: "No todo funcionó – detalles en el registro de HA."
+      }
+    },
+    panel: {
+      ustawienia: "Ajustes",
+      historia: "Historial",
+      powod: "Motivo",
+      brak: "Todavía no hay ventanas de Motor HA.",
+      dodaj: "Añadir ventana",
+      tytul: "Motor HA"
     }
   };
 
@@ -5852,6 +7917,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Finestra intera",
       rodzajCalosc: "Scegli un riquadro per dargli un altro tipo o colore.",
       rodzajPole: "Ora imposti solo il riquadro {0}."
+    },
+    ekran: {
+      witaj: "Benvenuto in Motor HA",
+      nowaWersja: "Nuova versione di Motor HA",
+      wersja: "Versione {0}",
+      coNowego: "Novità della {0}",
+      nowe: [
+        "Questa schermata: scegli tu cosa Motor HA aggiunge a Home Assistant",
+        "Scheda della finestra nella plancia, vista e posizione scelte, scorciatoie per tutta la casa e un pannello nella barra laterale",
+        "Riquadri del layout ed editor del layout personalizzato disegnati come una vera finestra, schermature visibili in ogni passo della procedura"
+      ],
+      jak: "Come vuoi usare Motor HA?",
+      tryby: {
+        pelny: [
+          "Tutto",
+          "Finestra, scheda, automazione, notifiche"
+        ],
+        samo: [
+          "Solo il dispositivo",
+          "Solo la schermatura in HA, senza scheda né automazione"
+        ],
+        wlasny: [
+          "La mia scelta",
+          "Scelgo io qui sotto"
+        ]
+      },
+      co: "Cosa deve aggiungere Motor HA a Home Assistant?",
+      opcje: {
+        karta: [
+          "Scheda della finestra in una plancia",
+          "Ogni nuova finestra riceve una scheda. Scegli la plancia e la posizione."
+        ],
+        dom: [
+          "Scheda «Tutta la casa»",
+          "Tutte le finestre in una scheda."
+        ],
+        skroty: [
+          "Scorciatoie nella plancia",
+          "Pulsanti per tutta la casa."
+        ],
+        pasek: [
+          "Pannello «Motor HA» nella barra laterale",
+          "Tutte le finestre, il motivo di ogni movimento e la cronologia in un posto."
+        ],
+        assist: [
+          "Controllo vocale (Assist)",
+          "Le finestre ascoltano i comandi, p. es. «chiudi il soggiorno»."
+        ],
+        ukryj: [
+          "Nascondi i motori semplici alla voce",
+          "Assist vede solo le finestre Motor HA, senza nomi doppi."
+        ],
+        powiadom: [
+          "Notifiche",
+          "Quando qualcosa non va con una schermatura o un sensore."
+        ],
+        auto: [
+          "Automazione",
+          "Le schermature reagiscono da sole all’ora, al sole, al meteo e ai sensori."
+        ],
+        nowa_wersja: [
+          "Avviso nuova versione",
+          "Questa schermata con le «Novità» dopo ogni aggiornamento."
+        ]
+      },
+      jakDziala: "Come funziona",
+      gdyWyl: "Se disattivato",
+      opisy: {
+        karta: [
+          "Quando aggiungi una finestra, Motor HA mette la sua scheda nella plancia, vista e posizione scelte. Non rimuove né sposta nulla. Se la scheda c’è già, non fa nulla.",
+          "La scheda non va in nessuna plancia. Aggiungila tu: Modifica plancia → Aggiungi scheda → Motor HA."
+        ],
+        dom: [
+          "La plancia scelta per la scheda della finestra riceve una scheda con tutte le finestre della casa: lo stato di ognuna e i pulsanti apri, stop, chiudi.",
+          "Nessuna scheda per tutta la casa, solo schede di singole finestre."
+        ],
+        skroty: [
+          "Sopra le schede delle finestre ci sono tre pulsanti per tutta la casa. Pausa ferma l’automazione di tutte le finestre per 2 ore.",
+          "Nessun pulsante; controlli tutta la casa dalla scheda «Tutta la casa» o con la voce."
+        ],
+        pasek: [
+          "La barra laterale di HA riceve la voce «Motor HA»: tutte le finestre con le schede, il motivo dell’ultimo movimento, la cronologia e queste impostazioni.",
+          "Nessuna voce nella barra laterale. Le finestre sono in Impostazioni → Dispositivi → Motor HA."
+        ],
+        assist: [
+          "Assist vede le finestre Motor HA con il loro nome e la stanza, p. es. «chiudi il soggiorno», «apri la finestra della cucina».",
+          "Assist non vede le finestre Motor HA; le controlli dalla scheda e con l’automazione."
+        ],
+        ukryj: [
+          "I motori semplici da cui sono nate le finestre Motor HA sono nascosti ad Assist. La voce non confonde «tapparella soggiorno» con «finestra soggiorno».",
+          "Assist vede sia il motore sia la finestra Motor HA (possono esserci due nomi simili)."
+        ],
+        powiadom: [
+          "Ricevi un messaggio quando un motore non risponde, una schermatura non ha raggiunto la posizione, una batteria è scarica o l’automazione non ha potuto muovere una schermatura (p. es. per una finestra aperta).",
+          "Nessun messaggio. Lo stato si vede sulla scheda e nella cronologia della finestra."
+        ],
+        auto: [
+          "Ogni finestra riceve gli scenari qui sotto. Agiscono in ordine di importanza: uno più alto vince su uno più basso o lo limita. Potrai cambiare ognuno più tardi in «Configura» della finestra.",
+          "Le schermature si muovono solo su tuo comando: scheda, voce, pulsante o le tue automazioni HA. Motor HA non fa nulla da solo."
+        ],
+        nowa_wersja: [
+          "Dopo ogni aggiornamento compare questa schermata con le «Novità» e le tue impostazioni da controllare.",
+          "Aggiornamenti senza questa schermata. Le «Novità» sono solo in HACS."
+        ]
+      },
+      panel: "Plancia",
+      widok: "Vista",
+      miejsce: "Posizione",
+      proponowane: "consigliato",
+      nowyWidok: "Nuova vista «Finestre»",
+      miejsca: {
+        sekcja: "Sezione «Motor HA» in fondo",
+        gora: "Sezione «Motor HA» in alto",
+        pokoj: "Nella sezione della stanza della finestra"
+      },
+      miniOpis: {
+        sekcja: "Le schede Motor HA insieme in una sezione in fondo alla vista, nient’altro si sposta.",
+        gora: "Sezione Motor HA in cima alla vista.",
+        pokoj: "Scheda nella sezione il cui titolo è la stanza della finestra (p. es. Soggiorno). Senza tale sezione – nella sezione Motor HA."
+      },
+      miniNowy: "In una vista separata «Finestre».",
+      oknoMini: "Finestra",
+      salon: "Soggiorno",
+      kuchnia: "Cucina",
+      brakPanelu: "Non c’è nessuna plancia salvata dall’interfaccia, quindi la scheda non verrà aggiunta. Crea una plancia in Impostazioni → Plance e riapri questa schermata.",
+      skroty: [
+        "⬇ Chiudi tutto",
+        "⬆ Apri tutto",
+        "⏸ Pausa automazione 2 h"
+      ],
+      skrotyOpis: "Sulla stessa plancia, sopra le schede delle finestre.",
+      telefon: "Anche sul telefono (app HA)",
+      wHa: "Arrivano sempre anche nelle notifiche di HA (campanella nella barra laterale).",
+      brakTelefonu: "Nessun telefono con l’app HA – le notifiche arrivano solo in HA (campanella nella barra laterale).",
+      scenOpis: "Tutti gli scenari in ordine di importanza (1 è il più importante). Uno scenario senza il sensore necessario si salta da solo. Puoi disattivare ognuno:",
+      skad: "Come lo sa",
+      scen: {
+        cisza: [
+          "Calma dopo l’avvio di HA",
+          "per 5 minuti dopo il riavvio di HA le schermature restano ferme finché i sensori non danno il loro stato",
+          "–"
+        ],
+        dym: [
+          "Fumo",
+          "rilevatore di fumo → la schermatura si apre (via di fuga e luce)",
+          "rilevatore di fumo"
+        ],
+        wiatr: [
+          "Vento, grandine, vibrazioni",
+          "vento da 40 km/h o vibrazioni → la schermatura esterna si ritira; allerta grandine → tenda ritirata, tapparella chiusa (protegge il vetro)",
+          "meteo, anemometro, sensore di vibrazioni, allerte"
+        ],
+        deszcz: [
+          "Pioggia",
+          "tende da sole, screen e frangisole si ritirano; le tapparelle restano come sono",
+          "meteo o sensore di pioggia"
+        ],
+        mroz: [
+          "Gelo",
+          "a 1 °C e meno la schermatura esterna non si muove (può essere ghiacciata)",
+          "temperatura esterna o meteo"
+        ],
+        pauza: [
+          "Il tuo movimento manuale",
+          "se muovi tu la schermatura, l’automazione aspetta 2 ore",
+          "motore della schermatura"
+        ],
+        alarm: [
+          "Allarme",
+          "quando l’allarme è inserito, la schermatura si chiude",
+          "allarme HA"
+        ],
+        spie: [
+          "Sto dormendo",
+          "interruttore «Sto dormendo» attivo → la schermatura resta chiusa e non si apre al mattino",
+          "interruttore «Sto dormendo» della finestra"
+        ],
+        nikogo: [
+          "Nessuno in casa",
+          "nessuno in casa → la schermatura è chiusa; in modalità vacanza si muove ogni mattina e sera a un’ora un po’ diversa",
+          "telefoni dei familiari"
+        ],
+        rano: [
+          "Apri al mattino",
+          "all’alba (o all’ora che imposti) la schermatura si apre",
+          "sole HA, orologio"
+        ],
+        wieczor: [
+          "Chiudi la sera",
+          "al tramonto (o all’ora che imposti) la schermatura si chiude",
+          "sole HA, orologio"
+        ],
+        obecnosc: [
+          "Al mattino aspetta qualcuno",
+          "fino alle 10:00 la schermatura si apre solo quando qualcuno entra nella stanza",
+          "sensore di presenza o di movimento"
+        ],
+        posrednia: [
+          "Posizione pomeridiana",
+          "dalle 13:00 la schermatura sta al 50 % invece che tutta aperta",
+          "orologio"
+        ],
+        slonce: [
+          "Sole e caldo",
+          "il sole entra da questa finestra e fuori ci sono 24 °C o più (o è previsto caldo) → la schermatura scende al 20 % di apertura",
+          "sole HA, meteo, temperatura"
+        ],
+        oslepianie: [
+          "Abbagliamento",
+          "sole nella finestra → la schermatura scende in modo che il sole non arrivi oltre 3 m nella stanza (p. es. fino alla TV o alla scrivania)",
+          "sole HA"
+        ],
+        pokoj: [
+          "Stanza calda",
+          "25 °C o più nella stanza e sole nella finestra → la schermatura al 20 % di apertura",
+          "termometro della stanza"
+        ],
+        zima: [
+          "Inverno",
+          "da novembre a marzo la schermatura è aperta al sole (calore gratis) e chiusa di notte (meno dispersione di calore)",
+          "sole HA, calendario"
+        ],
+        okno: [
+          "Finestra e porta aperte",
+          "finestra a ribalta: la schermatura non scende sotto il 20 %; finestra aperta: non scende; porta del balcone aperta: non sotto l’80 %",
+          "sensore di finestra e porta"
+        ],
+        przeszkoda: [
+          "Ostacolo",
+          "sensore di ostacolo alla porta del balcone → la schermatura non scende",
+          "sensore di ostacolo"
+        ],
+        granice: [
+          "Limiti di corsa e lamelle",
+          "la schermatura non supera mai i limiti impostati; le lamelle si orientano secondo l’angolo del sole",
+          "–"
+        ]
+      },
+      sprawdz: "Verifica cosa vince quando succedono più cose insieme",
+      przyklad: "Esempio: tapparella esterna, finestra a sud, luglio. Lo calcola la stessa logica che comanda le tue finestre.",
+      zaznacz: "Spunta cosa sta succedendo ora:",
+      pora: "Momento",
+      pory: {
+        rano: "Mattina 7:30",
+        dzien: "Giorno 14:00",
+        wieczor: "Sera (dopo il tramonto)",
+        noc: "Notte 23:00"
+      },
+      warunki: {
+        slonce: "Il sole entra dalla finestra",
+        upal: "Caldo (30 °C)",
+        wiatr: "Vento forte (60 km/h)",
+        deszcz: "Pioggia",
+        okno: "Finestra a ribalta",
+        dym: "Rilevatore di fumo",
+        alarm: "Allarme inserito",
+        spie: "«Sto dormendo» attivo",
+        nikogo: "Nessuno in casa",
+        reka: "Hai mosso la schermatura a mano"
+      },
+      oslona: "Schermatura: aperta al {0} %",
+      stoi: "La schermatura resta dov’è",
+      wygrywa: "Vince: {0}",
+      nic: "non succede nulla",
+      ogranicza: "La finestra aperta limita: doveva essere {0} %, è {1} %.",
+      ogrStoi: "La finestra aperta limita: doveva essere {0} %, la schermatura non scende.",
+      kolejnosc: "Spuntato ora:",
+      stany: {
+        wygrywa: "vince",
+        ogranicza: "limita",
+        przegrywa: "perde",
+        nie_dziala: "non attivo ora"
+      },
+      istniejace: "Applica anche alle mie finestre ({0}): scheda nella plancia, notifiche e scenari",
+      stopka: "Potrai cambiarlo più tardi: pannello «Motor HA» nella barra laterale o Impostazioni → Dispositivi → Motor HA.",
+      pozniej: "Più tardi",
+      zapisz: "Salva",
+      zapiszDodaj: "Salva e aggiungi finestra",
+      zapisano: "Salvato.",
+      blad: "Non salvato:",
+      zrobione: {
+        skroty: "Le scorciatoie sono nella plancia.",
+        dom: "La scheda «Tutta la casa» è nella plancia.",
+        karty: "Le schede delle finestre sono nella plancia.",
+        okna: "Le finestre hanno le nuove impostazioni.",
+        blad: "Non tutto è riuscito – dettagli nel registro di HA."
+      }
+    },
+    panel: {
+      ustawienia: "Impostazioni",
+      historia: "Cronologia",
+      powod: "Motivo",
+      brak: "Non ci sono ancora finestre Motor HA.",
+      dodaj: "Aggiungi finestra",
+      tytul: "Motor HA"
     }
   };
 
@@ -6383,6 +8743,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Hele raam",
       rodzajCalosc: "Kies een vak om het een ander soort of andere kleur te geven.",
       rodzajPole: "Je stelt nu alleen vak {0} in."
+    },
+    ekran: {
+      witaj: "Welkom bij Motor HA",
+      nowaWersja: "Nieuwe versie van Motor HA",
+      wersja: "Versie {0}",
+      coNowego: "Nieuw in {0}",
+      nowe: [
+        "Dit scherm: jij kiest wat Motor HA aan Home Assistant toevoegt",
+        "Raamkaart op het dashboard, de weergave en de plek die je kiest, snelkoppelingen voor het hele huis en een paneel in de zijbalk",
+        "Indelingstegels en de editor voor een eigen indeling getekend als een echt raam, zonwering zichtbaar in elke stap van de wizard"
+      ],
+      jak: "Hoe wil je Motor HA gebruiken?",
+      tryby: {
+        pelny: [
+          "Alles",
+          "Raam, kaart, automatisering, meldingen"
+        ],
+        samo: [
+          "Alleen het apparaat",
+          "Alleen de zonwering in HA, zonder kaart en automatisering"
+        ],
+        wlasny: [
+          "Eigen keuze",
+          "Ik vink hieronder aan"
+        ]
+      },
+      co: "Wat moet Motor HA aan Home Assistant toevoegen?",
+      opcje: {
+        karta: [
+          "Raamkaart op een dashboard",
+          "Elk nieuw raam krijgt een kaart. Kies het dashboard en de plek."
+        ],
+        dom: [
+          "Kaart „Heel het huis”",
+          "Alle ramen op één kaart."
+        ],
+        skroty: [
+          "Snelkoppelingen op het dashboard",
+          "Knoppen voor het hele huis."
+        ],
+        pasek: [
+          "Paneel „Motor HA” in de zijbalk",
+          "Alle ramen, de reden van elke beweging en de geschiedenis op één plek."
+        ],
+        assist: [
+          "Spraakbediening (Assist)",
+          "Ramen luisteren naar opdrachten, bijv. „sluit de woonkamer”."
+        ],
+        ukryj: [
+          "Gewone motoren verbergen voor spraak",
+          "Assist ziet alleen de Motor HA-ramen, geen dubbele namen."
+        ],
+        powiadom: [
+          "Meldingen",
+          "Wanneer er iets mis is met een zonwering of sensor."
+        ],
+        auto: [
+          "Automatisering",
+          "Zonwering reageert vanzelf op tijd, zon, weer en sensoren."
+        ],
+        nowa_wersja: [
+          "Melding nieuwe versie",
+          "Dit scherm met „Nieuw” na elke update."
+        ]
+      },
+      jakDziala: "Zo werkt het",
+      gdyWyl: "Indien uit",
+      opisy: {
+        karta: [
+          "Als je een raam toevoegt, zet Motor HA de kaart op het gekozen dashboard, de weergave en de plek. Er wordt niets verwijderd of verplaatst. Staat de kaart er al, dan gebeurt er niets.",
+          "De kaart komt op geen enkel dashboard. Voeg hem zelf toe: Dashboard bewerken → Kaart toevoegen → Motor HA."
+        ],
+        dom: [
+          "Het dashboard dat voor de raamkaart is gekozen, krijgt één kaart met alle ramen van het huis: de stand van elk raam en de knoppen open, stop, dicht.",
+          "Geen kaart voor het hele huis, alleen kaarten van losse ramen."
+        ],
+        skroty: [
+          "Boven de raamkaarten staan drie knoppen voor het hele huis. Pauze stopt de automatisering van alle ramen voor 2 uur.",
+          "Geen knoppen; je bedient het hele huis via de kaart „Heel het huis” of met spraak."
+        ],
+        pasek: [
+          "De zijbalk van HA krijgt het item „Motor HA”: alle ramen met hun kaarten, de reden van de laatste beweging, de geschiedenis en deze instellingen.",
+          "Geen item in de zijbalk. Je vindt de ramen in Instellingen → Apparaten → Motor HA."
+        ],
+        assist: [
+          "Assist ziet de Motor HA-ramen met hun naam en ruimte, bijv. „sluit de woonkamer”, „open het keukenraam”.",
+          "Assist ziet de Motor HA-ramen niet; je bedient ze via de kaart en de automatisering."
+        ],
+        ukryj: [
+          "De gewone motoren waarvan de Motor HA-ramen zijn gemaakt, worden voor Assist verborgen. Spraak verwart „rolluik woonkamer” niet met „raam woonkamer”.",
+          "Assist ziet zowel de motor als het Motor HA-raam (er kunnen twee vergelijkbare namen zijn)."
+        ],
+        powiadom: [
+          "Je krijgt een bericht als een motor niet reageert, een zonwering zijn stand niet haalt, een batterij bijna leeg is of de automatisering een zonwering niet kon bewegen (bijv. door een open raam).",
+          "Geen berichten. De status zie je op de kaart en in de geschiedenis van het raam."
+        ],
+        auto: [
+          "Elk raam krijgt de scenario’s hieronder. Ze werken op volgorde van belang: een hoger scenario wint van een lager of beperkt het. Je kunt elk later wijzigen bij „Configureren” van het raam.",
+          "Zonwering beweegt alleen als jij dat zegt: kaart, spraak, knop of je eigen HA-automatiseringen. Motor HA doet niets vanzelf."
+        ],
+        nowa_wersja: [
+          "Na elke update verschijnt dit scherm met „Nieuw” en je instellingen om na te kijken.",
+          "Updates zonder dit scherm. „Nieuw” staat alleen in HACS."
+        ]
+      },
+      panel: "Dashboard",
+      widok: "Weergave",
+      miejsce: "Plek",
+      proponowane: "aanbevolen",
+      nowyWidok: "Nieuwe weergave „Ramen”",
+      miejsca: {
+        sekcja: "Sectie „Motor HA” onderaan",
+        gora: "Sectie „Motor HA” bovenaan",
+        pokoj: "In de sectie van de ruimte van het raam"
+      },
+      miniOpis: {
+        sekcja: "Motor HA-kaarten samen in één sectie onderaan de weergave, verder schuift er niets.",
+        gora: "Motor HA-sectie helemaal bovenaan de weergave.",
+        pokoj: "Kaart in de sectie met de ruimte van het raam als titel (bijv. Woonkamer). Zonder zo’n sectie – in de Motor HA-sectie."
+      },
+      miniNowy: "In een aparte weergave „Ramen”.",
+      oknoMini: "Raam",
+      salon: "Woonkamer",
+      kuchnia: "Keuken",
+      brakPanelu: "Er is geen dashboard dat via de interface is opgeslagen, dus de kaart wordt niet toegevoegd. Maak een dashboard in Instellingen → Dashboards en open dit scherm opnieuw.",
+      skroty: [
+        "⬇ Alles dicht",
+        "⬆ Alles open",
+        "⏸ Automatisering 2 u pauzeren"
+      ],
+      skrotyOpis: "Op hetzelfde dashboard, boven de raamkaarten.",
+      telefon: "Ook naar de telefoon (HA-app)",
+      wHa: "Ze komen altijd ook in de HA-meldingen (bel in de zijbalk).",
+      brakTelefonu: "Geen telefoon met de HA-app – meldingen komen alleen in HA (bel in de zijbalk).",
+      scenOpis: "Alle scenario’s op volgorde van belang (1 is het belangrijkst). Een scenario zonder de benodigde sensor wordt vanzelf overgeslagen. Je kunt elk uitzetten:",
+      skad: "Hoe het dat weet",
+      scen: {
+        cisza: [
+          "Rust na het starten van HA",
+          "5 minuten na een herstart van HA bewegen de zonweringen niet tot de sensoren hun status melden",
+          "–"
+        ],
+        dym: [
+          "Rook",
+          "rookmelder → zonwering gaat open (vluchtweg en licht)",
+          "rookmelder"
+        ],
+        wiatr: [
+          "Wind, hagel, trillingen",
+          "wind vanaf 40 km/u of trillingen → buitenzonwering trekt in; hagelwaarschuwing → zonnescherm in, rolluik dicht (beschermt het glas)",
+          "weer, windmeter, trillingssensor, waarschuwingen"
+        ],
+        deszcz: [
+          "Regen",
+          "zonneschermen, screens en lamellendaken trekken in; rolluiken blijven zoals ze zijn",
+          "weer of regensensor"
+        ],
+        mroz: [
+          "Vorst",
+          "bij 1 °C en lager beweegt buitenzonwering niet (kan vastgevroren zijn)",
+          "buitentemperatuur of weer"
+        ],
+        pauza: [
+          "Je eigen handmatige beweging",
+          "als je de zonwering zelf beweegt, wacht de automatisering 2 uur",
+          "motor van de zonwering"
+        ],
+        alarm: [
+          "Alarm",
+          "bij het inschakelen van het alarm gaat de zonwering dicht",
+          "HA-alarm"
+        ],
+        spie: [
+          "Ik slaap",
+          "schakelaar „Ik slaap” aan → zonwering blijft dicht en gaat ’s ochtends niet open",
+          "schakelaar „Ik slaap” van het raam"
+        ],
+        nikogo: [
+          "Niemand thuis",
+          "niemand thuis → zonwering dicht; in vakantiemodus beweegt hij elke ochtend en avond op een iets ander tijdstip",
+          "telefoons van het gezin"
+        ],
+        rano: [
+          "’s Ochtends open",
+          "bij zonsopkomst (of op de tijd die je instelt) gaat de zonwering open",
+          "HA-zon, klok"
+        ],
+        wieczor: [
+          "’s Avonds dicht",
+          "na zonsondergang (of op de tijd die je instelt) gaat de zonwering dicht",
+          "HA-zon, klok"
+        ],
+        obecnosc: [
+          "’s Ochtends op iemand wachten",
+          "tot 10:00 gaat de zonwering pas open als er iemand de ruimte binnenkomt",
+          "aanwezigheids- of bewegingssensor"
+        ],
+        posrednia: [
+          "Middagstand",
+          "vanaf 13:00 staat de zonwering op 50 % in plaats van helemaal open",
+          "klok"
+        ],
+        slonce: [
+          "Zon en hitte",
+          "de zon schijnt door dit raam en buiten is het 24 °C of meer (of hitte voorspeld) → zonwering zakt tot 20 % open",
+          "HA-zon, weer, temperatuur"
+        ],
+        oslepianie: [
+          "Verblinding",
+          "zon in het raam → zonwering zakt zodat de zon niet verder dan 3 m de ruimte in komt (bijv. tot de tv of het bureau)",
+          "HA-zon"
+        ],
+        pokoj: [
+          "Warme ruimte",
+          "25 °C of meer in de ruimte en zon in het raam → zonwering op 20 % open",
+          "thermometer in de ruimte"
+        ],
+        zima: [
+          "Winter",
+          "van november tot maart is de zonwering open in de zon (gratis warmte) en ’s nachts dicht (minder warmteverlies)",
+          "HA-zon, kalender"
+        ],
+        okno: [
+          "Open raam en deur",
+          "raam op kiepstand: zonwering niet lager dan 20 %; raam open: zakt niet; balkondeur open: niet lager dan 80 %",
+          "raam- en deursensor"
+        ],
+        przeszkoda: [
+          "Obstakel",
+          "obstakelsensor bij de balkondeur → zonwering zakt niet",
+          "obstakelsensor"
+        ],
+        granice: [
+          "Bewegingsgrenzen en lamellen",
+          "de zonwering gaat nooit voorbij de ingestelde grenzen; lamellen draaien mee met de zonnehoek",
+          "–"
+        ]
+      },
+      sprawdz: "Bekijk wat wint als er meerdere dingen tegelijk gebeuren",
+      przyklad: "Voorbeeld: buitenrolluik, raam op het zuiden, juli. Berekend met dezelfde logica die je ramen aanstuurt.",
+      zaznacz: "Vink aan wat er nu gebeurt:",
+      pora: "Tijdstip",
+      pory: {
+        rano: "Ochtend 7:30",
+        dzien: "Dag 14:00",
+        wieczor: "Avond (na zonsondergang)",
+        noc: "Nacht 23:00"
+      },
+      warunki: {
+        slonce: "De zon schijnt door het raam",
+        upal: "Hitte (30 °C)",
+        wiatr: "Harde wind (60 km/u)",
+        deszcz: "Regen",
+        okno: "Raam op kiepstand",
+        dym: "Rookmelder",
+        alarm: "Alarm ingeschakeld",
+        spie: "„Ik slaap” aan",
+        nikogo: "Niemand thuis",
+        reka: "Je hebt de zonwering met de hand bewogen"
+      },
+      oslona: "Zonwering: {0} % open",
+      stoi: "Zonwering blijft waar hij is",
+      wygrywa: "Wint: {0}",
+      nic: "er gebeurt niets",
+      ogranicza: "Het open raam beperkt: het zou {0} % zijn, het is {1} %.",
+      ogrStoi: "Het open raam beperkt: het zou {0} % zijn, de zonwering zakt niet.",
+      kolejnosc: "Nu aangevinkt:",
+      stany: {
+        wygrywa: "wint",
+        ogranicza: "beperkt",
+        przegrywa: "verliest",
+        nie_dziala: "nu niet actief"
+      },
+      istniejace: "Ook toepassen op mijn ramen ({0}): kaart op het dashboard, meldingen en scenario’s",
+      stopka: "Je kunt dit later wijzigen: paneel „Motor HA” in de zijbalk of Instellingen → Apparaten → Motor HA.",
+      pozniej: "Later",
+      zapisz: "Opslaan",
+      zapiszDodaj: "Opslaan en raam toevoegen",
+      zapisano: "Opgeslagen.",
+      blad: "Niet opgeslagen:",
+      zrobione: {
+        skroty: "De snelkoppelingen staan op het dashboard.",
+        dom: "De kaart „Heel het huis” staat op het dashboard.",
+        karty: "De raamkaarten staan op het dashboard.",
+        okna: "De ramen hebben de nieuwe instellingen.",
+        blad: "Niet alles is gelukt – details in het HA-logboek."
+      }
+    },
+    panel: {
+      ustawienia: "Instellingen",
+      historia: "Geschiedenis",
+      powod: "Reden",
+      brak: "Er zijn nog geen Motor HA-ramen.",
+      dodaj: "Raam toevoegen",
+      tytul: "Motor HA"
     }
   };
 
@@ -6914,6 +9569,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Janela inteira",
       rodzajCalosc: "Escolha um painel para lhe dar outro tipo ou cor.",
       rodzajPole: "Agora está a ajustar só o painel {0}."
+    },
+    ekran: {
+      witaj: "Bem-vindo ao Motor HA",
+      nowaWersja: "Nova versão do Motor HA",
+      wersja: "Versão {0}",
+      coNowego: "Novidades da {0}",
+      nowe: [
+        "Este ecrã: escolhe o que o Motor HA adiciona ao Home Assistant",
+        "Cartão da janela no painel, na vista e no lugar que escolheres, atalhos para toda a casa e um painel na barra lateral",
+        "Mosaicos de disposição e editor de disposição própria desenhados como uma janela real, proteções visíveis em cada passo do assistente"
+      ],
+      jak: "Como queres usar o Motor HA?",
+      tryby: {
+        pelny: [
+          "Tudo",
+          "Janela, cartão, automação, notificações"
+        ],
+        samo: [
+          "Só o dispositivo",
+          "Só a proteção no HA, sem cartão nem automação"
+        ],
+        wlasny: [
+          "A minha escolha",
+          "Eu marco abaixo"
+        ]
+      },
+      co: "O que deve o Motor HA adicionar ao Home Assistant?",
+      opcje: {
+        karta: [
+          "Cartão da janela num painel",
+          "Cada janela nova recebe um cartão. Escolhe o painel e o lugar."
+        ],
+        dom: [
+          "Cartão «Casa inteira»",
+          "Todas as janelas num cartão."
+        ],
+        skroty: [
+          "Atalhos no painel",
+          "Botões para toda a casa."
+        ],
+        pasek: [
+          "Painel «Motor HA» na barra lateral",
+          "Todas as janelas, o motivo de cada movimento e o histórico num só lugar."
+        ],
+        assist: [
+          "Controlo por voz (Assist)",
+          "As janelas ouvem comandos, p. ex. «fecha a sala»."
+        ],
+        ukryj: [
+          "Esconder os motores simples da voz",
+          "O Assist só vê as janelas do Motor HA, sem nomes duplicados."
+        ],
+        powiadom: [
+          "Notificações",
+          "Quando algo corre mal com uma proteção ou um sensor."
+        ],
+        auto: [
+          "Automação",
+          "As proteções reagem sozinhas à hora, ao sol, ao tempo e aos sensores."
+        ],
+        nowa_wersja: [
+          "Aviso de nova versão",
+          "Este ecrã com «Novidades» após cada atualização."
+        ]
+      },
+      jakDziala: "Como funciona",
+      gdyWyl: "Quando desligado",
+      opisy: {
+        karta: [
+          "Ao adicionar uma janela, o Motor HA coloca o seu cartão no painel, na vista e no lugar escolhidos. Não remove nem move nada. Se o cartão já lá estiver, não faz nada.",
+          "O cartão não vai para nenhum painel. Adiciona-o tu: Editar painel → Adicionar cartão → Motor HA."
+        ],
+        dom: [
+          "O painel escolhido para o cartão da janela recebe um cartão com todas as janelas da casa: o estado de cada uma e os botões abrir, parar, fechar.",
+          "Sem cartão da casa inteira, só cartões de janelas individuais."
+        ],
+        skroty: [
+          "Por cima dos cartões das janelas há três botões para toda a casa. Pausa para a automação de todas as janelas durante 2 horas.",
+          "Sem botões; controlas toda a casa pelo cartão «Casa inteira» ou por voz."
+        ],
+        pasek: [
+          "A barra lateral do HA recebe a entrada «Motor HA»: todas as janelas com os seus cartões, o motivo do último movimento, o histórico e estas definições.",
+          "Sem entrada na barra lateral. As janelas estão em Definições → Dispositivos → Motor HA."
+        ],
+        assist: [
+          "O Assist vê as janelas do Motor HA com o seu nome e divisão, p. ex. «fecha a sala», «abre a janela da cozinha».",
+          "O Assist não vê as janelas do Motor HA; controlas pelo cartão e pela automação."
+        ],
+        ukryj: [
+          "Os motores simples a partir dos quais foram criadas as janelas do Motor HA ficam escondidos do Assist. A voz não confunde «estore sala» com «janela sala».",
+          "O Assist vê o motor e a janela do Motor HA (pode haver dois nomes parecidos)."
+        ],
+        powiadom: [
+          "Recebes uma mensagem quando um motor não responde, uma proteção não chega à posição, uma bateria está fraca ou a automação não conseguiu mover uma proteção (p. ex. por causa de uma janela aberta).",
+          "Sem mensagens. O estado vê-se no cartão e no histórico da janela."
+        ],
+        auto: [
+          "Cada janela recebe os cenários abaixo. Atuam por ordem de importância: um mais alto ganha a um mais baixo ou limita-o. Podes mudar cada um mais tarde em «Configurar» da janela.",
+          "As proteções só se movem quando mandas: cartão, voz, botão ou as tuas próprias automações do HA. O Motor HA não faz nada sozinho."
+        ],
+        nowa_wersja: [
+          "Após cada atualização aparece este ecrã com «Novidades» e as tuas definições para rever.",
+          "Atualizações sem este ecrã. As «Novidades» estão só no HACS."
+        ]
+      },
+      panel: "Painel",
+      widok: "Vista",
+      miejsce: "Lugar",
+      proponowane: "recomendado",
+      nowyWidok: "Nova vista «Janelas»",
+      miejsca: {
+        sekcja: "Secção «Motor HA» no fim",
+        gora: "Secção «Motor HA» no topo",
+        pokoj: "Na secção da divisão da janela"
+      },
+      miniOpis: {
+        sekcja: "Cartões do Motor HA juntos numa secção no fim da vista, nada mais se move.",
+        gora: "Secção Motor HA no topo da vista.",
+        pokoj: "Cartão na secção cujo título é a divisão da janela (p. ex. Sala). Sem essa secção – na secção Motor HA."
+      },
+      miniNowy: "Numa vista à parte «Janelas».",
+      oknoMini: "Janela",
+      salon: "Sala",
+      kuchnia: "Cozinha",
+      brakPanelu: "Não há nenhum painel guardado pela interface, por isso o cartão não será adicionado. Cria um painel em Definições → Painéis e volta a abrir este ecrã.",
+      skroty: [
+        "⬇ Fechar tudo",
+        "⬆ Abrir tudo",
+        "⏸ Pausar automação 2 h"
+      ],
+      skrotyOpis: "No mesmo painel, por cima dos cartões das janelas.",
+      telefon: "Também para o telemóvel (app HA)",
+      wHa: "Chegam sempre também às notificações do HA (sino na barra lateral).",
+      brakTelefonu: "Nenhum telemóvel com a app HA – as notificações só chegam ao HA (sino na barra lateral).",
+      scenOpis: "Todos os cenários por ordem de importância (1 é o mais importante). Um cenário sem o sensor necessário é saltado sozinho. Podes desligar cada um:",
+      skad: "Como sabe",
+      scen: {
+        cisza: [
+          "Calma após o arranque do HA",
+          "durante 5 minutos após reiniciar o HA as proteções não se movem até os sensores darem o seu estado",
+          "–"
+        ],
+        dym: [
+          "Fumo",
+          "detetor de fumo → a proteção abre (saída de emergência e luz)",
+          "detetor de fumo"
+        ],
+        wiatr: [
+          "Vento, granizo, vibração",
+          "vento a partir de 40 km/h ou vibração → a proteção exterior recolhe; aviso de granizo → toldo recolhido, estore fechado (protege o vidro)",
+          "tempo, anemómetro, sensor de vibração, avisos"
+        ],
+        deszcz: [
+          "Chuva",
+          "toldos, screens e pérgolas recolhem; os estores ficam como estão",
+          "tempo ou sensor de chuva"
+        ],
+        mroz: [
+          "Gelo",
+          "a 1 °C ou menos a proteção exterior não se move (pode estar congelada)",
+          "temperatura exterior ou tempo"
+        ],
+        pauza: [
+          "O teu movimento manual",
+          "se moveres a proteção tu mesmo, a automação espera 2 horas",
+          "motor da proteção"
+        ],
+        alarm: [
+          "Alarme",
+          "ao armar o alarme a proteção fecha",
+          "alarme do HA"
+        ],
+        spie: [
+          "A dormir",
+          "interruptor «A dormir» ligado → a proteção fica fechada e não abre de manhã",
+          "interruptor «A dormir» da janela"
+        ],
+        nikogo: [
+          "Ninguém em casa",
+          "ninguém em casa → a proteção está fechada; em modo férias move-se todas as manhãs e noites a uma hora um pouco diferente",
+          "telemóveis da família"
+        ],
+        rano: [
+          "Abrir de manhã",
+          "ao nascer do sol (ou à hora que definires) a proteção abre",
+          "sol do HA, relógio"
+        ],
+        wieczor: [
+          "Fechar à noite",
+          "após o pôr do sol (ou à hora que definires) a proteção fecha",
+          "sol do HA, relógio"
+        ],
+        obecnosc: [
+          "De manhã, esperar por alguém",
+          "até às 10:00 a proteção só abre quando alguém entra na divisão",
+          "sensor de presença ou movimento"
+        ],
+        posrednia: [
+          "Posição da tarde",
+          "a partir das 13:00 a proteção fica a 50 % em vez de totalmente aberta",
+          "relógio"
+        ],
+        slonce: [
+          "Sol e calor",
+          "o sol entra por esta janela e lá fora estão 24 °C ou mais (ou prevê-se calor) → a proteção desce até 20 % aberta",
+          "sol do HA, tempo, temperatura"
+        ],
+        oslepianie: [
+          "Encandeamento",
+          "sol na janela → a proteção desce para que o sol não entre mais de 3 m na divisão (p. ex. até à TV ou à secretária)",
+          "sol do HA"
+        ],
+        pokoj: [
+          "Divisão quente",
+          "25 °C ou mais na divisão e sol na janela → a proteção a 20 % aberta",
+          "termómetro da divisão"
+        ],
+        zima: [
+          "Inverno",
+          "de novembro a março a proteção está aberta ao sol (calor grátis) e fechada à noite (menos perda de calor)",
+          "sol do HA, calendário"
+        ],
+        okno: [
+          "Janela e porta abertas",
+          "janela basculante: a proteção não desce abaixo de 20 %; janela aberta: não desce; porta da varanda aberta: não abaixo de 80 %",
+          "sensor de janela e porta"
+        ],
+        przeszkoda: [
+          "Obstáculo",
+          "sensor de obstáculo na porta da varanda → a proteção não desce",
+          "sensor de obstáculo"
+        ],
+        granice: [
+          "Limites de curso e lâminas",
+          "a proteção nunca passa os limites definidos; as lâminas orientam-se pelo ângulo do sol",
+          "–"
+        ]
+      },
+      sprawdz: "Vê o que ganha quando acontecem várias coisas ao mesmo tempo",
+      przyklad: "Exemplo: estore exterior, janela virada a sul, julho. Calculado pela mesma lógica que controla as tuas janelas.",
+      zaznacz: "Marca o que está a acontecer agora:",
+      pora: "Momento",
+      pory: {
+        rano: "Manhã 7:30",
+        dzien: "Dia 14:00",
+        wieczor: "Noite (após o pôr do sol)",
+        noc: "Madrugada 23:00"
+      },
+      warunki: {
+        slonce: "O sol entra pela janela",
+        upal: "Calor (30 °C)",
+        wiatr: "Vento forte (60 km/h)",
+        deszcz: "Chuva",
+        okno: "Janela basculante",
+        dym: "Detetor de fumo",
+        alarm: "Alarme armado",
+        spie: "«A dormir» ligado",
+        nikogo: "Ninguém em casa",
+        reka: "Moveste a proteção à mão"
+      },
+      oslona: "Proteção: {0} % aberta",
+      stoi: "A proteção fica onde está",
+      wygrywa: "Ganha: {0}",
+      nic: "nada acontece",
+      ogranicza: "A janela aberta limita: devia ser {0} %, é {1} %.",
+      ogrStoi: "A janela aberta limita: devia ser {0} %, a proteção não desce.",
+      kolejnosc: "Marcado agora:",
+      stany: {
+        wygrywa: "ganha",
+        ogranicza: "limita",
+        przegrywa: "perde",
+        nie_dziala: "inativo agora"
+      },
+      istniejace: "Aplicar também às minhas janelas ({0}): cartão no painel, notificações e cenários",
+      stopka: "Podes mudar isto mais tarde: painel «Motor HA» na barra lateral ou Definições → Dispositivos → Motor HA.",
+      pozniej: "Mais tarde",
+      zapisz: "Guardar",
+      zapiszDodaj: "Guardar e adicionar janela",
+      zapisano: "Guardado.",
+      blad: "Não guardado:",
+      zrobione: {
+        skroty: "Os atalhos estão no painel.",
+        dom: "O cartão «Casa inteira» está no painel.",
+        karty: "Os cartões das janelas estão no painel.",
+        okna: "As janelas têm as novas definições.",
+        blad: "Nem tudo funcionou – detalhes no registo do HA."
+      }
+    },
+    panel: {
+      ustawienia: "Definições",
+      historia: "Histórico",
+      powod: "Motivo",
+      brak: "Ainda não há janelas do Motor HA.",
+      dodaj: "Adicionar janela",
+      tytul: "Motor HA"
     }
   };
 
@@ -7445,6 +10395,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Усе вікно",
       rodzajCalosc: "Виберіть поле, щоб задати йому інший вид або колір.",
       rodzajPole: "Зараз налаштовується лише поле {0}."
+    },
+    ekran: {
+      witaj: "Ласкаво просимо до Motor HA",
+      nowaWersja: "Нова версія Motor HA",
+      wersja: "Версія {0}",
+      coNowego: "Що нового у {0}",
+      nowe: [
+        "Цей екран: ви вирішуєте, що Motor HA додає до Home Assistant",
+        "Картка вікна на вибраній панелі, вкладці й місці, ярлики для всього дому та панель на бічній смузі",
+        "Плитки розкладу й редактор власного розкладу намальовані як справжнє вікно, захист видно на кожному кроці майстра"
+      ],
+      jak: "Як ви хочете користуватися Motor HA?",
+      tryby: {
+        pelny: [
+          "Усе",
+          "Вікно, картка, автоматика, сповіщення"
+        ],
+        samo: [
+          "Лише пристрій",
+          "Лише захист у HA, без картки й автоматики"
+        ],
+        wlasny: [
+          "Власний вибір",
+          "Позначу нижче"
+        ]
+      },
+      co: "Що Motor HA має додати до Home Assistant?",
+      opcje: {
+        karta: [
+          "Картка вікна на панелі",
+          "Кожне нове вікно отримує картку. Виберіть панель і місце."
+        ],
+        dom: [
+          "Картка «Увесь дім»",
+          "Усі вікна на одній картці."
+        ],
+        skroty: [
+          "Ярлики на панелі",
+          "Кнопки для всього дому."
+        ],
+        pasek: [
+          "Панель «Motor HA» на бічній смузі",
+          "Усі вікна, причина кожного руху й історія в одному місці."
+        ],
+        assist: [
+          "Голосове керування (Assist)",
+          "Вікна слухають команди, напр. «закрий вітальню»."
+        ],
+        ukryj: [
+          "Сховати звичайні мотори від голосу",
+          "Assist бачить лише вікна Motor HA, без подвійних назв."
+        ],
+        powiadom: [
+          "Сповіщення",
+          "Коли з захистом або датчиком щось не так."
+        ],
+        auto: [
+          "Автоматика",
+          "Захист сам реагує на час, сонце, погоду й датчики."
+        ],
+        nowa_wersja: [
+          "Повідомлення про нову версію",
+          "Цей екран із «Що нового» після кожного оновлення."
+        ]
+      },
+      jakDziala: "Як працює",
+      gdyWyl: "Якщо вимкнено",
+      opisy: {
+        karta: [
+          "Коли ви додаєте вікно, Motor HA ставить його картку на вибрану панель, вкладку й місце. Нічого не видаляє й не переміщує. Якщо картка вже є, нічого не робить.",
+          "Картка не потрапляє на жодну панель. Додайте її самі: Редагувати панель → Додати картку → Motor HA."
+        ],
+        dom: [
+          "Панель, вибрана для картки вікна, отримує картку з усіма вікнами дому: стан кожного й кнопки відкрити, стоп, закрити.",
+          "Без картки всього дому, лише картки окремих вікон."
+        ],
+        skroty: [
+          "Над картками вікон є три кнопки для всього дому. Пауза зупиняє автоматику всіх вікон на 2 години.",
+          "Без кнопок; весь дім керуєте з картки «Увесь дім» або голосом."
+        ],
+        pasek: [
+          "Бічна смуга HA отримує пункт «Motor HA»: усі вікна з картками, причина останнього руху, історія та ці налаштування.",
+          "Без пункту на бічній смузі. Вікна є в Налаштування → Пристрої → Motor HA."
+        ],
+        assist: [
+          "Assist бачить вікна Motor HA з їхньою назвою та кімнатою, напр. «закрий вітальню», «відкрий вікно на кухні».",
+          "Assist не бачить вікон Motor HA; керуєте з картки й автоматикою."
+        ],
+        ukryj: [
+          "Звичайні мотори, з яких створено вікна Motor HA, сховані від Assist. Голос не плутає «ролета вітальня» з «вікно вітальня».",
+          "Assist бачить і мотор, і вікно Motor HA (можуть бути дві схожі назви)."
+        ],
+        powiadom: [
+          "Ви отримуєте повідомлення, коли мотор не відповідає, захист не дійшов до положення, батарея слабка або автоматика не змогла зрушити захист (напр. через відчинене вікно).",
+          "Без повідомлень. Стан видно на картці та в історії вікна."
+        ],
+        auto: [
+          "Кожне вікно отримує сценарії нижче. Вони діють у порядку важливості: вищий перемагає нижчий або обмежує його. Кожен можна змінити пізніше в «Налаштувати» вікна.",
+          "Захист рухається лише за вашою командою: картка, голос, кнопка або ваші власні автоматизації HA. Motor HA нічого не робить сам."
+        ],
+        nowa_wersja: [
+          "Після кожного оновлення з’являється цей екран із «Що нового» та вашими налаштуваннями для перевірки.",
+          "Оновлення без цього екрана. «Що нового» є лише в HACS."
+        ]
+      },
+      panel: "Панель",
+      widok: "Вкладка",
+      miejsce: "Місце",
+      proponowane: "рекомендовано",
+      nowyWidok: "Нова вкладка «Вікна»",
+      miejsca: {
+        sekcja: "Розділ «Motor HA» внизу",
+        gora: "Розділ «Motor HA» угорі",
+        pokoj: "У розділі кімнати вікна"
+      },
+      miniOpis: {
+        sekcja: "Картки Motor HA разом в одному розділі внизу вкладки, більше нічого не зсувається.",
+        gora: "Розділ Motor HA на самому верху вкладки.",
+        pokoj: "Картка в розділі, назва якого — кімната вікна (напр. Вітальня). Без такого розділу — у розділі Motor HA."
+      },
+      miniNowy: "На окремій вкладці «Вікна».",
+      oknoMini: "Вікно",
+      salon: "Вітальня",
+      kuchnia: "Кухня",
+      brakPanelu: "Немає панелі, збереженої через інтерфейс, тому картку не буде додано. Створіть панель у Налаштування → Панелі й відкрийте цей екран знову.",
+      skroty: [
+        "⬇ Закрити все",
+        "⬆ Відкрити все",
+        "⏸ Пауза автоматики 2 год"
+      ],
+      skrotyOpis: "На тій самій панелі, над картками вікон.",
+      telefon: "Також на телефон (застосунок HA)",
+      wHa: "Завжди надходять також у сповіщення HA (дзвіночок на бічній смузі).",
+      brakTelefonu: "Немає телефона із застосунком HA – сповіщення надходять лише в HA (дзвіночок на бічній смузі).",
+      scenOpis: "Усі сценарії в порядку важливості (1 — найважливіший). Сценарій без потрібного датчика пропускається сам. Кожен можна вимкнути:",
+      skad: "Звідки знає",
+      scen: {
+        cisza: [
+          "Спокій після запуску HA",
+          "5 хвилин після перезапуску HA захист не рухається, доки датчики не передадуть стан",
+          "–"
+        ],
+        dym: [
+          "Дим",
+          "датчик диму → захист відкривається (шлях евакуації та світло)",
+          "датчик диму"
+        ],
+        wiatr: [
+          "Вітер, град, вібрація",
+          "вітер від 40 км/год або вібрація → зовнішній захист згортається; попередження про град → маркіза згорнута, ролета закрита (захищає скло)",
+          "погода, анемометр, датчик вібрації, попередження"
+        ],
+        deszcz: [
+          "Дощ",
+          "маркізи, скрини й пергола згортаються; ролети лишаються як є",
+          "погода або датчик дощу"
+        ],
+        mroz: [
+          "Мороз",
+          "при 1 °C і нижче зовнішній захист не рухається (може примерзнути)",
+          "зовнішня температура або погода"
+        ],
+        pauza: [
+          "Ваш ручний рух",
+          "якщо ви самі зрушили захист, автоматика чекає 2 години",
+          "мотор захисту"
+        ],
+        alarm: [
+          "Сигналізація",
+          "після постановки на охорону захист закривається",
+          "сигналізація HA"
+        ],
+        spie: [
+          "Сплю",
+          "перемикач «Сплю» увімкнено → захист лишається закритим і вранці не відкривається",
+          "перемикач «Сплю» вікна"
+        ],
+        nikogo: [
+          "Нікого вдома",
+          "нікого немає → захист закритий; у режимі відпустки рухається щоранку й щовечора в трохи інший час",
+          "телефони родини"
+        ],
+        rano: [
+          "Вранці відкрити",
+          "на сході сонця (або в заданий час) захист відкривається",
+          "сонце HA, годинник"
+        ],
+        wieczor: [
+          "Увечері закрити",
+          "після заходу сонця (або в заданий час) захист закривається",
+          "сонце HA, годинник"
+        ],
+        obecnosc: [
+          "Вранці чекати на когось",
+          "до 10:00 захист відкривається лише тоді, коли хтось заходить у кімнату",
+          "датчик присутності або руху"
+        ],
+        posrednia: [
+          "Денне положення",
+          "з 13:00 захист стоїть на 50 % замість повністю відкритого",
+          "годинник"
+        ],
+        slonce: [
+          "Сонце й спека",
+          "сонце світить у це вікно, а надворі 24 °C або більше (або прогноз спеки) → захист опускається до 20 % відкриття",
+          "сонце HA, погода, температура"
+        ],
+        oslepianie: [
+          "Засліплення",
+          "сонце у вікні → захист опускається так, щоб сонце не сягало далі 3 м у кімнату (напр. до телевізора чи столу)",
+          "сонце HA"
+        ],
+        pokoj: [
+          "Тепло в кімнаті",
+          "25 °C або більше в кімнаті й сонце у вікні → захист на 20 % відкриття",
+          "термометр у кімнаті"
+        ],
+        zima: [
+          "Зима",
+          "з листопада по березень захист відкритий на сонці (безкоштовне тепло) і закритий уночі (менше втрат тепла)",
+          "сонце HA, календар"
+        ],
+        okno: [
+          "Відчинені вікно й двері",
+          "вікно на провітрюванні: захист не нижче 20 %; вікно відчинене: не опускається; балконні двері відчинені: не нижче 80 %",
+          "датчик вікна й дверей"
+        ],
+        przeszkoda: [
+          "Перешкода",
+          "датчик перешкоди біля балконних дверей → захист не опускається",
+          "датчик перешкоди"
+        ],
+        granice: [
+          "Межі руху й ламелі",
+          "захист ніколи не виходить за задані межі; ламелі повертаються за кутом сонця",
+          "–"
+        ]
+      },
+      sprawdz: "Перевірте, що перемагає, коли одночасно відбувається кілька речей",
+      przyklad: "Приклад: зовнішня ролета, вікно на південь, липень. Розраховує та сама логіка, що керує вашими вікнами.",
+      zaznacz: "Позначте, що відбувається зараз:",
+      pora: "Час",
+      pory: {
+        rano: "Ранок 7:30",
+        dzien: "День 14:00",
+        wieczor: "Вечір (після заходу сонця)",
+        noc: "Ніч 23:00"
+      },
+      warunki: {
+        slonce: "Сонце світить у вікно",
+        upal: "Спека (30 °C)",
+        wiatr: "Сильний вітер (60 км/год)",
+        deszcz: "Дощ",
+        okno: "Вікно на провітрюванні",
+        dym: "Датчик диму",
+        alarm: "Сигналізація на охороні",
+        spie: "«Сплю» увімкнено",
+        nikogo: "Нікого вдома",
+        reka: "Ви зрушили захист вручну"
+      },
+      oslona: "Захист: відкрито на {0} %",
+      stoi: "Захист лишається на місці",
+      wygrywa: "Перемагає: {0}",
+      nic: "нічого не відбувається",
+      ogranicza: "Відчинене вікно обмежує: мало бути {0} %, є {1} %.",
+      ogrStoi: "Відчинене вікно обмежує: мало бути {0} %, захист не опускається.",
+      kolejnosc: "Позначено зараз:",
+      stany: {
+        wygrywa: "перемагає",
+        ogranicza: "обмежує",
+        przegrywa: "програє",
+        nie_dziala: "зараз не діє"
+      },
+      istniejace: "Застосувати й до моїх вікон ({0}): картка на панелі, сповіщення та сценарії",
+      stopka: "Це можна змінити пізніше: панель «Motor HA» на бічній смузі або Налаштування → Пристрої → Motor HA.",
+      pozniej: "Пізніше",
+      zapisz: "Зберегти",
+      zapiszDodaj: "Зберегти й додати вікно",
+      zapisano: "Збережено.",
+      blad: "Не збережено:",
+      zrobione: {
+        skroty: "Ярлики на панелі.",
+        dom: "Картка «Увесь дім» на панелі.",
+        karty: "Картки вікон на панелі.",
+        okna: "Вікна мають нові налаштування.",
+        blad: "Не все вдалося – подробиці в журналі HA."
+      }
+    },
+    panel: {
+      ustawienia: "Налаштування",
+      historia: "Історія",
+      powod: "Причина",
+      brak: "Ще немає вікон Motor HA.",
+      dodaj: "Додати вікно",
+      tytul: "Motor HA"
     }
   };
 
@@ -7976,6 +11221,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "Всё окно",
       rodzajCalosc: "Выберите поле, чтобы задать ему другой вид или цвет.",
       rodzajPole: "Сейчас настраивается только поле {0}."
+    },
+    ekran: {
+      witaj: "Добро пожаловать в Motor HA",
+      nowaWersja: "Новая версия Motor HA",
+      wersja: "Версия {0}",
+      coNowego: "Что нового в {0}",
+      nowe: [
+        "Этот экран: вы решаете, что Motor HA добавляет в Home Assistant",
+        "Карточка окна на выбранной панели, вкладке и месте, ярлыки для всего дома и панель в боковом меню",
+        "Плитки раскладки и редактор своей раскладки нарисованы как настоящее окно, защита видна на каждом шаге мастера"
+      ],
+      jak: "Как вы хотите пользоваться Motor HA?",
+      tryby: {
+        pelny: [
+          "Всё",
+          "Окно, карточка, автоматика, уведомления"
+        ],
+        samo: [
+          "Только устройство",
+          "Только защита в HA, без карточки и автоматики"
+        ],
+        wlasny: [
+          "Свой выбор",
+          "Отмечу ниже"
+        ]
+      },
+      co: "Что Motor HA должен добавить в Home Assistant?",
+      opcje: {
+        karta: [
+          "Карточка окна на панели",
+          "Каждое новое окно получает карточку. Выберите панель и место."
+        ],
+        dom: [
+          "Карточка «Весь дом»",
+          "Все окна на одной карточке."
+        ],
+        skroty: [
+          "Ярлыки на панели",
+          "Кнопки для всего дома."
+        ],
+        pasek: [
+          "Панель «Motor HA» в боковом меню",
+          "Все окна, причина каждого движения и история в одном месте."
+        ],
+        assist: [
+          "Голосовое управление (Assist)",
+          "Окна слушают команды, напр. «закрой гостиную»."
+        ],
+        ukryj: [
+          "Скрыть обычные моторы от голоса",
+          "Assist видит только окна Motor HA, без двойных названий."
+        ],
+        powiadom: [
+          "Уведомления",
+          "Когда что-то не так с защитой или датчиком."
+        ],
+        auto: [
+          "Автоматика",
+          "Защита сама реагирует на время, солнце, погоду и датчики."
+        ],
+        nowa_wersja: [
+          "Сообщение о новой версии",
+          "Этот экран с «Что нового» после каждого обновления."
+        ]
+      },
+      jakDziala: "Как работает",
+      gdyWyl: "Если выключено",
+      opisy: {
+        karta: [
+          "Когда вы добавляете окно, Motor HA ставит его карточку на выбранную панель, вкладку и место. Ничего не удаляет и не перемещает. Если карточка уже есть, ничего не делает.",
+          "Карточка не попадает ни на одну панель. Добавьте её сами: Изменить панель → Добавить карточку → Motor HA."
+        ],
+        dom: [
+          "Панель, выбранная для карточки окна, получает карточку со всеми окнами дома: состояние каждого и кнопки открыть, стоп, закрыть.",
+          "Без карточки всего дома, только карточки отдельных окон."
+        ],
+        skroty: [
+          "Над карточками окон есть три кнопки для всего дома. Пауза останавливает автоматику всех окон на 2 часа.",
+          "Без кнопок; весь дом управляется с карточки «Весь дом» или голосом."
+        ],
+        pasek: [
+          "Боковое меню HA получает пункт «Motor HA»: все окна с карточками, причина последнего движения, история и эти настройки.",
+          "Без пункта в боковом меню. Окна есть в Настройки → Устройства → Motor HA."
+        ],
+        assist: [
+          "Assist видит окна Motor HA с их названием и комнатой, напр. «закрой гостиную», «открой окно на кухне».",
+          "Assist не видит окна Motor HA; управление с карточки и автоматикой."
+        ],
+        ukryj: [
+          "Обычные моторы, из которых созданы окна Motor HA, скрыты от Assist. Голос не путает «роллета гостиная» с «окно гостиная».",
+          "Assist видит и мотор, и окно Motor HA (могут быть два похожих названия)."
+        ],
+        powiadom: [
+          "Вы получаете сообщение, когда мотор не отвечает, защита не дошла до положения, батарея разряжается или автоматика не смогла сдвинуть защиту (напр. из-за открытого окна).",
+          "Без сообщений. Состояние видно на карточке и в истории окна."
+        ],
+        auto: [
+          "Каждое окно получает сценарии ниже. Они действуют в порядке важности: более высокий побеждает более низкий или ограничивает его. Каждый можно изменить позже в «Настроить» окна.",
+          "Защита движется только по вашей команде: карточка, голос, кнопка или ваши собственные автоматизации HA. Motor HA ничего не делает сам."
+        ],
+        nowa_wersja: [
+          "После каждого обновления появляется этот экран с «Что нового» и вашими настройками для проверки.",
+          "Обновления без этого экрана. «Что нового» есть только в HACS."
+        ]
+      },
+      panel: "Панель",
+      widok: "Вкладка",
+      miejsce: "Место",
+      proponowane: "рекомендуется",
+      nowyWidok: "Новая вкладка «Окна»",
+      miejsca: {
+        sekcja: "Раздел «Motor HA» внизу",
+        gora: "Раздел «Motor HA» вверху",
+        pokoj: "В разделе комнаты окна"
+      },
+      miniOpis: {
+        sekcja: "Карточки Motor HA вместе в одном разделе внизу вкладки, больше ничего не сдвигается.",
+        gora: "Раздел Motor HA в самом верху вкладки.",
+        pokoj: "Карточка в разделе, название которого — комната окна (напр. Гостиная). Без такого раздела — в разделе Motor HA."
+      },
+      miniNowy: "На отдельной вкладке «Окна».",
+      oknoMini: "Окно",
+      salon: "Гостиная",
+      kuchnia: "Кухня",
+      brakPanelu: "Нет панели, сохранённой через интерфейс, поэтому карточка не будет добавлена. Создайте панель в Настройки → Панели и откройте этот экран снова.",
+      skroty: [
+        "⬇ Закрыть всё",
+        "⬆ Открыть всё",
+        "⏸ Пауза автоматики 2 ч"
+      ],
+      skrotyOpis: "На той же панели, над карточками окон.",
+      telefon: "Также на телефон (приложение HA)",
+      wHa: "Всегда приходят и в уведомления HA (колокольчик в боковом меню).",
+      brakTelefonu: "Нет телефона с приложением HA – уведомления приходят только в HA (колокольчик в боковом меню).",
+      scenOpis: "Все сценарии в порядке важности (1 — самый важный). Сценарий без нужного датчика пропускается сам. Каждый можно выключить:",
+      skad: "Откуда знает",
+      scen: {
+        cisza: [
+          "Покой после запуска HA",
+          "5 минут после перезапуска HA защита не движется, пока датчики не передадут состояние",
+          "–"
+        ],
+        dym: [
+          "Дым",
+          "датчик дыма → защита открывается (путь эвакуации и свет)",
+          "датчик дыма"
+        ],
+        wiatr: [
+          "Ветер, град, вибрация",
+          "ветер от 40 км/ч или вибрация → наружная защита сворачивается; предупреждение о граде → маркиза свёрнута, роллета закрыта (защищает стекло)",
+          "погода, анемометр, датчик вибрации, предупреждения"
+        ],
+        deszcz: [
+          "Дождь",
+          "маркизы, скрины и перголы сворачиваются; роллеты остаются как есть",
+          "погода или датчик дождя"
+        ],
+        mroz: [
+          "Мороз",
+          "при 1 °C и ниже наружная защита не движется (может примёрзнуть)",
+          "наружная температура или погода"
+        ],
+        pauza: [
+          "Ваше ручное движение",
+          "если вы сами сдвинули защиту, автоматика ждёт 2 часа",
+          "мотор защиты"
+        ],
+        alarm: [
+          "Сигнализация",
+          "при постановке на охрану защита закрывается",
+          "сигнализация HA"
+        ],
+        spie: [
+          "Сплю",
+          "переключатель «Сплю» включён → защита остаётся закрытой и утром не открывается",
+          "переключатель «Сплю» окна"
+        ],
+        nikogo: [
+          "Никого дома",
+          "никого нет → защита закрыта; в режиме отпуска движется каждое утро и вечер в немного разное время",
+          "телефоны семьи"
+        ],
+        rano: [
+          "Утром открыть",
+          "на восходе (или в заданное время) защита открывается",
+          "солнце HA, часы"
+        ],
+        wieczor: [
+          "Вечером закрыть",
+          "после заката (или в заданное время) защита закрывается",
+          "солнце HA, часы"
+        ],
+        obecnosc: [
+          "Утром ждать кого-то",
+          "до 10:00 защита открывается только когда кто-то заходит в комнату",
+          "датчик присутствия или движения"
+        ],
+        posrednia: [
+          "Дневное положение",
+          "с 13:00 защита стоит на 50 % вместо полностью открытой",
+          "часы"
+        ],
+        slonce: [
+          "Солнце и жара",
+          "солнце светит в это окно, а снаружи 24 °C и выше (или прогноз жары) → защита опускается до 20 % открытия",
+          "солнце HA, погода, температура"
+        ],
+        oslepianie: [
+          "Ослепление",
+          "солнце в окне → защита опускается так, чтобы солнце не проникало дальше 3 м в комнату (напр. до телевизора или стола)",
+          "солнце HA"
+        ],
+        pokoj: [
+          "Тепло в комнате",
+          "25 °C и выше в комнате и солнце в окне → защита на 20 % открытия",
+          "термометр в комнате"
+        ],
+        zima: [
+          "Зима",
+          "с ноября по март защита открыта на солнце (бесплатное тепло) и закрыта ночью (меньше потерь тепла)",
+          "солнце HA, календарь"
+        ],
+        okno: [
+          "Открытые окно и дверь",
+          "окно на проветривании: защита не ниже 20 %; окно открыто: не опускается; балконная дверь открыта: не ниже 80 %",
+          "датчик окна и двери"
+        ],
+        przeszkoda: [
+          "Препятствие",
+          "датчик препятствия у балконной двери → защита не опускается",
+          "датчик препятствия"
+        ],
+        granice: [
+          "Пределы хода и ламели",
+          "защита никогда не выходит за заданные пределы; ламели поворачиваются по углу солнца",
+          "–"
+        ]
+      },
+      sprawdz: "Проверьте, что побеждает, когда одновременно происходит несколько вещей",
+      przyklad: "Пример: наружная роллета, окно на юг, июль. Считает та же логика, что управляет вашими окнами.",
+      zaznacz: "Отметьте, что происходит сейчас:",
+      pora: "Время",
+      pory: {
+        rano: "Утро 7:30",
+        dzien: "День 14:00",
+        wieczor: "Вечер (после заката)",
+        noc: "Ночь 23:00"
+      },
+      warunki: {
+        slonce: "Солнце светит в окно",
+        upal: "Жара (30 °C)",
+        wiatr: "Сильный ветер (60 км/ч)",
+        deszcz: "Дождь",
+        okno: "Окно на проветривании",
+        dym: "Датчик дыма",
+        alarm: "Сигнализация на охране",
+        spie: "«Сплю» включено",
+        nikogo: "Никого дома",
+        reka: "Вы сдвинули защиту вручную"
+      },
+      oslona: "Защита: открыта на {0} %",
+      stoi: "Защита остаётся на месте",
+      wygrywa: "Побеждает: {0}",
+      nic: "ничего не происходит",
+      ogranicza: "Открытое окно ограничивает: должно быть {0} %, есть {1} %.",
+      ogrStoi: "Открытое окно ограничивает: должно быть {0} %, защита не опускается.",
+      kolejnosc: "Отмечено сейчас:",
+      stany: {
+        wygrywa: "побеждает",
+        ogranicza: "ограничивает",
+        przegrywa: "проигрывает",
+        nie_dziala: "сейчас не действует"
+      },
+      istniejace: "Применить и к моим окнам ({0}): карточка на панели, уведомления и сценарии",
+      stopka: "Это можно изменить позже: панель «Motor HA» в боковом меню или Настройки → Устройства → Motor HA.",
+      pozniej: "Позже",
+      zapisz: "Сохранить",
+      zapiszDodaj: "Сохранить и добавить окно",
+      zapisano: "Сохранено.",
+      blad: "Не сохранено:",
+      zrobione: {
+        skroty: "Ярлыки на панели.",
+        dom: "Карточка «Весь дом» на панели.",
+        karty: "Карточки окон на панели.",
+        okna: "Окна получили новые настройки.",
+        blad: "Не всё получилось – подробности в журнале HA."
+      }
+    },
+    panel: {
+      ustawienia: "Настройки",
+      historia: "История",
+      powod: "Причина",
+      brak: "Пока нет окон Motor HA.",
+      dodaj: "Добавить окно",
+      tytul: "Motor HA"
     }
   };
 
@@ -8507,6 +12047,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "窓全体",
       rodzajCalosc: "区画を選ぶと、別の種類や色にできます。",
       rodzajPole: "今は区画 {0} だけを設定しています。"
+    },
+    ekran: {
+      witaj: "Motor HA へようこそ",
+      nowaWersja: "Motor HA の新しいバージョン",
+      wersja: "バージョン {0}",
+      coNowego: "{0} の新機能",
+      nowe: [
+        "この画面：Motor HA が Home Assistant に何を追加するかをあなたが選びます",
+        "選んだダッシュボード・ビュー・場所に窓カード、家全体のショートカット、サイドバーのパネル",
+        "レイアウトのタイルと独自レイアウトのエディターを本物の窓のように描画、ウィザードの各ステップで遮蔽物を表示"
+      ],
+      jak: "Motor HA をどのように使いますか？",
+      tryby: {
+        pelny: [
+          "すべて",
+          "窓、カード、自動化、通知"
+        ],
+        samo: [
+          "デバイスのみ",
+          "HA の遮蔽物だけ、カードと自動化なし"
+        ],
+        wlasny: [
+          "自分で選ぶ",
+          "下で選択します"
+        ]
+      },
+      co: "Motor HA は Home Assistant に何を追加しますか？",
+      opcje: {
+        karta: [
+          "ダッシュボードの窓カード",
+          "新しい窓ごとにカードが追加されます。ダッシュボードと場所を選んでください。"
+        ],
+        dom: [
+          "「家全体」カード",
+          "すべての窓を 1 枚のカードに。"
+        ],
+        skroty: [
+          "ダッシュボードのショートカット",
+          "家全体用のボタン。"
+        ],
+        pasek: [
+          "サイドバーの「Motor HA」パネル",
+          "すべての窓、各動作の理由、履歴を 1 か所で。"
+        ],
+        assist: [
+          "音声操作（Assist）",
+          "窓が命令を聞きます。例：「リビングを閉めて」。"
+        ],
+        ukryj: [
+          "通常のモーターを音声から隠す",
+          "Assist は Motor HA の窓だけを認識し、名前が重複しません。"
+        ],
+        powiadom: [
+          "通知",
+          "遮蔽物やセンサーに問題があるとき。"
+        ],
+        auto: [
+          "自動化",
+          "遮蔽物が時刻・太陽・天気・センサーに自動で反応します。"
+        ],
+        nowa_wersja: [
+          "新バージョンのお知らせ",
+          "更新のたびに「新機能」付きのこの画面。"
+        ]
+      },
+      jakDziala: "動作",
+      gdyWyl: "オフの場合",
+      opisy: {
+        karta: [
+          "窓を追加すると、Motor HA は選んだダッシュボード・ビュー・場所にそのカードを置きます。何も削除・移動しません。カードが既にあれば何もしません。",
+          "カードはどのダッシュボードにも追加されません。自分で追加：ダッシュボードを編集 → カードを追加 → Motor HA。"
+        ],
+        dom: [
+          "窓カード用に選んだダッシュボードに、家のすべての窓をまとめたカードが追加されます：各窓の状態と、開く・停止・閉じるボタン。",
+          "家全体のカードはなく、個別の窓カードのみ。"
+        ],
+        skroty: [
+          "窓カードの上に家全体用のボタンが 3 つ。一時停止はすべての窓の自動化を 2 時間止めます。",
+          "ボタンなし。家全体は「家全体」カードか音声で操作します。"
+        ],
+        pasek: [
+          "HA のサイドバーに「Motor HA」項目：すべての窓とカード、最後の動作の理由、履歴、この設定。",
+          "サイドバー項目なし。窓は 設定 → デバイス → Motor HA にあります。"
+        ],
+        assist: [
+          "Assist は Motor HA の窓を名前と部屋で認識します。例：「リビングを閉めて」「キッチンの窓を開けて」。",
+          "Assist は Motor HA の窓を認識しません。カードと自動化で操作します。"
+        ],
+        ukryj: [
+          "Motor HA の窓の元になった通常のモーターは Assist から隠されます。音声で「リビングのシャッター」と「リビングの窓」を混同しません。",
+          "Assist はモーターと Motor HA の窓の両方を認識します（似た名前が 2 つになる場合があります）。"
+        ],
+        powiadom: [
+          "モーターが応答しない、遮蔽物が位置に届かない、電池が少ない、自動化が遮蔽物を動かせなかった（例：窓が開いている）ときにメッセージが届きます。",
+          "メッセージなし。状態はカードと窓の履歴で確認できます。"
+        ],
+        auto: [
+          "各窓に下のシナリオが設定されます。重要度の順に働き、上位が下位に勝つか制限します。後で窓の「設定」から個別に変更できます。",
+          "遮蔽物はあなたの指示でのみ動きます：カード、音声、ボタン、または独自の HA 自動化。Motor HA は自動では何もしません。"
+        ],
+        nowa_wersja: [
+          "更新のたびに「新機能」と確認用の設定を表示するこの画面が出ます。",
+          "この画面なしで更新。「新機能」は HACS のみ。"
+        ]
+      },
+      panel: "ダッシュボード",
+      widok: "ビュー",
+      miejsce: "場所",
+      proponowane: "おすすめ",
+      nowyWidok: "新しいビュー「窓」",
+      miejsca: {
+        sekcja: "下部の「Motor HA」セクション",
+        gora: "上部の「Motor HA」セクション",
+        pokoj: "窓の部屋のセクション内"
+      },
+      miniOpis: {
+        sekcja: "Motor HA のカードをビュー下部の 1 つのセクションにまとめ、他は動きません。",
+        gora: "ビューの最上部に Motor HA セクション。",
+        pokoj: "窓の部屋名（例：リビング）が見出しのセクションにカード。そのセクションがなければ Motor HA セクションへ。"
+      },
+      miniNowy: "別ビュー「窓」に。",
+      oknoMini: "窓",
+      salon: "リビング",
+      kuchnia: "キッチン",
+      brakPanelu: "UI で保存されたダッシュボードがないため、カードは追加されません。設定 → ダッシュボード でダッシュボードを作成し、この画面を開き直してください。",
+      skroty: [
+        "⬇ すべて閉じる",
+        "⬆ すべて開く",
+        "⏸ 自動化を 2 時間停止"
+      ],
+      skrotyOpis: "同じダッシュボードの窓カードの上に。",
+      telefon: "スマートフォンにも（HA アプリ）",
+      wHa: "HA の通知（サイドバーのベル）にも必ず届きます。",
+      brakTelefonu: "HA アプリ入りのスマートフォンがありません – 通知は HA（サイドバーのベル）にのみ届きます。",
+      scenOpis: "すべてのシナリオを重要度順に（1 が最重要）。必要なセンサーがないシナリオは自動でスキップされます。個別にオフにできます：",
+      skad: "判断元",
+      scen: {
+        cisza: [
+          "HA 起動後の待機",
+          "HA 再起動後 5 分間、センサーが状態を報告するまで遮蔽物は動きません",
+          "–"
+        ],
+        dym: [
+          "煙",
+          "煙感知器 → 遮蔽物が開きます（避難経路と明かり）",
+          "煙感知器"
+        ],
+        wiatr: [
+          "風・雹・振動",
+          "風速 40 km/h 以上または振動 → 屋外遮蔽物を収納。雹警報 → オーニング収納、シャッター閉（ガラスを保護）",
+          "天気、風速計、振動センサー、警報"
+        ],
+        deszcz: [
+          "雨",
+          "オーニング、スクリーン、パーゴラを収納。シャッターはそのまま",
+          "天気または雨センサー"
+        ],
+        mroz: [
+          "凍結",
+          "1 °C 以下では屋外遮蔽物は動きません（凍っている可能性）",
+          "外気温または天気"
+        ],
+        pauza: [
+          "手動操作",
+          "自分で遮蔽物を動かすと、自動化は 2 時間待ちます",
+          "遮蔽物のモーター"
+        ],
+        alarm: [
+          "警報",
+          "警報をセットすると遮蔽物が閉じます",
+          "HA の警報"
+        ],
+        spie: [
+          "就寝中",
+          "「就寝中」スイッチがオン → 遮蔽物は閉じたまま、朝も開きません",
+          "窓の「就寝中」スイッチ"
+        ],
+        nikogo: [
+          "不在",
+          "誰もいない → 遮蔽物は閉。休暇モードでは毎朝・毎晩少しずつ違う時刻に動きます",
+          "家族のスマートフォン"
+        ],
+        rano: [
+          "朝に開く",
+          "日の出（または設定した時刻）に遮蔽物が開きます",
+          "HA の太陽、時計"
+        ],
+        wieczor: [
+          "夜に閉じる",
+          "日没後（または設定した時刻）に遮蔽物が閉じます",
+          "HA の太陽、時計"
+        ],
+        obecnosc: [
+          "朝は人を待つ",
+          "10:00 までは誰かが部屋に入ったときだけ遮蔽物が開きます",
+          "在室または人感センサー"
+        ],
+        posrednia: [
+          "午後の位置",
+          "13:00 以降は全開ではなく 50 % に",
+          "時計"
+        ],
+        slonce: [
+          "日差しと暑さ",
+          "この窓に日が差し、外が 24 °C 以上（または猛暑予報） → 遮蔽物を開度 20 % まで下げます",
+          "HA の太陽、天気、気温"
+        ],
+        oslepianie: [
+          "まぶしさ",
+          "窓に日差し → 日差しが部屋の 3 m より奥に届かないよう遮蔽物を下げます（例：テレビや机まで）",
+          "HA の太陽"
+        ],
+        pokoj: [
+          "部屋が暑い",
+          "部屋が 25 °C 以上で窓に日差し → 遮蔽物を開度 20 % に",
+          "部屋の温度計"
+        ],
+        zima: [
+          "冬",
+          "11 月から 3 月は日差しで開（無料の暖かさ）、夜は閉（熱損失を減らす）",
+          "HA の太陽、カレンダー"
+        ],
+        okno: [
+          "窓・ドアが開いている",
+          "窓が傾き開き：遮蔽物は 20 % より下がらない。窓が開：下がらない。バルコニードアが開：80 % より下がらない",
+          "窓・ドアセンサー"
+        ],
+        przeszkoda: [
+          "障害物",
+          "バルコニードアの障害物センサー → 遮蔽物は下がりません",
+          "障害物センサー"
+        ],
+        granice: [
+          "動作範囲とスラット",
+          "遮蔽物は設定した範囲を超えません。スラットは太陽の角度に合わせて回転します",
+          "–"
+        ]
+      },
+      sprawdz: "複数のことが同時に起きたとき何が勝つかを確認",
+      przyklad: "例：屋外シャッター、南向きの窓、7 月。あなたの窓を制御するのと同じロジックで計算します。",
+      zaznacz: "いま起きていることにチェック：",
+      pora: "時間帯",
+      pory: {
+        rano: "朝 7:30",
+        dzien: "昼 14:00",
+        wieczor: "夕方（日没後）",
+        noc: "夜 23:00"
+      },
+      warunki: {
+        slonce: "窓に日が差している",
+        upal: "猛暑（30 °C）",
+        wiatr: "強風（60 km/h）",
+        deszcz: "雨",
+        okno: "窓が傾き開き",
+        dym: "煙感知器",
+        alarm: "警報セット中",
+        spie: "「就寝中」オン",
+        nikogo: "不在",
+        reka: "遮蔽物を手で動かした"
+      },
+      oslona: "遮蔽物：{0} % 開",
+      stoi: "遮蔽物はそのまま",
+      wygrywa: "勝ち：{0}",
+      nic: "何も起きません",
+      ogranicza: "開いた窓が制限：{0} % のはずが {1} %。",
+      ogrStoi: "開いた窓が制限：{0} % のはずが、遮蔽物は下がりません。",
+      kolejnosc: "いまチェック中：",
+      stany: {
+        wygrywa: "勝ち",
+        ogranicza: "制限",
+        przegrywa: "負け",
+        nie_dziala: "現在無効"
+      },
+      istniejace: "既存の窓（{0}）にも適用：ダッシュボードのカード、通知、シナリオ",
+      stopka: "後で変更できます：サイドバーの「Motor HA」パネル、または 設定 → デバイス → Motor HA。",
+      pozniej: "後で",
+      zapisz: "保存",
+      zapiszDodaj: "保存して窓を追加",
+      zapisano: "保存しました。",
+      blad: "保存されませんでした：",
+      zrobione: {
+        skroty: "ショートカットをダッシュボードに追加しました。",
+        dom: "「家全体」カードをダッシュボードに追加しました。",
+        karty: "窓カードをダッシュボードに追加しました。",
+        okna: "窓に新しい設定を適用しました。",
+        blad: "一部失敗しました – 詳細は HA のログに。"
+      }
+    },
+    panel: {
+      ustawienia: "設定",
+      historia: "履歴",
+      powod: "理由",
+      brak: "Motor HA の窓はまだありません。",
+      dodaj: "窓を追加",
+      tytul: "Motor HA"
     }
   };
 
@@ -9038,6 +12873,301 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       caleOkno: "整扇窗",
       rodzajCalosc: "选择一个格子，可为它设置其他类型或颜色。",
       rodzajPole: "现在只设置第 {0} 格。"
+    },
+    ekran: {
+      witaj: "欢迎使用 Motor HA",
+      nowaWersja: "Motor HA 新版本",
+      wersja: "版本 {0}",
+      coNowego: "{0} 新功能",
+      nowe: [
+        "此界面：由你决定 Motor HA 向 Home Assistant 添加什么",
+        "在你选择的仪表板、视图和位置添加窗户卡片，全屋快捷按钮和侧边栏面板",
+        "布局磁贴和自定义布局编辑器按真实窗户绘制，向导每一步都能看到遮阳装置"
+      ],
+      jak: "你想如何使用 Motor HA？",
+      tryby: {
+        pelny: [
+          "全部",
+          "窗户、卡片、自动化、通知"
+        ],
+        samo: [
+          "仅设备",
+          "仅在 HA 中添加遮阳装置，无卡片和自动化"
+        ],
+        wlasny: [
+          "自定义",
+          "我在下面勾选"
+        ]
+      },
+      co: "Motor HA 应向 Home Assistant 添加什么？",
+      opcje: {
+        karta: [
+          "仪表板上的窗户卡片",
+          "每个新窗户都有一张卡片。选择仪表板和位置。"
+        ],
+        dom: [
+          "“全屋”卡片",
+          "所有窗户在一张卡片上。"
+        ],
+        skroty: [
+          "仪表板快捷按钮",
+          "全屋控制按钮。"
+        ],
+        pasek: [
+          "侧边栏中的“Motor HA”面板",
+          "所有窗户、每次动作的原因和历史集中在一处。"
+        ],
+        assist: [
+          "语音控制（Assist）",
+          "窗户听从指令，例如“关上客厅”。"
+        ],
+        ukryj: [
+          "对语音隐藏普通电机",
+          "Assist 只识别 Motor HA 窗户，不会出现重名。"
+        ],
+        powiadom: [
+          "通知",
+          "当遮阳装置或传感器出现问题时。"
+        ],
+        auto: [
+          "自动化",
+          "遮阳装置自动响应时间、太阳、天气和传感器。"
+        ],
+        nowa_wersja: [
+          "新版本提示",
+          "每次更新后显示带“新功能”的此界面。"
+        ]
+      },
+      jakDziala: "工作方式",
+      gdyWyl: "关闭时",
+      opisy: {
+        karta: [
+          "添加窗户时，Motor HA 会把它的卡片放到所选仪表板、视图和位置。不会删除或移动任何内容。如果卡片已存在，则不做任何操作。",
+          "卡片不会添加到任何仪表板。请自行添加：编辑仪表板 → 添加卡片 → Motor HA。"
+        ],
+        dom: [
+          "为窗户卡片选择的仪表板会添加一张包含全屋所有窗户的卡片：每个窗户的状态以及打开、停止、关闭按钮。",
+          "没有全屋卡片，只有单个窗户的卡片。"
+        ],
+        skroty: [
+          "窗户卡片上方有三个全屋按钮。暂停会停止所有窗户的自动化 2 小时。",
+          "没有按钮；通过“全屋”卡片或语音控制全屋。"
+        ],
+        pasek: [
+          "HA 侧边栏增加“Motor HA”项：所有窗户及其卡片、最近一次动作的原因、历史和这些设置。",
+          "侧边栏中没有该项。窗户在 设置 → 设备 → Motor HA 中。"
+        ],
+        assist: [
+          "Assist 按名称和房间识别 Motor HA 窗户，例如“关上客厅”“打开厨房窗户”。",
+          "Assist 不识别 Motor HA 窗户；通过卡片和自动化控制。"
+        ],
+        ukryj: [
+          "创建 Motor HA 窗户所用的普通电机对 Assist 隐藏。语音不会把“客厅卷帘”和“客厅窗户”混淆。",
+          "Assist 同时识别电机和 Motor HA 窗户（可能有两个相似的名称）。"
+        ],
+        powiadom: [
+          "当电机无响应、遮阳装置未到达位置、电池电量低或自动化无法移动遮阳装置（例如窗户开着）时，你会收到消息。",
+          "没有消息。状态可在卡片和窗户历史中查看。"
+        ],
+        auto: [
+          "每个窗户都会获得下面的场景。它们按重要性顺序生效：较高的胜过或限制较低的。以后可在窗户的“配置”中逐一更改。",
+          "遮阳装置只按你的指令移动：卡片、语音、按钮或你自己的 HA 自动化。Motor HA 不会自行操作。"
+        ],
+        nowa_wersja: [
+          "每次更新后都会出现此界面，显示“新功能”和待检查的设置。",
+          "更新时不显示此界面。“新功能”仅在 HACS 中。"
+        ]
+      },
+      panel: "仪表板",
+      widok: "视图",
+      miejsce: "位置",
+      proponowane: "推荐",
+      nowyWidok: "新视图“窗户”",
+      miejsca: {
+        sekcja: "底部的“Motor HA”区块",
+        gora: "顶部的“Motor HA”区块",
+        pokoj: "在窗户所在房间的区块中"
+      },
+      miniOpis: {
+        sekcja: "Motor HA 卡片集中在视图底部的一个区块中，其他内容不移动。",
+        gora: "Motor HA 区块位于视图最顶部。",
+        pokoj: "卡片放在以窗户房间命名的区块中（例如客厅）。没有该区块时放在 Motor HA 区块。"
+      },
+      miniNowy: "放在单独的“窗户”视图中。",
+      oknoMini: "窗户",
+      salon: "客厅",
+      kuchnia: "厨房",
+      brakPanelu: "没有通过界面保存的仪表板，因此不会添加卡片。请在 设置 → 仪表板 中创建一个仪表板，然后重新打开此界面。",
+      skroty: [
+        "⬇ 全部关闭",
+        "⬆ 全部打开",
+        "⏸ 暂停自动化 2 小时"
+      ],
+      skrotyOpis: "在同一仪表板上，位于窗户卡片上方。",
+      telefon: "同时发送到手机（HA 应用）",
+      wHa: "始终也会发送到 HA 通知（侧边栏中的铃铛）。",
+      brakTelefonu: "没有安装 HA 应用的手机 – 通知只发送到 HA（侧边栏中的铃铛）。",
+      scenOpis: "所有场景按重要性排序（1 最重要）。缺少所需传感器的场景会自动跳过。每个都可以关闭：",
+      skad: "依据",
+      scen: {
+        cisza: [
+          "HA 启动后静止",
+          "HA 重启后 5 分钟内，遮阳装置在传感器报告状态之前不动",
+          "–"
+        ],
+        dym: [
+          "烟雾",
+          "烟雾探测器 → 遮阳装置打开（逃生通道和光线）",
+          "烟雾探测器"
+        ],
+        wiatr: [
+          "风、冰雹、振动",
+          "风速达 40 km/h 或振动 → 室外遮阳装置收起；冰雹预警 → 遮阳篷收起，卷帘关闭（保护玻璃）",
+          "天气、风速计、振动传感器、预警"
+        ],
+        deszcz: [
+          "雨",
+          "遮阳篷、遮阳帘和凉棚收起；卷帘保持不变",
+          "天气或雨量传感器"
+        ],
+        mroz: [
+          "霜冻",
+          "1 °C 及以下时室外遮阳装置不动（可能已冻住）",
+          "室外温度或天气"
+        ],
+        pauza: [
+          "你的手动操作",
+          "你手动移动遮阳装置后，自动化等待 2 小时",
+          "遮阳装置电机"
+        ],
+        alarm: [
+          "警报",
+          "警报布防后遮阳装置关闭",
+          "HA 警报"
+        ],
+        spie: [
+          "睡眠中",
+          "“睡眠中”开关打开 → 遮阳装置保持关闭，早上不打开",
+          "窗户的“睡眠中”开关"
+        ],
+        nikogo: [
+          "无人在家",
+          "无人在家 → 遮阳装置关闭；度假模式下每天早晚在略有不同的时间移动",
+          "家人的手机"
+        ],
+        rano: [
+          "早上打开",
+          "日出时（或你设定的时间）遮阳装置打开",
+          "HA 太阳、时钟"
+        ],
+        wieczor: [
+          "晚上关闭",
+          "日落后（或你设定的时间）遮阳装置关闭",
+          "HA 太阳、时钟"
+        ],
+        obecnosc: [
+          "早上等人",
+          "10:00 之前只有有人进入房间时遮阳装置才打开",
+          "存在或运动传感器"
+        ],
+        posrednia: [
+          "下午位置",
+          "13:00 起遮阳装置停在 50 %，而不是完全打开",
+          "时钟"
+        ],
+        slonce: [
+          "阳光和炎热",
+          "阳光照进这扇窗户且室外 24 °C 以上（或预报高温） → 遮阳装置降到开度 20 %",
+          "HA 太阳、天气、温度"
+        ],
+        oslepianie: [
+          "眩光",
+          "阳光照到窗户 → 遮阳装置下降，使阳光不超过房间内 3 m（例如到电视或书桌）",
+          "HA 太阳"
+        ],
+        pokoj: [
+          "房间过热",
+          "房间 25 °C 以上且阳光照到窗户 → 遮阳装置开度 20 %",
+          "房间温度计"
+        ],
+        zima: [
+          "冬季",
+          "11 月至 3 月有阳光时遮阳装置打开（免费取暖），夜间关闭（减少热量损失）",
+          "HA 太阳、日历"
+        ],
+        okno: [
+          "窗户和门打开",
+          "窗户内倒：遮阳装置不低于 20 %；窗户打开：不下降；阳台门打开：不低于 80 %",
+          "门窗传感器"
+        ],
+        przeszkoda: [
+          "障碍物",
+          "阳台门的障碍物传感器 → 遮阳装置不下降",
+          "障碍物传感器"
+        ],
+        granice: [
+          "行程限位和叶片",
+          "遮阳装置永远不会超出设定限位；叶片随太阳角度转动",
+          "–"
+        ]
+      },
+      sprawdz: "查看多件事同时发生时哪个优先",
+      przyklad: "示例：室外卷帘，朝南窗户，七月。使用与控制你窗户相同的逻辑计算。",
+      zaznacz: "勾选当前正在发生的情况：",
+      pora: "时间",
+      pory: {
+        rano: "早上 7:30",
+        dzien: "白天 14:00",
+        wieczor: "傍晚（日落后）",
+        noc: "夜间 23:00"
+      },
+      warunki: {
+        slonce: "阳光照进窗户",
+        upal: "炎热（30 °C）",
+        wiatr: "大风（60 km/h）",
+        deszcz: "雨",
+        okno: "窗户内倒",
+        dym: "烟雾探测器",
+        alarm: "警报已布防",
+        spie: "“睡眠中”已打开",
+        nikogo: "无人在家",
+        reka: "你手动移动了遮阳装置"
+      },
+      oslona: "遮阳装置：开度 {0} %",
+      stoi: "遮阳装置保持原位",
+      wygrywa: "优先：{0}",
+      nic: "不发生任何操作",
+      ogranicza: "打开的窗户限制：本应 {0} %，实际 {1} %。",
+      ogrStoi: "打开的窗户限制：本应 {0} %，遮阳装置不下降。",
+      kolejnosc: "当前勾选：",
+      stany: {
+        wygrywa: "优先",
+        ogranicza: "限制",
+        przegrywa: "被覆盖",
+        nie_dziala: "当前未生效"
+      },
+      istniejace: "也应用到我的窗户（{0}）：仪表板卡片、通知和场景",
+      stopka: "以后可以更改：侧边栏中的“Motor HA”面板或 设置 → 设备 → Motor HA。",
+      pozniej: "稍后",
+      zapisz: "保存",
+      zapiszDodaj: "保存并添加窗户",
+      zapisano: "已保存。",
+      blad: "未保存：",
+      zrobione: {
+        skroty: "快捷按钮已在仪表板上。",
+        dom: "“全屋”卡片已在仪表板上。",
+        karty: "窗户卡片已在仪表板上。",
+        okna: "窗户已应用新设置。",
+        blad: "部分未成功 – 详情见 HA 日志。"
+      }
+    },
+    panel: {
+      ustawienia: "设置",
+      historia: "历史",
+      powod: "原因",
+      brak: "还没有 Motor HA 窗户。",
+      dodaj: "添加窗户",
+      tytul: "Motor HA"
     }
   };
 
@@ -9071,9 +13201,452 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   var jezyk = (cfg, hass) => cfg?.jezyk && cfg.jezyk !== "auto" && TEKSTY[cfg.jezyk] ? cfg.jezyk : kodJezyka(hass?.locale?.language || hass?.language || navigator.language);
   var wstaw = (t, ...a) => String(t ?? "").replace(/\{(\d)\}/g, (_, i) => a[i] ?? "");
 
-  // src/urzadzenie.js
+  // src/klocki_przepisy.js
+  var P2 = (v, f, o = {}) => ({ v, f, ...o });
+  var PRZEPISY = {
+    pelna: P2("wew", "rol", { gora: "rol_rura", tk: "kas_tkanina", dol: "kas_listwa", przesw: 1 }),
+    kasetowa: P2("wew", "rol", { gora: "kas_kaseta", tk: "kas_tkanina", prow: "kas_prowadnica", dol: "kas_listwa", przesw: 1 }),
+    zebra: P2("wew", "rol", { gora: "kas_kaseta", tk: "kas_tkanina", dol: "rol_listwa", zebra: 1 }),
+    zaciemniajaca: P2("wew", "rol", { gora: "kas_kaseta", tk: "rol_blackout", prow: "rol_prow_u", dol: "kas_listwa" }),
+    roleta_zip_wew: P2("wew", "rol", { gora: "rol_kwadrat", tk: "kas_tkanina", prow: "rol_prow_zip", dol: "rol_listwa_ciezka", przesw: 1 }),
+    bambusowa: P2("wew", "rol", { gora: "rol_belka", tk: "rol_bambus", dol: "rol_belka", drewno: 1 }),
+    ekran: P2("wew", "rol", { gora: "kas_kaseta", tk: "kas_tkanina", dol: "rol_listwa", ekran: 1 }),
+    plisa: P2("wew", "har", { tk: "plisa" }),
+    plisa_gora_dol: P2("wew", "har", { tk: "plisa", gd: 1 }),
+    plaster: P2("wew", "har", { tk: "plaster" }),
+    rzymska: P2("wew", "rzym"),
+    zaluzja: P2("wew", "lam", { tk: "zal25", pak: "zal25_pak", szyna: "zal_szyna" }),
+    drewniana: P2("wew", "lam", { tk: "zal50", pak: "zal50_pak", szyna: "zal_szyna" }),
+    pionowa: P2("wew", "pion"),
+    panel: P2("wew", "pion", { panel: 1 }),
+    zaslona: P2("wew", "zas", { tk: "zas_tk" }),
+    zaslona_wave: P2("wew", "zas", { tk: "zas_wave" }),
+    firana: P2("wew", "zas", { tk: "zas_tk", firana: 1 }),
+    natynkowa: P2("zew", "rolz", { skrz: "nat" }),
+    natynkowa_okragla: P2("zew", "rolz", { skrz: "okr" }),
+    podtynkowa: P2("zew", "rolz", { skrz: "pod" }),
+    zewnetrzna: P2("zew", "rolz", { skrz: "nad" }),
+    adaptacyjna: P2("zew", "rolz", { skrz: "adapt" }),
+    perforowana: P2("zew", "rolz", { skrz: "nat", perf: 1 }),
+    roleta_moskitiera: P2("zew", "rolz", { skrz: "nat", siatka: 1 }),
+    ekstrudowana: P2("zew", "rolz", { skrz: "nat", pan: "pancerz_ext" }),
+    roleta_drzwi: P2("zew", "rolz", { skrz: "nat", pan: "pancerz_ext", drzwi: 1 }),
+    fasadowa: P2("zew", "fas", { tk: "c80", pak: "c80_pak" }),
+    fasadowaz: P2("zew", "fas", { tk: "z90", pak: "z90_pak" }),
+    fasadowa_f80: P2("zew", "fas", { tk: "f80", pak: "c80_pak" }),
+    screen: P2("zew", "scr", { prow: "rol_prow_zip" }),
+    markizoleta: P2("zew", "scr", { wysieg: 1 }),
+    screen_taras: P2("zew", "scr", { prow: "rol_prow_zip", drzwi: 1 }),
+    markiza_pionowa: P2("zew", "scr", { prow: "fas_prowadnica", mark: 1 }),
+    okiennice: P2("zew", "okien"),
+    okiennice_przesuwne: P2("zew", "okien", { przesuw: 1 }),
+    dach_dkl: P2("dach", "rol", { gora: "rol_kaseta_dach", tk: "rol_blackout", prow: "rol_prow_dach", dol: "rol_listwa_dach" }),
+    dach_fhb: P2("dach", "rzym", { prow: "rol_prow_dach" }),
+    dach_dn: P2("dach", "rol", { gora: "rol_kaseta_dach", tk: "kas_tkanina", prow: "rol_prow_dach", dol: "rol_listwa_dach", zebra: 1 }),
+    dach_pal: P2("dach", "lam", { tk: "zal25", pak: "zal25_pak", szyna: "rol_kaseta_dach", prow: "rol_prow_dach", dolL: "rol_listwa_dach" }),
+    dach_fhl: P2("dach", "har", { tk: "plisa", prow: "rol_prow_dach", dolL: "rol_listwa_dach" }),
+    dach_ssl: P2("dach", "zaSzyba", { pan: "nat_pancerz" }),
+    dachowa: P2("dach", "zaSzyba", { pan: "pancerz_ext" }),
+    dach_msl: P2("dach", "zaSzyba", { tk: "rol_screen" }),
+    markizeta_dach: P2("dach", "zaSzyba", { tk: "rol_screen", haki: 1 }),
+    markiza_otwarta: P2("zew", "mark", { gora: "mark_rura" }),
+    markiza: P2("zew", "mark", { gora: "mark_rura", daszek: 1 }),
+    markiza_polkasetowa: P2("zew", "mark", { gora: "mark_kaseta", polk: 1 }),
+    markiza_kasetowa: P2("zew", "mark", { gora: "mark_kaseta" }),
+    markiza_volant: P2("zew", "mark", { gora: "mark_rura", volant: 1 }),
+    markiza_koszowa: P2("zew", "kosz"),
+    markiza_wolnostojaca: P2("zew", "mark", { gora: "mark_rura", slupy: 1 }),
+    markiza_zimowa: P2("zew", "mark", { gora: "mark_kaseta", ogrod: 1 }),
+    markizeta: P2("zew", "mark", { gora: "mark_kaseta", markizeta: 1 }),
+    markiza_balkonowa: P2("zew", "mark", { gora: "mark_rura", slupy: 2 }),
+    markiza_boczna: P2("zew", "bok"),
+    zagiel: P2("zew", "zagiel"),
+    parasol: P2("zew", "parasol"),
+    pergola: P2("zew", "pergola", { lam: 1 }),
+    pergola_tkanina: P2("zew", "pergola"),
+    zadaszenie: P2("zew", "zadaszenie"),
+    okno_silownik: P2("wew", "okno"),
+    okno_dachowe: P2("dach", "okno", { srodek: 1 }),
+    okno_plaskie: P2("sufit", "okno", { sufit: 1 }),
+    swietlik: P2("sufit", "okno", { sufit: 1, kopula: 1 }),
+    wylaz: P2("sufit", "okno", { sufit: 1, bok: 1 }),
+    moskitiera: P2("zew", "scr", { siatka: 1, prow: "kas_prowadnica", gora: "kas_kaseta" }),
+    moskitiera_plisa_okno: P2("zew", "mplisa"),
+    moskitiera_drzwi: P2("zew", "mplisa", { bok: 1, drzwi: 1 }),
+    moskitiera_zip_drzwi: P2("zew", "scr", { siatka: 1, prow: "rol_prow_zip", gora: "rol_kwadrat", drzwi: 1 })
+  };
+  var przepis = (t) => PRZEPISY[t] || PRZEPISY.pelna;
+  var MIEJSCE = {
+    rolz: [0.29, 0.06, 0.04],
+    fas: [0.19, 0.06, 0.03],
+    scr: [0.24, 0.06, 0.03],
+    mplisa: [0.08, 0.04, 0.03],
+    zas: [0.26, 0.36, 0.34],
+    pion: [0.12, 0.12, 0.2],
+    mark: [0.62, 0.2, 0.05],
+    kosz: [0.5, 0.25, 0.05],
+    bok: [0.32, 0.58, 0.3],
+    zagiel: [0.55, 0.4, 0.05],
+    parasol: [0.5, 0.35, 0.05],
+    pergola: [0.58, 0.28, 0.05],
+    zadaszenie: [0.3, 0.22, 0.05]
+  };
+  function miejsce(typ, W3) {
+    const p = przepis(typ);
+    if (p.f === "okien") return [0.1, W3 / 2 + 0.05, 0.04];
+    const m = MIEJSCE[p.f] || [0, 0, 0];
+    return p.slupy ? [m[0], 0.3, m[2]] : m;
+  }
+
+  // src/okno3d_uklad.js
+  var RAMA = 0.07;
+  function polaNaObrazku(pola, W3, H2, m = 0) {
+    const iW = W3 - 2 * RAMA, iH = H2 - 2 * RAMA, s = 1 - 2 * m;
+    return pola.map(([x, y, w, h]) => [m + s * (RAMA + x * iW) / W3, m + s * (RAMA + y * iH) / H2, s * w * iW / W3, s * h * iH / H2]);
+  }
+  var wymiary = (proporcja2) => ({ W: +(1.5 * proporcja2).toFixed(3), H: 1.5 });
+  var NA_BOKI = ["pionowa", "panel", "zaslona", "zaslona_wave", "firana", "okiennice", "okiennice_przesuwne", "markiza_boczna"];
+  var gl3 = null;
+  var moze3d = () => {
+    if (gl3 === null) try {
+      gl3 = !!document.createElement("canvas").getContext("2d");
+    } catch (e) {
+      gl3 = false;
+    }
+    return gl3;
+  };
+  var mod = null;
+  var okno3d = (wersja) => mod || (mod = import(`/motor_ha/okno2d.js?v=${wersja}`));
+  function marginesDla(typy, W3, H2, min = 0) {
+    let m = min;
+    for (const t of typy) {
+      const [g, b, d] = miejsce(t, W3), v = Math.max(g, d);
+      m = Math.max(m, v / (H2 + 2 * v), b / (W3 + 2 * b));
+    }
+    return +Math.min(0.3, m).toFixed(4);
+  }
+  var JASNOSC = { dzien: 1, zloto: 0.85, swit: 0.8, zmierzch: 0.55, noc: 0.3 };
+  var proporcja = (pola) => {
+    const kol = new Set(pola.map((p) => +(+p[0]).toFixed(3))).size, rz = new Set(pola.map((p) => +(+p[1]).toFixed(3))).size;
+    return Math.max(0.6, Math.min(2.4, (kol === 1 ? 0.78 : kol === 2 ? 1.12 : 0.55 * kol) * (rz > 2 ? 0.85 : 1)));
+  };
+
+  // src/ekran.js
   var esc = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var IK = {
+    karta: "M3 3h8v8H3V3m10 0h8v5h-8V3M3 13h8v8H3v-8m10-3h8v11h-8V10Z",
+    dom: "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z",
+    skroty: "M13 3 4 14h7l-1 7 9-11h-7l1-7Z",
+    pasek: "M4 4h16v2H4V4m0 4h10v2H4V8m0 4h16v2H4v-2m0 4h10v2H4v-2Z",
+    assist: "M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3m7 9c0 3.5-2.6 6.4-6 6.9V21h-2v-3.1c-3.4-.5-6-3.4-6-6.9h2a5 5 0 0 0 10 0h2Z",
+    ukryj: "M2 4.27 3.27 3 21 20.73 19.73 22l-3.35-3.35c-1.35.54-2.83.85-4.38.85-5 0-9.27-3.11-11-7.5a11.9 11.9 0 0 1 3.73-5L2 4.27M12 7a5 5 0 0 1 4.64 6.82l2.93 2.93A11.9 11.9 0 0 0 23 12c-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-4 .7L10.17 7.4C10.74 7.13 11.35 7 12 7Z",
+    powiadom: "M21 19v1H3v-1l2-2v-6c0-3.1 2-5.8 5-6.7V4a2 2 0 0 1 4 0v.3c3 .9 5 3.6 5 6.7v6l2 2m-7 2a2 2 0 0 1-4 0",
+    auto: "M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0-5 2.4 3.3L12 5 9.6 5.3 12 2M2 12l3.3-2.4L5 12l.3 2.4L2 12m20 0-3.3 2.4.3-2.4-.3-2.4L22 12",
+    nowa_wersja: "M12 4V1L8 5l4 4V6a6 6 0 0 1 6 6c0 1-.25 1.97-.7 2.8l1.46 1.46A7.9 7.9 0 0 0 20 12a8 8 0 0 0-8-8m0 14a6 6 0 0 1-6-6c0-1 .25-1.97.7-2.8L5.24 7.74A7.9 7.9 0 0 0 4 12a8 8 0 0 0 8 8v3l4-4-4-4v3Z"
+  };
+  var OPCJE = ["karta", "dom", "skroty", "pasek", "assist", "ukryj", "powiadom", "auto", "nowa_wersja"];
+  var TRYB = { pelny: (k) => !["dom", "ukryj"].includes(k), samo: (k) => ["assist", "nowa_wersja"].includes(k) };
+  var WARUNKI = ["slonce", "upal", "wiatr", "deszcz", "okno", "dym", "alarm", "spie", "nikogo", "reka"];
+  var LOGO = "/motor_ha/ikona.png";
   var STYL = `
+:host{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:rgba(0,0,0,.45);font-family:var(--ha-font-family-body,Roboto,Noto,sans-serif);
+ --k:var(--card-background-color,#fff);--k2:var(--secondary-background-color,#f2f4f5);--t:var(--primary-text-color,#212121);--d:var(--secondary-text-color,#727272);
+ --g:var(--primary-color,#009ac7);--a:var(--accent-color,#ff9800);--l:var(--divider-color,#e0e0e0);--w:var(--disabled-color,#bdbdbd)}
+*{box-sizing:border-box}
+.dlg{background:var(--k);color:var(--t);border-radius:var(--ha-dialog-border-radius,24px);width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 48px);display:flex;flex-direction:column;box-shadow:0 8px 28px rgba(0,0,0,.28);overflow:hidden}
+@media (max-width:600px){.dlg{width:100vw;max-height:100vh;height:100%;border-radius:0}}
+header{display:flex;gap:14px;align-items:center;padding:20px 22px 8px}
+header img{width:52px;height:52px;border-radius:12px}
+h2{font-size:var(--ha-font-size-xl,20px);font-weight:var(--ha-font-weight-normal,400);margin:0}
+.wer{font-size:13px;color:var(--d)}
+.x{margin-left:auto;border:0;background:none;color:var(--d);width:40px;height:40px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.x svg{width:24px;height:24px;fill:currentColor}
+.tresc{padding:6px 22px 8px;display:grid;gap:12px;overflow:auto;flex:1}
+.nowe{background:var(--k2);border-radius:12px;padding:10px 14px}
+.nowe b,.tyt{font-weight:500}
+.nowe ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+.opcja2{display:grid;background:var(--k2);border-radius:12px}
+.opcja{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;padding:10px 12px;cursor:pointer}
+.ik{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--g) 16%,transparent);color:var(--g)}
+.ik svg{width:22px;height:22px;fill:currentColor}
+.opcja b{display:block;font-weight:500;font-size:15px}
+.opcja span span{display:block;font-size:13px;color:var(--d)}
+.tg{position:relative;width:46px;height:26px;flex:none}
+.tg input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.tg i{position:absolute;inset:0;border-radius:13px;background:var(--w);transition:background .15s}
+.tg i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
+.tg input:checked+i{background:var(--g)}.tg input:checked+i::after{transform:translateX(20px)}
+.tg input:focus-visible+i,button:focus-visible,select:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+.jak{margin:0;padding:0 12px 10px 64px;font-size:13px}.jak b{font-weight:500;color:var(--g)}.jak.wyl b{color:var(--d)}
+.pod{padding:0 12px 12px 64px;display:grid;gap:8px}
+@media (max-width:520px){.pod,.jak{padding-left:12px}}
+.siatka2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+label.p{display:grid;gap:3px;font-size:12.5px;color:var(--d)}
+select{font-size:14px;font-family:inherit;padding:7px 8px;border-radius:8px;border:1px solid var(--l);background:var(--k);color:var(--t);width:100%}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:var(--k);border:1px solid var(--l);border-radius:10px;padding:8px}
+.mini .h{grid-column:1/-1;font-size:11.5px;color:var(--d);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.mini .c{height:30px;border-radius:6px;background:var(--l)}
+.mini .c.nowa{background:var(--a);color:#fff;font-size:11px;display:grid;place-items:center;font-weight:500}
+.podpis{font-size:13px;color:var(--d);margin:0}
+.rzadek{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px}
+.rzadek label{display:flex;gap:6px;align-items:center}
+.chip{font-size:13px;padding:5px 10px;border-radius:14px;background:var(--k);border:1px solid var(--l)}
+.tryby{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.tryby button{font:inherit;text-align:left;padding:10px 12px;border-radius:12px;border:2px solid var(--l);background:var(--k2);color:var(--t);cursor:pointer;display:grid;gap:2px}
+.tryby button b{font-weight:500}.tryby button span{font-size:12.5px;color:var(--d)}
+.tryby button[aria-checked="true"]{border-color:var(--g)}
+.reg{display:grid;gap:6px}
+.reg label{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;background:var(--k);border:1px solid var(--l);border-radius:10px;padding:8px 10px;font-size:13.5px}
+.reg label span span{display:block;font-size:12.5px;color:var(--d)}
+.reg em{font-style:normal;font-size:12px;color:var(--g);display:block}
+details{background:var(--k);border:1px solid var(--l);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer}
+.symA{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:8px}
+@media (max-width:520px){.symA{grid-template-columns:1fr}}
+.symL,.symP{display:grid;gap:6px;align-content:start}
+.war{display:grid;gap:4px;font-size:13.5px}.war label{display:flex;gap:6px;align-items:center}
+.oknoS{position:relative;width:100%;aspect-ratio:1.4/1}
+.werdykt{font-size:14px;background:var(--k2);border-radius:8px;padding:8px 10px}.werdykt b{color:var(--g)}
+.kolej{margin:6px 0 0;padding-left:0;list-style:none;display:grid;gap:3px;font-size:13px;color:var(--d)}
+.kolej li span{font-size:12px;margin-left:6px;padding:1px 7px;border-radius:9px;background:var(--w);color:#fff}
+.kolej li.wygrywa{color:var(--t);font-weight:500}.kolej li.wygrywa span{background:var(--a)}
+.kolej li.ogranicza{color:var(--t)}.kolej li.ogranicza span{background:var(--g)}
+.ist{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;background:color-mix(in srgb,var(--a) 12%,transparent);border-radius:12px;padding:10px 12px}
+footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 22px 18px;flex-wrap:wrap;border-top:1px solid var(--l)}
+footer .maly{font-size:12.5px;color:var(--d);flex:1 1 220px}
+.przyc{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font-size:14px;font-weight:500;font-family:inherit;padding:10px 20px;border-radius:20px;border:0;background:var(--g);color:var(--text-primary-color,#fff);cursor:pointer}
+.btn.txt{background:none;color:var(--g);padding:10px 12px}
+.btn:disabled{opacity:.6;cursor:default}
+.wynik{font-size:13.5px;color:var(--g)}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}`;
+  var MotorHaEkran = class extends HTMLElement {
+    set hass(h) {
+      this._hass = h;
+    }
+    get hass() {
+      return this._hass;
+    }
+    async otworz(dane) {
+      this.dane = dane;
+      const h = this._hass, T2 = TEKSTY[jezyk({}, h)], E = this.E = T2.ekran;
+      const u3 = this.u = { ...dane.ustawienia };
+      const root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      const opcja = (k, pod = "") => `<div class="opcja2"><label class="opcja"><span class="ik"><svg viewBox="0 0 24 24"><path d="${IK[k]}"/></svg></span>
+      <span><b>${esc(E.opcje[k][0])}</b><span>${esc(E.opcje[k][1])}</span></span><span class="tg"><input type="checkbox" data-o="${k}" ${u3[k] ? "checked" : ""}><i></i></span></label>
+      <p class="jak" data-jak="${k}"></p>${pod ? `<div class="pod" data-dla="${k}">${pod}</div>` : ""}</div>`;
+      const panele = dane.panele.map((p) => `<option value="${esc(p.klucz)}" ${p.klucz === u3.panel ? "selected" : ""}>${esc(p.nazwa)}</option>`).join("");
+      const karta = dane.panele.length ? `<div class="siatka2">
+        <label class="p">${esc(E.panel)}<select id="panel">${panele}</select></label>
+        <label class="p">${esc(E.widok)}<select id="widok"></select></label>
+        <label class="p" style="grid-column:1/-1">${esc(E.miejsce)}<select id="miejsce">${Object.entries(E.miejsca).map(([k, n]) => `<option value="${k}" ${k === u3.miejsce ? "selected" : ""}>${esc(n)}${k === "sekcja" ? ` (${esc(E.proponowane)})` : ""}</option>`).join("")}</select></label>
+      </div><div class="mini" id="mini" aria-hidden="true"></div><p class="podpis" id="miniOpis"></p>` : `<p class="podpis">${esc(E.brakPanelu)}</p>`;
+      const skroty = `<div class="rzadek">${E.skroty.map((s) => `<span class="chip">${esc(s)}</span>`).join("")}</div><p class="podpis">${esc(E.skrotyOpis)}</p>`;
+      const powiadom = `<div class="rzadek"><label><input type="checkbox" data-o="telefon" ${u3.telefon ? "checked" : ""}> ${esc(E.telefon)}</label></div>
+      <p class="podpis">${esc(dane.telefony ? E.wHa : E.brakTelefonu)}</p>`;
+      const auto = `<p class="podpis">${esc(E.scenOpis)}</p>
+      <div class="reg">${dane.scenariusze.map((k, i) => `<label><input type="checkbox" data-s="${k}" ${u3.scenariusze.includes(k) ? "checked" : ""}><span><b>${i + 1}. ${esc(E.scen[k][0])}</b><span>${esc(E.scen[k][1])}</span><em>${esc(E.skad)}: ${esc(E.scen[k][2])}</em></span></label>`).join("")}</div>
+      <details><summary><b>${esc(E.sprawdz)}</b></summary><p class="podpis" style="margin-top:6px">${esc(E.przyklad)}</p>
+      <div class="symA"><div class="symL"><div class="podpis">${esc(E.zaznacz)}</div>
+        <label class="p">${esc(E.pora)}<select id="pora">${Object.entries(E.pory).map(([k, n]) => `<option value="${k}" ${k === "dzien" ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>
+        <div class="war" id="war">${WARUNKI.map((k) => `<label><input type="checkbox" data-w="${k}" ${["slonce", "upal", "okno"].includes(k) ? "checked" : ""}> ${esc(E.warunki[k])}</label>`).join("")}</div></div>
+      <div class="symP"><div class="oknoS" id="oknoS"></div><div class="werdykt" id="werdykt" aria-live="polite"></div></div></div>
+      <ul class="kolej" id="kolej"></ul></details>`;
+      root.innerHTML = `<style>${STYL}</style><div class="dlg" role="dialog" aria-modal="true" aria-labelledby="tyt">
+      <header><img src="${LOGO}" alt=""><div><h2 id="tyt">${esc(dane.pierwszy ? E.witaj : E.nowaWersja)}</h2><div class="wer">${esc(wstaw(E.wersja, dane.wersja))}</div></div>
+        <button class="x" id="x" aria-label="${esc(E.pozniej)}"><svg viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></button></header>
+      <div class="tresc">
+        <div class="nowe"><b>${esc(wstaw(E.coNowego, dane.wersja))}</b><ul>${E.nowe.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>
+        <div class="tyt">${esc(E.jak)}</div>
+        <div class="tryby" role="radiogroup" id="tryb">${Object.entries(E.tryby).map(([k, [n, o]]) => `<button role="radio" aria-checked="${u3.tryb === k}" data-t="${k}"><b>${esc(n)}</b><span>${esc(o)}</span></button>`).join("")}</div>
+        <div class="tyt">${esc(E.co)}</div>
+        ${opcja("karta", karta)}${opcja("dom")}${opcja("skroty", skroty)}${opcja("pasek")}${opcja("assist")}${opcja("ukryj")}${opcja("powiadom", powiadom)}${opcja("auto", auto)}${opcja("nowa_wersja")}
+        ${dane.okna ? `<label class="ist"><input type="checkbox" id="ist"> <span>${esc(wstaw(E.istniejace, dane.okna))}</span></label>` : ""}
+      </div>
+      <footer><span class="maly" id="stopka">${esc(E.stopka)}</span>
+        <div class="przyc"><button class="btn txt" id="pozniej">${esc(E.pozniej)}</button>
+        <button class="btn" id="zapisz">${esc(dane.okna ? E.zapisz : E.zapiszDodaj)}</button></div></footer></div>`;
+      const $ = (s) => root.querySelector(s);
+      this.$ = $;
+      $("#x").onclick = $("#pozniej").onclick = () => this.zamknij(true);
+      this.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") this.zamknij(true);
+      });
+      $("#tryb").onclick = (e) => {
+        const b = e.target.closest("button");
+        if (!b) return;
+        const t = b.dataset.t;
+        this._tryb(t);
+        if (TRYB[t]) root.querySelectorAll(".opcja input[data-o]").forEach((i) => {
+          i.checked = TRYB[t](i.dataset.o);
+        });
+        this._pokaz();
+      };
+      root.querySelectorAll(".opcja input[data-o]").forEach((i) => i.addEventListener("change", () => {
+        this._tryb("wlasny");
+        this._pokaz();
+      }));
+      if ($("#panel")) {
+        $("#panel").onchange = () => {
+          this._widoki();
+          this._mini();
+        };
+        $("#widok").onchange = $("#miejsce").onchange = () => this._mini();
+        this._widoki();
+      }
+      root.addEventListener("change", (e) => {
+        if (e.target.closest("#war,.reg") || e.target.id === "pora") this._licz();
+      });
+      $("#zapisz").onclick = () => this.zapisz();
+      this._pokaz();
+      this._licz();
+      $("#zapisz").focus();
+    }
+    _tryb(t) {
+      this.$("#tryb").querySelectorAll("button").forEach((x) => x.setAttribute("aria-checked", x.dataset.t === t));
+    }
+    _pokaz() {
+      const r = this.shadowRoot, E = this.E;
+      for (const k of OPCJE) {
+        const on = r.querySelector(`input[data-o="${k}"]`).checked, j = r.querySelector(`[data-jak="${k}"]`);
+        j.innerHTML = `<b>${esc(on ? E.jakDziala : E.gdyWyl)}:</b> ${esc(E.opisy[k][on ? 0 : 1])}`;
+        j.classList.toggle("wyl", !on);
+        r.querySelector(`[data-dla="${k}"]`)?.toggleAttribute("hidden", !on);
+      }
+      if (!r.querySelector('input[data-o="karta"]').checked) r.querySelector('[data-dla="skroty"]')?.setAttribute("hidden", "");
+    }
+    _widoki() {
+      const p = this.dane.panele.find((x) => x.klucz === this.$("#panel").value), E = this.E;
+      const w = (p?.widoki || []).map((n, i) => `<option value="${i}">${esc(n)}${i === 0 ? ` (${esc(E.proponowane)})` : ""}</option>`);
+      this.$("#widok").innerHTML = w.join("") + `<option value="nowy">${esc(E.nowyWidok)}</option>`;
+      const u3 = this.u.widok;
+      this.$("#widok").value = p?.klucz === this.dane.ustawienia.panel && (u3 === "nowy" || +u3 < w.length) ? String(u3) : w.length ? "0" : "nowy";
+      this._mini();
+    }
+    _mini() {
+      const E = this.E, m = this.$("#miejsce").value, wid = this.$("#widok").value;
+      const p = this.$("#panel").selectedOptions[0]?.textContent || "", vs = this.$("#widok").selectedOptions[0]?.textContent || "";
+      const c = (n) => '<div class="c"></div>'.repeat(n), N = `<div class="c nowa">${esc(E.oknoMini)}</div>`;
+      const nazwa2 = wid === "nowy" ? E.nowyWidok : `${p} · ${vs.replace(/ \(.*\)$/, "")}`;
+      this.$("#mini").innerHTML = m === "gora" ? `<div class="h">Motor HA</div>${N}${c(2)}<div class="h">${esc(nazwa2)}</div>${c(3)}` : m === "pokoj" ? `<div class="h">${esc(E.salon)}</div>${c(2)}${N}<div class="h">${esc(E.kuchnia)}</div>${c(3)}` : `<div class="h">${esc(nazwa2)}</div>${wid === "nowy" ? "" : c(5)}<div class="h">Motor HA</div>${N}`;
+      this.$("#miniOpis").textContent = E.miniOpis[m] + (wid === "nowy" ? " " + E.miniNowy : "");
+    }
+    _zbierz() {
+      const r = this.shadowRoot, u3 = { ...this.u };
+      r.querySelectorAll("input[data-o]").forEach((i) => {
+        u3[i.dataset.o] = i.checked;
+      });
+      u3.tryb = r.querySelector('#tryb [aria-checked="true"]')?.dataset.t || "wlasny";
+      u3.scenariusze = [...r.querySelectorAll("input[data-s]")].filter((i) => i.checked).map((i) => i.dataset.s);
+      if (this.$("#panel")) {
+        u3.panel = this.$("#panel").value;
+        u3.miejsce = this.$("#miejsce").value;
+        u3.widok = this.$("#widok").value === "nowy" ? "nowy" : +this.$("#widok").value;
+      }
+      delete u3.widziana;
+      return u3;
+    }
+    async _licz() {
+      const r = this.shadowRoot, E = this.E;
+      const warunki = [...r.querySelectorAll("#war input")].filter((i) => i.checked).map((i) => i.dataset.w);
+      const scenariusze = [...r.querySelectorAll("input[data-s]")].filter((i) => i.checked).map((i) => i.dataset.s);
+      const nr2 = this._nr = (this._nr || 0) + 1;
+      let w;
+      try {
+        w = await this._hass.callWS({ type: "motor_ha/symuluj", pora: this.$("#pora").value, warunki, scenariusze });
+      } catch (e) {
+        return;
+      }
+      if (nr2 !== this._nr) return;
+      const poz = w.poz ?? (w.baza_poz ?? 100);
+      const glowny = w.baza ? w.baza_nazwa : w.powod_nazwa;
+      let t = `<b>${esc(w.poz === null ? E.stoi : wstaw(E.oslona, w.poz))}</b><br>${esc(wstaw(E.wygrywa, ["brak", "harm_dzien"].includes(w.baza || w.powod) && !warunki.length ? E.nic : glowny))}`;
+      if (w.baza) t += `<br>${esc(w.poz === null ? wstaw(E.ogrStoi, w.baza_poz) : wstaw(E.ogranicza, w.baza_poz, w.poz))}`;
+      this.$("#werdykt").innerHTML = t;
+      this.$("#kolej").innerHTML = `<li class="podpis">${esc(E.kolejnosc)}</li>` + w.lista.map((x) => `<li class="${x.stan}">${esc(E.warunki[x.warunek])}<span>${esc(E.stany[x.stan])}</span></li>`).join("");
+      try {
+        const m = await okno3d(WERSJA), host = this.$("#oknoS");
+        const cfg = {
+          pola: [[0, 0, 0.5, 1], [0.5, 0, 0.5, 1]],
+          typy: ["natynkowa", "natynkowa"],
+          kolory: ["#3b3f45", "#3b3f45"],
+          rama: "#f4f4f2",
+          W: 1.68,
+          H: 1.5,
+          margines: marginesDla(["natynkowa"], 1.68, 1.5, 0.04),
+          sciana: null,
+          pozycje: [poz, poz]
+        };
+        if (this._ok) this._ok.ustaw(cfg);
+        else this._ok = new m.Okno3D(host, cfg);
+      } catch (e) {
+      }
+    }
+    async zapisz() {
+      const E = this.E, b = this.$("#zapisz"), u3 = this._zbierz();
+      b.disabled = true;
+      try {
+        const w = await this._hass.callWS({ type: "motor_ha/ustawienia/zapisz", ustawienia: u3, istniejace: !!this.$("#ist")?.checked });
+        this.$("#stopka").className = "wynik";
+        this.$("#stopka").textContent = [E.zapisano, ...w.zrobione.map((z) => E.zrobione[z]).filter(Boolean)].join(" ");
+        setTimeout(() => {
+          this.zamknij(false);
+          if (!this.dane.okna && !okienkoHa()) {
+            history.pushState(null, "", "/config/integrations/dashboard/add?domain=motor_ha");
+            window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
+          }
+        }, 1800);
+      } catch (e) {
+        b.disabled = false;
+        this.$("#stopka").textContent = `${E.blad} ${e?.message || ""}`;
+      }
+    }
+    zamknij(pozniej) {
+      if (pozniej) try {
+        sessionStorage.setItem("motorHaEkranPozniej", WERSJA);
+      } catch (e) {
+      }
+      this._ok?.zniszcz?.();
+      this.remove();
+    }
+  };
+  async function otworzEkran(h, sam = false) {
+    if (!h?.user?.is_admin || document.querySelector("motor-ha-ekran") || !customElements.get("motor-ha-ekran")) return false;
+    const dane = await h.callWS({ type: "motor_ha/ustawienia" });
+    if (sam && !dane.pokaz) return false;
+    const e = document.createElement("motor-ha-ekran");
+    e.hass = h;
+    document.body.appendChild(e);
+    await e.otworz(dane);
+    return true;
+  }
+  var okienkoHa = () => {
+    const d = document.querySelector("home-assistant")?.shadowRoot?.querySelector("dialog-data-entry-flow");
+    return !!(d && (d._params || d.shadowRoot?.querySelector("[open]")));
+  };
+  var sprawdzone = false;
+  var spokoj = 0;
+  function pilnujEkranu() {
+    if (sprawdzone || window.frameElement || location.pathname.startsWith("/motor-ha-start")) return;
+    spokoj = okienkoHa() ? 0 : spokoj + 1;
+    if (spokoj < 3) return;
+    const h = document.querySelector("home-assistant")?.hass;
+    if (!h?.user || !h.connection) return;
+    sprawdzone = true;
+    if (!h.user.is_admin) return;
+    try {
+      if (sessionStorage.getItem("motorHaEkranPozniej") === WERSJA) return;
+    } catch (e) {
+    }
+    otworzEkran(h, true).catch(() => {
+      sprawdzone = false;
+    });
+  }
+
+  // src/urzadzenie.js
+  var esc2 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var STYL2 = `
 :host{display:block;margin-bottom:var(--ha-space-4,16px)}
 [hidden]{display:none!important}
 .ramka{background:var(--ha-card-background,var(--card-background-color));border-radius:var(--ha-card-border-radius,12px);
@@ -9122,10 +13695,10 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       const T2 = TEKSTY[jezyk({}, h)], U = T2.urzadzenie, root = this.shadowRoot || this.attachShadow({ mode: "open" });
       if (!this._zbudowane) {
         this._zbudowane = true;
-        root.innerHTML = `<style>${STYL}</style><div class="ramka"><div class="karta"></div>
-        <div class="stopka"><button class="link dodaj">${esc(U.dodaj)}</button>${c.wpis ? `<button class="link zmien">⚙ ${esc(U.zmien)}</button>` : ""}
+        root.innerHTML = `<style>${STYL2}</style><div class="ramka"><div class="karta"></div>
+        <div class="stopka"><button class="link dodaj">${esc2(U.dodaj)}</button>${c.wpis ? `<button class="link zmien">⚙ ${esc2(U.zmien)}</button>` : ""}${c.dom && h.user?.is_admin ? `<button class="link ekran">⚙ ${esc2(U.ustawienia)}</button>` : ""}
         <div class="panele" hidden></div><div class="info" hidden></div></div>
-        ${c.entity ? `<div class="ust" style="border-top:1px solid var(--divider-color)"><h2>${esc(U.ustawienia)}</h2><div class="wiersze"></div></div>` : ""}</div>`;
+        ${c.entity ? `<div class="ust" style="border-top:1px solid var(--divider-color)"><h2>${esc2(U.ustawienia)}</h2><div class="wiersze"></div></div>` : ""}</div>`;
         const karta = document.createElement(c.entity ? "motor-ha" : "motor-ha-dom");
         karta.bezEdycji = true;
         karta.setConfig(c.entity ? { type: "custom:motor-ha", entity: c.entity } : { type: "custom:motor-ha-dom" });
@@ -9133,6 +13706,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
         this._karta = karta;
         root.querySelector(".dodaj").addEventListener("click", () => this._panele());
         root.querySelector(".zmien")?.addEventListener("click", () => konfiguruj(c.wpis));
+        root.querySelector(".ekran")?.addEventListener("click", () => otworzEkran(this._hass));
       }
       this._karta.hass = h;
       if (c.entity) {
@@ -9145,7 +13719,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
           const lista = root.querySelector(".wiersze");
           lista.innerHTML = wiersze.map(([a, b, cel], i) => {
             const dziala = cel.encja || c.wpis;
-            return `<div class="wiersz${dziala ? " klik" : ""}" ${dziala ? `role="button" tabindex="0" data-i="${i}"` : ""}><span>${esc(a)}</span><span>${esc(b)}</span></div>`;
+            return `<div class="wiersz${dziala ? " klik" : ""}" ${dziala ? `role="button" tabindex="0" data-i="${i}"` : ""}><span>${esc2(a)}</span><span>${esc2(b)}</span></div>`;
           }).join("");
           lista.querySelectorAll(".klik").forEach((el) => {
             const idz2 = () => this._edytuj(wiersze[+el.dataset.i][2]);
@@ -9198,7 +13772,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
           info.hidden = false;
           return;
         }
-        pole.innerHTML = `<div class="pyt">${esc(U.ktory)}</div>` + lista.map((p) => `<button data-k="${esc(p.klucz)}">${esc(p.nazwa)}</button>`).join("");
+        pole.innerHTML = `<div class="pyt">${esc2(U.ktory)}</div>` + lista.map((p) => `<button data-k="${esc2(p.klucz)}">${esc2(p.nazwa)}</button>`).join("");
         pole.hidden = false;
         pole.querySelectorAll("button").forEach((b) => b.addEventListener("click", async () => {
           try {
@@ -9380,136 +13954,6 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     return `<img class="ftki" data-przek="${typ}" data-kol="${kolor}" src="${zKolorem(typ, kolor) || src}" alt="" draggable="false" style="width:calc(${W3} * ${n(1 / bw)});height:calc(${H2} * ${n(1 / bh)});left:calc((100cqw - ${W3}) / 2 - ${W3} * ${n(bx / bw)});top:calc((100cqh - ${H2}) / 2 - ${H2} * ${n(by / bh)});-webkit-mask-image:${mk};mask-image:${mk}">`;
   }
 
-  // src/klocki_przepisy.js
-  var P2 = (v, f, o = {}) => ({ v, f, ...o });
-  var PRZEPISY = {
-    pelna: P2("wew", "rol", { gora: "rol_rura", tk: "kas_tkanina", dol: "kas_listwa", przesw: 1 }),
-    kasetowa: P2("wew", "rol", { gora: "kas_kaseta", tk: "kas_tkanina", prow: "kas_prowadnica", dol: "kas_listwa", przesw: 1 }),
-    zebra: P2("wew", "rol", { gora: "kas_kaseta", tk: "kas_tkanina", dol: "rol_listwa", zebra: 1 }),
-    zaciemniajaca: P2("wew", "rol", { gora: "kas_kaseta", tk: "rol_blackout", prow: "rol_prow_u", dol: "kas_listwa" }),
-    roleta_zip_wew: P2("wew", "rol", { gora: "rol_kwadrat", tk: "kas_tkanina", prow: "rol_prow_zip", dol: "rol_listwa_ciezka", przesw: 1 }),
-    bambusowa: P2("wew", "rol", { gora: "rol_belka", tk: "rol_bambus", dol: "rol_belka", drewno: 1 }),
-    ekran: P2("wew", "rol", { gora: "kas_kaseta", tk: "kas_tkanina", dol: "rol_listwa", ekran: 1 }),
-    plisa: P2("wew", "har", { tk: "plisa" }),
-    plisa_gora_dol: P2("wew", "har", { tk: "plisa", gd: 1 }),
-    plaster: P2("wew", "har", { tk: "plaster" }),
-    rzymska: P2("wew", "rzym"),
-    zaluzja: P2("wew", "lam", { tk: "zal25", pak: "zal25_pak", szyna: "zal_szyna" }),
-    drewniana: P2("wew", "lam", { tk: "zal50", pak: "zal50_pak", szyna: "zal_szyna" }),
-    pionowa: P2("wew", "pion"),
-    panel: P2("wew", "pion", { panel: 1 }),
-    zaslona: P2("wew", "zas", { tk: "zas_tk" }),
-    zaslona_wave: P2("wew", "zas", { tk: "zas_wave" }),
-    firana: P2("wew", "zas", { tk: "zas_tk", firana: 1 }),
-    natynkowa: P2("zew", "rolz", { skrz: "nat" }),
-    natynkowa_okragla: P2("zew", "rolz", { skrz: "okr" }),
-    podtynkowa: P2("zew", "rolz", { skrz: "pod" }),
-    zewnetrzna: P2("zew", "rolz", { skrz: "nad" }),
-    adaptacyjna: P2("zew", "rolz", { skrz: "adapt" }),
-    perforowana: P2("zew", "rolz", { skrz: "nat", perf: 1 }),
-    roleta_moskitiera: P2("zew", "rolz", { skrz: "nat", siatka: 1 }),
-    ekstrudowana: P2("zew", "rolz", { skrz: "nat", pan: "pancerz_ext" }),
-    roleta_drzwi: P2("zew", "rolz", { skrz: "nat", pan: "pancerz_ext", drzwi: 1 }),
-    fasadowa: P2("zew", "fas", { tk: "c80", pak: "c80_pak" }),
-    fasadowaz: P2("zew", "fas", { tk: "z90", pak: "z90_pak" }),
-    fasadowa_f80: P2("zew", "fas", { tk: "f80", pak: "c80_pak" }),
-    screen: P2("zew", "scr", { prow: "rol_prow_zip" }),
-    markizoleta: P2("zew", "scr", { wysieg: 1 }),
-    screen_taras: P2("zew", "scr", { prow: "rol_prow_zip", drzwi: 1 }),
-    markiza_pionowa: P2("zew", "scr", { prow: "fas_prowadnica", mark: 1 }),
-    okiennice: P2("zew", "okien"),
-    okiennice_przesuwne: P2("zew", "okien", { przesuw: 1 }),
-    dach_dkl: P2("dach", "rol", { gora: "rol_kaseta_dach", tk: "rol_blackout", prow: "rol_prow_dach", dol: "rol_listwa_dach" }),
-    dach_fhb: P2("dach", "rzym", { prow: "rol_prow_dach" }),
-    dach_dn: P2("dach", "rol", { gora: "rol_kaseta_dach", tk: "kas_tkanina", prow: "rol_prow_dach", dol: "rol_listwa_dach", zebra: 1 }),
-    dach_pal: P2("dach", "lam", { tk: "zal25", pak: "zal25_pak", szyna: "rol_kaseta_dach", prow: "rol_prow_dach", dolL: "rol_listwa_dach" }),
-    dach_fhl: P2("dach", "har", { tk: "plisa", prow: "rol_prow_dach", dolL: "rol_listwa_dach" }),
-    dach_ssl: P2("dach", "zaSzyba", { pan: "nat_pancerz" }),
-    dachowa: P2("dach", "zaSzyba", { pan: "pancerz_ext" }),
-    dach_msl: P2("dach", "zaSzyba", { tk: "rol_screen" }),
-    markizeta_dach: P2("dach", "zaSzyba", { tk: "rol_screen", haki: 1 }),
-    markiza_otwarta: P2("zew", "mark", { gora: "mark_rura" }),
-    markiza: P2("zew", "mark", { gora: "mark_rura", daszek: 1 }),
-    markiza_polkasetowa: P2("zew", "mark", { gora: "mark_kaseta", polk: 1 }),
-    markiza_kasetowa: P2("zew", "mark", { gora: "mark_kaseta" }),
-    markiza_volant: P2("zew", "mark", { gora: "mark_rura", volant: 1 }),
-    markiza_koszowa: P2("zew", "kosz"),
-    markiza_wolnostojaca: P2("zew", "mark", { gora: "mark_rura", slupy: 1 }),
-    markiza_zimowa: P2("zew", "mark", { gora: "mark_kaseta", ogrod: 1 }),
-    markizeta: P2("zew", "mark", { gora: "mark_kaseta", markizeta: 1 }),
-    markiza_balkonowa: P2("zew", "mark", { gora: "mark_rura", slupy: 2 }),
-    markiza_boczna: P2("zew", "bok"),
-    zagiel: P2("zew", "zagiel"),
-    parasol: P2("zew", "parasol"),
-    pergola: P2("zew", "pergola", { lam: 1 }),
-    pergola_tkanina: P2("zew", "pergola"),
-    zadaszenie: P2("zew", "zadaszenie"),
-    okno_silownik: P2("wew", "okno"),
-    okno_dachowe: P2("dach", "okno", { srodek: 1 }),
-    okno_plaskie: P2("sufit", "okno", { sufit: 1 }),
-    swietlik: P2("sufit", "okno", { sufit: 1, kopula: 1 }),
-    wylaz: P2("sufit", "okno", { sufit: 1, bok: 1 }),
-    moskitiera: P2("zew", "scr", { siatka: 1, prow: "kas_prowadnica", gora: "kas_kaseta" }),
-    moskitiera_plisa_okno: P2("zew", "mplisa"),
-    moskitiera_drzwi: P2("zew", "mplisa", { bok: 1, drzwi: 1 }),
-    moskitiera_zip_drzwi: P2("zew", "scr", { siatka: 1, prow: "rol_prow_zip", gora: "rol_kwadrat", drzwi: 1 })
-  };
-  var przepis = (t) => PRZEPISY[t] || PRZEPISY.pelna;
-  var MIEJSCE = {
-    rolz: [0.29, 0.06, 0.04],
-    fas: [0.19, 0.06, 0.03],
-    scr: [0.24, 0.06, 0.03],
-    mplisa: [0.08, 0.04, 0.03],
-    zas: [0.26, 0.36, 0.34],
-    pion: [0.12, 0.12, 0.2],
-    mark: [0.62, 0.2, 0.05],
-    kosz: [0.5, 0.25, 0.05],
-    bok: [0.32, 0.58, 0.3],
-    zagiel: [0.55, 0.4, 0.05],
-    parasol: [0.5, 0.35, 0.05],
-    pergola: [0.58, 0.28, 0.05],
-    zadaszenie: [0.3, 0.22, 0.05]
-  };
-  function miejsce(typ, W3) {
-    const p = przepis(typ);
-    if (p.f === "okien") return [0.1, W3 / 2 + 0.05, 0.04];
-    const m = MIEJSCE[p.f] || [0, 0, 0];
-    return p.slupy ? [m[0], 0.3, m[2]] : m;
-  }
-
-  // src/okno3d_uklad.js
-  var RAMA = 0.07;
-  function polaNaObrazku(pola, W3, H2, m = 0) {
-    const iW = W3 - 2 * RAMA, iH = H2 - 2 * RAMA, s = 1 - 2 * m;
-    return pola.map(([x, y, w, h]) => [m + s * (RAMA + x * iW) / W3, m + s * (RAMA + y * iH) / H2, s * w * iW / W3, s * h * iH / H2]);
-  }
-  var wymiary = (proporcja2) => ({ W: +(1.5 * proporcja2).toFixed(3), H: 1.5 });
-  var NA_BOKI = ["pionowa", "panel", "zaslona", "zaslona_wave", "firana", "okiennice", "okiennice_przesuwne", "markiza_boczna"];
-  var gl3 = null;
-  var moze3d = () => {
-    if (gl3 === null) try {
-      gl3 = !!document.createElement("canvas").getContext("2d");
-    } catch (e) {
-      gl3 = false;
-    }
-    return gl3;
-  };
-  var mod = null;
-  var okno3d = (wersja) => mod || (mod = import(`/motor_ha/okno2d.js?v=${wersja}`));
-  function marginesDla(typy, W3, H2, min = 0) {
-    let m = min;
-    for (const t of typy) {
-      const [g, b, d] = miejsce(t, W3), v = Math.max(g, d);
-      m = Math.max(m, v / (H2 + 2 * v), b / (W3 + 2 * b));
-    }
-    return +Math.min(0.3, m).toFixed(4);
-  }
-  var JASNOSC = { dzien: 1, zloto: 0.85, swit: 0.8, zmierzch: 0.55, noc: 0.3 };
-  var proporcja = (pola) => {
-    const kol = new Set(pola.map((p) => +(+p[0]).toFixed(3))).size, rz = new Set(pola.map((p) => +(+p[1]).toFixed(3))).size;
-    return Math.max(0.6, Math.min(2.4, (kol === 1 ? 0.78 : kol === 2 ? 1.12 : 0.55 * kol) * (rz > 2 ? 0.85 : 1)));
-  };
-
   // src/bramy_zdj.js
   var BRAMY_ZDJ = { "furtka": [0.2758, 0.124, 0.4425, 0.7615], "garaz_boczna": [0.0992, 0.1917, 0.8017, 0.6281], "garaz_skrzydlowa": [0.1142, 0.124, 0.7708, 0.7438], "przesuwna": [0.0958, 0.1615, 0.8033, 0.6344], "roletowa": [0.1617, 0.201, 0.6742, 0.699], "segmentowa": [0.12, 0.1615, 0.76, 0.751], "skrzydlowa": [0.1008, 0.1271, 0.7983, 0.701], "szlaban": [0.1992, 0.3302, 0.76, 0.0823], "uchylna": [0.1292, 0.1427, 0.7417, 0.7062] };
 
@@ -9558,7 +14002,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   };
   var LISTWA = 5;
   var POD_LISTWA = 8;
-  var esc2 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var esc3 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var MotorHaKarta = class extends HTMLElement {
     static getConfigElement() {
       return document.createElement("motor-ha-editor");
@@ -9692,15 +14136,15 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
    ${mury}${ramy}${zw || foto ? "" : czl.map((_, i) => P4 ? `<div class="za"${miejsce2(i)}></div>` : `<div class="za" style="${n > 1 ? `left:${i ? "50%" : "6px"};right:${i ? "6px" : "50%"}` : ""}"></div>`).join("")}
    ${Array.from({ length: n }, (_, i) => skrzydlo(i)).join("")}
    ${zw ? `<div class="zewo">${Array.from({ length: n }, (_, i) => kolumna(i)).join("")}</div>` : ""}
-   ${n > 1 && !c.osobno && !P4 ? `<div class="oba" title="${esc2(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
+   ${n > 1 && !c.osobno && !P4 ? `<div class="oba" title="${esc3(T2.karta.oba)}"><ha-icon icon="mdi:arrow-up-down"></ha-icon></div>` : ""}
   </div>${pion2 ? this._suwakHtml(T2, true, dwaSuwaki ? 1 : null) : ""}</div>
  ${c.przyciski !== false ? `<div class="przyc">
-  <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}">${ikUI("gora", '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
-  <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}">${ikUI("stop", '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
-  <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}">${ikUI("dol", '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ""}
+  <button class="otw" title="${esc3(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}">${ikUI("gora", '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
+  <button class="stp" title="${esc3(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}">${ikUI("stop", '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
+  <button class="zam" title="${esc3(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}">${ikUI("dol", '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ""}
  ${c.suwak !== false && !pion2 ? this._suwakHtml(T2, false) : ""}
- ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc2(T2.karta.zwinieta) : p === 0 ? esc2(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
- ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc2(T2.urzadzenie.wyglad)}</button></div>` : ""}
+ ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc3(T2.karta.zwinieta) : p === 0 ? esc3(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc3(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc3(T2.urzadzenie.wyglad)}</button></div>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
       const pola = zw ? qa(".zewo .szyba") : qa(".skrz .szyba");
@@ -9787,12 +14231,12 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
    ${czl.map((_, i) => `<div class="skrz" data-i="${i}" data-s="${strona2(i)}" style="left:${pr(R2[i][0])};top:${pr(R2[i][1])};width:${pr(R2[i][2])};height:${pr(R2[i][3])}"><div class="szyba"><div class="cel"><span></span></div></div></div>`).join("")}
   </div>${pion2 ? this._suwakHtml(T2, true, dwaSuwaki ? 1 : null) : ""}</div>
  ${c.przyciski !== false ? `<div class="przyc">
-  <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}">${ikUI("gora", '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
-  <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}">${ikUI("stop", '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
-  <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}">${ikUI("dol", '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ""}
+  <button class="otw" title="${esc3(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}">${ikUI("gora", '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
+  <button class="stp" title="${esc3(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}">${ikUI("stop", '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
+  <button class="zam" title="${esc3(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}">${ikUI("dol", '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ""}
  ${c.suwak !== false && !pion2 ? this._suwakHtml(T2, false) : ""}
- ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc2(T2.karta.zwinieta) : p === 0 ? esc2(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
- ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc2(T2.urzadzenie.wyglad)}</button></div>` : ""}
+ ${pozycje.length ? `<div class="poz">${pozycje.map((p) => `<button data-p="${p}">${p === 100 ? esc3(T2.karta.zwinieta) : p === 0 ? esc3(T2.karta.opuszczona) : p + " %"}</button>`).join("")}</div>` : ""}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc3(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc3(T2.urzadzenie.wyglad)}</button></div>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
       const E = this._el = {
@@ -9852,7 +14296,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
   <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
   <svg class="kompas" viewBox="-20 -20 40 40" hidden aria-hidden="true"><circle r="17" fill="none" stroke="var(--divider-color)" stroke-width="2"/>
    <path d="M-9 -15h18" stroke="var(--primary-color)" stroke-width="4" stroke-linecap="round"/><circle class="sl" r="4.5" fill="#ffb300"/></svg></div>
- <div class="auto" hidden><i class="aik"></i><span></span><button class="wzn" hidden>${esc2(this._T.karta.wznow)}</button></div>`;
+ <div class="auto" hidden><i class="aik"></i><span></span><button class="wzn" hidden>${esc3(this._T.karta.wznow)}</button></div>`;
     }
     _wspolne(q) {
       const el = { auto: q(".auto"), autoT: q(".auto span"), aik: q(".auto .aik"), wzn: q(".wzn"), kompas: q(".kompas"), sl: q(".kompas .sl"), ikona: q(".ik ha-icon") };
@@ -9880,11 +14324,11 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
  ${this._naglowek(c)}
  <div class="scena"><div class="bramaw" role="button" tabindex="0"></div></div>
  ${c.przyciski !== false ? `<div class="przyc">
-  <button class="otw" title="${esc2(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}">${ikUI("gora", '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
-  <button class="stp" title="${esc2(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}">${ikUI("stop", '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
-  <button class="zam" title="${esc2(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}">${ikUI("dol", '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ""}
+  <button class="otw" title="${esc3(this._lok("ui.card.cover.open_cover", T2.karta.otworz))}">${ikUI("gora", '<ha-icon icon="mdi:arrow-up"></ha-icon>')}</button>
+  <button class="stp" title="${esc3(this._lok("ui.card.cover.stop_cover", T2.karta.stop))}">${ikUI("stop", '<ha-icon icon="mdi:stop"></ha-icon>')}</button>
+  <button class="zam" title="${esc3(this._lok("ui.card.cover.close_cover", T2.karta.zamknij))}">${ikUI("dol", '<ha-icon icon="mdi:arrow-down"></ha-icon>')}</button></div>` : ""}
  ${c.suwak !== false && zPoz ? this._suwakHtml(T2, false) : ""}
- ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc2(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc2(T2.urzadzenie.wyglad)}</button></div>` : ""}
+ ${this._wpis() ? `<div class="stopka"><button class="zmien">⚙ ${esc3(T2.urzadzenie.zmien)}</button><button class="zmien wyg">🎨 ${esc3(T2.urzadzenie.wyglad)}</button></div>` : ""}
 </div></ha-card>`;
       const q = (s) => root.querySelector(s);
       this._el = {
@@ -10006,7 +14450,7 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
       this._polecenie(w > 0 ? 100 : 0, ktore);
     }
     _suwakHtml(T2, pion2, i = null) {
-      return `<div class="suwak${pion2 ? " pion" : ""}"${i === null ? "" : ` data-i="${i}"`} role="slider" tabindex="0" aria-orientation="${pion2 ? "vertical" : "horizontal"}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc2(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>`;
+      return `<div class="suwak${pion2 ? " pion" : ""}"${i === null ? "" : ` data-i="${i}"`} role="slider" tabindex="0" aria-orientation="${pion2 ? "vertical" : "horizontal"}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc3(this._lok("ui.card.cover.position", T2.karta.pozycja))}"><div class="wyp"></div></div>`;
     }
     _suwak(el) {
       let akt = false;
@@ -10315,13 +14759,13 @@ ${zew ? `.zewo .oslona{box-shadow:0 2px 6px rgba(0,0,0,.35)}` : ""}
     const n = PLIK_KROKU[k] || k, f = [ciem3 ? n + "-ciemny.png" : null, n + ".png"].find((x) => x && UI.has(x));
     return f ? `<img class="ikk" src="/motor_ha/ui/${f}?v=${WERSJA}" alt="">` : `<ha-icon icon="${mdi}"></ha-icon>`;
   };
-  var esc3 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var esc4 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var doHex2 = (v) => Array.isArray(v) && v.length === 3 ? "#" + v.map((x) => (+x).toString(16).padStart(2, "0")).join("") : null;
   var zHex = (h) => {
     const s = String(h).replace("#", "");
     return s.length === 6 ? [0, 2, 4].map((i) => parseInt(s.slice(i, i + 2), 16)) : void 0;
   };
-  var STYL2 = `
+  var STYL3 = `
 :host{display:block}
 .ed{display:flex;flex-direction:column;gap:var(--ha-space-4,16px)}
 /* pasek kroków: kółka 40 px, podpisy pod spodem */
@@ -10438,14 +14882,14 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       this._krok = Math.min(this._krok ?? 0, LISTA.length - 1);
       const T2 = this._T, n = this._krok, [kl, ik2] = LISTA[n], K = T2.kroki[kl];
       const root = this.shadowRoot || this.attachShadow({ mode: "open" }), ciem3 = !!this._hass?.themes?.darkMode;
-      root.innerHTML = `<style>${STYL2}</style><div class="ed">
-<div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? " on" : j < n ? " zrob" : ""}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc3(T2.kroki[k].t)}">
- <span class="k">${ikKroku(k, i, ciem3 || j === n)}</span><span class="p">${esc3(T2.kroki[k].t)}</span></button>`).join("")}</div>
-<div class="tyt"><span class="k">${ikKroku(kl, ik2, ciem3)}</span><h3>${esc3(K.t)}<small>${esc3(wstaw(T2.ui.krok, n + 1, LISTA.length))}</small></h3></div>
-<p class="cp"><span><b>${esc3(T2.ui.co)}</b> ${esc3(K.co)}</span><span><b>${esc3(T2.ui.poco)}</b> ${esc3(K.poco)}</span></p>
+      root.innerHTML = `<style>${STYL3}</style><div class="ed">
+<div class="pasek" role="tablist">${LISTA.map(([k, i], j) => `<button class="kr${j === n ? " on" : j < n ? " zrob" : ""}" data-k="${j}" role="tab" aria-selected="${j === n}" title="${esc4(T2.kroki[k].t)}">
+ <span class="k">${ikKroku(k, i, ciem3 || j === n)}</span><span class="p">${esc4(T2.kroki[k].t)}</span></button>`).join("")}</div>
+<div class="tyt"><span class="k">${ikKroku(kl, ik2, ciem3)}</span><h3>${esc4(K.t)}<small>${esc4(wstaw(T2.ui.krok, n + 1, LISTA.length))}</small></h3></div>
+<p class="cp"><span><b>${esc4(T2.ui.co)}</b> ${esc4(K.co)}</span><span><b>${esc4(T2.ui.poco)}</b> ${esc4(K.poco)}</span></p>
 <div class="tresc"></div>
-<div class="nav"><button class="bt dr" data-n="-1" ${n ? "" : "hidden"}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc3(T2.ui.wstecz)}</button>
- <button class="bt" data-n="1" ${n < LISTA.length - 1 ? "" : "hidden"}>${esc3(T2.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
+<div class="nav"><button class="bt dr" data-n="-1" ${n ? "" : "hidden"}><ha-icon icon="mdi:chevron-left"></ha-icon>${esc4(T2.ui.wstecz)}</button>
+ <button class="bt" data-n="1" ${n < LISTA.length - 1 ? "" : "hidden"}>${esc4(T2.ui.dalej)}<ha-icon icon="mdi:chevron-right"></ha-icon></button></div></div>`;
       root.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => {
         this._krok = +b.dataset.k;
         this._rysuj();
@@ -10492,7 +14936,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       this._zmien(zm, struktura);
     }
     _info(box, txt, ikona = "mdi:information-outline") {
-      box.insertAdjacentHTML("beforeend", `<div class="info"><ha-icon icon="${ikona}"></ha-icon><span>${esc3(txt)}</span></div>`);
+      box.insertAdjacentHTML("beforeend", `<div class="info"><ha-icon icon="${ikona}"></ha-icon><span>${esc4(txt)}</span></div>`);
     }
     // ── kroki ──
     _urzadzenie(box) {
@@ -10506,9 +14950,9 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     _oslona(box) {
       const T2 = this._T, wyb = this._w("oslona");
       for (const [g, pod] of Object.entries(GRUPY)) {
-        box.insertAdjacentHTML("beforeend", `<div class="gr">${UI.has(g + ".png") ? `<img class="ikg" src="/motor_ha/ui/${g}.png?v=${WERSJA}" alt="">` : `<ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>`}${esc3(T2.grupy[g])}</div>`);
+        box.insertAdjacentHTML("beforeend", `<div class="gr">${UI.has(g + ".png") ? `<img class="ikg" src="/motor_ha/ui/${g}.png?v=${WERSJA}" alt="">` : `<ha-icon icon="${IKONY_GRUP[g]}"></ha-icon>`}${esc4(T2.grupy[g])}</div>`);
         for (const [p, typy] of Object.entries(pod)) {
-          box.insertAdjacentHTML("beforeend", `<div class="pg">${esc3(T2.grupy[p])}</div><div class="kafle">${typy.map((t) => `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i">${ZDJECIA.has(t) ? `<img src="/motor_ha/rodzaje/${t}.webp?v=${WERSJA}" alt="" loading="lazy">` : `<ha-icon icon="${IKONY[t]}"></ha-icon>`}</span>${esc3(T2.oslony[t])}</button>`).join("")}</div>`);
+          box.insertAdjacentHTML("beforeend", `<div class="pg">${esc4(T2.grupy[p])}</div><div class="kafle">${typy.map((t) => `<button class="kaf" data-t="${t}" aria-pressed="${t === wyb}"><span class="i">${ZDJECIA.has(t) ? `<img src="/motor_ha/rodzaje/${t}.webp?v=${WERSJA}" alt="" loading="lazy">` : `<ha-icon icon="${IKONY[t]}"></ha-icon>`}</span>${esc4(T2.oslony[t])}</button>`).join("")}</div>`);
         }
       }
       box.querySelectorAll("[data-t]").forEach((b) => b.addEventListener("click", () => this._zmien({ oslona: b.dataset.t })));
@@ -10516,11 +14960,11 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
     _kolory(box) {
       const T2 = this._T, k = this._w("kolor"), r = ramaHex(this._w("rama"));
       const nazwaK = KOLORY[k] ? T2.kolory[k] : hex(k), nazwaR = RAMY[r] ? T2.ramy[RAMY[r][0]] : r;
-      box.insertAdjacentHTML("beforeend", `<h4>${esc3(T2.pola.kolor)}</h4><div class="probki">${Object.entries(KOLORY).map(([kk, h]) => `<button class="pr" data-kolor="${kk}" style="background:${h}" title="${esc3(T2.kolory[kk])}" aria-label="${esc3(T2.kolory[kk])}" aria-pressed="${kk === k}"></button>`).join("")}</div>
-      <p class="wyb">${esc3(T2.ui.wybrany)} <b>${esc3(nazwaK)}</b></p>`);
+      box.insertAdjacentHTML("beforeend", `<h4>${esc4(T2.pola.kolor)}</h4><div class="probki">${Object.entries(KOLORY).map(([kk, h]) => `<button class="pr" data-kolor="${kk}" style="background:${h}" title="${esc4(T2.kolory[kk])}" aria-label="${esc4(T2.kolory[kk])}" aria-pressed="${kk === k}"></button>`).join("")}</div>
+      <p class="wyb">${esc4(T2.ui.wybrany)} <b>${esc4(nazwaK)}</b></p>`);
       this._formularz(box, [{ name: "kolor_wlasny", selector: { color_rgb: {} } }], { kolor_wlasny: KOLORY[k] ? void 0 : zHex(hex(k)) });
-      box.insertAdjacentHTML("beforeend", `<h4>${esc3(T2.pola.rama)}</h4><div class="probki">${Object.entries(RAMY).map(([h, [kk]]) => `<button class="pr" data-rama="${h}" style="background:${h}" title="${esc3(T2.ramy[kk])}" aria-label="${esc3(T2.ramy[kk])}" aria-pressed="${h === r}"></button>`).join("")}</div>
-      <p class="wyb">${esc3(T2.ui.wybrany)} <b>${esc3(nazwaR)}</b></p>`);
+      box.insertAdjacentHTML("beforeend", `<h4>${esc4(T2.pola.rama)}</h4><div class="probki">${Object.entries(RAMY).map(([h, [kk]]) => `<button class="pr" data-rama="${h}" style="background:${h}" title="${esc4(T2.ramy[kk])}" aria-label="${esc4(T2.ramy[kk])}" aria-pressed="${h === r}"></button>`).join("")}</div>
+      <p class="wyb">${esc4(T2.ui.wybrany)} <b>${esc4(nazwaR)}</b></p>`);
       this._formularz(box, [{ name: "rama_wlasna", selector: { color_rgb: {} } }], { rama_wlasna: RAMY[r] ? void 0 : zHex(r) });
       box.querySelectorAll("[data-kolor]").forEach((b) => b.addEventListener("click", () => this._zmien({ kolor: b.dataset.kolor })));
       box.querySelectorAll("[data-rama]").forEach((b) => b.addEventListener("click", () => this._zmien({ rama: b.dataset.rama })));
@@ -10535,7 +14979,7 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
         { name: "odwroc", selector: { boolean: {} } },
         ...dwa ? [{ name: "osobno", selector: { boolean: {} } }] : []
       ], { skrzydla: String(dwa ? 2 : 1), wysokosc: +this._w("wysokosc"), roleta_lewa: this._cfg.roleta_lewa, roleta_prawa: this._cfg.roleta_prawa, odwroc: !!this._w("odwroc"), osobno: !!this._w("osobno") });
-      box.insertAdjacentHTML("beforeend", `<h4>${esc3(T2.ui.sterowanie)}</h4>`);
+      box.insertAdjacentHTML("beforeend", `<h4>${esc4(T2.ui.sterowanie)}</h4>`);
       this._formularz(box, [
         { name: "przyciski", selector: { boolean: {} } },
         { name: "suwak", selector: { boolean: {} } },
@@ -10579,8 +15023,8 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   };
 
   // src/dom.js
-  var esc4 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
-  var STYL3 = `
+  var esc5 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var STYL4 = `
 .lista{display:flex;flex-direction:column;gap:4px}
 .wiersz{display:flex;align-items:center;gap:10px;min-height:48px}
 .wiersz .opis{cursor:pointer}
@@ -10619,13 +15063,13 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
       const klucz2 = lista.join() + T2.karta.dom;
       if (klucz2 !== this._klucz) {
         this._klucz = klucz2;
-        root.innerHTML = `<style>${STYL_STALY}${STYL3}</style><ha-card><div class="mh">
-        <div class="tytul">${esc4(this._cfg.title ?? T2.karta.dom)}</div>
+        root.innerHTML = `<style>${STYL_STALY}${STYL4}</style><ha-card><div class="mh">
+        <div class="tytul">${esc5(this._cfg.title ?? T2.karta.dom)}</div>
         ${lista.length ? `<div class="lista">${lista.map((e) => `<div class="wiersz" data-e="${e}"><div class="ik"><ha-icon></ha-icon></div>
           <div class="opis"><span class="nazwa"></span><span class="stan"></span></div>
-          <div class="male"><button data-u="open_cover" title="${esc4(T2.karta.otworz)}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
-          <button data-u="stop_cover" title="${esc4(T2.karta.stop)}"><ha-icon icon="mdi:stop"></ha-icon></button>
-          <button data-u="close_cover" title="${esc4(T2.karta.zamknij)}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div></div>`).join("")}</div>` : `<div class="brak">${esc4(T2.karta.domBrak)}</div>`}
+          <div class="male"><button data-u="open_cover" title="${esc5(T2.karta.otworz)}"><ha-icon icon="mdi:arrow-up"></ha-icon></button>
+          <button data-u="stop_cover" title="${esc5(T2.karta.stop)}"><ha-icon icon="mdi:stop"></ha-icon></button>
+          <button data-u="close_cover" title="${esc5(T2.karta.zamknij)}"><ha-icon icon="mdi:arrow-down"></ha-icon></button></div></div>`).join("")}</div>` : `<div class="brak">${esc5(T2.karta.domBrak)}</div>`}
       </div></ha-card>`;
         root.querySelectorAll(".wiersz").forEach((w) => {
           const e = w.dataset.e;
@@ -10705,13 +15149,13 @@ h4{margin:8px 0 0;font-size:var(--ha-font-size-m,14px);font-weight:var(--ha-font
   var POGODY_EN = { sunny: "Sunny", partlycloudy: "Partly cloudy", cloudy: "Cloudy", rainy: "Rainy", "lightning-rainy": "Lightning, rainy", snowy: "Snowy", fog: "Fog" };
   var BARWY = ["grafit", "bialy", "kremowy", "piaskowy", "szary", "mokka", "granat", "morski", "oliwka", "terakota", "bordo"];
   var RAMA2 = { bialy: "antracyt", kremowy: "antracyt", piaskowy: "antracyt" };
-  var esc5 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var esc6 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var svgIkony = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI[n] || ""}"/></svg>`;
   var ZAMIENNIKI = `ha-card{display:block;background:var(--ha-card-background,var(--card-background-color,#fff));color:var(--primary-text-color);
  border-radius:var(--ha-card-border-radius,12px);border:var(--ha-card-border-width,1px) solid var(--ha-card-border-color,var(--divider-color,#e0e0e0));
  box-shadow:var(--ha-card-box-shadow,none)}
 ha-icon{display:inline-flex}ha-icon svg{width:var(--mdc-icon-size,24px);height:var(--mdc-icon-size,24px);fill:currentColor;display:block}`;
-  var STYL4 = `:host{display:block;font-family:var(--ha-font-family-body,Roboto,sans-serif);color:var(--primary-text-color)}
+  var STYL5 = `:host{display:block;font-family:var(--ha-font-family-body,Roboto,sans-serif);color:var(--primary-text-color)}
 .s{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:16px;align-items:start}
 @media (max-width:640px){.s{grid-template-columns:1fr}}
 .k{min-width:0}
@@ -10776,14 +15220,14 @@ button .iku{--iku:20px}
     _rysuj() {
       const T2 = this._T = TEKSTY[this._jez], S = T2.symulator, s = this._s;
       const root = this.shadowRoot || this.attachShadow({ mode: "open" });
-      const przycisk = (dane, wart, tekst, ikona, kropka) => `<button data-${dane}="${esc5(wart)}"${s[dane] === wart ? ' class="on"' : ""}>${kropka || (ikona ? dane === "pora" || dane === "pogoda" ? ikUI(wart, svgIkony(ikona)) : svgIkony(ikona) : "")}${esc5(tekst)}</button>`;
-      const rodzaje = Object.entries(GRUPY).map(([g, pod]) => `<div class="g">${esc5(T2.grupy[g])}</div><div class="c">${Object.values(pod).flat().map((t) => przycisk("typ", t, T2.oslony[t], IKONY[t])).join("")}</div>`).join("");
-      root.innerHTML = `<style>${STYL4}${STYL_IKU}</style><div class="s${this._gora?.themes?.darkMode ? " ciemny" : ""}"><div class="k"></div><div>
-<p class="t">${esc5(S.tytul)}</p><p class="w">${esc5(S.wskazowka)}</p>
-<div class="r"><div class="l">${esc5(S.pora)}</div><div class="c">${PORY.map((p) => przycisk("pora", p, S[p], IKONY_POR[p])).join("")}</div></div>
-<div class="r"><div class="l">${esc5(S.pogoda)}</div><div class="c">${Object.entries(POGODY).map(([p, i]) => przycisk("pogoda", p, this._pogoda(p), i)).join("")}</div></div>
-<div class="r"><div class="l">${esc5(S.kolor)}</div><div class="c">${BARWY.map((k) => przycisk("kolor", k, T2.kolory[k], null, `<span class="p" style="background:${KOLORY[k]}"></span>`)).join("")}</div></div>
-<div class="r"><div class="l">${esc5(S.rodzaj)}</div>${rodzaje}</div></div></div>`;
+      const przycisk = (dane, wart, tekst, ikona, kropka) => `<button data-${dane}="${esc6(wart)}"${s[dane] === wart ? ' class="on"' : ""}>${kropka || (ikona ? dane === "pora" || dane === "pogoda" ? ikUI(wart, svgIkony(ikona)) : svgIkony(ikona) : "")}${esc6(tekst)}</button>`;
+      const rodzaje = Object.entries(GRUPY).map(([g, pod]) => `<div class="g">${esc6(T2.grupy[g])}</div><div class="c">${Object.values(pod).flat().map((t) => przycisk("typ", t, T2.oslony[t], IKONY[t])).join("")}</div>`).join("");
+      root.innerHTML = `<style>${STYL5}${STYL_IKU}</style><div class="s${this._gora?.themes?.darkMode ? " ciemny" : ""}"><div class="k"></div><div>
+<p class="t">${esc6(S.tytul)}</p><p class="w">${esc6(S.wskazowka)}</p>
+<div class="r"><div class="l">${esc6(S.pora)}</div><div class="c">${PORY.map((p) => przycisk("pora", p, S[p], IKONY_POR[p])).join("")}</div></div>
+<div class="r"><div class="l">${esc6(S.pogoda)}</div><div class="c">${Object.entries(POGODY).map(([p, i]) => przycisk("pogoda", p, this._pogoda(p), i)).join("")}</div></div>
+<div class="r"><div class="l">${esc6(S.kolor)}</div><div class="c">${BARWY.map((k) => przycisk("kolor", k, T2.kolory[k], null, `<span class="p" style="background:${KOLORY[k]}"></span>`)).join("")}</div></div>
+<div class="r"><div class="l">${esc6(S.rodzaj)}</div>${rodzaje}</div></div></div>`;
       root.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
         const [k, v] = Object.entries(b.dataset)[0];
         s[k] = v;
@@ -10865,7 +15309,7 @@ button .iku{--iku:20px}
     x: "M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
   };
   var ik = (n, r = 18) => `<svg viewBox="0 0 24 24" width="${r}" height="${r}" aria-hidden="true"><path d="${MDI2[n]}"/></svg>`;
-  var esc6 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var esc7 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
   var okr = (v) => Math.round(v * 1e3) / 1e3;
   var PROC = (v) => v + " %";
   var PAR = {
@@ -10962,7 +15406,7 @@ button .iku{--iku:20px}
     }
     return { tytul: S.tytul, opcje: o };
   }
-  var STYL5 = `
+  var STYL6 = `
 :host{--bg:var(--primary-background-color,#f0f2f4);--surface:var(--ha-dialog-surface-background,var(--mdc-theme-surface,var(--card-background-color,#fff)));
  --fg:var(--primary-text-color,#212121);--fg2:var(--secondary-text-color,#6f7377);--line:var(--divider-color,rgba(0,0,0,.12));
  --primary:var(--primary-color,#009ac7);--accent:var(--accent-color,#ff9800);--on:var(--text-primary-color,#fff);
@@ -11273,7 +15717,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const nazwa2 = typeof S.szablon === "number" && UKLADY[S.szablon] && UKLADY[S.szablon][1].length === pl.length ? UKLADY[S.szablon][0] : null;
       const gotowy = nazwa2 && UI.has(nazwa2 + ".webp") && SZYBY[nazwa2];
       const proporcja2 = "193/161";
-      const d = [`<div class="fokno" data-id="${id}" role="img" aria-label="${esc6(this.t.kroki.uklad)}" style="aspect-ratio:${proporcja2}${opt.w ? `;width:${opt.w}px` : ""}">`];
+      const d = [`<div class="fokno" data-id="${id}" role="img" aria-label="${esc7(this.t.kroki.uklad)}" style="aspect-ratio:${proporcja2}${opt.w ? `;width:${opt.w}px` : ""}">`];
       if (gotowy) d.push(this._img("ftlo", nazwa2, `/motor_ha/ui/${nazwa2}.webp?v=${WERSJA}`, "", this._rama()));
       const u1 = SZYBY.u1[0];
       pl.forEach((p, i) => {
@@ -11314,11 +15758,11 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         pozycje: P4.map((_, i) => opt.poz ? opt.poz(i) : 35)
       };
       const R2 = polaNaObrazku(pola, W3, H2, m), id = opt.id || opt.klasa;
-      const d = [`<div class="${opt.klasa} o3k" data-id="${id}" data-o3="${esc6(JSON.stringify(cfg))}"${opt.ruch ? ' data-ruch="1"' : ""} role="${opt.wybor ? "group" : "img"}" aria-label="${esc6(this.t.kroki.uklad)}" style="aspect-ratio:${W3}/${H2};--a:${(W3 / H2).toFixed(4)}${opt.w ? `;width:${opt.w}px` : ""}"><div class="o3h"></div>`];
+      const d = [`<div class="${opt.klasa} o3k" data-id="${id}" data-o3="${esc7(JSON.stringify(cfg))}"${opt.ruch ? ' data-ruch="1"' : ""} role="${opt.wybor ? "group" : "img"}" aria-label="${esc7(this.t.kroki.uklad)}" style="aspect-ratio:${W3}/${H2};--a:${(W3 / H2).toFixed(4)}${opt.w ? `;width:${opt.w}px` : ""}"><div class="o3h"></div>`];
       R2.forEach(([x, y, w, h], i) => {
         const on = opt.wybrane === i, nr2 = opt.numery && P4.length > 1 || opt.klasa === "fokno" && opt.numery ? `<span class="fnr">${i + 1}</span>` : "";
         const cz = opt.klasa === "fokno" && opt.numery ? `<svg class="fcz" viewBox="0 0 24 24" width="24" height="24">${this._znakCzujnika(i, 12, 12)}</svg>` : "";
-        d.push(`<${opt.tag} class="${opt.pole}${on ? " wyb" : ""}"${opt.wybor ? ` data-pole="${i}" aria-label="${esc6(wstaw(this.t.pole, i + 1))}"` : ""} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}">${opt.pole === "fsz" ? '<i class="obsz"></i>' : ""}${nr2}${cz}</${opt.tag}>`);
+        d.push(`<${opt.tag} class="${opt.pole}${on ? " wyb" : ""}"${opt.wybor ? ` data-pole="${i}" aria-label="${esc7(wstaw(this.t.pole, i + 1))}"` : ""} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}">${opt.pole === "fsz" ? '<i class="obsz"></i>' : ""}${nr2}${cz}</${opt.tag}>`);
       });
       d.push("</div>");
       return d.join("");
@@ -11444,13 +15888,13 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (moze3d() && !this.bez3d) return this._okno3d({ ...opt, klasa: "fzest", pole: "fzp", tag: opt.wybor ? "button" : "div", poz: () => 35, ruch: ["rodzaj", "kolory"].includes(this.kroki()[this.S.krok]) });
       const S = this.S, P4 = prostokaty(S.u), rama = this._rama();
       const A = Math.max(0.8, Math.min(3, P4.map(([, , w, h]) => 1.2 * h / w).sort((a, b) => a - b)[Math.floor(P4.length / 2)]));
-      const d = [`<div class="fzest" role="group" aria-label="${esc6(this.t.kroki.uklad)}" style="aspect-ratio:${+A.toFixed(3)};--a:${+A.toFixed(3)}">`];
+      const d = [`<div class="fzest" role="group" aria-label="${esc7(this.t.kroki.uklad)}" style="aspect-ratio:${+A.toFixed(3)};--a:${+A.toFixed(3)}">`];
       P4.forEach(([x, y, w, h], i) => {
         const pp = S.pola[i] || {}, typ = pp.oslona || S.o.oslona, kol = pp.kolor ? KOLORY[pp.kolor] || pp.kolor : this._kolor();
         const zdj = this._zdj(typ, kol, "", rama) || `<div style="width:100%;height:100%">${this.kafelRodzaju(typ, kol, rama)}</div>`;
         const nr2 = opt.numery && P4.length > 1 ? `<span class="fnr">${i + 1}</span>` : "";
         const tag = opt.wybor ? "button" : "div";
-        d.push(`<${tag} class="fzp${opt.wybor && opt.wybrane === i ? " wyb" : ""}"${opt.wybor ? ` data-pole="${i}" aria-label="${esc6(wstaw(this.t.pole, i + 1))}"` : ""} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}">${zdj}${nr2}</${tag}>`);
+        d.push(`<${tag} class="fzp${opt.wybor && opt.wybrane === i ? " wyb" : ""}"${opt.wybor ? ` data-pole="${i}" aria-label="${esc7(wstaw(this.t.pole, i + 1))}"` : ""} style="left:${UL(x)};top:${UL(y)};width:${UL(w)};height:${UL(h)}">${zdj}${nr2}</${tag}>`);
       });
       d.push("</div>");
       return d.join("");
@@ -11512,7 +15956,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       }, 70);
     }
     kafelRodzaju(typ, kolor = this._kolor(), rama = this._rama()) {
-      if (moze3d() && !this.bez3d && !czyBrama(typ)) return `<img class="zdj k3d" data-k3d="${esc6([typ, kolor, rama].join("|"))}" src="${KAFLE3D.get([typ, kolor, rama].join("|")) || PUSTY}" alt="" draggable="false">`;
+      if (moze3d() && !this.bez3d && !czyBrama(typ)) return `<img class="zdj k3d" data-k3d="${esc7([typ, kolor, rama].join("|"))}" src="${KAFLE3D.get([typ, kolor, rama].join("|")) || PUSTY}" alt="" draggable="false">`;
       if (ZDJECIA.has(typ)) return this._zdj(typ, kolor, "", rama);
       return kafel(typ, kolor, rama) || this._kafelProsty(typ);
     }
@@ -11537,7 +15981,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           return kk ? KOLORY[kk] || kk : this._kolor();
         });
         const klu = "U" + JSON.stringify({ pola, typy, kolory, rama: this._rama(), W: W3, H: H2, margines: marginesDla(typy, W3, H2, 0.03), sciana: S.sciana && SCIANY[S.sciana] || null, pozycje: pola.map(() => 50) });
-        return `<img class="zdj k3d" data-k3d="${esc6(klu)}" src="${KAFLE3D.get(klu) || PUSTY}" alt="" draggable="false">`;
+        return `<img class="zdj k3d" data-k3d="${esc7(klu)}" src="${KAFLE3D.get(klu) || PUSTY}" alt="" draggable="false">`;
       }
       const f = klucz2 && [klucz2 + ".webp", klucz2 + ".png"].find((x) => UI.has(x));
       if (f) return this._img("zdj", klucz2, `/motor_ha/ui/${f}?v=${WERSJA}`, "", f.endsWith(".webp") ? this._rama() : "");
@@ -11551,7 +15995,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // --- kroki ---
     str_silnik() {
       const S = this.S, t = this.t, d = this.dane;
-      if (!d.oslony.length) return `<p class="pod">${esc6(t.brakOslon)}</p>`;
+      if (!d.oslony.length) return `<p class="pod">${esc7(t.brakOslon)}</p>`;
       const [n1] = this._nieba(), pierwszy = this._oslona(S.rolety[0])?.area;
       const calyPokoj = (a) => {
         const poj = d.oslony.filter((o) => o.area === a && !o.grupa && !o.brama);
@@ -11561,10 +16005,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         const czl = (o.czlonkowie || []).filter((e) => this._oslona(e));
         const grWyb = czl.length > 1 && czl.length === S.rolety.length && czl.every((e) => S.rolety.includes(e)) && (S.wybSkad ? S.wybSkad === "grupa:" + o.id : !calyPokoj(o.area));
         const nr2 = S.rolety.indexOf(o.id), poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
-        return `<button class="kaf ${nr2 >= 0 || grWyb ? "wyb" : ""}" data-oslona="${esc6(o.id)}" aria-pressed="${nr2 >= 0}">${nr2 >= 0 ? `<span class="zn">${nr2 + 1}</span>` : ""}
+        return `<button class="kaf ${nr2 >= 0 || grWyb ? "wyb" : ""}" data-oslona="${esc7(o.id)}" aria-pressed="${nr2 >= 0}">${nr2 >= 0 ? `<span class="zn">${nr2 + 1}</span>` : ""}
         ${this._zdj(o.brama ? czyBrama(S.o.oslona) ? S.o.oslona : "przesuwna" : this._typKafla(o)) || (o.brama ? `<svg viewBox="0 0 64 44" aria-hidden="true"><path d="M8 40V14h48v26" fill="none" stroke="var(--fg2)" stroke-width="2"/>${Array.from({ length: 8 }, (_, i) => `<line x1="${12 + i * 5.5}" x2="${12 + i * 5.5}" y1="14" y2="40" stroke="var(--fg2)"/>`).join("")}</svg>` : `<svg viewBox="0 0 64 44" aria-hidden="true"><rect x="9" y="3" width="46" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/>
         <rect x="12" y="6" width="40" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), 12, 6, 40, 32, Math.max(poz, 8), this._kolor())}</svg>`)}
-        <b>${esc6(o.nazwa)}</b><span class="miejsce">${esc6(`${poz} %`)}</span>${o.zajeta && nr2 < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc6(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc6(czl.length > 1 ? wstaw(t.grupaIle, czl.length) : t.grupa)}</span>` : ""}</button>`;
+        <b>${esc7(o.nazwa)}</b><span class="miejsce">${esc7(`${poz} %`)}</span>${o.zajeta && nr2 < 0 ? `<span class="miejsce" style="color:var(--accent)">${esc7(wstaw(t.wUrzadzeniu, o.zajeta))}</span>` : o.grupa ? `<span class="miejsce">${esc7(czl.length > 1 ? wstaw(t.grupaIle, czl.length) : t.grupa)}</span>` : ""}</button>`;
       };
       const pokoje = [...new Set(d.oslony.map((o) => o.area || ""))].sort((a, b) => (b === pierwszy) - (a === pierwszy) || !a - !b || (this._nazwaPokoju(a) || "").localeCompare(this._nazwaPokoju(b) || ""));
       const w = pokoje.map((a) => {
@@ -11574,14 +16018,14 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           const x = 4 + i * 44, poz = typeof o.poz === "number" ? o.poz : o.stan === "closed" ? 0 : 100;
           return `<rect x="${x}" y="3" width="40" height="38" rx="2" fill="${this._rama()}" stroke="#000" stroke-opacity=".25"/><rect x="${x + 3}" y="6" width="34" height="32" fill="${n1}"/>${this.oslona(this._typOslony(o), x + 3, 6, 34, 32, Math.max(poz, 8), this._kolor())}`;
         };
-        const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? "wyb" : ""}" data-pokojcaly="${esc6(a)}" aria-pressed="${caly}">
+        const podp = a && poj.length > 1 ? `<button class="kaf caly ${caly ? "wyb" : ""}" data-pokojcaly="${esc7(a)}" aria-pressed="${caly}">
         ${poj.every((o) => ZDJECIA.has(this._typKafla(o))) ? `<div class="zdjRzad">${poj.map((o) => this._zdj(this._typKafla(o))).join("")}</div>` : `<svg viewBox="0 0 ${4 + poj.length * 44} 44" aria-hidden="true">${poj.map(okienko).join("")}</svg>`}
-        <b>${esc6(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc6(poj.map((o) => o.nazwa).join(" + "))}</span></button>` : "";
+        <b>${esc7(wstaw(t.calyPokoj, this._nazwaPokoju(a)))}</b><span class="miejsce">${esc7(poj.map((o) => o.nazwa).join(" + "))}</span></button>` : "";
         const grupy = tu.filter((o) => o.grupa), reszta = tu.filter((o) => !o.grupa);
-        const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc6(t.pojedyncze)}</span></div>` : "";
-        return `<div class="sek">${esc6(a ? this._nazwaPokoju(a) : t.bezPokoju)}</div><div class="siatka k2">${podp}${grupy.map(kafel2).join("")}${linia}${reszta.map(kafel2).join("")}</div>`;
+        const linia = grupy.length && reszta.length ? `<div class="linia"><span>${esc7(t.pojedyncze)}</span></div>` : "";
+        return `<div class="sek">${esc7(a ? this._nazwaPokoju(a) : t.bezPokoju)}</div><div class="siatka k2">${podp}${grupy.map(kafel2).join("")}${linia}${reszta.map(kafel2).join("")}</div>`;
       });
-      return w.join("") + (S.wykryty ? `<p class="pod" style="margin-top:12px">${esc6(wstaw(t.wykryty, S.wykryty))}</p>` : "");
+      return w.join("") + (S.wykryty ? `<p class="pod" style="margin-top:12px">${esc7(wstaw(t.wykryty, S.wykryty))}</p>` : "");
     }
     // rysunek kafelka: rodzaj osłony zgadnięty z klasy, lamel albo nazwy
     _typOslony(o) {
@@ -11606,17 +16050,17 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const t = this.t;
       return `<div id="edytor">${this.edytor()}</div>
       <div class="chipy" style="justify-content:center;margin:10px 0 4px">
-        <button class="chip" data-op="poz">${ik("uklad", 16)} ${esc6(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik("uklad", 16)} ${esc6(t.wzdluz)}</button>
-        <button class="chip" data-op="usun">${esc6(t.usun)}</button></div>
+        <button class="chip" data-op="poz">${ik("uklad", 16)} ${esc7(t.wPoprzek)}</button><button class="chip" data-op="pion">${ik("uklad", 16)} ${esc7(t.wzdluz)}</button>
+        <button class="chip" data-op="usun">${esc7(t.usun)}</button></div>
       <div id="przerwy">${this._suwakiPrzerw()}</div>
-      <p class="pod" style="text-align:center">${esc6(t.wlasnyPodpis)}</p>`;
+      <p class="pod" style="text-align:center">${esc7(t.wlasnyPodpis)}</p>`;
     }
     str_uklad() {
       const S = this.S, t = this.t;
-      const ed = S.szablon === "w" && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc6(t.wlasnyTytul)}</div>
-      ${this._edytorCaly()}<div class="sek">${esc6(t.zSzablonu)}</div>` : "";
-      return ed + `<div class="siatka k4">${UKLADY.map(([k, P4, drzwi3], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P4, drzwi3, k)}<b>${esc6(dziel(t.uklady[k]))}</b></button>`).join("")}
-      <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u), false, "wlasny")}<b>${esc6(t.uklady.wlasny)}</b></button></div>`;
+      const ed = S.szablon === "w" && !this._szeroko ? `<div class="sek" style="margin-top:0">${esc7(t.wlasnyTytul)}</div>
+      ${this._edytorCaly()}<div class="sek">${esc7(t.zSzablonu)}</div>` : "";
+      return ed + `<div class="siatka k4">${UKLADY.map(([k, P4, drzwi3], i) => `<button class="kaf ${S.szablon === i ? "wyb" : ""}" data-uklad="${i}">${this.kafelUkladu(P4, drzwi3, k)}<b>${esc7(dziel(t.uklady[k]))}</b></button>`).join("")}
+      <button class="kaf ${S.szablon === "w" ? "wyb" : ""}" data-wlasny="1">${this.kafelUkladu(prostokaty(S.u), false, "wlasny")}<b>${esc7(t.uklady.wlasny)}</b></button></div>`;
     }
     // „Rodzaj”: grupy jak w katalogach producentów, realistyczny obrazek i nazwa (z kodem modelu) pod każdym
     str_rodzaj() {
@@ -11630,15 +16074,15 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       return this._wyborPola() + grupy.map(([g, pod]) => {
         const sek = pod.map(([p, typy]) => [p, typy.filter(pasuje)]).filter(([, typy]) => typy.length);
         if (!sek.length) return "";
-        return `<div class="grupaR">${esc6(T2.grupy[g] || g)}</div>` + sek.map(([p, typy]) => (p !== g ? `<div class="sek">${esc6(T2.grupy[p] || p)}</div>` : "") + `<div class="siatka k4">${typy.map((t) => `<button class="kaf ${akt === t ? "wyb" : ""}" data-rodzaj="${t}">${this.kafelRodzaju(t, kolor, rama)}<b>${esc6(dziel(T2.oslony[t] || t))}</b></button>`).join("")}</div>`).join("");
+        return `<div class="grupaR">${esc7(T2.grupy[g] || g)}</div>` + sek.map(([p, typy]) => (p !== g ? `<div class="sek">${esc7(T2.grupy[p] || p)}</div>` : "") + `<div class="siatka k4">${typy.map((t) => `<button class="kaf ${akt === t ? "wyb" : ""}" data-rodzaj="${t}">${this.kafelRodzaju(t, kolor, rama)}<b>${esc7(dziel(T2.oslony[t] || t))}</b></button>`).join("")}</div>`).join("");
       }).join("");
     }
     str_kolory() {
       const S = this.S, T2 = this.T, t = this.t;
       const wr = this._wybR(), wybrany = (co, k) => co === "kolor" && wr !== null ? (S.pola[wr]?.kolor || S.o.kolor) === k : S.o[co] === k && !S.o[co === "kolor" ? "kolor_wlasny" : co + "_wlasna"];
-      const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map((k) => `<button class="probka ${wybrany(co, k) ? "wyb" : ""}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc6(dziel(nazwy[k] || k))}</button>`).join("")}</div>`;
+      const rzad = (co, lista, hexy, nazwy) => `<div class="probki">${lista.map((k) => `<button class="probka ${wybrany(co, k) ? "wyb" : ""}" data-${co}="${k}"><i style="background:${hexy(k)}"></i>${esc7(dziel(nazwy[k] || k))}</button>`).join("")}</div>`;
       const bezOslony = wr === null && OKNA_NAPED.includes(S.o.oslona);
-      return this._wyborPola() + (bezOslony ? "" : `<div class="sek">${esc6(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}`) + `<div class="sek">${esc6(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}${wr === null && przerwy(S.u).some((p) => p[4] === "mur") ? `<div class="sek">${esc6(t.sciana)}</div>${rzad("sciana", Object.keys(SCIANY), (k) => SCIANY[k], t.sciany)}` : ""}`;
+      return this._wyborPola() + (bezOslony ? "" : `<div class="sek">${esc7(t.oslona)}</div>${rzad("kolor", KOLORY_TAB, (k) => KOLORY[k], T2.kolory)}`) + `<div class="sek">${esc7(t.rama)}</div>${rzad("rama", RAMY_TAB, (k) => RAMA_Z_KLUCZA[k], T2.ramy)}${wr === null && przerwy(S.u).some((p) => p[4] === "mur") ? `<div class="sek">${esc7(t.sciana)}</div>${rzad("sciana", Object.keys(SCIANY), (k) => SCIANY[k], t.sciany)}` : ""}`;
     }
     // „Rodzaj” i „Kolory”: całe okno albo jedno pole (przyciski pól; podgląd = zdjęcie kafelka wybranego rodzaju)
     _wybR() {
@@ -11649,20 +16093,20 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t, n = prostokaty(S.u).length, wr = this._wybR();
       if (S.brama || n < 2) return "";
       return `<div class="wybpol">${this._szeroko ? "" : `<div style="display:flex;justify-content:center"><div style="width:min(100%,340px)">${this._zestaw({ numery: true, wybor: true, wybrane: wr })}</div></div>`}
-      <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? "wyb" : ""}" data-calosc="1">${esc6(t.caleOkno)}</button>
-      ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? "wyb" : ""}" data-pole="${i}">${esc6(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? " ✎" : ""}</button>`).join("")}</div>
-      <p class="pod" style="text-align:center;margin:6px 0 0">${esc6(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
+      <div class="chipy" style="justify-content:center;margin-top:8px"><button class="chip ${wr === null ? "wyb" : ""}" data-calosc="1">${esc7(t.caleOkno)}</button>
+      ${Array.from({ length: n }, (_, i) => `<button class="chip ${wr === i ? "wyb" : ""}" data-pole="${i}">${esc7(wstaw(t.pole, i + 1))}${S.pola[i]?.oslona || S.pola[i]?.kolor ? " ✎" : ""}</button>`).join("")}</div>
+      <p class="pod" style="text-align:center;margin:6px 0 0">${esc7(wr === null ? t.rodzajCalosc : wstaw(t.rodzajPole, wr + 1))}</p></div>`;
     }
     str_przypisz() {
       const S = this.S, t = this.t;
-      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc6(t.przypiszPodpis)}</p>${this._szeroko ? "" : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz, poz: () => 50 })}</div>`}
-      <p class="pod" style="text-align:center;margin:8px 0 0">${esc6(t.zamienPodpis)}</p>
-      ${S.rolety.length > 1 ? `<div style="display:flex;justify-content:center;margin-top:8px"><button class="chip" data-zaleca="1">✨ ${esc6(t.jakZaleca)}</button></div>` : ""}
+      return `<p class="pod" style="text-align:center;margin:0 0 8px">${esc7(t.przypiszPodpis)}</p>${this._szeroko ? "" : `<div style="display:flex;justify-content:center" id="duzeOkno">${this.okno({ w: 230, h: 210, numery: true, id: "d", wybrane: S.arkusz, poz: () => 50 })}</div>`}
+      <p class="pod" style="text-align:center;margin:8px 0 0">${esc7(t.zamienPodpis)}</p>
+      ${S.rolety.length > 1 ? `<div style="display:flex;justify-content:center;margin-top:8px"><button class="chip" data-zaleca="1">✨ ${esc7(t.jakZaleca)}</button></div>` : ""}
       <div style="margin-top:10px">${prostokaty(S.u).map((_, i) => {
         const p = S.pola[i] || {}, o = this._oslona(p.silnik);
         const c = p.czujnik && this._nazwa(p.czujnik);
-        return `<button class="wiersz" data-pole="${i}"><span class="chwyt" title="${esc6(t.przeciagnij)}" aria-hidden="true">⠿</span><span class="ik">${i + 1}</span><span class="t"><b>${esc6(o ? o.nazwa : t.wybierzSilnik)}</b>
-          <small>${c ? `✓ ${esc6(c)} · ${esc6(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : `<span style="color:var(--accent)">+ ${esc6(t.czujnikPola)}</span>`}</small></span></button>`;
+        return `<button class="wiersz" data-pole="${i}"><span class="chwyt" title="${esc7(t.przeciagnij)}" aria-hidden="true">⠿</span><span class="ik">${i + 1}</span><span class="t"><b>${esc7(o ? o.nazwa : t.wybierzSilnik)}</b>
+          <small>${c ? `✓ ${esc7(c)} · ${esc7(p.tryb === "otworz" ? t.otworz : t.uchyl)}` : `<span style="color:var(--accent)">+ ${esc7(t.czujnikPola)}</span>`}</small></span></button>`;
       }).join("")}</div>`;
     }
     _nazwa(e) {
@@ -11688,17 +16132,17 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, t = this.t, w = [];
       if (!S.brama) {
         const okna = [...new Set(S.pola.map((p) => p.czujnik).filter(Boolean))];
-        w.push(`<button class="wiersz ${okna.length ? "" : "wyl"}" data-idz="przypisz"><span class="ik">${ik("okno", 22)}</span><span class="t"><b>${esc6(t.czujniki.okno)}</b><small>${esc6(okna.length ? okna.map((e) => this._nazwa(e)).join(", ") : t.okienBrak)}</small></span><span class="przel"></span></button>`);
-        if (this.dane.slonce) w.push(`<button class="wiersz ${S.o.bez_slonca ? "wyl" : ""}" data-slonce="1"><span class="ik">${ik("slonce", 22)}</span><span class="t"><b>${esc6(t.czujniki.slonce)}</b><small>${esc6(t.slonceOpis)}</small></span><span class="przel"></span></button>`);
+        w.push(`<button class="wiersz ${okna.length ? "" : "wyl"}" data-idz="przypisz"><span class="ik">${ik("okno", 22)}</span><span class="t"><b>${esc7(t.czujniki.okno)}</b><small>${esc7(okna.length ? okna.map((e) => this._nazwa(e)).join(", ") : t.okienBrak)}</small></span><span class="przel"></span></button>`);
+        if (this.dane.slonce) w.push(`<button class="wiersz ${S.o.bez_slonca ? "wyl" : ""}" data-slonce="1"><span class="ik">${ik("slonce", 22)}</span><span class="t"><b>${esc7(t.czujniki.slonce)}</b><small>${esc7(t.slonceOpis)}</small></span><span class="przel"></span></button>`);
       }
       for (const [r, i, klucz2] of this._listaCzujnikow()) {
         const c = this._czujnik(r), e = S.o[klucz2];
         if (!c.lista.length && !e) {
-          w.push(`<div class="wiersz wyl brak"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(t.czujniki[r])}</b><small>${esc6(t.nieZnalazlem)}</small></span></div>`);
+          w.push(`<div class="wiersz wyl brak"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc7(t.czujniki[r])}</b><small>${esc7(t.nieZnalazlem)}</small></span></div>`);
           continue;
         }
         const st = e && this._stan(e);
-        w.push(`<button class="wiersz ${e ? "" : "wyl"}" data-czujnik="${r}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(t.czujniki[r])}</b><small>${esc6(e ? this._nazwa(e) + (st ? " · " + st : "") : t.nieUzywaj)}</small></span><span class="przel"></span></button>`);
+        w.push(`<button class="wiersz ${e ? "" : "wyl"}" data-czujnik="${r}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc7(t.czujniki[r])}</b><small>${esc7(e ? this._nazwa(e) + (st ? " · " + st : "") : t.nieUzywaj)}</small></span><span class="przel"></span></button>`);
       }
       return w.join("");
     }
@@ -11707,12 +16151,12 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const S = this.S, o = S.o, t = this.t;
       const okna = S.pola.some((p) => p.czujnik), w = [];
       const harm = !!o.f_harmonogram;
-      const wiersz = (k, i, on, tyt, opis, extra = "") => w.push(`<button class="wiersz ${on ? "" : "wyl"}" data-auto="${k}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc6(tyt)}</b><small>${esc6(opis)}</small></span><span class="przel"></span></button>${on ? extra : ""}`);
+      const wiersz = (k, i, on, tyt, opis, extra = "") => w.push(`<button class="wiersz ${on ? "" : "wyl"}" data-auto="${k}"><span class="ik">${ik(i, 22)}</span><span class="t"><b>${esc7(tyt)}</b><small>${esc7(opis)}</small></span><span class="przel"></span></button>${on ? extra : ""}`);
       const rano = harm && o.harm_otwieraj !== false, wieczor = harm && o.harm_zamykaj !== false;
-      const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw">${g === "slonce" ? `<span class="et">${esc6(t.pozycja)}</span>` : ""}<input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc6(tekst)}"><span>${esc6(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
+      const suwak = (g, mn, mx, wart, tekst, krok = 15) => `<div class="suw">${g === "slonce" ? `<span class="et">${esc7(t.pozycja)}</span>` : ""}<input type="range" min="${mn}" max="${mx}" step="${krok}" value="${wart}" data-suw="${g}" aria-label="${esc7(tekst)}"><span>${esc7(g === "slonce" ? 100 - wart + " %" : godz(wart))}</span></div>`;
       const pora = (k, ikona, on, tyt, klucz2, godzKlucz, dom, mn, mx, slonceTekst) => {
         const sl = this._harm(k) === "slonce";
-        const tryby = `<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-harm="${k}" data-v="slonce">${ik(ikona, 16)} ${esc6(slonceTekst)}</button><button class="chip ${sl ? "" : "wyb"}" data-harm="${k}" data-v="godziny">${ik("stoper", 16)} ${esc6(t.godzina)}</button></div>`;
+        const tryby = `<div class="suw chipy"><button class="chip ${sl ? "wyb" : ""}" data-harm="${k}" data-v="slonce">${ik(ikona, 16)} ${esc7(slonceTekst)}</button><button class="chip ${sl ? "" : "wyb"}" data-harm="${k}" data-v="godziny">${ik("stoper", 16)} ${esc7(t.godzina)}</button></div>`;
         wiersz(k, ikona, on, tyt, this._opisPory(k), tryby + (sl ? this._par(klucz2, t.przesuniecie) : suwak(godzKlucz, mn, mx, minuty(o[godzKlucz] || dom), tyt)));
       };
       pora("rano", "wschod", rano, t.auto.rano, "przes_otw", "otworz", "07:00", 300, 660, t.wschodSlonca);
@@ -11720,7 +16164,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (okna && wieczor) w.push(this._oknaWieczorem());
       if (!o.bez_slonca) {
         const poz = 100 - (+o.slonce_poz || 20);
-        wiersz("slonce", "slonce", !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak("slonce", 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5) + (o.czujnik_temp || o.pogoda ? this._par("slonce_temp", t.odTemp) : "") + `<div class="suw chipy"><span style="min-width:auto">${esc6(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? "wyb" : ""}" data-azymut="${a}">${esc6(t.strony[k])}</button>`).join("")}</div>`);
+        wiersz("slonce", "slonce", !!o.f_slonce, t.auto.slonce, wstaw(t.zaslon, poz), suwak("slonce", 0, 70, +o.slonce_poz || 20, t.auto.slonce, 5) + (o.czujnik_temp || o.pogoda ? this._par("slonce_temp", t.odTemp) : "") + `<div class="suw chipy"><span style="min-width:auto">${esc7(t.strona)}</span>${STRONY.map(([k, a]) => `<button class="chip ${+(o.azymut ?? 180) === a ? "wyb" : ""}" data-azymut="${a}">${esc7(t.strony[k])}</button>`).join("")}</div>`);
       }
       if (okna) {
         wiersz("blokada", "tarcza", !!o.f_blokada, t.auto.blokada, t.okienne);
@@ -11743,7 +16187,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
         t.deszczOpis,
         this._zrodlo("deszcz", "czujnik_deszcz") + this._par("deszcz_poz", t.pozycja)
       );
-      if (!zew || !(o.pogoda || o.czujnik_wiatr)) w.push(`<p class="pod" style="margin-top:6px">${esc6(t.autoPodpis)}</p>`);
+      if (!zew || !(o.pogoda || o.czujnik_wiatr)) w.push(`<p class="pod" style="margin-top:6px">${esc7(t.autoPodpis)}</p>`);
       return w.join("");
     }
     _harm(k) {
@@ -11763,30 +16207,30 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const wiersze = S.pola.map((p, i) => [p, i]).filter(([p]) => p.czujnik).map(([p, i]) => {
         const uch = p.tryb !== "otworz";
         const co = uch && o.f_wietrzenie ? wstaw(t.zjedzieDo, o.wietrzenie_poz ?? PAR.wietrzenie_poz.dom) : o.f_blokada ? t.nieZjedzie : t.zjedzieNormalnie;
-        return `<div class="ow"><span class="nr">${i + 1}</span><span><b>${esc6(this._nazwa(p.czujnik))}</b> · ${esc6(uch ? t.uchyl : t.otworz)} → ${esc6(co)}</span></div>`;
+        return `<div class="ow"><span class="nr">${i + 1}</span><span><b>${esc7(this._nazwa(p.czujnik))}</b> · ${esc7(uch ? t.uchyl : t.otworz)} → ${esc7(co)}</span></div>`;
       });
-      return `<div class="okw"><div class="et">${ik("okno", 16)} ${esc6(t.oknaWieczorem)}</div>${wiersze.join("")}<div class="pod">${esc6(t.pozniej)}</div></div>`;
+      return `<div class="okw"><div class="et">${ik("okno", 16)} ${esc7(t.oknaWieczorem)}</div>${wiersze.join("")}<div class="pod">${esc7(t.pozniej)}</div></div>`;
     }
     // ustawienia włączonej automatyki: z czego bierze dane, próg i pozycja (suwaki pod wierszem)
     _par(k, etykieta) {
       const d = PAR[k], v = +(this.S.o[k] ?? d.dom);
-      return `<div class="suw"><span class="et">${esc6(etykieta)}</span><input type="range" min="${d.mn}" max="${d.mx}" step="${d.krok}" value="${v}" data-par="${k}" aria-label="${esc6(etykieta)}"><span>${esc6(d.fmt(v))}</span></div>`;
+      return `<div class="suw"><span class="et">${esc7(etykieta)}</span><input type="range" min="${d.mn}" max="${d.mx}" step="${d.krok}" value="${v}" data-par="${k}" aria-label="${esc7(etykieta)}"><span>${esc7(d.fmt(v))}</span></div>`;
     }
     _zrodlo(r, klucz2) {
       const o = this.S.o, t = this.t, lista = this._czujnik(r).lista;
       const opcje = [...lista.map((x) => [x.id, x.nazwa]), ...o.pogoda ? [["", this._nazwa(o.pogoda)]] : []];
       if (opcje.length < 2) return "";
-      return `<div class="suw chipy"><span class="et">${esc6(t.zrodlo)}</span>${opcje.map(([id, n]) => `<button class="chip ${(o[klucz2] || "") === id ? "wyb" : ""}" data-zrodlo="${esc6(id)}" data-klucz="${klucz2}">${esc6(n)}</button>`).join("")}</div>`;
+      return `<div class="suw chipy"><span class="et">${esc7(t.zrodlo)}</span>${opcje.map(([id, n]) => `<button class="chip ${(o[klucz2] || "") === id ? "wyb" : ""}" data-zrodlo="${esc7(id)}" data-klucz="${klucz2}">${esc7(n)}</button>`).join("")}</div>`;
     }
     str_stoper() {
       const S = this.S, t = this.t, p = S.pomiar || {};
       const czas = p.czas ?? (+S.o.czas || 0);
       return `<div class="duzy"><div id="okKal">${this._oknoNaZywo()}</div>
       <div class="zegar" id="zegar">${p.trwa ? this._sekundy() : czas ? `${String(czas).replace(".", this._przecinek())} s${p.czas ? " ✓" : ""}` : "— s"}</div>
-      <button class="btn" id="mierz" ${p.trwa || !S.rolety.length ? "disabled" : ""}>${esc6(p.trwa ? t.mierze : czas ? t.zmierzZnow : t.zmierz)}</button>
-      ${p.silniki?.length > 1 ? `<div class="okw" style="margin:0;align-self:stretch"><div class="et">${ik("stoper", 16)} ${esc6(t.kazdy)}</div>${p.silniki.map((x, i) => `<div class="ow"><span class="nr">${i + 1}</span><span style="flex:1">${esc6(x.nazwa)}</span><b>${String(x.czas).replace(".", this._przecinek())} s</b></div>`).join("")}</div>` : ""}
-      ${p.blad ? `<p class="blad">${esc6(p.blad)}</p>` : ""}
-      <p class="pod" style="text-align:center">${esc6(t.pomin)}</p></div>`;
+      <button class="btn" id="mierz" ${p.trwa || !S.rolety.length ? "disabled" : ""}>${esc7(p.trwa ? t.mierze : czas ? t.zmierzZnow : t.zmierz)}</button>
+      ${p.silniki?.length > 1 ? `<div class="okw" style="margin:0;align-self:stretch"><div class="et">${ik("stoper", 16)} ${esc7(t.kazdy)}</div>${p.silniki.map((x, i) => `<div class="ow"><span class="nr">${i + 1}</span><span style="flex:1">${esc7(x.nazwa)}</span><b>${String(x.czas).replace(".", this._przecinek())} s</b></div>`).join("")}</div>` : ""}
+      ${p.blad ? `<p class="blad">${esc7(p.blad)}</p>` : ""}
+      <p class="pod" style="text-align:center">${esc7(t.pomin)}</p></div>`;
     }
     _przecinek() {
       return 1.5.toLocaleString(this._hass?.locale?.language || void 0).includes(",") ? "," : ".";
@@ -11837,19 +16281,19 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     str_dzwonek() {
       const S = this.S, o = S.o, t = this.t, w = [];
       const gdzie = new Set(o.powiadom_gdzie || []), co = new Set(o.powiadom || []);
-      for (const tel of this.dane.telefony) w.push(`<button class="wiersz ${gdzie.has(tel.id) ? "" : "wyl"}" data-tel="${esc6(tel.id)}"><span class="ik">${ik(tel.telefon ? "telefon" : "dzwonek", 22)}</span><span class="t"><b>${esc6(tel.telefon ? t.telefon : tel.nazwa)}</b><small>${esc6(tel.telefon ? tel.nazwa : tel.id)}</small></span><span class="przel"></span></button>`);
-      if (!this.dane.telefony.length) w.push(`<p class="pod">${esc6(t.brakTelefonu)}</p>`);
+      for (const tel of this.dane.telefony) w.push(`<button class="wiersz ${gdzie.has(tel.id) ? "" : "wyl"}" data-tel="${esc7(tel.id)}"><span class="ik">${ik(tel.telefon ? "telefon" : "dzwonek", 22)}</span><span class="t"><b>${esc7(tel.telefon ? t.telefon : tel.nazwa)}</b><small>${esc7(tel.telefon ? tel.nazwa : tel.id)}</small></span><span class="przel"></span></button>`);
+      if (!this.dane.telefony.length) w.push(`<p class="pod">${esc7(t.brakTelefonu)}</p>`);
       const rodzaje = S.brama ? ["nie_odpowiada", "brama_otwarta", "brama_niedomknieta", ...o.czujnik_foto ? ["przeszkoda"] : [], "bateria"] : ["nie_odpowiada", "nie_dojechala", "bateria", "automatyka"];
       const ikony = { nie_odpowiada: "ostrz", nie_dojechala: "stoper", bateria: "bateria", automatyka: "robot", brama_otwarta: "ostrz", brama_niedomknieta: "stoper", przeszkoda: "foto" };
-      for (const r of rodzaje) w.push(`<button class="wiersz ${co.has(r) ? "" : "wyl"}" data-powiadom="${r}"><span class="ik">${ik(ikony[r], 22)}</span><span class="t"><b>${esc6(t.powiadom[r])}</b><small>${esc6(t.powiadomOpis[r])}</small></span><span class="przel"></span></button>`);
+      for (const r of rodzaje) w.push(`<button class="wiersz ${co.has(r) ? "" : "wyl"}" data-powiadom="${r}"><span class="ik">${ik(ikony[r], 22)}</span><span class="t"><b>${esc7(t.powiadom[r])}</b><small>${esc7(t.powiadomOpis[r])}</small></span><span class="przel"></span></button>`);
       return w.join("");
     }
     str_gotowe() {
       const S = this.S, t = this.t, d = this.dane;
       const panel = d.panele.find((p) => p.klucz === d.panel);
-      return `<input class="nazwa" id="nazwa" value="${esc6(S.tytul)}" aria-label="${esc6(t.nazwa)}" placeholder="${esc6(t.nazwa)}">
+      return `<input class="nazwa" id="nazwa" value="${esc7(S.tytul)}" aria-label="${esc7(t.nazwa)}" placeholder="${esc7(t.nazwa)}">
       ${this._szeroko ? "" : '<div class="karta" id="karta"></div>'}
-      ${d.nowy && panel ? `<button class="wiersz ${S.panel ? "" : "wyl"}" data-panel="1" style="margin-top:12px"><span class="ik">${ik("uklad", 22)}</span><span class="t"><b>${esc6(t.naPanel)}</b><small>${esc6(panel.nazwa)}</small></span><span class="przel"></span></button>` : ""}`;
+      ${d.nowy && panel ? `<button class="wiersz ${S.panel ? "" : "wyl"}" data-panel="1" style="margin-top:12px"><span class="ik">${ik("uklad", 22)}</span><span class="t"><b>${esc7(t.naPanel)}</b><small>${esc7(panel.nazwa)}</small></span><span class="przel"></span></button>` : ""}`;
     }
     // karta na udawanej encji: dokładnie to, co pokaże panel
     _konfigKarty() {
@@ -11888,7 +16332,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     edytor() {
       const duzy = this._szeroko, EW = duzy ? 440 : 260, EH = duzy ? 390 : 230, EP = 10, S = this.S, P4 = prostokaty(S.u), K = S.u.kol, suma = sumaKol(K), iw = EW - 2 * EP, ih = EH - 2 * EP;
       const [n1, n2] = this._nieba(), d = [], kol = this._kolor();
-      d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc6(this.t.wlasnyTytul)}">`);
+      d.push(`<svg id="edSvg" viewBox="0 0 ${EW} ${EH + 14}" width="${EW}" height="${EH + 14}" style="max-width:100%;height:auto;touch-action:none" role="img" aria-label="${esc7(this.t.wlasnyTytul)}">`);
       d.push(`<defs><linearGradient id="nE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${n1}"/><stop offset="1" stop-color="${n2}"/></linearGradient></defs>`);
       d.push(`<line x1="0" x2="${EW}" y1="${EH - EP + 1}" y2="${EH - EP + 1}" stroke="var(--fg2)" stroke-width="1.5"/>`);
       const klocki = moze3d() && !this.bez3d;
@@ -11899,7 +16343,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
           return kk ? KOLORY[kk] || kk : kol;
         });
         const klu = "U" + JSON.stringify({ pola, typy, kolory, rama: this._rama(), W: +(1.5 * iw / ih).toFixed(3), H: 1.5, margines: 0, sciana: null, pozycje: pola.map(() => 50) });
-        d.push(`<image class="k3d" data-k3d="${esc6(klu)}" href="${KAFLE3D.get(klu) || PUSTY}" x="${EP}" y="${EP}" width="${iw}" height="${ih}" preserveAspectRatio="none"/>`);
+        d.push(`<image class="k3d" data-k3d="${esc7(klu)}" href="${KAFLE3D.get(klu) || PUSTY}" x="${EP}" y="${EP}" width="${iw}" height="${ih}" preserveAspectRatio="none"/>`);
       }
       for (const [x2, y, w, h, typ] of przerwy(S.u)) d.push(this._przerwa(EP + x2 * iw, EP + y * ih, w * iw, h * ih, typ));
       P4.forEach((p, i) => {
@@ -11977,8 +16421,8 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const sw = K.reduce((a, x) => a + x.w, 0), sr = k.r.reduce((a, b) => a + b, 0);
       const blok = (tytul, gdzie, typ, id, v, waski) => {
         const rodzaj = !v ? "brak" : v <= 3 ? "waski" : "sciana", nz = t.przegRodzaj;
-        return `<div class="przeg"><div class="sek">${esc6(tytul)} <small>· ${esc6(gdzie)}</small></div><div class="chipy">${[["brak", nz.brak], ["waski", nz[waski]], ["sciana", nz.sciana]].map(([r, n]) => `<button class="chip ${rodzaj === r ? "wyb" : ""}" data-przeg="${typ}:${id}:${r}">${esc6(n)}</button>`).join("")}</div>
-        ${rodzaj === "sciana" ? `<div class="suw"><span class="et">${esc6(t.szerokosc)}</span><input type="range" min="4" max="${typ.startsWith("mur") ? 40 : 30}" step="1" value="${v}" data-przerwa="${typ}:${id}" aria-label="${esc6(t.szerokosc)}"><span>${v} %</span></div>` : ""}</div>`;
+        return `<div class="przeg"><div class="sek">${esc7(tytul)} <small>· ${esc7(gdzie)}</small></div><div class="chipy">${[["brak", nz.brak], ["waski", nz[waski]], ["sciana", nz.sciana]].map(([r, n]) => `<button class="chip ${rodzaj === r ? "wyb" : ""}" data-przeg="${typ}:${id}:${r}">${esc7(n)}</button>`).join("")}</div>
+        ${rodzaj === "sciana" ? `<div class="suw"><span class="et">${esc7(t.szerokosc)}</span><input type="range" min="4" max="${typ.startsWith("mur") ? 40 : 30}" step="1" value="${v}" data-przerwa="${typ}:${id}" aria-label="${esc7(t.szerokosc)}"><span>${v} %</span></div>` : ""}</div>`;
       };
       const nr2 = Math.min(S.wyb, prostokaty(S.u).length - 1) + 1;
       if (cm >= 0) w.push(blok(t.przegPion, wstaw(t.obokPola, nr2), "mur", `${cm}:0`, Math.round((+K[cm].mur || 0) / sw * 100), "slupek"));
@@ -12077,7 +16521,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const o = this._oslona(this.S.pola[i]?.silnik), d = document.createElement("div");
       d.id = "duch";
       d.className = "duch";
-      d.innerHTML = `<span class="ik">${i + 1}</span><b>${esc6(o ? o.nazwa : this.t.wybierzSilnik)}</b>`;
+      d.innerHTML = `<span class="ik">${i + 1}</span><b>${esc7(o ? o.nazwa : this.t.wybierzSilnik)}</b>`;
       this.shadowRoot.querySelector(".cialo").append(d);
     }
     _polePod(e) {
@@ -12095,7 +16539,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       if (this.S.wszystkie || !lista.some(tu)) return { lista, wiecej: "" };
       return {
         lista: lista.filter((x) => tu(x) || wybrane.includes(x.id)),
-        wiecej: `<button class="chip" data-wszystkie="1">${esc6(this.t.wszystkie)}</button>`
+        wiecej: `<button class="chip" data-wszystkie="1">${esc7(this.t.wszystkie)}</button>`
       };
     }
     arkusz() {
@@ -12104,30 +16548,30 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const sil = this._tylkoTu(this.dane.oslony.filter((o) => !o.brama && (!o.grupa || S.rolety.includes(o.id))).sort((a, b) => (pokoj ? (b.area === pokoj) - (a.area === pokoj) : 0) || a.nazwa.localeCompare(b.nazwa)), (o) => pokoj && o.area === pokoj, [p.silnik, ...S.rolety]);
       const silniki = sil.lista;
       const ok = this._tylkoTu(this._czujnik("okno").lista, (c) => c.tu, [p.czujnik]), okna = ok.lista;
-      return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(wstaw(t.pole, i + 1))}"><div class="uchwyt"></div><h2>${esc6(wstaw(t.pole, i + 1))}</h2>
-      <div class="sek">${esc6(t.silnikPola)}</div><div class="chipy">${silniki.map((o) => `<button class="chip ${p.silnik === o.id ? "wyb" : ""}" data-silnik="${esc6(o.id)}">${esc6(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc6(o.pokoj)}</span>` : ""}</button>`).join("")}${sil.wiecej}</div>
-      <div class="sek">${esc6(t.czujnikPola)}</div><div class="chipy">${okna.map((c) => `<button class="chip ${p.czujnik === c.id ? "wyb" : ""}" data-czuj="${esc6(c.id)}">${esc6(c.nazwa)}${c.tu && c.pokoj ? `<span class="p">${esc6(c.pokoj)}</span>` : ""}</button>`).join("")}
-      ${ok.wiecej}<button class="chip ${!p.czujnik ? "wyb" : ""}" data-czuj="">${esc6(t.bezCzujnika)}</button></div>
-      ${p.czujnik ? `<div class="sek">${esc6(t.gdyOtwarte)}</div><div class="chipy">${["uchyl", "otworz"].map((k) => `<button class="chip ${p.tryb === k ? "wyb" : ""}" data-tryb="${k}">${esc6(t[k])}</button>`).join("")}</div>` : ""}
-      <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
+      return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc7(wstaw(t.pole, i + 1))}"><div class="uchwyt"></div><h2>${esc7(wstaw(t.pole, i + 1))}</h2>
+      <div class="sek">${esc7(t.silnikPola)}</div><div class="chipy">${silniki.map((o) => `<button class="chip ${p.silnik === o.id ? "wyb" : ""}" data-silnik="${esc7(o.id)}">${esc7(o.nazwa)}${pokoj && o.area === pokoj && o.pokoj ? `<span class="p">${esc7(o.pokoj)}</span>` : ""}</button>`).join("")}${sil.wiecej}</div>
+      <div class="sek">${esc7(t.czujnikPola)}</div><div class="chipy">${okna.map((c) => `<button class="chip ${p.czujnik === c.id ? "wyb" : ""}" data-czuj="${esc7(c.id)}">${esc7(c.nazwa)}${c.tu && c.pokoj ? `<span class="p">${esc7(c.pokoj)}</span>` : ""}</button>`).join("")}
+      ${ok.wiecej}<button class="chip ${!p.czujnik ? "wyb" : ""}" data-czuj="">${esc7(t.bezCzujnika)}</button></div>
+      ${p.czujnik ? `<div class="sek">${esc7(t.gdyOtwarte)}</div><div class="chipy">${["uchyl", "otworz"].map((k) => `<button class="chip ${p.tryb === k ? "wyb" : ""}" data-tryb="${k}">${esc7(t[k])}</button>`).join("")}</div>` : ""}
+      <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc7(t.gotowe)}</button></div></div>`;
     }
     arkuszCzujnika(r) {
       const S = this.S, t = this.t, klucz2 = this._listaCzujnikow().find((x) => x[0] === r)[2], c = this._tylkoTu(this._czujnik(r).lista, (x) => x.tu, [S.o[klucz2]]);
-      return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc6(t.czujniki[r])}"><div class="uchwyt"></div><h2>${esc6(t.czujniki[r])}</h2>
-      <div class="chipy" style="margin-top:12px">${c.lista.map((x) => `<button class="chip ${S.o[klucz2] === x.id ? "wyb" : ""}" data-wybierz="${esc6(x.id)}" data-klucz="${klucz2}">${esc6(x.nazwa)}${x.pokoj ? `<span class="p">${esc6(x.pokoj)}</span>` : ""}</button>`).join("")}
-      ${c.wiecej}<button class="chip ${!S.o[klucz2] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz2}">${esc6(t.nieUzywaj)}</button></div>
-      <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc6(t.gotowe)}</button></div></div>`;
+      return `<div class="tlo" data-zamknij="1"></div><div class="arkusz" role="dialog" aria-label="${esc7(t.czujniki[r])}"><div class="uchwyt"></div><h2>${esc7(t.czujniki[r])}</h2>
+      <div class="chipy" style="margin-top:12px">${c.lista.map((x) => `<button class="chip ${S.o[klucz2] === x.id ? "wyb" : ""}" data-wybierz="${esc7(x.id)}" data-klucz="${klucz2}">${esc7(x.nazwa)}${x.pokoj ? `<span class="p">${esc7(x.pokoj)}</span>` : ""}</button>`).join("")}
+      ${c.wiecej}<button class="chip ${!S.o[klucz2] ? "wyb" : ""}" data-wybierz="" data-klucz="${klucz2}">${esc7(t.nieUzywaj)}</button></div>
+      <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn" data-zamknij="1">${esc7(t.gotowe)}</button></div></div>`;
     }
     // --- budowa i rysowanie ---
     _zbuduj() {
       const r = this.shadowRoot || this.attachShadow({ mode: "open" }), t = this.t;
       this.lang = jezyk({}, this._hass);
-      r.innerHTML = `<style>${STYL5}</style>
-      <div class="gora"><div class="tytul"><button class="x" data-x="1" aria-label="${esc6(t.zamknij)}">${ik("x", 22)}</button>
+      r.innerHTML = `<style>${STYL6}</style>
+      <div class="gora"><div class="tytul"><button class="x" data-x="1" aria-label="${esc7(t.zamknij)}">${ik("x", 22)}</button>
         <div><span id="nazwaKroku"></span><small id="ktory"></small></div></div>
         <div class="kroki" id="kroki"></div><div class="podglad" id="podglad"></div></div>
       <div class="cialo"><div class="scena" id="scena"></div><div class="tresc" id="tresc"></div></div>
-      <div class="dol"><button class="btn plaski" id="wstecz">${esc6(t.wstecz)}</button><button class="btn" id="dalej">${esc6(t.dalej)}</button></div>`;
+      <div class="dol"><button class="btn plaski" id="wstecz">${esc7(t.wstecz)}</button><button class="btn" id="dalej">${esc7(t.dalej)}</button></div>`;
       r.addEventListener("click", (e) => this._klik(e));
       this._ro?.disconnect();
       this._ro = new ResizeObserver(() => {
@@ -12221,7 +16665,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       const k = kroki[S.krok];
       r.getElementById("nazwaKroku").textContent = t.kroki[k];
       r.getElementById("ktory").textContent = `${wstaw(t.krok, S.krok + 1, kroki.length)} · v${WERSJA}`;
-      r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc6(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${this._ikKroku(kk, i === S.krok)}</span><span class="n">${esc6(t.kroki[kk])}</span></button>`).join("");
+      r.getElementById("kroki").innerHTML = kroki.map((kk, i) => `<button class="krok ${i === S.krok ? "teraz" : i < S.krok ? "zrob" : ""}" data-krok="${i}" aria-label="${esc7(t.kroki[kk])}"${i === S.krok ? ' aria-current="step"' : ""}><span class="k">${this._ikKroku(kk, i === S.krok)}</span><span class="n">${esc7(t.kroki[kk])}</span></button>`).join("");
       {
         const kr = r.getElementById("kroki"), a = kr.querySelector(".teraz");
         if (a && kr.scrollWidth > kr.clientWidth) kr.scrollLeft = a.offsetLeft - (kr.clientWidth - a.offsetWidth) / 2;
@@ -12232,7 +16676,7 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       this._odswiezScene(k, jedenDuzy);
       const pyt = k === "rodzaj" && S.brama ? t.pytania.rodzajBrama : t.pytania[k], pod = t.podpisy[k];
       this._kartaEl = null;
-      r.getElementById("tresc").innerHTML = `<h2>${esc6(pyt)}</h2>${pod ? `<p class="pod">${esc6(pod)}</p>` : ""}${this["str_" + k]()}` + (S.arkusz !== null && k === "przypisz" ? this.arkusz() : "") + (S.arkuszC && k === "czujniki" ? this.arkuszCzujnika(S.arkuszC) : "");
+      r.getElementById("tresc").innerHTML = `<h2>${esc7(pyt)}</h2>${pod ? `<p class="pod">${esc7(pod)}</p>` : ""}${this["str_" + k]()}` + (S.arkusz !== null && k === "przypisz" ? this.arkusz() : "") + (S.arkuszC && k === "czujniki" ? this.arkuszCzujnika(S.arkuszC) : "");
       this._przekolorujZdj();
       r.getElementById("wstecz").style.visibility = S.krok ? "visible" : "hidden";
       const dalej = r.getElementById("dalej");
@@ -12849,6 +17293,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       } catch (e) {
       }
       try {
+        pilnujEkranu();
+      } catch (e) {
+      }
+      try {
         pilnuj(rejestruj2);
       } catch (e) {
         powod = String(e?.message || e);
@@ -12860,6 +17308,76 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
       }
     }, 700);
   }
+
+  // src/panel.js
+  var esc8 = (s) => String(s ?? "").replace(/[&<>"]/g, (z) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[z]);
+  var STYL7 = `
+:host{display:block;min-height:100%;background:var(--primary-background-color);color:var(--primary-text-color);font-family:var(--ha-font-family-body,Roboto,Noto,sans-serif)}
+.pasek{display:flex;align-items:center;gap:4px;height:var(--header-height,56px);padding:0 12px 0 4px;background:var(--app-header-background-color,var(--primary-color));
+ color:var(--app-header-text-color,#fff);border-bottom:var(--app-header-border-bottom,none);position:sticky;top:0;z-index:2}
+.pasek h1{font-size:var(--ha-font-size-xl,20px);font-weight:var(--ha-font-weight-normal,400);margin:0 0 0 12px;flex:1}
+.pasek button{font:inherit;font-size:14px;font-weight:500;border:0;border-radius:18px;padding:8px 14px;cursor:pointer;background:rgba(255,255,255,.16);color:inherit}
+.siatka{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px;padding:16px;max-width:1500px;margin:0 auto}
+.okno{display:grid;gap:6px;align-content:start}
+.info{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--secondary-text-color);padding:0 4px}
+.info a{color:var(--primary-color);text-decoration:none;font-weight:500;white-space:nowrap}
+.pusto{padding:32px 16px;text-align:center;display:grid;gap:12px;justify-items:center;color:var(--secondary-text-color)}
+.pusto button{font:inherit;font-size:14px;font-weight:500;border:0;border-radius:20px;padding:10px 20px;cursor:pointer;background:var(--primary-color);color:var(--text-primary-color,#fff)}`;
+  var MotorHaPanel = class extends HTMLElement {
+    set hass(h) {
+      this._hass = h;
+      this._rysuj();
+    }
+    get hass() {
+      return this._hass;
+    }
+    set narrow(n) {
+      this._narrow = n;
+      if (this._menu) this._menu.narrow = n;
+    }
+    set panel(p) {
+      this._panel = p;
+    }
+    _okna() {
+      const h = this._hass;
+      return Object.values(h.entities || {}).filter((e) => e.platform === "motor_ha" && e.entity_id.startsWith("cover.") && h.states[e.entity_id]).map((e) => e.entity_id).sort((a, b) => String(h.states[a].attributes.friendly_name).localeCompare(String(h.states[b].attributes.friendly_name)));
+    }
+    _rysuj() {
+      const h = this._hass;
+      if (!h) return;
+      const T2 = TEKSTY[jezyk({}, h)], P4 = T2.panel, root = this.shadowRoot || this.attachShadow({ mode: "open" });
+      const okna = this._okna(), klucz2 = okna.join() + P4.tytul;
+      if (klucz2 !== this._klucz) {
+        this._klucz = klucz2;
+        root.innerHTML = `<style>${STYL7}</style><div class="pasek"><span id="menu"></span><h1>Motor HA</h1>
+        ${h.user?.is_admin ? `<button id="ust">⚙ ${esc8(P4.ustawienia)}</button>` : ""}</div>
+        ${okna.length ? `<div class="siatka">${okna.map((e) => `<div class="okno" data-e="${e}"><div class="k"></div>
+          <div class="info"><span class="powod"></span><a href="/logbook?entity_id=${encodeURIComponent(e)}">${esc8(P4.historia)}</a></div></div>`).join("")}</div>` : `<div class="pusto"><span>${esc8(P4.brak)}</span>${h.user?.is_admin ? `<button id="dodaj">${esc8(P4.dodaj)}</button>` : ""}</div>`}`;
+        if (customElements.get("ha-menu-button")) {
+          this._menu = document.createElement("ha-menu-button");
+          this._menu.narrow = this._narrow;
+          root.querySelector("#menu").appendChild(this._menu);
+        }
+        root.querySelector("#ust")?.addEventListener("click", () => otworzEkran(this._hass));
+        root.querySelector("#dodaj")?.addEventListener("click", () => {
+          history.pushState(null, "", "/config/integrations/dashboard/add?domain=motor_ha");
+          window.dispatchEvent(new CustomEvent("location-changed", { detail: { replace: false } }));
+        });
+        this._karty = [...root.querySelectorAll(".okno")].map((o) => {
+          const k = document.createElement("motor-ha");
+          k.setConfig({ type: "custom:motor-ha", entity: o.dataset.e });
+          o.querySelector(".k").appendChild(k);
+          return [o, k];
+        });
+      }
+      if (this._menu) this._menu.hass = h;
+      for (const [o, k] of this._karty || []) {
+        k.hass = h;
+        const m = h.states[o.dataset.e]?.attributes?.motor_ha, ps = m?.encje?.powod && h.states[m.encje.powod];
+        o.querySelector(".powod").textContent = ps ? `${P4.powod}: ${h.formatEntityState ? h.formatEntityState(ps) : ps.state}` : "";
+      }
+    }
+  };
 
   // src/index.js
   var MotorHaStart = class extends HTMLElement {
@@ -12885,6 +17403,10 @@ h2{margin:0 0 4px;font-size:18px;font-weight:500;text-wrap:balance}
     // kreator graficzny nad okienkiem HA (kreator.js)
     ["motor-ha-start", MotorHaStart],
     // ukryta strona /motor-ha-start (pierwsze urządzenie po instalacji)
+    ["motor-ha-ekran", MotorHaEkran],
+    // pierwszy ekran po instalacji i aktualizacji (ekran.js)
+    ["motor-ha-panel", MotorHaPanel],
+    // panel „Motor HA” w pasku bocznym (panel.js)
     ["roleta-realistyczna", class extends MotorHaKarta {
     }],
     ["roleta-realistyczna-editor", class extends MotorHaEdytor {

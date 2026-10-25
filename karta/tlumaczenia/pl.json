@@ -525,5 +525,300 @@
     "caleOkno": "Całe okno",
     "rodzajCalosc": "Wybierz pole, żeby dać mu inny rodzaj albo kolor.",
     "rodzajPole": "Teraz ustawiasz tylko pole {0}."
+  },
+  "ekran": {
+    "witaj": "Witaj w Motor HA",
+    "nowaWersja": "Nowa wersja Motor HA",
+    "wersja": "Wersja {0}",
+    "coNowego": "Co nowego w {0}",
+    "nowe": [
+      "Ten ekran: sam wybierasz, co Motor HA dodaje do Home Assistanta",
+      "Karta okna na wybranym panelu, widoku i miejscu, skróty dla całego domu i panel w pasku bocznym",
+      "Kafelki układów i edytor własnego układu jako prawdziwe okno, osłony widoczne w każdym kroku kreatora"
+    ],
+    "jak": "Jak chcesz używać Motor HA?",
+    "tryby": {
+      "pelny": [
+        "Wszystko",
+        "Okno, karta, automatyka, powiadomienia"
+      ],
+      "samo": [
+        "Samo urządzenie",
+        "Tylko osłona w HA, bez karty i automatyki"
+      ],
+      "wlasny": [
+        "Mój wybór",
+        "Zaznaczam sam poniżej"
+      ]
+    },
+    "co": "Co Motor HA ma dodać do Home Assistanta?",
+    "opcje": {
+      "karta": [
+        "Karta okna na panelu",
+        "Każde nowe okno dostaje kartę. Wybierz panel i miejsce."
+      ],
+      "dom": [
+        "Karta „Cały dom”",
+        "Wszystkie okna na jednej karcie."
+      ],
+      "skroty": [
+        "Skróty na panelu",
+        "Przyciski dla całego domu."
+      ],
+      "pasek": [
+        "Panel „Motor HA” w pasku bocznym",
+        "Wszystkie okna, powód ruchu i historia w jednym miejscu."
+      ],
+      "assist": [
+        "Sterowanie głosem (Assist)",
+        "Okna słuchają poleceń, np. „zasłoń salon”."
+      ],
+      "ukryj": [
+        "Ukryj zwykłe silniki przed głosem",
+        "Assist widzi tylko okna Motor HA, bez podwójnych nazw."
+      ],
+      "powiadom": [
+        "Powiadomienia",
+        "Gdy coś jest nie tak z osłoną albo czujnikiem."
+      ],
+      "auto": [
+        "Automatyka",
+        "Osłony same reagują na porę dnia, słońce, pogodę i czujniki."
+      ],
+      "nowa_wersja": [
+        "Informacja o nowej wersji",
+        "Ten ekran z „Co nowego” po każdej aktualizacji."
+      ]
+    },
+    "jakDziala": "Jak działa",
+    "gdyWyl": "Gdy wyłączone",
+    "opisy": {
+      "karta": [
+        "Po dodaniu okna Motor HA dokłada jego kartę na wybrany panel, widok i miejsce. Niczego nie usuwa i nie przesuwa. Gdy karta już tam jest, nic nie robi.",
+        "Karta nie trafia na żaden panel. Dodasz ją sam: Edytuj panel → Dodaj kartę → Motor HA."
+      ],
+      "dom": [
+        "Na panelu wybranym przy karcie okna jest jedna karta ze wszystkimi oknami domu: stan każdego okna i przyciski otwórz, stop, zamknij.",
+        "Brak karty całego domu, są tylko karty pojedynczych okien."
+      ],
+      "skroty": [
+        "Nad kartami okien są trzy przyciski dla całego domu. Pauza zatrzymuje automatykę wszystkich okien na 2 godziny.",
+        "Bez przycisków; całym domem sterujesz z karty „Cały dom” albo głosem."
+      ],
+      "pasek": [
+        "W pasku bocznym HA jest pozycja „Motor HA”: wszystkie okna z kartami, powód ostatniego ruchu, historia ruchów i te ustawienia.",
+        "Bez pozycji w pasku bocznym. Okna znajdziesz w Ustawienia → Urządzenia → Motor HA."
+      ],
+      "assist": [
+        "Okna Motor HA są widoczne dla Assist pod swoją nazwą i pokojem, np. „zasłoń salon”, „odsłoń okno w kuchni”.",
+        "Assist nie widzi okien Motor HA; sterujesz z karty i automatyki."
+      ],
+      "ukryj": [
+        "Zwykłe silniki, z których powstały okna Motor HA, są ukryte przed Assist. Głos nie myli „rolety salon” z „oknem salon”.",
+        "Assist widzi i silnik, i okno Motor HA (mogą być dwie podobne nazwy)."
+      ],
+      "powiadom": [
+        "Wiadomość przychodzi, gdy silnik nie odpowiada, osłona nie dojechała, słabnie bateria albo automatyka nie mogła ruszyć osłony (np. przez otwarte okno).",
+        "Bez wiadomości. Stan widać na karcie i w historii okna."
+      ],
+      "auto": [
+        "Każde okno dostaje scenariusze poniżej. Działają w kolejności ważności: wyższy wygrywa albo ogranicza niższy. Każdy zmienisz później w „Konfiguruj” przy oknie.",
+        "Osłony ruszają się tylko, gdy Ty każesz: karta, głos, przycisk albo Twoje własne automatyzacje HA. Motor HA nic sam nie robi."
+      ],
+      "nowa_wersja": [
+        "Po każdej aktualizacji pojawia się ten ekran z „Co nowego” i Twoimi ustawieniami do sprawdzenia.",
+        "Aktualizacje bez tego ekranu. „Co nowego” jest tylko w HACS."
+      ]
+    },
+    "panel": "Panel",
+    "widok": "Widok",
+    "miejsce": "Miejsce",
+    "proponowane": "proponowane",
+    "nowyWidok": "Nowy widok „Okna”",
+    "miejsca": {
+      "sekcja": "Sekcja „Motor HA” na końcu",
+      "gora": "Sekcja „Motor HA” na górze",
+      "pokoj": "W sekcji pokoju okna"
+    },
+    "miniOpis": {
+      "sekcja": "Karty Motor HA razem w jednej sekcji na końcu widoku, nic innego się nie przesuwa.",
+      "gora": "Sekcja Motor HA na samej górze widoku.",
+      "pokoj": "Karta w sekcji, której nagłówek to nazwa pokoju okna (np. Salon). Bez takiej sekcji – w sekcji Motor HA."
+    },
+    "miniNowy": "Na osobnym widoku „Okna”.",
+    "oknoMini": "Okno",
+    "salon": "Salon",
+    "kuchnia": "Kuchnia",
+    "brakPanelu": "Nie ma panelu zapisywanego z UI, więc karta się nie doda. Utwórz panel w Ustawienia → Panele i otwórz ten ekran jeszcze raz.",
+    "skroty": [
+      "⬇ Zasłoń wszystko",
+      "⬆ Odsłoń wszystko",
+      "⏸ Pauza automatyki 2 h"
+    ],
+    "skrotyOpis": "Na tym samym panelu, nad kartami okien.",
+    "telefon": "Też na telefon (aplikacja HA)",
+    "wHa": "Zawsze trafiają też do powiadomień HA (dzwonek w pasku bocznym).",
+    "brakTelefonu": "Nie ma telefonu z aplikacją HA – powiadomienia trafią tylko do HA (dzwonek w pasku bocznym).",
+    "scenOpis": "Wszystkie scenariusze w kolejności ważności (1 najważniejszy). Scenariusz bez potrzebnego czujnika sam się pomija. Każdy możesz wyłączyć:",
+    "skad": "Skąd wie",
+    "scen": {
+      "cisza": [
+        "Spokój po starcie HA",
+        "przez 5 minut po restarcie HA osłony stoją, aż czujniki podadzą stan",
+        "–"
+      ],
+      "dym": [
+        "Dym",
+        "czujnik dymu → osłona się otwiera (droga ucieczki i światło)",
+        "czujnik dymu"
+      ],
+      "wiatr": [
+        "Wiatr, grad, drgania",
+        "wiatr od 40 km/h albo drgania → osłona zewnętrzna się zwija; ostrzeżenie o gradzie → markiza zwinięta, roleta zamknięta (chroni szybę)",
+        "pogoda, wiatromierz, czujnik drgań, ostrzeżenia"
+      ],
+      "deszcz": [
+        "Deszcz",
+        "markizy, screeny i żaluzje fasadowe się zwijają; rolety zostają, jak są",
+        "pogoda albo czujnik deszczu"
+      ],
+      "mroz": [
+        "Mróz",
+        "od 1 °C w dół osłona zewnętrzna nie rusza (może być przymarznięta)",
+        "temperatura na zewnątrz albo pogoda"
+      ],
+      "pauza": [
+        "Twój ręczny ruch",
+        "gdy sam ruszysz osłonę, automatyka czeka 2 godziny",
+        "silnik osłony"
+      ],
+      "alarm": [
+        "Alarm",
+        "po uzbrojeniu alarmu osłona się zamyka",
+        "alarm HA"
+      ],
+      "spie": [
+        "Śpię",
+        "przełącznik „Śpię” włączony → osłona zamknięta, rano się nie otwiera",
+        "przełącznik „Śpię” przy oknie"
+      ],
+      "nikogo": [
+        "Nikogo w domu",
+        "nikogo nie ma → osłona zamknięta; w trybie wakacyjnym rano i wieczorem ruch o trochę innej porze każdego dnia",
+        "telefony domowników"
+      ],
+      "rano": [
+        "Rano otwórz",
+        "o wschodzie słońca (albo o godzinie, którą ustawisz) osłona się otwiera",
+        "słońce HA, zegar"
+      ],
+      "wieczor": [
+        "Wieczorem zamknij",
+        "o zachodzie słońca (albo o ustawionej godzinie) osłona się zamyka",
+        "słońce HA, zegar"
+      ],
+      "obecnosc": [
+        "Rano poczekaj na domownika",
+        "do 10:00 osłona otwiera się dopiero, gdy ktoś wejdzie do pokoju",
+        "czujnik obecności albo ruchu"
+      ],
+      "posrednia": [
+        "Pozycja na popołudnie",
+        "od 13:00 osłona stoi na 50 % zamiast w pełni otwarta",
+        "zegar"
+      ],
+      "slonce": [
+        "Słońce i upał",
+        "słońce świeci w to okno i na zewnątrz jest od 24 °C (albo prognoza upału) → osłona zjeżdża do 20 % otwarcia",
+        "słońce HA, pogoda, temperatura"
+      ],
+      "oslepianie": [
+        "Oślepianie",
+        "słońce w oknie → osłona zjeżdża tak, żeby słońce nie sięgało dalej niż 3 m w głąb pokoju (np. do telewizora albo biurka)",
+        "słońce HA"
+      ],
+      "pokoj": [
+        "Ciepło w pokoju",
+        "w pokoju od 25 °C i słońce w oknie → osłona do 20 % otwarcia",
+        "termometr w pokoju"
+      ],
+      "zima": [
+        "Zima",
+        "od listopada do marca w słońcu osłona otwarta (darmowe ciepło), w nocy zamknięta (mniej strat ciepła)",
+        "słońce HA, kalendarz"
+      ],
+      "okno": [
+        "Otwarte okno i drzwi",
+        "uchylone okno: osłona nie zjedzie niżej niż 20 %; otwarte okno: nie zjeżdża; otwarte drzwi balkonowe: nie niżej niż 80 %",
+        "czujnik okna i drzwi"
+      ],
+      "przeszkoda": [
+        "Przeszkoda",
+        "czujnik przeszkody przy drzwiach balkonowych → osłona nie zjeżdża w dół",
+        "czujnik przeszkody"
+      ],
+      "granice": [
+        "Granice ruchu i lamele",
+        "osłona nigdy nie wyjedzie poza ustawione granice; lamele żaluzji ustawiają się pod kątem słońca",
+        "–"
+      ]
+    },
+    "sprawdz": "Sprawdź, co wygrywa, gdy kilka rzeczy dzieje się naraz",
+    "przyklad": "Przykład: roleta zewnętrzna, okno od południa, lipiec. Liczy to ta sama logika, która działa w Twoich oknach.",
+    "zaznacz": "Zaznacz, co się teraz dzieje:",
+    "pora": "Pora",
+    "pory": {
+      "rano": "Rano 7:30",
+      "dzien": "Dzień 14:00",
+      "wieczor": "Wieczór (po zachodzie słońca)",
+      "noc": "Noc 23:00"
+    },
+    "warunki": {
+      "slonce": "Słońce świeci w okno",
+      "upal": "Upał (30 °C)",
+      "wiatr": "Silny wiatr (60 km/h)",
+      "deszcz": "Deszcz",
+      "okno": "Okno uchylone",
+      "dym": "Czujnik dymu",
+      "alarm": "Alarm uzbrojony",
+      "spie": "Włączone „Śpię”",
+      "nikogo": "Nikogo w domu",
+      "reka": "Ręcznie ruszyłeś osłonę"
+    },
+    "oslona": "Osłona: {0} % otwarcia",
+    "stoi": "Osłona zostaje, gdzie jest",
+    "wygrywa": "Wygrywa: {0}",
+    "nic": "nic się nie dzieje",
+    "ogranicza": "Otwarte okno ogranicza: miało być {0} %, jest {1} %.",
+    "ogrStoi": "Otwarte okno ogranicza: miało być {0} %, osłona nie zjeżdża.",
+    "kolejnosc": "Zaznaczone teraz:",
+    "stany": {
+      "wygrywa": "wygrywa",
+      "ogranicza": "ogranicza",
+      "przegrywa": "przegrywa",
+      "nie_dziala": "nie działa teraz"
+    },
+    "istniejace": "Zastosuj też do moich okien ({0}): karta na panelu, powiadomienia i scenariusze",
+    "stopka": "Zmienisz to później: panel „Motor HA” w pasku bocznym albo Ustawienia → Urządzenia → Motor HA.",
+    "pozniej": "Później",
+    "zapisz": "Zapisz",
+    "zapiszDodaj": "Zapisz i dodaj okno",
+    "zapisano": "Zapisano.",
+    "blad": "Nie zapisałem:",
+    "zrobione": {
+      "skroty": "Skróty są na panelu.",
+      "dom": "Karta „Cały dom” jest na panelu.",
+      "karty": "Karty okien są na panelu.",
+      "okna": "Okna mają nowe ustawienia.",
+      "blad": "Nie wszystko się udało – szczegóły w dzienniku HA."
+    }
+  },
+  "panel": {
+    "ustawienia": "Ustawienia",
+    "historia": "Historia",
+    "powod": "Powód",
+    "brak": "Nie ma jeszcze okien Motor HA.",
+    "dodaj": "Dodaj okno",
+    "tytul": "Motor HA"
   }
 }

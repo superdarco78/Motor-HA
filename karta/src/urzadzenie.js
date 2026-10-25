@@ -1,6 +1,7 @@
 // Karta Motor HA na stronie urządzenia (Ustawienia → Urządzenia): żywe okno, „Dodaj do panelu”, opis ustawień
 // i „Zmień ustawienia”, które otwiera kreator „Konfiguruj” tego urządzenia. Wstawia ją strona.js.
 import { TEKSTY, jezyk } from './jezyk.js';
+import { otworzEkran } from './ekran.js';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, z => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[z]);
 const STYL = `
@@ -43,7 +44,7 @@ export class MotorHaUrzadzenie extends HTMLElement {
     if (!this._zbudowane) {
       this._zbudowane = true;
       root.innerHTML = `<style>${STYL}</style><div class="ramka"><div class="karta"></div>
-        <div class="stopka"><button class="link dodaj">${esc(U.dodaj)}</button>${c.wpis ? `<button class="link zmien">⚙ ${esc(U.zmien)}</button>` : ''}
+        <div class="stopka"><button class="link dodaj">${esc(U.dodaj)}</button>${c.wpis ? `<button class="link zmien">⚙ ${esc(U.zmien)}</button>` : ''}${c.dom && h.user?.is_admin ? `<button class="link ekran">⚙ ${esc(U.ustawienia)}</button>` : ''}
         <div class="panele" hidden></div><div class="info" hidden></div></div>
         ${c.entity ? `<div class="ust" style="border-top:1px solid var(--divider-color)"><h2>${esc(U.ustawienia)}</h2><div class="wiersze"></div></div>` : ''}</div>`;
       const karta = document.createElement(c.entity ? 'motor-ha' : 'motor-ha-dom');
@@ -53,6 +54,7 @@ export class MotorHaUrzadzenie extends HTMLElement {
       this._karta = karta;
       root.querySelector('.dodaj').addEventListener('click', () => this._panele());
       root.querySelector('.zmien')?.addEventListener('click', () => konfiguruj(c.wpis));
+      root.querySelector('.ekran')?.addEventListener('click', () => otworzEkran(this._hass));
     }
     this._karta.hass = h;
     if (c.entity) {

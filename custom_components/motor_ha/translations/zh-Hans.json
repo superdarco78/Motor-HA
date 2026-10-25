@@ -953,6 +953,14 @@
         "mahon": "桃花心木",
         "dab_bagienny": "沼泽橡木"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "全部关闭",
+        "odslon": "全部打开",
+        "pauza": "暂停自动化",
+        "wznow": "恢复自动化"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "叶片",
           "description": "叶片角度。"
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "所有窗户",
+      "description": "一次关闭或打开所有 Motor HA 窗户，或暂停其自动化（仪表板上的快捷按钮）。",
+      "fields": {
+        "akcja": {
+          "name": "操作",
+          "description": "对所有窗户执行的操作。"
+        },
+        "minuty": {
+          "name": "分钟",
+          "description": "暂停持续多久。"
         }
       }
     }

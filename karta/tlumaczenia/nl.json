@@ -525,5 +525,300 @@
     "caleOkno": "Hele raam",
     "rodzajCalosc": "Kies een vak om het een ander soort of andere kleur te geven.",
     "rodzajPole": "Je stelt nu alleen vak {0} in."
+  },
+  "ekran": {
+    "witaj": "Welkom bij Motor HA",
+    "nowaWersja": "Nieuwe versie van Motor HA",
+    "wersja": "Versie {0}",
+    "coNowego": "Nieuw in {0}",
+    "nowe": [
+      "Dit scherm: jij kiest wat Motor HA aan Home Assistant toevoegt",
+      "Raamkaart op het dashboard, de weergave en de plek die je kiest, snelkoppelingen voor het hele huis en een paneel in de zijbalk",
+      "Indelingstegels en de editor voor een eigen indeling getekend als een echt raam, zonwering zichtbaar in elke stap van de wizard"
+    ],
+    "jak": "Hoe wil je Motor HA gebruiken?",
+    "tryby": {
+      "pelny": [
+        "Alles",
+        "Raam, kaart, automatisering, meldingen"
+      ],
+      "samo": [
+        "Alleen het apparaat",
+        "Alleen de zonwering in HA, zonder kaart en automatisering"
+      ],
+      "wlasny": [
+        "Eigen keuze",
+        "Ik vink hieronder aan"
+      ]
+    },
+    "co": "Wat moet Motor HA aan Home Assistant toevoegen?",
+    "opcje": {
+      "karta": [
+        "Raamkaart op een dashboard",
+        "Elk nieuw raam krijgt een kaart. Kies het dashboard en de plek."
+      ],
+      "dom": [
+        "Kaart „Heel het huis”",
+        "Alle ramen op één kaart."
+      ],
+      "skroty": [
+        "Snelkoppelingen op het dashboard",
+        "Knoppen voor het hele huis."
+      ],
+      "pasek": [
+        "Paneel „Motor HA” in de zijbalk",
+        "Alle ramen, de reden van elke beweging en de geschiedenis op één plek."
+      ],
+      "assist": [
+        "Spraakbediening (Assist)",
+        "Ramen luisteren naar opdrachten, bijv. „sluit de woonkamer”."
+      ],
+      "ukryj": [
+        "Gewone motoren verbergen voor spraak",
+        "Assist ziet alleen de Motor HA-ramen, geen dubbele namen."
+      ],
+      "powiadom": [
+        "Meldingen",
+        "Wanneer er iets mis is met een zonwering of sensor."
+      ],
+      "auto": [
+        "Automatisering",
+        "Zonwering reageert vanzelf op tijd, zon, weer en sensoren."
+      ],
+      "nowa_wersja": [
+        "Melding nieuwe versie",
+        "Dit scherm met „Nieuw” na elke update."
+      ]
+    },
+    "jakDziala": "Zo werkt het",
+    "gdyWyl": "Indien uit",
+    "opisy": {
+      "karta": [
+        "Als je een raam toevoegt, zet Motor HA de kaart op het gekozen dashboard, de weergave en de plek. Er wordt niets verwijderd of verplaatst. Staat de kaart er al, dan gebeurt er niets.",
+        "De kaart komt op geen enkel dashboard. Voeg hem zelf toe: Dashboard bewerken → Kaart toevoegen → Motor HA."
+      ],
+      "dom": [
+        "Het dashboard dat voor de raamkaart is gekozen, krijgt één kaart met alle ramen van het huis: de stand van elk raam en de knoppen open, stop, dicht.",
+        "Geen kaart voor het hele huis, alleen kaarten van losse ramen."
+      ],
+      "skroty": [
+        "Boven de raamkaarten staan drie knoppen voor het hele huis. Pauze stopt de automatisering van alle ramen voor 2 uur.",
+        "Geen knoppen; je bedient het hele huis via de kaart „Heel het huis” of met spraak."
+      ],
+      "pasek": [
+        "De zijbalk van HA krijgt het item „Motor HA”: alle ramen met hun kaarten, de reden van de laatste beweging, de geschiedenis en deze instellingen.",
+        "Geen item in de zijbalk. Je vindt de ramen in Instellingen → Apparaten → Motor HA."
+      ],
+      "assist": [
+        "Assist ziet de Motor HA-ramen met hun naam en ruimte, bijv. „sluit de woonkamer”, „open het keukenraam”.",
+        "Assist ziet de Motor HA-ramen niet; je bedient ze via de kaart en de automatisering."
+      ],
+      "ukryj": [
+        "De gewone motoren waarvan de Motor HA-ramen zijn gemaakt, worden voor Assist verborgen. Spraak verwart „rolluik woonkamer” niet met „raam woonkamer”.",
+        "Assist ziet zowel de motor als het Motor HA-raam (er kunnen twee vergelijkbare namen zijn)."
+      ],
+      "powiadom": [
+        "Je krijgt een bericht als een motor niet reageert, een zonwering zijn stand niet haalt, een batterij bijna leeg is of de automatisering een zonwering niet kon bewegen (bijv. door een open raam).",
+        "Geen berichten. De status zie je op de kaart en in de geschiedenis van het raam."
+      ],
+      "auto": [
+        "Elk raam krijgt de scenario’s hieronder. Ze werken op volgorde van belang: een hoger scenario wint van een lager of beperkt het. Je kunt elk later wijzigen bij „Configureren” van het raam.",
+        "Zonwering beweegt alleen als jij dat zegt: kaart, spraak, knop of je eigen HA-automatiseringen. Motor HA doet niets vanzelf."
+      ],
+      "nowa_wersja": [
+        "Na elke update verschijnt dit scherm met „Nieuw” en je instellingen om na te kijken.",
+        "Updates zonder dit scherm. „Nieuw” staat alleen in HACS."
+      ]
+    },
+    "panel": "Dashboard",
+    "widok": "Weergave",
+    "miejsce": "Plek",
+    "proponowane": "aanbevolen",
+    "nowyWidok": "Nieuwe weergave „Ramen”",
+    "miejsca": {
+      "sekcja": "Sectie „Motor HA” onderaan",
+      "gora": "Sectie „Motor HA” bovenaan",
+      "pokoj": "In de sectie van de ruimte van het raam"
+    },
+    "miniOpis": {
+      "sekcja": "Motor HA-kaarten samen in één sectie onderaan de weergave, verder schuift er niets.",
+      "gora": "Motor HA-sectie helemaal bovenaan de weergave.",
+      "pokoj": "Kaart in de sectie met de ruimte van het raam als titel (bijv. Woonkamer). Zonder zo’n sectie – in de Motor HA-sectie."
+    },
+    "miniNowy": "In een aparte weergave „Ramen”.",
+    "oknoMini": "Raam",
+    "salon": "Woonkamer",
+    "kuchnia": "Keuken",
+    "brakPanelu": "Er is geen dashboard dat via de interface is opgeslagen, dus de kaart wordt niet toegevoegd. Maak een dashboard in Instellingen → Dashboards en open dit scherm opnieuw.",
+    "skroty": [
+      "⬇ Alles dicht",
+      "⬆ Alles open",
+      "⏸ Automatisering 2 u pauzeren"
+    ],
+    "skrotyOpis": "Op hetzelfde dashboard, boven de raamkaarten.",
+    "telefon": "Ook naar de telefoon (HA-app)",
+    "wHa": "Ze komen altijd ook in de HA-meldingen (bel in de zijbalk).",
+    "brakTelefonu": "Geen telefoon met de HA-app – meldingen komen alleen in HA (bel in de zijbalk).",
+    "scenOpis": "Alle scenario’s op volgorde van belang (1 is het belangrijkst). Een scenario zonder de benodigde sensor wordt vanzelf overgeslagen. Je kunt elk uitzetten:",
+    "skad": "Hoe het dat weet",
+    "scen": {
+      "cisza": [
+        "Rust na het starten van HA",
+        "5 minuten na een herstart van HA bewegen de zonweringen niet tot de sensoren hun status melden",
+        "–"
+      ],
+      "dym": [
+        "Rook",
+        "rookmelder → zonwering gaat open (vluchtweg en licht)",
+        "rookmelder"
+      ],
+      "wiatr": [
+        "Wind, hagel, trillingen",
+        "wind vanaf 40 km/u of trillingen → buitenzonwering trekt in; hagelwaarschuwing → zonnescherm in, rolluik dicht (beschermt het glas)",
+        "weer, windmeter, trillingssensor, waarschuwingen"
+      ],
+      "deszcz": [
+        "Regen",
+        "zonneschermen, screens en lamellendaken trekken in; rolluiken blijven zoals ze zijn",
+        "weer of regensensor"
+      ],
+      "mroz": [
+        "Vorst",
+        "bij 1 °C en lager beweegt buitenzonwering niet (kan vastgevroren zijn)",
+        "buitentemperatuur of weer"
+      ],
+      "pauza": [
+        "Je eigen handmatige beweging",
+        "als je de zonwering zelf beweegt, wacht de automatisering 2 uur",
+        "motor van de zonwering"
+      ],
+      "alarm": [
+        "Alarm",
+        "bij het inschakelen van het alarm gaat de zonwering dicht",
+        "HA-alarm"
+      ],
+      "spie": [
+        "Ik slaap",
+        "schakelaar „Ik slaap” aan → zonwering blijft dicht en gaat ’s ochtends niet open",
+        "schakelaar „Ik slaap” van het raam"
+      ],
+      "nikogo": [
+        "Niemand thuis",
+        "niemand thuis → zonwering dicht; in vakantiemodus beweegt hij elke ochtend en avond op een iets ander tijdstip",
+        "telefoons van het gezin"
+      ],
+      "rano": [
+        "’s Ochtends open",
+        "bij zonsopkomst (of op de tijd die je instelt) gaat de zonwering open",
+        "HA-zon, klok"
+      ],
+      "wieczor": [
+        "’s Avonds dicht",
+        "na zonsondergang (of op de tijd die je instelt) gaat de zonwering dicht",
+        "HA-zon, klok"
+      ],
+      "obecnosc": [
+        "’s Ochtends op iemand wachten",
+        "tot 10:00 gaat de zonwering pas open als er iemand de ruimte binnenkomt",
+        "aanwezigheids- of bewegingssensor"
+      ],
+      "posrednia": [
+        "Middagstand",
+        "vanaf 13:00 staat de zonwering op 50 % in plaats van helemaal open",
+        "klok"
+      ],
+      "slonce": [
+        "Zon en hitte",
+        "de zon schijnt door dit raam en buiten is het 24 °C of meer (of hitte voorspeld) → zonwering zakt tot 20 % open",
+        "HA-zon, weer, temperatuur"
+      ],
+      "oslepianie": [
+        "Verblinding",
+        "zon in het raam → zonwering zakt zodat de zon niet verder dan 3 m de ruimte in komt (bijv. tot de tv of het bureau)",
+        "HA-zon"
+      ],
+      "pokoj": [
+        "Warme ruimte",
+        "25 °C of meer in de ruimte en zon in het raam → zonwering op 20 % open",
+        "thermometer in de ruimte"
+      ],
+      "zima": [
+        "Winter",
+        "van november tot maart is de zonwering open in de zon (gratis warmte) en ’s nachts dicht (minder warmteverlies)",
+        "HA-zon, kalender"
+      ],
+      "okno": [
+        "Open raam en deur",
+        "raam op kiepstand: zonwering niet lager dan 20 %; raam open: zakt niet; balkondeur open: niet lager dan 80 %",
+        "raam- en deursensor"
+      ],
+      "przeszkoda": [
+        "Obstakel",
+        "obstakelsensor bij de balkondeur → zonwering zakt niet",
+        "obstakelsensor"
+      ],
+      "granice": [
+        "Bewegingsgrenzen en lamellen",
+        "de zonwering gaat nooit voorbij de ingestelde grenzen; lamellen draaien mee met de zonnehoek",
+        "–"
+      ]
+    },
+    "sprawdz": "Bekijk wat wint als er meerdere dingen tegelijk gebeuren",
+    "przyklad": "Voorbeeld: buitenrolluik, raam op het zuiden, juli. Berekend met dezelfde logica die je ramen aanstuurt.",
+    "zaznacz": "Vink aan wat er nu gebeurt:",
+    "pora": "Tijdstip",
+    "pory": {
+      "rano": "Ochtend 7:30",
+      "dzien": "Dag 14:00",
+      "wieczor": "Avond (na zonsondergang)",
+      "noc": "Nacht 23:00"
+    },
+    "warunki": {
+      "slonce": "De zon schijnt door het raam",
+      "upal": "Hitte (30 °C)",
+      "wiatr": "Harde wind (60 km/u)",
+      "deszcz": "Regen",
+      "okno": "Raam op kiepstand",
+      "dym": "Rookmelder",
+      "alarm": "Alarm ingeschakeld",
+      "spie": "„Ik slaap” aan",
+      "nikogo": "Niemand thuis",
+      "reka": "Je hebt de zonwering met de hand bewogen"
+    },
+    "oslona": "Zonwering: {0} % open",
+    "stoi": "Zonwering blijft waar hij is",
+    "wygrywa": "Wint: {0}",
+    "nic": "er gebeurt niets",
+    "ogranicza": "Het open raam beperkt: het zou {0} % zijn, het is {1} %.",
+    "ogrStoi": "Het open raam beperkt: het zou {0} % zijn, de zonwering zakt niet.",
+    "kolejnosc": "Nu aangevinkt:",
+    "stany": {
+      "wygrywa": "wint",
+      "ogranicza": "beperkt",
+      "przegrywa": "verliest",
+      "nie_dziala": "nu niet actief"
+    },
+    "istniejace": "Ook toepassen op mijn ramen ({0}): kaart op het dashboard, meldingen en scenario’s",
+    "stopka": "Je kunt dit later wijzigen: paneel „Motor HA” in de zijbalk of Instellingen → Apparaten → Motor HA.",
+    "pozniej": "Later",
+    "zapisz": "Opslaan",
+    "zapiszDodaj": "Opslaan en raam toevoegen",
+    "zapisano": "Opgeslagen.",
+    "blad": "Niet opgeslagen:",
+    "zrobione": {
+      "skroty": "De snelkoppelingen staan op het dashboard.",
+      "dom": "De kaart „Heel het huis” staat op het dashboard.",
+      "karty": "De raamkaarten staan op het dashboard.",
+      "okna": "De ramen hebben de nieuwe instellingen.",
+      "blad": "Niet alles is gelukt – details in het HA-logboek."
+    }
+  },
+  "panel": {
+    "ustawienia": "Instellingen",
+    "historia": "Geschiedenis",
+    "powod": "Reden",
+    "brak": "Er zijn nog geen Motor HA-ramen.",
+    "dodaj": "Raam toevoegen",
+    "tytul": "Motor HA"
   }
 }

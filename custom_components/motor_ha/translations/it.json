@@ -953,6 +953,14 @@
         "mahon": "mogano",
         "dab_bagienny": "rovere di palude"
       }
+    },
+    "akcja_wszystkie": {
+      "options": {
+        "zaslon": "Chiudi tutto",
+        "odslon": "Apri tutto",
+        "pauza": "Metti in pausa l’automazione",
+        "wznow": "Riprendi l’automazione"
+      }
     }
   },
   "entity": {
@@ -1244,6 +1252,20 @@
         "lamele": {
           "name": "Lamelle",
           "description": "Angolo delle lamelle."
+        }
+      }
+    },
+    "wszystkie": {
+      "name": "Tutte le finestre",
+      "description": "Chiude o apre insieme tutte le finestre Motor HA, oppure mette in pausa la loro automazione (scorciatoie nella plancia).",
+      "fields": {
+        "akcja": {
+          "name": "Azione",
+          "description": "Cosa fare con tutte le finestre."
+        },
+        "minuty": {
+          "name": "Minuti",
+          "description": "Quanto dura la pausa."
         }
       }
     }

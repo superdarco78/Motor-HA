@@ -525,5 +525,300 @@
     "caleOkno": "Finestra intera",
     "rodzajCalosc": "Scegli un riquadro per dargli un altro tipo o colore.",
     "rodzajPole": "Ora imposti solo il riquadro {0}."
+  },
+  "ekran": {
+    "witaj": "Benvenuto in Motor HA",
+    "nowaWersja": "Nuova versione di Motor HA",
+    "wersja": "Versione {0}",
+    "coNowego": "Novità della {0}",
+    "nowe": [
+      "Questa schermata: scegli tu cosa Motor HA aggiunge a Home Assistant",
+      "Scheda della finestra nella plancia, vista e posizione scelte, scorciatoie per tutta la casa e un pannello nella barra laterale",
+      "Riquadri del layout ed editor del layout personalizzato disegnati come una vera finestra, schermature visibili in ogni passo della procedura"
+    ],
+    "jak": "Come vuoi usare Motor HA?",
+    "tryby": {
+      "pelny": [
+        "Tutto",
+        "Finestra, scheda, automazione, notifiche"
+      ],
+      "samo": [
+        "Solo il dispositivo",
+        "Solo la schermatura in HA, senza scheda né automazione"
+      ],
+      "wlasny": [
+        "La mia scelta",
+        "Scelgo io qui sotto"
+      ]
+    },
+    "co": "Cosa deve aggiungere Motor HA a Home Assistant?",
+    "opcje": {
+      "karta": [
+        "Scheda della finestra in una plancia",
+        "Ogni nuova finestra riceve una scheda. Scegli la plancia e la posizione."
+      ],
+      "dom": [
+        "Scheda «Tutta la casa»",
+        "Tutte le finestre in una scheda."
+      ],
+      "skroty": [
+        "Scorciatoie nella plancia",
+        "Pulsanti per tutta la casa."
+      ],
+      "pasek": [
+        "Pannello «Motor HA» nella barra laterale",
+        "Tutte le finestre, il motivo di ogni movimento e la cronologia in un posto."
+      ],
+      "assist": [
+        "Controllo vocale (Assist)",
+        "Le finestre ascoltano i comandi, p. es. «chiudi il soggiorno»."
+      ],
+      "ukryj": [
+        "Nascondi i motori semplici alla voce",
+        "Assist vede solo le finestre Motor HA, senza nomi doppi."
+      ],
+      "powiadom": [
+        "Notifiche",
+        "Quando qualcosa non va con una schermatura o un sensore."
+      ],
+      "auto": [
+        "Automazione",
+        "Le schermature reagiscono da sole all’ora, al sole, al meteo e ai sensori."
+      ],
+      "nowa_wersja": [
+        "Avviso nuova versione",
+        "Questa schermata con le «Novità» dopo ogni aggiornamento."
+      ]
+    },
+    "jakDziala": "Come funziona",
+    "gdyWyl": "Se disattivato",
+    "opisy": {
+      "karta": [
+        "Quando aggiungi una finestra, Motor HA mette la sua scheda nella plancia, vista e posizione scelte. Non rimuove né sposta nulla. Se la scheda c’è già, non fa nulla.",
+        "La scheda non va in nessuna plancia. Aggiungila tu: Modifica plancia → Aggiungi scheda → Motor HA."
+      ],
+      "dom": [
+        "La plancia scelta per la scheda della finestra riceve una scheda con tutte le finestre della casa: lo stato di ognuna e i pulsanti apri, stop, chiudi.",
+        "Nessuna scheda per tutta la casa, solo schede di singole finestre."
+      ],
+      "skroty": [
+        "Sopra le schede delle finestre ci sono tre pulsanti per tutta la casa. Pausa ferma l’automazione di tutte le finestre per 2 ore.",
+        "Nessun pulsante; controlli tutta la casa dalla scheda «Tutta la casa» o con la voce."
+      ],
+      "pasek": [
+        "La barra laterale di HA riceve la voce «Motor HA»: tutte le finestre con le schede, il motivo dell’ultimo movimento, la cronologia e queste impostazioni.",
+        "Nessuna voce nella barra laterale. Le finestre sono in Impostazioni → Dispositivi → Motor HA."
+      ],
+      "assist": [
+        "Assist vede le finestre Motor HA con il loro nome e la stanza, p. es. «chiudi il soggiorno», «apri la finestra della cucina».",
+        "Assist non vede le finestre Motor HA; le controlli dalla scheda e con l’automazione."
+      ],
+      "ukryj": [
+        "I motori semplici da cui sono nate le finestre Motor HA sono nascosti ad Assist. La voce non confonde «tapparella soggiorno» con «finestra soggiorno».",
+        "Assist vede sia il motore sia la finestra Motor HA (possono esserci due nomi simili)."
+      ],
+      "powiadom": [
+        "Ricevi un messaggio quando un motore non risponde, una schermatura non ha raggiunto la posizione, una batteria è scarica o l’automazione non ha potuto muovere una schermatura (p. es. per una finestra aperta).",
+        "Nessun messaggio. Lo stato si vede sulla scheda e nella cronologia della finestra."
+      ],
+      "auto": [
+        "Ogni finestra riceve gli scenari qui sotto. Agiscono in ordine di importanza: uno più alto vince su uno più basso o lo limita. Potrai cambiare ognuno più tardi in «Configura» della finestra.",
+        "Le schermature si muovono solo su tuo comando: scheda, voce, pulsante o le tue automazioni HA. Motor HA non fa nulla da solo."
+      ],
+      "nowa_wersja": [
+        "Dopo ogni aggiornamento compare questa schermata con le «Novità» e le tue impostazioni da controllare.",
+        "Aggiornamenti senza questa schermata. Le «Novità» sono solo in HACS."
+      ]
+    },
+    "panel": "Plancia",
+    "widok": "Vista",
+    "miejsce": "Posizione",
+    "proponowane": "consigliato",
+    "nowyWidok": "Nuova vista «Finestre»",
+    "miejsca": {
+      "sekcja": "Sezione «Motor HA» in fondo",
+      "gora": "Sezione «Motor HA» in alto",
+      "pokoj": "Nella sezione della stanza della finestra"
+    },
+    "miniOpis": {
+      "sekcja": "Le schede Motor HA insieme in una sezione in fondo alla vista, nient’altro si sposta.",
+      "gora": "Sezione Motor HA in cima alla vista.",
+      "pokoj": "Scheda nella sezione il cui titolo è la stanza della finestra (p. es. Soggiorno). Senza tale sezione – nella sezione Motor HA."
+    },
+    "miniNowy": "In una vista separata «Finestre».",
+    "oknoMini": "Finestra",
+    "salon": "Soggiorno",
+    "kuchnia": "Cucina",
+    "brakPanelu": "Non c’è nessuna plancia salvata dall’interfaccia, quindi la scheda non verrà aggiunta. Crea una plancia in Impostazioni → Plance e riapri questa schermata.",
+    "skroty": [
+      "⬇ Chiudi tutto",
+      "⬆ Apri tutto",
+      "⏸ Pausa automazione 2 h"
+    ],
+    "skrotyOpis": "Sulla stessa plancia, sopra le schede delle finestre.",
+    "telefon": "Anche sul telefono (app HA)",
+    "wHa": "Arrivano sempre anche nelle notifiche di HA (campanella nella barra laterale).",
+    "brakTelefonu": "Nessun telefono con l’app HA – le notifiche arrivano solo in HA (campanella nella barra laterale).",
+    "scenOpis": "Tutti gli scenari in ordine di importanza (1 è il più importante). Uno scenario senza il sensore necessario si salta da solo. Puoi disattivare ognuno:",
+    "skad": "Come lo sa",
+    "scen": {
+      "cisza": [
+        "Calma dopo l’avvio di HA",
+        "per 5 minuti dopo il riavvio di HA le schermature restano ferme finché i sensori non danno il loro stato",
+        "–"
+      ],
+      "dym": [
+        "Fumo",
+        "rilevatore di fumo → la schermatura si apre (via di fuga e luce)",
+        "rilevatore di fumo"
+      ],
+      "wiatr": [
+        "Vento, grandine, vibrazioni",
+        "vento da 40 km/h o vibrazioni → la schermatura esterna si ritira; allerta grandine → tenda ritirata, tapparella chiusa (protegge il vetro)",
+        "meteo, anemometro, sensore di vibrazioni, allerte"
+      ],
+      "deszcz": [
+        "Pioggia",
+        "tende da sole, screen e frangisole si ritirano; le tapparelle restano come sono",
+        "meteo o sensore di pioggia"
+      ],
+      "mroz": [
+        "Gelo",
+        "a 1 °C e meno la schermatura esterna non si muove (può essere ghiacciata)",
+        "temperatura esterna o meteo"
+      ],
+      "pauza": [
+        "Il tuo movimento manuale",
+        "se muovi tu la schermatura, l’automazione aspetta 2 ore",
+        "motore della schermatura"
+      ],
+      "alarm": [
+        "Allarme",
+        "quando l’allarme è inserito, la schermatura si chiude",
+        "allarme HA"
+      ],
+      "spie": [
+        "Sto dormendo",
+        "interruttore «Sto dormendo» attivo → la schermatura resta chiusa e non si apre al mattino",
+        "interruttore «Sto dormendo» della finestra"
+      ],
+      "nikogo": [
+        "Nessuno in casa",
+        "nessuno in casa → la schermatura è chiusa; in modalità vacanza si muove ogni mattina e sera a un’ora un po’ diversa",
+        "telefoni dei familiari"
+      ],
+      "rano": [
+        "Apri al mattino",
+        "all’alba (o all’ora che imposti) la schermatura si apre",
+        "sole HA, orologio"
+      ],
+      "wieczor": [
+        "Chiudi la sera",
+        "al tramonto (o all’ora che imposti) la schermatura si chiude",
+        "sole HA, orologio"
+      ],
+      "obecnosc": [
+        "Al mattino aspetta qualcuno",
+        "fino alle 10:00 la schermatura si apre solo quando qualcuno entra nella stanza",
+        "sensore di presenza o di movimento"
+      ],
+      "posrednia": [
+        "Posizione pomeridiana",
+        "dalle 13:00 la schermatura sta al 50 % invece che tutta aperta",
+        "orologio"
+      ],
+      "slonce": [
+        "Sole e caldo",
+        "il sole entra da questa finestra e fuori ci sono 24 °C o più (o è previsto caldo) → la schermatura scende al 20 % di apertura",
+        "sole HA, meteo, temperatura"
+      ],
+      "oslepianie": [
+        "Abbagliamento",
+        "sole nella finestra → la schermatura scende in modo che il sole non arrivi oltre 3 m nella stanza (p. es. fino alla TV o alla scrivania)",
+        "sole HA"
+      ],
+      "pokoj": [
+        "Stanza calda",
+        "25 °C o più nella stanza e sole nella finestra → la schermatura al 20 % di apertura",
+        "termometro della stanza"
+      ],
+      "zima": [
+        "Inverno",
+        "da novembre a marzo la schermatura è aperta al sole (calore gratis) e chiusa di notte (meno dispersione di calore)",
+        "sole HA, calendario"
+      ],
+      "okno": [
+        "Finestra e porta aperte",
+        "finestra a ribalta: la schermatura non scende sotto il 20 %; finestra aperta: non scende; porta del balcone aperta: non sotto l’80 %",
+        "sensore di finestra e porta"
+      ],
+      "przeszkoda": [
+        "Ostacolo",
+        "sensore di ostacolo alla porta del balcone → la schermatura non scende",
+        "sensore di ostacolo"
+      ],
+      "granice": [
+        "Limiti di corsa e lamelle",
+        "la schermatura non supera mai i limiti impostati; le lamelle si orientano secondo l’angolo del sole",
+        "–"
+      ]
+    },
+    "sprawdz": "Verifica cosa vince quando succedono più cose insieme",
+    "przyklad": "Esempio: tapparella esterna, finestra a sud, luglio. Lo calcola la stessa logica che comanda le tue finestre.",
+    "zaznacz": "Spunta cosa sta succedendo ora:",
+    "pora": "Momento",
+    "pory": {
+      "rano": "Mattina 7:30",
+      "dzien": "Giorno 14:00",
+      "wieczor": "Sera (dopo il tramonto)",
+      "noc": "Notte 23:00"
+    },
+    "warunki": {
+      "slonce": "Il sole entra dalla finestra",
+      "upal": "Caldo (30 °C)",
+      "wiatr": "Vento forte (60 km/h)",
+      "deszcz": "Pioggia",
+      "okno": "Finestra a ribalta",
+      "dym": "Rilevatore di fumo",
+      "alarm": "Allarme inserito",
+      "spie": "«Sto dormendo» attivo",
+      "nikogo": "Nessuno in casa",
+      "reka": "Hai mosso la schermatura a mano"
+    },
+    "oslona": "Schermatura: aperta al {0} %",
+    "stoi": "La schermatura resta dov’è",
+    "wygrywa": "Vince: {0}",
+    "nic": "non succede nulla",
+    "ogranicza": "La finestra aperta limita: doveva essere {0} %, è {1} %.",
+    "ogrStoi": "La finestra aperta limita: doveva essere {0} %, la schermatura non scende.",
+    "kolejnosc": "Spuntato ora:",
+    "stany": {
+      "wygrywa": "vince",
+      "ogranicza": "limita",
+      "przegrywa": "perde",
+      "nie_dziala": "non attivo ora"
+    },
+    "istniejace": "Applica anche alle mie finestre ({0}): scheda nella plancia, notifiche e scenari",
+    "stopka": "Potrai cambiarlo più tardi: pannello «Motor HA» nella barra laterale o Impostazioni → Dispositivi → Motor HA.",
+    "pozniej": "Più tardi",
+    "zapisz": "Salva",
+    "zapiszDodaj": "Salva e aggiungi finestra",
+    "zapisano": "Salvato.",
+    "blad": "Non salvato:",
+    "zrobione": {
+      "skroty": "Le scorciatoie sono nella plancia.",
+      "dom": "La scheda «Tutta la casa» è nella plancia.",
+      "karty": "Le schede delle finestre sono nella plancia.",
+      "okna": "Le finestre hanno le nuove impostazioni.",
+      "blad": "Non tutto è riuscito – dettagli nel registro di HA."
+    }
+  },
+  "panel": {
+    "ustawienia": "Impostazioni",
+    "historia": "Cronologia",
+    "powod": "Motivo",
+    "brak": "Non ci sono ancora finestre Motor HA.",
+    "dodaj": "Aggiungi finestra",
+    "tytul": "Motor HA"
   }
 }

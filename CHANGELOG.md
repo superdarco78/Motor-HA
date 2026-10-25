@@ -1,5 +1,16 @@
 # 📝 Historia zmian
 
+## v2.2.28 – Pierwszy ekran: Ty decydujesz, co Motor HA dodaje
+
+- 👋 Przy instalacji i po każdej aktualizacji ekran z wersją i „Co nowego” oraz wyborem, co Motor HA dodaje do Home Assistanta: Wszystko, Samo urządzenie albo Mój wybór
+- 🧩 Karta okna na wybranym panelu, widoku (albo nowym widoku „Okna”) i miejscu: sekcja „Motor HA” na końcu albo na górze, albo sekcja pokoju okna. Niczego nie usuwa i nie przesuwa
+- ⚡ Skróty dla całego domu nad kartami okien: Zasłoń wszystko, Odsłoń wszystko, Pauza automatyki 2 h (nowa akcja „motor_ha.wszystkie”)
+- 📋 Panel „Motor HA” w pasku bocznym: wszystkie okna z kartami, powód ostatniego ruchu, historia i ustawienia
+- 🗣️ Assist, ukrywanie zwykłych silników przed głosem, powiadomienia (też na telefon) i karta „Cały dom” – każde do włączenia albo wyłączenia, przy każdym opis „Jak działa” i „Gdy wyłączone”
+- 🤖 Automatyka: wszystkie 20 scenariuszy w kolejności ważności, przy każdym skąd integracja to wie; scenariusz bez potrzebnego czujnika sam się pomija. „Sprawdź, co wygrywa” liczy ta sama logika, która steruje oknami
+- 🔁 Ustawienia są domyślne dla nowych okien; „Zastosuj też do moich okien” zmienia istniejące. Ekran otworzysz znów z panelu „Motor HA” albo ze strony urządzenia Motor HA
+- 🪟 Kafelki układów i edytor własnego układu jako prawdziwe okno z klocków; osłony widoczne w każdym kroku kreatora, także w Czujnikach i dalej
+
 ## v2.2.27 – Jedna prośba o restart
 
 - 🔁 Po aktualizacji w „Naprawach” jest tylko jedna prośba o restart: gdy HACS pokazuje swoje „Restart required”, wpis „Motor HA … – uruchom ponownie” znika (zostaje tylko przy aktualizacji bez HACS)
