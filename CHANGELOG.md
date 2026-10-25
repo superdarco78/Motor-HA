@@ -1,5 +1,9 @@
 # 📝 Historia zmian
 
+## v2.2.27 – Jedna prośba o restart
+
+- 🔁 Po aktualizacji w „Naprawach” jest tylko jedna prośba o restart: gdy HACS pokazuje swoje „Restart required”, wpis „Motor HA … – uruchom ponownie” znika (zostaje tylko przy aktualizacji bez HACS)
+
 ## v2.2.26 – Okno i osłona z Blendera, realistycznie 1:1
 
 - 🪟 Podgląd w kreatorze, na kafelkach rodzajów i na karcie: całe okno z ramą w wybranym kolorze i osłoną złożoną z elementów wyrenderowanych w Blenderze (światło, cień, materiał) – zamiast okna 3D z przeglądarki

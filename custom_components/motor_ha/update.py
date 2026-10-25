@@ -31,6 +31,18 @@ CO_ILE = timedelta(minutes=2)
 RESTART = "restart"
 
 
+@callback
+def prosba_o_restart(hass: HomeAssistant, wersja: str) -> None:
+    """Jedna prośba o restart w „Naprawach”: gdy HACS już ma swoją („Restart required”), nasza znika."""
+    if any(d == "hacs" and (i.startswith("restart_required") or p.translation_key == "restart_required") and p.active
+           and not p.dismissed_version for (d, i), p in ir.async_get(hass).issues.items()):
+        ir.async_delete_issue(hass, DOMAIN, RESTART)
+        return
+    ir.async_create_issue(hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
+                          severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
+                          translation_placeholders={"wersja": wersja})
+
+
 def numer(wersja: str | None) -> tuple[int, ...]:
     return tuple(int(x) for x in re.findall(r"\d+", str(wersja or ""))) or (0,)
 
@@ -164,9 +176,7 @@ class Aktualizacja(UpdateEntity):
                 self._postep(40)
                 await self._pobierz(wersja)
             self._zainstalowana = wersja
-            ir.async_create_issue(self.hass, DOMAIN, RESTART, is_fixable=True, is_persistent=False,
-                                  severity=ir.IssueSeverity.WARNING, translation_key=RESTART,
-                                  translation_placeholders={"wersja": wersja})
+            prosba_o_restart(self.hass, wersja)
         finally:
             self._postep(None)
 
